@@ -1,0 +1,51 @@
+{
+  "type": "object",
+  "properties": {
+    "property_id": {
+      "type": "string"
+    },
+    "file_url": {
+      "type": "string"
+    },
+    "file_name": {
+      "type": "string"
+    },
+    "custom_name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Exterior",
+        "Interior",
+        "Uncategorized"
+      ]
+    },
+    "room": {
+      "type": "string"
+    },
+    "ai_category": {
+      "type": "string"
+    },
+    "ai_room": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Keep",
+        "Delete",
+        "Enhance",
+        "Pending"
+      ]
+    },
+    "enhanced_url": {
+      "type": "string"
+    },
+    "sort_order": {
+      "type": "number"
+    }
+  },
+  "required": [],
+  "name": "PropertyPhoto"
+}

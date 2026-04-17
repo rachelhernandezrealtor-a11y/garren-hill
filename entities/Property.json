@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Importing",
+        "Reviewing",
+        "Complete"
+      ]
+    },
+    "notes": {
+      "type": "string"
+    },
+    "photo_count": {
+      "type": "number"
+    },
+    "thumbnail_url": {
+      "type": "string"
+    }
+  },
+  "required": [],
+  "name": "Property"
+}
