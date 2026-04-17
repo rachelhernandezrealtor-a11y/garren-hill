@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { Home, Plus, ArrowRight } from "lucide-react";
+import { Home, Plus, ArrowRight, Copy, Check } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const statusColors = {
@@ -14,19 +14,19 @@ const statusColors = {
   Complete: "bg-green-100 text-green-700",
 };
 
+const GALLERY_BASE = "https://rocky-app-b6e5df8e.base44.app/Gallery";
+
 export default function HomePage() {
   const [properties, setProperties] = useState([]);
   const [showNew, setShowNew] = useState(false);
-  const [form, setForm] = useState({ address: "", city: "", state: "", notes: "" });
+  const [form, setForm] = useState({ address: "", city: "", state: "", notes: "", mls_number: "" });
   const [loading, setLoading] = useState(false);
   const [pageLoading, setPageLoading] = useState(true);
+  const [copiedId, setCopiedId] = useState(null);
 
   useEffect(() => {
     Property.list("-created_date")
-      .then((data) => {
-        setProperties(data || []);
-        setPageLoading(false);
-      })
+      .then((data) => { setProperties(data || []); setPageLoading(false); })
       .catch(() => setPageLoading(false));
   }, []);
 
@@ -37,23 +37,26 @@ export default function HomePage() {
       const p = await Property.create({ ...form, status: "Importing", photo_count: 0 });
       setProperties((prev) => [p, ...prev]);
       setShowNew(false);
-      setForm({ address: "", city: "", state: "", notes: "" });
-    } catch (err) {
-      console.error(err);
-    }
+      setForm({ address: "", city: "", state: "", notes: "", mls_number: "" });
+    } catch (err) { console.error(err); }
     setLoading(false);
   };
 
-  if (pageLoading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-          <p className="text-gray-500 text-sm">Loading...</p>
-        </div>
-      </div>
-    );
-  }
+  const copyGalleryLink = (e, id) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const link = `${GALLERY_BASE}?property=${id}`;
+    navigator.clipboard.writeText(link).then(() => {
+      setCopiedId(id);
+      setTimeout(() => setCopiedId(null), 2000);
+    });
+  };
+
+  if (pageLoading) return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" />
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -69,8 +72,7 @@ export default function HomePage() {
             </div>
           </div>
           <Button onClick={() => setShowNew(true)} className="bg-blue-600 hover:bg-blue-700 gap-2">
-            <Plus className="w-4 h-4" />
-            New Property
+            <Plus className="w-4 h-4" /> New Property
           </Button>
         </div>
 
@@ -80,43 +82,54 @@ export default function HomePage() {
             <h3 className="text-lg font-medium text-gray-500 mb-2">No properties yet</h3>
             <p className="text-sm text-gray-400 mb-6">Create your first property to start organizing photos</p>
             <Button onClick={() => setShowNew(true)} className="bg-blue-600 hover:bg-blue-700 gap-2">
-              <Plus className="w-4 h-4" />
-              New Property
+              <Plus className="w-4 h-4" /> New Property
             </Button>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {properties.map((p) => (
-              <Link key={p.id} to={`/Import?property=${p.id}`}>
-                <Card className="hover:shadow-md transition-shadow cursor-pointer border border-gray-200">
-                  <CardContent className="p-5">
-                    {p.thumbnail_url ? (
-                      <div className="w-full h-36 rounded-lg overflow-hidden mb-4 bg-gray-100">
-                        <img src={p.thumbnail_url} alt={p.address} className="w-full h-full object-cover" />
+              <div key={p.id} className="relative group">
+                <Link to={`/Import?property=${p.id}`}>
+                  <Card className="hover:shadow-md transition-shadow cursor-pointer border border-gray-200">
+                    <CardContent className="p-5">
+                      {p.thumbnail_url ? (
+                        <div className="w-full h-36 rounded-lg overflow-hidden mb-4 bg-gray-100">
+                          <img src={p.thumbnail_url} alt={p.address} className="w-full h-full object-cover" />
+                        </div>
+                      ) : (
+                        <div className="w-full h-36 rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center mb-4">
+                          <Home className="w-10 h-10 text-blue-300" />
+                        </div>
+                      )}
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold text-gray-900 truncate">{p.address}</h3>
+                          {(p.city || p.state) && (
+                            <p className="text-sm text-gray-500">{[p.city, p.state].filter(Boolean).join(", ")}</p>
+                          )}
+                          <div className="flex items-center gap-2 mt-1 flex-wrap">
+                            <p className="text-xs text-gray-400">{p.photo_count || 0} photos</p>
+                            {p.mls_number && <span className="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">MLS# {p.mls_number}</span>}
+                          </div>
+                        </div>
+                        <div className="flex-shrink-0 flex flex-col items-end gap-2">
+                          <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${statusColors[p.status] || "bg-gray-100 text-gray-600"}`}>
+                            {p.status}
+                          </span>
+                          <ArrowRight className="w-4 h-4 text-gray-300" />
+                        </div>
                       </div>
-                    ) : (
-                      <div className="w-full h-36 rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center mb-4">
-                        <Home className="w-10 h-10 text-blue-300" />
-                      </div>
-                    )}
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-gray-900 truncate">{p.address}</h3>
-                        {(p.city || p.state) && (
-                          <p className="text-sm text-gray-500">{[p.city, p.state].filter(Boolean).join(", ")}</p>
-                        )}
-                        <p className="text-xs text-gray-400 mt-1">{p.photo_count || 0} photos</p>
-                      </div>
-                      <div className="flex-shrink-0 flex flex-col items-end gap-2">
-                        <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${statusColors[p.status] || "bg-gray-100 text-gray-600"}`}>
-                          {p.status}
-                        </span>
-                        <ArrowRight className="w-4 h-4 text-gray-300" />
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
+                    </CardContent>
+                  </Card>
+                </Link>
+                {/* Copy Gallery Link */}
+                <button
+                  onClick={(e) => copyGalleryLink(e, p.id)}
+                  className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-white border border-gray-200 rounded-lg px-2 py-1 text-xs flex items-center gap-1 shadow-sm hover:bg-gray-50 z-10"
+                >
+                  {copiedId === p.id ? <><Check className="w-3 h-3 text-green-500" /> Copied!</> : <><Copy className="w-3 h-3 text-gray-500" /> Copy Gallery Link</>}
+                </button>
+              </div>
             ))}
           </div>
         )}
@@ -124,47 +137,29 @@ export default function HomePage() {
 
       <Dialog open={showNew} onOpenChange={setShowNew}>
         <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle>New Property</DialogTitle>
-          </DialogHeader>
+          <DialogHeader><DialogTitle>New Property</DialogTitle></DialogHeader>
           <div className="space-y-4 py-2">
             <div>
               <Label>Street Address *</Label>
-              <Input
-                placeholder="123 Main Street"
-                value={form.address}
-                onChange={(e) => setForm({ ...form, address: e.target.value })}
-                className="mt-1"
-              />
+              <Input placeholder="123 Main Street" value={form.address} onChange={(e) => setForm({ ...form, address: e.target.value })} className="mt-1" />
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <Label>City</Label>
-                <Input
-                  placeholder="New York"
-                  value={form.city}
-                  onChange={(e) => setForm({ ...form, city: e.target.value })}
-                  className="mt-1"
-                />
+                <Input placeholder="New York" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })} className="mt-1" />
               </div>
               <div>
                 <Label>State</Label>
-                <Input
-                  placeholder="NY"
-                  value={form.state}
-                  onChange={(e) => setForm({ ...form, state: e.target.value })}
-                  className="mt-1"
-                />
+                <Input placeholder="NY" value={form.state} onChange={(e) => setForm({ ...form, state: e.target.value })} className="mt-1" />
               </div>
             </div>
             <div>
+              <Label>MLS Number</Label>
+              <Input placeholder="e.g. 12345678" value={form.mls_number} onChange={(e) => setForm({ ...form, mls_number: e.target.value })} className="mt-1" />
+            </div>
+            <div>
               <Label>Notes (optional)</Label>
-              <Input
-                placeholder="Any notes about this property..."
-                value={form.notes}
-                onChange={(e) => setForm({ ...form, notes: e.target.value })}
-                className="mt-1"
-              />
+              <Input placeholder="Any notes about this property..." value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="mt-1" />
             </div>
           </div>
           <DialogFooter>

@@ -36,7 +36,8 @@
         "Keep",
         "Delete",
         "Enhance",
-        "Pending"
+        "Pending",
+        "Flag"
       ]
     },
     "enhanced_url": {
@@ -52,6 +53,12 @@
         "Portrait",
         "Unknown"
       ]
+    },
+    "notes": {
+      "type": "string"
+    },
+    "flag_for_photographer": {
+      "type": "boolean"
     }
   },
   "required": [],

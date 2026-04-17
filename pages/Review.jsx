@@ -3,8 +3,9 @@ import { Property, PropertyPhoto } from "@/api/entities";
 import { InvokeAgent } from "@/api/ai";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowLeft, Wand2, Trash2, Sparkles, CheckCircle, ChevronLeft, ChevronRight, Loader2, LayoutGrid, LayoutList } from "lucide-react";
+import { ArrowLeft, Wand2, Trash2, Sparkles, CheckCircle, ChevronLeft, ChevronRight, Loader2, LayoutGrid, LayoutList, Flag, SplitSquareHorizontal, Image } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
 const CATEGORIES = ["Exterior", "Interior", "Uncategorized"];
@@ -16,6 +17,7 @@ const statusStyles = {
   Delete: "border-red-400 bg-red-50",
   Enhance: "border-purple-400 bg-purple-50",
   Pending: "border-gray-200 bg-white",
+  Flag: "border-orange-400 bg-orange-50",
 };
 
 const orientationBadge = {
@@ -38,6 +40,8 @@ export default function Review() {
   const [filterStatus, setFilterStatus] = useState("All");
   const [filterCategory, setFilterCategory] = useState("All");
   const [filterOrientation, setFilterOrientation] = useState("All");
+  const [selected, setSelected] = useState(new Set());
+  const [showBeforeAfter, setShowBeforeAfter] = useState(false);
 
   useEffect(() => {
     if (!propertyId) return;
@@ -61,14 +65,12 @@ Return ONLY a JSON object:
 JSON only, no other text.`,
           image_urls: [photo.file_url],
         });
-
         let parsed = {};
         try {
           const text = typeof result === "string" ? result : result?.content || result?.text || JSON.stringify(result);
           const match = text.match(/\{[\s\S]*\}/);
           parsed = match ? JSON.parse(match[0]) : {};
         } catch {}
-
         const updates = {
           ai_category: parsed.category || "Uncategorized",
           ai_room: parsed.room || "",
@@ -78,9 +80,7 @@ JSON only, no other text.`,
         };
         await PropertyPhoto.update(photo.id, updates);
         setPhotos((prev) => prev.map((p) => p.id === photo.id ? { ...p, ...updates } : p));
-      } catch (err) {
-        console.error("AI failed for", photo.id, err);
-      }
+      } catch (err) { console.error("AI failed for", photo.id, err); }
     }
     setAiLoading(false);
     setAiDone(true);
@@ -89,6 +89,26 @@ JSON only, no other text.`,
   const updatePhoto = async (id, changes) => {
     await PropertyPhoto.update(id, changes);
     setPhotos((prev) => prev.map((p) => p.id === id ? { ...p, ...changes } : p));
+  };
+
+  // Bulk actions
+  const toggleSelect = (id) => {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  };
+
+  const selectAll = () => setSelected(new Set(filteredPhotos.map(p => p.id)));
+  const clearSelected = () => setSelected(new Set());
+
+  const bulkUpdate = async (changes) => {
+    for (const id of selected) {
+      await PropertyPhoto.update(id, changes);
+    }
+    setPhotos((prev) => prev.map((p) => selected.has(p.id) ? { ...p, ...changes } : p));
+    clearSelected();
   };
 
   const filteredPhotos = photos.filter((p) => {
@@ -105,6 +125,7 @@ JSON only, no other text.`,
     delete: photos.filter((p) => p.status === "Delete").length,
     enhance: photos.filter((p) => p.status === "Enhance").length,
     pending: photos.filter((p) => p.status === "Pending").length,
+    flag: photos.filter((p) => p.flag_for_photographer).length,
     landscape: photos.filter((p) => p.orientation === "Landscape").length,
     portrait: photos.filter((p) => p.orientation === "Portrait").length,
   };
@@ -119,15 +140,18 @@ JSON only, no other text.`,
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-6xl mx-auto px-4 py-6">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
           <div className="flex items-center gap-3">
             <Link to="/"><Button variant="ghost" size="icon"><ArrowLeft className="w-4 h-4" /></Button></Link>
             <div>
               <h1 className="text-xl font-bold text-gray-900">{property.address}</h1>
-              <p className="text-sm text-gray-500">{photos.length} photos</p>
+              <p className="text-sm text-gray-500">
+                {photos.length} photos
+                {property.mls_number && <span className="ml-2 text-gray-400">· MLS# {property.mls_number}</span>}
+              </p>
             </div>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 flex-wrap">
             {!aiDone && photos.some((p) => !p.ai_category) && (
               <Button onClick={runAiCategorize} disabled={aiLoading} className="bg-purple-600 hover:bg-purple-700 gap-2">
                 {aiLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
@@ -146,9 +170,10 @@ JSON only, no other text.`,
           <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-red-400" /><span className="text-gray-600">Delete: <strong>{stats.delete}</strong></span></div>
           <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-purple-400" /><span className="text-gray-600">Enhance: <strong>{stats.enhance}</strong></span></div>
           <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-gray-300" /><span className="text-gray-600">Pending: <strong>{stats.pending}</strong></span></div>
-          <div className="w-px h-4 bg-gray-200 mx-1" />
-          <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-sky-400" /><span className="text-gray-600">Landscape: <strong>{stats.landscape}</strong></span></div>
-          <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-rose-400" /><span className="text-gray-600">Portrait: <strong>{stats.portrait}</strong></span></div>
+          {stats.flag > 0 && <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-orange-400" /><span className="text-gray-600">Flagged: <strong>{stats.flag}</strong></span></div>}
+          <div className="w-px h-4 bg-gray-200 mx-1 hidden sm:block" />
+          <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-sky-400" /><span className="text-gray-600">H: <strong>{stats.landscape}</strong></span></div>
+          <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-rose-400" /><span className="text-gray-600">V: <strong>{stats.portrait}</strong></span></div>
           <div className="ml-auto flex items-center gap-2">
             <button onClick={() => setViewMode("single")} className={`p-1.5 rounded ${viewMode === "single" ? "bg-blue-100 text-blue-600" : "text-gray-400 hover:text-gray-600"}`}><LayoutList className="w-4 h-4" /></button>
             <button onClick={() => setViewMode("grid")} className={`p-1.5 rounded ${viewMode === "grid" ? "bg-blue-100 text-blue-600" : "text-gray-400 hover:text-gray-600"}`}><LayoutGrid className="w-4 h-4" /></button>
@@ -156,27 +181,36 @@ JSON only, no other text.`,
         </div>
 
         {/* Filters */}
-        <div className="flex items-center gap-3 mb-5 flex-wrap">
-          <Select value={filterStatus} onValueChange={(v) => { setFilterStatus(v); setCurrent(0); }}>
+        <div className="flex items-center gap-3 mb-4 flex-wrap">
+          <Select value={filterStatus} onValueChange={(v) => { setFilterStatus(v); setCurrent(0); clearSelected(); }}>
             <SelectTrigger className="w-36 bg-white"><SelectValue /></SelectTrigger>
-            <SelectContent>
-              {["All", "Keep", "Delete", "Enhance", "Pending"].map((s) => <SelectItem key={s} value={s}>{s}</SelectItem>)}
-            </SelectContent>
+            <SelectContent>{["All", "Keep", "Delete", "Enhance", "Pending", "Flag"].map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}</SelectContent>
           </Select>
-          <Select value={filterCategory} onValueChange={(v) => { setFilterCategory(v); setCurrent(0); }}>
+          <Select value={filterCategory} onValueChange={(v) => { setFilterCategory(v); setCurrent(0); clearSelected(); }}>
             <SelectTrigger className="w-40 bg-white"><SelectValue /></SelectTrigger>
-            <SelectContent>
-              {["All", "Exterior", "Interior", "Uncategorized"].map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
-            </SelectContent>
+            <SelectContent>{["All", "Exterior", "Interior", "Uncategorized"].map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}</SelectContent>
           </Select>
-          <Select value={filterOrientation} onValueChange={(v) => { setFilterOrientation(v); setCurrent(0); }}>
+          <Select value={filterOrientation} onValueChange={(v) => { setFilterOrientation(v); setCurrent(0); clearSelected(); }}>
             <SelectTrigger className="w-40 bg-white"><SelectValue /></SelectTrigger>
-            <SelectContent>
-              {["All", "Landscape", "Portrait", "Unknown"].map((o) => <SelectItem key={o} value={o}>{o}</SelectItem>)}
-            </SelectContent>
+            <SelectContent>{["All", "Landscape", "Portrait", "Unknown"].map(o => <SelectItem key={o} value={o}>{o}</SelectItem>)}</SelectContent>
           </Select>
           <span className="text-sm text-gray-500">{filteredPhotos.length} shown</span>
         </div>
+
+        {/* Bulk Action Bar */}
+        {selected.size > 0 && (
+          <div className="flex items-center gap-3 mb-4 bg-blue-50 border border-blue-200 rounded-xl px-4 py-3 flex-wrap">
+            <span className="text-sm font-medium text-blue-700">{selected.size} selected</span>
+            <div className="flex items-center gap-2 flex-wrap">
+              <Button size="sm" onClick={() => bulkUpdate({ status: "Keep" })} className="bg-green-600 hover:bg-green-700 h-8 text-xs gap-1"><CheckCircle className="w-3 h-3" /> Keep All</Button>
+              <Button size="sm" onClick={() => bulkUpdate({ status: "Enhance" })} className="bg-purple-600 hover:bg-purple-700 h-8 text-xs gap-1"><Wand2 className="w-3 h-3" /> Enhance All</Button>
+              <Button size="sm" onClick={() => bulkUpdate({ status: "Delete" })} className="bg-red-600 hover:bg-red-700 h-8 text-xs gap-1"><Trash2 className="w-3 h-3" /> Delete All</Button>
+              <Button size="sm" onClick={() => bulkUpdate({ flag_for_photographer: true })} className="bg-orange-500 hover:bg-orange-600 h-8 text-xs gap-1"><Flag className="w-3 h-3" /> Flag All</Button>
+            </div>
+            <button onClick={clearSelected} className="ml-auto text-sm text-blue-500 hover:text-blue-700">Clear</button>
+            <button onClick={selectAll} className="text-sm text-blue-500 hover:text-blue-700">Select All</button>
+          </div>
+        )}
 
         {/* Grid View */}
         {viewMode === "grid" ? (
@@ -184,21 +218,33 @@ JSON only, no other text.`,
             {filteredPhotos.map((p, i) => (
               <div
                 key={p.id}
-                onClick={() => { setCurrent(i); setViewMode("single"); }}
                 className={`relative cursor-pointer rounded-xl overflow-hidden border-2 transition-all hover:scale-[1.02] ${
+                  selected.has(p.id) ? "border-blue-500 ring-2 ring-blue-300" :
                   p.status === "Keep" ? "border-green-300" :
                   p.status === "Delete" ? "border-red-300" :
-                  p.status === "Enhance" ? "border-purple-300" : "border-gray-200"
+                  p.status === "Enhance" ? "border-purple-300" :
+                  p.status === "Flag" ? "border-orange-300" : "border-gray-200"
                 }`}
+                onClick={() => { setCurrent(i); setViewMode("single"); }}
               >
                 <img src={p.file_url} alt={p.custom_name || p.file_name} className="w-full h-32 object-cover" />
+                {/* Select checkbox */}
+                <div
+                  className="absolute top-2 left-2 z-10"
+                  onClick={(e) => { e.stopPropagation(); toggleSelect(p.id); }}
+                >
+                  <div className={`w-5 h-5 rounded border-2 flex items-center justify-center ${selected.has(p.id) ? "bg-blue-500 border-blue-500" : "bg-white/80 border-gray-300"}`}>
+                    {selected.has(p.id) && <CheckCircle className="w-3 h-3 text-white" />}
+                  </div>
+                </div>
+                {p.flag_for_photographer && <div className="absolute top-2 right-2"><Flag className="w-4 h-4 text-orange-500 fill-orange-400" /></div>}
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-2 py-2">
                   <p className="text-white text-xs font-medium truncate">{p.custom_name || p.file_name}</p>
                   {p.room && <p className="text-white/70 text-xs">{p.room}</p>}
                 </div>
-                <div className="absolute top-2 left-2 flex gap-1">
+                <div className="absolute bottom-8 left-2">
                   <span className={`px-1.5 py-0.5 rounded text-xs font-medium ${orientationBadge[p.orientation] || orientationBadge.Unknown}`}>
-                    {p.orientation === "Landscape" ? "⬛ H" : p.orientation === "Portrait" ? "▮ V" : "?"}
+                    {p.orientation === "Landscape" ? "H" : p.orientation === "Portrait" ? "V" : "?"}
                   </span>
                 </div>
               </div>
@@ -211,31 +257,63 @@ JSON only, no other text.`,
             {/* Photo Viewer */}
             <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
               <div className="relative bg-black aspect-[4/3]">
-                <img src={photo.enhanced_url || photo.file_url} alt={photo.custom_name} className="w-full h-full object-contain" />
-                {/* Status badge */}
+                {showBeforeAfter && photo.enhanced_url ? (
+                  <div className="flex w-full h-full">
+                    <div className="flex-1 relative">
+                      <img src={photo.file_url} className="w-full h-full object-contain" alt="Original" />
+                      <span className="absolute bottom-2 left-2 bg-black/60 text-white text-xs px-2 py-1 rounded">Original</span>
+                    </div>
+                    <div className="w-px bg-white/40" />
+                    <div className="flex-1 relative">
+                      <img src={photo.enhanced_url} className="w-full h-full object-contain" alt="Enhanced" />
+                      <span className="absolute bottom-2 right-2 bg-purple-600/80 text-white text-xs px-2 py-1 rounded">Enhanced</span>
+                    </div>
+                  </div>
+                ) : (
+                  <img src={photo.enhanced_url || photo.file_url} alt={photo.custom_name} className="w-full h-full object-contain" />
+                )}
+
+                {/* Badges */}
                 <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-xs font-medium border ${
                   photo.status === "Keep" ? "bg-green-100 text-green-700 border-green-200" :
                   photo.status === "Delete" ? "bg-red-100 text-red-700 border-red-200" :
                   photo.status === "Enhance" ? "bg-purple-100 text-purple-700 border-purple-200" :
+                  photo.status === "Flag" ? "bg-orange-100 text-orange-700 border-orange-200" :
                   "bg-gray-100 text-gray-600 border-gray-200"
                 }`}>{photo.status}</div>
-                {/* Orientation badge */}
-                <div className={`absolute top-3 left-3 px-2 py-1 rounded-full text-xs font-medium ${orientationBadge[photo.orientation] || orientationBadge.Unknown}`}>
-                  {photo.orientation === "Landscape" ? "⬛ Horizontal" : photo.orientation === "Portrait" ? "▮ Vertical" : "? Unknown"}
+
+                <div className={`absolute top-3 left-3 flex items-center gap-1.5`}>
+                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${orientationBadge[photo.orientation] || orientationBadge.Unknown}`}>
+                    {photo.orientation === "Landscape" ? "⬛ H" : photo.orientation === "Portrait" ? "▮ V" : "?"}
+                  </span>
+                  {photo.flag_for_photographer && <span className="bg-orange-100 text-orange-600 px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1"><Flag className="w-3 h-3" />Flagged</span>}
                 </div>
+
                 {photo.ai_category && (
                   <div className="absolute bottom-3 left-3 flex items-center gap-1 bg-black/50 text-white px-2 py-1 rounded-full text-xs">
                     <Sparkles className="w-3 h-3 text-purple-300" />
                     AI: {photo.ai_room || photo.ai_category}
                   </div>
                 )}
+
+                {/* Before/After toggle */}
+                {photo.enhanced_url && (
+                  <button
+                    onClick={() => setShowBeforeAfter(!showBeforeAfter)}
+                    className={`absolute bottom-3 right-3 flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium transition-all ${showBeforeAfter ? "bg-purple-600 text-white" : "bg-black/50 text-white hover:bg-purple-600"}`}
+                  >
+                    <SplitSquareHorizontal className="w-3 h-3" />
+                    {showBeforeAfter ? "Before/After On" : "Before/After"}
+                  </button>
+                )}
               </div>
+
               <div className="flex items-center justify-between px-4 py-3 border-t border-gray-100">
-                <Button variant="ghost" size="sm" disabled={current === 0} onClick={() => setCurrent((c) => c - 1)}>
+                <Button variant="ghost" size="sm" disabled={current === 0} onClick={() => setCurrent(c => c - 1)}>
                   <ChevronLeft className="w-4 h-4 mr-1" /> Prev
                 </Button>
                 <span className="text-sm text-gray-500">{current + 1} / {filteredPhotos.length}</span>
-                <Button variant="ghost" size="sm" disabled={current === filteredPhotos.length - 1} onClick={() => setCurrent((c) => c + 1)}>
+                <Button variant="ghost" size="sm" disabled={current === filteredPhotos.length - 1} onClick={() => setCurrent(c => c + 1)}>
                   Next <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
               </div>
@@ -259,7 +337,7 @@ JSON only, no other text.`,
                 <label className="text-xs font-semibold text-gray-500 uppercase tracking-wide block">Category</label>
                 <Select value={photo.category} onValueChange={(v) => updatePhoto(photo.id, { category: v, room: "" })}>
                   <SelectTrigger className="text-sm"><SelectValue /></SelectTrigger>
-                  <SelectContent>{CATEGORIES.map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}</SelectContent>
+                  <SelectContent>{CATEGORIES.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}</SelectContent>
                 </Select>
                 {photo.category !== "Uncategorized" && (
                   <>
@@ -267,14 +345,13 @@ JSON only, no other text.`,
                     <Select value={photo.room || ""} onValueChange={(v) => updatePhoto(photo.id, { room: v })}>
                       <SelectTrigger className="text-sm"><SelectValue placeholder="Select room..." /></SelectTrigger>
                       <SelectContent>
-                        {(photo.category === "Exterior" ? EXTERIOR_ROOMS : INTERIOR_ROOMS).map((r) => (
+                        {(photo.category === "Exterior" ? EXTERIOR_ROOMS : INTERIOR_ROOMS).map(r => (
                           <SelectItem key={r} value={r}>{r}</SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
                   </>
                 )}
-                {/* Orientation override */}
                 <label className="text-xs font-semibold text-gray-500 uppercase tracking-wide block">Orientation</label>
                 <Select value={photo.orientation || "Unknown"} onValueChange={(v) => updatePhoto(photo.id, { orientation: v })}>
                   <SelectTrigger className="text-sm"><SelectValue /></SelectTrigger>
@@ -286,19 +363,31 @@ JSON only, no other text.`,
                 </Select>
               </div>
 
+              {/* Notes */}
+              <div className="bg-white rounded-xl border border-gray-200 p-4">
+                <label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2 block">Notes</label>
+                <Textarea
+                  value={photo.notes || ""}
+                  onChange={(e) => updatePhoto(photo.id, { notes: e.target.value })}
+                  placeholder="e.g. retake this shot, use for hero image..."
+                  className="text-sm resize-none h-20"
+                />
+              </div>
+
               {/* Actions */}
               <div className="bg-white rounded-xl border border-gray-200 p-4">
                 <label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3 block">Action</label>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-4 gap-2 mb-3">
                   {[
-                    { key: "Keep", icon: <CheckCircle className="w-5 h-5" />, color: "green" },
-                    { key: "Enhance", icon: <Wand2 className="w-5 h-5" />, color: "purple" },
-                    { key: "Delete", icon: <Trash2 className="w-5 h-5" />, color: "red" },
+                    { key: "Keep", icon: <CheckCircle className="w-4 h-4" />, color: "green" },
+                    { key: "Enhance", icon: <Wand2 className="w-4 h-4" />, color: "purple" },
+                    { key: "Delete", icon: <Trash2 className="w-4 h-4" />, color: "red" },
+                    { key: "Flag", icon: <Flag className="w-4 h-4" />, color: "orange" },
                   ].map(({ key, icon, color }) => (
                     <button
                       key={key}
                       onClick={() => updatePhoto(photo.id, { status: key })}
-                      className={`flex flex-col items-center gap-1.5 p-3 rounded-xl border-2 transition-all ${
+                      className={`flex flex-col items-center gap-1 p-2.5 rounded-xl border-2 transition-all ${
                         photo.status === key ? statusStyles[key] : "border-gray-200 hover:border-gray-300"
                       }`}
                     >
@@ -307,14 +396,25 @@ JSON only, no other text.`,
                     </button>
                   ))}
                 </div>
+                {/* Flag for photographer toggle */}
+                <button
+                  onClick={() => updatePhoto(photo.id, { flag_for_photographer: !photo.flag_for_photographer })}
+                  className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg border transition-all text-sm ${
+                    photo.flag_for_photographer ? "border-orange-300 bg-orange-50 text-orange-700" : "border-gray-200 text-gray-500 hover:border-orange-200"
+                  }`}
+                >
+                  <Flag className={`w-4 h-4 ${photo.flag_for_photographer ? "fill-orange-400 text-orange-500" : ""}`} />
+                  {photo.flag_for_photographer ? "Flagged for photographer" : "Flag for photographer to reshoot"}
+                </button>
               </div>
 
               {/* Thumbnail strip */}
               <div className="bg-white rounded-xl border border-gray-200 p-3">
                 <div className="flex gap-2 overflow-x-auto pb-1">
                   {filteredPhotos.map((p, i) => (
-                    <button key={p.id} onClick={() => setCurrent(i)} className={`flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all ${i === current ? "border-blue-500 scale-105" : "border-transparent opacity-60 hover:opacity-100"}`}>
+                    <button key={p.id} onClick={() => setCurrent(i)} className={`flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all relative ${i === current ? "border-blue-500 scale-105" : "border-transparent opacity-60 hover:opacity-100"}`}>
                       <img src={p.file_url} alt="" className="w-14 h-10 object-cover" />
+                      {p.flag_for_photographer && <Flag className="w-2.5 h-2.5 text-orange-500 absolute top-0.5 right-0.5" />}
                     </button>
                   ))}
                 </div>
