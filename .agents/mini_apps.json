@@ -13,6 +13,9 @@
     },
     "Export": {
       "title": "Export"
+    },
+    "Home": {
+      "title": "Home"
     }
   }
 }
