@@ -4,9 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { Home, Plus, Camera, CheckCircle, Clock, ArrowRight } from "lucide-react";
+import { Home, Plus, CheckCircle, Clock, Camera, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const statusColors = {
@@ -15,36 +14,63 @@ const statusColors = {
   Complete: "bg-green-100 text-green-700",
 };
 
-const statusIcons = {
-  Importing: <Clock className="w-3 h-3" />,
-  Reviewing: <Camera className="w-3 h-3" />,
-  Complete: <CheckCircle className="w-3 h-3" />,
-};
-
 export default function Properties() {
   const [properties, setProperties] = useState([]);
   const [showNew, setShowNew] = useState(false);
   const [form, setForm] = useState({ address: "", city: "", state: "", notes: "" });
   const [loading, setLoading] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    Property.list("-created_date").then(setProperties);
+    Property.list("-created_date")
+      .then((data) => {
+        setProperties(data || []);
+        setPageLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setError("Could not load properties. Please refresh.");
+        setPageLoading(false);
+      });
   }, []);
 
   const handleCreate = async () => {
     if (!form.address) return;
     setLoading(true);
-    const p = await Property.create({ ...form, status: "Importing", photo_count: 0 });
-    setProperties([p, ...properties]);
-    setShowNew(false);
-    setForm({ address: "", city: "", state: "", notes: "" });
+    try {
+      const p = await Property.create({ ...form, status: "Importing", photo_count: 0 });
+      setProperties((prev) => [p, ...prev]);
+      setShowNew(false);
+      setForm({ address: "", city: "", state: "", notes: "" });
+    } catch (err) {
+      console.error(err);
+    }
     setLoading(false);
   };
+
+  if (pageLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+          <p className="text-gray-500 text-sm">Loading properties...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center text-red-500">{error}</div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-5xl mx-auto px-4 py-8">
-        {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
@@ -61,7 +87,6 @@ export default function Properties() {
           </Button>
         </div>
 
-        {/* Properties Grid */}
         {properties.length === 0 ? (
           <div className="text-center py-20">
             <Home className="w-12 h-12 text-gray-300 mx-auto mb-4" />
@@ -96,8 +121,7 @@ export default function Properties() {
                         <p className="text-xs text-gray-400 mt-1">{p.photo_count || 0} photos</p>
                       </div>
                       <div className="flex-shrink-0 flex flex-col items-end gap-2">
-                        <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${statusColors[p.status]}`}>
-                          {statusIcons[p.status]}
+                        <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${statusColors[p.status] || "bg-gray-100 text-gray-600"}`}>
                           {p.status}
                         </span>
                         <ArrowRight className="w-4 h-4 text-gray-300" />
@@ -111,7 +135,6 @@ export default function Properties() {
         )}
       </div>
 
-      {/* New Property Dialog */}
       <Dialog open={showNew} onOpenChange={setShowNew}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
