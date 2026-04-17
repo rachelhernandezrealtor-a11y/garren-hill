@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowLeft, Wand2, Trash2, Sparkles, CheckCircle, ChevronLeft, ChevronRight, Loader2, LayoutGrid, LayoutList, Flag, SplitSquareHorizontal, Image } from "lucide-react";
+import { ArrowLeft, Wand2, Trash2, Sparkles, CheckCircle, ChevronLeft, ChevronRight, Loader2, LayoutGrid, LayoutList, Flag, SplitSquareHorizontal, FileImage } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
 const CATEGORIES = ["Exterior", "Interior", "Uncategorized"];
@@ -42,6 +42,7 @@ export default function Review() {
   const [filterOrientation, setFilterOrientation] = useState("All");
   const [selected, setSelected] = useState(new Set());
   const [showBeforeAfter, setShowBeforeAfter] = useState(false);
+  const [mlsAddedId, setMlsAddedId] = useState(null);
 
   useEffect(() => {
     if (!propertyId) return;
@@ -91,6 +92,15 @@ JSON only, no other text.`,
     setPhotos((prev) => prev.map((p) => p.id === id ? { ...p, ...changes } : p));
   };
 
+  const sendToMLS = async (photo) => {
+    if (photo.mls_status === "Queued" || photo.mls_status === "Ready") return;
+    // Get current MLS count to assign next order
+    const mlsCount = photos.filter(p => p.mls_status === "Queued" || p.mls_status === "Ready").length;
+    await updatePhoto(photo.id, { mls_status: "Queued", mls_sort_order: mlsCount });
+    setMlsAddedId(photo.id);
+    setTimeout(() => setMlsAddedId(null), 2000);
+  };
+
   // Bulk actions
   const toggleSelect = (id) => {
     setSelected((prev) => {
@@ -111,6 +121,21 @@ JSON only, no other text.`,
     clearSelected();
   };
 
+  const bulkSendToMLS = async () => {
+    let mlsCount = photos.filter(p => p.mls_status === "Queued" || p.mls_status === "Ready").length;
+    for (const id of selected) {
+      const photo = photos.find(p => p.id === id);
+      if (!photo || photo.mls_status === "Queued" || photo.mls_status === "Ready") continue;
+      await PropertyPhoto.update(id, { mls_status: "Queued", mls_sort_order: mlsCount });
+      mlsCount++;
+    }
+    setPhotos((prev) => prev.map((p) => {
+      if (!selected.has(p.id) || p.mls_status === "Queued" || p.mls_status === "Ready") return p;
+      return { ...p, mls_status: "Queued" };
+    }));
+    clearSelected();
+  };
+
   const filteredPhotos = photos.filter((p) => {
     if (filterStatus !== "All" && p.status !== filterStatus) return false;
     if (filterCategory !== "All" && p.category !== filterCategory) return false;
@@ -126,6 +151,7 @@ JSON only, no other text.`,
     enhance: photos.filter((p) => p.status === "Enhance").length,
     pending: photos.filter((p) => p.status === "Pending").length,
     flag: photos.filter((p) => p.flag_for_photographer).length,
+    mls: photos.filter((p) => p.mls_status === "Queued" || p.mls_status === "Ready").length,
     landscape: photos.filter((p) => p.orientation === "Landscape").length,
     portrait: photos.filter((p) => p.orientation === "Portrait").length,
   };
@@ -158,6 +184,12 @@ JSON only, no other text.`,
                 {aiLoading ? "AI Sorting..." : "Auto-Sort with AI"}
               </Button>
             )}
+            <Link to={`/MLS?property=${propertyId}`}>
+              <Button variant="outline" className="gap-2 border-blue-200 text-blue-600 hover:bg-blue-50">
+                <FileImage className="w-4 h-4" />
+                MLS Queue {stats.mls > 0 && <span className="bg-blue-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">{stats.mls}</span>}
+              </Button>
+            </Link>
             <Button onClick={() => navigate(`/Export?property=${propertyId}`)} className="bg-blue-600 hover:bg-blue-700 gap-2">
               Export <ChevronRight className="w-4 h-4" />
             </Button>
@@ -171,6 +203,7 @@ JSON only, no other text.`,
           <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-purple-400" /><span className="text-gray-600">Enhance: <strong>{stats.enhance}</strong></span></div>
           <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-gray-300" /><span className="text-gray-600">Pending: <strong>{stats.pending}</strong></span></div>
           {stats.flag > 0 && <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-orange-400" /><span className="text-gray-600">Flagged: <strong>{stats.flag}</strong></span></div>}
+          {stats.mls > 0 && <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-blue-400" /><span className="text-gray-600">MLS: <strong>{stats.mls}</strong></span></div>}
           <div className="w-px h-4 bg-gray-200 mx-1 hidden sm:block" />
           <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-sky-400" /><span className="text-gray-600">H: <strong>{stats.landscape}</strong></span></div>
           <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-rose-400" /><span className="text-gray-600">V: <strong>{stats.portrait}</strong></span></div>
@@ -202,10 +235,11 @@ JSON only, no other text.`,
           <div className="flex items-center gap-3 mb-4 bg-blue-50 border border-blue-200 rounded-xl px-4 py-3 flex-wrap">
             <span className="text-sm font-medium text-blue-700">{selected.size} selected</span>
             <div className="flex items-center gap-2 flex-wrap">
-              <Button size="sm" onClick={() => bulkUpdate({ status: "Keep" })} className="bg-green-600 hover:bg-green-700 h-8 text-xs gap-1"><CheckCircle className="w-3 h-3" /> Keep All</Button>
-              <Button size="sm" onClick={() => bulkUpdate({ status: "Enhance" })} className="bg-purple-600 hover:bg-purple-700 h-8 text-xs gap-1"><Wand2 className="w-3 h-3" /> Enhance All</Button>
-              <Button size="sm" onClick={() => bulkUpdate({ status: "Delete" })} className="bg-red-600 hover:bg-red-700 h-8 text-xs gap-1"><Trash2 className="w-3 h-3" /> Delete All</Button>
-              <Button size="sm" onClick={() => bulkUpdate({ flag_for_photographer: true })} className="bg-orange-500 hover:bg-orange-600 h-8 text-xs gap-1"><Flag className="w-3 h-3" /> Flag All</Button>
+              <Button size="sm" onClick={() => bulkUpdate({ status: "Keep" })} className="bg-green-600 hover:bg-green-700 h-8 text-xs gap-1"><CheckCircle className="w-3 h-3" /> Keep</Button>
+              <Button size="sm" onClick={() => bulkUpdate({ status: "Enhance" })} className="bg-purple-600 hover:bg-purple-700 h-8 text-xs gap-1"><Wand2 className="w-3 h-3" /> Enhance</Button>
+              <Button size="sm" onClick={() => bulkUpdate({ status: "Delete" })} className="bg-red-600 hover:bg-red-700 h-8 text-xs gap-1"><Trash2 className="w-3 h-3" /> Delete</Button>
+              <Button size="sm" onClick={() => bulkUpdate({ flag_for_photographer: true })} className="bg-orange-500 hover:bg-orange-600 h-8 text-xs gap-1"><Flag className="w-3 h-3" /> Flag</Button>
+              <Button size="sm" onClick={bulkSendToMLS} className="bg-blue-600 hover:bg-blue-700 h-8 text-xs gap-1"><FileImage className="w-3 h-3" /> Send to MLS</Button>
             </div>
             <button onClick={clearSelected} className="ml-auto text-sm text-blue-500 hover:text-blue-700">Clear</button>
             <button onClick={selectAll} className="text-sm text-blue-500 hover:text-blue-700">Select All</button>
@@ -220,6 +254,7 @@ JSON only, no other text.`,
                 key={p.id}
                 className={`relative cursor-pointer rounded-xl overflow-hidden border-2 transition-all hover:scale-[1.02] ${
                   selected.has(p.id) ? "border-blue-500 ring-2 ring-blue-300" :
+                  p.mls_status === "Queued" || p.mls_status === "Ready" ? "border-blue-300" :
                   p.status === "Keep" ? "border-green-300" :
                   p.status === "Delete" ? "border-red-300" :
                   p.status === "Enhance" ? "border-purple-300" :
@@ -228,24 +263,20 @@ JSON only, no other text.`,
                 onClick={() => { setCurrent(i); setViewMode("single"); }}
               >
                 <img src={p.file_url} alt={p.custom_name || p.file_name} className="w-full h-32 object-cover" />
-                {/* Select checkbox */}
-                <div
-                  className="absolute top-2 left-2 z-10"
-                  onClick={(e) => { e.stopPropagation(); toggleSelect(p.id); }}
-                >
+                <div className="absolute top-2 left-2 z-10" onClick={(e) => { e.stopPropagation(); toggleSelect(p.id); }}>
                   <div className={`w-5 h-5 rounded border-2 flex items-center justify-center ${selected.has(p.id) ? "bg-blue-500 border-blue-500" : "bg-white/80 border-gray-300"}`}>
                     {selected.has(p.id) && <CheckCircle className="w-3 h-3 text-white" />}
                   </div>
                 </div>
-                {p.flag_for_photographer && <div className="absolute top-2 right-2"><Flag className="w-4 h-4 text-orange-500 fill-orange-400" /></div>}
+                <div className="absolute top-2 right-2 flex gap-1">
+                  {p.flag_for_photographer && <Flag className="w-4 h-4 text-orange-500 fill-orange-400" />}
+                  {(p.mls_status === "Queued" || p.mls_status === "Ready") && (
+                    <span className="bg-blue-600 text-white text-xs px-1.5 py-0.5 rounded-full font-medium">MLS</span>
+                  )}
+                </div>
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-2 py-2">
                   <p className="text-white text-xs font-medium truncate">{p.custom_name || p.file_name}</p>
                   {p.room && <p className="text-white/70 text-xs">{p.room}</p>}
-                </div>
-                <div className="absolute bottom-8 left-2">
-                  <span className={`px-1.5 py-0.5 rounded text-xs font-medium ${orientationBadge[p.orientation] || orientationBadge.Unknown}`}>
-                    {p.orientation === "Landscape" ? "H" : p.orientation === "Portrait" ? "V" : "?"}
-                  </span>
                 </div>
               </div>
             ))}
@@ -273,7 +304,6 @@ JSON only, no other text.`,
                   <img src={photo.enhanced_url || photo.file_url} alt={photo.custom_name} className="w-full h-full object-contain" />
                 )}
 
-                {/* Badges */}
                 <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-xs font-medium border ${
                   photo.status === "Keep" ? "bg-green-100 text-green-700 border-green-200" :
                   photo.status === "Delete" ? "bg-red-100 text-red-700 border-red-200" :
@@ -282,21 +312,23 @@ JSON only, no other text.`,
                   "bg-gray-100 text-gray-600 border-gray-200"
                 }`}>{photo.status}</div>
 
-                <div className={`absolute top-3 left-3 flex items-center gap-1.5`}>
+                <div className="absolute top-3 left-3 flex items-center gap-1.5 flex-wrap">
                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${orientationBadge[photo.orientation] || orientationBadge.Unknown}`}>
                     {photo.orientation === "Landscape" ? "⬛ H" : photo.orientation === "Portrait" ? "▮ V" : "?"}
                   </span>
                   {photo.flag_for_photographer && <span className="bg-orange-100 text-orange-600 px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1"><Flag className="w-3 h-3" />Flagged</span>}
+                  {(photo.mls_status === "Queued" || photo.mls_status === "Ready") && (
+                    <span className="bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium">✓ In MLS Queue</span>
+                  )}
                 </div>
 
                 {photo.ai_category && (
-                  <div className="absolute bottom-3 left-3 flex items-center gap-1 bg-black/50 text-white px-2 py-1 rounded-full text-xs">
+                  <div className="absolute bottom-10 left-3 flex items-center gap-1 bg-black/50 text-white px-2 py-1 rounded-full text-xs">
                     <Sparkles className="w-3 h-3 text-purple-300" />
                     AI: {photo.ai_room || photo.ai_category}
                   </div>
                 )}
 
-                {/* Before/After toggle */}
                 {photo.enhanced_url && (
                   <button
                     onClick={() => setShowBeforeAfter(!showBeforeAfter)}
@@ -396,15 +428,32 @@ JSON only, no other text.`,
                     </button>
                   ))}
                 </div>
-                {/* Flag for photographer toggle */}
+
+                {/* Flag for photographer */}
                 <button
                   onClick={() => updatePhoto(photo.id, { flag_for_photographer: !photo.flag_for_photographer })}
-                  className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg border transition-all text-sm ${
+                  className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg border transition-all text-sm mb-2 ${
                     photo.flag_for_photographer ? "border-orange-300 bg-orange-50 text-orange-700" : "border-gray-200 text-gray-500 hover:border-orange-200"
                   }`}
                 >
                   <Flag className={`w-4 h-4 ${photo.flag_for_photographer ? "fill-orange-400 text-orange-500" : ""}`} />
                   {photo.flag_for_photographer ? "Flagged for photographer" : "Flag for photographer to reshoot"}
+                </button>
+
+                {/* Send to MLS */}
+                <button
+                  onClick={() => sendToMLS(photo)}
+                  disabled={photo.mls_status === "Queued" || photo.mls_status === "Ready"}
+                  className={`w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg border transition-all text-sm ${
+                    photo.mls_status === "Queued" || photo.mls_status === "Ready"
+                      ? "border-blue-300 bg-blue-50 text-blue-700 cursor-default"
+                      : "border-gray-200 text-gray-500 hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700"
+                  }`}
+                >
+                  <FileImage className="w-4 h-4" />
+                  {mlsAddedId === photo.id ? "✓ Added to MLS Queue!" :
+                   photo.mls_status === "Queued" || photo.mls_status === "Ready" ? "✓ In MLS Queue" :
+                   "Send to MLS Queue"}
                 </button>
               </div>
 
@@ -415,6 +464,9 @@ JSON only, no other text.`,
                     <button key={p.id} onClick={() => setCurrent(i)} className={`flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all relative ${i === current ? "border-blue-500 scale-105" : "border-transparent opacity-60 hover:opacity-100"}`}>
                       <img src={p.file_url} alt="" className="w-14 h-10 object-cover" />
                       {p.flag_for_photographer && <Flag className="w-2.5 h-2.5 text-orange-500 absolute top-0.5 right-0.5" />}
+                      {(p.mls_status === "Queued" || p.mls_status === "Ready") && (
+                        <div className="absolute bottom-0 left-0 right-0 bg-blue-600/70 text-white text-center" style={{fontSize: "8px"}}>MLS</div>
+                      )}
                     </button>
                   ))}
                 </div>
