@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { Home, Plus, ArrowRight, Copy, Check } from "lucide-react";
+import { Home, Plus, ArrowRight, Copy, Check, FileImage } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const statusColors = {
@@ -89,9 +89,9 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {properties.map((p) => (
               <div key={p.id} className="relative group">
-                <Link to={`/Import?property=${p.id}`}>
-                  <Card className="hover:shadow-md transition-shadow cursor-pointer border border-gray-200">
-                    <CardContent className="p-5">
+                <Card className="border border-gray-200 hover:shadow-md transition-shadow">
+                  <CardContent className="p-5">
+                    <Link to={`/Import?property=${p.id}`}>
                       {p.thumbnail_url ? (
                         <div className="w-full h-36 rounded-lg overflow-hidden mb-4 bg-gray-100">
                           <img src={p.thumbnail_url} alt={p.address} className="w-full h-full object-cover" />
@@ -101,7 +101,7 @@ export default function HomePage() {
                           <Home className="w-10 h-10 text-blue-300" />
                         </div>
                       )}
-                      <div className="flex items-start justify-between gap-2">
+                      <div className="flex items-start justify-between gap-2 mb-3">
                         <div className="flex-1 min-w-0">
                           <h3 className="font-semibold text-gray-900 truncate">{p.address}</h3>
                           {(p.city || p.state) && (
@@ -112,23 +112,33 @@ export default function HomePage() {
                             {p.mls_number && <span className="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">MLS# {p.mls_number}</span>}
                           </div>
                         </div>
-                        <div className="flex-shrink-0 flex flex-col items-end gap-2">
-                          <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${statusColors[p.status] || "bg-gray-100 text-gray-600"}`}>
-                            {p.status}
-                          </span>
-                          <ArrowRight className="w-4 h-4 text-gray-300" />
-                        </div>
+                        <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium flex-shrink-0 ${statusColors[p.status] || "bg-gray-100 text-gray-600"}`}>
+                          {p.status}
+                        </span>
                       </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-                {/* Copy Gallery Link */}
-                <button
-                  onClick={(e) => copyGalleryLink(e, p.id)}
-                  className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-white border border-gray-200 rounded-lg px-2 py-1 text-xs flex items-center gap-1 shadow-sm hover:bg-gray-50 z-10"
-                >
-                  {copiedId === p.id ? <><Check className="w-3 h-3 text-green-500" /> Copied!</> : <><Copy className="w-3 h-3 text-gray-500" /> Copy Gallery Link</>}
-                </button>
+                    </Link>
+
+                    {/* Quick action buttons */}
+                    <div className="flex items-center gap-2 pt-3 border-t border-gray-100">
+                      <Link to={`/Review?property=${p.id}`} className="flex-1">
+                        <Button variant="outline" size="sm" className="w-full text-xs h-8 gap-1">
+                          <ArrowRight className="w-3 h-3" /> Review
+                        </Button>
+                      </Link>
+                      <Link to={`/MLS?property=${p.id}`} className="flex-1">
+                        <Button variant="outline" size="sm" className="w-full text-xs h-8 gap-1 text-blue-600 border-blue-200 hover:bg-blue-50">
+                          <FileImage className="w-3 h-3" /> MLS
+                        </Button>
+                      </Link>
+                      <button
+                        onClick={(e) => copyGalleryLink(e, p.id)}
+                        className="flex-1 h-8 px-2 rounded-md border border-gray-200 text-xs flex items-center justify-center gap-1 hover:bg-gray-50 transition-colors"
+                      >
+                        {copiedId === p.id ? <><Check className="w-3 h-3 text-green-500" />Copied!</> : <><Copy className="w-3 h-3 text-gray-400" />Gallery</>}
+                      </button>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             ))}
           </div>

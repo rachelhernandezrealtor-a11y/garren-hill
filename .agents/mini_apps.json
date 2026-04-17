@@ -22,6 +22,9 @@
     },
     "SocialPost": {
       "title": "SocialPost"
+    },
+    "MLS": {
+      "title": "MLS"
     }
   }
 }

@@ -59,6 +59,21 @@
     },
     "flag_for_photographer": {
       "type": "boolean"
+    },
+    "mls_status": {
+      "type": "string",
+      "enum": [
+        "None",
+        "Queued",
+        "Ready"
+      ],
+      "default": "None"
+    },
+    "mls_sort_order": {
+      "type": "number"
+    },
+    "mls_url": {
+      "type": "string"
     }
   },
   "required": [],
