@@ -67,8 +67,8 @@ export default function HomePage() {
               <Home className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Property Photos</h1>
-              <p className="text-sm text-gray-500">Your photo organization system</p>
+              <h1 className="text-2xl font-bold text-gray-900">Photo Hub</h1>
+              <p className="text-sm text-gray-500">Rachel Hernandez Real Estate</p>
             </div>
           </div>
           <Button onClick={() => setShowNew(true)} className="bg-blue-600 hover:bg-blue-700 gap-2">
