@@ -2,9 +2,6 @@
   "app_id": "69e24a457ec33cf6b6e5df8e",
   "slug": "rocky-app-b6e5df8e",
   "pages": {
-    "Properties": {
-      "title": "Properties"
-    },
     "Import": {
       "title": "Import"
     },
