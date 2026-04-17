@@ -19,6 +19,9 @@
     },
     "Gallery": {
       "title": "Gallery"
+    },
+    "SocialPost": {
+      "title": "SocialPost"
     }
   }
 }
