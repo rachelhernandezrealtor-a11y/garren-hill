@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Property, PropertyPhoto } from "@/api/entities";
-import { Home, ChevronRight, X, ZoomIn } from "lucide-react";
+import { X, ZoomIn, Home } from "lucide-react";
 
 export default function Gallery() {
   const params = new URLSearchParams(window.location.search);
@@ -11,6 +11,7 @@ export default function Gallery() {
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("All");
   const [activeRoom, setActiveRoom] = useState("All");
+  const [activeOrientation, setActiveOrientation] = useState("All");
   const [lightbox, setLightbox] = useState(null);
 
   useEffect(() => {
@@ -30,17 +31,24 @@ export default function Gallery() {
   const rooms = ["All", ...new Set(
     photos
       .filter(p => activeCategory === "All" || p.category === activeCategory)
-      .map(p => p.room)
-      .filter(Boolean)
+      .map(p => p.room).filter(Boolean)
   )];
+  const orientations = ["All", ...new Set(photos.map(p => p.orientation).filter(Boolean))];
 
   const filtered = photos.filter(p => {
     if (activeCategory !== "All" && p.category !== activeCategory) return false;
     if (activeRoom !== "All" && p.room !== activeRoom) return false;
+    if (activeOrientation !== "All" && p.orientation !== activeOrientation) return false;
     return true;
   });
 
   const lightboxIdx = lightbox !== null ? filtered.findIndex(p => p.id === lightbox) : -1;
+
+  // Smart grid: landscape photos get wider cells
+  const getGridClass = (p) => {
+    if (p.orientation === "Landscape") return "col-span-2";
+    return "col-span-1";
+  };
 
   if (loading) return (
     <div className="min-h-screen bg-white flex items-center justify-center">
@@ -59,7 +67,7 @@ export default function Gallery() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Header */}
+      {/* Hero */}
       <div className="bg-gradient-to-br from-slate-900 to-blue-900 text-white px-6 py-12 text-center">
         <p className="text-blue-300 text-sm font-medium uppercase tracking-widest mb-2">Property Gallery</p>
         <h1 className="text-3xl font-bold mb-1">{property.address}</h1>
@@ -71,17 +79,10 @@ export default function Gallery() {
 
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Category Filter */}
-        <div className="flex items-center gap-2 mb-4 flex-wrap">
+        <div className="flex items-center gap-2 mb-3 flex-wrap">
           {categories.map(cat => (
-            <button
-              key={cat}
-              onClick={() => { setActiveCategory(cat); setActiveRoom("All"); }}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                activeCategory === cat
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-              }`}
-            >
+            <button key={cat} onClick={() => { setActiveCategory(cat); setActiveRoom("All"); }}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeCategory === cat ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
               {cat}
             </button>
           ))}
@@ -89,30 +90,36 @@ export default function Gallery() {
 
         {/* Room Filter */}
         {rooms.length > 2 && (
-          <div className="flex items-center gap-2 mb-6 flex-wrap">
+          <div className="flex items-center gap-2 mb-3 flex-wrap">
             {rooms.map(room => (
-              <button
-                key={room}
-                onClick={() => setActiveRoom(room)}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all border ${
-                  activeRoom === room
-                    ? "border-blue-400 bg-blue-50 text-blue-700"
-                    : "border-gray-200 text-gray-500 hover:border-blue-300"
-                }`}
-              >
+              <button key={room} onClick={() => setActiveRoom(room)}
+                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all border ${activeRoom === room ? "border-blue-400 bg-blue-50 text-blue-700" : "border-gray-200 text-gray-500 hover:border-blue-300"}`}>
                 {room}
               </button>
             ))}
           </div>
         )}
 
-        {/* Photo Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        {/* Orientation Filter */}
+        {orientations.length > 2 && (
+          <div className="flex items-center gap-2 mb-6 flex-wrap">
+            {orientations.map(o => (
+              <button key={o} onClick={() => setActiveOrientation(o)}
+                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all border ${activeOrientation === o ? "border-slate-500 bg-slate-100 text-slate-700" : "border-gray-200 text-gray-500 hover:border-slate-300"}`}>
+                {o === "Landscape" ? "⬛ Horizontal" : o === "Portrait" ? "▮ Vertical" : o}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Smart Photo Grid — landscape photos take 2 columns */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {filtered.map((p) => (
             <button
               key={p.id}
               onClick={() => setLightbox(p.id)}
-              className="group relative aspect-square rounded-xl overflow-hidden bg-gray-100 hover:shadow-lg transition-all hover:scale-[1.02]"
+              className={`group relative rounded-xl overflow-hidden bg-gray-100 hover:shadow-lg transition-all hover:scale-[1.02] ${getGridClass(p)}`}
+              style={{ aspectRatio: p.orientation === "Portrait" ? "3/4" : "16/9" }}
             >
               <img
                 src={p.enhanced_url || p.file_url}
@@ -141,15 +148,11 @@ export default function Gallery() {
           <button onClick={() => setLightbox(null)} className="absolute top-4 right-4 text-white/70 hover:text-white">
             <X className="w-7 h-7" />
           </button>
-
           <button
             onClick={() => lightboxIdx > 0 && setLightbox(filtered[lightboxIdx - 1].id)}
             disabled={lightboxIdx === 0}
-            className="absolute left-4 text-white/70 hover:text-white disabled:opacity-20 text-4xl font-light"
-          >
-            ‹
-          </button>
-
+            className="absolute left-4 text-white/70 hover:text-white disabled:opacity-20 text-4xl font-light px-2"
+          >‹</button>
           <div className="max-w-4xl w-full">
             <img
               src={filtered[lightboxIdx].enhanced_url || filtered[lightboxIdx].file_url}
@@ -158,18 +161,20 @@ export default function Gallery() {
             />
             <div className="text-center mt-3">
               <p className="text-white font-medium">{filtered[lightboxIdx].custom_name || filtered[lightboxIdx].file_name}</p>
-              {filtered[lightboxIdx].room && <p className="text-white/50 text-sm">{filtered[lightboxIdx].category} · {filtered[lightboxIdx].room}</p>}
+              <div className="flex items-center justify-center gap-3 mt-1">
+                {filtered[lightboxIdx].room && <p className="text-white/50 text-sm">{filtered[lightboxIdx].category} · {filtered[lightboxIdx].room}</p>}
+                <span className={`text-xs px-2 py-0.5 rounded-full ${filtered[lightboxIdx].orientation === "Landscape" ? "bg-sky-900 text-sky-300" : "bg-rose-900 text-rose-300"}`}>
+                  {filtered[lightboxIdx].orientation === "Landscape" ? "⬛ Horizontal" : "▮ Vertical"}
+                </span>
+              </div>
               <p className="text-white/30 text-xs mt-1">{lightboxIdx + 1} / {filtered.length}</p>
             </div>
           </div>
-
           <button
             onClick={() => lightboxIdx < filtered.length - 1 && setLightbox(filtered[lightboxIdx + 1].id)}
             disabled={lightboxIdx === filtered.length - 1}
-            className="absolute right-4 text-white/70 hover:text-white disabled:opacity-20 text-4xl font-light"
-          >
-            ›
-          </button>
+            className="absolute right-4 text-white/70 hover:text-white disabled:opacity-20 text-4xl font-light px-2"
+          >›</button>
         </div>
       )}
     </div>

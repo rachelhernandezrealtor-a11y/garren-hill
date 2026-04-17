@@ -44,6 +44,14 @@
     },
     "sort_order": {
       "type": "number"
+    },
+    "orientation": {
+      "type": "string",
+      "enum": [
+        "Landscape",
+        "Portrait",
+        "Unknown"
+      ]
     }
   },
   "required": [],

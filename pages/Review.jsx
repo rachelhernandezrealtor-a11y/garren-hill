@@ -1,11 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Property, PropertyPhoto } from "@/api/entities";
 import { InvokeAgent } from "@/api/ai";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowLeft, Wand2, Trash2, Sparkles, CheckCircle, ChevronLeft, ChevronRight, Loader2, Tag, LayoutGrid, LayoutList } from "lucide-react";
+import { ArrowLeft, Wand2, Trash2, Sparkles, CheckCircle, ChevronLeft, ChevronRight, Loader2, LayoutGrid, LayoutList } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
 const CATEGORIES = ["Exterior", "Interior", "Uncategorized"];
@@ -13,10 +12,16 @@ const EXTERIOR_ROOMS = ["Front", "Back", "Side", "Garage", "Yard", "Pool", "Driv
 const INTERIOR_ROOMS = ["Living Room", "Kitchen", "Master Bedroom", "Bedroom", "Master Bathroom", "Bathroom", "Dining Room", "Office", "Basement", "Laundry Room", "Hallway", "Other Interior"];
 
 const statusStyles = {
-  Keep: "bg-green-100 text-green-700 border-green-200",
-  Delete: "bg-red-100 text-red-700 border-red-200",
-  Enhance: "bg-purple-100 text-purple-700 border-purple-200",
-  Pending: "bg-gray-100 text-gray-600 border-gray-200",
+  Keep: "border-green-400 bg-green-50",
+  Delete: "border-red-400 bg-red-50",
+  Enhance: "border-purple-400 bg-purple-50",
+  Pending: "border-gray-200 bg-white",
+};
+
+const orientationBadge = {
+  Landscape: "bg-sky-100 text-sky-700",
+  Portrait: "bg-rose-100 text-rose-700",
+  Unknown: "bg-gray-100 text-gray-500",
 };
 
 export default function Review() {
@@ -29,10 +34,10 @@ export default function Review() {
   const [current, setCurrent] = useState(0);
   const [aiLoading, setAiLoading] = useState(false);
   const [aiDone, setAiDone] = useState(false);
-  const [viewMode, setViewMode] = useState("single"); // single | grid
+  const [viewMode, setViewMode] = useState("single");
   const [filterStatus, setFilterStatus] = useState("All");
   const [filterCategory, setFilterCategory] = useState("All");
-  const [saving, setSaving] = useState(false);
+  const [filterOrientation, setFilterOrientation] = useState("All");
 
   useEffect(() => {
     if (!propertyId) return;
@@ -49,24 +54,20 @@ export default function Review() {
       try {
         const result = await InvokeAgent({
           prompt: `Look at this real estate photo and categorize it. URL: ${photo.file_url}
-          
-Return ONLY a JSON object with these fields:
+Return ONLY a JSON object:
 - category: "Exterior" or "Interior"
-- room: the specific room/area (e.g. "Kitchen", "Living Room", "Front", "Backyard", "Master Bedroom", "Bathroom", "Garage", etc.)
+- room: specific room/area (e.g. "Kitchen", "Living Room", "Front", "Backyard", "Master Bedroom", "Bathroom", "Garage")
 - quality: "good", "needs_enhancement", or "poor"
-
 JSON only, no other text.`,
           image_urls: [photo.file_url],
         });
 
-        let parsed;
+        let parsed = {};
         try {
           const text = typeof result === "string" ? result : result?.content || result?.text || JSON.stringify(result);
           const match = text.match(/\{[\s\S]*\}/);
           parsed = match ? JSON.parse(match[0]) : {};
-        } catch {
-          parsed = {};
-        }
+        } catch {}
 
         const updates = {
           ai_category: parsed.category || "Uncategorized",
@@ -75,11 +76,10 @@ JSON only, no other text.`,
           room: parsed.room || "",
           status: parsed.quality === "poor" ? "Delete" : parsed.quality === "needs_enhancement" ? "Enhance" : "Keep",
         };
-
         await PropertyPhoto.update(photo.id, updates);
         setPhotos((prev) => prev.map((p) => p.id === photo.id ? { ...p, ...updates } : p));
       } catch (err) {
-        console.error("AI categorization failed for", photo.id, err);
+        console.error("AI failed for", photo.id, err);
       }
     }
     setAiLoading(false);
@@ -87,29 +87,27 @@ JSON only, no other text.`,
   };
 
   const updatePhoto = async (id, changes) => {
-    setSaving(true);
     await PropertyPhoto.update(id, changes);
     setPhotos((prev) => prev.map((p) => p.id === id ? { ...p, ...changes } : p));
-    setSaving(false);
   };
 
   const filteredPhotos = photos.filter((p) => {
     if (filterStatus !== "All" && p.status !== filterStatus) return false;
     if (filterCategory !== "All" && p.category !== filterCategory) return false;
+    if (filterOrientation !== "All" && p.orientation !== filterOrientation) return false;
     return true;
   });
 
   const photo = filteredPhotos[current];
-  const rooms = photo?.category === "Exterior" ? EXTERIOR_ROOMS : INTERIOR_ROOMS;
 
   const stats = {
     keep: photos.filter((p) => p.status === "Keep").length,
     delete: photos.filter((p) => p.status === "Delete").length,
     enhance: photos.filter((p) => p.status === "Enhance").length,
     pending: photos.filter((p) => p.status === "Pending").length,
+    landscape: photos.filter((p) => p.orientation === "Landscape").length,
+    portrait: photos.filter((p) => p.orientation === "Portrait").length,
   };
-
-  const goToExport = () => navigate(`/export?property=${propertyId}`);
 
   if (!property) return (
     <div className="min-h-screen flex items-center justify-center">
@@ -136,18 +134,21 @@ JSON only, no other text.`,
                 {aiLoading ? "AI Sorting..." : "Auto-Sort with AI"}
               </Button>
             )}
-            <Button onClick={goToExport} className="bg-blue-600 hover:bg-blue-700 gap-2">
+            <Button onClick={() => navigate(`/Export?property=${propertyId}`)} className="bg-blue-600 hover:bg-blue-700 gap-2">
               Export <ChevronRight className="w-4 h-4" />
             </Button>
           </div>
         </div>
 
         {/* Stats Bar */}
-        <div className="flex items-center gap-4 mb-6 bg-white rounded-xl border border-gray-200 px-5 py-3 flex-wrap">
+        <div className="flex items-center gap-4 mb-4 bg-white rounded-xl border border-gray-200 px-5 py-3 flex-wrap">
           <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-green-400" /><span className="text-gray-600">Keep: <strong>{stats.keep}</strong></span></div>
           <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-red-400" /><span className="text-gray-600">Delete: <strong>{stats.delete}</strong></span></div>
           <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-purple-400" /><span className="text-gray-600">Enhance: <strong>{stats.enhance}</strong></span></div>
-          <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-gray-400" /><span className="text-gray-600">Pending: <strong>{stats.pending}</strong></span></div>
+          <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-gray-300" /><span className="text-gray-600">Pending: <strong>{stats.pending}</strong></span></div>
+          <div className="w-px h-4 bg-gray-200 mx-1" />
+          <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-sky-400" /><span className="text-gray-600">Landscape: <strong>{stats.landscape}</strong></span></div>
+          <div className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-rose-400" /><span className="text-gray-600">Portrait: <strong>{stats.portrait}</strong></span></div>
           <div className="ml-auto flex items-center gap-2">
             <button onClick={() => setViewMode("single")} className={`p-1.5 rounded ${viewMode === "single" ? "bg-blue-100 text-blue-600" : "text-gray-400 hover:text-gray-600"}`}><LayoutList className="w-4 h-4" /></button>
             <button onClick={() => setViewMode("grid")} className={`p-1.5 rounded ${viewMode === "grid" ? "bg-blue-100 text-blue-600" : "text-gray-400 hover:text-gray-600"}`}><LayoutGrid className="w-4 h-4" /></button>
@@ -155,45 +156,50 @@ JSON only, no other text.`,
         </div>
 
         {/* Filters */}
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-3 mb-5 flex-wrap">
           <Select value={filterStatus} onValueChange={(v) => { setFilterStatus(v); setCurrent(0); }}>
             <SelectTrigger className="w-36 bg-white"><SelectValue /></SelectTrigger>
             <SelectContent>
-              {["All", "Keep", "Delete", "Enhance", "Pending"].map((s) => (
-                <SelectItem key={s} value={s}>{s}</SelectItem>
-              ))}
+              {["All", "Keep", "Delete", "Enhance", "Pending"].map((s) => <SelectItem key={s} value={s}>{s}</SelectItem>)}
             </SelectContent>
           </Select>
           <Select value={filterCategory} onValueChange={(v) => { setFilterCategory(v); setCurrent(0); }}>
             <SelectTrigger className="w-40 bg-white"><SelectValue /></SelectTrigger>
             <SelectContent>
-              {["All", "Exterior", "Interior", "Uncategorized"].map((c) => (
-                <SelectItem key={c} value={c}>{c}</SelectItem>
-              ))}
+              {["All", "Exterior", "Interior", "Uncategorized"].map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
+            </SelectContent>
+          </Select>
+          <Select value={filterOrientation} onValueChange={(v) => { setFilterOrientation(v); setCurrent(0); }}>
+            <SelectTrigger className="w-40 bg-white"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              {["All", "Landscape", "Portrait", "Unknown"].map((o) => <SelectItem key={o} value={o}>{o}</SelectItem>)}
             </SelectContent>
           </Select>
           <span className="text-sm text-gray-500">{filteredPhotos.length} shown</span>
         </div>
 
+        {/* Grid View */}
         {viewMode === "grid" ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {filteredPhotos.map((p, i) => (
               <div
                 key={p.id}
                 onClick={() => { setCurrent(i); setViewMode("single"); }}
-                className={`relative cursor-pointer rounded-xl overflow-hidden border-2 transition-all ${
-                  statusStyles[p.status]?.includes("green") ? "border-green-300" :
-                  statusStyles[p.status]?.includes("red") ? "border-red-300" :
-                  statusStyles[p.status]?.includes("purple") ? "border-purple-300" : "border-gray-200"
-                } hover:scale-[1.02]`}
+                className={`relative cursor-pointer rounded-xl overflow-hidden border-2 transition-all hover:scale-[1.02] ${
+                  p.status === "Keep" ? "border-green-300" :
+                  p.status === "Delete" ? "border-red-300" :
+                  p.status === "Enhance" ? "border-purple-300" : "border-gray-200"
+                }`}
               >
                 <img src={p.file_url} alt={p.custom_name || p.file_name} className="w-full h-32 object-cover" />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-2 py-2">
                   <p className="text-white text-xs font-medium truncate">{p.custom_name || p.file_name}</p>
-                  {p.room && <p className="text-white/70 text-xs truncate">{p.room}</p>}
+                  {p.room && <p className="text-white/70 text-xs">{p.room}</p>}
                 </div>
-                <div className={`absolute top-2 right-2 px-1.5 py-0.5 rounded text-xs font-medium ${statusStyles[p.status]}`}>
-                  {p.status}
+                <div className="absolute top-2 left-2 flex gap-1">
+                  <span className={`px-1.5 py-0.5 rounded text-xs font-medium ${orientationBadge[p.orientation] || orientationBadge.Unknown}`}>
+                    {p.orientation === "Landscape" ? "⬛ H" : p.orientation === "Portrait" ? "▮ V" : "?"}
+                  </span>
                 </div>
               </div>
             ))}
@@ -206,18 +212,24 @@ JSON only, no other text.`,
             <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
               <div className="relative bg-black aspect-[4/3]">
                 <img src={photo.enhanced_url || photo.file_url} alt={photo.custom_name} className="w-full h-full object-contain" />
-                <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-xs font-medium border ${statusStyles[photo.status]}`}>
-                  {photo.status}
+                {/* Status badge */}
+                <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-xs font-medium border ${
+                  photo.status === "Keep" ? "bg-green-100 text-green-700 border-green-200" :
+                  photo.status === "Delete" ? "bg-red-100 text-red-700 border-red-200" :
+                  photo.status === "Enhance" ? "bg-purple-100 text-purple-700 border-purple-200" :
+                  "bg-gray-100 text-gray-600 border-gray-200"
+                }`}>{photo.status}</div>
+                {/* Orientation badge */}
+                <div className={`absolute top-3 left-3 px-2 py-1 rounded-full text-xs font-medium ${orientationBadge[photo.orientation] || orientationBadge.Unknown}`}>
+                  {photo.orientation === "Landscape" ? "⬛ Horizontal" : photo.orientation === "Portrait" ? "▮ Vertical" : "? Unknown"}
                 </div>
                 {photo.ai_category && (
-                  <div className="absolute top-3 left-3 flex items-center gap-1 bg-black/50 text-white px-2 py-1 rounded-full text-xs">
+                  <div className="absolute bottom-3 left-3 flex items-center gap-1 bg-black/50 text-white px-2 py-1 rounded-full text-xs">
                     <Sparkles className="w-3 h-3 text-purple-300" />
                     AI: {photo.ai_room || photo.ai_category}
                   </div>
                 )}
               </div>
-
-              {/* Navigation */}
               <div className="flex items-center justify-between px-4 py-3 border-t border-gray-100">
                 <Button variant="ghost" size="sm" disabled={current === 0} onClick={() => setCurrent((c) => c - 1)}>
                   <ChevronLeft className="w-4 h-4 mr-1" /> Prev
@@ -247,11 +259,8 @@ JSON only, no other text.`,
                 <label className="text-xs font-semibold text-gray-500 uppercase tracking-wide block">Category</label>
                 <Select value={photo.category} onValueChange={(v) => updatePhoto(photo.id, { category: v, room: "" })}>
                   <SelectTrigger className="text-sm"><SelectValue /></SelectTrigger>
-                  <SelectContent>
-                    {CATEGORIES.map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
-                  </SelectContent>
+                  <SelectContent>{CATEGORIES.map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}</SelectContent>
                 </Select>
-
                 {photo.category !== "Uncategorized" && (
                   <>
                     <label className="text-xs font-semibold text-gray-500 uppercase tracking-wide block">Room / Area</label>
@@ -265,33 +274,38 @@ JSON only, no other text.`,
                     </Select>
                   </>
                 )}
+                {/* Orientation override */}
+                <label className="text-xs font-semibold text-gray-500 uppercase tracking-wide block">Orientation</label>
+                <Select value={photo.orientation || "Unknown"} onValueChange={(v) => updatePhoto(photo.id, { orientation: v })}>
+                  <SelectTrigger className="text-sm"><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Landscape">⬛ Horizontal (Landscape)</SelectItem>
+                    <SelectItem value="Portrait">▮ Vertical (Portrait)</SelectItem>
+                    <SelectItem value="Unknown">Unknown</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
               {/* Actions */}
               <div className="bg-white rounded-xl border border-gray-200 p-4">
                 <label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3 block">Action</label>
                 <div className="grid grid-cols-3 gap-2">
-                  <button
-                    onClick={() => updatePhoto(photo.id, { status: "Keep" })}
-                    className={`flex flex-col items-center gap-1.5 p-3 rounded-xl border-2 transition-all ${photo.status === "Keep" ? "border-green-400 bg-green-50" : "border-gray-200 hover:border-green-300"}`}
-                  >
-                    <CheckCircle className={`w-5 h-5 ${photo.status === "Keep" ? "text-green-500" : "text-gray-400"}`} />
-                    <span className="text-xs font-medium">Keep</span>
-                  </button>
-                  <button
-                    onClick={() => updatePhoto(photo.id, { status: "Enhance" })}
-                    className={`flex flex-col items-center gap-1.5 p-3 rounded-xl border-2 transition-all ${photo.status === "Enhance" ? "border-purple-400 bg-purple-50" : "border-gray-200 hover:border-purple-300"}`}
-                  >
-                    <Wand2 className={`w-5 h-5 ${photo.status === "Enhance" ? "text-purple-500" : "text-gray-400"}`} />
-                    <span className="text-xs font-medium">Enhance</span>
-                  </button>
-                  <button
-                    onClick={() => updatePhoto(photo.id, { status: "Delete" })}
-                    className={`flex flex-col items-center gap-1.5 p-3 rounded-xl border-2 transition-all ${photo.status === "Delete" ? "border-red-400 bg-red-50" : "border-gray-200 hover:border-red-300"}`}
-                  >
-                    <Trash2 className={`w-5 h-5 ${photo.status === "Delete" ? "text-red-500" : "text-gray-400"}`} />
-                    <span className="text-xs font-medium">Delete</span>
-                  </button>
+                  {[
+                    { key: "Keep", icon: <CheckCircle className="w-5 h-5" />, color: "green" },
+                    { key: "Enhance", icon: <Wand2 className="w-5 h-5" />, color: "purple" },
+                    { key: "Delete", icon: <Trash2 className="w-5 h-5" />, color: "red" },
+                  ].map(({ key, icon, color }) => (
+                    <button
+                      key={key}
+                      onClick={() => updatePhoto(photo.id, { status: key })}
+                      className={`flex flex-col items-center gap-1.5 p-3 rounded-xl border-2 transition-all ${
+                        photo.status === key ? statusStyles[key] : "border-gray-200 hover:border-gray-300"
+                      }`}
+                    >
+                      <span className={photo.status === key ? `text-${color}-500` : "text-gray-400"}>{icon}</span>
+                      <span className="text-xs font-medium">{key}</span>
+                    </button>
+                  ))}
                 </div>
               </div>
 
