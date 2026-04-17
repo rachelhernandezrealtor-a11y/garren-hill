@@ -29,6 +29,21 @@
     },
     "mls_number": {
       "type": "string"
+    },
+    "vimeo_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "matterport_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "media_notes": {
+      "type": "string"
     }
   },
   "required": [],

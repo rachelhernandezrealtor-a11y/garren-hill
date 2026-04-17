@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { Camera, Plus, ArrowRight, Copy, Check, FileImage } from "lucide-react";
+import { Camera, Plus, ArrowRight, Copy, Check, FileImage, Video } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const statusColors = {
@@ -111,6 +111,12 @@ export default function HomePage() {
                         <div className="flex items-center gap-2 mt-1 flex-wrap">
                           <p className="text-xs text-gray-400">{p.photo_count || 0} photos</p>
                           {p.mls_number && <span className="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">MLS# {p.mls_number}</span>}
+                          {(p.vimeo_urls?.length > 0 || p.matterport_urls?.length > 0) && (
+                            <span className="text-xs bg-purple-100 text-purple-600 px-1.5 py-0.5 rounded flex items-center gap-1">
+                              <Video className="w-3 h-3" />
+                              {(p.vimeo_urls?.length || 0) + (p.matterport_urls?.length || 0)} media
+                            </span>
+                          )}
                         </div>
                       </div>
                       <span className={`inline-flex px-2 py-0.5 rounded-full text-xs font-medium flex-shrink-0 ${statusColors[p.status] || "bg-gray-100 text-gray-600"}`}>
@@ -119,7 +125,8 @@ export default function HomePage() {
                     </div>
                   </Link>
 
-                  <div className="flex items-center gap-2 pt-3 border-t border-gray-100">
+                  {/* Quick actions row 1 */}
+                  <div className="flex items-center gap-2 pt-3 border-t border-gray-100 mb-2">
                     <Link to={`/Review?property=${p.id}`} className="flex-1">
                       <Button variant="outline" size="sm" className="w-full text-xs h-8 gap-1">
                         <ArrowRight className="w-3 h-3" /> Review
@@ -130,13 +137,19 @@ export default function HomePage() {
                         <FileImage className="w-3 h-3" /> MLS
                       </Button>
                     </Link>
-                    <button
-                      onClick={(e) => copyGalleryLink(e, p.id)}
-                      className="flex-1 h-8 px-2 rounded-md border border-gray-200 text-xs flex items-center justify-center gap-1 hover:bg-gray-50 transition-colors"
-                    >
-                      {copiedId === p.id ? <><Check className="w-3 h-3 text-green-500" />Copied!</> : <><Copy className="w-3 h-3 text-gray-400" />Gallery</>}
-                    </button>
+                    <Link to={`/Media?property=${p.id}`} className="flex-1">
+                      <Button variant="outline" size="sm" className="w-full text-xs h-8 gap-1 text-purple-600 border-purple-200 hover:bg-purple-50">
+                        <Video className="w-3 h-3" /> Media
+                      </Button>
+                    </Link>
                   </div>
+                  {/* Gallery link */}
+                  <button
+                    onClick={(e) => copyGalleryLink(e, p.id)}
+                    className="w-full h-8 px-2 rounded-md border border-gray-200 text-xs flex items-center justify-center gap-1 hover:bg-gray-50 transition-colors"
+                  >
+                    {copiedId === p.id ? <><Check className="w-3 h-3 text-green-500" />Gallery link copied!</> : <><Copy className="w-3 h-3 text-gray-400" />Copy client gallery link</>}
+                  </button>
                 </CardContent>
               </Card>
             ))}
