@@ -3,32 +3,32 @@
   "slug": "rocky-app-b6e5df8e",
   "default_page": "Index",
   "pages": {
-    "Import": {
-      "title": "Import"
-    },
-    "Review": {
-      "title": "Review"
-    },
-    "Export": {
-      "title": "Export"
-    },
-    "Home": {
-      "title": "Home"
-    },
-    "Gallery": {
-      "title": "Gallery"
-    },
     "SocialPost": {
       "title": "SocialPost"
     },
     "MLS": {
       "title": "MLS"
     },
+    "Import": {
+      "title": "Import"
+    },
+    "Home": {
+      "title": "Home"
+    },
     "Media": {
       "title": "Media"
     },
     "Index": {
       "title": "Index"
+    },
+    "Gallery": {
+      "title": "Gallery"
+    },
+    "Export": {
+      "title": "Export"
+    },
+    "Review": {
+      "title": "Review"
     }
   }
 }
