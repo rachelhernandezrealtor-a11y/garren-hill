@@ -3,6 +3,9 @@
   "slug": "rocky-app-b6e5df8e",
   "default_page": "Index",
   "pages": {
+    "Index": {
+      "title": "Index"
+    },
     "SocialPost": {
       "title": "SocialPost"
     },
@@ -17,9 +20,6 @@
     },
     "Media": {
       "title": "Media"
-    },
-    "Index": {
-      "title": "Index"
     },
     "Gallery": {
       "title": "Gallery"
