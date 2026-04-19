@@ -251,20 +251,22 @@ function Hero() {
     <section id="story" style={{ position: 'relative', height: '100vh', width: '100%', background: '#000' }}>
 
       {/* Full bleed video */}
-      <div style={{ position: 'absolute', inset: '-6%', overflow: 'hidden', opacity: videoReady ? 1 : 0, transition: 'opacity 2s ease' }}>
-        <iframe
-          src="https://player.vimeo.com/video/1171394707?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0"
-          frameBorder="0"
-          allow="autoplay; fullscreen"
-          allowFullScreen
-          onLoad={() => setVideoReady(true)}
-          style={{
-            position: 'absolute', top: '50%', left: '50%',
-            width: 'max(177.78vh, 100vw)', height: 'max(56.25vw, 100vh)',
-            transform: 'translate(-50%, -50%)', border: 'none',
-          }}
-        />
-      </div>
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        onCanPlay={() => setVideoReady(true)}
+        style={{
+          position: 'absolute', top: '50%', left: '50%',
+          width: '100%', height: '100%',
+          transform: 'translate(-50%, -50%)',
+          objectFit: 'cover',
+          zIndex: 1,
+        }}
+      >
+        <source src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f7910a1c9_275a93837_forestheroMAIN.mp4" type="video/mp4" />
+      </video>
       {!videoReady && (
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${PHOTOS.hero})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
       )}
