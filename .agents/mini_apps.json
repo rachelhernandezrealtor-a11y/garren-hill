@@ -59,6 +59,9 @@
     },
     "PropertyDetail": {
       "title": "PropertyDetail"
+    },
+    "Properties": {
+      "title": "Properties"
     }
   }
 }
