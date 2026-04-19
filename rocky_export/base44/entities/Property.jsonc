@@ -1,0 +1,46 @@
+{
+  "name": "Property",
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": "string",
+      "description": "Street address"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "mls_number": {
+      "type": "string",
+      "description": "MLS number"
+    },
+    "vimeo_url": {
+      "type": "string",
+      "description": "Vimeo video URL"
+    },
+    "matterport_url": {
+      "type": "string",
+      "description": "Matterport 3D tour URL"
+    },
+    "gallery_token": {
+      "type": "string",
+      "description": "Unique token for shareable client gallery"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "sold",
+        "pending"
+      ],
+      "default": "active"
+    }
+  },
+  "required": [
+    "address",
+    "city",
+    "state"
+  ]
+}

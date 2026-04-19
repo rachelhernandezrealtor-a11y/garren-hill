@@ -1,0 +1,73 @@
+{
+  "name": "Photo",
+  "type": "object",
+  "properties": {
+    "property_id": {
+      "type": "string",
+      "description": "Reference to Property"
+    },
+    "file_url": {
+      "type": "string",
+      "description": "Uploaded photo URL"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Thumbnail URL"
+    },
+    "room": {
+      "type": "string",
+      "enum": [
+        "exterior_front",
+        "exterior_back",
+        "exterior_side",
+        "living_room",
+        "kitchen",
+        "dining_room",
+        "primary_bedroom",
+        "bedroom",
+        "bathroom",
+        "primary_bathroom",
+        "office",
+        "basement",
+        "garage",
+        "backyard",
+        "pool",
+        "other"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "interior",
+        "exterior",
+        "aerial",
+        "detail",
+        "twilight",
+        "other"
+      ]
+    },
+    "orientation": {
+      "type": "string",
+      "enum": [
+        "horizontal",
+        "vertical"
+      ],
+      "default": "horizontal"
+    },
+    "sort_order": {
+      "type": "number",
+      "default": 0
+    },
+    "caption": {
+      "type": "string"
+    },
+    "selected_for_mls": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "property_id",
+    "file_url"
+  ]
+}
