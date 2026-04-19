@@ -449,7 +449,7 @@ export default function FlowFarmLanding2() {
       <Hero />
       <Manifesto />
       <CinematicReveal
-        src={IMG.exterior}
+        src={IMG.living}
         eyebrow="The Residence"
         headline={"A grand living room.\n27 feet wide. 17 feet tall."}
         body="Reclaimed Civil War-era heart pine floors. Seven fireplaces. Six bedrooms, seven bathrooms. 8,519 square feet above grade. Designed by Robert E. Clark AIA -- built to outlast everything around it."
