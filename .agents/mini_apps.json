@@ -12,9 +12,6 @@
     "Gallery": {
       "title": "Gallery"
     },
-    "Home": {
-      "title": "Home"
-    },
     "Import": {
       "title": "Import"
     },
@@ -35,6 +32,9 @@
     },
     "GarrenHillGallery": {
       "title": "GarrenHillGallery"
+    },
+    "Home": {
+      "title": "Home"
     }
   }
 }

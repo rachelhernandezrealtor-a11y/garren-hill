@@ -1,207 +1,265 @@
-import { useState, useEffect } from "react";
-import { Property } from "@/api/entities";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { Camera, Plus, ArrowRight, Copy, Check, FileImage, Video, Wand2 } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
-const statusColors = {
-  Importing: "bg-blue-100 text-blue-700",
-  Reviewing: "bg-yellow-100 text-yellow-700",
-  Complete: "bg-green-100 text-green-700",
-};
+const PHOTO_HUB_URL = "https://base44.app/api/apps/69e2578ca7113dbe93cb208d/functions/getPhotosByRoom";
 
-const GALLERY_BASE = "https://rocky-app-b6e5df8e.base44.app/Gallery";
+const FEATURED_ROOMS = ["Portico", "Living Room", "Entrance Hall", "Kitchen", "Master Bedroom", "Library", "Pool"];
 
-export default function HomePage() {
-  const [properties, setProperties] = useState([]);
-  const [showNew, setShowNew] = useState(false);
-  const [form, setForm] = useState({ address: "", city: "", state: "", notes: "", mls_number: "" });
-  const [loading, setLoading] = useState(false);
-  const [pageLoading, setPageLoading] = useState(true);
-  const [copiedId, setCopiedId] = useState(null);
+function LazyImg({ src, alt, className }) {
+  const [loaded, setLoaded] = useState(false);
+  const [inView, setInView] = useState(false);
+  const ref = useRef();
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect(); } }, { rootMargin: "400px" });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+  return (
+    <div ref={ref} className={`${className} overflow-hidden bg-stone-900`}>
+      {!loaded && <div className="w-full h-full bg-stone-800 animate-pulse" />}
+      {inView && <img src={src} alt={alt} onLoad={() => setLoaded(true)} className={`w-full h-full object-cover transition-opacity duration-700 ${loaded ? "opacity-100" : "opacity-0"}`} />}
+    </div>
+  );
+}
+
+export default function Home() {
+  const [heroPhoto, setHeroPhoto] = useState(null);
+  const [featured, setFeatured] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    Property.list("-created_date")
-      .then((data) => { setProperties(data || []); setPageLoading(false); })
-      .catch(() => setPageLoading(false));
+    fetch(PHOTO_HUB_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({}) })
+      .then(r => r.json())
+      .then(data => {
+        if (data.grouped) {
+          // Pick hero from Portico or first available
+          const portico = data.grouped["Portico"] || data.grouped[Object.keys(data.grouped)[0]] || [];
+          if (portico.length) setHeroPhoto(portico[0]);
+
+          // Build featured grid: first photo from each featured room
+          const picks = [];
+          FEATURED_ROOMS.forEach(room => {
+            const photos = data.grouped[room];
+            if (photos && photos.length) picks.push({ room, photo: photos[0], count: photos.length });
+          });
+          setFeatured(picks);
+        }
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
   }, []);
 
-  const handleCreate = async () => {
-    if (!form.address) return;
-    setLoading(true);
-    try {
-      const p = await Property.create({ ...form, status: "Importing", photo_count: 0 });
-      setProperties((prev) => [p, ...prev]);
-      setShowNew(false);
-      setForm({ address: "", city: "", state: "", notes: "", mls_number: "" });
-    } catch (err) { console.error(err); }
-    setLoading(false);
-  };
-
-  const copyGalleryLink = (e, id) => {
-    e.preventDefault();
-    e.stopPropagation();
-    navigator.clipboard.writeText(`${GALLERY_BASE}?property=${id}`).then(() => {
-      setCopiedId(id);
-      setTimeout(() => setCopiedId(null), 2000);
-    });
-  };
-
-  if (pageLoading) return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" />
+  if (loading) return (
+    <div className="min-h-screen flex items-center justify-center" style={{ background: "#0e0d08" }}>
+      <div className="text-center">
+        <div className="w-px h-16 bg-gradient-to-b from-transparent via-amber-400/60 to-transparent mx-auto animate-pulse mb-6" />
+        <p className="text-amber-400/50 text-xs tracking-[0.5em] uppercase">Garren Hill</p>
+      </div>
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Top nav */}
-      <div className="bg-white border-b border-gray-200 px-4 py-4 mb-6">
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center">
-              <Camera className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <h1 className="text-lg font-bold text-gray-900">Photo Hub</h1>
-              <p className="text-xs text-gray-500">Rachel Hernandez Real Estate</p>
-            </div>
+    <div className="min-h-screen" style={{ background: "#0e0d08", fontFamily: "Georgia, 'Times New Roman', serif" }}>
+
+      {/* Nav */}
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5" style={{ background: "linear-gradient(to bottom, rgba(14,13,8,0.95), transparent)" }}>
+        <div>
+          <p className="text-white/80 text-sm tracking-[0.3em] uppercase" style={{ fontFamily: "Georgia, serif" }}>Garren Hill</p>
+          <p className="text-amber-400/50 text-[10px] tracking-widest uppercase">Est. 1916 · Pinehurst, NC</p>
+        </div>
+        <div className="hidden md:flex items-center gap-8">
+          <a href="#story" className="text-white/40 hover:text-white/80 text-xs tracking-[0.2em] uppercase transition-colors">The Story</a>
+          <a href="#rooms" className="text-white/40 hover:text-white/80 text-xs tracking-[0.2em] uppercase transition-colors">Rooms</a>
+          <Link to="/GarrenHillGallery" className="text-white/40 hover:text-white/80 text-xs tracking-[0.2em] uppercase transition-colors">Gallery</Link>
+          <a href="#contact" className="border border-amber-400/40 text-amber-400/80 hover:border-amber-400 hover:text-amber-400 text-xs tracking-[0.2em] uppercase px-4 py-2 transition-all">Inquire</a>
+        </div>
+        <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-white/50 hover:text-white">
+          <div className="space-y-1.5">
+            <div className="w-6 h-px bg-current" />
+            <div className="w-4 h-px bg-current" />
+            <div className="w-6 h-px bg-current" />
           </div>
-          <Button onClick={() => setShowNew(true)} className="bg-blue-600 hover:bg-blue-700 gap-2">
-            <Plus className="w-4 h-4" /> New Property
-          </Button>
+        </button>
+      </nav>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8" style={{ background: "rgba(14,13,8,0.98)" }}>
+          <button onClick={() => setMenuOpen(false)} className="absolute top-6 right-8 text-white/30 text-2xl">×</button>
+          {["The Story", "Rooms", "Gallery", "Inquire"].map(item => (
+            <a key={item} href={item === "Gallery" ? "/GarrenHillGallery" : `#${item.toLowerCase().replace(" ", "")}`}
+              onClick={() => setMenuOpen(false)}
+              className="text-white/60 hover:text-white text-xl tracking-[0.3em] uppercase transition-colors">
+              {item}
+            </a>
+          ))}
+        </div>
+      )}
+
+      {/* Hero */}
+      <div className="relative h-screen min-h-[600px]">
+        {heroPhoto ? (
+          <img src={heroPhoto.photoUrl} alt="Garren Hill" className="absolute inset-0 w-full h-full object-cover" />
+        ) : (
+          <div className="absolute inset-0 bg-stone-900" />
+        )}
+        {/* Gradient overlay */}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(14,13,8,0.3) 0%, rgba(14,13,8,0.1) 40%, rgba(14,13,8,0.7) 80%, rgba(14,13,8,1) 100%)" }} />
+
+        {/* Hero text */}
+        <div className="absolute bottom-0 left-0 right-0 px-8 md:px-16 pb-20">
+          <p className="text-amber-400/70 text-[10px] tracking-[0.6em] uppercase mb-4">Pinehurst, North Carolina · Est. 1916</p>
+          <h1 className="text-6xl md:text-8xl font-light text-white/90 tracking-wide mb-4" style={{ lineHeight: 1.05 }}>
+            Garren Hill
+          </h1>
+          <p className="text-white/40 text-sm md:text-base tracking-widest max-w-lg mb-8">
+            A singular historic estate. Four acres of curated legacy, meticulously restored for the discerning steward.
+          </p>
+          <div className="flex items-center gap-6">
+            <Link to="/GarrenHillGallery"
+              className="border border-amber-400/60 text-amber-400/90 hover:border-amber-400 hover:text-amber-400 text-xs tracking-[0.3em] uppercase px-8 py-3.5 transition-all">
+              View Gallery
+            </Link>
+            <a href="#contact" className="text-white/30 hover:text-white/60 text-xs tracking-[0.3em] uppercase transition-colors">
+              Private Inquiry →
+            </a>
+          </div>
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 pb-10">
-        {properties.length === 0 ? (
-          <div className="text-center py-24">
-            <Camera className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-500 mb-2">No properties yet</h3>
-            <p className="text-sm text-gray-400 mb-6">Create your first property to start organizing photos</p>
-            <Button onClick={() => setShowNew(true)} className="bg-blue-600 hover:bg-blue-700 gap-2">
-              <Plus className="w-4 h-4" /> New Property
-            </Button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {properties.map((p) => (
-              <Card key={p.id} className="border border-gray-200 hover:shadow-md transition-shadow">
-                <CardContent className="p-5">
-                  <Link to={`/Import?property=${p.id}`}>
-                    {p.thumbnail_url ? (
-                      <div className="w-full h-36 rounded-lg overflow-hidden mb-3 bg-gray-100">
-                        <img src={p.thumbnail_url} alt={p.address} className="w-full h-full object-cover" />
-                      </div>
-                    ) : (
-                      <div className="w-full h-36 rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center mb-3">
-                        <Camera className="w-10 h-10 text-blue-300" />
-                      </div>
-                    )}
-                    <div className="flex items-start justify-between gap-2 mb-3">
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-gray-900 truncate">{p.address}</h3>
-                        {(p.city || p.state) && (
-                          <p className="text-sm text-gray-500">{[p.city, p.state].filter(Boolean).join(", ")}</p>
-                        )}
-                        <div className="flex items-center gap-2 mt-1 flex-wrap">
-                          <p className="text-xs text-gray-400">{p.photo_count || 0} photos</p>
-                          {p.mls_number && <span className="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">MLS# {p.mls_number}</span>}
-                          {(p.vimeo_urls?.length > 0 || p.matterport_urls?.length > 0) && (
-                            <span className="text-xs bg-purple-100 text-purple-600 px-1.5 py-0.5 rounded flex items-center gap-1">
-                              <Video className="w-3 h-3" />
-                              {(p.vimeo_urls?.length || 0) + (p.matterport_urls?.length || 0)} media
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                      <span className={`inline-flex px-2 py-0.5 rounded-full text-xs font-medium flex-shrink-0 ${statusColors[p.status] || "bg-gray-100 text-gray-600"}`}>
-                        {p.status}
-                      </span>
-                    </div>
-                  </Link>
+      {/* Stats bar */}
+      <div className="border-y border-white/8 py-8 px-8">
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {[
+            { label: "Year Built", value: "1916" },
+            { label: "Acreage", value: "4.15" },
+            { label: "Bedrooms", value: "5" },
+            { label: "Bathrooms", value: "5" },
+          ].map(({ label, value }) => (
+            <div key={label}>
+              <p className="text-white/80 text-2xl md:text-3xl font-light mb-1">{value}</p>
+              <p className="text-white/25 text-[10px] tracking-[0.3em] uppercase">{label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
 
-                  {/* Quick actions row 1 */}
-                  <div className="flex items-center gap-2 pt-3 border-t border-gray-100 mb-2">
-                    <Link to={`/Review?property=${p.id}`} className="flex-1">
-                      <Button variant="outline" size="sm" className="w-full text-xs h-8 gap-1">
-                        <ArrowRight className="w-3 h-3" /> Review
-                      </Button>
-                    </Link>
-                    <Link to={`/Editor?property=${p.id}`} className="flex-1">
-                      <Button variant="outline" size="sm" className="w-full text-xs h-8 gap-1 text-purple-600 border-purple-200 hover:bg-purple-50">
-                        <Wand2 className="w-3 h-3" /> Edit
-                      </Button>
-                    </Link>
-                    <Link to={`/MLS?property=${p.id}`} className="flex-1">
-                      <Button variant="outline" size="sm" className="w-full text-xs h-8 gap-1 text-blue-600 border-blue-200 hover:bg-blue-50">
-                        <FileImage className="w-3 h-3" /> MLS
-                      </Button>
-                    </Link>
-                  </div>
+      {/* Story */}
+      <div id="story" className="max-w-3xl mx-auto px-8 py-24 text-center">
+        <div className="w-px h-10 bg-amber-400/30 mx-auto mb-10" />
+        <p className="text-amber-400/60 text-[10px] tracking-[0.5em] uppercase mb-8">The History</p>
+        <h2 className="text-3xl md:text-4xl font-light text-white/80 mb-8 leading-relaxed">
+          A Century of Distinction
+        </h2>
+        <p className="text-white/40 text-base leading-8 mb-6">
+          Built in 1916 for Walter Hines Page — co-founder of Doubleday, Page & Co. and U.S. Ambassador to the Court of St. James's — Garren Hill has defined quiet prestige in the Carolina Sandhills for over a century.
+        </p>
+        <p className="text-white/30 text-base leading-8 mb-6">
+          The estate was meticulously restored by its current stewards: three months spent sourcing period-accurate bricks for the columned portico, a five-zone climate system installed to preserve original heart pine floors and seven working fireplaces, and the arrival of the Wee Cottage — a separate guest retreat delivered by sky crane.
+        </p>
+        <p className="text-white/30 text-base leading-8">
+          Today, the date "1916" remains inlaid in herringbone brick beneath the portico columns — a quiet acknowledgment of a lineage that very few properties can claim.
+        </p>
+        <div className="w-px h-10 bg-amber-400/20 mx-auto mt-10" />
+      </div>
 
-                  {/* Quick actions row 2 */}
-                  <div className="flex items-center gap-2 mb-2">
-                    <Link to={`/Media?property=${p.id}`} className="flex-1">
-                      <Button variant="outline" size="sm" className="w-full text-xs h-8 gap-1 text-indigo-600 border-indigo-200 hover:bg-indigo-50">
-                        <Video className="w-3 h-3" /> Media
-                      </Button>
-                    </Link>
-                  </div>
+      {/* Featured Rooms Grid */}
+      <div id="rooms" className="max-w-7xl mx-auto px-4 md:px-8 pb-24">
+        <div className="text-center mb-12">
+          <p className="text-amber-400/60 text-[10px] tracking-[0.5em] uppercase mb-4">Interiors</p>
+          <h2 className="text-3xl font-light text-white/70">Room by Room</h2>
+        </div>
 
-                  {/* Gallery link */}
-                  <button
-                    onClick={(e) => copyGalleryLink(e, p.id)}
-                    className="w-full h-8 px-2 rounded-md border border-gray-200 text-xs flex items-center justify-center gap-1 hover:bg-gray-50 transition-colors"
-                  >
-                    {copiedId === p.id ? <><Check className="w-3 h-3 text-green-500" />Gallery link copied!</> : <><Copy className="w-3 h-3 text-gray-400" />Copy client gallery link</>}
-                  </button>
-                </CardContent>
-              </Card>
+        {featured.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+            {/* First photo is large */}
+            {featured.slice(0, 1).map(({ room, photo, count }) => (
+              <Link key={room} to="/GarrenHillGallery" className="md:col-span-2 lg:col-span-2 group relative block">
+                <LazyImg src={photo.photoUrl} alt={room} className="w-full aspect-[16/9] rounded-sm" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent rounded-sm" />
+                <div className="absolute bottom-0 left-0 p-6">
+                  <p className="text-white/90 text-lg font-light tracking-wide">{room}</p>
+                  <p className="text-amber-400/50 text-xs tracking-widest uppercase mt-1">{count} photographs</p>
+                </div>
+              </Link>
+            ))}
+
+            {/* Rest in equal grid */}
+            {featured.slice(1, 7).map(({ room, photo, count }) => (
+              <Link key={room} to="/GarrenHillGallery" className="group relative block">
+                <LazyImg src={photo.photoUrl} alt={room} className="w-full aspect-[4/3] rounded-sm" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent rounded-sm" />
+                <div className="absolute bottom-0 left-0 p-4">
+                  <p className="text-white/80 text-sm font-light">{room}</p>
+                  <p className="text-amber-400/40 text-[10px] tracking-widest uppercase mt-0.5">{count} photographs</p>
+                </div>
+              </Link>
             ))}
           </div>
         )}
+
+        <div className="text-center mt-10">
+          <Link to="/GarrenHillGallery"
+            className="inline-block border border-white/15 text-white/40 hover:border-amber-400/40 hover:text-amber-400/70 text-xs tracking-[0.3em] uppercase px-10 py-4 transition-all">
+            View Full Gallery
+          </Link>
+        </div>
       </div>
 
-      <Dialog open={showNew} onOpenChange={setShowNew}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader><DialogTitle>New Property</DialogTitle></DialogHeader>
-          <div className="space-y-4 py-2">
-            <div>
-              <Label>Street Address *</Label>
-              <Input placeholder="123 Main Street" value={form.address} onChange={(e) => setForm({ ...form, address: e.target.value })} className="mt-1" />
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <Label>City</Label>
-                <Input placeholder="Pinehurst" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })} className="mt-1" />
+      {/* Property Details */}
+      <div className="border-t border-white/8 py-20 px-8">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-amber-400/60 text-[10px] tracking-[0.5em] uppercase mb-12 text-center">Property Details</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6">
+            {[
+              ["Address", "200 Hollycrest Drive, Pinehurst, NC"],
+              ["Year Built", "1916"],
+              ["Acreage", "4.15 acres"],
+              ["County", "Moore County, NC"],
+              ["Bedrooms", "5"],
+              ["Bathrooms", "5"],
+              ["Living Room", "Nearly 40 feet in length"],
+              ["Fireplaces", "7 working fireplaces"],
+              ["Pool", "20 × 40 ft"],
+              ["Tennis Courts", "2"],
+              ["Outbuildings", "Wee Cottage, Garage"],
+              ["Recognition", "Village Historic Foundation"],
+            ].map(([label, value]) => (
+              <div key={label} className="flex items-start justify-between gap-4 py-3 border-b border-white/6">
+                <p className="text-white/25 text-xs tracking-widest uppercase flex-shrink-0">{label}</p>
+                <p className="text-white/55 text-sm text-right">{value}</p>
               </div>
-              <div>
-                <Label>State</Label>
-                <Input placeholder="NC" value={form.state} onChange={(e) => setForm({ ...form, state: e.target.value })} className="mt-1" />
-              </div>
-            </div>
-            <div>
-              <Label>MLS Number</Label>
-              <Input placeholder="e.g. 12345678" value={form.mls_number} onChange={(e) => setForm({ ...form, mls_number: e.target.value })} className="mt-1" />
-            </div>
-            <div>
-              <Label>Notes (optional)</Label>
-              <Input placeholder="Any notes..." value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="mt-1" />
-            </div>
+            ))}
           </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setShowNew(false)}>Cancel</Button>
-            <Button onClick={handleCreate} disabled={!form.address || loading} className="bg-blue-600 hover:bg-blue-700">
-              {loading ? "Creating..." : "Create Property"}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+        </div>
+      </div>
+
+      {/* Contact */}
+      <div id="contact" className="border-t border-white/8 py-20 px-8 text-center">
+        <div className="w-px h-10 bg-amber-400/30 mx-auto mb-10" />
+        <p className="text-amber-400/60 text-[10px] tracking-[0.5em] uppercase mb-6">Private Inquiries</p>
+        <h2 className="text-3xl font-light text-white/70 mb-4">Arrange a Viewing</h2>
+        <p className="text-white/30 text-sm mb-10 max-w-md mx-auto leading-7">
+          Garren Hill is offered to qualified buyers by private appointment. Please reach out directly to discuss.
+        </p>
+        <a href="mailto:rachelhernandezrealtor@gmail.com"
+          className="inline-block border border-amber-400/50 text-amber-400/80 hover:border-amber-400 hover:text-amber-400 text-xs tracking-[0.4em] uppercase px-12 py-4 transition-all">
+          Contact Rachel Hernandez
+        </a>
+        <p className="text-white/15 text-xs tracking-widest mt-6">rachelhernandezrealtor@gmail.com</p>
+      </div>
+
+      {/* Footer */}
+      <div className="border-t border-white/5 py-10 px-8 text-center">
+        <p className="text-white/15 text-[10px] tracking-[0.4em] uppercase">Garren Hill · Pinehurst, North Carolina · Est. 1916</p>
+        <p className="text-white/8 text-[10px] tracking-widest mt-2">© Rachel Hernandez Real Estate</p>
+        {/* Hidden admin access */}
+        <div className="mt-8 flex items-center justify-center gap-6">
+          <Link to="/Import" className="text-white/8 hover:text-white/20 text-[9px] tracking-widest uppercase transition-colors">Hub</Link>
+        </div>
+      </div>
+
     </div>
   );
 }
