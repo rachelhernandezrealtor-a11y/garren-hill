@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 
-const NAV_LINKS = ["The Estate", "The Land", "Infrastructure", "Gallery", "Inquire"];
-
 const STATS = [
   { value: "15", label: "Acres" },
   { value: "8,519", label: "Sq Ft Main Residence" },
@@ -20,7 +18,7 @@ const FEATURES = [
 
 const STRUCTURES = [
   { name: "Main Residence", detail: "8,519 SF | 6 beds | 7 baths", img: "https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/595faa261_107LindenTrail-29.jpg" },
-  { name: "Cabana House", detail: "Private guest retreat | 1 bed | 1 bath | full kitchen", img: "https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/3af6924d6_CabanaHouseMain.jpg" },
+  { name: "Cabana House", detail: "Private guest retreat | 1 bed | 1 bath | full kitchen", img: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/3af6924d6_CabanaHouseMain.jpg" },
   { name: "High Tunnel Greenhouse", detail: "96x36ft | Custom geothermal climate control", img: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/217fdb4a1_HighTunnel.jpg" },
   { name: "Farm Workshop", detail: "30x40ft | Plumbing | Electrical | Walk-in cooler", img: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/136958608_FarmWorkshop.jpg" },
   { name: "Compost System", detail: "O2Compost | Regenerative waste management", img: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/983e028f7_CompostingandBioChar.jpg" },
@@ -29,7 +27,6 @@ const STRUCTURES = [
 
 export default function FlowFarmHome() {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -38,7 +35,7 @@ export default function FlowFarmHome() {
   }, []);
 
   return (
-    <div style={{ background: "#080c08", color: "#e8e4dc", fontFamily: "'Georgia', serif", overflowX: "hidden" }}>
+    <div style={{ background: "#080c08", color: "#e8e4dc", fontFamily: "Georgia, serif", overflowX: "hidden" }}>
 
       {/* NAV */}
       <nav style={{
@@ -47,84 +44,51 @@ export default function FlowFarmHome() {
         display: "flex", alignItems: "center", justifyContent: "space-between",
         background: scrolled ? "rgba(8,12,8,0.95)" : "transparent",
         backdropFilter: scrolled ? "blur(12px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "none",
         transition: "all 0.4s ease"
       }}>
-        <div style={{ fontSize: 13, letterSpacing: "0.2em", textTransform: "uppercase", color: "#e8e4dc", fontWeight: 400 }}>
-          Flow Farm
-        </div>
+        <div style={{ fontSize: 13, letterSpacing: "0.2em", textTransform: "uppercase" }}>Flow Farm</div>
         <div style={{ display: "flex", gap: 40 }}>
-          {NAV_LINKS.map(link => (
-            <span key={link} style={{
-              fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase",
-              color: "rgba(232,228,220,0.7)", cursor: "pointer",
-              transition: "color 0.2s"
-            }}
-              onMouseEnter={e => e.target.style.color = "#e8e4dc"}
-              onMouseLeave={e => e.target.style.color = "rgba(232,228,220,0.7)"}
-            >{link}</span>
+          {["The Estate", "The Land", "Infrastructure", "Inquire"].map(link => (
+            <span key={link} style={{ fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(232,228,220,0.7)", cursor: "pointer" }}>{link}</span>
           ))}
         </div>
       </nav>
 
-      {/* HERO — Vimeo full bleed */}
+      {/* HERO — photo background */}
       <section style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
-        <div style={{
-          position: "absolute", inset: 0,
-          background: "linear-gradient(to bottom, rgba(8,12,8,0.3) 0%, rgba(8,12,8,0.1) 40%, rgba(8,12,8,0.7) 100%)",
-          zIndex: 2
-        }} />
-        <iframe
-          src="https://player.vimeo.com/video/1171394707?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
-          style={{
-            position: "absolute", top: "50%", left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "177.78vh", minWidth: "100%",
-            height: "56.25vw", minHeight: "100%",
-            border: "none", zIndex: 1
-          }}
-          allow="autoplay; fullscreen"
-          title="Flow Farm Hero"
+        <img
+          src="https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/595faa261_107LindenTrail-29.jpg"
+          alt="Flow Farm"
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 1 }}
         />
         <div style={{
-          position: "absolute", bottom: "12%", left: "8%", zIndex: 3,
-          maxWidth: 680
-        }}>
+          position: "absolute", inset: 0, zIndex: 2,
+          background: "linear-gradient(to bottom, rgba(8,12,8,0.2) 0%, rgba(8,12,8,0.15) 40%, rgba(8,12,8,0.8) 100%)"
+        }} />
+        <div style={{ position: "absolute", bottom: "12%", left: "8%", zIndex: 3, maxWidth: 680 }}>
           <div style={{ fontSize: 11, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(232,228,220,0.6)", marginBottom: 20 }}>
             107 Linden Trail — Aberdeen, NC
           </div>
-          <h1 style={{ fontSize: "clamp(42px, 6vw, 80px)", fontWeight: 300, lineHeight: 1.1, margin: "0 0 24px", letterSpacing: "-0.01em" }}>
+          <h1 style={{ fontSize: "clamp(42px, 6vw, 80px)", fontWeight: 300, lineHeight: 1.1, margin: "0 0 24px" }}>
             Agritourism Established.<br />Legacy Ready.
           </h1>
-          <p style={{ fontSize: 16, lineHeight: 1.7, color: "rgba(232,228,220,0.75)", maxWidth: 520, marginBottom: 36 }}>
-            A rare convergence of land, architecture, and infrastructure. Energy independence, favorable tax positioning, rare zoning flexibility, and a transferable Pinehurst Country Club Signature Golf Membership.
+          <p style={{ fontSize: 16, lineHeight: 1.7, color: "rgba(232,228,220,0.8)", maxWidth: 520, marginBottom: 36 }}>
+            A rare convergence of land, architecture, and infrastructure. Energy independence, favorable tax positioning, and a transferable Pinehurst Country Club Signature Golf Membership.
           </p>
-          <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: 16 }}>
             <button style={{
               padding: "14px 32px", background: "transparent",
-              border: "1px solid rgba(232,228,220,0.5)", color: "#e8e4dc",
-              fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase",
-              cursor: "pointer", transition: "all 0.2s"
-            }}
-              onMouseEnter={e => { e.target.style.background = "rgba(232,228,220,0.1)"; e.target.style.borderColor = "#e8e4dc"; }}
-              onMouseLeave={e => { e.target.style.background = "transparent"; e.target.style.borderColor = "rgba(232,228,220,0.5)"; }}
-            >View Gallery</button>
+              border: "1px solid rgba(232,228,220,0.6)", color: "#e8e4dc",
+              fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", cursor: "pointer"
+            }}>View Gallery</button>
             <button style={{
               padding: "14px 32px", background: "rgba(232,228,220,0.08)",
-              border: "1px solid rgba(232,228,220,0.2)", color: "rgba(232,228,220,0.7)",
-              fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase",
-              cursor: "pointer", transition: "all 0.2s"
-            }}
-              onMouseEnter={e => { e.target.style.background = "rgba(232,228,220,0.15)"; }}
-              onMouseLeave={e => { e.target.style.background = "rgba(232,228,220,0.08)"; }}
-            >Private Inquiry</button>
+              border: "1px solid rgba(232,228,220,0.2)", color: "rgba(232,228,220,0.8)",
+              fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", cursor: "pointer"
+            }}>Private Inquiry</button>
           </div>
         </div>
-        <div style={{
-          position: "absolute", bottom: "10%", right: "6%", zIndex: 3,
-          fontSize: 22, fontWeight: 300, letterSpacing: "0.05em", color: "rgba(232,228,220,0.9)",
-          textAlign: "right"
-        }}>
+        <div style={{ position: "absolute", bottom: "10%", right: "6%", zIndex: 3, fontSize: 24, fontWeight: 300, letterSpacing: "0.05em" }}>
           $5,250,000
         </div>
       </section>
@@ -140,14 +104,14 @@ export default function FlowFarmHome() {
             padding: "40px 32px", textAlign: "center",
             borderRight: i < 3 ? "1px solid rgba(255,255,255,0.08)" : "none"
           }}>
-            <div style={{ fontSize: 36, fontWeight: 300, marginBottom: 8, letterSpacing: "-0.02em" }}>{s.value}</div>
+            <div style={{ fontSize: 36, fontWeight: 300, marginBottom: 8 }}>{s.value}</div>
             <div style={{ fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(232,228,220,0.5)" }}>{s.label}</div>
           </div>
         ))}
       </section>
 
       {/* INTRO */}
-      <section style={{ padding: "120px 8% 80px", maxWidth: 1200, margin: "0 auto" }}>
+      <section style={{ padding: "120px 8%", maxWidth: 1400, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
           <div>
             <div style={{ fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(232,228,220,0.4)", marginBottom: 24 }}>The Estate</div>
@@ -163,13 +127,13 @@ export default function FlowFarmHome() {
           </div>
           <div style={{ position: "relative" }}>
             <img
-              src="https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/595faa261_107LindenTrail-29.jpg"
-              alt="Flow Farm Main Residence"
+              src="https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/da785e254_flowfarmmasterphotoswebsite3.jpg"
+              alt="Flow Farm Estate"
               style={{ width: "100%", height: 480, objectFit: "cover", display: "block" }}
             />
             <div style={{
               position: "absolute", bottom: -24, left: -24,
-              background: "rgba(8,12,8,0.9)", backdropFilter: "blur(8px)",
+              background: "rgba(8,12,8,0.92)", backdropFilter: "blur(8px)",
               border: "1px solid rgba(255,255,255,0.08)",
               padding: "20px 28px"
             }}>
@@ -181,21 +145,15 @@ export default function FlowFarmHome() {
         </div>
       </section>
 
-      {/* FEATURES GRID */}
+      {/* FEATURES */}
       <section style={{ padding: "80px 8%", background: "rgba(255,255,255,0.02)" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{ fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(232,228,220,0.4)", marginBottom: 16 }}>Infrastructure</div>
           <h2 style={{ fontSize: "clamp(24px, 3vw, 40px)", fontWeight: 300, marginBottom: 60 }}>Built for Independence</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 1, background: "rgba(255,255,255,0.06)" }}>
             {FEATURES.map((f, i) => (
-              <div key={i} style={{
-                padding: "40px 36px", background: "#080c08",
-                transition: "background 0.2s"
-              }}
-                onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.03)"}
-                onMouseLeave={e => e.currentTarget.style.background = "#080c08"}
-              >
-                <h3 style={{ fontSize: 16, fontWeight: 400, marginBottom: 12, letterSpacing: "0.02em" }}>{f.title}</h3>
+              <div key={i} style={{ padding: "40px 36px", background: "#080c08" }}>
+                <h3 style={{ fontSize: 16, fontWeight: 400, marginBottom: 12 }}>{f.title}</h3>
                 <p style={{ fontSize: 13, lineHeight: 1.7, color: "rgba(232,228,220,0.55)", margin: 0 }}>{f.desc}</p>
               </div>
             ))}
@@ -205,26 +163,20 @@ export default function FlowFarmHome() {
 
       {/* STRUCTURES */}
       <section style={{ padding: "100px 8%" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{ fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(232,228,220,0.4)", marginBottom: 16 }}>The Compound</div>
           <h2 style={{ fontSize: "clamp(24px, 3vw, 40px)", fontWeight: 300, marginBottom: 60 }}>Six Structures. One Vision.</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
             {STRUCTURES.map((s, i) => (
-              <div key={i} style={{ position: "relative", overflow: "hidden", cursor: "pointer" }}
-                onMouseEnter={e => e.currentTarget.querySelector('img').style.transform = "scale(1.05)"}
-                onMouseLeave={e => e.currentTarget.querySelector('img').style.transform = "scale(1)"}
-              >
-                <img src={s.img} alt={s.name} style={{
-                  width: "100%", height: 260, objectFit: "cover", display: "block",
-                  transition: "transform 0.6s ease"
-                }} />
+              <div key={i} style={{ position: "relative", overflow: "hidden" }}>
+                <img src={s.img} alt={s.name} style={{ width: "100%", height: 260, objectFit: "cover", display: "block" }} />
                 <div style={{
                   position: "absolute", bottom: 0, left: 0, right: 0,
                   background: "linear-gradient(to top, rgba(8,12,8,0.95) 0%, transparent 100%)",
                   padding: "40px 20px 20px"
                 }}>
                   <div style={{ fontSize: 15, fontWeight: 400, marginBottom: 4 }}>{s.name}</div>
-                  <div style={{ fontSize: 11, color: "rgba(232,228,220,0.55)", letterSpacing: "0.05em" }}>{s.detail}</div>
+                  <div style={{ fontSize: 11, color: "rgba(232,228,220,0.55)" }}>{s.detail}</div>
                 </div>
               </div>
             ))}
@@ -232,19 +184,14 @@ export default function FlowFarmHome() {
         </div>
       </section>
 
-      {/* GOLF MEMBERSHIP */}
-      <section style={{
-        padding: "100px 8%",
-        background: "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 100%)",
-        borderTop: "1px solid rgba(255,255,255,0.06)",
-        borderBottom: "1px solid rgba(255,255,255,0.06)"
-      }}>
+      {/* GOLF */}
+      <section style={{ padding: "100px 8%", borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
           <div style={{ fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(232,228,220,0.4)", marginBottom: 24 }}>Included</div>
           <h2 style={{ fontSize: "clamp(24px, 3vw, 42px)", fontWeight: 300, lineHeight: 1.3, marginBottom: 24 }}>
             Pinehurst Country Club<br />Signature Golf Membership
           </h2>
-          <p style={{ fontSize: 15, lineHeight: 1.9, color: "rgba(232,228,220,0.65)", marginBottom: 16 }}>
+          <p style={{ fontSize: 15, lineHeight: 1.9, color: "rgba(232,228,220,0.65)" }}>
             Transferable membership with unlimited access to the legendary Course No. 7 and Course No. 9. One of the most coveted memberships in American golf — included with the estate.
           </p>
           <div style={{ fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(232,228,220,0.35)", marginTop: 32 }}>
@@ -255,7 +202,7 @@ export default function FlowFarmHome() {
 
       {/* LOCATION */}
       <section style={{ padding: "100px 8%" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
           <div>
             <div style={{ fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(232,228,220,0.4)", marginBottom: 24 }}>Location</div>
             <h2 style={{ fontSize: "clamp(24px, 3vw, 40px)", fontWeight: 300, lineHeight: 1.3, marginBottom: 32 }}>
@@ -264,56 +211,39 @@ export default function FlowFarmHome() {
             <p style={{ fontSize: 15, lineHeight: 1.9, color: "rgba(232,228,220,0.65)", marginBottom: 32 }}>
               Multiple points of access including primary entrance from Linden Trail and additional access via Linden Road, Mollie Lane, and Skene Lane. Private drive creates immediate separation and discretion.
             </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-              {[
-                "Moore County Regional Airport — private aviation",
-                "Raleigh-Durham International — 1 hour",
-                "FirstHealth Moore Regional Hospital — nearby",
-                "Historic Village of Pinehurst — 3 miles"
-              ].map((item, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                  <div style={{ width: 24, height: 1, background: "rgba(232,228,220,0.3)", flexShrink: 0 }} />
-                  <span style={{ fontSize: 13, color: "rgba(232,228,220,0.6)" }}>{item}</span>
-                </div>
-              ))}
-            </div>
+            {["Moore County Regional Airport — private aviation", "Raleigh-Durham International — 1 hour", "FirstHealth Moore Regional Hospital — nearby", "Historic Village of Pinehurst — 3 miles"].map((item, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 16 }}>
+                <div style={{ width: 24, height: 1, background: "rgba(232,228,220,0.3)", flexShrink: 0 }} />
+                <span style={{ fontSize: 13, color: "rgba(232,228,220,0.6)" }}>{item}</span>
+              </div>
+            ))}
           </div>
-          <div>
-            <img
-              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/46fb99d0e_TSDroneHouseRoof.jpg"
-              alt="Flow Farm Aerial"
-              style={{ width: "100%", height: 500, objectFit: "cover", display: "block" }}
-            />
-          </div>
+          <img
+            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/46fb99d0e_TSDroneHouseRoof.jpg"
+            alt="Flow Farm Aerial"
+            style={{ width: "100%", height: 500, objectFit: "cover", display: "block" }}
+          />
         </div>
       </section>
 
-      {/* INQUIRY CTA */}
-      <section style={{
-        padding: "120px 8%",
-        textAlign: "center",
-        borderTop: "1px solid rgba(255,255,255,0.06)"
-      }}>
+      {/* CTA */}
+      <section style={{ padding: "120px 8%", textAlign: "center", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
         <div style={{ fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(232,228,220,0.4)", marginBottom: 24 }}>Private Inquiry</div>
         <h2 style={{ fontSize: "clamp(28px, 4vw, 52px)", fontWeight: 300, marginBottom: 20 }}>Begin the Conversation</h2>
         <p style={{ fontSize: 15, color: "rgba(232,228,220,0.55)", marginBottom: 48, maxWidth: 480, margin: "0 auto 48px" }}>
           This offering is presented exclusively. Private viewings available by appointment.
         </p>
-        <button style={{
-          padding: "18px 52px", background: "transparent",
+        <a href="mailto:rachelhernandezrealtor@gmail.com" style={{
+          display: "inline-block", padding: "18px 52px", background: "transparent",
           border: "1px solid rgba(232,228,220,0.4)", color: "#e8e4dc",
           fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase",
-          cursor: "pointer", transition: "all 0.3s"
-        }}
-          onMouseEnter={e => { e.target.style.background = "rgba(232,228,220,0.08)"; e.target.style.borderColor = "#e8e4dc"; }}
-          onMouseLeave={e => { e.target.style.background = "transparent"; e.target.style.borderColor = "rgba(232,228,220,0.4)"; }}
-        >Request Private Viewing</button>
+          textDecoration: "none"
+        }}>Request Private Viewing</a>
       </section>
 
       {/* FOOTER */}
       <footer style={{
-        padding: "40px 8%",
-        borderTop: "1px solid rgba(255,255,255,0.06)",
+        padding: "40px 8%", borderTop: "1px solid rgba(255,255,255,0.06)",
         display: "flex", justifyContent: "space-between", alignItems: "center"
       }}>
         <div style={{ fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase" }}>Flow Farm</div>
