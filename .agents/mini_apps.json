@@ -9,6 +9,9 @@
     "Export": {
       "title": "Export"
     },
+    "FlowFarm": {
+      "title": "FlowFarm"
+    },
     "FlowFarmGallery": {
       "title": "FlowFarmGallery"
     },
@@ -41,9 +44,6 @@
     },
     "FlowFarmHome": {
       "title": "FlowFarmHome"
-    },
-    "FlowFarm": {
-      "title": "FlowFarm"
     }
   }
 }
