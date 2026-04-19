@@ -270,15 +270,31 @@ function Hero() {
       )}
 
 
+
       {/* Dark gradient overlay */}
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.75) 100%)', zIndex: 5 }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.0) 50%, rgba(0,0,0,0.7) 100%)', zIndex: 5 }} />
+
+      {/* Stat bar pinned to bottom */}
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 20, display: 'flex', borderTop: '1px solid rgba(255,255,255,0.15)', background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(12px)' }}>
+        {[
+          { num: '15', label: 'USDA Acres' },
+          { num: '7', label: 'Buildable Acres' },
+          { num: '3', label: 'Acre Veganic Farm' },
+          { num: '$5.25M', label: 'Offered At' },
+          { num: '6', label: 'Structures' },
+          { num: '1,200', label: 'Amp Power' },
+        ].map((stat, i, arr) => (
+          <div key={stat.label} style={{ flex: 1, padding: '1rem 0.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRight: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.1)' : 'none' }}>
+            <span style={{ color: '#fff', fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1.4rem', lineHeight: 1, marginBottom: '0.25rem' }}>{stat.num}</span>
+            <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.5rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>{stat.label}</span>
+          </div>
+        ))}
+      </div>
 
     </section>
   );
 }
 
-
-}
 
 function StorySection() {
   return (
