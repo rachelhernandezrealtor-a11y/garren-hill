@@ -258,106 +258,106 @@ function useCountUp(target, duration, start) {
 }
 
 function Hero() {
-  const [videoReady, setVideoReady] = useState(false);
   const [started, setStarted] = useState(false);
-
   useEffect(() => {
-    const t = setTimeout(() => setStarted(true), 600);
+    const t = setTimeout(() => setStarted(true), 700);
     return () => clearTimeout(t);
   }, []);
 
-  const acres = useCountUp(15, 2200, started);
-  const farm = useCountUp(3, 2200, started);
-  const miles = useCountUp(3, 2200, started);
-  const structures = useCountUp(6, 2200, started);
+  const acres = useCountUp(15, 2000, started);
+  const farm = useCountUp(3, 2000, started);
+  const miles = useCountUp(3, 2000, started);
+  const structs = useCountUp(6, 2000, started);
 
   const TICKER = ['14.3kW Solar Array', '30kW Kohler Generator', 'Geothermal HVAC', 'Control4 Smart Home', 'Golf Membership Included', 'Private Well 50 gpm', '6 Structures', '1,200 Amp Power'];
+
+  const engrave = {
+    textShadow: '0 1px 0 rgba(255,255,255,0.07), 0 2px 6px rgba(0,0,0,1), 0 8px 40px rgba(0,0,0,0.8)'
+  };
 
   return (
     <section style={{ position: 'relative', height: '100vh', width: '100%', overflow: 'hidden', background: '#000' }}>
 
       {/* Video */}
-      <video autoPlay loop muted playsInline onCanPlay={() => setVideoReady(true)}
+      <video autoPlay loop muted playsInline
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 1 }}>
         <source src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f7910a1c9_275a93837_forestheroMAIN.mp4" type="video/mp4" />
       </video>
 
-      {/* Vignette */}
+      {/* Overlays - DO NOT TOUCH */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%)' }} />
       <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 30%, transparent 60%, rgba(0,0,0,0.8) 100%)' }} />
 
+      {/* Soft dark bloom behind text only */}
+      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 600, height: 420, background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.6) 0%, transparent 70%)', zIndex: 3, pointerEvents: 'none' }} />
+
       {/* Top bar */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10, display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '2rem 3rem' }}>
-        <p style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'sans-serif', fontSize: '0.58rem', letterSpacing: '0.22em', textTransform: 'uppercase', margin: 0 }}>
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10, display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.75rem 2.5rem' }}>
+        <p style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'sans-serif', fontSize: '0.55rem', letterSpacing: '0.22em', textTransform: 'uppercase', margin: 0 }}>
           Flow Farm -- 107 Linden Trail, Aberdeen NC
         </p>
-        <p style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '0.85rem', margin: 0, letterSpacing: '0.04em' }}>
+        <p style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '0.8rem', margin: 0 }}>
           $5,250,000
         </p>
       </div>
 
-      {/* Center content */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '5rem 3rem 4rem' }}>
+      {/* CENTER COLUMN -- everything stacked tight */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
 
-        {/* Frosted backdrop behind text */}
-        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '85%', maxWidth: 700, height: '55%', background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, transparent 75%)', filter: 'blur(18px)', zIndex: -1 }} />
+        {/* Headline block */}
+        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+          <h1 style={{ color: 'rgba(255,255,255,0.95)', fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(1.5rem, 3.2vw, 3rem)', lineHeight: 1.2, margin: '0 0 0.15rem', letterSpacing: '0.02em', ...engrave }}>
+            Agritourism Established.
+          </h1>
+          <h1 style={{ color: 'rgba(255,255,255,0.95)', fontFamily: 'Georgia, serif', fontWeight: 400, fontStyle: 'italic', fontSize: 'clamp(1.5rem, 3.2vw, 3rem)', lineHeight: 1.2, margin: 0, letterSpacing: '0.02em', ...engrave }}>
+            Legacy Ready.
+          </h1>
+        </div>
 
-        {/* Headline */}
-        <h1 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(2rem, 4.5vw, 4.2rem)', lineHeight: 1.2, margin: '0 0 0.5rem', textShadow: '0 2px 60px rgba(0,0,0,0.5)', letterSpacing: '0.01em' }}>
-          Agritourism Established.
-        </h1>
-        <h1 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400, fontStyle: 'italic', fontSize: 'clamp(2rem, 4.5vw, 4.2rem)', lineHeight: 1.2, margin: '0 0 2.5rem', textShadow: '0 2px 60px rgba(0,0,0,0.5)', letterSpacing: '0.01em' }}>
-          Legacy Ready.
-        </h1>
+        {/* Gold rule */}
+        <div style={{ width: 44, height: 1, background: '#BFA274', boxShadow: '0 0 10px rgba(191,162,116,0.7)', marginBottom: '1.5rem' }} />
 
-        {/* Thin gold rule */}
-        <div style={{ width: 40, height: 1, background: 'rgba(191,162,116,0.6)', marginBottom: '2.5rem' }} />
-
-        {/* Counting stats */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: 0, marginBottom: '2.5rem', maxWidth: '90vw' }}>
+        {/* Stats row -- tight, centered */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.75rem' }}>
           {[
-            { val: acres, label: 'Acres' },
-            { val: farm, label: 'Acre Farm' },
-            { val: '5.25M', label: 'Offered At', prefix: '$', static: true },
-            { val: miles, label: 'Mi. to Pinehurst' },
-            { val: structures, label: 'Structures' },
+            { num: acres, label: 'Acres' },
+            { num: farm, label: 'Acre Farm' },
+            { num: '$5.25M', label: 'Offered At', isStatic: true },
+            { num: miles, label: 'Mi. Pinehurst' },
+            { num: structs, label: 'Structures' },
           ].map((s, i, arr) => (
             <div key={s.label} style={{ display: 'flex', alignItems: 'center' }}>
-              <div style={{ textAlign: 'center', padding: '0 1.2rem' }}>
-                <div style={{ color: '#fff', fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 'clamp(1.1rem, 2vw, 1.8rem)', lineHeight: 1 }}>
-                  {s.static ? `${s.prefix}${s.val}` : s.val}
+              <div style={{ textAlign: 'center', padding: '0 1rem' }}>
+                <div style={{ color: '#fff', fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 'clamp(1rem, 1.8vw, 1.6rem)', lineHeight: 1, ...engrave }}>
+                  {s.isStatic ? s.num : s.num}
                 </div>
-                <div style={{ color: 'rgba(191,162,116,0.75)', fontFamily: 'sans-serif', fontSize: '0.48rem', letterSpacing: '0.22em', textTransform: 'uppercase', marginTop: '0.4rem' }}>
+                <div style={{ color: '#BFA274', fontFamily: 'sans-serif', fontSize: '0.46rem', letterSpacing: '0.18em', textTransform: 'uppercase', marginTop: '0.4rem', textShadow: '0 1px 4px rgba(0,0,0,1)' }}>
                   {s.label}
                 </div>
               </div>
-              {i < arr.length - 1 && (
-                <div style={{ width: 1, height: 28, background: 'rgba(255,255,255,0.15)' }} />
-              )}
+              {i < arr.length - 1 && <div style={{ width: 1, height: 24, background: 'rgba(255,255,255,0.18)' }} />}
             </div>
           ))}
         </div>
 
         {/* CTA */}
-        <a href="#story-detail" style={{ display: 'inline-block', border: '1px solid rgba(255,255,255,0.3)', color: 'rgba(255,255,255,0.85)', fontFamily: 'sans-serif', fontSize: '0.55rem', letterSpacing: '0.3em', textTransform: 'uppercase', padding: '0.9rem 3rem', backdropFilter: 'blur(10px)', background: 'rgba(255,255,255,0.05)', textDecoration: 'none', transition: 'all 0.3s' }}>
+        <a href="#story-detail" style={{ display: 'inline-block', border: '1px solid rgba(255,255,255,0.28)', color: 'rgba(255,255,255,0.8)', fontFamily: 'sans-serif', fontSize: '0.52rem', letterSpacing: '0.28em', textTransform: 'uppercase', padding: '0.85rem 2.75rem', backdropFilter: 'blur(12px)', background: 'rgba(0,0,0,0.2)', textDecoration: 'none' }}>
           Enter Flow Farm
         </a>
       </div>
 
       {/* Bottom ticker */}
-      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 6, borderTop: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(16px)', overflow: 'hidden', padding: '0.65rem 0' }}>
-        <div style={{ display: 'flex', animation: 'ticker 24s linear infinite', whiteSpace: 'nowrap', width: 'max-content' }}>
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 6, borderTop: '1px solid rgba(255,255,255,0.07)', background: 'rgba(0,0,0,0.38)', backdropFilter: 'blur(16px)', overflow: 'hidden', padding: '0.6rem 0' }}>
+        <div style={{ display: 'flex', animation: 'ticker 26s linear infinite', whiteSpace: 'nowrap', width: 'max-content' }}>
           {[...TICKER, ...TICKER].map((item, i) => (
-            <span key={i} style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'sans-serif', fontSize: '0.52rem', letterSpacing: '0.22em', textTransform: 'uppercase', padding: '0 2.5rem' }}>
-              {item} <span style={{ color: 'rgba(191,162,116,0.4)', margin: '0 0.5rem' }}>+</span>
+            <span key={i} style={{ color: 'rgba(255,255,255,0.38)', fontFamily: 'sans-serif', fontSize: '0.5rem', letterSpacing: '0.2em', textTransform: 'uppercase', padding: '0 2.5rem' }}>
+              {item} <span style={{ color: 'rgba(191,162,116,0.5)' }}>+</span>
             </span>
           ))}
         </div>
       </div>
 
-      <style>{`
-        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-      `}</style>
+      <style>{`@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`}</style>
 
     </section>
   );
