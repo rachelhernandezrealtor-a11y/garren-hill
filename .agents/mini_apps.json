@@ -12,8 +12,14 @@
     "Gallery": {
       "title": "Gallery"
     },
+    "Home": {
+      "title": "Home"
+    },
     "Import": {
       "title": "Import"
+    },
+    "Index": {
+      "title": "Index"
     },
     "MLS": {
       "title": "MLS"
@@ -29,12 +35,6 @@
     },
     "GarrenHillGallery": {
       "title": "GarrenHillGallery"
-    },
-    "Home": {
-      "title": "Home"
-    },
-    "Index": {
-      "title": "Index"
     }
   }
 }

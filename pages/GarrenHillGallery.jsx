@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import { X, ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
+import { PropertyPhoto, Property } from "@/api/entities";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
-const PHOTO_HUB_URL = "https://base44.app/api/apps/69e2578ca7113dbe93cb208d/functions/getPhotosByRoom";
+const PROPERTY_ID = "69e437375f1b701c20f9d509";
 
 const ROOM_ORDER = [
   "Portico","Entrance Hall","Living Room","Dining Room","Kitchen",
@@ -20,7 +21,7 @@ function LazyImg({ src, alt, className, onClick }) {
   useEffect(() => {
     const obs = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect(); } },
-      { rootMargin: "300px" }
+      { rootMargin: "400px" }
     );
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
@@ -45,30 +46,58 @@ export default function GarrenHillGallery() {
   const [rooms, setRooms] = useState([]);
   const [activeRoom, setActiveRoom] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [lightbox, setLightbox] = useState(null); // { photos, idx }
+  const [lightbox, setLightbox] = useState(null);
   const [totalCount, setTotalCount] = useState(0);
+  const [matterportUrl, setMatterportUrl] = useState(null);
+  const [showTour, setShowTour] = useState(false);
   const roomRefs = useRef({});
 
   useEffect(() => {
-    fetch(PHOTO_HUB_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({})
-    })
-      .then(r => r.json())
-      .then(data => {
-        if (data.grouped) {
-          setGrouped(data.grouped);
-          const sorted = [
-            ...ROOM_ORDER.filter(r => data.grouped[r]),
-            ...Object.keys(data.grouped).filter(r => !ROOM_ORDER.includes(r)).sort()
-          ];
-          setRooms(sorted);
-          setTotalCount(Object.values(data.grouped).reduce((a, arr) => a + arr.length, 0));
+    const load = async () => {
+      try {
+        // Load property for matterport URL
+        const props = await Property.filter({ id: PROPERTY_ID });
+        if (props.length > 0 && props[0].matterport_urls?.length) {
+          setMatterportUrl(props[0].matterport_urls[0]);
         }
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
+
+        // Load all photos for this property
+        let all = [];
+        let skip = 0;
+        let hasMore = true;
+        while (hasMore) {
+          const batch = await PropertyPhoto.filter(
+            { property_id: PROPERTY_ID },
+            { limit: 200, skip, sort: "sort_order" }
+          );
+          all = [...all, ...batch];
+          hasMore = batch.length === 200;
+          skip += 200;
+        }
+
+        // Group by room, exclude uncategorized from display (show at end)
+        const groups = {};
+        all.forEach(p => {
+          const room = p.room || "Uncategorized";
+          if (!groups[room]) groups[room] = [];
+          groups[room].push(p);
+        });
+
+        setGrouped(groups);
+        setTotalCount(all.length);
+
+        const sorted = [
+          ...ROOM_ORDER.filter(r => groups[r]?.length),
+          ...Object.keys(groups).filter(r => !ROOM_ORDER.includes(r) && r !== "Uncategorized").sort(),
+          ...(groups["Uncategorized"] ? ["Uncategorized"] : [])
+        ];
+        setRooms(sorted);
+      } catch (e) {
+        console.error(e);
+      }
+      setLoading(false);
+    };
+    load();
   }, []);
 
   const scrollToRoom = (room) => {
@@ -76,21 +105,15 @@ export default function GarrenHillGallery() {
     roomRefs.current[room]?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const prevPhoto = () => {
-    if (!lightbox) return;
-    if (lightbox.idx > 0) setLightbox({ ...lightbox, idx: lightbox.idx - 1 });
-  };
-  const nextPhoto = () => {
-    if (!lightbox) return;
-    if (lightbox.idx < lightbox.photos.length - 1) setLightbox({ ...lightbox, idx: lightbox.idx + 1 });
-  };
+  const prevPhoto = () => lightbox?.idx > 0 && setLightbox({ ...lightbox, idx: lightbox.idx - 1 });
+  const nextPhoto = () => lightbox && lightbox.idx < lightbox.photos.length - 1 && setLightbox({ ...lightbox, idx: lightbox.idx + 1 });
 
   useEffect(() => {
     const handler = (e) => {
       if (!lightbox) return;
       if (e.key === "ArrowLeft") prevPhoto();
       if (e.key === "ArrowRight") nextPhoto();
-      if (e.key === "Escape") setLightbox(null);
+      if (e.key === "Escape") { setLightbox(null); setShowTour(false); }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
@@ -100,7 +123,7 @@ export default function GarrenHillGallery() {
     <div className="min-h-screen flex items-center justify-center" style={{ background: "#111009" }}>
       <div className="text-center space-y-4">
         <div className="w-px h-16 bg-gradient-to-b from-transparent via-amber-400 to-transparent mx-auto animate-pulse" />
-        <p className="text-amber-400/60 text-xs tracking-[0.4em] uppercase">Garren Hill</p>
+        <p className="text-amber-400/60 text-xs tracking-[0.4em] uppercase">Loading Garren Hill</p>
       </div>
     </div>
   );
@@ -118,13 +141,23 @@ export default function GarrenHillGallery() {
         <p className="text-white/30 text-sm tracking-widest uppercase mb-2">200 Hollycrest Drive</p>
         <div className="w-px h-6 bg-amber-400/20 mx-auto mt-6" />
         <p className="text-white/20 text-xs tracking-[0.3em] uppercase mt-4">{totalCount} Photographs</p>
+
+        {/* Virtual Tour Button */}
+        {matterportUrl && (
+          <button
+            onClick={() => setShowTour(true)}
+            className="mt-8 px-8 py-3 border border-amber-400/40 text-amber-400/70 text-[11px] tracking-[0.3em] uppercase hover:border-amber-400 hover:text-amber-400 transition-all"
+          >
+            ◈ Virtual Tour
+          </button>
+        )}
       </div>
 
       {/* Sticky Room Nav */}
       <div className="sticky top-0 z-30 border-b border-white/8 backdrop-blur-md" style={{ background: "rgba(17,16,9,0.92)" }}>
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center gap-0 overflow-x-auto">
-            {rooms.map((room, i) => (
+          <div className="flex items-center gap-0 overflow-x-auto scrollbar-hide">
+            {rooms.map((room) => (
               <button
                 key={room}
                 onClick={() => scrollToRoom(room)}
@@ -146,18 +179,11 @@ export default function GarrenHillGallery() {
         {rooms.map(room => {
           const photos = grouped[room] || [];
           if (!photos.length) return null;
-
-          // Editorial masonry-style layout
-          // First photo is hero (full width), rest in grid
           const hero = photos[0];
           const rest = photos.slice(1);
 
           return (
-            <div
-              key={room}
-              ref={el => roomRefs.current[room] = el}
-              className="scroll-mt-16"
-            >
+            <div key={room} ref={el => roomRefs.current[room] = el} className="scroll-mt-16">
               {/* Room Header */}
               <div className="flex items-center gap-6 mb-8">
                 <div className="w-6 h-px bg-amber-400/40" />
@@ -166,24 +192,20 @@ export default function GarrenHillGallery() {
                 <span className="text-white/20 text-[11px] tracking-widest">{photos.length}</span>
               </div>
 
-              {/* Hero + grid layout */}
               <div className="space-y-2">
-                {/* Hero image — full width, tall */}
                 <LazyImg
-                  src={hero.photoUrl}
-                  alt={hero.fileName}
+                  src={hero.file_url}
+                  alt={hero.file_name}
                   className="w-full aspect-[16/7] rounded-sm"
                   onClick={() => setLightbox({ photos, idx: 0 })}
                 />
-
-                {/* Rest in responsive grid */}
                 {rest.length > 0 && (
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
                     {rest.slice(0, 7).map((photo, i) => (
                       <LazyImg
                         key={photo.id}
-                        src={photo.photoUrl}
-                        alt={photo.fileName}
+                        src={photo.file_url}
+                        alt={photo.file_name}
                         className="aspect-[4/3] rounded-sm"
                         onClick={() => setLightbox({ photos, idx: i + 1 })}
                       />
@@ -215,48 +237,44 @@ export default function GarrenHillGallery() {
         <p className="text-white/10 text-[10px] tracking-widest mt-2">Rachel Hernandez · Realtor</p>
       </div>
 
-      {/* Lightbox */}
-      {lightbox && currentPhoto && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center"
-          style={{ background: "rgba(8,8,5,0.97)" }}
-        >
-          {/* Close */}
+      {/* Matterport Modal */}
+      {showTour && matterportUrl && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ background: "rgba(8,8,5,0.97)" }}>
           <button
-            onClick={() => setLightbox(null)}
+            onClick={() => setShowTour(false)}
             className="absolute top-5 right-5 text-white/30 hover:text-white/80 transition-colors z-10"
           >
+            <X className="w-6 h-6" />
+          </button>
+          <div className="w-full max-w-6xl mx-4 aspect-video">
+            <iframe
+              src={matterportUrl}
+              className="w-full h-full rounded"
+              frameBorder="0"
+              allow="xr-spatial-tracking"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Photo Lightbox */}
+      {lightbox && currentPhoto && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ background: "rgba(8,8,5,0.97)" }}>
+          <button onClick={() => setLightbox(null)} className="absolute top-5 right-5 text-white/30 hover:text-white/80 transition-colors z-10">
             <X className="w-5 h-5" />
           </button>
-
-          {/* Prev */}
-          <button
-            onClick={prevPhoto}
-            disabled={lightbox.idx === 0}
-            className="absolute left-4 md:left-8 text-white/20 hover:text-white/60 disabled:opacity-0 transition-colors"
-          >
+          <button onClick={prevPhoto} disabled={lightbox.idx === 0} className="absolute left-4 md:left-8 text-white/20 hover:text-white/60 disabled:opacity-0 transition-colors">
             <ChevronLeft className="w-10 h-10" />
           </button>
-
-          {/* Image */}
           <div className="w-full max-w-5xl px-16 md:px-20">
-            <img
-              src={currentPhoto.photoUrl}
-              alt={currentPhoto.fileName}
-              className="w-full max-h-[80vh] object-contain"
-            />
+            <img src={currentPhoto.file_url} alt={currentPhoto.file_name} className="w-full max-h-[80vh] object-contain" />
             <div className="mt-5 flex items-center justify-between">
-              <p className="text-amber-400/40 text-[10px] tracking-[0.3em] uppercase">{currentPhoto.room}</p>
+              <p className="text-white/20 text-[10px] tracking-[0.3em] uppercase">{currentPhoto.room}</p>
               <p className="text-white/15 text-[10px] tracking-widest">{lightbox.idx + 1} / {lightbox.photos.length}</p>
             </div>
           </div>
-
-          {/* Next */}
-          <button
-            onClick={nextPhoto}
-            disabled={lightbox.idx === lightbox.photos.length - 1}
-            className="absolute right-4 md:right-8 text-white/20 hover:text-white/60 disabled:opacity-0 transition-colors"
-          >
+          <button onClick={nextPhoto} disabled={lightbox.idx === lightbox.photos.length - 1} className="absolute right-4 md:right-8 text-white/20 hover:text-white/60 disabled:opacity-0 transition-colors">
             <ChevronRight className="w-10 h-10" />
           </button>
         </div>
