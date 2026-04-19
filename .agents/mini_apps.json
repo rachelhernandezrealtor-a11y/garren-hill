@@ -12,8 +12,14 @@
     "FlowFarm": {
       "title": "FlowFarm"
     },
+    "FlowFarmForest": {
+      "title": "FlowFarmForest"
+    },
     "FlowFarmGallery": {
       "title": "FlowFarmGallery"
+    },
+    "FlowFarmHome": {
+      "title": "FlowFarmHome"
     },
     "Gallery": {
       "title": "Gallery"
@@ -35,12 +41,6 @@
     },
     "Media": {
       "title": "Media"
-    },
-    "FlowFarmHome": {
-      "title": "FlowFarmHome"
-    },
-    "FlowFarmForest": {
-      "title": "FlowFarmForest"
     },
     "Review": {
       "title": "Review"
