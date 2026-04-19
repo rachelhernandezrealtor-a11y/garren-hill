@@ -248,7 +248,7 @@ function Hero() {
   };
 
   return (
-    <section id="story" style={{ position: 'relative', height: '100vh', minHeight: 700, overflow: 'hidden', background: '#000', display: 'flex', flexDirection: 'column' }}>
+    <section id="story" style={{ position: 'relative', height: '100vh', minHeight: 600, maxHeight: '100vh', overflow: 'hidden', background: '#000' }}>
 
       {/* Full bleed video */}
       <div style={{ position: 'absolute', inset: '-6%', opacity: videoReady ? 1 : 0, transition: 'opacity 2s ease' }}>
@@ -327,11 +327,11 @@ function Hero() {
 
       {/* Stat tickers bottom */}
       <div style={{
-        position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 20,
+        position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 30,
         display: 'flex', alignItems: 'stretch',
-        borderTop: '1px solid rgba(255,255,255,0.15)',
-        background: 'rgba(0,0,0,0.55)',
-        backdropFilter: 'blur(12px)',
+        borderTop: '1px solid rgba(255,255,255,0.2)',
+        background: 'rgba(0,0,0,0.6)',
+        backdropFilter: 'blur(10px)',
       }}>
         {[
           { num: '15', label: 'USDA Acres' },
@@ -340,7 +340,7 @@ function Hero() {
           { num: '$5.25M', label: 'Offered At' },
         ].map((stat, i, arr) => (
           <div key={stat.label} style={{
-            flex: 1, padding: '0.7rem 1rem',
+            flex: 1, padding: '0.5rem 0.8rem',
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
             borderRight: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.12)' : 'none',
           }}>
@@ -348,13 +348,13 @@ function Hero() {
               color: '#fff',
               fontFamily: 'Georgia, serif',
               fontStyle: 'italic',
-          fontSize: '1.1rem',
+          fontSize: '0.95rem',
               lineHeight: 1,
-          marginBottom: '0.2rem',
+          marginBottom: '0.15rem',
             }}>{stat.num}</span>
             <span style={{
               color: 'rgba(255,255,255,0.55)',
-          fontSize: '0.5rem',
+          fontSize: '0.45rem',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
               fontFamily: 'sans-serif',
