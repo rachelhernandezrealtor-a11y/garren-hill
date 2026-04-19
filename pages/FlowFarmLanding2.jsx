@@ -287,9 +287,9 @@ function Hero() {
 
       {/* Main hero content - left aligned like original */}
       <div style={{
-        position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column',
-        alignItems: 'flex-start', justifyContent: 'flex-start',
-        padding: '0 6vw', paddingTop: '5rem', paddingBottom: '0',
+        position: 'absolute', top: 0, left: 0, right: 0, bottom: '4rem', display: 'flex', flexDirection: 'column',
+        alignItems: 'flex-start', justifyContent: 'center',
+        padding: '0 6vw', paddingTop: '8rem',
       }}>
         <h1 style={{
           color: '#fff',
