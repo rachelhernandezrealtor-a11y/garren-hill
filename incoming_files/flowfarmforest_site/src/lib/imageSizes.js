@@ -1,0 +1,1 @@
+export const SIZES_DEFAULT = "(min-width: 1536px) 1400px, (min-width: 1280px) 1200px, (min-width: 1024px) 900px, 100vw";

@@ -1,0 +1,38 @@
+{
+  "name": "MapPinLayout",
+  "type": "object",
+  "properties": {
+    "map_key": {
+      "type": "string",
+      "description": "Unique key for the map layout"
+    },
+    "pins": {
+      "type": "array",
+      "description": "Saved pin positions for the map",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          },
+          "labelX": {
+            "type": "number"
+          },
+          "labelY": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "map_key",
+    "pins"
+  ]
+}

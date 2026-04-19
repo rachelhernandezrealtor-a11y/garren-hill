@@ -1,0 +1,67 @@
+{
+  "name": "FarmCrop",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Crop name (e.g., Tomatoes)"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Primary image for the crop"
+    },
+    "varietals": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of varietals or cultivars"
+    },
+    "tasting_note": {
+      "type": "string",
+      "description": "Short note about flavor/profile"
+    },
+    "order": {
+      "type": "number",
+      "description": "Display order (ascending)"
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Show in Featured Crops cards"
+    },
+    "is_vegan": {
+      "type": "boolean",
+      "default": true,
+      "description": "Affirms veganic/vegan practices for this crop"
+    },
+    "vegan_practices": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Optional notes on vegan agricultural practices applied"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
