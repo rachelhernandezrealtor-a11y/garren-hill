@@ -311,7 +311,7 @@ function Hero() {
         <div style={{ width: 40, height: 1, background: 'rgba(191,162,116,0.6)', marginBottom: '2.5rem' }} />
 
         {/* Counting stats */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0, marginBottom: '2.5rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: 0, marginBottom: '2rem', maxWidth: '90vw' }}>
           {[
             { val: acres, label: 'Acres' },
             { val: farm, label: 'Acre Farm' },
@@ -320,8 +320,8 @@ function Hero() {
             { val: structures, label: 'Structures' },
           ].map((s, i, arr) => (
             <div key={s.label} style={{ display: 'flex', alignItems: 'center' }}>
-              <div style={{ textAlign: 'center', padding: '0 1.8rem' }}>
-                <div style={{ color: '#fff', fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 'clamp(1.4rem, 2.5vw, 2.2rem)', lineHeight: 1 }}>
+              <div style={{ textAlign: 'center', padding: '0 1.2rem' }}>
+                <div style={{ color: '#fff', fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 'clamp(1.1rem, 2vw, 1.8rem)', lineHeight: 1 }}>
                   {s.static ? `${s.prefix}${s.val}` : s.val}
                 </div>
                 <div style={{ color: 'rgba(191,162,116,0.75)', fontFamily: 'sans-serif', fontSize: '0.48rem', letterSpacing: '0.22em', textTransform: 'uppercase', marginTop: '0.4rem' }}>
