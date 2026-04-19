@@ -50,6 +50,15 @@
     },
     "SocialPost": {
       "title": "SocialPost"
+    },
+    "ClientGallery": {
+      "title": "ClientGallery"
+    },
+    "Dashboard": {
+      "title": "Dashboard"
+    },
+    "PropertyDetail": {
+      "title": "PropertyDetail"
     }
   }
 }
