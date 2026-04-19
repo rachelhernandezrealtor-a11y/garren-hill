@@ -296,9 +296,9 @@ function Hero() {
           fontFamily: 'Georgia, "Times New Roman", serif',
           fontWeight: 400,
           fontStyle: 'italic',
-          fontSize: 'clamp(1.8rem, 3.5vw, 4rem)',
-          lineHeight: 1.0,
-          marginBottom: '1.2rem',
+          fontSize: '2rem',
+          lineHeight: 1.1,
+          marginBottom: '0.8rem',
           textShadow: '0 4px 60px rgba(0,0,0,0.5)',
           maxWidth: 820,
         }}>
@@ -306,17 +306,17 @@ function Hero() {
         </h1>
         <p style={{
           color: 'rgba(255,255,255,0.8)',
-          fontSize: '0.85rem',
+          fontSize: '0.75rem',
           lineHeight: 1.7,
           fontFamily: 'sans-serif',
           maxWidth: 520,
-          marginBottom: '2rem',
+          marginBottom: '1.2rem',
         }}>
           Fifteen acres of working farmland, forest, and a fully self-sustaining compound -- three miles from Pinehurst Resort. Transferable Pinehurst Country Club membership available.
         </p>
         <button onClick={() => scrollTo('residence')} style={{
           background: 'transparent', border: '1px solid rgba(255,255,255,0.55)',
-          color: '#fff', padding: '0.9rem 2.4rem', fontSize: '0.68rem',
+          color: '#fff', padding: '0.6rem 1.6rem', fontSize: '0.6rem',
           letterSpacing: '0.25em', textTransform: 'uppercase', cursor: 'pointer',
           fontFamily: 'sans-serif', transition: 'all 0.2s',
         }}
@@ -340,7 +340,7 @@ function Hero() {
           { num: '$5.25M', label: 'Offered At' },
         ].map((stat, i, arr) => (
           <div key={stat.label} style={{
-            flex: 1, padding: '1.1rem 1.5rem',
+            flex: 1, padding: '0.7rem 1rem',
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
             borderRight: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.12)' : 'none',
           }}>
@@ -348,13 +348,13 @@ function Hero() {
               color: '#fff',
               fontFamily: 'Georgia, serif',
               fontStyle: 'italic',
-              fontSize: 'clamp(1.4rem, 2.5vw, 2rem)',
+          fontSize: '1.1rem',
               lineHeight: 1,
-              marginBottom: '0.4rem',
+          marginBottom: '0.2rem',
             }}>{stat.num}</span>
             <span style={{
               color: 'rgba(255,255,255,0.55)',
-              fontSize: '0.6rem',
+          fontSize: '0.5rem',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
               fontFamily: 'sans-serif',
