@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from "react";
+import { PropertyPhoto, Property } from "@/api/entities";
+import { X } from "lucide-react";
 
-const PHOTO_HUB_URL = "https://base44.app/api/apps/69e2578ca7113dbe93cb208d/functions/getPhotosByRoom";
-
+const PROPERTY_ID = "69e437375f1b701c20f9d509";
 const FEATURED_ROOMS = ["Portico", "Living Room", "Entrance Hall", "Kitchen", "Master Bedroom", "Library", "Pool"];
 
-function LazyImg({ src, alt, className }) {
+function LazyImg({ src, alt, style }) {
   const [loaded, setLoaded] = useState(false);
   const [inView, setInView] = useState(false);
   const ref = useRef();
@@ -17,17 +18,12 @@ function LazyImg({ src, alt, className }) {
     return () => obs.disconnect();
   }, []);
   return (
-    <div ref={ref} className={className} style={{ overflow: "hidden", background: "#1a1810" }}>
-      {!loaded && <div style={{ width: "100%", height: "100%", background: "#1a1810" }} />}
+    <div ref={ref} style={{ ...style, overflow: "hidden", background: "#1a1810" }}>
       {inView && (
         <img
-          src={src}
-          alt={alt}
+          src={src} alt={alt}
           onLoad={() => setLoaded(true)}
-          style={{
-            width: "100%", height: "100%", objectFit: "cover",
-            opacity: loaded ? 1 : 0, transition: "opacity 0.7s"
-          }}
+          style={{ width: "100%", height: "100%", objectFit: "cover", opacity: loaded ? 1 : 0, transition: "opacity 0.8s" }}
         />
       )}
     </div>
@@ -38,38 +34,57 @@ export default function Home() {
   const [heroPhoto, setHeroPhoto] = useState(null);
   const [featured, setFeatured] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [error, setError] = useState(false);
+  const [matterportUrl, setMatterportUrl] = useState(null);
+  const [showTour, setShowTour] = useState(false);
 
   useEffect(() => {
-    fetch(PHOTO_HUB_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({})
-    })
-      .then(r => r.json())
-      .then(data => {
-        try {
-          if (data && data.grouped) {
-            const keys = Object.keys(data.grouped);
-            const portico = data.grouped["Portico"] || (keys.length ? data.grouped[keys[0]] : []);
-            if (portico && portico.length) setHeroPhoto(portico[0]);
+    const load = async () => {
+      try {
+        // Load property
+        const props = await Property.filter({ id: PROPERTY_ID });
+        if (props.length > 0 && props[0].matterport_urls?.length) {
+          setMatterportUrl(props[0].matterport_urls[0]);
+        }
 
-            const picks = [];
-            FEATURED_ROOMS.forEach(room => {
-              const photos = data.grouped[room];
-              if (photos && photos.length) picks.push({ room, photo: photos[0], count: photos.length });
-            });
-            setFeatured(picks);
-          }
-        } catch (e) { console.error(e); }
-        setLoading(false);
-      })
-      .catch(e => {
+        // Load all photos
+        let all = [];
+        let skip = 0;
+        let hasMore = true;
+        while (hasMore) {
+          const batch = await PropertyPhoto.filter(
+            { property_id: PROPERTY_ID },
+            { limit: 200, skip, sort: "sort_order" }
+          );
+          all = [...all, ...batch];
+          hasMore = batch.length === 200;
+          skip += 200;
+        }
+
+        // Build grouped map
+        const groups = {};
+        all.forEach(p => {
+          const room = p.room || "Uncategorized";
+          if (!groups[room]) groups[room] = [];
+          groups[room].push(p);
+        });
+
+        // Hero = first Portico photo or fallback to first photo
+        const portico = groups["Portico"] || groups["Entrance Hall"] || (all.length ? [all[0]] : []);
+        if (portico.length) setHeroPhoto(portico[0]);
+
+        // Featured rooms
+        const picks = [];
+        FEATURED_ROOMS.forEach(room => {
+          const photos = groups[room];
+          if (photos?.length) picks.push({ room, photo: photos[0], count: photos.length });
+        });
+        setFeatured(picks);
+      } catch (e) {
         console.error(e);
-        setError(true);
-        setLoading(false);
-      });
+      }
+      setLoading(false);
+    };
+    load();
   }, []);
 
   const bg = "#0e0d08";
@@ -98,14 +113,22 @@ export default function Home() {
           <p style={{ color: "rgba(255,255,255,0.8)", fontSize: 13, letterSpacing: "0.3em", textTransform: "uppercase", margin: 0 }}>Garren Hill</p>
           <p style={{ color: `${gold}60`, fontSize: 10, letterSpacing: "0.4em", textTransform: "uppercase", margin: "2px 0 0" }}>Est. 1916 · Pinehurst, NC</p>
         </div>
-        <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
-          {["The Story", "Rooms", "Gallery"].map(item => (
-            <a key={item}
-              href={item === "Gallery" ? "/GarrenHillGallery" : `#${item.toLowerCase().replace(" ", "")}`}
+        <div style={{ display: "flex", gap: 28, alignItems: "center" }}>
+          {[["The Story", "#story"], ["Rooms", "#rooms"], ["Gallery", "/GarrenHillGallery"]].map(([label, href]) => (
+            <a key={label} href={href}
               style={{ color: "rgba(255,255,255,0.4)", fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", textDecoration: "none" }}>
-              {item}
+              {label}
             </a>
           ))}
+          {matterportUrl && (
+            <button onClick={() => setShowTour(true)} style={{
+              background: "none", border: `1px solid ${gold}50`, color: `${gold}80`,
+              fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase",
+              padding: "7px 14px", cursor: "pointer"
+            }}>
+              ◈ Tour
+            </button>
+          )}
           <a href="#contact" style={{
             border: `1px solid ${gold}60`, color: `${gold}90`,
             fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase",
@@ -119,7 +142,7 @@ export default function Home() {
       {/* Hero */}
       <div style={{ position: "relative", height: "100vh", minHeight: 600 }}>
         {heroPhoto ? (
-          <img src={heroPhoto.photoUrl} alt="Garren Hill"
+          <img src={heroPhoto.file_url} alt="Garren Hill"
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
         ) : (
           <div style={{ position: "absolute", inset: 0, background: "#1a1810" }} />
@@ -135,17 +158,26 @@ export default function Home() {
           <h1 style={{ fontSize: "clamp(48px, 8vw, 96px)", fontWeight: 300, color: "rgba(255,255,255,0.9)", letterSpacing: "0.05em", margin: "0 0 16px", lineHeight: 1.05 }}>
             Garren Hill
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 15, letterSpacing: "0.1em", maxWidth: 480, marginBottom: 36, lineHeight: 1.7 }}>
+          <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 15, letterSpacing: "0.05em", maxWidth: 480, marginBottom: 40, lineHeight: 1.8 }}>
             A singular historic estate. Four acres of curated legacy, meticulously restored for the discerning steward.
           </p>
-          <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
+          <div style={{ display: "flex", gap: 20, alignItems: "center", flexWrap: "wrap" }}>
             <a href="/GarrenHillGallery" style={{
-              border: `1px solid ${gold}70`, color: `${gold}`, fontSize: 11,
+              border: `1px solid ${gold}70`, color: gold, fontSize: 11,
               letterSpacing: "0.3em", textTransform: "uppercase", padding: "14px 32px", textDecoration: "none"
             }}>
               View Gallery
             </a>
-            <a href="#contact" style={{ color: "rgba(255,255,255,0.3)", fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", textDecoration: "none" }}>
+            {matterportUrl && (
+              <button onClick={() => setShowTour(true)} style={{
+                background: "none", border: `1px solid rgba(255,255,255,0.2)`, color: "rgba(255,255,255,0.5)",
+                fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase",
+                padding: "14px 32px", cursor: "pointer"
+              }}>
+                ◈ Virtual Tour
+              </button>
+            )}
+            <a href="#contact" style={{ color: "rgba(255,255,255,0.25)", fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", textDecoration: "none" }}>
               Private Inquiry →
             </a>
           </div>
@@ -157,7 +189,7 @@ export default function Home() {
         <div style={{ maxWidth: 800, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32, textAlign: "center" }}>
           {[["1916","Year Built"],["4.15","Acres"],["5","Bedrooms"],["5","Bathrooms"]].map(([val, label]) => (
             <div key={label}>
-              <p style={{ fontSize: 32, fontWeight: 300, color: "rgba(255,255,255,0.8)", margin: "0 0 6px" }}>{val}</p>
+              <p style={{ fontSize: 32, fontWeight: 300, color: "rgba(255,255,255,0.8)", margin: "0 0 6px", fontFamily: "Georgia, serif" }}>{val}</p>
               <p style={{ fontSize: 10, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", margin: 0 }}>{label}</p>
             </div>
           ))}
@@ -189,112 +221,111 @@ export default function Home() {
             <h2 style={{ fontSize: 32, fontWeight: 300, color: "rgba(255,255,255,0.65)", margin: 0 }}>Room by Room</h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
-            {featured.slice(0, 1).map(({ room, photo, count }) => (
+            {featured.slice(0, 1).map(({ room, photo }) => (
               <a key={room} href="/GarrenHillGallery"
                 style={{ gridColumn: "span 2", position: "relative", display: "block", textDecoration: "none", aspectRatio: "16/9" }}>
-                <LazyImg src={photo.photoUrl} alt={room} className="" style={{ width: "100%", height: "100%" }} />
-                <img src={photo.photoUrl} alt={room} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 2 }} />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.7), transparent)", borderRadius: 2 }} />
-                <div style={{ position: "absolute", bottom: 0, left: 0, padding: 24 }}>
-                  <p style={{ color: "rgba(255,255,255,0.9)", fontSize: 18, fontWeight: 300, margin: "0 0 4px" }}>{room}</p>
-                  <p style={{ color: `${gold}60`, fontSize: 10, letterSpacing: "0.3em", textTransform: "uppercase", margin: 0 }}>{count} photographs</p>
+                <LazyImg src={photo.file_url} alt={room} style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(14,13,8,0.7), transparent)" }} />
+                <div style={{ position: "absolute", bottom: 20, left: 24 }}>
+                  <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 10, letterSpacing: "0.4em", textTransform: "uppercase", margin: 0 }}>{room}</p>
                 </div>
               </a>
             ))}
-            {featured.slice(1, 3).map(({ room, photo, count }) => (
+            {featured.slice(1, 3).map(({ room, photo }) => (
               <a key={room} href="/GarrenHillGallery"
                 style={{ position: "relative", display: "block", textDecoration: "none", aspectRatio: "4/3" }}>
-                <img src={photo.photoUrl} alt={room} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 2 }} />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.7), transparent)", borderRadius: 2 }} />
-                <div style={{ position: "absolute", bottom: 0, left: 0, padding: 16 }}>
-                  <p style={{ color: "rgba(255,255,255,0.8)", fontSize: 14, fontWeight: 300, margin: "0 0 2px" }}>{room}</p>
-                  <p style={{ color: `${gold}50`, fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", margin: 0 }}>{count}</p>
+                <LazyImg src={photo.file_url} alt={room} style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(14,13,8,0.7), transparent)" }} />
+                <div style={{ position: "absolute", bottom: 16, left: 20 }}>
+                  <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 10, letterSpacing: "0.4em", textTransform: "uppercase", margin: 0 }}>{room}</p>
+                </div>
+              </a>
+            ))}
+            {featured.slice(3, 7).map(({ room, photo }) => (
+              <a key={room} href="/GarrenHillGallery"
+                style={{ position: "relative", display: "block", textDecoration: "none", aspectRatio: "4/3" }}>
+                <LazyImg src={photo.file_url} alt={room} style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(14,13,8,0.7), transparent)" }} />
+                <div style={{ position: "absolute", bottom: 16, left: 20 }}>
+                  <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 10, letterSpacing: "0.4em", textTransform: "uppercase", margin: 0 }}>{room}</p>
                 </div>
               </a>
             ))}
           </div>
-          {featured.length > 3 && (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, marginTop: 8 }}>
-              {featured.slice(3, 7).map(({ room, photo, count }) => (
-                <a key={room} href="/GarrenHillGallery"
-                  style={{ position: "relative", display: "block", textDecoration: "none", aspectRatio: "4/3" }}>
-                  <img src={photo.photoUrl} alt={room} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 2 }} />
-                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.65), transparent)", borderRadius: 2 }} />
-                  <div style={{ position: "absolute", bottom: 0, left: 0, padding: 12 }}>
-                    <p style={{ color: "rgba(255,255,255,0.75)", fontSize: 12, fontWeight: 300, margin: 0 }}>{room}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
-          )}
-          <div style={{ textAlign: "center", marginTop: 40 }}>
+          <div style={{ textAlign: "center", marginTop: 32 }}>
             <a href="/GarrenHillGallery" style={{
-              display: "inline-block", border: "1px solid rgba(255,255,255,0.15)",
-              color: "rgba(255,255,255,0.4)", fontSize: 11, letterSpacing: "0.3em",
-              textTransform: "uppercase", padding: "16px 48px", textDecoration: "none"
+              border: `1px solid rgba(255,255,255,0.15)`, color: "rgba(255,255,255,0.3)",
+              fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase",
+              padding: "12px 28px", textDecoration: "none", display: "inline-block"
             }}>
-              View Full Gallery
+              View All Rooms →
             </a>
           </div>
         </div>
       )}
 
-      {/* Property Details */}
-      <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", padding: "80px 32px" }}>
-        <div style={{ maxWidth: 800, margin: "0 auto" }}>
-          <p style={{ color: `${gold}60`, fontSize: 10, letterSpacing: "0.5em", textTransform: "uppercase", textAlign: "center", marginBottom: 48 }}>Property Details</p>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 64px" }}>
-            {[
-              ["Address","200 Hollycrest Drive, Pinehurst, NC"],
-              ["Year Built","1916"],
-              ["Acreage","4.15 acres"],
-              ["County","Moore County, NC"],
-              ["Bedrooms","5"],
-              ["Bathrooms","5"],
-              ["Living Room","Nearly 40 feet in length"],
-              ["Fireplaces","7 working fireplaces"],
-              ["Pool","20 × 40 ft"],
-              ["Tennis Courts","2"],
-              ["Outbuildings","Wee Cottage, Garage"],
-              ["Recognition","Village Historic Foundation"],
-            ].map(([label, value]) => (
-              <div key={label} style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", padding: "14px 0", borderBottom: "1px solid rgba(255,255,255,0.06)", gap: 16 }}>
-                <p style={{ color: "rgba(255,255,255,0.25)", fontSize: 10, letterSpacing: "0.3em", textTransform: "uppercase", margin: 0, flexShrink: 0 }}>{label}</p>
-                <p style={{ color: "rgba(255,255,255,0.55)", fontSize: 13, margin: 0, textAlign: "right" }}>{value}</p>
-              </div>
-            ))}
-          </div>
+      {/* Virtual Tour Section */}
+      {matterportUrl && (
+        <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "80px 32px", textAlign: "center" }}>
+          <div style={{ width: 1, height: 32, background: `${gold}30`, margin: "0 auto 40px" }} />
+          <p style={{ color: `${gold}60`, fontSize: 10, letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: 16 }}>Immersive Experience</p>
+          <h2 style={{ fontSize: 32, fontWeight: 300, color: "rgba(255,255,255,0.65)", marginBottom: 24 }}>Walk the Rooms</h2>
+          <p style={{ color: "rgba(255,255,255,0.25)", fontSize: 14, lineHeight: 1.8, maxWidth: 480, margin: "0 auto 36px" }}>
+            Tour Garren Hill from anywhere in the world. A fully immersive 3D experience of every room, every detail.
+          </p>
+          <button onClick={() => setShowTour(true)} style={{
+            background: "none", border: `1px solid ${gold}60`, color: `${gold}80`,
+            fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase",
+            padding: "16px 40px", cursor: "pointer"
+          }}>
+            ◈ Launch Virtual Tour
+          </button>
         </div>
-      </div>
+      )}
 
       {/* Contact */}
-      <div id="contact" style={{ borderTop: "1px solid rgba(255,255,255,0.08)", padding: "80px 32px", textAlign: "center" }}>
-        <div style={{ width: 1, height: 40, background: `${gold}30`, margin: "0 auto 40px" }} />
-        <p style={{ color: `${gold}60`, fontSize: 10, letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: 20 }}>Private Inquiries</p>
-        <h2 style={{ fontSize: 32, fontWeight: 300, color: "rgba(255,255,255,0.7)", marginBottom: 16 }}>Arrange a Viewing</h2>
-        <p style={{ color: "rgba(255,255,255,0.3)", fontSize: 14, maxWidth: 400, margin: "0 auto 40px", lineHeight: 1.8 }}>
-          Garren Hill is offered to qualified buyers by private appointment. Please reach out directly to discuss.
+      <div id="contact" style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "80px 32px", textAlign: "center" }}>
+        <div style={{ width: 1, height: 32, background: `${gold}30`, margin: "0 auto 40px" }} />
+        <p style={{ color: `${gold}60`, fontSize: 10, letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: 16 }}>Private Showing</p>
+        <h2 style={{ fontSize: 32, fontWeight: 300, color: "rgba(255,255,255,0.65)", marginBottom: 24 }}>Begin a Conversation</h2>
+        <p style={{ color: "rgba(255,255,255,0.25)", fontSize: 14, lineHeight: 1.8, maxWidth: 400, margin: "0 auto 36px" }}>
+          Garren Hill is offered exclusively. Inquiries by appointment.
         </p>
         <a href="mailto:rachelhernandezrealtor@gmail.com" style={{
-          display: "inline-block", border: `1px solid ${gold}60`,
-          color: `${gold}90`, fontSize: 11, letterSpacing: "0.4em",
-          textTransform: "uppercase", padding: "16px 48px", textDecoration: "none"
+          border: `1px solid ${gold}60`, color: `${gold}80`,
+          fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase",
+          padding: "16px 40px", textDecoration: "none", display: "inline-block"
         }}>
           Contact Rachel Hernandez
         </a>
-        <p style={{ color: "rgba(255,255,255,0.15)", fontSize: 11, letterSpacing: "0.2em", marginTop: 20 }}>rachelhernandezrealtor@gmail.com</p>
       </div>
 
       {/* Footer */}
-      <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", padding: "40px 32px", textAlign: "center" }}>
-        <p style={{ color: "rgba(255,255,255,0.12)", fontSize: 10, letterSpacing: "0.4em", textTransform: "uppercase", margin: "0 0 8px" }}>
-          Garren Hill · Pinehurst, North Carolina · Est. 1916
+      <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "40px 32px", textAlign: "center" }}>
+        <p style={{ color: "rgba(255,255,255,0.12)", fontSize: 10, letterSpacing: "0.4em", textTransform: "uppercase", margin: 0 }}>
+          Garren Hill · Pinehurst, North Carolina · rachelhernandezrealtor@gmail.com
         </p>
-        <p style={{ color: "rgba(255,255,255,0.06)", fontSize: 10, margin: 0 }}>© Rachel Hernandez Real Estate</p>
-        <a href="/Import" style={{ display: "inline-block", marginTop: 24, color: "rgba(255,255,255,0.06)", fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", textDecoration: "none" }}>
-          hub
-        </a>
       </div>
+
+      {/* Matterport Modal */}
+      {showTour && matterportUrl && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 100, background: "rgba(8,8,5,0.97)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <button
+            onClick={() => setShowTour(false)}
+            style={{ position: "absolute", top: 20, right: 20, background: "none", border: "none", color: "rgba(255,255,255,0.4)", cursor: "pointer", zIndex: 10 }}
+          >
+            <X size={24} />
+          </button>
+          <div style={{ width: "100%", maxWidth: 1100, margin: "0 32px", aspectRatio: "16/9" }}>
+            <iframe
+              src={matterportUrl}
+              style={{ width: "100%", height: "100%", border: "none", borderRadius: 4 }}
+              allow="xr-spatial-tracking"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
 
     </div>
   );
