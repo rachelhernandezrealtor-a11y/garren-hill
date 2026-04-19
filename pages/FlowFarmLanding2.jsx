@@ -303,12 +303,12 @@ function Hero() {
       <div style={{ position: 'absolute', bottom: '12%', left: 0, right: 0, zIndex: 5, padding: '0 5vw' }}>
 
         {/* Big stacked headline */}
-        <h1 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(3rem, 8vw, 7.5rem)', lineHeight: 1.05, margin: '0 0 1.2rem', maxWidth: 800, ...engrave }}>
+        <h1 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(2.4rem, 6.5vw, 6.2rem)', lineHeight: 1.05, margin: '0 0 1.2rem', maxWidth: 800, ...engrave }}>
           Agritourism<br /><em>Established.</em><br />Legacy Ready.
         </h1>
 
         {/* Subtext */}
-        <p style={{ color: 'rgba(255,255,255,0.75)', fontFamily: 'Georgia, serif', fontSize: 'clamp(0.75rem, 1.2vw, 0.95rem)', lineHeight: 1.65, maxWidth: 440, margin: '0 0 1.75rem', ...engrave }}>
+        <p style={{ color: 'rgba(255,255,255,0.75)', fontFamily: 'Georgia, serif', fontSize: 'clamp(0.75rem, 1.2vw, 0.95rem)', lineHeight: 1.65, maxWidth: 440, margin: '0 0 2rem', ...engrave }}>
           Fifteen acres of working farmland, forest, and a fully self-sustaining compound -- three miles from Pinehurst Resort. Transferable Pinehurst Country Club membership available.
         </p>
 
