@@ -349,7 +349,7 @@ No other text.`,
                     <RefreshCw className="w-4 h-4" /> Regenerate
                   </Button>
                   <Button onClick={() => setStep("photos")} className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 gap-2 flex-1">
-                    <- Adjust & Redo
+                    ← Adjust & Redo
                   </Button>
                 </div>
               </>

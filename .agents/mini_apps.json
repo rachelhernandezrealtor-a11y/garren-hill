@@ -42,11 +42,11 @@
     "FlowFarmForest": {
       "title": "FlowFarmForest"
     },
-    "SocialPost": {
-      "title": "SocialPost"
-    },
     "Review": {
       "title": "Review"
+    },
+    "SocialPost": {
+      "title": "SocialPost"
     }
   }
 }
