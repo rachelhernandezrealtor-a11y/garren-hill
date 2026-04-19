@@ -248,7 +248,9 @@ function Hero() {
   };
 
   return (
-    <section id="story" style={{ position: 'relative', height: '100vh', minHeight: 650, overflow: 'hidden', background: '#000' }}>
+    <section id="story" style={{ position: 'relative', height: '100vh', minHeight: 700, overflow: 'hidden', background: '#000' }}>
+
+      {/* Full bleed video */}
       <div style={{ position: 'absolute', inset: '-6%', opacity: videoReady ? 1 : 0, transition: 'opacity 2s ease' }}>
         <iframe
           src="https://player.vimeo.com/video/1171394707?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0"
@@ -266,44 +268,101 @@ function Hero() {
       {!videoReady && (
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${PHOTOS.hero})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
       )}
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.05) 35%, rgba(0,0,0,0.65) 100%)' }} />
 
+      {/* Dark gradient overlay */}
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.75) 100%)' }} />
+
+      {/* Address bar top */}
+      <div style={{
+        position: 'absolute', top: 80, left: 0, right: 0,
+        display: 'flex', justifyContent: 'center', alignItems: 'center',
+        gap: '1.2rem', zIndex: 10,
+      }}>
+        <span style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.62rem', letterSpacing: '0.25em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>107 Linden Trail, Aberdeen, NC</span>
+        <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.62rem' }}>|</span>
+        <span style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.62rem', letterSpacing: '0.25em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>3 Miles From Pinehurst</span>
+        <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.62rem' }}>|</span>
+        <span style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.62rem', letterSpacing: '0.25em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>Pinehurst ETJ</span>
+      </div>
+
+      {/* Main hero content - left aligned like original */}
       <div style={{
         position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column',
-        alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '0 2rem',
+        alignItems: 'flex-start', justifyContent: 'center',
+        padding: '0 6vw', paddingBottom: '12rem',
       }}>
-        <p style={{ color: GOLD, fontSize: '0.72rem', letterSpacing: '0.35em', textTransform: 'uppercase', marginBottom: '1.2rem', fontFamily: 'sans-serif' }}>
-          107 Linden Trail -- Aberdeen, NC
-        </p>
         <h1 style={{
-          color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400,
-          fontSize: 'clamp(3rem, 8vw, 7rem)', lineHeight: 1.05,
-          marginBottom: '1.5rem', textShadow: '0 4px 40px rgba(0,0,0,0.4)',
-        }}>Flow Farm</h1>
+          color: '#fff',
+          fontFamily: 'Georgia, "Times New Roman", serif',
+          fontWeight: 400,
+          fontStyle: 'italic',
+          fontSize: 'clamp(3.5rem, 8vw, 8rem)',
+          lineHeight: 1.0,
+          marginBottom: '1.8rem',
+          textShadow: '0 4px 60px rgba(0,0,0,0.5)',
+          maxWidth: 820,
+        }}>
+          Agritourism<br />Established.<br />Legacy Ready.
+        </h1>
         <p style={{
-          color: 'rgba(255,255,255,0.85)', fontSize: 'clamp(0.75rem, 1.5vw, 0.9rem)',
-          letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '2.5rem', fontFamily: 'sans-serif',
-        }}>Agritourism Established. Legacy Ready.</p>
-        <p style={{ color: GOLD, fontFamily: 'Georgia, serif', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', marginBottom: '3rem', letterSpacing: '0.05em' }}>
-          $5,250,000
+          color: 'rgba(255,255,255,0.8)',
+          fontSize: 'clamp(0.8rem, 1.4vw, 1rem)',
+          lineHeight: 1.7,
+          fontFamily: 'sans-serif',
+          maxWidth: 520,
+          marginBottom: '2.5rem',
+        }}>
+          Fifteen acres of working farmland, forest, and a fully self-sustaining compound -- three miles from Pinehurst Resort. Transferable Pinehurst Country Club membership available.
         </p>
-        <div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-          <button onClick={() => scrollTo('residence')} style={{
-            background: 'transparent', border: '1px solid rgba(255,255,255,0.6)',
-            color: '#fff', padding: '0.85rem 2.2rem', fontSize: '0.72rem',
-            letterSpacing: '0.2em', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'sans-serif',
-          }}>Discover the Estate</button>
-          <button onClick={() => scrollTo('contact')} style={{
-            background: 'transparent', border: `1px solid ${GOLD}`,
-            color: GOLD, padding: '0.85rem 2.2rem', fontSize: '0.72rem',
-            letterSpacing: '0.2em', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'sans-serif',
-          }}>Private Inquiry</button>
-        </div>
+        <button onClick={() => scrollTo('residence')} style={{
+          background: 'transparent', border: '1px solid rgba(255,255,255,0.55)',
+          color: '#fff', padding: '0.9rem 2.4rem', fontSize: '0.68rem',
+          letterSpacing: '0.25em', textTransform: 'uppercase', cursor: 'pointer',
+          fontFamily: 'sans-serif', transition: 'all 0.2s',
+        }}
+          onMouseEnter={e => { e.target.style.background = 'rgba(255,255,255,0.1)'; }}
+          onMouseLeave={e => { e.target.style.background = 'transparent'; }}
+        >Enter Flow Farm</button>
       </div>
-      <div style={{ position: 'absolute', bottom: '2.5rem', left: '50%', transform: 'translateX(-50%)', textAlign: 'center' }}>
-        <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.6rem', letterSpacing: '0.3em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>Scroll</p>
-        <div style={{ width: 1, height: 50, background: 'linear-gradient(to bottom, rgba(255,255,255,0.4), transparent)', margin: '0.5rem auto 0' }} />
+
+      {/* Stat tickers bottom */}
+      <div style={{
+        position: 'absolute', bottom: 0, left: 0, right: 0,
+        display: 'flex', alignItems: 'stretch',
+        borderTop: '1px solid rgba(255,255,255,0.15)',
+        background: 'rgba(0,0,0,0.45)',
+        backdropFilter: 'blur(8px)',
+      }}>
+        {[
+          { num: '15', label: 'USDA Acres' },
+          { num: '7', label: 'Buildable Acres' },
+          { num: '3', label: 'Acre Veganic Farm' },
+          { num: '$5.25M', label: 'Offered At' },
+        ].map((stat, i, arr) => (
+          <div key={stat.label} style={{
+            flex: 1, padding: '1.6rem 2rem',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+            borderRight: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.12)' : 'none',
+          }}>
+            <span style={{
+              color: '#fff',
+              fontFamily: 'Georgia, serif',
+              fontStyle: 'italic',
+              fontSize: 'clamp(2rem, 4vw, 3rem)',
+              lineHeight: 1,
+              marginBottom: '0.4rem',
+            }}>{stat.num}</span>
+            <span style={{
+              color: 'rgba(255,255,255,0.55)',
+              fontSize: '0.6rem',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              fontFamily: 'sans-serif',
+            }}>{stat.label}</span>
+          </div>
+        ))}
       </div>
+
     </section>
   );
 }
