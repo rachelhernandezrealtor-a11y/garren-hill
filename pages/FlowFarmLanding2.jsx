@@ -277,6 +277,30 @@ function Hero() {
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.0) 50%, rgba(0,0,0,0.7) 100%)', zIndex: 5 }} />
 
 
+      {/* Stat bar */}
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 20, display: 'flex', borderTop: '1px solid rgba(255,255,255,0.15)', background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(12px)' }}>
+        {[
+          { num: '15', label: 'USDA Acres' },
+          { num: '7', label: 'Buildable Acres' },
+          { num: '3', label: 'Acre Veganic Farm' },
+          { num: '$5.25M', label: 'Offered At' },
+          { num: '6', label: 'Structures' },
+          { num: '1,200', label: 'Amp Power' },
+        ].map((stat, i, arr) => (
+          <div key={stat.label} style={{ flex: 1, padding: '1rem 0.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRight: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.1)' : 'none' }}>
+            <span style={{ color: '#fff', fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1.4rem', lineHeight: 1, marginBottom: '0.25rem' }}>{stat.num}</span>
+            <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.5rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>{stat.label}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Hero headline */}
+      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 10, textAlign: 'center', width: '80%' }}>
+        <h1 style={{ color: '#fff', fontSize: 'clamp(1.8rem, 4vw, 3.5rem)', fontFamily: 'Georgia, serif', fontWeight: 400, textShadow: '0 2px 30px rgba(0,0,0,0.9)', margin: 0, lineHeight: 1.2 }}>
+          Agritourism Established. Legacy Ready.
+        </h1>
+      </div>
+
     </section>
   );
 }
@@ -887,24 +911,7 @@ export default function FlowFarmLanding2() {
   return (
     <div style={{ background: DARK, minHeight: '100vh' }}>
       {/* <Navbar /> */}
-      <div style={{ position: 'relative' }}>
-        <Hero />
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 50, display: 'flex', borderTop: '1px solid rgba(255,255,255,0.15)', background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(12px)' }}>
-          {[
-            { num: '15', label: 'USDA Acres' },
-            { num: '7', label: 'Buildable Acres' },
-            { num: '3', label: 'Acre Veganic Farm' },
-            { num: '$5.25M', label: 'Offered At' },
-            { num: '6', label: 'Structures' },
-            { num: '1,200', label: 'Amp Power' },
-          ].map((stat, i, arr) => (
-            <div key={stat.label} style={{ flex: 1, padding: '1rem 0.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRight: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.1)' : 'none' }}>
-              <span style={{ color: '#fff', fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1.4rem', lineHeight: 1, marginBottom: '0.25rem' }}>{stat.num}</span>
-              <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.5rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>{stat.label}</span>
-            </div>
-          ))}
-        </div>
-      </div>
+      <Hero />
       <StorySection />
       <ResidenceSection />
       <GallerySection />
