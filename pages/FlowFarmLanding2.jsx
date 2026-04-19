@@ -297,7 +297,7 @@ function Hero() {
       </div>
 
       {/* Center content */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '0 3rem' }}>
+      <div style={{ position: 'absolute', inset: 0, zIndex: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '5rem 3rem 4rem' }}>
 
         {/* Headline */}
         <h1 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(2rem, 4.5vw, 4.2rem)', lineHeight: 1.2, margin: '0 0 0.5rem', textShadow: '0 2px 60px rgba(0,0,0,0.5)', letterSpacing: '0.01em' }}>
@@ -311,7 +311,7 @@ function Hero() {
         <div style={{ width: 40, height: 1, background: 'rgba(191,162,116,0.6)', marginBottom: '2.5rem' }} />
 
         {/* Counting stats */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: 0, marginBottom: '2rem', maxWidth: '90vw' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: 0, marginBottom: '2.5rem', maxWidth: '90vw' }}>
           {[
             { val: acres, label: 'Acres' },
             { val: farm, label: 'Acre Farm' },
