@@ -1,3 +1,1 @@
-export default function PropertyDetail() {
-  return null;
-}
+export default function PropertyDetail() { return null; }
