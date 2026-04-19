@@ -186,7 +186,7 @@ function Hero() {
           107 Linden Trail -- Aberdeen, NC
         </p>
         <h1 style={{ color: '#fff', fontSize: 'clamp(3.5rem, 8vw, 7rem)', fontFamily: 'Georgia, serif', fontWeight: 300, lineHeight: 1.05, margin: '0 0 1.5rem' }}>
-          Flow Farm
+          Flow Farm Take 2
         </h1>
         <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 'clamp(0.85rem, 1.5vw, 1.05rem)', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'sans-serif', marginBottom: '3rem' }}>
           Agritourism Established. Legacy Ready.
