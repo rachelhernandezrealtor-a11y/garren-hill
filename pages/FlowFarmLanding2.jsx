@@ -924,7 +924,7 @@ function Footer() {
 export default function FlowFarmLanding2() {
   return (
     <div style={{ background: DARK, minHeight: '100vh' }}>
-      <Navbar />
+      {/* <Navbar /> */}
       <Hero />
       <StorySection />
       <ResidenceSection />
