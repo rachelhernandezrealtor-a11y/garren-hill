@@ -1,0 +1,44 @@
+      {/* CONTACT */}
+      <section id="contact" style={{ background: "#0d0d0b", padding: g("120px 48px", "80px 24px") }}>
+        <div style={{ maxWidth: 680, margin: "0 auto", textAlign: "center" }}>
+          <p className="ff-sans" style={{ fontSize: 10, letterSpacing: "0.3em", color: "#c9a84c", marginBottom: 16 }}>PRIVATE INQUIRY</p>
+          <h2 className="ff-serif" style={{ fontSize: g(52, 36), fontWeight: 300, lineHeight: 1.1, marginBottom: 16 }}>Begin the Conversation</h2>
+          <p className="ff-sans" style={{ fontSize: 12, color: "rgba(240,235,224,0.45)", marginBottom: 48, lineHeight: 1.8, fontWeight: 300 }}>
+            Flow Farm is offered exclusively. Showings are by private appointment only. We welcome qualified inquiries from principals and their representatives.
+          </p>
+          {formSent ? (
+            <div style={{ border: "1px solid rgba(201,168,76,0.3)", padding: "48px 32px" }}>
+              <p className="ff-serif" style={{ fontSize: 28, fontWeight: 300, marginBottom: 10 }}>Thank you.</p>
+              <p className="ff-sans" style={{ fontSize: 12, color: "rgba(240,235,224,0.55)", fontWeight: 300 }}>We will be in touch shortly.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleForm} style={{ display: "flex", flexDirection: "column", gap: 14, textAlign: "left" }}>
+              <div style={{ display: "grid", gridTemplateColumns: g("1fr 1fr", "1fr"), gap: 14 }}>
+                <input type="text" placeholder="Full Name" value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))} required style={{ background: "transparent", border: "1px solid rgba(240,235,224,0.18)", padding: "14px 16px", color: "#f0ebe0", fontSize: 12, fontFamily: "Montserrat, Arial, sans-serif", width: "100%" }} />
+                <input type="email" placeholder="Email Address" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))} required style={{ background: "transparent", border: "1px solid rgba(240,235,224,0.18)", padding: "14px 16px", color: "#f0ebe0", fontSize: 12, fontFamily: "Montserrat, Arial, sans-serif", width: "100%" }} />
+              </div>
+              <input type="tel" placeholder="Phone Number (optional)" value={formData.phone} onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))} style={{ background: "transparent", border: "1px solid rgba(240,235,224,0.18)", padding: "14px 16px", color: "#f0ebe0", fontSize: 12, fontFamily: "Montserrat, Arial, sans-serif", width: "100%" }} />
+              <textarea placeholder="Message (optional)" value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))} rows={5} style={{ background: "transparent", border: "1px solid rgba(240,235,224,0.18)", padding: "14px 16px", color: "#f0ebe0", fontSize: 12, fontFamily: "Montserrat, Arial, sans-serif", resize: "none", width: "100%" }} />
+              <button type="submit" className="ff-btn-gold" style={{ width: "100%", padding: "18px", fontSize: 11, marginTop: 6 }}>SUBMIT INQUIRY</button>
+            </form>
+          )}
+          <div style={{ marginTop: 48, paddingTop: 48, borderTop: "1px solid rgba(240,235,224,0.08)" }}>
+            <p className="ff-sans" style={{ fontSize: 10, color: "rgba(240,235,224,0.35)", letterSpacing: "0.15em", marginBottom: 8 }}>LISTING AGENT</p>
+            <p className="ff-serif" style={{ fontSize: 22, fontWeight: 300, marginBottom: 4 }}>Rachel Hernandez</p>
+            <p className="ff-sans" style={{ fontSize: 11, color: "#c9a84c", letterSpacing: "0.1em" }}>rachelhernandezrealtor@gmail.com</p>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer style={{ background: "#0a0a08", borderTop: "1px solid rgba(201,168,76,0.12)", padding: g("36px 48px", "28px 24px") }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
+          <div className="ff-serif" style={{ fontSize: 18, letterSpacing: "0.15em", fontWeight: 300 }}>FLOW FARM</div>
+          <p className="ff-sans" style={{ fontSize: 10, color: "rgba(240,235,224,0.28)", letterSpacing: "0.12em" }}>107 LINDEN TRAIL -- ABERDEEN, NC 28315</p>
+          <p className="ff-sans" style={{ fontSize: 10, color: "rgba(240,235,224,0.28)", letterSpacing: "0.1em" }}>OFFERED AT $5,250,000</p>
+        </div>
+      </footer>
+
+    </div>
+  );
+}

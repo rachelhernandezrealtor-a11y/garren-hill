@@ -28,81 +28,6 @@ const GALLERY_PHOTOS = [
   { url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/3af6924d6_CabanaHouseMain.jpg", label: "Cabana House" },
 ];
 
-const AERIAL_PINS = [
-  {
-    id: 0,
-    label: "MAIN RESIDENCE",
-    x: 44,
-    y: 38,
-    category: "RESIDENCE",
-    name: "Main Residence",
-    description: "The main residence anchors the estate with architectural presence and a direct relationship to the surrounding land.",
-    systems: ["20 Geothermal Wells", "14.3 kW Solar Array", "Comml. Water Filtration"],
-    tour: "https://my.matterport.com/show/?m=xZRfSiQPuQ8&brand=0",
-    image: "https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/595faa261_107LindenTrail-29.jpg",
-  },
-  {
-    id: 1,
-    label: "GUESTHOUSE",
-    x: 60,
-    y: 55,
-    category: "GUEST QUARTERS",
-    name: "Cabana House",
-    description: "Fully independent guest retreat with private entrance, full kitchen, one bedroom and one bath.",
-    systems: ["Private Entrance", "Full Kitchen", "Independent HVAC"],
-    tour: null,
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/3af6924d6_CabanaHouseMain.jpg",
-  },
-  {
-    id: 2,
-    label: "3-ACRE VEGANIC FARM",
-    x: 52,
-    y: 20,
-    category: "AGRICULTURE",
-    name: "3-Acre Veganic Farm",
-    description: "USDA-registered active farm. 1,400 ft double deer fence. Certified sustainable growing operation.",
-    systems: ["USDA FSA #5893", "1,400 ft Deer Fence", "Walk-In Cooler"],
-    tour: null,
-    image: "https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/da785e254_flowfarmmasterphotoswebsite3.jpg",
-  },
-  {
-    id: 3,
-    label: "HIGH TUNNEL",
-    x: 65,
-    y: 35,
-    category: "GREENHOUSE",
-    name: "High Tunnel Greenhouse",
-    description: "96x36 ft year-round specialty cultivation. Custom geothermal climate battery. Currently producing pineapples, avocados, citrus.",
-    systems: ["96 x 36 ft Structure", "Geothermal Climate Battery", "Four Season Tools"],
-    tour: null,
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/217fdb4a1_HighTunnel.jpg",
-  },
-  {
-    id: 4,
-    label: "FARM WORKSHOP",
-    x: 58,
-    y: 70,
-    category: "WORKSHOP",
-    name: "Farm Workshop",
-    description: "30x40 ft operational workshop with plumbing and electrical. Fully equipped for serious agricultural production.",
-    systems: ["30 x 40 ft", "Plumbing + Electrical", "Walk-In Cooler"],
-    tour: null,
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/136958608_FarmWorkshop.jpg",
-  },
-  {
-    id: 5,
-    label: "COMPOST AREA",
-    x: 72,
-    y: 60,
-    category: "SUSTAINABILITY",
-    name: "Compost + Biochar",
-    description: "O2Compost aerated system and biochar kiln with I-beam and chain hoist. Closes the regenerative loop on-site.",
-    systems: ["O2Compost System", "Biochar Kiln", "Chain Hoist + I-Beam"],
-    tour: null,
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/983e028f7_CompostingandBioChar.jpg",
-  },
-];
-
 const STRUCTURES = [
   { number: "01", name: "Main Residence", detail: "8,519 SF", description: "Six bedrooms, seven bathrooms. Reclaimed Civil War-era heart pine floors in custom artisan patterns. Glass conservatory with octagonal skylight dome. Gourmet kitchen with Sub-Zero and Wolf 60\" range. Geothermal climate, 30kW generator, 14.3kW solar. Designed by Robert E. Clark, AIA.", image: "https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/595faa261_107LindenTrail-29.jpg" },
   { number: "02", name: "Cabana House", detail: "Private Guest Retreat", description: "Fully independent guest quarters with private entrance, full kitchen, one bedroom, and one bathroom. Ideal for extended family, staff, or rental income.", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/3af6924d6_CabanaHouseMain.jpg" },
@@ -130,148 +55,6 @@ const PROXIMITY = [
   { label: "Historic Village of Pinehurst", detail: "UNESCO nominated", icon: "V" },
   { label: "Pinehurst Country Club", detail: "Membership included", icon: "G" },
 ];
-
-function AerialMap({ isMobile }) {
-  const [activePin, setActivePin] = useState(0);
-  const pin = AERIAL_PINS[activePin];
-
-  return (
-    <div style={{ position: "relative", width: "100%", userSelect: "none" }}>
-      {/* AERIAL IMAGE */}
-      <div style={{ position: "relative", width: "100%", aspectRatio: isMobile ? "4/5" : "16/7", overflow: "hidden", background: "#111109" }}>
-        <img
-          src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/46fb99d0e_TSDroneHouseRoof.jpg"
-          alt="Flow Farm aerial"
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
-        />
-        {/* dark overlay */}
-        <div style={{ position: "absolute", inset: 0, background: "rgba(10,10,8,0.35)" }} />
-
-        {/* PINS */}
-        {AERIAL_PINS.map((p, i) => (
-          <button
-            key={p.id}
-            onClick={() => setActivePin(i)}
-            style={{
-              position: "absolute",
-              left: p.x + "%",
-              top: p.y + "%",
-              transform: "translate(-50%, -50%)",
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              zIndex: 10,
-              padding: 0,
-            }}
-          >
-            {/* pulse ring when active */}
-            {activePin === i && (
-              <span style={{
-                position: "absolute",
-                inset: -8,
-                borderRadius: "50%",
-                border: "1px solid rgba(201,168,76,0.5)",
-                animation: "pinPulse 1.8s ease-in-out infinite",
-              }} />
-            )}
-            <span style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 6,
-              background: activePin === i ? "rgba(201,168,76,0.92)" : "rgba(15,15,12,0.82)",
-              border: activePin === i ? "1px solid #c9a84c" : "1px solid rgba(201,168,76,0.45)",
-              borderRadius: 2,
-              padding: "5px 10px",
-              backdropFilter: "blur(8px)",
-              transition: "all 0.25s",
-            }}>
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: activePin === i ? "#0a0a08" : "#c9a84c", flexShrink: 0 }} />
-              <span style={{
-                fontFamily: "Montserrat, Arial, sans-serif",
-                fontSize: isMobile ? 8 : 10,
-                letterSpacing: "0.18em",
-                fontWeight: 500,
-                color: activePin === i ? "#0a0a08" : "#f0ebe0",
-                whiteSpace: "nowrap",
-              }}>{p.label}</span>
-            </span>
-          </button>
-        ))}
-
-        {/* INFO DRAWER - desktop: overlays left side; mobile: bottom */}
-        <div style={{
-          position: "absolute",
-          top: isMobile ? "auto" : "50%",
-          bottom: isMobile ? 0 : "auto",
-          left: isMobile ? 0 : 40,
-          right: isMobile ? 0 : "auto",
-          transform: isMobile ? "none" : "translateY(-50%)",
-          width: isMobile ? "100%" : 340,
-          background: "rgba(12,12,10,0.92)",
-          backdropFilter: "blur(16px)",
-          border: "1px solid rgba(201,168,76,0.2)",
-          padding: isMobile ? "20px 20px 24px" : "32px 28px",
-          zIndex: 20,
-        }}>
-          <p style={{ fontFamily: "Montserrat, Arial, sans-serif", fontSize: 9, letterSpacing: "0.3em", color: "#c9a84c", marginBottom: 8 }}>{pin.category}</p>
-          <h3 style={{ fontFamily: "Cormorant Garamond, Georgia, serif", fontSize: isMobile ? 24 : 30, fontWeight: 300, color: "#f0ebe0", marginBottom: 12, lineHeight: 1.1 }}>{pin.name}</h3>
-          <p style={{ fontFamily: "Montserrat, Arial, sans-serif", fontSize: 12, lineHeight: 1.75, color: "rgba(240,235,224,0.65)", fontWeight: 300, marginBottom: 20 }}>{pin.description}</p>
-          <p style={{ fontFamily: "Montserrat, Arial, sans-serif", fontSize: 9, letterSpacing: "0.25em", color: "#c9a84c", marginBottom: 12 }}>CONNECTED SYSTEMS</p>
-          <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 24 }}>
-            {pin.systems.map(s => (
-              <span key={s} style={{ display: "inline-block", border: "1px solid rgba(201,168,76,0.3)", padding: "6px 12px", fontFamily: "Montserrat, Arial, sans-serif", fontSize: 10, letterSpacing: "0.12em", color: "rgba(240,235,224,0.7)" }}>{s}</span>
-            ))}
-          </div>
-          {pin.tour && (
-            <a href={pin.tour} target="_blank" rel="noreferrer" style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 10,
-              background: "transparent",
-              border: "1px solid #c9a84c",
-              padding: "12px 18px",
-              fontFamily: "Montserrat, Arial, sans-serif",
-              fontSize: 10,
-              letterSpacing: "0.2em",
-              color: "#c9a84c",
-              textDecoration: "none",
-              cursor: "pointer",
-              transition: "all 0.3s",
-              marginBottom: 20,
-            }}>LAUNCH VIRTUAL 3D TOUR  &rarr;</a>
-          )}
-          {/* DOT NAV */}
-          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-            {AERIAL_PINS.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActivePin(i)}
-                style={{
-                  width: activePin === i ? 20 : 6,
-                  height: 6,
-                  borderRadius: 3,
-                  background: activePin === i ? "#c9a84c" : "rgba(240,235,224,0.25)",
-                  border: "none",
-                  cursor: "pointer",
-                  transition: "all 0.3s",
-                  padding: 0,
-                }}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <style>{`
-        @keyframes pinPulse {
-          0% { transform: scale(1); opacity: 0.7; }
-          50% { transform: scale(1.4); opacity: 0.2; }
-          100% { transform: scale(1); opacity: 0.7; }
-        }
-      `}</style>
-    </div>
-  );
-}
 
 export default function FlowFarmLanding() {
   const [navScrolled, setNavScrolled] = useState(false);
@@ -324,7 +107,7 @@ export default function FlowFarmLanding() {
         .ff-btn-ghost:hover { border-color: #c9a84c; color: #c9a84c; }
         input::placeholder, textarea::placeholder { color: rgba(240,235,224,0.3); }
         input:focus, textarea:focus { border-color: rgba(201,168,76,0.5) !important; outline: none; }
-        .prox-card { border: 1px solid rgba(201,168,76,0.15); padding: 20px; transition: border-color 0.3s, background 0.3s; }
+        .prox-card { border: 1px solid rgba(201,168,76,0.15); padding: 20px; transition: border-color 0.3s, background 0.3s; cursor: default; }
         .prox-card:hover { border-color: rgba(201,168,76,0.5); background: rgba(201,168,76,0.04); }
         .struct-card { position: relative; overflow: hidden; aspect-ratio: 3/4; }
         .struct-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
@@ -332,6 +115,8 @@ export default function FlowFarmLanding() {
         .gal-item { break-inside: avoid; margin-bottom: 4px; overflow: hidden; cursor: pointer; }
         .gal-item img { width: 100%; display: block; transition: transform 0.5s ease; }
         .gal-item:hover img { transform: scale(1.04); }
+        .map-wrapper { position: relative; width: 100%; padding-bottom: 56%; overflow: hidden; background: #111109; }
+        .map-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
       `}</style>
 
       {/* NAV */}
@@ -365,7 +150,7 @@ export default function FlowFarmLanding() {
       {/* MOBILE MENU */}
       {menuOpen && (
         <div style={{ position: "fixed", inset: 0, zIndex: 99, background: "rgba(10,10,8,0.98)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 32 }}>
-          <button onClick={() => setMenuOpen(false)} style={{ position: "absolute", top: 24, right: 24, background: "none", border: "none", color: "#f0ebe0", fontSize: 28, cursor: "pointer" }}>x</button>
+          <button onClick={() => setMenuOpen(false)} style={{ position: "absolute", top: 24, right: 24, background: "none", border: "none", color: "#f0ebe0", fontSize: 28, cursor: "pointer", lineHeight: 1 }}>x</button>
           {NAV_LINKS.map(l => (
             <button key={l.label} className="ff-nav-link" style={{ fontSize: 14 }} onClick={() => scrollTo(l.href)}>{l.label}</button>
           ))}
@@ -383,8 +168,8 @@ export default function FlowFarmLanding() {
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(10,10,8,0.25) 0%, rgba(10,10,8,0.4) 50%, rgba(10,10,8,0.88) 100%)" }} />
         <div style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "0 24px", maxWidth: 800, margin: "0 auto" }}>
-          <p className="ff-sans" style={{ letterSpacing: "0.3em", fontSize: g(11, 9), color: "#c9a84c", marginBottom: 24 }}>107 LINDEN TRAIL -- ABERDEEN, NC</p>
-          <h1 className="ff-serif" style={{ fontSize: g(110, 72), fontWeight: 300, lineHeight: 0.88, color: "#f0ebe0", marginBottom: 32 }}>Flow<br />Farm</h1>
+          <p className="ff-sans" style={{ letterSpacing: "0.3em", fontSize: g(11, 9), color: "#c9a84c", marginBottom: 24, fontWeight: 400 }}>107 LINDEN TRAIL -- ABERDEEN, NC</p>
+          <h1 className="ff-serif" style={{ fontSize: g(110, 72), fontWeight: 300, lineHeight: 0.88, letterSpacing: "0.02em", color: "#f0ebe0", marginBottom: 32 }}>Flow<br />Farm</h1>
           <p className="ff-sans" style={{ letterSpacing: "0.25em", fontSize: g(12, 9), color: "rgba(240,235,224,0.65)", marginBottom: 40, fontWeight: 300 }}>AGRITOURISM ESTABLISHED. LEGACY READY.</p>
           <p className="ff-serif" style={{ fontSize: g(30, 24), color: "#c9a84c", fontWeight: 300, marginBottom: 48 }}>$5,250,000</p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
@@ -485,10 +270,10 @@ export default function FlowFarmLanding() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: g("repeat(3,1fr)", "1fr 1fr"), gap: g(48, 28) }}>
             {[
-              { title: "Grand Living Room", detail: "27.5 x 23.8 ft | 17 ft Vaulted Ceiling", body: "Reclaimed Civil War-era heart pine floors in custom artisan patterns. Proportions designed for entertaining at scale." },
+              { title: "Grand Living Room", detail: "27.5 x 23.8 ft | 17 ft Vaulted Ceiling", body: "The heart of the home. Reclaimed Civil War-era heart pine floors in custom artisan patterns. Proportions designed for entertaining at scale." },
               { title: "Glass Conservatory", detail: "19.5 x 17.7 ft | Octagonal Skylight Dome", body: "Wrapped entirely in glass, anchored by a custom octagonal dome skylight. A living room, dining space, or morning sanctuary." },
               { title: "Chef Kitchen", detail: "Sub-Zero + Wolf 60\" Range | Scullery", body: "Sub-Zero column refrigeration, Wolf 60\" dual fuel range, six burners, griddle, grill, warming drawer. Two dishwashers. Full scullery." },
-              { title: "Heart Pine Floors", detail: "Civil War-Era Reclaimed", body: "Custom artisan patterns throughout every bedroom, hallway, and closet. Sourced, milled, installed as a singular design statement." },
+              { title: "Heart Pine Floors", detail: "Civil War-Era Reclaimed", body: "Custom artisan patterns throughout every bedroom, hallway, and closet. Sourced, milled, and installed as a singular design statement." },
               { title: "Primary Suite", detail: "Walk-In Closet: 11.7 x 21.7 ft", body: "A private retreat within the estate. Generous proportions, natural light, and a walk-in closet designed to the scale of a room." },
               { title: "Smart Infrastructure", detail: "Control4 | Araknis | Lennox", body: "Whole-house Control4 audio, video, and lighting. Enterprise-grade Araknis campus Wi-Fi. Lennox air purification on every zone." },
             ].map(item => (
@@ -511,14 +296,14 @@ export default function FlowFarmLanding() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: g("1fr 1fr", "1fr"), gap: 24 }}>
             <div>
-              <div style={{ position: "relative", paddingBottom: "62%", background: "#111109", overflow: "hidden" }}>
-                <iframe src="https://my.matterport.com/show/?m=xZRfSiQPuQ8&brand=0" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }} allowFullScreen title="Interior Tour" />
+              <div className="map-wrapper">
+                <iframe src="https://my.matterport.com/show/?m=xZRfSiQPuQ8&brand=0" allowFullScreen title="Interior 3D Tour" />
               </div>
               <p className="ff-sans" style={{ fontSize: 10, letterSpacing: "0.2em", color: "rgba(240,235,224,0.38)", marginTop: 12, textAlign: "center" }}>INTERIOR 3D TOUR</p>
             </div>
             <div>
-              <div style={{ position: "relative", paddingBottom: "62%", background: "#111109", overflow: "hidden" }}>
-                <iframe src="https://portal.nucleus4d.com/3ec4ff02-9412-4f29-87ba-4926145df7a1/exterior-d302c992-e611-4197-b2df-ff6931a8827a" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }} allowFullScreen title="Exterior Tour" />
+              <div className="map-wrapper">
+                <iframe src="https://portal.nucleus4d.com/3ec4ff02-9412-4f29-87ba-4926145df7a1/exterior-d302c992-e611-4197-b2df-ff6931a8827a" allowFullScreen title="Exterior 3D Tour" />
               </div>
               <p className="ff-sans" style={{ fontSize: 10, letterSpacing: "0.2em", color: "rgba(240,235,224,0.38)", marginTop: 12, textAlign: "center" }}>EXTERIOR 3D TOUR</p>
             </div>
@@ -570,7 +355,7 @@ export default function FlowFarmLanding() {
       {/* LIGHTBOX */}
       {activeGallery !== null && (
         <div style={{ position: "fixed", inset: 0, zIndex: 200, background: "rgba(10,10,8,0.97)", display: "flex", alignItems: "center", justifyContent: "center" }} onClick={() => setActiveGallery(null)}>
-          <button onClick={() => setActiveGallery(null)} style={{ position: "absolute", top: 20, right: 28, background: "none", border: "none", color: "#f0ebe0", fontSize: 30, cursor: "pointer" }}>x</button>
+          <button onClick={() => setActiveGallery(null)} style={{ position: "absolute", top: 20, right: 28, background: "none", border: "none", color: "#f0ebe0", fontSize: 30, cursor: "pointer", lineHeight: 1 }}>x</button>
           <button onClick={(e) => { e.stopPropagation(); setActiveGallery(a => (a - 1 + GALLERY_PHOTOS.length) % GALLERY_PHOTOS.length); }} style={{ position: "absolute", left: g(24, 8), background: "none", border: "none", color: "#c9a84c", fontSize: g(36, 28), cursor: "pointer" }}>{"<"}</button>
           <img src={GALLERY_PHOTOS[activeGallery].url} alt={GALLERY_PHOTOS[activeGallery].label} style={{ maxHeight: "85vh", maxWidth: "90vw", objectFit: "contain" }} onClick={e => e.stopPropagation()} />
           <button onClick={(e) => { e.stopPropagation(); setActiveGallery(a => (a + 1) % GALLERY_PHOTOS.length); }} style={{ position: "absolute", right: g(24, 8), background: "none", border: "none", color: "#c9a84c", fontSize: g(36, 28), cursor: "pointer" }}>{">"}</button>
@@ -616,76 +401,3 @@ export default function FlowFarmLanding() {
         </div>
       </section>
 
-      {/* INTERACTIVE AERIAL MAP */}
-      <section style={{ padding: g("120px 0 60px", "80px 0 40px"), background: "#0a0a08" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: g("0 48px", "0 24px") }}>
-          <div style={{ textAlign: "center", marginBottom: 56 }}>
-            <p className="ff-sans" style={{ fontSize: 10, letterSpacing: "0.3em", color: "#c9a84c", marginBottom: 16 }}>THE ESTATE FROM ABOVE</p>
-            <h2 className="ff-serif" style={{ fontSize: g(52, 34), fontWeight: 300, lineHeight: 1.1 }}>Private by Nature.<br />Pinehurst by Proximity.</h2>
-          </div>
-        </div>
-        <AerialMap isMobile={isMobile} />
-        <div style={{ maxWidth: 1200, margin: "48px auto 0", padding: g("0 48px", "0 24px") }}>
-          <p className="ff-sans" style={{ fontSize: 12, lineHeight: 1.9, color: "rgba(240,235,224,0.5)", fontWeight: 300, textAlign: "center", maxWidth: 700, margin: "0 auto 48px" }}>
-            Multiple points of access: primary entrance from Linden Trail with additional access via Linden Road, Mollie Lane, and Skene Lane.
-          </p>
-          <div style={{ display: "grid", gridTemplateColumns: g("repeat(3,1fr)", "1fr 1fr"), gap: g(16, 12) }}>
-            {PROXIMITY.map(item => (
-              <div key={item.label} className="prox-card">
-                <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 8 }}>
-                  <div style={{ width: 30, height: 30, borderRadius: "50%", border: "1px solid rgba(201,168,76,0.4)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <span className="ff-serif" style={{ fontSize: 13, color: "#c9a84c" }}>{item.icon}</span>
-                  </div>
-                  <span className="ff-sans" style={{ fontSize: g(12, 11), color: "rgba(240,235,224,0.75)", fontWeight: 300, lineHeight: 1.4 }}>{item.label}</span>
-                </div>
-                <p className="ff-sans" style={{ fontSize: 10, color: "#c9a84c", letterSpacing: "0.15em", paddingLeft: 44 }}>{item.detail}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CONTACT */}
-      <section id="contact" style={{ background: "#0d0d0b", padding: g("120px 48px", "80px 24px") }}>
-        <div style={{ maxWidth: 680, margin: "0 auto", textAlign: "center" }}>
-          <p className="ff-sans" style={{ fontSize: 10, letterSpacing: "0.3em", color: "#c9a84c", marginBottom: 16 }}>PRIVATE INQUIRY</p>
-          <h2 className="ff-serif" style={{ fontSize: g(52, 36), fontWeight: 300, lineHeight: 1.1, marginBottom: 16 }}>Begin the Conversation</h2>
-          <p className="ff-sans" style={{ fontSize: 12, color: "rgba(240,235,224,0.45)", marginBottom: 48, lineHeight: 1.8, fontWeight: 300 }}>
-            Flow Farm is offered exclusively. Showings are by private appointment only. We welcome qualified inquiries from principals and their representatives.
-          </p>
-          {formSent ? (
-            <div style={{ border: "1px solid rgba(201,168,76,0.3)", padding: "48px 32px" }}>
-              <p className="ff-serif" style={{ fontSize: 28, fontWeight: 300, marginBottom: 10 }}>Thank you.</p>
-              <p className="ff-sans" style={{ fontSize: 12, color: "rgba(240,235,224,0.55)", fontWeight: 300 }}>We will be in touch shortly.</p>
-            </div>
-          ) : (
-            <form onSubmit={handleForm} style={{ display: "flex", flexDirection: "column", gap: 14, textAlign: "left" }}>
-              <div style={{ display: "grid", gridTemplateColumns: g("1fr 1fr", "1fr"), gap: 14 }}>
-                <input type="text" placeholder="Full Name" value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))} required style={{ background: "transparent", border: "1px solid rgba(240,235,224,0.18)", padding: "14px 16px", color: "#f0ebe0", fontSize: 12, fontFamily: "Montserrat, Arial, sans-serif", width: "100%" }} />
-                <input type="email" placeholder="Email Address" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))} required style={{ background: "transparent", border: "1px solid rgba(240,235,224,0.18)", padding: "14px 16px", color: "#f0ebe0", fontSize: 12, fontFamily: "Montserrat, Arial, sans-serif", width: "100%" }} />
-              </div>
-              <input type="tel" placeholder="Phone Number (optional)" value={formData.phone} onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))} style={{ background: "transparent", border: "1px solid rgba(240,235,224,0.18)", padding: "14px 16px", color: "#f0ebe0", fontSize: 12, fontFamily: "Montserrat, Arial, sans-serif", width: "100%" }} />
-              <textarea placeholder="Message (optional)" value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))} rows={5} style={{ background: "transparent", border: "1px solid rgba(240,235,224,0.18)", padding: "14px 16px", color: "#f0ebe0", fontSize: 12, fontFamily: "Montserrat, Arial, sans-serif", resize: "none", width: "100%" }} />
-              <button type="submit" className="ff-btn-gold" style={{ width: "100%", padding: "18px", fontSize: 11, marginTop: 6 }}>SUBMIT INQUIRY</button>
-            </form>
-          )}
-          <div style={{ marginTop: 48, paddingTop: 48, borderTop: "1px solid rgba(240,235,224,0.08)" }}>
-            <p className="ff-sans" style={{ fontSize: 10, color: "rgba(240,235,224,0.35)", letterSpacing: "0.15em", marginBottom: 8 }}>LISTING AGENT</p>
-            <p className="ff-serif" style={{ fontSize: 22, fontWeight: 300, marginBottom: 4 }}>Rachel Hernandez</p>
-            <p className="ff-sans" style={{ fontSize: 11, color: "#c9a84c", letterSpacing: "0.1em" }}>rachelhernandezrealtor@gmail.com</p>
-          </div>
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer style={{ background: "#0a0a08", borderTop: "1px solid rgba(201,168,76,0.12)", padding: g("36px 48px", "28px 24px") }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
-          <div className="ff-serif" style={{ fontSize: 18, letterSpacing: "0.15em", fontWeight: 300 }}>FLOW FARM</div>
-          <p className="ff-sans" style={{ fontSize: 10, color: "rgba(240,235,224,0.28)", letterSpacing: "0.12em" }}>107 LINDEN TRAIL -- ABERDEEN, NC 28315</p>
-          <p className="ff-sans" style={{ fontSize: 10, color: "rgba(240,235,224,0.28)", letterSpacing: "0.1em" }}>OFFERED AT $5,250,000</p>
-        </div>
-      </footer>
-
-    </div>
-  );
-}

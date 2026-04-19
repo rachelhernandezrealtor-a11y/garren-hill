@@ -1,0 +1,31 @@
+      {/* INTERACTIVE AERIAL MAP */}
+      <section style={{ padding: g("120px 0", "80px 0"), background: "#0a0a08" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: g("0 48px", "0 24px") }}>
+          <div style={{ textAlign: "center", marginBottom: 56 }}>
+            <p className="ff-sans" style={{ fontSize: 10, letterSpacing: "0.3em", color: "#c9a84c", marginBottom: 16 }}>THE ESTATE FROM ABOVE</p>
+            <h2 className="ff-serif" style={{ fontSize: g(52, 34), fontWeight: 300, lineHeight: 1.1 }}>Six Structures.<br />Fifteen Acres.<br />One Vision.</h2>
+          </div>
+        </div>
+        <AerialMap isMobile={isMobile} />
+        <div style={{ maxWidth: 1200, margin: "48px auto 0", padding: g("0 48px", "0 24px") }}>
+          <div style={{ textAlign: "center" }}>
+            <p className="ff-sans" style={{ fontSize: 12, lineHeight: 1.9, color: "rgba(240,235,224,0.5)", fontWeight: 300, maxWidth: 700, margin: "0 auto" }}>
+              Multiple points of access: primary entrance from Linden Trail with additional access via Linden Road, Mollie Lane, and Skene Lane. The private drive creates immediate separation and discretion.
+            </p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: g("repeat(3,1fr)", "1fr 1fr"), gap: g(16, 12), marginTop: 48 }}>
+            {PROXIMITY.map(item => (
+              <div key={item.label} className="prox-card">
+                <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 8 }}>
+                  <div style={{ width: 30, height: 30, borderRadius: "50%", border: "1px solid rgba(201,168,76,0.4)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <span className="ff-serif" style={{ fontSize: 13, color: "#c9a84c" }}>{item.icon}</span>
+                  </div>
+                  <span className="ff-sans" style={{ fontSize: g(12, 11), color: "rgba(240,235,224,0.75)", fontWeight: 300, lineHeight: 1.4 }}>{item.label}</span>
+                </div>
+                <p className="ff-sans" style={{ fontSize: 10, color: "#c9a84c", letterSpacing: "0.15em", paddingLeft: 44 }}>{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
