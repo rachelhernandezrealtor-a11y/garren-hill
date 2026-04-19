@@ -7,36 +7,36 @@ const H2 = { fontSize: "clamp(28px, 3.5vw, 46px)", fontWeight: 300, color: "rgba
 const WRAP = { maxWidth: 1100, margin: "0 auto", padding: "60px 32px 80px" };
 
 const STRUCTURES = [
-  { name: "Main Residence", tagline: "Robert Clark Architectural Masterpiece", img: "https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/595faa261_107LindenTrail-29.jpg", desc: "8,519 SF above grade by architect Robert Clark — one of his final works. Grand living room 27.5x23.8 ft with 17 ft vaulted ceiling. Reclaimed Civil War-era heart pine throughout. Glass conservatory, Sub-Zero and Wolf kitchen, Control4 smart home, geothermal systems." },
+  { name: "Main Residence", tagline: "Robert Clark Architectural Masterpiece", img: "https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/595faa261_107LindenTrail-29.jpg", desc: "8,519 SF above grade by architect Robert Clark - one of his final works. Grand living room 27.5x23.8 ft with 17 ft vaulted ceiling. Reclaimed Civil War-era heart pine throughout. Glass conservatory, Sub-Zero and Wolf kitchen, Control4 smart home, geothermal systems." },
   { name: "Cabana House", tagline: "Private Guest Retreat", img: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/3af6924d6_CabanaHouseMain.jpg", desc: "Independent guest quarters with private entrance, full bath, and kitchenette. Complete privacy from the main residence." },
   { name: "High Tunnel Greenhouse", tagline: "Year-Round Agricultural Production", img: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/217fdb4a1_HighTunnel.jpg", desc: "96x36 ft high tunnel with custom Climate Battery geothermal heating. Produces pineapples, avocados, citrus year-round." },
   { name: "Farm Workshop", tagline: "Operational Infrastructure", img: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/136958608_FarmWorkshop.jpg", desc: "30x40 ft operational workshop with plumbing, electrical, and 12x8 ft walk-in cooler. 1,400 ft double deer fencing enclosing 3 acres." },
   { name: "Compost and Biochar", tagline: "Regenerative Systems", img: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/983e028f7_CompostingandBioChar.jpg", desc: "Covered aerated composting (O2Compost) and biochar kiln under covered structure with I-Beam and chain hoist." },
-  { name: "Garage Loft", tagline: "Flex Space Above Grade", img: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/46fb99d0e_TSDroneHouseRoof.jpg", desc: "Separate living and storage area above the attached garage with its own utilities — available for studio, office, or guest use." },
+  { name: "Garage Loft", tagline: "Flex Space Above Grade", img: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/46fb99d0e_TSDroneHouseRoof.jpg", desc: "Separate living and storage area above the attached garage with its own utilities - available for studio, office, or guest use." },
 ];
 
 const FEATURES = [
-  "Gourmet kitchen with scullery — Sub-Zero refrigerator, freezer, fridge/freezer combo and wine cooler; Wolf 60 inch dual fuel stove with 6-burners, griddle, grill and warming drawer; 2 KitchenAid dishwashers",
+  "Gourmet kitchen with scullery - Sub-Zero refrigerator, freezer, fridge/freezer combo and wine cooler; Wolf 60 inch dual fuel stove with 6-burners, griddle, grill and warming drawer; 2 KitchenAid dishwashers",
   "2 sets of Whirlpool washers and steam dryers",
   "Whole house commercial water filtration system (Clear Water Solutions)",
   "Whole house fire sprinkler system",
   "30 kW Kohler generator with 2x 1,000 gallon buried propane tanks",
-  "14.3 kW solar array — 61 Samsung panels",
+  "14.3 kW solar array - 61 Samsung panels",
   "Sunny Island 10k Solar Battery Backup system",
-  "Private water well — up to 50 gpm",
-  "Private septic — 2x 1,500 gallon tanks with pump",
-  "Geothermal loop — 20 deep wells, each 300 feet deep",
+  "Private water well - up to 50 gpm",
+  "Private septic - 2x 1,500 gallon tanks with pump",
+  "Geothermal loop - 20 deep wells, each 300 feet deep",
   "Five interconnected HVAC zones with Water Furnace geothermal systems",
   "Lennox air purification systems on each zone",
   "Two Water Furnace superheaters providing geothermal hot water",
   "Energy Recovery Ventilator system",
   "HVAC design by Energy Innovations / Harry Boody",
-  "Energy efficient insulation and mylar wrap — whole house",
-  "Whole house central vacuum — dual VacuMaid S2400",
+  "Energy efficient insulation and mylar wrap - whole house",
+  "Whole house central vacuum - dual VacuMaid S2400",
   "Sealed and fully conditioned crawl space below full footprint",
   "All mechanicals fully accessible in conditioned space",
   "1,200 amp total power service",
-  "Brown Safe — jewelry safe and vault door",
+  "Brown Safe - jewelry safe and vault door",
   "Whole smart house Control4 audio, video and lighting system",
   "Araknis enterprise-grade whole-estate networking",
   "Whole house alarm system and whole campus Wi-Fi",
@@ -49,7 +49,7 @@ const FEATURES = [
   "Covered aerated composting system (O2Compost)",
   "Biochar kiln under covered structure with I-Beam and chain hoist",
   "Walk-in cooler 12x8 ft in farm auxiliary building",
-  "Transferable Pinehurst Country Club Signature Golf Membership — unlimited access to Course No. 7 and No. 9",
+  "Transferable Pinehurst Country Club Signature Golf Membership - unlimited access to Course No. 7 and No. 9",
 ];
 
 export default function FlowFarmHome() {
@@ -94,7 +94,7 @@ export default function FlowFarmHome() {
       <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "20px 40px", background: navScrolled ? "rgba(8,10,8,0.94)" : "transparent", backdropFilter: navScrolled ? "blur(20px)" : "none", WebkitBackdropFilter: navScrolled ? "blur(20px)" : "none", borderBottom: navScrolled ? "1px solid rgba(255,255,255,0.06)" : "none", transition: "all 0.4s ease" }}>
         <div>
           <p style={{ color: "rgba(255,252,245,0.9)", fontSize: 13, letterSpacing: "0.35em", textTransform: "uppercase", margin: 0, fontWeight: 300 }}>Flow Farm</p>
-          <p style={{ color: "rgba(160,190,140,0.4)", fontSize: 9, letterSpacing: "0.4em", textTransform: "uppercase", margin: "3px 0 0" }}>107 Linden Trail · Aberdeen, NC</p>
+          <p style={{ color: "rgba(160,190,140,0.4)", fontSize: 9, letterSpacing: "0.4em", textTransform: "uppercase", margin: "3px 0 0" }}>107 Linden Trail   |   Aberdeen, NC</p>
         </div>
         <div style={{ display: "flex", gap: 28, alignItems: "center" }}>
           {[["Residence","#residence"],["The Farm","#farm"],["Features","#features"],["Location","#location"]].map(([label, href]) => (
@@ -121,12 +121,12 @@ export default function FlowFarmHome() {
         )}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.28) 0%, transparent 30%, transparent 50%, rgba(0,0,0,0.78) 85%, #080c08 100%)" }} />
         <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "0 24px" }}>
-          <p style={{ color: "rgba(180,210,150,0.6)", fontSize: 9, letterSpacing: "0.65em", textTransform: "uppercase", marginBottom: 20 }}>A Regenerative Estate · Fifteen Acres · Six Structures</p>
+          <p style={{ color: "rgba(180,210,150,0.6)", fontSize: 9, letterSpacing: "0.65em", textTransform: "uppercase", marginBottom: 20 }}>A Regenerative Estate   |   Fifteen Acres   |   Six Structures</p>
           <h1 style={{ fontSize: "clamp(48px, 8.5vw, 104px)", fontWeight: 300, color: "#fff", margin: "0 0 24px", lineHeight: 0.95, textShadow: "0 2px 32px rgba(0,0,0,0.6)" }}>
             Agritourism<br /><em>Established.</em><br />Legacy Ready.
           </h1>
           <p style={{ color: "rgba(255,255,255,0.48)", fontSize: "clamp(13px, 1vw, 15px)", maxWidth: 600, lineHeight: 1.9, marginBottom: 40, textShadow: "0 1px 12px rgba(0,0,0,0.7)" }}>
-            A rare convergence of land, architecture, and infrastructure — offering energy independence, rare zoning flexibility, and a transferable Pinehurst Country Club Signature Golf Membership with unlimited access to Course No. 7 and No. 9.
+            A rare convergence of land, architecture, and infrastructure - offering energy independence, rare zoning flexibility, and a transferable Pinehurst Country Club Signature Golf Membership with unlimited access to Course No. 7 and No. 9.
           </p>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center", marginBottom: 40 }}>
             {[["15 Acres","USDA Zoned"],["3 Miles","to Pinehurst"],["$5.26M","Offered At"],["6","Structures"]].map(([val, label]) => (
@@ -172,10 +172,10 @@ export default function FlowFarmHome() {
             </div>
             <div>
               <p style={{ color: "rgba(255,255,255,0.3)", fontSize: 14, lineHeight: 1.95, marginBottom: 14 }}>8,519 SF above grade, plus 1,709 SF partially finished walk-out lower level and 2,531 SF fully conditioned crawl space. Grand central living room: 27.5 x 23.8 ft with 17 ft vaulted ceiling.</p>
-              <p style={{ color: "rgba(255,255,255,0.2)", fontSize: 14, lineHeight: 1.95, marginBottom: 14 }}>Glass-wrapped conservatory (19.5 x 17.7 ft) with octagonal skylight dome. Reclaimed Civil War-era heart pine floors in artisan patterns throughout — including bedrooms, hallways, and closets.</p>
-              <p style={{ color: "rgba(255,255,255,0.16)", fontSize: 14, lineHeight: 1.95, marginBottom: 28 }}>Primary suite: cathedral-ceiling bedroom, sitting room, spa bath, and dressing room (11.7 x 21.7 ft). Basement: media room, sauna, and Brown Safe vault — all fully conditioned.</p>
+              <p style={{ color: "rgba(255,255,255,0.2)", fontSize: 14, lineHeight: 1.95, marginBottom: 14 }}>Glass-wrapped conservatory (19.5 x 17.7 ft) with octagonal skylight dome. Reclaimed Civil War-era heart pine floors in artisan patterns throughout - including bedrooms, hallways, and closets.</p>
+              <p style={{ color: "rgba(255,255,255,0.16)", fontSize: 14, lineHeight: 1.95, marginBottom: 28 }}>Primary suite: cathedral-ceiling bedroom, sitting room, spa bath, and dressing room (11.7 x 21.7 ft). Basement: media room, sauna, and Brown Safe vault - all fully conditioned.</p>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 22 }}>
-                {[["Kitchen","Sub-Zero suite + Wolf 60 inch range, double ovens, 2 KitchenAid dishwashers"],["Smart Home","Control4 audio/video/lighting + Araknis enterprise networking"],["Energy","20 geothermal wells, 61 solar panels, 30kW generator, 1,200 amp service"],["Basement","Media room, sauna, Brown Safe vault — all fully conditioned"]].map(([title, desc]) => (
+                {[["Kitchen","Sub-Zero suite + Wolf 60 inch range, double ovens, 2 KitchenAid dishwashers"],["Smart Home","Control4 audio/video/lighting + Araknis enterprise networking"],["Energy","20 geothermal wells, 61 solar panels, 30kW generator, 1,200 amp service"],["Basement","Media room, sauna, Brown Safe vault - all fully conditioned"]].map(([title, desc]) => (
                   <div key={title} style={{ ...GL, padding: "14px 13px" }}>
                     <div style={{ width: 14, height: 1, background: "rgba(160,190,130,0.4)", marginBottom: 9 }} />
                     <p style={{ fontSize: 10, color: "rgba(255,252,245,0.7)", letterSpacing: "0.06em", margin: "0 0 6px" }}>{title}</p>
@@ -234,7 +234,7 @@ export default function FlowFarmHome() {
           <div>
             <p style={EYEBROW}>Location</p>
             <h2 style={H2}>Private by Nature.<br />Pinehurst by Proximity.</h2>
-            <p style={{ color: "rgba(255,255,255,0.26)", fontSize: 14, lineHeight: 1.9, marginBottom: 14 }}>Flow Farm is approached via private drive from Linden Trail with additional access via Linden Road, Mollie Lane, and Skene Lane — creating immediate separation and discretion.</p>
+            <p style={{ color: "rgba(255,255,255,0.26)", fontSize: 14, lineHeight: 1.9, marginBottom: 14 }}>Flow Farm is approached via private drive from Linden Trail with additional access via Linden Road, Mollie Lane, and Skene Lane - creating immediate separation and discretion.</p>
             <p style={{ color: "rgba(255,255,255,0.16)", fontSize: 14, lineHeight: 1.9, marginBottom: 26 }}>Rare privacy without isolation. Minutes from Pinehurst, private aviation, advanced healthcare, and within easy reach of Raleigh-Durham International Airport.</p>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
               {[["3 Miles","Historic Village of Pinehurst"],["Minutes","Moore County Regional Airport"],["1 Hour","Raleigh-Durham International"],["Nearby","FirstHealth Moore Regional Hospital"]].map(([val, label]) => (
@@ -265,8 +265,8 @@ export default function FlowFarmHome() {
       {/* FOOTER */}
       <div style={{ ...G, borderRadius: 0, borderLeft: "none", borderRight: "none", borderBottom: "none", padding: "22px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div>
-          <p style={{ color: "rgba(255,255,255,0.16)", fontSize: 9, letterSpacing: "0.4em", textTransform: "uppercase", margin: 0 }}>Flow Farm · 107 Linden Trail · Aberdeen, NC 28315</p>
-          <p style={{ color: "rgba(255,255,255,0.08)", fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", margin: "4px 0 0" }}>Offered at $5,260,000 · Rachel Hernandez, Listing Agent</p>
+          <p style={{ color: "rgba(255,255,255,0.16)", fontSize: 9, letterSpacing: "0.4em", textTransform: "uppercase", margin: 0 }}>Flow Farm   |   107 Linden Trail   |   Aberdeen, NC 28315</p>
+          <p style={{ color: "rgba(255,255,255,0.08)", fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", margin: "4px 0 0" }}>Offered at $5,260,000   |   Rachel Hernandez, Listing Agent</p>
         </div>
         <p style={{ color: "rgba(255,255,255,0.08)", fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", margin: 0 }}>flowfarmforest.com</p>
       </div>
