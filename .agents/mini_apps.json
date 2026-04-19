@@ -35,6 +35,12 @@
     },
     "Home": {
       "title": "Home"
+    },
+    "FlowFarmHome": {
+      "title": "FlowFarmHome"
+    },
+    "FlowFarmGallery": {
+      "title": "FlowFarmGallery"
     }
   }
 }
