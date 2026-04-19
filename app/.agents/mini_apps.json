@@ -3,29 +3,15 @@
   "slug": "rocky-app-b6e5df8e",
   "default_page": "Home",
   "pages": {
-    "Home": {
-      "title": "Home"
-    },
-    "Import": {
-      "title": "Import"
-    },
-    "Review": {
-      "title": "Review"
-    },
-    "MLS": {
-      "title": "MLS"
-    },
-    "Media": {
-      "title": "Media"
-    },
-    "Gallery": {
-      "title": "Gallery"
-    },
-    "Export": {
-      "title": "Export"
-    },
-    "SocialPost": {
-      "title": "SocialPost"
-    }
+    "Home": { "title": "Home" },
+    "Import": { "title": "Import" },
+    "Review": { "title": "Review" },
+    "MLS": { "title": "MLS" },
+    "Media": { "title": "Media" },
+    "Gallery": { "title": "Gallery" },
+    "Export": { "title": "Export" },
+    "SocialPost": { "title": "SocialPost" },
+    "Editor": { "title": "Editor" },
+    "GarrenHillGallery": { "title": "Garren Hill Gallery" }
   }
 }
