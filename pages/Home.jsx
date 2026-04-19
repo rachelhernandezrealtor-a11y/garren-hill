@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { Camera, Plus, ArrowRight, Copy, Check, FileImage, Video } from "lucide-react";
+import { Camera, Plus, ArrowRight, Copy, Check, FileImage, Video, Wand2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const statusColors = {
@@ -132,17 +132,27 @@ export default function HomePage() {
                         <ArrowRight className="w-3 h-3" /> Review
                       </Button>
                     </Link>
+                    <Link to={`/Editor?property=${p.id}`} className="flex-1">
+                      <Button variant="outline" size="sm" className="w-full text-xs h-8 gap-1 text-purple-600 border-purple-200 hover:bg-purple-50">
+                        <Wand2 className="w-3 h-3" /> Edit
+                      </Button>
+                    </Link>
                     <Link to={`/MLS?property=${p.id}`} className="flex-1">
                       <Button variant="outline" size="sm" className="w-full text-xs h-8 gap-1 text-blue-600 border-blue-200 hover:bg-blue-50">
                         <FileImage className="w-3 h-3" /> MLS
                       </Button>
                     </Link>
+                  </div>
+
+                  {/* Quick actions row 2 */}
+                  <div className="flex items-center gap-2 mb-2">
                     <Link to={`/Media?property=${p.id}`} className="flex-1">
-                      <Button variant="outline" size="sm" className="w-full text-xs h-8 gap-1 text-purple-600 border-purple-200 hover:bg-purple-50">
+                      <Button variant="outline" size="sm" className="w-full text-xs h-8 gap-1 text-indigo-600 border-indigo-200 hover:bg-indigo-50">
                         <Video className="w-3 h-3" /> Media
                       </Button>
                     </Link>
                   </div>
+
                   {/* Gallery link */}
                   <button
                     onClick={(e) => copyGalleryLink(e, p.id)}

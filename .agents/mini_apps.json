@@ -6,11 +6,14 @@
     "Import": {
       "title": "Import"
     },
-    "Gallery": {
-      "title": "Gallery"
+    "Editor": {
+      "title": "Editor"
     },
     "Home": {
       "title": "Home"
+    },
+    "Gallery": {
+      "title": "Gallery"
     },
     "Export": {
       "title": "Export"
