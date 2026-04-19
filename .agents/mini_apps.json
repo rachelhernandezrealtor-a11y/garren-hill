@@ -15,9 +15,6 @@
     "Import": {
       "title": "Import"
     },
-    "Index": {
-      "title": "Index"
-    },
     "MLS": {
       "title": "MLS"
     },
@@ -41,6 +38,9 @@
     },
     "FlowFarmGallery": {
       "title": "FlowFarmGallery"
+    },
+    "Index": {
+      "title": "Index"
     }
   }
 }
