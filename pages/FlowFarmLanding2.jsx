@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const GOLD = '#C9A96E';
 const CREAM = '#F5F0E8';
-const DARK = '#0a0a0a';
+const DARK = "#0a0a0a"; // v3
 
 const PHOTOS = {
   exterior: 'https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/595faa261_107LindenTrail-29.jpg',
