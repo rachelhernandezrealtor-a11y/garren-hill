@@ -1,90 +1,103 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { X, ZoomIn, Home, ChevronLeft, ChevronRight } from "lucide-react";
 
 const PHOTO_HUB_URL = "https://base44.app/api/apps/69e2578ca7113dbe93cb208d/functions/getPhotosByRoom";
 
-async function fetchPhotosByRoom(room = null) {
-  const res = await fetch(PHOTO_HUB_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(room ? { room } : {})
-  });
-  return res.json();
-}
-
 const ROOM_ORDER = [
-  "Portico",
-  "Entrance Hall",
-  "Living Room",
-  "Dining Room",
-  "Kitchen",
-  "Breakfast Room",
-  "Butler's Pantry",
-  "Library",
-  "Sitting Room",
-  "Powder Room",
-  "Master Bedroom",
-  "Master Bath",
-  "TV Room",
-  "Bedroom #1",
-  "Bedroom #2",
-  "Bedroom #3",
-  "Bedroom #4",
-  "Bath #2",
-  "Bath #3",
-  "Bath #4",
-  "Dressing Room",
-  "Office / Game Study",
-  "Upper Stair Hall",
-  "Rear Porch",
-  "Balcony",
-  "Pool",
-  "Wee Cottage",
-  "Garage",
+  "Portico","Entrance Hall","Living Room","Dining Room","Kitchen",
+  "Breakfast Room","Butler's Pantry","Library","Sitting Room","Powder Room",
+  "Master Bedroom","Master Bath","TV Room","Bedroom #1","Bedroom #2",
+  "Bedroom #3","Bedroom #4","Bath #2","Bath #3","Bath #4",
+  "Dressing Room","Office / Game Study","Upper Stair Hall",
+  "Rear Porch","Balcony","Pool","Wee Cottage","Garage",
 ];
+
+// Lazy image component — loads only when in viewport
+function LazyPhoto({ src, alt, onClick, className }) {
+  const [loaded, setLoaded] = useState(false);
+  const [inView, setInView] = useState(false);
+  const ref = useRef();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect(); } },
+      { rootMargin: "200px" }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref} className={`relative overflow-hidden bg-white/5 ${className}`}>
+      {/* Blur placeholder */}
+      {!loaded && (
+        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/10 animate-pulse" />
+      )}
+      {inView && (
+        <img
+          src={src}
+          alt={alt}
+          onLoad={() => setLoaded(true)}
+          onClick={onClick}
+          className={`w-full h-full object-cover cursor-pointer transition-all duration-500 hover:scale-105 ${loaded ? "opacity-100" : "opacity-0"}`}
+        />
+      )}
+      {inView && loaded && (
+        <div
+          onClick={onClick}
+          className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-all flex items-center justify-center cursor-pointer group"
+        >
+          <ZoomIn className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-all" />
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function GarrenHillGallery() {
   const [grouped, setGrouped] = useState({});
-  const [allPhotos, setAllPhotos] = useState([]);
+  const [rooms, setRooms] = useState([]);
   const [activeRoom, setActiveRoom] = useState("All");
   const [loading, setLoading] = useState(true);
   const [lightbox, setLightbox] = useState(null);
+  const [lightboxPhotos, setLightboxPhotos] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
 
+  // Load only room names + first photo per room on mount (fast)
   useEffect(() => {
-    fetchPhotosByRoom()
+    fetch(PHOTO_HUB_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({})
+    })
+      .then(r => r.json())
       .then(data => {
         if (data.grouped) {
           setGrouped(data.grouped);
-          // Flatten all photos in room order
-          const ordered = [];
-          const rooms = sortedRooms(data.grouped);
-          rooms.forEach(room => {
-            (data.grouped[room] || []).forEach(p => ordered.push(p));
-          });
-          setAllPhotos(ordered);
+          const sorted = [
+            ...ROOM_ORDER.filter(r => data.grouped[r]),
+            ...Object.keys(data.grouped).filter(r => !ROOM_ORDER.includes(r)).sort()
+          ];
+          setRooms(sorted);
+          setTotalCount(Object.values(data.grouped).reduce((acc, arr) => acc + arr.length, 0));
         }
         setLoading(false);
       })
       .catch(() => setLoading(false));
   }, []);
 
-  const sortedRooms = (g) => {
-    const keys = Object.keys(g || grouped);
-    return [
-      ...ROOM_ORDER.filter(r => keys.includes(r)),
-      ...keys.filter(r => !ROOM_ORDER.includes(r)).sort()
-    ];
-  };
-
   const displayPhotos = activeRoom === "All"
-    ? allPhotos
+    ? rooms.flatMap(r => grouped[r] || [])
     : (grouped[activeRoom] || []);
 
   const lightboxIdx = lightbox !== null
-    ? displayPhotos.findIndex(p => p.id === lightbox)
+    ? lightboxPhotos.findIndex(p => p.id === lightbox)
     : -1;
 
-  const rooms = sortedRooms(grouped);
+  const openLightbox = (photo, photos) => {
+    setLightboxPhotos(photos);
+    setLightbox(photo.id);
+  };
 
   if (loading) return (
     <div className="min-h-screen bg-[#1a1610] flex items-center justify-center">
@@ -102,18 +115,16 @@ export default function GarrenHillGallery() {
         <p className="text-amber-400 text-xs font-medium uppercase tracking-[0.3em] mb-3">Photo Gallery</p>
         <h1 className="text-4xl font-light text-white mb-1" style={{ fontFamily: 'Georgia, serif' }}>Garren Hill</h1>
         <p className="text-white/40 text-sm">200 Hollycrest Drive · Pinehurst, North Carolina</p>
-        <p className="text-white/25 text-xs mt-2">{allPhotos.length} photographs</p>
+        <p className="text-white/25 text-xs mt-2">{totalCount} photographs</p>
       </div>
 
       {/* Room Filter */}
       <div className="sticky top-0 z-20 bg-[#1a1610]/95 backdrop-blur-sm border-b border-white/5 px-4 py-3">
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide max-w-6xl mx-auto">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 max-w-6xl mx-auto">
           <button
             onClick={() => setActiveRoom("All")}
             className={`flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all ${
-              activeRoom === "All"
-                ? "bg-amber-400 text-black"
-                : "border border-white/20 text-white/60 hover:border-amber-400/50 hover:text-amber-200"
+              activeRoom === "All" ? "bg-amber-400 text-black" : "border border-white/20 text-white/60 hover:border-amber-400/50 hover:text-amber-200"
             }`}
           >
             All Rooms
@@ -123,64 +134,54 @@ export default function GarrenHillGallery() {
               key={room}
               onClick={() => setActiveRoom(room)}
               className={`flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all ${
-                activeRoom === room
-                  ? "bg-amber-400 text-black"
-                  : "border border-white/20 text-white/60 hover:border-amber-400/50 hover:text-amber-200"
+                activeRoom === room ? "bg-amber-400 text-black" : "border border-white/20 text-white/60 hover:border-amber-400/50 hover:text-amber-200"
               }`}
             >
               {room}
-              <span className="ml-1.5 text-[10px] opacity-50">
-                {(grouped[room] || []).length}
-              </span>
+              <span className="ml-1.5 text-[10px] opacity-50">{(grouped[room] || []).length}</span>
             </button>
           ))}
         </div>
       </div>
 
-      {/* Gallery Grid */}
+      {/* Gallery */}
       <div className="max-w-7xl mx-auto px-4 py-8">
         {activeRoom === "All" ? (
-          // Grouped view — section per room
-          rooms.map(room => (
-            <div key={room} className="mb-12">
-              <div className="flex items-center gap-4 mb-4">
-                <h2 className="text-white/80 text-sm font-medium tracking-widest uppercase">{room}</h2>
-                <div className="flex-1 h-px bg-white/10" />
-                <span className="text-white/25 text-xs">{(grouped[room] || []).length}</span>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-                {(grouped[room] || []).slice(0, 8).map(photo => (
-                  <button
-                    key={photo.id}
-                    onClick={() => { setActiveRoom(room); setLightbox(photo.id); }}
-                    className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-white/5 hover:ring-1 hover:ring-amber-400/50 transition-all"
-                  >
-                    <img
+          // Grouped view — show first 6 per room, lazy loaded
+          rooms.map(room => {
+            const photos = grouped[room] || [];
+            const preview = photos.slice(0, 6);
+            return (
+              <div key={room} className="mb-12">
+                <div className="flex items-center gap-4 mb-4">
+                  <h2 className="text-white/80 text-sm font-medium tracking-widest uppercase">{room}</h2>
+                  <div className="flex-1 h-px bg-white/10" />
+                  <span className="text-white/25 text-xs">{photos.length}</span>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
+                  {preview.map(photo => (
+                    <LazyPhoto
+                      key={photo.id}
                       src={photo.photoUrl}
                       alt={photo.fileName}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      onClick={() => openLightbox(photo, photos)}
+                      className="aspect-[4/3] rounded-lg"
                     />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all flex items-center justify-center">
-                      <ZoomIn className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-all" />
-                    </div>
-                  </button>
-                ))}
-                {(grouped[room] || []).length > 8 && (
+                  ))}
+                </div>
+                {photos.length > 6 && (
                   <button
                     onClick={() => setActiveRoom(room)}
-                    className="aspect-[4/3] rounded-lg bg-white/5 border border-white/10 hover:border-amber-400/40 transition-all flex items-center justify-center"
+                    className="mt-3 text-amber-400/50 hover:text-amber-400 text-xs tracking-widest uppercase transition-colors"
                   >
-                    <div className="text-center">
-                      <p className="text-white/60 text-lg font-light">+{(grouped[room] || []).length - 8}</p>
-                      <p className="text-white/30 text-xs mt-1">more photos</p>
-                    </div>
+                    View all {photos.length} photos →
                   </button>
                 )}
               </div>
-            </div>
-          ))
+            );
+          })
         ) : (
-          // Single room view — full grid
+          // Single room — full grid, lazy loaded
           <div>
             <button
               onClick={() => setActiveRoom("All")}
@@ -191,20 +192,13 @@ export default function GarrenHillGallery() {
             </button>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
               {displayPhotos.map(photo => (
-                <button
+                <LazyPhoto
                   key={photo.id}
-                  onClick={() => setLightbox(photo.id)}
-                  className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-white/5 hover:ring-1 hover:ring-amber-400/50 transition-all"
-                >
-                  <img
-                    src={photo.photoUrl}
-                    alt={photo.fileName}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all flex items-center justify-center">
-                    <ZoomIn className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-all" />
-                  </div>
-                </button>
+                  src={photo.photoUrl}
+                  alt={photo.fileName}
+                  onClick={() => openLightbox(photo, displayPhotos)}
+                  className="aspect-[4/3] rounded-lg"
+                />
               ))}
             </div>
           </div>
@@ -221,38 +215,30 @@ export default function GarrenHillGallery() {
       {/* Lightbox */}
       {lightbox !== null && lightboxIdx >= 0 && (
         <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4">
-          <button
-            onClick={() => setLightbox(null)}
-            className="absolute top-4 right-4 text-white/40 hover:text-white transition-colors"
-          >
+          <button onClick={() => setLightbox(null)} className="absolute top-4 right-4 text-white/40 hover:text-white transition-colors">
             <X className="w-6 h-6" />
           </button>
-
           <button
-            onClick={() => lightboxIdx > 0 && setLightbox(displayPhotos[lightboxIdx - 1].id)}
+            onClick={() => lightboxIdx > 0 && setLightbox(lightboxPhotos[lightboxIdx - 1].id)}
             disabled={lightboxIdx === 0}
             className="absolute left-4 text-white/30 hover:text-white disabled:opacity-10 transition-colors p-2"
           >
             <ChevronLeft className="w-8 h-8" />
           </button>
-
           <div className="max-w-5xl w-full">
             <img
-              src={displayPhotos[lightboxIdx].photoUrl}
-              alt={displayPhotos[lightboxIdx].fileName}
+              src={lightboxPhotos[lightboxIdx].photoUrl}
+              alt={lightboxPhotos[lightboxIdx].fileName}
               className="w-full max-h-[82vh] object-contain rounded-lg"
             />
             <div className="text-center mt-4">
-              <p className="text-amber-400/60 text-xs tracking-widest uppercase">
-                {displayPhotos[lightboxIdx].room}
-              </p>
-              <p className="text-white/20 text-xs mt-1">{lightboxIdx + 1} / {displayPhotos.length}</p>
+              <p className="text-amber-400/60 text-xs tracking-widest uppercase">{lightboxPhotos[lightboxIdx].room}</p>
+              <p className="text-white/20 text-xs mt-1">{lightboxIdx + 1} / {lightboxPhotos.length}</p>
             </div>
           </div>
-
           <button
-            onClick={() => lightboxIdx < displayPhotos.length - 1 && setLightbox(displayPhotos[lightboxIdx + 1].id)}
-            disabled={lightboxIdx === displayPhotos.length - 1}
+            onClick={() => lightboxIdx < lightboxPhotos.length - 1 && setLightbox(lightboxPhotos[lightboxIdx + 1].id)}
+            disabled={lightboxIdx === lightboxPhotos.length - 1}
             className="absolute right-4 text-white/30 hover:text-white disabled:opacity-10 transition-colors p-2"
           >
             <ChevronRight className="w-8 h-8" />
