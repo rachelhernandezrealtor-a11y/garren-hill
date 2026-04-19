@@ -248,7 +248,7 @@ function Hero() {
   };
 
   return (
-    <section id="story" style={{ position: 'relative', height: '100vh', minHeight: 700, overflow: 'hidden', background: '#000' }}>
+    <section id="story" style={{ position: 'relative', height: '100vh', minHeight: 700, overflow: 'hidden', background: '#000', display: 'flex', flexDirection: 'column' }}>
 
       {/* Full bleed video */}
       <div style={{ position: 'absolute', inset: '-6%', opacity: videoReady ? 1 : 0, transition: 'opacity 2s ease' }}>
@@ -327,11 +327,11 @@ function Hero() {
 
       {/* Stat tickers bottom */}
       <div style={{
-        position: 'absolute', bottom: 0, left: 0, right: 0,
+        position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 20,
         display: 'flex', alignItems: 'stretch',
         borderTop: '1px solid rgba(255,255,255,0.15)',
-        background: 'rgba(0,0,0,0.45)',
-        backdropFilter: 'blur(8px)',
+        background: 'rgba(0,0,0,0.55)',
+        backdropFilter: 'blur(12px)',
       }}>
         {[
           { num: '15', label: 'USDA Acres' },
