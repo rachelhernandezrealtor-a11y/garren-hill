@@ -248,7 +248,7 @@ function Hero() {
   };
 
   return (
-    <section id="story" style={{ position: 'relative', height: '100vh', width: '100%', background: '#000' }}>
+    <section id="story" style={{ position: 'relative', height: '100vh', width: '100%', overflow: 'hidden', background: '#000' }}>
 
       {/* Full bleed video */}
       <video
