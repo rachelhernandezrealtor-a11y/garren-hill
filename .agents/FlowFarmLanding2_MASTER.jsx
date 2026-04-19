@@ -17,11 +17,10 @@ const PHOTOS = {
   conservatory1: 'https://imagedelivery.net/M_TGAUj9Ze_tNOtZS6jINg/6d2ef33c-35eb-4b90-5c6d-fe3d37fea900/public',
   conservatory2: 'https://imagedelivery.net/M_TGAUj9Ze_tNOtZS6jINg/1abfcd89-c693-4c59-0c1f-0aa35ab1e100/public',
   foyer: 'https://imagedelivery.net/M_TGAUj9Ze_tNOtZS6jINg/ada10c6f-d704-40ce-10e5-58d25e101200/public',
-  dining: 'https://imagedelivery.net/M_TGAUj9Ze_tNOtZS6jINg/53360e16-7ba3-4bae-ef62-721a86fdbd00/public',
   cabana2: 'https://imagedelivery.net/M_TGAUj9Ze_tNOtZS6jINg/bb6c9c80-2258-4414-87c7-5ae5a49b1700/public',
 };
 
-function useFadeIn(threshold = 0.1) {
+function useFadeIn(threshold = 0.08) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -39,8 +38,8 @@ function FadeIn({ children, delay = 0, style = {} }) {
   return (
     <div ref={ref} style={{
       opacity: visible ? 1 : 0,
-      transform: visible ? 'translateY(0)' : 'translateY(22px)',
-      transition: `opacity 1.3s ease ${delay}s, transform 1.3s ease ${delay}s`,
+      transform: visible ? 'translateY(0)' : 'translateY(20px)',
+      transition: `opacity 1.2s ease ${delay}s, transform 1.2s ease ${delay}s`,
       ...style
     }}>
       {children}
@@ -100,68 +99,65 @@ function Hero() {
   );
 }
 
-function PhotoSection({ photo, label, headline, body, cards, minHeight = '100vh', overlay = 'rgba(0,0,0,0.38)', id }) {
+function EditorialSection({ photo, label, headline, paragraphs, overlay = 'rgba(0,0,0,0.42)', minHeight = '100vh', id, flip = false }) {
   return (
     <section id={id} style={{ position: 'relative', minHeight, overflow: 'hidden' }}>
       <img src={photo} alt={label} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }} />
-      <div style={{ position: 'absolute', inset: 0, background: overlay, zIndex: 1 }} />
-      <div style={{ position: 'relative', zIndex: 2, padding: '7rem 6vw 5rem' }}>
-        <FadeIn>
-          <p style={{ fontFamily: 'sans-serif', fontSize: '0.42rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', margin: '0 0 2.5rem' }}>{label}</p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start', maxWidth: 1100 }}>
-            <h2 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(2rem, 4.5vw, 4.2rem)', lineHeight: 1.08, margin: 0, letterSpacing: '-0.02em' }}>{headline}</h2>
-            <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'Georgia, serif', fontSize: 'clamp(0.9rem, 1.2vw, 1.05rem)', lineHeight: 1.9, margin: '0.5rem 0 0', maxWidth: 420 }}>{body}</p>
+      <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: overlay }} />
+      <div style={{ position: 'relative', zIndex: 2, minHeight, display: 'flex', alignItems: 'center', padding: '8rem 6vw' }}>
+        <FadeIn style={{ width: '100%' }}>
+          <p style={{ fontFamily: 'sans-serif', fontSize: '0.42rem', letterSpacing: '0.32em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', margin: '0 0 2.8rem' }}>{label}</p>
+          <div style={{ display: 'grid', gridTemplateColumns: flip ? '1fr 1.1fr' : '1.1fr 1fr', gap: '6vw', alignItems: 'start', maxWidth: 1200 }}>
+            <div style={{ order: flip ? 2 : 1 }}>
+              <h2 style={{
+                color: '#fff',
+                fontFamily: 'Georgia, serif',
+                fontWeight: 700,
+                fontSize: 'clamp(2.4rem, 5vw, 4.8rem)',
+                lineHeight: 1.05,
+                margin: 0,
+                letterSpacing: '-0.025em'
+              }}>
+                {headline}
+              </h2>
+            </div>
+            <div style={{ order: flip ? 1 : 2 }}>
+              {paragraphs.map((p, i) => (
+                <p key={i} style={{
+                  color: 'rgba(255,255,255,0.65)',
+                  fontFamily: 'Georgia, serif',
+                  fontSize: 'clamp(0.88rem, 1.15vw, 1.05rem)',
+                  lineHeight: 1.9,
+                  margin: i < paragraphs.length - 1 ? '0 0 1.4rem' : 0
+                }}>{p}</p>
+              ))}
+            </div>
           </div>
         </FadeIn>
-        {cards && (
-          <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cards.length}, 1fr)`, gap: '0', marginTop: '5rem', maxWidth: 1100, borderTop: '1px solid rgba(255,255,255,0.12)' }}>
-            {cards.map((card, i) => (
-              <FadeIn key={card.label} delay={i * 0.1}>
-                <div style={{ padding: '2.2rem 2rem 2.2rem 0', borderRight: i < cards.length - 1 ? '1px solid rgba(255,255,255,0.1)' : 'none', paddingRight: i < cards.length - 1 ? '2rem' : 0, paddingLeft: i > 0 ? '2rem' : 0 }}>
-                  <p style={{ color: GOLD, fontFamily: 'sans-serif', fontSize: '0.42rem', letterSpacing: '0.22em', textTransform: 'uppercase', margin: '0 0 0.7rem' }}>{card.label}</p>
-                  <p style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'Georgia, serif', fontSize: '0.92rem', lineHeight: 1.75, margin: 0 }}>{card.body}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        )}
       </div>
     </section>
   );
 }
 
-function SystemsSection() {
-  const cols = [
-    { label: 'Energy', items: ['14.3kW Solar -- 61 Samsung Panels', 'Sunny Island 10k Battery Backup', '30kW Kohler Generator', '2 x 1,000 Gal Propane Tanks', '1,200 Amp Total Power'] },
-    { label: 'Climate', items: ['Geothermal -- 20 Wells x 300 Ft', '5-Zone Water Furnace', 'Energy Recovery Ventilator', 'Lennox Air Purification', 'Zone-Independent Control'] },
-    { label: 'Water + Security', items: ['Private Well -- 50 GPM', '2 x 1,500 Gal Septic', 'Commercial Water Filtration', 'Whole House Fire Sprinkler', 'Full Property Alarm'] },
-    { label: 'Smart Home', items: ['Control4 Audio, Video, Light', 'Araknis Enterprise Network', 'Whole Campus Wi-Fi', 'Brown Safe + Vault Door', 'Dual Central Vacuum'] },
+function StatsBar() {
+  const stats = [
+    { v: '15', l: 'Acres' }, { v: '8,519', l: 'Sq Ft' }, { v: '6 / 7', l: 'Beds / Baths' },
+    { v: '7', l: 'Fireplaces' }, { v: '6', l: 'Structures' }, { v: '$5.25M', l: 'Offered At' },
   ];
   return (
-    <section style={{ position: 'relative', minHeight: '90vh', overflow: 'hidden' }}>
-      <img src={PHOTOS.exterior} alt="Systems" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }} />
-      <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.62)', zIndex: 1 }} />
-      <div style={{ position: 'relative', zIndex: 2, padding: '7rem 6vw 6rem' }}>
-        <FadeIn>
-          <p style={{ fontFamily: 'sans-serif', fontSize: '0.42rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', margin: '0 0 2.5rem' }}>Infrastructure</p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start', maxWidth: 1100, marginBottom: '5rem' }}>
-            <h2 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(2rem, 4vw, 3.8rem)', lineHeight: 1.08, margin: 0, letterSpacing: '-0.02em' }}>Off-grid capable.<br /><em>On-grid refined.</em></h2>
-            <p style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'Georgia, serif', fontSize: '1rem', lineHeight: 1.9, margin: '0.5rem 0 0', maxWidth: 420 }}>
-              Solar, battery, generator, geothermal, and private water. Complete autonomy -- quietly, invisibly, and without compromise.
-            </p>
-          </div>
-        </FadeIn>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0', maxWidth: 1100, borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-          {cols.map((col, i) => (
-            <FadeIn key={col.label} delay={i * 0.1}>
-              <div style={{ padding: '2rem', borderRight: i < 3 ? '1px solid rgba(255,255,255,0.08)' : 'none' }}>
-                <p style={{ color: GOLD, fontFamily: 'sans-serif', fontSize: '0.41rem', letterSpacing: '0.22em', textTransform: 'uppercase', margin: '0 0 1.2rem' }}>{col.label}</p>
-                {col.items.map(item => <p key={item} style={{ color: 'rgba(255,255,255,0.42)', fontFamily: 'Georgia, serif', fontSize: '0.88rem', lineHeight: 1.75, margin: '0 0 0.5rem' }}>{item}</p>)}
-              </div>
-            </FadeIn>
+    <section style={{ position: 'relative', overflow: 'hidden', minHeight: '40vh', display: 'flex', alignItems: 'center' }}>
+      <img src={PHOTOS.aerial} alt="Aerial" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.55)', zIndex: 1 }} />
+      <FadeIn style={{ position: 'relative', zIndex: 2, width: '100%', padding: '4rem 6vw' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', maxWidth: 1200, borderTop: '1px solid rgba(255,255,255,0.1)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+          {stats.map((s, i) => (
+            <div key={s.l} style={{ textAlign: 'center', padding: '2.2rem 0.5rem', borderRight: i < 5 ? '1px solid rgba(255,255,255,0.08)' : 'none' }}>
+              <p style={{ color: CREAM, fontFamily: 'Georgia, serif', fontSize: 'clamp(1.5rem, 2.2vw, 2.2rem)', fontWeight: 400, margin: '0 0 0.3rem', letterSpacing: '-0.02em' }}>{s.v}</p>
+              <p style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'sans-serif', fontSize: '0.4rem', letterSpacing: '0.2em', textTransform: 'uppercase', margin: 0 }}>{s.l}</p>
+            </div>
           ))}
         </div>
-      </div>
+      </FadeIn>
     </section>
   );
 }
@@ -175,23 +171,23 @@ function InquireSection() {
   return (
     <section id="inquire" style={{ position: 'relative', minHeight: '90vh', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
       <img src={PHOTOS.living2} alt="Inquire" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }} />
-      <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.52)', zIndex: 1 }} />
-      <div style={{ position: 'relative', zIndex: 2, padding: '7rem 6vw', width: '100%' }}>
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.55)', zIndex: 1 }} />
+      <div style={{ position: 'relative', zIndex: 2, padding: '8rem 6vw', width: '100%' }}>
         <FadeIn>
-          <p style={{ fontFamily: 'sans-serif', fontSize: '0.42rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', margin: '0 0 2.5rem' }}>Private Inquiry</p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6rem', alignItems: 'start', maxWidth: 1000 }}>
+          <p style={{ fontFamily: 'sans-serif', fontSize: '0.42rem', letterSpacing: '0.32em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', margin: '0 0 2.8rem' }}>Private Inquiry</p>
+          <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: '6vw', alignItems: 'start', maxWidth: 1100 }}>
             <div>
-              <h2 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(2rem, 3.8vw, 3.6rem)', lineHeight: 1.1, margin: '0 0 1.5rem', letterSpacing: '-0.02em' }}>
-                Request a<br /><em>Private Viewing.</em>
+              <h2 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 700, fontSize: 'clamp(2.4rem, 4.5vw, 4.2rem)', lineHeight: 1.05, margin: '0 0 2rem', letterSpacing: '-0.025em' }}>
+                Request a<br />Private Viewing.
               </h2>
-              <p style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'Georgia, serif', fontSize: '1rem', lineHeight: 1.9, margin: '0 0 0.5rem' }}>
-                Exclusively represented by Rachel Hernandez.
+              <p style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'Georgia, serif', fontSize: '1rem', lineHeight: 1.9, margin: '0 0 0.6rem' }}>
+                Exclusively represented by Rachel Hernandez. Showings are by private appointment only.
               </p>
-              <p style={{ color: 'rgba(255,255,255,0.28)', fontFamily: 'sans-serif', fontSize: '0.41rem', letterSpacing: '0.14em', margin: 0, textTransform: 'uppercase' }}>rachelhernandezrealtor@gmail.com</p>
+              <p style={{ color: 'rgba(255,255,255,0.28)', fontFamily: 'sans-serif', fontSize: '0.41rem', letterSpacing: '0.15em', textTransform: 'uppercase', margin: 0 }}>rachelhernandezrealtor@gmail.com</p>
             </div>
-            <div>
+            <div style={{ paddingTop: '0.5rem' }}>
               {sent ? (
-                <p style={{ color: GOLD, fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1.1rem', paddingTop: '2rem' }}>Thank you. We will be in touch shortly.</p>
+                <p style={{ color: GOLD, fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1.1rem' }}>Thank you. We will be in touch shortly.</p>
               ) : (
                 <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: '1.4rem' }}>
                   <input name="name" value={form.name} onChange={handle} placeholder="Your Name" required style={inputStyle} />
@@ -229,74 +225,86 @@ export default function FlowFarmLanding2() {
   return (
     <div style={{ background: DARK }}>
       <Hero />
-      <PhotoSection
+
+      <EditorialSection
         photo={PHOTOS.grounds}
         label="Property Introduction"
         headline={"An established\nsystem of land\nand architecture."}
-        body="A rare land position with privacy, agricultural standing, and long-term optionality already in place. Fifteen acres of forest and working farmland, three miles from Pinehurst Resort."
-        cards={[
-          { label: '15 USDA Acres', body: 'Secured agricultural status and a protected natural privacy buffer.' },
-          { label: '3-Acre Veganic Farm', body: 'Established and highly productive agricultural infrastructure.' },
-          { label: 'Architectural Main House', body: 'A curated design masterpiece -- 8,519 square feet above grade.' },
-          { label: 'Architectural Guest House', body: 'Cabana house -- 1 bed, 1 bath, full kitchen, private entrance.' },
+        paragraphs={[
+          "Flow Farm is not a concept. It is a fully realized, operating estate -- 15 USDA-certified acres with agricultural standing, natural privacy buffer, and long-term optionality already in place.",
+          "Three miles from Pinehurst Resort, the property sits at the intersection of working land and refined living. Six structures. A 3-acre veganic farm. Seven buildable acres. And infrastructure designed to run the entire operation independently.",
+          "This is the rare land position that does not ask you to imagine what it could become. It is already there."
         ]}
-        overlay="rgba(0,0,0,0.42)"
+        overlay="rgba(0,0,0,0.44)"
       />
-      <PhotoSection
+
+      <StatsBar />
+
+      <EditorialSection
         id="the-estate"
         photo={PHOTOS.living1}
         label="The Residence"
-        headline={"A grand living room\n27 feet wide.\n17 feet tall."}
-        body="Reclaimed Civil War-era heart pine floors run the full depth of the home. Seven fireplaces. Designed by Robert E. Clark AIA as one of his final private commissions -- built for permanence."
-        cards={[
-          { label: '6 Bedrooms / 7 Baths', body: 'Generously proportioned rooms with original architectural detail throughout.' },
-          { label: '7 Fireplaces', body: 'Each fireplace unique -- positioned to anchor every major living space.' },
-          { label: 'Glass Conservatory', body: '19.5 x 17.7 ft, fully glass-wrapped with an octagonal skylight dome.' },
-          { label: 'Heart Pine Floors', body: 'Reclaimed Civil War-era -- irreplaceable, impossibly beautiful.' },
-        ]}
-        overlay="rgba(0,0,0,0.38)"
-      />
-      <PhotoSection
-        photo={PHOTOS.kitchen1}
-        label="The Kitchen"
-        headline={"Sub-Zero. Wolf 60\".\nBuilt for the\nserious cook."}
-        body="A 60-inch dual fuel Wolf range with six burners, griddle, grill, and warming drawer. Two KitchenAid dishwashers. Sub-Zero refrigeration. Walk-in pantry and breakfast room opening to the farm."
-        cards={[
-          { label: 'Wolf 60" Dual Fuel Range', body: '6 burners, griddle, grill, warming drawer -- restaurant performance.' },
-          { label: 'Sub-Zero Refrigeration', body: 'Integrated and seamless -- cold storage designed for a working kitchen.' },
-          { label: 'Walk-In Pantry', body: 'Generous storage with direct access to the breakfast room and farm.' },
-          { label: '2 KitchenAid Dishwashers', body: 'Because entertaining at this level demands it.' },
+        headline={"A grand living\nroom. 17 feet tall.\nBuilt to last."}
+        paragraphs={[
+          "Designed by Robert E. Clark AIA as one of his final private commissions, the main residence spans 8,519 square feet above grade -- with a 1,709 SF partially finished walk-out lower level and 2,531 SF of conditioned crawl space below.",
+          "Reclaimed Civil War-era heart pine floors run the full depth of the home. Seven fireplaces, each unique, anchor the major living spaces. Six bedrooms, seven bathrooms -- every room designed with proportion, permanence, and the long view.",
+          "The glass-wrapped conservatory -- 19.5 by 17.7 feet with an octagonal skylight dome -- is the heart of the home. A room that dissolves the boundary between inside and estate."
         ]}
         overlay="rgba(0,0,0,0.4)"
+        flip={true}
       />
-      <PhotoSection
+
+      <EditorialSection
+        photo={PHOTOS.kitchen1}
+        label="The Kitchen"
+        headline={"Sub-Zero.\nWolf 60\".\nSerious cook."}
+        paragraphs={[
+          "A 60-inch dual fuel Wolf range with six burners, griddle, grill, and warming drawer. Two KitchenAid dishwashers. Sub-Zero refrigeration. This is a kitchen designed for people who actually cook.",
+          "The walk-in pantry opens directly to the breakfast room, which looks out across the farm. The dining room beyond seats twelve comfortably. The flow of the kitchen to the land is intentional -- this house was designed to feed people.",
+          "Two KitchenAid dishwashers. Because entertaining at this level demands it."
+        ]}
+        overlay="rgba(0,0,0,0.42)"
+      />
+
+      <EditorialSection
         id="the-land"
         photo={PHOTOS.highTunnel}
         label="The Farm"
         headline={"Three acres\nproducing.\nSeven waiting."}
-        body="USDA-certified veganic. O2Compost regenerative systems. Biochar production kiln. 1,400-ft double deer fence. A living farm in operation for years -- and seven buildable acres ready for whatever comes next."
-        cards={[
-          { label: 'High Tunnel Greenhouse', body: '96 x 36 ft -- year-round specialty crops with geothermal climate control.' },
-          { label: 'Farm Workshop', body: '30 x 40 ft with plumbing, full electrical, walk-in cooler 12 x 8 ft.' },
-          { label: 'O2Compost System', body: 'Regenerative composting with biochar kiln and covered production area.' },
-          { label: '7 Buildable Acres', body: 'Additional structures, hospitality expansion, or custom development.' },
+        paragraphs={[
+          "The 3-acre USDA-certified veganic farm has been in active production for years. O2Compost regenerative systems, a biochar kiln, and a 1,400-foot double deer fence create a self-contained growing operation unlike anything in the region.",
+          "The 96 by 36 foot high tunnel greenhouse operates year-round with geothermal climate control. The farm workshop -- 30 by 40 feet with full plumbing, electrical, and a 12 by 8 walk-in cooler -- is operational and producing.",
+          "Seven additional buildable acres remain untouched. The expansion potential for hospitality, wellness retreats, agritourism, or additional structures is significant -- and the infrastructure to support it is already in place."
         ]}
         overlay="rgba(0,0,0,0.45)"
+        flip={true}
       />
-      <SystemsSection />
-      <PhotoSection
+
+      <EditorialSection
+        photo={PHOTOS.exterior}
+        label="Architectural Gravity"
+        headline={"Structure that\nholds\nfreedom."}
+        paragraphs={[
+          "A property built to run, and designed to live. Operating with true architectural gravity, a 1,200-amp commercial-grade electrical distribution system powers a fully integrated, resilient smart home environment.",
+          "A whole Control4 system connects audio, video, and lighting throughout the entire residence, supported by whole-campus Wi-Fi, a comprehensive alarm system, and a Brown Safe jewelry and vault door for ultimate security.",
+          "These systems are robust, redundant, and largely invisible -- housed beneath the home in a sealed, fully conditioned mechanical crawl space with energy-efficient mylar wrap insulation. The result is a home that simply works. Quietly, completely, and indefinitely."
+        ]}
+        overlay="rgba(0,0,0,0.48)"
+      />
+
+      <EditorialSection
         photo={PHOTOS.aerial}
         label="Location"
-        headline={"Private by Nature.\nPinehurst\nby Proximity."}
-        body="Three miles from Pinehurst Resort. Four private points of access. Moore County Regional Airport 15 minutes away. Raleigh-Durham International under an hour. The world is close. You just cannot tell."
-        cards={[
-          { label: 'Pinehurst Resort -- 3 Miles', body: 'Transferable Pinehurst Country Club Signature Golf Membership included.' },
-          { label: 'Moore County Regional Airport', body: 'Private aviation -- 15 minutes from the property.' },
-          { label: 'RDU International', body: 'Under one hour to major commercial hub.' },
-          { label: 'FirstHealth Moore Regional', body: 'Level III trauma center -- 10 minutes from the property.' },
+        headline={"Private by\nNature. Pinehurst\nby Proximity."}
+        paragraphs={[
+          "Three miles from Pinehurst Resort. Four private points of access via Linden Trail, Linden Road, Mollie Lane, and Skene Lane. A private drive creates immediate separation from the world beyond.",
+          "Moore County Regional Airport is 15 minutes away for private aviation. Raleigh-Durham International is under an hour for commercial travel. FirstHealth Moore Regional Hospital is 10 minutes away.",
+          "A transferable Pinehurst Country Club Signature Golf Membership is included -- unlimited access to Course No. 7 and No. 9, two of the most revered courses in the history of American golf."
         ]}
-        overlay="rgba(0,0,0,0.4)"
+        overlay="rgba(0,0,0,0.42)"
+        flip={true}
       />
+
       <InquireSection />
       <Footer />
     </div>
