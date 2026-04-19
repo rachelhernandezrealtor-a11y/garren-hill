@@ -39,26 +39,14 @@
     "GarrenHillGallery": {
       "title": "GarrenHillGallery"
     },
-    "Home": {
-      "title": "Home"
-    },
     "Import": {
       "title": "Import"
-    },
-    "Index": {
-      "title": "Index"
     },
     "MLS": {
       "title": "MLS"
     },
     "Media": {
       "title": "Media"
-    },
-    "Properties": {
-      "title": "Properties"
-    },
-    "PropertyDetail": {
-      "title": "PropertyDetail"
     },
     "Review": {
       "title": "Review"
@@ -68,6 +56,18 @@
     },
     "FlowFarmLanding2": {
       "title": "FlowFarmLanding2"
+    },
+    "Home": {
+      "title": "Home"
+    },
+    "Properties": {
+      "title": "Properties"
+    },
+    "PropertyDetail": {
+      "title": "PropertyDetail"
+    },
+    "Index": {
+      "title": "Index"
     }
   }
 }
