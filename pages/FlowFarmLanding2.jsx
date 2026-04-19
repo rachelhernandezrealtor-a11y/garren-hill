@@ -248,10 +248,10 @@ function Hero() {
   };
 
   return (
-    <section id="story" style={{ position: 'relative', height: '100vh', width: '100%', overflow: 'hidden', background: '#000' }}>
+    <section id="story" style={{ position: 'relative', height: '100vh', width: '100%', background: '#000' }}>
 
       {/* Full bleed video */}
-      <div style={{ position: 'absolute', inset: '-6%', opacity: videoReady ? 1 : 0, transition: 'opacity 2s ease' }}>
+      <div style={{ position: 'absolute', inset: '-6%', overflow: 'hidden', opacity: videoReady ? 1 : 0, transition: 'opacity 2s ease' }}>
         <iframe
           src="https://player.vimeo.com/video/1171394707?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0"
           frameBorder="0"
