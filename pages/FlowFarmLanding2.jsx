@@ -240,142 +240,100 @@ function Navbar() {
   );
 }
 
-function useCountUp(target, duration, start) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    if (!start) return;
-    let startTime = null;
-    const step = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * target));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [start, target, duration]);
-  return count;
-}
-
 function Hero() {
-  const [started, setStarted] = useState(false);
+  const [phase, setPhase] = useState(0);
+
   useEffect(() => {
-    const t = setTimeout(() => setStarted(true), 600);
-    return () => clearTimeout(t);
+    const t1 = setTimeout(() => setPhase(1), 800);
+    const t2 = setTimeout(() => setPhase(2), 2000);
+    const t3 = setTimeout(() => setPhase(3), 3200);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, []);
 
-  const TICKER = ['14.3kW Solar Array', '30kW Kohler Generator', 'Geothermal HVAC', 'Control4 Smart Home', 'Golf Membership Included', 'Private Well 50 gpm', '6 Structures', '1,200 Amp Power'];
-
-  const engrave = {
-    textShadow: '0 2px 10px rgba(0,0,0,0.98), 0 8px 40px rgba(0,0,0,0.8)'
-  };
+  const fade = (p) => ({
+    opacity: phase >= p ? 1 : 0,
+    transform: phase >= p ? 'translateY(0)' : 'translateY(12px)',
+    transition: 'opacity 1.4s ease, transform 1.4s ease'
+  });
 
   return (
-    <section style={{ position: 'relative', height: '100vh', width: '100%', overflow: 'hidden', background: '#000' }}>
+    <section style={{ position: 'relative', height: '100vh', width: '100%', overflow: 'hidden', background: '#0a0a0a' }}>
 
-      {/* Video -- DO NOT TOUCH */}
+      {/* Video -- full bleed, untouched */}
       <video autoPlay loop muted playsInline
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 1 }}>
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 1, opacity: 0.88 }}>
         <source src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f7910a1c9_275a93837_forestheroMAIN.mp4" type="video/mp4" />
       </video>
 
-      {/* Vignette -- DO NOT TOUCH */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'radial-gradient(ellipse at 60% 50%, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.38) 100%)' }} />
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, transparent 28%, transparent 50%, rgba(0,0,0,0.88) 100%)' }} />
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to right, rgba(0,0,0,0.35) 0%, transparent 50%)' }} />
+      {/* Minimal dark edges only -- video breathes */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to bottom, rgba(0,0,0,0.32) 0%, transparent 20%, transparent 65%, rgba(0,0,0,0.75) 100%)' }} />
 
-      {/* Nav */}
-      <nav style={{ position: 'absolute', top: 0, right: 0, zIndex: 10, display: 'flex', gap: '2rem', padding: '1.75rem 2.5rem', alignItems: 'center' }}>
-        {['Home', 'Location', 'Estate at a Glance', 'Request Private Viewing'].map(item => (
-          <a key={item} href="#" style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'sans-serif', fontSize: '0.47rem', letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}>
+      {/* Property name -- top center, tiny, first to appear */}
+      <div style={{ position: 'absolute', top: '2.2rem', left: 0, right: 0, zIndex: 10, textAlign: 'center', ...fade(1) }}>
+        <span style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'sans-serif', fontSize: '0.44rem', letterSpacing: '0.32em', textTransform: 'uppercase' }}>
+          Flow Farm -- Pinehurst, North Carolina
+        </span>
+      </div>
+
+      {/* Nav -- top right, ghost */}
+      <nav style={{ position: 'absolute', top: '1.8rem', right: '2.5rem', zIndex: 10, display: 'flex', gap: '2rem', alignItems: 'center', ...fade(1) }}>
+        {['Location', 'Estate', 'Inquire'].map(item => (
+          <a key={item} href="#" style={{ color: 'rgba(255,255,255,0.38)', fontFamily: 'sans-serif', fontSize: '0.43rem', letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}>
             {item}
           </a>
         ))}
       </nav>
 
-      {/* Top left label */}
-      <div style={{ position: 'absolute', top: 0, left: 0, zIndex: 10, padding: '1.75rem 2.5rem' }}>
-        <p style={{ color: 'rgba(255,255,255,0.38)', fontFamily: 'sans-serif', fontSize: '0.46rem', letterSpacing: '0.22em', textTransform: 'uppercase', margin: 0 }}>
-          Flow Farm Pinehurst
-        </p>
-      </div>
+      {/* CENTER -- headline only, nothing else */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '0 6vw' }}>
 
-      {/* MAIN CONTENT -- left aligned, anchored lower third */}
-      <div style={{ position: 'absolute', bottom: '9%', left: 0, zIndex: 5, padding: '0 5vw', maxWidth: '65vw' }}>
-
-        {/* Headline */}
-        <h1 style={{
-          color: '#fff',
-          fontFamily: 'Georgia, serif',
-          fontWeight: 400,
-          fontSize: 'clamp(2.6rem, 7vw, 6.8rem)',
-          lineHeight: 1.02,
-          margin: '0 0 1.1rem',
-          letterSpacing: '-0.01em',
-          ...engrave
-        }}>
-          Agritourism<br /><em>Established.</em><br />Legacy Ready.
-        </h1>
-
-        {/* Subtext */}
-        <p style={{
-          color: 'rgba(255,255,255,0.72)',
-          fontFamily: 'Georgia, serif',
-          fontSize: 'clamp(0.72rem, 1.1vw, 0.92rem)',
-          lineHeight: 1.7,
-          maxWidth: 420,
-          margin: '0 0 1.6rem',
-          ...engrave
-        }}>
-          Fifteen acres of working farmland, forest, and a fully self-sustaining compound -- three miles from Pinehurst Resort. Transferable Pinehurst Country Club membership available.
-        </p>
-
-        {/* Pipe stats */}
-        <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1.8rem' }}>
-          {['3-Acre Veganic Farm', '15 Acres', '3 Mi. to Pinehurst', '$5.25M'].map((s, i, arr) => (
-            <div key={s} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <span style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'sans-serif', fontSize: '0.5rem', letterSpacing: '0.18em', textTransform: 'uppercase', textShadow: '0 1px 8px rgba(0,0,0,1)' }}>
-                {s}
-              </span>
-              {i < arr.length - 1 && <span style={{ color: 'rgba(255,255,255,0.22)', fontSize: '0.7rem', lineHeight: 1 }}>|</span>}
-            </div>
-          ))}
+        {/* The headline -- owns the frame */}
+        <div style={fade(2)}>
+          <h1 style={{
+            color: '#fff',
+            fontFamily: 'Georgia, serif',
+            fontWeight: 400,
+            fontSize: 'clamp(3rem, 7.5vw, 7rem)',
+            lineHeight: 1.0,
+            margin: 0,
+            letterSpacing: '-0.01em',
+            textShadow: '0 2px 40px rgba(0,0,0,0.6)'
+          }}>
+            Agritourism<br />
+            <em style={{ fontStyle: 'italic' }}>Established.</em><br />
+            Legacy Ready.
+          </h1>
         </div>
 
-        {/* CTA button */}
-        <a href="#story-detail" style={{
-          display: 'inline-block',
-          border: '1px solid rgba(255,255,255,0.28)',
-          color: 'rgba(255,255,255,0.82)',
-          fontFamily: 'sans-serif',
-          fontSize: '0.48rem',
-          letterSpacing: '0.28em',
-          textTransform: 'uppercase',
-          padding: '0.9rem 2.6rem',
-          background: 'rgba(0,0,0,0.18)',
-          backdropFilter: 'blur(12px)',
-          textDecoration: 'none',
-          transition: 'border-color 0.3s, color 0.3s'
-        }}>
-          Enter Flow Farm
-        </a>
+        {/* Single thin gold line */}
+        <div style={{ width: 1, height: 48, background: 'linear-gradient(to bottom, transparent, rgba(212,175,120,0.7), transparent)', margin: '2.4rem auto 0', ...fade(3) }} />
+
       </div>
 
-      {/* Bottom ticker */}
-      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 6, borderTop: '1px solid rgba(255,255,255,0.06)', background: 'rgba(0,0,0,0.42)', backdropFilter: 'blur(16px)', overflow: 'hidden', padding: '0.55rem 0' }}>
-        <div style={{ display: 'flex', animation: 'ticker 28s linear infinite', whiteSpace: 'nowrap', width: 'max-content' }}>
-          {[...TICKER, ...TICKER].map((item, i) => (
-            <span key={i} style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'sans-serif', fontSize: '0.48rem', letterSpacing: '0.2em', textTransform: 'uppercase', padding: '0 2.5rem' }}>
-              {item} <span style={{ color: 'rgba(191,162,116,0.45)' }}>+</span>
-            </span>
-          ))}
+      {/* Bottom -- address + scroll cue */}
+      <div style={{ position: 'absolute', bottom: '2.8rem', left: 0, right: 0, zIndex: 10, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', padding: '0 2.8rem', ...fade(3) }}>
+
+        <div>
+          <p style={{ color: 'rgba(255,255,255,0.38)', fontFamily: 'sans-serif', fontSize: '0.44rem', letterSpacing: '0.2em', textTransform: 'uppercase', margin: '0 0 0.25rem' }}>
+            107 Linden Trail, Aberdeen NC
+          </p>
+          <p style={{ color: 'rgba(255,255,255,0.22)', fontFamily: 'sans-serif', fontSize: '0.42rem', letterSpacing: '0.16em', textTransform: 'uppercase', margin: 0 }}>
+            15 Acres -- 6 Structures -- $5,250,000
+          </p>
         </div>
+
+        {/* Scroll cue */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.4rem' }}>
+          <span style={{ color: 'rgba(255,255,255,0.25)', fontFamily: 'sans-serif', fontSize: '0.4rem', letterSpacing: '0.22em', textTransform: 'uppercase' }}>Scroll</span>
+          <div style={{ width: 1, height: 32, background: 'linear-gradient(to bottom, rgba(255,255,255,0.3), transparent)', animation: 'scrollPulse 2s ease-in-out infinite' }} />
+        </div>
+
       </div>
 
       <style>{`
-        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        @media (max-width: 768px) {
-          .hero-content { padding: 0 6vw !important; max-width: 92vw !important; bottom: 14% !important; }
+        @keyframes scrollPulse {
+          0%, 100% { opacity: 0.3; transform: scaleY(1); }
+          50% { opacity: 0.8; transform: scaleY(1.15); }
         }
       `}</style>
 
