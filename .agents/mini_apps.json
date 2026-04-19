@@ -12,14 +12,8 @@
     "FlowFarm": {
       "title": "FlowFarm"
     },
-    "FlowFarmForest": {
-      "title": "FlowFarmForest"
-    },
     "FlowFarmGallery": {
       "title": "FlowFarmGallery"
-    },
-    "FlowFarmHome": {
-      "title": "FlowFarmHome"
     },
     "Gallery": {
       "title": "Gallery"
@@ -42,14 +36,20 @@
     "Review": {
       "title": "Review"
     },
-    "SocialPost": {
-      "title": "SocialPost"
+    "FlowFarmForest": {
+      "title": "FlowFarmForest"
+    },
+    "FlowFarmHome": {
+      "title": "FlowFarmHome"
     },
     "FlowFarmLanding": {
       "title": "FlowFarmLanding"
     },
     "MLS": {
       "title": "MLS"
+    },
+    "SocialPost": {
+      "title": "SocialPost"
     }
   }
 }

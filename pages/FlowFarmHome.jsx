@@ -54,7 +54,7 @@ export default function FlowFarmHome() {
         </div>
       </nav>
 
-      {/* HERO — photo background */}
+      {/* HERO - photo background */}
       <section style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
         <img
           src="https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/595faa261_107LindenTrail-29.jpg"
@@ -67,7 +67,7 @@ export default function FlowFarmHome() {
         }} />
         <div style={{ position: "absolute", bottom: "12%", left: "8%", zIndex: 3, maxWidth: 680 }}>
           <div style={{ fontSize: 11, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(232,228,220,0.6)", marginBottom: 20 }}>
-            107 Linden Trail — Aberdeen, NC
+            107 Linden Trail - Aberdeen, NC
           </div>
           <h1 style={{ fontSize: "clamp(42px, 6vw, 80px)", fontWeight: 300, lineHeight: 1.1, margin: "0 0 24px" }}>
             Agritourism Established.<br />Legacy Ready.
@@ -119,7 +119,7 @@ export default function FlowFarmHome() {
               A Foundation for What Comes Next
             </h2>
             <p style={{ fontSize: 15, lineHeight: 1.9, color: "rgba(232,228,220,0.7)", marginBottom: 24 }}>
-              A living estate rooted in sustainability, elevated by state-of-the-art infrastructure and refined luxury. Designed by Robert E. Clark AIA of Pinehurst — one of his final and most personal works.
+              A living estate rooted in sustainability, elevated by state-of-the-art infrastructure and refined luxury. Designed by Robert E. Clark AIA of Pinehurst - one of his final and most personal works.
             </p>
             <p style={{ fontSize: 15, lineHeight: 1.9, color: "rgba(232,228,220,0.7)" }}>
               Reclaimed Civil War-era heart pine floors, custom-laid in artisan patterns throughout every bedroom, hallway, and closet. A glass conservatory with octagonal skylight dome. Six structures across 15 curated acres.
@@ -192,7 +192,7 @@ export default function FlowFarmHome() {
             Pinehurst Country Club<br />Signature Golf Membership
           </h2>
           <p style={{ fontSize: 15, lineHeight: 1.9, color: "rgba(232,228,220,0.65)" }}>
-            Transferable membership with unlimited access to the legendary Course No. 7 and Course No. 9. One of the most coveted memberships in American golf — included with the estate.
+            Transferable membership with unlimited access to the legendary Course No. 7 and Course No. 9. One of the most coveted memberships in American golf - included with the estate.
           </p>
           <div style={{ fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(232,228,220,0.35)", marginTop: 32 }}>
             3 Miles from Pinehurst Village
@@ -211,7 +211,7 @@ export default function FlowFarmHome() {
             <p style={{ fontSize: 15, lineHeight: 1.9, color: "rgba(232,228,220,0.65)", marginBottom: 32 }}>
               Multiple points of access including primary entrance from Linden Trail and additional access via Linden Road, Mollie Lane, and Skene Lane. Private drive creates immediate separation and discretion.
             </p>
-            {["Moore County Regional Airport — private aviation", "Raleigh-Durham International — 1 hour", "FirstHealth Moore Regional Hospital — nearby", "Historic Village of Pinehurst — 3 miles"].map((item, i) => (
+            {["Moore County Regional Airport - private aviation", "Raleigh-Durham International - 1 hour", "FirstHealth Moore Regional Hospital - nearby", "Historic Village of Pinehurst - 3 miles"].map((item, i) => (
               <div key={i} style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 16 }}>
                 <div style={{ width: 24, height: 1, background: "rgba(232,228,220,0.3)", flexShrink: 0 }} />
                 <span style={{ fontSize: 13, color: "rgba(232,228,220,0.6)" }}>{item}</span>
