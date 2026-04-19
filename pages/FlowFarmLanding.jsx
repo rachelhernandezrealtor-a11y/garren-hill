@@ -221,29 +221,29 @@ function StorySection() {
     { value: '$5.25M', label: 'Asking Price' },
   ];
   return (
-    <section style={{ background: '#fff', padding: '7rem 2rem' }}>
+    <section style={{ background: DARK, padding: '7rem 2rem' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '4rem', alignItems: 'center' }}>
           <div>
             <p style={{ color: GOLD, fontSize: '0.65rem', letterSpacing: '0.35em', textTransform: 'uppercase', fontFamily: 'sans-serif', marginBottom: '1.25rem' }}>
               The Opportunity
             </p>
-            <h2 style={{ color: DARK, fontFamily: 'Georgia, serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 300, lineHeight: 1.15, margin: '0 0 1.5rem' }}>
+            <h2 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 300, lineHeight: 1.15, margin: '0 0 1.5rem' }}>
               Flow Farm: A Foundation for What Comes Next.
             </h2>
-            <p style={{ color: '#555', fontSize: '1rem', lineHeight: 1.85, fontFamily: 'sans-serif', margin: '0 0 1.25rem' }}>
+            <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '1rem', lineHeight: 1.85, fontFamily: 'sans-serif', margin: '0 0 1.25rem' }}>
               A living estate rooted in sustainability, elevated by state-of-the-art infrastructure and refined luxury. A rare convergence of land, architecture, and infrastructure.
             </p>
-            <p style={{ color: '#555', fontSize: '1rem', lineHeight: 1.85, fontFamily: 'sans-serif', margin: 0 }}>
+            <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '1rem', lineHeight: 1.85, fontFamily: 'sans-serif', margin: 0 }}>
               This private estate offers energy independence, favorable tax positioning, rare zoning flexibility, enterprise potential, future expansion opportunity, and a transferable Pinehurst Country Club Signature Golf Membership with exclusive unlimited access to Course No. 7 and No. 9.
             </p>
           </div>
           <div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1px', background: '#e5e5e5', border: '1px solid #e5e5e5' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1px', background: '#e5e5e5', border: '1px solid rgba(255,255,255,0.1)' }}>
               {STATS.map(s => (
-                <div key={s.label} style={{ background: '#fff', padding: '2rem', textAlign: 'center' }}>
-                  <div style={{ color: DARK, fontFamily: 'Georgia, serif', fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 300, marginBottom: '0.5rem' }}>{s.value}</div>
-                  <div style={{ color: '#888', fontSize: '0.65rem', letterSpacing: '0.25em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>{s.label}</div>
+                <div key={s.label} style={{ background: DARK, padding: '2rem', textAlign: 'center' }}>
+                  <div style={{ color: '#fff', fontFamily: 'Georgia, serif', fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 300, marginBottom: '0.5rem' }}>{s.value}</div>
+                  <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.65rem', letterSpacing: '0.25em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>{s.label}</div>
                 </div>
               ))}
             </div>
@@ -317,12 +317,12 @@ function EstateSection() {
   const [active, setActive] = useState(null);
 
   return (
-    <section id="estate" style={{ background: '#f8f6f2', padding: '7rem 2rem' }}>
+    <section id="estate" style={{ background: '#111', padding: '7rem 2rem' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <p style={{ color: GOLD, fontSize: '0.65rem', letterSpacing: '0.35em', textTransform: 'uppercase', fontFamily: 'sans-serif', marginBottom: '1rem' }}>The Property</p>
-          <h2 style={{ color: DARK, fontFamily: 'Georgia, serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 300, margin: '0 0 1rem' }}>Six Structures. Fifteen Acres.</h2>
-          <p style={{ color: '#666', fontSize: '0.9rem', fontFamily: 'sans-serif', margin: 0 }}>Click any structure to explore</p>
+          <h2 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 300, margin: '0 0 1rem' }}>Six Structures. Fifteen Acres.</h2>
+          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', fontFamily: 'sans-serif', margin: 0 }}>Click any structure to explore</p>
         </div>
         <div style={{ position: 'relative', marginBottom: '3rem' }}>
           <img src={PHOTOS.hero} alt="Estate aerial view"
@@ -347,13 +347,13 @@ function EstateSection() {
           const s = STRUCTURES.find(x => x.id === active);
           if (!s) return null;
           return (
-            <div style={{ background: '#fff', border: `1px solid #e5e5e5`, padding: '2rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2rem', alignItems: 'center' }}>
+            <div style={{ background: DARK, border: `1px solid #e5e5e5`, padding: '2rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2rem', alignItems: 'center' }}>
               <img src={s.img} alt={s.label} style={{ width: '100%', height: 200, objectFit: 'cover' }} />
               <div>
                 <p style={{ color: GOLD, fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase', fontFamily: 'sans-serif', marginBottom: '0.5rem' }}>{s.tag}</p>
-                <h3 style={{ color: DARK, fontFamily: 'Georgia, serif', fontSize: '1.6rem', fontWeight: 300, margin: '0 0 0.4rem' }}>{s.label}</h3>
+                <h3 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontSize: '1.6rem', fontWeight: 300, margin: '0 0 0.4rem' }}>{s.label}</h3>
                 <p style={{ color: GOLD, fontSize: '0.8rem', fontFamily: 'sans-serif', margin: '0 0 1rem' }}>{s.sf}</p>
-                <p style={{ color: '#555', fontSize: '0.9rem', lineHeight: 1.75, fontFamily: 'sans-serif', margin: 0 }}>{s.desc}</p>
+                <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.9rem', lineHeight: 1.75, fontFamily: 'sans-serif', margin: 0 }}>{s.desc}</p>
               </div>
             </div>
           );
@@ -423,24 +423,24 @@ function GallerySection() {
 
 function SystemsSection() {
   return (
-    <section id="systems" style={{ background: '#fff', padding: '7rem 2rem' }}>
+    <section id="systems" style={{ background: DARK, padding: '7rem 2rem' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <p style={{ color: GOLD, fontSize: '0.65rem', letterSpacing: '0.35em', textTransform: 'uppercase', fontFamily: 'sans-serif', marginBottom: '1rem' }}>Infrastructure</p>
-          <h2 style={{ color: DARK, fontFamily: 'Georgia, serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 300, margin: '0 0 1rem' }}>Engineered for Independence</h2>
-          <p style={{ color: '#666', fontSize: '0.9rem', fontFamily: 'sans-serif', maxWidth: 560, margin: '0 auto' }}>
+          <h2 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 300, margin: '0 0 1rem' }}>Engineered for Independence</h2>
+          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', fontFamily: 'sans-serif', maxWidth: 560, margin: '0 auto' }}>
             1,200 amps of total power capacity. Geothermal. Solar. Generator backup. A complete off-grid capability within a luxury estate.
           </p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '2rem' }}>
           {SYSTEMS.map(sys => (
-            <div key={sys.label} style={{ border: '1px solid #e5e5e5', padding: '2rem' }}>
+            <div key={sys.label} style={{ border: '1px solid rgba(255,255,255,0.1)', padding: '2rem' }}>
               <p style={{ color: GOLD, fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase', fontFamily: 'sans-serif', marginBottom: '1.25rem' }}>{sys.label}</p>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {sys.items.map(item => (
                   <li key={item} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start', marginBottom: '0.75rem' }}>
                     <span style={{ color: GOLD, marginTop: 2, flexShrink: 0 }}>--</span>
-                    <span style={{ color: '#444', fontSize: '0.88rem', lineHeight: 1.6, fontFamily: 'sans-serif' }}>{item}</span>
+                    <span style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.88rem', lineHeight: 1.6, fontFamily: 'sans-serif' }}>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -494,11 +494,11 @@ function LocationSection() {
 function FAQSection() {
   const [open, setOpen] = useState(null);
   return (
-    <section id="faq" style={{ background: '#f8f6f2', padding: '7rem 2rem' }}>
+    <section id="faq" style={{ background: '#111', padding: '7rem 2rem' }}>
       <div style={{ maxWidth: 800, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <p style={{ color: GOLD, fontSize: '0.65rem', letterSpacing: '0.35em', textTransform: 'uppercase', fontFamily: 'sans-serif', marginBottom: '1rem' }}>FAQ</p>
-          <h2 style={{ color: DARK, fontFamily: 'Georgia, serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 300, margin: 0 }}>Common Questions</h2>
+          <h2 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 300, margin: 0 }}>Common Questions</h2>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
           {FAQ_ITEMS.map((item, i) => (
@@ -510,7 +510,7 @@ function FAQSection() {
               </button>
               {open === i && (
                 <div style={{ paddingBottom: '1.5rem' }}>
-                  <p style={{ color: '#555', fontSize: '0.9rem', lineHeight: 1.8, fontFamily: 'sans-serif', margin: 0 }}>{item.a}</p>
+                  <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.9rem', lineHeight: 1.8, fontFamily: 'sans-serif', margin: 0 }}>{item.a}</p>
                 </div>
               )}
             </div>
