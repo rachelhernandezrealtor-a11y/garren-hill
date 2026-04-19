@@ -99,7 +99,7 @@ const SYSTEMS = [
 const FAQ_ITEMS = [
   { q: 'Is the Pinehurst golf membership transferable?', a: 'Yes. A Pinehurst Country Club Signature Golf Membership is included with the sale, providing unlimited access to Course No. 7 and No. 9.' },
   { q: 'What is the agricultural zoning status?', a: 'The property is USDA-zoned with 3 acres in active veganic farm operation and 7 additional buildable acres within the 15-acre total.' },
-  { q: 'How far is the property from Pinehurst?', a: 'Flow Farm Party is approximately 3 miles from the Historic Village of Pinehurst, with multiple private access points via Linden Trail, Linden Road, Mollie Lane, and Skene Lane.' },
+  { q: 'How far is the property from Pinehurst?', a: 'Flow Farm is approximately 3 miles from the Historic Village of Pinehurst, with multiple private access points via Linden Trail, Linden Road, Mollie Lane, and Skene Lane.' },
   { q: 'What airport access is available?', a: 'Moore County Regional Airport for private aviation is nearby. Raleigh-Durham International Airport is approximately 1 hour away.' },
   { q: 'Is the farm operational?', a: 'Yes. The 3-acre veganic farm is fully operational with certified infrastructure including the high tunnel greenhouse, composting system, biochar kiln, and farm workshop.' },
   { q: 'What backup systems are in place?', a: 'The estate has a 30kW Kohler generator with 2x 1,000 gallon buried propane tanks, 14.3kW solar array, and Sunny Island 10k solar battery backup for complete energy independence.' },
@@ -132,7 +132,7 @@ function Navbar() {
     }}>
       <div style={{ maxWidth: 1400, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
         <span style={{ color: '#fff', fontFamily: 'Georgia, serif', fontSize: '1.1rem', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
-          Flow Farm Party
+          Flow Farm
         </span>
         <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="desktop-nav">
           {NAV_LINKS.slice(0, -1).map(link => (
@@ -186,7 +186,7 @@ function Hero() {
           107 Linden Trail -- Aberdeen, NC
         </p>
         <h1 style={{ color: '#fff', fontSize: 'clamp(3.5rem, 8vw, 7rem)', fontFamily: 'Georgia, serif', fontWeight: 300, lineHeight: 1.05, margin: '0 0 1.5rem' }}>
-          Flow Farm Party
+          Flow Farm
         </h1>
         <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 'clamp(0.85rem, 1.5vw, 1.05rem)', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'sans-serif', marginBottom: '3rem' }}>
           Agritourism Established. Legacy Ready.
@@ -229,7 +229,7 @@ function StorySection() {
               The Opportunity
             </p>
             <h2 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 300, lineHeight: 1.15, margin: '0 0 1.5rem' }}>
-              Flow Farm Party: A Foundation for What Comes Next.
+              Flow Farm: A Foundation for What Comes Next.
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '1rem', lineHeight: 1.85, fontFamily: 'sans-serif', margin: '0 0 1.25rem' }}>
               A living estate rooted in sustainability, elevated by state-of-the-art infrastructure and refined luxury. A rare convergence of land, architecture, and infrastructure.
@@ -395,7 +395,7 @@ function GallerySection() {
           {ALL_PHOTOS.map((p, i) => (
             <div key={i} onClick={() => setLightbox(i)}
               style={{ cursor: 'pointer', overflow: 'hidden', position: 'relative', paddingBottom: i % 5 === 0 ? '66%' : '75%' }}>
-              <img src={p} alt="Flow Farm Party" loading="lazy"
+              <img src={p} alt="Flow Farm" loading="lazy"
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
                 onMouseEnter={e => e.target.style.transform = 'scale(1.04)'}
                 onMouseLeave={e => e.target.style.transform = 'scale(1)'} />
@@ -406,7 +406,7 @@ function GallerySection() {
       {lightbox !== null && (
         <div onClick={() => setLightbox(null)}
           style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.93)', zIndex: 999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
-          <img src={ALL_PHOTOS[lightbox]} alt="Flow Farm Party"
+          <img src={ALL_PHOTOS[lightbox]} alt="Flow Farm"
             style={{ maxWidth: '90vw', maxHeight: '88vh', objectFit: 'contain' }}
             onClick={e => e.stopPropagation()} />
           <button onClick={() => setLightbox(null)}
@@ -476,7 +476,7 @@ function LocationSection() {
           </div>
           <div style={{ borderRadius: 0, overflow: 'hidden', border: `1px solid rgba(191,162,116,0.2)` }}>
             <iframe
-              title="Flow Farm Party Location"
+              title="Flow Farm Location"
               width="100%"
               height="360"
               frameBorder="0"
