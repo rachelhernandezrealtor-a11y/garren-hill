@@ -185,7 +185,7 @@ export default function MLS() {
           <div className="flex items-center gap-3">
             <Link to={`/Review?property=${propertyId}`}>
               <Button variant="outline" size="sm" className="gap-1 text-sm">
-                <- Review Photos
+                ← Review Photos
               </Button>
             </Link>
             <Button

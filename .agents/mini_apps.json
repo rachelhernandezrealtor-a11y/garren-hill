@@ -36,9 +36,6 @@
     "Index": {
       "title": "Index"
     },
-    "MLS": {
-      "title": "MLS"
-    },
     "Media": {
       "title": "Media"
     },
@@ -50,6 +47,9 @@
     },
     "FlowFarmLanding": {
       "title": "FlowFarmLanding"
+    },
+    "MLS": {
+      "title": "MLS"
     }
   }
 }
