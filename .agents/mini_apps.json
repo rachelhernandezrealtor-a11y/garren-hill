@@ -39,14 +39,14 @@
     "Review": {
       "title": "Review"
     },
-    "SocialPost": {
-      "title": "SocialPost"
-    },
     "FlowFarmHome": {
       "title": "FlowFarmHome"
     },
     "FlowFarmForest": {
       "title": "FlowFarmForest"
+    },
+    "SocialPost": {
+      "title": "SocialPost"
     }
   }
 }

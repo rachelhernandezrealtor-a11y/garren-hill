@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Home, Sparkles, Instagram, Facebook, Linkedin, ArrowRight, RefreshCw, Copy, Check, Download, ChevronLeft } from "lucide-react";
-import { InvokeAgent } from "@/api/ai";
+import { InvokeAgent } from "@/api/base44Client";
 
 const MEDIA_HUB_URL = "https://rocky-40781cce.base44.app/functions/getPropertyPhotos";
 const MEDIA_HUB_APP_ID = "69e248a2469cc39540781cce";
