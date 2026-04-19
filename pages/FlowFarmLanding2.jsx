@@ -312,12 +312,15 @@ function Hero() {
         </p>
 
         {/* Counting stats */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '2rem', borderTop: '1px solid rgba(255,255,255,0.12)', borderBottom: '1px solid rgba(255,255,255,0.12)', padding: '1.25rem 0', gap: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2rem', borderTop: '1px solid rgba(255,255,255,0.12)', borderBottom: '1px solid rgba(255,255,255,0.12)', padding: '1.25rem 0', gap: 0, width: '100%', maxWidth: 700 }}>
           <StatNumber target={15} label="USDA Acres" started={statsStarted} />
           <div style={{ width: '1px', height: 40, background: 'rgba(255,255,255,0.15)' }} />
           <StatNumber target={3} label="Acre Veganic Farm" started={statsStarted} />
           <div style={{ width: '1px', height: 40, background: 'rgba(255,255,255,0.15)' }} />
-          <StatNumber prefix="$" target={5.25} suffix="M" label="Offered At" started={statsStarted} />
+          <div style={{ textAlign: 'center', padding: '0 1.5rem' }}>
+            <div style={{ color: '#fff', fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 'clamp(2rem, 3.5vw, 3.2rem)', lineHeight: 1 }}>$5.25M</div>
+            <div style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'sans-serif', fontSize: '0.5rem', letterSpacing: '0.22em', textTransform: 'uppercase', marginTop: '0.4rem' }}>Offered At</div>
+          </div>
           <div style={{ width: '1px', height: 40, background: 'rgba(255,255,255,0.15)' }} />
           <StatNumber target={3} suffix=" mi" label="To Pinehurst" started={statsStarted} />
         </div>
