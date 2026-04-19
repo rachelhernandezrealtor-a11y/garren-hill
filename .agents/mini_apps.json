@@ -9,11 +9,23 @@
     "Export": {
       "title": "Export"
     },
+    "FlowFarmGallery": {
+      "title": "FlowFarmGallery"
+    },
     "Gallery": {
       "title": "Gallery"
     },
+    "GarrenHillGallery": {
+      "title": "GarrenHillGallery"
+    },
+    "Home": {
+      "title": "Home"
+    },
     "Import": {
       "title": "Import"
+    },
+    "Index": {
+      "title": "Index"
     },
     "MLS": {
       "title": "MLS"
@@ -26,18 +38,6 @@
     },
     "SocialPost": {
       "title": "SocialPost"
-    },
-    "GarrenHillGallery": {
-      "title": "GarrenHillGallery"
-    },
-    "Home": {
-      "title": "Home"
-    },
-    "FlowFarmGallery": {
-      "title": "FlowFarmGallery"
-    },
-    "Index": {
-      "title": "Index"
     },
     "FlowFarmHome": {
       "title": "FlowFarmHome"
