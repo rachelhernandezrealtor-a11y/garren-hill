@@ -27,6 +27,9 @@
     "FlowFarmHome": {
       "title": "FlowFarmHome"
     },
+    "FlowFarmLanding_new": {
+      "title": "FlowFarmLanding_new"
+    },
     "Gallery": {
       "title": "Gallery"
     },
@@ -59,9 +62,6 @@
     },
     "SocialPost": {
       "title": "SocialPost"
-    },
-    "FlowFarmLanding_new": {
-      "title": "FlowFarmLanding_new"
     },
     "FlowFarmLanding": {
       "title": "FlowFarmLanding"
