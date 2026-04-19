@@ -340,7 +340,7 @@ function Hero() {
           { num: '$5.25M', label: 'Offered At' },
         ].map((stat, i, arr) => (
           <div key={stat.label} style={{
-            flex: 1, padding: '0.3rem 0.5rem',
+            flex: 1, padding: '0.2rem 0.4rem',
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
             borderRight: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.12)' : 'none',
           }}>
@@ -348,13 +348,13 @@ function Hero() {
               color: '#fff',
               fontFamily: 'Georgia, serif',
               fontStyle: 'italic',
-          fontSize: '0.75rem',
+          fontSize: '0.55rem',
               lineHeight: 1,
-          marginBottom: '0.1rem',
+              marginBottom: '0.05rem',
             }}>{stat.num}</span>
             <span style={{
               color: 'rgba(255,255,255,0.55)',
-          fontSize: '0.4rem',
+          fontSize: '0.35rem',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
               fontFamily: 'sans-serif',
