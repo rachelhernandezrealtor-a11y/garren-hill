@@ -15,9 +15,6 @@
     "Import": {
       "title": "Import"
     },
-    "Index": {
-      "title": "Index"
-    },
     "MLS": {
       "title": "MLS"
     },
@@ -35,6 +32,9 @@
     },
     "Home": {
       "title": "Home"
+    },
+    "Index": {
+      "title": "Index"
     }
   }
 }
