@@ -9,6 +9,7 @@ const PHOTOS = {
   hero: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/46fb99d0e_TSDroneHouseRoof.jpg',
   exterior: 'https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/595faa261_107LindenTrail-29.jpg',
   grounds: 'https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/da785e254_flowfarmmasterphotoswebsite3.jpg',
+  aerial: 'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/b9cebf4a8_aerial_map.jpg',
   highTunnel: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/217fdb4a1_HighTunnel.jpg',
   workshop: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/136958608_FarmWorkshop.jpg',
   compost: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/983e028f7_CompostingandBioChar.jpg',
@@ -479,7 +480,7 @@ function EstateSection() {
       label: "Main Residence",
       tag: "Robert Clark AIA",
       sf: "8,519 SF",
-      top: "18%", left: "50%",
+      top: "15%", left: "42%",
       desc: "6 beds, 7 baths. Reclaimed Civil War-era heart pine floors throughout including bedrooms, hallways, and closets. Glass conservatory with octagonal skylight dome. Sub-Zero + Wolf 60\" dual fuel kitchen with full scullery. Control4 smart home.",
       img: PHOTOS.exterior,
       systems: ["20 Geothermal Wells x 300 ft", "14.3 kW Solar + Battery Backup", "30kW Kohler Generator", "Control4 Audio/Video/Lighting", "5-Zone Water Furnace HVAC", "1,200 Amp Power", "Whole House Fire Sprinkler", "Commercial Water Filtration"],
@@ -489,7 +490,7 @@ function EstateSection() {
       label: "Cabana House",
       tag: "Guest Retreat",
       sf: "Private Suite",
-      top: "35%", left: "65%",
+      top: "28%", left: "48%",
       desc: "Fully private guest retreat with 1 bed, 1 bath, full kitchen, and private entrance. Solar panels visible on roof. Connected to estate-wide geothermal, water filtration, and smart home systems.",
       img: PHOTOS.cabana,
       systems: ["Solar Panel Array", "Geothermal Connected", "Private Entrance", "Full Kitchen", "Campus Wi-Fi", "Whole House Water Filtration"],
@@ -499,7 +500,7 @@ function EstateSection() {
       label: "3-Acre Veganic Farm",
       tag: "USDA Agricultural",
       sf: "3 of 15 Acres",
-      top: "38%", left: "18%",
+      top: "55%", left: "32%",
       desc: "USDA-zoned veganic operation with certified organic practices. 1,400 ft double deer fence enclosing 3 acres. 500 ft dog run fence. 7 additional buildable acres with multiple road frontages.",
       img: PHOTOS.grounds,
       systems: ["USDA Agricultural Zoning", "1,400 ft Double Deer Fence", "Private Well 50 gpm", "Closed-Loop Composting", "7 Buildable Acres", "Agritourism Eligible"],
@@ -509,7 +510,7 @@ function EstateSection() {
       label: "High Tunnel",
       tag: "Greenhouse",
       sf: "96 x 36 ft",
-      top: "72%", left: "42%",
+      top: "72%", left: "50%",
       desc: "Four Season Tools construction with custom climate battery geothermal air-to-soil heating system. Year-round specialty crop production including pineapples, avocados, and citrus.",
       img: PHOTOS.highTunnel,
       systems: ["Geothermal Air-to-Soil Heat", "Year-Round Production", "Pineapple + Avocado + Citrus", "Four Season Tools Build", "Connected to Farm Workshop", "Walk-In Cooler Access"],
@@ -519,7 +520,7 @@ function EstateSection() {
       label: "Farm Workshop",
       tag: "Infrastructure",
       sf: "30 x 40 ft",
-      top: "60%", left: "78%",
+      top: "82%", left: "52%",
       desc: "Fully operational farm workshop with full plumbing, electrical, and 12x8 walk-in cooler. Hub connecting high tunnel, compost, and biochar operations. Biochar kiln under covered structure with I-beam and chain hoist.",
       img: PHOTOS.workshop,
       systems: ["12x8 Walk-In Cooler", "Full Plumbing + Electrical", "I-Beam + Chain Hoist", "O2Compost Aerated System", "Biochar Kiln Covered", "1,400 ft Deer Fence"],
@@ -529,7 +530,7 @@ function EstateSection() {
       label: "Compost + Biochar",
       tag: "Regenerative Systems",
       sf: "Covered Structure",
-      top: "68%", left: "60%",
+      top: "85%", left: "58%",
       desc: "Covered O2Compost aerated composting system and biochar kiln creating a fully closed-loop regenerative waste management system. All organic matter returns to the soil.",
       img: PHOTOS.compost,
       systems: ["O2Compost Aerated System", "Biochar Kiln", "I-Beam + Chain Hoist", "Closed-Loop Waste Mgmt", "Feeds Veganic Farm", "Covered Structure"],
@@ -546,7 +547,7 @@ function EstateSection() {
           <p style={{ color: "rgba(255,255,255,0.4)", marginTop: "1rem", fontFamily: "sans-serif", fontSize: "0.85rem" }}>Click any pin to explore each structure</p>
         </div>
         <div style={{ position: "relative", width: "100%", overflow: "hidden" }}>
-          <img src={PHOTOS.grounds} alt="Flow Farm Aerial" style={{ width: "100%", display: "block", height: "auto" }} />
+          <img src={PHOTOS.aerial} alt="Flow Farm Aerial" style={{ width: "100%", display: "block", height: "auto" }} />
           <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.25)" }} />
           {PINS.map((pin, i) => (
             <div key={pin.label} style={{ position: "absolute", top: pin.top, left: pin.left, transform: "translate(-50%, -50%)", zIndex: 10 }}>
