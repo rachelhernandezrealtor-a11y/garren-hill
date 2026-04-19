@@ -260,88 +260,72 @@ function useCountUp(target, duration, start) {
 function Hero() {
   const [started, setStarted] = useState(false);
   useEffect(() => {
-    const t = setTimeout(() => setStarted(true), 700);
+    const t = setTimeout(() => setStarted(true), 600);
     return () => clearTimeout(t);
   }, []);
-
-  const acres = useCountUp(15, 2000, started);
-  const farm = useCountUp(3, 2000, started);
-  const miles = useCountUp(3, 2000, started);
-  const structs = useCountUp(6, 2000, started);
 
   const TICKER = ['14.3kW Solar Array', '30kW Kohler Generator', 'Geothermal HVAC', 'Control4 Smart Home', 'Golf Membership Included', 'Private Well 50 gpm', '6 Structures', '1,200 Amp Power'];
 
   const engrave = {
-    textShadow: '0 1px 0 rgba(255,255,255,0.07), 0 2px 6px rgba(0,0,0,1), 0 8px 40px rgba(0,0,0,0.8)'
+    textShadow: '0 2px 8px rgba(0,0,0,0.95), 0 8px 40px rgba(0,0,0,0.7)'
   };
 
   return (
     <section style={{ position: 'relative', height: '100vh', width: '100%', overflow: 'hidden', background: '#000' }}>
 
-      {/* Video */}
+      {/* Video -- DO NOT TOUCH */}
       <video autoPlay loop muted playsInline
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 1 }}>
         <source src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f7910a1c9_275a93837_forestheroMAIN.mp4" type="video/mp4" />
       </video>
 
-      {/* Overlays - DO NOT TOUCH */}
+      {/* Overlays -- DO NOT TOUCH */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%)' }} />
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 30%, transparent 60%, rgba(0,0,0,0.8) 100%)' }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, transparent 35%, transparent 55%, rgba(0,0,0,0.75) 100%)' }} />
 
-      {/* Soft dark bloom behind text only */}
-      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 600, height: 420, background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.6) 0%, transparent 70%)', zIndex: 3, pointerEvents: 'none' }} />
+      {/* Nav -- top right */}
+      <nav style={{ position: 'absolute', top: 0, right: 0, zIndex: 10, display: 'flex', gap: '2rem', padding: '2rem 2.5rem', alignItems: 'center' }}>
+        {['Home', 'Location', 'Estate at a Glance', 'Request Private Viewing'].map(item => (
+          <a key={item} href="#" style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'sans-serif', fontSize: '0.48rem', letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}>
+            {item}
+          </a>
+        ))}
+      </nav>
 
-      {/* Top bar */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10, display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.75rem 2.5rem' }}>
-        <p style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'sans-serif', fontSize: '0.55rem', letterSpacing: '0.22em', textTransform: 'uppercase', margin: 0 }}>
-          Flow Farm -- 107 Linden Trail, Aberdeen NC
-        </p>
-        <p style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '0.8rem', margin: 0 }}>
-          $5,250,000
+      {/* Top left property label */}
+      <div style={{ position: 'absolute', top: 0, left: 0, zIndex: 10, padding: '2rem 2.5rem' }}>
+        <p style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'sans-serif', fontSize: '0.48rem', letterSpacing: '0.22em', textTransform: 'uppercase', margin: 0 }}>
+          Flow Farm Pinehurst
         </p>
       </div>
 
-      {/* CENTER COLUMN -- everything stacked tight */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+      {/* HERO CONTENT -- left aligned, bottom third */}
+      <div style={{ position: 'absolute', bottom: '12%', left: 0, right: 0, zIndex: 5, padding: '0 5vw' }}>
 
-        {/* Headline block */}
-        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-          <h1 style={{ color: 'rgba(255,255,255,0.95)', fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(2rem, 4.5vw, 4.2rem)', lineHeight: 1.15, margin: '0 0 0.1rem', letterSpacing: '0.02em', ...engrave }}>
-            Agritourism Established.
-          </h1>
-          <h1 style={{ color: 'rgba(255,255,255,0.95)', fontFamily: 'Georgia, serif', fontWeight: 400, fontStyle: 'italic', fontSize: 'clamp(2rem, 4.5vw, 4.2rem)', lineHeight: 1.15, margin: 0, letterSpacing: '0.02em', ...engrave }}>
-            Legacy Ready.
-          </h1>
-        </div>
+        {/* Big stacked headline */}
+        <h1 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(3rem, 8vw, 7.5rem)', lineHeight: 1.05, margin: '0 0 1.2rem', maxWidth: 800, ...engrave }}>
+          Agritourism<br /><em>Established.</em><br />Legacy Ready.
+        </h1>
 
-        {/* Gold rule */}
-        <div style={{ width: 52, height: 1, background: '#D4AF78', boxShadow: '0 0 16px rgba(212,175,120,0.9), 0 0 4px rgba(212,175,120,1)', marginBottom: '1.5rem' }} />
+        {/* Subtext */}
+        <p style={{ color: 'rgba(255,255,255,0.75)', fontFamily: 'Georgia, serif', fontSize: 'clamp(0.75rem, 1.2vw, 0.95rem)', lineHeight: 1.65, maxWidth: 440, margin: '0 0 1.75rem', ...engrave }}>
+          Fifteen acres of working farmland, forest, and a fully self-sustaining compound -- three miles from Pinehurst Resort. Transferable Pinehurst Country Club membership available.
+        </p>
 
-        {/* Stats row -- tight, centered */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.75rem' }}>
-          {[
-            { num: acres, label: 'Acres' },
-            { num: farm, label: 'Acre Farm' },
-            { num: '$5.25M', label: 'Offered At', isStatic: true },
-            { num: miles, label: 'Mi. Pinehurst' },
-            { num: structs, label: 'Structures' },
-          ].map((s, i, arr) => (
-            <div key={s.label} style={{ display: 'flex', alignItems: 'center' }}>
-              <div style={{ textAlign: 'center', padding: '0 1rem' }}>
-                <div style={{ color: '#fff', fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 'clamp(1rem, 1.8vw, 1.6rem)', lineHeight: 1, ...engrave }}>
-                  {s.isStatic ? s.num : s.num}
-                </div>
-                <div style={{ color: '#BFA274', fontFamily: 'sans-serif', fontSize: '0.46rem', letterSpacing: '0.18em', textTransform: 'uppercase', marginTop: '0.4rem', textShadow: '0 1px 4px rgba(0,0,0,1)' }}>
-                  {s.label}
-                </div>
-              </div>
-              {i < arr.length - 1 && <div style={{ width: 1, height: 24, background: 'rgba(255,255,255,0.18)' }} />}
+        {/* Pipe stats */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
+          {['3-Acre Veganic Farm', '15 Acres', '3 Mi. to Pinehurst', '$5.25M'].map((s, i, arr) => (
+            <div key={s} style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
+              <span style={{ color: 'rgba(255,255,255,0.65)', fontFamily: 'sans-serif', fontSize: '0.52rem', letterSpacing: '0.18em', textTransform: 'uppercase', textShadow: '0 1px 6px rgba(0,0,0,1)' }}>
+                {s}
+              </span>
+              {i < arr.length - 1 && <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.6rem' }}>|</span>}
             </div>
           ))}
         </div>
 
         {/* CTA */}
-        <a href="#story-detail" style={{ display: 'inline-block', border: '1px solid rgba(255,255,255,0.28)', color: 'rgba(255,255,255,0.8)', fontFamily: 'sans-serif', fontSize: '0.52rem', letterSpacing: '0.28em', textTransform: 'uppercase', padding: '0.85rem 2.75rem', backdropFilter: 'blur(12px)', background: 'rgba(0,0,0,0.2)', textDecoration: 'none' }}>
+        <a href="#story-detail" style={{ display: 'inline-block', border: '1px solid rgba(255,255,255,0.3)', color: 'rgba(255,255,255,0.8)', fontFamily: 'sans-serif', fontSize: '0.5rem', letterSpacing: '0.28em', textTransform: 'uppercase', padding: '0.9rem 2.5rem', background: 'rgba(0,0,0,0.15)', backdropFilter: 'blur(10px)', textDecoration: 'none' }}>
           Enter Flow Farm
         </a>
       </div>
