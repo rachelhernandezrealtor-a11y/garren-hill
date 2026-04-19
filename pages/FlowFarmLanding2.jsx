@@ -248,7 +248,7 @@ function Hero() {
   };
 
   return (
-    <section id="story" style={{ position: 'relative', height: '100vh', minHeight: 600, maxHeight: '100vh', overflow: 'hidden', background: '#000' }}>
+    <section id="story" style={{ position: 'relative', height: '100vh', width: '100%', overflow: 'hidden', background: '#000' }}>
 
       {/* Full bleed video */}
       <div style={{ position: 'absolute', inset: '-6%', opacity: videoReady ? 1 : 0, transition: 'opacity 2s ease' }}>
@@ -289,7 +289,7 @@ function Hero() {
       <div style={{
         position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column',
         alignItems: 'flex-start', justifyContent: 'center',
-        padding: '0 6vw', paddingTop: '8rem', paddingBottom: '14rem', justifyContent: 'flex-start',
+        padding: '0 6vw', paddingTop: '9rem', paddingBottom: '7rem',
       }}>
         <h1 style={{
           color: '#fff',
