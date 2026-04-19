@@ -280,9 +280,9 @@ function Hero() {
       </video>
 
       {/* Vignette -- DO NOT TOUCH */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'radial-gradient(ellipse at 60% 50%, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.52) 100%)' }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'radial-gradient(ellipse at 60% 50%, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.38) 100%)' }} />
       <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, transparent 28%, transparent 50%, rgba(0,0,0,0.88) 100%)' }} />
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 45%, transparent 70%)' }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to right, rgba(0,0,0,0.35) 0%, transparent 50%)' }} />
 
       {/* Nav */}
       <nav style={{ position: 'absolute', top: 0, right: 0, zIndex: 10, display: 'flex', gap: '2rem', padding: '1.75rem 2.5rem', alignItems: 'center' }}>
