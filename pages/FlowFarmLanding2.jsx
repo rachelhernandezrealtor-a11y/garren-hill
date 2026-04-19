@@ -306,16 +306,16 @@ function Hero() {
 
         {/* Headline block */}
         <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-          <h1 style={{ color: 'rgba(255,255,255,0.95)', fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(1.5rem, 3.2vw, 3rem)', lineHeight: 1.2, margin: '0 0 0.15rem', letterSpacing: '0.02em', ...engrave }}>
+          <h1 style={{ color: 'rgba(255,255,255,0.95)', fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(2rem, 4.5vw, 4.2rem)', lineHeight: 1.15, margin: '0 0 0.1rem', letterSpacing: '0.02em', ...engrave }}>
             Agritourism Established.
           </h1>
-          <h1 style={{ color: 'rgba(255,255,255,0.95)', fontFamily: 'Georgia, serif', fontWeight: 400, fontStyle: 'italic', fontSize: 'clamp(1.5rem, 3.2vw, 3rem)', lineHeight: 1.2, margin: 0, letterSpacing: '0.02em', ...engrave }}>
+          <h1 style={{ color: 'rgba(255,255,255,0.95)', fontFamily: 'Georgia, serif', fontWeight: 400, fontStyle: 'italic', fontSize: 'clamp(2rem, 4.5vw, 4.2rem)', lineHeight: 1.15, margin: 0, letterSpacing: '0.02em', ...engrave }}>
             Legacy Ready.
           </h1>
         </div>
 
         {/* Gold rule */}
-        <div style={{ width: 44, height: 1, background: '#BFA274', boxShadow: '0 0 10px rgba(191,162,116,0.7)', marginBottom: '1.5rem' }} />
+        <div style={{ width: 52, height: 1, background: '#D4AF78', boxShadow: '0 0 16px rgba(212,175,120,0.9), 0 0 4px rgba(212,175,120,1)', marginBottom: '1.5rem' }} />
 
         {/* Stats row -- tight, centered */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.75rem' }}>
