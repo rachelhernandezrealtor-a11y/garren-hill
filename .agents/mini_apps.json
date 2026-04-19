@@ -36,11 +36,11 @@
     "FlowFarmGallery": {
       "title": "FlowFarmGallery"
     },
-    "FlowFarmHome": {
-      "title": "FlowFarmHome"
-    },
     "Index": {
       "title": "Index"
+    },
+    "FlowFarmHome": {
+      "title": "FlowFarmHome"
     }
   }
 }
