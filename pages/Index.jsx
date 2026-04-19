@@ -3,6 +3,11 @@ import { Property } from "@/api/entities";
 import { Link } from "react-router-dom";
 import { Plus, Image, Video, Box, ChevronRight, Home } from "lucide-react";
 
+const PROPERTY_SITES = {
+  "69e4406f90bbe19ad72108ab": { home: "/FlowFarmHome", gallery: "/FlowFarmGallery", label: "Flow Farm" },
+  "69e437375f1b701c20f9d509": { home: "/Home", gallery: "/GarrenHillGallery", label: "Garren Hill" },
+};
+
 export default function Index() {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -54,103 +59,100 @@ export default function Index() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {properties.map((property) => (
-              <div key={property.id} className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
-                {/* Thumbnail */}
-                <div className="h-40 bg-gray-100 relative overflow-hidden">
-                  {property.thumbnail_url ? (
-                    <img src={property.thumbnail_url} alt={property.address}
-                      className="w-full h-full object-cover" />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <Image className="w-8 h-8 text-gray-300" />
-                    </div>
-                  )}
-                  <div className="absolute top-3 right-3">
-                    <span className={`text-[10px] px-2 py-1 rounded-full font-medium uppercase tracking-wide
-                      ${property.status === 'active' ? 'bg-green-100 text-green-700' :
-                        property.status === 'Reviewing' ? 'bg-yellow-100 text-yellow-700' :
-                        'bg-gray-100 text-gray-500'}`}>
-                      {property.status || 'Draft'}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Info */}
-                <div className="p-4">
-                  <h3 className="font-semibold text-gray-900 text-base mb-0.5">{property.address}</h3>
-                  <p className="text-sm text-gray-400">{property.city}{property.state ? `, ${property.state}` : ""}</p>
-
-                  {/* Stats row */}
-                  <div className="flex items-center gap-4 mt-3 mb-4">
-                    <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                      <Image className="w-3.5 h-3.5 text-gray-400" />
-                      <span>{property.photo_count || 0} photos</span>
-                    </div>
-                    {property.vimeo_urls?.length > 0 && (
-                      <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                        <Video className="w-3.5 h-3.5 text-blue-400" />
-                        <span>{property.vimeo_urls.length} video{property.vimeo_urls.length > 1 ? 's' : ''}</span>
+            {properties.map((property) => {
+              const site = PROPERTY_SITES[property.id];
+              return (
+                <div key={property.id} className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                  {/* Thumbnail */}
+                  <div className="h-40 bg-gray-100 relative overflow-hidden">
+                    {property.thumbnail_url ? (
+                      <img src={property.thumbnail_url} alt={property.address} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <Image className="w-8 h-8 text-gray-300" />
                       </div>
                     )}
-                    {property.matterport_urls?.length > 0 && (
-                      <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                        <Box className="w-3.5 h-3.5 text-purple-400" />
-                        <span>3D tour</span>
+                    <div className="absolute top-3 right-3">
+                      <span className={`text-[10px] px-2 py-1 rounded-full font-medium uppercase tracking-wide
+                        ${property.status === 'active' || property.status === 'Active' ? 'bg-green-100 text-green-700' :
+                          property.status === 'Reviewing' ? 'bg-yellow-100 text-yellow-700' :
+                          'bg-gray-100 text-gray-500'}`}>
+                        {property.status || 'Draft'}
+                      </span>
+                    </div>
+                    {site && (
+                      <div className="absolute bottom-3 left-3">
+                        <span className="text-[10px] px-2 py-1 bg-black/50 text-white/80 rounded-full tracking-widest uppercase">{site.label}</span>
                       </div>
                     )}
                   </div>
 
-                  {/* Action Buttons */}
-                  <div className="grid grid-cols-2 gap-2">
-                    <Link to={`/Import?property=${property.id}`}
-                      className="flex items-center justify-center gap-1.5 px-3 py-2 bg-gray-900 text-white rounded-lg text-xs font-medium hover:bg-gray-700 transition-colors">
-                      <Plus className="w-3.5 h-3.5" /> Add Photos
-                    </Link>
-                    <Link to={`/Review?property=${property.id}`}
-                      className="flex items-center justify-center gap-1.5 px-3 py-2 bg-gray-100 text-gray-700 rounded-lg text-xs font-medium hover:bg-gray-200 transition-colors">
-                      Review
-                    </Link>
-                    <Link to={`/Media?property=${property.id}`}
-                      className="flex items-center justify-center gap-1.5 px-3 py-2 bg-gray-100 text-gray-700 rounded-lg text-xs font-medium hover:bg-gray-200 transition-colors">
-                      <Video className="w-3.5 h-3.5" /> Media
-                    </Link>
-                    <Link to={`/MLS?property=${property.id}`}
-                      className="flex items-center justify-center gap-1.5 px-3 py-2 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium hover:bg-blue-100 transition-colors">
-                      MLS Export
-                    </Link>
-                  </div>
+                  {/* Info */}
+                  <div className="p-4">
+                    <h3 className="font-semibold text-gray-900 text-base mb-0.5">{property.address}</h3>
+                    <p className="text-sm text-gray-400">{property.city}{property.state ? `, ${property.state}` : ""}</p>
 
-                  {/* Public site links */}
-                  <div className="mt-3 pt-3 border-t border-gray-100 flex gap-3 flex-wrap">
-                    {property.address === "Flow Farm" && (
-                      <>
-                        <a href="/FlowFarmHome" target="_blank"
+                    {/* Stats row */}
+                    <div className="flex items-center gap-4 mt-3 mb-4">
+                      <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                        <Image className="w-3.5 h-3.5 text-gray-400" />
+                        <span>{property.photo_count || 0} photos</span>
+                      </div>
+                      {property.vimeo_urls?.length > 0 && (
+                        <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                          <Video className="w-3.5 h-3.5 text-blue-400" />
+                          <span>{property.vimeo_urls.length} video{property.vimeo_urls.length > 1 ? 's' : ''}</span>
+                        </div>
+                      )}
+                      {property.matterport_urls?.length > 0 && (
+                        <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                          <Box className="w-3.5 h-3.5 text-purple-400" />
+                          <span>3D tour</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="grid grid-cols-2 gap-2">
+                      <Link to={`/Import?property=${property.id}`}
+                        className="flex items-center justify-center gap-1.5 px-3 py-2 bg-gray-900 text-white rounded-lg text-xs font-medium hover:bg-gray-700 transition-colors">
+                        <Plus className="w-3.5 h-3.5" /> Add Photos
+                      </Link>
+                      <Link to={`/Review?property=${property.id}`}
+                        className="flex items-center justify-center gap-1.5 px-3 py-2 bg-gray-100 text-gray-700 rounded-lg text-xs font-medium hover:bg-gray-200 transition-colors">
+                        Review
+                      </Link>
+                      <Link to={`/Media?property=${property.id}`}
+                        className="flex items-center justify-center gap-1.5 px-3 py-2 bg-gray-100 text-gray-700 rounded-lg text-xs font-medium hover:bg-gray-200 transition-colors">
+                        <Video className="w-3.5 h-3.5" /> Media
+                      </Link>
+                      <Link to={`/MLS?property=${property.id}`}
+                        className="flex items-center justify-center gap-1.5 px-3 py-2 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium hover:bg-blue-100 transition-colors">
+                        MLS Export
+                      </Link>
+                    </div>
+
+                    {/* Public site links */}
+                    {site && (
+                      <div className="mt-3 pt-3 border-t border-gray-100 flex gap-4">
+                        <a href={site.home} target="_blank" rel="noreferrer"
                           className="flex items-center gap-1 text-xs text-gray-400 hover:text-gray-700 transition-colors">
                           <ChevronRight className="w-3 h-3" /> Public Site
                         </a>
-                        <a href="/FlowFarmGallery" target="_blank"
+                        <a href={site.gallery} target="_blank" rel="noreferrer"
                           className="flex items-center gap-1 text-xs text-gray-400 hover:text-gray-700 transition-colors">
                           <ChevronRight className="w-3 h-3" /> Gallery
                         </a>
-                      </>
+                        <Link to={`/Editor?property=${property.id}`}
+                          className="flex items-center gap-1 text-xs text-gray-400 hover:text-gray-700 transition-colors ml-auto">
+                          <ChevronRight className="w-3 h-3" /> Editor
+                        </Link>
+                      </div>
                     )}
-                    {property.address === "200 Hollycrest Drive" || property.city === "Pinehurst" && property.address !== "Flow Farm" ? (
-                      <>
-                        <a href="/Home" target="_blank"
-                          className="flex items-center gap-1 text-xs text-gray-400 hover:text-gray-700 transition-colors">
-                          <ChevronRight className="w-3 h-3" /> Public Site
-                        </a>
-                        <a href="/GarrenHillGallery" target="_blank"
-                          className="flex items-center gap-1 text-xs text-gray-400 hover:text-gray-700 transition-colors">
-                          <ChevronRight className="w-3 h-3" /> Gallery
-                        </a>
-                      </>
-                    ) : null}
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>

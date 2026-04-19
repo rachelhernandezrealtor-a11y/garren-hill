@@ -33,11 +33,11 @@
     "Home": {
       "title": "Home"
     },
-    "FlowFarmHome": {
-      "title": "FlowFarmHome"
-    },
     "FlowFarmGallery": {
       "title": "FlowFarmGallery"
+    },
+    "FlowFarmHome": {
+      "title": "FlowFarmHome"
     },
     "Index": {
       "title": "Index"
