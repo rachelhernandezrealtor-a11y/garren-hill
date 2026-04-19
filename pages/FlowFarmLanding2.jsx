@@ -240,8 +240,43 @@ function Navbar() {
   );
 }
 
+function useCountUp(target, duration, start) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!start) return;
+    let startTime = null;
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * target));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [start, target, duration]);
+  return count;
+}
+
+function StatNumber({ target, prefix, suffix, label, started }) {
+  const count = useCountUp(target, 2000, started);
+  return (
+    <div style={{ textAlign: 'center', padding: '0 1.5rem' }}>
+      <div style={{ color: '#fff', fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 'clamp(2rem, 3.5vw, 3.2rem)', lineHeight: 1, letterSpacing: '-0.01em' }}>
+        {prefix}{count}{suffix}
+      </div>
+      <div style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'sans-serif', fontSize: '0.5rem', letterSpacing: '0.22em', textTransform: 'uppercase', marginTop: '0.4rem' }}>{label}</div>
+    </div>
+  );
+}
+
 function Hero() {
   const [videoReady, setVideoReady] = useState(false);
+  const [statsStarted, setStatsStarted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setStatsStarted(true), 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section style={{ position: 'relative', height: '100vh', width: '100%', overflow: 'hidden', background: '#000' }}>
@@ -255,57 +290,57 @@ function Hero() {
         <source src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f7910a1c9_275a93837_forestheroMAIN.mp4" type="video/mp4" />
       </video>
 
-      {/* Dark gradient overlay */}
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.75) 100%)', zIndex: 2 }} />
+      {/* Gradient overlay */}
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.75) 100%)', zIndex: 2 }} />
 
-      {/* Center content */}
+      {/* Main content */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 3, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '0 2rem' }}>
-        <h1 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(2.2rem, 5vw, 4.5rem)', lineHeight: 1.15, marginBottom: '1.25rem', textShadow: '0 2px 40px rgba(0,0,0,0.7)' }}>
+
+        {/* Eyebrow */}
+        <p style={{ color: 'rgba(191,162,116,0.9)', fontFamily: 'sans-serif', fontSize: '0.6rem', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '1.25rem' }}>
+          107 Linden Trail, Aberdeen, NC
+        </p>
+
+        {/* Headline */}
+        <h1 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(1.8rem, 4.5vw, 4rem)', lineHeight: 1.15, marginBottom: '1rem', textShadow: '0 2px 40px rgba(0,0,0,0.6)' }}>
           Agritourism Established.<br /><em>Legacy Ready.</em>
         </h1>
-        <p style={{ color: 'rgba(255,255,255,0.8)', fontFamily: 'sans-serif', fontSize: 'clamp(0.8rem, 1.5vw, 1rem)', maxWidth: 600, lineHeight: 1.7, marginBottom: '2rem', textShadow: '0 1px 10px rgba(0,0,0,0.8)' }}>
-          Fifteen acres of working farmland, forest, and a fully self-sustaining compound three miles from Pinehurst Resort. Transferable Pinehurst Country Club Signature Membership available.
+
+        {/* Subtext */}
+        <p style={{ color: 'rgba(255,255,255,0.7)', fontFamily: 'sans-serif', fontSize: 'clamp(0.75rem, 1.2vw, 0.9rem)', maxWidth: 520, lineHeight: 1.75, marginBottom: '2rem', textShadow: '0 1px 10px rgba(0,0,0,0.8)' }}>
+          Fifteen acres of working farmland, forest, and a fully self-sustaining compound three miles from Pinehurst Resort.
         </p>
-        <a href="#story-detail" style={{ display: 'inline-block', border: '1px solid rgba(255,255,255,0.4)', color: '#fff', fontFamily: 'sans-serif', fontSize: '0.65rem', letterSpacing: '0.25em', textTransform: 'uppercase', padding: '0.85rem 2.5rem', backdropFilter: 'blur(8px)', background: 'rgba(255,255,255,0.08)', cursor: 'pointer', textDecoration: 'none', marginBottom: '2.5rem' }}>
+
+        {/* Counting stats */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '2rem', borderTop: '1px solid rgba(255,255,255,0.12)', borderBottom: '1px solid rgba(255,255,255,0.12)', padding: '1.25rem 0', gap: 0 }}>
+          <StatNumber target={15} label="USDA Acres" started={statsStarted} />
+          <div style={{ width: '1px', height: 40, background: 'rgba(255,255,255,0.15)' }} />
+          <StatNumber target={3} label="Acre Veganic Farm" started={statsStarted} />
+          <div style={{ width: '1px', height: 40, background: 'rgba(255,255,255,0.15)' }} />
+          <StatNumber prefix="$" target={5.25} suffix="M" label="Offered At" started={statsStarted} />
+          <div style={{ width: '1px', height: 40, background: 'rgba(255,255,255,0.15)' }} />
+          <StatNumber target={3} suffix=" mi" label="To Pinehurst" started={statsStarted} />
+        </div>
+
+        {/* CTA */}
+        <a href="#story-detail" style={{ display: 'inline-block', border: '1px solid rgba(255,255,255,0.35)', color: '#fff', fontFamily: 'sans-serif', fontSize: '0.6rem', letterSpacing: '0.28em', textTransform: 'uppercase', padding: '0.85rem 2.5rem', backdropFilter: 'blur(8px)', background: 'rgba(255,255,255,0.07)', cursor: 'pointer', textDecoration: 'none' }}>
           Enter Flow Farm
         </a>
       </div>
 
-      {/* Ticker stat bar */}
-      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 4, borderTop: '1px solid rgba(255,255,255,0.15)', background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(12px)', overflow: 'hidden', padding: '0.75rem 0' }}>
-        <div style={{ display: 'flex', animation: 'ticker 18s linear infinite', whiteSpace: 'nowrap', width: 'max-content' }}>
-          {[
-            '3-Acre Veganic Farm',
-            '15 USDA Acres',
-            '3 Mi to Pinehurst',
-            '$5.25M',
-            '6 Structures',
-            '14.3kW Solar',
-            '30kW Generator',
-            '1,200 Amp Power',
-            'Golf Membership Included',
-            '3-Acre Veganic Farm',
-            '15 USDA Acres',
-            '3 Mi to Pinehurst',
-            '$5.25M',
-            '6 Structures',
-            '14.3kW Solar',
-            '30kW Generator',
-            '1,200 Amp Power',
-            'Golf Membership Included',
-          ].map((item, i) => (
-            <span key={i} style={{ color: 'rgba(255,255,255,0.75)', fontFamily: 'sans-serif', fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', padding: '0 2.5rem' }}>
-              {item} <span style={{ color: 'rgba(191,162,116,0.6)', marginLeft: '2rem' }}>*</span>
+      {/* Bottom ticker */}
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 4, borderTop: '1px solid rgba(255,255,255,0.1)', background: 'rgba(0,0,0,0.45)', backdropFilter: 'blur(12px)', overflow: 'hidden', padding: '0.6rem 0' }}>
+        <div style={{ display: 'flex', animation: 'ticker 22s linear infinite', whiteSpace: 'nowrap', width: 'max-content' }}>
+          {['14.3kW Solar Array', '30kW Kohler Generator', 'Geothermal HVAC', 'Control4 Smart Home', 'Golf Membership Included', 'Private Well 50gpm', '6 Structures', '1,200 Amp Power', '14.3kW Solar Array', '30kW Kohler Generator', 'Geothermal HVAC', 'Control4 Smart Home', 'Golf Membership Included', 'Private Well 50gpm', '6 Structures', '1,200 Amp Power'].map((item, i) => (
+            <span key={i} style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'sans-serif', fontSize: '0.55rem', letterSpacing: '0.2em', textTransform: 'uppercase', padding: '0 2rem' }}>
+              {item} <span style={{ color: 'rgba(191,162,116,0.5)' }}>--</span>
             </span>
           ))}
         </div>
       </div>
 
       <style>{`
-        @keyframes ticker {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
       `}</style>
 
     </section>
