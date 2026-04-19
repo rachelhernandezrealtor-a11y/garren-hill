@@ -583,7 +583,7 @@ function LocationSection() {
             <div style={{ width: '100%', height: 400, overflow: 'hidden', border: `1px solid rgba(191,162,116,0.15)` }}>
               <iframe
                 title="Flow Farm Location"
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFmBWY&q=107+Linden+Trail,Aberdeen,NC&zoom=13&maptype=satellite"
+                src="https://maps.google.com/maps?q=107+Linden+Trail,Aberdeen,NC+28315&t=k&z=14&ie=UTF8&iwloc=&output=embed"
                 width="100%" height="400" frameBorder="0" style={{ border: 0, display: 'block' }} allowFullScreen loading="lazy"
               />
             </div>
