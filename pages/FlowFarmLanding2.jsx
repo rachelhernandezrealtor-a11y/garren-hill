@@ -289,16 +289,16 @@ function Hero() {
       <div style={{
         position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column',
         alignItems: 'flex-start', justifyContent: 'center',
-        padding: '0 6vw', paddingTop: '4rem', paddingBottom: '10rem',
+        padding: '0 6vw', paddingTop: '8rem', paddingBottom: '14rem', justifyContent: 'flex-start',
       }}>
         <h1 style={{
           color: '#fff',
           fontFamily: 'Georgia, "Times New Roman", serif',
           fontWeight: 400,
           fontStyle: 'italic',
-          fontSize: 'clamp(2.2rem, 4.5vw, 5rem)',
+          fontSize: 'clamp(1.8rem, 3.5vw, 4rem)',
           lineHeight: 1.0,
-          marginBottom: '1.8rem',
+          marginBottom: '1.2rem',
           textShadow: '0 4px 60px rgba(0,0,0,0.5)',
           maxWidth: 820,
         }}>
@@ -306,11 +306,11 @@ function Hero() {
         </h1>
         <p style={{
           color: 'rgba(255,255,255,0.8)',
-          fontSize: 'clamp(0.8rem, 1.4vw, 1rem)',
+          fontSize: '0.85rem',
           lineHeight: 1.7,
           fontFamily: 'sans-serif',
           maxWidth: 520,
-          marginBottom: '2.5rem',
+          marginBottom: '2rem',
         }}>
           Fifteen acres of working farmland, forest, and a fully self-sustaining compound -- three miles from Pinehurst Resort. Transferable Pinehurst Country Club membership available.
         </p>
