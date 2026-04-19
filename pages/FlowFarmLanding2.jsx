@@ -546,7 +546,7 @@ function EstateSection() {
           <p style={{ color: "rgba(255,255,255,0.4)", marginTop: "1rem", fontFamily: "sans-serif", fontSize: "0.85rem" }}>Click any pin to explore each structure</p>
         </div>
         <div style={{ position: "relative", width: "100%", overflow: "hidden" }}>
-          <img src={PHOTOS.grounds} alt="Flow Farm Aerial" style={{ width: "100%", display: "block", maxHeight: 620, objectFit: "cover", objectPosition: "center" }} />
+          <img src={PHOTOS.grounds} alt="Flow Farm Aerial" style={{ width: "100%", display: "block", height: "auto" }} />
           <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.25)" }} />
           {PINS.map((pin, i) => (
             <div key={pin.label} style={{ position: "absolute", top: pin.top, left: pin.left, transform: "translate(-50%, -50%)", zIndex: 10 }}>
