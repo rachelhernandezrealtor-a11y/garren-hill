@@ -47,6 +47,9 @@
     },
     "SocialPost": {
       "title": "SocialPost"
+    },
+    "FlowFarmLanding": {
+      "title": "FlowFarmLanding"
     }
   }
 }
