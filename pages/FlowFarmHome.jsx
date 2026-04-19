@@ -125,7 +125,7 @@ export default function FlowFarmHome() {
           fontSize: 22, fontWeight: 300, letterSpacing: "0.05em", color: "rgba(232,228,220,0.9)",
           textAlign: "right"
         }}>
-          $5,260,000
+          $5,250,000
         </div>
       </section>
 
@@ -317,7 +317,7 @@ export default function FlowFarmHome() {
         display: "flex", justifyContent: "space-between", alignItems: "center"
       }}>
         <div style={{ fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase" }}>Flow Farm</div>
-        <div style={{ fontSize: 11, color: "rgba(232,228,220,0.35)" }}>107 Linden Trail, Aberdeen, NC | $5,260,000</div>
+        <div style={{ fontSize: 11, color: "rgba(232,228,220,0.35)" }}>107 Linden Trail, Aberdeen, NC | $5,250,000</div>
         <div style={{ fontSize: 11, color: "rgba(232,228,220,0.35)" }}>Rachel Hernandez</div>
       </footer>
 
