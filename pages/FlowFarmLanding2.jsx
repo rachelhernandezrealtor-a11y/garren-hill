@@ -273,51 +273,10 @@ function Hero() {
       {/* Dark gradient overlay */}
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.75) 100%)', zIndex: 5 }} />
 
-      {/* All hero content -- overlaid on video */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 10, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-
-        {/* Address bar */}
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem', padding: '1.5rem 0', marginTop: '3.5rem' }}>
-          <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.55rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>107 Linden Trail, Aberdeen, NC</span>
-          <span style={{ color: 'rgba(255,255,255,0.3)' }}>|</span>
-          <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.55rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>3 Miles From Pinehurst</span>
-          <span style={{ color: 'rgba(255,255,255,0.3)' }}>|</span>
-          <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.55rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>Pinehurst ETJ</span>
-        </div>
-
-        {/* Headline + subtext + button */}
-        <div style={{ padding: '0 6vw' }}>
-          <h1 style={{ color: '#fff', fontFamily: 'Georgia, "Times New Roman", serif', fontWeight: 400, fontStyle: 'italic', fontSize: '1.4rem', lineHeight: 1.15, marginBottom: '0.5rem', textShadow: '0 4px 40px rgba(0,0,0,0.5)' }}>
-            Agritourism<br />Established.<br />Legacy Ready.
-          </h1>
-          <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.6rem', lineHeight: 1.6, fontFamily: 'sans-serif', maxWidth: 480, marginBottom: '0.7rem' }}>
-            Fifteen acres of working farmland, forest, and a fully self-sustaining compound -- three miles from Pinehurst Resort.
-          </p>
-          <button onClick={() => scrollTo('residence')} style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.55)', color: '#fff', padding: '0.4rem 1.2rem', fontSize: '0.5rem', letterSpacing: '0.2em', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'sans-serif' }}>
-            Enter Flow Farm
-          </button>
-        </div>
-
-        {/* Stat bar -- pinned to bottom */}
-        <div style={{ display: 'flex', borderTop: '1px solid rgba(255,255,255,0.15)', background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(10px)' }}>
-          {[
-            { num: '15', label: 'USDA Acres' },
-            { num: '7', label: 'Buildable Acres' },
-            { num: '3', label: 'Acre Veganic Farm' },
-            { num: '$5.25M', label: 'Offered At' },
-          ].map((stat, i, arr) => (
-            <div key={stat.label} style={{ flex: 1, padding: '0.6rem 1rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRight: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.12)' : 'none' }}>
-              <span style={{ color: '#fff', fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '0.9rem', lineHeight: 1, marginBottom: '0.15rem' }}>{stat.num}</span>
-              <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.45rem', letterSpacing: '0.18em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>{stat.label}</span>
-            </div>
-          ))}
-        </div>
-
-      </div>
-
     </section>
   );
 }
+
 
 }
 
