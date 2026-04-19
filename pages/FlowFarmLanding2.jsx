@@ -281,8 +281,8 @@ function Hero() {
 
       {/* Vignette -- DO NOT TOUCH */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'radial-gradient(ellipse at 60% 50%, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.52) 100%)' }} />
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 30%, transparent 55%, rgba(0,0,0,0.82) 100%)' }} />
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to right, rgba(0,0,0,0.45) 0%, transparent 60%)' }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, transparent 28%, transparent 50%, rgba(0,0,0,0.88) 100%)' }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 45%, transparent 70%)' }} />
 
       {/* Nav */}
       <nav style={{ position: 'absolute', top: 0, right: 0, zIndex: 10, display: 'flex', gap: '2rem', padding: '1.75rem 2.5rem', alignItems: 'center' }}>
@@ -301,7 +301,7 @@ function Hero() {
       </div>
 
       {/* MAIN CONTENT -- left aligned, anchored lower third */}
-      <div style={{ position: 'absolute', bottom: '11%', left: 0, zIndex: 5, padding: '0 5vw', maxWidth: '70vw' }}>
+      <div style={{ position: 'absolute', bottom: '9%', left: 0, zIndex: 5, padding: '0 5vw', maxWidth: '65vw' }}>
 
         {/* Headline */}
         <h1 style={{
