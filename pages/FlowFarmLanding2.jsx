@@ -274,7 +274,7 @@ function Hero() {
 
       {/* Address bar top */}
       <div style={{
-        position: 'absolute', top: 80, left: 0, right: 0,
+        position: 'absolute', top: 90, left: 0, right: 0,
         display: 'flex', justifyContent: 'center', alignItems: 'center',
         gap: '1.2rem', zIndex: 10,
       }}>
@@ -289,14 +289,14 @@ function Hero() {
       <div style={{
         position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column',
         alignItems: 'flex-start', justifyContent: 'center',
-        padding: '0 6vw', paddingBottom: '12rem',
+        padding: '0 6vw', paddingTop: '4rem', paddingBottom: '10rem',
       }}>
         <h1 style={{
           color: '#fff',
           fontFamily: 'Georgia, "Times New Roman", serif',
           fontWeight: 400,
           fontStyle: 'italic',
-          fontSize: 'clamp(3.5rem, 8vw, 8rem)',
+          fontSize: 'clamp(2.2rem, 4.5vw, 5rem)',
           lineHeight: 1.0,
           marginBottom: '1.8rem',
           textShadow: '0 4px 60px rgba(0,0,0,0.5)',
@@ -340,7 +340,7 @@ function Hero() {
           { num: '$5.25M', label: 'Offered At' },
         ].map((stat, i, arr) => (
           <div key={stat.label} style={{
-            flex: 1, padding: '1.6rem 2rem',
+            flex: 1, padding: '1.1rem 1.5rem',
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
             borderRight: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.12)' : 'none',
           }}>
@@ -348,7 +348,7 @@ function Hero() {
               color: '#fff',
               fontFamily: 'Georgia, serif',
               fontStyle: 'italic',
-              fontSize: 'clamp(2rem, 4vw, 3rem)',
+              fontSize: 'clamp(1.4rem, 2.5vw, 2rem)',
               lineHeight: 1,
               marginBottom: '0.4rem',
             }}>{stat.num}</span>
