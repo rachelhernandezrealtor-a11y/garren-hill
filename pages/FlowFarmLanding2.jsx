@@ -299,6 +299,9 @@ function Hero() {
       {/* Center content */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '5rem 3rem 4rem' }}>
 
+        {/* Frosted backdrop behind text */}
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '85%', maxWidth: 700, height: '55%', background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, transparent 75%)', filter: 'blur(18px)', zIndex: -1 }} />
+
         {/* Headline */}
         <h1 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(2rem, 4.5vw, 4.2rem)', lineHeight: 1.2, margin: '0 0 0.5rem', textShadow: '0 2px 60px rgba(0,0,0,0.5)', letterSpacing: '0.01em' }}>
           Agritourism Established.
