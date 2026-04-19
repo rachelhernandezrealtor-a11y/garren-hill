@@ -101,14 +101,14 @@ function Hero() {
 
 function VisionSection() {
   return (
-    <section style={{ background: DARK, padding: '11rem 0', textAlign: 'center' }}>
+    <section style={{ background: DARK, padding: '9rem 0', textAlign: 'center' }}>
       <FadeIn>
-        <Label style={{ display: 'block', marginBottom: '2.5rem' }}>The Vision</Label>
-        <GoldRule style={{ margin: '0 auto 3.5rem' }} />
-        <h2 style={{ color: CREAM, fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(2rem, 3.8vw, 3.6rem)', lineHeight: 1.2, maxWidth: 820, margin: '0 auto 2.5rem', padding: '0 2rem', letterSpacing: '-0.015em' }}>
-          Not just a home. A living system<br />built for those who intend to leave<br />something behind.
+        <Label style={{ display: 'block', marginBottom: '2rem' }}>The Vision</Label>
+        <GoldRule style={{ margin: '0 auto 3rem' }} />
+        <h2 style={{ color: CREAM, fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: '2.6rem', lineHeight: 1.25, maxWidth: 700, margin: '0 auto 2.5rem', padding: '0 2rem', letterSpacing: '-0.01em' }}>
+          Not just a home. A living system built for those who intend to leave something behind.
         </h2>
-        <p style={{ color: 'rgba(255,255,255,0.38)', fontFamily: 'Georgia, serif', fontSize: 'clamp(0.9rem, 1.3vw, 1.08rem)', lineHeight: 2, maxWidth: 560, margin: '0 auto', padding: '0 2rem' }}>
+        <p style={{ color: 'rgba(255,255,255,0.42)', fontFamily: 'Georgia, serif', fontSize: '1.05rem', lineHeight: 1.95, maxWidth: 580, margin: '0 auto', padding: '0 2rem' }}>
           Fifteen acres of forest and working farmland. A fully self-sustaining compound three miles from Pinehurst Resort. Designed by Robert E. Clark AIA as one of his final private commissions -- and built to operate indefinitely, independently, and beautifully.
         </p>
       </FadeIn>
