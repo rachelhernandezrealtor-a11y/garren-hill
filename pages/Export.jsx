@@ -98,7 +98,7 @@ export default function Export() {
 
         {pendingPhotos.length > 0 && (
           <div className="bg-yellow-50 border border-yellow-200 rounded-xl px-4 py-3 mb-6 text-sm text-yellow-800 flex items-center gap-2">
-            <span className="font-medium">⚠️ {pendingPhotos.length} photos still pending review.</span>
+            <span className="font-medium">! {pendingPhotos.length} photos still pending review.</span>
             <button onClick={() => navigate(`/review?property=${propertyId}`)} className="underline hover:no-underline">Go back to review</button>
           </div>
         )}

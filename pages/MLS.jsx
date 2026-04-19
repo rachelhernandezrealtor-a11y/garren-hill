@@ -178,14 +178,14 @@ export default function MLS() {
               <h1 className="text-xl font-bold text-gray-900">{property.address}</h1>
               <p className="text-sm text-gray-500">
                 {MLS_NAME} Photos
-                {property.mls_number && <span className="ml-2 text-gray-400">· MLS# {property.mls_number}</span>}
+                {property.mls_number && <span className="ml-2 text-gray-400">| MLS# {property.mls_number}</span>}
               </p>
             </div>
           </div>
           <div className="flex items-center gap-3">
             <Link to={`/Review?property=${propertyId}`}>
               <Button variant="outline" size="sm" className="gap-1 text-sm">
-                ← Review Photos
+                <- Review Photos
               </Button>
             </Link>
             <Button
@@ -200,7 +200,7 @@ export default function MLS() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-          {/* MLS Queue — left/main */}
+          {/* MLS Queue - left/main */}
           <div className="lg:col-span-3">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
@@ -214,7 +214,7 @@ export default function MLS() {
                 </span>
                 {savingOrder && <span className="text-xs text-gray-400 flex items-center gap-1"><Loader2 className="w-3 h-3 animate-spin" />Saving order...</span>}
               </div>
-              <p className="text-xs text-gray-400">Drag to reorder · First photo = hero</p>
+              <p className="text-xs text-gray-400">Drag to reorder | First photo = hero</p>
             </div>
 
             {overLimit && (
@@ -259,7 +259,7 @@ export default function MLS() {
                         {p.custom_name || p.file_name}
                         {i === 0 && <span className="ml-2 text-xs bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full">Hero</span>}
                       </p>
-                      <p className="text-xs text-gray-400">{[p.category, p.room].filter(Boolean).join(" · ")}</p>
+                      <p className="text-xs text-gray-400">{[p.category, p.room].filter(Boolean).join(" | ")}</p>
                     </div>
                     <div className="flex items-center gap-1.5 flex-shrink-0">
                       <span className={`text-xs px-2 py-0.5 rounded-full ${
@@ -281,7 +281,7 @@ export default function MLS() {
             )}
           </div>
 
-          {/* Available Photos — right panel */}
+          {/* Available Photos - right panel */}
           <div className="lg:col-span-2">
             <div className="flex items-center justify-between mb-3">
               <h2 className="font-semibold text-gray-900">Available Photos</h2>
@@ -304,7 +304,7 @@ export default function MLS() {
                     />
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-gray-900 truncate">{p.custom_name || p.file_name}</p>
-                      <p className="text-xs text-gray-400">{[p.category, p.room].filter(Boolean).join(" · ")}</p>
+                      <p className="text-xs text-gray-400">{[p.category, p.room].filter(Boolean).join(" | ")}</p>
                     </div>
                     <button
                       onClick={() => addToMLS(p)}
@@ -323,7 +323,7 @@ export default function MLS() {
             {availablePhotos.length === 0 && allPhotos.filter(p => p.status === "Pending").length > 0 && (
               <div className="mt-3 bg-yellow-50 border border-yellow-200 rounded-xl p-3 text-xs text-yellow-700">
                 You have {allPhotos.filter(p => p.status === "Pending").length} unreviewed photos.{" "}
-                <Link to={`/Review?property=${propertyId}`} className="underline font-medium">Review them →</Link>
+                <Link to={`/Review?property=${propertyId}`} className="underline font-medium">Review them -></Link>
               </div>
             )}
           </div>

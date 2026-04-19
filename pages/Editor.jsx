@@ -15,7 +15,7 @@ const ENHANCE_PRESETS = [
   {
     id: "global_polish",
     label: "Global Polish",
-    icon: "✨",
+    icon: "",
     desc: "Safe all-around enhancement for every photo",
     color: "bg-purple-100 text-purple-700 border-purple-200",
     activeColor: "bg-purple-600 text-white border-purple-600",
@@ -23,15 +23,15 @@ const ENHANCE_PRESETS = [
   {
     id: "interior_enhance",
     label: "Interior Boost",
-    icon: "🏠",
-    desc: "Lifts shadows, warms tone — perfect for indoor shots",
+    icon: "",
+    desc: "Lifts shadows, warms tone - perfect for indoor shots",
     color: "bg-amber-100 text-amber-700 border-amber-200",
     activeColor: "bg-amber-500 text-white border-amber-500",
   },
   {
     id: "exterior_enhance",
     label: "Exterior Pop",
-    icon: "🌿",
+    icon: "",
     desc: "Boosts sky, greens, and architectural detail",
     color: "bg-green-100 text-green-700 border-green-200",
     activeColor: "bg-green-600 text-white border-green-600",
@@ -39,7 +39,7 @@ const ENHANCE_PRESETS = [
   {
     id: "shadow_lift",
     label: "Shadow Lift",
-    icon: "🔆",
+    icon: "",
     desc: "Opens up dark corners without blowing highlights",
     color: "bg-sky-100 text-sky-700 border-sky-200",
     activeColor: "bg-sky-600 text-white border-sky-600",
@@ -47,7 +47,7 @@ const ENHANCE_PRESETS = [
   {
     id: "window_pull",
     label: "Window Pull",
-    icon: "🪟",
+    icon: "",
     desc: "Balances bright windows with dark interiors",
     color: "bg-blue-100 text-blue-700 border-blue-200",
     activeColor: "bg-blue-600 text-white border-blue-600",
@@ -55,7 +55,7 @@ const ENHANCE_PRESETS = [
   {
     id: "color_balance",
     label: "Color Balance",
-    icon: "🎨",
+    icon: "",
     desc: "Auto white balance + vibrance correction",
     color: "bg-rose-100 text-rose-700 border-rose-200",
     activeColor: "bg-rose-600 text-white border-rose-600",
@@ -124,12 +124,12 @@ export default function Editor() {
       if (data.enhanced_url) {
         setPhotos(prev => prev.map(p => p.id === ph.id ? { ...p, enhanced_url: data.enhanced_url } : p));
         setShowEnhanced(true);
-        showMsg("✨ Enhanced!");
+        showMsg(" Enhanced!");
       } else {
-        showMsg("❌ Enhancement failed — try again");
+        showMsg(" Enhancement failed - try again");
       }
     } catch (err) {
-      showMsg("❌ Error: " + err.message);
+      showMsg(" Error: " + err.message);
     }
     setEnhancing(false);
   };
@@ -162,7 +162,7 @@ export default function Editor() {
       setBulkProgress(Math.round((done / photoList.length) * 100));
     }
     setBulkEnhancing(false);
-    showMsg(`✨ ${done} photos enhanced!`);
+    showMsg(` ${done} photos enhanced!`);
   };
 
   const enhanceAll = () => enhanceBulk(filteredPhotos);
@@ -207,7 +207,7 @@ export default function Editor() {
             </Link>
             <div>
               <h1 className="font-bold text-white">{property.address}</h1>
-              <p className="text-xs text-gray-400">{filteredPhotos.length} photos · Photo Editor</p>
+              <p className="text-xs text-gray-400">{filteredPhotos.length} photos | Photo Editor</p>
             </div>
           </div>
 
@@ -227,7 +227,7 @@ export default function Editor() {
 
       <div className="max-w-7xl mx-auto px-4 py-4 flex gap-4">
 
-        {/* Left Panel — Controls */}
+        {/* Left Panel - Controls */}
         <div className="w-72 flex-shrink-0 space-y-4">
 
           {/* Room Filter */}
@@ -354,7 +354,7 @@ export default function Editor() {
                     onClick={() => setShowEnhanced(true)}
                     className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${showEnhanced ? "bg-purple-600 text-white" : "bg-gray-800 text-gray-400 hover:text-white"}`}
                   >
-                    ✨ Enhanced
+                     Enhanced
                   </button>
                   {photo.enhanced_url && (
                     <Badge className="bg-green-900 text-green-300 border-green-700">Enhanced</Badge>
@@ -362,7 +362,7 @@ export default function Editor() {
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-400">
                   <span>{photo.room || "Unsorted"}</span>
-                  <span>·</span>
+                  <span>|</span>
                   <span>{photo.orientation}</span>
                 </div>
               </div>
@@ -382,7 +382,7 @@ export default function Editor() {
                 )}
                 {showEnhanced && photo.enhanced_url && (
                   <div className="absolute top-3 left-3 bg-purple-600/90 text-white text-xs px-2 py-1 rounded">
-                    ✨ Enhanced
+                     Enhanced
                   </div>
                 )}
               </div>
@@ -456,7 +456,7 @@ export default function Editor() {
                     className="w-full h-full object-cover"
                   />
                   {ph.enhanced_url && (
-                    <div className="absolute top-1.5 left-1.5 bg-purple-600/90 text-white text-xs px-1.5 py-0.5 rounded">✨</div>
+                    <div className="absolute top-1.5 left-1.5 bg-purple-600/90 text-white text-xs px-1.5 py-0.5 rounded"></div>
                   )}
                   {selected.has(ph.id) && (
                     <div className="absolute inset-0 bg-purple-600/20 flex items-center justify-center">

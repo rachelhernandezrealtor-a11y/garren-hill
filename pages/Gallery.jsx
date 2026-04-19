@@ -106,13 +106,13 @@ export default function Gallery() {
             {orientations.map(o => (
               <button key={o} onClick={() => setActiveOrientation(o)}
                 className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all border ${activeOrientation === o ? "border-slate-500 bg-slate-100 text-slate-700" : "border-gray-200 text-gray-500 hover:border-slate-300"}`}>
-                {o === "Landscape" ? "⬛ Horizontal" : o === "Portrait" ? "▮ Vertical" : o}
+                {o === "Landscape" ? " Horizontal" : o === "Portrait" ? " Vertical" : o}
               </button>
             ))}
           </div>
         )}
 
-        {/* Smart Photo Grid — landscape photos take 2 columns */}
+        {/* Smart Photo Grid - landscape photos take 2 columns */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {filtered.map((p) => (
             <button
@@ -152,7 +152,7 @@ export default function Gallery() {
             onClick={() => lightboxIdx > 0 && setLightbox(filtered[lightboxIdx - 1].id)}
             disabled={lightboxIdx === 0}
             className="absolute left-4 text-white/70 hover:text-white disabled:opacity-20 text-4xl font-light px-2"
-          >‹</button>
+          ></button>
           <div className="max-w-4xl w-full">
             <img
               src={filtered[lightboxIdx].enhanced_url || filtered[lightboxIdx].file_url}
@@ -162,9 +162,9 @@ export default function Gallery() {
             <div className="text-center mt-3">
               <p className="text-white font-medium">{filtered[lightboxIdx].custom_name || filtered[lightboxIdx].file_name}</p>
               <div className="flex items-center justify-center gap-3 mt-1">
-                {filtered[lightboxIdx].room && <p className="text-white/50 text-sm">{filtered[lightboxIdx].category} · {filtered[lightboxIdx].room}</p>}
+                {filtered[lightboxIdx].room && <p className="text-white/50 text-sm">{filtered[lightboxIdx].category} | {filtered[lightboxIdx].room}</p>}
                 <span className={`text-xs px-2 py-0.5 rounded-full ${filtered[lightboxIdx].orientation === "Landscape" ? "bg-sky-900 text-sky-300" : "bg-rose-900 text-rose-300"}`}>
-                  {filtered[lightboxIdx].orientation === "Landscape" ? "⬛ Horizontal" : "▮ Vertical"}
+                  {filtered[lightboxIdx].orientation === "Landscape" ? " Horizontal" : " Vertical"}
                 </span>
               </div>
               <p className="text-white/30 text-xs mt-1">{lightboxIdx + 1} / {filtered.length}</p>
@@ -174,7 +174,7 @@ export default function Gallery() {
             onClick={() => lightboxIdx < filtered.length - 1 && setLightbox(filtered[lightboxIdx + 1].id)}
             disabled={lightboxIdx === filtered.length - 1}
             className="absolute right-4 text-white/70 hover:text-white disabled:opacity-20 text-4xl font-light px-2"
-          >›</button>
+          ></button>
         </div>
       )}
     </div>

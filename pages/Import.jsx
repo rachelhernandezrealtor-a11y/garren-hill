@@ -221,7 +221,7 @@ export default function Import() {
                 Import More
               </Button>
               <Button onClick={() => navigate(`/Review?property=${propertyId}`)} className="bg-blue-600 hover:bg-blue-700">
-                Review & Organize →
+                Review & Organize ->
               </Button>
             </div>
           </div>
@@ -270,7 +270,7 @@ export default function Import() {
                   <Upload className="w-10 h-10 text-gray-300 mx-auto mb-3" />
                   <h3 className="text-lg font-semibold text-gray-700 mb-1">Drag & drop photos here</h3>
                   <p className="text-sm text-gray-400 mb-4">
-                    Select all at once with <kbd className="bg-gray-100 px-1.5 py-0.5 rounded text-xs">⌘A</kbd> then drag, or click to browse
+                    Select all at once with <kbd className="bg-gray-100 px-1.5 py-0.5 rounded text-xs">CmdA</kbd> then drag, or click to browse
                   </p>
                   <label className="cursor-pointer">
                     <input type="file" multiple accept="image/*" className="hidden" onChange={(e) => addFiles(e.target.files)} />
@@ -296,7 +296,7 @@ export default function Import() {
                 <div className="bg-amber-50 border border-amber-100 rounded-lg p-3 flex gap-2 mb-4">
                   <Info className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
                   <p className="text-xs text-amber-700">
-                    Dropbox integration is coming soon! For now, the fastest way is to open Dropbox on your Mac, select all photos (<strong>⌘A</strong>), and drag them directly into the upload box.
+                    Dropbox integration is coming soon! For now, the fastest way is to open Dropbox on your Mac, select all photos (<strong>CmdA</strong>), and drag them directly into the upload box.
                   </p>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-4">
@@ -304,7 +304,7 @@ export default function Import() {
                   <ol className="text-sm text-gray-600 space-y-1 list-decimal list-inside">
                     <li>Open <strong>Dropbox.app</strong> on your Mac</li>
                     <li>Navigate to your Garren Hill photos folder</li>
-                    <li>Press <kbd className="bg-white border border-gray-200 px-1.5 py-0.5 rounded text-xs">⌘A</kbd> to select all</li>
+                    <li>Press <kbd className="bg-white border border-gray-200 px-1.5 py-0.5 rounded text-xs">CmdA</kbd> to select all</li>
                     <li>Switch to "From My Computer" tab above</li>
                     <li>Drag them into the upload box</li>
                   </ol>

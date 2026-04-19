@@ -132,9 +132,9 @@ export default function FlowFarmGallery() {
       {/* Hero */}
       <div className="relative flex flex-col items-center justify-center text-center px-6 py-24 border-b" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
         <div className="w-px h-10 mx-auto mb-8" style={{ background: `${green}40` }} />
-        <p className="text-[10px] tracking-[0.5em] uppercase mb-4" style={{ color: `${green}80` }}>Pinehurst, North Carolina · 15 Acres</p>
+        <p className="text-[10px] tracking-[0.5em] uppercase mb-4" style={{ color: `${green}80` }}>Pinehurst, North Carolina | 15 Acres</p>
         <h1 className="text-5xl md:text-7xl font-light tracking-wide mb-4" style={{ color: "rgba(255,255,255,0.9)" }}>Flow Farm</h1>
-        <p className="text-sm tracking-widest uppercase mb-2" style={{ color: "rgba(255,255,255,0.3)" }}>Regenerative Estate · Six Structures</p>
+        <p className="text-sm tracking-widest uppercase mb-2" style={{ color: "rgba(255,255,255,0.3)" }}>Regenerative Estate | Six Structures</p>
         <div className="w-px h-6 mx-auto mt-6" style={{ background: `${green}20` }} />
         <p className="text-xs tracking-[0.3em] uppercase mt-4" style={{ color: "rgba(255,255,255,0.2)" }}>{totalCount > 0 ? `${totalCount} Photographs` : "Photography Coming Soon"}</p>
 
@@ -142,7 +142,7 @@ export default function FlowFarmGallery() {
           <button onClick={() => setShowTour(true)}
             className="mt-8 px-8 py-3 text-[11px] tracking-[0.3em] uppercase transition-all"
             style={{ border: `1px solid ${green}40`, color: `${green}80` }}>
-            ◈ Virtual Tour
+            * Virtual Tour
           </button>
         )}
       </div>
@@ -238,8 +238,8 @@ export default function FlowFarmGallery() {
       {/* Footer */}
       <div className="border-t text-center py-12 px-6" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
         <div className="w-px h-8 mx-auto mb-6" style={{ background: `${green}20` }} />
-        <p className="text-[10px] tracking-[0.4em] uppercase" style={{ color: "rgba(255,255,255,0.2)" }}>Flow Farm · Pinehurst, North Carolina</p>
-        <p className="text-[10px] tracking-widest mt-2" style={{ color: "rgba(255,255,255,0.1)" }}>Rachel Hernandez · Realtor</p>
+        <p className="text-[10px] tracking-[0.4em] uppercase" style={{ color: "rgba(255,255,255,0.2)" }}>Flow Farm | Pinehurst, North Carolina</p>
+        <p className="text-[10px] tracking-widest mt-2" style={{ color: "rgba(255,255,255,0.1)" }}>Rachel Hernandez | Realtor</p>
       </div>
 
       {/* Matterport Modal */}

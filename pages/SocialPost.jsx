@@ -8,9 +8,9 @@ const MEDIA_HUB_URL = "https://rocky-40781cce.base44.app/functions/getPropertyPh
 const MEDIA_HUB_APP_ID = "69e248a2469cc39540781cce";
 
 const PLATFORMS = [
-  { id: "instagram", label: "Instagram", icon: "📸", color: "bg-gradient-to-br from-purple-500 to-pink-500", dims: "1:1 or 4:5", maxChars: 2200 },
-  { id: "facebook", label: "Facebook", icon: "👍", color: "bg-blue-600", dims: "16:9 or 1:1", maxChars: 63206 },
-  { id: "linkedin", label: "LinkedIn", icon: "💼", color: "bg-sky-700", dims: "1.91:1", maxChars: 3000 },
+  { id: "instagram", label: "Instagram", icon: "", color: "bg-gradient-to-br from-purple-500 to-pink-500", dims: "1:1 or 4:5", maxChars: 2200 },
+  { id: "facebook", label: "Facebook", icon: "", color: "bg-blue-600", dims: "16:9 or 1:1", maxChars: 63206 },
+  { id: "linkedin", label: "LinkedIn", icon: "", color: "bg-sky-700", dims: "1.91:1", maxChars: 3000 },
 ];
 
 const TONES = ["Professional", "Warm & Inviting", "Luxury", "Casual", "Exciting"];
@@ -297,7 +297,7 @@ No other text.`,
         {step === "result" && (
           <div>
             <h2 className="text-xl font-bold text-gray-900 mb-1">Your Social Post</h2>
-            <p className="text-sm text-gray-500 mb-6">{selectedProp?.address} · {PLATFORMS.find(p => p.id === platform)?.label} · {tone}</p>
+            <p className="text-sm text-gray-500 mb-6">{selectedProp?.address} | {PLATFORMS.find(p => p.id === platform)?.label} | {tone}</p>
 
             {/* Selected photos preview */}
             {selectedPhotoObjs.length > 0 && (
@@ -349,7 +349,7 @@ No other text.`,
                     <RefreshCw className="w-4 h-4" /> Regenerate
                   </Button>
                   <Button onClick={() => setStep("photos")} className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 gap-2 flex-1">
-                    ← Adjust & Redo
+                    <- Adjust & Redo
                   </Button>
                 </div>
               </>

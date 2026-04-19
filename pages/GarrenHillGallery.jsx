@@ -136,7 +136,7 @@ export default function GarrenHillGallery() {
       {/* Hero */}
       <div className="relative flex flex-col items-center justify-center text-center px-6 py-24 border-b border-white/8">
         <div className="w-px h-10 bg-amber-400/40 mx-auto mb-8" />
-        <p className="text-amber-400/70 text-[10px] tracking-[0.5em] uppercase mb-4">Pinehurst, North Carolina · Est. 1916</p>
+        <p className="text-amber-400/70 text-[10px] tracking-[0.5em] uppercase mb-4">Pinehurst, North Carolina | Est. 1916</p>
         <h1 className="text-5xl md:text-7xl font-light text-white/90 tracking-wide mb-4">Garren Hill</h1>
         <p className="text-white/30 text-sm tracking-widest uppercase mb-2">200 Hollycrest Drive</p>
         <div className="w-px h-6 bg-amber-400/20 mx-auto mt-6" />
@@ -148,7 +148,7 @@ export default function GarrenHillGallery() {
             onClick={() => setShowTour(true)}
             className="mt-8 px-8 py-3 border border-amber-400/40 text-amber-400/70 text-[11px] tracking-[0.3em] uppercase hover:border-amber-400 hover:text-amber-400 transition-all"
           >
-            ◈ Virtual Tour
+            * Virtual Tour
           </button>
         )}
       </div>
@@ -233,8 +233,8 @@ export default function GarrenHillGallery() {
       {/* Footer */}
       <div className="border-t border-white/8 text-center py-12 px-6">
         <div className="w-px h-8 bg-amber-400/20 mx-auto mb-6" />
-        <p className="text-white/20 text-[10px] tracking-[0.4em] uppercase">Garren Hill · Pinehurst, North Carolina</p>
-        <p className="text-white/10 text-[10px] tracking-widest mt-2">Rachel Hernandez · Realtor</p>
+        <p className="text-white/20 text-[10px] tracking-[0.4em] uppercase">Garren Hill | Pinehurst, North Carolina</p>
+        <p className="text-white/10 text-[10px] tracking-widest mt-2">Rachel Hernandez | Realtor</p>
       </div>
 
       {/* Matterport Modal */}

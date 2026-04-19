@@ -173,7 +173,7 @@ JSON only, no other text.`,
               <h1 className="text-xl font-bold text-gray-900">{property.address}</h1>
               <p className="text-sm text-gray-500">
                 {photos.length} photos
-                {property.mls_number && <span className="ml-2 text-gray-400">· MLS# {property.mls_number}</span>}
+                {property.mls_number && <span className="ml-2 text-gray-400">| MLS# {property.mls_number}</span>}
               </p>
             </div>
           </div>
@@ -314,11 +314,11 @@ JSON only, no other text.`,
 
                 <div className="absolute top-3 left-3 flex items-center gap-1.5 flex-wrap">
                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${orientationBadge[photo.orientation] || orientationBadge.Unknown}`}>
-                    {photo.orientation === "Landscape" ? "⬛ H" : photo.orientation === "Portrait" ? "▮ V" : "?"}
+                    {photo.orientation === "Landscape" ? " H" : photo.orientation === "Portrait" ? " V" : "?"}
                   </span>
                   {photo.flag_for_photographer && <span className="bg-orange-100 text-orange-600 px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1"><Flag className="w-3 h-3" />Flagged</span>}
                   {(photo.mls_status === "Queued" || photo.mls_status === "Ready") && (
-                    <span className="bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium">✓ In MLS Queue</span>
+                    <span className="bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium"> In MLS Queue</span>
                   )}
                 </div>
 
@@ -388,8 +388,8 @@ JSON only, no other text.`,
                 <Select value={photo.orientation || "Unknown"} onValueChange={(v) => updatePhoto(photo.id, { orientation: v })}>
                   <SelectTrigger className="text-sm"><SelectValue /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Landscape">⬛ Horizontal (Landscape)</SelectItem>
-                    <SelectItem value="Portrait">▮ Vertical (Portrait)</SelectItem>
+                    <SelectItem value="Landscape"> Horizontal (Landscape)</SelectItem>
+                    <SelectItem value="Portrait"> Vertical (Portrait)</SelectItem>
                     <SelectItem value="Unknown">Unknown</SelectItem>
                   </SelectContent>
                 </Select>
@@ -451,8 +451,8 @@ JSON only, no other text.`,
                   }`}
                 >
                   <FileImage className="w-4 h-4" />
-                  {mlsAddedId === photo.id ? "✓ Added to MLS Queue!" :
-                   photo.mls_status === "Queued" || photo.mls_status === "Ready" ? "✓ In MLS Queue" :
+                  {mlsAddedId === photo.id ? " Added to MLS Queue!" :
+                   photo.mls_status === "Queued" || photo.mls_status === "Ready" ? " In MLS Queue" :
                    "Send to MLS Queue"}
                 </button>
               </div>

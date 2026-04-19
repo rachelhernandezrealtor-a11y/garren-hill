@@ -111,7 +111,7 @@ export default function Home() {
       }}>
         <div>
           <p style={{ color: "rgba(255,255,255,0.8)", fontSize: 13, letterSpacing: "0.3em", textTransform: "uppercase", margin: 0 }}>Garren Hill</p>
-          <p style={{ color: `${gold}60`, fontSize: 10, letterSpacing: "0.4em", textTransform: "uppercase", margin: "2px 0 0" }}>Est. 1916 · Pinehurst, NC</p>
+          <p style={{ color: `${gold}60`, fontSize: 10, letterSpacing: "0.4em", textTransform: "uppercase", margin: "2px 0 0" }}>Est. 1916 | Pinehurst, NC</p>
         </div>
         <div style={{ display: "flex", gap: 28, alignItems: "center" }}>
           {[["The Story", "#story"], ["Rooms", "#rooms"], ["Gallery", "/GarrenHillGallery"]].map(([label, href]) => (
@@ -126,7 +126,7 @@ export default function Home() {
               fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase",
               padding: "7px 14px", cursor: "pointer"
             }}>
-              ◈ Tour
+              * Tour
             </button>
           )}
           <a href="#contact" style={{
@@ -153,7 +153,7 @@ export default function Home() {
         }} />
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "0 48px 80px" }}>
           <p style={{ color: `${gold}80`, fontSize: 10, letterSpacing: "0.6em", textTransform: "uppercase", marginBottom: 16 }}>
-            Pinehurst, North Carolina · Est. 1916
+            Pinehurst, North Carolina | Est. 1916
           </p>
           <h1 style={{ fontSize: "clamp(48px, 8vw, 96px)", fontWeight: 300, color: "rgba(255,255,255,0.9)", letterSpacing: "0.05em", margin: "0 0 16px", lineHeight: 1.05 }}>
             Garren Hill
@@ -174,11 +174,11 @@ export default function Home() {
                 fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase",
                 padding: "14px 32px", cursor: "pointer"
               }}>
-                ◈ Virtual Tour
+                * Virtual Tour
               </button>
             )}
             <a href="#contact" style={{ color: "rgba(255,255,255,0.25)", fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", textDecoration: "none" }}>
-              Private Inquiry →
+              Private Inquiry ->
             </a>
           </div>
         </div>
@@ -202,13 +202,13 @@ export default function Home() {
         <p style={{ color: `${gold}70`, fontSize: 10, letterSpacing: "0.5em", textTransform: "uppercase", marginBottom: 32 }}>The History</p>
         <h2 style={{ fontSize: 36, fontWeight: 300, color: "rgba(255,255,255,0.75)", marginBottom: 32, lineHeight: 1.4 }}>A Century of Distinction</h2>
         <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 15, lineHeight: 1.9, marginBottom: 24 }}>
-          Built in 1916 for Walter Hines Page — co-founder of Doubleday, Page & Co. and U.S. Ambassador to the Court of St. James's — Garren Hill has defined quiet prestige in the Carolina Sandhills for over a century.
+          Built in 1916 for Walter Hines Page - co-founder of Doubleday, Page & Co. and U.S. Ambassador to the Court of St. James's - Garren Hill has defined quiet prestige in the Carolina Sandhills for over a century.
         </p>
         <p style={{ color: "rgba(255,255,255,0.3)", fontSize: 15, lineHeight: 1.9, marginBottom: 24 }}>
-          Meticulously restored by its current stewards: three months sourcing period-accurate bricks for the columned portico, a five-zone climate system installed to preserve original heart pine floors and seven working fireplaces, and the Wee Cottage — a separate guest retreat delivered by sky crane.
+          Meticulously restored by its current stewards: three months sourcing period-accurate bricks for the columned portico, a five-zone climate system installed to preserve original heart pine floors and seven working fireplaces, and the Wee Cottage - a separate guest retreat delivered by sky crane.
         </p>
         <p style={{ color: "rgba(255,255,255,0.25)", fontSize: 15, lineHeight: 1.9 }}>
-          The date "1916" remains inlaid in herringbone brick beneath the portico columns — a quiet acknowledgment of a lineage that very few properties can claim.
+          The date "1916" remains inlaid in herringbone brick beneath the portico columns - a quiet acknowledgment of a lineage that very few properties can claim.
         </p>
         <div style={{ width: 1, height: 40, background: `${gold}20`, margin: "48px auto 0" }} />
       </div>
@@ -258,7 +258,7 @@ export default function Home() {
               fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase",
               padding: "12px 28px", textDecoration: "none", display: "inline-block"
             }}>
-              View All Rooms →
+              View All Rooms ->
             </a>
           </div>
         </div>
@@ -278,7 +278,7 @@ export default function Home() {
             fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase",
             padding: "16px 40px", cursor: "pointer"
           }}>
-            ◈ Launch Virtual Tour
+            * Launch Virtual Tour
           </button>
         </div>
       )}
@@ -303,7 +303,7 @@ export default function Home() {
       {/* Footer */}
       <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "40px 32px", textAlign: "center" }}>
         <p style={{ color: "rgba(255,255,255,0.12)", fontSize: 10, letterSpacing: "0.4em", textTransform: "uppercase", margin: 0 }}>
-          Garren Hill · Pinehurst, North Carolina · rachelhernandezrealtor@gmail.com
+          Garren Hill | Pinehurst, North Carolina | rachelhernandezrealtor@gmail.com
         </p>
       </div>
 

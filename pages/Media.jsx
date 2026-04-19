@@ -141,7 +141,7 @@ export default function Media() {
               <h1 className="text-xl font-bold text-gray-900">{property.address}</h1>
               <p className="text-sm text-gray-500">
                 Media Hub
-                {property.mls_number && <span className="ml-2 text-gray-400">· MLS# {property.mls_number}</span>}
+                {property.mls_number && <span className="ml-2 text-gray-400">| MLS# {property.mls_number}</span>}
               </p>
             </div>
           </div>
