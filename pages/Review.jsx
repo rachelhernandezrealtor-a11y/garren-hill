@@ -1,6 +1,6 @@
+import { InvokeLLM } from "@/api/integrations";
 import { useState, useEffect } from "react";
 import { Property, PropertyPhoto } from "@/api/entities";
-import { InvokeAgent } from "@/api/ai";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -57,7 +57,7 @@ export default function Review() {
     const toProcess = photos.filter((p) => !p.ai_category);
     for (const photo of toProcess) {
       try {
-        const result = await InvokeAgent({
+        const result = await InvokeLLM({
           prompt: `Look at this real estate photo and categorize it. URL: ${photo.file_url}
 Return ONLY a JSON object:
 - category: "Exterior" or "Interior"
