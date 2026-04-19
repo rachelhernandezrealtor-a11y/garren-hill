@@ -189,7 +189,7 @@ function Hero() {
           Flow Farm
         </h1>
         <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 'clamp(0.85rem, 1.5vw, 1.05rem)', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'sans-serif', marginBottom: '3rem' }}>
-          Agritourism Established. Legacy Ready.
+          Agritourism Established. Legacy Ready. -- LIVE EDIT TEST
         </p>
         <p style={{ color: GOLD, fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontFamily: 'Georgia, serif', marginBottom: '3rem' }}>
           $5,250,000
