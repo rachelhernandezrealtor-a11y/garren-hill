@@ -338,7 +338,7 @@ function StorySection() {
           </div>
         </div>
         <div style={{ position: 'relative' }}>
-          <img src={PHOTOS.grounds} alt="Flow Farm Estate" style={{ width: '100%', height: 520, objectFit: 'cover', display: 'block' }} />
+          <img src={PHOTOS.exterior} alt="Flow Farm Estate" style={{ width: '100%', height: 520, objectFit: 'cover', display: 'block' }} />
           <div style={{
             position: 'absolute', bottom: '-2rem', left: '-2rem',
             background: DARK, border: `1px solid rgba(191,162,116,0.2)`,
