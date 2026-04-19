@@ -10,8 +10,10 @@
     "Media": { "title": "Media" },
     "Gallery": { "title": "Gallery" },
     "Export": { "title": "Export" },
-    "SocialPost": { "title": "SocialPost" },
+    "SocialPost": { "title": "Social Post" },
     "Editor": { "title": "Editor" },
-    "GarrenHillGallery": { "title": "Garren Hill Gallery" }
+    "GarrenHillGallery": { "title": "Garren Hill Gallery" },
+    "FlowFarmHome": { "title": "Flow Farm" },
+    "FlowFarmGallery": { "title": "Flow Farm Gallery" }
   }
 }
