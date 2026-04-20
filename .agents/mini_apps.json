@@ -3,6 +3,9 @@
   "slug": "rocky-app-b6e5df8e",
   "default_page": "Index",
   "pages": {
+    "GarrenHill": {
+      "title": "GarrenHill"
+    },
     "Properties": {
       "title": "Properties"
     },
@@ -44,9 +47,6 @@
     },
     "FlowFarmGallery": {
       "title": "FlowFarmGallery"
-    },
-    "GarrenHill": {
-      "title": "GarrenHill"
     },
     "FlowFarmLanding_new": {
       "title": "FlowFarmLanding_new"
