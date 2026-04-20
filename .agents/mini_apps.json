@@ -3,68 +3,17 @@
   "slug": "rocky-app-b6e5df8e",
   "default_page": "Index",
   "pages": {
-    "GarrenHill": {
-      "title": "GarrenHill"
-    },
-    "GarrenHillV2": {
-      "title": "GarrenHillV2"
-    },
-    "GHLanding": {
-      "title": "GHLanding"
-    },
-    "FlowFarmLanding": {
-      "title": "FlowFarmLanding"
-    },
     "Properties": {
       "title": "Properties"
-    },
-    "GarrenHillGallery": {
-      "title": "GarrenHillGallery"
-    },
-    "Media": {
-      "title": "Media"
-    },
-    "Dashboard": {
-      "title": "Dashboard"
-    },
-    "Home": {
-      "title": "Home"
-    },
-    "FlowFarmLanding2": {
-      "title": "FlowFarmLanding2"
-    },
-    "SocialPost": {
-      "title": "SocialPost"
-    },
-    "FlowFarm": {
-      "title": "FlowFarm"
     },
     "Export": {
       "title": "Export"
     },
-    "Import": {
-      "title": "Import"
-    },
     "FlowFarmForest": {
       "title": "FlowFarmForest"
     },
-    "FlowFarmHome": {
-      "title": "FlowFarmHome"
-    },
-    "Index": {
-      "title": "Index"
-    },
-    "FlowFarmGallery": {
-      "title": "FlowFarmGallery"
-    },
-    "FlowFarmLanding_new": {
-      "title": "FlowFarmLanding_new"
-    },
-    "MLS": {
-      "title": "MLS"
-    },
-    "Editor": {
-      "title": "Editor"
+    "SocialPost": {
+      "title": "SocialPost"
     },
     "Gallery": {
       "title": "Gallery"
@@ -72,11 +21,62 @@
     "Review": {
       "title": "Review"
     },
+    "Index": {
+      "title": "Index"
+    },
+    "GarrenHillGallery": {
+      "title": "GarrenHillGallery"
+    },
+    "Media": {
+      "title": "Media"
+    },
     "PropertyDetail": {
       "title": "PropertyDetail"
     },
+    "Import": {
+      "title": "Import"
+    },
+    "FlowFarmLanding2": {
+      "title": "FlowFarmLanding2"
+    },
+    "Home": {
+      "title": "Home"
+    },
+    "FlowFarmHome": {
+      "title": "FlowFarmHome"
+    },
+    "FlowFarmLanding": {
+      "title": "FlowFarmLanding"
+    },
+    "Editor": {
+      "title": "Editor"
+    },
+    "MLS": {
+      "title": "MLS"
+    },
+    "FlowFarmGallery": {
+      "title": "FlowFarmGallery"
+    },
+    "FlowFarmLanding_new": {
+      "title": "FlowFarmLanding_new"
+    },
+    "GarrenHillV2": {
+      "title": "GarrenHillV2"
+    },
     "ClientGallery": {
       "title": "ClientGallery"
+    },
+    "FlowFarm": {
+      "title": "FlowFarm"
+    },
+    "Dashboard": {
+      "title": "Dashboard"
+    },
+    "GHLanding": {
+      "title": "GHLanding"
+    },
+    "GarrenHill": {
+      "title": "GarrenHill"
     }
   }
 }
