@@ -12,6 +12,9 @@
     "GHLanding": {
       "title": "GHLanding"
     },
+    "FlowFarmLanding": {
+      "title": "FlowFarmLanding"
+    },
     "Properties": {
       "title": "Properties"
     },
@@ -74,9 +77,6 @@
     },
     "ClientGallery": {
       "title": "ClientGallery"
-    },
-    "FlowFarmLanding": {
-      "title": "FlowFarmLanding"
     }
   }
 }
