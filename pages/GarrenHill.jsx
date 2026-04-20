@@ -5,11 +5,37 @@ const CREAM = '#F2EDE4';
 const DARK = '#0d0b09';
 const MATTERPORT = 'https://my.matterport.com/show/?m=mfwyqT5Btwx&brand=0&mls=1&';
 
-const B = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/';
+// All Garren Hill photos from the property database
+const GH = 'https://base44.app/api/apps/69e2578ca7113dbe93cb208d/files/mp/public/69e2578ca7113dbe93cb208d/';
+
 const IMG = {
-  hero:      B + '6e1617ac3_200HollycrestDrive-222.jpg',
-  portico:   B + '0275eccb6_200HollycrestDrive-225.jpg',
-  staircase: B + 'e8203efae_260115107LindenTrailF-9922.jpg',
+  // Exterior / hero shots (high numbers = professionally shot exteriors)
+  hero:       GH + '6e1617ac3_200HollycrestDrive-222.jpg',
+  exterior2:  GH + '0275eccb6_200HollycrestDrive-225.jpg',
+  exterior3:  GH + 'f0b4bf90e_200HollycrestDrive-223.jpg',
+  aerial:     GH + '9efa93e39_200HollycrestDrive-230.jpg',
+  pool:       GH + '18ea0e2c4_200HollycrestDrive-218.jpg',
+  poolwide:   GH + '6e1fa56a6_200HollycrestDrive-219.jpg',
+  tennis:     GH + 'b38e74a20_200HollycrestDrive-216.jpg',
+  weecottage: GH + '4e6cdb2f6_200HollycrestDrive-212.jpg',
+  grounds:    GH + '9efa93e39_200HollycrestDrive-230.jpg',
+  // Interior -- categorized rooms
+  livingroom:  GH + 'cee09ae5f_200HollycrestDrive-65.jpg',
+  livingfire:  GH + '5f5f87315_200HollycrestDrive-65fire.jpg',
+  living2:     GH + '974dc6da4_200HollycrestDrive-66.jpg',
+  masterbath:  GH + '78160e09e_200HollycrestDrive-69.jpg',
+  masterbath2: GH + 'a9f46703e_200HollycrestDrive-68.jpg',
+  bath2:       GH + '8b40a6c2b_200HollycrestDrive-64.jpg',
+  // Additional numbered shots -- selecting key rooms
+  kitchen:     GH + '3eddea51a_200HollycrestDrive-32.jpg',
+  dining:      GH + '75f99e8d6_200HollycrestDrive-31.jpg',
+  hallway:     GH + '23ae60213_200HollycrestDrive-30.jpg',
+  bedroom2:    GH + 'fd252a907_200HollycrestDrive-60.jpg',
+  bedroom3:    GH + 'd8eb9d69a_200HollycrestDrive-59.jpg',
+  library:     GH + '42dea0be0_200HollycrestDrive-58.jpg',
+  portico:     GH + 'b9dc3dc38_200HollycrestDrive-61.jpg',
+  entry:       GH + '594c48db0_200HollycrestDrive-62.jpg',
+  sitting:     GH + 'c416c62aa_200HollycrestDrive-67.jpg',
 };
 
 function useW() {
@@ -30,7 +56,7 @@ function Fade({ children, delay, up, style }) {
   return <div ref={ref} style={{ opacity: on ? 1 : 0, transform: on ? 'none' : (up ? 'translateY(36px)' : 'translateY(20px)'), transition: `opacity 1.8s ease ${delay || 0}s, transform 1.8s ease ${delay || 0}s`, ...style }}>{children}</div>;
 }
 function Glass({ children, style }) {
-  return <div style={{ background: 'rgba(10,8,6,0.65)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.06)', ...style }}>{children}</div>;
+  return <div style={{ background: 'rgba(10,8,6,0.68)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.06)', ...style }}>{children}</div>;
 }
 function Eyebrow({ children, center }) {
   return <p style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.36em', textTransform: 'uppercase', color: GOLD, margin: 0, textAlign: center ? 'center' : 'left' }}>{children}</p>;
@@ -50,13 +76,12 @@ function Hero() {
       <img src={IMG.hero} alt="Garren Hill" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', zIndex: 1, opacity: 0.68 }} />
       <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to bottom, rgba(13,11,9,0.3) 0%, transparent 25%, transparent 55%, rgba(13,11,9,0.97) 100%)' }} />
       <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'radial-gradient(ellipse at center, transparent 30%, rgba(13,11,9,0.42) 100%)' }} />
-
       <div style={{ position: 'absolute', top: mob ? '1.8rem' : '2.6rem', left: 0, right: 0, zIndex: 10, textAlign: 'center', ...show(1) }}>
         <p style={{ fontFamily: 'Georgia, serif', fontSize: '10px', letterSpacing: '0.52em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', margin: 0 }}>Garren Hill</p>
       </div>
       {!mob && (
         <nav style={{ position: 'absolute', top: '2.4rem', right: '3rem', zIndex: 10, display: 'flex', gap: '2.8rem', ...show(1) }}>
-          {['The Manor', 'The Legacy', 'Inquire'].map(n => (
+          {['The Manor', 'The Grounds', 'Inquire'].map(n => (
             <a key={n} href={'#' + n.toLowerCase().replace(' ', '-')} style={{ color: 'rgba(255,255,255,0.2)', fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.24em', textTransform: 'uppercase', textDecoration: 'none' }}>{n}</a>
           ))}
         </nav>
@@ -85,7 +110,7 @@ function Hero() {
   );
 }
 
-// LEGACY / MANIFESTO
+// MANIFESTO
 function Legacy() {
   const w = useW(); const mob = w < 768;
   return (
@@ -100,9 +125,9 @@ function Legacy() {
           </h2>
           <GoldLine center />
           <p style={{ color: 'rgba(255,255,255,0.28)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.12rem', lineHeight: 2.1, margin: 0, maxWidth: 640 }}>
-            Recognized by the Village Historic Foundation. Meticulously restored with period-accurate
-            brick sourced over three months to match the original portico. The date 1916 remains
-            inlaid in the entrance portico -- a quiet declaration that some things are built to last.
+            Recognized by the Village Historic Foundation. Meticulous restoration with period-accurate
+            brick sourced over three months to match the original portico exactly. The year 1916
+            remains inlaid in brick at the entrance -- a quiet declaration that some things are built to last.
           </p>
           <a href={MATTERPORT} target="_blank" rel="noreferrer" style={{ color: GOLD, fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.32em', textTransform: 'uppercase', textDecoration: 'none', borderBottom: '1px solid rgba(184,152,106,0.28)', paddingBottom: '0.3rem' }}>
             Begin the Virtual Tour
@@ -119,7 +144,7 @@ function Cinematic({ src, eyebrow, headline, body, align, quote, position }) {
   return (
     <section style={{ position: 'relative', minHeight: mob ? '80vh' : '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
       <img src={src} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: position || 'center', zIndex: 1 }} />
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: quote ? 'rgba(13,11,9,0.55)' : align === 'right' ? 'linear-gradient(to left, rgba(13,11,9,0.9) 0%, rgba(13,11,9,0.35) 55%, transparent 100%)' : 'linear-gradient(to right, rgba(13,11,9,0.9) 0%, rgba(13,11,9,0.35) 55%, transparent 100%)' }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: quote ? 'rgba(13,11,9,0.58)' : align === 'right' ? 'linear-gradient(to left, rgba(13,11,9,0.92) 0%, rgba(13,11,9,0.35) 55%, transparent 100%)' : 'linear-gradient(to right, rgba(13,11,9,0.92) 0%, rgba(13,11,9,0.35) 55%, transparent 100%)' }} />
       <div style={{ position: 'relative', zIndex: 5, width: '100%', maxWidth: 1360, margin: '0 auto', padding: mob ? '6rem 6vw' : '10rem 6vw', display: 'flex', justifyContent: quote ? 'center' : align === 'right' ? 'flex-end' : 'flex-start' }}>
         <Fade delay={0.1}>
           {quote ? (
@@ -140,31 +165,31 @@ function Cinematic({ src, eyebrow, headline, body, align, quote, position }) {
   );
 }
 
-// MANOR -- split
+// MANOR
 function Manor() {
   const w = useW(); const mob = w < 768;
   return (
     <section id="the-manor" style={{ background: '#100e0c', padding: mob ? '8rem 0' : '16rem 0' }}>
       <div style={{ display: 'grid', gridTemplateColumns: mob ? '1fr' : '1fr 1fr', maxWidth: 1320, margin: '0 auto', padding: '0 6vw', gap: mob ? '5rem' : '8rem', alignItems: 'center' }}>
         <Fade delay={0.1}>
-          <img src={IMG.portico} alt="Garren Hill portico" style={{ width: '100%', height: mob ? 360 : 600, objectFit: 'cover', objectPosition: 'center 20%', display: 'block' }} />
+          <img src={IMG.exterior2} alt="Garren Hill manor" style={{ width: '100%', height: mob ? 360 : 600, objectFit: 'cover', objectPosition: 'center 20%', display: 'block' }} />
         </Fade>
         <Fade delay={0.25}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <Eyebrow>The Manor</Eyebrow>
             <GoldLine />
             <h2 style={{ color: CREAM, fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '2rem' : '3rem', lineHeight: 1.2, margin: 0, letterSpacing: '-0.018em' }}>
-              Five bedrooms.<br />Seven fireplaces.<br />One hundred and nine years<br />of character.
+              Five bedrooms.<br />Seven fireplaces.<br />One hundred and nine<br />years of character.
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.28)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.05rem', lineHeight: 2.1, margin: 0 }}>
               Wide plank heart pine floors throughout. A central hall vista that runs the full
-              depth of the house. Original millwork, period-accurate brick carefully sourced
-              over three months to match the entrance portico exactly.
+              depth of the house. Original millwork, period-accurate brick sourced over three
+              months to match the entrance portico exactly.
             </p>
             <p style={{ color: 'rgba(255,255,255,0.2)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.05rem', lineHeight: 2.1, margin: 0 }}>
               A five-zone climate system engineered to protect the original architecture.
-              The Wee Cottage -- a private guest structure relocated to the grounds by sky crane --
-              sits quietly at the edge of the property, complete and self-contained.
+              The Wee Cottage -- moved to the grounds by sky crane -- sits quietly at the
+              edge of the property, complete and self-contained.
             </p>
             <div style={{ display: 'flex', gap: '1.5rem', marginTop: '0.5rem' }}>
               <a href={MATTERPORT} target="_blank" rel="noreferrer" style={{ color: GOLD, fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.28em', textTransform: 'uppercase', textDecoration: 'none', borderBottom: '1px solid rgba(184,152,106,0.28)', paddingBottom: '0.3rem' }}>Virtual Tour</a>
@@ -172,6 +197,47 @@ function Manor() {
             </div>
           </div>
         </Fade>
+      </div>
+    </section>
+  );
+}
+
+// INTERIOR PHOTO GRID
+function Interiors() {
+  const w = useW(); const mob = w < 768;
+  const photos = [
+    { src: IMG.livingroom,  label: 'Living Room',    body: 'The 40-foot grand living room. Two fireplaces. Original pine floors. The heart of the house.' },
+    { src: IMG.masterbath,  label: 'Master Bath',    body: 'Fully renovated with period sensitivity. Every fixture chosen to honor the architecture.' },
+    { src: IMG.pool,        label: 'Pool',           body: '20 by 40 feet. Surrounded by mature plantings and the quiet of the Pinehurst pines.' },
+    { src: IMG.weecottage,  label: 'The Wee Cottage',body: 'Private guest structure. Moved to the grounds by sky crane. Self-contained and intimate.' },
+    { src: IMG.exterior3,   label: 'The Grounds',    body: '4.15 acres of curated landscape. Circular drive. Mature trees. Private and protected.' },
+    { src: IMG.exterior2,   label: 'The Portico',    body: '1916 inlaid in the entrance brick. The first thing you see. The last thing you forget.' },
+  ];
+  return (
+    <section style={{ background: '#0d0b09', padding: mob ? '8rem 0' : '14rem 0' }}>
+      <Fade up>
+        <div style={{ textAlign: 'center', marginBottom: mob ? '5rem' : '8rem', padding: '0 6vw' }}>
+          <Eyebrow center>The Interior</Eyebrow>
+          <h2 style={{ color: CREAM, fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '2rem' : '3rem', lineHeight: 1.25, margin: '2rem 0 0', letterSpacing: '-0.018em' }}>
+            Rooms that remember.
+          </h2>
+        </div>
+      </Fade>
+      <div style={{ display: 'grid', gridTemplateColumns: mob ? '1fr' : 'repeat(3, 1fr)', maxWidth: 1320, margin: '0 auto', padding: '0 5vw', gap: mob ? '3rem' : '3.5rem' }}>
+        {photos.map((p, i) => (
+          <Fade key={p.label} delay={i * 0.12}>
+            <div>
+              <div style={{ position: 'relative', overflow: 'hidden' }}>
+                <img src={p.src} alt={p.label} style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(13,11,9,0.75) 0%, transparent 60%)' }} />
+                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.5rem' }}>
+                  <p style={{ color: GOLD, fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.26em', textTransform: 'uppercase', margin: 0 }}>{p.label}</p>
+                </div>
+              </div>
+              <p style={{ color: 'rgba(255,255,255,0.25)', fontFamily: 'Georgia, serif', fontSize: '0.95rem', lineHeight: 1.9, margin: '1.5rem 0 0' }}>{p.body}</p>
+            </div>
+          </Fade>
+        ))}
       </div>
     </section>
   );
@@ -198,22 +264,59 @@ function Numbers() {
   );
 }
 
-// ROOMS
+// GROUNDS
+function Grounds() {
+  const w = useW(); const mob = w < 768;
+  return (
+    <section id="the-grounds" style={{ background: '#100e0c', padding: mob ? '8rem 0' : '16rem 0' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: mob ? '1fr' : '1fr 1fr', maxWidth: 1320, margin: '0 auto', padding: '0 6vw', gap: mob ? '5rem' : '8rem', alignItems: 'center' }}>
+        <Fade delay={0.05}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <Eyebrow>The Grounds</Eyebrow>
+            <GoldLine />
+            <h2 style={{ color: CREAM, fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '2rem' : '2.8rem', lineHeight: 1.22, margin: 0, letterSpacing: '-0.018em' }}>
+              4.15 acres.<br />Pool. Tennis.<br />The Wee Cottage.
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.28)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.05rem', lineHeight: 2.1, margin: 0 }}>
+              A 20 by 40 foot pool surrounded by mature plantings. Two tennis courts.
+              A circular drive approaching the portico through a canopy of pines.
+              Garren Hill was designed to be experienced from the outside as much as within.
+            </p>
+            <p style={{ color: 'rgba(255,255,255,0.2)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.05rem', lineHeight: 2.1, margin: 0 }}>
+              The Wee Cottage -- a private guest structure moved to the property by sky crane --
+              provides complete guest independence with its own entrance and full facilities.
+            </p>
+          </div>
+        </Fade>
+        <Fade delay={0.2}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.8rem' }}>
+            <img src={IMG.pool} alt="Pool" style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block' }} />
+            <img src={IMG.weecottage} alt="Wee Cottage" style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block' }} />
+            <img src={IMG.exterior3} alt="Grounds" style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block' }} />
+            <img src={IMG.exterior2} alt="Portico" style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block' }} />
+          </div>
+        </Fade>
+      </div>
+    </section>
+  );
+}
+
+// ROOMS GRID
 function Rooms() {
   const w = useW(); const mob = w < 768;
   const rooms = [
-    { label: 'Grand Living Room',       body: 'Approximately 40 feet in length. A fireplace at each end. Heart pine floors that tell the age of the wood in every knot and grain.' },
-    { label: 'Entrance Hall',           body: 'The central hall vista runs the full depth of the house. Every door, every threshold, every proportion deliberate and unhurried.' },
-    { label: 'Library',                 body: 'Floor-to-ceiling shelving. A fireplace. The room that first made Garren Hill a place for writers, thinkers, and those who valued the quiet.' },
-    { label: 'Dining Room',             body: 'Formal and generous. Original millwork. Light from the garden. The table that has seated a century of remarkable meals.' },
-    { label: 'Kitchen + Breakfast Room',body: 'Fully modernized while honoring the bones. Opens to the rear grounds and the pool terrace beyond.' },
-    { label: 'Primary Suite',           body: 'First floor. Private fireplace. A master bath that carries the same attention to detail as every other room in the house.' },
-    { label: 'Pool + Tennis Courts',    body: '20 by 40 foot pool. Two tennis courts. The outdoor life that completes the picture.' },
-    { label: 'The Wee Cottage',         body: 'A private guest structure, moved to the property by sky crane. Self-contained, intimate, and fully independent.' },
-    { label: 'Office / Game Study',     body: 'Second floor via spiral staircase. Skylights. Heart pine floors. The room that earns its own destination.' },
+    { label: 'Grand Living Room',        body: 'Approximately 40 feet in length. A fireplace at each end. Heart pine floors that tell the age of the wood in every knot and grain.' },
+    { label: 'Entrance Hall',            body: 'The central hall vista runs the full depth of the house. Every door, every threshold, every proportion deliberate.' },
+    { label: 'Library',                  body: 'Floor-to-ceiling shelving. A fireplace. The room that first made Garren Hill a destination for writers and thinkers.' },
+    { label: 'Dining Room',              body: 'Formal and generous. Original millwork. Light from the garden. The table that has seated a century of remarkable meals.' },
+    { label: 'Kitchen + Breakfast Room', body: 'Fully modernized while honoring the bones. Opens to the rear grounds and pool terrace.' },
+    { label: 'Primary Suite',            body: 'First floor. Private fireplace. A master bath renovated with period sensitivity and modern comfort.' },
+    { label: 'Pool + Tennis Courts',     body: '20 by 40 foot pool. Two tennis courts. The outdoor life that completes the picture of Garren Hill.' },
+    { label: 'The Wee Cottage',          body: 'A private guest structure, moved to the property by sky crane. Self-contained, intimate, and fully independent.' },
+    { label: 'Office / Game Study',      body: 'Second floor via spiral staircase. Skylights. Heart pine floors. Reached by its own private passage.' },
   ];
   return (
-    <section id="the-legacy" style={{ background: '#100e0c', padding: mob ? '8rem 0' : '16rem 0' }}>
+    <section style={{ background: '#100e0c', padding: mob ? '8rem 0' : '14rem 0' }}>
       <Fade up>
         <div style={{ textAlign: 'center', marginBottom: mob ? '5rem' : '8rem', padding: '0 6vw' }}>
           <Eyebrow center>The Rooms</Eyebrow>
@@ -249,13 +352,13 @@ function Location() {
           </h2>
           <GoldLine center />
           <p style={{ color: 'rgba(255,255,255,0.26)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.1rem', lineHeight: 2.1, margin: '2rem 0 0', maxWidth: 580 }}>
-            Located in the Pinehurst ETJ, Garren Hill benefits from a favorable tax rate
-            while sitting at the quiet center of everything the Sandhills offers.
-            Golf, dining, culture, and some of the finest weather in the Southeast --
+            Located in the Pinehurst ETJ, Garren Hill benefits from a favorable county tax rate
+            while sitting at the quiet center of everything the Sandhills has to offer.
+            Golf, culture, healthcare, and some of the finest weather in the Southeast --
             all within minutes.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', justifyContent: 'center', marginTop: '1.5rem' }}>
-            {['Pinehurst Village -- Minutes Away', 'Pinehurst Resort -- Nearby', 'Moore County Airport', 'FirstHealth Regional Hospital', 'Village Historic Foundation'].map(item => (
+            {['Pinehurst Village -- Minutes Away', 'Pinehurst Resort Nearby', 'Moore County Airport', 'FirstHealth Regional Hospital', 'Village Historic Foundation Member'].map(item => (
               <p key={item} style={{ color: 'rgba(255,255,255,0.14)', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', margin: 0, display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
                 <span style={{ display: 'inline-block', width: 16, height: 1, background: GOLD, opacity: 0.4 }} />
                 {item}
@@ -329,18 +432,28 @@ export default function GarrenHill() {
       <Legacy />
       <Manor />
       <Cinematic
-        src={IMG.hero}
-        headline={"A house that has outlasted every trend\nthat ever passed through Pinehurst."}
-        quote
+        src={IMG.livingroom}
+        eyebrow="The Living Room"
+        headline={"40 feet long.\nTwo fireplaces.\nOne hundred years of life lived well."}
+        body="Original heart pine floors. Proportions that command respect. The room Walter Hines Page built for conversation, literature, and the long view."
         position="center 40%"
       />
       <Numbers />
+      <Interiors />
+      <Cinematic
+        src={IMG.livingfire}
+        headline={"A house that has outlasted every trend that ever passed through Pinehurst."}
+        quote
+        position="center 50%"
+      />
+      <Grounds />
       <Rooms />
       <Cinematic
-        src={IMG.portico}
+        src={IMG.exterior2}
         eyebrow="The Portico"
-        headline={"The date 1916,\ninlaid in brick.\nStill there."}
-        body="Three months spent sourcing period-accurate brick to match what Walter Hines Page put here over a century ago. Some things are worth getting right."
+        headline={"1916.\nInlaid in brick.\nStill there."}
+        body="Three months sourcing period-accurate brick to match what Walter Hines Page built over a century ago. Some things are worth getting exactly right."
+        align="right"
         position="center 25%"
       />
       <Location />
