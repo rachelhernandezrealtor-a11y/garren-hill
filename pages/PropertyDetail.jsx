@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Property, PropertyPhoto } from '@/api/entities';
+import { uploadFile } from '@/api/storage';
 
 const GOLD = '#C9A96E';
 const DARK = '#0a0a0a';
@@ -11,6 +12,7 @@ export default function PropertyDetail() {
   const [property, setProperty] = useState(null);
   const [photos, setPhotos] = useState([]);
   const [uploading, setUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState('');
   const [filter, setFilter] = useState('All');
   const fileRef = useRef();
 
@@ -22,21 +24,33 @@ export default function PropertyDetail() {
 
   const upload = async (files) => {
     setUploading(true);
-    for (const file of Array.from(files)) {
-      const form = new FormData();
-      form.append('file', file);
+    const fileArray = Array.from(files);
+    let successCount = 0;
+    for (let i = 0; i < fileArray.length; i++) {
+      const file = fileArray[i];
+      setUploadProgress(`Uploading ${i + 1} of ${fileArray.length}...`);
       try {
-        const res = await fetch(`/api/apps/${window.__APP_ID__ || '69e248a2469cc39540781cce'}/files/upload`, { method: 'POST', body: form });
-        const data = await res.json();
-        const url = data.url || data.file_url;
-        if (url) {
-          await PropertyPhoto.create({ property_id: id, file_url: url, file_name: file.name, status: 'active', sort_order: photos.length });
+        const { file_url } = await uploadFile(file, { isPublic: true });
+        if (file_url) {
+          await PropertyPhoto.create({
+            property_id: id,
+            file_url,
+            file_name: file.name,
+            status: 'active',
+            sort_order: photos.length + i
+          });
+          successCount++;
         }
-      } catch(e) { console.error(e); }
+      } catch(e) {
+        console.error('Upload failed for', file.name, e);
+      }
     }
     const updated = await PropertyPhoto.filter({ property_id: id });
-    setPhotos(updated.sort((a,b) => (a.sort_order||0)-(b.sort_order||0)));
-    await Property.update(id, { photo_count: updated.length, thumbnail_url: updated[0]?.file_url });
+    const sorted = updated.sort((a,b) => (a.sort_order||0)-(b.sort_order||0));
+    setPhotos(sorted);
+    await Property.update(id, { photo_count: updated.length, thumbnail_url: sorted[0]?.file_url });
+    setUploadProgress(`Done! ${successCount} of ${fileArray.length} uploaded.`);
+    setTimeout(() => setUploadProgress(''), 3000);
     setUploading(false);
   };
 
@@ -58,7 +72,7 @@ export default function PropertyDetail() {
           <button
             onClick={() => fileRef.current.click()}
             disabled={uploading}
-            style={{ background: 'transparent', border: `1px solid ${GOLD}`, color: GOLD, fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.26em', textTransform: 'uppercase', padding: '0.7rem 1.6rem', cursor: 'pointer' }}>
+            style={{ background: 'transparent', border: `1px solid ${GOLD}`, color: GOLD, fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.26em', textTransform: 'uppercase', padding: '0.7rem 1.6rem', cursor: uploading ? 'not-allowed' : 'pointer', opacity: uploading ? 0.5 : 1 }}>
             {uploading ? 'Uploading...' : '+ Upload Photos'}
           </button>
           <input ref={fileRef} type="file" multiple accept="image/*" style={{ display: 'none' }} onChange={e => upload(e.target.files)} />
@@ -69,10 +83,10 @@ export default function PropertyDetail() {
       <div
         onDragOver={e => e.preventDefault()}
         onDrop={e => { e.preventDefault(); upload(e.dataTransfer.files); }}
-        style={{ margin: '2rem 2.5rem', border: '1px dashed rgba(255,255,255,0.08)', borderRadius: 2, padding: '2rem', textAlign: 'center', cursor: 'pointer' }}
-        onClick={() => fileRef.current.click()}>
-        <p style={{ margin: 0, color: 'rgba(255,255,255,0.15)', fontFamily: 'sans-serif', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-          {uploading ? 'Uploading...' : 'Drag & drop photos here or click to browse'}
+        style={{ margin: '2rem 2.5rem', border: `1px dashed ${uploading ? GOLD : 'rgba(255,255,255,0.08)'}`, borderRadius: 2, padding: '2rem', textAlign: 'center', cursor: uploading ? 'not-allowed' : 'pointer', transition: 'border-color 0.3s' }}
+        onClick={() => !uploading && fileRef.current.click()}>
+        <p style={{ margin: 0, color: uploading ? GOLD : 'rgba(255,255,255,0.15)', fontFamily: 'sans-serif', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
+          {uploadProgress || (uploading ? 'Uploading...' : 'Drag & drop photos here or click to browse')}
         </p>
       </div>
 
@@ -88,6 +102,11 @@ export default function PropertyDetail() {
       )}
 
       {/* Photo grid */}
+      {filtered.length === 0 && !uploading && (
+        <div style={{ padding: '2rem 2.5rem', textAlign: 'center' }}>
+          <p style={{ color: 'rgba(255,255,255,0.15)', fontFamily: 'sans-serif', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase' }}>No photos yet. Upload some above.</p>
+        </div>
+      )}
       <div style={{ padding: '0 2.5rem 4rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '0.8rem' }}>
         {filtered.map(photo => (
           <div key={photo.id} style={{ position: 'relative', overflow: 'hidden', background: '#111' }}>
