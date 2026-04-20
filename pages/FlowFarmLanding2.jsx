@@ -7,21 +7,28 @@ const DARK = '#0a0a0a';
 const VIDEO = 'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f7910a1c9_275a93837_forestheroMAIN.mp4';
 const MATTERPORT = 'https://my.matterport.com/show/?m=xZRfSiQPuQ8';
 
-const cf = id => `https://imagedelivery.net/M_TGAUj9Ze_tNOtZS6jINg/${id}/w=2400`;
+const B = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/';
 
 const IMG = {
-  exterior:      'https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/595faa261_107LindenTrail-29.jpg',
-  grounds:       'https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/da785e254_flowfarmmasterphotoswebsite3.jpg',
+  // Hero shots -- real professional photos
+  living:        B + '4db7d0477_livingroom.jpg',
+  conservatory:  B + '8cb2578a0_MONEYSHOT.jpg',
+  kitchen:       B + '1c4b8a04f_SOGOODKITCHEN.jpg',
+  dining:        B + 'db01725cb_sogoodtolivingroom.jpg',
+  spabath:       B + '08da5b97d_spaprimarybath.jpg',
+  foyer:         B + '9b1d02a04_260115107LindenTrailF-9727.jpg',
+  powderroom:    B + '4e58028ab_260115107LindenTrailF-9769-2.jpg',
+  wolf:          B + 'ef4b4a364_WOLFDOUBLEGASRANGE.jpg',
+  office:        B + '2b920c3b0_markofficemoneyshot.jpg',
+  hallway:       B + '8e3d794f9_secondfloorhallway.jpg',
+  // Grounds / aerial
   aerial:        'https://media.base44.com/images/public/69e248a2469cc39540781cce/2ca329bbf_flowfarmmasterphotoswebsite.jpg',
+  grounds:       'https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/da785e254_flowfarmmasterphotoswebsite3.jpg',
+  exterior:      'https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/595faa261_107LindenTrail-29.jpg',
+  // Structures
+  cabana:        'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/3af6924d6_CabanaHouseMain.jpg',
   tunnel:        'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/217fdb4a1_HighTunnel.jpg',
   workshop:      'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/136958608_FarmWorkshop.jpg',
-  cabana:        'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/3af6924d6_CabanaHouseMain.jpg',
-  living:        cf('717eeff1-f98e-4bd6-0ef6-66ed1c054200'),
-  living2:       cf('6c90dba3-97de-4654-ccba-a70677a7a300'),
-  kitchen:       cf('88c2e1c1-04db-4193-745d-8bec90459b00'),
-  conservatory:  cf('6d2ef33c-35eb-4b90-5c6d-fe3d37fea900'),
-  foyer:         cf('ada10c6f-d704-40ce-10e5-58d25e101200'),
-  dining:        cf('53360e16-7ba3-4bae-ef62-721a86fdbd00'),
 };
 
 function useW() {
@@ -64,7 +71,7 @@ function Fade({ children, delay, up, style }) {
 function Glass({ children, style }) {
   return (
     <div style={{
-      background: 'rgba(8,8,8,0.58)',
+      background: 'rgba(8,8,8,0.62)',
       backdropFilter: 'blur(20px)',
       WebkitBackdropFilter: 'blur(20px)',
       border: '1px solid rgba(255,255,255,0.07)',
@@ -164,11 +171,7 @@ function Hero() {
         </div>
       </div>
 
-      <div style={{
-        position: 'absolute', bottom: mob ? '2rem' : '3rem',
-        left: mob ? '1.5rem' : '3rem', right: mob ? '1.5rem' : '3rem',
-        zIndex: 10, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', ...show(3),
-      }}>
+      <div style={{ position: 'absolute', bottom: mob ? '2rem' : '3rem', left: mob ? '1.5rem' : '3rem', right: mob ? '1.5rem' : '3rem', zIndex: 10, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', ...show(3) }}>
         <div>
           <p style={{ color: 'rgba(255,255,255,0.36)', fontFamily: 'sans-serif', fontSize: mob ? '9px' : '11px', letterSpacing: '0.2em', textTransform: 'uppercase', margin: '0 0 0.35rem' }}>107 Linden Trail, Aberdeen NC</p>
           <p style={{ color: 'rgba(255,255,255,0.14)', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.16em', textTransform: 'uppercase', margin: 0 }}>15 Acres &mdash; 6 Structures &mdash; $5,250,000</p>
@@ -195,14 +198,8 @@ function Manifesto() {
       <Fade up>
         <div style={{ maxWidth: 820, margin: '0 auto', padding: '0 6vw', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: mob ? '2.4rem' : '3rem' }}>
           <Eyebrow center>107 Linden Trail &mdash; Aberdeen, North Carolina</Eyebrow>
-          <h2 style={{
-            color: CREAM, fontFamily: 'Georgia, serif', fontWeight: 400,
-            fontSize: mob ? '2rem' : w < 1024 ? '2.6rem' : '3.2rem',
-            lineHeight: 1.3, margin: 0, letterSpacing: '-0.018em',
-          }}>
-            Not just a home.<br />
-            A living system built for those<br />
-            who intend to leave something behind.
+          <h2 style={{ color: CREAM, fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '2rem' : w < 1024 ? '2.6rem' : '3.2rem', lineHeight: 1.3, margin: 0, letterSpacing: '-0.018em' }}>
+            Not just a home.<br />A living system built for those<br />who intend to leave something behind.
           </h2>
           <GoldLine />
           <p style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.15rem', lineHeight: 2.1, margin: 0, maxWidth: 580 }}>
@@ -221,27 +218,19 @@ function Manifesto() {
 }
 
 // ============================================================
-// FOUNDATION -- Angel's intro section, Aman treatment
+// FOUNDATION
 // ============================================================
 function Foundation() {
   const w = useW();
   const mob = w < 768;
   return (
     <section id="the-estate" style={{ background: '#0c0c0c', padding: mob ? '8rem 0' : '16rem 0' }}>
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: mob ? '1fr' : '1fr 1fr',
-        maxWidth: 1320, margin: '0 auto', padding: '0 6vw',
-        gap: mob ? '5rem' : '8rem', alignItems: 'center',
-      }}>
+      <div style={{ display: 'grid', gridTemplateColumns: mob ? '1fr' : '1fr 1fr', maxWidth: 1320, margin: '0 auto', padding: '0 6vw', gap: mob ? '5rem' : '8rem', alignItems: 'center' }}>
         <Fade delay={0.05}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <Eyebrow>The Estate</Eyebrow>
             <GoldLine />
-            <h2 style={{
-              color: CREAM, fontFamily: 'Georgia, serif', fontWeight: 400,
-              fontSize: mob ? '2rem' : '3rem', lineHeight: 1.22, margin: 0, letterSpacing: '-0.018em',
-            }}>
+            <h2 style={{ color: CREAM, fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '2rem' : '3rem', lineHeight: 1.22, margin: 0, letterSpacing: '-0.018em' }}>
               A Foundation for<br />What Comes Next.
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.32)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.06rem', lineHeight: 2.1, margin: 0 }}>
@@ -268,15 +257,8 @@ function Foundation() {
         </Fade>
         <Fade delay={0.2}>
           <div style={{ position: 'relative' }}>
-            <img
-              src={IMG.grounds}
-              alt="Flow Farm Estate"
-              style={{ width: '100%', height: mob ? 340 : 560, objectFit: 'cover', display: 'block' }}
-            />
-            <Glass style={{
-              position: 'absolute', bottom: mob ? -20 : -28, left: mob ? -10 : -28,
-              padding: '1.4rem 2rem',
-            }}>
+            <img src={IMG.grounds} alt="Flow Farm Estate" style={{ width: '100%', height: mob ? 340 : 560, objectFit: 'cover', display: 'block' }} />
+            <Glass style={{ position: 'absolute', bottom: mob ? -20 : -28, left: mob ? -10 : -28, padding: '1.4rem 2rem' }}>
               <p style={{ margin: '0 0 0.3rem', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)' }}>Architect</p>
               <p style={{ margin: 0, fontFamily: 'Georgia, serif', fontSize: '1rem', color: CREAM }}>Robert E. Clark AIA</p>
               <p style={{ margin: '0.2rem 0 0', fontFamily: 'sans-serif', fontSize: '9px', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em' }}>Pinehurst, NC</p>
@@ -289,32 +271,25 @@ function Foundation() {
 }
 
 // ============================================================
-// CINEMATIC -- full bleed photo with glass card or quote
+// CINEMATIC
 // ============================================================
 function CinematicReveal({ src, eyebrow, headline, body, align, quote, position }) {
   const w = useW();
   const mob = w < 768;
-
   return (
     <section style={{ position: 'relative', minHeight: mob ? '80vh' : '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
-      <img src={src} alt=""
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: position || 'center', zIndex: 1 }}
-      />
+      <img src={src} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: position || 'center', zIndex: 1 }} />
       <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: quote
-        ? 'rgba(0,0,0,0.42)'
+        ? 'rgba(0,0,0,0.48)'
         : align === 'right'
-          ? 'linear-gradient(to left, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.1) 100%)'
-          : 'linear-gradient(to right, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.1) 100%)'
+          ? 'linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.05) 100%)'
+          : 'linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.05) 100%)'
       }} />
       <div style={{ position: 'relative', zIndex: 5, width: '100%', maxWidth: 1360, margin: '0 auto', padding: mob ? '6rem 6vw' : '10rem 6vw', display: 'flex', justifyContent: quote ? 'center' : align === 'right' ? 'flex-end' : 'flex-start' }}>
         <Fade delay={0.1}>
           {quote ? (
             <div style={{ maxWidth: mob ? '100%' : 700, textAlign: 'center' }}>
-              <p style={{
-                color: '#fff', fontFamily: 'Georgia, serif', fontStyle: 'italic',
-                fontSize: mob ? '1.6rem' : w < 1024 ? '2.2rem' : '3rem',
-                lineHeight: 1.35, margin: 0, textShadow: '0 2px 40px rgba(0,0,0,0.7)', letterSpacing: '-0.01em',
-              }}>
+              <p style={{ color: '#fff', fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: mob ? '1.6rem' : w < 1024 ? '2.2rem' : '3rem', lineHeight: 1.35, margin: 0, textShadow: '0 2px 40px rgba(0,0,0,0.7)', letterSpacing: '-0.01em' }}>
                 &ldquo;{headline}&rdquo;
               </p>
             </div>
@@ -322,11 +297,7 @@ function CinematicReveal({ src, eyebrow, headline, body, align, quote, position 
             <Glass style={{ padding: mob ? '2.5rem 2rem' : '3.5rem 4rem', maxWidth: mob ? '100%' : 520 }}>
               {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
               {eyebrow && <div style={{ width: 28, height: 1, background: GOLD, opacity: 0.35, margin: '1.4rem 0' }} />}
-              <h2 style={{
-                color: CREAM, fontFamily: 'Georgia, serif', fontWeight: 400,
-                fontSize: mob ? '1.7rem' : '2.5rem', lineHeight: 1.22,
-                margin: '0 0 1.6rem', letterSpacing: '-0.015em', whiteSpace: 'pre-line',
-              }}>
+              <h2 style={{ color: CREAM, fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '1.7rem' : '2.5rem', lineHeight: 1.22, margin: '0 0 1.6rem', letterSpacing: '-0.015em', whiteSpace: 'pre-line' }}>
                 {headline}
               </h2>
               {body && <p style={{ color: 'rgba(255,255,255,0.44)', fontFamily: 'Georgia, serif', fontSize: mob ? '0.95rem' : '1rem', lineHeight: 2, margin: 0 }}>{body}</p>}
@@ -348,9 +319,9 @@ function Numbers() {
   const stats = [
     ['15', 'Acres'],
     ['8,519', 'Sq Ft Main Residence'],
-    ['6', 'Structures'],
-    ['$5.25M', 'Offered At'],
     ['6 / 7', 'Beds / Baths'],
+    ['$5.25M', 'Offered At'],
+    ['6', 'Structures'],
     ['1,200', 'Amps Total Power'],
     ['14.3kW', 'Solar Array'],
     ['3 mi', 'To Pinehurst Resort'],
@@ -362,19 +333,10 @@ function Numbers() {
           By The Numbers
         </p>
       </Fade>
-      <div style={{
-        display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`,
-        maxWidth: 1020, margin: '0 auto', padding: '0 5vw',
-        borderTop: '1px solid rgba(255,255,255,0.05)',
-        borderLeft: '1px solid rgba(255,255,255,0.05)',
-      }}>
+      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, maxWidth: 1020, margin: '0 auto', padding: '0 5vw', borderTop: '1px solid rgba(255,255,255,0.05)', borderLeft: '1px solid rgba(255,255,255,0.05)' }}>
         {stats.map(([v, l], i) => (
           <Fade key={l} delay={i * 0.05}>
-            <div style={{
-              textAlign: 'center', padding: mob ? '3rem 1rem' : '4rem 1rem',
-              borderBottom: '1px solid rgba(255,255,255,0.05)',
-              borderRight: '1px solid rgba(255,255,255,0.05)',
-            }}>
+            <div style={{ textAlign: 'center', padding: mob ? '3rem 1rem' : '4rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.05)', borderRight: '1px solid rgba(255,255,255,0.05)' }}>
               <p style={{ color: CREAM, fontFamily: 'Georgia, serif', fontSize: mob ? '2rem' : '2.8rem', fontWeight: 400, margin: '0 0 0.7rem', letterSpacing: '-0.03em' }}>{v}</p>
               <p style={{ color: 'rgba(255,255,255,0.16)', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', margin: 0 }}>{l}</p>
             </div>
@@ -386,7 +348,7 @@ function Numbers() {
 }
 
 // ============================================================
-// THE MECHANISM
+// MECHANISM
 // ============================================================
 function Mechanism() {
   const w = useW();
@@ -409,8 +371,8 @@ function Mechanism() {
               Structure that holds<br /><em>freedom.</em>
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.26)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.12rem', lineHeight: 2.1, maxWidth: 520, margin: '0 auto' }}>
-              Operating with commercial-grade gravity. Solar, battery, generator, geothermal,
-              private water. Autonomy at this scale is not inherited. It is engineered.
+              Solar, battery, generator, geothermal, private water.
+              Autonomy at this scale is not inherited. It is engineered.
             </p>
           </div>
         </Fade>
@@ -503,13 +465,7 @@ function Location() {
               is included with the sale.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '0.5rem' }}>
-              {[
-                'Pinehurst Resort -- 3 Miles',
-                'Moore County Regional -- Private Aviation',
-                'Raleigh-Durham International -- 1 Hour',
-                'FirstHealth Moore Regional Hospital',
-                'Pinehurst CC Membership Included',
-              ].map(item => (
+              {['Pinehurst Resort -- 3 Miles', 'Moore County Regional -- Private Aviation', 'Raleigh-Durham International -- 1 Hour', 'FirstHealth Moore Regional Hospital', 'Pinehurst CC Membership Included'].map(item => (
                 <p key={item} style={{ color: 'rgba(255,255,255,0.18)', fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', margin: 0, display: 'flex', alignItems: 'center', gap: '1rem' }}>
                   <span style={{ display: 'inline-block', width: 20, height: 1, background: GOLD, opacity: 0.4, flexShrink: 0 }} />
                   {item}
@@ -534,14 +490,8 @@ function Inquire() {
   const mob = w < 768;
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [sent, setSent] = useState(false);
-
-  const submit = async e => {
-    e.preventDefault();
-    setSent(true);
-  };
-
+  const submit = e => { e.preventDefault(); setSent(true); };
   const inp = { background: 'transparent', border: 'none', borderBottom: '1px solid rgba(255,255,255,0.12)', color: CREAM, fontFamily: 'Georgia, serif', fontSize: '1rem', padding: '1rem 0', width: '100%', outline: 'none' };
-
   return (
     <section id="inquire" style={{ background: '#0c0c0c', padding: mob ? '8rem 0' : '16rem 0' }}>
       <div style={{ maxWidth: 640, margin: '0 auto', padding: '0 6vw', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3rem' }}>
@@ -559,11 +509,7 @@ function Inquire() {
           </div>
         </Fade>
         {sent ? (
-          <Fade>
-            <p style={{ color: GOLD, fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1.1rem', textAlign: 'center', lineHeight: 1.9 }}>
-              Thank you. We will be in touch shortly.
-            </p>
-          </Fade>
+          <Fade><p style={{ color: GOLD, fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1.1rem', textAlign: 'center', lineHeight: 1.9 }}>Thank you. We will be in touch shortly.</p></Fade>
         ) : (
           <Fade style={{ width: '100%' }}>
             <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: '2rem', width: '100%' }}>
@@ -591,13 +537,13 @@ function Footer() {
   return (
     <footer style={{ background: DARK, borderTop: '1px solid rgba(255,255,255,0.05)', padding: mob ? '4rem 6vw' : '5rem 6vw' }}>
       <div style={{ maxWidth: 1320, margin: '0 auto', display: 'flex', flexDirection: mob ? 'column' : 'row', justifyContent: 'space-between', alignItems: mob ? 'flex-start' : 'center', gap: '2rem' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <p style={{ color: 'rgba(255,255,255,0.12)', fontFamily: 'Georgia, serif', fontSize: '0.85rem', margin: 0, letterSpacing: '0.12em' }}>Flow Farm</p>
+        <div>
+          <p style={{ color: 'rgba(255,255,255,0.12)', fontFamily: 'Georgia, serif', fontSize: '0.85rem', margin: '0 0 0.4rem', letterSpacing: '0.12em' }}>Flow Farm</p>
           <p style={{ color: 'rgba(255,255,255,0.08)', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.18em', textTransform: 'uppercase', margin: 0 }}>107 Linden Trail, Aberdeen, NC</p>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', textAlign: mob ? 'left' : 'right' }}>
-          <p style={{ color: 'rgba(255,255,255,0.08)', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.18em', textTransform: 'uppercase', margin: 0 }}>Offered at $5,250,000</p>
-          <p style={{ color: 'rgba(255,255,255,0.06)', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.12em', textTransform: 'uppercase', margin: 0 }}>Rachel Hernandez | rachelhernandezrealtor@gmail.com</p>
+        <div style={{ textAlign: mob ? 'left' : 'right' }}>
+          <p style={{ color: 'rgba(255,255,255,0.08)', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 0.3rem' }}>Offered at $5,250,000</p>
+          <p style={{ color: 'rgba(255,255,255,0.06)', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.12em', textTransform: 'uppercase', margin: 0 }}>Rachel Hernandez &mdash; rachelhernandezrealtor@gmail.com</p>
         </div>
       </div>
     </footer>
@@ -617,17 +563,17 @@ export default function FlowFarmLanding2() {
         src={IMG.living}
         eyebrow="The Residence"
         headline={"A grand living room.\n27 feet wide. 17 feet tall."}
-        body="Reclaimed Civil War-era heart pine floors. Seven fireplaces. Six bedrooms, seven bathrooms. 8,519 square feet above grade. Designed by Robert E. Clark AIA -- built to outlast everything around it."
-        position="center center"
+        body="Exposed king post trusses. Grand piano. Heart pine floors. French doors to the covered porch. And beyond -- the conservatory, the kitchen, the farm. All of it visible from where you stand."
+        position="center 35%"
       />
       <Numbers />
       <CinematicReveal
         src={IMG.conservatory}
         eyebrow="The Conservatory"
-        headline={"Glass on every side.\nAn octagonal dome overhead."}
-        body="19.5 by 17.7 feet, entirely glass-wrapped with a skylight dome that tracks the sky from morning to dusk. The room that reminds you why you came here."
+        headline={"The room that stops\nevery conversation."}
+        body="19.5 by 17.7 feet, entirely glass-wrapped. An octagonal dome overhead tracks the sky from morning to dusk. Views of the farm, the cabana, the pines. The room that reminds you why you came here."
         align="right"
-        position="center 40%"
+        position="center center"
       />
       <CinematicReveal
         src={IMG.grounds}
@@ -639,17 +585,24 @@ export default function FlowFarmLanding2() {
         src={IMG.kitchen}
         eyebrow="The Kitchen"
         headline={"Sub-Zero. Wolf 60\".\nBuilt for the serious cook."}
-        body="A 60-inch dual fuel Wolf range. Six burners, griddle, grill, warming drawer. Two KitchenAid dishwashers. Sub-Zero throughout. The pantry opens to a breakfast room that looks across the farm."
-        position="center 30%"
+        body="A 60-inch dual fuel Wolf range with red knobs, six burners, griddle, grill, and warming drawer. Two KitchenAid dishwashers. Butcher block island. Scullery with full Sub-Zero and wine fridge. The kitchen that makes you want to stay home."
+        position="center 40%"
       />
       <Land />
       <Mechanism />
       <CinematicReveal
+        src={IMG.spabath}
+        eyebrow="The Primary Suite"
+        headline={"A spa.\nA sanctuary.\nA reason to stay."}
+        body="Dual vanities. Freestanding soaking tub beneath a window to the forest. Body-jet shower. Mosaic tile floors. A room that earns the word primary."
+        align="right"
+        position="center 30%"
+      />
+      <CinematicReveal
         src={IMG.foyer}
         eyebrow="The Welcome"
         headline={"Every arrival\nshould feel like this."}
-        body="The central hall vista runs the full depth of the house. Heart pine floors, original millwork, and a staircase that earns every eye that finds it."
-        align="right"
+        body="Herringbone heart pine floors laid on the diagonal. A reclaimed wood door with transom light overhead. A star lantern casting warm light across the entry. The first impression that sets the tone for everything that follows."
         position="center top"
       />
       <Location />
