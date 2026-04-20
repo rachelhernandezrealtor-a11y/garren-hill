@@ -39,6 +39,9 @@
     "Gallery": {
       "title": "Gallery"
     },
+    "GarrenHill": {
+      "title": "GarrenHill"
+    },
     "GarrenHillGallery": {
       "title": "GarrenHillGallery"
     },
@@ -60,17 +63,14 @@
     "Properties": {
       "title": "Properties"
     },
+    "PropertyDetail": {
+      "title": "PropertyDetail"
+    },
     "Review": {
       "title": "Review"
     },
     "SocialPost": {
       "title": "SocialPost"
-    },
-    "PropertyDetail": {
-      "title": "PropertyDetail"
-    },
-    "GarrenHill": {
-      "title": "GarrenHill"
     }
   }
 }
