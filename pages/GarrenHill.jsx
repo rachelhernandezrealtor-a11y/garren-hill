@@ -1,3 +1,4 @@
+// v2.1 clean build
 import React, { useState, useEffect, useRef } from 'react';
 
 const GOLD = '#B8986A';
