@@ -6,11 +6,62 @@
     "GarrenHill": {
       "title": "GarrenHill"
     },
+    "Gallery": {
+      "title": "Gallery"
+    },
+    "Properties": {
+      "title": "Properties"
+    },
+    "Review": {
+      "title": "Review"
+    },
+    "FlowFarmLanding2": {
+      "title": "FlowFarmLanding2"
+    },
+    "FlowFarmHome": {
+      "title": "FlowFarmHome"
+    },
+    "Import": {
+      "title": "Import"
+    },
+    "PropertyDetail": {
+      "title": "PropertyDetail"
+    },
+    "FlowFarmForest": {
+      "title": "FlowFarmForest"
+    },
+    "FlowFarmLanding_new": {
+      "title": "FlowFarmLanding_new"
+    },
+    "Index": {
+      "title": "Index"
+    },
+    "FlowFarmGallery": {
+      "title": "FlowFarmGallery"
+    },
+    "Media": {
+      "title": "Media"
+    },
+    "FlowFarmLanding": {
+      "title": "FlowFarmLanding"
+    },
+    "SocialPost": {
+      "title": "SocialPost"
+    },
+    "FlowFarm": {
+      "title": "FlowFarm"
+    },
+    "MLS": {
+      "title": "MLS"
+    },
+    "Home": {
+      "title": "Home"
+    },
     "GarrenHillGallery": {
       "title": "GarrenHillGallery"
     },
-    "ClientGallery": {
-      "title": "ClientGallery"
+    "Dashboard": {
+      "title": "Dashboard"
     },
     "Export": {
       "title": "Export"
@@ -18,59 +69,8 @@
     "Editor": {
       "title": "Editor"
     },
-    "Dashboard": {
-      "title": "Dashboard"
-    },
-    "MLS": {
-      "title": "MLS"
-    },
-    "Import": {
-      "title": "Import"
-    },
-    "Review": {
-      "title": "Review"
-    },
-    "FlowFarmHome": {
-      "title": "FlowFarmHome"
-    },
-    "FlowFarm": {
-      "title": "FlowFarm"
-    },
-    "PropertyDetail": {
-      "title": "PropertyDetail"
-    },
-    "FlowFarmLanding": {
-      "title": "FlowFarmLanding"
-    },
-    "FlowFarmLanding2": {
-      "title": "FlowFarmLanding2"
-    },
-    "Home": {
-      "title": "Home"
-    },
-    "FlowFarmLanding_new": {
-      "title": "FlowFarmLanding_new"
-    },
-    "FlowFarmForest": {
-      "title": "FlowFarmForest"
-    },
-    "Gallery": {
-      "title": "Gallery"
-    },
-    "Media": {
-      "title": "Media"
-    },
-    "SocialPost": {
-      "title": "SocialPost"
-    },
-    "FlowFarmGallery": {
-      "title": "FlowFarmGallery"
-    },
-    "Properties": {
-      "title": "Properties"
-    },
-    "Index": {
-      "title": "Index"
+    "ClientGallery": {
+      "title": "ClientGallery"
     }
   }
 }

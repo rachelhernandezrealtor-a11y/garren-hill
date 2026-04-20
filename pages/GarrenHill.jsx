@@ -88,7 +88,7 @@ function Hero() {
       )}
       <div style={{ position: 'absolute', inset: 0, zIndex: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: mob ? '0 6vw' : '0 10vw' }}>
         <div style={show(2)}>
-          <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.4em', textTransform: 'uppercase', color: GOLD, margin: mob ? '0 0 1.6rem' : '0 0 2rem' }}>Pinehurst, North Carolina &mdash; Est. 1916</p>
+          <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.4em', textTransform: 'uppercase', color: GOLD, margin: mob ? '0 0 1.6rem' : '0 0 2rem' }}>Pinehurst, North Carolina -- Est. 1916</p>
           <h1 style={{ color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '2.6rem' : w < 1024 ? '4.2rem' : '5.8rem', lineHeight: 1.08, margin: 0, letterSpacing: '-0.02em', textShadow: '0 4px 80px rgba(0,0,0,0.7)' }}>
             A Century of<br /><em>Quiet Consequence.</em>
           </h1>
@@ -103,7 +103,7 @@ function Hero() {
       <div style={{ position: 'absolute', bottom: mob ? '2rem' : '3rem', left: mob ? '1.5rem' : '3rem', right: mob ? '1.5rem' : '3rem', zIndex: 10, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', ...show(3) }}>
         <div>
           <p style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'sans-serif', fontSize: mob ? '9px' : '11px', letterSpacing: '0.2em', textTransform: 'uppercase', margin: '0 0 0.3rem' }}>200 Hollycrest Drive, Pinehurst, NC</p>
-          <p style={{ color: 'rgba(255,255,255,0.12)', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.16em', textTransform: 'uppercase', margin: 0 }}>4.15 Acres &mdash; 5 Beds &mdash; 5 Baths &mdash; 7 Fireplaces</p>
+          <p style={{ color: 'rgba(255,255,255,0.12)', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.16em', textTransform: 'uppercase', margin: 0 }}>4.15 Acres -- 5 Beds -- 5 Baths -- 7 Fireplaces</p>
         </div>
       </div>
     </section>
@@ -117,10 +117,10 @@ function Legacy() {
     <section style={{ background: DARK, padding: mob ? '8rem 0' : '18rem 0', textAlign: 'center' }}>
       <Fade up>
         <div style={{ maxWidth: 840, margin: '0 auto', padding: '0 6vw', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: mob ? '2.4rem' : '3rem' }}>
-          <Eyebrow center>200 Hollycrest Drive &mdash; Pinehurst, North Carolina</Eyebrow>
+          <Eyebrow center>200 Hollycrest Drive -- Pinehurst, North Carolina</Eyebrow>
           <h2 style={{ color: CREAM, fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '2rem' : w < 1024 ? '2.6rem' : '3.2rem', lineHeight: 1.32, margin: 0, letterSpacing: '-0.018em' }}>
             Built in 1916 by Walter Hines Page.<br />
-            Co-founder of Doubleday, Page &amp; Co.<br />
+            Co-founder of Doubleday, Page and Co.<br />
             <em>Still standing. Still rare.</em>
           </h2>
           <GoldLine center />
@@ -149,7 +149,7 @@ function Cinematic({ src, eyebrow, headline, body, align, quote, position }) {
         <Fade delay={0.1}>
           {quote ? (
             <div style={{ maxWidth: mob ? '100%' : 680, textAlign: 'center' }}>
-              <p style={{ color: CREAM, fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: mob ? '1.5rem' : w < 1024 ? '2rem' : '2.8rem', lineHeight: 1.4, margin: 0, letterSpacing: '-0.01em' }}>&ldquo;{headline}&rdquo;</p>
+              <p style={{ color: CREAM, fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: mob ? '1.5rem' : w < 1024 ? '2rem' : '2.8rem', lineHeight: 1.4, margin: 0, letterSpacing: '-0.01em' }}>"{headline}"</p>
             </div>
           ) : (
             <Glass style={{ padding: mob ? '2.5rem 2rem' : '3.5rem 4rem', maxWidth: mob ? '100%' : 500 }}>
@@ -417,9 +417,9 @@ function Footer() {
       <div style={{ maxWidth: 1320, margin: '0 auto', display: 'flex', flexDirection: mob ? 'column' : 'row', justifyContent: 'space-between', alignItems: mob ? 'flex-start' : 'center', gap: '2rem' }}>
         <div>
           <p style={{ color: 'rgba(255,255,255,0.1)', fontFamily: 'Georgia, serif', fontSize: '0.85rem', margin: '0 0 0.4rem', letterSpacing: '0.12em' }}>Garren Hill</p>
-          <p style={{ color: 'rgba(255,255,255,0.06)', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.18em', textTransform: 'uppercase', margin: 0 }}>200 Hollycrest Drive, Pinehurst, NC &mdash; Est. 1916</p>
+          <p style={{ color: 'rgba(255,255,255,0.06)', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.18em', textTransform: 'uppercase', margin: 0 }}>200 Hollycrest Drive, Pinehurst, NC -- Est. 1916</p>
         </div>
-        <p style={{ color: 'rgba(255,255,255,0.06)', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.12em', textTransform: 'uppercase', margin: 0 }}>Rachel Hernandez &mdash; rachelhernandezrealtor@gmail.com</p>
+        <p style={{ color: 'rgba(255,255,255,0.06)', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.12em', textTransform: 'uppercase', margin: 0 }}>Rachel Hernandez -- rachelhernandezrealtor@gmail.com</p>
       </div>
     </footer>
   );
