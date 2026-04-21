@@ -34,7 +34,7 @@ const IMG = {
   hallway:       B + '8e3d794f9_secondfloorhallway.jpg',
   // Grounds / aerial
   aerial:        'https://media.base44.com/images/public/69e248a2469cc39540781cce/2ca329bbf_flowfarmmasterphotoswebsite.jpg',
-  forestcanopy:  'https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png',
+  forestcanopy:  'https://res.cloudinary.com/dghn2xpif/image/fetch/f_auto,q_auto,w_2400/https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png',
   grounds:       'https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/da785e254_flowfarmmasterphotoswebsite3.jpg',
   exterior:      'https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/595faa261_107LindenTrail-29.jpg',
   // Structures
@@ -658,6 +658,20 @@ function Footer() {
 function Opportunity() {
   const w = useW();
   const mob = w < 768;
+  const parallaxRef = useRef(null);
+
+  useEffect(() => {
+    const el = parallaxRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const rect = el.getBoundingClientRect();
+      const pct = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      const shift = Math.round((pct - 0.5) * 120);
+      el.style.backgroundPositionY = (50 + shift * 0.35) + '%';
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const cards = [
     {
@@ -697,15 +711,16 @@ function Opportunity() {
     <>
       {/* CINEMATIC FULL-BLEED GLASS SECTION */}
       <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
-        <div style={{
+        <div ref={parallaxRef} style={{
             position: 'absolute', inset: 0,
             backgroundImage: 'url(' + IMG.forestcanopy + ')',
             backgroundSize: 'cover',
-            backgroundPosition: 'center 45%',
+            backgroundPosition: 'center 50%',
             backgroundRepeat: 'no-repeat',
+            willChange: 'background-position',
             zIndex: 0,
           }} />
-        <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.75) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.55) 100%)' }} />
 
         <div style={{ position: 'relative', zIndex: 2, width: '100%', padding: mob ? '8rem 6vw' : '10rem 8vw' }}>
           <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -734,29 +749,33 @@ function Opportunity() {
             <div style={{
               display: 'grid',
               gridTemplateColumns: mob ? '1fr' : '1fr 1fr',
-              gap: mob ? '1.2rem' : '1.5rem',
+              gap: mob ? '1rem' : '1.2rem',
             }}>
               {cards.map((c, i) => (
                 <div key={c.eyebrow} style={{
-                  background: 'rgba(8,8,8,0.60)',
-                  backdropFilter: 'blur(24px)',
-                  WebkitBackdropFilter: 'blur(24px)',
-                  border: '1px solid rgba(255,255,255,0.09)',
+                  background: 'rgba(255,255,255,0.07)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255,255,255,0.18)',
+                  borderRadius: '2px',
                   padding: mob ? '2rem 1.8rem' : '2.6rem 2.4rem',
+                  boxShadow: '0 8px 40px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.12)',
                 }}>
-                  <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.32em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.9rem' }}>
+                  <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.36em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.8rem' }}>
                     {c.eyebrow}
                   </p>
                   <h3 style={{
                     color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400,
-                    fontSize: mob ? '1.15rem' : '1.3rem', lineHeight: 1.3,
-                    margin: '0 0 1rem',
+                    fontSize: mob ? '1.1rem' : '1.25rem', lineHeight: 1.3,
+                    margin: '0 0 0.9rem',
+                    textShadow: '0 1px 8px rgba(0,0,0,0.4)',
                   }}>
                     {c.headline}
                   </h3>
                   <p style={{
-                    color: 'rgba(255,255,255,0.52)', fontFamily: 'Georgia, serif',
-                    fontSize: '0.92rem', lineHeight: 1.75, margin: 0,
+                    color: 'rgba(255,255,255,0.72)', fontFamily: 'Georgia, serif',
+                    fontSize: '0.9rem', lineHeight: 1.78, margin: 0,
+                    textShadow: '0 1px 4px rgba(0,0,0,0.3)',
                   }}>
                     {c.body}
                   </p>
