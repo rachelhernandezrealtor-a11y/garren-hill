@@ -34,6 +34,7 @@ const IMG = {
   hallway:       B + '8e3d794f9_secondfloorhallway.jpg',
   // Grounds / aerial
   aerial:        'https://media.base44.com/images/public/69e248a2469cc39540781cce/2ca329bbf_flowfarmmasterphotoswebsite.jpg',
+  forestcanopy:  'https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png',
   grounds:       'https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/da785e254_flowfarmmasterphotoswebsite3.jpg',
   exterior:      'https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/595faa261_107LindenTrail-29.jpg',
   // Structures
@@ -698,7 +699,7 @@ function Opportunity() {
       <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
         <div style={{
             position: 'absolute', inset: 0,
-            backgroundImage: 'url(' + cdn(IMG.grounds, 2400) + ')',
+            backgroundImage: 'url(' + IMG.forestcanopy + ')',
             backgroundSize: 'cover',
             backgroundPosition: 'center 45%',
             backgroundRepeat: 'no-repeat',
