@@ -696,15 +696,14 @@ function Opportunity() {
     <>
       {/* CINEMATIC FULL-BLEED GLASS SECTION */}
       <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
-        <img
-          src={cdn(IMG.aerial)}
-          alt=""
-          style={{
-            position: 'absolute', inset: 0, width: '100%', height: '100%',
-            objectFit: 'cover', objectPosition: 'center 40%',
+        <div style={{
+            position: 'absolute', inset: 0,
+            backgroundImage: 'url(' + cdn(IMG.grounds, 2400) + ')',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center 45%',
+            backgroundRepeat: 'no-repeat',
             zIndex: 0,
-          }}
-        />
+          }} />
         <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.75) 100%)' }} />
 
         <div style={{ position: 'relative', zIndex: 2, width: '100%', padding: mob ? '8rem 6vw' : '10rem 8vw' }}>
