@@ -171,23 +171,17 @@ function Hero() {
           </p>
           <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', margin: mob ? '0 0 2rem' : '0 0 2.6rem', gap: 0 }}>
             {[
-              { num: '15', label: 'USDA
-ACRES' },
-              { num: '7', label: 'BUILDABLE
-ACRES' },
-              { num: '3', label: 'ACRE
-VEGANIC
-FARM' },
-              { num: '3', label: 'MI TO
-PINEHURST' },
-              { num: '$5.25M', label: 'OFFERED
-AT' },
+              { num: '15', label1: 'USDA', label2: 'ACRES' },
+              { num: '7', label1: 'BUILDABLE', label2: 'ACRES' },
+              { num: '3', label1: 'ACRE VEGANIC', label2: 'FARM' },
+              { num: '3', label1: 'MI TO', label2: 'PINEHURST' },
+              { num: '$5.25M', label1: 'OFFERED', label2: 'AT' },
             ].map((s, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'stretch', gap: 0 }}>
                 {i > 0 && <div style={{ width: '1px', background: 'rgba(255,255,255,0.25)', margin: mob ? '0 1.2rem' : '0 2rem', alignSelf: 'stretch' }} />}
                 <div style={{ textAlign: 'left' }}>
                   <div style={{ color: '#fff', fontFamily: 'Georgia, serif', fontSize: mob ? '2rem' : '2.8rem', fontWeight: 400, lineHeight: 1, marginBottom: '0.4rem' }}>{s.num}</div>
-                  <div style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'sans-serif', fontSize: mob ? '7px' : '8px', letterSpacing: '0.18em', textTransform: 'uppercase', whiteSpace: 'pre-line', lineHeight: 1.5 }}>{s.label}</div>
+                  <div style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'sans-serif', fontSize: mob ? '7px' : '8px', letterSpacing: '0.18em', textTransform: 'uppercase', lineHeight: 1.5 }}>{s.label1}<br />{s.label2}</div>
                 </div>
               </div>
             ))}
@@ -639,3 +633,4 @@ export default function FlowFarmLanding2() {
     </div>
   );
 }
+
