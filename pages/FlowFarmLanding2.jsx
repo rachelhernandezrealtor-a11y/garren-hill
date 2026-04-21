@@ -169,7 +169,17 @@ function Hero() {
           }}>
             A rare convergence of land, architecture, and infrastructure.
           </p>
-          <div style={{ width: 1, height: 44, background: `linear-gradient(to bottom, ${GOLD}, transparent)`, margin: '0 auto', opacity: 0.6 }} />
+          <div style={{ display: 'flex', gap: mob ? '1.2rem' : '2.4rem', flexWrap: 'wrap', margin: mob ? '0 0 2rem' : '0 0 2.6rem', alignItems: 'center' }}>
+            {['3-Acre Veganic Farm', '15 Acres', '3 Mi. to Pinehurst', '$5.25M'].map((s, i) => (
+              <span key={i} style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'sans-serif', fontSize: mob ? '8px' : '10px', letterSpacing: '0.22em', textTransform: 'uppercase' }}>
+                {i > 0 && <span style={{ marginRight: mob ? '1.2rem' : '2.4rem', color: 'rgba(255,255,255,0.18)' }}>|</span>}
+                {s}
+              </span>
+            ))}
+          </div>
+          <a href="#inquire" style={{ display: 'inline-block', background: GOLD, color: '#0a0a0a', fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.28em', textTransform: 'uppercase', padding: mob ? '0.85rem 2rem' : '1rem 2.6rem', borderRadius: '2rem', textDecoration: 'none', fontWeight: 600, cursor: 'pointer' }}>
+            Enter Flow Farm
+          </a>
         </div>
       </div>
 

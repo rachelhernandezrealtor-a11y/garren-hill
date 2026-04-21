@@ -1,6 +1,6 @@
-import { createClient } from "npm:@base44/sdk";
+import { base44 } from "npm:@base44/sdk";
 
-const client = createClient({ appId: Deno.env.get("APP_ID") || "" });
+const client = base44.createClient({ appId: Deno.env.get("APP_ID") || "" });
 
 const CLOUD_NAME = Deno.env.get("CLOUDINARY_CLOUD_NAME");
 const API_KEY = Deno.env.get("CLOUDINARY_API_KEY");
@@ -15,47 +15,49 @@ async function sha1(str: string): Promise<string> {
     .join("");
 }
 
-async function uploadToCloudinary(imageUrl: string, eager: string): Promise<string> {
-  const timestamp = Math.round(Date.now() / 1000).toString();
+async function enhanceSinglePhoto(photo_id: string, photo_url: string, category: string, room: string) {
+  try {
+    const cat = (category || "").toLowerCase();
+    const rm = (room || "").toLowerCase();
+    const isExterior = cat === "exterior" || ["aerial", "grounds", "garden", "outdoor", "pool", "tennis"].some(x => rm.includes(x));
 
-  // Correct Cloudinary signature: all params in alphabetical order
-  const sigString = `eager=${eager}&eager_async=false&timestamp=${timestamp}${API_SECRET}`;
-  const signature = await sha1(sigString);
+    const eager = isExterior
+      ? "e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_1400,c_limit"
+      : "e_improve:indoor:60,e_brightness:10,e_shadow:-30,e_sharpen:40,e_saturation:15,f_auto,q_auto,w_1400,c_limit";
 
-  const body = new URLSearchParams();
-  body.append("file", imageUrl);
-  body.append("timestamp", timestamp);
-  body.append("api_key", API_KEY!);
-  body.append("eager", eager);
-  body.append("eager_async", "false");
-  body.append("signature", signature);
+    const timestamp = Math.round(Date.now() / 1000).toString();
+    const sigString = `eager=${eager}&timestamp=${timestamp}${API_SECRET}`;
+    const signature = await sha1(sigString);
 
-  const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
-    method: "POST",
-    body,
-  });
+    const body = new URLSearchParams();
+    body.append("file", photo_url);
+    body.append("timestamp", timestamp);
+    body.append("api_key", API_KEY!);
+    body.append("eager", eager);
+    body.append("eager_async", "false");
+    body.append("signature", signature);
 
-  const result = await res.json();
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
+      method: "POST",
+      body,
+    });
 
-  if (result.error) {
-    throw new Error(`Cloudinary error: ${result.error.message}`);
-  }
+    const result = await res.json();
 
-  if (result.eager && result.eager[0]) {
-    return result.eager[0].secure_url;
-  }
-  return result.secure_url;
-}
+    if (result.error) {
+      console.error(`Photo ${photo_id}: Cloudinary error - ${result.error.message}`);
+      return null;
+    }
 
-function buildEager(category: string, room: string): string {
-  const cat = (category || "").toLowerCase();
-  const rm = (room || "").toLowerCase();
-  const isExterior = cat === "exterior" || ["aerial", "grounds", "garden", "outdoor", "pool", "tennis"].some(x => rm.includes(x));
+    const enhanced_url = (result.eager && result.eager[0]) ? result.eager[0].secure_url : result.secure_url;
 
-  if (isExterior) {
-    return "e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_1400,c_limit";
-  } else {
-    return "e_improve:indoor:60,e_brightness:10,e_shadow:-30,e_sharpen:40,e_saturation:15,f_auto,q_auto,w_1400,c_limit";
+    // Update DB synchronously
+    await client.asServiceRole.entities.PropertyPhoto.update(photo_id, { enhanced_url });
+    console.log(`Photo ${photo_id}: Enhanced successfully`);
+    return enhanced_url;
+  } catch (err) {
+    console.error(`Photo ${photo_id}: ${String(err)}`);
+    return null;
   }
 }
 
@@ -67,31 +69,44 @@ export default async function handler(req: Request): Promise<Response> {
   }
 
   try {
-    const { photo_id, photo_url, mode, bulk_ids } = await req.json();
+    const { photo_id, photo_url, bulk_ids, skip_existing } = await req.json();
 
-    // Bulk mode — process array of IDs
-    if (bulk_ids && Array.isArray(bulk_ids)) {
+    // Bulk mode — process IDs one at a time with quick response
+    if (bulk_ids && Array.isArray(bulk_ids) && bulk_ids.length > 0) {
       const results = [];
+      const toProcess = [];
+
+      // Load all photos first
       for (const id of bulk_ids) {
         try {
           const photo = await client.asServiceRole.entities.PropertyPhoto.get(id);
-          if (!photo) {
-            results.push({ id, success: false, error: "Photo not found" });
-            continue;
+          if (!skip_existing || !photo.enhanced_url) {
+            toProcess.push({ id, ...photo });
           }
-
-          const eager = buildEager(photo.category || "", photo.room || "");
-          const enhanced_url = await uploadToCloudinary(photo.file_url, eager);
-
-          await client.asServiceRole.entities.PropertyPhoto.update(id, { enhanced_url });
-          results.push({ id, enhanced_url, success: true });
         } catch (err) {
-          results.push({ id, success: false, error: String(err) });
+          console.error(`Failed to load photo ${id}`);
         }
       }
-      return new Response(JSON.stringify({ results, count: results.length }), {
-        headers: { "Content-Type": "application/json", ...cors }
-      });
+
+      // Return immediately so function doesn't timeout
+      const response = new Response(
+        JSON.stringify({ 
+          queued: toProcess.length, 
+          message: `${toProcess.length} photos queued for enhancement` 
+        }),
+        { headers: { "Content-Type": "application/json", ...cors } }
+      );
+
+      // Process async in background
+      (async () => {
+        for (const photo of toProcess) {
+          await enhanceSinglePhoto(photo.id, photo.file_url, photo.category, photo.room);
+          // Small delay to avoid Cloudinary rate limit
+          await new Promise(r => setTimeout(r, 200));
+        }
+      })();
+
+      return response;
     }
 
     // Single photo mode
@@ -103,11 +118,38 @@ export default async function handler(req: Request): Promise<Response> {
     }
 
     const photo = await client.asServiceRole.entities.PropertyPhoto.get(photo_id);
-    const eager = mode === "exterior_enhance"
+    const cat = (photo.category || "").toLowerCase();
+    const rm = (photo.room || "").toLowerCase();
+    const isExterior = cat === "exterior" || ["aerial", "grounds", "garden", "outdoor", "pool", "tennis"].some(x => rm.includes(x));
+
+    const eager = isExterior
       ? "e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_1400,c_limit"
       : "e_improve:indoor:60,e_brightness:10,e_shadow:-30,e_sharpen:40,e_saturation:15,f_auto,q_auto,w_1400,c_limit";
 
-    const enhanced_url = await uploadToCloudinary(photo_url, eager);
+    const timestamp = Math.round(Date.now() / 1000).toString();
+    const sigString = `eager=${eager}&timestamp=${timestamp}${API_SECRET}`;
+    const signature = await sha1(sigString);
+
+    const body = new URLSearchParams();
+    body.append("file", photo_url);
+    body.append("timestamp", timestamp);
+    body.append("api_key", API_KEY!);
+    body.append("eager", eager);
+    body.append("eager_async", "false");
+    body.append("signature", signature);
+
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
+      method: "POST",
+      body,
+    });
+
+    const result = await res.json();
+
+    if (result.error) {
+      throw new Error(`Cloudinary error: ${result.error.message}`);
+    }
+
+    const enhanced_url = (result.eager && result.eager[0]) ? result.eager[0].secure_url : result.secure_url;
     await client.asServiceRole.entities.PropertyPhoto.update(photo_id, { enhanced_url });
 
     return new Response(JSON.stringify({ enhanced_url, success: true }), {
