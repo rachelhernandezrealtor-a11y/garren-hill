@@ -56,6 +56,35 @@ function useFade() {
   return [ref, on];
 }
 
+function useCounter(target, duration, start, decimals) {
+  // target = numeric end value, duration ms, start = when to begin, decimals = decimal places
+  const [count, setCount] = React.useState(0);
+  const [triggered, setTriggered] = React.useState(false);
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setTriggered(true); obs.disconnect(); } }, { threshold: 0.4 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  React.useEffect(() => {
+    if (!triggered) return;
+    let startTime = null;
+    const step = (ts) => {
+      if (!startTime) startTime = ts;
+      const progress = Math.min((ts - startTime) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      setCount(parseFloat((ease * target).toFixed(decimals || 0)));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [triggered, target, duration]);
+  return [count, ref];
+}
+
+
+
 function Fade({ children, delay, up, style }) {
   const [ref, on] = useFade();
   return (
@@ -332,19 +361,32 @@ function CinematicReveal({ src, eyebrow, headline, body, align, quote, position 
 // ============================================================
 // NUMBERS
 // ============================================================
+function CountStat({ value, label, prefix, suffix, decimals, duration, mob }) {
+  // value = numeric target, prefix/suffix = decorative strings around the number
+  const [count, ref] = useCounter(value, duration || 1800, 0, decimals || 0);
+  const display = (prefix || '') + (decimals ? count.toFixed(decimals) : Math.round(count).toLocaleString()) + (suffix || '');
+  return (
+    <div ref={ref} style={{ textAlign: 'center', padding: mob ? '3rem 1rem' : '4rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.05)', borderRight: '1px solid rgba(255,255,255,0.05)' }}>
+      <p style={{ color: CREAM, fontFamily: 'Georgia, serif', fontSize: mob ? '2rem' : '2.8rem', fontWeight: 400, margin: '0 0 0.7rem', letterSpacing: '-0.03em' }}>{display}</p>
+      <p style={{ color: 'rgba(255,255,255,0.16)', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', margin: 0 }}>{label}</p>
+    </div>
+  );
+}
+
 function Numbers() {
   const w = useW();
   const mob = w < 768;
   const cols = mob ? 2 : 4;
+  // [label, numeric_target, prefix, suffix, decimals, duration_ms]
   const stats = [
-    ['15', 'Acres'],
-    ['8,519', 'Sq Ft Main Residence'],
-    ['6 / 7', 'Beds / Baths'],
-    ['$5.25M', 'Offered At'],
-    ['6', 'Structures'],
-    ['1,200', 'Amps Total Power'],
-    ['14.3kW', 'Solar Array'],
-    ['3 mi', 'To Pinehurst Resort'],
+    ['Acres', 15, '', '', 0, 1600],
+    ['Sq Ft Main Residence', 8519, '', '', 0, 2200],
+    ['Beds', 6, '', '', 0, 1200],
+    ['Offered At', 5.25, '$', 'M', 2, 1800],
+    ['Structures', 6, '', '', 0, 1200],
+    ['Amps Total Power', 1200, '', '', 0, 2000],
+    ['kW Solar Array', 14.3, '', 'kW', 1, 1600],
+    ['Mi To Pinehurst', 3, '', ' mi', 0, 1000],
   ];
   return (
     <section style={{ background: '#0c0c0c', padding: mob ? '6rem 0' : '9rem 0' }}>
@@ -354,13 +396,8 @@ function Numbers() {
         </p>
       </Fade>
       <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, maxWidth: 1020, margin: '0 auto', padding: '0 5vw', borderTop: '1px solid rgba(255,255,255,0.05)', borderLeft: '1px solid rgba(255,255,255,0.05)' }}>
-        {stats.map(([v, l], i) => (
-          <Fade key={l} delay={i * 0.05}>
-            <div style={{ textAlign: 'center', padding: mob ? '3rem 1rem' : '4rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.05)', borderRight: '1px solid rgba(255,255,255,0.05)' }}>
-              <p style={{ color: CREAM, fontFamily: 'Georgia, serif', fontSize: mob ? '2rem' : '2.8rem', fontWeight: 400, margin: '0 0 0.7rem', letterSpacing: '-0.03em' }}>{v}</p>
-              <p style={{ color: 'rgba(255,255,255,0.16)', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', margin: 0 }}>{l}</p>
-            </div>
-          </Fade>
+        {stats.map(([label, value, prefix, suffix, decimals, duration], i) => (
+          <CountStat key={label} value={value} label={label} prefix={prefix} suffix={suffix} decimals={decimals} duration={duration} mob={mob} />
         ))}
       </div>
     </section>
