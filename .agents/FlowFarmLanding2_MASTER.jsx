@@ -682,12 +682,12 @@ function Opportunity() {
   ];
 
   const summary = [
-    { num: '15', label: 'Acres Total', sub: 'Secured agricultural standing within a protected natural forest buffer.' },
-    { num: '3', label: 'Veganic Farm', sub: 'A productive USDA-registered farm anchoring the estate zoning and tax status.' },
-    { num: '7+', label: 'Buildable Acres', sub: 'Architect-designed guest house shell ready for immediate development.' },
-    { num: '~7,500', label: 'Square Feet', sub: 'A design masterpiece by Robert E. Clark AIA, built to commercial standards.' },
-    { num: '5', label: 'Geothermal Zones', sub: 'True self-sufficiency through solar, geothermal, and deep private wells.' },
-    { num: '6', label: 'Structures', sub: 'A compound with capacity for family, enterprise, or hospitality -- without strain.' },
+    { num: '15', label: 'Acres of Working Land', sub: 'USDA-registered agricultural standing inside a dense natural forest buffer -- permanent, protected, and fully active.' },
+    { num: '3', label: 'The Farm at Its Heart', sub: 'A veganic operation building soil since 2009. The farm sustains the zoning. The zoning unlocks the land.' },
+    { num: '7+', label: 'Acres Ready to Build', sub: 'A guest house shell designed by Robert E. Clark AIA already on the parcel. The infrastructure exists. The vision is yours.' },
+    { num: '~7,500', label: 'Square Feet of Residence', sub: 'Eight structures designed as a compound -- not a house with outbuildings, but a full estate in deliberate balance.' },
+    { num: '5', label: 'Climate Zones, Zero Grid', sub: 'Twenty geothermal wells. 14.3 kW solar with battery. Two deep wells. The estate answers to nothing municipal.' },
+    { num: '6', label: 'Structures on the Land', sub: 'Main house, wing, cabana, workshop, high tunnel, cottage. A compound that absorbs a family or an enterprise without strain.' },
   ];
 
   const vis = { opacity: 1, transform: 'none' };
