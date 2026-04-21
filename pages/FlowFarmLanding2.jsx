@@ -383,72 +383,92 @@ function Foundation() {
 function ALivingPlace() {
   const w = useW();
   const mob = w < 768;
-  const [scrollY, setScrollY] = useState(0);
+  const bgRef = useRef(null);
+  const [fadeIn, setFadeIn] = useState(false);
+  const sectionRef = useRef(null);
+
   useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY);
+    const bg = bgRef.current;
+    if (!bg) return;
+    const onScroll = () => {
+      const rect = bg.closest('section').getBoundingClientRect();
+      const pct = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      const shift = (pct - 0.5) * 100;
+      bg.style.transform = 'scale(1.08) translateY(' + shift + 'px)';
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-  const [ref, fadeIn] = useFade();
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setFadeIn(true); }, { threshold: 0.15 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   const FOREST = 'https://res.cloudinary.com/dghn2xpif/image/fetch/f_auto,q_auto,w_2400,e_vibrance:50,e_saturation:30,e_brightness:18,e_sharpen:60/' + encodeURIComponent('https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png');
 
   return (
-    <section ref={ref} style={{ position: 'relative', minHeight: mob ? '80vh' : '90vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      {/* Forest background with parallax */}
-      <div style={{
+    <section ref={sectionRef} style={{ position: 'relative', minHeight: mob ? '85vh' : '95vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      {/* Full-bleed forest background */}
+      <div ref={bgRef} style={{
         position: 'absolute', inset: 0, zIndex: 1,
         backgroundImage: 'url(' + FOREST + ')',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        transform: 'scale(1.08) translateY(' + (scrollY * 0.18) + 'px)',
-        filter: 'saturate(1.3) brightness(1.08)',
+        transform: 'scale(1.08) translateY(0px)',
+        filter: 'saturate(1.35) brightness(1.12)',
         transition: 'transform 0.05s linear',
       }} />
-      {/* Very light overlay -- let the color breathe */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.08) 40%, rgba(0,0,0,0.38) 100%)' }} />
+      {/* Very light vignette only -- let forest breathe */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.42) 100%)' }} />
 
-      {/* Content */}
+      {/* Content floats on image */}
       <div style={{
         position: 'relative', zIndex: 3,
         textAlign: 'center',
         padding: mob ? '5rem 6vw' : '7rem 8vw',
-        maxWidth: 880,
+        maxWidth: 860,
         margin: '0 auto',
         opacity: fadeIn ? 1 : 0,
-        transform: fadeIn ? 'none' : 'translateY(28px)',
-        transition: 'opacity 1.6s ease, transform 1.6s ease',
+        transform: fadeIn ? 'none' : 'translateY(32px)',
+        transition: 'opacity 1.8s ease, transform 1.8s ease',
       }}>
-        <p style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.38em', textTransform: 'uppercase', color: GOLD, margin: '0 0 1.6rem', fontWeight: 400 }}>
+        <p style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.42em', textTransform: 'uppercase', color: GOLD, margin: '0 0 1.8rem', fontWeight: 400 }}>
           Flow Farm
         </p>
         <h2 style={{
           fontFamily: 'Georgia, serif',
           fontWeight: 400,
-          fontSize: mob ? 'clamp(2rem, 7vw, 2.8rem)' : 'clamp(2.6rem, 3.8vw, 4rem)',
+          fontSize: mob ? 'clamp(2.2rem, 7vw, 3rem)' : 'clamp(2.8rem, 4vw, 4.4rem)',
           color: '#fff',
-          lineHeight: 1.18,
+          lineHeight: 1.15,
           letterSpacing: '-0.02em',
-          margin: '0 0 2rem',
-          textShadow: '0 2px 24px rgba(0,0,0,0.45)',
+          margin: '0 0 2.4rem',
+          textShadow: '0 2px 32px rgba(0,0,0,0.55)',
         }}>
           A Living Place,<br />Rooted in Possibility.
         </h2>
+        {/* Frosted glass pill -- text floats, not boxed */}
         <div style={{
-          background: 'rgba(0,0,0,0.28)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          border: '1px solid rgba(255,255,255,0.10)',
-          padding: mob ? '1.8rem 1.6rem' : '2.4rem 3rem',
-          maxWidth: 680,
-          margin: '0 auto',
+          display: 'inline-block',
+          background: 'rgba(255,255,255,0.08)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          border: '1px solid rgba(255,255,255,0.14)',
+          borderRadius: '2px',
+          padding: mob ? '1.8rem 1.8rem' : '2.6rem 3.6rem',
+          maxWidth: 660,
         }}>
           <p style={{
             fontFamily: 'Georgia, serif',
-            fontSize: mob ? '1rem' : '1.08rem',
-            color: 'rgba(255,255,255,0.88)',
+            fontSize: mob ? '1rem' : '1.1rem',
+            color: 'rgba(255,255,255,0.92)',
             lineHeight: 2.0,
             margin: 0,
+            textShadow: '0 1px 8px rgba(0,0,0,0.3)',
           }}>
             Flow Farm is more than an estate, and more than a farm. It is a place where land,
             life, and vision move together -- where luxury and stewardship exist in living balance.
@@ -1465,11 +1485,11 @@ export default function FlowFarmLanding2() {
   return (
     <div style={{ background: DARK, margin: 0, padding: 0, overflowX: 'hidden' }}>
       <Hero />
-      <Opportunity />
-      <Manifesto />
-      <Foundation />
       <ALivingPlace />
       <OperationalByDesign />
+      <Manifesto />
+      <Foundation />
+      <Opportunity />
       <PropertyMap />
       <StealTheShow />
       <CinematicReveal
