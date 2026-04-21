@@ -21,6 +21,7 @@ const CLOUD = 'dghn2xpif';
 const cdn = (url, w = 1400) => 'https://res.cloudinary.com/' + CLOUD + '/image/fetch/f_auto,q_auto,w_' + w + ',c_limit/' + encodeURIComponent(url);
 const cdnInt = (url) => 'https://res.cloudinary.com/' + CLOUD + '/image/fetch/e_improve:indoor:60,e_brightness:10,e_shadow:-30,e_sharpen:40,e_saturation:15,f_auto,q_auto,w_1600,c_limit/' + encodeURIComponent(url);
 const cdnExt = (url) => 'https://res.cloudinary.com/' + CLOUD + '/image/fetch/e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_1600,c_limit/' + encodeURIComponent(url);
+const cdnSharp = (url) => 'https://res.cloudinary.com/' + CLOUD + '/image/fetch/e_sharpen:200,e_vibrance:30,e_brightness:8,e_saturation:20,f_auto,q_auto,w_2000,c_limit/' + encodeURIComponent(url);
 
 const IMG = {
   // Hero shots -- real professional photos
@@ -929,7 +930,7 @@ export default function FlowFarmLanding2() {
       />
       <Numbers />
       <CinematicReveal
-        src={cdnInt(IMG.conservatory)}
+        src={cdnSharp(IMG.conservatory)}
         eyebrow="The Conservatory"
         headline={"The room that stops\nevery conversation."}
         body="19.5 by 17.7 feet, entirely glass-wrapped. An octagonal dome overhead tracks the sky from morning to dusk. Views of the farm, the cabana, the pines. The room that reminds you why you came here."
