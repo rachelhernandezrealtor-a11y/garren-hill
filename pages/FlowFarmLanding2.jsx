@@ -726,7 +726,7 @@ function PropertyMap() {
         <div style={{ position: 'relative', width: '100%', paddingBottom: mob ? '100%' : '75%', overflow: 'hidden' }}>
           {/* Aerial photo */}
           <img
-            src={cdnExt(AERIAL_MAP)}
+            src={"https://res.cloudinary.com/dghn2xpif/image/fetch/e_sharpen:80,e_vibrance:20,e_saturation:15,f_auto,q_auto,w_2400/" + encodeURIComponent(AERIAL_MAP)}
             alt="Flow Farm aerial view"
             style={{
               position: 'absolute', inset: 0, width: '100%', height: '100%',
