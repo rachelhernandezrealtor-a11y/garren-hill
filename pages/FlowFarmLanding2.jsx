@@ -13,7 +13,7 @@ const GOLD = '#C9A96E';
 const CREAM = '#F5F0E8';
 const DARK = '#0a0a0a';
 
-const VIDEO = 'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f7910a1c9_275a93837_forestheroMAIN.mp4';
+const VIDEO_VIMEO_ID = '1180614233';
 const MATTERPORT = 'https://my.matterport.com/show/?m=xZRfSiQPuQ8';
 
 const B = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/';
@@ -211,10 +211,12 @@ function Hero() {
 
   return (
     <section style={{ position: 'relative', height: '100vh', minHeight: mob ? 600 : 700, overflow: 'hidden', background: '#000' }}>
-      <video autoPlay loop muted playsInline
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 1, opacity: 0.80 }}>
-        <source src={VIDEO} type="video/mp4" />
-      </video>
+      <iframe
+        src={`https://player.vimeo.com/video/${VIDEO_VIMEO_ID}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+        style={{ position: 'absolute', inset: '-10%', width: '120%', height: '120%', border: 'none', zIndex: 1, pointerEvents: 'none', opacity: 0.85 }}
+        allow="autoplay; fullscreen"
+        title="Hero background"
+      />
       <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.5) 100%)' }} />
       <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to bottom, rgba(0,0,0,0.22) 0%, transparent 30%, transparent 50%, rgba(0,0,0,0.94) 100%)' }} />
 
@@ -374,6 +376,34 @@ function Foundation() {
 // ============================================================
 // CINEMATIC
 // ============================================================
+
+// ============================================================
+// STEAL THE SHOW QUOTE
+// ============================================================
+function StealTheShow() {
+  const w = useW();
+  const mob = w < 768;
+  return (
+    <section style={{ background: DARK, padding: mob ? '7rem 6vw' : '11rem 6vw', textAlign: 'center' }}>
+      <Fade up>
+        <p style={{
+          fontFamily: "'Cormorant Garamond', Georgia, serif",
+          fontStyle: 'italic',
+          fontWeight: 300,
+          fontSize: mob ? 'clamp(2rem, 8vw, 3rem)' : 'clamp(2.4rem, 4vw, 4.2rem)',
+          color: '#fff',
+          lineHeight: 1.3,
+          letterSpacing: '-0.01em',
+          maxWidth: 860,
+          margin: '0 auto',
+        }}>
+          "The house that quietly steals the whole show."
+        </p>
+      </Fade>
+    </section>
+  );
+}
+
 function CinematicReveal({ src, eyebrow, headline, body, align, quote, position }) {
   const w = useW();
   const mob = w < 768;
@@ -873,6 +903,7 @@ export default function FlowFarmLanding2() {
       <Opportunity />
       <Manifesto />
       <Foundation />
+      <StealTheShow />
       <CinematicReveal
         src={cdn(IMG.living)}
         eyebrow="The Residence"
