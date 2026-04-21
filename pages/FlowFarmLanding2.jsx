@@ -682,19 +682,20 @@ function Opportunity() {
   ];
 
   const summary = [
-    { num: '15', label: 'Acres of Opportunity', sub: 'Secured agricultural standing within a protected natural forest buffer.' },
-    { num: '3', label: 'The Agricultural Engine', sub: 'A productive USDA-registered veganic farm anchoring the estate's zoning.' },
+    { num: '15', label: 'Acres Total', sub: 'Secured agricultural standing within a protected natural forest buffer.' },
+    { num: '3', label: 'Veganic Farm', sub: 'A productive USDA-registered farm anchoring the estate zoning and tax status.' },
     { num: '7+', label: 'Buildable Acres', sub: 'Architect-designed guest house shell ready for immediate development.' },
     { num: '~7,500', label: 'Square Feet', sub: 'A design masterpiece by Robert E. Clark AIA, built to commercial standards.' },
-    { num: '5', label: 'Geothermal Zones', sub: 'True self-sufficiency through advanced solar, geothermal, and deep-water wells.' },
+    { num: '5', label: 'Geothermal Zones', sub: 'True self-sufficiency through solar, geothermal, and deep private wells.' },
     { num: '6', label: 'Structures', sub: 'A compound with capacity for family, enterprise, or hospitality -- without strain.' },
   ];
+
+  const vis = { opacity: 1, transform: 'none' };
 
   return (
     <>
       {/* CINEMATIC FULL-BLEED GLASS SECTION */}
       <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
-        {/* Fixed background photo -- using img tag for reliable rendering */}
         <img
           src={cdn(IMG.aerial)}
           alt=""
@@ -704,88 +705,75 @@ function Opportunity() {
             zIndex: 0,
           }}
         />
-        {/* Overlay */}
-        <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.72) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.75) 100%)' }} />
 
-        {/* Floating glass content */}
         <div style={{ position: 'relative', zIndex: 2, width: '100%', padding: mob ? '8rem 6vw' : '10rem 8vw' }}>
           <div style={{ maxWidth: 1280, margin: '0 auto' }}>
 
-            {/* Thesis */}
-            <Fade up>
-              <p style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.36em', textTransform: 'uppercase', color: GOLD, margin: mob ? '0 0 1.6rem' : '0 0 2rem' }}>
-                The Opportunity
-              </p>
-            </Fade>
-            <Fade up delay={0.1}>
-              <h2 style={{
-                color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400,
-                fontSize: mob ? '2rem' : '3.2rem', lineHeight: 1.18,
-                margin: mob ? '0 0 1.2rem' : '0 0 1.6rem',
-                maxWidth: 780,
-              }}>
-                A Rare Convergence of<br />Sanctuary and Strategy.
-              </h2>
-            </Fade>
-            <Fade up delay={0.18}>
-              <p style={{
-                color: 'rgba(255,255,255,0.62)', fontFamily: 'Georgia, serif',
-                fontSize: mob ? '1rem' : '1.15rem', lineHeight: 1.8,
-                maxWidth: 640, margin: mob ? '0 0 4rem' : '0 0 5rem',
-              }}>
-                The farm sustains the zoning. The zoning unlocks the land. The infrastructure removes every barrier between ownership and what comes next. Fifteen acres -- a compound, not simply a residence -- that absorbs a growing family or a growing enterprise without ever feeling the strain.
-              </p>
-            </Fade>
+            <p style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.36em', textTransform: 'uppercase', color: GOLD, margin: mob ? '0 0 1.6rem' : '0 0 2rem' }}>
+              The Opportunity
+            </p>
 
-            {/* Glass cards grid */}
+            <h2 style={{
+              color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400,
+              fontSize: mob ? '2rem' : '3.2rem', lineHeight: 1.18,
+              margin: mob ? '0 0 1.2rem' : '0 0 1.6rem',
+              maxWidth: 780,
+            }}>
+              A Rare Convergence of<br />Sanctuary and Strategy.
+            </h2>
+
+            <p style={{
+              color: 'rgba(255,255,255,0.65)', fontFamily: 'Georgia, serif',
+              fontSize: mob ? '1rem' : '1.15rem', lineHeight: 1.85,
+              maxWidth: 640, margin: mob ? '0 0 4rem' : '0 0 5rem',
+            }}>
+              The farm sustains the zoning. The zoning unlocks the land. The infrastructure removes every barrier between ownership and what comes next. Fifteen acres -- a compound, not simply a residence -- that absorbs a growing family or a growing enterprise without ever feeling the strain.
+            </p>
+
             <div style={{
               display: 'grid',
               gridTemplateColumns: mob ? '1fr' : '1fr 1fr',
               gap: mob ? '1.2rem' : '1.5rem',
             }}>
               {cards.map((c, i) => (
-                <Fade key={c.eyebrow} up delay={0.1 + i * 0.08}>
-                  <div style={{
-                    background: 'rgba(8,8,8,0.58)',
-                    backdropFilter: 'blur(24px)',
-                    WebkitBackdropFilter: 'blur(24px)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    padding: mob ? '2rem 1.8rem' : '2.6rem 2.4rem',
+                <div key={c.eyebrow} style={{
+                  background: 'rgba(8,8,8,0.60)',
+                  backdropFilter: 'blur(24px)',
+                  WebkitBackdropFilter: 'blur(24px)',
+                  border: '1px solid rgba(255,255,255,0.09)',
+                  padding: mob ? '2rem 1.8rem' : '2.6rem 2.4rem',
+                }}>
+                  <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.32em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.9rem' }}>
+                    {c.eyebrow}
+                  </p>
+                  <h3 style={{
+                    color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400,
+                    fontSize: mob ? '1.15rem' : '1.3rem', lineHeight: 1.3,
+                    margin: '0 0 1rem',
                   }}>
-                    <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.32em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.9rem' }}>
-                      {c.eyebrow}
-                    </p>
-                    <h3 style={{
-                      color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400,
-                      fontSize: mob ? '1.15rem' : '1.3rem', lineHeight: 1.3,
-                      margin: '0 0 1rem',
-                    }}>
-                      {c.headline}
-                    </h3>
-                    <p style={{
-                      color: 'rgba(255,255,255,0.52)', fontFamily: 'Georgia, serif',
-                      fontSize: '0.92rem', lineHeight: 1.75, margin: 0,
-                    }}>
-                      {c.body}
-                    </p>
-                  </div>
-                </Fade>
+                    {c.headline}
+                  </h3>
+                  <p style={{
+                    color: 'rgba(255,255,255,0.52)', fontFamily: 'Georgia, serif',
+                    fontSize: '0.92rem', lineHeight: 1.75, margin: 0,
+                  }}>
+                    {c.body}
+                  </p>
+                </div>
               ))}
             </div>
 
-            {/* Floating quote */}
-            <Fade up delay={0.5}>
-              <p style={{
-                color: 'rgba(255,255,255,0.22)', fontFamily: 'Georgia, serif', fontStyle: 'italic',
-                fontSize: mob ? '1rem' : '1.25rem', lineHeight: 1.7,
-                textAlign: 'center', margin: mob ? '4rem 0 0' : '5rem auto 0',
-                maxWidth: 600,
-                borderTop: '1px solid rgba(255,255,255,0.08)',
-                paddingTop: mob ? '2.5rem' : '3.5rem',
-              }}>
-                "Fifteen acres where every system answers to the next."
-              </p>
-            </Fade>
+            <p style={{
+              color: 'rgba(255,255,255,0.25)', fontFamily: 'Georgia, serif', fontStyle: 'italic',
+              fontSize: mob ? '1rem' : '1.25rem', lineHeight: 1.7,
+              textAlign: 'center', margin: mob ? '4rem 0 0' : '5rem auto 0',
+              maxWidth: 600,
+              borderTop: '1px solid rgba(255,255,255,0.08)',
+              paddingTop: mob ? '2.5rem' : '3.5rem',
+            }}>
+              "Fifteen acres where every system answers to the next."
+            </p>
           </div>
         </div>
       </section>
@@ -810,7 +798,6 @@ function Opportunity() {
           <div style={{
             display: 'grid',
             gridTemplateColumns: mob ? '1fr' : 'repeat(3, 1fr)',
-            gap: mob ? '0' : '0',
             borderTop: '1px solid rgba(255,255,255,0.06)',
             borderLeft: mob ? 'none' : '1px solid rgba(255,255,255,0.06)',
           }}>
@@ -847,6 +834,7 @@ function Opportunity() {
     </>
   );
 }
+
 
 // ============================================================
 // PAGE
