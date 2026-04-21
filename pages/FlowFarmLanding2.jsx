@@ -19,6 +19,8 @@ const MATTERPORT = 'https://my.matterport.com/show/?m=xZRfSiQPuQ8';
 const B = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/';
 const CLOUD = 'dghn2xpif';
 const cdn = (url, w = 1400) => 'https://res.cloudinary.com/' + CLOUD + '/image/fetch/f_auto,q_auto,w_' + w + ',c_limit/' + encodeURIComponent(url);
+const cdnInt = (url) => 'https://res.cloudinary.com/' + CLOUD + '/image/fetch/e_improve:indoor:60,e_brightness:10,e_shadow:-30,e_sharpen:40,e_saturation:15,f_auto,q_auto,w_1600,c_limit/' + encodeURIComponent(url);
+const cdnExt = (url) => 'https://res.cloudinary.com/' + CLOUD + '/image/fetch/e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_1600,c_limit/' + encodeURIComponent(url);
 
 const IMG = {
   // Hero shots -- real professional photos
@@ -358,7 +360,7 @@ function Foundation() {
         </Fade>
         <Fade delay={0.2}>
           <div style={{ position: 'relative' }}>
-            <img src={cdn(IMG.aerial)} alt="Flow Farm Estate" style={{ width: '100%', height: mob ? 340 : 560, objectFit: 'cover', display: 'block' }} />
+            <img src={cdnExt(IMG.aerial)} alt="Flow Farm Estate" style={{ width: '100%', height: mob ? 340 : 560, objectFit: 'cover', display: 'block' }} />
             <Glass style={{ position: 'absolute', bottom: mob ? -20 : -28, left: mob ? -10 : -28, padding: '1.4rem 2rem' }}>
               <p style={{ margin: '0 0 0.3rem', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)' }}>Architect</p>
               <p style={{ margin: 0, fontFamily: 'Georgia, serif', fontSize: '1rem', color: CREAM }}>Robert E. Clark AIA</p>
@@ -627,7 +629,7 @@ function Location() {
           </div>
         </Fade>
         <Fade delay={0.2}>
-          <img src={cdn(IMG.aerial)} alt="Aerial view of Flow Farm" style={{ width: '100%', height: mob ? 320 : 560, objectFit: 'cover', display: 'block' }} />
+          <img src={cdnExt(IMG.aerial)} alt="Aerial view of Flow Farm" style={{ width: '100%', height: mob ? 320 : 560, objectFit: 'cover', display: 'block' }} />
         </Fade>
       </div>
     </section>
@@ -919,7 +921,7 @@ export default function FlowFarmLanding2() {
       <Foundation />
       <StealTheShow />
       <CinematicReveal
-        src={cdn(IMG.living)}
+        src={cdnInt(IMG.living)}
         eyebrow="The Residence"
         headline={"A grand living room.\n27 feet wide. 17 feet tall."}
         body="Exposed king post trusses. Grand piano. Heart pine floors. French doors to the covered porch. And beyond -- the conservatory, the kitchen, the farm. All of it visible from where you stand. Sound fills seventeen feet without effort. You won't find the speakers."
@@ -927,7 +929,7 @@ export default function FlowFarmLanding2() {
       />
       <Numbers />
       <CinematicReveal
-        src={cdn(IMG.conservatory)}
+        src={cdnInt(IMG.conservatory)}
         eyebrow="The Conservatory"
         headline={"The room that stops\nevery conversation."}
         body="19.5 by 17.7 feet, entirely glass-wrapped. An octagonal dome overhead tracks the sky from morning to dusk. Views of the farm, the cabana, the pines. The room that reminds you why you came here."
@@ -935,13 +937,13 @@ export default function FlowFarmLanding2() {
         position="center center"
       />
       <CinematicReveal
-        src={cdn(IMG.grounds)}
+        src={cdnExt(IMG.grounds)}
         headline={"Autonomy at this scale is not inherited. It is engineered."}
         quote
         position="center 60%"
       />
       <CinematicReveal
-        src={cdn(IMG.kitchen)}
+        src={cdnInt(IMG.kitchen)}
         eyebrow="The Kitchen"
         headline={"Sub-Zero. Wolf 60\".\nBuilt for the serious cook."}
         body="A 60-inch dual fuel Wolf range with red knobs, six burners, griddle, grill, and warming drawer. Two KitchenAid dishwashers. Butcher block island. Scullery with full Sub-Zero and wine fridge. The water from every tap is filtered. Drink it straight. Music plays from somewhere you can't locate. That's the point."
@@ -950,7 +952,7 @@ export default function FlowFarmLanding2() {
       <Land />
       <Mechanism />
       <CinematicReveal
-        src={cdn(IMG.spabath)}
+        src={cdnInt(IMG.spabath)}
         eyebrow="The Primary Suite"
         headline={"A spa.\nA sanctuary.\nA reason to stay."}
         body="Dual vanities. Freestanding soaking tub beneath a window to the forest. Body-jet shower. Mosaic tile floors. A room that earns the word primary. The lights are already at ten percent when you walk in. Control4 knows."
@@ -958,7 +960,7 @@ export default function FlowFarmLanding2() {
         position="center 30%"
       />
       <CinematicReveal
-        src={cdn(IMG.foyer)}
+        src={cdnInt(IMG.foyer)}
         eyebrow="The Welcome"
         headline={"Every arrival\nshould feel like this."}
         body="Herringbone heart pine floors laid on the diagonal. A reclaimed wood door with transom light overhead. A star lantern casting warm light across the entry. The first impression that sets the tone for everything that follows. One tap. The whole house shifts."
