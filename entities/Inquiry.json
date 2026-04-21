@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "property": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    }
+  },
+  "required": [],
+  "name": "Inquiry"
+}

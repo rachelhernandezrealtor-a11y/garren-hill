@@ -363,7 +363,7 @@ function Foundation() {
         </Fade>
         <Fade delay={0.2}>
           <div style={{ position: 'relative' }}>
-            <img src={cdnExt(IMG.aerial)} alt="Flow Farm Estate" style={{ width: '100%', height: mob ? 340 : 560, objectFit: 'cover', display: 'block' }} />
+            <img src={cdnInt(IMG.living)} alt="Flow Farm Estate" style={{ width: '100%', height: mob ? 340 : 560, objectFit: 'cover', display: 'block' }} />
             <Glass style={{ position: 'absolute', bottom: mob ? -20 : -28, left: mob ? -10 : -28, padding: '1.4rem 2rem' }}>
               <p style={{ margin: '0 0 0.3rem', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)' }}>Architect</p>
               <p style={{ margin: 0, fontFamily: 'Georgia, serif', fontSize: '1rem', color: CREAM }}>Robert E. Clark AIA</p>
@@ -632,7 +632,7 @@ function Location() {
           </div>
         </Fade>
         <Fade delay={0.2}>
-          <img src={cdnExt(IMG.aerial)} alt="Aerial view of Flow Farm" style={{ width: '100%', height: mob ? 320 : 560, objectFit: 'cover', display: 'block' }} />
+          <img src={cdnExt(IMG.exterior)} alt="Flow Farm Estate" style={{ width: '100%', height: mob ? 320 : 560, objectFit: 'cover', display: 'block' }} />
         </Fade>
       </div>
     </section>
@@ -647,7 +647,20 @@ function Inquire() {
   const mob = w < 768;
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [sent, setSent] = useState(false);
-  const submit = e => { e.preventDefault(); setSent(true); };
+  const [saving, setSaving] = useState(false);
+  const submit = async e => {
+    e.preventDefault();
+    setSaving(true);
+    try {
+      await fetch('/api/apps/69e248a2469cc39540781cce/entities/Inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, property: 'Flow Farm', source: 'Landing Page' })
+      });
+    } catch(err) { console.error(err); }
+    setSaving(false);
+    setSent(true);
+  };
   const inp = { background: 'transparent', border: 'none', borderBottom: '1px solid rgba(255,255,255,0.12)', color: CREAM, fontFamily: 'Georgia, serif', fontSize: '1rem', padding: '1rem 0', width: '100%', outline: 'none' };
   return (
     <section id="inquire" style={{ background: '#0c0c0c', padding: mob ? '7rem 0' : '10rem 0' }}>
@@ -675,7 +688,7 @@ function Inquire() {
               <input style={inp} placeholder="Phone Number" value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} />
               <textarea style={{ ...inp, resize: 'none', height: 100 }} placeholder="Your message (optional)" value={form.message} onChange={e => setForm({...form, message: e.target.value})} />
               <button type="submit" style={{ background: 'transparent', border: `1px solid ${GOLD}`, color: GOLD, fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.32em', textTransform: 'uppercase', padding: '1.2rem 3rem', cursor: 'pointer', alignSelf: 'center', marginTop: '1rem' }}>
-                Submit Inquiry
+                {saving ? 'Sending...' : 'Submit Inquiry'}
               </button>
             </form>
           </Fade>
