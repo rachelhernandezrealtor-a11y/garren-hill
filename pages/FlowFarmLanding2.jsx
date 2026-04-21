@@ -723,14 +723,14 @@ function PropertyMap() {
         opacity: fadeIn ? 1 : 0,
         transition: 'opacity 1.8s ease 0.3s',
       }}>
-        <div style={{ position: 'relative', width: '100%', paddingBottom: mob ? '85%' : '65%', overflow: 'hidden' }}>
+        <div style={{ position: 'relative', width: '100%', paddingBottom: mob ? '100%' : '75%', overflow: 'hidden' }}>
           {/* Aerial photo */}
           <img
             src={cdnExt(AERIAL_MAP)}
             alt="Flow Farm aerial view"
             style={{
               position: 'absolute', inset: 0, width: '100%', height: '100%',
-              objectFit: 'cover', objectPosition: 'center 40%',
+              objectFit: 'cover', objectPosition: 'center 55%',
               display: 'block',
             }}
           />
