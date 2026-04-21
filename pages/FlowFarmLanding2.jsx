@@ -402,7 +402,7 @@ function ForestIntro() {
       const rect = bg.parentElement.getBoundingClientRect();
       const pct = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
       const shift = (pct - 0.5) * 140;
-      bg.style.transform = 'scale(1.1) translateY(' + shift + 'px)';
+      bg.style.transform = 'scale(1.04) translateY(' + (shift * 0.3) + 'px)';
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -433,23 +433,27 @@ function ForestIntro() {
 
   return (
     <div style={{ position: 'relative', overflow: 'hidden' }}>
-      {/* ONE shared forest background spanning all three beats */}
-      <div ref={bgRef} style={{
-        position: 'absolute', inset: 0, zIndex: 0,
-        backgroundImage: 'url(' + FOREST + ')',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        transform: 'scale(1.1) translateY(0px)',
-        filter: 'saturate(1.6) brightness(1.22)',
-        transition: 'transform 0.05s linear',
-        willChange: 'transform',
-      }} />
-      {/* Radial vignette -- edges dark, center glowing */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.28) 100%)' }} />
+      {/* ONE shared forest background -- sticky so it fills the full chapter */}
+      <div style={{
+        position: 'sticky', top: 0,
+        height: 0, overflow: 'visible',
+        zIndex: 0,
+      }}>
+        <div ref={bgRef} style={{
+          position: 'absolute', top: 0, left: 0, right: 0,
+          height: '100vh',
+          backgroundImage: 'url(' + FOREST + ')',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          filter: 'saturate(1.6) brightness(1.22)',
+          willChange: 'transform',
+        }} />
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '100vh', background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.22) 100%)' }} />
+      </div>
 
       {/* ---- BEAT 1: A Living Place ---- */}
       <div ref={b1Ref} style={{
-        position: 'relative', zIndex: 2,
+        position: 'relative', zIndex: 3,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         minHeight: mob ? '85vh' : '95vh',
         padding: mob ? '6rem 6vw' : '8rem 8vw',
@@ -469,23 +473,12 @@ function ForestIntro() {
           }}>
             A Living Place,<br />Rooted in Possibility.
           </h2>
-          <div style={{
-            display: 'inline-block',
-            background: 'rgba(255,255,255,0.06)',
-            backdropFilter: 'blur(22px)',
-            WebkitBackdropFilter: 'blur(22px)',
-            border: '1px solid rgba(255,255,255,0.14)',
-            borderRadius: '2px',
-            padding: mob ? '1.8rem 1.8rem' : '2.6rem 3.8rem',
-            maxWidth: 660,
-          }}>
-            <p style={{ fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.1rem', color: 'rgba(255,255,255,0.92)', lineHeight: 2.0, margin: 0, textShadow: '0 1px 8px rgba(0,0,0,0.28)' }}>
-              Flow Farm is more than an estate, and more than a farm. It is a place where land,
-              life, and vision move together -- where luxury and stewardship exist in living balance.
-              Every part of the property, from its architecture to its growing systems, has been
-              shaped with intention, creating an experience that feels both grounded and expansive.
-            </p>
-          </div>
+          <p style={{ fontFamily: 'Georgia, serif', fontSize: mob ? '1.05rem' : '1.15rem', color: 'rgba(255,255,255,0.92)', lineHeight: 2.0, margin: '0 auto', maxWidth: 620, textShadow: '0 2px 16px rgba(0,0,0,0.55)' }}>
+            Flow Farm is more than an estate, and more than a farm. It is a place where land,
+            life, and vision move together -- where luxury and stewardship exist in living balance.
+            Every part of the property, from its architecture to its growing systems, has been
+            shaped with intention, creating an experience that feels both grounded and expansive.
+          </p>
           {/* Scroll cue */}
           <div style={{ marginTop: '3.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', opacity: 0.45 }}>
             <div style={{ width: 1, height: 48, background: GOLD }} />
@@ -495,7 +488,7 @@ function ForestIntro() {
 
       {/* ---- BEAT 2: Operational by Design ---- */}
       <div ref={b2Ref} style={{
-        position: 'relative', zIndex: 2,
+        position: 'relative', zIndex: 3,
         minHeight: mob ? '80vh' : '85vh',
         display: 'flex', alignItems: 'center',
         padding: mob ? '5rem 6vw' : '8rem 8vw',
@@ -552,7 +545,7 @@ function ForestIntro() {
 
       {/* ---- BEAT 3: The Opportunity ---- */}
       <div ref={b3Ref} style={{
-        position: 'relative', zIndex: 2,
+        position: 'relative', zIndex: 3,
         minHeight: mob ? '90vh' : '100vh',
         display: 'flex', alignItems: 'center',
         padding: mob ? '5rem 6vw 8rem' : '6rem 8vw 10rem',
