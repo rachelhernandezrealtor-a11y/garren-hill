@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react'; // v2
 
 // Load Cormorant Garamond for ultra-thin editorial numerals
 if (typeof document !== 'undefined') {
@@ -42,6 +42,7 @@ const IMG = {
   forestcanopy:  cdn('https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png', 2400),
   grounds:       cdn('https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/da785e254_flowfarmmasterphotoswebsite3.jpg', 2400),
   exterior:      cdn('https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/595faa261_107LindenTrail-29.jpg', 2400),
+  trail:         cdn('https://media.base44.com/images/public/69e248a2469cc39540781cce/41690f47b_107LindenTrail-822.jpg', 2400),
   // Structures
   cabana:        cdn('https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/3af6924d6_CabanaHouseMain.jpg', 1600),
   tunnel:        cdn('https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/217fdb4a1_HighTunnel.jpg', 1600),
@@ -264,21 +265,21 @@ function Hero() {
           </p>
           <HeroStats mob={mob} />
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: mob ? '0.75rem' : '1rem', justifyContent: 'center', alignItems: 'center' }}>
-            <a href="https://vimeo.com/1165426324" target="_blank" rel="noreferrer" style={{ display: 'inline-block', background: 'rgba(255,255,255,0.10)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.22)', color: '#fff', fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.28em', textTransform: 'uppercase', padding: mob ? '0.85rem 1.8rem' : '1rem 2.4rem', borderRadius: '2rem', textDecoration: 'none', fontWeight: 500, cursor: 'pointer', transition: 'background 0.3s ease, border-color 0.3s ease' }}>
+            <a href="https://vimeo.com/1165426324" target="_blank" rel="noreferrer" style={{ display: 'inline-block', background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.55)', color: '#fff', fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.32em', textTransform: 'uppercase', padding: mob ? '0.85rem 2rem' : '1rem 2.8rem', borderRadius: '2rem', textDecoration: 'none', fontWeight: 500, cursor: 'pointer', transition: 'background 0.3s ease', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 4px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}>
               Enter Flow Farm
             </a>
-            <a href="https://portal.nucleus4d.com/3ec4ff02-9412-4f29-87ba-4926145df7a1/exterior-d302c992-e611-4197-b2df-ff6931a8827a" target="_blank" rel="noreferrer" style={{ display: 'inline-block', background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.16)', color: 'rgba(255,255,255,0.88)', fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.28em', textTransform: 'uppercase', padding: mob ? '0.85rem 1.8rem' : '1rem 2.4rem', borderRadius: '2rem', textDecoration: 'none', fontWeight: 500, cursor: 'pointer', transition: 'background 0.3s ease, border-color 0.3s ease' }}>
-              Walk the Land
-            </a>
-            <a href="https://my.matterport.com/show/?m=xZRfSiQPuQ8" target="_blank" rel="noreferrer" style={{ display: 'inline-block', background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.16)', color: 'rgba(255,255,255,0.88)', fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.28em', textTransform: 'uppercase', padding: mob ? '0.85rem 1.8rem' : '1rem 2.4rem', borderRadius: '2rem', textDecoration: 'none', fontWeight: 500, cursor: 'pointer', transition: 'background 0.3s ease, border-color 0.3s ease' }}>
-              Tour the Estate
-            </a>
+
           </div>
         </div>
       </div>
 
       <div style={{ position: 'absolute', bottom: mob ? '2rem' : '3rem', left: mob ? '1.5rem' : '3rem', right: mob ? '1.5rem' : '3rem', zIndex: 10, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', ...show(3) }}>
         <div>
+          <div style={{ margin: '0 0 1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span style={{ fontSize: '18px' }}>&#127807;</span>
+            <p style={{ color: GOLD, fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: mob ? '13px' : '15px', letterSpacing: '0.06em', margin: 0, opacity: 0.9 }}>Hi Farmer Mark!</p>
+            <span style={{ fontSize: '16px' }}>&#128075;</span>
+          </div>
           <p style={{ color: 'rgba(255,255,255,0.36)', fontFamily: 'sans-serif', fontSize: mob ? '9px' : '11px', letterSpacing: '0.2em', textTransform: 'uppercase', margin: '0 0 0.35rem' }}>107 Linden Trail, Aberdeen NC</p>
           <p style={{ color: 'rgba(255,255,255,0.14)', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.16em', textTransform: 'uppercase', margin: 0 }}>15 Acres &mdash; 6 Structures &mdash; $5,250,000</p>
         </div>
@@ -376,7 +377,574 @@ function Foundation() {
   );
 }
 
+
 // ============================================================
+// A LIVING PLACE
+// ============================================================
+// ============================================================
+// FOREST INTRO -- unified chapter (A Living Place + Operational + Opportunity)
+// ============================================================
+function ForestIntro() {
+  const w = useW();
+  const mob = w < 768;
+  const bgRef = useRef(null);
+  const [beat1, setBeat1] = useState(false);
+  const [beat2, setBeat2] = useState(false);
+  const [beat3, setBeat3] = useState(false);
+  const b1Ref = useRef(null);
+  const b2Ref = useRef(null);
+  const b3Ref = useRef(null);
+
+  useEffect(() => {
+    const bg = bgRef.current;
+    if (!bg) return;
+    const onScroll = () => {
+      const rect = bg.parentElement.getBoundingClientRect();
+      const pct = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
+      const shift = (pct - 0.5) * 220;
+      const zoom = 1.10 + pct * 0.04;
+      bg.style.transform = 'scale(' + zoom + ') translateY(' + (shift * 0.4) + 'px)';
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const pairs = [[b1Ref, setBeat1], [b2Ref, setBeat2], [b3Ref, setBeat3]];
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        pairs.forEach(([r, set]) => { if (e.target === r.current && e.isIntersecting) set(true); });
+      });
+    }, { threshold: 0.12 });
+    pairs.forEach(([r]) => { if (r.current) obs.observe(r.current); });
+    return () => obs.disconnect();
+  }, []);
+
+  const FOREST = 'https://res.cloudinary.com/dghn2xpif/image/fetch/f_auto,q_auto,w_2400,e_vibrance:80,e_saturation:50,e_brightness:18,e_sharpen:100,e_clarity:40/' + encodeURIComponent('https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png');
+  const FARM = 'https://res.cloudinary.com/dghn2xpif/image/fetch/f_auto,q_auto,w_2400,e_improve:outdoor:70,e_vibrance:50,e_saturation:30,e_sharpen:80,e_brightness:10/' + encodeURIComponent('https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/da785e254_flowfarmmasterphotoswebsite3.jpg');
+
+  const gold = { fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.40em', textTransform: 'uppercase', color: GOLD, fontWeight: 400 };
+
+  const gridItems = [
+    { label: '15 USDA ACRES', body: 'Agricultural status secured. A natural forest buffer. Permanently protected.' },
+    { label: '3-ACRE VEGANIC FARM', body: 'In active production since 2009. Figs, citrus, grapes, biochar. The farm sustains the land.' },
+    { label: '8,519 SF RESIDENCE', body: "Architect Robert E. Clark's final private commission. Impossible to replicate." },
+    { label: 'BUILT FOR INDEPENDENCE', body: 'Geothermal. 14.3kW solar. 30kW generator. Private well at 50gpm. The grid is optional.' },
+    { label: '7 BUILDABLE ACRES', body: 'The driveway. The guest house. The basement. Infrastructure already in. The vision is yours to finish.' },
+  ];
+
+  return (
+    <div style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* Shared forest background -- vibrant, no heavy overlay */}
+      <div ref={bgRef} style={{
+        position: 'absolute', inset: '-10% 0', zIndex: 0,
+        backgroundImage: 'url(' + FOREST + ')',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center 40%',
+        filter: 'saturate(1.15) brightness(1.05)',
+        transition: 'transform 0.08s linear',
+        willChange: 'transform',
+      }} />
+      {/* Edge vignette only -- preserve center clarity */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.18) 100%)' }} />
+
+      {/* ---- BEAT 1: A Living Place ---- */}
+      <div ref={b1Ref} style={{
+        position: 'relative', zIndex: 3,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: mob ? '5rem 6vw 4rem' : '7rem 8vw 5rem',
+        textAlign: 'center',
+        opacity: beat1 ? 1 : 0,
+        transform: beat1 ? 'none' : 'translateY(36px)',
+        transition: 'opacity 1.8s ease, transform 1.8s ease',
+      }}>
+        <div style={{ maxWidth: 820, margin: '0 auto' }}>
+          <p style={{ ...gold, margin: '0 0 1.2rem' }}>Flow Farm</p>
+          <h2 style={{
+            fontFamily: 'Georgia, serif', fontWeight: 400,
+            fontSize: mob ? 'clamp(2.4rem, 8vw, 3.2rem)' : 'clamp(3rem, 4.5vw, 5rem)',
+            color: '#fff', lineHeight: 1.12, letterSpacing: '-0.02em',
+            margin: '0 0 1.8rem',
+            textShadow: '0 4px 60px rgba(0,0,0,0.55)',
+          }}>
+            A Living Place,<br />Rooted in Possibility.
+          </h2>
+          <p style={{
+            fontFamily: 'Georgia, serif', fontStyle: 'italic',
+            fontSize: mob ? '1.1rem' : '1.25rem',
+            color: 'rgba(255,255,255,0.92)',
+            lineHeight: 1.75, maxWidth: 600, margin: '0 auto',
+            textShadow: '0 2px 24px rgba(0,0,0,0.5)',
+          }}>
+            Seventeen years of intention. The soil is built. The farm is running. Now it belongs to whoever is meant to take it from here.
+          </p>
+        </div>
+      </div>
+
+      {/* ---- BEAT 2: Operational by Design ---- */}
+      <div ref={b2Ref} style={{
+        position: 'relative', zIndex: 3,
+        padding: mob ? '4rem 6vw 5rem' : '6rem 8vw',
+        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+        opacity: beat2 ? 1 : 0,
+        transform: beat2 ? 'none' : 'translateY(36px)',
+        transition: 'opacity 1.8s ease 0.2s, transform 1.8s ease 0.2s',
+      }}>
+        <div style={{ maxWidth: 960, width: '100%', margin: '0 auto', textAlign: 'center' }}>
+          <p style={{ ...gold, margin: '0 0 1rem' }}>The Estate</p>
+          <h2 style={{
+            fontFamily: 'Georgia, serif', fontWeight: 400,
+            fontSize: mob ? 'clamp(2rem, 7vw, 2.8rem)' : 'clamp(2.6rem, 4vw, 4.2rem)',
+            color: '#fff', lineHeight: 1.12, letterSpacing: '-0.02em',
+            margin: '0 0 0.6rem',
+            textShadow: '0 4px 60px rgba(0,0,0,0.55)',
+          }}>
+            Operational by Design.
+          </h2>
+          <p style={{
+            fontFamily: 'Georgia, serif', fontStyle: 'italic',
+            fontSize: mob ? '1rem' : '1.15rem',
+            color: GOLD, margin: '0 0 1.2rem',
+            textShadow: '0 2px 20px rgba(0,0,0,0.5)',
+          }}>
+            Eight acres working. Seven acres waiting.
+          </p>
+          <p style={{
+            fontFamily: 'Georgia, serif', fontStyle: 'italic',
+            fontSize: mob ? '0.95rem' : '1.05rem',
+            color: 'rgba(255,255,255,0.75)', margin: '0 0 2.4rem',
+            textShadow: '0 2px 20px rgba(0,0,0,0.5)',
+          }}>
+            Most houses depend on the grid. This one doesn't need to.
+          </p>
+          {/* 5-item grid */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: mob ? '1fr' : 'repeat(3, 1fr)',
+            gap: mob ? '1.5rem' : '1.8rem',
+            textAlign: 'left',
+          }}>
+            {gridItems.map((item, i) => (
+              <div key={i} style={{
+                background: 'rgba(10,10,10,0.22)',
+                border: '1px solid rgba(255,255,255,0.22)',
+                backdropFilter: 'blur(18px)',
+                WebkitBackdropFilter: 'blur(18px)',
+                borderRadius: '3px',
+                padding: mob ? '1.4rem 1.4rem' : '1.8rem 2rem',
+              }}>
+                <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.32em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.7rem', fontWeight: 600 }}>{item.label}</p>
+                <p style={{ fontFamily: 'Georgia, serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.65, margin: 0 }}>{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ---- BEAT 3: Farm photo chapter ---- */}
+      <div style={{ position: 'relative', overflow: 'hidden', minHeight: mob ? '55vh' : '70vh' }}>
+        {/* Farm background */}
+        <div style={{
+          position: 'absolute', inset: '-10% 0',
+          backgroundImage: 'url(' + IMG.trail + ')',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 60%',
+          filter: 'saturate(1.2) brightness(1.05)',
+          transition: 'transform 0.08s linear',
+        }} />
+        {/* Subtle dark gradient bottom-up for text legibility */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.5) 100%)' }} />
+
+        <div ref={b3Ref} style={{
+          position: 'relative', zIndex: 3,
+          display: 'flex', alignItems: 'flex-end', justifyContent: 'center',
+          minHeight: mob ? '55vh' : '70vh',
+          padding: mob ? '3rem 6vw 4rem' : '5rem 8vw 6rem',
+          textAlign: 'center',
+          opacity: beat3 ? 1 : 0,
+          transform: beat3 ? 'none' : 'translateY(36px)',
+          transition: 'opacity 1.8s ease 0.3s, transform 1.8s ease 0.3s',
+        }}>
+          <div>
+            <p style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.40em', textTransform: 'uppercase', color: GOLD, margin: '0 0 1rem', fontWeight: 400 }}>The Farm</p>
+            <p style={{
+              fontFamily: 'Georgia, serif', fontStyle: 'italic',
+              fontSize: mob ? 'clamp(1.6rem, 5vw, 2.2rem)' : 'clamp(2rem, 3vw, 3rem)',
+              color: '#fff',
+              lineHeight: 1.45, maxWidth: 760, margin: '0 auto 1.2rem',
+              textShadow: '0 4px 40px rgba(0,0,0,0.7)',
+            }}>
+              This is what seventeen years looks like from above.
+            </p>
+            <p style={{
+              fontFamily: 'Georgia, serif',
+              fontSize: mob ? '0.95rem' : '1.05rem',
+              color: 'rgba(255,255,255,0.75)',
+              lineHeight: 1.7, maxWidth: 560, margin: '0 auto',
+              textShadow: '0 2px 20px rgba(0,0,0,0.6)',
+            }}>
+              Seven acres of pine forest. Two miles of trails. The land has not yet been asked what it wants to become.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+// ============================================================
+// ============================================================
+// PROPERTY MAP
+// ============================================================
+const AERIAL_MAP = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/2ca329bbf_flowfarmmasterphotoswebsite.jpg';
+
+const MAP_PINS = [
+  {
+    id: 'residence',
+    label: 'Main Residence',
+    category: 'RESIDENCE',
+    x: 34,
+    y: 28,
+    headline: 'The Operating Center',
+    description: 'The main house anchors the estate -- architecturally and energetically. Every system on the property reports here. Solar, geothermal, generator, well, and farm all feed into and are monitored from a single Control4 brain.',
+    systems: ['600-Amp Dedicated Service', '20 Geothermal Wells', '14.3kW Solar Array', 'Control4 Home Automation', '143 Lighting Circuits'],
+    cta: { label: 'Launch Virtual 3D Tour', url: 'https://my.matterport.com/show/?m=xZRfSiQPuQ8' },
+  },
+  {
+    id: 'guesthouse',
+    label: 'Guesthouse',
+    category: 'GUESTHOUSE',
+    x: 52,
+    y: 55,
+    headline: 'Independent. Connected.',
+    description: 'The guesthouse carries its own 200-amp dedicated electrical service while remaining fully integrated into the Control4 network. Guests experience the same automation, the same systems, complete autonomy.',
+    systems: ['200-Amp Dedicated Service', 'Control4 Integration', 'Private Entrance'],
+    cta: null,
+  },
+  {
+    id: 'farm',
+    label: '3-Acre Veganic Farm',
+    category: 'THE LAND',
+    x: 22,
+    y: 52,
+    headline: 'Where the land goes to work.',
+    description: 'Three certified veganic acres in active production. Deer-fenced, irrigated from the private 50-gpm well, and supported by biochar soil amendment and composting systems on-site. The farm does not need to leave the property to sustain itself.',
+    systems: ['50-GPM Private Well Irrigation', '1,400-Ft Deer Fence', 'Biochar Soil System', 'On-Site Composting'],
+    cta: { label: 'Walk the Land', url: 'https://portal.nucleus4d.com/3ec4ff02-9412-4f29-87ba-4926145df7a1/exterior-d302c992-e611-4197-b2df-ff6931a8827a' },
+  },
+  {
+    id: 'tunnel',
+    label: 'High Tunnel',
+    category: 'PRODUCTION',
+    x: 47,
+    y: 68,
+    headline: 'Year-round production.',
+    description: 'A 96 by 36-foot high tunnel greenhouse extends the growing season across all four seasons. Connected to the same well and irrigation system that feeds the open fields. Structure and soil working together.',
+    systems: ['96 x 36 Ft Structure', 'Full Irrigation Integration', 'Year-Round Growing'],
+    cta: null,
+  },
+  {
+    id: 'workshop',
+    label: 'Farm Workshop',
+    category: 'INFRASTRUCTURE',
+    x: 60,
+    y: 76,
+    headline: 'The backbone of operations.',
+    description: 'A 30 by 40-foot farm workshop powered by the 400-amp farm electrical service. This is where the estate maintains itself -- equipment, tools, and repair all on-property. No dependency on outside services.',
+    systems: ['400-Amp Farm Service', '30 x 40 Ft Bay', 'Full Equipment Storage'],
+    cta: null,
+  },
+  {
+    id: 'biochar',
+    label: 'Biochar Kiln',
+    category: 'SOIL SYSTEMS',
+    x: 66,
+    y: 86,
+    headline: 'The soil feeds the farm.',
+    description: 'On-site biochar production closes the loop on the regenerative system. Organic matter from the property becomes a soil amendment that returns to the fields. The farm is not just sustainable -- it is self-replenishing.',
+    systems: ['On-Site Biochar Production', 'Compost Integration', 'Regenerative Soil Loop'],
+    cta: null,
+  },
+];
+
+function PropertyMap() {
+  const w = useW();
+  const mob = w < 768;
+  const [active, setActive] = useState(null);
+  const [panelVisible, setPanelVisible] = useState(false);
+  const [ref, fadeIn] = useFade();
+  const mapImgRef = useRef(null);
+
+  useEffect(() => {
+    const el = mapImgRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const rect = el.closest('section').getBoundingClientRect();
+      const pct = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      const shift = (pct - 0.5) * 80;
+      el.style.transform = 'scale(1.06) translateY(' + (shift * 0.5) + 'px)';
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const openPin = (pin) => {
+    setActive(pin);
+    setTimeout(() => setPanelVisible(true), 30);
+  };
+
+  const closePanel = () => {
+    setPanelVisible(false);
+    setTimeout(() => setActive(null), 400);
+  };
+
+  return (
+    <section ref={ref} style={{ background: DARK, padding: mob ? '5rem 0 5rem' : '8rem 0 6rem' }}>
+      {/* Section header */}
+      <div style={{
+        textAlign: 'center',
+        padding: mob ? '0 6vw 3rem' : '0 6vw 4rem',
+        opacity: fadeIn ? 1 : 0,
+        transform: fadeIn ? 'none' : 'translateY(24px)',
+        transition: 'opacity 1.4s ease, transform 1.4s ease',
+      }}>
+        <Eyebrow center>The Estate at a Glance</Eyebrow>
+        <div style={{ width: 36, height: 1, background: GOLD, opacity: 0.35, margin: '1.2rem auto' }} />
+        <h2 style={{
+          color: CREAM,
+          fontFamily: 'Georgia, serif',
+          fontWeight: 400,
+          fontSize: mob ? '2rem' : '2.8rem',
+          lineHeight: 1.22,
+          margin: '0 auto 1rem',
+          letterSpacing: '-0.018em',
+          maxWidth: 700,
+        }}>
+          Fifteen acres.<br />One integrated system.
+        </h2>
+        <p style={{
+          color: 'rgba(255,255,255,0.32)',
+          fontFamily: 'Georgia, serif',
+          fontSize: mob ? '0.95rem' : '1.02rem',
+          lineHeight: 1.9,
+          maxWidth: 560,
+          margin: '0 auto',
+        }}>
+          Every structure on this property serves a purpose. Every system connects to the next.
+          Tap any marker to see how it all fits together.
+        </p>
+      </div>
+
+      {/* Map container */}
+      <div style={{
+        position: 'relative',
+        maxWidth: 1320,
+        margin: '0 auto',
+        padding: '0 4vw',
+        opacity: fadeIn ? 1 : 0,
+        transition: 'opacity 1.8s ease 0.3s',
+      }}>
+        <div style={{ position: 'relative', width: '100%', paddingBottom: mob ? '120%' : '90%', overflow: 'hidden' }}>
+          {/* Aerial photo */}
+          <img
+            ref={mapImgRef}
+            src={"https://res.cloudinary.com/dghn2xpif/image/fetch/e_sharpen:150,e_vibrance:20,e_saturation:15,f_auto,q_auto,w_3200,c_limit/" + encodeURIComponent(AERIAL_MAP)}
+            alt="Flow Farm aerial view"
+            style={{
+              position: 'absolute', inset: 0, width: '100%', height: '100%',
+              objectFit: 'cover', objectPosition: 'center 65%',
+              display: 'block',
+              transform: 'scale(1.06) translateY(0px)',
+              transition: 'transform 0.05s linear',
+              willChange: 'transform',
+            }}
+          />
+          {/* Dark vignette overlay */}
+          <div style={{
+            position: 'absolute', inset: 0,
+            background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.08) 30%, rgba(0,0,0,0.52) 100%)',
+            zIndex: 2,
+          }} />
+
+          {/* Pins */}
+          {MAP_PINS.map((pin) => (
+            <button
+              key={pin.id}
+              onClick={() => active && active.id === pin.id ? closePanel() : openPin(pin)}
+              style={{
+                position: 'absolute',
+                left: pin.x + '%',
+                top: pin.y + '%',
+                transform: 'translate(-50%, -50%)',
+                zIndex: 10,
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: mob ? '4px' : '6px',
+              }}
+            >
+              {/* Pulse ring */}
+              <div style={{ position: 'relative', width: mob ? 16 : 20, height: mob ? 16 : 20 }}>
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  borderRadius: '50%',
+                  border: '1.5px solid ' + GOLD,
+                  opacity: active && active.id === pin.id ? 0 : 0.5,
+                  animation: 'pinPulse 2.4s ease-in-out infinite',
+                  transform: 'scale(1.7)',
+                }} />
+                <div style={{
+                  width: '100%', height: '100%',
+                  borderRadius: '50%',
+                  background: active && active.id === pin.id ? GOLD : 'rgba(201,169,110,0.85)',
+                  border: '1.5px solid ' + GOLD,
+                  boxShadow: '0 0 12px rgba(201,169,110,0.6)',
+                  transition: 'background 0.3s ease',
+                }} />
+              </div>
+              {/* Label */}
+              <div style={{
+                background: 'rgba(8,8,8,0.78)',
+                backdropFilter: 'blur(8px)',
+                border: '1px solid rgba(201,169,110,0.22)',
+                padding: mob ? '2px 7px' : '3px 10px',
+                whiteSpace: 'nowrap',
+              }}>
+                <span style={{
+                  fontFamily: 'sans-serif',
+                  fontSize: mob ? '7px' : '8px',
+                  letterSpacing: '0.22em',
+                  textTransform: 'uppercase',
+                  color: CREAM,
+                  fontWeight: 400,
+                }}>
+                  {pin.label}
+                </span>
+              </div>
+            </button>
+          ))}
+
+          {/* Detail panel */}
+          {active && (
+            <div style={{
+              position: 'absolute',
+              top: mob ? 'auto' : '50%',
+              bottom: mob ? 0 : 'auto',
+              left: mob ? 0 : '3%',
+              width: mob ? '100%' : Math.min(380, w * 0.32) + 'px',
+              zIndex: 20,
+              opacity: panelVisible ? 1 : 0,
+              transform: panelVisible
+                ? (mob ? 'translateY(0)' : 'translateY(-50%)')
+                : (mob ? 'translateY(20px)' : 'translateY(calc(-50% + 16px))'),
+              transition: 'opacity 0.38s ease, transform 0.38s ease',
+            }}>
+              <div style={{
+                background: 'rgba(8,8,8,0.88)',
+                backdropFilter: 'blur(24px)',
+                WebkitBackdropFilter: 'blur(24px)',
+                border: '1px solid rgba(201,169,110,0.18)',
+                padding: mob ? '1.6rem 1.4rem' : '2.4rem 2.2rem',
+                position: 'relative',
+              }}>
+                {/* Close */}
+                <button onClick={closePanel} style={{
+                  position: 'absolute', top: '1rem', right: '1rem',
+                  background: 'none', border: 'none', cursor: 'pointer',
+                  color: 'rgba(255,255,255,0.3)', fontSize: '1.1rem', lineHeight: 1, padding: '4px 8px',
+                }}>x</button>
+
+                <p style={{ margin: '0 0 0.6rem', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>{active.category}</p>
+                <h3 style={{ margin: '0 0 0.5rem', fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '1.3rem' : '1.5rem', color: '#fff', lineHeight: 1.2 }}>{active.label}</h3>
+                <p style={{ margin: '0 0 0.4rem', fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: mob ? '0.82rem' : '0.9rem', color: GOLD }}>{active.headline}</p>
+                <p style={{ margin: '0 0 1.4rem', fontFamily: 'Georgia, serif', fontSize: mob ? '0.82rem' : '0.88rem', color: 'rgba(255,255,255,0.62)', lineHeight: 1.75 }}>{active.description}</p>
+
+                {/* Systems tags */}
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: active.cta ? '1.4rem' : 0 }}>
+                  {active.systems.map((s, i) => (
+                    <span key={i} style={{
+                      fontFamily: 'sans-serif', fontSize: mob ? '7px' : '7.5px', letterSpacing: '0.18em',
+                      textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)',
+                      border: '1px solid rgba(255,255,255,0.12)', padding: '4px 8px',
+                    }}>{s}</span>
+                  ))}
+                </div>
+
+                {/* CTA */}
+                {active.cta && (
+                  <a href={active.cta.url} target="_blank" rel="noreferrer" style={{
+                    display: 'inline-block', marginTop: '0.2rem',
+                    fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.26em',
+                    textTransform: 'uppercase', color: GOLD,
+                    border: '1px solid rgba(201,169,110,0.4)',
+                    padding: '0.7rem 1.4rem', textDecoration: 'none',
+                    transition: 'background 0.25s ease',
+                  }}>
+                    {active.cta.label} ->
+                  </a>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Dot nav */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '0.6rem', marginTop: '1.8rem' }}>
+          {MAP_PINS.map((pin) => (
+            <button key={pin.id} onClick={() => openPin(pin)} style={{
+              width: active && active.id === pin.id ? 20 : 6,
+              height: 6, borderRadius: 3,
+              background: active && active.id === pin.id ? GOLD : 'rgba(255,255,255,0.18)',
+              border: 'none', cursor: 'pointer', padding: 0,
+              transition: 'width 0.35s ease, background 0.35s ease',
+            }} />
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes pinPulse {
+          0%, 100% { opacity: 0.18; transform: scale(1.7); }
+          50% { opacity: 0.5; transform: scale(2.2); }
+        }
+      `}</style>
+
+      {/* Walk the Land CTA */}
+      <div style={{ textAlign: 'center', padding: '2.5rem 0 3.5rem', position: 'relative', zIndex: 10 }}>
+        <a
+          href="https://portal.nucleus4d.com/3ec4ff02-9412-4f29-87ba-4926145df7a1/exterior-d302c992-e611-4197-b2df-ff6931a8827a"
+          target="_blank"
+          rel="noreferrer"
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: '0.6rem',
+            background: GOLD,
+            color: DARK,
+            fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.32em', textTransform: 'uppercase',
+            fontWeight: 700,
+            padding: '1.1rem 2.8rem',
+            borderRadius: '2rem',
+            textDecoration: 'none',
+            boxShadow: '0 4px 30px rgba(201,169,110,0.35)',
+            transition: 'opacity 0.2s ease',
+          }}
+        >
+          &#127758; Walk the Land
+        </a>
+        <p style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '0.85rem', color: 'rgba(255,255,255,0.45)', margin: '0.9rem 0 0' }}>
+          Aerial 3D tour -- explore all 15 acres
+        </p>
+      </div>
+    </section>
+  );
+}
+
+
 // CINEMATIC
 // ============================================================
 
@@ -597,6 +1165,77 @@ function Land() {
         ))}
       </div>
     </section>
+  );
+}
+
+// ============================================================
+// ZONING OPPORTUNITY
+// ============================================================
+function ZoningOpportunity() {
+  const w = useW();
+  const mob = w < 768;
+  const [visible, setVisible] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true); }, { threshold: 0.15 });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref} style={{
+      background: DARK,
+      padding: mob ? '6rem 6vw' : '8rem 10vw',
+      opacity: visible ? 1 : 0,
+      transform: visible ? 'none' : 'translateY(32px)',
+      transition: 'opacity 1.6s ease, transform 1.6s ease',
+    }}>
+      <div style={{ maxWidth: 900, margin: '0 auto' }}>
+        <p style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.4em', textTransform: 'uppercase', color: GOLD, margin: '0 0 1.6rem' }}>The Opportunity</p>
+        <h2 style={{
+          fontFamily: 'Georgia, serif', fontWeight: 400,
+          fontSize: mob ? 'clamp(2rem, 7vw, 2.8rem)' : 'clamp(2.6rem, 3.8vw, 4rem)',
+          color: '#fff', lineHeight: 1.12, letterSpacing: '-0.02em',
+          margin: '0 0 2rem',
+        }}>
+          The zoning is already<br /><em>unlocked.</em>
+        </h2>
+        <div style={{
+          width: '40px', height: '1px', background: GOLD, margin: '0 0 2.4rem', opacity: 0.6,
+        }} />
+        <p style={{
+          fontFamily: 'Georgia, serif', fontSize: mob ? '1.05rem' : '1.2rem',
+          color: CREAM, lineHeight: 1.8, maxWidth: 680, margin: '0 0 3rem',
+        }}>
+          NC Qualifying Farmer Exemption is in place. Retreat centers, event venues, agritourism, commercial kitchens, equestrian operations -- all permitted. Most buyers spend years and real capital securing what this property already has.
+        </p>
+        {/* Pinehurst callout */}
+        <div style={{
+          display: 'inline-block',
+          background: 'rgba(201,169,110,0.1)',
+          border: '1px solid rgba(201,169,110,0.35)',
+          borderRadius: '2px',
+          padding: mob ? '1.4rem 1.8rem' : '1.8rem 2.6rem',
+          maxWidth: 560,
+        }}>
+          <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.36em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.7rem' }}>Location</p>
+          <p style={{
+            fontFamily: 'Georgia, serif', fontStyle: 'italic',
+            fontSize: mob ? '1.1rem' : '1.35rem',
+            color: '#fff', lineHeight: 1.5, margin: 0,
+          }}>
+            Three miles from Pinehurst Resort -- one of the most visited golf destinations in the world.
+          </p>
+          <p style={{
+            fontFamily: 'Georgia, serif', fontSize: '0.9rem',
+            color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, margin: '0.9rem 0 0',
+          }}>
+            Resort economy. County taxation. No HOA. No city limits. The location is not incidental -- it is part of the thesis.
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -932,7 +1571,8 @@ export default function FlowFarmLanding2() {
   return (
     <div style={{ background: DARK, margin: 0, padding: 0, overflowX: 'hidden' }}>
       <Hero />
-      <Opportunity />
+      <ForestIntro />
+      <PropertyMap />
       <Manifesto />
       <Foundation />
       <StealTheShow />
@@ -966,6 +1606,7 @@ export default function FlowFarmLanding2() {
         position="center 40%"
       />
       <Land />
+      <ZoningOpportunity />
       <Mechanism />
       <CinematicReveal
         src={cdnInt(IMG.spabath)}
