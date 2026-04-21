@@ -42,6 +42,7 @@ const IMG = {
   forestcanopy:  cdn('https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png', 2400),
   grounds:       cdn('https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/da785e254_flowfarmmasterphotoswebsite3.jpg', 2400),
   exterior:      cdn('https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/595faa261_107LindenTrail-29.jpg', 2400),
+  trail:         cdn('https://media.base44.com/images/public/69e248a2469cc39540781cce/41690f47b_107LindenTrail-822.jpg', 2400),
   // Structures
   cabana:        cdn('https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/3af6924d6_CabanaHouseMain.jpg', 1600),
   tunnel:        cdn('https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a8c6b6c09f3f53db8fa60a/217fdb4a1_HighTunnel.jpg', 1600),
@@ -546,7 +547,7 @@ function ForestIntro() {
         {/* Farm background */}
         <div style={{
           position: 'absolute', inset: '-10% 0',
-          backgroundImage: 'url(' + FARM + ')',
+          backgroundImage: 'url(' + IMG.trail + ')',
           backgroundSize: 'cover',
           backgroundPosition: 'center 60%',
           filter: 'saturate(1.2) brightness(1.05)',
@@ -583,7 +584,7 @@ function ForestIntro() {
               lineHeight: 1.7, maxWidth: 560, margin: '0 auto',
               textShadow: '0 2px 20px rgba(0,0,0,0.6)',
             }}>
-              Eight acres working. A farm that sustains itself -- and the land around it.
+              Seven acres of pine forest. Two miles of trails. The land has not yet been asked what it wants to become.
             </p>
           </div>
         </div>
