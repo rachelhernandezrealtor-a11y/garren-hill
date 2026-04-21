@@ -1,6 +1,6 @@
-import * as base44 from "npm:@base44/sdk";
+import { createClient } from "npm:@base44/sdk";
 
-const client = base44.createClient({ appId: Deno.env.get("APP_ID") || "" });
+const client = createClient({ appId: Deno.env.get("APP_ID") || "" });
 
 const CLOUD_NAME = Deno.env.get("CLOUDINARY_CLOUD_NAME");
 const API_KEY = Deno.env.get("CLOUDINARY_API_KEY");
@@ -17,7 +17,9 @@ async function sha1(str: string): Promise<string> {
 
 async function uploadToCloudinary(imageUrl: string, eager: string): Promise<string> {
   const timestamp = Math.round(Date.now() / 1000).toString();
-  const sigString = `eager=${eager}&timestamp=${timestamp}${API_SECRET}`;
+
+  // Correct Cloudinary signature: all params in alphabetical order
+  const sigString = `eager=${eager}&eager_async=false&timestamp=${timestamp}${API_SECRET}`;
   const signature = await sha1(sigString);
 
   const body = new URLSearchParams();
@@ -65,7 +67,7 @@ export default async function handler(req: Request): Promise<Response> {
   }
 
   try {
-    const { photo_id, photo_url, mode, bulk_ids, skip_existing } = await req.json();
+    const { photo_id, photo_url, mode, bulk_ids } = await req.json();
 
     // Bulk mode — process array of IDs
     if (bulk_ids && Array.isArray(bulk_ids)) {
@@ -73,10 +75,8 @@ export default async function handler(req: Request): Promise<Response> {
       for (const id of bulk_ids) {
         try {
           const photo = await client.asServiceRole.entities.PropertyPhoto.get(id);
-
-          // Skip if already enhanced and skip_existing is true
-          if (skip_existing && photo.enhanced_url) {
-            results.push({ id, skipped: true });
+          if (!photo) {
+            results.push({ id, success: false, error: "Photo not found" });
             continue;
           }
 
