@@ -399,10 +399,12 @@ function ForestIntro() {
     if (!bg) return;
     const onScroll = () => {
       const rect = bg.parentElement.getBoundingClientRect();
-      const pct = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
-      const shift = (pct - 0.5) * 140;
-      bg.style.transform = 'scale(1.08) translateY(' + (shift * 0.35) + 'px)';
+      const pct = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
+      const shift = (pct - 0.5) * 220;
+      const zoom = 1.10 + pct * 0.04;
+      bg.style.transform = 'scale(' + zoom + ') translateY(' + (shift * 0.4) + 'px)';
     };
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -439,6 +441,7 @@ function ForestIntro() {
         backgroundSize: 'cover',
         backgroundPosition: 'center 40%',
         filter: 'saturate(1.15) brightness(1.05)',
+        transition: 'transform 0.08s linear',
         willChange: 'transform',
       }} />
       {/* Edge vignette only -- preserve center clarity */}
