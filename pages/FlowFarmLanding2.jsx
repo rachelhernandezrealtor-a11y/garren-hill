@@ -167,14 +167,13 @@ function Hero() {
             fontSize: mob ? '0.95rem' : '1.1rem', margin: mob ? '0 0 2rem' : '0 0 2.6rem',
             letterSpacing: '0.01em', lineHeight: 1.7,
           }}>
-            A rare convergence of land, architecture, and infrastructure.
+            Where architectural excellence meets working land — three miles from Pinehurst Resort.
           </p>
           <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', margin: mob ? '0 0 2rem' : '0 0 2.6rem', gap: 0 }}>
             {[
               { num: '15', label1: 'USDA', label2: 'ACRES' },
               { num: '7', label1: 'BUILDABLE', label2: 'ACRES' },
               { num: '3', label1: 'ACRE VEGANIC', label2: 'FARM' },
-              { num: '3', label1: 'MI TO', label2: 'PINEHURST' },
               { num: '$5.25M', label1: 'OFFERED', label2: 'AT' },
             ].map((s, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'stretch', gap: 0 }}>
