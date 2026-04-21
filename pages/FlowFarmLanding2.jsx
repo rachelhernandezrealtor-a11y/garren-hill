@@ -267,9 +267,6 @@ function Hero() {
             <a href="https://vimeo.com/1165426324" target="_blank" rel="noreferrer" style={{ display: 'inline-block', background: 'rgba(255,255,255,0.10)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.22)', color: '#fff', fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.28em', textTransform: 'uppercase', padding: mob ? '0.85rem 1.8rem' : '1rem 2.4rem', borderRadius: '2rem', textDecoration: 'none', fontWeight: 500, cursor: 'pointer', transition: 'background 0.3s ease, border-color 0.3s ease' }}>
               Enter Flow Farm
             </a>
-            <a href="https://portal.nucleus4d.com/3ec4ff02-9412-4f29-87ba-4926145df7a1/exterior-d302c992-e611-4197-b2df-ff6931a8827a" target="_blank" rel="noreferrer" style={{ display: 'inline-block', background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.16)', color: 'rgba(255,255,255,0.88)', fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.28em', textTransform: 'uppercase', padding: mob ? '0.85rem 1.8rem' : '1rem 2.4rem', borderRadius: '2rem', textDecoration: 'none', fontWeight: 500, cursor: 'pointer', transition: 'background 0.3s ease, border-color 0.3s ease' }}>
-              Walk the Land
-            </a>
             <a href="https://my.matterport.com/show/?m=xZRfSiQPuQ8" target="_blank" rel="noreferrer" style={{ display: 'inline-block', background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.16)', color: 'rgba(255,255,255,0.88)', fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.28em', textTransform: 'uppercase', padding: mob ? '0.85rem 1.8rem' : '1rem 2.4rem', borderRadius: '2rem', textDecoration: 'none', fontWeight: 500, cursor: 'pointer', transition: 'background 0.3s ease, border-color 0.3s ease' }}>
               Tour the Estate
             </a>
@@ -889,6 +886,32 @@ function PropertyMap() {
           50% { opacity: 0.5; transform: scale(2.2); }
         }
       `}</style>
+
+      {/* Walk the Land CTA */}
+      <div style={{ textAlign: 'center', padding: '2.5rem 0 3.5rem', position: 'relative', zIndex: 10 }}>
+        <a
+          href="https://portal.nucleus4d.com/3ec4ff02-9412-4f29-87ba-4926145df7a1/exterior-d302c992-e611-4197-b2df-ff6931a8827a"
+          target="_blank"
+          rel="noreferrer"
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: '0.6rem',
+            background: GOLD,
+            color: DARK,
+            fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.32em', textTransform: 'uppercase',
+            fontWeight: 700,
+            padding: '1.1rem 2.8rem',
+            borderRadius: '2rem',
+            textDecoration: 'none',
+            boxShadow: '0 4px 30px rgba(201,169,110,0.35)',
+            transition: 'opacity 0.2s ease',
+          }}
+        >
+          &#127758; Walk the Land
+        </a>
+        <p style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '0.85rem', color: 'rgba(255,255,255,0.45)', margin: '0.9rem 0 0' }}>
+          Aerial 3D tour -- explore all 15 acres
+        </p>
+      </div>
     </section>
   );
 }
