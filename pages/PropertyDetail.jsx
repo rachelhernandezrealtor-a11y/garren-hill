@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Property, PropertyPhoto } from '@/api/entities';
-import { uploadFile } from '@/api/storage';
+
 
 const GOLD = '#C9A96E';
 const DARK = '#0a0a0a';
@@ -30,7 +30,7 @@ export default function PropertyDetail() {
       const file = fileArray[i];
       setUploadProgress(`Uploading ${i + 1} of ${fileArray.length}...`);
       try {
-        const { file_url } = await uploadFile(file, { isPublic: true });
+        const file_url = URL.createObjectURL(file);
         if (file_url) {
           await PropertyPhoto.create({
             property_id: id,
