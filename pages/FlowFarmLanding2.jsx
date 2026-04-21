@@ -147,7 +147,7 @@ function Hero() {
         </nav>
       )}
 
-      <div style={{ position: 'absolute', inset: 0, zIndex: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: mob ? '0 6vw' : '0 10vw' }}>
+      <div style={{ position: 'absolute', inset: 0, zIndex: 5, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center', textAlign: 'left', padding: mob ? '0 6vw' : '0 8vw' }}>
         <div style={show(2)}>
           <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.38em', textTransform: 'uppercase', color: GOLD, margin: mob ? '0 0 1.6rem' : '0 0 2rem' }}>
             The Architectural Masterpiece
@@ -169,7 +169,7 @@ function Hero() {
           }}>
             A rare convergence of land, architecture, and infrastructure.
           </p>
-          <div style={{ display: 'flex', gap: mob ? '1.2rem' : '2.4rem', flexWrap: 'wrap', margin: mob ? '0 0 2rem' : '0 0 2.6rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: mob ? '1.2rem' : '2.4rem', flexWrap: 'wrap', margin: mob ? '0 0 2rem' : '0 0 2.6rem', alignItems: 'center', justifyContent: 'flex-start' }}>
             {['3-Acre Veganic Farm', '15 Acres', '3 Mi. to Pinehurst', '$5.25M'].map((s, i) => (
               <span key={i} style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'sans-serif', fontSize: mob ? '8px' : '10px', letterSpacing: '0.22em', textTransform: 'uppercase' }}>
                 {i > 0 && <span style={{ marginRight: mob ? '1.2rem' : '2.4rem', color: 'rgba(255,255,255,0.18)' }}>|</span>}
@@ -177,7 +177,7 @@ function Hero() {
               </span>
             ))}
           </div>
-          <a href="#inquire" style={{ display: 'inline-block', background: GOLD, color: '#0a0a0a', fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.28em', textTransform: 'uppercase', padding: mob ? '0.85rem 2rem' : '1rem 2.6rem', borderRadius: '2rem', textDecoration: 'none', fontWeight: 600, cursor: 'pointer' }}>
+          <a href="#inquire" style={{ display: 'inline-block', background: 'rgba(255,255,255,0.08)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '1px solid rgba(201,169,110,0.45)', color: GOLD, fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.28em', textTransform: 'uppercase', padding: mob ? '0.85rem 2rem' : '1rem 2.6rem', borderRadius: '2rem', textDecoration: 'none', fontWeight: 600, cursor: 'pointer' }}>
             Enter Flow Farm
           </a>
         </div>

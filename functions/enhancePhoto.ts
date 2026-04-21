@@ -1,7 +1,5 @@
 import { base44 } from "npm:@base44/sdk";
 
-const client = base44.createClient({ appId: Deno.env.get("APP_ID") || "" });
-
 const CLOUD_NAME = Deno.env.get("CLOUDINARY_CLOUD_NAME");
 const API_KEY = Deno.env.get("CLOUDINARY_API_KEY");
 const API_SECRET = Deno.env.get("CLOUDINARY_API_SECRET");
@@ -51,8 +49,8 @@ async function enhanceSinglePhoto(photo_id: string, photo_url: string, category:
 
     const enhanced_url = (result.eager && result.eager[0]) ? result.eager[0].secure_url : result.secure_url;
 
-    // Update DB synchronously
-    await client.asServiceRole.entities.PropertyPhoto.update(photo_id, { enhanced_url });
+    // Update DB using service role
+    await base44.asServiceRole.entities.PropertyPhoto.update(photo_id, { enhanced_url });
     console.log(`Photo ${photo_id}: Enhanced successfully`);
     return enhanced_url;
   } catch (err) {
@@ -69,55 +67,25 @@ export default async function handler(req: Request): Promise<Response> {
   }
 
   try {
-    const { photo_id, photo_url, bulk_ids, skip_existing } = await req.json();
+    const { photoId, fileUrl } = await req.json();
 
-    // Bulk mode — process IDs one at a time with quick response
-    if (bulk_ids && Array.isArray(bulk_ids) && bulk_ids.length > 0) {
-      const results = [];
-      const toProcess = [];
-
-      // Load all photos first
-      for (const id of bulk_ids) {
-        try {
-          const photo = await client.asServiceRole.entities.PropertyPhoto.get(id);
-          if (!skip_existing || !photo.enhanced_url) {
-            toProcess.push({ id, ...photo });
-          }
-        } catch (err) {
-          console.error(`Failed to load photo ${id}`);
-        }
-      }
-
-      // Return immediately so function doesn't timeout
-      const response = new Response(
-        JSON.stringify({ 
-          queued: toProcess.length, 
-          message: `${toProcess.length} photos queued for enhancement` 
-        }),
-        { headers: { "Content-Type": "application/json", ...cors } }
-      );
-
-      // Process async in background
-      (async () => {
-        for (const photo of toProcess) {
-          await enhanceSinglePhoto(photo.id, photo.file_url, photo.category, photo.room);
-          // Small delay to avoid Cloudinary rate limit
-          await new Promise(r => setTimeout(r, 200));
-        }
-      })();
-
-      return response;
-    }
-
-    // Single photo mode
-    if (!photo_id || !photo_url) {
-      return new Response(JSON.stringify({ error: "photo_id and photo_url required" }), {
+    if (!photoId || !fileUrl) {
+      return new Response(JSON.stringify({ error: "photoId and fileUrl required" }), {
         status: 400,
         headers: { "Content-Type": "application/json", ...cors }
       });
     }
 
-    const photo = await client.asServiceRole.entities.PropertyPhoto.get(photo_id);
+    // Get photo details from database
+    const photo = await base44.asServiceRole.entities.PropertyPhoto.get(photoId);
+    
+    if (!photo) {
+      return new Response(JSON.stringify({ error: "Photo not found" }), {
+        status: 404,
+        headers: { "Content-Type": "application/json", ...cors }
+      });
+    }
+
     const cat = (photo.category || "").toLowerCase();
     const rm = (photo.room || "").toLowerCase();
     const isExterior = cat === "exterior" || ["aerial", "grounds", "garden", "outdoor", "pool", "tennis"].some(x => rm.includes(x));
@@ -131,7 +99,7 @@ export default async function handler(req: Request): Promise<Response> {
     const signature = await sha1(sigString);
 
     const body = new URLSearchParams();
-    body.append("file", photo_url);
+    body.append("file", fileUrl);
     body.append("timestamp", timestamp);
     body.append("api_key", API_KEY!);
     body.append("eager", eager);
@@ -150,13 +118,14 @@ export default async function handler(req: Request): Promise<Response> {
     }
 
     const enhanced_url = (result.eager && result.eager[0]) ? result.eager[0].secure_url : result.secure_url;
-    await client.asServiceRole.entities.PropertyPhoto.update(photo_id, { enhanced_url });
+    await base44.asServiceRole.entities.PropertyPhoto.update(photoId, { enhanced_url });
 
     return new Response(JSON.stringify({ enhanced_url, success: true }), {
       headers: { "Content-Type": "application/json", ...cors }
     });
 
   } catch (err) {
+    console.error("Enhancement error:", err);
     return new Response(JSON.stringify({ error: String(err) }), {
       status: 500,
       headers: { "Content-Type": "application/json", ...cors }
