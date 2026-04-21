@@ -178,7 +178,7 @@ function Hero() {
               { num: '$5.25M', label1: 'OFFERED', label2: 'AT' },
             ].map((s, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'stretch', gap: 0 }}>
-                {i > 0 && <div style={{ width: '1px', background: 'rgba(255,255,255,0.25)', margin: mob ? '0 1.2rem' : '0 2rem', alignSelf: 'stretch' }} />}
+                {i > 0 && <div style={{ width: '1px', background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.18) 20%, rgba(255,255,255,0.18) 80%, transparent)', margin: mob ? '0 1.2rem' : '0 2rem', alignSelf: 'stretch', minHeight: mob ? '48px' : '60px' }} />}
                 <div style={{ textAlign: 'left' }}>
                   <div style={{ color: '#fff', fontFamily: 'Georgia, serif', fontSize: mob ? '2.2rem' : '3rem', fontWeight: 300, lineHeight: 1, marginBottom: '0.35rem', letterSpacing: '-0.01em' }}>{s.num}</div>
                   <div style={{ color: 'rgba(255,255,255,0.85)', fontFamily: 'Georgia, serif', fontSize: mob ? '8px' : '9px', letterSpacing: '0.12em', textTransform: 'uppercase', lineHeight: 1.5, fontWeight: 400, fontStyle: 'normal' }}>{s.label1}<br />{s.label2}</div>
