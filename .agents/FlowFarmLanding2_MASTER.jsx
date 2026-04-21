@@ -27,6 +27,7 @@ const IMG = {
   // Hero shots -- real professional photos
   living:        B + '4db7d0477_livingroom.jpg',
   conservatory:  B + '8cb2578a0_MONEYSHOT.jpg',
+  conservatoryDome: B + '1fd157275_260115107LindenTrailF-9565.jpg',
   kitchen:       B + '1c4b8a04f_SOGOODKITCHEN.jpg',
   dining:        B + 'db01725cb_sogoodtolivingroom.jpg',
   spabath:       B + '08da5b97d_spaprimarybath.jpg',
@@ -930,7 +931,7 @@ export default function FlowFarmLanding2() {
       />
       <Numbers />
       <CinematicReveal
-        src={cdnSharp(IMG.conservatory)}
+        src={cdnSharp(IMG.conservatoryDome)}
         eyebrow="The Conservatory"
         headline={"The room that stops\nevery conversation."}
         body="19.5 by 17.7 feet, entirely glass-wrapped. An octagonal dome overhead tracks the sky from morning to dusk. Views of the farm, the cabana, the pines. The room that reminds you why you came here."
