@@ -8,6 +8,8 @@ const VIDEO = 'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/pub
 const MATTERPORT = 'https://my.matterport.com/show/?m=xZRfSiQPuQ8';
 
 const B = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/';
+const CLOUD = 'dghn2xpif';
+const cdn = (url, w = 1400) => 'https://res.cloudinary.com/' + CLOUD + '/image/fetch/f_auto,q_auto,w_' + w + ',c_limit/' + encodeURIComponent(url);
 
 const IMG = {
   // Hero shots -- real professional photos
@@ -257,7 +259,7 @@ function Foundation() {
         </Fade>
         <Fade delay={0.2}>
           <div style={{ position: 'relative' }}>
-            <img src={IMG.grounds} alt="Flow Farm Estate" style={{ width: '100%', height: mob ? 340 : 560, objectFit: 'cover', display: 'block' }} />
+            <img src={cdn(IMG.grounds)} alt="Flow Farm Estate" style={{ width: '100%', height: mob ? 340 : 560, objectFit: 'cover', display: 'block' }} />
             <Glass style={{ position: 'absolute', bottom: mob ? -20 : -28, left: mob ? -10 : -28, padding: '1.4rem 2rem' }}>
               <p style={{ margin: '0 0 0.3rem', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)' }}>Architect</p>
               <p style={{ margin: 0, fontFamily: 'Georgia, serif', fontSize: '1rem', color: CREAM }}>Robert E. Clark AIA</p>
@@ -362,7 +364,7 @@ function Mechanism() {
   ];
   return (
     <section style={{ position: 'relative', background: DARK, padding: mob ? '8rem 0' : '16rem 0', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${IMG.aerial})`, backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.05, zIndex: 0 }} />
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${cdn(IMG.aerial)})`, backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.05, zIndex: 0 }} />
       <div style={{ position: 'relative', zIndex: 1 }}>
         <Fade>
           <div style={{ textAlign: 'center', marginBottom: mob ? '5rem' : '8rem', padding: '0 6vw' }}>
@@ -475,7 +477,7 @@ function Location() {
           </div>
         </Fade>
         <Fade delay={0.2}>
-          <img src={IMG.aerial} alt="Aerial view of Flow Farm" style={{ width: '100%', height: mob ? 320 : 560, objectFit: 'cover', display: 'block' }} />
+          <img src={cdn(IMG.aerial)} alt="Aerial view of Flow Farm" style={{ width: '100%', height: mob ? 320 : 560, objectFit: 'cover', display: 'block' }} />
         </Fade>
       </div>
     </section>
@@ -560,7 +562,7 @@ export default function FlowFarmLanding2() {
       <Manifesto />
       <Foundation />
       <CinematicReveal
-        src={IMG.living}
+        src={cdn(IMG.living)}
         eyebrow="The Residence"
         headline={"A grand living room.\n27 feet wide. 17 feet tall."}
         body="Exposed king post trusses. Grand piano. Heart pine floors. French doors to the covered porch. And beyond -- the conservatory, the kitchen, the farm. All of it visible from where you stand."
@@ -568,7 +570,7 @@ export default function FlowFarmLanding2() {
       />
       <Numbers />
       <CinematicReveal
-        src={IMG.conservatory}
+        src={cdn(IMG.conservatory)}
         eyebrow="The Conservatory"
         headline={"The room that stops\nevery conversation."}
         body="19.5 by 17.7 feet, entirely glass-wrapped. An octagonal dome overhead tracks the sky from morning to dusk. Views of the farm, the cabana, the pines. The room that reminds you why you came here."
@@ -576,13 +578,13 @@ export default function FlowFarmLanding2() {
         position="center center"
       />
       <CinematicReveal
-        src={IMG.grounds}
+        src={cdn(IMG.grounds)}
         headline={"Autonomy at this scale is not inherited. It is engineered."}
         quote
         position="center 60%"
       />
       <CinematicReveal
-        src={IMG.kitchen}
+        src={cdn(IMG.kitchen)}
         eyebrow="The Kitchen"
         headline={"Sub-Zero. Wolf 60\".\nBuilt for the serious cook."}
         body="A 60-inch dual fuel Wolf range with red knobs, six burners, griddle, grill, and warming drawer. Two KitchenAid dishwashers. Butcher block island. Scullery with full Sub-Zero and wine fridge. The kitchen that makes you want to stay home."
@@ -591,7 +593,7 @@ export default function FlowFarmLanding2() {
       <Land />
       <Mechanism />
       <CinematicReveal
-        src={IMG.spabath}
+        src={cdn(IMG.spabath)}
         eyebrow="The Primary Suite"
         headline={"A spa.\nA sanctuary.\nA reason to stay."}
         body="Dual vanities. Freestanding soaking tub beneath a window to the forest. Body-jet shower. Mosaic tile floors. A room that earns the word primary."
@@ -599,7 +601,7 @@ export default function FlowFarmLanding2() {
         position="center 30%"
       />
       <CinematicReveal
-        src={IMG.foyer}
+        src={cdn(IMG.foyer)}
         eyebrow="The Welcome"
         headline={"Every arrival\nshould feel like this."}
         body="Herringbone heart pine floors laid on the diagonal. A reclaimed wood door with transom light overhead. A star lantern casting warm light across the entry. The first impression that sets the tone for everything that follows."
