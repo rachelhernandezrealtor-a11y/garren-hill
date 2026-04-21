@@ -376,6 +376,215 @@ function Foundation() {
   );
 }
 
+
+// ============================================================
+// A LIVING PLACE
+// ============================================================
+function ALivingPlace() {
+  const w = useW();
+  const mob = w < 768;
+  const [scrollY, setScrollY] = useState(0);
+  useEffect(() => {
+    const onScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  const [ref, fadeIn] = useFade();
+
+  const FOREST = 'https://res.cloudinary.com/dghn2xpif/image/fetch/f_auto,q_auto,w_2400,e_vibrance:50,e_saturation:30,e_brightness:18,e_sharpen:60/' + encodeURIComponent('https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png');
+
+  return (
+    <section ref={ref} style={{ position: 'relative', minHeight: mob ? '80vh' : '90vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      {/* Forest background with parallax */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1,
+        backgroundImage: 'url(' + FOREST + ')',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        transform: 'scale(1.08) translateY(' + (scrollY * 0.18) + 'px)',
+        filter: 'saturate(1.3) brightness(1.08)',
+        transition: 'transform 0.05s linear',
+      }} />
+      {/* Very light overlay -- let the color breathe */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.08) 40%, rgba(0,0,0,0.38) 100%)' }} />
+
+      {/* Content */}
+      <div style={{
+        position: 'relative', zIndex: 3,
+        textAlign: 'center',
+        padding: mob ? '5rem 6vw' : '7rem 8vw',
+        maxWidth: 880,
+        margin: '0 auto',
+        opacity: fadeIn ? 1 : 0,
+        transform: fadeIn ? 'none' : 'translateY(28px)',
+        transition: 'opacity 1.6s ease, transform 1.6s ease',
+      }}>
+        <p style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.38em', textTransform: 'uppercase', color: GOLD, margin: '0 0 1.6rem', fontWeight: 400 }}>
+          Flow Farm
+        </p>
+        <h2 style={{
+          fontFamily: 'Georgia, serif',
+          fontWeight: 400,
+          fontSize: mob ? 'clamp(2rem, 7vw, 2.8rem)' : 'clamp(2.6rem, 3.8vw, 4rem)',
+          color: '#fff',
+          lineHeight: 1.18,
+          letterSpacing: '-0.02em',
+          margin: '0 0 2rem',
+          textShadow: '0 2px 24px rgba(0,0,0,0.45)',
+        }}>
+          A Living Place,<br />Rooted in Possibility.
+        </h2>
+        <div style={{
+          background: 'rgba(0,0,0,0.28)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          border: '1px solid rgba(255,255,255,0.10)',
+          padding: mob ? '1.8rem 1.6rem' : '2.4rem 3rem',
+          maxWidth: 680,
+          margin: '0 auto',
+        }}>
+          <p style={{
+            fontFamily: 'Georgia, serif',
+            fontSize: mob ? '1rem' : '1.08rem',
+            color: 'rgba(255,255,255,0.88)',
+            lineHeight: 2.0,
+            margin: 0,
+          }}>
+            Flow Farm is more than an estate, and more than a farm. It is a place where land,
+            life, and vision move together -- where luxury and stewardship exist in living balance.
+            Every part of the property, from its architecture to its growing systems, has been
+            shaped with intention, creating an experience that feels both grounded and expansive.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================
+// OPERATIONAL BY DESIGN
+// ============================================================
+function OperationalByDesign() {
+  const w = useW();
+  const mob = w < 768;
+  const [scrollY, setScrollY] = useState(0);
+  useEffect(() => {
+    const onScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  const [ref, fadeIn] = useFade();
+
+  const FOREST = 'https://res.cloudinary.com/dghn2xpif/image/fetch/f_auto,q_auto,w_2400,e_vibrance:50,e_saturation:30,e_brightness:18,e_sharpen:60/' + encodeURIComponent('https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png');
+
+  const features = [
+    { label: '15 USDA Acres', body: 'Secured agricultural status and a protected natural privacy buffer.' },
+    { label: '3-Acre Veganic Farm', body: 'Established and highly productive agricultural infrastructure in active production.' },
+    { label: 'Main Residence', body: 'Architect-designed masterpiece spanning 8,519 SF. One of Robert E. Clark\'s final private commissions.' },
+    { label: 'Guesthouse', body: 'Architect-designed guest structure with 200-amp dedicated service and full system integration.' },
+    { label: 'Sustainable Systems', body: 'True energy independence -- solar, geothermal, generator, private well, and biochar all on-property.' },
+    { label: '7 Buildable Acres', body: 'Prime acreage ready for expansion, additional structures, agritourism, or custom development.' },
+  ];
+
+  return (
+    <section ref={ref} style={{ position: 'relative', minHeight: mob ? '90vh' : '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
+      {/* Forest background with parallax */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1,
+        backgroundImage: 'url(' + FOREST + ')',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center 30%',
+        transform: 'scale(1.1) translateY(' + (scrollY * 0.14) + 'px)',
+        filter: 'saturate(1.35) brightness(1.05)',
+        transition: 'transform 0.05s linear',
+      }} />
+      {/* Light overlay -- keep color vivid */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to right, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.12) 60%, rgba(0,0,0,0.22) 100%)' }} />
+
+      {/* Content */}
+      <div style={{
+        position: 'relative', zIndex: 3,
+        width: '100%',
+        maxWidth: 1320,
+        margin: '0 auto',
+        padding: mob ? '5rem 6vw' : '8rem 6vw',
+        opacity: fadeIn ? 1 : 0,
+        transform: fadeIn ? 'none' : 'translateY(28px)',
+        transition: 'opacity 1.6s ease, transform 1.6s ease',
+      }}>
+        {/* Header */}
+        <div style={{ marginBottom: mob ? '3rem' : '4rem' }}>
+          <p style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.38em', textTransform: 'uppercase', color: GOLD, margin: '0 0 1rem', fontWeight: 400 }}>
+            The Estate
+          </p>
+          <div style={{ width: 36, height: 1, background: GOLD, opacity: 0.45, marginBottom: '1.4rem' }} />
+          <h2 style={{
+            fontFamily: 'Georgia, serif',
+            fontWeight: 400,
+            fontSize: mob ? '2rem' : 'clamp(2.2rem, 3vw, 3rem)',
+            color: '#fff',
+            lineHeight: 1.18,
+            letterSpacing: '-0.02em',
+            margin: '0 0 1rem',
+            textShadow: '0 2px 20px rgba(0,0,0,0.5)',
+          }}>
+            Operational by Design.
+          </h2>
+          <p style={{
+            fontFamily: 'Georgia, serif',
+            fontStyle: 'italic',
+            fontSize: mob ? '0.95rem' : '1.05rem',
+            color: 'rgba(255,255,255,0.75)',
+            maxWidth: 540,
+            lineHeight: 1.8,
+            margin: 0,
+            textShadow: '0 1px 12px rgba(0,0,0,0.4)',
+          }}>
+            Eight acres working. Seven acres waiting.
+          </p>
+        </div>
+
+        {/* Feature grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: mob ? '1fr' : '1fr 1fr',
+          gap: mob ? '0' : '0',
+          maxWidth: mob ? '100%' : 860,
+        }}>
+          {features.map((f, i) => (
+            <div key={i} style={{
+              padding: mob ? '1.4rem 0' : '1.8rem 2.4rem 1.8rem 0',
+              borderBottom: '1px solid rgba(255,255,255,0.10)',
+              borderRight: !mob && i % 2 === 0 ? '1px solid rgba(255,255,255,0.10)' : 'none',
+              paddingRight: !mob && i % 2 === 0 ? '2.4rem' : 0,
+              paddingLeft: !mob && i % 2 === 1 ? '2.4rem' : 0,
+            }}>
+              <p style={{
+                fontFamily: 'sans-serif',
+                fontSize: '9px',
+                letterSpacing: '0.28em',
+                textTransform: 'uppercase',
+                color: GOLD,
+                margin: '0 0 0.5rem',
+                textShadow: '0 1px 8px rgba(0,0,0,0.5)',
+              }}>{f.label}</p>
+              <p style={{
+                fontFamily: 'Georgia, serif',
+                fontSize: mob ? '0.88rem' : '0.94rem',
+                color: 'rgba(255,255,255,0.82)',
+                lineHeight: 1.75,
+                margin: 0,
+                textShadow: '0 1px 10px rgba(0,0,0,0.5)',
+              }}>{f.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
 // ============================================================
 // ============================================================
 // PROPERTY MAP
@@ -1242,6 +1451,8 @@ export default function FlowFarmLanding2() {
       <Opportunity />
       <Manifesto />
       <Foundation />
+      <ALivingPlace />
+      <OperationalByDesign />
       <PropertyMap />
       <StealTheShow />
       <CinematicReveal
