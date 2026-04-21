@@ -1,4 +1,4 @@
-import { base44 } from "npm:@base44/sdk";
+import { createClientFromRequest } from 'npm:@base44/sdk@0.8.25';
 
 const CLOUD_NAME = Deno.env.get("CLOUDINARY_CLOUD_NAME");
 const API_KEY = Deno.env.get("CLOUDINARY_API_KEY");
@@ -13,77 +13,31 @@ async function sha1(str: string): Promise<string> {
     .join("");
 }
 
-async function enhanceSinglePhoto(photo_id: string, photo_url: string, category: string, room: string) {
-  try {
-    const cat = (category || "").toLowerCase();
-    const rm = (room || "").toLowerCase();
-    const isExterior = cat === "exterior" || ["aerial", "grounds", "garden", "outdoor", "pool", "tennis"].some(x => rm.includes(x));
-
-    const eager = isExterior
-      ? "e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_1400,c_limit"
-      : "e_improve:indoor:60,e_brightness:10,e_shadow:-30,e_sharpen:40,e_saturation:15,f_auto,q_auto,w_1400,c_limit";
-
-    const timestamp = Math.round(Date.now() / 1000).toString();
-    const sigString = `eager=${eager}&timestamp=${timestamp}${API_SECRET}`;
-    const signature = await sha1(sigString);
-
-    const body = new URLSearchParams();
-    body.append("file", photo_url);
-    body.append("timestamp", timestamp);
-    body.append("api_key", API_KEY!);
-    body.append("eager", eager);
-    body.append("eager_async", "false");
-    body.append("signature", signature);
-
-    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
-      method: "POST",
-      body,
-    });
-
-    const result = await res.json();
-
-    if (result.error) {
-      console.error(`Photo ${photo_id}: Cloudinary error - ${result.error.message}`);
-      return null;
-    }
-
-    const enhanced_url = (result.eager && result.eager[0]) ? result.eager[0].secure_url : result.secure_url;
-
-    // Update DB using service role
-    await base44.asServiceRole.entities.PropertyPhoto.update(photo_id, { enhanced_url });
-    console.log(`Photo ${photo_id}: Enhanced successfully`);
-    return enhanced_url;
-  } catch (err) {
-    console.error(`Photo ${photo_id}: ${String(err)}`);
-    return null;
-  }
-}
-
-export default async function handler(req: Request): Promise<Response> {
-  const cors = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST", "Access-Control-Allow-Headers": "Content-Type" };
-
+Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: cors });
+    return new Response(null, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST",
+        "Access-Control-Allow-Headers": "Content-Type"
+      }
+    });
   }
 
   try {
-    const { photoId, fileUrl } = await req.json();
+    const base44 = createClientFromRequest(req);
+    const body = await req.json().catch(() => ({}));
+    const { photoId, fileUrl } = body;
 
     if (!photoId || !fileUrl) {
-      return new Response(JSON.stringify({ error: "photoId and fileUrl required" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json", ...cors }
-      });
+      return Response.json({ error: "photoId and fileUrl required" }, { status: 400 });
     }
 
-    // Get photo details from database
+    // Get photo details from database using service role
     const photo = await base44.asServiceRole.entities.PropertyPhoto.get(photoId);
     
     if (!photo) {
-      return new Response(JSON.stringify({ error: "Photo not found" }), {
-        status: 404,
-        headers: { "Content-Type": "application/json", ...cors }
-      });
+      return Response.json({ error: "Photo not found" }, { status: 404 });
     }
 
     const cat = (photo.category || "").toLowerCase();
@@ -95,20 +49,22 @@ export default async function handler(req: Request): Promise<Response> {
       : "e_improve:indoor:60,e_brightness:10,e_shadow:-30,e_sharpen:40,e_saturation:15,f_auto,q_auto,w_1400,c_limit";
 
     const timestamp = Math.round(Date.now() / 1000).toString();
-    const sigString = `eager=${eager}&timestamp=${timestamp}${API_SECRET}`;
-    const signature = await sha1(sigString);
+    
+    // Build the string to sign: all params in alphabetical order, ending with API_SECRET
+    const stringToSign = `eager=${eager}&eager_async=false&timestamp=${timestamp}${API_SECRET}`;
+    const signature = await sha1(stringToSign);
 
-    const body = new URLSearchParams();
-    body.append("file", fileUrl);
-    body.append("timestamp", timestamp);
-    body.append("api_key", API_KEY!);
-    body.append("eager", eager);
-    body.append("eager_async", "false");
-    body.append("signature", signature);
+    const uploadBody = new URLSearchParams();
+    uploadBody.append("file", fileUrl);
+    uploadBody.append("timestamp", timestamp);
+    uploadBody.append("api_key", API_KEY!);
+    uploadBody.append("eager", eager);
+    uploadBody.append("eager_async", "false");
+    uploadBody.append("signature", signature);
 
     const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
       method: "POST",
-      body,
+      body: uploadBody,
     });
 
     const result = await res.json();
@@ -118,17 +74,14 @@ export default async function handler(req: Request): Promise<Response> {
     }
 
     const enhanced_url = (result.eager && result.eager[0]) ? result.eager[0].secure_url : result.secure_url;
+    
+    // Update photo with enhanced URL
     await base44.asServiceRole.entities.PropertyPhoto.update(photoId, { enhanced_url });
 
-    return new Response(JSON.stringify({ enhanced_url, success: true }), {
-      headers: { "Content-Type": "application/json", ...cors }
-    });
+    return Response.json({ enhanced_url, success: true });
 
   } catch (err) {
     console.error("Enhancement error:", err);
-    return new Response(JSON.stringify({ error: String(err) }), {
-      status: 500,
-      headers: { "Content-Type": "application/json", ...cors }
-    });
+    return Response.json({ error: String(err) }, { status: 500 });
   }
-}
+});
