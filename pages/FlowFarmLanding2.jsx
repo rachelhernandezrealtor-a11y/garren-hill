@@ -650,6 +650,204 @@ function Footer() {
   );
 }
 
+
+// ============================================================
+// OPPORTUNITY
+// ============================================================
+function Opportunity() {
+  const w = useW();
+  const mob = w < 768;
+
+  const cards = [
+    {
+      eyebrow: 'The Farm',
+      headline: 'The Engine Is Already Running.',
+      body: 'A USDA-registered veganic operation building soil since 2009. CSA members, a high tunnel, a biochar kiln -- all active. The farm is not a feature. It is the legal and strategic foundation for everything that follows.',
+    },
+    {
+      eyebrow: 'The Zoning',
+      headline: 'The Key Is Already Cut.',
+      body: 'NC Qualifying Farmer Exemption in place. Retreat centers, event venues, commercial kitchens, equestrian operations -- all permitted. What others spend years and capital to unlock, this estate has already secured.',
+    },
+    {
+      eyebrow: 'The Infrastructure',
+      headline: 'Independent by Design.',
+      body: 'Two deep private wells. 14.3 kW solar with battery backup. Five geothermal zones from twenty wells at 300 feet. 30 kW standby generator. The estate operates entirely off municipal systems -- by intention, not circumstance.',
+    },
+    {
+      eyebrow: 'The Position',
+      headline: 'Three Miles from a Million Visitors.',
+      body: 'Close enough to draw on a resort economy. Far enough to remain outside city limits. Resort-caliber proximity with county-level taxation. The location is not incidental -- it is part of the thesis.',
+    },
+  ];
+
+  const summary = [
+    { num: '15', label: 'Acres of Opportunity', sub: 'Secured agricultural standing within a protected natural forest buffer.' },
+    { num: '3', label: 'The Agricultural Engine', sub: 'A productive USDA-registered veganic farm anchoring the estate's zoning.' },
+    { num: '7+', label: 'Buildable Acres', sub: 'Architect-designed guest house shell ready for immediate development.' },
+    { num: '~7,500', label: 'Square Feet', sub: 'A design masterpiece by Robert E. Clark AIA, built to commercial standards.' },
+    { num: '5', label: 'Geothermal Zones', sub: 'True self-sufficiency through advanced solar, geothermal, and deep-water wells.' },
+    { num: '6', label: 'Structures', sub: 'A compound with capacity for family, enterprise, or hospitality -- without strain.' },
+  ];
+
+  return (
+    <>
+      {/* CINEMATIC FULL-BLEED GLASS SECTION */}
+      <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
+        {/* Fixed background photo -- using img tag for reliable rendering */}
+        <img
+          src={cdn(IMG.aerial)}
+          alt=""
+          style={{
+            position: 'absolute', inset: 0, width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: 'center 40%',
+            zIndex: 0,
+          }}
+        />
+        {/* Overlay */}
+        <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.72) 100%)' }} />
+
+        {/* Floating glass content */}
+        <div style={{ position: 'relative', zIndex: 2, width: '100%', padding: mob ? '8rem 6vw' : '10rem 8vw' }}>
+          <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+
+            {/* Thesis */}
+            <Fade up>
+              <p style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.36em', textTransform: 'uppercase', color: GOLD, margin: mob ? '0 0 1.6rem' : '0 0 2rem' }}>
+                The Opportunity
+              </p>
+            </Fade>
+            <Fade up delay={0.1}>
+              <h2 style={{
+                color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400,
+                fontSize: mob ? '2rem' : '3.2rem', lineHeight: 1.18,
+                margin: mob ? '0 0 1.2rem' : '0 0 1.6rem',
+                maxWidth: 780,
+              }}>
+                A Rare Convergence of<br />Sanctuary and Strategy.
+              </h2>
+            </Fade>
+            <Fade up delay={0.18}>
+              <p style={{
+                color: 'rgba(255,255,255,0.62)', fontFamily: 'Georgia, serif',
+                fontSize: mob ? '1rem' : '1.15rem', lineHeight: 1.8,
+                maxWidth: 640, margin: mob ? '0 0 4rem' : '0 0 5rem',
+              }}>
+                The farm sustains the zoning. The zoning unlocks the land. The infrastructure removes every barrier between ownership and what comes next. Fifteen acres -- a compound, not simply a residence -- that absorbs a growing family or a growing enterprise without ever feeling the strain.
+              </p>
+            </Fade>
+
+            {/* Glass cards grid */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: mob ? '1fr' : '1fr 1fr',
+              gap: mob ? '1.2rem' : '1.5rem',
+            }}>
+              {cards.map((c, i) => (
+                <Fade key={c.eyebrow} up delay={0.1 + i * 0.08}>
+                  <div style={{
+                    background: 'rgba(8,8,8,0.58)',
+                    backdropFilter: 'blur(24px)',
+                    WebkitBackdropFilter: 'blur(24px)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    padding: mob ? '2rem 1.8rem' : '2.6rem 2.4rem',
+                  }}>
+                    <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.32em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.9rem' }}>
+                      {c.eyebrow}
+                    </p>
+                    <h3 style={{
+                      color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400,
+                      fontSize: mob ? '1.15rem' : '1.3rem', lineHeight: 1.3,
+                      margin: '0 0 1rem',
+                    }}>
+                      {c.headline}
+                    </h3>
+                    <p style={{
+                      color: 'rgba(255,255,255,0.52)', fontFamily: 'Georgia, serif',
+                      fontSize: '0.92rem', lineHeight: 1.75, margin: 0,
+                    }}>
+                      {c.body}
+                    </p>
+                  </div>
+                </Fade>
+              ))}
+            </div>
+
+            {/* Floating quote */}
+            <Fade up delay={0.5}>
+              <p style={{
+                color: 'rgba(255,255,255,0.22)', fontFamily: 'Georgia, serif', fontStyle: 'italic',
+                fontSize: mob ? '1rem' : '1.25rem', lineHeight: 1.7,
+                textAlign: 'center', margin: mob ? '4rem 0 0' : '5rem auto 0',
+                maxWidth: 600,
+                borderTop: '1px solid rgba(255,255,255,0.08)',
+                paddingTop: mob ? '2.5rem' : '3.5rem',
+              }}>
+                "Fifteen acres where every system answers to the next."
+              </p>
+            </Fade>
+          </div>
+        </div>
+      </section>
+
+      {/* INVESTMENT SUMMARY -- dark editorial */}
+      <section style={{ background: DARK, borderTop: '1px solid rgba(255,255,255,0.04)', padding: mob ? '7rem 6vw' : '10rem 8vw' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+          <Fade up>
+            <p style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.36em', textTransform: 'uppercase', color: GOLD, margin: '0 0 1.2rem', textAlign: 'center' }}>
+              Investment Summary
+            </p>
+          </Fade>
+          <Fade up delay={0.08}>
+            <h2 style={{
+              color: 'rgba(255,255,255,0.82)', fontFamily: 'Georgia, serif', fontWeight: 400,
+              fontSize: mob ? '1.5rem' : '2rem', textAlign: 'center',
+              margin: mob ? '0 0 4rem' : '0 0 5.5rem', lineHeight: 1.3,
+            }}>
+              The strategic value of the land.
+            </h2>
+          </Fade>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: mob ? '1fr' : 'repeat(3, 1fr)',
+            gap: mob ? '0' : '0',
+            borderTop: '1px solid rgba(255,255,255,0.06)',
+            borderLeft: mob ? 'none' : '1px solid rgba(255,255,255,0.06)',
+          }}>
+            {summary.map((s, i) => (
+              <Fade key={s.label} up delay={0.05 + i * 0.07}>
+                <div style={{
+                  padding: mob ? '2.8rem 0' : '3.5rem 3rem',
+                  borderRight: mob ? 'none' : '1px solid rgba(255,255,255,0.06)',
+                  borderBottom: '1px solid rgba(255,255,255,0.06)',
+                }}>
+                  <div style={{
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontSize: mob ? '3rem' : '3.8rem',
+                    fontWeight: 300,
+                    color: GOLD,
+                    lineHeight: 1,
+                    marginBottom: '1rem',
+                  }}>{s.num}</div>
+                  <p style={{
+                    color: 'rgba(255,255,255,0.75)', fontFamily: 'sans-serif',
+                    fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase',
+                    margin: '0 0 0.75rem',
+                  }}>{s.label}</p>
+                  <p style={{
+                    color: 'rgba(255,255,255,0.35)', fontFamily: 'Georgia, serif',
+                    fontSize: '0.88rem', lineHeight: 1.7, margin: 0,
+                  }}>{s.sub}</p>
+                </div>
+              </Fade>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
 // ============================================================
 // PAGE
 // ============================================================
@@ -658,6 +856,7 @@ export default function FlowFarmLanding2() {
   return (
     <div style={{ background: DARK, margin: 0, padding: 0, overflowX: 'hidden' }}>
       <Hero />
+      <Opportunity />
       <Manifesto />
       <Foundation />
       <CinematicReveal
