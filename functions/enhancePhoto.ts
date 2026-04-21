@@ -1,6 +1,4 @@
-import { base44 } from "npm:@base44/sdk";
-
-const client = base44.createClient({ appId: Deno.env.get("APP_ID") || "" });
+import { createClientFromRequest } from 'npm:@base44/sdk@0.8.25';
 
 const CLOUD_NAME = Deno.env.get("CLOUDINARY_CLOUD_NAME");
 const API_KEY = Deno.env.get("CLOUDINARY_API_KEY");
@@ -17,9 +15,8 @@ async function sha1(str: string): Promise<string> {
 
 async function uploadToCloudinary(imageUrl: string, eager: string): Promise<string> {
   const timestamp = Math.round(Date.now() / 1000).toString();
-
-  // Correct Cloudinary signature: only non-file params, alphabetical, no file= included
-  const sigString = `eager=${eager}&timestamp=${timestamp}${API_SECRET}`;
+  // Signature must include all params except file and signature, alphabetically
+  const sigString = `eager=${eager}&eager_async=false&timestamp=${timestamp}${API_SECRET}`;
   const signature = await sha1(sigString);
 
   const body = new URLSearchParams();
@@ -36,14 +33,8 @@ async function uploadToCloudinary(imageUrl: string, eager: string): Promise<stri
   });
 
   const result = await res.json();
-
-  if (result.error) {
-    throw new Error(`Cloudinary error: ${result.error.message}`);
-  }
-
-  if (result.eager && result.eager[0]) {
-    return result.eager[0].secure_url;
-  }
+  if (result.error) throw new Error(`Cloudinary error: ${result.error.message}`);
+  if (result.eager && result.eager[0]) return result.eager[0].secure_url;
   return result.secure_url;
 }
 
@@ -51,75 +42,61 @@ function buildEager(category: string, room: string): string {
   const cat = (category || "").toLowerCase();
   const rm = (room || "").toLowerCase();
   const isExterior = cat === "exterior" || ["aerial", "grounds", "garden", "outdoor", "pool", "tennis"].some(x => rm.includes(x));
-
   if (isExterior) {
     return "e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_1400,c_limit";
-  } else {
-    return "e_improve:indoor:60,e_brightness:10,e_shadow:-30,e_sharpen:40,e_saturation:15,f_auto,q_auto,w_1400,c_limit";
   }
+  return "e_improve:indoor:60,e_brightness:10,e_shadow:-30,e_sharpen:40,e_saturation:15,f_auto,q_auto,w_1400,c_limit";
 }
 
-export default async function handler(req: Request): Promise<Response> {
-  const cors = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST", "Access-Control-Allow-Headers": "Content-Type" };
-
+Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: cors });
+    return new Response(null, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST",
+        "Access-Control-Allow-Headers": "Content-Type, x-base44-token",
+      }
+    });
   }
 
   try {
-    const { photo_id, photo_url, mode, bulk_ids, skip_existing } = await req.json();
+    const base44 = createClientFromRequest(req);
+    const { photo_id, photo_url, bulk_ids, skip_existing } = await req.json();
 
-    // Bulk mode — process array of IDs
+    // Bulk mode
     if (bulk_ids && Array.isArray(bulk_ids)) {
       const results = [];
       for (const id of bulk_ids) {
         try {
-          const photo = await client.asServiceRole.entities.PropertyPhoto.get(id);
-
-          // Skip if already enhanced and skip_existing is true
+          const photo = await base44.asServiceRole.entities.PropertyPhoto.get(id);
           if (skip_existing && photo.enhanced_url) {
             results.push({ id, skipped: true });
             continue;
           }
-
           const eager = buildEager(photo.category || "", photo.room || "");
           const enhanced_url = await uploadToCloudinary(photo.file_url, eager);
-
-          await client.asServiceRole.entities.PropertyPhoto.update(id, { enhanced_url });
+          await base44.asServiceRole.entities.PropertyPhoto.update(id, { enhanced_url });
           results.push({ id, enhanced_url, success: true });
         } catch (err) {
           results.push({ id, success: false, error: String(err) });
         }
       }
-      return new Response(JSON.stringify({ results, count: results.length }), {
-        headers: { "Content-Type": "application/json", ...cors }
-      });
+      return Response.json({ results, count: results.length });
     }
 
-    // Single photo mode
+    // Single mode
     if (!photo_id || !photo_url) {
-      return new Response(JSON.stringify({ error: "photo_id and photo_url required" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json", ...cors }
-      });
+      return Response.json({ error: "photo_id and photo_url required" }, { status: 400 });
     }
 
-    const photo = await client.asServiceRole.entities.PropertyPhoto.get(photo_id);
-    const eager = mode === "exterior_enhance"
-      ? "e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_1400,c_limit"
-      : "e_improve:indoor:60,e_brightness:10,e_shadow:-30,e_sharpen:40,e_saturation:15,f_auto,q_auto,w_1400,c_limit";
-
+    const photo = await base44.asServiceRole.entities.PropertyPhoto.get(photo_id);
+    const eager = buildEager(photo.category || "", photo.room || "");
     const enhanced_url = await uploadToCloudinary(photo_url, eager);
-    await client.asServiceRole.entities.PropertyPhoto.update(photo_id, { enhanced_url });
+    await base44.asServiceRole.entities.PropertyPhoto.update(photo_id, { enhanced_url });
 
-    return new Response(JSON.stringify({ enhanced_url, success: true }), {
-      headers: { "Content-Type": "application/json", ...cors }
-    });
+    return Response.json({ enhanced_url, success: true });
 
   } catch (err) {
-    return new Response(JSON.stringify({ error: String(err) }), {
-      status: 500,
-      headers: { "Content-Type": "application/json", ...cors }
-    });
+    return Response.json({ error: String(err) }, { status: 500 });
   }
-}
+});
