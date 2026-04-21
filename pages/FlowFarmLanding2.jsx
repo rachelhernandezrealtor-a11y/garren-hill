@@ -1,5 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+// Load Cormorant Garamond for ultra-thin editorial numerals
+if (typeof document !== 'undefined') {
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap';
+  document.head.appendChild(link);
+}
+
+
 const GOLD = '#C9A96E';
 const CREAM = '#F5F0E8';
 const DARK = '#0a0a0a';
@@ -130,6 +139,61 @@ function GoldLine() {
 // ============================================================
 // HERO
 // ============================================================
+function HeroStat({ value, prefix, suffix, decimals, label1, label2, duration, mob }) {
+  const [count, ref] = useCounter(value, duration || 1600, 0, decimals || 0);
+  const display = (prefix || '') + (decimals ? count.toFixed(decimals) : Math.round(count).toLocaleString()) + (suffix || '');
+  return (
+    <div ref={ref} style={{ textAlign: 'left' }}>
+      <div style={{
+        color: '#fff',
+        fontFamily: "'Cormorant Garamond', Georgia, serif",
+        fontSize: mob ? '2.4rem' : '3.2rem',
+        fontWeight: 300,
+        lineHeight: 1,
+        marginBottom: '0.35rem',
+        letterSpacing: '-0.01em',
+        fontStyle: 'normal',
+      }}>{display}</div>
+      <div style={{
+        color: 'rgba(255,255,255,0.55)',
+        fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+        fontSize: mob ? '7px' : '8px',
+        letterSpacing: '0.22em',
+        textTransform: 'uppercase',
+        lineHeight: 1.6,
+        fontWeight: 400,
+      }}>{label1}<br />{label2}</div>
+    </div>
+  );
+}
+
+function HeroStats({ mob }) {
+  const stats = [
+    { value: 15, prefix: '', suffix: '', decimals: 0, label1: 'USDA', label2: 'ACRES', duration: 1400 },
+    { value: 7, prefix: '', suffix: '', decimals: 0, label1: 'BUILDABLE', label2: 'ACRES', duration: 1200 },
+    { value: 3, prefix: '', suffix: '', decimals: 0, label1: 'ACRE VEGANIC', label2: 'FARM', duration: 1000 },
+    { value: 5.25, prefix: '$', suffix: 'M', decimals: 2, label1: 'OFFERED', label2: 'AT', duration: 1800 },
+  ];
+  return (
+    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', margin: mob ? '0 0 2rem' : '0 0 2.6rem', gap: 0 }}>
+      {stats.map((s, i) => (
+        <div key={i} style={{ display: 'flex', alignItems: 'stretch', gap: 0 }}>
+          {i > 0 && (
+            <div style={{
+              width: '1px',
+              background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.18) 20%, rgba(255,255,255,0.18) 80%, transparent)',
+              margin: mob ? '0 1.2rem' : '0 2rem',
+              alignSelf: 'stretch',
+              minHeight: mob ? '48px' : '60px',
+            }} />
+          )}
+          <HeroStat {...s} mob={mob} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function Hero() {
   const w = useW();
   const mob = w < 768;
@@ -198,22 +262,7 @@ function Hero() {
           }}>
             Where architectural excellence meets working land — three miles from Pinehurst Resort.
           </p>
-          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', margin: mob ? '0 0 2rem' : '0 0 2.6rem', gap: 0 }}>
-            {[
-              { num: '15', label1: 'USDA', label2: 'ACRES' },
-              { num: '7', label1: 'BUILDABLE', label2: 'ACRES' },
-              { num: '3', label1: 'ACRE VEGANIC', label2: 'FARM' },
-              { num: '$5.25M', label1: 'OFFERED', label2: 'AT' },
-            ].map((s, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'stretch', gap: 0 }}>
-                {i > 0 && <div style={{ width: '1px', background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.18) 20%, rgba(255,255,255,0.18) 80%, transparent)', margin: mob ? '0 1.2rem' : '0 2rem', alignSelf: 'stretch', minHeight: mob ? '48px' : '60px' }} />}
-                <div style={{ textAlign: 'left' }}>
-                  <div style={{ color: '#fff', fontFamily: 'Georgia, serif', fontSize: mob ? '2.2rem' : '3rem', fontWeight: 300, lineHeight: 1, marginBottom: '0.35rem', letterSpacing: '-0.01em' }}>{s.num}</div>
-                  <div style={{ color: 'rgba(255,255,255,0.85)', fontFamily: 'Georgia, serif', fontSize: mob ? '8px' : '9px', letterSpacing: '0.12em', textTransform: 'uppercase', lineHeight: 1.5, fontWeight: 400, fontStyle: 'normal' }}>{s.label1}<br />{s.label2}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <HeroStats mob={mob} />
           <a href="#inquire" style={{ display: 'inline-block', background: 'rgba(255,255,255,0.08)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '1px solid rgba(201,169,110,0.45)', color: GOLD, fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.28em', textTransform: 'uppercase', padding: mob ? '0.85rem 2rem' : '1rem 2.6rem', borderRadius: '2rem', textDecoration: 'none', fontWeight: 600, cursor: 'pointer' }}>
             Enter Flow Farm
           </a>
