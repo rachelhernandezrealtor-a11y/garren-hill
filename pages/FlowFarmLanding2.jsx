@@ -25,7 +25,7 @@ const cdnSharp = (url) => 'https://res.cloudinary.com/' + CLOUD + '/image/fetch/
 
 const IMG = {
   // Hero shots -- real professional photos
-  living:        B + '4db7d0477_livingroom.jpg',
+  living:        B + 'f4af32cdd_260115107LindenTrailF-9619.jpg',
   conservatory:  B + '8cb2578a0_MONEYSHOT.jpg',
   conservatoryDome: B + '1fd157275_260115107LindenTrailF-9565.jpg',
   kitchen:       B + '1c4b8a04f_SOGOODKITCHEN.jpg',
@@ -34,6 +34,7 @@ const IMG = {
   foyer:         B + '9b1d02a04_260115107LindenTrailF-9727.jpg',
   powderroom:    B + '4e58028ab_260115107LindenTrailF-9769-2.jpg',
   wolf:          B + 'ef4b4a364_WOLFDOUBLEGASRANGE.jpg',
+  kitchen2:      B + '1c4b8a04f_SOGOODKITCHEN.jpg',
   office:        B + '2b920c3b0_markofficemoneyshot.jpg',
   hallway:       B + '8e3d794f9_secondfloorhallway.jpg',
   // Grounds / aerial
@@ -939,13 +940,13 @@ export default function FlowFarmLanding2() {
         position="center center"
       />
       <CinematicReveal
-        src={cdnExt(IMG.grounds)}
+        src={cdnExt(IMG.aerial)}
         headline={"Autonomy at this scale is not inherited. It is engineered."}
         quote
         position="center 60%"
       />
       <CinematicReveal
-        src={cdnInt(IMG.kitchen)}
+        src={cdnInt(IMG.wolf)}
         eyebrow="The Kitchen"
         headline={"Sub-Zero. Wolf 60\".\nBuilt for the serious cook."}
         body="A 60-inch dual fuel Wolf range with red knobs, six burners, griddle, grill, and warming drawer. Two KitchenAid dishwashers. Butcher block island. Scullery with full Sub-Zero and wine fridge. The water from every tap is filtered. Drink it straight. Music plays from somewhere you can't locate. That's the point."
