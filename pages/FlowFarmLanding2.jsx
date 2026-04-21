@@ -675,7 +675,7 @@ function PropertyMap() {
       const rect = el.closest('section').getBoundingClientRect();
       const pct = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
       const shift = (pct - 0.5) * 80;
-      el.style.transform = 'scale(1.14) translateY(' + shift + 'px)';
+      el.style.transform = 'scale(1.06) translateY(' + (shift * 0.5) + 'px)';
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -741,13 +741,13 @@ function PropertyMap() {
           {/* Aerial photo */}
           <img
             ref={mapImgRef}
-            src={"https://res.cloudinary.com/dghn2xpif/image/fetch/e_sharpen:80,e_vibrance:20,e_saturation:15,f_auto,q_auto,w_2400/" + encodeURIComponent(AERIAL_MAP)}
+            src={"https://res.cloudinary.com/dghn2xpif/image/fetch/e_sharpen:150,e_vibrance:20,e_saturation:15,f_auto,q_auto,w_3200,c_limit/" + encodeURIComponent(AERIAL_MAP)}
             alt="Flow Farm aerial view"
             style={{
               position: 'absolute', inset: 0, width: '100%', height: '100%',
               objectFit: 'cover', objectPosition: 'center 65%',
               display: 'block',
-              transform: 'scale(1.14) translateY(0px)',
+              transform: 'scale(1.06) translateY(0px)',
               transition: 'transform 0.05s linear',
               willChange: 'transform',
             }}
