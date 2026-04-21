@@ -377,6 +377,313 @@ function Foundation() {
 }
 
 // ============================================================
+// ============================================================
+// PROPERTY MAP
+// ============================================================
+const AERIAL_MAP = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/2ca329bbf_flowfarmmasterphotoswebsite.jpg';
+
+const MAP_PINS = [
+  {
+    id: 'residence',
+    label: 'Main Residence',
+    category: 'RESIDENCE',
+    x: 34,
+    y: 28,
+    headline: 'The Operating Center',
+    description: 'The main house anchors the estate -- architecturally and energetically. Every system on the property reports here. Solar, geothermal, generator, well, and farm all feed into and are monitored from a single Control4 brain.',
+    systems: ['600-Amp Dedicated Service', '20 Geothermal Wells', '14.3kW Solar Array', 'Control4 Home Automation', '143 Lighting Circuits'],
+    cta: { label: 'Launch Virtual 3D Tour', url: 'https://my.matterport.com/show/?m=xZRfSiQPuQ8' },
+  },
+  {
+    id: 'guesthouse',
+    label: 'Guesthouse',
+    category: 'GUESTHOUSE',
+    x: 52,
+    y: 55,
+    headline: 'Independent. Connected.',
+    description: 'The guesthouse carries its own 200-amp dedicated electrical service while remaining fully integrated into the Control4 network. Guests experience the same automation, the same systems, complete autonomy.',
+    systems: ['200-Amp Dedicated Service', 'Control4 Integration', 'Private Entrance'],
+    cta: null,
+  },
+  {
+    id: 'farm',
+    label: '3-Acre Veganic Farm',
+    category: 'THE LAND',
+    x: 22,
+    y: 52,
+    headline: 'Where the land goes to work.',
+    description: 'Three certified veganic acres in active production. Deer-fenced, irrigated from the private 50-gpm well, and supported by biochar soil amendment and composting systems on-site. The farm does not need to leave the property to sustain itself.',
+    systems: ['50-GPM Private Well Irrigation', '1,400-Ft Deer Fence', 'Biochar Soil System', 'On-Site Composting'],
+    cta: { label: 'Walk the Land', url: 'https://portal.nucleus4d.com/3ec4ff02-9412-4f29-87ba-4926145df7a1/exterior-d302c992-e611-4197-b2df-ff6931a8827a' },
+  },
+  {
+    id: 'tunnel',
+    label: 'High Tunnel',
+    category: 'PRODUCTION',
+    x: 47,
+    y: 68,
+    headline: 'Year-round production.',
+    description: 'A 96 by 36-foot high tunnel greenhouse extends the growing season across all four seasons. Connected to the same well and irrigation system that feeds the open fields. Structure and soil working together.',
+    systems: ['96 x 36 Ft Structure', 'Full Irrigation Integration', 'Year-Round Growing'],
+    cta: null,
+  },
+  {
+    id: 'workshop',
+    label: 'Farm Workshop',
+    category: 'INFRASTRUCTURE',
+    x: 60,
+    y: 76,
+    headline: 'The backbone of operations.',
+    description: 'A 30 by 40-foot farm workshop powered by the 400-amp farm electrical service. This is where the estate maintains itself -- equipment, tools, and repair all on-property. No dependency on outside services.',
+    systems: ['400-Amp Farm Service', '30 x 40 Ft Bay', 'Full Equipment Storage'],
+    cta: null,
+  },
+  {
+    id: 'biochar',
+    label: 'Biochar Kiln',
+    category: 'SOIL SYSTEMS',
+    x: 66,
+    y: 86,
+    headline: 'The soil feeds the farm.',
+    description: 'On-site biochar production closes the loop on the regenerative system. Organic matter from the property becomes a soil amendment that returns to the fields. The farm is not just sustainable -- it is self-replenishing.',
+    systems: ['On-Site Biochar Production', 'Compost Integration', 'Regenerative Soil Loop'],
+    cta: null,
+  },
+];
+
+function PropertyMap() {
+  const w = useW();
+  const mob = w < 768;
+  const [active, setActive] = useState(null);
+  const [panelVisible, setPanelVisible] = useState(false);
+  const [ref, fadeIn] = useFade();
+
+  const openPin = (pin) => {
+    setActive(pin);
+    setTimeout(() => setPanelVisible(true), 30);
+  };
+
+  const closePanel = () => {
+    setPanelVisible(false);
+    setTimeout(() => setActive(null), 400);
+  };
+
+  return (
+    <section ref={ref} style={{ background: DARK, padding: mob ? '5rem 0 3rem' : '8rem 0 4rem' }}>
+      {/* Section header */}
+      <div style={{
+        textAlign: 'center',
+        padding: mob ? '0 6vw 3rem' : '0 6vw 4rem',
+        opacity: fadeIn ? 1 : 0,
+        transform: fadeIn ? 'none' : 'translateY(24px)',
+        transition: 'opacity 1.4s ease, transform 1.4s ease',
+      }}>
+        <Eyebrow center>The Estate at a Glance</Eyebrow>
+        <div style={{ width: 36, height: 1, background: GOLD, opacity: 0.35, margin: '1.2rem auto' }} />
+        <h2 style={{
+          color: CREAM,
+          fontFamily: 'Georgia, serif',
+          fontWeight: 400,
+          fontSize: mob ? '2rem' : '2.8rem',
+          lineHeight: 1.22,
+          margin: '0 auto 1rem',
+          letterSpacing: '-0.018em',
+          maxWidth: 700,
+        }}>
+          Fifteen acres.<br />One integrated system.
+        </h2>
+        <p style={{
+          color: 'rgba(255,255,255,0.32)',
+          fontFamily: 'Georgia, serif',
+          fontSize: mob ? '0.95rem' : '1.02rem',
+          lineHeight: 1.9,
+          maxWidth: 560,
+          margin: '0 auto',
+        }}>
+          Every structure on this property serves a purpose. Every system connects to the next.
+          Tap any marker to see how it all fits together.
+        </p>
+      </div>
+
+      {/* Map container */}
+      <div style={{
+        position: 'relative',
+        maxWidth: 1320,
+        margin: '0 auto',
+        padding: '0 4vw',
+        opacity: fadeIn ? 1 : 0,
+        transition: 'opacity 1.8s ease 0.3s',
+      }}>
+        <div style={{ position: 'relative', width: '100%', paddingBottom: mob ? '75%' : '56.25%', overflow: 'hidden' }}>
+          {/* Aerial photo */}
+          <img
+            src={cdnExt(AERIAL_MAP)}
+            alt="Flow Farm aerial view"
+            style={{
+              position: 'absolute', inset: 0, width: '100%', height: '100%',
+              objectFit: 'cover', objectPosition: 'center',
+              display: 'block',
+            }}
+          />
+          {/* Dark vignette overlay */}
+          <div style={{
+            position: 'absolute', inset: 0,
+            background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.08) 30%, rgba(0,0,0,0.52) 100%)',
+            zIndex: 2,
+          }} />
+
+          {/* Pins */}
+          {MAP_PINS.map((pin) => (
+            <button
+              key={pin.id}
+              onClick={() => active && active.id === pin.id ? closePanel() : openPin(pin)}
+              style={{
+                position: 'absolute',
+                left: pin.x + '%',
+                top: pin.y + '%',
+                transform: 'translate(-50%, -50%)',
+                zIndex: 10,
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: mob ? '4px' : '6px',
+              }}
+            >
+              {/* Pulse ring */}
+              <div style={{ position: 'relative', width: mob ? 16 : 20, height: mob ? 16 : 20 }}>
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  borderRadius: '50%',
+                  border: '1.5px solid ' + GOLD,
+                  opacity: active && active.id === pin.id ? 0 : 0.5,
+                  animation: 'pinPulse 2.4s ease-in-out infinite',
+                  transform: 'scale(1.7)',
+                }} />
+                <div style={{
+                  width: '100%', height: '100%',
+                  borderRadius: '50%',
+                  background: active && active.id === pin.id ? GOLD : 'rgba(201,169,110,0.85)',
+                  border: '1.5px solid ' + GOLD,
+                  boxShadow: '0 0 12px rgba(201,169,110,0.6)',
+                  transition: 'background 0.3s ease',
+                }} />
+              </div>
+              {/* Label */}
+              <div style={{
+                background: 'rgba(8,8,8,0.78)',
+                backdropFilter: 'blur(8px)',
+                border: '1px solid rgba(201,169,110,0.22)',
+                padding: mob ? '2px 7px' : '3px 10px',
+                whiteSpace: 'nowrap',
+              }}>
+                <span style={{
+                  fontFamily: 'sans-serif',
+                  fontSize: mob ? '7px' : '8px',
+                  letterSpacing: '0.22em',
+                  textTransform: 'uppercase',
+                  color: CREAM,
+                  fontWeight: 400,
+                }}>
+                  {pin.label}
+                </span>
+              </div>
+            </button>
+          ))}
+
+          {/* Detail panel */}
+          {active && (
+            <div style={{
+              position: 'absolute',
+              top: mob ? 'auto' : '50%',
+              bottom: mob ? 0 : 'auto',
+              left: mob ? 0 : '3%',
+              transform: mob ? 'none' : 'translateY(-50%)',
+              width: mob ? '100%' : Math.min(380, w * 0.32) + 'px',
+              zIndex: 20,
+              opacity: panelVisible ? 1 : 0,
+              transform: panelVisible
+                ? (mob ? 'translateY(0)' : 'translateY(-50%)')
+                : (mob ? 'translateY(20px)' : 'translateY(calc(-50% + 16px))'),
+              transition: 'opacity 0.38s ease, transform 0.38s ease',
+            }}>
+              <div style={{
+                background: 'rgba(8,8,8,0.88)',
+                backdropFilter: 'blur(24px)',
+                WebkitBackdropFilter: 'blur(24px)',
+                border: '1px solid rgba(201,169,110,0.18)',
+                padding: mob ? '1.6rem 1.4rem' : '2.4rem 2.2rem',
+                position: 'relative',
+              }}>
+                {/* Close */}
+                <button onClick={closePanel} style={{
+                  position: 'absolute', top: '1rem', right: '1rem',
+                  background: 'none', border: 'none', cursor: 'pointer',
+                  color: 'rgba(255,255,255,0.3)', fontSize: '1.1rem', lineHeight: 1, padding: '4px 8px',
+                }}>x</button>
+
+                <p style={{ margin: '0 0 0.6rem', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>{active.category}</p>
+                <h3 style={{ margin: '0 0 0.5rem', fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '1.3rem' : '1.5rem', color: '#fff', lineHeight: 1.2 }}>{active.label}</h3>
+                <p style={{ margin: '0 0 0.4rem', fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: mob ? '0.82rem' : '0.9rem', color: GOLD }}>{active.headline}</p>
+                <p style={{ margin: '0 0 1.4rem', fontFamily: 'Georgia, serif', fontSize: mob ? '0.82rem' : '0.88rem', color: 'rgba(255,255,255,0.62)', lineHeight: 1.75 }}>{active.description}</p>
+
+                {/* Systems tags */}
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: active.cta ? '1.4rem' : 0 }}>
+                  {active.systems.map((s, i) => (
+                    <span key={i} style={{
+                      fontFamily: 'sans-serif', fontSize: mob ? '7px' : '7.5px', letterSpacing: '0.18em',
+                      textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)',
+                      border: '1px solid rgba(255,255,255,0.12)', padding: '4px 8px',
+                    }}>{s}</span>
+                  ))}
+                </div>
+
+                {/* CTA */}
+                {active.cta && (
+                  <a href={active.cta.url} target="_blank" rel="noreferrer" style={{
+                    display: 'inline-block', marginTop: '0.2rem',
+                    fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.26em',
+                    textTransform: 'uppercase', color: GOLD,
+                    border: '1px solid rgba(201,169,110,0.4)',
+                    padding: '0.7rem 1.4rem', textDecoration: 'none',
+                    transition: 'background 0.25s ease',
+                  }}>
+                    {active.cta.label} ->
+                  </a>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Dot nav */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '0.6rem', marginTop: '1.8rem' }}>
+          {MAP_PINS.map((pin) => (
+            <button key={pin.id} onClick={() => openPin(pin)} style={{
+              width: active && active.id === pin.id ? 20 : 6,
+              height: 6, borderRadius: 3,
+              background: active && active.id === pin.id ? GOLD : 'rgba(255,255,255,0.18)',
+              border: 'none', cursor: 'pointer', padding: 0,
+              transition: 'width 0.35s ease, background 0.35s ease',
+            }} />
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes pinPulse {
+          0%, 100% { opacity: 0.18; transform: scale(1.7); }
+          50% { opacity: 0.5; transform: scale(2.2); }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+
 // CINEMATIC
 // ============================================================
 
@@ -935,6 +1242,7 @@ export default function FlowFarmLanding2() {
       <Opportunity />
       <Manifesto />
       <Foundation />
+      <PropertyMap />
       <StealTheShow />
       <CinematicReveal
         src={cdnInt(IMG.living)}
