@@ -452,20 +452,19 @@ function ForestIntro() {
       <div ref={b1Ref} style={{
         position: 'relative', zIndex: 3,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        minHeight: mob ? '85vh' : '100vh',
-        padding: mob ? '6rem 6vw' : '8rem 8vw',
+        padding: mob ? '5rem 6vw 4rem' : '7rem 8vw 5rem',
         textAlign: 'center',
         opacity: beat1 ? 1 : 0,
         transform: beat1 ? 'none' : 'translateY(36px)',
         transition: 'opacity 1.8s ease, transform 1.8s ease',
       }}>
         <div style={{ maxWidth: 820, margin: '0 auto' }}>
-          <p style={{ ...gold, margin: '0 0 1.8rem' }}>Flow Farm</p>
+          <p style={{ ...gold, margin: '0 0 1.2rem' }}>Flow Farm</p>
           <h2 style={{
             fontFamily: 'Georgia, serif', fontWeight: 400,
             fontSize: mob ? 'clamp(2.4rem, 8vw, 3.2rem)' : 'clamp(3rem, 4.5vw, 5rem)',
             color: '#fff', lineHeight: 1.12, letterSpacing: '-0.02em',
-            margin: '0 0 2.6rem',
+            margin: '0 0 1.8rem',
             textShadow: '0 4px 60px rgba(0,0,0,0.55)',
           }}>
             A Living Place,<br />Rooted in Possibility.
@@ -485,20 +484,19 @@ function ForestIntro() {
       {/* ---- BEAT 2: Operational by Design ---- */}
       <div ref={b2Ref} style={{
         position: 'relative', zIndex: 3,
-        minHeight: mob ? 'auto' : '100vh',
-        padding: mob ? '5rem 6vw 6rem' : '8rem 8vw',
+        padding: mob ? '4rem 6vw 5rem' : '6rem 8vw',
         display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
         opacity: beat2 ? 1 : 0,
         transform: beat2 ? 'none' : 'translateY(36px)',
         transition: 'opacity 1.8s ease 0.2s, transform 1.8s ease 0.2s',
       }}>
         <div style={{ maxWidth: 960, width: '100%', margin: '0 auto', textAlign: 'center' }}>
-          <p style={{ ...gold, margin: '0 0 1.4rem' }}>The Estate</p>
+          <p style={{ ...gold, margin: '0 0 1rem' }}>The Estate</p>
           <h2 style={{
             fontFamily: 'Georgia, serif', fontWeight: 400,
             fontSize: mob ? 'clamp(2rem, 7vw, 2.8rem)' : 'clamp(2.6rem, 4vw, 4.2rem)',
             color: '#fff', lineHeight: 1.12, letterSpacing: '-0.02em',
-            margin: '0 0 0.8rem',
+            margin: '0 0 0.6rem',
             textShadow: '0 4px 60px rgba(0,0,0,0.55)',
           }}>
             Operational by Design.
@@ -506,7 +504,7 @@ function ForestIntro() {
           <p style={{
             fontFamily: 'Georgia, serif', fontStyle: 'italic',
             fontSize: mob ? '1rem' : '1.15rem',
-            color: GOLD, margin: '0 0 2rem',
+            color: GOLD, margin: '0 0 1.2rem',
             textShadow: '0 2px 20px rgba(0,0,0,0.5)',
           }}>
             Eight acres working. Seven acres waiting.
@@ -514,7 +512,7 @@ function ForestIntro() {
           <p style={{
             fontFamily: 'Georgia, serif', fontStyle: 'italic',
             fontSize: mob ? '0.95rem' : '1.05rem',
-            color: 'rgba(255,255,255,0.75)', margin: '0 0 3.5rem',
+            color: 'rgba(255,255,255,0.75)', margin: '0 0 2.4rem',
             textShadow: '0 2px 20px rgba(0,0,0,0.5)',
           }}>
             Most houses depend on the grid. This one doesn't need to.
@@ -544,7 +542,7 @@ function ForestIntro() {
       </div>
 
       {/* ---- BEAT 3: Farm photo chapter ---- */}
-      <div style={{ position: 'relative', overflow: 'hidden', minHeight: mob ? '80vh' : '100vh' }}>
+      <div style={{ position: 'relative', overflow: 'hidden', minHeight: mob ? '55vh' : '70vh' }}>
         {/* Farm background */}
         <div style={{
           position: 'absolute', inset: '-10% 0',
@@ -560,15 +558,15 @@ function ForestIntro() {
         <div ref={b3Ref} style={{
           position: 'relative', zIndex: 3,
           display: 'flex', alignItems: 'flex-end', justifyContent: 'center',
-          minHeight: mob ? '80vh' : '100vh',
-          padding: mob ? '4rem 6vw 5rem' : '6rem 8vw 7rem',
+          minHeight: mob ? '55vh' : '70vh',
+          padding: mob ? '3rem 6vw 4rem' : '5rem 8vw 6rem',
           textAlign: 'center',
           opacity: beat3 ? 1 : 0,
           transform: beat3 ? 'none' : 'translateY(36px)',
           transition: 'opacity 1.8s ease 0.3s, transform 1.8s ease 0.3s',
         }}>
           <div>
-            <p style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.40em', textTransform: 'uppercase', color: GOLD, margin: '0 0 1.4rem', fontWeight: 400 }}>The Farm</p>
+            <p style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.40em', textTransform: 'uppercase', color: GOLD, margin: '0 0 1rem', fontWeight: 400 }}>The Farm</p>
             <p style={{
               fontFamily: 'Georgia, serif', fontStyle: 'italic',
               fontSize: mob ? 'clamp(1.6rem, 5vw, 2.2rem)' : 'clamp(2rem, 3vw, 3rem)',
