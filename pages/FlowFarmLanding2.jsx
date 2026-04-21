@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'; // v2
+import React, { useState, useEffect, useRef } from 'react'; // v3
 
 // Load Cormorant Garamond for ultra-thin editorial numerals
 if (typeof document !== 'undefined') {
