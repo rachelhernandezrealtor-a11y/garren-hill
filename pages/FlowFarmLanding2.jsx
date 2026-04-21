@@ -12,7 +12,7 @@ const CLOUD = 'dghn2xpif';
 const cdn = (url, w = 1400) => 'https://res.cloudinary.com/' + CLOUD + '/image/fetch/f_auto,q_auto,w_' + w + ',c_limit/' + encodeURIComponent(url);
 
 const IMG = {
-  // Hero shots -- real professional photos
+  // Hero shots — real professional photos
   living:        B + '4db7d0477_livingroom.jpg',
   conservatory:  B + '8cb2578a0_MONEYSHOT.jpg',
   kitchen:       B + '1c4b8a04f_SOGOODKITCHEN.jpg',
@@ -214,7 +214,7 @@ function Manifesto() {
   const w = useW();
   const mob = w < 768;
   return (
-    <section style={{ background: DARK, padding: mob ? '8rem 0' : '18rem 0', textAlign: 'center' }}>
+    <section style={{ background: DARK, padding: mob ? '7rem 0' : '11rem 0', textAlign: 'center' }}>
       <Fade up>
         <div style={{ maxWidth: 820, margin: '0 auto', padding: '0 6vw', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: mob ? '2.4rem' : '3rem' }}>
           <Eyebrow center>107 Linden Trail &mdash; Aberdeen, North Carolina</Eyebrow>
@@ -244,7 +244,7 @@ function Foundation() {
   const w = useW();
   const mob = w < 768;
   return (
-    <section id="the-estate" style={{ background: '#0c0c0c', padding: mob ? '8rem 0' : '16rem 0' }}>
+    <section id="the-estate" style={{ background: '#0c0c0c', padding: mob ? '7rem 0' : '10rem 0' }}>
       <div style={{ display: 'grid', gridTemplateColumns: mob ? '1fr' : '1fr 1fr', maxWidth: 1320, margin: '0 auto', padding: '0 6vw', gap: mob ? '5rem' : '8rem', alignItems: 'center' }}>
         <Fade delay={0.05}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -256,7 +256,7 @@ function Foundation() {
             <p style={{ color: 'rgba(255,255,255,0.32)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.06rem', lineHeight: 2.1, margin: 0 }}>
               A living estate rooted in sustainability, elevated by state-of-the-art
               infrastructure and refined luxury. Designed by Robert E. Clark AIA of Pinehurst
-              -- one of his final and most personal works.
+              — one of his final and most personal works.
             </p>
             <p style={{ color: 'rgba(255,255,255,0.22)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.06rem', lineHeight: 2.1, margin: 0 }}>
               Reclaimed Civil War-era heart pine floors, custom-laid in artisan patterns
@@ -277,7 +277,7 @@ function Foundation() {
         </Fade>
         <Fade delay={0.2}>
           <div style={{ position: 'relative' }}>
-            <img src={cdn(IMG.grounds)} alt="Flow Farm Estate" style={{ width: '100%', height: mob ? 340 : 560, objectFit: 'cover', display: 'block' }} />
+            <img src={cdn(IMG.aerial)} alt="Flow Farm Estate" style={{ width: '100%', height: mob ? 340 : 560, objectFit: 'cover', display: 'block' }} />
             <Glass style={{ position: 'absolute', bottom: mob ? -20 : -28, left: mob ? -10 : -28, padding: '1.4rem 2rem' }}>
               <p style={{ margin: '0 0 0.3rem', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)' }}>Architect</p>
               <p style={{ margin: 0, fontFamily: 'Georgia, serif', fontSize: '1rem', color: CREAM }}>Robert E. Clark AIA</p>
@@ -347,7 +347,7 @@ function Numbers() {
     ['3 mi', 'To Pinehurst Resort'],
   ];
   return (
-    <section style={{ background: '#0c0c0c', padding: mob ? '7rem 0' : '13rem 0' }}>
+    <section style={{ background: '#0c0c0c', padding: mob ? '6rem 0' : '9rem 0' }}>
       <Fade>
         <p style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.36em', textTransform: 'uppercase', color: GOLD, margin: mob ? '0 0 5rem' : '0 0 6rem', textAlign: 'center' }}>
           By The Numbers
@@ -375,13 +375,13 @@ function Mechanism() {
   const mob = w < 768;
   const tab = w < 1024;
   const cols = [
-    { label: 'Energy',     items: ['14.3kW Solar -- 61 Samsung Panels', 'Sunny Island 10k Battery Backup', '30kW Kohler Generator', '2 x 1,000 Gal Propane', '1,200 Amp Total Power'] },
-    { label: 'Climate',    items: ['Geothermal -- 20 Wells x 300 Ft', '5-Zone Water Furnace', 'Energy Recovery Ventilator', 'Lennox Air Purification Per Zone', 'Zone-Independent Control'] },
-    { label: 'Water',      items: ['Private Well -- Up to 50 GPM', '2 x 1,500 Gal Private Septic', 'Whole-House Water Filtration', 'Whole-House Fire Sprinkler', 'Walk-In Cooler 12 x 8 Ft'] },
+    { label: 'Energy',     items: ['14.3kW Solar — 61 Samsung Panels', 'Sunny Island 10k Battery Backup', '30kW Kohler Generator', '2 x 1,000 Gal Propane', '1,200 Amp Total Power'] },
+    { label: 'Climate',    items: ['Geothermal — 20 Wells x 300 Ft', '5-Zone Water Furnace', 'Energy Recovery Ventilator', 'Lennox Air Purification Per Zone', 'Zone-Independent Control'] },
+    { label: 'Water',      items: ['Private Well — Up to 50 GPM', '2 x 1,500 Gal Private Septic', 'Whole-House Water Filtration', 'Whole-House Fire Sprinkler', 'Walk-In Cooler 12 x 8 Ft'] },
     { label: 'Smart Home', items: ['Control4 Audio, Video, Lighting', 'Araknis Enterprise Network', 'Whole Campus Wi-Fi', 'Brown Safe + Vault Door', 'Dual Central Vacuum'] },
   ];
   return (
-    <section style={{ position: 'relative', background: DARK, padding: mob ? '8rem 0' : '16rem 0', overflow: 'hidden' }}>
+    <section style={{ position: 'relative', background: DARK, padding: mob ? '6rem 0' : '10rem 0', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${cdn(IMG.aerial)})`, backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.05, zIndex: 0 }} />
       <div style={{ position: 'relative', zIndex: 1 }}>
         <Fade>
@@ -427,7 +427,7 @@ function Land() {
     { src: IMG.workshop, label: 'Farm Workshop',          detail: '30 x 40 Ft | Plumbing | Electrical | Walk-In Cooler', body: 'Built to run a real operation. Plumbing, electrical, and a 12 by 8 foot walk-in cooler. This is the infrastructure behind the idea.' },
   ];
   return (
-    <section id="the-land" style={{ background: '#0c0c0c', padding: mob ? '8rem 0' : '16rem 0' }}>
+    <section id="the-land" style={{ background: '#0c0c0c', padding: mob ? '6rem 0' : '10rem 0' }}>
       <Fade up>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2.4rem', marginBottom: mob ? '6rem' : '10rem', padding: '0 6vw', textAlign: 'center' }}>
           <Eyebrow center>The Land</Eyebrow>
@@ -438,7 +438,7 @@ function Land() {
           <p style={{ color: 'rgba(255,255,255,0.26)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.12rem', lineHeight: 2.1, maxWidth: 540, margin: 0 }}>
             USDA-certified veganic. O2Compost regenerative systems.
             Biochar production. 1,400-ft double deer fence.
-            A farm already running -- and seven raw acres ready for whatever comes next.
+            A farm already running — and seven raw acres ready for whatever comes next.
           </p>
         </div>
       </Fade>
@@ -470,7 +470,7 @@ function Location() {
   const w = useW();
   const mob = w < 768;
   return (
-    <section style={{ background: DARK, padding: mob ? '8rem 0' : '16rem 0' }}>
+    <section style={{ background: DARK, padding: mob ? '7rem 0' : '10rem 0' }}>
       <div style={{ display: 'grid', gridTemplateColumns: mob ? '1fr' : '1fr 1fr', maxWidth: 1320, margin: '0 auto', padding: '0 5vw', gap: mob ? '5rem' : '8rem', alignItems: 'center' }}>
         <Fade delay={0.05}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -481,11 +481,11 @@ function Location() {
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.32)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.06rem', lineHeight: 2, margin: 0 }}>
               Three miles from Pinehurst Resort. A transferable Pinehurst Country Club
-              Signature Golf Membership -- unlimited access to Course No. 7 and No. 9 --
+              Signature Golf Membership — unlimited access to Course No. 7 and No. 9 --
               is included with the sale.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '0.5rem' }}>
-              {['Pinehurst Resort -- 3 Miles', 'Moore County Regional -- Private Aviation', 'Raleigh-Durham International -- 1 Hour', 'FirstHealth Moore Regional Hospital', 'Pinehurst CC Membership Included'].map(item => (
+              {['Pinehurst Resort — 3 Miles', 'Moore County Regional — Private Aviation', 'Raleigh-Durham International — 1 Hour', 'FirstHealth Moore Regional Hospital', 'Pinehurst CC Membership Included'].map(item => (
                 <p key={item} style={{ color: 'rgba(255,255,255,0.18)', fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', margin: 0, display: 'flex', alignItems: 'center', gap: '1rem' }}>
                   <span style={{ display: 'inline-block', width: 20, height: 1, background: GOLD, opacity: 0.4, flexShrink: 0 }} />
                   {item}
@@ -513,7 +513,7 @@ function Inquire() {
   const submit = e => { e.preventDefault(); setSent(true); };
   const inp = { background: 'transparent', border: 'none', borderBottom: '1px solid rgba(255,255,255,0.12)', color: CREAM, fontFamily: 'Georgia, serif', fontSize: '1rem', padding: '1rem 0', width: '100%', outline: 'none' };
   return (
-    <section id="inquire" style={{ background: '#0c0c0c', padding: mob ? '8rem 0' : '16rem 0' }}>
+    <section id="inquire" style={{ background: '#0c0c0c', padding: mob ? '7rem 0' : '10rem 0' }}>
       <div style={{ maxWidth: 640, margin: '0 auto', padding: '0 6vw', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3rem' }}>
         <Fade up>
           <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.6rem' }}>
@@ -584,7 +584,7 @@ export default function FlowFarmLanding2() {
         src={cdn(IMG.living)}
         eyebrow="The Residence"
         headline={"A grand living room.\n27 feet wide. 17 feet tall."}
-        body="Exposed king post trusses. Grand piano. Heart pine floors. French doors to the covered porch. And beyond -- the conservatory, the kitchen, the farm. All of it visible from where you stand."
+        body="Exposed king post trusses. Grand piano. Heart pine floors. French doors to the covered porch. And beyond — the conservatory, the kitchen, the farm. All of it visible from where you stand."
         position="center 35%"
       />
       <Numbers />
