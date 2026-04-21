@@ -69,20 +69,20 @@ function useCounter(target, duration, delay, decimals) {
   const [count, setCount] = React.useState(0);
   const ref = React.useRef(null);
   React.useEffect(() => {
-    // Fire after a simple delay -- no IntersectionObserver needed for above-fold elements
     const t = setTimeout(() => {
       let startTime = null;
-      const step = (ts) => {
+      const animate = (ts) => {
         if (!startTime) startTime = ts;
         const progress = Math.min((ts - startTime) / duration, 1);
         const ease = 1 - Math.pow(1 - progress, 3);
-        setCount(parseFloat((ease * target).toFixed(decimals || 0)));
-        if (progress < 1) requestAnimationFrame(step);
+        const val = ease * target;
+        setCount(parseFloat(val.toFixed(decimals || 0)));
+        if (progress < 1) requestAnimationFrame(animate);
       };
-      requestAnimationFrame(step);
-    }, delay || 600);
+      requestAnimationFrame(animate);
+    }, delay || 1800);
     return () => clearTimeout(t);
-  }, [target, duration, delay]);
+  }, []);
   return [count, ref];
 }
 
@@ -163,10 +163,10 @@ function HeroStat({ value, prefix, suffix, decimals, label1, label2, duration, d
 
 function HeroStats({ mob }) {
   const stats = [
-    { value: 15, prefix: '', suffix: '', decimals: 0, label1: 'USDA', label2: 'ACRES', duration: 1400, delay: 600 },
-    { value: 7, prefix: '', suffix: '', decimals: 0, label1: 'BUILDABLE', label2: 'ACRES', duration: 1200, delay: 700 },
-    { value: 3, prefix: '', suffix: '', decimals: 0, label1: 'ACRE VEGANIC', label2: 'FARM', duration: 1000, delay: 800 },
-    { value: 5.25, prefix: '$', suffix: 'M', decimals: 2, label1: 'OFFERED', label2: 'AT', duration: 1800, delay: 900 },
+    { value: 15, prefix: '', suffix: '', decimals: 0, label1: 'USDA', label2: 'ACRES', duration: 1600, delay: 1800 },
+    { value: 7, prefix: '', suffix: '', decimals: 0, label1: 'BUILDABLE', label2: 'ACRES', duration: 1600, delay: 1950 },
+    { value: 3, prefix: '', suffix: '', decimals: 0, label1: 'ACRE VEGANIC', label2: 'FARM', duration: 1600, delay: 2100 },
+    { value: 5.25, prefix: '$', suffix: 'M', decimals: 2, label1: 'OFFERED', label2: 'AT', duration: 1600, delay: 2250 },
   ];
   return (
     <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', margin: mob ? '0 0 2rem' : '0 0 2.6rem', gap: 0 }}>
