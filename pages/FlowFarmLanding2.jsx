@@ -66,16 +66,19 @@ function useFade() {
 }
 
 function useCounter(target, duration, start, decimals) {
-  // target = numeric end value, duration ms, start = when to begin, decimals = decimal places
   const [count, setCount] = React.useState(0);
   const [triggered, setTriggered] = React.useState(false);
   const ref = React.useRef(null);
   React.useEffect(() => {
     const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setTriggered(true); obs.disconnect(); } }, { threshold: 0.4 });
+    // Fallback: always trigger after 300ms regardless of scroll position
+    const fallback = setTimeout(() => setTriggered(true), 300);
+    if (!el) return () => clearTimeout(fallback);
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setTriggered(true); obs.disconnect(); clearTimeout(fallback); }
+    }, { threshold: 0 });
     obs.observe(el);
-    return () => obs.disconnect();
+    return () => { obs.disconnect(); clearTimeout(fallback); };
   }, []);
   React.useEffect(() => {
     if (!triggered) return;
