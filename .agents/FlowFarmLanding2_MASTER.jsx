@@ -467,7 +467,7 @@ function Mechanism() {
     { label: 'Energy',     items: ['14.3kW Solar -- 61 Samsung Panels', 'Sunny Island 10k Battery Backup', '30kW Kohler Generator', '2 x 1,000 Gal Propane', '1,200 Amp Total Power'] },
     { label: 'Climate',    items: ['Geothermal -- 20 Wells x 300 Ft', '5-Zone Water Furnace', 'Energy Recovery Ventilator', 'Lennox Air Purification Per Zone', 'Zone-Independent Control'] },
     { label: 'Water',      items: ['Private Well -- Up to 50 GPM', '2 x 1,500 Gal Private Septic', 'Whole-House Water Filtration', 'Whole-House Fire Sprinkler', 'Walk-In Cooler 12 x 8 Ft'] },
-    { label: 'Smart Home', items: ['Control4 Audio, Video, Lighting', 'Araknis Enterprise Network', 'Whole Campus Wi-Fi', 'Brown Safe + Vault Door', 'Dual Central Vacuum'] },
+    { label: 'Smart Home', items: ['Control4 -- Every Light. Every Shade. Every Degree.', 'Pool, Spa, Security + Irrigation -- One Screen', 'Monitor Energy + Adjust Anything From Anywhere', 'Araknis Enterprise Network + Whole Campus Wi-Fi', '143 Individually Addressable Lighting Circuits'] },
   ];
   return (
     <section style={{ position: 'relative', background: DARK, padding: mob ? '6rem 0' : '10rem 0', overflow: 'hidden' }}>
@@ -479,9 +479,8 @@ function Mechanism() {
             <h2 style={{ color: CREAM, fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '2rem' : '3.2rem', lineHeight: 1.28, margin: '2rem 0 2.4rem', letterSpacing: '-0.018em' }}>
               Structure that holds<br /><em>freedom.</em>
             </h2>
-            <p style={{ color: 'rgba(255,255,255,0.26)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.12rem', lineHeight: 2.1, maxWidth: 520, margin: '0 auto' }}>
-              Solar, battery, generator, geothermal, private water.
-              Autonomy at this scale is not inherited. It is engineered.
+            <p style={{ color: 'rgba(255,255,255,0.26)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.12rem', lineHeight: 2.1, maxWidth: 560, margin: '0 auto' }}>
+              1,200 amps across three dedicated services. The main house alone runs on 600 -- the capacity of a small hotel. Control4 ties it all together. Solar, geothermal, and a 30kW generator hand off so cleanly you won't notice the transition.
             </p>
           </div>
         </Fade>
@@ -878,7 +877,7 @@ export default function FlowFarmLanding2() {
         src={cdn(IMG.living)}
         eyebrow="The Residence"
         headline={"A grand living room.\n27 feet wide. 17 feet tall."}
-        body="Exposed king post trusses. Grand piano. Heart pine floors. French doors to the covered porch. And beyond -- the conservatory, the kitchen, the farm. All of it visible from where you stand."
+        body="Exposed king post trusses. Grand piano. Heart pine floors. French doors to the covered porch. And beyond -- the conservatory, the kitchen, the farm. All of it visible from where you stand. Sound fills seventeen feet without effort. You won't find the speakers."
         position="center 35%"
       />
       <Numbers />
@@ -900,7 +899,7 @@ export default function FlowFarmLanding2() {
         src={cdn(IMG.kitchen)}
         eyebrow="The Kitchen"
         headline={"Sub-Zero. Wolf 60\".\nBuilt for the serious cook."}
-        body="A 60-inch dual fuel Wolf range with red knobs, six burners, griddle, grill, and warming drawer. Two KitchenAid dishwashers. Butcher block island. Scullery with full Sub-Zero and wine fridge. The kitchen that makes you want to stay home."
+        body="A 60-inch dual fuel Wolf range with red knobs, six burners, griddle, grill, and warming drawer. Two KitchenAid dishwashers. Butcher block island. Scullery with full Sub-Zero and wine fridge. The water from every tap is filtered. Drink it straight. Music plays from somewhere you can't locate. That's the point."
         position="center 40%"
       />
       <Land />
@@ -909,7 +908,7 @@ export default function FlowFarmLanding2() {
         src={cdn(IMG.spabath)}
         eyebrow="The Primary Suite"
         headline={"A spa.\nA sanctuary.\nA reason to stay."}
-        body="Dual vanities. Freestanding soaking tub beneath a window to the forest. Body-jet shower. Mosaic tile floors. A room that earns the word primary."
+        body="Dual vanities. Freestanding soaking tub beneath a window to the forest. Body-jet shower. Mosaic tile floors. A room that earns the word primary. The lights are already at ten percent when you walk in. Control4 knows."
         align="right"
         position="center 30%"
       />
@@ -917,7 +916,7 @@ export default function FlowFarmLanding2() {
         src={cdn(IMG.foyer)}
         eyebrow="The Welcome"
         headline={"Every arrival\nshould feel like this."}
-        body="Herringbone heart pine floors laid on the diagonal. A reclaimed wood door with transom light overhead. A star lantern casting warm light across the entry. The first impression that sets the tone for everything that follows."
+        body="Herringbone heart pine floors laid on the diagonal. A reclaimed wood door with transom light overhead. A star lantern casting warm light across the entry. The first impression that sets the tone for everything that follows. One tap. The whole house shifts."
         position="center top"
       />
       <Location />
