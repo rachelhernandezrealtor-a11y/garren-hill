@@ -34,7 +34,7 @@ const IMG = {
   hallway:       B + '8e3d794f9_secondfloorhallway.jpg',
   // Grounds / aerial
   aerial:        'https://media.base44.com/images/public/69e248a2469cc39540781cce/2ca329bbf_flowfarmmasterphotoswebsite.jpg',
-  forestcanopy:  'https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png',
+  forestcanopy:  'https://res.cloudinary.com/dghn2xpif/image/fetch/f_auto,q_auto,w_2400/https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png',
   grounds:       'https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/da785e254_flowfarmmasterphotoswebsite3.jpg',
   exterior:      'https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/595faa261_107LindenTrail-29.jpg',
   // Structures
