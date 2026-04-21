@@ -818,7 +818,6 @@ function PropertyMap() {
               top: mob ? 'auto' : '50%',
               bottom: mob ? 0 : 'auto',
               left: mob ? 0 : '3%',
-              transform: mob ? 'none' : 'translateY(-50%)',
               width: mob ? '100%' : Math.min(380, w * 0.32) + 'px',
               zIndex: 20,
               opacity: panelVisible ? 1 : 0,
