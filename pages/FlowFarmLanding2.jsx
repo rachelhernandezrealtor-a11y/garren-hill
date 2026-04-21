@@ -387,7 +387,7 @@ function StealTheShow() {
       <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: '#000' }}>
         <iframe
           src="https://player.vimeo.com/video/1180614233?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
-          style={{ position: 'absolute', inset: '-10%', width: '120%', height: '120%', border: 'none', pointerEvents: 'none', opacity: 0.82 }}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', pointerEvents: 'none', opacity: 0.90 }}
           allow="autoplay; fullscreen"
           title="Fan background"
         />
