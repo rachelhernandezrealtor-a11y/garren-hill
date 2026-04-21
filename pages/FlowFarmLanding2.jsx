@@ -1542,9 +1542,9 @@ export default function FlowFarmLanding2() {
     <div style={{ background: DARK, margin: 0, padding: 0, overflowX: 'hidden' }}>
       <Hero />
       <ForestIntro />
+      <PropertyMap />
       <Manifesto />
       <Foundation />
-      <PropertyMap />
       <StealTheShow />
       <CinematicReveal
         src={cdnInt(IMG.living)}
