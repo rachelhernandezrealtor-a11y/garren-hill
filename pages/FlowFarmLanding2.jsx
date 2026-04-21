@@ -421,6 +421,7 @@ function ForestIntro() {
   }, []);
 
   const FOREST = 'https://res.cloudinary.com/dghn2xpif/image/fetch/f_auto,q_auto,w_2400,e_vibrance:80,e_saturation:50,e_brightness:18,e_sharpen:100,e_clarity:40/' + encodeURIComponent('https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png');
+  const FARM = 'https://res.cloudinary.com/dghn2xpif/image/fetch/f_auto,q_auto,w_2400,e_improve:outdoor:70,e_vibrance:50,e_saturation:30,e_sharpen:80,e_brightness:10/' + encodeURIComponent('https://media.base44.com/images/public/69a8c6b6c09f3f53db8fa60a/da785e254_flowfarmmasterphotoswebsite3.jpg');
 
   const gold = { fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.40em', textTransform: 'uppercase', color: GOLD, fontWeight: 400 };
 
@@ -542,26 +543,52 @@ function ForestIntro() {
         </div>
       </div>
 
-      {/* ---- BEAT 3: Bridge to map ---- */}
-      <div ref={b3Ref} style={{
-        position: 'relative', zIndex: 3,
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        minHeight: mob ? '40vh' : '50vh',
-        padding: mob ? '4rem 6vw' : '6rem 8vw',
-        textAlign: 'center',
-        opacity: beat3 ? 1 : 0,
-        transform: beat3 ? 'none' : 'translateY(36px)',
-        transition: 'opacity 1.8s ease 0.3s, transform 1.8s ease 0.3s',
-      }}>
-        <p style={{
-          fontFamily: 'Georgia, serif', fontStyle: 'italic',
-          fontSize: mob ? 'clamp(1.4rem, 5vw, 2rem)' : 'clamp(1.8rem, 3vw, 2.8rem)',
-          color: 'rgba(255,255,255,0.9)',
-          lineHeight: 1.5, maxWidth: 700, margin: '0 auto',
-          textShadow: '0 4px 40px rgba(0,0,0,0.6)',
+      {/* ---- BEAT 3: Farm photo chapter ---- */}
+      <div style={{ position: 'relative', overflow: 'hidden', minHeight: mob ? '80vh' : '100vh' }}>
+        {/* Farm background */}
+        <div style={{
+          position: 'absolute', inset: '-10% 0',
+          backgroundImage: 'url(' + FARM + ')',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 60%',
+          filter: 'saturate(1.2) brightness(1.05)',
+          transition: 'transform 0.08s linear',
+        }} />
+        {/* Subtle dark gradient bottom-up for text legibility */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.5) 100%)' }} />
+
+        <div ref={b3Ref} style={{
+          position: 'relative', zIndex: 3,
+          display: 'flex', alignItems: 'flex-end', justifyContent: 'center',
+          minHeight: mob ? '80vh' : '100vh',
+          padding: mob ? '4rem 6vw 5rem' : '6rem 8vw 7rem',
+          textAlign: 'center',
+          opacity: beat3 ? 1 : 0,
+          transform: beat3 ? 'none' : 'translateY(36px)',
+          transition: 'opacity 1.8s ease 0.3s, transform 1.8s ease 0.3s',
         }}>
-          This is what seventeen years looks like from above.
-        </p>
+          <div>
+            <p style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.40em', textTransform: 'uppercase', color: GOLD, margin: '0 0 1.4rem', fontWeight: 400 }}>The Farm</p>
+            <p style={{
+              fontFamily: 'Georgia, serif', fontStyle: 'italic',
+              fontSize: mob ? 'clamp(1.6rem, 5vw, 2.2rem)' : 'clamp(2rem, 3vw, 3rem)',
+              color: '#fff',
+              lineHeight: 1.45, maxWidth: 760, margin: '0 auto 1.2rem',
+              textShadow: '0 4px 40px rgba(0,0,0,0.7)',
+            }}>
+              This is what seventeen years looks like from above.
+            </p>
+            <p style={{
+              fontFamily: 'Georgia, serif',
+              fontSize: mob ? '0.95rem' : '1.05rem',
+              color: 'rgba(255,255,255,0.75)',
+              lineHeight: 1.7, maxWidth: 560, margin: '0 auto',
+              textShadow: '0 2px 20px rgba(0,0,0,0.6)',
+            }}>
+              Eight acres working. A farm that sustains itself -- and the land around it.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
