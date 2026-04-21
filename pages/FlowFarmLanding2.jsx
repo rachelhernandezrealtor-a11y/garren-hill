@@ -254,7 +254,7 @@ function Hero() {
             lineHeight: 1.06, margin: 0, letterSpacing: '-0.02em',
             textShadow: '0 4px 80px rgba(0,0,0,0.6)',
           }}>
-            Agritourism Established.<br /><em>Legacy Ready.</em>
+            Agritourism <em>Established.</em><br /><em>Legacy Ready.</em>
           </h1>
         </div>
         <div style={{ ...show(3), marginTop: mob ? '1.6rem' : '2.2rem' }}>
