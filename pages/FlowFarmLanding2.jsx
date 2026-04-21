@@ -382,7 +382,7 @@ function StealTheShow() {
   const w = useW();
   const mob = w < 768;
   return (
-    <section style={{ position: 'relative', minHeight: mob ? '70vh' : '90vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <section style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       {/* Fan video background */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: '#000' }}>
         <iframe
@@ -393,32 +393,26 @@ function StealTheShow() {
         />
       </div>
       {/* Dark overlay */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to bottom, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.18) 50%, rgba(0,0,0,0.52) 100%)' }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to bottom, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.20) 40%, rgba(0,0,0,0.60) 100%)' }} />
       {/* Content */}
-      <div style={{ position: 'relative', zIndex: 3, textAlign: 'center', padding: mob ? '0 6vw' : '0 8vw', maxWidth: 1100, margin: '0 auto' }}>
-        <Fade up>
-          <p style={{ fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.36em', textTransform: 'uppercase', color: GOLD, marginBottom: mob ? '1.2rem' : '1.6rem', fontWeight: 400 }}>
-            The Architectural Masterpiece
-          </p>
-        </Fade>
-        <Fade up delay={120}>
-          <h2 style={{
-            fontFamily: 'Georgia, serif',
-            fontWeight: 400,
-            fontSize: mob ? 'clamp(2.4rem, 9vw, 3.6rem)' : 'clamp(3rem, 5.5vw, 5.2rem)',
-            color: '#fff',
-            lineHeight: 1.12,
-            letterSpacing: '-0.02em',
-            margin: '0 0 1.6rem 0',
-          }}>
-            The House That Quietly Steals<br />the Whole Show.
-          </h2>
-        </Fade>
-        <Fade up delay={240}>
-          <p style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: mob ? '1rem' : '1.2rem', color: 'rgba(255,255,255,0.82)', lineHeight: 1.6, maxWidth: 680, margin: '0 auto' }}>
-            Architect-designed, materially rich, and impossible to confuse with ordinary luxury.
-          </p>
-        </Fade>
+      <div style={{ position: 'relative', zIndex: 3, textAlign: 'center', padding: mob ? '6rem 6vw' : '8rem 8vw', maxWidth: 1100, margin: '0 auto' }}>
+        <p style={{ fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.36em', textTransform: 'uppercase', color: GOLD, marginBottom: mob ? '1.4rem' : '2rem', fontWeight: 400 }}>
+          The Architectural Masterpiece
+        </p>
+        <h2 style={{
+          fontFamily: 'Georgia, serif',
+          fontWeight: 400,
+          fontSize: mob ? 'clamp(2.4rem, 9vw, 3.6rem)' : 'clamp(3rem, 5.5vw, 5.2rem)',
+          color: '#fff',
+          lineHeight: 1.12,
+          letterSpacing: '-0.02em',
+          margin: '0 0 2rem 0',
+        }}>
+          The House That Quietly Steals<br />the Whole Show.
+        </h2>
+        <p style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: mob ? '1rem' : '1.2rem', color: 'rgba(255,255,255,0.82)', lineHeight: 1.6, maxWidth: 680, margin: '0 auto' }}>
+          Architect-designed, materially rich, and impossible to confuse with ordinary luxury.
+        </p>
       </div>
     </section>
   );
