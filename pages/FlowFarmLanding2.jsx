@@ -418,7 +418,7 @@ function ForestIntro() {
     return () => obs.disconnect();
   }, []);
 
-  const FOREST = 'https://res.cloudinary.com/dghn2xpif/image/fetch/f_auto,q_auto,w_2400,e_vibrance:60,e_saturation:40,e_brightness:22,e_sharpen:70/' + encodeURIComponent('https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png');
+  const FOREST = 'https://res.cloudinary.com/dghn2xpif/image/fetch/f_auto,q_auto,w_2400,e_vibrance:80,e_saturation:50,e_brightness:18,e_sharpen:100,e_clarity:40/' + encodeURIComponent('https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png');
 
   const gold = { fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.40em', textTransform: 'uppercase', color: GOLD, fontWeight: 400 };
 
@@ -438,11 +438,11 @@ function ForestIntro() {
         backgroundImage: 'url(' + FOREST + ')',
         backgroundSize: 'cover',
         backgroundPosition: 'center 40%',
-        filter: 'saturate(1.4) brightness(1.22)',
+        filter: 'saturate(1.15) brightness(1.05)',
         willChange: 'transform',
       }} />
-      {/* Very light vignette only -- no dark wash */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.0) 40%, rgba(0,0,0,0.32) 100%)' }} />
+      {/* Edge vignette only -- preserve center clarity */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.18) 100%)' }} />
 
       {/* ---- BEAT 1: A Living Place ---- */}
       <div ref={b1Ref} style={{
@@ -524,10 +524,11 @@ function ForestIntro() {
           }}>
             {gridItems.map((item, i) => (
               <div key={i} style={{
-                background: 'rgba(255,255,255,0.08)',
-                border: '1px solid rgba(255,255,255,0.18)',
-                backdropFilter: 'blur(10px)',
-                borderRadius: '2px',
+                background: 'rgba(10,10,10,0.22)',
+                border: '1px solid rgba(255,255,255,0.22)',
+                backdropFilter: 'blur(18px)',
+                WebkitBackdropFilter: 'blur(18px)',
+                borderRadius: '3px',
                 padding: mob ? '1.4rem 1.4rem' : '1.8rem 2rem',
               }}>
                 <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.32em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.7rem', fontWeight: 600 }}>{item.label}</p>
