@@ -21,7 +21,7 @@ const CLOUD = 'dghn2xpif';
 const cdn = (url, w = 1400) => 'https://res.cloudinary.com/' + CLOUD + '/image/fetch/f_auto,q_auto,w_' + w + ',c_limit/' + encodeURIComponent(url);
 
 const IMG = {
-  // Hero shots — real professional photos
+  // Hero shots -- real professional photos
   living:        B + '4db7d0477_livingroom.jpg',
   conservatory:  B + '8cb2578a0_MONEYSHOT.jpg',
   kitchen:       B + '1c4b8a04f_SOGOODKITCHEN.jpg',
@@ -69,7 +69,7 @@ function useCounter(target, duration, delay, decimals) {
   const [count, setCount] = React.useState(0);
   const ref = React.useRef(null);
   React.useEffect(() => {
-    // Fire after a simple delay — no IntersectionObserver needed for above-fold elements
+    // Fire after a simple delay -- no IntersectionObserver needed for above-fold elements
     const t = setTimeout(() => {
       let startTime = null;
       const step = (ts) => {
@@ -133,7 +133,7 @@ function GoldLine() {
 // ============================================================
 // HERO
 // ============================================================
-function HeroStat({ value, prefix, suffix, decimals, label1, label2, duration, mob }) {
+function HeroStat({ value, prefix, suffix, decimals, label1, label2, duration, delay, mob }) {
   const [count, ref] = useCounter(value, duration || 1600, delay || 600, decimals || 0);
   const display = (prefix || '') + (decimals ? count.toFixed(decimals) : Math.round(count).toLocaleString()) + (suffix || '');
   return (
@@ -254,7 +254,7 @@ function Hero() {
             fontSize: mob ? '0.95rem' : '1.1rem', margin: mob ? '0 0 2rem' : '0 0 2.6rem',
             letterSpacing: '0.01em', lineHeight: 1.7,
           }}>
-            Where architectural excellence meets working land — three miles from Pinehurst Resort.
+            Where architectural excellence meets working land -- three miles from Pinehurst Resort.
           </p>
           <HeroStats mob={mob} />
           <a href="#inquire" style={{ display: 'inline-block', background: 'rgba(255,255,255,0.08)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '1px solid rgba(201,169,110,0.45)', color: GOLD, fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.28em', textTransform: 'uppercase', padding: mob ? '0.85rem 2rem' : '1rem 2.6rem', borderRadius: '2rem', textDecoration: 'none', fontWeight: 600, cursor: 'pointer' }}>
@@ -328,7 +328,7 @@ function Foundation() {
             <p style={{ color: 'rgba(255,255,255,0.32)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.06rem', lineHeight: 2.1, margin: 0 }}>
               A living estate rooted in sustainability, elevated by state-of-the-art
               infrastructure and refined luxury. Designed by Robert E. Clark AIA of Pinehurst
-              — one of his final and most personal works.
+              -- one of his final and most personal works.
             </p>
             <p style={{ color: 'rgba(255,255,255,0.22)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.06rem', lineHeight: 2.1, margin: 0 }}>
               Reclaimed Civil War-era heart pine floors, custom-laid in artisan patterns
@@ -455,9 +455,9 @@ function Mechanism() {
   const mob = w < 768;
   const tab = w < 1024;
   const cols = [
-    { label: 'Energy',     items: ['14.3kW Solar — 61 Samsung Panels', 'Sunny Island 10k Battery Backup', '30kW Kohler Generator', '2 x 1,000 Gal Propane', '1,200 Amp Total Power'] },
-    { label: 'Climate',    items: ['Geothermal — 20 Wells x 300 Ft', '5-Zone Water Furnace', 'Energy Recovery Ventilator', 'Lennox Air Purification Per Zone', 'Zone-Independent Control'] },
-    { label: 'Water',      items: ['Private Well — Up to 50 GPM', '2 x 1,500 Gal Private Septic', 'Whole-House Water Filtration', 'Whole-House Fire Sprinkler', 'Walk-In Cooler 12 x 8 Ft'] },
+    { label: 'Energy',     items: ['14.3kW Solar -- 61 Samsung Panels', 'Sunny Island 10k Battery Backup', '30kW Kohler Generator', '2 x 1,000 Gal Propane', '1,200 Amp Total Power'] },
+    { label: 'Climate',    items: ['Geothermal -- 20 Wells x 300 Ft', '5-Zone Water Furnace', 'Energy Recovery Ventilator', 'Lennox Air Purification Per Zone', 'Zone-Independent Control'] },
+    { label: 'Water',      items: ['Private Well -- Up to 50 GPM', '2 x 1,500 Gal Private Septic', 'Whole-House Water Filtration', 'Whole-House Fire Sprinkler', 'Walk-In Cooler 12 x 8 Ft'] },
     { label: 'Smart Home', items: ['Control4 Audio, Video, Lighting', 'Araknis Enterprise Network', 'Whole Campus Wi-Fi', 'Brown Safe + Vault Door', 'Dual Central Vacuum'] },
   ];
   return (
@@ -518,7 +518,7 @@ function Land() {
           <p style={{ color: 'rgba(255,255,255,0.26)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.12rem', lineHeight: 2.1, maxWidth: 540, margin: 0 }}>
             USDA-certified veganic. O2Compost regenerative systems.
             Biochar production. 1,400-ft double deer fence.
-            A farm already running — and seven raw acres ready for whatever comes next.
+            A farm already running -- and seven raw acres ready for whatever comes next.
           </p>
         </div>
       </Fade>
@@ -561,11 +561,11 @@ function Location() {
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.32)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.06rem', lineHeight: 2, margin: 0 }}>
               Three miles from Pinehurst Resort. A transferable Pinehurst Country Club
-              Signature Golf Membership — unlimited access to Course No. 7 and No. 9 --
+              Signature Golf Membership -- unlimited access to Course No. 7 and No. 9 --
               is included with the sale.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '0.5rem' }}>
-              {['Pinehurst Resort — 3 Miles', 'Moore County Regional — Private Aviation', 'Raleigh-Durham International — 1 Hour', 'FirstHealth Moore Regional Hospital', 'Pinehurst CC Membership Included'].map(item => (
+              {['Pinehurst Resort -- 3 Miles', 'Moore County Regional -- Private Aviation', 'Raleigh-Durham International -- 1 Hour', 'FirstHealth Moore Regional Hospital', 'Pinehurst CC Membership Included'].map(item => (
                 <p key={item} style={{ color: 'rgba(255,255,255,0.18)', fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', margin: 0, display: 'flex', alignItems: 'center', gap: '1rem' }}>
                   <span style={{ display: 'inline-block', width: 20, height: 1, background: GOLD, opacity: 0.4, flexShrink: 0 }} />
                   {item}
@@ -664,7 +664,7 @@ export default function FlowFarmLanding2() {
         src={cdn(IMG.living)}
         eyebrow="The Residence"
         headline={"A grand living room.\n27 feet wide. 17 feet tall."}
-        body="Exposed king post trusses. Grand piano. Heart pine floors. French doors to the covered porch. And beyond — the conservatory, the kitchen, the farm. All of it visible from where you stand."
+        body="Exposed king post trusses. Grand piano. Heart pine floors. French doors to the covered porch. And beyond -- the conservatory, the kitchen, the farm. All of it visible from where you stand."
         position="center 35%"
       />
       <Numbers />
