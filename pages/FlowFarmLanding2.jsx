@@ -433,23 +433,16 @@ function ForestIntro() {
 
   return (
     <div style={{ position: 'relative', overflow: 'hidden' }}>
-      {/* ONE shared forest background -- sticky so it fills the full chapter */}
-      <div style={{
-        position: 'sticky', top: 0,
-        height: 0, overflow: 'visible',
-        zIndex: 0,
-      }}>
-        <div ref={bgRef} style={{
-          position: 'absolute', top: 0, left: 0, right: 0,
-          height: '100vh',
-          backgroundImage: 'url(' + FOREST + ')',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          filter: 'saturate(1.6) brightness(1.22)',
-          willChange: 'transform',
-        }} />
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '100vh', background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.22) 100%)' }} />
-      </div>
+      {/* ONE shared forest background -- simple absolute, crisp, no blur */}
+      <div ref={bgRef} style={{
+        position: 'absolute', inset: 0, zIndex: 0,
+        backgroundImage: 'url(' + FOREST + ')',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center 40%',
+        backgroundAttachment: 'fixed',
+        filter: 'saturate(1.5) brightness(1.18)',
+      }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.18) 100%)' }} />
 
       {/* ---- BEAT 1: A Living Place ---- */}
       <div ref={b1Ref} style={{
