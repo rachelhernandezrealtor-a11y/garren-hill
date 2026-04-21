@@ -264,7 +264,7 @@ function Hero() {
           </p>
           <HeroStats mob={mob} />
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: mob ? '0.75rem' : '1rem', justifyContent: 'center', alignItems: 'center' }}>
-            <a href="https://vimeo.com/1165426324" target="_blank" rel="noreferrer" style={{ display: 'inline-block', background: GOLD, border: '1px solid ' + GOLD, color: DARK, fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.32em', textTransform: 'uppercase', padding: mob ? '0.85rem 2rem' : '1rem 2.8rem', borderRadius: '2rem', textDecoration: 'none', fontWeight: 700, cursor: 'pointer', transition: 'opacity 0.2s ease', boxShadow: '0 4px 30px rgba(201,169,110,0.4)' }}>
+            <a href="https://vimeo.com/1165426324" target="_blank" rel="noreferrer" style={{ display: 'inline-block', background: 'rgba(255,255,255,0.10)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.30)', color: '#fff', fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.32em', textTransform: 'uppercase', padding: mob ? '0.85rem 2rem' : '1rem 2.8rem', borderRadius: '2rem', textDecoration: 'none', fontWeight: 500, cursor: 'pointer', transition: 'background 0.3s ease, border-color 0.3s ease', boxShadow: '0 4px 30px rgba(255,255,255,0.08)' }}>
               Enter Flow Farm
             </a>
 
