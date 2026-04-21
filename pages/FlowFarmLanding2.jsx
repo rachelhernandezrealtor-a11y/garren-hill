@@ -380,227 +380,230 @@ function Foundation() {
 // ============================================================
 // A LIVING PLACE
 // ============================================================
-function ALivingPlace() {
+// ============================================================
+// FOREST INTRO -- unified chapter (A Living Place + Operational + Opportunity)
+// ============================================================
+function ForestIntro() {
   const w = useW();
   const mob = w < 768;
   const bgRef = useRef(null);
-  const [fadeIn, setFadeIn] = useState(false);
-  const sectionRef = useRef(null);
+  const [beat1, setBeat1] = useState(false);
+  const [beat2, setBeat2] = useState(false);
+  const [beat3, setBeat3] = useState(false);
+  const b1Ref = useRef(null);
+  const b2Ref = useRef(null);
+  const b3Ref = useRef(null);
 
+  // Parallax on the shared background
   useEffect(() => {
     const bg = bgRef.current;
     if (!bg) return;
     const onScroll = () => {
-      const rect = bg.closest('section').getBoundingClientRect();
+      const rect = bg.parentElement.getBoundingClientRect();
       const pct = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
-      const shift = (pct - 0.5) * 100;
-      bg.style.transform = 'scale(1.08) translateY(' + shift + 'px)';
+      const shift = (pct - 0.5) * 140;
+      bg.style.transform = 'scale(1.1) translateY(' + shift + 'px)';
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Fade each beat in as it enters viewport
   useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setFadeIn(true); }, { threshold: 0.15 });
-    obs.observe(el);
+    const pairs = [[b1Ref, setBeat1], [b2Ref, setBeat2], [b3Ref, setBeat3]];
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        pairs.forEach(([r, set]) => { if (e.target === r.current && e.isIntersecting) set(true); });
+      });
+    }, { threshold: 0.12 });
+    pairs.forEach(([r]) => { if (r.current) obs.observe(r.current); });
     return () => obs.disconnect();
   }, []);
 
   const FOREST = 'https://res.cloudinary.com/dghn2xpif/image/fetch/f_auto,q_auto,w_2400,e_vibrance:50,e_saturation:30,e_brightness:18,e_sharpen:60/' + encodeURIComponent('https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png');
 
+  const cards = [
+    { eyebrow: 'The Farm', headline: 'The Engine Is Already Running.', body: 'A USDA-registered veganic operation building soil since 2009. CSA members, a high tunnel, a biochar kiln -- all active. The farm is not a feature. It is the legal and strategic foundation for everything that follows.' },
+    { eyebrow: 'The Zoning', headline: 'The Key Is Already Cut.', body: 'NC Qualifying Farmer Exemption in place. Retreat centers, event venues, commercial kitchens, equestrian operations -- all permitted. What others spend years and capital to unlock, this estate has already secured.' },
+    { eyebrow: 'The Infrastructure', headline: 'Independent by Design.', body: 'Two deep private wells. 14.3 kW solar with battery backup. Five geothermal zones from twenty wells at 300 feet. 30 kW standby generator. The estate operates entirely off municipal systems -- by intention, not circumstance.' },
+    { eyebrow: 'The Position', headline: 'Three Miles from a Million Visitors.', body: 'Close enough to draw on a resort economy. Far enough to remain outside city limits. Resort-caliber proximity with county-level taxation. The location is not incidental -- it is part of the thesis.' },
+  ];
+
+  const gold = { fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.40em', textTransform: 'uppercase', color: GOLD, fontWeight: 400 };
+
   return (
-    <section ref={sectionRef} style={{ position: 'relative', minHeight: mob ? '85vh' : '95vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      {/* Full-bleed forest background */}
+    <div style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* ONE shared forest background spanning all three beats */}
       <div ref={bgRef} style={{
-        position: 'absolute', inset: 0, zIndex: 1,
+        position: 'absolute', inset: 0, zIndex: 0,
         backgroundImage: 'url(' + FOREST + ')',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        transform: 'scale(1.08) translateY(0px)',
-        filter: 'saturate(1.35) brightness(1.12)',
+        transform: 'scale(1.1) translateY(0px)',
+        filter: 'saturate(1.35) brightness(1.1)',
         transition: 'transform 0.05s linear',
+        willChange: 'transform',
       }} />
-      {/* Very light vignette only -- let forest breathe */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.42) 100%)' }} />
+      {/* Radial vignette -- edges dark, center glowing */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.52) 100%)' }} />
 
-      {/* Content floats on image */}
-      <div style={{
-        position: 'relative', zIndex: 3,
+      {/* ---- BEAT 1: A Living Place ---- */}
+      <div ref={b1Ref} style={{
+        position: 'relative', zIndex: 2,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        minHeight: mob ? '85vh' : '95vh',
+        padding: mob ? '6rem 6vw' : '8rem 8vw',
         textAlign: 'center',
-        padding: mob ? '5rem 6vw' : '7rem 8vw',
-        maxWidth: 860,
-        margin: '0 auto',
-        opacity: fadeIn ? 1 : 0,
-        transform: fadeIn ? 'none' : 'translateY(32px)',
+        opacity: beat1 ? 1 : 0,
+        transform: beat1 ? 'none' : 'translateY(36px)',
         transition: 'opacity 1.8s ease, transform 1.8s ease',
       }}>
-        <p style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.42em', textTransform: 'uppercase', color: GOLD, margin: '0 0 1.8rem', fontWeight: 400 }}>
-          Flow Farm
-        </p>
-        <h2 style={{
-          fontFamily: 'Georgia, serif',
-          fontWeight: 400,
-          fontSize: mob ? 'clamp(2.2rem, 7vw, 3rem)' : 'clamp(2.8rem, 4vw, 4.4rem)',
-          color: '#fff',
-          lineHeight: 1.15,
-          letterSpacing: '-0.02em',
-          margin: '0 0 2.4rem',
-          textShadow: '0 2px 32px rgba(0,0,0,0.55)',
-        }}>
-          A Living Place,<br />Rooted in Possibility.
-        </h2>
-        {/* Frosted glass pill -- text floats, not boxed */}
-        <div style={{
-          display: 'inline-block',
-          background: 'rgba(255,255,255,0.08)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255,255,255,0.14)',
-          borderRadius: '2px',
-          padding: mob ? '1.8rem 1.8rem' : '2.6rem 3.6rem',
-          maxWidth: 660,
-        }}>
-          <p style={{
-            fontFamily: 'Georgia, serif',
-            fontSize: mob ? '1rem' : '1.1rem',
-            color: 'rgba(255,255,255,0.92)',
-            lineHeight: 2.0,
-            margin: 0,
-            textShadow: '0 1px 8px rgba(0,0,0,0.3)',
+        <div style={{ maxWidth: 820, margin: '0 auto' }}>
+          <p style={{ ...gold, margin: '0 0 1.8rem' }}>Flow Farm</p>
+          <h2 style={{
+            fontFamily: 'Georgia, serif', fontWeight: 400,
+            fontSize: mob ? 'clamp(2.2rem, 7vw, 3rem)' : 'clamp(2.8rem, 4vw, 4.6rem)',
+            color: '#fff', lineHeight: 1.14, letterSpacing: '-0.02em',
+            margin: '0 0 2.6rem',
+            textShadow: '0 2px 40px rgba(0,0,0,0.5)',
           }}>
-            Flow Farm is more than an estate, and more than a farm. It is a place where land,
-            life, and vision move together -- where luxury and stewardship exist in living balance.
-            Every part of the property, from its architecture to its growing systems, has been
-            shaped with intention, creating an experience that feels both grounded and expansive.
-          </p>
+            A Living Place,<br />Rooted in Possibility.
+          </h2>
+          <div style={{
+            display: 'inline-block',
+            background: 'rgba(255,255,255,0.08)',
+            backdropFilter: 'blur(22px)',
+            WebkitBackdropFilter: 'blur(22px)',
+            border: '1px solid rgba(255,255,255,0.14)',
+            borderRadius: '2px',
+            padding: mob ? '1.8rem 1.8rem' : '2.6rem 3.8rem',
+            maxWidth: 660,
+          }}>
+            <p style={{ fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.1rem', color: 'rgba(255,255,255,0.92)', lineHeight: 2.0, margin: 0, textShadow: '0 1px 8px rgba(0,0,0,0.28)' }}>
+              Flow Farm is more than an estate, and more than a farm. It is a place where land,
+              life, and vision move together -- where luxury and stewardship exist in living balance.
+              Every part of the property, from its architecture to its growing systems, has been
+              shaped with intention, creating an experience that feels both grounded and expansive.
+            </p>
+          </div>
+          {/* Scroll cue */}
+          <div style={{ marginTop: '3.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', opacity: 0.45 }}>
+            <div style={{ width: 1, height: 48, background: GOLD }} />
+          </div>
         </div>
       </div>
-    </section>
-  );
-}
 
-// ============================================================
-// OPERATIONAL BY DESIGN
-// ============================================================
-function OperationalByDesign() {
-  const w = useW();
-  const mob = w < 768;
-  const [scrollY, setScrollY] = useState(0);
-  useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-  const [ref, fadeIn] = useFade();
-
-  const FOREST = 'https://res.cloudinary.com/dghn2xpif/image/fetch/f_auto,q_auto,w_2400,e_vibrance:50,e_saturation:30,e_brightness:18,e_sharpen:60/' + encodeURIComponent('https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png');
-
-  const features = [
-    { label: '15 USDA Acres', body: 'Secured agricultural status and a protected natural privacy buffer.' },
-    { label: '3-Acre Veganic Farm', body: 'Established and highly productive agricultural infrastructure in active production.' },
-    { label: 'Main Residence', body: 'Architect-designed masterpiece spanning 8,519 SF. One of Robert E. Clark\'s final private commissions.' },
-    { label: 'Guesthouse', body: 'Architect-designed guest structure with 200-amp dedicated service and full system integration.' },
-    { label: 'Sustainable Systems', body: 'True energy independence -- solar, geothermal, generator, private well, and biochar all on-property.' },
-    { label: '7 Buildable Acres', body: 'Prime acreage ready for expansion, additional structures, agritourism, or custom development.' },
-  ];
-
-  return (
-    <section ref={ref} style={{ position: 'relative', minHeight: mob ? '90vh' : '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
-      {/* Forest background with parallax */}
-      <div style={{
-        position: 'absolute', inset: 0, zIndex: 1,
-        backgroundImage: 'url(' + FOREST + ')',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center 30%',
-        transform: 'scale(1.1) translateY(' + (scrollY * 0.14) + 'px)',
-        filter: 'saturate(1.35) brightness(1.05)',
-        transition: 'transform 0.05s linear',
-      }} />
-      {/* Light overlay -- keep color vivid */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to right, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.12) 60%, rgba(0,0,0,0.22) 100%)' }} />
-
-      {/* Content */}
-      <div style={{
-        position: 'relative', zIndex: 3,
-        width: '100%',
-        maxWidth: 1320,
-        margin: '0 auto',
-        padding: mob ? '5rem 6vw' : '8rem 6vw',
-        opacity: fadeIn ? 1 : 0,
-        transform: fadeIn ? 'none' : 'translateY(28px)',
-        transition: 'opacity 1.6s ease, transform 1.6s ease',
+      {/* ---- BEAT 2: Operational by Design ---- */}
+      <div ref={b2Ref} style={{
+        position: 'relative', zIndex: 2,
+        minHeight: mob ? '80vh' : '85vh',
+        display: 'flex', alignItems: 'center',
+        padding: mob ? '5rem 6vw' : '8rem 8vw',
+        opacity: beat2 ? 1 : 0,
+        transform: beat2 ? 'none' : 'translateY(32px)',
+        transition: 'opacity 1.8s ease 0.1s, transform 1.8s ease 0.1s',
       }}>
-        {/* Header */}
-        <div style={{ marginBottom: mob ? '3rem' : '4rem' }}>
-          <p style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.38em', textTransform: 'uppercase', color: GOLD, margin: '0 0 1rem', fontWeight: 400 }}>
-            The Estate
-          </p>
-          <div style={{ width: 36, height: 1, background: GOLD, opacity: 0.45, marginBottom: '1.4rem' }} />
+        <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%' }}>
+          <div style={{ marginBottom: mob ? '3rem' : '4rem', maxWidth: 680 }}>
+            <p style={{ ...gold, margin: '0 0 1rem' }}>The Estate</p>
+            <div style={{ width: 32, height: 1, background: GOLD, opacity: 0.45, marginBottom: '1.6rem' }} />
+            <h2 style={{
+              fontFamily: 'Georgia, serif', fontWeight: 400,
+              fontSize: mob ? '2rem' : 'clamp(2.4rem, 3vw, 3.2rem)',
+              color: '#fff', lineHeight: 1.16, letterSpacing: '-0.02em',
+              margin: '0 0 1rem',
+              textShadow: '0 2px 24px rgba(0,0,0,0.55)',
+            }}>
+              Operational by Design.
+            </h2>
+            <p style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: mob ? '0.95rem' : '1.05rem', color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, margin: 0, textShadow: '0 1px 12px rgba(0,0,0,0.4)' }}>
+              Eight acres working. Seven acres waiting.
+            </p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: mob ? '1fr' : '1fr 1fr', maxWidth: 860 }}>
+            {[
+              { label: '15 USDA Acres', body: 'Secured agricultural status and a protected natural privacy buffer.' },
+              { label: '3-Acre Veganic Farm', body: 'Established and highly productive agricultural infrastructure in active production.' },
+              { label: 'Main Residence', body: "Architect-designed masterpiece spanning 8,519 SF. One of Robert E. Clark's final private commissions." },
+              { label: 'Guesthouse', body: 'Architect-designed guest structure with 200-amp dedicated service and full system integration.' },
+              { label: 'Sustainable Systems', body: 'True energy independence -- solar, geothermal, generator, private well, and biochar all on-property.' },
+              { label: '7 Buildable Acres', body: 'Prime acreage ready for expansion, additional structures, agritourism, or custom development.' },
+            ].map((f, i) => (
+              <div key={i} style={{
+                padding: mob ? '1.4rem 0' : '1.8rem 2.4rem 1.8rem 0',
+                borderBottom: '1px solid rgba(255,255,255,0.10)',
+                borderRight: !mob && i % 2 === 0 ? '1px solid rgba(255,255,255,0.10)' : 'none',
+                paddingRight: !mob && i % 2 === 0 ? '2.4rem' : 0,
+                paddingLeft: !mob && i % 2 === 1 ? '2.4rem' : 0,
+              }}>
+                <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.5rem', textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}>{f.label}</p>
+                <p style={{ fontFamily: 'Georgia, serif', fontSize: mob ? '0.88rem' : '0.94rem', color: 'rgba(255,255,255,0.82)', lineHeight: 1.75, margin: 0, textShadow: '0 1px 10px rgba(0,0,0,0.5)' }}>{f.body}</p>
+              </div>
+            ))}
+          </div>
+          {/* Divider into beat 3 */}
+          <div style={{ marginTop: mob ? '4rem' : '5rem', display: 'flex', alignItems: 'center', gap: '1.2rem', maxWidth: 860 }}>
+            <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.10)' }} />
+            <div style={{ width: 5, height: 5, borderRadius: '50%', background: GOLD, opacity: 0.6 }} />
+            <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.10)' }} />
+          </div>
+        </div>
+      </div>
+
+      {/* ---- BEAT 3: The Opportunity ---- */}
+      <div ref={b3Ref} style={{
+        position: 'relative', zIndex: 2,
+        minHeight: mob ? '90vh' : '100vh',
+        display: 'flex', alignItems: 'center',
+        padding: mob ? '5rem 6vw 8rem' : '6rem 8vw 10rem',
+        opacity: beat3 ? 1 : 0,
+        transform: beat3 ? 'none' : 'translateY(32px)',
+        transition: 'opacity 1.8s ease 0.1s, transform 1.8s ease 0.1s',
+      }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%' }}>
+          <p style={{ ...gold, margin: '0 0 1.8rem' }}>The Opportunity</p>
           <h2 style={{
-            fontFamily: 'Georgia, serif',
-            fontWeight: 400,
-            fontSize: mob ? '2rem' : 'clamp(2.2rem, 3vw, 3rem)',
-            color: '#fff',
-            lineHeight: 1.18,
-            letterSpacing: '-0.02em',
-            margin: '0 0 1rem',
-            textShadow: '0 2px 20px rgba(0,0,0,0.5)',
+            fontFamily: 'Georgia, serif', fontWeight: 400,
+            fontSize: mob ? '2rem' : 'clamp(2.4rem, 3.4vw, 3.6rem)',
+            color: '#fff', lineHeight: 1.16, letterSpacing: '-0.02em',
+            margin: mob ? '0 0 1.2rem' : '0 0 1.6rem',
+            maxWidth: 780,
+            textShadow: '0 2px 32px rgba(0,0,0,0.5)',
           }}>
-            Operational by Design.
+            A Rare Convergence of<br />Sanctuary and Strategy.
           </h2>
           <p style={{
-            fontFamily: 'Georgia, serif',
-            fontStyle: 'italic',
-            fontSize: mob ? '0.95rem' : '1.05rem',
-            color: 'rgba(255,255,255,0.75)',
-            maxWidth: 540,
-            lineHeight: 1.8,
-            margin: 0,
-            textShadow: '0 1px 12px rgba(0,0,0,0.4)',
+            fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.1rem',
+            color: 'rgba(255,255,255,0.72)', lineHeight: 1.85,
+            maxWidth: 620, margin: mob ? '0 0 3.5rem' : '0 0 4.5rem',
+            textShadow: '0 1px 10px rgba(0,0,0,0.4)',
           }}>
-            Eight acres working. Seven acres waiting.
+            The farm sustains the zoning. The zoning unlocks the land. The infrastructure removes every barrier between ownership and what comes next. Fifteen acres -- a compound, not simply a residence -- that absorbs a growing family or a growing enterprise without ever feeling the strain.
           </p>
-        </div>
-
-        {/* Feature grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: mob ? '1fr' : '1fr 1fr',
-          gap: mob ? '0' : '0',
-          maxWidth: mob ? '100%' : 860,
-        }}>
-          {features.map((f, i) => (
-            <div key={i} style={{
-              padding: mob ? '1.4rem 0' : '1.8rem 2.4rem 1.8rem 0',
-              borderBottom: '1px solid rgba(255,255,255,0.10)',
-              borderRight: !mob && i % 2 === 0 ? '1px solid rgba(255,255,255,0.10)' : 'none',
-              paddingRight: !mob && i % 2 === 0 ? '2.4rem' : 0,
-              paddingLeft: !mob && i % 2 === 1 ? '2.4rem' : 0,
-            }}>
-              <p style={{
-                fontFamily: 'sans-serif',
-                fontSize: '9px',
-                letterSpacing: '0.28em',
-                textTransform: 'uppercase',
-                color: GOLD,
-                margin: '0 0 0.5rem',
-                textShadow: '0 1px 8px rgba(0,0,0,0.5)',
-              }}>{f.label}</p>
-              <p style={{
-                fontFamily: 'Georgia, serif',
-                fontSize: mob ? '0.88rem' : '0.94rem',
-                color: 'rgba(255,255,255,0.82)',
-                lineHeight: 1.75,
-                margin: 0,
-                textShadow: '0 1px 10px rgba(0,0,0,0.5)',
-              }}>{f.body}</p>
-            </div>
-          ))}
+          <div style={{ display: 'grid', gridTemplateColumns: mob ? '1fr' : '1fr 1fr', gap: mob ? '1rem' : '1.2rem' }}>
+            {cards.map((c) => (
+              <div key={c.eyebrow} style={{
+                background: 'rgba(255,255,255,0.07)',
+                backdropFilter: 'blur(22px)',
+                WebkitBackdropFilter: 'blur(22px)',
+                border: '1px solid rgba(255,255,255,0.16)',
+                borderRadius: '2px',
+                padding: mob ? '2rem 1.8rem' : '2.6rem 2.4rem',
+              }}>
+                <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.36em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.8rem' }}>{c.eyebrow}</p>
+                <h3 style={{ fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '1.1rem' : '1.22rem', color: '#fff', lineHeight: 1.28, margin: '0 0 0.9rem', textShadow: '0 1px 8px rgba(0,0,0,0.4)' }}>{c.headline}</h3>
+                <p style={{ fontFamily: 'Georgia, serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.72)', lineHeight: 1.78, margin: 0 }}>{c.body}</p>
+              </div>
+            ))}
+          </div>
+          {/* Transition into map -- gold line pointing down */}
+          <div style={{ marginTop: mob ? '4rem' : '5.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+            <p style={{ ...gold, fontSize: '9px', letterSpacing: '0.3em', color: 'rgba(255,255,255,0.4)', margin: 0 }}>See the full estate</p>
+            <div style={{ width: 1, height: 64, background: 'linear-gradient(to bottom, rgba(201,169,110,0.6), rgba(201,169,110,0))' }} />
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -1485,11 +1488,9 @@ export default function FlowFarmLanding2() {
   return (
     <div style={{ background: DARK, margin: 0, padding: 0, overflowX: 'hidden' }}>
       <Hero />
-      <ALivingPlace />
-      <OperationalByDesign />
+      <ForestIntro />
       <Manifesto />
       <Foundation />
-      <Opportunity />
       <PropertyMap />
       <StealTheShow />
       <CinematicReveal
