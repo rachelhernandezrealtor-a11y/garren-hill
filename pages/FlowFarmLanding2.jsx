@@ -666,6 +666,12 @@ function PropertyMap() {
   const [active, setActive] = useState(null);
   const [panelVisible, setPanelVisible] = useState(false);
   const [ref, fadeIn] = useFade();
+  const [scrollY, setScrollY] = useState(0);
+  useEffect(() => {
+    const onScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const openPin = (pin) => {
     setActive(pin);
@@ -732,6 +738,8 @@ function PropertyMap() {
               position: 'absolute', inset: 0, width: '100%', height: '100%',
               objectFit: 'cover', objectPosition: 'center 55%',
               display: 'block',
+              transform: 'scale(1.12) translateY(' + (scrollY * 0.12) + 'px)',
+              transition: 'transform 0.05s linear',
             }}
           />
           {/* Dark vignette overlay */}
