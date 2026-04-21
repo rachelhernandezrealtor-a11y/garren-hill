@@ -399,7 +399,6 @@ function ForestIntro() {
   const b2Ref = useRef(null);
   const b3Ref = useRef(null);
 
-  // Parallax on the shared background
   useEffect(() => {
     const bg = bgRef.current;
     if (!bg) return;
@@ -407,13 +406,12 @@ function ForestIntro() {
       const rect = bg.parentElement.getBoundingClientRect();
       const pct = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
       const shift = (pct - 0.5) * 140;
-      bg.style.transform = 'scale(1.04) translateY(' + (shift * 0.3) + 'px)';
+      bg.style.transform = 'scale(1.08) translateY(' + (shift * 0.35) + 'px)';
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Fade each beat in as it enters viewport
   useEffect(() => {
     const pairs = [[b1Ref, setBeat1], [b2Ref, setBeat2], [b3Ref, setBeat3]];
     const obs = new IntersectionObserver((entries) => {
@@ -425,37 +423,37 @@ function ForestIntro() {
     return () => obs.disconnect();
   }, []);
 
-  const FOREST = 'https://res.cloudinary.com/dghn2xpif/image/fetch/f_auto,q_auto,w_2400,e_vibrance:70,e_saturation:50,e_brightness:28,e_sharpen:80/' + encodeURIComponent('https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png');
-
-  const cards = [
-    { eyebrow: 'The Farm', headline: 'The Engine Is Already Running.', body: 'A USDA-registered veganic operation building soil since 2009. CSA members, a high tunnel, a biochar kiln -- all active. The farm is not a feature. It is the legal and strategic foundation for everything that follows.' },
-    { eyebrow: 'The Zoning', headline: 'The Key Is Already Cut.', body: 'NC Qualifying Farmer Exemption in place. Retreat centers, event venues, commercial kitchens, equestrian operations -- all permitted. What others spend years and capital to unlock, this estate has already secured.' },
-    { eyebrow: 'The Infrastructure', headline: 'Independent by Design.', body: 'Two deep private wells. 14.3 kW solar with battery backup. Five geothermal zones from twenty wells at 300 feet. 30 kW standby generator. The estate operates entirely off municipal systems -- by intention, not circumstance.' },
-    { eyebrow: 'The Position', headline: 'Three Miles from a Million Visitors.', body: 'Close enough to draw on a resort economy. Far enough to remain outside city limits. Resort-caliber proximity with county-level taxation. The location is not incidental -- it is part of the thesis.' },
-  ];
+  const FOREST = 'https://res.cloudinary.com/dghn2xpif/image/fetch/f_auto,q_auto,w_2400,e_vibrance:60,e_saturation:40,e_brightness:22,e_sharpen:70/' + encodeURIComponent('https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png');
 
   const gold = { fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.40em', textTransform: 'uppercase', color: GOLD, fontWeight: 400 };
 
+  const gridItems = [
+    { label: '15 USDA ACRES', body: 'Agricultural status secured. A natural forest buffer. Permanently protected.' },
+    { label: '3-ACRE VEGANIC FARM', body: 'In active production since 2009. Figs, citrus, grapes, biochar. The farm sustains the land.' },
+    { label: '8,519 SF RESIDENCE', body: "Architect Robert E. Clark's final private commission. Impossible to replicate." },
+    { label: 'BUILT FOR INDEPENDENCE', body: 'Geothermal. 14.3kW solar. 30kW generator. Private well at 50gpm. The grid is optional.' },
+    { label: '7 BUILDABLE ACRES', body: 'The driveway. The guest house. The basement. Infrastructure already in. The vision is yours to finish.' },
+  ];
+
   return (
     <div style={{ position: 'relative', overflow: 'hidden' }}>
-      {/* ONE shared forest background -- simple absolute, crisp, no blur */}
+      {/* Shared forest background -- vibrant, no heavy overlay */}
       <div ref={bgRef} style={{
-        position: 'absolute', inset: 0, zIndex: 0,
+        position: 'absolute', inset: '-10% 0', zIndex: 0,
         backgroundImage: 'url(' + FOREST + ')',
         backgroundSize: 'cover',
         backgroundPosition: 'center 40%',
-        backgroundAttachment: 'fixed',
-        filter: 'saturate(1.5) brightness(1.18)',
+        filter: 'saturate(1.4) brightness(1.22)',
+        willChange: 'transform',
       }} />
-      {/* Directional overlay -- darker left/bottom for text legibility, crystal clear center */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(to right, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.08) 55%, rgba(0,0,0,0.0) 100%)' }} />
-      <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(to bottom, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.0) 70%, rgba(0,0,0,0.28) 100%)' }} />
+      {/* Very light vignette only -- no dark wash */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.0) 40%, rgba(0,0,0,0.32) 100%)' }} />
 
       {/* ---- BEAT 1: A Living Place ---- */}
       <div ref={b1Ref} style={{
         position: 'relative', zIndex: 3,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        minHeight: mob ? '85vh' : '95vh',
+        minHeight: mob ? '85vh' : '100vh',
         padding: mob ? '6rem 6vw' : '8rem 8vw',
         textAlign: 'center',
         opacity: beat1 ? 1 : 0,
@@ -466,132 +464,105 @@ function ForestIntro() {
           <p style={{ ...gold, margin: '0 0 1.8rem' }}>Flow Farm</p>
           <h2 style={{
             fontFamily: 'Georgia, serif', fontWeight: 400,
-            fontSize: mob ? 'clamp(2.2rem, 7vw, 3rem)' : 'clamp(2.8rem, 4vw, 4.6rem)',
-            color: '#fff', lineHeight: 1.14, letterSpacing: '-0.02em',
+            fontSize: mob ? 'clamp(2.4rem, 8vw, 3.2rem)' : 'clamp(3rem, 4.5vw, 5rem)',
+            color: '#fff', lineHeight: 1.12, letterSpacing: '-0.02em',
             margin: '0 0 2.6rem',
-            textShadow: '0 2px 40px rgba(0,0,0,0.5)',
+            textShadow: '0 4px 60px rgba(0,0,0,0.55)',
           }}>
             A Living Place,<br />Rooted in Possibility.
           </h2>
-          <p style={{ fontFamily: 'Georgia, serif', fontSize: mob ? '1.05rem' : '1.15rem', color: 'rgba(255,255,255,0.92)', lineHeight: 2.0, margin: '0 auto', maxWidth: 620, textShadow: '0 2px 16px rgba(0,0,0,0.55)' }}>
-            Flow Farm is more than an estate, and more than a farm. It is a place where land,
-            life, and vision move together -- where luxury and stewardship exist in living balance.
-            Every part of the property, from its architecture to its growing systems, has been
-            shaped with intention, creating an experience that feels both grounded and expansive.
+          <p style={{
+            fontFamily: 'Georgia, serif', fontStyle: 'italic',
+            fontSize: mob ? '1.1rem' : '1.25rem',
+            color: 'rgba(255,255,255,0.92)',
+            lineHeight: 1.75, maxWidth: 600, margin: '0 auto',
+            textShadow: '0 2px 24px rgba(0,0,0,0.5)',
+          }}>
+            Seventeen years of intention. The soil is built. The farm is running. Now it belongs to whoever is meant to take it from here.
           </p>
-          {/* Scroll cue */}
-          <div style={{ marginTop: '3.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', opacity: 0.45 }}>
-            <div style={{ width: 1, height: 48, background: GOLD }} />
-          </div>
         </div>
       </div>
 
       {/* ---- BEAT 2: Operational by Design ---- */}
       <div ref={b2Ref} style={{
         position: 'relative', zIndex: 3,
-        minHeight: mob ? '80vh' : '85vh',
-        display: 'flex', alignItems: 'center',
-        padding: mob ? '5rem 6vw' : '8rem 8vw',
+        minHeight: mob ? 'auto' : '100vh',
+        padding: mob ? '5rem 6vw 6rem' : '8rem 8vw',
+        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
         opacity: beat2 ? 1 : 0,
-        transform: beat2 ? 'none' : 'translateY(32px)',
-        transition: 'opacity 1.8s ease 0.1s, transform 1.8s ease 0.1s',
+        transform: beat2 ? 'none' : 'translateY(36px)',
+        transition: 'opacity 1.8s ease 0.2s, transform 1.8s ease 0.2s',
       }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%' }}>
-          <div style={{ marginBottom: mob ? '3rem' : '4rem', maxWidth: 680 }}>
-            <p style={{ ...gold, margin: '0 0 1rem' }}>The Estate</p>
-            <div style={{ width: 32, height: 1, background: GOLD, opacity: 0.45, marginBottom: '1.6rem' }} />
-            <h2 style={{
-              fontFamily: 'Georgia, serif', fontWeight: 400,
-              fontSize: mob ? '2rem' : 'clamp(2.4rem, 3vw, 3.2rem)',
-              color: '#fff', lineHeight: 1.16, letterSpacing: '-0.02em',
-              margin: '0 0 1rem',
-              textShadow: '0 2px 24px rgba(0,0,0,0.55)',
-            }}>
-              Operational by Design.
-            </h2>
-            <p style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: mob ? '0.95rem' : '1.05rem', color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, margin: 0, textShadow: '0 1px 12px rgba(0,0,0,0.4)' }}>
-              Eight acres working. Seven acres waiting.
-            </p>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: mob ? '1fr' : '1fr 1fr', maxWidth: 860 }}>
-            {[
-              { label: '15 USDA Acres', body: 'Secured agricultural status and a protected natural privacy buffer.' },
-              { label: '3-Acre Veganic Farm', body: 'Established and highly productive agricultural infrastructure in active production.' },
-              { label: 'Main Residence', body: "Architect-designed masterpiece spanning 8,519 SF. One of Robert E. Clark's final private commissions." },
-              { label: 'Guesthouse', body: 'Architect-designed guest structure with 200-amp dedicated service and full system integration.' },
-              { label: 'Sustainable Systems', body: 'True energy independence -- solar, geothermal, generator, private well, and biochar all on-property.' },
-              { label: '7 Buildable Acres', body: 'Prime acreage ready for expansion, additional structures, agritourism, or custom development.' },
-            ].map((f, i) => (
+        <div style={{ maxWidth: 960, width: '100%', margin: '0 auto', textAlign: 'center' }}>
+          <p style={{ ...gold, margin: '0 0 1.4rem' }}>The Estate</p>
+          <h2 style={{
+            fontFamily: 'Georgia, serif', fontWeight: 400,
+            fontSize: mob ? 'clamp(2rem, 7vw, 2.8rem)' : 'clamp(2.6rem, 4vw, 4.2rem)',
+            color: '#fff', lineHeight: 1.12, letterSpacing: '-0.02em',
+            margin: '0 0 0.8rem',
+            textShadow: '0 4px 60px rgba(0,0,0,0.55)',
+          }}>
+            Operational by Design.
+          </h2>
+          <p style={{
+            fontFamily: 'Georgia, serif', fontStyle: 'italic',
+            fontSize: mob ? '1rem' : '1.15rem',
+            color: GOLD, margin: '0 0 2rem',
+            textShadow: '0 2px 20px rgba(0,0,0,0.5)',
+          }}>
+            Eight acres working. Seven acres waiting.
+          </p>
+          <p style={{
+            fontFamily: 'Georgia, serif', fontStyle: 'italic',
+            fontSize: mob ? '0.95rem' : '1.05rem',
+            color: 'rgba(255,255,255,0.75)', margin: '0 0 3.5rem',
+            textShadow: '0 2px 20px rgba(0,0,0,0.5)',
+          }}>
+            Most houses depend on the grid. This one doesn't need to.
+          </p>
+          {/* 5-item grid */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: mob ? '1fr' : 'repeat(3, 1fr)',
+            gap: mob ? '1.5rem' : '1.8rem',
+            textAlign: 'left',
+          }}>
+            {gridItems.map((item, i) => (
               <div key={i} style={{
-                padding: mob ? '1.4rem 0' : '1.8rem 2.4rem 1.8rem 0',
-                borderBottom: '1px solid rgba(255,255,255,0.10)',
-                borderRight: !mob && i % 2 === 0 ? '1px solid rgba(255,255,255,0.10)' : 'none',
-                paddingRight: !mob && i % 2 === 0 ? '2.4rem' : 0,
-                paddingLeft: !mob && i % 2 === 1 ? '2.4rem' : 0,
+                background: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(255,255,255,0.18)',
+                backdropFilter: 'blur(10px)',
+                borderRadius: '2px',
+                padding: mob ? '1.4rem 1.4rem' : '1.8rem 2rem',
               }}>
-                <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.5rem', textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}>{f.label}</p>
-                <p style={{ fontFamily: 'Georgia, serif', fontSize: mob ? '0.88rem' : '0.94rem', color: 'rgba(255,255,255,0.82)', lineHeight: 1.75, margin: 0, textShadow: '0 1px 10px rgba(0,0,0,0.5)' }}>{f.body}</p>
+                <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.32em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.7rem', fontWeight: 600 }}>{item.label}</p>
+                <p style={{ fontFamily: 'Georgia, serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.65, margin: 0 }}>{item.body}</p>
               </div>
             ))}
-          </div>
-          {/* Divider into beat 3 */}
-          <div style={{ marginTop: mob ? '4rem' : '5rem', display: 'flex', alignItems: 'center', gap: '1.2rem', maxWidth: 860 }}>
-            <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.10)' }} />
-            <div style={{ width: 5, height: 5, borderRadius: '50%', background: GOLD, opacity: 0.6 }} />
-            <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.10)' }} />
           </div>
         </div>
       </div>
 
-      {/* ---- BEAT 3: The Opportunity ---- */}
+      {/* ---- BEAT 3: Bridge to map ---- */}
       <div ref={b3Ref} style={{
         position: 'relative', zIndex: 3,
-        minHeight: mob ? '90vh' : '100vh',
-        display: 'flex', alignItems: 'center',
-        padding: mob ? '5rem 6vw 8rem' : '6rem 8vw 10rem',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        minHeight: mob ? '40vh' : '50vh',
+        padding: mob ? '4rem 6vw' : '6rem 8vw',
+        textAlign: 'center',
         opacity: beat3 ? 1 : 0,
-        transform: beat3 ? 'none' : 'translateY(32px)',
-        transition: 'opacity 1.8s ease 0.1s, transform 1.8s ease 0.1s',
+        transform: beat3 ? 'none' : 'translateY(36px)',
+        transition: 'opacity 1.8s ease 0.3s, transform 1.8s ease 0.3s',
       }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%' }}>
-          <p style={{ ...gold, margin: '0 0 1.8rem' }}>The Opportunity</p>
-          <h2 style={{
-            fontFamily: 'Georgia, serif', fontWeight: 400,
-            fontSize: mob ? '2rem' : 'clamp(2.4rem, 3.4vw, 3.6rem)',
-            color: '#fff', lineHeight: 1.16, letterSpacing: '-0.02em',
-            margin: mob ? '0 0 1.2rem' : '0 0 1.6rem',
-            maxWidth: 780,
-            textShadow: '0 2px 32px rgba(0,0,0,0.5)',
-          }}>
-            A Rare Convergence of<br />Sanctuary and Strategy.
-          </h2>
-          <p style={{
-            fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.1rem',
-            color: 'rgba(255,255,255,0.72)', lineHeight: 1.85,
-            maxWidth: 620, margin: mob ? '0 0 3.5rem' : '0 0 4.5rem',
-            textShadow: '0 1px 10px rgba(0,0,0,0.4)',
-          }}>
-            The farm sustains the zoning. The zoning unlocks the land. The infrastructure removes every barrier between ownership and what comes next. Fifteen acres -- a compound, not simply a residence -- that absorbs a growing family or a growing enterprise without ever feeling the strain.
-          </p>
-          <div style={{ display: 'grid', gridTemplateColumns: mob ? '1fr' : '1fr 1fr', gap: 0, maxWidth: 900 }}>
-            {cards.map((c) => (
-              <div key={c.eyebrow} style={{
-                padding: mob ? '1.6rem 0' : '2rem 2.4rem 2rem 0',
-                borderBottom: '1px solid rgba(255,255,255,0.12)',
-                borderRight: 'none',
-              }}>
-                <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.32em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.6rem', textShadow: '0 1px 6px rgba(0,0,0,0.5)' }}>{c.eyebrow}</p>
-                <h3 style={{ fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '1.05rem' : '1.18rem', color: '#fff', lineHeight: 1.28, margin: '0 0 0.7rem', textShadow: '0 2px 12px rgba(0,0,0,0.55)' }}>{c.headline}</h3>
-                <p style={{ fontFamily: 'Georgia, serif', fontSize: '0.88rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, margin: 0, textShadow: '0 1px 8px rgba(0,0,0,0.45)' }}>{c.body}</p>
-              </div>
-            ))}
-          </div>
-          {/* Transition into map -- gold line pointing down */}
-          <div style={{ marginTop: mob ? '4rem' : '5.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-            <p style={{ ...gold, fontSize: '9px', letterSpacing: '0.3em', color: 'rgba(255,255,255,0.4)', margin: 0 }}>See the full estate</p>
-            <div style={{ width: 1, height: 64, background: 'linear-gradient(to bottom, rgba(201,169,110,0.6), rgba(201,169,110,0))' }} />
-          </div>
-        </div>
+        <p style={{
+          fontFamily: 'Georgia, serif', fontStyle: 'italic',
+          fontSize: mob ? 'clamp(1.4rem, 5vw, 2rem)' : 'clamp(1.8rem, 3vw, 2.8rem)',
+          color: 'rgba(255,255,255,0.9)',
+          lineHeight: 1.5, maxWidth: 700, margin: '0 auto',
+          textShadow: '0 4px 40px rgba(0,0,0,0.6)',
+        }}>
+          This is what seventeen years looks like from above.
+        </p>
       </div>
     </div>
   );
