@@ -402,7 +402,7 @@ function StealTheShow() {
         <h2 style={{
           fontFamily: 'Georgia, serif',
           fontWeight: 400,
-          fontSize: mob ? 'clamp(2.4rem, 9vw, 3.6rem)' : 'clamp(3rem, 5.5vw, 5.2rem)',
+          fontSize: mob ? 'clamp(2rem, 7vw, 2.8rem)' : 'clamp(2.4rem, 3.8vw, 3.8rem)',
           color: '#fff',
           lineHeight: 1.12,
           letterSpacing: '-0.02em',
@@ -410,7 +410,7 @@ function StealTheShow() {
         }}>
           The House That Quietly Steals<br />the Whole Show.
         </h2>
-        <p style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: mob ? '1rem' : '1.2rem', color: 'rgba(255,255,255,0.82)', lineHeight: 1.6, maxWidth: 680, margin: '0 auto' }}>
+        <p style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: mob ? '0.9rem' : '1.05rem', color: 'rgba(255,255,255,0.82)', lineHeight: 1.6, maxWidth: 960, margin: '0 auto', whiteSpace: mob ? 'normal' : 'nowrap' }}>
           Architect-designed, materially rich, and impossible to confuse with ordinary luxury.
         </p>
       </div>
