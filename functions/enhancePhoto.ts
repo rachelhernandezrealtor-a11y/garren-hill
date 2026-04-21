@@ -1,26 +1,123 @@
+import * as base44 from "npm:@base44/sdk";
+
+const client = base44.createClient({ appId: Deno.env.get("APP_ID") || "" });
+
+const CLOUD_NAME = Deno.env.get("CLOUDINARY_CLOUD_NAME");
+const API_KEY = Deno.env.get("CLOUDINARY_API_KEY");
+const API_SECRET = Deno.env.get("CLOUDINARY_API_SECRET");
+
+async function sha1(str: string): Promise<string> {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(str);
+  const hashBuffer = await crypto.subtle.digest("SHA-1", data);
+  return Array.from(new Uint8Array(hashBuffer))
+    .map(b => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+async function uploadToCloudinary(imageUrl: string, eager: string): Promise<string> {
+  const timestamp = Math.round(Date.now() / 1000).toString();
+  const sigString = `eager=${eager}&timestamp=${timestamp}${API_SECRET}`;
+  const signature = await sha1(sigString);
+
+  const body = new URLSearchParams();
+  body.append("file", imageUrl);
+  body.append("timestamp", timestamp);
+  body.append("api_key", API_KEY!);
+  body.append("eager", eager);
+  body.append("eager_async", "false");
+  body.append("signature", signature);
+
+  const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
+    method: "POST",
+    body,
+  });
+
+  const result = await res.json();
+
+  if (result.error) {
+    throw new Error(`Cloudinary error: ${result.error.message}`);
+  }
+
+  if (result.eager && result.eager[0]) {
+    return result.eager[0].secure_url;
+  }
+  return result.secure_url;
+}
+
+function buildEager(category: string, room: string): string {
+  const cat = (category || "").toLowerCase();
+  const rm = (room || "").toLowerCase();
+  const isExterior = cat === "exterior" || ["aerial", "grounds", "garden", "outdoor", "pool", "tennis"].some(x => rm.includes(x));
+
+  if (isExterior) {
+    return "e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_1400,c_limit";
+  } else {
+    return "e_improve:indoor:60,e_brightness:10,e_shadow:-30,e_sharpen:40,e_saturation:15,f_auto,q_auto,w_1400,c_limit";
+  }
+}
+
 export default async function handler(req: Request): Promise<Response> {
-  const corsHeaders = { "Access-Control-Allow-Origin": "*" };
+  const cors = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST", "Access-Control-Allow-Headers": "Content-Type" };
+
+  if (req.method === "OPTIONS") {
+    return new Response(null, { headers: cors });
+  }
 
   try {
-    // For bulk enhancement without SDK (test mode)
-    const { bulk_ids } = await req.json();
-    
-    if (!bulk_ids?.length) {
-      return new Response(JSON.stringify({ error: "bulk_ids required" }), { status: 400 });
+    const { photo_id, photo_url, mode, bulk_ids, skip_existing } = await req.json();
+
+    // Bulk mode — process array of IDs
+    if (bulk_ids && Array.isArray(bulk_ids)) {
+      const results = [];
+      for (const id of bulk_ids) {
+        try {
+          const photo = await client.asServiceRole.entities.PropertyPhoto.get(id);
+
+          // Skip if already enhanced and skip_existing is true
+          if (skip_existing && photo.enhanced_url) {
+            results.push({ id, skipped: true });
+            continue;
+          }
+
+          const eager = buildEager(photo.category || "", photo.room || "");
+          const enhanced_url = await uploadToCloudinary(photo.file_url, eager);
+
+          await client.asServiceRole.entities.PropertyPhoto.update(id, { enhanced_url });
+          results.push({ id, enhanced_url, success: true });
+        } catch (err) {
+          results.push({ id, success: false, error: String(err) });
+        }
+      }
+      return new Response(JSON.stringify({ results, count: results.length }), {
+        headers: { "Content-Type": "application/json", ...cors }
+      });
     }
 
-    // Just echo back for now to test the function works
-    return new Response(JSON.stringify({ 
-      received: bulk_ids.length,
-      message: "Function is running. SDK integration needed for database updates."
-    }), {
-      headers: { "Content-Type": "application/json", ...corsHeaders }
+    // Single photo mode
+    if (!photo_id || !photo_url) {
+      return new Response(JSON.stringify({ error: "photo_id and photo_url required" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json", ...cors }
+      });
+    }
+
+    const photo = await client.asServiceRole.entities.PropertyPhoto.get(photo_id);
+    const eager = mode === "exterior_enhance"
+      ? "e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_1400,c_limit"
+      : "e_improve:indoor:60,e_brightness:10,e_shadow:-30,e_sharpen:40,e_saturation:15,f_auto,q_auto,w_1400,c_limit";
+
+    const enhanced_url = await uploadToCloudinary(photo_url, eager);
+    await client.asServiceRole.entities.PropertyPhoto.update(photo_id, { enhanced_url });
+
+    return new Response(JSON.stringify({ enhanced_url, success: true }), {
+      headers: { "Content-Type": "application/json", ...cors }
     });
 
   } catch (err) {
     return new Response(JSON.stringify({ error: String(err) }), {
       status: 500,
-      headers: { "Content-Type": "application/json", ...corsHeaders }
+      headers: { "Content-Type": "application/json", ...cors }
     });
   }
 }
