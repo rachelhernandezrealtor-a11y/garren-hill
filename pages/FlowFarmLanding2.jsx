@@ -402,7 +402,7 @@ function StealTheShow() {
         <h2 style={{
           fontFamily: 'Georgia, serif',
           fontWeight: 400,
-          fontSize: mob ? 'clamp(2.6rem, 9vw, 3.8rem)' : 'clamp(3.8rem, 5.8vw, 6rem)',
+          fontSize: mob ? 'clamp(2.4rem, 8vw, 3.4rem)' : 'clamp(3rem, 4.4vw, 4.8rem)',
           color: '#fff',
           lineHeight: 1.12,
           letterSpacing: '-0.02em',
