@@ -442,7 +442,9 @@ function ForestIntro() {
         backgroundAttachment: 'fixed',
         filter: 'saturate(1.5) brightness(1.18)',
       }} />
-      <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.18) 100%)' }} />
+      {/* Directional overlay -- darker left/bottom for text legibility, crystal clear center */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(to right, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.08) 55%, rgba(0,0,0,0.0) 100%)' }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(to bottom, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.0) 70%, rgba(0,0,0,0.28) 100%)' }} />
 
       {/* ---- BEAT 1: A Living Place ---- */}
       <div ref={b1Ref} style={{
@@ -566,19 +568,16 @@ function ForestIntro() {
           }}>
             The farm sustains the zoning. The zoning unlocks the land. The infrastructure removes every barrier between ownership and what comes next. Fifteen acres -- a compound, not simply a residence -- that absorbs a growing family or a growing enterprise without ever feeling the strain.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: mob ? '1fr' : '1fr 1fr', gap: mob ? '1rem' : '1.2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: mob ? '1fr' : '1fr 1fr', gap: 0, maxWidth: 900 }}>
             {cards.map((c) => (
               <div key={c.eyebrow} style={{
-                background: 'rgba(255,255,255,0.07)',
-                backdropFilter: 'blur(22px)',
-                WebkitBackdropFilter: 'blur(22px)',
-                border: '1px solid rgba(255,255,255,0.16)',
-                borderRadius: '2px',
-                padding: mob ? '2rem 1.8rem' : '2.6rem 2.4rem',
+                padding: mob ? '1.6rem 0' : '2rem 2.4rem 2rem 0',
+                borderBottom: '1px solid rgba(255,255,255,0.12)',
+                borderRight: 'none',
               }}>
-                <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.36em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.8rem' }}>{c.eyebrow}</p>
-                <h3 style={{ fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '1.1rem' : '1.22rem', color: '#fff', lineHeight: 1.28, margin: '0 0 0.9rem', textShadow: '0 1px 8px rgba(0,0,0,0.4)' }}>{c.headline}</h3>
-                <p style={{ fontFamily: 'Georgia, serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.72)', lineHeight: 1.78, margin: 0 }}>{c.body}</p>
+                <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.32em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.6rem', textShadow: '0 1px 6px rgba(0,0,0,0.5)' }}>{c.eyebrow}</p>
+                <h3 style={{ fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '1.05rem' : '1.18rem', color: '#fff', lineHeight: 1.28, margin: '0 0 0.7rem', textShadow: '0 2px 12px rgba(0,0,0,0.55)' }}>{c.headline}</h3>
+                <p style={{ fontFamily: 'Georgia, serif', fontSize: '0.88rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, margin: 0, textShadow: '0 1px 8px rgba(0,0,0,0.45)' }}>{c.body}</p>
               </div>
             ))}
           </div>
