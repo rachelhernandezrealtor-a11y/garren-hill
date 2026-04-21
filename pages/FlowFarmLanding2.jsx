@@ -420,7 +420,7 @@ function ForestIntro() {
     return () => obs.disconnect();
   }, []);
 
-  const FOREST = 'https://res.cloudinary.com/dghn2xpif/image/fetch/f_auto,q_auto,w_2400,e_vibrance:50,e_saturation:30,e_brightness:18,e_sharpen:60/' + encodeURIComponent('https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png');
+  const FOREST = 'https://res.cloudinary.com/dghn2xpif/image/fetch/f_auto,q_auto,w_2400,e_vibrance:70,e_saturation:50,e_brightness:28,e_sharpen:80/' + encodeURIComponent('https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png');
 
   const cards = [
     { eyebrow: 'The Farm', headline: 'The Engine Is Already Running.', body: 'A USDA-registered veganic operation building soil since 2009. CSA members, a high tunnel, a biochar kiln -- all active. The farm is not a feature. It is the legal and strategic foundation for everything that follows.' },
@@ -440,12 +440,12 @@ function ForestIntro() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         transform: 'scale(1.1) translateY(0px)',
-        filter: 'saturate(1.35) brightness(1.1)',
+        filter: 'saturate(1.6) brightness(1.22)',
         transition: 'transform 0.05s linear',
         willChange: 'transform',
       }} />
       {/* Radial vignette -- edges dark, center glowing */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.52) 100%)' }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.28) 100%)' }} />
 
       {/* ---- BEAT 1: A Living Place ---- */}
       <div ref={b1Ref} style={{
@@ -471,7 +471,7 @@ function ForestIntro() {
           </h2>
           <div style={{
             display: 'inline-block',
-            background: 'rgba(255,255,255,0.08)',
+            background: 'rgba(255,255,255,0.06)',
             backdropFilter: 'blur(22px)',
             WebkitBackdropFilter: 'blur(22px)',
             border: '1px solid rgba(255,255,255,0.14)',
