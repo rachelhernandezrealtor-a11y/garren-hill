@@ -1118,6 +1118,77 @@ function Land() {
 }
 
 // ============================================================
+// ZONING OPPORTUNITY
+// ============================================================
+function ZoningOpportunity() {
+  const w = useW();
+  const mob = w < 768;
+  const [visible, setVisible] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true); }, { threshold: 0.15 });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref} style={{
+      background: DARK,
+      padding: mob ? '6rem 6vw' : '8rem 10vw',
+      opacity: visible ? 1 : 0,
+      transform: visible ? 'none' : 'translateY(32px)',
+      transition: 'opacity 1.6s ease, transform 1.6s ease',
+    }}>
+      <div style={{ maxWidth: 900, margin: '0 auto' }}>
+        <p style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.4em', textTransform: 'uppercase', color: GOLD, margin: '0 0 1.6rem' }}>The Opportunity</p>
+        <h2 style={{
+          fontFamily: 'Georgia, serif', fontWeight: 400,
+          fontSize: mob ? 'clamp(2rem, 7vw, 2.8rem)' : 'clamp(2.6rem, 3.8vw, 4rem)',
+          color: '#fff', lineHeight: 1.12, letterSpacing: '-0.02em',
+          margin: '0 0 2rem',
+        }}>
+          The zoning is already<br /><em>unlocked.</em>
+        </h2>
+        <div style={{
+          width: '40px', height: '1px', background: GOLD, margin: '0 0 2.4rem', opacity: 0.6,
+        }} />
+        <p style={{
+          fontFamily: 'Georgia, serif', fontSize: mob ? '1.05rem' : '1.2rem',
+          color: CREAM, lineHeight: 1.8, maxWidth: 680, margin: '0 0 3rem',
+        }}>
+          NC Qualifying Farmer Exemption is in place. Retreat centers, event venues, agritourism, commercial kitchens, equestrian operations -- all permitted. Most buyers spend years and real capital securing what this property already has.
+        </p>
+        {/* Pinehurst callout */}
+        <div style={{
+          display: 'inline-block',
+          background: 'rgba(201,169,110,0.1)',
+          border: '1px solid rgba(201,169,110,0.35)',
+          borderRadius: '2px',
+          padding: mob ? '1.4rem 1.8rem' : '1.8rem 2.6rem',
+          maxWidth: 560,
+        }}>
+          <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.36em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.7rem' }}>Location</p>
+          <p style={{
+            fontFamily: 'Georgia, serif', fontStyle: 'italic',
+            fontSize: mob ? '1.1rem' : '1.35rem',
+            color: '#fff', lineHeight: 1.5, margin: 0,
+          }}>
+            Three miles from Pinehurst Resort -- one of the most visited golf destinations in the world.
+          </p>
+          <p style={{
+            fontFamily: 'Georgia, serif', fontSize: '0.9rem',
+            color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, margin: '0.9rem 0 0',
+          }}>
+            Resort economy. County taxation. No HOA. No city limits. The location is not incidental -- it is part of the thesis.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================
 // LOCATION
 // ============================================================
 function Location() {
@@ -1484,6 +1555,7 @@ export default function FlowFarmLanding2() {
         position="center 40%"
       />
       <Land />
+      <ZoningOpportunity />
       <Mechanism />
       <CinematicReveal
         src={cdnInt(IMG.spabath)}
