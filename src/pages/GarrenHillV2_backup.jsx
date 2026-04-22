@@ -190,7 +190,7 @@ function TimelineItem({ year, title, body, last = false }) {
   );
 }
 
-export default function GarrenHill() {
+export default function GarrenHillV2() {
   const scrollY = useScrollY();
   const [inquiryOpen, setInquiryOpen] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
