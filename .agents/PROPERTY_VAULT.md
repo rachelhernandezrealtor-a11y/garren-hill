@@ -21,8 +21,10 @@
 |---|---|
 | Pinestraw Magazine -- A Page Out of History | https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/5d214b4a6_bead4d052_pinestrawmagcom-APageOutofHistory.pdf |
 | Hollycrest Article (Pinestraw Oct 2019) | https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/8cf901d15_3d3d0e3cb_HollycrestarticleinPinestrawOct19.pdf |
-| GarrenHill.pdf | (upload failed -- drop into chat to retry) |
-| Builder Plans PDF | (drop into chat to add) |
+| Builder Plans -- Pages 1-9 | https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/dd87f6f4e_GH_plans_p1-9.pdf |
+| Builder Plans -- Pages 10-18 | https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/4bac41bfa_GH_plans_p10-18.pdf |
+| Builder Plans -- Pages 19-27 | https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/343ee027b_GH_plans_p19-27.pdf |
+| Builder Plans -- Pages 28-36 | https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/50e4f0ca4_GH_plans_p28-36.pdf |
 | Floor Plan image | (drop into chat to add) |
 
 #### CODE FILES
