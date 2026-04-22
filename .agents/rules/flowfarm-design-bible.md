@@ -193,26 +193,27 @@ const cdn = (url) => url ? `https://res.cloudinary.com/dghn2xpif/image/fetch/f_a
 - Once locked, these URLs are NEVER changed without Rachel explicit approval
 - If a video breaks, the fix is ALWAYS re-uploading to Cloudflare Stream — never switching platforms
 
+### LOCKED VIDEO URLS (DO NOT CHANGE)
+| Video | Cloudflare Stream URL |
+|---|---|
+| Hero background (forest loop) | `https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/5d06a3b0e25b768ac6dc681dbf4f5b81/manifest/video.m3u8` |
+| Property tour ("Enter Flow Farm") | PENDING — Rachel to upload to Cloudflare Stream |
+
 ### Upload Workflow
 1. Rachel uploads video file to Cloudflare Stream (dash.cloudflare.com → Stream → Upload)
 2. Rachel pastes the Stream URL or video ID here
 3. Rocky locks it into the code and updates this bible + memory
 4. Done. Never revisited.
 
-### Current Video Status
-- Hero bg video: NEEDS migration to Cloudflare Stream
-- Property tour video: NEEDS migration to Cloudflare Stream
-
 ---
 
 ## PENDING / TO-DO
 
-- [ ] Upload both videos to Cloudflare Stream and lock URLs into code
+- [ ] Upload property tour video to Cloudflare Stream and lock URL into code
 - [ ] Weave all smart home copy moments into existing sections
 - [ ] Spa bath pull quote as full-bleed standalone section
 - [ ] "143 lighting circuits" exterior night moment
 - [ ] Garren Hill landing page (same Aman treatment)
-- [ ] Confirm forest Opportunity section looks vibrant on live site (Rachel to verify)
 - [ ] Fix hero stats counter — currently not firing on Cloudflare build
 - [ ] Update master backup after next approved change
 
