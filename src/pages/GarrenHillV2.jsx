@@ -7,7 +7,7 @@ const GLASS = 'rgba(255,255,255,0.10)';
 const GLASS_BORDER = 'rgba(255,255,255,0.25)';
 
 // Old GH app base (396 categorized photos live here)
-const GH = 'https://base44.app/api/apps/69e2578ca7113dbe93cb208d/files/mp/public/69e2578ca7113dbe93cb208d/';
+const GH = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/';
 
 const cdnExt = (id) =>
   `https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_2400,c_limit/${encodeURIComponent(GH + id)}`;
@@ -15,20 +15,20 @@ const cdnInt = (id) =>
   `https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:indoor:60,e_brightness:10,e_shadow:-30,e_sharpen:40,e_saturation:15,f_auto,q_auto,w_2400,c_limit/${encodeURIComponent(GH + id)}`;
 
 // KEY PHOTOS -- best shot per section
-const IMG_HERO       = cdnExt('68cfea3cf_FrontExterior.jpg');         // Front elevation, columned portico
-const IMG_ARCH       = cdnExt('efbaf4e19_-HolycrestExtF-3370.jpg');   // Side / grounds wide
-const IMG_SALON      = cdnInt('286e0697a_200Holycrest-1542.jpg');      // Living room / salon
-const IMG_DINING     = cdnInt('7dbb52edc_200Holycrest-1308.jpg');      // Dining room
-const IMG_KITCHEN    = cdnInt('025a9c5a7_200Holycrest-1680.jpg');      // Kitchen
-const IMG_STAIRCASE  = cdnInt('7427e8d2e_200Holycrest-1698.jpg');      // Hallway / staircase
-const IMG_FOYER      = cdnInt('02bb02e1e_200Holycrest-1689.jpg');      // Entry foyer
-const IMG_PRIMARY    = cdnInt('5f1f8af66_200Holycrest-1545.jpg');      // Primary bedroom
-const IMG_BATH       = cdnInt('0447409d0_200Holycrest-1563.jpg');      // Primary bath
-const IMG_POWDER     = cdnInt('b57f79399_200HollycrestDrive-80.jpg');  // Powder room (Tennessee marble)
-const IMG_POOL       = cdnExt('9dd5eed5d_-HolycrestExtF-3334.jpg');   // Pool classic shot
-const IMG_POOL2      = cdnExt('57352d0a9_200HollycrestDrive-208.jpg'); // Pool with house
-const IMG_GARDEN     = cdnExt('93480b070_200HollycrestDrive-190.jpg'); // Garden / grounds
-const IMG_REAR       = cdnExt('d93c7facb_200Holycrest-1437.jpg');      // Rear terrace / porch
+const IMG_HERO       = cdnExt('6d016e870_gh_200HollycrestDrive-1.jpg');         // Front elevation, columned portico
+const IMG_ARCH       = cdnExt('8a3262779_gh_200HollycrestDrive-28.jpg');   // Side / grounds wide
+const IMG_SALON      = cdnInt('fe1c337d9_gh_200HollycrestDrive-101.jpg');      // Living room / salon
+const IMG_DINING     = cdnInt('1e5316439_gh_200HollycrestDrive-112.jpg');      // Dining room
+const IMG_KITCHEN    = cdnInt('fd1aeeab0_gh_200HollycrestDrive-126.jpg');      // Kitchen
+const IMG_STAIRCASE  = cdnInt('2a82b823f_gh_200HollycrestDrive-122.jpg');      // Hallway / staircase
+const IMG_FOYER      = cdnInt('6375ea198_gh_200HollycrestDrive-131.jpg');      // Entry foyer
+const IMG_PRIMARY    = cdnInt('b90cae2e4_gh_200HollycrestDrive-92.jpg');      // Primary bedroom
+const IMG_BATH       = cdnInt('e5397c8b5_gh_200HollycrestDrive-94.jpg');      // Primary bath
+const IMG_POWDER     = cdnInt('463a0de5a_gh_200HollycrestDrive-97.jpg');  // Powder room (Tennessee marble)
+const IMG_POOL       = cdnExt('d7ef65a2f_gh_200HollycrestDrive-186.jpg');   // Pool classic shot
+const IMG_POOL2      = cdnExt('c201aa59d_gh_200HollycrestDrive-195.jpg'); // Pool with house
+const IMG_GARDEN     = cdnExt('5ff674a83_gh_200HollycrestDrive-219.jpg'); // Garden / grounds
+const IMG_REAR       = cdnExt('600163e1d_gh_200HollycrestDrive-40.jpg');      // Rear terrace / porch
 
 const eyebrow = {
   fontFamily: 'sans-serif',
