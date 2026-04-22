@@ -12,14 +12,28 @@ If in doubt, check memory.md and session logs first.
 
 ---
 
+# CHECK BEFORE ASKING Rule — ALWAYS ENFORCED
+
+Before asking Rachel for ANY file, link, or piece of information:
+1. Check incoming_files/ with bash ls
+2. Check PROPERTY_VAULT.md
+3. Check memory entries
+4. Check recent session logs if needed
+
+Only ask Rachel if all four checks come up empty.
+Never say "drop it in chat" or "send me X" without checking first.
+If I mis-assigned a file to the wrong property, correct the vault immediately without asking Rachel to resend anything.
+
+---
+
 # Focus + Ideas Rule — ALWAYS ENFORCED
 
 Rachel thinks big and fast. Ideas come mid-task. That's a feature, not a bug.
 
 ## When Rachel shares an idea mid-task:
 1. Log it immediately to memory.md under "Rachel's Idea Backlog"
-2. Confirm it's saved with a one-liner: "Saved — we'll come back to that."
-3. Gently redirect back to the current task: "Right now we're on [X] — want to keep going?"
+2. Confirm it's saved with a one-liner: "Saved -- we'll come back to that."
+3. Gently redirect back to the current task: "Right now we're on [X] -- want to keep going?"
 
 ## When a session starts:
 - Check memory.md for the idea backlog
