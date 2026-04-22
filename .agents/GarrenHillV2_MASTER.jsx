@@ -316,13 +316,13 @@ export default function GarrenHillV2() {
         </FadeIn>
         <FadeIn delay={0.15}>
           <p style={{ color: CREAM, fontSize: '1.1rem', lineHeight: 2.05, opacity: 0.85, margin: '2.2rem 0' }}>
-            In 1913, Walter Hines Page -- co-founder of Doubleday, Page &amp; Co., confidant to presidents, and soon-to-be U.S. Ambassador to the Court of St. James -- purchased a thousand-acre farm two miles southwest of Pinehurst and commissioned a Boston architect to design a two-story Georgian brick manor. He named it Garran Hill, after his family's deep Moore County roots. He planned to grow peaches. He planned to come home.
+            In 1913, Walter Hines Page -- co-founder of Doubleday, Page &amp; Co. and U.S. Ambassador to the Court of St. James -- purchased a thousand-acre tract two miles southwest of Pinehurst. He named it Garran Hill. He planned to grow peaches and come home.
           </p>
           <p style={{ color: CREAM, fontSize: '1.1rem', lineHeight: 2.05, opacity: 0.85, margin: '0 0 2.2rem' }}>
-            Instead, Woodrow Wilson called. Page sailed for London, served through the entirety of World War I, and gave what remained of his health to the Allied cause. He never fully occupied the house he built.
+            Instead, Woodrow Wilson called. Page sailed for London, served through the whole of the First World War, and gave what remained of his health to the cause. He never came back. He never saw the house.
           </p>
           <p style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', color: 'rgba(255,255,255,0.5)', fontSize: '1.05rem', lineHeight: 1.85, margin: 0 }}>
-            In a vestibule of Westminster Abbey stands a sculpture bearing the inscription: "The friend of Britain in her sorest need." Garren Hill is the house he was always trying to come back to.
+            In a vestibule of Westminster Abbey, a sculpture bears the inscription: "The friend of Britain in her sorest need." The house he built stands two miles southwest of Pinehurst. It has been waiting ever since.
           </p>
         </FadeIn>
       </div>
@@ -331,7 +331,7 @@ export default function GarrenHillV2() {
       <CinematicReveal
         eyebrowText="The Architecture"
         headline="Neo-Georgian.<br /><em>Unchanged in all</em><br />the ways that matter."
-        body="Designed by a Boston architectural firm and built by Leonard Tufts' own craftsmen. The structure is longitudinal brick construction, one room deep, with a wing at each end -- a silhouette that has not changed since 1916. The NE/SW orientation was deliberate: the back of the house floods with natural light from morning through afternoon."
+        body="Designed by a Boston architectural firm. Built by Leonard Tufts' own craftsmen from Pinehurst. Longitudinal brick, one room deep, a wing at each end. The silhouette has not changed since 1916. The NE/SW orientation was deliberate -- the back of the house floods with natural light from morning through afternoon, and whoever specified that knew exactly what they were doing."
         imgSrc={IMG_ARCH}
         position="center top"
       />
@@ -346,7 +346,7 @@ export default function GarrenHillV2() {
       <CinematicReveal
         eyebrowText="The Living Room"
         headline="Nearly forty feet<br /><em>of room.</em>"
-        body="The salon runs nearly forty feet. Tall windows parade down both sides. One end anchored by a fireplace; the other by a view of the camellia garden that the current owners planted knowing exactly how it would look through those windows. The original oak flooring is still here. Master carpenter David Prest rebuilt the Georgian woodwork from scratch: paneling, crown moldings, chair rails. The bones are 1916. The eye is not."
+        body="Nearly forty feet. Tall windows on both sides. One end anchored by a fireplace; the other open to the camellia garden. The original oak flooring has been here since 1916 -- so have all seven carved mantels. Master carpenter David Prest rebuilt the Georgian woodwork from scratch: custom paneling, crown moldings, chair rails. The bones are original. The rest was put together by someone with very particular taste."
         imgSrc={IMG_SALON}
         reverse={true}
       />
@@ -383,7 +383,7 @@ export default function GarrenHillV2() {
       <CinematicReveal
         eyebrowText="The Dining Room"
         headline="The frontispiece<br /><em>was not touched.</em>"
-        body="The original frontispiece in the dining room was preserved through the entire 1999 restoration -- stripped back to itself, left exactly as it was. The room was designed for the kind of dinner parties that last past midnight. It still is."
+        body="The original frontispiece was not touched in the 1999 restoration. It did not need to be. The dining room was built for the kind of evening that begins at seven and ends when it ends. It still reads that way."
         imgSrc={IMG_DINING}
       />
 
@@ -398,10 +398,10 @@ export default function GarrenHillV2() {
         </FadeIn>
         <FadeIn delay={0.15}>
           <p style={{ color: CREAM, fontSize: '1.05rem', lineHeight: 2.05, opacity: 0.85, margin: '2.2rem 0' }}>
-            In 1998, the current stewards commissioned Durham architect Thomas O'Shea to recreate the original drawings from scratch. General contractor Dennis Dunagan led a three-year full restoration -- interior completely gutted, all plumbing and electrical replaced, new joists, every Marvin window custom-made to profile. An interior designer's eye was in every decision. The wallpaper. The hardware. The way the light falls through a doorway. If you know, you know.
+            In 1998, Durham architect Thomas O'Shea recreated the original drawings from scratch. General contractor Dennis Dunagan spent three years rebuilding the interior completely -- all plumbing, all electrical, new joists, every Marvin window custom-made. An interior designer oversaw every finish. The wallpaper was chosen. The hardware was chosen. The way light moves through a doorway was considered. The rooms show it.
           </p>
           <p style={{ color: CREAM, fontSize: '1.05rem', lineHeight: 2.05, opacity: 0.85 }}>
-            What was kept is the point: the leaded glass sidelights and over-door fan at the front entry. The seven fireplace mantels. The original oak flooring. The solid-wood interior doors with their original brass key plates -- and their original keys.
+            What was preserved is the argument: the leaded glass sidelights and over-door fanlight at the entry. Seven fireplace mantels, all original. The oak floors. The solid-wood interior doors with their original brass key plates -- and their original keys. There is a reason people who know Georgian architecture walk through this house slowly.
           </p>
         </FadeIn>
       </div>
@@ -413,7 +413,7 @@ export default function GarrenHillV2() {
       <CinematicReveal
         eyebrowText="The Kitchen"
         headline="Created entirely<br /><em>from scratch.</em>"
-        body="There was no kitchen in the original house. The current stewards designed it from nothing -- opening it to sweeping views of the magnolias and the grounds. New heart-pine flooring continues the thread. The room knows where it is."
+        body="There was no kitchen in the 1916 house. The current stewards created one from nothing -- opening it entirely to the magnolias, the sycamores, the grounds. New heart-pine flooring was laid to match what was already underfoot. A room built from scratch that somehow arrived knowing exactly where it belonged."
         imgSrc={IMG_KITCHEN}
         reverse={true}
       />
@@ -422,7 +422,7 @@ export default function GarrenHillV2() {
       <CinematicReveal
         eyebrowText="The Powder Room"
         headline="Tennessee marble.<br /><em>Polished brass.</em><br />1916 hardware."
-        body="A Tennessee marble vanity. Original polished brass hinges and doorknobs. The kind of powder room that stops a guest mid-sentence. The kind of detail that reveals who put this house together."
+        body="Tennessee marble. Polished brass. The kind of powder room that stops a guest mid-sentence -- not because it announces itself, but because everything in it is exactly right. A small room that tells you everything you need to know about who finished this house."
         imgSrc={IMG_POWDER}
       />
 
@@ -430,7 +430,7 @@ export default function GarrenHillV2() {
       <CinematicReveal
         eyebrowText="The Grounds"
         headline="4.15 acres.<br /><em>The Wee Cottage</em><br />arrived by sky crane."
-        body="Betty Dumaine planted three American sycamores in 1959. They are still here. The camellia garden. Grandiflora magnolias. A brick terrace designed for dining al fresco -- accessible from both the dining room and the living room. A 20-by-40-foot pool. Two tennis courts. And tucked in the corner: the Wee Cottage, a fully furnished guest retreat that was transported to the property by sky crane and set on its own foundation."
+        body="Betty Dumaine planted three American sycamores in 1959. They are still here. So is the camellia garden. The grandiflora magnolias. The brick terrace behind the house -- accessible from both the dining room and the living room, designed for large groups, and it shows. A 20-by-40-foot pool. Two tennis courts. And in the far corner, the Wee Cottage: a fully furnished guest retreat that arrived by sky crane and was set on its own foundation. The kind of thing that simply happens at a place like this."
         imgSrc={IMG_REAR}
         reverse={true}
       />
@@ -447,27 +447,27 @@ export default function GarrenHillV2() {
           <TimelineItem
             year="1916"
             title="Walter Hines Page"
-            body="U.S. Ambassador to the Court of St. James. Co-founder of Doubleday, Page & Co. He helped put Woodrow Wilson in the White House. He commissioned this house for himself. He never lived here -- he gave the rest of his health to the Allied cause and died weeks after returning from London."
+            body="U.S. Ambassador to the Court of St. James. Co-founder of Doubleday, Page & Co. He helped put Woodrow Wilson in the White House. He commissioned this house for his own retirement. He never saw it finished. He returned from London in 1918, worn through by four years of wartime diplomacy, and died within weeks. His son Ralph moved the family in."
           />
           <TimelineItem
             year="1918"
             title="The Page Family"
-            body="Walter's son Ralph moved the family in after his father's death. The house stayed in the Page family through World War II -- quietly outlasting the men who shaped it."
+            body="Walter's son Ralph moved the family in. The house stayed in the Page family through a second world war -- a quiet constant while everything else moved."
           />
           <TimelineItem
             year="1959"
             title="Betty Dumaine"
-            body="Prominent Bostonian. Horses, hounds, and peacocks kept as guard birds. Her Vassar roommate became the Queen of Thailand -- the royal entourage visited. She threw birthday parties for her horses and invited the neighborhood children. Her favorite horse, Blue Fox, is buried on the grounds beneath a slate marker and a four-foot bronze statue."
+            body="Prominent Bostonian. Foxhunter. Her Vassar roommate became the Queen of Thailand -- the royal entourage visited on several occasions. She kept horses, hounds, and peacocks. She threw birthday parties for the horses and invited the neighborhood children. Her favorite, Blue Fox, is buried on the grounds beneath a slate-covered grave with a brass marker and a four-foot bronze statue. Betty Dumaine did not do anything by halves."
           />
           <TimelineItem
             year="1980"
             title="Duke University"
-            body="Betty left the estate to Duke on her death. Duke advertised in Atlanta and New York. The tennis courts and pool were added in 1985. Still no buyers."
+            body="Betty left the estate to Duke University on her death in 1980. Duke advertised in Atlanta and New York and found no takers. The tennis courts and pool were added in 1985 in preparation for a subdivision that never happened. The house waited."
           />
           <TimelineItem
             year="1999"
             title="The Restoration"
-            body="The current stewards purchased the property and spent three years restoring it completely. An interior designer's hand is in every finish, every fabric, every door. The Georgian bones, preserved. The twenty-first century, installed."
+            body="The current stewards purchased the property and spent three years rebuilding it from the inside out -- every system, every surface, every window. One of them was an interior designer. Every room in this house was considered by someone who understood exactly what they had. The Georgian bones were preserved. The rest was done with uncommon care."
           />
           <TimelineItem
             year="Now"
@@ -482,7 +482,7 @@ export default function GarrenHillV2() {
       <CinematicReveal
         eyebrowText="The Primary Suite"
         headline="Light from<br /><em>three directions.</em>"
-        body="The NE/SW orientation the Boston architect specified in 1916 still delivers. The back of the house is wall-to-wall windows. A balcony off two of the second-floor bedrooms overlooks the tennis courts and the rear grounds. The narrow spiral staircase connects the floors with quiet drama. Below, the stone-walled basement holds a climate-controlled wine room -- the same quiet logic throughout: everything considered."
+        body="The orientation specified in 1916 still delivers. The back of the house is windows. A balcony off two of the second-floor bedrooms looks out over the tennis courts and the rear grounds -- the same view the Page family had. A narrow spiral staircase connects the floors with the kind of drama that requires no announcement. Below, a stone-walled basement: climate-controlled, partially finished, wine rack, storage, interior and exterior access. This house has more room than it shows."
         imgSrc={IMG_PRIMARY}
         reverse={true}
       />
@@ -530,7 +530,7 @@ export default function GarrenHillV2() {
       <CinematicReveal
         eyebrowText="The Entry"
         headline="The leaded glass<br /><em>has been here</em><br />since 1916."
-        body="The leaded glass sidelights and over-door fan at the front entry are original. The frontispiece in the dining room is original. The solid-wood interior doors with their original brass key plates are original. Some things survive a restoration because they are worth surviving."
+        body="The leaded glass sidelights. The over-door fanlight. The original brass key plates on every interior door. These were here before the restoration. They were here during it. They are here now. Some things do not need to be improved -- they need to be respected."
         imgSrc={IMG_FOYER}
       />
 
@@ -545,10 +545,10 @@ export default function GarrenHillV2() {
         </FadeIn>
         <FadeIn delay={0.15}>
           <p style={{ color: CREAM, fontSize: '1.05rem', lineHeight: 2.05, opacity: 0.85, margin: '2.2rem 0' }}>
-            200 Hollycrest Drive sits within the Pinehurst ETJ -- the extraterritorial jurisdiction. The address carries the prestige and proximity of Pinehurst village. The tax rate is Moore County. It is a rare and meaningful distinction.
+            200 Hollycrest Drive sits within the Pinehurst ETJ. The address is Pinehurst. The tax rate is Moore County. For the right buyer, that distinction is not a footnote -- it is the point.
           </p>
           <p style={{ color: CREAM, fontSize: '1.05rem', lineHeight: 2.05, opacity: 0.85, margin: 0 }}>
-            Two miles from the village. Walking distance to the Pinehurst Harness Track. Three golf courses within five minutes. The resort, the restaurants, the village -- all of it close enough to matter.
+            Two miles from the village. The Pinehurst Resort, the courses, the restaurants -- close enough to use, far enough to have a driveway worth having. This is not a house you pass on your way somewhere else.
           </p>
         </FadeIn>
       </div>
