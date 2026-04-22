@@ -449,6 +449,39 @@ export default function GarrenHillV2() {
       {/* PORTICO FULL BLEED */}
       <FullBleed imgSrc={IMG_PORTICO} label="The columned portico -- original 1916" height="56vw" maxH="680px" />
 
+      {/* MATTERPORT -- Walk the Floor Plan */}
+      <div style={{ padding: 'clamp(5rem, 10vw, 8rem) clamp(2rem, 8vw, 12rem)', background: DARK, textAlign: 'center' }}>
+        <div style={{ maxWidth: 860, margin: '0 auto' }}>
+          <FadeIn>
+            <span style={eyebrow}>Walk the Floor Plan</span>
+            <h2 style={{ fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(2rem, 3.5vw, 3rem)', color: '#fff', lineHeight: 1.18, margin: '0 0 1.5rem', letterSpacing: '-0.02em' }}>
+              The rooms reveal<br /><em>how they connect.</em>
+            </h2>
+            <div style={divider} />
+            <p style={{ color: CREAM, fontSize: '1.05rem', lineHeight: 2, opacity: 0.75, margin: '2rem auto', maxWidth: 600 }}>
+              The Matterport tour does more than show the rooms -- it shows how they are laid out. The longitudinal plan. The two stair cores. The way the light moves through the house from the NE/SW orientation. Walk it before you walk through the door.
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <div style={{ marginTop: '3rem', borderRadius: 4, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 0 60px rgba(0,0,0,0.6)' }}>
+              <iframe
+                src="https://my.matterport.com/show/?m=mfwyqT5Btwx&brand=0&mls=1&"
+                width="100%"
+                height="560"
+                frameBorder="0"
+                allow="xr-spatial-tracking"
+                allowFullScreen
+                style={{ display: 'block' }}
+                title="Garren Hill -- 3D Floor Plan Tour"
+              />
+            </div>
+            <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', marginTop: '1.2rem' }}>
+              Use the dollhouse view to see the full floor plan layout
+            </p>
+          </FadeIn>
+        </div>
+      </div>
+
       {/* SPECS */}
       <div style={{ padding: 'clamp(5rem, 10vw, 8rem) clamp(2rem, 8vw, 12rem)', background: '#070707' }}>
         <div style={{ maxWidth: 900, margin: '0 auto' }}>
