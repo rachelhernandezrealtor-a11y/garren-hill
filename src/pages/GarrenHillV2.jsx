@@ -1,3 +1,4 @@
+// v2.1
 import React, { useState, useEffect, useRef } from 'react';
 
 const GOLD = '#C9A96E';
