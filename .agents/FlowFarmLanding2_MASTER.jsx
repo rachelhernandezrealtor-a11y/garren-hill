@@ -230,12 +230,12 @@ function VideoLightbox({ onClose }) {
         aspectRatio: '16/9', borderRadius: '4px', overflow: 'hidden',
         boxShadow: '0 40px 120px rgba(0,0,0,0.8)',
       }}>
-        <iframe
-          src="https://player.vimeo.com/video/1165426324?autoplay=1&autopause=0&byline=0&title=0&portrait=0&dnt=1&transparent=0"
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none' }}
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-          loading="eager"
+        <video
+          src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f7910a1c9_275a93837_forestheroMAIN.mp4"
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', objectFit: 'cover' }}
+          autoPlay
+          controls
+          playsInline
         />
       </div>
       <button onClick={onClose} style={{
