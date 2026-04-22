@@ -231,7 +231,7 @@ function VideoLightbox({ onClose }) {
         boxShadow: '0 40px 120px rgba(0,0,0,0.8)',
       }}>
         <iframe
-          src="https://player.vimeo.com/video/1165426324?autoplay=1&autopause=0&byline=0&title=0&portrait=0&color=C9A96E&dnt=1"
+          src="https://player.vimeo.com/video/1165426324?autoplay=1&autopause=0&byline=0&title=0&portrait=0&dnt=1&transparent=0"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none' }}
           allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
