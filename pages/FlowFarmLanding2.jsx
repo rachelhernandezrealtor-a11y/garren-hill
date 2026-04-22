@@ -13,7 +13,7 @@ const GOLD = '#C9A96E';
 const CREAM = '#F5F0E8';
 const DARK = '#0a0a0a';
 
-const VIDEO = 'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f7910a1c9_275a93837_forestheroMAIN.mp4';
+const VIDEO = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/5d06a3b0e25b768ac6dc681dbf4f5b81/manifest/video.m3u8';
 const MATTERPORT = 'https://my.matterport.com/show/?m=xZRfSiQPuQ8';
 
 const B = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/';
@@ -74,23 +74,29 @@ function useFade() {
 
 function useCounter(target, duration, delay, decimals) {
   const [count, setCount] = React.useState(0);
-  const ref = React.useRef(null);
+  const done = React.useRef(false);
   React.useEffect(() => {
-    const t = setTimeout(() => {
-      let startTime = null;
-      const animate = (ts) => {
-        if (!startTime) startTime = ts;
-        const progress = Math.min((ts - startTime) / duration, 1);
+    if (done.current) return;
+    done.current = true;
+    const _target = target;
+    const _duration = duration || 1600;
+    const _delay = delay != null ? delay : 800;
+    const _decimals = decimals || 0;
+    const steps = 60;
+    const stepTime = _duration / steps;
+    let current = 0;
+    const run = () => {
+      const t = setTimeout(() => {
+        current++;
+        const progress = current / steps;
         const ease = 1 - Math.pow(1 - progress, 3);
-        const val = ease * target;
-        setCount(parseFloat(val.toFixed(decimals || 0)));
-        if (progress < 1) requestAnimationFrame(animate);
-      };
-      requestAnimationFrame(animate);
-    }, delay || 1800);
-    return () => clearTimeout(t);
+        setCount(parseFloat((ease * _target).toFixed(_decimals)));
+        if (current < steps) run();
+      }, stepTime);
+    };
+    setTimeout(run, _delay);
   }, []);
-  return [count, ref];
+  return [count, React.useRef(null)];
 }
 
 
@@ -140,7 +146,7 @@ function GoldLine() {
 // ============================================================
 // HERO
 // ============================================================
-function HeroStat({ value, prefix, suffix, decimals, label1, label2, duration, delay, mob }) {
+const HeroStat = React.memo(function HeroStat({ value, prefix, suffix, decimals, label1, label2, duration, delay, mob }) {
   const [count, ref] = useCounter(value, duration || 1600, delay || 600, decimals || 0);
   const display = (prefix || '') + (decimals ? count.toFixed(decimals) : Math.round(count).toLocaleString()) + (suffix || '');
   return (
@@ -148,17 +154,17 @@ function HeroStat({ value, prefix, suffix, decimals, label1, label2, duration, d
       <div style={{
         color: '#fff',
         fontFamily: "'Cormorant Garamond', Georgia, serif",
-        fontSize: mob ? '2.4rem' : '3.2rem',
+        fontSize: mob ? '1.7rem' : '3.2rem',
         fontWeight: 300,
         lineHeight: 1,
-        marginBottom: '0.35rem',
+        marginBottom: '0.7rem',
         letterSpacing: '-0.01em',
         fontStyle: 'normal',
       }}>{display}</div>
       <div style={{
         color: 'rgba(255,255,255,0.55)',
         fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-        fontSize: mob ? '7px' : '8px',
+        fontSize: mob ? '6px' : '8px',
         letterSpacing: '0.22em',
         textTransform: 'uppercase',
         lineHeight: 1.6,
@@ -166,24 +172,24 @@ function HeroStat({ value, prefix, suffix, decimals, label1, label2, duration, d
       }}>{label1}<br />{label2}</div>
     </div>
   );
-}
+});
 
-function HeroStats({ mob }) {
+const HeroStats = React.memo(function HeroStats({ mob }) {
   const stats = [
-    { value: 15, prefix: '', suffix: '', decimals: 0, label1: 'USDA', label2: 'ACRES', duration: 1600, delay: 1800 },
-    { value: 7, prefix: '', suffix: '', decimals: 0, label1: 'BUILDABLE', label2: 'ACRES', duration: 1600, delay: 1950 },
-    { value: 3, prefix: '', suffix: '', decimals: 0, label1: 'ACRE VEGANIC', label2: 'FARM', duration: 1600, delay: 2100 },
-    { value: 5.25, prefix: '$', suffix: 'M', decimals: 2, label1: 'OFFERED', label2: 'AT', duration: 1600, delay: 2250 },
+    { value: 15, prefix: '', suffix: '', decimals: 0, label1: 'USDA', label2: 'ACRES', duration: 2000, delay: 400 },
+    { value: 7, prefix: '', suffix: '', decimals: 0, label1: 'BUILDABLE', label2: 'ACRES', duration: 2000, delay: 550 },
+    { value: 3, prefix: '', suffix: '', decimals: 0, label1: 'ACRE VEGANIC', label2: 'FARM', duration: 2000, delay: 700 },
+    { value: 5.25, prefix: '$', suffix: 'M', decimals: 2, label1: 'LIST', label2: 'PRICE', duration: 2000, delay: 850 },
   ];
   return (
-    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', margin: mob ? '0 0 2rem' : '0 0 2.6rem', gap: 0 }}>
+    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', margin: mob ? '0 0 0.8rem' : '0 0 2.6rem', gap: 0 }}>
       {stats.map((s, i) => (
         <div key={i} style={{ display: 'flex', alignItems: 'stretch', gap: 0 }}>
           {i > 0 && (
             <div style={{
               width: '1px',
               background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.18) 20%, rgba(255,255,255,0.18) 80%, transparent)',
-              margin: mob ? '0 1.2rem' : '0 2rem',
+              margin: mob ? '0 1.0rem' : '0 2rem',
               alignSelf: 'stretch',
               minHeight: mob ? '48px' : '60px',
             }} />
@@ -195,10 +201,73 @@ function HeroStats({ mob }) {
   );
 }
 
+
+// ============================================================
+// VIDEO LIGHTBOX
+// ============================================================
+function VideoLightbox({ onClose }) {
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  return (
+    <div onClick={onClose} style={{
+      position: 'fixed', inset: 0, zIndex: 9999,
+      background: 'rgba(0,0,0,0.92)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)',
+      animation: 'fadeIn 0.3s ease',
+    }}>
+      <style>{`@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }`}</style>
+      <div onClick={e => e.stopPropagation()} style={{
+        position: 'relative', width: '90vw', maxWidth: '1100px',
+        aspectRatio: '16/9', borderRadius: '4px', overflow: 'hidden',
+        boxShadow: '0 40px 120px rgba(0,0,0,0.8)',
+      }}>
+        <video
+          src="https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/5d06a3b0e25b768ac6dc681dbf4f5b81/manifest/video.m3u8"
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', objectFit: 'cover' }}
+          autoPlay
+          controls
+          playsInline
+        />
+      </div>
+      <button onClick={onClose} style={{
+        position: 'fixed', top: '1.5rem', right: '1.5rem',
+        background: 'none', border: '1px solid rgba(255,255,255,0.3)',
+        color: '#fff', fontFamily: 'sans-serif', fontSize: '11px',
+        letterSpacing: '0.2em', textTransform: 'uppercase',
+        padding: '0.5rem 1.2rem', borderRadius: '2rem', cursor: 'pointer',
+        opacity: 0.7,
+      }}>
+        Close
+      </button>
+    </div>
+  );
+});
+
 function Hero() {
   const w = useW();
   const mob = w < 768;
   const [p, setP] = useState(0);
+  const [videoOpen, setVideoOpen] = useState(false);
+  // Preconnect to Vimeo on mount so video loads instantly on click
+  useEffect(() => {
+    const link1 = document.createElement('link');
+    link1.rel = 'preconnect';
+    link1.href = 'https://iframe.cloudflarestream.com';
+    document.head.appendChild(link1);
+    const link2 = document.createElement('link');
+    link2.rel = 'preconnect';
+    link2.href = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com';
+    document.head.appendChild(link2);
+  }, []);
 
   useEffect(() => {
     const t = [
@@ -224,11 +293,7 @@ function Hero() {
       <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.5) 100%)' }} />
       <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to bottom, rgba(0,0,0,0.22) 0%, transparent 30%, transparent 50%, rgba(0,0,0,0.94) 100%)' }} />
 
-      <div style={{ position: 'absolute', top: mob ? '1.8rem' : '2.6rem', left: 0, right: 0, zIndex: 10, textAlign: 'center', ...show(1) }}>
-        <p style={{ fontFamily: 'Georgia, serif', fontSize: '10px', letterSpacing: '0.52em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.32)', margin: 0 }}>
-          Flow Farm
-        </p>
-      </div>
+
 
       {!mob && (
         <nav style={{ position: 'absolute', top: '2.4rem', right: '3rem', zIndex: 10, display: 'flex', gap: '2.8rem', ...show(1) }}>
@@ -241,55 +306,45 @@ function Hero() {
         </nav>
       )}
 
-      <div style={{ position: 'absolute', inset: 0, zIndex: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: mob ? '0 6vw' : '0 10vw' }}>
-        <div style={show(2)}>
-          <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.38em', textTransform: 'uppercase', color: GOLD, margin: mob ? '0 0 1.6rem' : '0 0 2rem' }}>
-            The Architectural Masterpiece
-          </p>
+      {/* Address pinned to top */}
+      <div style={{ position: 'absolute', top: mob ? '4.5rem' : '3.8rem', left: 0, right: 0, zIndex: 6, display: 'flex', justifyContent: 'center', ...show(2) }}>
+        <p style={{ fontFamily: 'sans-serif', fontSize: mob ? '7px' : '10px', letterSpacing: mob ? '0.16em' : '0.36em', textTransform: 'uppercase', color: GOLD, margin: 0, whiteSpace: 'nowrap' }}>
+          107 Linden Trail&nbsp;&nbsp;Aberdeen, NC 28315&nbsp;&nbsp;<span style={{ color: 'rgba(201,169,110,0.5)' }}>|</span>&nbsp;&nbsp;Pinehurst ETJ
+        </p>
+      </div>
+      {/* Center block — headline + subhead + stats + button */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: mob ? '0 6vw' : '0 10vw', maxWidth: '100%' }}>
+        <div style={{ ...show(2), width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <h1 style={{
             color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400,
-            fontSize: mob ? '2.8rem' : w < 1024 ? '4.6rem' : '6.2rem',
+            fontSize: mob ? '2.3rem' : w < 1024 ? '4.6rem' : '6.2rem',
             lineHeight: 1.06, margin: 0, letterSpacing: '-0.02em',
             textShadow: '0 4px 80px rgba(0,0,0,0.6)',
           }}>
             Agritourism <em>Established.</em><br />Legacy Ready.
           </h1>
         </div>
-        <div style={{ ...show(3), marginTop: mob ? '1.6rem' : '2.2rem' }}>
+        <div style={{ ...show(3), marginTop: mob ? '1rem' : '2.2rem', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <p style={{
-            color: 'rgba(255,255,255,0.38)', fontFamily: 'Georgia, serif', fontStyle: 'italic',
-            fontSize: mob ? '0.95rem' : '1.1rem', margin: mob ? '0 0 2rem' : '0 0 2.6rem',
+            color: '#F5F0E8', fontFamily: 'Georgia, serif', fontStyle: 'italic',
+            fontSize: mob ? '0.82rem' : '1.25rem', margin: mob ? '0 0 1.2rem' : '0 0 2rem',
             letterSpacing: '0.01em', lineHeight: 1.7,
+            textShadow: '0 2px 20px rgba(0,0,0,0.5)',
           }}>
-            Where architectural excellence meets working land -- three miles from Pinehurst Resort.
+            Build a compound. Keep the farm. Three miles from Pinehurst.
           </p>
           <HeroStats mob={mob} />
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: mob ? '0.75rem' : '1rem', justifyContent: 'center', alignItems: 'center' }}>
-            <a href="https://vimeo.com/1165426324" target="_blank" rel="noreferrer" style={{ display: 'inline-block', background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.55)', color: '#fff', fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.32em', textTransform: 'uppercase', padding: mob ? '0.85rem 2rem' : '1rem 2.8rem', borderRadius: '2rem', textDecoration: 'none', fontWeight: 500, cursor: 'pointer', transition: 'background 0.3s ease', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 4px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: mob ? '0.75rem' : '1rem', justifyContent: 'center', alignItems: 'center', marginTop: mob ? '1rem' : '0' }}>
+            <button onClick={() => setVideoOpen(true)} style={{ display: 'inline-block', background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.55)', color: '#fff', fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.32em', textTransform: 'uppercase', padding: mob ? '0.85rem 2rem' : '1rem 2.8rem', borderRadius: '2rem', textDecoration: 'none', fontWeight: 500, cursor: 'pointer', transition: 'background 0.3s ease', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 4px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}>
               Enter Flow Farm
-            </a>
+            </button>
+            {videoOpen && <VideoLightbox onClose={() => setVideoOpen(false)} />}
 
           </div>
         </div>
       </div>
 
-      <div style={{ position: 'absolute', bottom: mob ? '2rem' : '3rem', left: mob ? '1.5rem' : '3rem', right: mob ? '1.5rem' : '3rem', zIndex: 10, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', ...show(3) }}>
-        <div>
-          <div style={{ margin: '0 0 1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ fontSize: '18px' }}>&#127807;</span>
-            <p style={{ color: GOLD, fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: mob ? '13px' : '15px', letterSpacing: '0.06em', margin: 0, opacity: 0.9 }}>Hi Farmer Mark!</p>
-            <span style={{ fontSize: '16px' }}>&#128075;</span>
-          </div>
-          <p style={{ color: 'rgba(255,255,255,0.36)', fontFamily: 'sans-serif', fontSize: mob ? '9px' : '11px', letterSpacing: '0.2em', textTransform: 'uppercase', margin: '0 0 0.35rem' }}>107 Linden Trail, Aberdeen NC</p>
-          <p style={{ color: 'rgba(255,255,255,0.14)', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.16em', textTransform: 'uppercase', margin: 0 }}>15 Acres &mdash; 6 Structures &mdash; $5,250,000</p>
-        </div>
-        {!mob && (
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.4rem' }}>
-            <p style={{ color: 'rgba(255,255,255,0.12)', fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.28em', textTransform: 'uppercase', margin: 0 }}>Scroll</p>
-            <div style={{ width: 1, height: 36, background: 'linear-gradient(to bottom, rgba(255,255,255,0.2), transparent)' }} />
-          </div>
-        )}
-      </div>
+
     </section>
   );
 }
@@ -300,26 +355,116 @@ function Hero() {
 function Manifesto() {
   const w = useW();
   const mob = w < 768;
+  const [ref, visible] = useFade();
+  const [scrollY, setScrollY] = React.useState(0);
+  React.useEffect(() => {
+    const onScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  const BG_URL = 'https://res.cloudinary.com/dghn2xpif/image/fetch/f_auto,q_auto,w_2400,e_vibrance:40,e_saturation:20,e_brightness:15,e_sharpen:60/' + encodeURIComponent('https://media.base44.com/images/public/69e248a2469cc39540781cce/fbfaf627b_generated_image.png');
   return (
-    <section style={{ background: DARK, padding: mob ? '7rem 0' : '11rem 0', textAlign: 'center' }}>
-      <Fade up>
-        <div style={{ maxWidth: 820, margin: '0 auto', padding: '0 6vw', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: mob ? '2.4rem' : '3rem' }}>
-          <Eyebrow center>107 Linden Trail &mdash; Aberdeen, North Carolina</Eyebrow>
-          <h2 style={{ color: CREAM, fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '2rem' : w < 1024 ? '2.6rem' : '3.2rem', lineHeight: 1.3, margin: 0, letterSpacing: '-0.018em' }}>
-            Not just a home.<br />A living system built for those<br />who intend to leave something behind.
-          </h2>
-          <GoldLine />
-          <p style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.15rem', lineHeight: 2.1, margin: 0, maxWidth: 580 }}>
-            Fifteen acres of forest and working farmland three miles from Pinehurst Resort.
-            Designed by Robert E. Clark AIA as one of his final private commissions.
-            Built to operate indefinitely, independently, and beautifully.
-          </p>
-          <a href={MATTERPORT} target="_blank" rel="noreferrer"
-            style={{ color: GOLD, fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.32em', textTransform: 'uppercase', textDecoration: 'none', borderBottom: '1px solid rgba(201,169,110,0.28)', paddingBottom: '0.3rem' }}>
-            Begin the Virtual Tour
-          </a>
-        </div>
-      </Fade>
+    <section ref={ref} style={{
+      position: 'relative',
+      minHeight: mob ? '80vh' : '90vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      overflow: 'hidden',
+    }}>
+      {/* Full-bleed forest bg with parallax */}
+      <div style={{
+        position: 'absolute',
+        inset: '-10%',
+        backgroundImage: 'url(' + BG_URL + ')',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center ' + (50 + scrollY * 0.15) + '%',
+        transform: 'scale(1.08)',
+        transition: 'background-position 0.1s linear',
+        filter: 'saturate(1.2) brightness(0.72)',
+      }} />
+      {/* Dark gradient vignette -- edges only, center stays clear */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.55) 100%)',
+        pointerEvents: 'none',
+      }} />
+      {/* Bottom fade into dark */}
+      <div style={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: '35%',
+        background: 'linear-gradient(to bottom, transparent, ' + DARK + ')',
+        pointerEvents: 'none',
+      }} />
+      {/* Text -- floating directly on image, no card */}
+      <div style={{
+        position: 'relative',
+        zIndex: 2,
+        textAlign: 'center',
+        maxWidth: 820,
+        padding: mob ? '0 7vw' : '0 6vw',
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'none' : 'translateY(32px)',
+        transition: 'opacity 1.8s ease 0.2s, transform 1.8s ease 0.2s',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: mob ? '2rem' : '2.8rem',
+      }}>
+        <p style={{
+          fontFamily: 'sans-serif',
+          fontSize: '10px',
+          letterSpacing: '0.40em',
+          textTransform: 'uppercase',
+          color: GOLD,
+          margin: 0,
+          textShadow: '0 1px 8px rgba(0,0,0,0.6)',
+        }}>107 Linden Trail -- Aberdeen, North Carolina</p>
+        <h2 style={{
+          color: '#ffffff',
+          fontFamily: 'Georgia, serif',
+          fontWeight: 400,
+          fontStyle: 'italic',
+          fontSize: mob ? '2rem' : w < 1024 ? '2.8rem' : 'clamp(2.6rem, 4vw, 3.6rem)',
+          lineHeight: 1.28,
+          margin: 0,
+          letterSpacing: '-0.018em',
+          textShadow: '0 2px 24px rgba(0,0,0,0.5)',
+        }}>
+          Not just a home.<br />A living system built for those<br />who intend to leave something behind.
+        </h2>
+        <div style={{ width: 36, height: 1, background: GOLD, opacity: 0.5 }} />
+        <p style={{
+          color: 'rgba(255,255,255,0.82)',
+          fontFamily: 'Georgia, serif',
+          fontSize: mob ? '1rem' : '1.1rem',
+          lineHeight: 1.95,
+          margin: 0,
+          maxWidth: 560,
+          textShadow: '0 1px 12px rgba(0,0,0,0.5)',
+        }}>
+          Fifteen acres of forest and working farmland three miles from Pinehurst Resort.
+          Designed by Robert E. Clark AIA as one of his final private commissions.
+          Built to operate indefinitely, independently, and beautifully.
+        </p>
+        <a href={MATTERPORT} target="_blank" rel="noreferrer" style={{
+          color: GOLD,
+          fontFamily: 'sans-serif',
+          fontSize: '10px',
+          letterSpacing: '0.32em',
+          textTransform: 'uppercase',
+          textDecoration: 'none',
+          borderBottom: '1px solid rgba(201,169,110,0.4)',
+          paddingBottom: '0.3rem',
+          textShadow: '0 1px 8px rgba(0,0,0,0.4)',
+        }}>
+          Begin the Virtual Tour
+        </a>
+      </div>
     </section>
   );
 }
@@ -581,6 +726,16 @@ function ForestIntro() {
 }
 
 
+
+const MAP_PINS = [
+  { id: 'main', x: 48, y: 42, label: 'Main Residence', sub: '8,519 SF -- 6 bed / 7 bath', icon: '🏛' },
+  { id: 'farm', x: 28, y: 62, label: 'Veganic Farm', sub: '3-acre certified veganic operation', icon: '🌿' },
+  { id: 'tunnel', x: 22, y: 55, label: 'High Tunnel', sub: '96x36 ft climate-controlled growing', icon: '🌱' },
+  { id: 'workshop', x: 35, y: 70, label: 'Farm Workshop', sub: '30x40 ft with full equipment storage', icon: '🔧' },
+  { id: 'guest', x: 58, y: 55, label: 'Guest Suite', sub: 'Private entrance -- 200 amp service', icon: '🏠' },
+  { id: 'solar', x: 65, y: 38, label: 'Solar Array', sub: '14.3kW -- 61 Samsung panels', icon: '☀️' },
+];
+
 function PropertyMap() {
   const w = useW();
   const mob = w < 768;
@@ -662,7 +817,7 @@ function PropertyMap() {
           {/* Aerial photo */}
           <img
             ref={mapImgRef}
-            src={"https://res.cloudinary.com/dghn2xpif/image/fetch/e_sharpen:150,e_vibrance:20,e_saturation:15,f_auto,q_auto,w_3200,c_limit/" + encodeURIComponent(AERIAL_MAP)}
+            src={"https://res.cloudinary.com/dghn2xpif/image/fetch/e_sharpen:150,e_vibrance:20,e_saturation:15,f_auto,q_auto,w_3200,c_limit/" + encodeURIComponent("https://media.base44.com/images/public/69e248a2469cc39540781cce/2ca329bbf_flowfarmmasterphotoswebsite.jpg")}
             alt="Flow Farm aerial view"
             style={{
               position: 'absolute', inset: 0, width: '100%', height: '100%',
@@ -730,7 +885,7 @@ function PropertyMap() {
               }}>
                 <span style={{
                   fontFamily: 'sans-serif',
-                  fontSize: mob ? '7px' : '8px',
+                  fontSize: mob ? '6px' : '8px',
                   letterSpacing: '0.22em',
                   textTransform: 'uppercase',
                   color: CREAM,
@@ -969,7 +1124,7 @@ function StealTheShow() {
       {/* Fan video background */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: '#000' }}>
         <iframe
-          src="https://player.vimeo.com/video/1180614233?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
+          src="https://iframe.cloudflarestream.com/de1885d159ae310508174f03f775c797?autoplay=true"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', pointerEvents: 'none', opacity: 0.90 }}
           allow="autoplay; fullscreen"
           title="Fan background"
@@ -979,9 +1134,7 @@ function StealTheShow() {
       <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to bottom, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.20) 40%, rgba(0,0,0,0.60) 100%)' }} />
       {/* Content */}
       <div style={{ position: 'relative', zIndex: 3, textAlign: 'center', padding: mob ? '6rem 6vw' : '8rem 8vw', maxWidth: 1100, margin: '0 auto' }}>
-        <p style={{ fontFamily: 'sans-serif', fontSize: mob ? '9px' : '10px', letterSpacing: '0.36em', textTransform: 'uppercase', color: GOLD, marginBottom: mob ? '1.4rem' : '2rem', fontWeight: 400 }}>
-          The Architectural Masterpiece
-        </p>
+
         <h2 style={{
           fontFamily: 'Georgia, serif',
           fontWeight: 400,
@@ -1103,7 +1256,7 @@ function Mechanism() {
         <Fade>
           <div style={{ textAlign: 'center', marginBottom: mob ? '5rem' : '8rem', padding: '0 6vw' }}>
             <Eyebrow center>The Mechanism</Eyebrow>
-            <h2 style={{ color: CREAM, fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '2rem' : '3.2rem', lineHeight: 1.28, margin: '2rem 0 2.4rem', letterSpacing: '-0.018em' }}>
+            <h2 style={{ color: CREAM, fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '1.7rem' : '3.2rem', lineHeight: 1.28, margin: '2rem 0 2.4rem', letterSpacing: '-0.018em' }}>
               Structure that holds<br /><em>freedom.</em>
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.26)', fontFamily: 'Georgia, serif', fontSize: mob ? '1rem' : '1.12rem', lineHeight: 2.1, maxWidth: 560, margin: '0 auto' }}>
@@ -1146,7 +1299,7 @@ function Land() {
       <Fade up>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2.4rem', marginBottom: mob ? '6rem' : '10rem', padding: '0 6vw', textAlign: 'center' }}>
           <Eyebrow center>The Land</Eyebrow>
-          <h2 style={{ color: CREAM, fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '2rem' : '3.2rem', lineHeight: 1.28, margin: 0, letterSpacing: '-0.018em' }}>
+          <h2 style={{ color: CREAM, fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: mob ? '1.7rem' : '3.2rem', lineHeight: 1.28, margin: 0, letterSpacing: '-0.018em' }}>
             Three acres producing.<br />Seven acres waiting.
           </h2>
           <GoldLine />
@@ -1449,7 +1602,7 @@ function Opportunity() {
 
             <h2 style={{
               color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400,
-              fontSize: mob ? '2rem' : '3.2rem', lineHeight: 1.18,
+              fontSize: mob ? '1.7rem' : '3.2rem', lineHeight: 1.18,
               margin: mob ? '0 0 1.2rem' : '0 0 1.6rem',
               maxWidth: 780,
             }}>
