@@ -231,7 +231,11 @@ export default function GarrenHillV2() {
       }}>
         <span style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1rem', color: '#fff', letterSpacing: '0.04em' }}>Garren Hill</span>
         <div style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
-          {['The Estate', 'The History', 'Inquire'].map(item => (
+          <a href="https://my.matterport.com/show/?m=mfwyqT5Btwx&brand=0&mls=1&" target="_blank" rel="noreferrer"
+            style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', textDecoration: 'none' }}>
+            Tour the Estate
+          </a>
+          {['The History', 'Inquire'].map(item => (
             <a key={item} href="#" onClick={(e) => { e.preventDefault(); if (item === 'Inquire') setInquiryOpen(true); }}
               style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', textDecoration: 'none', cursor: 'pointer' }}>
               {item}
@@ -308,7 +312,7 @@ export default function GarrenHillV2() {
                 letterSpacing: '0.28em', textTransform: 'uppercase',
                 textDecoration: 'none', borderRadius: 1, display: 'inline-flex', alignItems: 'center',
               }}>
-                Virtual Tour
+                Tour the Estate
               </a>
             </div>
           </FadeIn>
