@@ -1,5 +1,5 @@
 # FLOW FARM DESIGN BIBLE
-Last updated: 2026-04-21
+Last updated: 2026-04-22
 
 This is the living source of truth for all design decisions, copy rules, aesthetic standards, and implementation notes for the Flow Farm landing page (FlowFarmLanding2.jsx / flowfarmforest.com).
 
@@ -138,7 +138,7 @@ Wrap ALL images through this. Append Base44 CDN URL after the slash.
 - Sequential counter animation on page load
 - Font: Cormorant Garamond weight 300 (thin, editorial)
 - Ghostly dividers between stats
-- Stats: 3-ACRE VEGANIC FARM | 15 ACRES | 3 MI. TO PINEHURST | $5.25M
+- Stats: 15 USDA ACRES | 7 BUILDABLE | 3 ACRE VEGANIC FARM | $5.25M
 
 ### Parallax
 - All full-bleed background sections use backgroundPositionY scroll shift
@@ -162,7 +162,7 @@ Wrap ALL images through this. Append Base44 CDN URL after the slash.
 - Always check `ord(c) > 127` after any Python file manipulation
 
 ### File Management
-- Source of truth: `/app/pages/FlowFarmLanding2.jsx`
+- Source of truth: `/app/.agents/FlowFarmLanding2_MASTER.jsx` (pushed to GitHub → Cloudflare)
 - Master backup: `/app/.agents/FlowFarmLanding2_MASTER.jsx`
 - Update master backup after every approved change
 - NEVER use Base44 editor chat panel — it overwrites code
@@ -175,14 +175,45 @@ const cdn = (url) => url ? `https://res.cloudinary.com/dghn2xpif/image/fetch/f_a
 
 ---
 
+## VIDEO RULES — LAW, NON-NEGOTIABLE
+
+### Platform
+- ALL videos MUST be hosted on Cloudflare Stream. No exceptions.
+- NO Vimeo embeds. NO Base44 file hosting for video. NO third-party video players.
+- Cloudflare Stream = zero dependency, same ecosystem as Cloudflare Pages, global CDN, no privacy settings to break, no spinners.
+
+### The Two Videos
+1. **Hero background video** — ambient forest loop, plays silently behind hero
+2. **Property tour video** — triggered by "Enter Flow Farm" button, plays in lightbox
+
+### Implementation Law
+- Both video URLs must be Cloudflare Stream URLs, locked into the code permanently
+- Format: `https://customer-<id>.cloudflarestream.com/<video-id>/manifest/video.m3u8`
+- Or iframe embed: `https://iframe.cloudflarestream.com/<video-id>`
+- Once locked, these URLs are NEVER changed without Rachel explicit approval
+- If a video breaks, the fix is ALWAYS re-uploading to Cloudflare Stream — never switching platforms
+
+### Upload Workflow
+1. Rachel uploads video file to Cloudflare Stream (dash.cloudflare.com → Stream → Upload)
+2. Rachel pastes the Stream URL or video ID here
+3. Rocky locks it into the code and updates this bible + memory
+4. Done. Never revisited.
+
+### Current Video Status
+- Hero bg video: NEEDS migration to Cloudflare Stream
+- Property tour video: NEEDS migration to Cloudflare Stream
+
+---
+
 ## PENDING / TO-DO
 
-- [ ] Implement approved hero design (3-line headline, stats bar, gold CTA pill) — DO NOT touch until Rachel says go
+- [ ] Upload both videos to Cloudflare Stream and lock URLs into code
 - [ ] Weave all smart home copy moments into existing sections
 - [ ] Spa bath pull quote as full-bleed standalone section
 - [ ] "143 lighting circuits" exterior night moment
 - [ ] Garren Hill landing page (same Aman treatment)
 - [ ] Confirm forest Opportunity section looks vibrant on live site (Rachel to verify)
+- [ ] Fix hero stats counter — currently not firing on Cloudflare build
 - [ ] Update master backup after next approved change
 
 ---
@@ -193,7 +224,7 @@ const cdn = (url) => url ? `https://res.cloudinary.com/dghn2xpif/image/fetch/f_a
 - Crystal clear, like floating on glass
 - 3D immersive backgrounds with depth
 - Editorial serif typography
-- Glassmorphism frosted cards
+- Words floating directly on images — NO glass cards behind text
 - Full-bleed cinematic photo reveals
 - Specificity in copy — no vague luxury language
 - Aman resort aesthetic as the north star
