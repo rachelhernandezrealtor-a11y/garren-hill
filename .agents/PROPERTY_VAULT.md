@@ -19,10 +19,10 @@
 #### DOCUMENTS
 | What | Permanent URL |
 |---|---|
-| Builder / Architect Plans (HousePlansCombined.pdf) | https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f3b484b35_618925774_HousePlansCombined.pdf |
 | Pinestraw Magazine -- A Page Out of History | https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/5d214b4a6_bead4d052_pinestrawmagcom-APageOutofHistory.pdf |
 | Hollycrest Article (Pinestraw Oct 2019) | https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/8cf901d15_3d3d0e3cb_HollycrestarticleinPinestrawOct19.pdf |
-| GarrenHill.pdf | (upload failed -- retry) |
+| GarrenHill.pdf | (upload failed -- drop into chat to retry) |
+| Builder Plans PDF | (drop into chat to add) |
 | Floor Plan image | (drop into chat to add) |
 
 #### CODE FILES
@@ -61,9 +61,9 @@ https://media.base44.com/images/public/69e2578ca7113dbe93cb208d/
 - Matterport shows full floor plan layout
 
 #### PENDING / TO-DO
-- [ ] Add floor plan image to landing page (drop into chat)
-- [ ] Add builder plans PDF link to landing page
-- [ ] Retry GarrenHill.pdf upload
+- [ ] Drop Garren Hill builder plans PDF into chat
+- [ ] Drop floor plan image into chat
+- [ ] Add those to landing page
 - [ ] Get FlexMLS listing URL
 - [ ] Confirm Cloudflare Pages is live at garren-hill.pages.dev
 
@@ -87,6 +87,7 @@ https://media.base44.com/images/public/69e2578ca7113dbe93cb208d/
 #### DOCUMENTS
 | What | Permanent URL |
 |---|---|
+| Builder Plans (HousePlansCombined.pdf) | https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f3b484b35_618925774_HousePlansCombined.pdf |
 | Linden Features Sheet | https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/85b9ac66a_8c75a944c_LindenFeaturesSheet.pdf |
 | Electrical Design PDF | https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/37f15ce18_f5c8e9ea8_ElectricalDesign.pdf |
 | Pinestraw Magazine -- A Page Out of History | https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/5d214b4a6_bead4d052_pinestrawmagcom-APageOutofHistory.pdf |
