@@ -300,7 +300,7 @@ function Hero() {
       )}
 
       {/* Address pinned to top */}
-      <div style={{ position: 'absolute', top: mob ? '3.2rem' : '2.6rem', left: 0, right: 0, zIndex: 6, display: 'flex', justifyContent: 'center', ...show(2) }}>
+      <div style={{ position: 'absolute', top: mob ? '4.5rem' : '3.8rem', left: 0, right: 0, zIndex: 6, display: 'flex', justifyContent: 'center', ...show(2) }}>
         <p style={{ fontFamily: 'sans-serif', fontSize: mob ? '7px' : '10px', letterSpacing: mob ? '0.16em' : '0.36em', textTransform: 'uppercase', color: GOLD, margin: 0, whiteSpace: 'nowrap' }}>
           107 Linden Trail&nbsp;&nbsp;Aberdeen, NC 28315&nbsp;&nbsp;<span style={{ color: 'rgba(201,169,110,0.5)' }}>|</span>&nbsp;&nbsp;Pinehurst ETJ
         </p>
