@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garren Hill -- 200 Hollycrest Drive, Pinehurst, NC</title>
+<meta name="description" content="Garren Hill. A century of belonging. 200 Hollycrest Drive, Pinehurst, NC. Built 1916. 6,700 sq ft. 7 fireplaces. 4.15 acres.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: #0a0a0a; color: #F5F0E8; font-family: Georgia, serif; overflow-x: hidden; }
+::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: #0a0a0a; } ::-webkit-scrollbar-thumb { background: rgba(201,169,110,0.3); border-radius: 2px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+// v2.1
+
+const GOLD = '#C9A96E';
+const CREAM = '#F5F0E8';
+const DARK = '#0a0a0a';
+const GLASS = 'rgba(255,255,255,0.10)';
+const GLASS_BORDER = 'rgba(255,255,255,0.25)';
+
+// Old GH app base (396 categorized photos live here)
+const GH = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/';
+
+const cdnExt = (id) =>
+  `https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_2400,c_limit/${encodeURIComponent(GH + id)}`;
+const cdnInt = (id) =>
+  `https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:indoor:60,e_brightness:10,e_shadow:-30,e_sharpen:40,e_saturation:15,f_auto,q_auto,w_2400,c_limit/${encodeURIComponent(GH + id)}`;
+
+// KEY PHOTOS -- best shot per section
+const IMG_HERO       = cdnExt('6d016e870_gh_200HollycrestDrive-1.jpg');         // Front elevation, columned portico
+const IMG_ARCH       = cdnExt('8a3262779_gh_200HollycrestDrive-28.jpg');   // Side / grounds wide
+const IMG_SALON      = cdnInt('fe1c337d9_gh_200HollycrestDrive-101.jpg');      // Living room / salon
+const IMG_DINING     = cdnInt('1e5316439_gh_200HollycrestDrive-112.jpg');      // Dining room
+const IMG_KITCHEN    = cdnInt('fd1aeeab0_gh_200HollycrestDrive-126.jpg');      // Kitchen
+const IMG_STAIRCASE  = cdnInt('2a82b823f_gh_200HollycrestDrive-122.jpg');      // Hallway / staircase
+const IMG_FOYER      = cdnInt('6375ea198_gh_200HollycrestDrive-131.jpg');      // Entry foyer
+const IMG_PRIMARY    = cdnInt('b90cae2e4_gh_200HollycrestDrive-92.jpg');      // Primary bedroom
+const IMG_BATH       = cdnInt('e5397c8b5_gh_200HollycrestDrive-94.jpg');      // Primary bath
+const IMG_POWDER     = cdnInt('463a0de5a_gh_200HollycrestDrive-97.jpg');  // Powder room (Tennessee marble)
+const IMG_POOL       = cdnExt('d7ef65a2f_gh_200HollycrestDrive-186.jpg');   // Pool classic shot
+const IMG_POOL2      = cdnExt('c201aa59d_gh_200HollycrestDrive-195.jpg'); // Pool with house
+const IMG_GARDEN     = cdnExt('5ff674a83_gh_200HollycrestDrive-219.jpg'); // Garden / grounds
+const IMG_REAR       = cdnExt('600163e1d_gh_200HollycrestDrive-40.jpg');      // Rear terrace / porch
+
+const eyebrow = {
+  fontFamily: 'sans-serif',
+  fontSize: '10px',
+  letterSpacing: '0.36em',
+  textTransform: 'uppercase',
+  color: GOLD,
+  display: 'block',
+  margin: '0 0 1.2rem',
+};
+
+const divider = {
+  width: 40,
+  height: 1,
+  background: GOLD,
+  opacity: 0.5,
+  margin: '2rem auto',
+};
+
+function useScrollY() {
+  const [y, setY] = useState(0);
+  useEffect(() => {
+    const h = () => setY(window.scrollY);
+    window.addEventListener('scroll', h, { passive: true });
+    return () => window.removeEventListener('scroll', h);
+  }, []);
+  return y;
+}
+
+function useInView(ref, threshold = 0.12) {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setVisible(true); },
+      { threshold }
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+  return visible;
+}
+
+function FadeIn({ children, delay = 0, style = {} }) {
+  const ref = useRef();
+  const visible = useInView(ref);
+  return (
+    <div ref={ref} style={{
+      opacity: visible ? 1 : 0,
+      transform: visible ? 'translateY(0)' : 'translateY(24px)',
+      transition: `opacity 0.85s ease ${delay}s, transform 0.85s ease ${delay}s`,
+      ...style,
+    }}>
+      {children}
+    </div>
+  );
+}
+
+function CinematicReveal({ eyebrowText, headline, body, imgSrc, reverse = false, position = 'center' }) {
+  const ref = useRef();
+  const scrollY = useScrollY();
+  const [top, setTop] = useState(0);
+  useEffect(() => {
+    if (ref.current) setTop(ref.current.getBoundingClientRect().top + window.scrollY);
+  }, []);
+  const parallax = Math.max(-60, Math.min(60, (scrollY - top) * 0.25));
+
+  return (
+    <div ref={ref} style={{ position: 'relative', minHeight: '88vh', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: `url(${imgSrc})`,
+        backgroundSize: 'cover',
+        backgroundPosition: `${position} calc(50% + ${parallax}px)`,
+        transform: 'scale(1.06)',
+        zIndex: 0,
+        transition: 'background-position 0.05s linear',
+      }} />
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1,
+        background: reverse
+          ? 'linear-gradient(to left, rgba(10,10,10,0.9) 42%, rgba(10,10,10,0.15) 100%)'
+          : 'linear-gradient(to right, rgba(10,10,10,0.9) 42%, rgba(10,10,10,0.15) 100%)',
+      }} />
+      <div style={{
+        position: 'relative', zIndex: 2,
+        width: 'min(50%, 540px)',
+        padding: 'clamp(4rem, 8vw, 7rem) clamp(2.5rem, 5vw, 5rem)',
+        marginLeft: reverse ? 'auto' : 0,
+      }}>
+        <FadeIn>
+          <span style={eyebrow}>{eyebrowText}</span>
+          <h2 style={{
+            fontFamily: 'Georgia, serif', fontWeight: 400,
+            fontSize: 'clamp(1.9rem, 3vw, 3rem)',
+            color: '#fff', lineHeight: 1.15,
+            margin: '0 0 1.6rem', letterSpacing: '-0.02em',
+          }} dangerouslySetInnerHTML={{ __html: headline }} />
+          <div style={{ width: 32, height: 1, background: GOLD, opacity: 0.5, margin: '0 0 1.6rem' }} />
+          <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 2, margin: 0, opacity: 0.88 }}>{body}</p>
+        </FadeIn>
+      </div>
+    </div>
+  );
+}
+
+function PullQuote({ quote, attribution }) {
+  return (
+    <div style={{ padding: 'clamp(5rem, 10vw, 8rem) clamp(2rem, 12vw, 16rem)', background: '#060606', textAlign: 'center' }}>
+      <FadeIn>
+        <p style={{
+          fontFamily: 'Georgia, serif', fontStyle: 'italic',
+          fontSize: 'clamp(1.4rem, 2.6vw, 2.5rem)',
+          color: '#fff', lineHeight: 1.45,
+          margin: '0 auto 2.5rem', maxWidth: 820,
+        }}>
+          &ldquo;{quote}&rdquo;
+        </p>
+        <div style={{ width: 36, height: 1, background: GOLD, opacity: 0.4, margin: '0 auto 1.5rem' }} />
+        {attribution && (
+          <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.32em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.38)', margin: 0 }}>
+            {attribution}
+          </p>
+        )}
+      </FadeIn>
+    </div>
+  );
+}
+
+function FullBleed({ imgSrc, label, height = '55vw', maxH = '680px' }) {
+  return (
+    <div style={{ position: 'relative', height: `clamp(360px, ${height}, ${maxH})`, overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${imgSrc})`, backgroundSize: 'cover', backgroundPosition: 'center', transform: 'scale(1.03)' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,10,10,0.22)' }} />
+      {label && (
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.5rem 3vw', background: 'linear-gradient(to top, rgba(10,10,10,0.7) 0%, transparent 100%)' }}>
+          <FadeIn>
+            <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.32em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', margin: 0 }}>{label}</p>
+          </FadeIn>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function TimelineItem({ year, title, body, last = false }) {
+  return (
+    <FadeIn>
+      <div style={{ display: 'flex', gap: '2.5rem', marginBottom: last ? 0 : '3.5rem', alignItems: 'flex-start' }}>
+        <div style={{ minWidth: 52, textAlign: 'right', paddingTop: '0.1rem' }}>
+          <span style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300, fontSize: '1.35rem', color: GOLD, display: 'block', lineHeight: 1.15 }}>{year}</span>
+        </div>
+        <div style={{ flex: 1, borderLeft: '1px solid rgba(201,169,110,0.2)', paddingLeft: '2rem', paddingTop: '0.1rem' }}>
+          <p style={{ fontFamily: 'Georgia, serif', fontSize: '1.02rem', color: '#fff', margin: '0 0 0.45rem', lineHeight: 1.3 }}>{title}</p>
+          <p style={{ color: CREAM, fontSize: '0.93rem', lineHeight: 1.9, opacity: 0.7, margin: 0 }}>{body}</p>
+        </div>
+      </div>
+    </FadeIn>
+  );
+}
+
+function App() {
+  const scrollY = useScrollY();
+  const [inquiryOpen, setInquiryOpen] = useState(false);
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await fetch('https://base44.app/api/apps/69e248a2469cc39540781cce/entities/Inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, property: 'Garren Hill', source: 'Landing Page' }),
+      });
+    } catch (_) {}
+    setSubmitted(true);
+  };
+
+  return (
+    <div style={{ background: DARK, color: CREAM, fontFamily: 'Georgia, serif', overflowX: 'hidden' }}>
+
+      {/* NAV */}
+      <nav style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 200,
+        padding: '1.4rem 4vw', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        background: scrollY > 60 ? 'rgba(10,10,10,0.94)' : 'linear-gradient(to bottom, rgba(10,10,10,0.6) 0%, transparent 100%)',
+        borderBottom: scrollY > 60 ? '1px solid rgba(255,255,255,0.07)' : 'none',
+        backdropFilter: scrollY > 60 ? 'blur(14px)' : 'none',
+        transition: 'all 0.35s ease',
+      }}>
+        <span style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1rem', color: '#fff', letterSpacing: '0.04em' }}>Garren Hill</span>
+        <div style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
+          {['The Estate', 'The History', 'Inquire'].map(item => (
+            <a key={item} href="#" onClick={(e) => { e.preventDefault(); if (item === 'Inquire') setInquiryOpen(true); }}
+              style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', textDecoration: 'none', cursor: 'pointer' }}>
+              {item}
+            </a>
+          ))}
+        </div>
+      </nav>
+
+      {/* HERO */}
+      <div style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: `url(${IMG_HERO})`,
+          backgroundSize: 'cover', backgroundPosition: 'center top',
+          transform: `scale(1.08) translateY(${scrollY * 0.25}px)`,
+          transition: 'transform 0.08s linear',
+        }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,10,10,0.28) 0%, rgba(10,10,10,0.42) 50%, rgba(10,10,10,0.92) 100%)' }} />
+
+        {/* Stats bar */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
+          background: 'rgba(8,8,8,0.82)', backdropFilter: 'blur(14px)',
+          borderTop: '1px solid rgba(255,255,255,0.07)',
+          padding: '1.5rem 0',
+          display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem',
+        }}>
+          {[
+            { value: '1916', label: 'Year Built' },
+            { value: '6,700', label: 'Sq Ft' },
+            { value: '7', label: 'Fireplaces' },
+            { value: '4.15', label: 'Acres' },
+            { value: '$4,250,000', label: 'Offered At' },
+          ].map((s, i) => (
+            <React.Fragment key={s.label}>
+              {i > 0 && <div style={{ width: 1, height: 32, background: 'rgba(255,255,255,0.09)', margin: '0 clamp(0.8rem, 2.5vw, 2.5rem)' }} />}
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300, fontSize: 'clamp(1.2rem, 1.8vw, 1.8rem)', color: '#fff' }}>{s.value}</div>
+                <div style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.38)', marginTop: '0.25rem' }}>{s.label}</div>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+
+        {/* Hero copy */}
+        <div style={{ position: 'relative', zIndex: 5, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(3rem, 7vw, 6rem) clamp(3rem, 7vw, 6rem) 9.5rem' }}>
+          <FadeIn delay={0.1}>
+            <span style={{ ...eyebrow, marginBottom: '1.2rem' }}>Pinehurst, North Carolina -- Est. 1916</span>
+            <h1 style={{
+              fontFamily: 'Georgia, serif', fontWeight: 400,
+              fontSize: 'clamp(3rem, 6.5vw, 6.5rem)',
+              color: '#fff', lineHeight: 1.05,
+              margin: '0 0 2.2rem', letterSpacing: '-0.03em', maxWidth: 820,
+            }}>
+              Garren Hill.<br /><em>A century of</em><br />belonging.
+            </h1>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <button onClick={() => setInquiryOpen(true)} style={{
+                padding: '0.9rem 2.4rem',
+                background: 'rgba(201,169,110,0.15)',
+                border: `1px solid ${GOLD}`,
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1), 0 0 20px rgba(201,169,110,0.08)',
+                color: GOLD, fontFamily: 'sans-serif', fontSize: '10px',
+                letterSpacing: '0.28em', textTransform: 'uppercase',
+                cursor: 'pointer', borderRadius: 1,
+              }}>
+                Inquire
+              </button>
+              <a href="https://my.matterport.com/show/?m=mfwyqT5Btwx&brand=0&mls=1&" target="_blank" rel="noreferrer" style={{
+                padding: '0.9rem 2.4rem',
+                background: 'rgba(255,255,255,0.06)',
+                border: '1px solid rgba(255,255,255,0.2)',
+                color: 'rgba(255,255,255,0.75)', fontFamily: 'sans-serif', fontSize: '10px',
+                letterSpacing: '0.28em', textTransform: 'uppercase',
+                textDecoration: 'none', borderRadius: 1, display: 'inline-flex', alignItems: 'center',
+              }}>
+                Virtual Tour
+              </a>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+
+      {/* MANIFESTO */}
+      <div style={{ padding: 'clamp(5rem, 10vw, 9rem) clamp(2rem, 10vw, 14rem)', maxWidth: 840, margin: '0 auto', textAlign: 'center' }}>
+        <FadeIn>
+          <span style={eyebrow}>The Property</span>
+          <h2 style={{ fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(2rem, 3.5vw, 3.2rem)', color: '#fff', lineHeight: 1.18, margin: '0 0 2rem', letterSpacing: '-0.02em' }}>
+            Some houses hold history.<br /><em>This one shaped it.</em>
+          </h2>
+          <div style={divider} />
+        </FadeIn>
+        <FadeIn delay={0.15}>
+          <p style={{ color: CREAM, fontSize: '1.1rem', lineHeight: 2.1, opacity: 0.85, margin: '2.2rem 0' }}>
+            In 1913, Walter Hines Page -- publisher, kingmaker, and the man Woodrow Wilson would appoint U.S. Ambassador to the Court of St. James -- bought a thousand acres two miles southwest of Pinehurst and commissioned a Georgian manor from a Boston firm. He named it Garran Hill, after his Moore County roots. He planned to grow peaches. He planned, finally, to come home.
+          </p>
+          <p style={{ color: CREAM, fontSize: '1.1rem', lineHeight: 2.1, opacity: 0.85, margin: '0 0 2.2rem' }}>
+            The war came instead. Page spent four years in London arguing, cajoling, and eventually exhausting himself in service of the Allied cause. He sailed home in 1918, worn through. He died within weeks of his return. He never walked through the door of the house built for him.
+          </p>
+          <p style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', color: 'rgba(255,255,255,0.52)', fontSize: '1.08rem', lineHeight: 1.88, margin: 0 }}>
+            In a vestibule of Westminster Abbey, a bronze memorial bears the inscription: "The friend of Britain in her sorest need." The house he never occupied still stands. It has been cared for ever since by people who understood what they had.
+          </p>
+        </FadeIn>
+      </div>
+
+      {/* ARCHITECTURE CINEMATIC */}
+      <CinematicReveal
+        eyebrowText="The Architecture"
+        headline="Neo-Georgian.<br /><em>Unchanged in all</em><br />the ways that matter."
+        body="Designed by a Boston architectural firm. Built by Leonard Tufts' own craftsmen -- the same men who built Pinehurst. Longitudinal brick construction, one room deep, with a wing at each end. A columned portico. A circular drive. The NE/SW orientation was intentional: the back of the house fills with natural light from morning through late afternoon. Whoever laid this out understood that the most permanent form of luxury is a house that knows where it sits."
+        imgSrc={IMG_ARCH}
+        position="center top"
+      />
+
+      {/* BETTY DUMAINE QUOTE */}
+      <PullQuote
+        quote="She had shared a room at Vassar with a girl who became the Queen of Thailand. Hollycrest hosted the royal personage on several occasions."
+        attribution="Betty Dumaine -- Owner 1959 to 1980"
+      />
+
+      {/* SALON CINEMATIC */}
+      <CinematicReveal
+        eyebrowText="The Living Room"
+        headline="Nearly forty feet.<br /><em>Seven mantels.</em><br />One room."
+        body="The salon is nearly forty feet long. Tall windows parade down both sides. One end anchored by a carved mantel and fireplace; the other looking out toward the camellia garden. The original wide-plank oak flooring is still here. So are all seven fireplace mantels -- every one preserved through the full 1999 restoration. Master carpenter David Prest rebuilt the Georgian woodwork from nothing: raised-panel wainscoting, crown moldings, chair rails. The bones are 1916. The finish was chosen by someone who knew exactly what Georgian proportions require."
+        imgSrc={IMG_SALON}
+        reverse={true}
+      />
+
+      {/* NUMBERS GRID */}
+      <div style={{ padding: 'clamp(4rem, 8vw, 7rem) clamp(2rem, 6vw, 8rem)', background: '#060606' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <FadeIn>
+            <span style={{ ...eyebrow, textAlign: 'center', display: 'block', marginBottom: '2.5rem' }}>By the Numbers</span>
+          </FadeIn>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(165px, 1fr))', gap: '1px', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.06)' }}>
+            {[
+              { n: '5', label: 'Bedrooms' },
+              { n: '5', label: 'Bathrooms' },
+              { n: '7', label: 'Fireplaces' },
+              { n: '4.15', label: 'Acres' },
+              { n: '6,700', label: 'Sq Ft Heated' },
+              { n: '1916', label: 'Year Built' },
+              { n: '3 Yrs', label: 'Restoration' },
+              { n: '110+', label: 'Years of History' },
+            ].map(item => (
+              <FadeIn key={item.label}>
+                <div style={{ padding: '2.5rem 1rem', background: '#060606', textAlign: 'center' }}>
+                  <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300, fontSize: 'clamp(1.8rem, 2.2vw, 2.6rem)', color: '#fff' }}>{item.n}</div>
+                  <div style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.36)', marginTop: '0.45rem' }}>{item.label}</div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* DINING CINEMATIC */}
+      <CinematicReveal
+        eyebrowText="The Dining Room"
+        headline="The original<br /><em>frontispiece.</em><br />Still here."
+        body="The original frontispiece in the dining room was not touched during the 1999 restoration. It has been here since 1916 and required nothing. The room itself was designed for the kind of dinner that begins with cocktails on the terrace and ends when the last candle goes out. Twenty-five years of gatherings -- the English Speaking Union, Phi Beta Kappa, the DAR, wedding celebrations -- have only confirmed what the builder already knew."
+        imgSrc={IMG_DINING}
+      />
+
+      {/* RESTORATION */}
+      <div style={{ padding: 'clamp(5rem, 10vw, 9rem) clamp(2rem, 10vw, 14rem)', maxWidth: 840, margin: '0 auto', textAlign: 'center' }}>
+        <FadeIn>
+          <span style={eyebrow}>The Restoration</span>
+          <h2 style={{ fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', color: '#fff', lineHeight: 1.2, margin: '0 0 2rem' }}>
+            Three years.<br /><em>Every pipe. Every wire.</em><br />Every original key.
+          </h2>
+          <div style={divider} />
+        </FadeIn>
+        <FadeIn delay={0.15}>
+          <p style={{ color: CREAM, fontSize: '1.05rem', lineHeight: 2.1, opacity: 0.85, margin: '2.2rem 0' }}>
+            In 1998, Durham architect Thomas O'Shea recreated the original drawings from scratch -- there were none left. General contractor Dennis Dunagan led a three-year rebuild: interior completely gutted, all plumbing and electrical replaced, new joists, every Marvin window custom-ordered to match the original Georgian profiles. The kitchen was built from nothing. New heart-pine flooring was laid where there had been none. Every room was put back together with a level of considered attention that is not common.
+          </p>
+          <p style={{ color: CREAM, fontSize: '1.05rem', lineHeight: 2.1, opacity: 0.85 }}>
+            What was left alone is the case for the house: the 1916 leaded glass sidelights and over-door fanlight at the front entry. The original frontispiece in the dining room. Seven carved fireplace mantels. The wide-plank oak floors. Every solid-wood interior door, still fitted with its original brass key plate -- and its original key. The wallpaper in certain rooms. The hardware on the windows. Things that only reveal themselves to someone paying attention.
+          </p>
+        </FadeIn>
+      </div>
+
+      {/* STAIRCASE FULL BLEED */}
+      <FullBleed imgSrc={IMG_STAIRCASE} label="The Staircase -- Narrow. Dramatic. Original." height="60vw" maxH="720px" />
+
+      {/* KITCHEN CINEMATIC */}
+      <CinematicReveal
+        eyebrowText="The Kitchen"
+        headline="Created entirely<br /><em>from scratch.</em>"
+        body="There was no kitchen in the original 1916 house. One was built entirely from scratch during the restoration -- opened to the rear grounds, to the grandiflora magnolias, to the three sycamores Betty Dumaine planted in 1959. New heart-pine flooring continues the material thread from the rest of the house. The result is a room that does not announce its modernity. It simply works."
+        imgSrc={IMG_KITCHEN}
+        reverse={true}
+      />
+
+      {/* POWDER ROOM CINEMATIC */}
+      <CinematicReveal
+        eyebrowText="The Powder Room"
+        headline="Tennessee marble.<br /><em>Polished brass.</em><br />1916 hardware."
+        body="A Tennessee marble vanity. The original polished brass hinges and doorknobs still on every door in the house. A powder room that stops guests mid-sentence -- not because it announces itself, but because every material in it is exactly right and nothing is trying too hard. Small rooms tell the truth about a house. This one says everything."
+        imgSrc={IMG_POWDER}
+      />
+
+      {/* GROUNDS CINEMATIC */}
+      <CinematicReveal
+        eyebrowText="The Grounds"
+        headline="4.15 acres.<br /><em>Pool. Tennis.</em><br />The Wee Cottage."
+        body="Betty Dumaine planted three American sycamores in 1959. They are still here. The camellia garden is still here. So are the grandiflora magnolias, the dogwoods, the long-leaf pines, the iris beds. The brick terrace behind the house -- accessible from both the dining room and the living room -- seats a large group for dinner without crowding anyone. A 20-by-40 pool. Two tennis courts. And in the far corner of the grounds: the Wee Cottage, a fully furnished guest retreat that was transported to the property by sky crane and set on its own foundation. No one who hears that story forgets it."
+        imgSrc={IMG_REAR}
+        reverse={true}
+      />
+
+      {/* POOL FULL BLEED */}
+      <FullBleed imgSrc={IMG_POOL} label="The Pool -- 20 x 40 ft" height="58vw" maxH="700px" />
+
+      {/* CENTURY TIMELINE */}
+      <div style={{ padding: 'clamp(5rem, 10vw, 9rem) clamp(2rem, 8vw, 10rem)', background: '#060606' }}>
+        <div style={{ maxWidth: 780, margin: '0 auto' }}>
+          <FadeIn>
+            <span style={{ ...eyebrow, textAlign: 'center', display: 'block', marginBottom: '3.5rem' }}>A Century of Stewards</span>
+          </FadeIn>
+          <TimelineItem
+            year="1916"
+            title="Walter Hines Page"
+            body="Co-founder of Doubleday, Page & Co. He helped nominate Woodrow Wilson for the presidency. Wilson appointed him U.S. Ambassador to the Court of St. James in 1913 -- and Page spent four years in London arguing for American entry into the war, often against Wilson's own instincts. He returned to Moore County in 1918 with hypertension and renal failure and died within weeks. He never saw the house. His son Ralph moved the family in and the home stayed in the Page family through the Second World War."
+          />
+          <TimelineItem
+            year="1918"
+            title="The Page Family"
+            body="Walter's son Ralph moved the family in. The house stayed in the Page family through a second world war -- a quiet constant while everything else moved."
+          />
+          <TimelineItem
+            year="1959"
+            title="Betty Dumaine"
+            body="Proper Bostonian, serious foxhunter. She renamed the property Hollycrest for the native holly trees on the grounds. Her Vassar roommate had become the Queen of Thailand -- the royal entourage visited more than once. She kept horses, hounds, and peacocks (the peacocks served as guard birds). She threw annual birthday parties for the horses and invited children from the surrounding community. Her favorite horse, Blue Fox, is buried on the grounds beneath a ten-by-sixteen-foot slate-covered grave with a brass marker and a four-foot bronze statue. Betty Dumaine did nothing by halves."
+          />
+          <TimelineItem
+            year="1980"
+            title="Duke University"
+            body="Betty left the estate to Duke University on her death in 1980. Duke advertised in Atlanta and New York and found no takers. The tennis courts and pool were added in 1985 in preparation for a subdivision that never happened. The house waited."
+          />
+          <TimelineItem
+            year="1999"
+            title="The Restoration"
+            body="The current stewards purchased the property and spent three years rebuilding it from the inside out -- every system, every surface, every window. One of them was an interior designer. Every room in this house was considered by someone who understood exactly what they had. The Georgian bones were preserved. The rest was done with uncommon care."
+          />
+          <TimelineItem
+            year="Now"
+            title="The Next Chapter"
+            body="The house is ready."
+            last={true}
+          />
+        </div>
+      </div>
+
+      {/* PRIMARY SUITE CINEMATIC */}
+      <CinematicReveal
+        eyebrowText="The Primary Suite"
+        headline="Light from<br /><em>three directions.</em>"
+        body="The NE/SW orientation still delivers. The back of the house is nearly all windows and fills with afternoon light in a way that was clearly planned. A balcony off two of the second-floor bedrooms looks over the tennis courts and rear grounds -- the same prospect the Page family would have had in 1918. A narrow spiral staircase connects the floors with the kind of quiet drama that does not need explaining. Below the main floor: a four-room stone-walled basement, partially finished, climate-controlled. Wine storage. Room for what a house of this size accumulates. Interior and exterior access."
+        imgSrc={IMG_PRIMARY}
+        reverse={true}
+      />
+
+      {/* PRIMARY BATH FULL BLEED */}
+      <FullBleed imgSrc={IMG_BATH} label="The Primary Bath" height="55vw" maxH="660px" />
+
+      {/* FEATURE CARDS */}
+      <div style={{ padding: 'clamp(4rem, 8vw, 7rem) clamp(2rem, 6vw, 8rem)', background: DARK }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(255px, 1fr))', gap: '1.5rem' }}>
+          {[
+            {
+              label: 'Recognition',
+              title: 'Historic Designation',
+              body: 'One of the distinctly historical homes in southern Moore County. Virginia Historic Foundation recognized. 110 years of documented ownership and continuous stewardship.',
+            },
+            {
+              label: 'Infrastructure',
+              title: 'County Water, Sewer + Private Well',
+              body: '250-gallon underground propane. In-ground well and storage tank serving the pool and irrigation. 7 fireplaces with propane gas logs. All systems rebuilt during the 1999 restoration.',
+            },
+            {
+              label: 'Entertaining',
+              title: 'Built for Gatherings',
+              body: 'Over 25 years as a private venue: English Speaking Union, Pi Beta Phi, Phi Beta Kappa, DAR, the Folio Club of Durham, wedding celebrations. The house knows how to hold a crowd.',
+            },
+            {
+              label: 'Below Grade',
+              title: 'Four-Room Stone Basement',
+              body: 'Stone-walled basement under half the house. Partially finished, climate-controlled. Wine rack, storage, interior and exterior access. The house has more room than it shows.',
+            },
+          ].map(card => (
+            <FadeIn key={card.title}>
+              <div style={{ background: GLASS, border: `1px solid ${GLASS_BORDER}`, padding: '2.5rem 2rem' }}>
+                <span style={{ ...eyebrow, marginBottom: '0.9rem' }}>{card.label}</span>
+                <p style={{ fontFamily: 'Georgia, serif', fontSize: '1.02rem', color: '#fff', margin: '0 0 0.9rem', lineHeight: 1.3 }}>{card.title}</p>
+                <p style={{ color: CREAM, fontSize: '0.9rem', lineHeight: 1.95, opacity: 0.72, margin: 0 }}>{card.body}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+
+      {/* FOYER CINEMATIC */}
+      <CinematicReveal
+        eyebrowText="The Entry"
+        headline="The leaded glass<br /><em>has been here</em><br />since 1916."
+        body="The leaded glass sidelights flanking the front door. The over-door fanlight above it. Both original to 1916, both untouched. Every interior door in the house still carries its original brass key plate -- and the key fits. These details were preserved not because restoration required it, but because whoever was in charge understood that some things cannot be replicated. They can only be inherited."
+        imgSrc={IMG_FOYER}
+      />
+
+      {/* LOCATION */}
+      <div style={{ padding: 'clamp(5rem, 10vw, 9rem) clamp(2rem, 10vw, 14rem)', maxWidth: 840, margin: '0 auto', textAlign: 'center' }}>
+        <FadeIn>
+          <span style={eyebrow}>The Location</span>
+          <h2 style={{ fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', color: '#fff', lineHeight: 1.2, margin: '0 0 2rem' }}>
+            Pinehurst ETJ.<br /><em>Moore County tax rate.</em><br />All the prestige.
+          </h2>
+          <div style={divider} />
+        </FadeIn>
+        <FadeIn delay={0.15}>
+          <p style={{ color: CREAM, fontSize: '1.05rem', lineHeight: 2.1, opacity: 0.85, margin: '2.2rem 0' }}>
+            200 Hollycrest Drive sits within the Pinehurst ETJ -- the extraterritorial jurisdiction. The mailing address is Pinehurst. The property tax rate is Moore County. That pairing is rare, and for a buyer who knows the area, it is not a small thing.
+          </p>
+          <p style={{ color: CREAM, fontSize: '1.05rem', lineHeight: 2.1, opacity: 0.85, margin: 0 }}>
+            Two miles from the village. The Pinehurst Harness Track within walking distance. The Resort, the courses, the restaurants -- close enough to use daily, far enough that the driveway still feels like an arrival. County water and sewer to the street. A private in-ground well serves the irrigation and pool. 250-gallon underground propane. This house has been maintained as if someone intended to stay.
+          </p>
+        </FadeIn>
+      </div>
+
+      {/* MATTERPORT */}
+      <div style={{ background: '#060606', padding: 'clamp(3rem, 6vw, 5rem) clamp(2rem, 6vw, 8rem)' }}>
+        <FadeIn>
+          <span style={{ ...eyebrow, textAlign: 'center', display: 'block', marginBottom: '2rem' }}>Tour the Estate</span>
+          <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.07)' }}>
+            <iframe
+              src="https://my.matterport.com/show/?m=mfwyqT5Btwx&brand=0&mls=1&"
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0 }}
+              allowFullScreen allow="xr-spatial-tracking"
+              title="Garren Hill Virtual Tour"
+            />
+          </div>
+        </FadeIn>
+      </div>
+
+      {/* GARDEN FULL BLEED */}
+      <FullBleed imgSrc={IMG_GARDEN} label="The Grounds -- Long-leaf pines. Camellias. Sycamores planted in 1959." height="50vw" maxH="600px" />
+
+      {/* CLOSING QUOTE */}
+      <PullQuote
+        quote="This house needs three or four kids running around."
+        attribution="The current steward -- after 25 years of preservation"
+      />
+
+      {/* CLOSING CTA */}
+      <div style={{ padding: 'clamp(5rem, 10vw, 8rem) clamp(2rem, 10vw, 14rem)', textAlign: 'center', background: DARK }}>
+        <FadeIn>
+          <h2 style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontWeight: 400, fontSize: 'clamp(2.5rem, 5vw, 5rem)', color: '#fff', margin: '0 0 2.5rem', lineHeight: 1.08 }}>
+            Garren Hill is ready.
+          </h2>
+          <div style={divider} />
+          <p style={{ color: 'rgba(255,255,255,0.38)', fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.28em', textTransform: 'uppercase', margin: '2.5rem 0 3rem' }}>
+            200 Hollycrest Drive -- Pinehurst, NC 28374 -- $4,250,000
+          </p>
+          <button onClick={() => setInquiryOpen(true)} style={{
+            padding: '1.1rem 3.2rem',
+            background: 'rgba(201,169,110,0.15)',
+            border: `1px solid ${GOLD}`,
+            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1)',
+            color: GOLD, fontFamily: 'sans-serif', fontSize: '10px',
+            letterSpacing: '0.32em', textTransform: 'uppercase',
+            cursor: 'pointer', borderRadius: 1,
+          }}>
+            Begin a Conversation
+          </button>
+        </FadeIn>
+      </div>
+
+      {/* FOOTER */}
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '1.8rem 4vw', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#050505' }}>
+        <span style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '0.88rem', color: 'rgba(255,255,255,0.25)' }}>Garren Hill</span>
+        <span style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.18)' }}>Rachel Hernandez -- Listing Agent</span>
+      </div>
+
+      {/* INQUIRY MODAL */}
+      {inquiryOpen && (
+        <div onClick={() => setInquiryOpen(false)} style={{
+          position: 'fixed', inset: 0, zIndex: 500,
+          background: 'rgba(0,0,0,0.88)', backdropFilter: 'blur(10px)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem',
+        }}>
+          <div onClick={(e) => e.stopPropagation()} style={{
+            position: 'relative',
+            background: '#0f0f0f', border: '1px solid rgba(255,255,255,0.1)',
+            maxWidth: 480, width: '100%', padding: 'clamp(2rem, 5vw, 3.5rem)',
+          }}>
+            {submitted ? (
+              <div style={{ textAlign: 'center', padding: '2rem 0' }}>
+                <p style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1.5rem', color: '#fff', margin: '0 0 1rem' }}>Thank you.</p>
+                <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.95rem', margin: 0, lineHeight: 1.7 }}>We will be in touch shortly.</p>
+              </div>
+            ) : (
+              <>
+                <span style={{ ...eyebrow, marginBottom: '0.4rem' }}>Inquire</span>
+                <h3 style={{ fontFamily: 'Georgia, serif', fontWeight: 400, fontSize: '1.5rem', color: '#fff', margin: '0 0 2rem' }}>Garren Hill</h3>
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  {[
+                    { key: 'name', placeholder: 'Full Name', type: 'text', required: true },
+                    { key: 'email', placeholder: 'Email Address', type: 'email', required: true },
+                    { key: 'phone', placeholder: 'Phone (optional)', type: 'tel', required: false },
+                  ].map(f => (
+                    <input key={f.key} type={f.type} placeholder={f.placeholder} required={f.required}
+                      value={form[f.key]} onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
+                      style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', padding: '0.85rem 1rem', fontFamily: 'Georgia, serif', fontSize: '0.95rem', outline: 'none', borderRadius: 1, width: '100%', boxSizing: 'border-box' }}
+                    />
+                  ))}
+                  <textarea placeholder="Message (optional)" rows={4}
+                    value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', padding: '0.85rem 1rem', fontFamily: 'Georgia, serif', fontSize: '0.95rem', outline: 'none', resize: 'vertical', borderRadius: 1, width: '100%', boxSizing: 'border-box' }}
+                  />
+                  <button type="submit" style={{
+                    padding: '1rem', background: GOLD, border: 'none',
+                    color: '#0a0a0a', fontFamily: 'sans-serif', fontSize: '10px',
+                    letterSpacing: '0.28em', textTransform: 'uppercase',
+                    cursor: 'pointer', marginTop: '0.5rem', borderRadius: 1,
+                  }}>
+                    Send Inquiry
+                  </button>
+                </form>
+              </>
+            )}
+            <button onClick={() => setInquiryOpen(false)} style={{ position: 'absolute', top: '1.2rem', right: '1.2rem', background: 'none', border: 'none', color: 'rgba(255,255,255,0.35)', fontSize: '1.1rem', cursor: 'pointer', lineHeight: 1 }}>x</button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App));
+
+</script>
+</body>
+</html>
