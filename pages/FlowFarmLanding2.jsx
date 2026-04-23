@@ -13,7 +13,10 @@ const GOLD = '#C9A96E';
 const CREAM = '#F5F0E8';
 const DARK = '#0a0a0a';
 
-const VIDEO = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/5d06a3b0e25b768ac6dc681dbf4f5b81/manifest/video.m3u8';
+// LOCKED VIDEO IDs -- DO NOT CHANGE WITHOUT RACHEL APPROVAL
+const VIDEO_BG_ID = '5d06a3b0e25b768ac6dc681dbf4f5b81'; // forest loop (hero bg)
+const VIDEO_TOUR_ID = 'de1885d159ae310508174f03f775c797'; // property tour (Enter Flow Farm)
+const CF_STREAM = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com';
 const MATTERPORT = 'https://my.matterport.com/show/?m=xZRfSiQPuQ8';
 
 const B = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/';
@@ -74,10 +77,14 @@ function useFade() {
 
 function useCounter(target, duration, delay, decimals) {
   const [count, setCount] = React.useState(0);
-  const done = React.useRef(false);
+  const started = React.useRef(false);
+  const timers = React.useRef([]);
+
   React.useEffect(() => {
-    if (done.current) return;
-    done.current = true;
+    // Only ever run once per mount -- memo keeps this stable
+    if (started.current) return;
+    started.current = true;
+
     const _target = target;
     const _duration = duration || 1600;
     const _delay = delay != null ? delay : 800;
@@ -85,18 +92,25 @@ function useCounter(target, duration, delay, decimals) {
     const steps = 60;
     const stepTime = _duration / steps;
     let current = 0;
-    const run = () => {
-      const t = setTimeout(() => {
-        current++;
-        const progress = current / steps;
-        const ease = 1 - Math.pow(1 - progress, 3);
-        setCount(parseFloat((ease * _target).toFixed(_decimals)));
-        if (current < steps) run();
-      }, stepTime);
+
+    const tick = () => {
+      current++;
+      const progress = current / steps;
+      const ease = 1 - Math.pow(1 - progress, 3);
+      setCount(parseFloat((ease * _target).toFixed(_decimals)));
+      if (current < steps) {
+        const t = setTimeout(tick, stepTime);
+        timers.current.push(t);
+      }
     };
-    setTimeout(run, _delay);
+
+    const t0 = setTimeout(tick, _delay);
+    timers.current.push(t0);
+
+    return () => { timers.current.forEach(clearTimeout); };
   }, []);
-  return [count, React.useRef(null)];
+
+  return [count];
 }
 
 
@@ -147,10 +161,10 @@ function GoldLine() {
 // HERO
 // ============================================================
 const HeroStat = React.memo(function HeroStat({ value, prefix, suffix, decimals, label1, label2, duration, delay, mob }) {
-  const [count, ref] = useCounter(value, duration || 1600, delay || 600, decimals || 0);
+  const [count] = useCounter(value, duration || 1600, delay || 600, decimals || 0);
   const display = (prefix || '') + (decimals ? count.toFixed(decimals) : Math.round(count).toLocaleString()) + (suffix || '');
   return (
-    <div ref={ref} style={{ textAlign: 'left' }}>
+    <div style={{ textAlign: 'left' }}>
       <div style={{
         color: '#fff',
         fontFamily: "'Cormorant Garamond', Georgia, serif",
@@ -199,8 +213,43 @@ const HeroStats = React.memo(function HeroStats({ mob }) {
       ))}
     </div>
   );
-}
+});
 
+
+// ============================================================
+// ROTATE NUDGE -- mobile portrait only, fades out after 3s
+// ============================================================
+function RotateNudge() {
+  const [visible, setVisible] = React.useState(true);
+  React.useEffect(() => {
+    const t = setTimeout(() => setVisible(false), 3000);
+    return () => clearTimeout(t);
+  }, []);
+  // Only show on portrait mobile
+  const isPortrait = window.innerHeight > window.innerWidth;
+  const isMobile = window.innerWidth < 768;
+  if (!isPortrait || !isMobile) return null;
+  return (
+    <div style={{
+      position: 'fixed', bottom: '5rem', left: '50%',
+      transform: 'translateX(-50%)',
+      display: 'flex', alignItems: 'center', gap: '0.6rem',
+      opacity: visible ? 0.7 : 0,
+      transition: 'opacity 1s ease',
+      pointerEvents: 'none',
+      zIndex: 10002,
+    }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="5" y="2" width="14" height="20" rx="2" ry="2" transform="rotate(90 12 12)" />
+        <path d="M17 12l-5-5-5 5" />
+      </svg>
+      <span style={{
+        color: '#C9A96E', fontFamily: 'sans-serif', fontSize: '9px',
+        letterSpacing: '0.25em', textTransform: 'uppercase',
+      }}>Rotate for full view</span>
+    </div>
+  );
+}
 
 // ============================================================
 // VIDEO LIGHTBOX
@@ -209,10 +258,19 @@ function VideoLightbox({ onClose }) {
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', onKey);
+    // Lock scroll AND save position so closing doesn't jump
+    const scrollY = window.scrollY;
     document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
     return () => {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollY);
     };
   }, [onClose]);
 
@@ -225,32 +283,41 @@ function VideoLightbox({ onClose }) {
       animation: 'fadeIn 0.3s ease',
     }}>
       <style>{`@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }`}</style>
+      {/* Video box -- natural 16/9 on both mobile and desktop. Mobile: fits width, letterboxes naturally with dark above/below */}
       <div onClick={e => e.stopPropagation()} style={{
-        position: 'relative', width: '90vw', maxWidth: '1100px',
-        aspectRatio: '16/9', borderRadius: '4px', overflow: 'hidden',
+        position: 'relative',
+        width: '95vw',
+        maxWidth: '1100px',
+        aspectRatio: '16/9',
+        borderRadius: '4px',
+        overflow: 'hidden',
         boxShadow: '0 40px 120px rgba(0,0,0,0.8)',
       }}>
-        <video
-          src="https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/5d06a3b0e25b768ac6dc681dbf4f5b81/manifest/video.m3u8"
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', objectFit: 'cover' }}
-          autoPlay
-          controls
-          playsInline
+        <iframe
+          src="https://iframe.cloudflarestream.com/de1885d159ae310508174f03f775c797?autoplay=true&controls=true&preload=auto"
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none' }}
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          title="Flow Farm property tour"
         />
       </div>
+
+      {/* Rotate nudge -- mobile portrait only, fades out after 3s */}
+      <RotateNudge />
+
       <button onClick={onClose} style={{
-        position: 'fixed', top: '1.5rem', right: '1.5rem',
-        background: 'none', border: '1px solid rgba(255,255,255,0.3)',
+        position: 'fixed', top: '1.2rem', right: '1.2rem',
+        background: 'rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.25)',
         color: '#fff', fontFamily: 'sans-serif', fontSize: '11px',
         letterSpacing: '0.2em', textTransform: 'uppercase',
         padding: '0.5rem 1.2rem', borderRadius: '2rem', cursor: 'pointer',
-        opacity: 0.7,
+        zIndex: 10001,
       }}>
         Close
       </button>
     </div>
   );
-});
+}
 
 function Hero() {
   const w = useW();
@@ -286,10 +353,25 @@ function Hero() {
 
   return (
     <section style={{ position: 'relative', height: '100vh', minHeight: mob ? 600 : 700, overflow: 'hidden', background: '#000' }}>
-      <video autoPlay loop muted playsInline
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 1, opacity: 0.80 }}>
-        <source src={VIDEO} type="video/mp4" />
-      </video>
+      {/* BG video -- cover technique: fills viewport at any aspect ratio, no black bars */}
+      {/* Mobile portrait: focal point biased to 42% top to frame property not sky */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 1, overflow: 'hidden', opacity: 0.80 }}>
+        <iframe
+          src={`${CF_STREAM}/${VIDEO_BG_ID}/iframe?autoplay=true&loop=true&muted=true&controls=false&preload=auto`}
+          style={{
+            position: 'absolute',
+            top: mob ? '42%' : '48%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 'max(100%, 177.78vh)',
+            height: 'max(100%, 56.25vw)',
+            border: 'none',
+            pointerEvents: 'none',
+          }}
+          allow="autoplay; fullscreen; picture-in-picture"
+          title="Flow Farm background"
+        />
+      </div>
       <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.5) 100%)' }} />
       <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(to bottom, rgba(0,0,0,0.22) 0%, transparent 30%, transparent 50%, rgba(0,0,0,0.94) 100%)' }} />
 
@@ -312,26 +394,27 @@ function Hero() {
           107 Linden Trail&nbsp;&nbsp;Aberdeen, NC 28315&nbsp;&nbsp;<span style={{ color: 'rgba(201,169,110,0.5)' }}>|</span>&nbsp;&nbsp;Pinehurst ETJ
         </p>
       </div>
-      {/* Center block — headline + subhead + stats + button */}
+      {/* Center block -- headline + subhead + stats + button */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: mob ? '0 6vw' : '0 10vw', maxWidth: '100%' }}>
         <div style={{ ...show(2), width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <h1 style={{
             color: '#fff', fontFamily: 'Georgia, serif', fontWeight: 400,
-            fontSize: mob ? '2.3rem' : w < 1024 ? '4.6rem' : '6.2rem',
+            fontSize: mob ? '2.3rem' : w < 1024 ? '4.2rem' : 'clamp(4rem, 5.5vw, 5.6rem)',
             lineHeight: 1.06, margin: 0, letterSpacing: '-0.02em',
             textShadow: '0 4px 80px rgba(0,0,0,0.6)',
           }}>
             Agritourism <em>Established.</em><br />Legacy Ready.
           </h1>
         </div>
-        <div style={{ ...show(3), marginTop: mob ? '1rem' : '2.2rem', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div style={{ ...show(3), marginTop: mob ? '1rem' : '1.4rem', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          {/* !! LOCKED SUBHEAD -- DO NOT CHANGE WITHOUT RACHEL APPROVAL !! */}
           <p style={{
             color: '#F5F0E8', fontFamily: 'Georgia, serif', fontStyle: 'italic',
-            fontSize: mob ? '0.82rem' : '1.25rem', margin: mob ? '0 0 1.2rem' : '0 0 2rem',
+            fontSize: mob ? '0.82rem' : '1.1rem', margin: mob ? '0 0 1.2rem' : '0 0 1.2rem',
             letterSpacing: '0.01em', lineHeight: 1.7,
             textShadow: '0 2px 20px rgba(0,0,0,0.5)',
           }}>
-            Build a compound. Keep the farm. Three miles from Pinehurst.
+            The farm unlocks everything. Three miles from Pinehurst.
           </p>
           <HeroStats mob={mob} />
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: mob ? '0.75rem' : '1rem', justifyContent: 'center', alignItems: 'center', marginTop: mob ? '1rem' : '0' }}>
@@ -413,7 +496,7 @@ function Manifesto() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: mob ? '2rem' : '2.8rem',
+        gap: mob ? '2rem' : '2rem',
       }}>
         <p style={{
           fontFamily: 'sans-serif',
@@ -429,7 +512,7 @@ function Manifesto() {
           fontFamily: 'Georgia, serif',
           fontWeight: 400,
           fontStyle: 'italic',
-          fontSize: mob ? '2rem' : w < 1024 ? '2.8rem' : 'clamp(2.6rem, 4vw, 3.6rem)',
+          fontSize: mob ? '2rem' : w < 1024 ? '2.4rem' : 'clamp(2rem, 3.2vw, 2.8rem)',
           lineHeight: 1.28,
           margin: 0,
           letterSpacing: '-0.018em',
@@ -728,12 +811,12 @@ function ForestIntro() {
 
 
 const MAP_PINS = [
-  { id: 'main', x: 48, y: 42, label: 'Main Residence', sub: '8,519 SF -- 6 bed / 7 bath', icon: '🏛' },
-  { id: 'farm', x: 28, y: 62, label: 'Veganic Farm', sub: '3-acre certified veganic operation', icon: '🌿' },
-  { id: 'tunnel', x: 22, y: 55, label: 'High Tunnel', sub: '96x36 ft climate-controlled growing', icon: '🌱' },
-  { id: 'workshop', x: 35, y: 70, label: 'Farm Workshop', sub: '30x40 ft with full equipment storage', icon: '🔧' },
-  { id: 'guest', x: 58, y: 55, label: 'Guest Suite', sub: 'Private entrance -- 200 amp service', icon: '🏠' },
-  { id: 'solar', x: 65, y: 38, label: 'Solar Array', sub: '14.3kW -- 61 Samsung panels', icon: '☀️' },
+  { id: 'main', x: 48, y: 42, label: 'Main Residence', sub: '8,519 SF -- 6 bed / 7 bath', icon: '[H]' },
+  { id: 'farm', x: 28, y: 62, label: 'Veganic Farm', sub: '3-acre certified veganic operation', icon: '[F]' },
+  { id: 'tunnel', x: 22, y: 55, label: 'High Tunnel', sub: '96x36 ft climate-controlled growing', icon: '[T]' },
+  { id: 'workshop', x: 35, y: 70, label: 'Farm Workshop', sub: '30x40 ft with full equipment storage', icon: '[W]' },
+  { id: 'guest', x: 58, y: 55, label: 'Guest Suite', sub: 'Private entrance -- 200 amp service', icon: '[G]' },
+  { id: 'solar', x: 65, y: 38, label: 'Solar Array', sub: '14.3kW -- 61 Samsung panels', icon: '[S]' },
 ];
 
 function PropertyMap() {
