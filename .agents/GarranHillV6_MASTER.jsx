@@ -40,7 +40,7 @@ const ownExt = f => own(f, EXT);
 const I = {
   portico:     ext('fa8cec793_200HollycrestDrive-191.jpg'),
   entry:       pro('082d9b5c7_200Holycrest-1182.jpg'),
-  threshold:   pro('a9228a85d_200Holycrest-1179.jpg'),
+  threshold:   pro('7abb71910_200Holycrest-1179.jpg'),
   living:      pro('341c7343c_200Holycrest-1203.jpg'),
   wing:        own('0b06bdce9_Winglivingroom.jpg'),
   fireplace:   pro('5f5f87315_200HollycrestDrive-65fire.jpg'),
