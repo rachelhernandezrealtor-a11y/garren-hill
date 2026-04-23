@@ -5,6 +5,30 @@ This is the living source of truth for all design decisions, copy rules, aesthet
 
 ---
 
+## DEPLOYMENT LAW -- NON-NEGOTIABLE
+
+### Base44 is DEAD for landing pages. It does not exist.
+
+The ONLY valid deployment pipeline for both properties is:
+1. Edit master JSX locally (`/app/.agents/FlowFarmLanding2_MASTER.jsx` or `/app/.agents/GarranHillV2_MASTER.jsx`)
+2. Build standalone HTML (run build script)
+3. Push directly to GitHub
+4. Cloudflare Pages deploys automatically
+
+**NEVER use `manage_app` publish for landing pages.**
+**NEVER use the Base44 editor for landing pages.**
+**NEVER show Rachel a Base44 preview URL for landing pages.**
+
+The live URLs are:
+- Flow Farm: https://flowfarmforest.com (Cloudflare)
+- Garran Hill: https://garren-hill.pages.dev (Cloudflare)
+
+GitHub repos:
+- Flow Farm: rachelhernandezrealtor-a11y/flowfarm-landing
+- Garran Hill: rachelhernandezrealtor-a11y/garren-hill
+
+---
+
 ## THE MASTER TEMPLATE LAW
 
 Both properties share ONE template. The architecture is identical. Only images, copy, and typography expression change per property. This is non-negotiable.
@@ -37,31 +61,31 @@ Both properties share ONE template. The architecture is identical. Only images, 
 - Headlines: mixed upright + italic, left-aligned on hero
 
 ### Garran Hill
-- Primary display: `'Cormorant Garamond', Georgia, serif` — Cormorant IS the primary face
+- Primary display: `'Cormorant Garamond', Georgia, serif` -- Cormorant IS the primary face
 - Body: Georgia, serif
 - Stats/numbers: `'Cormorant Garamond', Georgia, serif` weight 300
 - Vibe: 18th century Georgian formality. Older, grander, more restrained.
 - Headlines: centered on hero, mixed upright + italic, declarative
-- Eyebrows: same sans-serif, same gold, same spacing — identical to FF
+- Eyebrows: same sans-serif, same gold, same spacing -- identical to FF
 
 ---
 
 ## BRAND IDENTITY
 
-### Color Palette (BOTH PROPERTIES — DO NOT CHANGE)
-- DARK: `#0a0a0a` — near-black background
-- GOLD: `#C9A96E` — accent, eyebrows, dividers, CTA
-- CREAM: `#F5F0E8` — body text on dark backgrounds
-- WHITE: `#ffffff` — headlines, pull quotes
-- GLASS: `rgba(255,255,255,0.12)` — frosted card fill
-- GLASS BORDER: `rgba(255,255,255,0.28)` — frosted card border
+### Color Palette (BOTH PROPERTIES -- DO NOT CHANGE)
+- DARK: `#0a0a0a` -- near-black background
+- GOLD: `#C9A96E` -- accent, eyebrows, dividers, CTA
+- CREAM: `#F5F0E8` -- body text on dark backgrounds
+- WHITE: `#ffffff` -- headlines, pull quotes
+- GLASS: `rgba(255,255,255,0.12)` -- frosted card fill
+- GLASS BORDER: `rgba(255,255,255,0.28)` -- frosted card border
 
 ### Vibe
 - Editorial. Aman resort aesthetic as the north star.
 - NOT dark and moody. Vibrant, crystal clear, floating on glass.
 - Full-bleed imagery. Minimal UI chrome.
 - Let the property speak. Copy is spare and deliberate.
-- Words float directly on images — NO glass cards behind text.
+- Words float directly on images -- NO glass cards behind text.
 
 ---
 
@@ -138,7 +162,7 @@ Wrap ALL images through this.
 - Aerial establishing: `2ca329bbf_flowfarmmasterphotoswebsite.jpg`
 
 ### Garran Hill Key Images
-- Hero (portico front): `ac89533df_gh_200HollycrestDrive-1.jpg` (current app BASE)
+- Hero (portico arrival): `fa8cec793_200HollycrestDrive-191.jpg`
 - Entrance hall: `082d9b5c7_200Holycrest-1182.jpg`
 - Living room wide: `341c7343c_200Holycrest-1203.jpg`
 - Fireplace lit: `5f5f87315_200HollycrestDrive-65fire.jpg`
@@ -184,6 +208,7 @@ Wrap ALL images through this.
 - "That someone is you" -- REMOVED, too salesy
 - Authoritative, restrained tone throughout
 - History is proof, not content -- every detail makes buyer feel chosen
+- Lead with the ESTATE -- architecture first, history as backdrop
 
 ### Pull Quote Format (BOTH PROPERTIES)
 - Full-bleed dark or image section
@@ -242,14 +267,16 @@ Wrap ALL images through this.
 ### File Management
 - Flow Farm source: `/app/.agents/FlowFarmLanding2_MASTER.jsx`
 - Garran Hill source: `/app/.agents/GarranHillV2_MASTER.jsx`
-- GH live file: `/tmp/garren-hill-push/index.html` (standalone HTML)
-- FF live file: Vite build via `/app/flowfarm-landing/` repo
+- FF live: push via flowfarm push script to GitHub -> Cloudflare
+- GH live: build standalone HTML, push to garren-hill GitHub -> Cloudflare
 - Update master backup after EVERY approved change
-- NEVER use Base44 editor chat panel
+- NEVER touch Base44 publish for landing pages
 
 ### Verification Before Every Push
-- FF: run `/app/.agents/skills/push_flowfarm.sh`
-- GH: check non-ASCII, confirm hero headline locked, confirm image URLs resolve
+- Check non-ASCII (must be zero)
+- Confirm hero image/video URL is correct
+- Confirm locked headlines are present
+- Push to GitHub only -- Cloudflare handles the rest
 
 ---
 
@@ -280,12 +307,9 @@ Wrap ALL images through this.
 - [ ] Manifesto section -- text floating on forest canopy bg
 
 ### Garran Hill
-- [ ] Refine all sections below hero to match new template laws
-- [ ] Cormorant Garamond as primary display face throughout
-- [ ] Blue Fox / Betty Dumaine section
-- [ ] Westminster Abbey pull quote
-- [ ] Ann's quote ending
-- [ ] Upload property video to Cloudflare Stream
+- [ ] Weave Georgian architecture descriptions -- estate first, history as backdrop
+- [ ] Get arrival video when reshoot happens
+- [ ] Push custom domain when ready
 
 ---
 
