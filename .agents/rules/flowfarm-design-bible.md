@@ -237,6 +237,7 @@ Wrap ALL images through this.
 - Use `--` not em-dash in strings
 - ASCII quotes only -- no curly quotes in code
 - Check `ord(c) > 127` after every Python file manipulation
+- SPELLING LAW: The property is always **Garren Hill** -- never "Garran Hill" (that was the original 1913 name, now corrected). Check every file.
 
 ### File Management
 - Flow Farm source: `/app/.agents/FlowFarmLanding2_MASTER.jsx`
