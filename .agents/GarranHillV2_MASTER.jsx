@@ -50,7 +50,7 @@ const IMG_WHP = cdnExt(GH2 + '2e864596c_WalterHinesPage.jpeg');  /* public domai
 const IMG_CEDAR_HALL = cdnInt(GH2 + 'e226bc2f4_200Holycrest-1570.jpg'); /* hallway to cedar closet, angled ceiling, family portraits */
 
 /* ---- HERO VIDEO ---- */
-const GH_VIDEO_URL = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/c69081003d2f865c41687d0afdbc6aa4/manifest/video.m3u8';
+const GH_VIDEO_URL = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/3ca89e91573ba05f59e829fdacad9c2e/manifest/video.m3u8';
 
 /* ---- CREST ---- */
 const CREST = 'https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal,f_png,fl_preserve_transparency/garranhill_crest_v2.png';
