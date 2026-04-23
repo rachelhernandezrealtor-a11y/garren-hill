@@ -828,7 +828,7 @@ export default function GarranHillV6() {
       <CinematicReveal
         eyebrow="The Dining Room"
         headline="The shell cabinets were already there.<br/><em style='font-weight:300'>They are still there now.</em>"
-        Fireplace with gas logs. Formal proportions that do not ask for anything from you. The room does the work."
+        body="Fireplace with gas logs. Formal proportions that do not ask for anything from you. The room does the work."
         img={I.dining}
         photos={G.dining} onOpen={openLB}
       />
