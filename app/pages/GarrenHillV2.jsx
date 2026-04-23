@@ -291,7 +291,7 @@ function Hero({ onInquire }) {
 function StatBar() {
   const S = [
     { n: '1916', l: 'Year Built' }, { n: '6,072', l: 'Square Feet' }, { n: '4.15', l: 'Acres' },
-    { n: '4 / 4', l: 'Beds / Baths' }, { n: '2', l: 'Powder Rooms' }, { n: '7', l: 'Fireplaces' }, { n: '$4,250,000', l: 'Asking Price' },
+    { n: '4', l: 'Bedrooms' }, { n: '4 + 2', l: 'Baths & Powder Rooms' }, { n: '7', l: 'Fireplaces' }, { n: '$4,250,000', l: 'Asking Price' },
   ];
   return (
     <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10, background: 'rgba(4,4,4,0.82)', backdropFilter: 'blur(16px)', borderTop: '1px solid rgba(201,169,110,0.1)', display: 'flex' }}>
