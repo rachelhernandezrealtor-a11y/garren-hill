@@ -336,12 +336,14 @@ function App() {
           </span>
         </div>
 
-        {/* HERO COPY -- centered, anchored lower third */}
+        {/* HERO COPY -- Vogue left-aligned, house owns the right */}
         <div style={{
           position: 'absolute', inset: 0, zIndex: 5,
           display: 'flex', flexDirection: 'column',
-          justifyContent: 'flex-end', alignItems: 'center', textAlign: 'center',
-          padding: 'clamp(3rem, 6vw, 5rem) clamp(2rem, 8vw, 10rem) clamp(8.5rem, 14vh, 12rem)',
+          justifyContent: 'center', alignItems: 'flex-start', textAlign: 'left',
+          padding: 'clamp(3rem, 6vw, 5rem) clamp(2rem, 8vw, 10rem)',
+          paddingLeft: 'clamp(3rem, 7vw, 8rem)',
+          maxWidth: '55%',
         }}>
           <FadeIn delay={0.1}>
             {/* GARREN HILL -- small elegant eyebrow, spaced */}
@@ -361,7 +363,7 @@ function App() {
             <div style={{
               width: 'clamp(60px, 8vw, 100px)', height: 1,
               background: GOLD, opacity: 0.7,
-              margin: '0 auto 1.6rem',
+              margin: '0 0 1.6rem',
             }} />
           </FadeIn>
           <FadeIn delay={0.25}>
@@ -380,14 +382,14 @@ function App() {
               fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic',
               fontSize: 'clamp(1rem, 1.5vw, 1.3rem)',
               color: 'rgba(245,240,232,0.78)', lineHeight: 1.75,
-              margin: '0 0 2.4rem', maxWidth: 520,
+              margin: '0 0 2.4rem', maxWidth: 420,
               fontWeight: 300,
             }}>
               Neo-Georgian. Walter Hines Page. 110 years of remarkable stewardship.
             </p>
           </FadeIn>
           <FadeIn delay={0.5}>
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
               <button onClick={() => setInquiryOpen(true)} style={{
                 padding: '0.9rem 2.6rem',
                 background: 'rgba(201,169,110,0.15)',
