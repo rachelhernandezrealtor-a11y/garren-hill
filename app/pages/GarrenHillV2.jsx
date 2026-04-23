@@ -295,6 +295,68 @@ function Hero({ onInquire }) {
   );
 }
 
+function CrestDivider() {
+  return (
+    <section style={{
+      position: 'relative',
+      background: '#060606',
+      padding: 'clamp(5rem,10vw,8rem) clamp(2rem,10vw,14rem)',
+      textAlign: 'center',
+      overflow: 'hidden',
+    }}>
+      {/* Large faded crest as atmospheric underlay */}
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 'clamp(320px,45vw,560px)',
+        height: 'clamp(320px,45vw,560px)',
+        backgroundImage: `url(${CREST_URL})`,
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        opacity: 0.07,
+        filter: 'sepia(1) saturate(2)',
+        zIndex: 0,
+      }} />
+      {/* Text floats over the crest */}
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <FadeIn>
+          <img
+            src={CREST_URL}
+            alt="Garran Hill -- VHF crest"
+            style={{
+              width: 'clamp(56px,7vw,80px)',
+              opacity: 0.55,
+              filter: 'drop-shadow(0 2px 10px rgba(201,169,110,0.22))',
+              marginBottom: '2rem',
+              display: 'block',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+            }}
+          />
+          <div style={{ width: 36, height: 1, background: GOLD, opacity: 0.28, margin: '0 auto 2.2rem' }} />
+          <p style={{
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontStyle: 'italic',
+            fontWeight: 300,
+            fontSize: 'clamp(1.3rem,2vw,2rem)',
+            color: 'rgba(255,255,255,0.72)',
+            lineHeight: 1.6,
+            maxWidth: 600,
+            margin: '0 auto 1.6rem',
+            letterSpacing: '0.01em',
+          }}>
+            Built in 1916. Recognized by the Village of Historical Foundations.<br />Still the finest house in Moore County.
+          </p>
+          <div style={{ width: 36, height: 1, background: GOLD, opacity: 0.28, margin: '0 auto' }} />
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
 function Manifesto() {
   return (
     <section style={{ background: '#060606', padding: 'clamp(5rem,10vw,9rem) clamp(2rem,10vw,14rem)', textAlign: 'center' }}>
@@ -595,7 +657,25 @@ function Dusk2Section() {
         transform: 'scale(1.06)',
         zIndex: 0,
       }} />
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(6,6,6,0.35) 0%, rgba(6,6,6,0.1) 50%, rgba(6,6,6,0.5) 100%)', zIndex: 1 }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(6,6,6,0.3) 0%, rgba(6,6,6,0.08) 45%, rgba(6,6,6,0.55) 100%)', zIndex: 1 }} />
+      <div style={{ position: 'absolute', bottom: '3.5rem', left: 0, right: 0, textAlign: 'center', zIndex: 2, padding: '0 2rem' }}>
+        <FadeIn>
+          <p style={{
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontStyle: 'italic',
+            fontWeight: 300,
+            fontSize: 'clamp(1.4rem,2.2vw,2.2rem)',
+            color: 'rgba(255,255,255,0.88)',
+            letterSpacing: '0.01em',
+            lineHeight: 1.5,
+            margin: '0 auto',
+            maxWidth: 640,
+            textShadow: '0 2px 24px rgba(0,0,0,0.6)',
+          }}>
+            The world outside these gates<br />does not exist here.
+          </p>
+        </FadeIn>
+      </div>
     </section>
   );
 }
@@ -728,6 +808,7 @@ export default function GarrenHillV2() {
     <div style={{ background: DARK, color: '#fff', fontFamily: 'Georgia, serif', margin: 0, padding: 0 }}>
       <Hero onInquire={() => setInquireOpen(true)} />
       <Manifesto />
+      <CrestDivider />
       <Architecture />
       <WalterPage />
       <TheSalon />
