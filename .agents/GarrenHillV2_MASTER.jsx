@@ -154,7 +154,7 @@ function StatBar() {
     }}>
       {[
         { value: '6,700', label: 'Square Feet' },
-        { value: '4.15', label: 'Acres' },
+        { value: '4.25', label: 'Acres' },
         { value: '5 / 5', label: 'Beds / Baths' },
         { value: '7', label: 'Fireplaces' },
         { value: '1916', label: 'Year Built' },
@@ -411,7 +411,7 @@ function ThePool() {
   return (
     <CinematicReveal
       eyebrowText="The Grounds"
-      headline="4.15 acres. Pool. Two tennis courts. A camellia garden."
+      headline="4.25 acres. Pool. Two tennis courts. A camellia garden."
       body="Three American sycamores planted by Betty Dumaine in 1959. Grandiflora magnolias. Dogwoods, holly, azaleas, iris. Long-leaf pines. A brick terrace that seats a crowd. The children's playhouse -- The Wee Cottage -- still stands."
       imgSrc={IMG_POOL}
       position="center"
