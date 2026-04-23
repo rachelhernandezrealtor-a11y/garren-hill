@@ -44,7 +44,12 @@ const I = {
   living:      pro('341c7343c_200Holycrest-1203.jpg'),
   wing:        own('0b06bdce9_Winglivingroom.jpg'),
   fireplace:   pro('5f5f87315_200HollycrestDrive-65fire.jpg'),
-  fireplace2:  pro('e07e07f86_200HollycrestDrive-86.jpg'),
+  fireplace2:  pro('194aa03be_200HollycrestDrive-94.jpg'),
+  fp3:         pro('cee09ae5f_200HollycrestDrive-65.jpg'),
+  fp4:         pro('c5aaa4c7d_200HollycrestDrive-110.jpg'),
+  fp5:         pro('b5094de64_200HollycrestDrive-107.jpg'),
+  fp6:         pro('d726a6755_200HollycrestDrive-119.jpg'),
+  fp7:         pro('974dc6da4_200HollycrestDrive-66.jpg'),
   sitting:     own('07dd22757_SITTINGROOMGUESTSUITE.jpg'),
   dining:      pro('e926f8fdd_200Holycrest-1296.jpg'),
   dining2:     pro('1b24b019d_HHDRwshellcabinetsApr96.jpg'),
@@ -726,6 +731,65 @@ export default function GarranHillV6() {
         img={I.bath}
         photos={G.primary} onOpen={openLB} dark
       />
+
+      {/* 08b SEVEN FIREPLACES */}
+      <section style={{ background: '#060606', padding: 'clamp(5rem,10vw,8rem) clamp(2rem,8vw,10rem)' }}>
+        <FadeIn>
+          <div style={{ marginBottom: 'clamp(3rem,6vw,5rem)' }}>
+            <span style={EYE()}>The Fireplaces</span>
+            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.2rem,4vw,4.8rem)', color: '#fff', lineHeight: 1.06, margin: '1.2rem 0 1.8rem', letterSpacing: '-0.015em' }}>
+              Seven fireplaces.<br /><em style={{ fontWeight: 300 }}>Six of them light with one switch.</em>
+            </h2>
+            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.95rem,1.2vw,1.08rem)', color: CREAM, opacity: 0.68, lineHeight: 2.2, maxWidth: 640 }}>
+              Each surround is original to 1916 -- carved wood, marble, painted plaster. Each room was designed around its fireplace. Six are fitted with propane gas logs and wall-switch timers. One tap. The house shifts.
+            </p>
+          </div>
+        </FadeIn>
+
+        {/* TWO HEROES -- fire on */}
+        <FadeIn>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4, marginBottom: 4 }}>
+            <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.fireplace})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(6,6,6,0.85) 0%, transparent 52%)' }} />
+              <div style={{ position: 'absolute', bottom: 0, left: 0, padding: 'clamp(1.2rem,2.5vw,2rem)' }}>
+                <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.5rem' }}>The Drawing Room</p>
+                <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.6vw,1.45rem)', color: '#fff', margin: 0, lineHeight: 1.3 }}>Fire going, no one home yet.</p>
+              </div>
+            </div>
+            <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.fireplace2})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(6,6,6,0.85) 0%, transparent 52%)' }} />
+              <div style={{ position: 'absolute', bottom: 0, left: 0, padding: 'clamp(1.2rem,2.5vw,2rem)' }}>
+                <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.5rem' }}>The Rose Suite</p>
+                <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.6vw,1.45rem)', color: '#fff', margin: 0, lineHeight: 1.3 }}>Carved Georgian surround. Original to 1916.</p>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+
+        {/* DETAIL STRIP -- five more surrounds */}
+        <FadeIn>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 4 }}>
+            {[
+              { src: I.fp3, label: 'Drawing Room', sub: 'Blue Delft tile. Wood-burning.' },
+              { src: I.fp4, label: 'The Red Room',  sub: 'White surround. Gas log.' },
+              { src: I.fp5, label: 'Guest Suite',   sub: 'Painted plaster. Gas log.' },
+              { src: I.fp6, label: 'Yellow Room',   sub: 'Wedgwood mantel. Gas log.' },
+              { src: I.fp7, label: 'Drawing Room',  sub: 'Wide angle. Three exposures.' },
+            ].map((fp, i) => (
+              <div key={i} style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${fp.src})`, backgroundSize: 'cover', backgroundPosition: 'center top' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(6,6,6,0.88) 0%, transparent 55%)' }} />
+                <div style={{ position: 'absolute', bottom: 0, left: 0, padding: '0.9rem' }}>
+                  <p style={{ fontFamily: 'sans-serif', fontSize: '6.5px', letterSpacing: '0.24em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.2rem', opacity: 0.85 }}>{fp.label}</p>
+                  <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: '0.72rem', color: CREAM, margin: 0, opacity: 0.6, lineHeight: 1.4 }}>{fp.sub}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </FadeIn>
+      </section>
 
       {/* 09 HISTORY -- Walter Hines Page */}
       <FullBleed
