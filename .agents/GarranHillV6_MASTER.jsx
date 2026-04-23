@@ -58,6 +58,17 @@ const I = {
   fireOrnate:  pro('c04dbe756_200HollycrestDrive-94.jpg'),
   stairHall:   pro('e856d8465_200HollycrestDrive-16.jpg'),
   leadedGlass: pro('b8fc16781_200Holycrest-1185.jpg'),
+  kitchen:     BP + 'gh_200HollycrestDrive-38.jpg',
+  kitchen2:    BP + 'gh_200HollycrestDrive-40.jpg',
+  kitchen3:    BP + 'gh_200HollycrestDrive-41.jpg',
+  kitchen4:    BP + 'gh_200HollycrestDrive-43.jpg',
+  kitchen5:    BP + 'gh_200HollycrestDrive-44.jpg',
+  masterBed:   BP + '12c35fb35_200HollycrestDrive-115.jpg',
+  masterBed2:  BP + 'feaf32e78_200HollycrestDrive-116.jpg',
+  masterBed3:  BP + 'd49cfd09b_200HollycrestDrive-117.jpg',
+  bed2:        BP + 'b5094de64_200HollycrestDrive-107.jpg',
+  bed2b:       BP + '8f5060238_200HollycrestDrive-108.jpg',
+  bed3:        BP + 'a6fad9582_200HollycrestDrive-116.jpg',
   sitting:     own('07dd22757_SITTINGROOMGUESTSUITE.jpg'),
   dining:      pro('e926f8fdd_200Holycrest-1296.jpg'),
   dining2:     pro('1b24b019d_HHDRwshellcabinetsApr96.jpg'),
@@ -648,6 +659,21 @@ export default function GarranHillV6() {
       { src: I.bath,      caption: 'Primary Bath -- Freestanding Tub' },
       { src: I.window,    caption: 'White dogwood through divided glass. April.' },
     ],
+    kitchen: [
+      { src: I.kitchen,  caption: 'The Kitchen' },
+      { src: I.kitchen2, caption: 'The Kitchen -- Heart-pine floors.' },
+      { src: I.kitchen3, caption: 'The Kitchen -- Original layout.' },
+      { src: I.kitchen4, caption: 'The Kitchen -- Details.' },
+      { src: I.kitchen5, caption: 'The Kitchen -- Full view.' },
+    ],
+    bedrooms: [
+      { src: I.masterBed,  caption: 'The Primary Suite' },
+      { src: I.masterBed2, caption: 'The Primary Suite -- Morning light.' },
+      { src: I.masterBed3, caption: 'The Primary Suite -- Full room.' },
+      { src: I.bed2,       caption: 'The Rose Suite -- Four-poster.' },
+      { src: I.bed2b,      caption: 'The Rose Suite -- Sitting area.' },
+      { src: I.fireYellow, caption: 'The Yellow Suite -- Fire on.' },
+    ],
     grounds: [
       { src: I.roseMoney, caption: 'The Rose Garden -- Money Shot' },
       { src: I.roseWall,  caption: 'The wall does two things: it holds the pool and it holds the roses.' },
@@ -734,6 +760,15 @@ export default function GarranHillV6() {
         photos={G.dining} onOpen={openLB}
       />
 
+      {/* 05b KITCHEN */}
+      <CinematicReveal flip
+        eyebrow="The Kitchen"
+        headline="Heart-pine floors.<br/><em style='font-weight:300'>Original to the house.</em>"
+        body="The kitchen floor is the original heart-pine -- the same boards laid in 1916. White cabinetry. Natural light from three windows. The layout has not changed because there was no reason to change it."
+        img={I.kitchen}
+        photos={G.kitchen} onOpen={openLB} dark
+      />
+
       {/* 06 LIBRARY */}
       <CinematicReveal flip
         eyebrow="The Library"
@@ -775,7 +810,16 @@ export default function GarranHillV6() {
         photos={G.primary} onOpen={openLB} dark
       />
 
-      {/* 08b SEVEN FIREPLACES */}
+      {/* 08b BEDROOMS */}
+      <CinematicReveal
+        eyebrow="The Bedrooms"
+        headline="Four bedrooms.<br/><em style='font-weight:300'>Each with its own fireplace.</em>"
+        body="The primary suite occupies the full south wing of the second floor. Three additional bedrooms -- the Rose Suite, the Yellow Suite, the Nursery -- each with original proportions, original fireplaces, original hardware. Nothing was combined. Nothing was converted."
+        img={I.masterBed}
+        photos={G.bedrooms} onOpen={openLB}
+      />
+
+      {/* 08c SEVEN FIREPLACES */}
       <section style={{ background: '#060606', padding: 'clamp(5rem,10vw,8rem) clamp(2rem,8vw,10rem)' }}>
         <FadeIn>
           <div style={{ marginBottom: 'clamp(3rem,6vw,5rem)' }}>
