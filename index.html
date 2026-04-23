@@ -346,36 +346,37 @@ function App() {
           maxWidth: '55%',
         }}>
           <FadeIn delay={0.1}>
-            {/* GARREN HILL -- small elegant eyebrow, spaced */}
-            <p style={{
+            {/* GARREN HILL -- the dominant focal point */}
+            <h1 style={{
               fontFamily: "'Cormorant Garamond', Georgia, serif",
               fontWeight: 300,
-              fontSize: 'clamp(0.85rem, 1.4vw, 1.2rem)',
-              color: 'rgba(255,255,255,0.78)',
-              letterSpacing: '0.32em',
+              fontSize: 'clamp(4.5rem, 10vw, 13rem)',
+              color: '#fff',
+              letterSpacing: '0.08em',
               textTransform: 'uppercase',
-              margin: '0 0 1.1rem',
-              lineHeight: 1,
+              margin: '0 0 0.8rem',
+              lineHeight: 0.95,
             }}>
-              Garren Hill
-            </p>
+              Garren<br />Hill
+            </h1>
             {/* Gold rule */}
             <div style={{
               width: 'clamp(60px, 8vw, 100px)', height: 1,
               background: GOLD, opacity: 0.7,
-              margin: '0 0 1.6rem',
+              margin: '0 0 1.4rem',
             }} />
           </FadeIn>
-          <FadeIn delay={0.25}>
-            {/* BIG headline */}
-            <h1 style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 400,
-              fontSize: 'clamp(3.8rem, 9vw, 11rem)',
-              color: '#fff', lineHeight: 1.0,
-              margin: '0 0 1.4rem', letterSpacing: '-0.02em',
+          <FadeIn delay={0.3}>
+            {/* Secondary line -- small, elegant, beneath */}
+            <p style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
+              fontStyle: 'italic',
+              fontSize: 'clamp(0.9rem, 1.5vw, 1.3rem)',
+              color: 'rgba(255,255,255,0.72)', lineHeight: 1.6,
+              margin: '0 0 1.4rem', letterSpacing: '0.03em',
             }}>
-              Built in 1916.<br /><em>Built once.</em><br />Built right.
-            </h1>
+              Built in 1916. Built once. Built right.
+            </p>
           </FadeIn>
           <FadeIn delay={0.45}>
             <p style={{
