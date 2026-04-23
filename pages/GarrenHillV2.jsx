@@ -7,7 +7,7 @@ const GLASS = 'rgba(255,255,255,0.10)';
 const GLASS_BORDER = 'rgba(255,255,255,0.25)';
 
 // Current app storage -- all verified 200 OK
-const BASE = 'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/';
+
 const GH = 'https://media.base44.com/images/public/69e2578ca7113dbe93cb208d/';
 
 const cdnExt = (url) =>
@@ -16,11 +16,11 @@ const cdnInt = (url) =>
   `https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:indoor:60,e_brightness:10,e_shadow:-30,e_sharpen:40,e_saturation:15,f_auto,q_auto,w_2400,c_limit/${encodeURIComponent(url)}`;
 
 // EXTERIORS -- uploaded to current app, verified live
-const IMG_HERO     = cdnExt(BASE + 'ac89533df_gh_200HollycrestDrive-1.jpg');   // Front elevation portico
-const IMG_ARCH     = cdnExt(BASE + '5c9dadfb8_gh_200HollycrestDrive-28.jpg');  // Side grounds wide
-const IMG_SIDE     = cdnExt(BASE + 'ff295318a_gh_200HollycrestDrive-8.jpg');   // Side elevation
-const IMG_GARDEN   = cdnExt(BASE + 'f0698e1ec_gh_200HollycrestDrive-29.jpg');  // Grounds / trees
-const IMG_AERIAL   = cdnExt(BASE + 'ac02a640a_gh_200HollycrestDrive-22.jpg');  // Aerial / wide exterior
+const IMG_HERO     = cdnExt(GH2 + 'a943f7564_200HollycrestDrive-1.jpg');   // Front elevation portico
+const IMG_ARCH     = cdnExt(GH2 + '86f3d0cd4_200HollycrestDrive-28.jpg');  // Side grounds wide
+const IMG_SIDE     = cdnExt(GH2 + '8b57c3b9b_200HollycrestDrive-8.jpg');   // Side elevation
+const IMG_GARDEN   = cdnExt(GH2 + '9be7f0b70_200HollycrestDrive-29.jpg');  // Grounds / trees
+const IMG_AERIAL   = cdnExt(GH2 + '8ceade2c2_200HollycrestDrive-22.jpg');  // Aerial / wide exterior
 const IMG_POOL     = cdnExt(GH  + '57352d0a9_200HollycrestDrive-208.jpg');     // Pool classic
 const IMG_POOL2    = cdnExt(GH  + 'cb2b6ff1c_200HollycrestDrive-207.jpg');     // Pool alt
 const IMG_PORTICO  = cdnExt(GH  + 'fa8cec793_200HollycrestDrive-191.jpg');     // Portico detail
@@ -348,7 +348,7 @@ export default function GarrenHillV2() {
             { value: '1916', label1: 'YEAR', label2: 'BUILT' },
             { value: '6,700', label1: 'HEATED', label2: 'SQ FT' },
             { value: '7', label1: 'ORIGINAL', label2: 'FIREPLACES' },
-            { value: '4.15', label1: 'PRIVATE', label2: 'ACRES' },
+            { value: '4.25', label1: 'PRIVATE', label2: 'ACRES' },
             { value: '$4.25M', label1: 'OFFERED', label2: 'AT' },
           ].map((s, i) => (
             <React.Fragment key={s.label1}>
@@ -407,7 +407,7 @@ export default function GarrenHillV2() {
       />
 
       {/* FULL BLEED -- SIDE ELEVATION */}
-      <FullBleed imgSrc={IMG_SIDE} label="200 Hollycrest Drive -- 4.15 Acres" height="55vw" maxH="680px" position="center top" />
+      <FullBleed imgSrc={IMG_SIDE} label="200 Hollycrest Drive -- 4.25 Acres" height="55vw" maxH="680px" position="center top" />
 
       {/* FOYER CINEMATIC */}
       <CinematicReveal
@@ -552,7 +552,7 @@ export default function GarrenHillV2() {
               { label: 'Bedrooms', value: '5' },
               { label: 'Bathrooms', value: '5' },
               { label: 'Fireplaces', value: '7 Original Mantels' },
-              { label: 'Acreage', value: '4.15 Acres' },
+              { label: 'Acreage', value: '4.25 Acres' },
               { label: 'Pool', value: '20 x 40 In-Ground' },
               { label: 'Tennis', value: '2 Courts' },
               { label: 'Basement', value: '4 Rooms, Climate-Controlled' },
