@@ -5,13 +5,15 @@ const CREAM = '#F5F0E8';
 const DARK = '#0a0a0a';
 
 const GH = 'https://media.base44.com/images/public/69e2578ca7113dbe93cb208d/';
+const GH2 = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/';
 
 const cdnExt = (url) =>
   `https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_2400,c_limit/${encodeURIComponent(url)}`;
 const cdnInt = (url) =>
   `https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:indoor:60,e_brightness:10,e_shadow:-30,e_sharpen:40,e_saturation:15,f_auto,q_auto,w_2400,c_limit/${encodeURIComponent(url)}`;
 
-const IMG_HERO    = cdnExt(GH + 'fa8cec793_200HollycrestDrive-191.jpg');
+const IMG_DRIVEWAY = cdnExt(GH2 + '42813e145_gh_driveway.jpg');
+const IMG_PORTICO  = cdnExt(GH + 'fa8cec793_200HollycrestDrive-191.jpg');
 const IMG_ARCH    = cdnExt(GH + '082d9b5c7_200Holycrest-1182.jpg');
 const IMG_SALON   = cdnInt(GH + '341c7343c_200Holycrest-1203.jpg');
 const IMG_FIRE    = cdnInt(GH + '5f5f87315_200HollycrestDrive-65fire.jpg');
@@ -23,6 +25,7 @@ const IMG_BATH    = cdnInt(GH + 'f0ace4a90_200HollycrestDrive-101.jpg');
 const IMG_POWDER  = cdnInt(GH + 'b57f79399_200HollycrestDrive-80.jpg');
 const IMG_REAR    = cdnExt(GH + '17d8dd539_200HollycrestDrive-132.jpg');
 const IMG_GARDEN  = cdnExt(GH + 'f0698e1ec_gh_200HollycrestDrive-29.jpg');
+const IMG_TWILIGHT = cdnExt(GH + '57352d0a9_200HollycrestDrive-208.jpg');
 
 const eyebrowStyle = {
   fontFamily: 'sans-serif',
@@ -175,17 +178,63 @@ function StatBar() {
 
 function Hero({ onInquire }) {
   const scrollY = useScrollY();
+  const [dissolve, setDissolve] = useState(0);
+
+  useEffect(() => {
+    // Cross-dissolve: driveway (0) -> portico (1) -> driveway (0) slow loop
+    // Each phase: 4s hold, 3s dissolve
+    const HOLD = 4000;
+    const FADE = 3000;
+    const TOTAL = (HOLD + FADE) * 2;
+    const start = Date.now();
+    let raf;
+    const tick = () => {
+      const t = (Date.now() - start) % TOTAL;
+      let alpha;
+      if (t < HOLD) {
+        alpha = 0; // driveway fully visible
+      } else if (t < HOLD + FADE) {
+        alpha = (t - HOLD) / FADE; // dissolve to portico
+      } else if (t < HOLD * 2 + FADE) {
+        alpha = 1; // portico fully visible
+      } else {
+        alpha = 1 - (t - (HOLD * 2 + FADE)) / FADE; // dissolve back to driveway
+      }
+      setDissolve(alpha);
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  const parallax = scrollY * 0.18;
+
   return (
     <section style={{ position: 'relative', height: '100vh', minHeight: 600, overflow: 'hidden', background: '#000' }}>
+
+      {/* DRIVEWAY -- base layer */}
       <div style={{
         position: 'absolute', inset: 0,
-        backgroundImage: `url(${IMG_HERO})`,
+        backgroundImage: `url(${IMG_DRIVEWAY})`,
         backgroundSize: 'cover',
-        backgroundPosition: `center calc(50% + ${scrollY * 0.18}px)`,
+        backgroundPosition: `center calc(50% + ${parallax}px)`,
         transform: 'scale(1.08)',
         zIndex: 0,
       }} />
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.12) 40%, rgba(10,10,10,0.55) 100%)', zIndex: 1 }} />
+
+      {/* PORTICO -- dissolve layer */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: `url(${IMG_PORTICO})`,
+        backgroundSize: 'cover',
+        backgroundPosition: `center calc(50% + ${parallax}px)`,
+        transform: 'scale(1.08)',
+        zIndex: 1,
+        opacity: dissolve,
+      }} />
+
+      {/* GRADIENT OVERLAY */}
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.12) 40%, rgba(10,10,10,0.55) 100%)', zIndex: 2 }} />
 
       {/* NAV */}
       <nav style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 20, padding: 'clamp(1rem,2vw,1.4rem) clamp(1.5rem,4vw,3.5rem)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -351,23 +400,32 @@ function BlueFox() {
             Betty Dumaine renamed the estate Hollycrest for the native holly trees. She brought horses, hounds, and peacocks. She shared a room at Vassar with a woman who became Queen of Thailand -- royalty visited. She threw annual birthday parties for her horses and invited the children of the community.
           </p>
           <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 2.0, opacity: 0.82, margin: '0 auto 2.5rem', maxWidth: 660 }}>
-            Her horse Blue Fox is buried in a 10-by-16-foot slate-covered grave on the property, marked with a brass plaque and a four-foot bronze fox statue. Betty left the estate to Duke University when she died in 1980. She loved it that much.
+            When Blue Fox -- her beloved horse -- died, she buried him in a 10x16 foot slate-covered grave with a brass marker and a four-foot blue fox statue. That grave is still on the property.
           </p>
-          <div style={{ display: 'inline-block', background: 'rgba(201,169,110,0.06)', border: '1px solid rgba(201,169,110,0.18)', padding: '1.4rem 2.4rem' }}>
-            <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, margin: 0 }}>Blue Fox -- Buried on the Grounds</p>
-          </div>
+          <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 2.0, opacity: 0.82, margin: '0 auto', maxWidth: 660 }}>
+            She left the estate to Duke University on her death in 1980. Duke couldn't sell it for years. Some houses wait for the right person.
+          </p>
         </FadeIn>
       </div>
     </section>
   );
 }
 
-function TheFireplace() {
+function WestminsterQuote() {
+  return (
+    <PullQuote
+      quote="The friend of Britain in her sorest need."
+      attribution="Westminster Abbey -- Walter Hines Page Memorial -- 1918"
+    />
+  );
+}
+
+function TheFireplaces() {
   return (
     <CinematicReveal
       eyebrowText="Seven Fireplaces"
-      headline="Every one original. Every one working."
-      body="The seven carved mantels survived the 1998 restoration untouched. New dampers. Propane gas logs in six. The original craftsmanship intact. On a cold Pinehurst night, every room in this house can be warm."
+      headline="Every carved mantel original. Every damper new."
+      body="The restoration team cleaned all seven fireplaces, installed new dampers throughout, and added propane gas logs to six. The mantels -- carved in 1916 -- were not touched. They did not need to be."
       imgSrc={IMG_FIRE}
       reverse={true}
       position="center"
@@ -487,6 +545,29 @@ function Closing() {
   );
 }
 
+function TwilightClose() {
+  const scrollY = useScrollY();
+  const ref = useRef();
+  const [top, setTop] = useState(0);
+  useEffect(() => {
+    if (ref.current) setTop(ref.current.getBoundingClientRect().top + window.scrollY);
+  }, []);
+  const parallax = Math.max(-40, Math.min(40, (scrollY - top) * 0.18));
+  return (
+    <section ref={ref} style={{ position: 'relative', height: '70vh', minHeight: 480, overflow: 'hidden' }}>
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: `url(${IMG_TWILIGHT})`,
+        backgroundSize: 'cover',
+        backgroundPosition: `center calc(50% + ${parallax}px)`,
+        transform: 'scale(1.06)',
+        zIndex: 0,
+      }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(6,6,6,0.3) 0%, rgba(6,6,6,0.15) 50%, rgba(6,6,6,0.6) 100%)', zIndex: 1 }} />
+    </section>
+  );
+}
+
 function Inquire({ open, onClose }) {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
@@ -537,7 +618,7 @@ function Inquire({ open, onClose }) {
                   />
                 </div>
               ))}
-              <div style={{ marginBottom: '1.8rem' }}>
+              <div style={{ marginBottom: '2rem' }}>
                 <label style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, display: 'block', marginBottom: '0.5rem' }}>Message</label>
                 <textarea
                   rows={4}
@@ -546,7 +627,7 @@ function Inquire({ open, onClose }) {
                   style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.12)', color: CREAM, padding: '0.8rem 1rem', fontFamily: 'Georgia, serif', fontSize: '0.9rem', outline: 'none', resize: 'vertical', boxSizing: 'border-box' }}
                 />
               </div>
-              <button type="submit" style={{ width: '100%', background: 'transparent', border: `1px solid ${GOLD}`, color: GOLD, fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.32em', textTransform: 'uppercase', padding: '1rem', cursor: 'pointer' }}>
+              <button type="submit" style={{ width: '100%', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.32em', textTransform: 'uppercase', color: DARK, background: GOLD, border: 'none', padding: '1rem', cursor: 'pointer' }}>
                 Submit Inquiry
               </button>
             </form>
@@ -557,55 +638,43 @@ function Inquire({ open, onClose }) {
   );
 }
 
-function Footer({ onInquire }) {
+function Footer() {
   return (
-    <footer style={{ background: '#030303', borderTop: '1px solid rgba(201,169,110,0.12)', padding: 'clamp(3rem,6vw,5rem) clamp(2rem,6vw,5rem)' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-start', gap: '2.5rem' }}>
-        <div>
-          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300, fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', margin: '0 0 0.4rem', letterSpacing: '0.1em' }}>GARRAN HILL</p>
-          <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.24em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', margin: 0 }}>200 Hollycrest Drive &nbsp;|&nbsp; Pinehurst, NC 28374</p>
-        </div>
-        <div style={{ textAlign: 'center' }}>
-          <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.4rem' }}>Exclusively Listed By</p>
-          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 400, fontSize: '1rem', color: 'rgba(255,255,255,0.75)', margin: '0 0 0.2rem' }}>Rachel Hernandez</p>
-          <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: 0 }}>Sotheby's International Realty</p>
-        </div>
-        <div style={{ textAlign: 'right' }}>
-          <button onClick={onInquire} style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, background: 'none', border: `1px solid ${GOLD}`, padding: '0.7rem 1.6rem', cursor: 'pointer', marginBottom: '1rem', display: 'block', marginLeft: 'auto' }}>
-            Private Inquiry
-          </button>
-          <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.22)', margin: 0 }}>rachelhernandezrealtor@gmail.com</p>
-        </div>
+    <footer style={{ background: '#030303', borderTop: '1px solid rgba(201,169,110,0.12)', padding: 'clamp(2.5rem,5vw,4rem) clamp(2rem,6vw,6rem)', textAlign: 'center' }}>
+      <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300, fontSize: 'clamp(1rem,1.4vw,1.2rem)', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: '1rem' }}>
+        Garran Hill
       </div>
-      <div style={{ maxWidth: 1100, margin: '2.5rem auto 0', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '1.5rem', textAlign: 'center' }}>
-        <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.18em', color: 'rgba(255,255,255,0.18)', margin: 0 }}>
-          &copy; 2026 Sotheby's International Realty. All rights reserved. Information deemed reliable but not guaranteed. $3,450,000.
-        </p>
-      </div>
+      <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)', margin: '0 0 0.5rem' }}>
+        200 Hollycrest Drive &nbsp;&bull;&nbsp; Pinehurst, NC 28374
+      </p>
+      <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.45)', margin: 0 }}>
+        Exclusively Listed by Rachel Hernandez &nbsp;&bull;&nbsp; Sotheby's International Realty
+      </p>
     </footer>
   );
 }
 
 export default function GarrenHillV2() {
-  const [inquiryOpen, setInquiryOpen] = useState(false);
+  const [inquireOpen, setInquireOpen] = useState(false);
   return (
-    <div style={{ background: DARK, color: CREAM, fontFamily: 'Georgia, serif', overflowX: 'hidden' }}>
-      <Hero onInquire={() => setInquiryOpen(true)} />
+    <div style={{ background: DARK, color: '#fff', fontFamily: 'Georgia, serif', margin: 0, padding: 0 }}>
+      <Hero onInquire={() => setInquireOpen(true)} />
       <Manifesto />
       <Architecture />
       <WalterPage />
       <TheSalon />
       <TheDining />
       <BlueFox />
-      <PullQuote quote="The friend of Britain in her sorest need." attribution="Westminster Abbey -- 1918" />
-      <TheFireplace />
+      <WestminsterQuote />
+      <TheFireplaces />
       <TheRestoration />
       <ThePool />
       <AnnQuote />
       <MatterportSection />
       <Closing />
-      <Footer onInquire={() => setInquiryOpen(true)} />
-      <Inquire open={inquiryOpen} onClose={() => setInquiryOpen(false)} />
+      <TwilightClose />
+      <Footer />
+      <Inquire open={inquireOpen} onClose={() => setInquireOpen(false)} />
     </div>
   );
 }
