@@ -448,12 +448,12 @@ function Hero({ onInquire }) {
       </nav>
 
       {/* CONTENT */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 10, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(2rem,5vw,4.5rem) clamp(2rem,6vw,5.5rem) clamp(9rem,14vw,12rem)' }}>
+      <div style={{ position: 'absolute', inset: 0, zIndex: 10, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(2rem,5vw,4.5rem) clamp(2rem,6vw,5.5rem) clamp(7rem,11vw,10rem)' }}>
         <div>
           <span style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.38em', textTransform: 'uppercase', color: GOLD, opacity: 0.75, display: 'block', marginBottom: '2rem' }}>
             200 Hollycrest Drive &nbsp;&bull;&nbsp; Pinehurst, NC &nbsp;&bull;&nbsp; Est. 1916
           </span>
-          <div style={{ fontFamily: SCRIPT, fontSize: 'clamp(5rem,12vw,13rem)', color: '#fff', lineHeight: 0.88, textShadow: '0 4px 40px rgba(0,0,0,0.6)', marginBottom: '2.5rem' }}>
+          <div style={{ fontFamily: SCRIPT, fontSize: 'clamp(6rem,14vw,16rem)', color: '#fff', lineHeight: 0.88, textShadow: '0 4px 40px rgba(0,0,0,0.6)', marginBottom: '2.5rem' }}>
             Garran<br />Hill
           </div>
           <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.5vw,1.25rem)', color: 'rgba(255,255,255,0.78)', margin: '0 0 0.5rem', letterSpacing: '0.01em' }}>Built in 1916. Built once. Built right.</p>
