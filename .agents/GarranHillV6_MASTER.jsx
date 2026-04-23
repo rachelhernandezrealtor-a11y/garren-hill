@@ -585,7 +585,7 @@ function Footer({ onInquire }) {
           <p style={{ fontFamily: SCRIPT, fontSize: 'clamp(2.5rem,5vw,4.5rem)', color: GOLD, margin: '0 0 0.4rem', lineHeight: 1 }}>Garran Hill</p>
           <p style={{ fontFamily: 'sans-serif', fontSize: '7.5px', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)', margin: 0 }}>200 Hollycrest Drive &bull; Pinehurst, NC 28374 &bull; Est. 1916</p>
         </div>
-        <img src={I.crest} alt="" style={{ height: 64, opacity: 0.35, mixBlendMode: 'screen' }} />
+        <img src={I.crest} alt="" style={{ height: 88, opacity: 0.82, mixBlendMode: 'lighten', filter: 'brightness(1.4) contrast(1.1)' }} />
         <div style={{ textAlign: 'right' }}>
           <p style={{ fontFamily: SERIF, fontStyle: 'italic', color: CREAM, opacity: 0.35, fontSize: '0.84rem', margin: '0 0 0.35rem' }}>Represented exclusively by</p>
           <p style={{ fontFamily: SERIF, fontWeight: 500, color: CREAM, fontSize: '1.05rem', margin: '0 0 0.22rem' }}>Rachel Hernandez</p>
