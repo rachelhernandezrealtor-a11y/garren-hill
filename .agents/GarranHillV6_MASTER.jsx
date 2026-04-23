@@ -547,7 +547,7 @@ function FullBleed({ src, eyebrow, headline, body, align = 'center', darken = 0.
           {eyebrow && <span style={EYE()}>{eyebrow}</span>}
           {headline && (
             <h2
-              style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(3rem,5.5vw,7rem)', color: '#fff', lineHeight: 1.08, margin: eyebrow ? '0 0 2rem' : '0 0 1.5rem', letterSpacing: '-0.015em', maxWidth: (align === 'left' || align === 'right') ? 780 : '100%' }}
+              style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(4.5rem,8vw,11rem)', color: '#fff', lineHeight: 1.08, margin: eyebrow ? '0 0 2rem' : '0 0 1.5rem', letterSpacing: '-0.015em', maxWidth: (align === 'left' || align === 'right') ? 780 : '100%' }}
               dangerouslySetInnerHTML={{ __html: headline }}
             />
           )}
@@ -565,7 +565,7 @@ function PullQuote({ quote, attr }) {
       <img src={I.crest} alt="" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 340, opacity: 0.03, pointerEvents: 'none', mixBlendMode: 'screen' }} />
       <FadeIn>
         <Rule center />
-        <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.7rem,3.5vw,3.6rem)', color: '#fff', lineHeight: 1.38, margin: '0 auto 2.2rem', maxWidth: 860 }}>
+        <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(2rem,4vw,4.5rem)', color: '#fff', lineHeight: 1.38, margin: '0 auto 2.2rem', maxWidth: 860 }}>
           &ldquo;{quote}&rdquo;
         </p>
         <Rule center />
@@ -581,7 +581,7 @@ function DarkSection({ eyebrow, headline, body, children, center = false }) {
       <FadeIn>
         {eyebrow && <span style={EYE()}>{eyebrow}</span>}
         <Rule center={center} />
-        {headline && <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.8rem,5vw,6.5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.8rem', maxWidth: center ? '100%' : 840, letterSpacing: '-0.012em' }} dangerouslySetInnerHTML={{ __html: headline }} />}
+        {headline && <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(4rem,7.5vw,10rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.8rem', maxWidth: center ? '100%' : 840, letterSpacing: '-0.012em' }} dangerouslySetInnerHTML={{ __html: headline }} />}
         {body && <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.95rem,1.18vw,1.08rem)', color: CREAM, opacity: 0.68, lineHeight: 2.25, maxWidth: 760, margin: center ? '0 auto' : 0 }}>{body}</p>}
         {children}
       </FadeIn>
@@ -770,7 +770,7 @@ export default function GarranHillV6() {
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.54)', zIndex: 1 }} />
         <FadeIn>
           <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: '0 2rem' }}>
-            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.8rem,4vw,4rem)', color: '#fff', margin: 0, lineHeight: 1.3 }}>
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(2.2rem,4.5vw,5rem)', color: '#fff', margin: 0, lineHeight: 1.3 }}>
               The door has been open since 1916.
             </p>
           </div>
@@ -948,7 +948,7 @@ export default function GarranHillV6() {
         <FadeIn>
           <div style={{ marginBottom: 'clamp(3rem,6vw,5rem)' }}>
             <span style={EYE()}>The Fireplaces</span>
-            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(3rem,5.5vw,7rem)', color: '#fff', lineHeight: 1.06, margin: '1.2rem 0 1.8rem', letterSpacing: '-0.015em' }}>
+            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(4.5rem,8vw,11rem)', color: '#fff', lineHeight: 1.06, margin: '1.2rem 0 1.8rem', letterSpacing: '-0.015em' }}>
               Seven fireplaces.<br /><em style={{ fontWeight: 300 }}>Six of them light with one switch.</em>
             </h2>
             <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.95rem,1.2vw,1.08rem)', color: CREAM, opacity: 0.68, lineHeight: 2.2, maxWidth: 640 }}>
@@ -1042,7 +1042,7 @@ export default function GarranHillV6() {
         <div style={{ position: 'relative', zIndex: 2 }}>
         <FadeIn>
           <span style={EYE()}>The Gardens</span>
-          <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.8rem,5vw,6rem)', color: '#fff', lineHeight: 1.1, margin: '1.2rem 0 3rem', letterSpacing: '-0.015em' }}>
+          <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(4rem,7.5vw,10rem)', color: '#fff', lineHeight: 1.1, margin: '1.2rem 0 3rem', letterSpacing: '-0.015em' }}>
             The irises come back every April.<br /><em style={{ fontWeight: 300 }}>The land remembers.</em>
           </h2>
         </FadeIn>
