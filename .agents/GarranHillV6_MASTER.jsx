@@ -820,7 +820,7 @@ export default function GarranHillV6() {
         eyebrow="The Drawing Room"
         headline="Fire going, no one home yet.<br/><em style='font-weight:300'>Seven fireplaces. This is one.</em>"
         body="The original proportions -- 17-foot ceilings where the architecture demands it. Original fireplace surround. Three exposures. The room holds light differently in the morning than it does in the afternoon."
-        img={I.living}
+        img={I.fireplace}
         photos={G.reception} onOpen={openLB} dark
       />
 
