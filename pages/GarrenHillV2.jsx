@@ -251,7 +251,7 @@ function CrestDivider() {
   return (
     <div style={{ background: DARK, padding: '3rem 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ height: 1, flex: 1, maxWidth: 200, background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.3))' }} />
-      <img src={CREST} alt="Garran Hill Crest" style={{ width: 56, height: 56, objectFit: 'contain', opacity: 0.7, margin: '0 2rem', filter: 'brightness(0.85) sepia(1) saturate(2) hue-rotate(5deg)' }} />
+      <img src={CREST} alt="Garran Hill Crest" style={{ width: 56, height: 56, objectFit: 'contain', opacity: 0.85, margin: '0 2rem', filter: 'brightness(0.85) sepia(1) saturate(2) hue-rotate(5deg)', mixBlendMode: 'screen' }} />
       <div style={{ height: 1, flex: 1, maxWidth: 200, background: 'linear-gradient(to left, transparent, rgba(201,169,110,0.3))' }} />
     </div>
   );
@@ -356,7 +356,7 @@ function Manifesto() {
 function WestminsterQuote() {
   return (
     <div style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(5rem,10vw,9rem) clamp(2rem,10vw,14rem)', textAlign: 'center', background: '#050505' }}>
-      <img src={CREST} alt="" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 320, opacity: 0.05, pointerEvents: 'none', filter: 'brightness(0.85) sepia(1) saturate(2) hue-rotate(5deg)' }} />
+      <img src={CREST} alt="" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 320, opacity: 0.05, pointerEvents: 'none', filter: 'brightness(0.85) sepia(1) saturate(2) hue-rotate(5deg)', mixBlendMode: 'screen' }} />
       <FadeIn>
         <span style={eyebrowStyle}>Westminster Abbey -- 1918</span>
         <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem,3vw,3rem)', color: '#fff', lineHeight: 1.38, margin: '0 auto 2rem', maxWidth: 780 }}>
@@ -903,7 +903,7 @@ function Inquire({ open, onClose }) {
 function Footer({ onInquire }) {
   return (
     <footer style={{ background: '#050505', borderTop: '1px solid rgba(201,169,110,0.12)', padding: 'clamp(4rem,8vw,7rem) clamp(2rem,8vw,10rem)', textAlign: 'center' }}>
-      <img src={CREST} alt="Garran Hill Crest" style={{ width: 64, height: 64, objectFit: 'contain', opacity: 0.65, marginBottom: '2rem', filter: 'brightness(0.85) sepia(1) saturate(2) hue-rotate(5deg)' }} />
+      <img src={CREST} alt="Garran Hill Crest" style={{ width: 64, height: 64, objectFit: 'contain', opacity: 0.85, marginBottom: '2rem', filter: 'brightness(0.85) sepia(1) saturate(2) hue-rotate(5deg)', mixBlendMode: 'screen' }} />
       <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300, fontSize: 'clamp(1rem,1.4vw,1.2rem)', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', marginBottom: '0.4rem' }}>
         Garran Hill
       </div>
