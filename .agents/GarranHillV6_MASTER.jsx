@@ -958,6 +958,7 @@ export default function GarranHillV6() {
         </FadeIn>
 
         {/* TWO HEROES -- fire on */}
+        <div style={{ position: 'relative', zIndex: 2 }}>
         <FadeIn>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4, marginBottom: 4 }}>
             <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
@@ -1000,6 +1001,7 @@ export default function GarranHillV6() {
             ))}
           </div>
         </FadeIn>
+        </div>{/* end zIndex:2 */}
       </section>
 
       {/* 13 GROUNDS -- ROSE GARDEN */}
@@ -1034,7 +1036,10 @@ export default function GarranHillV6() {
       />
 
       {/* 13c GROUNDS -- IRIS + AZALEA strip */}
-      <section style={{ background: '#060606', padding: 'clamp(4rem,8vw,6rem) clamp(2rem,8vw,10rem)' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(4rem,8vw,6rem) clamp(2rem,8vw,10rem)' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.roseGarden})`, backgroundSize: 'cover', backgroundPosition: 'center', zIndex: 0 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.75)', zIndex: 1 }} />
+        <div style={{ position: 'relative', zIndex: 2 }}>
         <FadeIn>
           <span style={EYE()}>The Gardens</span>
           <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.8rem,5vw,6rem)', color: '#fff', lineHeight: 1.1, margin: '1.2rem 0 3rem', letterSpacing: '-0.015em' }}>
@@ -1059,6 +1064,7 @@ export default function GarranHillV6() {
             ))}
           </div>
         </FadeIn>
+        </div>{/* end zIndex:2 */}
       </section>
 
       {/* 13b STEWARDSHIP -- Betty Dumaine, woven after Grounds */}
