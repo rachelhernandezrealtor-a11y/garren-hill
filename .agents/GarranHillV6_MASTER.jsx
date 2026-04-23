@@ -658,7 +658,7 @@ export default function GarranHillV6() {
       { src: I.library,     caption: 'The Library -- French Doors + Rolling Ladder' },
     ],
     study: [
-      { src: I.office,    caption: 'The Study -- David Prest Millwork' },
+      { src: I.office,    caption: 'The Study -- Custom Millwork' },
       { src: I.officeTall,caption: 'The Study -- Floor to Ceiling' },
     ],
     primary: [
@@ -891,8 +891,8 @@ export default function GarranHillV6() {
       {/* 07 STUDY */}}
       <CinematicReveal
         eyebrow="The Study"
-        headline="Custom millwork.<br/><em style='font-weight:300'>David Prest. Floor to ceiling.</em>"
-        body="Floor-to-ceiling built-in shelving by David Prest. Original fireplace. Divided-light windows on two walls. The room was designed for a man who read everything and wrote constantly."
+        headline="Custom millwork.<br/><em style='font-weight:300'>Floor to ceiling.</em>"
+        body="Floor-to-ceiling built-in shelving. Original fireplace. Divided-light windows on two walls. The room was designed for a man who read everything and wrote constantly."
         img={I.office}
         photos={G.study} onOpen={openLB}
       />
