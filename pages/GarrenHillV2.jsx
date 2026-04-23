@@ -44,6 +44,12 @@ const IMG_DOGWOOD = cdnExt(GH2 + 'd21f554f6_IMG_9409.jpg');
 /* ---- BLUE FOX ---- */
 const IMG_BLUEFOX = cdnExt(GH + '431db5579_200HollycrestDrive-10.jpg');
 
+/* ---- WALTER HINES PAGE PORTRAIT ---- */
+const IMG_WHP = cdnExt(GH2 + '2e864596c_WalterHinesPage.jpeg');  /* public domain portrait, red robes */
+
+/* ---- CEDAR CLOSET HALLWAY ---- */
+const IMG_CEDAR_HALL = cdnInt(GH2 + 'e226bc2f4_200Holycrest-1570.jpg'); /* hallway to cedar closet, angled ceiling, family portraits */
+
 /* ---- HERO VIDEO ---- */
 const GH_VIDEO_URL = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/c69081003d2f865c41687d0afdbc6aa4/manifest/video.m3u8';
 
@@ -437,31 +443,43 @@ function TheEntry() {
 /* ===== WALTER HINES PAGE ===== */
 function WalterPage() {
   return (
-    <section style={{ background: '#060606', padding: 'clamp(5rem,10vw,9rem) clamp(2rem,8vw,10rem)' }}>
-      <div style={{ maxWidth: 980, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(3rem,6vw,7rem)', alignItems: 'center' }}>
+    <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
+      {/* Portrait as full-bleed background */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: `url(${IMG_WHP})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center top',
+        zIndex: 0,
+      }} />
+      {/* Dark gradient -- left heavy so text reads, portrait visible right */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1,
+        background: 'linear-gradient(to right, rgba(5,5,5,0.94) 45%, rgba(5,5,5,0.55) 75%, rgba(5,5,5,0.3) 100%)',
+      }} />
+      {/* Content */}
+      <div style={{ position: 'relative', zIndex: 2, padding: 'clamp(6rem,12vw,10rem) clamp(2rem,8vw,10rem)', maxWidth: 680 }}>
         <FadeIn>
-          <span style={eyebrowStyle}>Walter Hines Page -- 1855-1918</span>
-          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 400, fontSize: 'clamp(1.8rem,2.8vw,3rem)', color: '#fff', lineHeight: 1.18, margin: '0 0 2rem', letterSpacing: '-0.01em' }}>
-            He named it. He never saw it.
+          <span style={eyebrowStyle}>Walter Hines Page -- 1855 to 1918</span>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 400, fontSize: 'clamp(2rem,3vw,3.4rem)', color: '#fff', lineHeight: 1.12, margin: '0 0 2rem', letterSpacing: '-0.01em' }}>
+            He named it Garran Hill in 1913.<br /><em style={{ fontWeight: 300 }}>He never walked through the door.</em>
           </h2>
           <div style={{ width: 32, height: 1, background: GOLD, opacity: 0.4, margin: '0 0 2rem' }} />
-          <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 2.0, opacity: 0.82, margin: '0 0 1.4rem' }}>
-            Publisher, diplomat, humanitarian. Page co-founded Doubleday and built Atlantic Monthly into a literary force. He named this land Garran Hill in February 1913 -- the original 1913 spelling, still correct today.
+          <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 2.0, opacity: 0.85, margin: '0 0 1.4rem' }}>
+            Publisher. Diplomat. Humanitarian. Page purchased this land in February 1913, named it Garran Hill, and planned to grow peaches. President Wilson appointed him Ambassador to Britain one month later.
           </p>
-          <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 2.0, opacity: 0.82, margin: 0 }}>
-            His tireless advocacy for America to enter WWI, documented in thousands of letters to Washington, is credited by historians as decisive. Britain honored him with a sculpture at Westminster Abbey. He came home to die in Pinehurst, a mile from the land he never visited.
+          <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 2.0, opacity: 0.85, margin: '0 0 2.8rem' }}>
+            Five years of urgent cables to Washington -- thousands of pages arguing that America must enter the war. Historians credit him as decisive. He came home on a stretcher in October 1918. He died in Pinehurst on December 21, 1918. A mile from the land he named but never saw.
           </p>
-        </FadeIn>
-        <FadeIn delay={0.2}>
-          <div style={{ background: 'rgba(201,169,110,0.05)', border: '1px solid rgba(201,169,110,0.15)', padding: '2.5rem' }}>
-            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.1rem,1.6vw,1.4rem)', color: '#fff', lineHeight: 1.5, margin: '0 0 1.8rem', opacity: 0.9 }}>
+          <div style={{ background: 'rgba(201,169,110,0.06)', border: '1px solid rgba(201,169,110,0.2)', padding: '2rem 2.5rem', display: 'inline-block' }}>
+            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.1rem,1.6vw,1.5rem)', color: '#fff', lineHeight: 1.5, margin: '0 0 1rem', opacity: 0.95 }}>
               &ldquo;The friend of Britain in her sorest need.&rdquo;
             </p>
             <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, margin: 0, opacity: 0.7 }}>Westminster Abbey -- 1918</p>
           </div>
         </FadeIn>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -781,16 +799,49 @@ function TheGrounds() {
   );
 }
 
-/* ===== POOL CINEMATIC ===== */
+/* ===== POOL + INFRASTRUCTURE ===== */
 function ThePool() {
   return (
-    <CinematicReveal
-      eyebrowText="The Grounds"
-      headline="4.25 acres. Pool. Two tennis courts. A camellia garden."
-      body="Three American sycamores planted by Betty Dumaine in 1959. Grandiflora magnolias. Dogwoods, holly, azaleas, iris. Long-leaf pines. A brick terrace that seats a crowd. The children's playhouse -- The Wee Cottage -- still stands."
-      imgSrc={IMG_POOL}
-      position="center"
-    />
+    <>
+      <CinematicReveal
+        eyebrowText="The Grounds"
+        headline="4.25 acres. Pool. Two tennis courts.<br/><em style='font-weight:300'>A camellia garden.</em>"
+        body="Three American sycamores planted by Betty Dumaine in 1959. Long-leaf pines. A 20 x 40 ft in-ground concrete pool -- converted to salt water in 2022, brick wall surround, #4 iron gates. Two regulation tennis courts with commercial-grade lighting for night play."
+        imgSrc={IMG_POOL}
+        position="center"
+      />
+      {/* Infrastructure stats */}
+      <section style={{ background: '#060606', padding: 'clamp(4rem,8vw,7rem) clamp(2rem,8vw,10rem)' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <FadeIn>
+            <span style={eyebrowStyle}>The Infrastructure</span>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 400, fontSize: 'clamp(1.8rem,2.8vw,3rem)', color: '#fff', lineHeight: 1.18, margin: '0 0 1rem', letterSpacing: '-0.01em', maxWidth: 680 }}>
+              Engineered for a household.<br /><em style={{ fontWeight: 300 }}>Every system thought through.</em>
+            </h2>
+            <div style={{ width: 32, height: 1, background: GOLD, opacity: 0.4, margin: '0 0 3rem' }} />
+          </FadeIn>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2rem' }}>
+            {[
+              { label: 'Water', detail: '130 ft deep well feeds a 28-zone irrigation system. Extended in 2000, 2003, 2009, and 2018. The grounds water themselves.' },
+              { label: 'Hot Water', detail: 'Three heaters: one 80-gallon electric in the basement, two 40-gallon in the crawl space. Plentiful supply engineered for the whole house.' },
+              { label: 'Fireplaces', detail: 'Six of seven fireplaces have propane gas logs. Each has a wall-mounted on/off switch with timer. Fire going before you are through the door.' },
+              { label: 'Whirlpool Tubs', detail: 'Three total -- the primary bath on the first floor, and two of three second-floor bathrooms. Each bathroom its own retreat.' },
+              { label: 'The Balcony', detail: 'Above the kitchen. Entered from two bedrooms. Overlooks the tennis courts and rear grounds. Sufficient for small-group entertaining.' },
+              { label: 'Security', detail: 'Hard-wired in 2000. Monitored remotely by a Greensboro firm. Smoke alarms throughout. Internal intercom via telephones in every room.' },
+              { label: 'Parking', detail: 'Main lot at the NE end: 12 or more cars. Second lot adjacent to the pool: six cars, originally for pool guests.' },
+              { label: 'The Attic', detail: '21 x 43 ft cedar-lined closet at the top of the third-floor stairs. Original oak floors. A dedicated stairway from the second floor. Off-season storage on a grand scale.' },
+            ].map((item, i) => (
+              <FadeIn key={i} delay={i * 0.05}>
+                <div style={{ borderTop: `1px solid rgba(201,169,110,0.2)`, paddingTop: '1.4rem' }}>
+                  <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.8rem' }}>{item.label}</p>
+                  <p style={{ color: CREAM, fontSize: '0.92rem', lineHeight: 1.85, opacity: 0.78, margin: 0 }}>{item.detail}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
 
