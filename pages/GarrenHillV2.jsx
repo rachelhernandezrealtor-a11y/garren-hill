@@ -39,7 +39,7 @@ const IMG_BATH     = cdnInt(GH  + 'f0ace4a90_200HollycrestDrive-101.jpg');     /
 const IMG_BATH2    = cdnInt(GH  + '00d939ad7_200HollycrestDrive-79.jpg');      // Master bath alt
 const IMG_POWDER   = cdnInt(GH  + 'b57f79399_200HollycrestDrive-80.jpg');      // Powder room Tennessee marble
 const IMG_BED2     = cdnInt(GH  + '0929fd72d_200HollycrestDrive-109.jpg');     // Bedroom 2
-const CREST = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/1d1a5e791_generated_image.png';
+const CREST = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/87a5105d9_generated_image.png';
 
 const eyebrow = {
   fontFamily: 'sans-serif',
@@ -664,12 +664,10 @@ export default function GarrenHillV2() {
           src={CREST}
           alt="Garren Hill Crest"
           style={{
-            width: 120,
-            height: 120,
+            width: 160,
+            height: 160,
             objectFit: 'contain',
-            mixBlendMode: 'screen',
-            opacity: 0.85,
-            marginBottom: '1.8rem',
+            opacity: 0.9,
             display: 'block',
             margin: '0 auto 1.8rem',
           }}
