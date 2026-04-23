@@ -25,7 +25,9 @@ const IMG_BATH    = cdnInt(GH + 'f0ace4a90_200HollycrestDrive-101.jpg');
 const IMG_POWDER  = cdnInt(GH + 'b57f79399_200HollycrestDrive-80.jpg');
 const IMG_REAR    = cdnExt(GH + '17d8dd539_200HollycrestDrive-132.jpg');
 const IMG_GARDEN  = cdnExt(GH + 'f0698e1ec_gh_200HollycrestDrive-29.jpg');
-const IMG_TWILIGHT = cdnExt(GH + '57352d0a9_200HollycrestDrive-208.jpg');
+const IMG_TWILIGHT = cdnExt(GH2 + 'dbb9ffc69_gh_200HollycrestDrive-203.jpg');
+
+const CREST_URL = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/be819ab2a_generated_image.png';
 
 const eyebrowStyle = {
   fontFamily: 'sans-serif',
@@ -641,6 +643,19 @@ function Inquire({ open, onClose }) {
 function Footer() {
   return (
     <footer style={{ background: '#030303', borderTop: '1px solid rgba(201,169,110,0.12)', padding: 'clamp(2.5rem,5vw,4rem) clamp(2rem,6vw,6rem)', textAlign: 'center' }}>
+      <img
+        src={CREST_URL}
+        alt="Garran Hill -- Hollycrest 1916 -- VHF"
+        style={{
+          width: 'clamp(100px,12vw,148px)',
+          opacity: 0.82,
+          filter: 'drop-shadow(0 2px 12px rgba(201,169,110,0.18))',
+          marginBottom: '1.8rem',
+          display: 'block',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
+      />
       <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300, fontSize: 'clamp(1rem,1.4vw,1.2rem)', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: '1rem' }}>
         Garran Hill
       </div>
