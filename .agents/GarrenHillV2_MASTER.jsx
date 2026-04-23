@@ -958,47 +958,58 @@ function Footer({ onInquire }) {
 // ===================== BLUE FOX SECTION =====================
 function BlueFoxSection() {
   const ref = useRef();
-  const scrollY = useScrollY();
-  const [top, setTop] = useState(0);
-  useEffect(() => { if (ref.current) setTop(ref.current.getBoundingClientRect().top + window.scrollY); }, []);
-  const parallax = Math.max(-40, Math.min(40, (scrollY - top) * 0.18));
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.25 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section ref={ref} style={{ position: 'relative', height: '72vh', minHeight: 500, overflow: 'hidden' }}>
+    <section ref={ref} style={{ position: 'relative', height: '80vh', minHeight: 560, overflow: 'hidden' }}>
+      {/* Ken Burns zoom layer */}
       <div style={{
-        position: 'absolute', inset: 0,
+        position: 'absolute', inset: 0, zIndex: 0,
         backgroundImage: `url(${IMG_BLUEFOX})`,
         backgroundSize: 'cover',
-        backgroundPosition: `center calc(50% + ${parallax}px)`,
-        transform: 'scale(1.06)', zIndex: 0,
+        backgroundPosition: 'center 40%',
+        transformOrigin: 'center center',
+        animation: visible ? 'kenBurnsFox 18s ease-out forwards' : 'none',
+        transform: 'scale(1.12)',
       }} />
+      {/* Dark gradient overlay */}
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1,
-        background: 'linear-gradient(to bottom, rgba(6,6,6,0.18) 0%, rgba(6,6,6,0.22) 45%, rgba(6,6,6,0.85) 100%)',
+        background: 'linear-gradient(to bottom, rgba(6,6,6,0.1) 0%, rgba(6,6,6,0.3) 50%, rgba(6,6,6,0.88) 100%)',
       }} />
+      {/* Quote fades in after Ken Burns starts */}
       <div style={{
-        position: 'absolute', bottom: '4rem', left: 0, right: 0,
+        position: 'absolute', bottom: '4.5rem', left: 0, right: 0,
         textAlign: 'center', zIndex: 2, padding: '0 2rem',
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0)' : 'translateY(18px)',
+        transition: 'opacity 1.8s ease 1.2s, transform 1.8s ease 1.2s',
       }}>
-        <FadeIn>
-          <span style={{ ...eyebrowStyle, marginBottom: '1.2rem' }}>The Grounds</span>
-          <p style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
-            fontStyle: 'italic', fontWeight: 300,
-            fontSize: 'clamp(1.4rem, 2.4vw, 2.5rem)',
-            color: '#fff', lineHeight: 1.6,
-            margin: '0 auto 1rem', maxWidth: 640,
-            textShadow: '0 2px 24px rgba(0,0,0,0.7)',
-          }}>
-            Blue Fox lived here from 1946 to 1965.<br />
-            Someone put flowers on his grave.<br />
-            <em>They still do.</em>
-          </p>
-          <p style={{
-            fontFamily: 'sans-serif', fontSize: '8.5px', letterSpacing: '0.28em',
-            textTransform: 'uppercase', color: GOLD, opacity: 0.65, margin: 0,
-          }}>Betty Dumaine &nbsp;&bull;&nbsp; Garran Hill</p>
-        </FadeIn>
+        <span style={{ ...eyebrowStyle, marginBottom: '1.4rem', display: 'block' }}>The Grounds</span>
+        <p style={{
+          fontFamily: "'Cormorant Garamond', Georgia, serif",
+          fontStyle: 'italic', fontWeight: 300,
+          fontSize: 'clamp(1.5rem, 2.6vw, 2.8rem)',
+          color: '#fff', lineHeight: 1.7,
+          margin: '0 auto 1.2rem', maxWidth: 620,
+          textShadow: '0 2px 32px rgba(0,0,0,0.8)',
+        }}>
+          Blue Fox lived here from 1946 to 1965.<br />
+          Someone put flowers on his grave.<br />
+          <em>They still do.</em>
+        </p>
+        <p style={{
+          fontFamily: 'sans-serif', fontSize: '8.5px', letterSpacing: '0.28em',
+          textTransform: 'uppercase', color: GOLD, opacity: 0.7, margin: 0,
+        }}>Betty Dumaine &nbsp;&bull;&nbsp; Garran Hill</p>
       </div>
     </section>
   );
