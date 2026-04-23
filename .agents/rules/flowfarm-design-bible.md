@@ -10,7 +10,7 @@ This is the living source of truth for all design decisions, copy rules, aesthet
 ### Base44 is DEAD for landing pages. It does not exist.
 
 The ONLY valid deployment pipeline for both properties is:
-1. Edit master JSX locally (`/app/.agents/FlowFarmLanding2_MASTER.jsx` or `/app/.agents/GarranHillV2_MASTER.jsx`)
+1. Edit master JSX locally (`/app/.agents/FlowFarmLanding2_MASTER.jsx` or `/app/.agents/GarranHillV6_MASTER.jsx`)
 2. Build standalone HTML (run build script)
 3. Push directly to GitHub
 4. Cloudflare Pages deploys automatically
@@ -266,7 +266,7 @@ Wrap ALL images through this.
 
 ### File Management
 - Flow Farm source: `/app/.agents/FlowFarmLanding2_MASTER.jsx`
-- Garran Hill source: `/app/.agents/GarranHillV2_MASTER.jsx`
+- Garran Hill source: `/app/.agents/GarranHillV6_MASTER.jsx`
 - FF live: push via flowfarm push script to GitHub -> Cloudflare
 - GH live: build standalone HTML, push to garren-hill GitHub -> Cloudflare
 - Update master backup after EVERY approved change
