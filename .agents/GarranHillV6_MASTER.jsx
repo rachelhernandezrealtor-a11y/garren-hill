@@ -473,7 +473,7 @@ function Hero({ onInquire }) {
 function StatBar() {
   const PRIMARY = [
     { n: '1916',       l: 'Year Built' },
-    { n: '6,072',      l: 'Square Feet' },
+    { n: '6,072',      l: 'Sq Ft GLA' },
     { n: '4.15',       l: 'Acres' },
     { n: '$4,250,000', l: 'Offered At' },
   ];
@@ -806,14 +806,7 @@ export default function GarranHillV6() {
         photos={G.entry} onOpen={openLB}
       />
 
-      {/* 03b CRAFTSMEN INTERSTITIAL */}
-      <div style={{ background: '#040404', padding: 'clamp(3.5rem,7vw,6rem) clamp(2rem,14vw,18rem)', textAlign: 'center' }}>
-        <FadeIn>
-          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.1rem,2vw,2rem)', color: CREAM, opacity: 0.55, lineHeight: 1.7, margin: '0 auto', maxWidth: 680, letterSpacing: '0.01em' }}>
-            Built by Leonard Tufts&rsquo; own craftsmen &mdash; the same men who built Pinehurst.
-          </p>
-        </FadeIn>
-      </div>
+      {/* 03b CRAFTSMEN INTERSTITIAL -- removed, unverified */}
 
       {/* 04 DRAWING ROOM */}}
       <CinematicReveal flip
@@ -837,7 +830,7 @@ export default function GarranHillV6() {
       <CinematicReveal flip
         eyebrow="The Kitchen"
         headline="Heart-pine floors.<br/><em style='font-weight:300'>Original to the house.</em>"
-        body="The kitchen floor is the original heart-pine -- the same boards laid in 1916. White cabinetry. Natural light from three windows. The layout has not changed because there was no reason to change it."
+        body="Heart-pine floors. The same boards laid in 1916. White cabinetry, three windows, a layout that has not changed because there was no reason to change it."
         img={I.kitchen}
         photos={G.kitchen} onOpen={openLB} dark
       />
@@ -934,7 +927,7 @@ export default function GarranHillV6() {
       <CinematicReveal
         eyebrow="The Study"
         headline="Same panel details<br/><em style='font-weight:300'>as the dining room. Drawn that way.</em>"
-        body="The 2000 renovation plans specify the study paneling must match the existing dining room panels exactly. Same profiles, same proportions, 84 years apart. The result is a room that does not feel added. It feels inevitable."
+        body="The millwork was drawn to match the 1916 dining room panels exactly. O'Shea wrote it into the plans. Same profiles, same proportions. Custom woodwork throughout. A reading room that earns the name."
         img={I.office}
         photos={G.study} onOpen={openLB}
       />
@@ -943,7 +936,7 @@ export default function GarranHillV6() {
       <CinematicReveal flip
         eyebrow="The Primary Suite"
         headline="The master suite<br/><em style='font-weight:300'>was a commission, not a renovation.</em>"
-        body="Every panel, every cabinet, the fireplace surround, the tub surround -- drawn from scratch by Thomas O'Shea in 2000 to match a 1916 house. The dogwood outside the divided-light windows blooms every April without anyone's help."
+        body="Every panel, every cabinet, the fireplace surround, the tub surround -- drawn from scratch by Thomas O'Shea in 2000 to match a 1916 house. Three whirlpool baths on the floor. The dogwood outside the window blooms every April."
         img={I.bath}
         photos={G.primary} onOpen={openLB} dark
       />
@@ -957,20 +950,7 @@ export default function GarranHillV6() {
         photos={G.bedrooms} onOpen={openLB}
       />
 
-      {/* 08d BETTY DUMAINE INTERSTITIAL */}
-      <div style={{ background: '#040404', padding: 'clamp(4rem,8vw,7rem) clamp(2rem,14vw,18rem)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-        <FadeIn>
-          <span style={EYE()}>The Stewardship</span>
-          <Rule center />
-          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.5rem,2.8vw,3rem)', color: '#fff', lineHeight: 1.45, margin: '0 auto 1.8rem', maxWidth: 800 }}>
-            She planted this garden from scratch.<br />This is what twenty years of care looks like.
-          </p>
-          <Rule center />
-          <p style={{ fontFamily: 'sans-serif', fontSize: '7.5px', letterSpacing: '0.32em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)', margin: '1.6rem 0 0' }}>
-            Betty Dumaine &mdash; Garran Hill &mdash; 1946 to 1965
-          </p>
-        </FadeIn>
-      </div>
+      {/* 08d BETTY DUMAINE INTERSTITIAL -- moved to Grounds section where she belongs */}
 
       {/* 08c SEVEN FIREPLACES */}}
       <section style={{ background: '#060606', padding: 'clamp(5rem,10vw,8rem) clamp(2rem,8vw,10rem)' }}>
@@ -1037,7 +1017,7 @@ export default function GarranHillV6() {
       <CinematicReveal
         eyebrow="The Grounds"
         headline="The rose garden runs<br/><em style='font-weight:300'>the full length of the pool wall.</em>"
-        body="4.15 acres. The garden was planted from bare ground and grown over twenty years. In spring it is the best argument for the property. In any season, it is the reason people do not leave."
+        body="4.15 acres. The rose garden was planted from bare ground over twenty years. It runs the full length of the pool wall. There is nothing like it in Pinehurst."
         img={I.roseMoney}
         photos={G.grounds} onOpen={openLB}
       />
