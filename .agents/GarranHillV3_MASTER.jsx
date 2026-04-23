@@ -384,7 +384,7 @@ function Hero({ onInquire }) {
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1,
         backgroundImage: `url(${GH_POSTER})`,
-        backgroundSize: 'cover', backgroundPosition: 'center 38%',
+        backgroundSize: 'cover', backgroundPosition: 'center 58%',
         opacity: ready ? 0 : 1,
         transition: 'opacity 1.4s ease',
       }} />
@@ -395,7 +395,7 @@ function Hero({ onInquire }) {
         muted loop playsInline preload="none"
         style={{
           position: 'absolute', inset: 0, width: '100%', height: '100%',
-          objectFit: 'cover', objectPosition: 'center 42%',
+          objectFit: 'cover', objectPosition: 'center 58%',
           zIndex: 2,
           opacity: ready ? 1 : 0,
           transition: 'opacity 1.4s ease',
