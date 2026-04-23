@@ -46,10 +46,10 @@ const I = {
   dining:      pro('e926f8fdd_200Holycrest-1296.jpg'),
   dining2:     pro('1b24b019d_HHDRwshellcabinetsApr96.jpg'),
   /* Study */
-  office:      own('2b920c3b0_markofficemoneyshot.jpg'),
-  officeTall:  own('0f9f2f213_architecmarkofficetallbeampic.jpg'),
+  office:      pro('1d3d71365_200HollycrestDrive-136.jpg'),
+  officeTall:  pro('92368fa78_200HollycrestDrive-135.jpg'),
   /* Primary Suite */
-  bath:        own('08da5b97d_spaprimarybath.jpg'),
+  bath:        pro('6e5fe498c_200HollycrestDrive-96.jpg'),
   window:      own('b0965610e_21AprHHBRwindowviewdogwoodemergingazaleas.jpg'),
   /* History */
   img1916:     own('7b1b1f524_GarranHill1916photos.jpg'),
@@ -463,7 +463,9 @@ export default function GarranHillV3() {
     ],
     study: [
       { src: I.office,     caption: 'The Study' },
-      { src: I.officeTall, caption: 'The Study -- Vaulted Ceiling & Exposed Beams' },
+      { src: I.officeTall, caption: 'The Study -- Original Millwork' },
+      { src: pro('f8a2857c7_200HollycrestDrive-137.jpg'), caption: 'The Study -- David Prest Shelving' },
+      { src: pro('e677bd9cb_200HollycrestDrive-138.jpg'), caption: 'The Study -- Fireplace Detail' },
     ],
     suite: [
       { src: I.bath,   caption: 'The Primary Bath' },
@@ -581,8 +583,8 @@ export default function GarranHillV3() {
       {/* 12 STUDY */}
       <CinematicReveal
         eyebrow="The Study"
-        headline="Exposed ceiling beams. Vaulted ceiling.<br/><em style='font-weight:300'>A wall of divided-light windows.</em>"
-        body="Custom-built desk. Built-in shelving. Conical pendant lights. The room does not ask you to work -- it makes work feel like the right thing to do."
+        headline="Custom millwork. Original proportions.<br/><em style='font-weight:300'>Built-in shelving floor to ceiling.</em>"
+        body="Floor-to-ceiling built-in shelving by David Prest. Original fireplace. Divided-light windows on two walls. The room was designed for a man who read everything and wrote constantly."
         img={I.office}
         photos={G.study} onOpen={openLB} dark />
 
