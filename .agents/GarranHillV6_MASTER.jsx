@@ -69,6 +69,12 @@ const I = {
   bed2:        BP + 'b5094de64_200HollycrestDrive-107.jpg',
   bed2b:       BP + '8f5060238_200HollycrestDrive-108.jpg',
   bed3:        BP + 'a6fad9582_200HollycrestDrive-116.jpg',
+  dressing:    BP + 'gh_200HollycrestDrive-81.jpg',
+  dressing2:   BP + 'gh_200HollycrestDrive-83.jpg',
+  sunroom:     BP + 'gh_200HollycrestDrive-48.jpg',
+  sunroom2:    BP + 'gh_200HollycrestDrive-72.jpg',
+  porch:       BP + 'gh_200HollycrestDrive-151.jpg',
+  porch2:      BP + 'gh_200HollycrestDrive-152.jpg',
   sitting:     own('07dd22757_SITTINGROOMGUESTSUITE.jpg'),
   dining:      pro('e926f8fdd_200Holycrest-1296.jpg'),
   dining2:     pro('1b24b019d_HHDRwshellcabinetsApr96.jpg'),
@@ -681,6 +687,8 @@ export default function GarranHillV6() {
       { src: I.azalea,    caption: 'Azaleas. Back yard. Under the magnolia.' },
       { src: I.poolWall,  caption: 'Pool -- The Arch Gate' },
       { src: I.pool,      caption: 'The Pool -- 20 x 40 Salt Water' },
+      { src: I.porch,     caption: 'The Rear Porch -- Columned, brick terrace.' },
+      { src: I.porch2,    caption: 'The Side Porch' },
     ],
   };
 
@@ -767,6 +775,18 @@ export default function GarranHillV6() {
         body="The kitchen floor is the original heart-pine -- the same boards laid in 1916. White cabinetry. Natural light from three windows. The layout has not changed because there was no reason to change it."
         img={I.kitchen}
         photos={G.kitchen} onOpen={openLB} dark
+      />
+
+      {/* 05c SUNROOM */}
+      <CinematicReveal
+        eyebrow="The Sunroom"
+        headline="Light on three sides.<br/><em style='font-weight:300'>Morning through evening.</em>"
+        body="Adjacent to the kitchen. Windows on three exposures. Original divided-light panes. The room changes completely depending on the hour."
+        img={I.sunroom}
+        photos={[
+          { src: I.sunroom,  caption: 'The Sunroom' },
+          { src: I.sunroom2, caption: 'The Sunroom -- Full view.' },
+        ]} onOpen={openLB}
       />
 
       {/* 06 LIBRARY */}
@@ -960,6 +980,8 @@ export default function GarranHillV6() {
         <DetailGrid items={[
           { label: 'Pool', body: '20x40 salt water, converted 2022. Brick surround with original wrought iron gate.' },
           { label: 'Hot Water', body: 'Three heaters -- 80 gallon primary + two 40-gallon units. Three whirlpool tubs.' },
+          { label: 'Laundry + Mudroom', body: 'Dedicated laundry room and mudroom entry. Separate from main living circulation.' },
+          { label: 'Attic + Cedar Closet', body: '21x43 ft attic, fully floored. Cedar-lined closet at the top of the third-floor stairs.' },
           { label: 'Fireplaces', body: 'Seven fireplaces. Six of seven fitted with propane gas logs and wall-switch timers.' },
           { label: 'Irrigation', body: '28+ zones fed by a dedicated 130-foot deep well. Independent of the domestic system.' },
           { label: 'Security', body: 'Hard-wired 2000. Greensboro monitoring. Intercom via house phones.' },
