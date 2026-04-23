@@ -472,24 +472,38 @@ function Hero({ onInquire }) {
 }
 
 function StatBar() {
-  const S = [
+  const PRIMARY = [
     { n: '1916',       l: 'Year Built' },
     { n: '6,072',      l: 'Square Feet' },
     { n: '4.15',       l: 'Acres' },
-    { n: '4',          l: 'Bedrooms' },
-    { n: '4',          l: 'Full Bathrooms' },
-    { n: '2',          l: 'Powder Rooms' },
-    { n: '7',          l: 'Fireplaces' },
-    { n: '$4,250,000', l: 'Asking Price' },
+    { n: '$4,250,000', l: 'Offered At' },
+  ];
+  const SECONDARY = [
+    { n: '4',  l: 'Bedrooms' },
+    { n: '4',  l: 'Full Baths' },
+    { n: '2',  l: 'Powder Rooms' },
+    { n: '7',  l: 'Fireplaces' },
   ];
   return (
-    <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10, background: 'rgba(4,4,4,0.84)', backdropFilter: 'blur(18px)', borderTop: '1px solid rgba(201,169,110,0.09)', display: 'flex', overflowX: 'auto' }}>
-      {S.map((s, i) => (
-        <div key={i} style={{ flex: '1 0 auto', padding: 'clamp(0.75rem,1.4vw,1.1rem) clamp(0.5rem,1vw,1rem)', textAlign: 'center', borderRight: i < S.length - 1 ? '1px solid rgba(201,169,110,0.07)' : 'none' }}>
-          <div style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.85rem,1.4vw,1.3rem)', color: '#fff', whiteSpace: 'nowrap' }}>{s.n}</div>
-          <div style={{ fontFamily: 'sans-serif', fontSize: '6.5px', letterSpacing: '0.26em', textTransform: 'uppercase', color: GOLD, opacity: 0.58, marginTop: '0.15rem', whiteSpace: 'nowrap' }}>{s.l}</div>
-        </div>
-      ))}
+    <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10, background: 'rgba(4,4,4,0.88)', backdropFilter: 'blur(22px)', borderTop: '1px solid rgba(201,169,110,0.12)' }}>
+      {/* PRIMARY ROW -- large */}
+      <div style={{ display: 'flex', borderBottom: '1px solid rgba(201,169,110,0.07)' }}>
+        {PRIMARY.map((s, i) => (
+          <div key={i} style={{ flex: 1, padding: 'clamp(1.1rem,2vw,1.8rem) clamp(1rem,2vw,2rem)', textAlign: 'center', borderRight: i < PRIMARY.length - 1 ? '1px solid rgba(201,169,110,0.1)' : 'none' }}>
+            <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300, fontSize: 'clamp(1.6rem,2.8vw,3rem)', color: '#fff', whiteSpace: 'nowrap', lineHeight: 1, letterSpacing: '-0.01em' }}>{s.n}</div>
+            <div style={{ fontFamily: 'sans-serif', fontSize: '6.5px', letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, opacity: 0.65, marginTop: '0.45rem', whiteSpace: 'nowrap' }}>{s.l}</div>
+          </div>
+        ))}
+      </div>
+      {/* SECONDARY ROW -- small supporting detail */}
+      <div style={{ display: 'flex' }}>
+        {SECONDARY.map((s, i) => (
+          <div key={i} style={{ flex: 1, padding: 'clamp(0.55rem,1vw,0.8rem) clamp(0.5rem,1vw,1rem)', textAlign: 'center', borderRight: i < SECONDARY.length - 1 ? '1px solid rgba(201,169,110,0.06)' : 'none' }}>
+            <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300, fontSize: 'clamp(0.95rem,1.6vw,1.5rem)', color: 'rgba(255,255,255,0.75)', whiteSpace: 'nowrap' }}>{s.n}</div>
+            <div style={{ fontFamily: 'sans-serif', fontSize: '5.5px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, opacity: 0.42, marginTop: '0.2rem', whiteSpace: 'nowrap' }}>{s.l}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
