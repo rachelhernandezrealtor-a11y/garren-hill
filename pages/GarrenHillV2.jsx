@@ -45,7 +45,7 @@ const IMG_DOGWOOD = cdnExt(GH2 + 'd21f554f6_IMG_9409.jpg');
 const IMG_BLUEFOX = cdnExt(GH + '431db5579_200HollycrestDrive-10.jpg');
 
 /* ---- CREST ---- */
-const CREST = 'https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal,f_png,fl_preserve_transparency/garranhill_crest_nobg.png';
+const CREST = 'https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal,f_png,fl_preserve_transparency/garranhill_crest_v2.png';
 
 /* ---- BLUEPRINTS ---- */
 const BP_ELEV  = cdnExt(GH2 + '6d312bf4e_IMG_4319.jpg');
