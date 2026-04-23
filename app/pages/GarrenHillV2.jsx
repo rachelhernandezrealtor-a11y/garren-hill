@@ -534,8 +534,8 @@ export default function GarranHillV3() {
       {/* 06 ENTRANCE HALL */}
       <CinematicReveal flip
         eyebrow="The Entrance Hall"
-        headline="The house announces itself<br/><em style='font-weight:300'>the moment you cross the threshold.</em>"
-        body='"GARRAN HILL 1916" is carved in granite at the threshold stone. The central hall axis runs straight through to the library bookcases -- visible the instant the door opens. The leaded glass above the door is the same leaded glass that was there in 1916. Everything else was rebuilt around it.'
+        headline="Powder blue walls. Mahogany rail.<br/><em style='font-weight:300'>The axis straight to the library from the front door.</em>"
+        body='White raised-panel wainscoting runs to chair rail on every wall. The staircase curves right as you enter -- mahogany volute, white turned balusters, the same sweep since 1916. The central axis runs straight to the library bookcases, visible from the front door. GARRAN HILL 1916, carved in granite at the threshold.'
         img={I.entry}
         photos={G.entry} onOpen={openLB} />
 
@@ -543,7 +543,7 @@ export default function GarranHillV3() {
       <CinematicReveal
         eyebrow="The Principal Reception Room"
         headline="The room was right in 1916.<br/><em style='font-weight:300'>It is right now.</em>"
-        body="Coffered ceiling. Original wide-plank oak floors. A tapestry flanked by sconces where it has always hung. French doors open to the grounds. The proportions have not been altered."
+        body="Coffered ceiling, white painted panels. Tall double-hung windows on two sides. French doors open to the grounds. Through the archway: the wing sitting room -- four six-pane casement windows, grayish-blue walls, light that changes every hour."
         subBody="Seven fireplaces in this house. This is the one that holds the room."
         img={I.living}
         photos={G.reception} onOpen={openLB} dark />
@@ -555,8 +555,8 @@ export default function GarranHillV3() {
       {/* 09 DINING ROOM */}
       <CinematicReveal flip
         eyebrow="The Dining Room"
-        headline="The shell cabinets were already there in 1916.<br/><em style='font-weight:300'>They are still there now.</em>"
-        body="Mahogany table. Bronze chandelier. Shell-motif arched display alcoves -- original 1916 millwork, untouched through the 2000 restoration and every year since. White mantelpiece with gold-framed mirror above. This room has held the same conversation for 110 years."
+        headline="Three shell alcoves.<br/><em style='font-weight:300'>All of them original 1916.</em>"
+        body="Three arched Neo-Georgian shell cabinets -- two flanking the fireplace, one additional -- have held the same position since the house was built. Brass candelabra chandelier. Gold-scrollwork mirror above the white mantelpiece. This room has not needed to change."
         img={I.dining}
         photos={G.dining} onOpen={openLB} />
 
@@ -586,7 +586,7 @@ export default function GarranHillV3() {
       <CinematicReveal flip
         eyebrow="The Primary Suite"
         headline="White dogwood through divided glass.<br/><em style='font-weight:300'>April. Every year.</em>"
-        body="The primary bath has a freestanding soaking tub, dual vanities with granite countertops, a frameless glass shower enclosure, and large-format floor tile with an inlaid border. Oversized circular mirrors above each vanity. Wall-mounted sconces. The room is finished correctly."
+        body="Two dark-wood vanities with speckled granite countertops and undermount sinks. Freestanding soaking tub. Frameless glass shower with rain showerhead. Wall-mounted sconces above each vanity. This is a bathroom that required decisions."
         img={I.bath}
         photos={G.suite} onOpen={openLB} />
 
@@ -611,8 +611,8 @@ export default function GarranHillV3() {
       {/* 17 WALLED POOL */}
       <CinematicReveal flip
         eyebrow="The Walled Pool Terrace -- 20 x 40 Feet"
-        headline="Salt water. Converted 2022.<br/><em style='font-weight:300'>The brick wall has been here since Betty.</em>"
-        body="The arched gate in the brick wall is the same gate that was here when Blue Fox was buried on the other side. The rose beds run the full length of the wall. 12 cars in the northeast lot. 6 additional at the pool."
+        headline="The wall does two things:<br/><em style='font-weight:300'>it holds the pool and it holds the roses.</em>"
+        body="Light gray stone surround. Brick perimeter wall with wrought iron gate. Salt water, converted 2022. The rose beds run the full length of the wall -- the same beds Betty planted."
         img={I.pool} />
 
       {/* 18 INFRASTRUCTURE */}
