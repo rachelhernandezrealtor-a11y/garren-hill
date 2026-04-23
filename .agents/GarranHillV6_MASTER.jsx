@@ -1127,7 +1127,7 @@ export default function GarranHillV6() {
             <span style={{ ...EYE(), marginBottom: '2rem', display: 'block' }}>Blue Fox &mdash; My Irish Hunter &mdash; 1946 to 1965</span>
             <Rule center />
             <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.4rem,4.5vw,5.5rem)', color: '#fff', lineHeight: 1.15, margin: '2rem auto', letterSpacing: '-0.015em', maxWidth: 780 }}>
-              Someone still puts flowers here.
+              Betty Dumaine put the first flowers here. Someone still does.
             </h2>
             <Rule center />
             <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(0.95rem,1.2vw,1.1rem)', color: CREAM, opacity: 0.65, lineHeight: 2, margin: '2rem auto 0', maxWidth: 520 }}>
