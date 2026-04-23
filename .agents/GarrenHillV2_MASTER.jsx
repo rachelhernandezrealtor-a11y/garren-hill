@@ -157,6 +157,38 @@ function PullQuote({ quote, attribution }) {
   );
 }
 
+
+function HistoryWhisper({ text, attribution = '' }) {
+  return (
+    <div style={{
+      background: '#060606',
+      padding: 'clamp(2.5rem,4vw,3.5rem) clamp(2rem,10vw,14rem)',
+      textAlign: 'center',
+      borderTop: '1px solid rgba(201,169,110,0.08)',
+      borderBottom: '1px solid rgba(201,169,110,0.08)',
+    }}>
+      <FadeIn>
+        <div style={{ width: 24, height: 1, background: GOLD, opacity: 0.3, margin: '0 auto 1.8rem' }} />
+        <p style={{
+          fontFamily: "'Cormorant Garamond', Georgia, serif",
+          fontStyle: 'italic',
+          fontWeight: 300,
+          fontSize: 'clamp(1.1rem,1.6vw,1.5rem)',
+          color: 'rgba(245,240,232,0.65)',
+          lineHeight: 1.7,
+          maxWidth: 640,
+          margin: '0 auto',
+          letterSpacing: '0.01em',
+        }}>{text}</p>
+        {attribution ? (
+          <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, margin: '1.4rem auto 0', opacity: 0.5 }}>{attribution}</p>
+        ) : null}
+        <div style={{ width: 24, height: 1, background: GOLD, opacity: 0.3, margin: '1.8rem auto 0' }} />
+      </FadeIn>
+    </div>
+  );
+}
+
 function StatBar() {
   return (
     <div style={{
@@ -368,16 +400,13 @@ function Manifesto() {
   return (
     <section style={{ background: '#060606', padding: 'clamp(5rem,10vw,9rem) clamp(2rem,10vw,14rem)', textAlign: 'center' }}>
       <FadeIn>
-        <span style={eyebrowStyle}>Pinehurst, North Carolina</span>
+        <span style={eyebrowStyle}>Pinehurst, North Carolina -- Built 1916</span>
         <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 400, fontSize: 'clamp(2rem,3.5vw,3.5rem)', color: '#fff', lineHeight: 1.2, margin: '0 auto 2.5rem', maxWidth: 820, letterSpacing: '-0.01em' }}>
           Some houses hold history.<br /><em style={{ fontWeight: 300 }}>This one shaped it.</em>
         </h2>
         <div style={{ width: 40, height: 1, background: GOLD, opacity: 0.4, margin: '0 auto 2.5rem' }} />
-        <p style={{ color: CREAM, fontSize: 'clamp(0.95rem,1.2vw,1.08rem)', lineHeight: 2.0, opacity: 0.8, maxWidth: 700, margin: '0 auto 1.8rem' }}>
-          Walter Hines Page never walked through the door. He was already dying when he returned from London -- four years as America's Ambassador to the Court of St. James, four years pushing Wilson toward a war that saved Europe. His son Ralph built Garran Hill for him. He died weeks after coming home.
-        </p>
-        <p style={{ color: CREAM, fontSize: 'clamp(0.95rem,1.2vw,1.08rem)', lineHeight: 2.0, opacity: 0.8, maxWidth: 700, margin: '0 auto' }}>
-          The house outlasted all of it. The Page family. Betty Dumaine's peacocks and royalty. A Duke University endowment. Three years of full restoration. One hundred and ten years of people who understood what they were holding. The current stewards have kept that faith.
+        <p style={{ color: CREAM, fontSize: 'clamp(0.95rem,1.2vw,1.08rem)', lineHeight: 2.0, opacity: 0.8, maxWidth: 680, margin: '0 auto' }}>
+          One hundred and ten years. Five families. A World War. Peacocks on the lawn. Three years of full restoration. The current stewards have kept the faith. Garran Hill is ready.
         </p>
       </FadeIn>
     </section>
@@ -409,43 +438,6 @@ function TheSalon() {
   );
 }
 
-function WalterPage() {
-  return (
-    <section style={{ background: '#060606', padding: 'clamp(5rem,10vw,9rem) clamp(2rem,8vw,10rem)' }}>
-      <div style={{ maxWidth: 980, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(3rem,6vw,7rem)', alignItems: 'start' }}>
-        <FadeIn>
-          <span style={eyebrowStyle}>The Provenance</span>
-          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 400, fontSize: 'clamp(1.8rem,2.8vw,3rem)', color: '#fff', lineHeight: 1.18, margin: '0 0 2rem', letterSpacing: '-0.01em' }}>
-            Walter Hines Page.<br /><em style={{ fontWeight: 300 }}>Publisher. Kingmaker. Ambassador.</em>
-          </h2>
-          <div style={{ width: 32, height: 1, background: GOLD, opacity: 0.4, margin: '0 0 2rem' }} />
-          <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 2.0, opacity: 0.82, margin: '0 0 1.4rem' }}>
-            Born in Cary, NC in 1855. Co-founder of Doubleday, Page & Co. He helped nominate Woodrow Wilson for the presidency in 1912. Wilson appointed him US Ambassador to the Court of St. James in 1913.
-          </p>
-          <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 2.0, opacity: 0.82, margin: 0 }}>
-            For four years -- through the whole of the First World War -- Page argued, pleaded, and pushed Wilson to enter the war. The British called him "the friend of Britain in her sorest need." Westminster Abbey agreed.
-          </p>
-        </FadeIn>
-        <FadeIn delay={0.2}>
-          <div style={{ borderLeft: '1px solid rgba(201,169,110,0.2)', paddingLeft: 'clamp(2rem,4vw,3.5rem)' }}>
-            <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 2.0, opacity: 0.82, margin: '0 0 1.4rem' }}>
-              He returned to Moore County in 1918 suffering hypertension and renal failure. His son Ralph had built Garran Hill for him -- a proper Georgian house, built right, by the craftsmen who built Pinehurst.
-            </p>
-            <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 2.0, opacity: 0.82, margin: '0 0 2rem' }}>
-              Page died only weeks after returning. He never lived here. But his name, his story, and his judgment about what a house should be -- that is baked into every brick.
-            </p>
-            <div style={{ background: 'rgba(201,169,110,0.07)', border: '1px solid rgba(201,169,110,0.2)', padding: '1.8rem 2rem' }}>
-              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.1rem,1.6vw,1.4rem)', color: '#fff', lineHeight: 1.5, margin: 0, opacity: 0.9 }}>
-                "The friend of Britain in her sorest need."
-              </p>
-              <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, margin: '1rem 0 0', opacity: 0.7 }}>Westminster Abbey -- 1918</p>
-            </div>
-          </div>
-        </FadeIn>
-      </div>
-    </section>
-  );
-}
 
 function TheDining() {
   return (
@@ -459,39 +451,7 @@ function TheDining() {
   );
 }
 
-function BlueFox() {
-  return (
-    <section style={{ background: '#070707', padding: 'clamp(5rem,10vw,9rem) clamp(2rem,8vw,10rem)' }}>
-      <div style={{ maxWidth: 820, margin: '0 auto', textAlign: 'center' }}>
-        <FadeIn>
-          <span style={eyebrowStyle}>Betty Dumaine -- 1959 to 1980</span>
-          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 400, fontSize: 'clamp(1.8rem,2.8vw,3rem)', color: '#fff', lineHeight: 1.18, margin: '0 auto 2rem', letterSpacing: '-0.01em', maxWidth: 700 }}>
-            Peacocks on the lawn.<br /><em style={{ fontWeight: 300 }}>Royalty at the table.</em>
-          </h2>
-          <div style={{ width: 36, height: 1, background: GOLD, opacity: 0.4, margin: '0 auto 2.5rem' }} />
-          <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 2.0, opacity: 0.82, margin: '0 auto 1.6rem', maxWidth: 660 }}>
-            Betty Dumaine renamed the estate Hollycrest for the native holly trees. She brought horses, hounds, and peacocks. She shared a room at Vassar with a woman who became Queen of Thailand -- royalty visited. She threw annual birthday parties for her horses and invited the children of the community.
-          </p>
-          <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 2.0, opacity: 0.82, margin: '0 auto 2.5rem', maxWidth: 660 }}>
-            When Blue Fox -- her beloved horse -- died, she buried him in a 10x16 foot slate-covered grave with a brass marker and a four-foot blue fox statue. That grave is still on the property.
-          </p>
-          <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 2.0, opacity: 0.82, margin: '0 auto', maxWidth: 660 }}>
-            She left the estate to Duke University on her death in 1980. Duke couldn't sell it for years. Some houses wait for the right person.
-          </p>
-        </FadeIn>
-      </div>
-    </section>
-  );
-}
 
-function WestminsterQuote() {
-  return (
-    <PullQuote
-      quote="The friend of Britain in her sorest need."
-      attribution="Westminster Abbey -- Walter Hines Page Memorial -- 1918"
-    />
-  );
-}
 
 function TheFireplaces() {
   return (
@@ -942,13 +902,15 @@ export default function GarrenHillV2() {
       <Manifesto />
       <CrestDivider />
       <Architecture />
-      <WalterPage />
+      <HistoryWhisper text="Ralph Page built this for his father. Walter Hines Page -- Ambassador to the Court of St. James, the man who pushed Wilson into the First World War -- died weeks after coming home. He never walked through the door." />
       <TheSalon />
+      <HistoryWhisper text="The English Speaking Union met here. Pi Beta Phi. Betty Dumaine's royalty. This room has always known how to hold a conversation." />
       <TheDining />
-      <BlueFox />
-      <WestminsterQuote />
+      <HistoryWhisper text="Betty Dumaine shared a room at Vassar with a woman who became Queen of Thailand. Royalty visited. The dining room frontispiece was already a hundred years old by then." />
       <TheFireplaces />
+      <HistoryWhisper text="The friend of Britain in her sorest need." attribution="Westminster Abbey -- Walter Hines Page Memorial -- 1918" />
       <TheRestoration />
+      <HistoryWhisper text="When Blue Fox died, Betty buried him in a 10x16 slate-covered grave with a brass marker and a four-foot blue fox statue. He is still on the property." />
       <ThePool />
       <TheGrounds />
       <HollySection />
