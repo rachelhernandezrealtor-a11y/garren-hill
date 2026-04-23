@@ -199,7 +199,7 @@ function TimelineItem({ year, title, body, last = false }) {
   );
 }
 
-export default function GarranHillV2() {
+export default function GarrenHillV2() {
   const scrollY = useScrollY();
   const [inquiryOpen, setInquiryOpen] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
@@ -211,7 +211,7 @@ export default function GarranHillV2() {
       await fetch('https://base44.app/api/apps/69e248a2469cc39540781cce/entities/Inquiry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, property: 'Garran Hill', source: 'Landing Page' }),
+        body: JSON.stringify({ ...form, property: 'Garren Hill', source: 'Landing Page' }),
       });
     } catch (_) {}
     setSubmitted(true);
@@ -229,7 +229,7 @@ export default function GarranHillV2() {
         backdropFilter: scrollY > 60 ? 'blur(14px)' : 'none',
         transition: 'all 0.35s ease',
       }}>
-        <span style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1rem', color: '#fff', letterSpacing: '0.04em' }}>Garran Hill</span>
+        <span style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1rem', color: '#fff', letterSpacing: '0.04em' }}>Garren Hill</span>
         <div style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
           <a href="https://my.matterport.com/show/?m=mfwyqT5Btwx&brand=0&mls=1&" target="_blank" rel="noreferrer"
             style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', textDecoration: 'none' }}>
@@ -529,7 +529,7 @@ export default function GarranHillV2() {
                 allow="xr-spatial-tracking"
                 allowFullScreen
                 style={{ display: 'block' }}
-                title="Garran Hill -- 3D Floor Plan Tour"
+                title="Garren Hill -- 3D Floor Plan Tour"
               />
             </div>
             <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', marginTop: '1.2rem' }}>
@@ -590,7 +590,7 @@ export default function GarranHillV2() {
         </FadeIn>
         <FadeIn delay={0.2}>
           <p style={{ color: CREAM, fontSize: '1.1rem', lineHeight: 2, opacity: 0.7, marginTop: '3rem' }}>
-            Garran Hill is ready.
+            Garren Hill is ready.
           </p>
         </FadeIn>
       </div>
@@ -659,7 +659,7 @@ export default function GarranHillV2() {
 
       {/* FOOTER */}
       <div style={{ padding: '2.5rem 4vw', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-        <span style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '0.9rem', color: 'rgba(255,255,255,0.3)' }}>Garran Hill -- 200 Hollycrest Drive, Pinehurst, NC</span>
+        <span style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '0.9rem', color: 'rgba(255,255,255,0.3)' }}>Garren Hill -- 200 Hollycrest Drive, Pinehurst, NC</span>
         <span style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)' }}>Rachel Hernandez Realty</span>
       </div>
 
