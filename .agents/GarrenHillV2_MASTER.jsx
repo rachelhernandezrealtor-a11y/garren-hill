@@ -158,7 +158,7 @@ function StatBar() {
         { value: '5 / 5', label: 'Beds / Baths' },
         { value: '7', label: 'Fireplaces' },
         { value: '1916', label: 'Year Built' },
-        { value: '$3,450,000', label: 'Asking Price' },
+        { value: '$4,250,000', label: 'Asking Price' },
       ].map((s, i, arr) => (
         <div key={i} style={{
           padding: 'clamp(1rem,2vw,1.4rem) clamp(1.2rem,3vw,2.8rem)',
@@ -173,18 +173,30 @@ function StatBar() {
   );
 }
 
+const IMG_DRIVE = cdnExt(GH + 'f0698e1ec_gh_200HollycrestDrive-29.jpg');
+
 function Hero({ onInquire }) {
   const scrollY = useScrollY();
+  const [slide, setSlide] = React.useState(0);
+  React.useEffect(() => {
+    const t = setInterval(() => setSlide(s => (s + 1) % 2), 5000);
+    return () => clearInterval(t);
+  }, []);
+  const imgs = [IMG_DRIVE, IMG_HERO];
   return (
     <section style={{ position: 'relative', height: '100vh', minHeight: 600, overflow: 'hidden', background: '#000' }}>
-      <div style={{
-        position: 'absolute', inset: 0,
-        backgroundImage: `url(${IMG_HERO})`,
-        backgroundSize: 'cover',
-        backgroundPosition: `center calc(50% + ${scrollY * 0.18}px)`,
-        transform: 'scale(1.08)',
-        zIndex: 0,
-      }} />
+      {imgs.map((src, i) => (
+        <div key={i} style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: `url(${src})`,
+          backgroundSize: 'cover',
+          backgroundPosition: `center calc(50% + ${scrollY * 0.18}px)`,
+          transform: 'scale(1.08)',
+          zIndex: 0,
+          opacity: slide === i ? 1 : 0,
+          transition: 'opacity 2.2s ease-in-out',
+        }} />
+      ))}
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.12) 40%, rgba(10,10,10,0.55) 100%)', zIndex: 1 }} />
 
       {/* NAV */}
@@ -579,7 +591,7 @@ function Footer({ onInquire }) {
       </div>
       <div style={{ maxWidth: 1100, margin: '2.5rem auto 0', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '1.5rem', textAlign: 'center' }}>
         <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.18em', color: 'rgba(255,255,255,0.18)', margin: 0 }}>
-          &copy; 2026 Sotheby's International Realty. All rights reserved. Information deemed reliable but not guaranteed. $3,450,000.
+          &copy; 2026 Sotheby's International Realty. All rights reserved. Information deemed reliable but not guaranteed. $4,250,000.
         </p>
       </div>
     </footer>
