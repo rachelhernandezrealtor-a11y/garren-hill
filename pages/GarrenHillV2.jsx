@@ -1,4 +1,3 @@
-49266 chars
 import React, { useState, useEffect, useRef } from 'react';
 
 const GOLD = '#C9A96E';
