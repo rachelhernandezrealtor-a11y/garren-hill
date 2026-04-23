@@ -537,6 +537,38 @@ export default function GarranHillV3() {
         body="Longitudinal plan. Columned portico. Circular drive. Three staircases. The 2000 restoration was designed entirely around the original 1916 leaded glass sidelights and over-door fanlight -- so they could remain exactly as they were the day the house was finished."
         img={I.portico} />
 
+      {/* 05b THRESHOLD */}
+      <section style={{ position: 'relative', overflow: 'hidden', height: 'clamp(480px,72vh,860px)' }}>
+        <div style={{
+          position: 'absolute', inset: '-6% 0',
+          backgroundImage: `url(${I.threshold})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 30%',
+          zIndex: 0
+        }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.38)', zIndex: 1 }} />
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 2,
+          display: 'flex', alignItems: 'center', justifyContent: 'center'
+        }}>
+          <FadeIn>
+            <p style={{
+              fontFamily: SERIF,
+              fontStyle: 'italic',
+              fontWeight: 300,
+              fontSize: 'clamp(1.6rem,3.2vw,3rem)',
+              color: '#fff',
+              letterSpacing: '-0.01em',
+              textAlign: 'center',
+              margin: 0,
+              textShadow: '0 2px 24px rgba(0,0,0,0.5)'
+            }}>
+              The door has been open since 1916.
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* 06 ENTRANCE HALL */}
       <CinematicReveal flip
         eyebrow="The Entrance Hall"
