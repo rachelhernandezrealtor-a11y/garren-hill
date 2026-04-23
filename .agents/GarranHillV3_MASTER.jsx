@@ -47,6 +47,8 @@ const I = {
   dining2:     pro('1b24b019d_HHDRwshellcabinetsApr96.jpg'),
   /* Study */
   office:      pro('1d3d71365_200HollycrestDrive-136.jpg'),
+  library:     pro('42dea0be0_200HollycrestDrive-58.jpg'),
+  libraryWide: pro('d8eb9d69a_200HollycrestDrive-59.jpg'),
   officeTall:  pro('92368fa78_200HollycrestDrive-135.jpg'),
   /* Primary Suite */
   bath:        pro('6e5fe498c_200HollycrestDrive-96.jpg'),
@@ -619,13 +621,13 @@ export default function GarranHillV3() {
         <DetailGrid items={RESTORATION} />
       </DarkSection>
 
-      {/* 12 STUDY */}
+      {/* 12 LIBRARY */}
       <CinematicReveal
-        eyebrow="The Study"
-        headline="Custom millwork. Original proportions.<br/><em style='font-weight:300'>Built-in shelving floor to ceiling.</em>"
-        body="Floor-to-ceiling built-in shelving by David Prest. Original fireplace. Divided-light windows on two walls. The room was designed for a man who read everything and wrote constantly."
-        img={I.office}
-        photos={G.study} onOpen={openLB} dark />
+        eyebrow="The Library"
+        headline="Floor to ceiling. Wall to wall.<br/><em style='font-weight:300'>The books were already there.</em>"
+        body="Built-in shelving on three walls. Rolling ladder. Brass chandelier. French doors to the entrance hall on two sides. Visible from the front door the moment you step in."
+        img={I.libraryWide}
+        photos={G.library} onOpen={openLB} dark />
 
       {/* 13 PRIMARY SUITE */}
       <CinematicReveal flip
