@@ -103,6 +103,14 @@ const IMG_DUSK2    = cdnExt(GH2 + 'f19ebeaad_gh_200HollycrestDrive-209.jpg');
 const IMG_TWILIGHT = cdnExt(GH2 + 'dbb9ffc69_gh_200HollycrestDrive-203.jpg');
 const IMG_BLUEFOX  = cdnExt(GH2 + 'd0ac5bb49_200HollycrestDrive-192.jpg');
 
+// -- AS DRAWN. AS BUILT. --
+const DRAW_SHEET8   = cdnExt(GH2 + '1ec5d67bf_E5751CC7-03E2-43F9-8A41-C0437168E36FIMG_4335.jpg');
+const DRAW_SHEET1   = cdnExt(GH2 + '6d312bf4e_IMG_4319.jpg');
+const DRAW_SHEET4   = cdnExt(GH2 + '17793bb24_IMG_4325.jpg');
+const PHOTO_PORTICO_CLOSE = cdnExt(GH2 + '6f0410dd9_200HollycrestDrive-8.jpg');
+const PHOTO_PORTICO_FULL  = cdnExt(GH  + 'fa8cec793_200HollycrestDrive-191.jpg');
+const PHOTO_THRESHOLD2    = cdnInt(GH2 + 'a9228a85d_200Holycrest-1179.jpg');
+
 //  EYEBROW 
 const eyebrowStyle = {
   fontFamily: 'sans-serif',
@@ -996,6 +1004,101 @@ function BlueFoxSection() {
   );
 }
 
+
+// ===================== AS DRAWN. AS BUILT. =====================
+function AsDrawnPair({ drawingSrc, photoSrc, sheetLabel, roomLabel, note }) {
+  return (
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gap: '3px',
+      marginBottom: '3px',
+    }}>
+      {/* Drawing panel */}
+      <div style={{ position: 'relative', paddingBottom: '70%', overflow: 'hidden', background: '#0c0c0c' }}>
+        <img src={drawingSrc} style={{
+          position: 'absolute', inset: 0, width: '100%', height: '100%',
+          objectFit: 'cover',
+          filter: 'grayscale(1) brightness(0.55) sepia(1) hue-rotate(5deg) saturate(3)',
+          mixBlendMode: 'screen',
+        }} alt="" />
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(135deg, rgba(201,169,110,0.08) 0%, transparent 60%)',
+        }} />
+        <div style={{ position: 'absolute', bottom: '1.2rem', left: '1.2rem' }}>
+          <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.3rem', opacity: 0.8 }}>{sheetLabel}</p>
+          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: '0.95rem', color: 'rgba(255,255,255,0.6)', margin: 0 }}>As Drawn</p>
+        </div>
+      </div>
+      {/* Photo panel */}
+      <div style={{ position: 'relative', paddingBottom: '70%', overflow: 'hidden', background: '#111' }}>
+        <img src={photoSrc} style={{
+          position: 'absolute', inset: 0, width: '100%', height: '100%',
+          objectFit: 'cover',
+        }} alt="" />
+        <div style={{ position: 'absolute', bottom: '1.2rem', right: '1.2rem', textAlign: 'right' }}>
+          <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.3rem', opacity: 0.8 }}>{roomLabel}</p>
+          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: '0.95rem', color: 'rgba(255,255,255,0.6)', margin: 0 }}>As Built</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AsDrawnSection() {
+  return (
+    <section style={{ background: DARK, padding: 'clamp(4rem,8vw,7rem) 0' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 clamp(2rem,6vw,5rem)' }}>
+        <FadeIn>
+          <span style={eyebrowStyle}>As Drawn. As Built.</span>
+          <h2 style={{
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontWeight: 400, fontSize: 'clamp(1.8rem,3vw,3rem)',
+            color: '#fff', lineHeight: 1.18, margin: '0 0 1rem', maxWidth: 700,
+          }}>
+            Thomas O'Shea drew it in 2000.<br />
+            <em style={{ fontWeight: 300 }}>The house was already 84 years old.</em>
+          </h2>
+          <div style={{ width: 32, height: 1, background: GOLD, opacity: 0.5, margin: '0 0 1rem' }} />
+          <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 1.95, opacity: 0.82, maxWidth: 620, margin: '0 0 3rem' }}>
+            When Dr. and Mrs. McAllister commissioned the restoration drawings, the architect found
+            a house built exactly as intended -- nothing structural had shifted in 84 years. The
+            columns still plumb. The brick still true. The proportions still perfect.
+          </p>
+        </FadeIn>
+      </div>
+      <FadeIn delay={0.1}>
+        <AsDrawnPair
+          drawingSrc={DRAW_SHEET8}
+          photoSrc={PHOTO_PORTICO_CLOSE}
+          sheetLabel="Sheet 8 of 15 -- Composite Section, Porch & Attic"
+          roomLabel="The Portico -- Built 1916"
+          note="Rear elevation, attic dormer, porch framing"
+        />
+      </FadeIn>
+      <FadeIn delay={0.2}>
+        <AsDrawnPair
+          drawingSrc={DRAW_SHEET1}
+          photoSrc={PHOTO_PORTICO_FULL}
+          sheetLabel="Sheet 1 of 15 -- Elevations & Site Plan"
+          roomLabel="The Front Elevation -- 110 Years Later"
+          note="Front, rear, and side elevations. Circular drive."
+        />
+      </FadeIn>
+      <FadeIn delay={0.3}>
+        <AsDrawnPair
+          drawingSrc={DRAW_SHEET4}
+          photoSrc={PHOTO_THRESHOLD2}
+          sheetLabel="Sheet 4 of 15 -- First Floor Plan"
+          roomLabel="The Threshold -- Garran Hill, 1916"
+          note="Library on central axis. Kitchen north. Marble flooring."
+        />
+      </FadeIn>
+    </section>
+  );
+}
+
 // ===================== APP =====================
 export default function GarrenHillV2() {
   const [inquireOpen, setInquireOpen] = useState(false);
@@ -1070,6 +1173,8 @@ export default function GarrenHillV2() {
         images={GALLERY_LIBRARY}
         fact="The library sits on the central hall axis -- the organizing spine of the entire floor plan."
       />
+
+      <AsDrawnSection />
 
       {/*  PRIMARY SUITE  */}
       <RoomSection
