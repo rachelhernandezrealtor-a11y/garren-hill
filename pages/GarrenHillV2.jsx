@@ -39,6 +39,7 @@ const IMG_BATH     = cdnInt(GH  + 'f0ace4a90_200HollycrestDrive-101.jpg');     /
 const IMG_BATH2    = cdnInt(GH  + '00d939ad7_200HollycrestDrive-79.jpg');      // Master bath alt
 const IMG_POWDER   = cdnInt(GH  + 'b57f79399_200HollycrestDrive-80.jpg');      // Powder room Tennessee marble
 const IMG_BED2     = cdnInt(GH  + '0929fd72d_200HollycrestDrive-109.jpg');     // Bedroom 2
+const CREST = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/1d1a5e791_generated_image.png';
 
 const eyebrow = {
   fontFamily: 'sans-serif',
@@ -658,9 +659,30 @@ export default function GarrenHillV2() {
       </div>
 
       {/* FOOTER */}
-      <div style={{ padding: '2.5rem 4vw', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-        <span style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '0.9rem', color: 'rgba(255,255,255,0.3)' }}>Garren Hill -- 200 Hollycrest Drive, Pinehurst, NC</span>
-        <span style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)' }}>Rachel Hernandez Realty</span>
+      <div style={{ padding: '3.5rem 4vw 2.5rem', borderTop: '1px solid rgba(201,169,110,0.12)', background: '#050505', textAlign: 'center' }}>
+        <img
+          src={CREST}
+          alt="Garren Hill Crest"
+          style={{
+            width: 120,
+            height: 120,
+            objectFit: 'contain',
+            mixBlendMode: 'screen',
+            opacity: 0.85,
+            marginBottom: '1.8rem',
+            display: 'block',
+            margin: '0 auto 1.8rem',
+          }}
+        />
+        <p style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '0.85rem', color: 'rgba(255,255,255,0.3)', margin: '0 0 0.5rem' }}>
+          Garren Hill &mdash; 200 Hollycrest Drive, Pinehurst, NC &mdash; Est. 1916
+        </p>
+        <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.4)', margin: '0 0 0.4rem' }}>
+          Rachel Hernandez &nbsp;&bull;&nbsp; Sotheby's International Realty
+        </p>
+        <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.15)', margin: 0 }}>
+          rachelhernandezrealtor@gmail.com
+        </p>
       </div>
 
       {/* INQUIRY MODAL */}
