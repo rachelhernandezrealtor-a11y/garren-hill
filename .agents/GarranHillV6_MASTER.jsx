@@ -408,7 +408,7 @@ function Hero({ onInquire }) {
   }, []);
 
   return (
-    <section style={{ position: 'relative', height: '100vh', minHeight: 680, overflow: 'hidden', background: '#040404' }}>
+    <section style={{ position: 'relative', height: '100vh', minHeight: 680, overflow: 'hidden', background: `url(${GH_POSTER}) center 58% / cover no-repeat` }}>
 
       {/* POSTER -- always visible until video is ready */}
       <div style={{
@@ -449,7 +449,7 @@ function Hero({ onInquire }) {
       </nav>
 
       {/* CONTENT */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 10, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(2rem,5vw,4.5rem) clamp(2rem,6vw,5.5rem) clamp(8rem,14vw,11rem)' }}>
+      <div style={{ position: 'absolute', inset: 0, zIndex: 10, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(2rem,5vw,4.5rem) clamp(2rem,6vw,5.5rem) clamp(11rem,18vw,15rem)' }}>
         <div>
           <span style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.38em', textTransform: 'uppercase', color: GOLD, opacity: 0.75, display: 'block', marginBottom: '2rem' }}>
             200 Hollycrest Drive &nbsp;&bull;&nbsp; Pinehurst, NC &nbsp;&bull;&nbsp; Est. 1916
