@@ -1111,6 +1111,32 @@ export default function GarranHillV6() {
         </p>
       </FullBleed>
 
+      
+      {/* 13c BLUE FOX -- standalone grave section */}
+      <section style={{ position: 'relative', overflow: 'hidden', minHeight: 'clamp(520px,68vh,780px)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: `url(https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:outdoor:60,e_sharpen:40,e_saturation:10,f_auto,q_auto,w_1600,c_limit/https://media.base44.com/images/public/69e248a2469cc39540781cce/75a1922cd_200HollycrestDrive-192.jpg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 40%',
+          zIndex: 0
+        }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(4,4,4,0.82) 0%, rgba(4,4,4,0.45) 50%, rgba(4,4,4,0.55) 100%)', zIndex: 1 }} />
+        <FadeIn>
+          <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: 'clamp(4rem,8vw,7rem) clamp(2rem,12vw,16rem)' }}>
+            <span style={{ ...EYE(), marginBottom: '2rem', display: 'block' }}>Blue Fox &mdash; My Irish Hunter &mdash; 1946 to 1965</span>
+            <Rule center />
+            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.4rem,4.5vw,5.5rem)', color: '#fff', lineHeight: 1.15, margin: '2rem auto', letterSpacing: '-0.015em', maxWidth: 780 }}>
+              Someone still puts flowers here.
+            </h2>
+            <Rule center />
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(0.95rem,1.2vw,1.1rem)', color: CREAM, opacity: 0.65, lineHeight: 2, margin: '2rem auto 0', maxWidth: 520 }}>
+              Betty Dumaine's horse. Buried on the grounds she kept for twenty years.<br/>The stone has been here since 1965.
+            </p>
+          </div>
+        </FadeIn>
+      </section>
+
       {/* 14 INFRASTRUCTURE */}
       <DarkSection
         eyebrow="Infrastructure"
