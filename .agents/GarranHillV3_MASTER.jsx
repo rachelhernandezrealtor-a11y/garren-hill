@@ -539,12 +539,19 @@ export default function GarranHillV3() {
 
       {/* 05b THRESHOLD */}
       <section style={{ position: 'relative', overflow: 'hidden', height: 'clamp(480px,72vh,860px)' }}>
+        <style>{`
+          @keyframes thresholdPull {
+            from { transform: scale(1.0); }
+            to   { transform: scale(1.06); }
+          }
+        `}</style>
         <div style={{
           position: 'absolute', inset: '-6% 0',
           backgroundImage: `url(${I.threshold})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center 30%',
-          zIndex: 0
+          zIndex: 0,
+          animation: 'thresholdPull 12s ease-in-out infinite alternate'
         }} />
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.38)', zIndex: 1 }} />
         <div style={{
