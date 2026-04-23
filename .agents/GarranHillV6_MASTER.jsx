@@ -534,7 +534,7 @@ function FullBleed({ src, eyebrow, headline, body, align = 'center', darken = 0.
           {eyebrow && <span style={EYE()}>{eyebrow}</span>}
           {headline && (
             <h2
-              style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,4vw,4.8rem)', color: '#fff', lineHeight: 1.08, margin: eyebrow ? '0 0 2rem' : '0 0 1.5rem', letterSpacing: '-0.015em', maxWidth: (align === 'left' || align === 'right') ? 780 : '100%' }}
+              style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(3rem,5.5vw,7rem)', color: '#fff', lineHeight: 1.08, margin: eyebrow ? '0 0 2rem' : '0 0 1.5rem', letterSpacing: '-0.015em', maxWidth: (align === 'left' || align === 'right') ? 780 : '100%' }}
               dangerouslySetInnerHTML={{ __html: headline }}
             />
           )}
@@ -568,7 +568,7 @@ function DarkSection({ eyebrow, headline, body, children, center = false }) {
       <FadeIn>
         {eyebrow && <span style={EYE()}>{eyebrow}</span>}
         <Rule center={center} />
-        {headline && <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,3.5vw,4rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.8rem', maxWidth: center ? '100%' : 840, letterSpacing: '-0.012em' }} dangerouslySetInnerHTML={{ __html: headline }} />}
+        {headline && <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.8rem,5vw,6.5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.8rem', maxWidth: center ? '100%' : 840, letterSpacing: '-0.012em' }} dangerouslySetInnerHTML={{ __html: headline }} />}
         {body && <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.95rem,1.18vw,1.08rem)', color: CREAM, opacity: 0.68, lineHeight: 2.25, maxWidth: 760, margin: center ? '0 auto' : 0 }}>{body}</p>}
         {children}
       </FadeIn>
@@ -683,7 +683,7 @@ export default function GarranHillV6() {
     grounds: [
       { src: I.roseMoney, caption: 'The Rose Garden -- Money Shot' },
       { src: I.roseWall,  caption: 'The wall does two things: it holds the pool and it holds the roses.' },
-      { src: I.iris,      caption: 'The irises come back every April. Nobody planted them this year.' },
+      { src: I.iris,      caption: 'The irises come back every April. The land remembers.' },
       { src: I.azalea,    caption: 'Azaleas. Back yard. Under the magnolia.' },
       { src: I.poolWall,  caption: 'Pool -- The Arch Gate' },
       { src: I.pool,      caption: 'The Pool -- 20 x 40 Salt Water' },
@@ -793,7 +793,16 @@ export default function GarranHillV6() {
         photos={G.entry} onOpen={openLB}
       />
 
-      {/* 04 DRAWING ROOM */}
+      {/* 03b CRAFTSMEN INTERSTITIAL */}
+      <div style={{ background: '#040404', padding: 'clamp(3.5rem,7vw,6rem) clamp(2rem,14vw,18rem)', textAlign: 'center' }}>
+        <FadeIn>
+          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.1rem,2vw,2rem)', color: CREAM, opacity: 0.55, lineHeight: 1.7, margin: '0 auto', maxWidth: 680, letterSpacing: '0.01em' }}>
+            Built by Leonard Tufts&rsquo; own craftsmen &mdash; the same men who built Pinehurst.
+          </p>
+        </FadeIn>
+      </div>
+
+      {/* 04 DRAWING ROOM */}}
       <CinematicReveal flip
         eyebrow="The Drawing Room"
         headline="Fire going, no one home yet.<br/><em style='font-weight:300'>Seven fireplaces. This is one.</em>"
@@ -853,7 +862,7 @@ export default function GarranHillV6() {
             <div style={{ maxWidth: 'min(520px, 48vw)', padding: 'clamp(5rem,10vw,9rem) clamp(2rem,6vw,7rem)' }}>
               <span style={EYE()}>The Man Who Built It</span>
               <Rule />
-              <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,3.5vw,4.2rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 2rem', letterSpacing: '-0.015em' }}>
+              <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.6rem,4.5vw,6rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 2rem', letterSpacing: '-0.015em' }}>
                 He named it Garran Hill.<br /><em style={{ fontWeight: 300 }}>He never walked through the door.</em>
               </h2>
               <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.68, lineHeight: 1.95, margin: 0 }}>
@@ -864,10 +873,25 @@ export default function GarranHillV6() {
         </div>
       </section>
 
-      {/* 07 STUDY */}
+      {/* 06c WESTMINSTER ABBEY QUOTE */}
+      <div style={{ background: '#030303', padding: 'clamp(5rem,10vw,9rem) clamp(2rem,14vw,18rem)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        <img src={I.crest} alt="" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 380, opacity: 0.025, pointerEvents: 'none', mixBlendMode: 'screen' }} />
+        <FadeIn>
+          <Rule center />
+          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.5rem,3vw,3.2rem)', color: '#fff', lineHeight: 1.45, margin: '0 auto 1.8rem', maxWidth: 820, letterSpacing: '-0.01em' }}>
+            &ldquo;The friend of Britain in her sorest need.&rdquo;
+          </p>
+          <Rule center />
+          <p style={{ fontFamily: 'sans-serif', fontSize: '7.5px', letterSpacing: '0.32em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)', margin: '1.6rem 0 0' }}>
+            Westminster Abbey &mdash; Memorial to Walter Hines Page &mdash; 1918
+          </p>
+        </FadeIn>
+      </div>
+
+      {/* 07 STUDY */}}
       <CinematicReveal
         eyebrow="The Study"
-        headline="Custom millwork. Original proportions.<br/><em style='font-weight:300'>Built-in shelving floor to ceiling.</em>"
+        headline="Custom millwork.<br/><em style='font-weight:300'>David Prest. Floor to ceiling.</em>"
         body="Floor-to-ceiling built-in shelving by David Prest. Original fireplace. Divided-light windows on two walls. The room was designed for a man who read everything and wrote constantly."
         img={I.office}
         photos={G.study} onOpen={openLB}
@@ -891,12 +915,27 @@ export default function GarranHillV6() {
         photos={G.bedrooms} onOpen={openLB}
       />
 
-      {/* 08c SEVEN FIREPLACES */}
+      {/* 08d BETTY DUMAINE INTERSTITIAL */}
+      <div style={{ background: '#040404', padding: 'clamp(4rem,8vw,7rem) clamp(2rem,14vw,18rem)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        <FadeIn>
+          <span style={EYE()}>The Stewardship</span>
+          <Rule center />
+          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.5rem,2.8vw,3rem)', color: '#fff', lineHeight: 1.45, margin: '0 auto 1.8rem', maxWidth: 800 }}>
+            She planted this garden from scratch.<br />This is what twenty years of care looks like.
+          </p>
+          <Rule center />
+          <p style={{ fontFamily: 'sans-serif', fontSize: '7.5px', letterSpacing: '0.32em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)', margin: '1.6rem 0 0' }}>
+            Betty Dumaine &mdash; Garran Hill &mdash; 1946 to 1965
+          </p>
+        </FadeIn>
+      </div>
+
+      {/* 08c SEVEN FIREPLACES */}}
       <section style={{ background: '#060606', padding: 'clamp(5rem,10vw,8rem) clamp(2rem,8vw,10rem)' }}>
         <FadeIn>
           <div style={{ marginBottom: 'clamp(3rem,6vw,5rem)' }}>
             <span style={EYE()}>The Fireplaces</span>
-            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.2rem,4vw,4.8rem)', color: '#fff', lineHeight: 1.06, margin: '1.2rem 0 1.8rem', letterSpacing: '-0.015em' }}>
+            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(3rem,5.5vw,7rem)', color: '#fff', lineHeight: 1.06, margin: '1.2rem 0 1.8rem', letterSpacing: '-0.015em' }}>
               Seven fireplaces.<br /><em style={{ fontWeight: 300 }}>Six of them light with one switch.</em>
             </h2>
             <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.95rem,1.2vw,1.08rem)', color: CREAM, opacity: 0.68, lineHeight: 2.2, maxWidth: 640 }}>
@@ -965,7 +1004,7 @@ export default function GarranHillV6() {
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(4,4,4,0.82) 0%, rgba(4,4,4,0.18) 55%, transparent 100%)' }} />
         <FadeIn>
           <div style={{ position: 'relative', zIndex: 2, padding: 'clamp(2.5rem,6vw,5rem) clamp(2rem,8vw,8rem)', maxWidth: 700 }}>
-            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem,3vw,3rem)', color: '#fff', margin: 0, lineHeight: 1.25 }}>
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(2.2rem,4vw,5rem)', color: '#fff', margin: 0, lineHeight: 1.25 }}>
               The wall does two things:<br />it holds the pool and it holds the roses.
             </p>
           </div>
@@ -985,8 +1024,8 @@ export default function GarranHillV6() {
       <section style={{ background: '#060606', padding: 'clamp(4rem,8vw,6rem) clamp(2rem,8vw,10rem)' }}>
         <FadeIn>
           <span style={EYE()}>The Gardens</span>
-          <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(1.8rem,3vw,3.6rem)', color: '#fff', lineHeight: 1.1, margin: '1.2rem 0 3rem', letterSpacing: '-0.015em' }}>
-            The irises come back every April.<br /><em style={{ fontWeight: 300 }}>Nobody planted them this year.</em>
+          <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.8rem,5vw,6rem)', color: '#fff', lineHeight: 1.1, margin: '1.2rem 0 3rem', letterSpacing: '-0.015em' }}>
+            The irises come back every April.<br /><em style={{ fontWeight: 300 }}>The land remembers.</em>
           </h2>
         </FadeIn>
         <FadeIn>
@@ -1064,7 +1103,7 @@ export default function GarranHillV6() {
           <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
             <span style={EYE()}>The Property</span>
             <Rule center />
-            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(1.8rem,3vw,3.2rem)', color: '#fff', lineHeight: 1.1, margin: '0 auto 0.8rem', letterSpacing: '-0.015em', maxWidth: 700 }}>
+            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.6rem,4.5vw,5.5rem)', color: '#fff', lineHeight: 1.1, margin: '0 auto 0.8rem', letterSpacing: '-0.015em', maxWidth: 700 }}>
               396 photographs.<br /><em style={{ fontWeight: 300 }}>Everything you need to know.</em>
             </h2>
             <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: '0.92rem', color: CREAM, opacity: 0.42, margin: '0 auto', maxWidth: 460 }}>
