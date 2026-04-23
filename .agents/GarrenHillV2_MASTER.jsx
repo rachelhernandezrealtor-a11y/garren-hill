@@ -101,6 +101,7 @@ const GALLERY_GROUNDS = [
 const IMG_AERIAL   = cdnExt(GH2 + '91bd002f8_gh_200HollycrestDrive-217.jpg');
 const IMG_DUSK2    = cdnExt(GH2 + 'f19ebeaad_gh_200HollycrestDrive-209.jpg');
 const IMG_TWILIGHT = cdnExt(GH2 + 'dbb9ffc69_gh_200HollycrestDrive-203.jpg');
+const IMG_BLUEFOX  = cdnExt(GH2 + 'd0ac5bb49_200HollycrestDrive-192.jpg');
 
 //  EYEBROW 
 const eyebrowStyle = {
@@ -945,6 +946,56 @@ function Footer({ onInquire }) {
   );
 }
 
+
+// ===================== BLUE FOX SECTION =====================
+function BlueFoxSection() {
+  const ref = useRef();
+  const scrollY = useScrollY();
+  const [top, setTop] = useState(0);
+  useEffect(() => { if (ref.current) setTop(ref.current.getBoundingClientRect().top + window.scrollY); }, []);
+  const parallax = Math.max(-40, Math.min(40, (scrollY - top) * 0.18));
+
+  return (
+    <section ref={ref} style={{ position: 'relative', height: '72vh', minHeight: 500, overflow: 'hidden' }}>
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: `url(${IMG_BLUEFOX})`,
+        backgroundSize: 'cover',
+        backgroundPosition: `center calc(50% + ${parallax}px)`,
+        transform: 'scale(1.06)', zIndex: 0,
+      }} />
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1,
+        background: 'linear-gradient(to bottom, rgba(6,6,6,0.18) 0%, rgba(6,6,6,0.22) 45%, rgba(6,6,6,0.85) 100%)',
+      }} />
+      <div style={{
+        position: 'absolute', bottom: '4rem', left: 0, right: 0,
+        textAlign: 'center', zIndex: 2, padding: '0 2rem',
+      }}>
+        <FadeIn>
+          <span style={{ ...eyebrowStyle, marginBottom: '1.2rem' }}>The Grounds</span>
+          <p style={{
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontStyle: 'italic', fontWeight: 300,
+            fontSize: 'clamp(1.4rem, 2.4vw, 2.5rem)',
+            color: '#fff', lineHeight: 1.6,
+            margin: '0 auto 1rem', maxWidth: 640,
+            textShadow: '0 2px 24px rgba(0,0,0,0.7)',
+          }}>
+            Blue Fox lived here from 1946 to 1965.<br />
+            Someone put flowers on his grave.<br />
+            <em>They still do.</em>
+          </p>
+          <p style={{
+            fontFamily: 'sans-serif', fontSize: '8.5px', letterSpacing: '0.28em',
+            textTransform: 'uppercase', color: GOLD, opacity: 0.65, margin: 0,
+          }}>Betty Dumaine &nbsp;&bull;&nbsp; Garran Hill</p>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
 // ===================== APP =====================
 export default function GarrenHillV2() {
   const [inquireOpen, setInquireOpen] = useState(false);
@@ -1008,10 +1059,7 @@ export default function GarrenHillV2() {
         reverse={true}
       />
 
-      <HistoryWhisper
-        text="Betty Dumaine kept peacocks on the grounds. A blue fox is buried beneath the old boxwood. European royalty visited. The house has always drawn the kind of people who understand what it is."
-        attribution="Provenance"
-      />
+      <BlueFoxSection />
 
       {/*  LIBRARY  */}
       <RoomSection
