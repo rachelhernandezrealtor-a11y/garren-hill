@@ -448,7 +448,7 @@ function Hero({ onInquire }) {
       </nav>
 
       {/* CONTENT */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 10, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(2rem,5vw,4.5rem) clamp(2rem,6vw,5.5rem) clamp(11rem,18vw,15rem)' }}>
+      <div style={{ position: 'absolute', inset: 0, zIndex: 10, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(2rem,5vw,4.5rem) clamp(2rem,6vw,5.5rem) clamp(9rem,14vw,12rem)' }}>
         <div>
           <span style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.38em', textTransform: 'uppercase', color: GOLD, opacity: 0.75, display: 'block', marginBottom: '2rem' }}>
             200 Hollycrest Drive &nbsp;&bull;&nbsp; Pinehurst, NC &nbsp;&bull;&nbsp; Est. 1916
@@ -488,7 +488,7 @@ function StatBar() {
       {/* PRIMARY ROW -- large */}
       <div style={{ display: 'flex', borderBottom: '1px solid rgba(201,169,110,0.07)' }}>
         {PRIMARY.map((s, i) => (
-          <div key={i} style={{ flex: 1, padding: 'clamp(1.1rem,2vw,1.8rem) clamp(1rem,2vw,2rem)', textAlign: 'center', borderRight: i < PRIMARY.length - 1 ? '1px solid rgba(201,169,110,0.1)' : 'none' }}>
+          <div key={i} style={{ flex: 1, padding: 'clamp(0.7rem,1.2vw,1.1rem) clamp(1rem,2vw,2rem)', textAlign: 'center', borderRight: i < PRIMARY.length - 1 ? '1px solid rgba(201,169,110,0.1)' : 'none' }}>
             <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300, fontSize: 'clamp(1.6rem,2.8vw,3rem)', color: '#fff', whiteSpace: 'nowrap', lineHeight: 1, letterSpacing: '-0.01em' }}>{s.n}</div>
             <div style={{ fontFamily: 'sans-serif', fontSize: '6.5px', letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, opacity: 0.65, marginTop: '0.45rem', whiteSpace: 'nowrap' }}>{s.l}</div>
           </div>
@@ -497,7 +497,7 @@ function StatBar() {
       {/* SECONDARY ROW -- small supporting detail */}
       <div style={{ display: 'flex' }}>
         {SECONDARY.map((s, i) => (
-          <div key={i} style={{ flex: 1, padding: 'clamp(0.55rem,1vw,0.8rem) clamp(0.5rem,1vw,1rem)', textAlign: 'center', borderRight: i < SECONDARY.length - 1 ? '1px solid rgba(201,169,110,0.06)' : 'none' }}>
+          <div key={i} style={{ flex: 1, padding: 'clamp(0.35rem,0.6vw,0.5rem) clamp(0.5rem,1vw,1rem)', textAlign: 'center', borderRight: i < SECONDARY.length - 1 ? '1px solid rgba(201,169,110,0.06)' : 'none' }}>
             <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300, fontSize: 'clamp(0.95rem,1.6vw,1.5rem)', color: 'rgba(255,255,255,0.75)', whiteSpace: 'nowrap' }}>{s.n}</div>
             <div style={{ fontFamily: 'sans-serif', fontSize: '5.5px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, opacity: 0.42, marginTop: '0.2rem', whiteSpace: 'nowrap' }}>{s.l}</div>
           </div>
