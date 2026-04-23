@@ -470,7 +470,7 @@ export default function GarranHillV3() {
       { src: I.window, caption: 'April -- Dogwood Through the Bedroom Window' },
     ],
     grounds: [
-      { src: I.roseMoney, caption: 'The Rose Garden -- June, Ann\'s Garden' },
+      { src: I.roseMoney, caption: 'The Rose Garden -- June' },
       { src: I.poolWall,  caption: 'The Pool Wall -- Arched Gate & Roses' },
       { src: I.iris,      caption: 'The Irises -- April. Nobody Planted Them This Year.' },
       { src: I.azalea,    caption: 'The Azaleas Under the Magnolia -- Betty\'s Colors' },
@@ -604,7 +604,7 @@ export default function GarranHillV3() {
       <CinematicReveal
         eyebrow="The Rose Garden -- June"
         headline="She planted this garden from scratch.<br/><em style='font-weight:300'>This is what twenty years of care looks like.</em>"
-        body="The current stewards planted roses before they filled the pool. The wall does two things: it holds the pool and it holds the roses. Ann's garden. The brick wall, the iron gates, the rose beds -- all of it from the same intention."
+        body="The roses were planted before the pool was filled. The wall does two things: it holds the pool and it holds the roses. The brick wall, the iron gates, the rose beds -- all of it from the same intention."
         img={I.roseMoney}
         photos={G.grounds} onOpen={openLB} dark />
 
