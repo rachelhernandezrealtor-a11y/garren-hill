@@ -819,7 +819,7 @@ export default function GarranHillV6() {
       <CinematicReveal flip
         eyebrow="The Drawing Room"
         headline="Fire going, no one home yet.<br/><em style='font-weight:300'>Seven fireplaces. This is one.</em>"
-        body="The original proportions -- 17-foot ceilings where the architecture demands it. Original fireplace surround. Three exposures. The room holds light differently in the morning than it does in the afternoon."
+        body="Original fireplace surround. Light arrives differently in the morning than it does in the afternoon. The room has been holding it that way since 1916."
         img={I.fireplace}
         photos={G.reception} onOpen={openLB} dark
       />
@@ -828,7 +828,7 @@ export default function GarranHillV6() {
       <CinematicReveal
         eyebrow="The Dining Room"
         headline="The shell cabinets were already there.<br/><em style='font-weight:300'>They are still there now.</em>"
-        body="Four shell alcoves set into the walls -- original to 1916, intact through every era of the house. The room was right then. It is right now."
+        Fireplace with gas logs. Formal proportions that do not ask for anything from you. The room does the work."
         img={I.dining}
         photos={G.dining} onOpen={openLB}
       />
