@@ -687,6 +687,26 @@ export default function GarranHillV6() {
         </FadeIn>
       </section>
 
+      {/* 02b STAIRCASE -- interior arrival */}
+      <section style={{ position: 'relative', minHeight: 'clamp(500px,68vh,780px)', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
+        <style>{`@keyframes stairPull { from { transform: scale(1.0); } to { transform: scale(1.06); } }`}</style>
+        <div style={{
+          position: 'absolute', inset: '-6% 0',
+          backgroundImage: `url(${I.leadedGlass})`,
+          backgroundSize: 'cover', backgroundPosition: 'center 20%', zIndex: 0,
+          animation: 'stairPull 14s ease-in-out infinite alternate',
+        }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(4,4,4,0.72) 0%, rgba(4,4,4,0.18) 60%, transparent 100%)', zIndex: 1 }} />
+        <FadeIn>
+          <div style={{ position: 'relative', zIndex: 2, padding: 'clamp(3rem,8vw,7rem) clamp(2rem,10vw,12rem)', maxWidth: 640 }}>
+            <span style={EYE()}>The Entrance Hall</span>
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem,3.2vw,3.2rem)', color: '#fff', margin: '1.5rem 0 0', lineHeight: 1.25, letterSpacing: '-0.01em' }}>
+              The staircase has turned<br />the same curve since 1916.
+            </p>
+          </div>
+        </FadeIn>
+      </section>
+
       {/* 03 ENTRANCE HALL */}
       <CinematicReveal
         eyebrow="The Entrance Hall"
@@ -722,6 +742,20 @@ export default function GarranHillV6() {
         img={I.libraryWide}
         photos={G.library} onOpen={openLB} dark
       />
+
+      {/* 06b WALTER HINES PAGE -- woven after Library */}
+      <FullBleed
+        src={I.whp}
+        eyebrow="The Man Who Built It"
+        headline="He named it Garran Hill.<br/><em style='font-weight:300'>He never walked through the door.</em>"
+        darken={0.70}
+        bgPos="center top"
+        minH="clamp(560px,76vh,860px)"
+      >
+        <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.92rem,1.15vw,1.05rem)', color: CREAM, opacity: 0.68, lineHeight: 2.3, maxWidth: 600, marginTop: '1.5rem' }}>
+          Walter Hines Page purchased the land in February 1913 and named the estate Garran Hill. The following month, President Wilson appointed him Ambassador to the Court of St. James. He served in London through the First World War -- the most consequential years of the 20th century. He died in Pinehurst on December 21, 1918, and was honored in Westminster Abbey as &ldquo;the friend of Britain in her sorest need.&rdquo; The house he built was completed without him. It has stood for 110 years.
+        </p>
+      </FullBleed>
 
       {/* 07 STUDY */}
       <CinematicReveal
@@ -800,67 +834,6 @@ export default function GarranHillV6() {
         </FadeIn>
       </section>
 
-      {/* 09 HISTORY -- Walter Hines Page */}
-      <FullBleed
-        src={I.whp}
-        eyebrow="The Founder"
-        headline="He named it Garran Hill.<br/>He never walked through the door."
-        darken={0.68}
-        bgPos="center top"
-        minH="clamp(580px,80vh,900px)"
-      >
-        <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.95rem,1.2vw,1.08rem)', color: CREAM, opacity: 0.7, lineHeight: 2.2, maxWidth: 640, margin: '0 auto' }}>
-          Walter Hines Page purchased the land in February 1913 and named the estate Garran Hill. The following month, President Wilson appointed him Ambassador to the Court of St. James. He served in London through the First World War, died in Pinehurst on December 21, 1918, and was honored in Westminster Abbey as &ldquo;the friend of Britain in her sorest need.&rdquo; The house he built was completed without him. It has stood for 110 years.
-        </p>
-      </FullBleed>
-
-      {/* 09b ARCHITECTURAL DETAILS -- doorknob full bleed */}
-      <FullBleed
-        src={I.doorknob}
-        eyebrow="The Details"
-        headline="Brass. Original.<br/><em style='font-weight:300'>Still on every door.</em>"
-        darken={0.22}
-        bgPos="center center"
-        minH="clamp(600px,85vh,960px)"
-        align="right"
-      >
-        <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.95rem,1.2vw,1.08rem)', color: CREAM, opacity: 0.72, lineHeight: 2.2, maxWidth: 520, marginTop: '1.5rem' }}>
-          The hardware was specified in 1916. It has not been replaced. The doors are original painted pine. The thresholds are original oak. Nothing here was modernized because nothing needed to be.
-        </p>
-      </FullBleed>
-
-      {/* 10 1916 ARCHIVE */}
-      <DarkSection
-        eyebrow="Est. 1916"
-        headline="In 1916, those were saplings.<br/>Now they are a forest."
-      >
-        <div style={{ marginTop: '3rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3 }}>
-          <div style={{ aspectRatio: '4/3', backgroundImage: `url(${I.img1916})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
-          <div style={{ aspectRatio: '4/3', backgroundImage: `url(${I.sepia})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
-        </div>
-      </DarkSection>
-
-      {/* 11 RESTORATION */}
-      <PullQuote
-        quote="The new entry was designed around the original leaded glass."
-        attr="Thomas O'Shea -- Restoration Architect, 2000"
-      />
-
-      {/* 12 STEWARDSHIP -- Betty Dumaine */}
-      <FullBleed
-        src={I.betty}
-        eyebrow="Stewardship"
-        headline="She planted this garden from scratch.<br/>This is what twenty years of care looks like."
-        darken={0.62}
-        align="left"
-        bgPos="center top"
-        minH="clamp(560px,72vh,860px)"
-      >
-        <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.95rem,1.2vw,1.08rem)', color: CREAM, opacity: 0.68, lineHeight: 2.2, maxWidth: 580, margin: '1.5rem 0 0' }}>
-          Betty Dumaine arrived at Garran Hill and found the grounds nearly bare. Over twenty years she planted everything -- the rose garden, the pool walk, the camellias along the pebble path. Blue Fox, her horse, is buried on the grounds. A stone marks the place.
-        </p>
-      </FullBleed>
-
       {/* 13 GROUNDS */}
       <CinematicReveal
         eyebrow="The Grounds"
@@ -869,6 +842,21 @@ export default function GarranHillV6() {
         img={I.roseMoney}
         photos={G.grounds} onOpen={openLB}
       />
+
+      {/* 13b STEWARDSHIP -- Betty Dumaine, woven after Grounds */}
+      <FullBleed
+        src={I.betty}
+        eyebrow="Stewardship"
+        headline="She planted this garden from scratch.<br/><em style='font-weight:300'>This is what twenty years of care looks like.</em>"
+        darken={0.60}
+        align="left"
+        bgPos="center top"
+        minH="clamp(540px,72vh,820px)"
+      >
+        <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.92rem,1.15vw,1.05rem)', color: CREAM, opacity: 0.68, lineHeight: 2.3, maxWidth: 560, marginTop: '1.5rem' }}>
+          Betty Dumaine arrived at Garran Hill and found the grounds nearly bare. Over twenty years she planted everything -- the rose garden, the pool walk, the camellias along the pebble path. Blue Fox, her horse, is buried on the grounds. A stone marks the place. Four generations of remarkable people have called this place home.
+        </p>
+      </FullBleed>
 
       {/* 14 INFRASTRUCTURE */}
       <DarkSection
@@ -884,6 +872,23 @@ export default function GarranHillV6() {
           { label: 'Parking', body: '12+ cars northeast lot. Additional 6 at the pool lot.' },
         ]} />
       </DarkSection>
+
+      {/* 14b 1916 ARCHIVE -- woven before end sequence */}
+      <DarkSection
+        eyebrow="Est. 1916"
+        headline="In 1916, those were saplings.<br/>Now they are a forest."
+      >
+        <div style={{ marginTop: '3rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3 }}>
+          <div style={{ aspectRatio: '4/3', backgroundImage: `url(${I.img1916})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+          <div style={{ aspectRatio: '4/3', backgroundImage: `url(${I.sepia})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        </div>
+      </DarkSection>
+
+      {/* RESTORATION PULL QUOTE -- transition into end */}
+      <PullQuote
+        quote="The new entry was designed around the original leaded glass."
+        attr="Thomas O'Shea -- Restoration Architect, 2000"
+      />
 
       {/* 15 AERIAL */}
       <FullBleed
