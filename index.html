@@ -413,6 +413,13 @@ function App() {
               Neo-Georgian. Walter Hines Page. 110 years of remarkable stewardship.
             </p>
           </FadeIn>
+        </div>
+
+        {/* TOUR BUTTON -- absolutely centered over full hero */}
+        <div style={{
+          position: 'absolute', bottom: '14%', left: 0, right: 0, zIndex: 6,
+          display: 'flex', justifyContent: 'center',
+        }}>
           <FadeIn delay={0.5}>
             <a href="https://my.matterport.com/show/?m=mfwyqT5Btwx&brand=0&mls=1&"
               target="_blank" rel="noreferrer" style={{
@@ -424,8 +431,6 @@ function App() {
               letterSpacing: '0.28em', textTransform: 'uppercase',
               textDecoration: 'none', borderRadius: 1,
               backdropFilter: 'blur(8px)',
-              alignSelf: 'center',
-              marginLeft: 'auto', marginRight: 'auto',
             }}>
               Tour the Estate
             </a>
