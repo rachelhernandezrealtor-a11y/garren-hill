@@ -798,19 +798,28 @@ export default function GarranHillV6() {
         photos={G.library} onOpen={openLB} dark
       />
 
-      {/* 06b WALTER HINES PAGE -- woven after Library */}
-      <FullBleed
-        src={I.whp}
-        eyebrow="The Man Who Built It"
-        headline="He named it Garran Hill.<br/><em style='font-weight:300'>He never walked through the door.</em>"
-        darken={0.70}
-        bgPos="center top"
-        minH="clamp(560px,76vh,860px)"
-      >
-        <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.92rem,1.15vw,1.05rem)', color: CREAM, opacity: 0.68, lineHeight: 2.3, maxWidth: 600, marginTop: '1.5rem' }}>
-          Walter Hines Page purchased the land in February 1913 and named the estate Garran Hill. The following month, President Wilson appointed him Ambassador to the Court of St. James. He served in London through the First World War -- the most consequential years of the 20th century. He died in Pinehurst on December 21, 1918, and was honored in Westminster Abbey as &ldquo;the friend of Britain in her sorest need.&rdquo; The house he built was completed without him. It has stood for 110 years.
-        </p>
-      </FullBleed>
+      {/* 06b WALTER HINES PAGE -- editorial split, portrait unobstructed */}
+      <section style={{ position: 'relative', minHeight: 'clamp(600px,80vh,920px)', overflow: 'hidden', display: 'flex', alignItems: 'stretch' }}>
+        {/* Full-bleed portrait -- right side, face clear */}
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.whp})`, backgroundSize: 'cover', backgroundPosition: 'center top', zIndex: 0 }} />
+        {/* Dark gradient covers LEFT half only -- portrait on right stays lit */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(4,4,4,0.97) 0%, rgba(4,4,4,0.90) 42%, rgba(4,4,4,0.45) 62%, transparent 78%)', zIndex: 1 }} />
+        {/* Text panel -- left side only, max 50% width */}
+        <div style={{ position: 'relative', zIndex: 2, width: '100%', display: 'flex', alignItems: 'center' }}>
+          <FadeIn>
+            <div style={{ maxWidth: 'min(520px, 48vw)', padding: 'clamp(5rem,10vw,9rem) clamp(2rem,6vw,7rem)' }}>
+              <span style={EYE()}>The Man Who Built It</span>
+              <Rule />
+              <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,3.5vw,4.2rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 2rem', letterSpacing: '-0.015em' }}>
+                He named it Garran Hill.<br /><em style={{ fontWeight: 300 }}>He never walked through the door.</em>
+              </h2>
+              <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.68, lineHeight: 1.95, margin: 0 }}>
+                Walter Hines Page purchased the land in February 1913 and named the estate Garran Hill. The following month, President Wilson appointed him Ambassador to the Court of St. James. He served in London through the First World War -- the most consequential years of the 20th century. He died in Pinehurst on December 21, 1918, and was honored in Westminster Abbey as &ldquo;the friend of Britain in her sorest need.&rdquo; The house he built was completed without him. It has stood for 110 years.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
 
       {/* 07 STUDY */}
       <CinematicReveal
