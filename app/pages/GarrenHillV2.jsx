@@ -26,6 +26,8 @@ const IMG_POWDER  = cdnInt(GH + 'b57f79399_200HollycrestDrive-80.jpg');
 const IMG_REAR    = cdnExt(GH + '17d8dd539_200HollycrestDrive-132.jpg');
 const IMG_GARDEN  = cdnExt(GH + 'f0698e1ec_gh_200HollycrestDrive-29.jpg');
 const IMG_TWILIGHT = cdnExt(GH2 + 'dbb9ffc69_gh_200HollycrestDrive-203.jpg');
+const IMG_AERIAL  = cdnExt(GH2 + '91bd002f8_gh_200HollycrestDrive-217.jpg');
+const IMG_DUSK2   = cdnExt(GH2 + 'f19ebeaad_gh_200HollycrestDrive-209.jpg');
 
 const CREST_URL = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/be819ab2a_generated_image.png';
 
@@ -547,6 +549,57 @@ function Closing() {
   );
 }
 
+function AerialSection() {
+  const scrollY = useScrollY();
+  const ref = useRef();
+  const [top, setTop] = useState(0);
+  useEffect(() => {
+    if (ref.current) setTop(ref.current.getBoundingClientRect().top + window.scrollY);
+  }, []);
+  const parallax = Math.max(-40, Math.min(40, (scrollY - top) * 0.18));
+  return (
+    <section ref={ref} style={{ position: 'relative', height: '65vh', minHeight: 440, overflow: 'hidden' }}>
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: `url(${IMG_AERIAL})`,
+        backgroundSize: 'cover',
+        backgroundPosition: `center calc(50% + ${parallax}px)`,
+        transform: 'scale(1.06)',
+        zIndex: 0,
+      }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(6,6,6,0.25) 0%, rgba(6,6,6,0.05) 40%, rgba(6,6,6,0.4) 100%)', zIndex: 1 }} />
+      <div style={{ position: 'absolute', bottom: '2.5rem', left: 0, right: 0, textAlign: 'center', zIndex: 2 }}>
+        <FadeIn>
+          <span style={{ ...eyebrowStyle, color: 'rgba(201,169,110,0.7)' }}>4.25 Acres &nbsp;&bull;&nbsp; Pinehurst, NC</span>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
+function Dusk2Section() {
+  const scrollY = useScrollY();
+  const ref = useRef();
+  const [top, setTop] = useState(0);
+  useEffect(() => {
+    if (ref.current) setTop(ref.current.getBoundingClientRect().top + window.scrollY);
+  }, []);
+  const parallax = Math.max(-40, Math.min(40, (scrollY - top) * 0.18));
+  return (
+    <section ref={ref} style={{ position: 'relative', height: '60vh', minHeight: 400, overflow: 'hidden' }}>
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: `url(${IMG_DUSK2})`,
+        backgroundSize: 'cover',
+        backgroundPosition: `center calc(50% + ${parallax}px)`,
+        transform: 'scale(1.06)',
+        zIndex: 0,
+      }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(6,6,6,0.35) 0%, rgba(6,6,6,0.1) 50%, rgba(6,6,6,0.5) 100%)', zIndex: 1 }} />
+    </section>
+  );
+}
+
 function TwilightClose() {
   const scrollY = useScrollY();
   const ref = useRef();
@@ -684,9 +737,11 @@ export default function GarrenHillV2() {
       <TheFireplaces />
       <TheRestoration />
       <ThePool />
+      <AerialSection />
       <AnnQuote />
       <MatterportSection />
       <Closing />
+      <Dusk2Section />
       <TwilightClose />
       <Footer />
       <Inquire open={inquireOpen} onClose={() => setInquireOpen(false)} />
