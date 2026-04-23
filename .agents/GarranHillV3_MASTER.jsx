@@ -335,10 +335,10 @@ function CinematicReveal({ eyebrow, headline, body, subBody, img, flip = false, 
 /* ============================================================
    FULL BLEED SECTION
 ============================================================ */
-function FullBleed({ src, eyebrow, headline, body, align = 'center', darken = 0.52, minH = 'clamp(500px,70vh,800px)', children }) {
+function FullBleed({ src, eyebrow, headline, body, align = 'center', darken = 0.52, minH = 'clamp(500px,70vh,800px)', bgPos = 'center', children }) {
   return (
     <section style={{ position: 'relative', overflow: 'hidden', minHeight: minH, display: 'flex', alignItems: 'center' }}>
-      <div style={{ position: 'absolute', inset: '-8% 0', backgroundImage: `url(${src})`, backgroundSize: 'cover', backgroundPosition: 'center', zIndex: 0 }} />
+      <div style={{ position: 'absolute', inset: '-8% 0', backgroundImage: `url(${src})`, backgroundSize: 'cover', backgroundPosition: bgPos, zIndex: 0 }} />
       <div style={{ position: 'absolute', inset: 0, background: `rgba(4,4,4,${darken})`, zIndex: 1 }} />
       <div style={{ position: 'relative', zIndex: 2, width: '100%', padding: 'clamp(5rem,10vw,9rem) clamp(2rem,10vw,14rem)', textAlign: align }}>
         <FadeIn>
@@ -565,7 +565,7 @@ export default function GarranHillV3() {
         photos={G.dining} onOpen={openLB} />
 
       {/* 10 WALTER HINES PAGE */}
-      <FullBleed src={I.whp} eyebrow="Walter Hines Page -- 1855-1918" align="left" darken={0.58}
+      <FullBleed src={I.whp} eyebrow="Walter Hines Page -- 1855-1918" align="left" darken={0.58} bgPos="top center"
         minH="clamp(540px,76vh,880px)"
         headline="He named it Garran Hill.<br/><em style='font-weight:300'>He never walked through the door.</em>"
         body="Ambassador to the Court of St. James's, 1913-1918. He wrote to Wilson every week begging America to enter the war. He came home on a stretcher in October 1918. He died December 21st at a cottage near Pinehurst. A tablet was placed in Westminster Abbey." />
