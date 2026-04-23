@@ -630,7 +630,7 @@ export default function GarranHillV3() {
 
       {/* 20 INQUIRE */}
       <FullBleed src={I.dusk2} eyebrow="200 Hollycrest Drive -- Pinehurst, NC" darken={0.5}
-        headline="The world outside these gates<br/><em style='font-weight:300'>does not exist here.</em>">
+        headline="The world beyond the brick pillars<br/><em style='font-weight:300'>does not exist here.</em>">
         <button onClick={() => setModal(true)} style={{ marginTop: '2.8rem', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.38em', textTransform: 'uppercase', color: GOLD, background: 'none', border: `1px solid ${GOLD}`, padding: '1.1rem 3.5rem', cursor: 'pointer' }}>
           Private Inquiry
         </button>
