@@ -44,6 +44,9 @@ const IMG_DOGWOOD = cdnExt(GH2 + 'd21f554f6_IMG_9409.jpg');
 /* ---- BLUE FOX ---- */
 const IMG_BLUEFOX = cdnExt(GH + '431db5579_200HollycrestDrive-10.jpg');
 
+/* ---- HERO VIDEO ---- */
+const GH_VIDEO_URL = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/c69081003d2f865c41687d0afdbc6aa4/manifest/video.m3u8';
+
 /* ---- CREST ---- */
 const CREST = 'https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal,f_png,fl_preserve_transparency/garranhill_crest_v2.png';
 
@@ -265,6 +268,15 @@ function Hero({ onInquire }) {
   const imgs = [IMG_DRIVE, IMG_PORTICO];
   return (
     <section style={{ position: 'relative', height: '100vh', minHeight: 600, overflow: 'hidden', background: '#000' }}>
+      {/* Video background */}
+      <video
+        autoPlay muted loop playsInline
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0, transform: 'scale(1.04)' }}
+        onError={e => { e.target.style.display = 'none'; }}
+      >
+        <source src={GH_VIDEO_URL} type="application/x-mpegURL" />
+      </video>
+      {/* Fallback photo if video fails */}
       {imgs.map((src, i) => (
         <div key={i} style={{
           position: 'absolute', inset: 0,
@@ -273,7 +285,7 @@ function Hero({ onInquire }) {
           backgroundPosition: `center calc(50% + ${scrollY * 0.18}px)`,
           transform: 'scale(1.08)',
           zIndex: 0,
-          opacity: slide === i ? 1 : 0,
+          opacity: slide === i ? 0.0 : 0,
           transition: 'opacity 2.4s ease-in-out',
         }} />
       ))}
