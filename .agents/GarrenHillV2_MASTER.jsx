@@ -533,7 +533,7 @@ function Hero({ onInquire }) {
           ['5 / 5', 'Beds / Baths'],
           ['7', 'Fireplaces'],
           ['1916', 'Year Built'],
-          ['$3,450,000', 'Asking Price'],
+          ['$4,250,000', 'Asking Price'],
         ].map(([val, label], i, arr) => (
           <React.Fragment key={label}>
             <div style={{ textAlign: 'center' }}>
@@ -940,7 +940,7 @@ function Footer({ onInquire }) {
       <img src={CREST} alt="Garran Hill Crest" style={{ width: 68, height: 68, objectFit: 'contain', opacity: 0.7, filter: 'sepia(1) saturate(1.5) brightness(1.1)', display: 'block', margin: '0 auto 2rem' }} />
       <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(1.4rem,2vw,1.8rem)', color: '#fff', fontWeight: 300, fontStyle: 'italic', margin: '0 0 0.6rem' }}>Garran Hill</p>
       <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, margin: '0 0 2.4rem', opacity: 0.75 }}>
-        200 Hollycrest Drive &nbsp;&bull;&nbsp; Pinehurst, NC &nbsp;&bull;&nbsp; $3,450,000
+        200 Hollycrest Drive &nbsp;&bull;&nbsp; Pinehurst, NC &nbsp;&bull;&nbsp; $4,250,000
       </p>
       <div style={{ width: 44, height: 1, background: `linear-gradient(to right, transparent, ${GOLD}, transparent)`, margin: '0 auto 2.4rem' }} />
       <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)', margin: '0 0 0.4rem' }}>Rachel Hernandez</p>
