@@ -1094,7 +1094,7 @@ export default function GarranHillV6() {
         minH="clamp(540px,72vh,820px)"
       >
         <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.92rem,1.15vw,1.05rem)', color: CREAM, opacity: 0.68, lineHeight: 2.3, maxWidth: 560, marginTop: '1.5rem' }}>
-          Betty Dumaine arrived at Garran Hill and found the grounds nearly bare. Over twenty years she planted everything -- the rose garden, the pool walk, the camellias along the pebble path. Blue Fox, her horse, is buried on the grounds. A stone marks the place. Four generations of remarkable people have called this place home.
+          She planted the rose garden, the pool walk, the camellias along the pebble path. She kept foxhounds and peacocks on the grounds. The Queen of Thailand stayed here. Four generations of remarkable people have called this place home.
         </p>
       </FullBleed>
 
