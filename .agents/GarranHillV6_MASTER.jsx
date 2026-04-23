@@ -50,6 +50,13 @@ const I = {
   fp5:         pro('b5094de64_200HollycrestDrive-107.jpg'),
   fp6:         pro('d726a6755_200HollycrestDrive-119.jpg'),
   fp7:         pro('974dc6da4_200HollycrestDrive-66.jpg'),
+  doorknob:    pro('886246096_200Holycrest-1701.jpg'),
+  fireYellow:  pro('a6fad9582_200HollycrestDrive-116.jpg'),
+  fireDining:  pro('a521e9d8a_200HollycrestDrive-34.jpg'),
+  firePink:    pro('66ed11beb_200Holycrest-1351.jpg'),
+  firePinkWide:pro('36a377fdc_200HollycrestDrive-93.jpg'),
+  fireOrnate:  pro('c04dbe756_200HollycrestDrive-94.jpg'),
+  stairHall:   pro('e856d8465_200HollycrestDrive-16.jpg'),
   sitting:     own('07dd22757_SITTINGROOMGUESTSUITE.jpg'),
   dining:      pro('e926f8fdd_200Holycrest-1296.jpg'),
   dining2:     pro('1b24b019d_HHDRwshellcabinetsApr96.jpg'),
@@ -504,12 +511,12 @@ function FullBleed({ src, eyebrow, headline, body, align = 'center', darken = 0.
     <section style={{ position: 'relative', overflow: 'hidden', minHeight: minH, display: 'flex', alignItems: 'center' }}>
       <div style={{ position: 'absolute', inset: '-8% 0', backgroundImage: `url(${src})`, backgroundSize: 'cover', backgroundPosition: bgPos, zIndex: 0 }} />
       <div style={{ position: 'absolute', inset: 0, background: `rgba(4,4,4,${darken})`, zIndex: 1 }} />
-      <div style={{ position: 'relative', zIndex: 2, width: '100%', padding: 'clamp(5rem,10vw,9rem) clamp(2rem,10vw,14rem)', textAlign: align }}>
+      <div style={{ position: 'relative', zIndex: 2, width: '100%', padding: 'clamp(5rem,10vw,9rem) clamp(2rem,10vw,14rem)', textAlign: align === 'right' ? 'left' : align, display: 'flex', flexDirection: 'column', alignItems: align === 'right' ? 'flex-end' : align === 'center' ? 'center' : 'flex-start' }}>
         <FadeIn>
           {eyebrow && <span style={EYE()}>{eyebrow}</span>}
           {headline && (
             <h2
-              style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,4vw,4.8rem)', color: '#fff', lineHeight: 1.08, margin: eyebrow ? '0 0 2rem' : '0 0 1.5rem', letterSpacing: '-0.015em', maxWidth: align === 'left' ? 780 : '100%' }}
+              style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,4vw,4.8rem)', color: '#fff', lineHeight: 1.08, margin: eyebrow ? '0 0 2rem' : '0 0 1.5rem', letterSpacing: '-0.015em', maxWidth: (align === 'left' || align === 'right') ? 780 : '100%' }}
               dangerouslySetInnerHTML={{ __html: headline }}
             />
           )}
@@ -758,11 +765,11 @@ export default function GarranHillV6() {
               </div>
             </div>
             <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.fireplace2})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+              <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.firePink})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(6,6,6,0.85) 0%, transparent 52%)' }} />
               <div style={{ position: 'absolute', bottom: 0, left: 0, padding: 'clamp(1.2rem,2.5vw,2rem)' }}>
                 <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.5rem' }}>The Rose Suite</p>
-                <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.6vw,1.45rem)', color: '#fff', margin: 0, lineHeight: 1.3 }}>Carved Georgian surround. Original to 1916.</p>
+                <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.6vw,1.45rem)', color: '#fff', margin: 0, lineHeight: 1.3 }}>The surround is carved plaster. The fire is real.</p>
               </div>
             </div>
           </div>
@@ -772,11 +779,11 @@ export default function GarranHillV6() {
         <FadeIn>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 4 }}>
             {[
-              { src: I.fp3, label: 'Drawing Room', sub: 'Blue Delft tile. Wood-burning.' },
-              { src: I.fp4, label: 'The Red Room',  sub: 'White surround. Gas log.' },
-              { src: I.fp5, label: 'Guest Suite',   sub: 'Painted plaster. Gas log.' },
-              { src: I.fp6, label: 'Yellow Room',   sub: 'Wedgwood mantel. Gas log.' },
-              { src: I.fp7, label: 'Drawing Room',  sub: 'Wide angle. Three exposures.' },
+              { src: I.fireOrnate,  label: 'The Master Wing',  sub: 'Ornate coffered overmantel. Gas log.' },
+              { src: I.fireYellow,  label: 'Yellow Suite',     sub: 'Twin room. Wood fire. Three windows.' },
+              { src: I.fireDining,  label: 'The Dining Room',  sub: 'Shell alcove + fire. Linked by arch.' },
+              { src: I.fp4,         label: 'The Red Room',     sub: 'White surround. Gas log.' },
+              { src: I.firePinkWide,label: 'The Rose Suite',   sub: 'Four-poster. Fire going.' },
             ].map((fp, i) => (
               <div key={i} style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden' }}>
                 <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${fp.src})`, backgroundSize: 'cover', backgroundPosition: 'center top' }} />
@@ -802,6 +809,21 @@ export default function GarranHillV6() {
       >
         <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.95rem,1.2vw,1.08rem)', color: CREAM, opacity: 0.7, lineHeight: 2.2, maxWidth: 640, margin: '0 auto' }}>
           Walter Hines Page purchased the land in February 1913 and named the estate Garran Hill. The following month, President Wilson appointed him Ambassador to the Court of St. James. He served in London through the First World War, died in Pinehurst on December 21, 1918, and was honored in Westminster Abbey as &ldquo;the friend of Britain in her sorest need.&rdquo; The house he built was completed without him. It has stood for 110 years.
+        </p>
+      </FullBleed>
+
+      {/* 09b ARCHITECTURAL DETAILS -- doorknob full bleed */}
+      <FullBleed
+        src={I.doorknob}
+        eyebrow="The Details"
+        headline="Brass. Original.<br/><em style='font-weight:300'>Still on every door.</em>"
+        darken={0.22}
+        bgPos="center center"
+        minH="clamp(600px,85vh,960px)"
+        align="right"
+      >
+        <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.95rem,1.2vw,1.08rem)', color: CREAM, opacity: 0.72, lineHeight: 2.2, maxWidth: 520, marginTop: '1.5rem' }}>
+          The hardware was specified in 1916. It has not been replaced. The doors are original painted pine. The thresholds are original oak. Nothing here was modernized because nothing needed to be.
         </p>
       </FullBleed>
 
