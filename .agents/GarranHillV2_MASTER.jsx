@@ -261,22 +261,49 @@ function CrestDivider() {
 function Hero({ onInquire }) {
   const scrollY = useScrollY();
   const [slide, setSlide] = useState(0);
+  const [videoReady, setVideoReady] = useState(false);
+  const videoRef = React.useRef(null);
+
   useEffect(() => {
     const t = setInterval(() => setSlide(s => (s + 1) % 2), 6000);
     return () => clearInterval(t);
   }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = GH_VIDEO_URL;
+      video.play().catch(() => {});
+      setVideoReady(true);
+    } else {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/hls.js@latest/dist/hls.min.js';
+      script.onload = () => {
+        if (window.Hls && window.Hls.isSupported()) {
+          const hls = new window.Hls();
+          hls.loadSource(GH_VIDEO_URL);
+          hls.attachMedia(video);
+          hls.on(window.Hls.Events.MANIFEST_PARSED, () => {
+            video.play().catch(() => {});
+            setVideoReady(true);
+          });
+        }
+      };
+      document.head.appendChild(script);
+    }
+  }, []);
+
   const imgs = [IMG_DRIVE, IMG_PORTICO];
   return (
     <section style={{ position: 'relative', height: '100vh', minHeight: 600, overflow: 'hidden', background: '#000' }}>
       {/* Video background */}
       <video
-        autoPlay muted loop playsInline
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0, transform: 'scale(1.04)' }}
-        onError={e => { e.target.style.display = 'none'; }}
-      >
-        <source src={GH_VIDEO_URL} type="application/x-mpegURL" />
-      </video>
-      {/* Fallback photo if video fails */}
+        ref={videoRef}
+        muted loop playsInline
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 1, transform: 'scale(1.04)' }}
+      />
+      {/* Fallback photo crossfade -- shows when video not ready */}
       {imgs.map((src, i) => (
         <div key={i} style={{
           position: 'absolute', inset: 0,
@@ -285,7 +312,7 @@ function Hero({ onInquire }) {
           backgroundPosition: `center calc(50% + ${scrollY * 0.18}px)`,
           transform: 'scale(1.08)',
           zIndex: 0,
-          opacity: slide === i ? 0.0 : 0,
+          opacity: videoReady ? 0 : (slide === i ? 1 : 0),
           transition: 'opacity 2.4s ease-in-out',
         }} />
       ))}
