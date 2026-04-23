@@ -13,7 +13,7 @@ const cdnInt = (url) =>
   `https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:indoor:60,e_brightness:10,e_shadow:-30,e_sharpen:40,e_saturation:15,f_auto,q_auto,w_2400,c_limit/${encodeURIComponent(url)}`;
 
 // --- IMAGES ---
-const IMG_DRIVEWAY   = cdnExt(GH2 + 'fa8cec793_200HollycrestDrive-191.jpg');
+const IMG_DRIVEWAY   = cdnExt(GH + 'gh_200HollycrestDrive-2.jpg');
 const IMG_PORTICO    = cdnExt(GH  + 'fa8cec793_200HollycrestDrive-191.jpg');
 const IMG_THRESHOLD  = cdnInt(GH2 + 'a9228a85d_200Holycrest-1179.jpg');
 const IMG_ENTRY      = cdnInt(GH  + '082d9b5c7_200Holycrest-1182.jpg');
