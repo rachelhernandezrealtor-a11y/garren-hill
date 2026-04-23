@@ -857,7 +857,7 @@ export default function GarranHillV6() {
       {/* 06 LIBRARY */}
       <CinematicReveal flip
         eyebrow="The Library"
-        headline="Floor to ceiling. Wall to wall.<br/><em style='font-weight:300'>The books were already there.</em>"
+        headline="Floor to ceiling.<br/><em style='font-weight:300'>Three walls. Rolling ladder.</em>"
         body="Built-in shelving on three walls. Rolling ladder. Brass chandelier. French doors to the entrance hall on two sides. Visible from the front door the moment you step in."
         img={I.libraryWide}
         photos={G.library} onOpen={openLB} dark
