@@ -198,7 +198,7 @@ Wrap ALL images through this.
 | Location | Line |
 |---|---|
 | Manifesto | Walter Hines Page / WWI / "never walked through the door" |
-| Architecture | "Built by Leonard Tufts' own craftsmen -- the same men who built Pinehurst." |
+| Architecture | "Pinehurst was built by James Walker Tufts in 1895. Garran Hill was built two miles away in 1916. The same hands were working this land." |
 | Blue Fox | "Betty Dumaine put the first flowers here. Someone still does." -- LOCKED, never change |
 | Westminster Abbey | "The friend of Britain in her sorest need." -- MUST appear |
 | Ending | Ann's quote + "Garran Hill is ready." -- full stop, no pitch after |

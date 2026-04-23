@@ -806,7 +806,14 @@ export default function GarranHillV6() {
         photos={G.entry} onOpen={openLB}
       />
 
-      {/* 03b CRAFTSMEN INTERSTITIAL -- removed, unverified */}
+      {/* 03b PINEHURST CONNECTION INTERSTITIAL */}
+      <div style={{ background: '#040404', padding: 'clamp(3.5rem,7vw,6rem) clamp(2rem,14vw,18rem)', textAlign: 'center' }}>
+        <FadeIn>
+          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.1rem,2vw,2rem)', color: CREAM, opacity: 0.55, lineHeight: 1.7, margin: '0 auto', maxWidth: 720, letterSpacing: '0.01em' }}>
+            Pinehurst was built by James Walker Tufts in 1895. Garran Hill was built two miles away in 1916. The same hands were working this land.
+          </p>
+        </FadeIn>
+      </div>
 
       {/* 04 DRAWING ROOM */}}
       <CinematicReveal flip
