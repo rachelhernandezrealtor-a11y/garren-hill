@@ -55,6 +55,16 @@ const GH_VIDEO_URL = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/c69
 /* ---- CREST ---- */
 const CREST = 'https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal,f_png,fl_preserve_transparency/garranhill_crest_v2.png';
 
+/* ---- ARCHIVE PHOTOS ---- */
+const IMG_1916      = cdnExt(GH2 + '7b1b1f524_GarranHill1916photos.jpg');
+const IMG_STAIR96   = cdnExt(GH2 + 'eb22540bf_HHStairwellupviewApr96.jpg');
+const IMG_EXT96     = cdnExt(GH2 + '87dd3a321_HHNsideviewApr96.jpg');
+const IMG_DR96      = cdnExt(GH2 + '1b24b019d_HHDRwshellcabinetsApr96.jpg');
+const IMG_POOLWALL  = cdnExt(GH2 + '6e6991d9a_HHSviewandpoolwallApr99.jpg');
+const IMG_POOLARCH  = cdnExt(GH2 + 'e83a8c208_HHpool_arch_rosebeds.jpg');
+const IMG_ROSEMONEY = cdnExt(GH2 + '53fbdc821_RosegardenfullbloomJun06.jpg');
+const IMG_DEER      = cdnExt(GH2 + 'be1c68ede_HHdeerinyardSept03.JPG');
+
 /* ---- BLUEPRINTS ---- */
 const BP_ELEV  = cdnExt(GH2 + '6d312bf4e_IMG_4319.jpg');
 const BP_FLOOR = cdnExt(GH2 + '6234ed606_IMG_4320.jpg');
@@ -366,7 +376,10 @@ function Hero({ onInquire }) {
 /* ===== MANIFESTO ===== */
 function Manifesto() {
   return (
-    <section style={{ background: '#060606', padding: 'clamp(6rem,12vw,11rem) clamp(2rem,8vw,10rem)', textAlign: 'center' }}>
+    <section style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(6rem,12vw,11rem) clamp(2rem,8vw,10rem)', textAlign: 'center' }}>
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${IMG_1916})`, backgroundSize: 'cover', backgroundPosition: 'center top', filter: 'grayscale(1) sepia(0.4) brightness(0.18)', zIndex: 0 }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(6,6,6,0.55) 0%, rgba(6,6,6,0.88) 100%)', zIndex: 1 }} />
+      <div style={{ position: 'relative', zIndex: 2 }}>
       <FadeIn>
         <span style={eyebrowStyle}>Pinehurst, North Carolina -- 1913</span>
         <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 400, fontSize: 'clamp(2rem,3.5vw,4rem)', color: '#fff', lineHeight: 1.14, margin: '0 auto 2.5rem', maxWidth: 820, letterSpacing: '-0.02em' }}>
@@ -380,6 +393,7 @@ function Manifesto() {
           President Wilson appointed him Ambassador to Britain in March 1913. Page spent five years fighting for America to enter the war, came home on a stretcher in October 1918, and died December 21st at a cottage in Pinehurst. His family held the farm.
         </p>
       </FadeIn>
+      </div>
     </section>
   );
 }
@@ -417,7 +431,10 @@ function Architecture() {
 /* ===== THRESHOLD -- ENTRY HALL ===== */
 function TheEntry() {
   return (
-    <section style={{ background: '#070707', padding: 'clamp(5rem,10vw,9rem) clamp(2rem,8vw,10rem)' }}>
+    <section style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(5rem,10vw,9rem) clamp(2rem,8vw,10rem)' }}>
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${IMG_ROSEMONEY})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.18) saturate(0.7)', zIndex: 0 }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(7,7,7,0.88)', zIndex: 1 }} />
+      <div style={{ position: 'relative', zIndex: 2 }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <FadeIn>
           <span style={eyebrowStyle}>The Entry Hall</span>
@@ -434,6 +451,7 @@ function TheEntry() {
           { src: IMG_FOYER, caption: 'The Foyer' },
           { src: IMG_STAIR, caption: 'The Main Stair -- Original Balusters' },
         ]} />
+      </div>
       </div>
     </section>
   );
@@ -680,7 +698,10 @@ function TheFireplace() {
 /* ===== THE RESTORATION ===== */
 function TheRestoration() {
   return (
-    <section style={{ background: '#060606', padding: 'clamp(5rem,10vw,9rem) clamp(2rem,8vw,10rem)' }}>
+    <section style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(5rem,10vw,9rem) clamp(2rem,8vw,10rem)' }}>
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${IMG_STAIR96})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'grayscale(1) sepia(0.25) brightness(0.14)', zIndex: 0 }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,6,6,0.92)', zIndex: 1 }} />
+      <div style={{ position: 'relative', zIndex: 2 }}>
       <div style={{ maxWidth: 980, margin: '0 auto' }}>
         <FadeIn>
           <span style={eyebrowStyle}>The Restoration -- 1998 to 2001</span>
@@ -705,6 +726,7 @@ function TheRestoration() {
             </FadeIn>
           ))}
         </div>
+      </div>
       </div>
     </section>
   );
@@ -848,7 +870,7 @@ function ThePool() {
 function AnnQuote() {
   return (
     <div style={{ position: 'relative', overflow: 'hidden', minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${IMG_CAMELLIA})`, backgroundSize: 'cover', backgroundPosition: 'center', zIndex: 0 }} />
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${IMG_ROSEMONEY})`, backgroundSize: 'cover', backgroundPosition: 'center', zIndex: 0 }} />
       <div style={{ position: 'absolute', inset: 0, background: 'rgba(5,5,5,0.78)', zIndex: 1 }} />
       <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: 'clamp(4rem,8vw,8rem) clamp(2rem,10vw,14rem)', maxWidth: 900, margin: '0 auto' }}>
         <FadeIn>
