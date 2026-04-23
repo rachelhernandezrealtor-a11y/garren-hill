@@ -13,7 +13,7 @@ const cdnInt = (url) =>
   `https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:indoor:60,e_brightness:10,e_shadow:-30,e_sharpen:40,e_saturation:15,f_auto,q_auto,w_2400,c_limit/${encodeURIComponent(url)}`;
 
 /* ---- HERO PHOTOS ---- */
-const IMG_DRIVE   = cdnExt(GH + 'fa8cec793_200HollycrestDrive-191.jpg'); /* portico arrival */
+const IMG_DRIVE   = cdnExt(GH2 + '689b03dab_gh_drive2.jpg'); /* driveway arrival -- hero slide 1 */
 const IMG_PORTICO = cdnExt(GH + 'fa8cec793_200HollycrestDrive-191.jpg'); /* full frontal portico -- same key shot */
 
 /* ---- INTERIOR ---- */
@@ -32,9 +32,9 @@ const IMG_WEDGWOOD = cdnInt(GH2 + 'd45916396_gh_119.jpg');
 /* ---- GROUNDS + EXTERIOR ---- */
 const IMG_POOL    = cdnExt(GH + '57352d0a9_200HollycrestDrive-208.jpg');
 const IMG_REAR    = cdnExt(GH + '17d8dd539_200HollycrestDrive-132.jpg');
-const IMG_AERIAL  = cdnExt(GH + '12f2e7091_200HollycrestDrive-214.jpg');
-const IMG_DUSK2   = cdnExt(GH + '0275eccb6_200HollycrestDrive-225.jpg');
-const IMG_TWILIGHT = cdnExt(GH + '0de69e38e_200HollycrestDrive-9.jpg');
+const IMG_AERIAL  = cdnExt(GH2 + '973ee1dc1_gh_217.jpg'); /* LOCKED aerial -- shot 217 */
+const IMG_DUSK2   = cdnExt(GH2 + '62359ae57_gh_209.jpg'); /* dusk privacy -- shot 209 */
+const IMG_TWILIGHT = cdnExt(GH2 + '93f374f64_gh_203.jpg'); /* LOCKED twilight -- shot 203 golden sky */
 const IMG_AZALEA  = cdnExt(GH2 + '782f791e5_IMG_9412.jpg');
 const IMG_CHERUB  = cdnExt(GH2 + 'e4a71cbd1_200HollycrestDrive-172.jpg');
 const IMG_CAMELLIA = cdnExt(GH2 + '988a1b559_26MarWhitecamelliablooms.jpg');
