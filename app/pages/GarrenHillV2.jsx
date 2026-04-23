@@ -31,6 +31,13 @@ const IMG_DUSK2   = cdnExt(GH2 + 'f19ebeaad_gh_200HollycrestDrive-209.jpg');
 
 const CREST_URL = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/be819ab2a_generated_image.png';
 
+const IMG_PINK_AZALEA  = 'https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_2400,c_limit/https%3A%2F%2Fmedia.base44.com%2Fimages%2Fpublic%2F69e248a2469cc39540781cce%2F7f4b1c053_200HollycrestDrive-190.jpg';
+const IMG_WHITE_AZALEA = 'https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_2400,c_limit/https%3A%2F%2Fmedia.base44.com%2Fimages%2Fpublic%2F69e248a2469cc39540781cce%2Fcd78defd6_200HollycrestDrive-11.jpg';
+const IMG_CHERUB       = 'https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_2400,c_limit/https%3A%2F%2Fmedia.base44.com%2Fimages%2Fpublic%2F69e248a2469cc39540781cce%2Fe4a71cbd1_200HollycrestDrive-172.jpg';
+const IMG_HOLLY        = 'https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_2400,c_limit/https%3A%2F%2Fmedia.base44.com%2Fimages%2Fpublic%2F69e248a2469cc39540781cce%2F8ec759e7b_200HollycrestDrive-189.jpg';
+const IMG_HELLEBORES   = 'https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_2400,c_limit/https%3A%2F%2Fmedia.base44.com%2Fimages%2Fpublic%2F69e248a2469cc39540781cce%2F49057010c_IMG_9345.jpeg';
+const IMG_DAFFODILS    = 'https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:outdoor:70,e_auto_brightness,e_sharpen:30,e_saturation:20,f_auto,q_auto,w_2400,c_limit/https%3A%2F%2Fmedia.base44.com%2Fimages%2Fpublic%2F69e248a2469cc39540781cce%2F8423de7d0_IMG_9355.jpeg';
+
 const eyebrowStyle = {
   fontFamily: 'sans-serif',
   fontSize: '10px',
@@ -611,6 +618,131 @@ function Closing() {
   );
 }
 
+function TheGrounds() {
+  const scrollY = useScrollY();
+  const ref = useRef();
+  const [top, setTop] = useState(0);
+  useEffect(() => {
+    if (ref.current) setTop(ref.current.getBoundingClientRect().top + window.scrollY);
+  }, []);
+  const parallax = Math.max(-60, Math.min(60, (scrollY - top) * 0.22));
+  return (
+    <section ref={ref} style={{ position: 'relative', minHeight: '90vh', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: `url(${IMG_PINK_AZALEA})`,
+        backgroundSize: 'cover',
+        backgroundPosition: `center calc(50% + ${parallax}px)`,
+        transform: 'scale(1.06)',
+        zIndex: 0,
+      }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,10,10,0.88) 38%, rgba(10,10,10,0.08) 100%)', zIndex: 1 }} />
+      <div style={{ position: 'relative', zIndex: 2, width: 'min(52%, 560px)', padding: 'clamp(4rem,8vw,7rem) clamp(2.5rem,5vw,5rem)' }}>
+        <FadeIn>
+          <span style={eyebrowStyle}>The Grounds</span>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 400, fontSize: 'clamp(2rem,3vw,3.2rem)', color: '#fff', lineHeight: 1.12, margin: '0 0 1.6rem', letterSpacing: '-0.01em' }}>
+            The gardens have been blooming<br /><em style={{ fontWeight: 300 }}>since 1916.</em>
+          </h2>
+          <div style={{ width: 32, height: 1, background: GOLD, opacity: 0.5, margin: '0 0 1.6rem' }} />
+          <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 1.95, margin: 0, opacity: 0.88 }}>
+            Azaleas. Hellebores. Daffodils returning every spring without being asked. The grounds at Garran Hill are not landscaped -- they are established. A century of planting, tending, and letting things take root.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
+function HollySection() {
+  const scrollY = useScrollY();
+  const ref = useRef();
+  const [top, setTop] = useState(0);
+  useEffect(() => {
+    if (ref.current) setTop(ref.current.getBoundingClientRect().top + window.scrollY);
+  }, []);
+  const parallax = Math.max(-40, Math.min(40, (scrollY - top) * 0.2));
+  return (
+    <section ref={ref} style={{ position: 'relative', height: '70vh', minHeight: 500, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: `url(${IMG_HOLLY})`,
+        backgroundSize: 'cover',
+        backgroundPosition: `center calc(50% + ${parallax}px)`,
+        transform: 'scale(1.06)',
+        zIndex: 0,
+      }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,10,10,0.52)', zIndex: 1 }} />
+      <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: '0 clamp(2rem,10vw,14rem)' }}>
+        <FadeIn>
+          <p style={{
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontStyle: 'italic',
+            fontWeight: 300,
+            fontSize: 'clamp(1.5rem,2.6vw,2.6rem)',
+            color: '#fff',
+            lineHeight: 1.45,
+            margin: '0 auto 1.8rem',
+            maxWidth: 700,
+            textShadow: '0 2px 20px rgba(0,0,0,0.5)',
+          }}>
+            Hollycrest was named for these trees.<br />They were here before the house.
+          </p>
+          <div style={{ width: 36, height: 1, background: GOLD, opacity: 0.45, margin: '0 auto' }} />
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
+function CherubSection() {
+  return (
+    <CinematicReveal
+      eyebrowText="The Gardens"
+      headline={"One hundred years of things
+taking root."}
+      body="The stone figures have stood in these gardens since Betty Dumaine's time. The azaleas were here before the current stewards arrived. The hellebores come back every winter without being asked. This is what a century of care looks like."
+      imgSrc={IMG_CHERUB}
+      reverse={true}
+      position="center"
+    />
+  );
+}
+
+function DaffodilSection() {
+  const scrollY = useScrollY();
+  const ref = useRef();
+  const [top, setTop] = useState(0);
+  useEffect(() => {
+    if (ref.current) setTop(ref.current.getBoundingClientRect().top + window.scrollY);
+  }, []);
+  const parallax = Math.max(-40, Math.min(40, (scrollY - top) * 0.2));
+  return (
+    <section ref={ref} style={{ position: 'relative', minHeight: '60vh', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: `url(${IMG_DAFFODILS})`,
+        backgroundSize: 'cover',
+        backgroundPosition: `center calc(50% + ${parallax}px)`,
+        transform: 'scale(1.06)',
+        zIndex: 0,
+      }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to left, rgba(10,10,10,0.88) 38%, rgba(10,10,10,0.08) 100%)', zIndex: 1 }} />
+      <div style={{ position: 'relative', zIndex: 2, width: 'min(52%, 520px)', marginLeft: 'auto', padding: 'clamp(4rem,8vw,6rem) clamp(2.5rem,5vw,5rem)' }}>
+        <FadeIn>
+          <span style={eyebrowStyle}>Every Spring</span>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 400, fontSize: 'clamp(1.8rem,2.6vw,2.8rem)', color: '#fff', lineHeight: 1.2, margin: '0 0 1.4rem' }}>
+            They return without<br /><em style={{ fontWeight: 300 }}>being asked.</em>
+          </h2>
+          <div style={{ width: 32, height: 1, background: GOLD, opacity: 0.5, margin: '0 0 1.4rem' }} />
+          <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 1.9, margin: 0, opacity: 0.85 }}>
+            Daffodils along the drive. Azaleas at the portico. The grounds at Garran Hill have been tended for over a century -- and they show it.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
 function AerialSection() {
   const scrollY = useScrollY();
   const ref = useRef();
@@ -818,6 +950,10 @@ export default function GarrenHillV2() {
       <TheFireplaces />
       <TheRestoration />
       <ThePool />
+      <TheGrounds />
+      <HollySection />
+      <CherubSection />
+      <DaffodilSection />
       <AerialSection />
       <AnnQuote />
       <MatterportSection />
