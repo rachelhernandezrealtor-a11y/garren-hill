@@ -878,14 +878,64 @@ export default function GarranHillV6() {
         </FadeIn>
       </section>
 
-      {/* 13 GROUNDS */}
+      {/* 13 GROUNDS -- ROSE GARDEN */}
       <CinematicReveal
         eyebrow="The Grounds"
-        headline="The wall does two things:<br/><em style='font-weight:300'>it holds the pool and it holds the roses.</em>"
-        body="4.15 acres. Rose garden running the full length of the pool wall. Irises in April. Azaleas under the magnolia. 28-zone irrigation from a 130-foot dedicated well. 12+ parking spaces. Two tennis courts."
+        headline="The rose garden runs<br/><em style='font-weight:300'>the full length of the pool wall.</em>"
+        body="4.15 acres. The garden was planted from bare ground and grown over twenty years. In spring it is the best argument for the property. In any season, it is the reason people do not leave."
         img={I.roseMoney}
         photos={G.grounds} onOpen={openLB}
       />
+
+      {/* 13a GROUNDS -- ROSE WALL full bleed */}
+      <section style={{ position: 'relative', minHeight: 'clamp(480px,65vh,760px)', overflow: 'hidden', display: 'flex', alignItems: 'flex-end' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.roseWall})`, backgroundSize: 'cover', backgroundPosition: 'center 40%' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(4,4,4,0.82) 0%, rgba(4,4,4,0.18) 55%, transparent 100%)' }} />
+        <FadeIn>
+          <div style={{ position: 'relative', zIndex: 2, padding: 'clamp(2.5rem,6vw,5rem) clamp(2rem,8vw,8rem)', maxWidth: 700 }}>
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem,3vw,3rem)', color: '#fff', margin: 0, lineHeight: 1.25 }}>
+              The wall does two things:<br />it holds the pool and it holds the roses.
+            </p>
+          </div>
+        </FadeIn>
+      </section>
+
+      {/* 13b GROUNDS -- POOL + TENNIS */}
+      <CinematicReveal flip
+        eyebrow="The Pool"
+        headline="20 by 40.<br/><em style='font-weight:300'>Salt water. Converted 2022.</em>"
+        body="Original brick surround. Wrought iron #4 arch gate. Two tennis courts beyond the tree line. The pool lot holds six cars. The northeast lot holds twelve more."
+        img={I.pool}
+        dark
+      />
+
+      {/* 13c GROUNDS -- IRIS + AZALEA strip */}
+      <section style={{ background: '#060606', padding: 'clamp(4rem,8vw,6rem) clamp(2rem,8vw,10rem)' }}>
+        <FadeIn>
+          <span style={EYE()}>The Gardens</span>
+          <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(1.8rem,3vw,3.6rem)', color: '#fff', lineHeight: 1.1, margin: '1.2rem 0 3rem', letterSpacing: '-0.015em' }}>
+            The irises come back every April.<br /><em style={{ fontWeight: 300 }}>Nobody planted them this year.</em>
+          </h2>
+        </FadeIn>
+        <FadeIn>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 4 }}>
+            {[
+              { src: I.iris,     label: 'Irises',   cap: 'April. Every year. Uninstructed.' },
+              { src: I.azalea,   label: 'Azaleas',  cap: 'Back yard. Under the magnolia.' },
+              { src: I.poolWall, label: 'The Gate',  cap: 'Wrought iron. Original. Still on the hinges.' },
+            ].map((g, i) => (
+              <div key={i} style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${g.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(6,6,6,0.85) 0%, transparent 55%)' }} />
+                <div style={{ position: 'absolute', bottom: 0, left: 0, padding: '1rem 1.2rem' }}>
+                  <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.26em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.3rem' }}>{g.label}</p>
+                  <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: '0.78rem', color: CREAM, margin: 0, opacity: 0.7, lineHeight: 1.4 }}>{g.cap}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </FadeIn>
+      </section>
 
       {/* 13b STEWARDSHIP -- Betty Dumaine, woven after Grounds */}
       <FullBleed
