@@ -343,22 +343,44 @@ function App() {
           justifyContent: 'flex-end', alignItems: 'center', textAlign: 'center',
           padding: 'clamp(3rem, 6vw, 5rem) clamp(2rem, 8vw, 10rem) clamp(8.5rem, 14vh, 12rem)',
         }}>
-          <FadeIn delay={0.15}>
+          <FadeIn delay={0.1}>
+            {/* GARREN HILL masthead -- editorial title, Cormorant, spaced */}
+            <p style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontWeight: 300,
+              fontSize: 'clamp(1.1rem, 2.2vw, 2rem)',
+              color: 'rgba(255,255,255,0.92)',
+              letterSpacing: '0.38em',
+              textTransform: 'uppercase',
+              margin: '0 0 1rem',
+              lineHeight: 1,
+            }}>
+              Garren Hill
+            </p>
+            {/* Gold rule */}
+            <div style={{
+              width: 'clamp(60px, 8vw, 100px)', height: 1,
+              background: GOLD, opacity: 0.7,
+              margin: '0 auto 1.4rem',
+            }} />
+          </FadeIn>
+          <FadeIn delay={0.25}>
             <h1 style={{
-              fontFamily: 'Georgia, serif', fontWeight: 400,
+              fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 400,
               fontSize: 'clamp(2.6rem, 5.5vw, 6.5rem)',
               color: '#fff', lineHeight: 1.08,
-              margin: '0 0 1.4rem', letterSpacing: '-0.025em',
+              margin: '0 0 1.4rem', letterSpacing: '-0.01em',
             }}>
               Built in 1916.<br /><em>Still the finest house</em><br />in Moore County.
             </h1>
           </FadeIn>
-          <FadeIn delay={0.35}>
+          <FadeIn delay={0.45}>
             <p style={{
-              fontFamily: 'Georgia, serif', fontStyle: 'italic',
-              fontSize: 'clamp(0.9rem, 1.3vw, 1.15rem)',
-              color: 'rgba(245,240,232,0.80)', lineHeight: 1.75,
-              margin: '0 0 2.4rem', maxWidth: 500,
+              fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic',
+              fontSize: 'clamp(1rem, 1.5vw, 1.3rem)',
+              color: 'rgba(245,240,232,0.78)', lineHeight: 1.75,
+              margin: '0 0 2.4rem', maxWidth: 520,
+              fontWeight: 300,
             }}>
               Neo-Georgian. Walter Hines Page. 110 years of remarkable stewardship.
             </p>
