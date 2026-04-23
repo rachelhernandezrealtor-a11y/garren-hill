@@ -369,3 +369,11 @@ features, offers, provides, showcases, highlights, impressive, remarkable
 - best_use: hero / gallery / MLS / skip
 - caption: one or two sentences, our voice, lands hard
 - issues: specific technical problems or none
+
+---
+
+## VIDEO SIZING -- LAW, NON-NEGOTIABLE
+
+Video is ALWAYS responsive. Never set fixed dimensions, never override aspect ratio, never touch width/height on video elements.
+If something looks wrong, the problem is in the container or section CSS -- not the video.
+The video scales naturally with the viewport. That is correct behavior. Do not fix it.
