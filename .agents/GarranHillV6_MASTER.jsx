@@ -854,6 +854,35 @@ export default function GarranHillV6() {
         ]} onOpen={openLB}
       />
 
+
+      {/* 05b OSHEA INTERSTITIAL -- The 2000 Commission Story */}
+      <section style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(6rem,12vw,11rem) clamp(2rem,14vw,18rem)', textAlign: 'center' }}>
+        {/* Faint architectural drawing background */}
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(https://media.base44.com/images/public/69e248a2469cc39540781cce/4e275b5d5_IMG_4319.jpg)`, backgroundSize: 'cover', backgroundPosition: 'center', zIndex: 0, filter: 'grayscale(100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.93)', zIndex: 1 }} />
+        <FadeIn>
+          <div style={{ position: 'relative', zIndex: 2 }}>
+            <span style={{ ...EYE(), marginBottom: '2.5rem', display: 'block' }}>Thomas O'Shea, Architect &mdash; Durham, NC &mdash; January 2000</span>
+            <Rule center />
+            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.8rem,5vw,7rem)', color: '#fff', lineHeight: 1.12, margin: '2.5rem auto', letterSpacing: '-0.015em', maxWidth: 900 }}>
+              "Renovations and Additions."<br /><em style={{ fontWeight: 300, fontSize: '0.82em' }}>His word choice tells you everything.</em>
+            </h2>
+            <Rule center />
+            <div style={{ maxWidth: 720, margin: '3rem auto 0', display: 'flex', flexDirection: 'column', gap: '1.6rem' }}>
+              <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(1rem,1.3vw,1.18rem)', color: CREAM, opacity: 0.82, lineHeight: 2, margin: 0 }}>
+                O'Shea did not renovate Garran Hill. He studied it. Fifteen sheets of drawings show him matching profiles, proportions, and cornice details to what was already there. The study paneling carries a single note: "same panel details as existing dining room panels." That is not a contractor instruction. That is a preservation philosophy written into a construction document.
+              </p>
+              <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(1rem,1.3vw,1.18rem)', color: CREAM, opacity: 0.82, lineHeight: 2, margin: 0 }}>
+                The library, the master suite, the portico -- designed from scratch in 2000 to the same standard as the house they joined. Same profiles. Same proportions. 84 years apart.
+              </p>
+              <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.1rem,1.6vw,1.5rem)', color: '#fff', opacity: 0.9, lineHeight: 1.7, margin: '1rem 0 0' }}>
+                The result does not feel added. It feels inevitable.
+              </p>
+            </div>
+          </div>
+        </FadeIn>
+      </section>
+
       {/* 06 LIBRARY */}
       <CinematicReveal flip
         eyebrow="The Library"
