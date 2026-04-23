@@ -199,7 +199,7 @@ function TimelineItem({ year, title, body, last = false }) {
   );
 }
 
-export default function GarrenHillV2() {
+export default function GarranHillV2() {
   const scrollY = useScrollY();
   const [inquiryOpen, setInquiryOpen] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
@@ -211,7 +211,7 @@ export default function GarrenHillV2() {
       await fetch('https://base44.app/api/apps/69e248a2469cc39540781cce/entities/Inquiry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, property: 'Garren Hill', source: 'Landing Page' }),
+        body: JSON.stringify({ ...form, property: 'Garran Hill', source: 'Landing Page' }),
       });
     } catch (_) {}
     setSubmitted(true);
@@ -229,7 +229,7 @@ export default function GarrenHillV2() {
         backdropFilter: scrollY > 60 ? 'blur(14px)' : 'none',
         transition: 'all 0.35s ease',
       }}>
-        <span style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1rem', color: '#fff', letterSpacing: '0.04em' }}>Garren Hill</span>
+        <span style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1rem', color: '#fff', letterSpacing: '0.04em' }}>Garran Hill</span>
         <div style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
           <a href="https://my.matterport.com/show/?m=mfwyqT5Btwx&brand=0&mls=1&" target="_blank" rel="noreferrer"
             style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', textDecoration: 'none' }}>
@@ -387,7 +387,7 @@ export default function GarrenHillV2() {
         </FadeIn>
         <FadeIn delay={0.15}>
           <p style={{ color: CREAM, fontSize: '1.1rem', lineHeight: 2.1, opacity: 0.85, margin: '2.2rem 0' }}>
-            In 1913, Walter Hines Page -- publisher, kingmaker, and the man Woodrow Wilson would appoint U.S. Ambassador to the Court of St. James -- bought land two miles southwest of Pinehurst and commissioned a Georgian manor from a Boston firm. He named it Garren Hill. He planned to come home.
+            In 1913, Walter Hines Page -- publisher, kingmaker, and the man Woodrow Wilson would appoint U.S. Ambassador to the Court of St. James -- bought land two miles southwest of Pinehurst and commissioned a Georgian manor from a Boston firm. He named it Garran Hill. He planned to come home.
           </p>
           <p style={{ color: CREAM, fontSize: '1.1rem', lineHeight: 2.1, opacity: 0.85, margin: '0 0 2.2rem' }}>
             The war came instead. Page spent four years in London arguing, cajoling, and eventually exhausting himself in service of the Allied cause. He sailed home in 1918, worn through. He died within weeks. He never walked through the door of the house built for him.
@@ -451,7 +451,7 @@ export default function GarrenHillV2() {
           <FadeIn>
             <span style={{ ...eyebrow, textAlign: 'left', display: 'block', marginBottom: '3rem' }}>The Provenance</span>
           </FadeIn>
-          <TimelineItem year="1916" title="Walter Hines Page commissions Garren Hill" body="Publisher of Doubleday, Page & Co. U.S. Ambassador to Great Britain 1913-1918. Built by the Tufts craftsmen who built Pinehurst itself. Page died weeks after returning from London. He never lived here." />
+          <TimelineItem year="1916" title="Walter Hines Page commissions Garran Hill" body="Publisher of Doubleday, Page & Co. U.S. Ambassador to Great Britain 1913-1918. Built by the Tufts craftsmen who built Pinehurst itself. Page died weeks after returning from London. He never lived here." />
           <TimelineItem year="1959" title="Betty Dumaine arrives. The estate becomes Hollycrest." body="Prominent Bostonian. She renamed the property for its native holly trees, brought horses, hounds, and peacocks. Shared her Vassar room with a girl who would become Queen of Thailand. Royalty visited. Her beloved horse Blue Fox is buried on the grounds beneath a 4-foot bronze." />
           <TimelineItem year="1980" title="Betty Dumaine bequeaths Hollycrest to Duke University." body="She died beloved. Duke could not sell. The tennis courts and pool were added in 1985 in preparation for a subdivision that never came." />
           <TimelineItem year="2001" title="The McAllister Restoration." body="Three years. Architect Thomas O'Shea of Durham. Contractor Dennis Dunagan. All plumbing and electrical replaced. Interior fully rebuilt around the surviving original fabric: seven mantels, original doors, the 1916 leaded glass, the dining room frontispiece. Nothing that mattered was touched." last={true} />
@@ -529,7 +529,7 @@ export default function GarrenHillV2() {
                 allow="xr-spatial-tracking"
                 allowFullScreen
                 style={{ display: 'block' }}
-                title="Garren Hill -- 3D Floor Plan Tour"
+                title="Garran Hill -- 3D Floor Plan Tour"
               />
             </div>
             <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', marginTop: '1.2rem' }}>
@@ -590,7 +590,7 @@ export default function GarrenHillV2() {
         </FadeIn>
         <FadeIn delay={0.2}>
           <p style={{ color: CREAM, fontSize: '1.1rem', lineHeight: 2, opacity: 0.7, marginTop: '3rem' }}>
-            Garren Hill is ready.
+            Garran Hill is ready.
           </p>
         </FadeIn>
       </div>
@@ -659,7 +659,7 @@ export default function GarrenHillV2() {
 
       {/* FOOTER */}
       <div style={{ padding: '2.5rem 4vw', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-        <span style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '0.9rem', color: 'rgba(255,255,255,0.3)' }}>Garren Hill -- 200 Hollycrest Drive, Pinehurst, NC</span>
+        <span style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '0.9rem', color: 'rgba(255,255,255,0.3)' }}>Garran Hill -- 200 Hollycrest Drive, Pinehurst, NC</span>
         <span style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)' }}>Rachel Hernandez Realty</span>
       </div>
 

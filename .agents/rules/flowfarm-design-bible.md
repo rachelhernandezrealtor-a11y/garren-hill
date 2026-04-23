@@ -1,7 +1,7 @@
 # FLOW FARM DESIGN BIBLE
 Last updated: 2026-04-23
 
-This is the living source of truth for all design decisions, copy rules, aesthetic standards, and implementation notes for the Flow Farm landing page (FlowFarmLanding2.jsx / flowfarmforest.com) AND the Garren Hill landing page (GarrenHillV2 / garren-hill.pages.dev).
+This is the living source of truth for all design decisions, copy rules, aesthetic standards, and implementation notes for the Flow Farm landing page (FlowFarmLanding2.jsx / flowfarmforest.com) AND the Garran Hill landing page (GarranHillV2 / garren-hill.pages.dev).
 
 ---
 
@@ -36,7 +36,7 @@ Both properties share ONE template. The architecture is identical. Only images, 
 - Vibe: working farm meets Aman resort. Warm, grounded, modern luxury.
 - Headlines: mixed upright + italic, left-aligned on hero
 
-### Garren Hill
+### Garran Hill
 - Primary display: `'Cormorant Garamond', Georgia, serif` — Cormorant IS the primary face
 - Body: Georgia, serif
 - Stats/numbers: `'Cormorant Garamond', Georgia, serif` weight 300
@@ -126,7 +126,7 @@ Wrap ALL images through this.
 ### Flow Farm Photo Base
 `https://media.base44.com/images/public/69e248a2469cc39540781cce/`
 
-### Garren Hill Photo Base
+### Garran Hill Photo Base
 `https://media.base44.com/images/public/69e2578ca7113dbe93cb208d/`
 
 ### Flow Farm Key Images
@@ -137,7 +137,7 @@ Wrap ALL images through this.
 - Foyer herringbone: `9b1d02a04_260115107LindenTrailF-9727.jpg`
 - Aerial establishing: `2ca329bbf_flowfarmmasterphotoswebsite.jpg`
 
-### Garren Hill Key Images
+### Garran Hill Key Images
 - Hero (portico front): `ac89533df_gh_200HollycrestDrive-1.jpg` (current app BASE)
 - Entrance hall: `082d9b5c7_200Holycrest-1182.jpg`
 - Living room wide: `341c7343c_200Holycrest-1203.jpg`
@@ -170,16 +170,16 @@ Wrap ALL images through this.
 | Exterior Night | "143 lighting circuits. Some of them are these trees." |
 | Infrastructure | Lead with "the electrical capacity of a small hotel" |
 
-### Garren Hill Copy Moments (LOCKED)
+### Garran Hill Copy Moments (LOCKED)
 | Location | Line |
 |---|---|
 | Manifesto | Walter Hines Page / WWI / "never walked through the door" |
 | Architecture | "Built by Leonard Tufts' own craftsmen -- the same men who built Pinehurst." |
 | History | Betty Dumaine -- peacocks, Blue Fox grave, royalty |
 | Westminster Abbey | "The friend of Britain in her sorest need." -- MUST appear |
-| Ending | Ann's quote + "Garren Hill is ready." -- full stop, no pitch after |
+| Ending | Ann's quote + "Garran Hill is ready." -- full stop, no pitch after |
 
-### Garren Hill Copy Laws
+### Garran Hill Copy Laws
 - Do NOT name current owners -- "the current stewards" only
 - "That someone is you" -- REMOVED, too salesy
 - Authoritative, restrained tone throughout
@@ -197,7 +197,7 @@ Wrap ALL images through this.
 - Land section: "Three acres producing. Seven acres waiting."
 - Mechanism section: "Structure that holds freedom."
 
-### Garren Hill Approved Headlines (LOCKED)
+### Garran Hill Approved Headlines (LOCKED)
 - Hero: "Built in 1916. Still the finest house in Moore County."
 - Hero subhead: "Neo-Georgian. Walter Hines Page. 110 years of remarkable stewardship."
 - Manifesto: "Some houses hold history. This one shaped it."
@@ -237,11 +237,11 @@ Wrap ALL images through this.
 - Use `--` not em-dash in strings
 - ASCII quotes only -- no curly quotes in code
 - Check `ord(c) > 127` after every Python file manipulation
-- SPELLING LAW: The property is always **Garren Hill** -- never "Garran Hill" (that was the original 1913 name, now corrected). Check every file.
+- SPELLING LAW: The property is always **Garran Hill** -- this IS the correct original 1913 spelling. Never "Garren Hill". Check every file.
 
 ### File Management
 - Flow Farm source: `/app/.agents/FlowFarmLanding2_MASTER.jsx`
-- Garren Hill source: `/app/.agents/GarrenHillV2_MASTER.jsx`
+- Garran Hill source: `/app/.agents/GarranHillV2_MASTER.jsx`
 - GH live file: `/tmp/garren-hill-push/index.html` (standalone HTML)
 - FF live file: Vite build via `/app/flowfarm-landing/` repo
 - Update master backup after EVERY approved change
@@ -265,7 +265,7 @@ Wrap ALL images through this.
 | Hero background (forest loop) | `https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/5d06a3b0e25b768ac6dc681dbf4f5b81/manifest/video.m3u8` |
 | Property tour ("Enter Flow Farm") | `https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/de1885d159ae310508174f03f775c797/watch` |
 
-### Garren Hill Video
+### Garran Hill Video
 - PENDING -- Rachel to upload to Cloudflare Stream when ready
 - Will be a lightbox tour triggered by "Tour the Estate" button
 
@@ -279,7 +279,7 @@ Wrap ALL images through this.
 - [ ] "143 lighting circuits" exterior night moment
 - [ ] Manifesto section -- text floating on forest canopy bg
 
-### Garren Hill
+### Garran Hill
 - [ ] Refine all sections below hero to match new template laws
 - [ ] Cormorant Garamond as primary display face throughout
 - [ ] Blue Fox / Betty Dumaine section
