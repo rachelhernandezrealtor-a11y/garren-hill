@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 /* ============================================================
    GARRAN HILL V5 -- MASTER BUILD 2026-04-23
    200 Hollycrest Drive, Pinehurst, NC
-   4 Beds / 4 Baths / 2 Powder Rooms / 7 Fireplaces
+   4 Bedrooms / 4 Full Bathrooms / 2 Powder Rooms / 7 Fireplaces
    4.15 Acres / 6,072 Sq Ft GLA / Est. 1916
    Offered at $4,250,000
    Represented by Rachel Hernandez, Sotheby's International Realty
@@ -203,7 +203,7 @@ function InquiryModal({ onClose }) {
         <p style={{ fontFamily: SCRIPT, fontSize: '2.2rem', color: GOLD, margin: '0 0 0.3rem', lineHeight: 1 }}>Garran Hill</p>
         <p style={{ fontFamily: SERIF, fontStyle: 'italic', color: CREAM, opacity: 0.5, fontSize: '0.88rem', margin: '0 0 2.2rem', lineHeight: 1.7 }}>
           200 Hollycrest Drive, Pinehurst, NC 28374<br />
-          4 Beds &nbsp;&bull;&nbsp; 4 Baths &nbsp;&bull;&nbsp; 2 Powder Rooms &nbsp;&bull;&nbsp; 4.15 Acres<br />
+          4 Bedrooms &nbsp;&bull;&nbsp; 4 Full Bathrooms &nbsp;&bull;&nbsp; 2 Powder Rooms &nbsp;&bull;&nbsp; 4.15 Acres<br />
           Offered at $4,250,000
         </p>
         {sent ? (
@@ -242,14 +242,18 @@ function Hero({ onInquire }) {
       const hls = new window.Hls({ maxBufferLength: 30 });
       hls.loadSource(GH_VIDEO); hls.attachMedia(v);
       hls.on(window.Hls.Events.MANIFEST_PARSED, () => v.play().catch(() => {}));
+      v.addEventListener('ended', () => { v.currentTime = 0; v.play().catch(() => {}); });
+      v.addEventListener('timeupdate', () => {
+        if (v.duration && v.currentTime > v.duration - 0.5) { v.currentTime = 0; }
+      });
     };
     document.head.appendChild(s);
   }, []);
 
   return (
     <section style={{ position: 'relative', height: '100vh', minHeight: 660, overflow: 'hidden', background: DARK }}>
-      <video ref={vRef} muted loop playsInline autoPlay poster={GH_POSTER}
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 38%', zIndex: 0 }} />
+      <video ref={vRef} muted playsInline autoPlay poster={GH_POSTER}
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 38%', zIndex: 0, transform: 'none', animation: 'none', transition: 'none' }} />
       {/* Gradient: left side darker so script reads, fade bottom for stats */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(105deg, rgba(4,4,4,0.72) 0%, rgba(4,4,4,0.32) 48%, rgba(4,4,4,0.06) 100%)' }} />
       <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(to bottom, rgba(4,4,4,0.25) 0%, transparent 20%, transparent 60%, rgba(4,4,4,0.75) 100%)' }} />
@@ -291,7 +295,7 @@ function Hero({ onInquire }) {
 function StatBar() {
   const S = [
     { n: '1916', l: 'Year Built' }, { n: '6,072', l: 'Square Feet' }, { n: '4.15', l: 'Acres' },
-    { n: '4', l: 'Bedrooms' }, { n: '4 + 2', l: 'Baths & Powder Rooms' }, { n: '7', l: 'Fireplaces' }, { n: '$4,250,000', l: 'Asking Price' },
+    { n: '4', l: 'Bedrooms' }, { n: '4', l: 'Full Bathrooms' }, { n: '2', l: 'Powder Rooms' }, { n: '7', l: 'Fireplaces' }, { n: '$4,250,000', l: 'Asking Price' },
   ];
   return (
     <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10, background: 'rgba(4,4,4,0.82)', backdropFilter: 'blur(16px)', borderTop: '1px solid rgba(201,169,110,0.1)', display: 'flex' }}>
