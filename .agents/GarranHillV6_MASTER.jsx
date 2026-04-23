@@ -408,15 +408,14 @@ function Hero({ onInquire }) {
   }, []);
 
   return (
-    <section style={{ position: 'relative', height: '100vh', minHeight: 680, overflow: 'hidden', background: `url(${GH_POSTER}) center 58% / cover no-repeat` }}>
+    <section style={{ position: 'relative', height: '100vh', minHeight: 680, overflow: 'hidden', background: '#0a0a0a' }}>
 
-      {/* POSTER -- always visible until video is ready */}
+      {/* POSTER -- always visible, video fades on top when ready */}
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1,
         backgroundImage: `url(${GH_POSTER})`,
         backgroundSize: 'cover', backgroundPosition: 'center 58%',
-        opacity: ready ? 0 : 1,
-        transition: 'opacity 1.4s ease',
+        opacity: 1,
       }} />
 
       {/* VIDEO */}
