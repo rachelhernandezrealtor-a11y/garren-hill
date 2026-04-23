@@ -325,3 +325,47 @@ Wrap ALL images through this.
 - Aman resort aesthetic as the north star
 - Stats and numbers as features, not footnotes
 - One template, two expressions -- never two different systems
+
+---
+
+## AI COPY VOICE -- THE PHILOSOPHY (LOCKED 2026-04-23)
+
+We are smart. We are confident. Less is more.
+But when we land a line -- it lands hard.
+
+### The Core Truth
+You are not describing a room. You are making someone feel something they cannot explain.
+Smart buyers do not need to be told what to feel. Give them one fact, one image, one truth -- and get out.
+
+### Copy Laws
+- One sentence. Maybe two. Never three.
+- Declarative. Present tense. No hedging.
+- Specificity is everything. Numbers, materials, names. Not adjectives.
+- Emotion comes from precision -- not from feeling words.
+- Silence is a tool. Say less than you could. Always.
+
+### Banned Words (GPT-4o enforces this list)
+nestled, boasts, charming, stunning, exudes, inviting, timeless, seamlessly,
+sophisticated, elegant, warmth, cozy, spacious, beautiful, gorgeous, luxurious,
+features, offers, provides, showcases, highlights, impressive, remarkable
+
+### Lines That Land (our north stars)
+- "Seven fireplaces. This is the one that matters."
+- "One tap. The house shifts."
+- "Built 1916. Still the finest house in Moore County."
+- "Heart pine floors. Seventeen feet to the peak."
+- "143 lighting circuits. Some of them are these trees."
+- "The farm unlocks everything."
+- "Garran Hill is ready."
+- "Sound that fills seventeen feet without effort."
+- "The electrical capacity of a small hotel."
+- "Fire going, no one home yet."
+- "This room holds stories."
+
+### What GPT-4o generates per photo
+- room: exact space name
+- quality_score: 1-10
+- mood: a precise image, not adjectives
+- best_use: hero / gallery / MLS / skip
+- caption: one or two sentences, our voice, lands hard
+- issues: specific technical problems or none

@@ -1,13 +1,8 @@
 #!/usr/bin/env python3
 """
 Photo Intelligence -- powered by GPT-4o Vision
-Analyzes a property photo and returns:
-- Room type
-- Quality score (1-10)
-- Mood/vibe
-- Best use (hero / gallery / MLS / skip)
-- Suggested caption (Sotheby's voice -- Rachel Hernandez / our locked style)
-- Issues to flag
+Voice: Rachel Hernandez / Sotheby's International Realty
+Less is more. Bang them with the right line.
 
 Usage: python3 photo_intelligence.py <image_url>
 """
@@ -27,46 +22,56 @@ if not image_url:
     print(json.dumps({"error": "No image URL provided"}))
     sys.exit(1)
 
-PROMPT = """You are writing for Sotheby's International Realty. Your voice is Rachel Hernandez -- a luxury real estate agent who writes like an editor, not a salesperson.
+PROMPT = """You write for Sotheby's International Realty. One agent. One voice. Confident, spare, surgical.
 
-VOICE LAWS -- memorize these before writing a single word:
-- Declarative sentences. Present tense. The property exists NOW.
-- Specificity over adjectives. "Seventeen feet" not "soaring." "Seven fireplaces" not "multiple."
-- No cliches. BANNED: nestled, boasts, charming, stunning, exudes, inviting, timeless, seamlessly, sophisticated, elegant, warmth, cozy, spacious.
-- Short. One sentence. Two maximum. Never three.
-- Numbers are features. Lead with them when they exist.
-- Let the room speak. Do not tell the buyer how to feel.
-- Authority, not pitch. You are describing a fact, not selling a feature.
+THE PHILOSOPHY:
+Less is more. But when you land a line -- it lands hard.
+You are not describing a room. You are making someone feel something they cannot explain.
+Smart buyers do not need to be told what to think. Give them one fact, one image, one truth -- and get out.
 
-GOOD examples:
-- "The living room runs seventeen feet to the peak -- heart pine floors, grand piano, timber trusses overhead."
+VOICE LAWS:
+- One sentence. Maybe two. Never three.
+- Declarative. Present tense. No hedging.
+- Specificity is everything. Numbers, materials, names. Not adjectives.
+- Emotion comes from precision, not from feeling words.
+- Silence is a tool. Say less than you could. Always.
+
+BANNED WORDS -- use any of these and start over:
+nestled, boasts, charming, stunning, exudes, inviting, timeless, seamlessly,
+sophisticated, elegant, warmth, cozy, spacious, beautiful, gorgeous, luxurious,
+features, offers, provides, showcases, highlights, impressive, remarkable
+
+GOOD lines -- study these:
 - "Seven fireplaces. This is the one that matters."
-- "Built by Leonard Tufts' own craftsmen. The same men who built Pinehurst."
-- "One tap. The entire house shifts."
-- "The kitchen runs the length of the north wing. Wolf range, walk-in cooler, speakers you cannot locate."
+- "One tap. The house shifts."
+- "Built 1916. Still the finest house in Moore County."
+- "Heart pine floors. Seventeen feet to the peak. A grand piano that earns the room."
+- "143 lighting circuits. Some of them are these trees."
+- "The farm unlocks everything."
+- "Garran Hill is ready."
+- "Sound that fills seventeen feet without effort."
+- "The electrical capacity of a small hotel."
 
-BAD examples (never write like this):
-- "An inviting living room exudes warmth with timeless charm." -- NO
-- "A stunning space that seamlessly integrates elegance." -- NO
-- "Charming details throughout." -- NO
+BAD lines -- never:
+- "An inviting space that exudes warmth and timeless charm." NO.
+- "A stunning room that seamlessly blends elegance." NO.
+- "This beautiful space features gorgeous details." NO.
 
-Now analyze this photo and return ONLY a JSON object with exactly these fields:
+Now analyze this photo. Return ONLY a JSON object -- no markdown, no explanation:
 {
-  "room": "exact room name (e.g. Living Room, Primary Bedroom, Kitchen, Exterior Front, Pool, Gardens, Aerial, Staircase, Dining Room, Library, Study, Foyer, Conservatory, Pool House, etc.)",
-  "quality_score": 8,
-  "mood": "one precise phrase -- NOT an adjective string. Example: 'first light through leaded glass' or 'fire lit, late afternoon'",
-  "best_use": "one of: hero / gallery / MLS / skip",
-  "caption": "one or two sentences maximum -- Sotheby's voice, declarative, specific, no banned words",
-  "issues": "specific issues only: blur / underexposed / overexposed / cluttered / bad angle / wide distortion / or 'none'"
+  "room": "exact room or space (Living Room, Primary Bedroom, Kitchen, Foyer, Library, Study, Dining Room, Staircase, Conservatory, Pool, Gardens, Exterior Front, Exterior Rear, Aerial, Pool House, Grounds, etc.)",
+  "quality_score": 9,
+  "mood": "a precise image -- not adjectives. Example: 'first light through leaded glass' / 'fire going, no one home yet' / 'the pool at noon'",
+  "best_use": "hero / gallery / MLS / skip",
+  "caption": "one or two sentences. Sotheby's voice. Specific. Declarative. Evocative. No banned words. Make it land.",
+  "issues": "blur / underexposed / overexposed / cluttered / bad angle / wide distortion / none"
 }
 
-best_use guide:
-- hero: stops you cold. Full-bleed worthy. Would anchor a magazine spread.
-- gallery: strong room shot. Shows the space clearly and beautifully.
-- MLS: functional. Good record of the space. Not editorial.
-- skip: not usable -- dark, blurry, cluttered, or compositionally broken.
-
-Return ONLY the JSON. No explanation. No markdown."""
+best_use:
+- hero: stops you. Full-bleed. Magazine cover.
+- gallery: strong, clear, editorial. Belongs in the room section.
+- MLS: solid record of the space. Functional.
+- skip: unusable."""
 
 payload = {
     "model": "gpt-4o",
