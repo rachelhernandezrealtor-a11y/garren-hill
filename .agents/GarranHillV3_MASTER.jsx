@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
    GARRAN HILL V5 -- MASTER BUILD 2026-04-23
    200 Hollycrest Drive, Pinehurst, NC
    4 Beds / 4 Baths / 2 Powder Rooms / 7 Fireplaces
-   4.25 Acres / 6,072 Sq Ft GLA / Est. 1916
+   4.15 Acres / 6,072 Sq Ft GLA / Est. 1916
    Offered at $4,250,000
    Represented by Rachel Hernandez, Sotheby's International Realty
 ============================================================ */
@@ -203,7 +203,7 @@ function InquiryModal({ onClose }) {
         <p style={{ fontFamily: SCRIPT, fontSize: '2.2rem', color: GOLD, margin: '0 0 0.3rem', lineHeight: 1 }}>Garran Hill</p>
         <p style={{ fontFamily: SERIF, fontStyle: 'italic', color: CREAM, opacity: 0.5, fontSize: '0.88rem', margin: '0 0 2.2rem', lineHeight: 1.7 }}>
           200 Hollycrest Drive, Pinehurst, NC 28374<br />
-          4 Beds &nbsp;&bull;&nbsp; 4 Baths &nbsp;&bull;&nbsp; 2 Powder Rooms &nbsp;&bull;&nbsp; 4.25 Acres<br />
+          4 Beds &nbsp;&bull;&nbsp; 4 Baths &nbsp;&bull;&nbsp; 2 Powder Rooms &nbsp;&bull;&nbsp; 4.15 Acres<br />
           Offered at $4,250,000
         </p>
         {sent ? (
@@ -290,7 +290,7 @@ function Hero({ onInquire }) {
 /* STAT BAR */
 function StatBar() {
   const S = [
-    { n: '1916', l: 'Year Built' }, { n: '6,072', l: 'Square Feet' }, { n: '4.25', l: 'Acres' },
+    { n: '1916', l: 'Year Built' }, { n: '6,072', l: 'Square Feet' }, { n: '4.15', l: 'Acres' },
     { n: '4 / 4', l: 'Beds / Baths' }, { n: '2', l: 'Powder Rooms' }, { n: '7', l: 'Fireplaces' }, { n: '$4,250,000', l: 'Asking Price' },
   ];
   return (
@@ -624,7 +624,7 @@ export default function GarranHillV3() {
       </DarkSection>
 
       {/* 19 AERIAL */}
-      <FullBleed src={I.aerial} eyebrow="4.25 Acres -- Pinehurst, North Carolina" darken={0.4}
+      <FullBleed src={I.aerial} eyebrow="4.15 Acres -- Pinehurst, North Carolina" darken={0.4}
         minH="clamp(480px,68vh,780px)"
         headline="The grounds hold the house<br/><em style='font-weight:300'>the way they always have.</em>" />
 
