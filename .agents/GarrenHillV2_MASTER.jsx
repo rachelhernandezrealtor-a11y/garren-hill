@@ -245,77 +245,134 @@ export default function GarrenHillV2() {
       </nav>
 
       {/* HERO */}
-      <div style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
+      <div style={{ position: 'relative', height: '100vh', minHeight: 640, overflow: 'hidden', background: '#000' }}>
+
+        {/* Full-bleed photo -- portico front elevation, Ken Burns scale */}
         <div style={{
           position: 'absolute', inset: 0,
           backgroundImage: `url(${IMG_HERO})`,
-          backgroundSize: 'cover', backgroundPosition: 'center top',
-          transform: `scale(1.08) translateY(${scrollY * 0.25}px)`,
-          transition: 'transform 0.08s linear',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 20%',
+          transform: `scale(1.08) translateY(${scrollY * 0.18}px)`,
+          transition: 'transform 0.06s linear',
+          willChange: 'transform',
         }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,10,10,0.28) 0%, rgba(10,10,10,0.42) 50%, rgba(10,10,10,0.92) 100%)' }} />
 
-        {/* Stats bar */}
+        {/* Gradient -- dark at top for nav, heavy at bottom for copy */}
         <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
-          background: 'rgba(8,8,8,0.82)', backdropFilter: 'blur(14px)',
-          borderTop: '1px solid rgba(255,255,255,0.07)',
-          padding: '1.5rem 0',
-          display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem',
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.1) 35%, rgba(10,10,10,0.15) 55%, rgba(10,10,10,0.88) 85%, rgba(10,10,10,0.97) 100%)',
+        }} />
+
+        {/* ADDRESS -- gold eyebrow pinned top left, below nav */}
+        <div style={{
+          position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10,
+          padding: 'clamp(5rem, 9vw, 7rem) clamp(2.5rem, 6vw, 6rem) 0',
+          pointerEvents: 'none',
         }}>
-          {[
-            { value: '1916', label: 'Year Built' },
-            { value: '6,700', label: 'Sq Ft' },
-            { value: '7', label: 'Fireplaces' },
-            { value: '4.15', label: 'Acres' },
-            { value: '$4,250,000', label: 'Offered At' },
-          ].map((s, i) => (
-            <React.Fragment key={s.label}>
-              {i > 0 && <div style={{ width: 1, height: 32, background: 'rgba(255,255,255,0.09)', margin: '0 clamp(0.8rem, 2.5vw, 2.5rem)' }} />}
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300, fontSize: 'clamp(1.2rem, 1.8vw, 1.8rem)', color: '#fff' }}>{s.value}</div>
-                <div style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.38)', marginTop: '0.25rem' }}>{s.label}</div>
-              </div>
-            </React.Fragment>
-          ))}
+          <span style={{
+            fontFamily: 'sans-serif', fontSize: '9px',
+            letterSpacing: '0.38em', textTransform: 'uppercase',
+            color: GOLD, display: 'block',
+          }}>
+            200 Hollycrest Drive &nbsp;|&nbsp; Pinehurst, NC &nbsp;|&nbsp; Est. 1916
+          </span>
         </div>
 
-        {/* Hero copy */}
-        <div style={{ position: 'relative', zIndex: 5, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(3rem, 7vw, 6rem) clamp(3rem, 7vw, 6rem) 9.5rem' }}>
-          <FadeIn delay={0.1}>
-            <span style={{ ...eyebrow, marginBottom: '1.2rem' }}>Pinehurst, North Carolina -- Est. 1916</span>
+        {/* HERO COPY -- centered block, vertically anchored to lower third */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 5,
+          display: 'flex', flexDirection: 'column',
+          justifyContent: 'flex-end',
+          alignItems: 'center',
+          textAlign: 'center',
+          padding: 'clamp(3rem, 6vw, 5rem) clamp(2rem, 8vw, 10rem) clamp(7rem, 12vh, 10rem)',
+        }}>
+          <FadeIn delay={0.15}>
             <h1 style={{
               fontFamily: 'Georgia, serif', fontWeight: 400,
-              fontSize: 'clamp(3rem, 6.5vw, 6.5rem)',
+              fontSize: 'clamp(2.8rem, 6.5vw, 7rem)',
               color: '#fff', lineHeight: 1.05,
-              margin: '0 0 2.2rem', letterSpacing: '-0.03em', maxWidth: 820,
+              margin: '0 0 1.4rem', letterSpacing: '-0.025em',
             }}>
-              Garren Hill.<br /><em>A century of</em><br />belonging.
+              Built in 1916.<br /><em>Still the finest house</em><br />in Moore County.
             </h1>
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          </FadeIn>
+          <FadeIn delay={0.35}>
+            <p style={{
+              fontFamily: 'Georgia, serif', fontStyle: 'italic',
+              fontSize: 'clamp(0.95rem, 1.4vw, 1.2rem)',
+              color: 'rgba(245,240,232,0.82)', lineHeight: 1.7,
+              margin: '0 0 2.4rem', maxWidth: 520,
+            }}>
+              Neo-Georgian. Walter Hines Page. 110 years of remarkable stewardship.
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.5}>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <button onClick={() => setInquiryOpen(true)} style={{
-                padding: '0.9rem 2.4rem',
+                padding: '0.9rem 2.6rem',
                 background: 'rgba(201,169,110,0.15)',
                 border: `1px solid ${GOLD}`,
-                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1), 0 0 20px rgba(201,169,110,0.08)',
                 color: GOLD, fontFamily: 'sans-serif', fontSize: '10px',
                 letterSpacing: '0.28em', textTransform: 'uppercase',
                 cursor: 'pointer', borderRadius: 1,
+                backdropFilter: 'blur(8px)',
               }}>
-                Inquire
+                Private Inquiry
               </button>
               <a href="https://my.matterport.com/show/?m=mfwyqT5Btwx&brand=0&mls=1&" target="_blank" rel="noreferrer" style={{
-                padding: '0.9rem 2.4rem',
+                padding: '0.9rem 2.6rem',
                 background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.2)',
-                color: 'rgba(255,255,255,0.75)', fontFamily: 'sans-serif', fontSize: '10px',
+                border: '1px solid rgba(255,255,255,0.18)',
+                color: 'rgba(255,255,255,0.72)', fontFamily: 'sans-serif', fontSize: '10px',
                 letterSpacing: '0.28em', textTransform: 'uppercase',
-                textDecoration: 'none', borderRadius: 1, display: 'inline-flex', alignItems: 'center',
+                textDecoration: 'none', borderRadius: 1,
+                backdropFilter: 'blur(8px)', display: 'inline-block',
               }}>
                 Tour the Estate
               </a>
             </div>
           </FadeIn>
+        </div>
+
+        {/* STATS BAR -- frosted glass, pinned bottom */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
+          background: 'rgba(8,8,8,0.78)', backdropFilter: 'blur(16px)',
+          borderTop: '1px solid rgba(255,255,255,0.07)',
+          padding: '1.4rem 0',
+          display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 0,
+        }}>
+          {[
+            { value: '1916', label1: 'YEAR', label2: 'BUILT' },
+            { value: '6,700', label1: 'HEATED', label2: 'SQ FT' },
+            { value: '7', label1: 'ORIGINAL', label2: 'FIREPLACES' },
+            { value: '4.15', label1: 'PRIVATE', label2: 'ACRES' },
+            { value: '$4.25M', label1: 'OFFERED', label2: 'AT' },
+          ].map((s, i) => (
+            <React.Fragment key={s.label1}>
+              {i > 0 && (
+                <div style={{
+                  width: 1, alignSelf: 'stretch', minHeight: 44,
+                  background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.12) 20%, rgba(255,255,255,0.12) 80%, transparent)',
+                  margin: '0 clamp(1rem, 3vw, 3rem)',
+                }} />
+              )}
+              <div style={{ textAlign: 'center' }}>
+                <div style={{
+                  fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
+                  fontSize: 'clamp(1.3rem, 2vw, 2rem)', color: '#fff', lineHeight: 1,
+                  marginBottom: '0.45rem',
+                }}>{s.value}</div>
+                <div style={{
+                  fontFamily: 'sans-serif', fontSize: '7px',
+                  letterSpacing: '0.22em', textTransform: 'uppercase',
+                  color: 'rgba(255,255,255,0.35)', lineHeight: 1.5,
+                }}>{s.label1}<br />{s.label2}</div>
+              </div>
+            </React.Fragment>
+          ))}
         </div>
       </div>
 
