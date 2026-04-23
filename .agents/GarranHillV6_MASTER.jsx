@@ -676,7 +676,7 @@ export default function GarranHillV6() {
     ],
     primary: [
       { src: I.bath,      caption: 'Primary Bath -- Freestanding Tub' },
-      { src: I.window,    caption: 'White dogwood through divided glass. April.' },
+        headline="The master suite<br/><em style='font-weight:300'>was a commission, not a renovation.</em>"
     ],
     kitchen: [
       { src: I.kitchen,  caption: 'The Kitchen' },
@@ -800,8 +800,8 @@ export default function GarranHillV6() {
       {/* 03 ENTRANCE HALL */}
       <CinematicReveal
         eyebrow="The Entrance Hall"
-        headline="Carved in granite.<br/><em style='font-weight:300'>GARRAN HILL 1916.</em>"
-        body="White raised-panel wainscoting to chair rail on every wall. The staircase curves right as you enter -- mahogany volute, white turned balusters, the same sweep since 1916. The central axis runs straight to the library bookcases, visible from the front door."
+        headline="Carved in granite.<br/><em style='font-weight:300'>Specified in 2000. Honoring 1916.</em>"
+        body="The architect drew it into the plans: GARRAN HILL 1916, carved into the granite threshold. Not original -- deliberate. The 2000 renovation began here, with this act. White raised-panel wainscoting, mahogany staircase volute, the central axis running straight to the library from the moment the door opens."
         img={I.entry}
         photos={G.entry} onOpen={openLB}
       />
@@ -857,8 +857,8 @@ export default function GarranHillV6() {
       {/* 06 LIBRARY */}
       <CinematicReveal flip
         eyebrow="The Library"
-        headline="Floor to ceiling.<br/><em style='font-weight:300'>Three walls. Rolling ladder.</em>"
-        body="Built-in shelving on three walls. Rolling ladder. Brass chandelier. French doors to the entrance hall on two sides. Visible from the front door the moment you step in."
+        headline="Designed in 2000.<br/><em style='font-weight:300'>Built to last another century.</em>"
+        body="Thomas O'Shea designed this room as a library from the beginning -- floor-to-ceiling shelving on three walls, rolling ladder, brass chandelier. Built in 2000 to the same standard as the house it joined. Visible from the front door the moment you step in."
         img={I.libraryWide}
         photos={G.library} onOpen={openLB} dark
       />
@@ -904,8 +904,8 @@ export default function GarranHillV6() {
       {/* 07 STUDY */}}
       <CinematicReveal
         eyebrow="The Study"
-        headline="Custom millwork.<br/><em style='font-weight:300'>Floor to ceiling.</em>"
-        body="Floor-to-ceiling built-in shelving. Original fireplace. Divided-light windows on two walls. The room was designed for a man who read everything and wrote constantly."
+        headline="Same panel details<br/><em style='font-weight:300'>as the dining room. Drawn that way.</em>"
+        body="The 2000 renovation plans specify the study paneling must match the existing dining room panels exactly. Same profiles, same proportions, 84 years apart. The result is a room that does not feel added. It feels inevitable."
         img={I.office}
         photos={G.study} onOpen={openLB}
       />
@@ -913,8 +913,8 @@ export default function GarranHillV6() {
       {/* 08 PRIMARY SUITE */}
       <CinematicReveal flip
         eyebrow="The Primary Suite"
-        headline="White dogwood through divided glass.<br/><em style='font-weight:300'>April. Every year.</em>"
-        body="Two dark-wood vanities with speckled granite countertops and undermount sinks. Freestanding soaking tub. Framed by original divided-light windows on two walls. The dogwood blooms every April without anyone's help."
+        headline="The master suite<br/><em style='font-weight:300'>was a commission, not a renovation.</em>"
+        body="Every panel, every cabinet, the fireplace surround, the tub surround -- drawn from scratch by Thomas O'Shea in 2000 to match a 1916 house. The dogwood outside the divided-light windows blooms every April without anyone's help."
         img={I.bath}
         photos={G.primary} onOpen={openLB} dark
       />
