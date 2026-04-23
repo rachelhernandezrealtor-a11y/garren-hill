@@ -57,6 +57,7 @@ const I = {
   firePinkWide:pro('36a377fdc_200HollycrestDrive-93.jpg'),
   fireOrnate:  pro('c04dbe756_200HollycrestDrive-94.jpg'),
   stairHall:   pro('e856d8465_200HollycrestDrive-16.jpg'),
+  leadedGlass: pro('b8fc16781_200Holycrest-1185.jpg'),
   sitting:     own('07dd22757_SITTINGROOMGUESTSUITE.jpg'),
   dining:      pro('e926f8fdd_200Holycrest-1296.jpg'),
   dining2:     pro('1b24b019d_HHDRwshellcabinetsApr96.jpg'),
@@ -620,8 +621,9 @@ export default function GarranHillV6() {
   /* ---- GALLERY COLLECTIONS ---- */
   const G = {
     entry: [
-      { src: I.entry,     caption: 'The Entrance Hall -- Looking to the Library' },
-      { src: I.threshold, caption: 'The Threshold -- GARRAN HILL 1916' },
+      { src: I.leadedGlass, caption: 'The Entrance Hall -- Leaded glass fanlight. Staircase. The axis to the library.' },
+      { src: I.entry,       caption: 'The Entrance Hall -- Looking to the Library' },
+      { src: I.threshold,   caption: 'The Threshold -- GARRAN HILL 1916' },
     ],
     reception: [
       { src: I.living,    caption: 'The Drawing Room' },
