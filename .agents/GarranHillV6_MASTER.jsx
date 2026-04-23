@@ -690,6 +690,49 @@ export default function GarranHillV6() {
       { src: I.porch,     caption: 'The Rear Porch -- Columned, brick terrace.' },
       { src: I.porch2,    caption: 'The Side Porch' },
     ],
+    fullGallery: [
+      { src: `${CDN}${EXT}/${BP}gh_200HollycrestDrive-191.jpg` },
+      { src: `${CDN}${EXT}/${BP}gh_200HollycrestDrive-190.jpg` },
+      { src: `${CDN}${EXT}/${BP}gh_200HollycrestDrive-192.jpg` },
+      { src: `${CDN}${EXT}/${BP}gh_200HollycrestDrive-214.jpg` },
+      { src: `${CDN}${EXT}/${BP}gh_200HollycrestDrive-222.jpg` },
+      { src: `${CDN}${EXT}/${BP}gh_200HollycrestDrive-208.jpg` },
+      { src: `${CDN}${EXT}/${BP}gh_200HollycrestDrive-151.jpg` },
+      { src: `${CDN}${EXT}/${BP}gh_200HollycrestDrive-156.jpg` },
+      { src: `${CDN}${EXT}/${BP}gh_200HollycrestDrive-157.jpg` },
+      { src: `${CDN}${EXT}/${BP}gh_200HollycrestDrive-158.jpg` },
+      { src: `${CDN}${EXT}/${BP}gh_200HollycrestDrive-160.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-1.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-2.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-31.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-32.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-34.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-30.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-35.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-38.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-40.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-43.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-48.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-58.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-53.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-135.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-68.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-91.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-115.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-116.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-81.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-107.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-108.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-70.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-71.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-67.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-86.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-87.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-73.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-55.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-74.jpg` },
+      { src: `${CDN}${INT}/${BP}gh_200HollycrestDrive-75.jpg` },
+    ],
   };
 
   return (
@@ -1014,6 +1057,41 @@ export default function GarranHillV6() {
         quote="The new entry was designed around the original leaded glass."
         attr="Thomas O'Shea -- Restoration Architect, 2000"
       />
+
+      {/* 14c FULL PROPERTY GALLERY */}
+      <section style={{ background: '#050505', padding: 'clamp(5rem,9vw,8rem) clamp(2rem,6vw,6rem)' }}>
+        <FadeIn>
+          <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+            <span style={EYE()}>The Property</span>
+            <Rule center />
+            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(1.8rem,3vw,3.2rem)', color: '#fff', lineHeight: 1.1, margin: '0 auto 0.8rem', letterSpacing: '-0.015em', maxWidth: 700 }}>
+              396 photographs.<br /><em style={{ fontWeight: 300 }}>Everything you need to know.</em>
+            </h2>
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: '0.92rem', color: CREAM, opacity: 0.42, margin: '0 auto', maxWidth: 460 }}>
+              Select any image to open the full gallery.
+            </p>
+          </div>
+        </FadeIn>
+        <FadeIn>
+          <div style={{ columns: 'clamp(180px,20vw,260px)', columnGap: 4, columnFill: 'balance' }}>
+            {G.fullGallery.map((p, i) => (
+              <div key={i}
+                onClick={() => openLB(G.fullGallery, i)}
+                style={{ breakInside: 'avoid', marginBottom: 4, cursor: 'pointer', position: 'relative', overflow: 'hidden' }}
+              >
+                <img
+                  src={p.src}
+                  alt=""
+                  loading="lazy"
+                  style={{ width: '100%', display: 'block', transition: 'transform 0.5s ease' }}
+                  onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.03)'}
+                  onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                />
+              </div>
+            ))}
+          </div>
+        </FadeIn>
+      </section>
 
       {/* 15 AERIAL */}
       <FullBleed
