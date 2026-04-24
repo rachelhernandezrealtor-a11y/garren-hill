@@ -22,49 +22,65 @@
     ::-webkit-scrollbar-track { background: #0a0a0a; }
     ::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 2px; }
 
-    /* SEAMLESS SCROLL -- no gaps, no borders, everything bleeds */
-    section { margin: 0 !important; border: none !important; outline: none !important; }
+    /* SEAMLESS CINEMATIC SCROLL -- one continuous film */
+    * { margin: 0; }
+    section, div[data-section] { margin: 0 !important; padding-top: 0 !important; border: none !important; outline: none !important; }
 
-    /* Image section fade-in/out -- dissolves into dark */
-    .cinematic-section { position: relative; }
+    /* Image sections: deep gradient dissolve top + bottom, pull into adjacent sections */
+    .cinematic-section {
+      position: relative;
+      margin-top: -2px !important;
+      margin-bottom: -2px !important;
+    }
     .cinematic-section::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: clamp(80px, 14vh, 160px);
-      background: linear-gradient(to bottom, #0a0a0a 0%, transparent 100%);
-      z-index: 3;
+      height: clamp(120px, 20vh, 220px);
+      background: linear-gradient(to bottom, #0a0a0a 0%, rgba(10,10,10,0.7) 60%, transparent 100%);
+      z-index: 4;
       pointer-events: none;
     }
     .cinematic-section::after {
       content: '';
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      height: clamp(80px, 14vh, 160px);
-      background: linear-gradient(to top, #0a0a0a 0%, transparent 100%);
-      z-index: 3;
+      height: clamp(120px, 20vh, 220px);
+      background: linear-gradient(to top, #0a0a0a 0%, rgba(10,10,10,0.7) 60%, transparent 100%);
+      z-index: 4;
       pointer-events: none;
     }
 
-    /* Gallery sections -- softer fade */
-    .gallery-section { position: relative; }
+    /* Gallery sections -- medium fade */
+    .gallery-section {
+      position: relative;
+      margin-top: -1px !important;
+      margin-bottom: -1px !important;
+    }
     .gallery-section::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: 60px;
+      height: 80px;
       background: linear-gradient(to bottom, #0a0a0a 0%, transparent 100%);
-      z-index: 3;
+      z-index: 4;
       pointer-events: none;
     }
     .gallery-section::after {
       content: '';
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      height: 60px;
+      height: 80px;
       background: linear-gradient(to top, #0a0a0a 0%, transparent 100%);
-      z-index: 3;
+      z-index: 4;
       pointer-events: none;
+    }
+
+    /* Dark text sections -- zero top padding, they just continue the dark */
+    .dark-section {
+      background: #0a0a0a !important;
+      padding-top: 0 !important;
+      margin: 0 !important;
     }
   </style>
 </head>
@@ -813,7 +829,7 @@ function FullBleed({ src, eyebrow, headline, sub, body, align = 'center', darken
 function CinematicReveal({ eyebrow, headline, body, img, flip = false, photos, onOpen, dark = false, subBody }) {
   const bgRef = useParallax(0.12);
   return (
-    <section style={{ display: 'flex', flexDirection: flip ? 'row-reverse' : 'row', minHeight: 'clamp(520px,68vh,820px)', background: DARK, overflow: 'hidden' }}>
+    <section style={{ display: 'flex', flexDirection: flip ? 'row-reverse' : 'row', minHeight: 'clamp(520px,68vh,820px)', background: DARK, overflow: 'hidden', margin: 0 }}>
       {/* text */}
       <div style={{ flex: '0 0 clamp(320px,42%,560px)', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 'clamp(3.5rem,6vw,6rem) clamp(2.5rem,5vw,5rem)' }}>
         <Fade>
@@ -840,7 +856,7 @@ function CinematicReveal({ eyebrow, headline, body, img, flip = false, photos, o
 function PullQuote({ quote, attr, bg }) {
   const bgRef = useParallax(0.15);
   return (
-    <section style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(4rem,8vw,6rem) clamp(2rem,12vw,16rem)', textAlign: 'center', background: bg ? 'transparent' : DARK }}>
+    <section style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(2rem,4vw,3rem) clamp(2rem,12vw,16rem)', textAlign: 'center', background: bg ? 'transparent' : DARK }}>
       {bg && <>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center', zIndex: 0 }} />
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.78)', zIndex: 1 }} />
@@ -1004,10 +1020,10 @@ function GarranHillV6() {
       />
 
       {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(4rem,8vw,7rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: '#0a0a0a', padding: '0 2rem clamp(2.5rem,4vw,3.5rem)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
         
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url($I.whp)`, backgroundSize: 'cover', backgroundPosition: 'center 30%', filter: 'brightness(0.07) saturate(0.4)' }} />
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2.5rem,4vw,3.5rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
+        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
           <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
           <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
             He named it Garran Hill. He never walked through the door.
@@ -1020,7 +1036,7 @@ function GarranHillV6() {
       <div id="estate" style={{ position: 'relative', overflow: 'hidden', minHeight: 'clamp(280px,35vh,420px)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${ext('0de69e38e_200HollycrestDrive-9.jpg')})`, backgroundSize: 'cover', backgroundPosition: 'center 60%', zIndex: 0 }} />
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.82)', zIndex: 1 }} />
-        <div style={{ position: 'relative', zIndex: 2, padding: 'clamp(3.5rem,7vw,5.5rem) clamp(2rem,12vw,16rem)', textAlign: 'center' }}>
+        <div style={{ position: 'relative', zIndex: 2, padding: 'clamp(2rem,4vw,4rem) clamp(2rem,12vw,16rem)', textAlign: 'center' }}>
           <Fade>
             <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(0.95rem,1.4vw,1.18rem)', color: CREAM, opacity: 0.72, lineHeight: 2.1, maxWidth: 720, margin: '0 auto' }}>
               Pinehurst was built by James Walker Tufts in 1895. Garran Hill was built two miles away in 1916. The same hands were working this land.
@@ -1050,10 +1066,10 @@ function GarranHillV6() {
       />
 
       {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(4rem,8vw,7rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: '#0a0a0a', padding: '0 2rem clamp(2.5rem,4vw,3.5rem)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
         
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url($I.img1916)`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.07) saturate(0.4)' }} />
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2.5rem,4vw,3.5rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
+        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
           <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
           <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
             Four generations of remarkable people have called this place home.
@@ -1073,7 +1089,7 @@ function GarranHillV6() {
         headline="Heart-pine floors.<br/><em style='font-weight:300'>Original to the house.</em>"
         body="The same boards laid in 1916. White cabinetry, three windows, a layout that has not changed because there was no reason to change it."
       />
-      <section style={{ background: '#0a0a0a', paddingBottom: 'clamp(3rem,5vw,5rem)', paddingTop: 'clamp(0.5rem,1vw,1rem)' }}>
+      <section style={{ background: '#0a0a0a', paddingBottom: 'clamp(1.5rem,3vw,2.5rem)', paddingTop: '0' }}>
         <FilmStrip photos={G.kitchen} onOpen={openLB} />
       </section>
 
@@ -1105,9 +1121,9 @@ function GarranHillV6() {
       />
 
       {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(4rem,8vw,7rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: '#0a0a0a', padding: '0 2rem clamp(2.5rem,4vw,3.5rem)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
         
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2.5rem,4vw,3.5rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
+        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
           <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
           <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
             Not original -- deliberate.
@@ -1117,7 +1133,7 @@ function GarranHillV6() {
       </section>
 
       {/* == 07b O'SHEA INTERSTITIAL == */}
-      <section style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(6rem,12vw,10rem) clamp(2rem,14vw,18rem)', textAlign: 'center' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(2.5rem,4vw,3.5rem) clamp(2rem,14vw,18rem)', textAlign: 'center' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.archDrawing})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'grayscale(100%)', zIndex: 0 }} />
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.94)', zIndex: 1 }} />
         <div style={{ position: 'relative', zIndex: 2 }}>
@@ -1185,7 +1201,7 @@ function GarranHillV6() {
         headline="The master suite was a commission,<br/><em style='font-weight:300'>not a renovation.</em>"
         body="Every panel, every cabinet, the fireplace surround, the tub surround -- drawn from scratch by Thomas O'Shea in 2000 to match a 1916 house."
       />
-      <section style={{ background: '#0a0a0a', paddingBottom: 'clamp(3rem,5vw,5rem)' }}>
+      <section style={{ background: '#0a0a0a', paddingBottom: 'clamp(1rem,2vw,1.5rem)' }}>
         <FilmStrip photos={G.primary} onOpen={openLB} tall />
       </section>
 
@@ -1210,10 +1226,10 @@ function GarranHillV6() {
       </section>
 
       {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(4rem,8vw,7rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: '#0a0a0a', padding: '0 2rem clamp(2.5rem,4vw,3.5rem)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
         
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url($I.iris)`, backgroundSize: 'cover', backgroundPosition: 'center 60%', filter: 'brightness(0.07) saturate(0.4)' }} />
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2.5rem,4vw,3.5rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
+        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
           <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
           <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
             The world outside these gates does not exist here.
@@ -1278,9 +1294,9 @@ function GarranHillV6() {
       </section>
 
       {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(4rem,8vw,7rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: '#0a0a0a', padding: '0 2rem clamp(2.5rem,4vw,3.5rem)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
         
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2.5rem,4vw,3.5rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
+        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
           <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
           <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
             Seven fireplaces. This is the one that matters.
