@@ -301,75 +301,6 @@ function MasonryGallery({ photos, onOpen }) {
   );
 }
 
-/* ============================================================
-   FILM STRIP -- horizontal scroll, full width, cinematic
-============================================================ */
-function FilmStrip({ photos, onOpen }) {
-  const scrollRef = useRef(null);
-  const [canLeft,  setCanLeft]  = React.useState(false);
-  const [canRight, setCanRight] = React.useState(true);
-
-  const checkScroll = () => {
-    const el = scrollRef.current;
-    if (!el) return;
-    setCanLeft(el.scrollLeft > 8);
-    setCanRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 8);
-  };
-
-  React.useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    el.addEventListener('scroll', checkScroll, { passive: true });
-    checkScroll();
-    return () => el.removeEventListener('scroll', checkScroll);
-  }, []);
-
-  const scroll = dir => {
-    const el = scrollRef.current;
-    if (!el) return;
-    el.scrollBy({ left: dir * 420, behavior: 'smooth' });
-  };
-
-  if (!photos || !photos.length) return null;
-
-  return (
-    <div style={{ position: 'relative', width: '100%' }}>
-      {canLeft && (
-        <button onClick={() => scroll(-1)}
-          style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-70%)', zIndex: 10, background: 'rgba(0,0,0,0.72)', border: '1px solid rgba(255,255,255,0.14)', color: 'rgba(255,255,255,0.75)', width: 50, height: 50, fontSize: '1.5rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(8px)' }}>
-          &#8249;
-        </button>
-      )}
-      {canRight && (
-        <button onClick={() => scroll(1)}
-          style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-70%)', zIndex: 10, background: 'rgba(0,0,0,0.72)', border: '1px solid rgba(255,255,255,0.14)', color: 'rgba(255,255,255,0.75)', width: 50, height: 50, fontSize: '1.5rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(8px)' }}>
-          &#8250;
-        </button>
-      )}
-      <div ref={scrollRef}
-        style={{ display: 'flex', overflowX: 'auto', scrollSnapType: 'x mandatory', gap: 4, scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>
-        {photos.map((p, i) => (
-          <div key={i} onClick={() => onOpen(photos, i)}
-            style={{ flexShrink: 0, width: 'clamp(280px,38vw,520px)', height: 'clamp(200px,26vw,360px)', scrollSnapAlign: 'start', position: 'relative', backgroundImage: 'url(' + p.src + ')', backgroundSize: 'cover', backgroundPosition: 'center', cursor: 'zoom-in', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0)', transition: 'background 0.3s' }}
-              onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.22)'}
-              onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0)'} />
-            {p.caption && (
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.5rem 1.2rem 0.9rem', background: 'linear-gradient(transparent, rgba(0,0,0,0.78))' }}>
-                <p style={{ fontFamily: SERIF, fontStyle: 'italic', color: 'rgba(255,255,255,0.7)', fontSize: '0.76rem', margin: 0, letterSpacing: '0.04em' }}>{p.caption}</p>
-              </div>
-            )}
-            <div style={{ position: 'absolute', top: 10, right: 12, fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.28em', color: 'rgba(255,255,255,0.32)', textTransform: 'uppercase' }}>{i + 1}</div>
-          </div>
-        ))}
-      </div>
-      <p style={{ fontFamily: 'sans-serif', fontSize: '7.5px', letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, opacity: 0.38, textAlign: 'center', margin: '1rem 0 0', padding: '0 0 0.2rem' }}>
-        Scroll to explore &mdash; {photos.length} images
-      </p>
-    </div>
-  );
-}
-
 function GalleryLabel({ n }) {
   return (
     <p style={{ fontFamily: 'sans-serif', fontSize: '7.5px', letterSpacing: '0.34em', textTransform: 'uppercase', color: GOLD, opacity: 0.55, margin: '0 0 0.75rem' }}>
@@ -746,13 +677,7 @@ export default function GarranHillV6() {
       { src: I.officeTall,caption: 'The Study -- Floor to Ceiling' },
     ],
     primary: [
-      { src: I.masterBed,   caption: 'The Primary Suite -- Full room.' },
-      { src: I.masterBed2,  caption: 'The Primary Suite -- Morning light through the windows.' },
-      { src: I.masterBed3,  caption: 'The Primary Suite -- Detail.' },
-      { src: I.bath,        caption: 'Primary Bath -- Freestanding tub. Three windows.' },
-      { src: I.window,      caption: 'The dogwood blooms every April. The window has not moved.' },
-      { src: I.dressing,    caption: 'The Dressing Room -- Custom cabinetry.' },
-      { src: I.dressing2,   caption: 'The Dressing Room -- Full view.' },
+      { src: I.bath,      caption: 'Primary Bath -- Freestanding Tub' },
     ],
     kitchen: [
       { src: I.kitchen,  caption: 'The Kitchen' },
@@ -909,62 +834,26 @@ export default function GarranHillV6() {
         photos={G.dining} onOpen={openLB}
       />
 
-      {/* 05b KITCHEN -- FULL STANDALONE SECTION */}
-      {/* Kitchen hero full-bleed */}
-      <section style={{ position: 'relative', overflow: 'hidden', minHeight: 'clamp(520px,68vh,800px)', display: 'flex', alignItems: 'flex-end' }}>
-        <div style={{ position: 'absolute', inset: '-6% 0', backgroundImage: `url(${I.kitchen})`, backgroundSize: 'cover', backgroundPosition: 'center 35%', zIndex: 0 }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(4,4,4,0.92) 0%, rgba(4,4,4,0.42) 50%, rgba(4,4,4,0.08) 100%)', zIndex: 1 }} />
-        <div style={{ position: 'relative', zIndex: 2, width: '100%', padding: 'clamp(4rem,8vw,7rem) clamp(2rem,8vw,10rem) clamp(3rem,5vw,5rem)' }}>
-          <FadeIn>
-            <span style={EYE()}>The Kitchen</span>
-            <Rule />
-            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(3.5rem,7vw,9rem)', color: '#fff', lineHeight: 1.06, margin: '0 0 1.5rem', letterSpacing: '-0.015em', maxWidth: 780 }}>
-              Heart-pine floors.<br /><em style={{ fontWeight: 300 }}>Original to the house.</em>
-            </h2>
-            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,1.05rem)', color: CREAM, opacity: 0.72, lineHeight: 2.1, maxWidth: 520, margin: 0 }}>
-              The same boards laid in 1916. White cabinetry, three windows, a layout that has not changed because there was no reason to change it.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
+      {/* 05b KITCHEN */}
+      <CinematicReveal flip
+        eyebrow="The Kitchen"
+        headline="Heart-pine floors.<br/><em style='font-weight:300'>Original to the house.</em>"
+        body="Heart-pine floors. The same boards laid in 1916. White cabinetry, three windows, a layout that has not changed because there was no reason to change it."
+        img={I.kitchen}
+        photos={G.kitchen} onOpen={openLB} dark
+      />
 
-      {/* Kitchen filmstrip */}
-      <section style={{ background: '#080808', padding: '0 0 clamp(4rem,7vw,6rem)' }}>
-        <FilmStrip
-          photos={[
-            { src: I.kitchen,  caption: 'The Kitchen -- Full view.' },
-            { src: I.kitchen2, caption: 'Heart-pine floors. Original to the house.' },
-            { src: I.kitchen3, caption: 'The Kitchen -- Three windows. Original layout.' },
-            { src: I.kitchen4, caption: 'The Kitchen -- Details.' },
-            { src: I.kitchen5, caption: 'The Kitchen -- Wide angle.' },
-            { src: I.sunroom,  caption: 'The Sunroom -- Adjacent. Light on three sides.' },
-            { src: I.sunroom2, caption: 'The Sunroom -- Morning through evening.' },
-          ]}
-          onOpen={openLB}
-        />
-      </section>
-
-      {/* Kitchen / Sunroom narrative dark panel */}
-      <section style={{ background: '#050505', padding: 'clamp(4rem,8vw,7rem) clamp(2rem,10vw,14rem)', display: 'flex', gap: 'clamp(3rem,6vw,7rem)', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-        <FadeIn>
-          <div style={{ flex: '1 1 320px', minWidth: 260 }}>
-            <span style={EYE()}>The Sunroom</span>
-            <Rule />
-            <h3 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,3.5vw,4rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.4rem', letterSpacing: '-0.012em' }}>
-              Light on three sides.<br /><em style={{ fontWeight: 300 }}>Morning through evening.</em>
-            </h3>
-            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.65, lineHeight: 2.15, margin: 0 }}>
-              Adjacent to the kitchen. Windows on three exposures. Original divided-light panes. The room changes completely depending on the hour.
-            </p>
-          </div>
-          <div style={{ flex: '1 1 320px', minWidth: 260, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4 }}>
-            {[I.sunroom, I.sunroom2].map((s, i) => (
-              <div key={i} onClick={() => openLB([{src:I.sunroom,caption:'The Sunroom'},{src:I.sunroom2,caption:'The Sunroom -- Full view.'}], i)}
-                style={{ aspectRatio: '4/3', backgroundImage: `url(${s})`, backgroundSize: 'cover', backgroundPosition: 'center', cursor: 'zoom-in' }} />
-            ))}
-          </div>
-        </FadeIn>
-      </section>
+      {/* 05c SUNROOM */}
+      <CinematicReveal
+        eyebrow="The Sunroom"
+        headline="Light on three sides.<br/><em style='font-weight:300'>Morning through evening.</em>"
+        body="Adjacent to the kitchen. Windows on three exposures. Original divided-light panes. The room changes completely depending on the hour."
+        img={I.sunroom}
+        photos={[
+          { src: I.sunroom,  caption: 'The Sunroom' },
+          { src: I.sunroom2, caption: 'The Sunroom -- Full view.' },
+        ]} onOpen={openLB}
+      />
 
 
       {/* 05b OSHEA INTERSTITIAL -- The 2000 Commission Story */}
@@ -1051,75 +940,21 @@ export default function GarranHillV6() {
         photos={G.study} onOpen={openLB}
       />
 
-      {/* 08 PRIMARY SUITE -- FULL STANDALONE SECTION */}
-
-      {/* Primary hero -- bedroom full bleed */}
-      <section style={{ position: 'relative', overflow: 'hidden', minHeight: 'clamp(560px,72vh,860px)', display: 'flex', alignItems: 'center' }}>
-        <div style={{ position: 'absolute', inset: '-8% 0', backgroundImage: `url(${I.masterBed})`, backgroundSize: 'cover', backgroundPosition: 'center 30%', zIndex: 0 }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(4,4,4,0.93) 0%, rgba(4,4,4,0.65) 52%, rgba(4,4,4,0.18) 100%)', zIndex: 1 }} />
-        <div style={{ position: 'relative', zIndex: 2, padding: 'clamp(4rem,8vw,8rem) clamp(2rem,8vw,10rem)', maxWidth: 680 }}>
-          <FadeIn>
-            <span style={EYE()}>The Primary Suite</span>
-            <Rule />
-            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(3.2rem,6.5vw,8.5rem)', color: '#fff', lineHeight: 1.06, margin: '0 0 2rem', letterSpacing: '-0.015em' }}>
-              The master suite<br /><em style={{ fontWeight: 300 }}>was a commission,<br />not a renovation.</em>
-            </h2>
-            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,1.05rem)', color: CREAM, opacity: 0.72, lineHeight: 2.1, margin: 0, maxWidth: 480 }}>
-              Every panel, every cabinet, the fireplace surround, the tub surround -- drawn from scratch by Thomas O'Shea in 2000 to match a 1916 house.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Primary Suite filmstrip */}
-      <section style={{ background: '#070707', padding: '0 0 0' }}>
-        <FilmStrip photos={G.primary} onOpen={openLB} />
-      </section>
-
-      {/* Primary detail -- bath cinematic reveal */}
-      <section style={{ display: 'flex', flexDirection: 'row-reverse', minHeight: 'clamp(500px,64vh,780px)', background: '#050505' }}>
-        {/* photo right */}
-        <div style={{ flex: '0 0 55%', backgroundImage: `url(${I.bath})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
-        {/* text left */}
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 'clamp(4rem,7vw,7rem) clamp(3rem,5.5vw,5.5rem)' }}>
-          <FadeIn>
-            <span style={EYE()}>Primary Bath</span>
-            <Rule />
-            <h3 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.2rem,4vw,5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.6rem', letterSpacing: '-0.012em' }}>
-              Three whirlpool baths<br /><em style={{ fontWeight: 300 }}>on this floor alone.</em>
-            </h3>
-            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.65, lineHeight: 2.15, margin: 0 }}>
-              Freestanding tub. Three windows. Drawn by O'Shea to the same standard as the 1916 house it joined. The result does not feel added. It feels inevitable.
-            </p>
-            <div style={{ marginTop: '2.4rem' }}>
-              <div onClick={() => openLB(G.primary, 3)}
-                style={{ display: 'inline-block', fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.32em', textTransform: 'uppercase', color: GOLD, cursor: 'pointer', borderBottom: `1px solid ${GOLD}`, paddingBottom: '0.3rem' }}>
-                View All Suite Photos
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Dogwood window moment */}
-      <section style={{ position: 'relative', overflow: 'hidden', minHeight: 'clamp(400px,50vh,620px)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ position: 'absolute', inset: '-6% 0', backgroundImage: `url(${I.window})`, backgroundSize: 'cover', backgroundPosition: 'center', zIndex: 0 }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.55)', zIndex: 1 }} />
-        <FadeIn>
-          <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: '4rem 2rem' }}>
-            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.8rem,3.5vw,4rem)', color: '#fff', lineHeight: 1.4, margin: 0, letterSpacing: '-0.01em' }}>
-              The dogwood blooms every April.<br /><span style={{ opacity: 0.7, fontSize: '0.72em' }}>The window has not moved.</span>
-            </p>
-          </div>
-        </FadeIn>
-      </section>
+      {/* 08 PRIMARY SUITE */}
+      <CinematicReveal flip
+        eyebrow="The Primary Suite"
+        headline="The master suite<br/><em style='font-weight:300'>was a commission, not a renovation.</em>"
+        body="Every panel, every cabinet, the fireplace surround, the tub surround -- drawn from scratch by Thomas O'Shea in 2000 to match a 1916 house. Three whirlpool baths on the floor. The dogwood outside the window blooms every April."
+        img={I.bath}
+        photos={G.primary} onOpen={openLB} dark
+      />
 
       {/* 08b BEDROOMS */}
       <CinematicReveal
-        eyebrow="The Other Bedrooms"
-        headline="Three more rooms.<br/><em style='font-weight:300'>Each with its own fireplace.</em>"
-        body="The Rose Suite, the Yellow Suite, the Nursery -- each with original proportions, original fireplaces, original hardware. Nothing was combined. Nothing was converted."
-        img={I.masterBed3}
+        eyebrow="The Bedrooms"
+        headline="Four bedrooms.<br/><em style='font-weight:300'>Each with its own fireplace.</em>"
+        body="The primary suite occupies the full south wing of the second floor. Three additional bedrooms -- the Rose Suite, the Yellow Suite, the Nursery -- each with original proportions, original fireplaces, original hardware. Nothing was combined. Nothing was converted."
+        img={I.masterBed}
         photos={G.bedrooms} onOpen={openLB}
       />
 
