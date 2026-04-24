@@ -753,60 +753,63 @@ function Hero({ onInquire }) {
 
 
 
-      {/* stat bar -- Sotheby's editorial with wax seal crest */}
-      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
-        background: 'linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.88) 55%, transparent 100%)',
-        padding: '0 clamp(3rem,8vw,9rem) clamp(2rem,3vw,2.8rem)' }}>
+      {/* TITLE BLOCK — its own absolute, bottom-aligned above stat bar */}
+      <div style={{
+        position: 'absolute', bottom: 'clamp(9rem,15vw,13rem)', left: 0, right: 0, zIndex: 10,
+        paddingLeft: 'clamp(2.5rem,6vw,7rem)'
+      }}>
+        <p style={{
+          fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.38em',
+          textTransform: 'uppercase', color: GOLD, margin: '0 0 0.5rem', opacity: 0.8
+        }}>200 Hollycrest Drive &nbsp;&nbsp;|&nbsp;&nbsp; Pinehurst, NC &nbsp;&nbsp;|&nbsp;&nbsp; Est. 1916</p>
+        <h1 style={{
+          fontFamily: SCRIPT,
+          fontSize: 'clamp(5rem, 10vw, 10rem)',
+          color: '#fff', lineHeight: 0.88, margin: 0,
+          textShadow: '0 3px 48px rgba(0,0,0,0.7), 0 1px 8px rgba(0,0,0,0.6)'
+        }}>Garran Hill</h1>
+        <p style={{
+          fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300,
+          fontSize: 'clamp(0.8rem, 1vw, 0.95rem)',
+          color: 'rgba(255,255,255,0.5)',
+          margin: '0.7rem 0 0', letterSpacing: '0.06em'
+        }}>Built in 1915. Neo-Georgian. Moore County, North Carolina.</p>
+      </div>
 
-        {/* Eyebrow + Garran Hill script sitting ON the top gold rule */}
-        <div style={{ paddingTop: 'clamp(8rem,14vw,12rem)' }}>
-          <p style={{
-            fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.38em',
-            textTransform: 'uppercase', color: GOLD, margin: '0 0 0.5rem', opacity: 0.8
-          }}>
-            200 Hollycrest Drive &nbsp;&nbsp;|&nbsp;&nbsp; Pinehurst, NC &nbsp;&nbsp;|&nbsp;&nbsp; Est. 1916
-          </p>
-          <h1 style={{
-            fontFamily: SCRIPT,
-            fontSize: 'clamp(5rem, 10vw, 10rem)',
-            color: '#fff', lineHeight: 0.88, margin: '0 0 0',
-            textShadow: '0 3px 48px rgba(0,0,0,0.7), 0 1px 8px rgba(0,0,0,0.6)'
-          }}>Garran Hill</h1>
-          <p style={{
-            fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300,
-            fontSize: 'clamp(0.8rem, 1vw, 0.95rem)',
-            color: 'rgba(255,255,255,0.55)',
-            margin: '0.6rem 0 0', letterSpacing: '0.06em'
-          }}>Built in 1915. Neo-Georgian. Moore County, North Carolina.</p>
-        </div>
+      {/* STAT BAR — lean, pinned to bottom, numbers + seal only */}
+      <div style={{
+        position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
+        background: 'linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.92) 60%, transparent 100%)',
+        padding: 'clamp(1.5rem,2.5vw,2rem) clamp(3rem,8vw,9rem) clamp(1.2rem,2vw,1.8rem)'
+      }}>
+        {/* TOP GOLD RULE */}
+        <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)', marginBottom: 'clamp(1rem,1.8vw,1.5rem)' }} />
 
-        {/* Top gold rule — Garran Hill baseline rests here */}
-        <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)', margin: 'clamp(1.2rem,2vw,1.8rem) 0 clamp(1.5rem,2.5vw,2rem)' }} />
-
+        {/* STATS ROW */}
         <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-end', gap: '1rem' }}>
           {[['1916','Est.'],['4','Bedrooms'],['4 + 2','Baths + Powder'],['6,072 sq ft','Living Area'],['4.15 Acres','Land'],['$4,250,000','Offered At']].map(([v,l]) => (
             <div key={l} style={{ textAlign: 'center', flex: 1 }}>
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
-                fontSize: 'clamp(1.4rem,2.4vw,2.6rem)', color: '#ffffff',
-                margin: '0 0 0.5rem', letterSpacing: '-0.01em', lineHeight: 1 }}>{v}</p>
+                fontSize: 'clamp(1.3rem,2.2vw,2.4rem)', color: '#fff',
+                margin: '0 0 0.4rem', letterSpacing: '-0.01em', lineHeight: 1 }}>{v}</p>
               <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.28em',
                 textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
             </div>
           ))}
         </div>
-        {/* BOTTOM GOLD LINE + WAX SEAL straddling it */}
-        <div style={{ position: 'relative', marginTop: 'clamp(2rem,3vw,2.5rem)', paddingBottom: 'clamp(80px,10vw,130px)' }}>
+
+        {/* BOTTOM GOLD RULE + WAX SEAL */}
+        <div style={{ position: 'relative', marginTop: 'clamp(1rem,1.8vw,1.5rem)', paddingBottom: 'clamp(3rem,5vw,4rem)' }}>
           <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.2) 15%, rgba(201,169,110,0.2) 85%, transparent)' }} />
-          {/* WAX SEAL centered on the gold line */}
           <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)' }}>
             <img
               src="https://media.base44.com/images/public/69e248a2469cc39540781cce/5b3231cf8_generated_image.png"
               alt="Garran Hill"
               style={{
-                width: 'clamp(80px, 8vw, 110px)',
+                width: 'clamp(70px, 7vw, 95px)',
                 height: 'auto',
                 borderRadius: '50%',
-                filter: 'drop-shadow(0 12px 40px rgba(0,0,0,1)) drop-shadow(0 4px 16px rgba(0,0,0,0.95)) drop-shadow(0 0 60px rgba(15,34,20,0.6))',
+                filter: 'drop-shadow(0 8px 28px rgba(0,0,0,1)) drop-shadow(0 2px 8px rgba(0,0,0,0.9))',
               }}
             />
           </div>
