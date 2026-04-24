@@ -780,7 +780,7 @@ function Hero({ onInquire }) {
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
         background: 'linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.92) 60%, transparent 100%)',
-        padding: 'clamp(1.5rem,2.5vw,2rem) clamp(3rem,8vw,9rem) clamp(1.2rem,2vw,1.8rem)'
+        padding: 'clamp(1.5rem,2.5vw,2rem) clamp(2rem,5vw,6rem) clamp(1.2rem,2vw,1.8rem)'
       }}>
         {/* TOP GOLD RULE */}
         <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)', marginBottom: 'clamp(1rem,1.8vw,1.5rem)' }} />
@@ -805,7 +805,7 @@ function Hero({ onInquire }) {
       </div>
 
       {/* WAX SEAL — pinned to absolute bottom center of hero, half off the edge */}
-      <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translate(-50%, 50%)', zIndex: 20 }}>
+      <div style={{ position: 'absolute', bottom: 'clamp(1.8rem,3vw,2.5rem)', left: '50%', transform: 'translate(-50%, 50%)', zIndex: 20 }}>
         <img
           src="https://media.base44.com/images/public/69e248a2469cc39540781cce/5b3231cf8_generated_image.png"
           alt="Garran Hill"
