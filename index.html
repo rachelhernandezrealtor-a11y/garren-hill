@@ -729,26 +729,38 @@ function Hero({ onInquire }) {
         </div>
       </nav>
 
-      {/* eyebrow */}
-      <div style={{ position: 'absolute', top: 'clamp(5rem,9vw,7.5rem)', left: 0, right: 0, zIndex: 10, textAlign: 'center' }}>
-        <span style={{ fontFamily: 'sans-serif', fontSize: '10px', letterSpacing: '0.38em', textTransform: 'uppercase', color: GOLD, opacity: 1 }}>
+      {/* title block -- bottom left, house breathes above it */}
+      <div style={{
+        position: 'absolute', bottom: '9rem', left: 0, right: 0, zIndex: 10,
+        display: 'flex', flexDirection: 'column', alignItems: 'center'
+      }}>
+        {/* eyebrow */}
+        <p style={{
+          fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.38em',
+          textTransform: 'uppercase', color: GOLD, margin: '0 0 1.2rem',
+          opacity: 0.9
+        }}>
           200 Hollycrest Drive &nbsp;&nbsp;|&nbsp;&nbsp; Pinehurst, NC &nbsp;&nbsp;|&nbsp;&nbsp; Est. 1916
-        </span>
-      </div>
-
-      {/* script wordmark */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 3, display: 'flex', alignItems: 'center', paddingLeft: 'clamp(3rem,7vw,8rem)', paddingBottom: '8rem' }}>
-        <div>
-          <h1 style={{ fontFamily: SCRIPT, fontSize: 'clamp(5rem,13vw,13rem)', color: '#fff', lineHeight: 0.9, margin: 0, textShadow: '0 2px 40px rgba(0,0,0,0.4)' }}>
-            Garran<br />Hill
-          </h1>
-          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.6vw,1.35rem)', color: 'rgba(255,255,255,0.72)', margin: '1.8rem 0 0.5rem', letterSpacing: '0.04em' }}>
-            Built in 1915. Completed 1916. Built once. Built right.
-          </p>
-          <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.82rem,1.1vw,0.98rem)', color: 'rgba(255,255,255,0.42)', margin: 0, letterSpacing: '0.06em' }}>
-            Neo-Georgian. Walter Hines Page. 110 years of remarkable stewardship.
-          </p>
-        </div>
+        </p>
+        {/* script title -- centered, smaller, not overwhelming the house */}
+        <h1 style={{
+          fontFamily: SCRIPT,
+          fontSize: 'clamp(3.5rem, 7vw, 7.5rem)',
+          color: '#fff', lineHeight: 1.0, margin: 0,
+          textShadow: '0 2px 32px rgba(0,0,0,0.55)',
+          textAlign: 'center'
+        }}>
+          Garran Hill
+        </h1>
+        {/* one clean subline */}
+        <p style={{
+          fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300,
+          fontSize: 'clamp(0.85rem, 1.2vw, 1.1rem)',
+          color: 'rgba(255,255,255,0.55)',
+          margin: '1rem 0 0', letterSpacing: '0.06em', textAlign: 'center'
+        }}>
+          Neo-Georgian &nbsp;&nbsp;&middot;&nbsp;&nbsp; 1916 &nbsp;&nbsp;&middot;&nbsp;&nbsp; Moore County, North Carolina
+        </p>
       </div>
 
       {/* stat bar -- Sotheby's editorial */}
