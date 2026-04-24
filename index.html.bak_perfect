@@ -82,7 +82,7 @@
   <script type="text/babel">
 const { useState, useEffect, useRef, useCallback } = React;
 
-// build: 20260424_PERFECT_v1
+// build: 20260424_OVERHAUL_v2
 
 /* ============================================================
    GARRAN HILL V7 -- CINEMATIC OVERHAUL 2026-04-24
@@ -707,33 +707,12 @@ function InquiryModal({ onClose }) {
    HERO
 ============================================================ */
 function Hero({ onInquire }) {
-  const videoRef = useRef();
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (typeof Hls !== 'undefined' && Hls.isSupported()) {
-      const hls = new Hls({ startLevel: 3, autoStartLoad: true });
-      hls.loadSource(GH_VIDEO);
-      hls.attachMedia(v);
-      hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        v.play().catch(() => {});
-      });
-    } else if (v.canPlayType('application/vnd.apple.mpegurl')) {
-      v.src = GH_VIDEO;
-      v.addEventListener('loadedmetadata', () => v.play().catch(() => {}));
-    }
-  }, []);
+
 
   return (
     <section style={{ position: 'relative', height: '100vh', minHeight: 680, overflow: 'hidden', background: '#0a0a0a' }}>
-      {/* poster -- fallback while video loads */}
+      {/* poster -- static hero photo */}
       <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${GH_POSTER})`, backgroundSize: 'cover', backgroundPosition: 'center 45%', zIndex: 0 }} />
-      {/* HLS video -- driveway approach, slow motion */}
-      <video ref={videoRef} autoPlay muted loop playsInline
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 45%', zIndex: 1, opacity: 0, transition: 'opacity 3s ease' }}
-        onCanPlay={e => { e.target.style.opacity = 1; }}
-        onPlaying={e => { e.target.style.opacity = 1; }}
-      />
       {/* gradient */}
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,10,10,0.22) 0%, rgba(10,10,10,0.08) 40%, rgba(10,10,10,0.55) 78%, rgba(10,10,10,0.92) 100%)', zIndex: 2 }} />
 
@@ -789,12 +768,12 @@ function Hero({ onInquire }) {
         padding: 'clamp(3.5rem,6vw,5rem) clamp(3rem,8vw,9rem) clamp(2rem,3vw,2.8rem)' }}>
         <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)', marginBottom: 'clamp(2rem,3.5vw,2.8rem)' }} />
         <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-end', gap: '1rem' }}>
-          {[['1916','Est.'],['4','Bedrooms'],['4 + 2','Baths + Powder'],['6,072 sq ft','Living Area'],['4.15 Acres','Land'],['$4,250,000','Offered At']].map(([v,l]) => (
+          {[['1916','Est.'],['6,072 sq ft','Living Area'],['4.15 Acres','Land'],['$4,250,000','Offered At']].map(([v,l]) => (
             <div key={l} style={{ textAlign: 'center', flex: 1 }}>
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
-                fontSize: 'clamp(1.4rem,2.4vw,2.6rem)', color: '#ffffff',
+                fontSize: 'clamp(1.9rem,3.2vw,3.2rem)', color: '#ffffff',
                 margin: '0 0 0.5rem', letterSpacing: '-0.01em', lineHeight: 1 }}>{v}</p>
-              <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.28em',
+              <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em',
                 textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
             </div>
           ))}
@@ -1143,7 +1122,7 @@ function GarranHillV6() {
       {/* == QUOTE INTERSTITIAL == */}
       <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
         
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.img1916})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.07) saturate(0.4)' }} />
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.img}1916)`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.07) saturate(0.4)' }} />
         <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
           <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
           <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
