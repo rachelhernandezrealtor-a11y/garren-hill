@@ -794,25 +794,25 @@ function Hero({ onInquire }) {
           marginBottom: '0.75rem' }} />
 
         <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', position: 'relative' }}>
-          {[['1916','Est.'],['4','Bedrooms'],['6','Bathrooms'],['__SEAL__',''],['6,072 sq ft','Living Area'],['4.15 Acres','Land'],['$4,250,000','Offered At']].map(([v,l]) => (
-            v === '__SEAL__' ? (
-              <div key="seal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 0.5rem' }}>
-                <img src="https://media.base44.com/images/public/69e248a2469cc39540781cce/c006d17ab_generated_image.png"
-                  alt="Garran Hill Seal"
-                  style={{ width: 'clamp(44px,4.5vw,60px)', height: 'auto', display: 'block',
-                    filter: 'drop-shadow(0 0 10px rgba(201,169,110,0.5)) drop-shadow(0 2px 8px rgba(0,0,0,0.8))',
-                    opacity: 0.95 }} />
-              </div>
-            ) : (
-              <div key={l} style={{ textAlign: 'center', flex: 1 }}>
-                <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
-                  fontSize: mob ? 'clamp(0.65rem,3.2vw,1rem)' : 'clamp(1rem,1.8vw,1.9rem)', color: '#fff',
-                  margin: '0 0 0.2rem', lineHeight: 1 }}>{v}</p>
-                <p style={{ fontFamily: 'sans-serif', fontSize: mob ? '5px' : '6.5px', letterSpacing: mob ? '0.12em' : '0.25em',
-                  textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
-              </div>
-            )
+          {[['1916','Est.'],['4','Bedrooms'],['6','Bathrooms'],['6,072 sq ft','Living Area'],['4.15 Acres','Land'],['$4,250,000','Offered At']].map(([v,l]) => (
+            <div key={l} style={{ textAlign: 'center', flex: 1 }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
+                fontSize: mob ? 'clamp(0.65rem,3.2vw,1rem)' : 'clamp(1rem,1.8vw,1.9rem)', color: '#fff',
+                margin: '0 0 0.2rem', lineHeight: 1 }}>{v}</p>
+              <p style={{ fontFamily: 'sans-serif', fontSize: mob ? '5px' : '6.5px', letterSpacing: mob ? '0.12em' : '0.25em',
+                textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
+            </div>
           ))}
+        </div>
+
+        {/* SEAL -- centered below stat line, floating on gradient, no background */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '0.5rem' }}>
+          <img
+            src="https://media.base44.com/images/public/69e248a2469cc39540781cce/c006d17ab_generated_image.png"
+            alt="Garran Hill Seal"
+            style={{ width: 'clamp(44px,4vw,56px)', height: 'auto', display: 'block',
+              filter: 'drop-shadow(0 0 8px rgba(201,169,110,0.4)) drop-shadow(0 2px 6px rgba(0,0,0,0.9))',
+              opacity: 0.95 }} />
         </div>
 
       </div>
