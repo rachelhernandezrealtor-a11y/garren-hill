@@ -1007,18 +1007,45 @@ function GarranHillV6() {
 
 
       {/* == 02b WHP CONTEXT INTERSTITIAL == */}
-      <div style={{ background: '#0a0a0a', padding: 'clamp(4rem,8vh,6rem) clamp(2rem,8vw,10rem)', textAlign: 'center' }}>
-        <div style={{ maxWidth: 720, margin: '0 auto', border: '1px solid rgba(201,169,110,0.25)', padding: 'clamp(2.5rem,5vw,4rem) clamp(2rem,5vw,4rem)', background: 'rgba(255,255,255,0.02)' }}>
-          <div style={{ width: 60, height: 1, background: 'rgba(201,169,110,0.6)', margin: '0 auto clamp(1.5rem,3vh,2rem)' }} />
-          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.15rem,2.2vw,1.5rem)', color: '#F5F0E8', lineHeight: 1.75, margin: 0, letterSpacing: '0.01em' }}>
-            Walter Hines Page was Ambassador to the Court of St. James under Woodrow Wilson.<br/>
-            In 1915, he commissioned a Neo-Georgian estate on a hundred-acre tract two miles from the village of Pinehurst.<br/>
-            The house was built in his name, on his land, to his instruction.<br/>
+      <section style={{ display: 'flex', minHeight: 'clamp(420px,58vh,640px)', overflow: 'hidden', margin: 0 }}>
+        {/* Portrait left */}
+        <div style={{
+          flex: '0 0 38%',
+          backgroundImage: 'url(https://media.base44.com/images/public/69e248a2469cc39540781cce/2e864596c_WalterHinesPage.jpeg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center top',
+          filter: 'sepia(40%) brightness(0.75)',
+          minHeight: 420
+        }} />
+        {/* Text right */}
+        <div style={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          padding: 'clamp(3rem,6vw,5rem) clamp(2.5rem,5vw,5rem)',
+          background: '#0a0a0a'
+        }}>
+          <div style={{ width: 48, height: 1, background: 'rgba(201,169,110,0.7)', marginBottom: 'clamp(1.5rem,3vh,2rem)' }} />
+          <p style={{
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontStyle: 'italic',
+            fontWeight: 300,
+            fontSize: 'clamp(1.1rem,1.9vw,1.45rem)',
+            color: '#F5F0E8',
+            lineHeight: 1.85,
+            margin: '0 0 clamp(1.5rem,3vh,2rem)',
+            letterSpacing: '0.01em'
+          }}>
+            Walter Hines Page was Ambassador to the Court of St.&#8201;James under Woodrow Wilson.
+            <br/><br/>
+            In 1915, he commissioned a Neo-Georgian estate on a hundred-acre tract two miles from the village of Pinehurst. The house was built in his name, on his land, to his instruction.
+            <br/><br/>
             He returned to Moore County in 1918 and died before he could walk through the door.
           </p>
-          <div style={{ width: 60, height: 1, background: 'rgba(201,169,110,0.6)', margin: 'clamp(1.5rem,3vh,2rem) auto 0' }} />
+          <div style={{ width: 48, height: 1, background: 'rgba(201,169,110,0.7)' }} />
         </div>
-      </div>
+      </section>
 
       {/* == 03 ENTRANCE HALL == */}
       <CinematicReveal
