@@ -770,22 +770,23 @@ function Hero({ onInquire }) {
         </div>
       </div>
 
-      {/* stat bar -- Sotheby's print */}
+      {/* stat bar -- Sotheby's editorial */}
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
-        background: 'linear-gradient(to top, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.78) 60%, transparent 100%)',
-        padding: 'clamp(2rem,4vw,3rem) clamp(2rem,8vw,10rem) clamp(1.4rem,2.5vw,2rem)' }}>
-        <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.4) 15%, rgba(201,169,110,0.4) 85%, transparent)', marginBottom: 'clamp(1.4rem,2.5vw,2rem)' }} />
-        <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-start' }}>
-          {[['1916','Est.'],['6,072 Sq Ft','Living Area'],['4.15 Acres','Land'],['$4,250,000','Offered At']].map(([v,l],i) => (
+        background: 'linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.88) 55%, transparent 100%)',
+        padding: 'clamp(3.5rem,6vw,5rem) clamp(3rem,8vw,9rem) clamp(2rem,3vw,2.8rem)' }}>
+        <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)', marginBottom: 'clamp(2rem,3.5vw,2.8rem)' }} />
+        <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-end', gap: '1rem' }}>
+          {[['1916','Est.'],['6,072 sq ft','Living Area'],['4.15 Acres','Land'],['$4,250,000','Offered At']].map(([v,l]) => (
             <div key={l} style={{ textAlign: 'center', flex: 1 }}>
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
-                fontSize: 'clamp(1.6rem,2.8vw,2.6rem)', color: '#ffffff',
-                margin: '0 0 0.35rem', letterSpacing: '0.01em', lineHeight: 1 }}>{v}</p>
-              <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.32em',
-                textTransform: 'uppercase', color: 'rgba(201,169,110,0.5)', margin: 0 }}>{l}</p>
+                fontSize: 'clamp(1.9rem,3.2vw,3.2rem)', color: '#ffffff',
+                margin: '0 0 0.5rem', letterSpacing: '-0.01em', lineHeight: 1 }}>{v}</p>
+              <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em',
+                textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
             </div>
           ))}
         </div>
+        <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.2) 15%, rgba(201,169,110,0.2) 85%, transparent)', marginTop: 'clamp(2rem,3vw,2.5rem)' }} />
       </div>
     </section>
   );
@@ -989,123 +990,91 @@ function GarranHillV6() {
       <Hero onInquire={() => setShowInq(true)} />
 
       {/* == 02 ARRIVAL -- THRESHOLD == */}
-      {/* Full-screen brick threshold -- 100vh, quote centered, fades to black */}
+      {/* -- Full-screen threshold: brick photo, quote, fades to black -- */}
       <div style={{
-        position: 'relative',
-        width: '100%',
-        height: '100vh',
-        minHeight: 600,
-        overflow: 'hidden',
-        margin: 0,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
+        position: 'relative', width: '100%', height: '100vh', minHeight: 640,
+        overflow: 'hidden', margin: 0,
+        display: 'flex', alignItems: 'center', justifyContent: 'center'
       }}>
-        {/* Photo */}
         <div style={{
           position: 'absolute', inset: 0,
-          backgroundImage: 'url(https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/https://media.base44.com/images/public/69e248a2469cc39540781cce/7abb71910_200Holycrest-1179.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 75%'
+          backgroundImage: 'url(https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1920,c_limit/https://media.base44.com/images/public/69e248a2469cc39540781cce/7abb71910_200Holycrest-1179.jpg)',
+          backgroundSize: 'cover', backgroundPosition: 'center 72%'
         }} />
-        {/* Dark overlay */}
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,10,10,0.38)' }} />
-        {/* Fade to black at bottom */}
+        {/* gentle dark wash */}
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,10,10,0.35)' }} />
+        {/* fade to black at bottom - must be seamless into WHP */}
         <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0,
-          height: '35%',
+          position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%',
           background: 'linear-gradient(to top, #0a0a0a 0%, transparent 100%)',
           zIndex: 2
         }} />
-        {/* Quote */}
+        {/* The quote */}
         <p style={{
           position: 'relative', zIndex: 3,
           fontFamily: "'Cormorant Garamond', Georgia, serif",
-          fontStyle: 'italic',
-          fontWeight: 300,
-          fontSize: 'clamp(2.4rem, 5vw, 6rem)',
-          color: '#fff',
-          lineHeight: 1.25,
-          margin: 0,
+          fontStyle: 'italic', fontWeight: 300,
+          fontSize: 'clamp(2.6rem, 5.5vw, 6.5rem)',
+          color: '#fff', lineHeight: 1.2, margin: 0,
           textAlign: 'center',
-          textShadow: '0 2px 32px rgba(0,0,0,0.7)',
-          padding: '0 clamp(2rem, 8vw, 10rem)',
-          letterSpacing: '-0.01em'
+          textShadow: '0 2px 40px rgba(0,0,0,0.65)',
+          padding: '0 clamp(2rem, 10vw, 14rem)',
+          letterSpacing: '-0.015em',
+          marginBottom: '15vh'
         }}>
           The door has been open since 1916.
         </p>
       </div>
 
-      {/* == 02b WHP CONTEXT -- full screen, portrait left / text right == */}
+      {/* == 02b WHP -- Full screen, portrait left, text right, dissolves from black -- */}
       <div style={{
-        position: 'relative',
-        width: '100%',
-        height: '100vh',
-        minHeight: 640,
-        display: 'flex',
-        overflow: 'hidden',
-        margin: 0,
-        background: '#0a0a0a'
+        position: 'relative', width: '100%', height: '100vh', minHeight: 680,
+        display: 'flex', overflow: 'hidden', margin: 0, background: '#0a0a0a'
       }}>
-        {/* Fade in from black at top */}
+        {/* fade IN from black at top (continues from threshold bottom fade) */}
         <div style={{
-          position: 'absolute', top: 0, left: 0, right: 0,
-          height: '25%',
+          position: 'absolute', top: 0, left: 0, right: 0, height: '30%',
           background: 'linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)',
-          zIndex: 3, pointerEvents: 'none'
+          zIndex: 4, pointerEvents: 'none'
         }} />
-        {/* Fade to black at bottom */}
+        {/* fade OUT to black at bottom */}
         <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0,
-          height: '25%',
+          position: 'absolute', bottom: 0, left: 0, right: 0, height: '28%',
           background: 'linear-gradient(to top, #0a0a0a 0%, transparent 100%)',
-          zIndex: 3, pointerEvents: 'none'
+          zIndex: 4, pointerEvents: 'none'
         }} />
 
-        {/* LEFT -- WHP portrait, full height */}
-        <div style={{
-          flex: '0 0 45%',
-          position: 'relative',
-          overflow: 'hidden'
-        }}>
+        {/* LEFT - WHP portrait, full height, sepia */}
+        <div style={{ flex: '0 0 48%', position: 'relative', overflow: 'hidden' }}>
           <div style={{
             position: 'absolute', inset: 0,
             backgroundImage: 'url(https://media.base44.com/images/public/69e248a2469cc39540781cce/2e864596c_WalterHinesPage.jpeg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center top',
-            filter: 'sepia(30%) brightness(0.65)'
+            backgroundSize: 'cover', backgroundPosition: 'center 8%',
+            filter: 'sepia(25%) brightness(0.6) contrast(1.05)'
           }} />
-          {/* Right edge fade into dark text panel */}
+          {/* right edge melts into text panel */}
           <div style={{
-            position: 'absolute', top: 0, right: 0, bottom: 0,
-            width: '30%',
+            position: 'absolute', top: 0, right: 0, bottom: 0, width: '35%',
             background: 'linear-gradient(to right, transparent 0%, #0a0a0a 100%)',
             zIndex: 2
           }} />
         </div>
 
-        {/* RIGHT -- text, vertically centered, generous padding */}
+        {/* RIGHT - editorial text, vertically centered */}
         <div style={{
           flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          padding: 'clamp(4rem, 8vw, 8rem) clamp(3rem, 6vw, 7rem) clamp(4rem, 8vw, 8rem) clamp(2rem, 4vw, 5rem)',
-          background: '#0a0a0a',
-          position: 'relative',
-          zIndex: 2
+          display: 'flex', flexDirection: 'column', justifyContent: 'center',
+          padding: 'clamp(4rem,8vw,9rem) clamp(3rem,5vw,6rem) clamp(4rem,8vw,9rem) clamp(1.5rem,3vw,3rem)',
+          background: '#0a0a0a', position: 'relative', zIndex: 2
         }}>
-          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.8)', marginBottom: 'clamp(2rem,4vh,3.5rem)' }} />
+          <div style={{ width: 44, height: 1, background: 'rgba(201,169,110,0.85)', marginBottom: 'clamp(2.5rem,5vh,4rem)' }} />
           <p style={{
             fontFamily: "'Cormorant Garamond', Georgia, serif",
-            fontStyle: 'italic',
-            fontWeight: 300,
-            fontSize: 'clamp(1.15rem, 1.9vw, 1.55rem)',
-            color: '#F5F0E8',
-            lineHeight: 2,
-            margin: '0 0 clamp(2rem,4vh,3.5rem)',
-            letterSpacing: '0.01em',
-            maxWidth: 520
+            fontStyle: 'italic', fontWeight: 300,
+            fontSize: 'clamp(1.2rem, 2vw, 1.65rem)',
+            color: '#F5F0E8', lineHeight: 1.95,
+            margin: '0 0 clamp(2.5rem,5vh,4rem)',
+            letterSpacing: '0.01em', maxWidth: 480
           }}>
             Walter Hines Page was Ambassador to the Court of St.&thinsp;James under Woodrow Wilson.
             <br/><br/>
@@ -1113,7 +1082,14 @@ function GarranHillV6() {
             <br/><br/>
             He returned to Moore County in 1918 and died before he could walk through the door.
           </p>
-          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.8)' }} />
+          <div style={{ width: 44, height: 1, background: 'rgba(201,169,110,0.85)' }} />
+          <p style={{
+            fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em',
+            textTransform: 'uppercase', color: 'rgba(201,169,110,0.5)',
+            margin: 'clamp(1.5rem,3vh,2.5rem) 0 0'
+          }}>
+            Walter Hines Page &nbsp;&middot;&nbsp; 1855-1918
+          </p>
         </div>
       </div>
 
