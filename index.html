@@ -783,37 +783,53 @@ function Hero({ onInquire }) {
         }}>Built in 1915.&nbsp;&nbsp;Neo-Georgian.&nbsp;&nbsp;Moore County, NC.</p>
       </div>
 
-      {/* STAT BAR -- tight, everything inside viewport */}
+      {/* STAT BAR -- gold line / stats+seal / gold line */}
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
         background: 'linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.92) 65%, transparent 100%)',
-        padding: '0.8rem clamp(1.5rem,4vw,5rem) 0.6rem'
+        padding: '0 clamp(1.5rem,4vw,5rem)'
       }}>
+        {/* TOP gold rule */}
         <div style={{ width: '100%', height: '1px',
-          background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)',
-          marginBottom: '0.75rem' }} />
+          background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.6) 15%, rgba(201,169,110,0.6) 85%, transparent)' }} />
 
-        <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', position: 'relative' }}>
-          {[['1916','Est.'],['4','Bedrooms'],['6','Bathrooms'],['6,072 sq ft','Living Area'],['4.15 Acres','Land'],['$4,250,000','Offered At']].map(([v,l]) => (
+        {/* Stats row with seal centered */}
+        <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', padding: '0.7rem 0', position: 'relative' }}>
+          {[['1916','Est.'],['4','Bedrooms'],['6','Bathrooms']].map(([v,l]) => (
             <div key={l} style={{ textAlign: 'center', flex: 1 }}>
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
                 fontSize: mob ? 'clamp(0.65rem,3.2vw,1rem)' : 'clamp(1rem,1.8vw,1.9rem)', color: '#fff',
                 margin: '0 0 0.2rem', lineHeight: 1 }}>{v}</p>
-              <p style={{ fontFamily: 'sans-serif', fontSize: mob ? '5px' : '6.5px', letterSpacing: mob ? '0.12em' : '0.25em',
+              <p style={{ fontFamily: 'sans-serif', fontSize: mob ? '5px' : '6.5px', letterSpacing: '0.22em',
+                textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
+            </div>
+          ))}
+
+          {/* SEAL -- centered between the two gold rules */}
+          <div style={{ flex: '0 0 auto', padding: '0 1rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img
+              src="https://media.base44.com/images/public/69e248a2469cc39540781cce/c006d17ab_generated_image.png"
+              alt="Garran Hill Seal"
+              style={{ width: 'clamp(48px,4.5vw,62px)', height: 'auto', display: 'block',
+                filter: 'drop-shadow(0 0 10px rgba(201,169,110,0.45)) drop-shadow(0 2px 8px rgba(0,0,0,0.95))',
+                opacity: 0.95 }} />
+          </div>
+
+          {[['6,072 sq ft','Living Area'],['4.15 Acres','Land'],['$4,250,000','Offered At']].map(([v,l]) => (
+            <div key={l} style={{ textAlign: 'center', flex: 1 }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
+                fontSize: mob ? 'clamp(0.65rem,3.2vw,1rem)' : 'clamp(1rem,1.8vw,1.9rem)', color: '#fff',
+                margin: '0 0 0.2rem', lineHeight: 1 }}>{v}</p>
+              <p style={{ fontFamily: 'sans-serif', fontSize: mob ? '5px' : '6.5px', letterSpacing: '0.22em',
                 textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
             </div>
           ))}
         </div>
 
-        {/* SEAL -- centered below stat line, floating on gradient, no background */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '0.5rem' }}>
-          <img
-            src="https://media.base44.com/images/public/69e248a2469cc39540781cce/c006d17ab_generated_image.png"
-            alt="Garran Hill Seal"
-            style={{ width: 'clamp(44px,4vw,56px)', height: 'auto', display: 'block',
-              filter: 'drop-shadow(0 0 8px rgba(201,169,110,0.4)) drop-shadow(0 2px 6px rgba(0,0,0,0.9))',
-              opacity: 0.95 }} />
-        </div>
+        {/* BOTTOM gold rule */}
+        <div style={{ width: '100%', height: '1px',
+          background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.6) 15%, rgba(201,169,110,0.6) 85%, transparent)',
+          marginBottom: '0.5rem' }} />
 
       </div>
     </section>
