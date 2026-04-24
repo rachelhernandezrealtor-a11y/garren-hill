@@ -350,7 +350,7 @@ function FilmStrip({ photos, onOpen }) {
         style={{ display: 'flex', overflowX: 'auto', scrollSnapType: 'x mandatory', gap: 4, scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>
         {photos.map((p, i) => (
           <div key={i} onClick={() => onOpen(photos, i)}
-            style={{ flexShrink: 0, width: 'clamp(280px,38vw,520px)', height: 'clamp(200px,26vw,360px)', scrollSnapAlign: 'start', position: 'relative', backgroundImage: 'url(' + p.src + ')', backgroundSize: 'cover', backgroundPosition: 'center', cursor: 'zoom-in', overflow: 'hidden' }}>
+            style={{ flexShrink: 0, width: 'clamp(280px,38vw,520px)', height: 'clamp(200px,26vw,360px)', scrollSnapAlign: 'start', position: 'relative', backgroundImage: `url(${p.src})`, backgroundSize: 'cover', backgroundPosition: 'center', cursor: 'zoom-in', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0)', transition: 'background 0.3s' }}
               onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.22)'}
               onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0)'} />
