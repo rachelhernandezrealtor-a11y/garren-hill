@@ -1168,19 +1168,32 @@ function GarranHillV6() {
         </div>
       </section>
 
-      {/* == 03b PINEHURST INTERSTITIAL == */}
+      {/* == 03b ARCHITECTURE MANIFESTO -- exterior front, words floating == */}
       <div id="estate" style={{
         position: 'relative', overflow: 'hidden',
-        minHeight: 'clamp(320px,42vh,500px)',
+        minHeight: '100vh',
         display: 'flex', alignItems: 'center', justifyContent: 'center'
       }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${ext('0de69e38e_200HollycrestDrive-9.jpg')})`, backgroundSize: 'cover', backgroundPosition: 'center 55%', zIndex: 0 }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.72)', zIndex: 1 }} />
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '35%', background: 'linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)', zIndex: 2 }} />
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '35%', background: 'linear-gradient(to top, #0a0a0a 0%, transparent 100%)', zIndex: 2 }} />
-        <div style={{ position: 'relative', zIndex: 3, padding: 'clamp(2rem,4vw,4rem) clamp(2rem,12vw,16rem)', textAlign: 'center' }}>
+        <div style={{ position: 'absolute', inset: 0,
+          backgroundImage: `url(${ext('0de69e38e_200HollycrestDrive-9.jpg')})`,
+          backgroundSize: 'cover', backgroundPosition: 'center 45%', zIndex: 0 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.52)', zIndex: 1 }} />
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '30%', background: 'linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)', zIndex: 2 }} />
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '28%', background: 'linear-gradient(to top, #0a0a0a 0%, transparent 100%)', zIndex: 2 }} />
+
+        <div style={{ position: 'relative', zIndex: 3, maxWidth: 900, padding: '0 clamp(2rem, 8vw, 8rem)', textAlign: 'center' }}>
           <Fade>
-            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.5vw,1.25rem)', color: CREAM, opacity: 0.8, lineHeight: 2.1, maxWidth: 680, margin: '0 auto' }}>
+            <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.42em', textTransform: 'uppercase', color: GOLD, margin: '0 0 2.5rem', opacity: 0.9 }}>
+              Neo-Georgian &nbsp;&nbsp;|&nbsp;&nbsp; Est. 1916 &nbsp;&nbsp;|&nbsp;&nbsp; Moore County, NC
+            </p>
+            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.2rem, 5vw, 6rem)', color: '#fff', lineHeight: 1.15, margin: '0 0 2.5rem', letterSpacing: '-0.015em' }}>
+              Some houses hold history.<br />This one shaped it.
+            </h2>
+            <div style={{ width: 48, height: 1, background: 'rgba(201,169,110,0.6)', margin: '0 auto 2.5rem' }} />
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem, 1.6vw, 1.35rem)', color: CREAM, opacity: 0.85, lineHeight: 2, maxWidth: 680, margin: '0 auto 1.8rem' }}>
+              Columned portico. Original leaded glass. Seven fireplaces. Four and a half acres of hardwoods, rose garden, and grounds that have never been neglected.
+            </p>
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem, 1.6vw, 1.35rem)', color: CREAM, opacity: 0.85, lineHeight: 2, maxWidth: 680, margin: '0 auto' }}>
               Pinehurst was built by James Walker Tufts in 1895. Garran Hill was built two miles away in 1916. The same hands were working this land.
             </p>
           </Fade>
@@ -1247,7 +1260,7 @@ function GarranHillV6() {
             <Eye>The Sunroom</Eye>
             <GoldLine />
             <h3 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,3.5vw,4.5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.2rem', letterSpacing: '-0.012em' }}>
-              Three walls of windows.<br /><em style={{ fontWeight: 300 }}>Toile on every surface.</em>
+              Three walls of windows.<br /><em style={{ fontWeight: 300 }}></em>
             </h3>
             <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.58, lineHeight: 2.1, margin: 0 }}>
               Toile on every wall. French doors on three sides. Built-in bookshelves. Original oak floors. The room is completely its own thing.
@@ -1418,7 +1431,7 @@ function GarranHillV6() {
             <Eye center>The Fireplaces</Eye>
             <GoldLine center />
             <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(4rem,8vw,10rem)', color: '#fff', lineHeight: 1.05, margin: '0 auto', letterSpacing: '-0.015em', maxWidth: 900, textAlign: 'center' }}>
-              Seven fireplaces.<br /><em style={{ fontWeight: 300 }}>Six of them light<br />with one switch.</em>
+              Seven fireplaces.<br /><em style={{ fontWeight: 300 }}>Six of seven. Each with its own fireplace. Each with its original surround.<br />with one switch.</em>
             </h2>
           </div>
         </Fade>
