@@ -753,7 +753,7 @@ function Hero({ onInquire }) {
 
       {/* title block -- bottom left, BIG script, house visible above */}
       <div style={{
-        position: 'absolute', bottom: '22rem', left: 0, right: 0, zIndex: 10,
+        position: 'absolute', bottom: 'calc(clamp(12rem,20vw,18rem) + 8rem)', left: 0, right: 0, zIndex: 10,
         display: 'flex', flexDirection: 'column', alignItems: 'flex-start',
         paddingLeft: 'clamp(2.5rem, 6vw, 7rem)'
       }}>
@@ -809,7 +809,7 @@ function Hero({ onInquire }) {
           {/* WAX SEAL centered on the gold line */}
           <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)' }}>
             <img
-              src="https://media.base44.com/images/public/69e248a2469cc39540781cce/c6aa84dfa_generated_image.png"
+              src="https://media.base44.com/images/public/69e248a2469cc39540781cce/06bf40708_generated_image.png"
               alt="Garran Hill"
               style={{
                 width: 'clamp(160px, 18vw, 240px)',
