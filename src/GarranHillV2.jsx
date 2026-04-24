@@ -439,12 +439,12 @@ function Hero({ onInquire }) {
 
       {/* nav */}
       <nav style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 'clamp(1.4rem,3vw,2.2rem) clamp(1.8rem,4vw,3.5rem)' }}>
-        <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: 'clamp(1rem,1.5vw,1.18rem)', color: 'rgba(255,255,255,0.88)', letterSpacing: '0.04em' }}>Garran Hill</span>
-        <div style={{ display: 'flex', gap: 'clamp(1.4rem,2.5vw,2.8rem)', alignItems: 'center' }}>
+        <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: 'clamp(1rem,1.5vw,1.18rem)', color: 'rgba(255,255,255,0.9)', letterSpacing: '0.04em' }}>Garran Hill</span>
+        <div style={{ display: 'flex', gap: 'clamp(2rem,3vw,3.5rem)', alignItems: 'center' }}>
           {['The Estate', 'The History', 'The Grounds'].map(l => (
-            <span key={l} style={{ fontFamily: 'sans-serif', fontSize: '7.5px', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.62)', cursor: 'default' }}>{l}</span>
+            <span key={l} style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', cursor: 'default' }}>{l}</span>
           ))}
-          <button onClick={onInquire} style={{ background: 'none', border: `1px solid rgba(255,255,255,0.45)`, color: 'rgba(255,255,255,0.82)', padding: '0.55rem 1.3rem', fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.3em', textTransform: 'uppercase', cursor: 'pointer', backdropFilter: 'blur(8px)', background: 'rgba(255,255,255,0.04)' }}>
+          <button onClick={onInquire} style={{ background: 'none', border: 'none', borderBottom: `1px solid ${GOLD}`, color: GOLD, padding: '0.2rem 0', fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase', cursor: 'pointer' }}>
             Private Inquiry
           </button>
         </div>
@@ -1142,7 +1142,7 @@ export default function GarranHillV6() {
             Garran Hill is ready.
           </p>
           <button onClick={() => setShowInq(true)}
-            style={{ background: 'none', border: `1px solid rgba(255,255,255,0.5)`, color: 'rgba(255,255,255,0.82)', padding: '0.85rem 2.5rem', fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.34em', textTransform: 'uppercase', cursor: 'pointer', backdropFilter: 'blur(8px)', background: 'rgba(255,255,255,0.04)' }}>
+            style={{ background: 'none', border: `1px solid ${GOLD}`, color: GOLD, padding: '0.85rem 2.8rem', fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.34em', textTransform: 'uppercase', cursor: 'pointer', background: 'none' }}>
             Private Inquiry
           </button>
         </div>
