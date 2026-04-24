@@ -75,14 +75,14 @@
   <!-- HLS.js for video playback -->
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js"></script>
   <!-- React + ReactDOM from CDN -->
-  <script crossorigin src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
-  <script crossorigin src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <!-- Babel for JSX transformation -->
-  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.23.10/babel.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
 const { useState, useEffect, useRef, useCallback } = React;
 
-// build: 20260424_v3_sealbust
+// build: 20260424_PERFECT_v1
 
 /* ============================================================
    GARRAN HILL V7 -- CINEMATIC OVERHAUL 2026-04-24
@@ -98,10 +98,10 @@ const DARK    = '#0a0a0a';
 const GOLD    = '#C9A96E';
 const CREAM   = '#F5F0E8';
 const SERIF   = "'Cormorant Garamond', Georgia, serif";
-const SCRIPT  = "'Cormorant Garamond', Georgia, serif";
+const SCRIPT  = "'Pinyon Script', cursive";
 
-const GH_VIDEO  = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/3ca89e91573ba05f59e829fdacad9c2e/manifest/video.m3u8';
-const GH_VIDEO_MP4 = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/3ca89e91573ba05f59e829fdacad9c2e/downloads/default.mp4';
+const GH_VIDEO  = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/ba88a34a312106b7bf9d00b52a452871/manifest/video.m3u8';
+const GH_VIDEO_MP4 = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/ba88a34a312106b7bf9d00b52a452871/downloads/default.mp4';
 const GH_POSTER = 'https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:outdoor:80,e_vibrance:40,e_auto_brightness,e_sharpen:50,e_saturation:30,e_brightness:8,f_auto,q_auto,w_1920,c_limit/https://media.base44.com/images/public/69e248a2469cc39540781cce/fa8cec793_200HollycrestDrive-191.jpg';
 
 const BP  = 'https://media.base44.com/images/public/69e2578ca7113dbe93cb208d/';
@@ -713,7 +713,7 @@ function Hero({ onInquire }) {
     const v = videoRef.current;
     if (!v) return;
     if (typeof Hls !== 'undefined' && Hls.isSupported()) {
-      const hls = new Hls({ startLevel: -1, autoStartLoad: true, maxBufferLength: 30, maxMaxBufferLength: 60 });
+      const hls = new Hls({ startLevel: 3, autoStartLoad: true });
       hls.loadSource(GH_VIDEO);
       hls.attachMedia(v);
       hls.on(Hls.Events.MANIFEST_PARSED, () => {
@@ -726,19 +726,21 @@ function Hero({ onInquire }) {
   }, []);
 
   return (
-    <section style={{ position: 'relative', height: '100vh', minHeight: 680, overflow: 'hidden', background: '#0a0a0a', backgroundImage: `url(${GH_POSTER})`, backgroundSize: 'cover', backgroundPosition: 'center 45%' }}>
-      {/* Hero photo -- portico, twilight. Video swaps in when ready. */}
-      <div id="gh-poster" style={{ position: 'absolute', inset: 0, backgroundImage: `url(${GH_POSTER})`, backgroundSize: 'cover', backgroundPosition: 'center 45%', zIndex: 1 }} />
-      <video ref={videoRef} autoPlay muted loop playsInline preload="none"
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 45%', zIndex: 2, opacity: 0, transition: 'opacity 2s ease' }}
+    <section style={{ position: 'relative', height: '100vh', minHeight: 680, overflow: 'hidden', background: '#0a0a0a' }}>
+      {/* poster -- fallback while video loads */}
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${GH_POSTER})`, backgroundSize: 'cover', backgroundPosition: 'center 45%', zIndex: 0 }} />
+      {/* HLS video -- driveway approach, slow motion */}
+      <video ref={videoRef} autoPlay muted loop playsInline
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 45%', zIndex: 1, opacity: 0, transition: 'opacity 3s ease' }}
         onCanPlay={e => { e.target.style.opacity = 1; }}
+        onPlaying={e => { e.target.style.opacity = 1; }}
       />
       {/* gradient */}
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,10,10,0.18) 0%, rgba(10,10,10,0.05) 30%, rgba(10,10,10,0.65) 65%, rgba(10,10,10,0.97) 100%)', zIndex: 2 }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,10,10,0.22) 0%, rgba(10,10,10,0.08) 40%, rgba(10,10,10,0.55) 78%, rgba(10,10,10,0.92) 100%)', zIndex: 2 }} />
 
       {/* nav */}
       <nav style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 'clamp(1.4rem,3vw,2.2rem) clamp(1.8rem,4vw,3.5rem)' }}>
-        <span />
+        <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: 'clamp(1rem,1.5vw,1.18rem)', color: 'rgba(255,255,255,0.9)', letterSpacing: '0.04em' }}>Garran Hill</span>
         <div style={{ display: 'flex', gap: 'clamp(2rem,3vw,3.5rem)', alignItems: 'center' }}>
           {['The Estate', 'The History', 'The Grounds'].map(l => (
             <span key={l} style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', cursor: 'default' }}>{l}</span>
@@ -751,64 +753,42 @@ function Hero({ onInquire }) {
 
 
 
-      {/* TITLE BLOCK -- left, house fills right */}
+      {/* TITLE BLOCK -- sits above stat bar, all within viewport */}
       <div style={{
-        position: 'absolute', top: 0, left: 0, bottom: 'clamp(7rem,12vw,10rem)',
-        width: '55%', zIndex: 10,
-        display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
-        paddingLeft: 'clamp(2.5rem,5vw,6rem)',
-        paddingBottom: '1.2rem'
+        position: 'absolute', bottom: 'clamp(6rem,11vw,9rem)', left: 0, right: 0, zIndex: 10,
+        paddingLeft: 'clamp(2.5rem,6vw,7rem)'
       }}>
-        {/* Eyebrow */}
         <p style={{
-          fontFamily: 'sans-serif', fontSize: 'clamp(9px,0.9vw,11px)', letterSpacing: '0.44em',
-          textTransform: 'uppercase', color: '#F0D078', margin: '0 0 0.8rem',
-          fontWeight: 700,
-          textShadow: '0 0 14px rgba(240,208,120,0.85), 0 0 36px rgba(240,208,120,0.4), 0 1px 4px rgba(0,0,0,0.9)',
-          opacity: 1,
-          whiteSpace: 'nowrap'
+          fontFamily: 'sans-serif', fontSize: 'clamp(9px,0.9vw,11px)', letterSpacing: '0.42em',
+          textTransform: 'uppercase', color: '#E8C878', margin: '0 0 0.6rem',
+          textShadow: '0 0 18px rgba(232,200,120,0.7), 0 0 40px rgba(232,200,120,0.35), 0 1px 3px rgba(0,0,0,0.8)',
+          opacity: 1, fontWeight: 600
         }}>200 Hollycrest Drive &nbsp;&nbsp;|&nbsp;&nbsp; Pinehurst, NC &nbsp;&nbsp;|&nbsp;&nbsp; Est. 1916</p>
 
-        {/* GARRAN HILL -- Cormorant Garamond, large, editorial */}
-        <div style={{ margin: '0.5rem 0 0.8rem' }}>
-          <p style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
-            fontStyle: 'italic', fontWeight: 300,
-            fontSize: 'clamp(5rem, 13vw, 13rem)',
-            color: '#fff',
-            lineHeight: 0.92, margin: 0,
-            letterSpacing: '-0.02em',
-            textShadow: '0 2px 4px rgba(0,0,0,0.95), 0 4px 32px rgba(0,0,0,0.75)'
-          }}>Garran Hill</p>
-        </div>
+        <h1 style={{
+          fontFamily: SCRIPT,
+          fontSize: 'clamp(5rem, 12vw, 13rem)',
+          color: '#fff', lineHeight: 0.95, margin: 0,
+          textShadow: '0 3px 48px rgba(0,0,0,0.7), 0 1px 8px rgba(0,0,0,0.6)'
+        }}>Garran Hill</h1>
 
-        {/* Subhead -- below the stack, readable */}
+        <div style={{ width: 'clamp(160px,35vw,400px)', height: '1px',
+          background: 'linear-gradient(to right, rgba(201,169,110,0.7), rgba(201,169,110,0.1))',
+          margin: '0.35rem 0 0.55rem' }} />
+
         <p style={{
-          fontFamily: SERIF, fontStyle: 'italic', fontWeight: 400,
-          fontSize: 'clamp(1.05rem, 1.25vw, 1.3rem)',
-          color: 'rgba(245,240,232,0.9)',
-          margin: '1.4rem 0 0', letterSpacing: '0.06em', lineHeight: 1.5,
-          textShadow: '0 1px 12px rgba(0,0,0,1), 0 2px 24px rgba(0,0,0,0.9)'
-        }}>Built in 1915.&nbsp; Neo-Georgian.&nbsp; Moore County, North Carolina.</p>
-
-        {/* SEAL -- below subhead, above stat bar */}
-        <div style={{ marginTop: '1.8rem', display: 'flex', justifyContent: 'flex-start' }}>
-          <img
-            src="https://media.base44.com/images/public/69e248a2469cc39540781cce/5f2575314_generated_image.png"
-            alt="Garran Hill Seal"
-            style={{ width: 'clamp(60px, 5vw, 80px)', height: 'auto',
-              opacity: 0.75,
-              filter: 'drop-shadow(0 2px 10px rgba(0,0,0,0.9)) drop-shadow(0 0 16px rgba(201,169,110,0.2))',
-              display: 'block' }}
-          />
-        </div>
+          fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300,
+          fontSize: 'clamp(0.88rem, 1.05vw, 1rem)',
+          color: 'rgba(255,255,255,0.62)',
+          margin: 0, letterSpacing: '0.04em'
+        }}>Built in 1915.&nbsp;&nbsp;Neo-Georgian.&nbsp;&nbsp;Moore County, North Carolina.</p>
       </div>
 
       {/* STAT BAR -- tight, everything inside viewport */}
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
         background: 'linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.92) 65%, transparent 100%)',
-        padding: '0.8rem clamp(2rem,5vw,6rem) 0.6rem'
+        padding: '0.8rem clamp(1.5rem,4vw,5rem) 0.6rem'
       }}>
         <div style={{ width: '100%', height: '1px',
           background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)',
@@ -826,7 +806,20 @@ function Hero({ onInquire }) {
           ))}
         </div>
 
-
+        {/* BOTTOM GOLD RULE -- seal straddles it */}
+        <div style={{ position: 'relative', marginTop: '0.75rem', paddingBottom: '3.5rem' }}>
+          <div style={{ width: '100%', height: '1px',
+            background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.25) 15%, rgba(201,169,110,0.25) 85%, transparent)' }} />
+          <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', zIndex: 20 }}>
+            <img
+              src="https://media.base44.com/images/public/69e248a2469cc39540781cce/c006d17ab_generated_image.png"
+              alt="Garran Hill Seal"
+              style={{ width: 'clamp(80px, 8vw, 108px)', height: 'auto', borderRadius: '50%',
+                filter: 'drop-shadow(0 0 22px rgba(201,169,110,0.45)) drop-shadow(0 8px 28px rgba(0,0,0,0.95)) drop-shadow(0 2px 6px rgba(0,0,0,1))',
+                imageRendering: 'auto' }}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -1127,32 +1120,19 @@ function GarranHillV6() {
         </div>
       </section>
 
-      {/* == 03b ARCHITECTURE MANIFESTO -- exterior front, words floating == */}
+      {/* == 03b PINEHURST INTERSTITIAL == */}
       <div id="estate" style={{
         position: 'relative', overflow: 'hidden',
-        minHeight: '100vh',
+        minHeight: 'clamp(320px,42vh,500px)',
         display: 'flex', alignItems: 'center', justifyContent: 'center'
       }}>
-        <div style={{ position: 'absolute', inset: 0,
-          backgroundImage: `url(${ext('0de69e38e_200HollycrestDrive-9.jpg')})`,
-          backgroundSize: 'cover', backgroundPosition: 'center 45%', zIndex: 0 }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.52)', zIndex: 1 }} />
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '30%', background: 'linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)', zIndex: 2 }} />
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '28%', background: 'linear-gradient(to top, #0a0a0a 0%, transparent 100%)', zIndex: 2 }} />
-
-        <div style={{ position: 'relative', zIndex: 3, maxWidth: 900, padding: '0 clamp(2rem, 8vw, 8rem)', textAlign: 'center' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${ext('0de69e38e_200HollycrestDrive-9.jpg')})`, backgroundSize: 'cover', backgroundPosition: 'center 55%', zIndex: 0 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.72)', zIndex: 1 }} />
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '35%', background: 'linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)', zIndex: 2 }} />
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '35%', background: 'linear-gradient(to top, #0a0a0a 0%, transparent 100%)', zIndex: 2 }} />
+        <div style={{ position: 'relative', zIndex: 3, padding: 'clamp(2rem,4vw,4rem) clamp(2rem,12vw,16rem)', textAlign: 'center' }}>
           <Fade>
-            <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.42em', textTransform: 'uppercase', color: GOLD, margin: '0 0 2.5rem', opacity: 0.9 }}>
-              Neo-Georgian &nbsp;&nbsp;|&nbsp;&nbsp; Est. 1916 &nbsp;&nbsp;|&nbsp;&nbsp; Moore County, NC
-            </p>
-            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.2rem, 5vw, 6rem)', color: '#fff', lineHeight: 1.15, margin: '0 0 2.5rem', letterSpacing: '-0.015em' }}>
-              Some houses hold history.<br />This one shaped it.
-            </h2>
-            <div style={{ width: 48, height: 1, background: 'rgba(201,169,110,0.6)', margin: '0 auto 2.5rem' }} />
-            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem, 1.6vw, 1.35rem)', color: CREAM, opacity: 0.85, lineHeight: 2, maxWidth: 680, margin: '0 auto 1.8rem' }}>
-              Columned portico. Original leaded glass. Seven fireplaces. Four and a half acres of hardwoods, rose garden, and grounds that have never been neglected.
-            </p>
-            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem, 1.6vw, 1.35rem)', color: CREAM, opacity: 0.85, lineHeight: 2, maxWidth: 680, margin: '0 auto' }}>
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.5vw,1.25rem)', color: CREAM, opacity: 0.8, lineHeight: 2.1, maxWidth: 680, margin: '0 auto' }}>
               Pinehurst was built by James Walker Tufts in 1895. Garran Hill was built two miles away in 1916. The same hands were working this land.
             </p>
           </Fade>
@@ -1219,7 +1199,7 @@ function GarranHillV6() {
             <Eye>The Sunroom</Eye>
             <GoldLine />
             <h3 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,3.5vw,4.5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.2rem', letterSpacing: '-0.012em' }}>
-              Three walls of windows.<br /><em style={{ fontWeight: 300 }}></em>
+              Three walls of windows.<br /><em style={{ fontWeight: 300 }}>Toile on every surface.</em>
             </h3>
             <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.58, lineHeight: 2.1, margin: 0 }}>
               Toile on every wall. French doors on three sides. Built-in bookshelves. Original oak floors. The room is completely its own thing.
@@ -1390,7 +1370,7 @@ function GarranHillV6() {
             <Eye center>The Fireplaces</Eye>
             <GoldLine center />
             <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(4rem,8vw,10rem)', color: '#fff', lineHeight: 1.05, margin: '0 auto', letterSpacing: '-0.015em', maxWidth: 900, textAlign: 'center' }}>
-              Seven fireplaces.<br /><em style={{ fontWeight: 300 }}>Six of seven. Each with its own fireplace. Each with its original surround.<br />with one switch.</em>
+              Seven fireplaces.<br /><em style={{ fontWeight: 300 }}>Six of them light<br />with one switch.</em>
             </h2>
           </div>
         </Fade>
