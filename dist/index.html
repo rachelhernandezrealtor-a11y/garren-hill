@@ -172,8 +172,8 @@ const I = {
   pool:         ext('57352d0a9_200HollycrestDrive-208.jpg'),
   aerial:       ext('12f2e7091_200HollycrestDrive-214.jpg'),
   dusk2:        ext('0de69e38e_200HollycrestDrive-9.jpg'),
-  twilight:     ext('0275eccb6_200HollycrestDrive-225.jpg'),
-  crest:        `https://res.cloudinary.com/dghn2xpif/image/fetch/e_background_removal/f_png/q_auto/w_300/https://media.base44.com/images/public/69e248a2469cc39540781cce/be819ab2a_generated_image.png`,
+  twilight:     'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f837f4d40_0275eccb6_200HollycrestDrive-225.jpg',
+  crest:        'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/1c9e99ff1_crest_transparent.png',
   bluefox:      own('75a1922cd_200HollycrestDrive-192.jpg'),
   archDrawing:  `${CDN}f_auto,q_auto,w_1200/${B}4e275b5d5_IMG_4319.jpg`,
 };
@@ -889,7 +889,7 @@ function Footer({ onInquire }) {
   return (
     <footer id="inquiry-anchor" style={{ background: '#0a0a0a', borderTop: '1px solid rgba(255,255,255,0.06)', padding: 'clamp(4rem,8vw,7rem) clamp(2rem,8vw,10rem)', textAlign: 'center' }}>
       <Fade>
-        <img src={I.crest} alt="Garran Hill" style={{ height: 70, opacity: 0.9, mixBlendMode: 'screen', display: 'block', margin: '0 auto 2rem' }} />
+        <img src={I.crest} alt="Garran Hill" style={{ height: 70, opacity: 0.85, display: 'block', margin: '0 auto 2rem' }} />
         <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.5vw,1.2rem)', color: CREAM, opacity: 0.55, marginBottom: '0.4rem' }}>200 Hollycrest Drive &nbsp;&bull;&nbsp; Pinehurst, NC 28374 &nbsp;&bull;&nbsp; Est. 1916</p>
         <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)', marginBottom: '2.5rem' }}>Represented exclusively by</p>
         <p style={{ fontFamily: SERIF, fontWeight: 500, fontSize: 'clamp(1.1rem,1.8vw,1.4rem)', color: '#fff', margin: '0 0 0.3rem' }}>Rachel Hernandez</p>
@@ -1657,7 +1657,7 @@ function GarranHillV6() {
       {/* == 19 FINAL -- TWILIGHT == */}
       <FullBleed src={I.twilight} darken={0.32} minH="85vh" bgPos="center 60%" align="center">
         <div style={{ textAlign: 'center' }}>
-          <img src={I.crest} alt="" style={{ height: 64, opacity: 0.6, mixBlendMode: 'screen', filter: 'brightness(1.4)', display: 'block', margin: '0 auto 2.5rem' }} />
+          <img src={I.crest} alt="" style={{ height: 64, opacity: 0.8, display: 'block', margin: '0 auto 2.5rem' }} />
           <p style={{ fontFamily: SCRIPT, fontSize: 'clamp(3rem,7vw,7rem)', color: '#fff', margin: '0 0 1.5rem', lineHeight: 1, textShadow: '0 2px 30px rgba(0,0,0,0.4)' }}>Garran Hill</p>
           <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.4rem,2.5vw,2.5rem)', color: '#fff', margin: '0 0 2.5rem', opacity: 0.88, letterSpacing: '0.02em' }}>
             Garran Hill is ready.
