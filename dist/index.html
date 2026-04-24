@@ -763,8 +763,9 @@ function Hero({ onInquire }) {
       }}>
         {/* Eyebrow */}
         <p style={{
-          fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.42em',
-          textTransform: 'uppercase', color: GOLD, margin: '0 0 0.8rem', opacity: 0.75
+          fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.45em',
+          textTransform: 'uppercase', color: GOLD, margin: '0 0 1rem', opacity: 0.9,
+          textShadow: '0 1px 8px rgba(0,0,0,0.95)'
         }}>200 Hollycrest Drive &nbsp;&nbsp;|&nbsp;&nbsp; Pinehurst, NC</p>
 
         {/* GARRAN stacked line 1 */}
@@ -772,8 +773,16 @@ function Hero({ onInquire }) {
           <span style={{
             fontFamily: SCRIPT,
             fontSize: 'clamp(5.5rem, 11vw, 12rem)',
-            color: '#fff', display: 'block', lineHeight: 0.88,
-            textShadow: '0 4px 40px rgba(0,0,0,0.8), 0 1px 6px rgba(0,0,0,0.7)'
+            color: 'rgba(255,255,255,0.88)',
+            display: 'block', lineHeight: 0.88,
+            textShadow: `
+              0 -1px 0 rgba(255,255,255,0.18),
+              0 2px 4px rgba(0,0,0,0.95),
+              0 4px 24px rgba(0,0,0,0.85),
+              0 8px 48px rgba(0,0,0,0.6)
+            `,
+            letterSpacing: '0.01em',
+            filter: 'drop-shadow(0 1px 0 rgba(0,0,0,0.9))'
           }}>Garran</span>
         </div>
 
@@ -787,18 +796,26 @@ function Hero({ onInquire }) {
           <span style={{
             fontFamily: SCRIPT,
             fontSize: 'clamp(5.5rem, 11vw, 12rem)',
-            color: '#fff', display: 'block', lineHeight: 0.88,
-            textShadow: '0 4px 40px rgba(0,0,0,0.8), 0 1px 6px rgba(0,0,0,0.7)'
+            color: 'rgba(255,255,255,0.88)',
+            display: 'block', lineHeight: 0.88,
+            textShadow: `
+              0 -1px 0 rgba(255,255,255,0.18),
+              0 2px 4px rgba(0,0,0,0.95),
+              0 4px 24px rgba(0,0,0,0.85),
+              0 8px 48px rgba(0,0,0,0.6)
+            `,
+            letterSpacing: '0.01em',
+            filter: 'drop-shadow(0 1px 0 rgba(0,0,0,0.9))'
           }}>Hill</span>
         </div>
 
         {/* Subhead — below the stack, readable */}
         <p style={{
-          fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300,
-          fontSize: 'clamp(0.95rem, 1.1vw, 1.1rem)',
-          color: 'rgba(255,255,255,0.78)',
-          margin: '0.9rem 0 0', letterSpacing: '0.05em',
-          textShadow: '0 1px 10px rgba(0,0,0,0.95)'
+          fontFamily: SERIF, fontStyle: 'italic', fontWeight: 400,
+          fontSize: 'clamp(1.05rem, 1.25vw, 1.3rem)',
+          color: 'rgba(245,240,232,0.9)',
+          margin: '1rem 0 0', letterSpacing: '0.06em', lineHeight: 1.5,
+          textShadow: '0 1px 12px rgba(0,0,0,1), 0 2px 24px rgba(0,0,0,0.9)'
         }}>Built in 1915.&nbsp; Neo-Georgian.&nbsp; Moore County, North Carolina.</p>
       </div>
 
