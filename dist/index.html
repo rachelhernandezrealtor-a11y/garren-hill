@@ -924,8 +924,7 @@ function GarranHillV6() {
   return (
     <div style={{ background: DARK, color: '#fff', fontFamily: SERIF, overflowX: 'hidden' }}>
       <link rel="stylesheet" href={FONTS} />
-      <script src="https://cdn.jsdelivr.net/npm/hls.js@latest" />
-
+      
       {lb       && <Lightbox photos={lb.photos} idx={lb.idx} onClose={() => setLb(null)} />}
       {showInq  && <InquiryModal onClose={() => setShowInq(false)} />}
       <StickyNav onInquire={() => setShowInq(true)} />
