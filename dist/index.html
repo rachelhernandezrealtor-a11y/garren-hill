@@ -771,13 +771,13 @@ function Hero({ onInquire }) {
         whiteSpace: 'nowrap'
         }}>200 Hollycrest Drive &nbsp;&nbsp;|&nbsp;&nbsp; Pinehurst, NC &nbsp;&nbsp;|&nbsp;&nbsp; Est. 1916</p>
 
-        {/* GARRAN stacked line 1 */}
-        <div style={{ lineHeight: 0.88 }}>
+        {/* GARRAN stacked line 1 -- editorial drop cap G */}
+        <div style={{ lineHeight: 0.88, display: 'flex', alignItems: 'flex-end' }}>
           <span style={{
             fontFamily: SCRIPT,
-            fontSize: 'clamp(4rem, 8.5vw, 9.5rem)',
-            color: 'rgba(255,255,255,0.88)',
-            display: 'block', lineHeight: 0.88,
+            fontSize: 'clamp(5.5rem, 12vw, 13rem)',
+            color: 'rgba(255,255,255,0.92)',
+            lineHeight: 0.88,
             textShadow: `
               0 -1px 0 rgba(255,255,255,0.18),
               0 2px 4px rgba(0,0,0,0.95),
@@ -786,7 +786,20 @@ function Hero({ onInquire }) {
             `,
             letterSpacing: '0.01em',
             filter: 'drop-shadow(0 1px 0 rgba(0,0,0,0.9))'
-          }}>Garran</span>
+          }}>G</span>
+          <span style={{
+            fontFamily: SCRIPT,
+            fontSize: 'clamp(3.2rem, 7vw, 8rem)',
+            color: 'rgba(255,255,255,0.88)',
+            lineHeight: 0.88,
+            marginBottom: '0.15em',
+            textShadow: `
+              0 2px 4px rgba(0,0,0,0.95),
+              0 4px 24px rgba(0,0,0,0.85),
+              0 8px 48px rgba(0,0,0,0.6)
+            `,
+            letterSpacing: '0.01em'
+          }}>arran</span>
         </div>
 
 
