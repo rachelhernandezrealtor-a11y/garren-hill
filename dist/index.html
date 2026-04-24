@@ -919,11 +919,11 @@ function GarranHillV6() {
       { src: I.fireDining,  caption: 'The dining room fireplace -- shell alcove.' },
     ],
     kitchen: [
-      { src: I.kitchen,     caption: 'The kitchen -- full view.' },
-      { src: I.kitchen2,    caption: 'Heart-pine floors. Warm and worn in the right way.' },
-      { src: I.kitchen3,    caption: 'Three windows. Original layout.' },
-      { src: I.kitchen4,    caption: 'The scullery sink and counter detail.' },
-      { src: I.kitchen5,    caption: 'The kitchen from the doorway.' },
+      { src: I.kitchen,     caption: 'The kitchen -- island, three windows, wood floors.' },
+      { src: I.kitchen2,    caption: 'Island with dark granite. White cabinetry throughout.' },
+      { src: I.kitchen3,    caption: 'Sink wall -- three windows, full southern light.' },
+      { src: I.kitchen4,    caption: 'The refrigerator bay and counter run.' },
+      { src: I.kitchen5,    caption: 'Range and hood -- stainless, full professional height.' },
       { src: I.sunroom,     caption: 'The sunroom -- adjacent. Light on three sides.' },
       { src: I.sunroom2,    caption: 'The sunroom -- morning through evening.' },
     ],
@@ -941,7 +941,7 @@ function GarranHillV6() {
       { src: I.masterBed3,     caption: 'Sitting room, primary suite.' },
       { src: I.masterBedBath,  caption: 'Primary bath -- freestanding tub, three windows.' },
       { src: I.masterBedBath2, caption: 'Spa shower and soaking tub.' },
-      { src: I.masterBedBath3, caption: 'The primary bath -- O'Shea detail, 2000.' },
+      { src: I.masterBedBath3, caption: 'Primary bath -- drawn by O&apos;Shea, 2000.' },
       { src: I.masterBedCloset,caption: 'Dressing closet with built-in safe.' },
       { src: I.window,      caption: 'The dogwood blooms every April. The window has not moved.' },
       { src: I.dressing,    caption: 'The dressing room.' },
@@ -959,7 +959,7 @@ function GarranHillV6() {
       { src: I.fireOrnate,  caption: 'The master wing -- ornate coffered overmantel.' },
       { src: I.fireYellow,  caption: 'The Yellow Suite -- wood fire, three windows.' },
       { src: I.fireDining,  caption: 'The dining room -- shell alcove and fire.' },
-      { src: I.fp4,         caption: 'The Red Room -- white surround.' },
+      { src: I.fp4,         caption: 'The drawing room -- white carved surround.' },
       { src: I.firePinkWide,caption: 'The Rose Suite wide -- four-poster.' },
     ],
     grounds: [
@@ -1074,6 +1074,9 @@ function GarranHillV6() {
         </div>
       </section>
 
+      {/* == 05b KITCHEN BREATH == */}
+      <div style={{ background: '#0a0a0a', height: 'clamp(4rem,8vh,7rem)', margin: 0 }} />
+
       {/* == 06 KITCHEN -- FULL SECTION == */}
       <FullBleed
         src={I.kitchen}
@@ -1082,16 +1085,16 @@ function GarranHillV6() {
         bgPos="center 40%"
         align="left"
         eyebrow="The Kitchen"
-        headline="Heart-pine floors.<br/><em style='font-weight:300'>Warm and worn in the right way.</em>"
-        body="Heart-pine floors. White cabinetry, three windows. The layout has not changed because there was no reason to change it."
+        headline="White cabinetry. Dark granite.<br/><em style='font-weight:300'>Island. Three windows. Room to cook.</em>"
+        body="Custom white cabinetry. Dark granite counters. Center island with seating. Professional range and hood. Three south-facing windows over the sink. The kitchen was renovated to work -- and it does."
       />
-      <section style={{ background: '#0a0a0a', paddingBottom: 'clamp(1.5rem,3vw,2.5rem)', paddingTop: '0' }}>
+      <section style={{ background: '#0a0a0a', paddingTop: 'clamp(2rem,4vh,3.5rem)', paddingBottom: 'clamp(2rem,4vh,3.5rem)' }}>
         <FilmStrip photos={G.kitchen} onOpen={openLB} />
       </section>
 
       {/* == 06b SUNROOM MOMENT == */}
       <section style={{ display: 'flex', minHeight: 'clamp(360px,52vh,580px)', overflow: 'hidden' }}>
-        <div style={{ flex: '0 0 55%', backgroundImage: `url(${pro('b8fc16781_200Holycrest-1185.jpg')})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: 320 }} />
+        <div style={{ flex: '0 0 55%', backgroundImage: `url(${I.sunroom})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: 320 }} />
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 'clamp(3rem,6vw,5.5rem) clamp(2.5rem,5vw,5rem)', background: '#0a0a0a' }}>
           <Fade>
             <Eye>The Sunroom</Eye>
@@ -1209,7 +1212,7 @@ function GarranHillV6() {
             <Eye>Primary Bath</Eye>
             <GoldLine />
             <h3 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,3.8vw,4.5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.5rem', letterSpacing: '-0.01em' }}>
-              Three whirlpool baths<br /><em style={{ fontWeight: 300 }}>on this floor alone.</em>
+              Freestanding tub.<br /><em style={{ fontWeight: 300 }}>Three windows. Drawn by O'Shea in 2000.</em>
             </h3>
             <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.6, lineHeight: 2.1, margin: 0 }}>
               Freestanding tub. Three windows. Drawn by O'Shea to the same standard as the 1916 house it joined.
@@ -1251,7 +1254,7 @@ function GarranHillV6() {
       <CinematicReveal flip
         eyebrow="The Other Bedrooms"
         headline="Three more rooms.<br/><em style='font-weight:300'>Each with its own fireplace.</em>"
-        body="The Rose Suite, the Yellow Suite, the Nursery -- each with original proportions, original fireplaces, original hardware. Nothing was combined. Nothing was converted."
+        body="The Rose Suite, the Yellow Suite, the Third Bedroom -- each with original proportions, original fireplaces, original hardware. Nothing was combined. Nothing was converted."
         img={I.bed2}
         photos={G.bedrooms}
         onOpen={openLB}
