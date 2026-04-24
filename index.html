@@ -813,7 +813,7 @@ function FullBleed({ src, eyebrow, headline, sub, body, align = 'center', darken
 function CinematicReveal({ eyebrow, headline, body, img, flip = false, photos, onOpen, dark = false, subBody }) {
   const bgRef = useParallax(0.12);
   return (
-    <section style={{ display: 'flex', flexDirection: flip ? 'row-reverse' : 'row', minHeight: 'clamp(520px,68vh,820px)', background: DARK, overflow: 'hidden', margin: 0 }}>
+    <section className="gallery-section" style={{ display: 'flex', flexDirection: flip ? 'row-reverse' : 'row', minHeight: 'clamp(520px,68vh,820px)', background: DARK, overflow: 'hidden', margin: 0 }}>
       {/* text */}
       <div style={{ flex: '0 0 clamp(320px,42%,560px)', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 'clamp(3.5rem,6vw,6rem) clamp(2.5rem,5vw,5rem)' }}>
         <Fade>
@@ -1450,7 +1450,10 @@ function GarranHillV6() {
         dark
       />
 
-      {/* == 14b BLUE FOX == */}
+      {/* == 14b BLUE FOX BREATH == */}
+      <div style={{ background: '#0a0a0a', height: 'clamp(4rem, 10vh, 8rem)' }} />
+
+      {/* == 14c BLUE FOX == */}
       <FullBleed
         src={I.bluefox}
         darken={0.55}
