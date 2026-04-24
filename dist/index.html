@@ -1181,20 +1181,108 @@ function GarranHillV6() {
         })()}
       </section>
 
-      /* == 12b DOORKNOB MOMENT == */
-      <section style={{ display: 'flex', minHeight: 'clamp(340px,45vh,560px)', background: DARK, overflow: 'hidden' }}>
-        <div style={{ flex: '0 0 50%', backgroundImage: `url(${I.doorknob})`, backgroundSize: 'cover', backgroundPosition: 'right center', minHeight: 'clamp(340px,45vh,560px)' }} />
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 'clamp(3rem,6vw,5.5rem) clamp(2.5rem,5vw,5rem)' }}>
-          <Fade>
-            <Eye>The Hardware</Eye>
-            <GoldLine />
-            <h3 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,3.5vw,4.5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.2rem', letterSpacing: '-0.012em' }}>
-              Brass. Original.<br /><em style={{ fontWeight: 300 }}>Still on every door.</em>
-            </h3>
-            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.55, lineHeight: 2.1, margin: 0 }}>
-              The hardware was specified in 1916. It has not been replaced.
-            </p>
-          </Fade>
+      {/* == 12b DOORKNOB MOMENT == */}
+      <section style={{
+        position: 'relative',
+        overflow: 'hidden',
+        minHeight: 'clamp(520px,72vh,820px)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+        {/* liquid glass background -- layered radial gradients for depth */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 0,
+          background: 'radial-gradient(ellipse 80% 60% at 30% 50%, rgba(18,14,8,1) 0%, rgba(8,6,3,1) 55%, rgba(0,0,0,1) 100%)',
+        }} />
+        {/* shimmer layer 1 */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 1,
+          background: 'radial-gradient(ellipse 40% 70% at 62% 48%, rgba(201,169,110,0.07) 0%, transparent 65%)',
+          mixBlendMode: 'screen',
+        }} />
+        {/* shimmer layer 2 -- cool silver liquid reflection */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 2,
+          background: 'radial-gradient(ellipse 25% 55% at 58% 52%, rgba(255,255,255,0.04) 0%, transparent 70%)',
+          mixBlendMode: 'screen',
+        }} />
+        {/* bottom floor reflection gradient */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, height: '38%', zIndex: 3,
+          background: 'linear-gradient(to top, rgba(201,169,110,0.04) 0%, transparent 100%)',
+        }} />
+
+        {/* content: portrait photo + copy */}
+        <div style={{
+          position: 'relative', zIndex: 10,
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 'clamp(3rem,6vw,8rem)',
+          padding: 'clamp(4rem,8vw,7rem) clamp(2rem,8vw,10rem)',
+          width: '100%',
+          maxWidth: 1400,
+          margin: '0 auto',
+        }}>
+
+          {/* vertical doorknob portrait */}
+          <div style={{ position: 'relative', flex: '0 0 auto' }}>
+            {/* the photo -- tall portrait crop */}
+            <div style={{
+              width: 'clamp(220px,22vw,320px)',
+              height: 'clamp(380px,52vh,620px)',
+              backgroundImage: `url(${I.doorknob})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center center',
+              position: 'relative',
+              zIndex: 2,
+            }} />
+            {/* liquid mirror reflection below */}
+            <div style={{
+              position: 'absolute',
+              top: '100%',
+              left: 0,
+              right: 0,
+              height: 'clamp(80px,12vh,160px)',
+              backgroundImage: `url(${I.doorknob})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center center',
+              transform: 'scaleY(-1)',
+              maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.28) 0%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.28) 0%, transparent 100%)',
+              zIndex: 1,
+            }} />
+          </div>
+
+          {/* copy block */}
+          <div style={{ flex: '1 1 280px', maxWidth: 460 }}>
+            <Fade>
+              <Eye>The Hardware</Eye>
+              <GoldLine />
+              <h3 style={{
+                fontFamily: SERIF, fontWeight: 400,
+                fontSize: 'clamp(2.4rem,4vw,5.5rem)',
+                color: '#fff', lineHeight: 1.05,
+                margin: '0 0 1.8rem',
+                letterSpacing: '-0.015em',
+              }}>
+                Brass. Original.<br />
+                <em style={{ fontWeight: 300, color: CREAM }}>Still on every door.</em>
+              </h3>
+              <p style={{
+                fontFamily: SERIF, fontWeight: 300,
+                fontSize: 'clamp(0.88rem,1.1vw,1.05rem)',
+                color: CREAM, opacity: 0.6,
+                lineHeight: 2.2, margin: 0,
+                letterSpacing: '0.01em',
+              }}>
+                The hardware was specified in 1916. It has not been replaced.
+              </p>
+            </Fade>
+          </div>
+
         </div>
       </section>
 
