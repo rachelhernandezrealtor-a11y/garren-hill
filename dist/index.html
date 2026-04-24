@@ -713,7 +713,7 @@ function Hero({ onInquire }) {
     const v = videoRef.current;
     if (!v) return;
     if (typeof Hls !== 'undefined' && Hls.isSupported()) {
-      const hls = new Hls({ startLevel: 3, autoStartLoad: true });
+      const hls = new Hls({ startLevel: -1, autoStartLoad: true, maxBufferLength: 30, maxMaxBufferLength: 60 });
       hls.loadSource(GH_VIDEO);
       hls.attachMedia(v);
       hls.on(Hls.Events.MANIFEST_PARSED, () => {
@@ -730,8 +730,8 @@ function Hero({ onInquire }) {
       {/* poster -- fallback while video loads */}
       <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${GH_POSTER})`, backgroundSize: 'cover', backgroundPosition: 'center 45%', zIndex: 0 }} />
       {/* HLS video -- driveway approach, slow motion */}
-      <video ref={videoRef} autoPlay muted loop playsInline
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 45%', zIndex: 1, opacity: 0, transition: 'opacity 3s ease' }}
+      <video ref={videoRef} autoPlay muted loop playsInline preload="auto"
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 45%', zIndex: 1, opacity: 0, transition: 'opacity 1s ease' }}
         onCanPlay={e => { e.target.style.opacity = 1; }}
         onPlaying={e => { e.target.style.opacity = 1; }}
       />
