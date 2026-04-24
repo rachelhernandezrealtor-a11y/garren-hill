@@ -807,15 +807,15 @@ function Hero({ onInquire }) {
 
       </div>
 
-      {/* SEAL -- pinned to very bottom center of hero, below stat bar, desktop only */}
+      {/* SEAL -- floats on photo above stat bar, desktop only, no background */}
       {!mob && (
-        <div style={{ position: 'absolute', bottom: '0.6rem', left: '50%', transform: 'translateX(-50%)', zIndex: 15 }}>
+        <div style={{ position: 'absolute', bottom: 'clamp(5.5rem,9vw,7.5rem)', left: '50%', transform: 'translateX(-50%)', zIndex: 15, background: 'none' }}>
           <img
             src="https://media.base44.com/images/public/69e248a2469cc39540781cce/c006d17ab_generated_image.png"
             alt="Garran Hill Seal"
-            style={{ width: 'clamp(64px, 5.5vw, 80px)', height: 'auto',
-              filter: 'drop-shadow(0 0 18px rgba(201,169,110,0.4)) drop-shadow(0 6px 20px rgba(0,0,0,0.9))',
-              opacity: 0.92 }}
+            style={{ width: 'clamp(72px, 6vw, 90px)', height: 'auto', display: 'block',
+              filter: 'drop-shadow(0 2px 12px rgba(0,0,0,0.85)) drop-shadow(0 0 24px rgba(201,169,110,0.3))',
+              opacity: 0.95 }}
           />
         </div>
       )}
