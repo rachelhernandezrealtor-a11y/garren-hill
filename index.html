@@ -37,6 +37,7 @@
       pointer-events: none;
     }
     .cinematic-section.no-bottom-fade::after { display: none; }
+    .cinematic-section.no-top-fade::before { display: none; }
     .cinematic-section::after {
       content: '';
       position: absolute;
@@ -990,15 +991,15 @@ function GarranHillV6() {
       {/* == 02 ARRIVAL -- THRESHOLD == */}
       <FullBleed
         src={I.threshold}
-        darken={0.32}
-        minH="85vh"
-        bgPos="center 92%"
+        darken={0.28}
+        minH="88vh"
+        bgPos="center 88%"
         align="center"
         headline={null}
-        extraClass="no-bottom-fade"
+        extraClass="no-bottom-fade no-top-fade"
       >
-        <div style={{ textAlign: 'center' }}>
-          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(2.2rem,4.5vw,5.5rem)', color: '#fff', lineHeight: 1.3, margin: 0, letterSpacing: '-0.01em', textShadow: '0 2px 24px rgba(0,0,0,0.5)' }}>
+        <div style={{ textAlign: 'center', position: 'absolute', top: 'clamp(5rem,12vw,9rem)', left: 0, right: 0 }}>
+          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(2.2rem,4.5vw,5.5rem)', color: '#fff', lineHeight: 1.3, margin: 0, letterSpacing: '-0.01em', textShadow: '0 2px 24px rgba(0,0,0,0.6)' }}>
             The door has been open since 1916.
           </p>
         </div>
