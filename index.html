@@ -36,6 +36,7 @@
       z-index: 4;
       pointer-events: none;
     }
+    .cinematic-section.no-bottom-fade::after { display: none; }
     .cinematic-section::after {
       content: '';
       position: absolute;
@@ -786,9 +787,9 @@ function Hero({ onInquire }) {
 /* ============================================================
    FULL BLEED PANEL -- parallax bg, text centered or left
 ============================================================ */
-function FullBleed({ src, eyebrow, headline, sub, body, align = 'center', darken = 0.55, minH = '70vh', bgPos = 'center', children, onClick }) {
+function FullBleed({ src, eyebrow, headline, sub, body, align = 'center', darken = 0.55, minH = '70vh', bgPos = 'center', children, onClick, extraClass = '' }) {
   return (
-    <section onClick={onClick} className="cinematic-section" style={{ position: 'relative', overflow: 'hidden', minHeight: `clamp(480px,${minH},900px)`, display: 'flex', alignItems: 'center', justifyContent: align === 'center' ? 'center' : 'flex-start', backgroundImage: `url(${src})`, backgroundSize: 'cover', backgroundPosition: bgPos, margin: 0 }}>
+    <section onClick={onClick} className={`cinematic-section ${extraClass}`} style={{ position: 'relative', overflow: 'hidden', minHeight: `clamp(480px,${minH},900px)`, display: 'flex', alignItems: 'center', justifyContent: align === 'center' ? 'center' : 'flex-start', backgroundImage: `url(${src})`, backgroundSize: 'cover', backgroundPosition: bgPos, margin: 0 }}>
       <div style={{ position: 'absolute', inset: 0, background: `rgba(8,8,8,${darken})`, zIndex: 1 }} />
       <div style={{ position: 'relative', zIndex: 2, maxWidth: align === 'center' ? 780 : 680, padding: 'clamp(4rem,8vw,7rem) clamp(2rem,8vw,10rem)', textAlign: align, width: '100%' }}>
         <Fade>
@@ -980,11 +981,12 @@ function GarranHillV6() {
       {/* == 02 ARRIVAL -- THRESHOLD == */}
       <FullBleed
         src={I.threshold}
-        darken={0.38}
-        minH="80vh"
-        bgPos="center 35%"
+        darken={0.32}
+        minH="85vh"
+        bgPos="center 72%"
         align="center"
         headline={null}
+        extraClass="no-bottom-fade"
       >
         <div style={{ textAlign: 'center' }}>
           <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(2.2rem,4.5vw,5.5rem)', color: '#fff', lineHeight: 1.3, margin: 0, letterSpacing: '-0.01em', textShadow: '0 2px 24px rgba(0,0,0,0.5)' }}>
