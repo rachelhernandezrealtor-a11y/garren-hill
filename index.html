@@ -803,20 +803,22 @@ function Hero({ onInquire }) {
             </div>
           ))}
         </div>
-        <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.2) 15%, rgba(201,169,110,0.2) 85%, transparent)', marginTop: 'clamp(2rem,3vw,2.5rem)' }} />
-
-        {/* WAX SEAL -- centered, sitting on the page */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1.5rem' }}>
-          <img
-            src="https://media.base44.com/images/public/69e248a2469cc39540781cce/c6aa84dfa_generated_image.png"
-            alt="Garran Hill"
-            style={{
-              width: 'clamp(200px, 22vw, 300px)',
-              height: 'auto',
-              borderRadius: '50%',
-              filter: 'drop-shadow(0 12px 40px rgba(0,0,0,1)) drop-shadow(0 4px 16px rgba(0,0,0,0.95)) drop-shadow(0 0 60px rgba(15,34,20,0.5))',
-            }}
-          />
+        {/* BOTTOM GOLD LINE + WAX SEAL straddling it */}
+        <div style={{ position: 'relative', marginTop: 'clamp(2rem,3vw,2.5rem)', paddingBottom: 'clamp(80px,10vw,130px)' }}>
+          <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.2) 15%, rgba(201,169,110,0.2) 85%, transparent)' }} />
+          {/* WAX SEAL centered on the gold line */}
+          <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)' }}>
+            <img
+              src="https://media.base44.com/images/public/69e248a2469cc39540781cce/c6aa84dfa_generated_image.png"
+              alt="Garran Hill"
+              style={{
+                width: 'clamp(160px, 18vw, 240px)',
+                height: 'auto',
+                borderRadius: '50%',
+                filter: 'drop-shadow(0 12px 40px rgba(0,0,0,1)) drop-shadow(0 4px 16px rgba(0,0,0,0.95)) drop-shadow(0 0 60px rgba(15,34,20,0.6))',
+              }}
+            />
+          </div>
         </div>
       </div>
     </section>
