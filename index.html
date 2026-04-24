@@ -101,7 +101,7 @@ const SERIF   = "'Cormorant Garamond', Georgia, serif";
 const SCRIPT  = "'Pinyon Script', cursive";
 
 const GH_VIDEO  = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/ba88a34a312106b7bf9d00b52a452871/manifest/video.m3u8';
-const GH_POSTER = 'https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/https://media.base44.com/images/public/69e248a2469cc39540781cce/425fe54ee_8093A9B9-F535-4336-9153-D99DA270E56C_1_102_o.jpg';
+const GH_POSTER = 'https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:outdoor:80,e_vibrance:40,e_auto_brightness,e_sharpen:50,e_saturation:30,e_brightness:8,f_auto,q_auto,w_1920,c_limit/https://media.base44.com/images/public/69e248a2469cc39540781cce/425fe54ee_8093A9B9-F535-4336-9153-D99DA270E56C_1_102_o.jpg';
 
 const BP  = 'https://media.base44.com/images/public/69e2578ca7113dbe93cb208d/';
 const B   = 'https://media.base44.com/images/public/69e248a2469cc39540781cce/';
@@ -729,37 +729,36 @@ function Hero({ onInquire }) {
         </div>
       </nav>
 
-      {/* title block -- bottom left, house breathes above it */}
+      {/* title block -- bottom left, BIG script, house visible above */}
       <div style={{
-        position: 'absolute', bottom: '9rem', left: 0, right: 0, zIndex: 10,
-        display: 'flex', flexDirection: 'column', alignItems: 'center'
+        position: 'absolute', bottom: '8.5rem', left: 0, right: 0, zIndex: 10,
+        display: 'flex', flexDirection: 'column', alignItems: 'flex-start',
+        paddingLeft: 'clamp(2.5rem, 6vw, 7rem)'
       }}>
         {/* eyebrow */}
         <p style={{
           fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.38em',
-          textTransform: 'uppercase', color: GOLD, margin: '0 0 1.2rem',
-          opacity: 0.9
+          textTransform: 'uppercase', color: GOLD, margin: '0 0 0.6rem', opacity: 0.9
         }}>
           200 Hollycrest Drive &nbsp;&nbsp;|&nbsp;&nbsp; Pinehurst, NC &nbsp;&nbsp;|&nbsp;&nbsp; Est. 1916
         </p>
-        {/* script title -- centered, smaller, not overwhelming the house */}
+        {/* BIG Pinyon Script -- left-anchored, drop shadow so it reads on bright sky */}
         <h1 style={{
           fontFamily: SCRIPT,
-          fontSize: 'clamp(3.5rem, 7vw, 7.5rem)',
-          color: '#fff', lineHeight: 1.0, margin: 0,
-          textShadow: '0 2px 32px rgba(0,0,0,0.55)',
-          textAlign: 'center'
+          fontSize: 'clamp(5.5rem, 11vw, 11rem)',
+          color: '#fff', lineHeight: 0.92, margin: 0,
+          textShadow: '0 3px 48px rgba(0,0,0,0.65), 0 1px 8px rgba(0,0,0,0.5)'
         }}>
           Garran Hill
         </h1>
-        {/* one clean subline */}
+        {/* subline */}
         <p style={{
           fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300,
-          fontSize: 'clamp(0.85rem, 1.2vw, 1.1rem)',
-          color: 'rgba(255,255,255,0.55)',
-          margin: '1rem 0 0', letterSpacing: '0.06em', textAlign: 'center'
+          fontSize: 'clamp(0.85rem, 1.1vw, 1rem)',
+          color: 'rgba(255,255,255,0.6)',
+          margin: '0.9rem 0 0', letterSpacing: '0.05em'
         }}>
-          Neo-Georgian &nbsp;&nbsp;&middot;&nbsp;&nbsp; 1916 &nbsp;&nbsp;&middot;&nbsp;&nbsp; Moore County, North Carolina
+          Built in 1915. Neo-Georgian. Moore County, North Carolina.
         </p>
       </div>
 
