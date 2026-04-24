@@ -740,7 +740,7 @@ function Hero({ onInquire }) {
 
       {/* nav */}
       <nav style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 'clamp(1.4rem,3vw,2.2rem) clamp(1.8rem,4vw,3.5rem)' }}>
-        <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: 'clamp(1rem,1.5vw,1.18rem)', color: 'rgba(255,255,255,0.9)', letterSpacing: '0.04em' }}>Garran Hill</span>
+        <span />
         <div style={{ display: 'flex', gap: 'clamp(2rem,3vw,3.5rem)', alignItems: 'center' }}>
           {['The Estate', 'The History', 'The Grounds'].map(l => (
             <span key={l} style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', cursor: 'default' }}>{l}</span>
@@ -762,14 +762,11 @@ function Hero({ onInquire }) {
         paddingBottom: '1.2rem'
       }}>
         {/* Eyebrow */}
-        <div style={{ display: 'inline-block', background: 'rgba(0,0,0,0.45)', 
-          padding: '0.35rem 0.8rem 0.35rem 0', marginBottom: '0.8rem', backdropFilter: 'none' }}>
-          <p style={{
-            fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.45em',
-            textTransform: 'uppercase', color: GOLD, margin: 0, opacity: 0.95,
-            textShadow: '0 1px 6px rgba(0,0,0,1)'
-          }}>200 Hollycrest Drive &nbsp;&nbsp;|&nbsp;&nbsp; Pinehurst, NC</p>
-        </div>
+        <p style={{
+          fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.45em',
+          textTransform: 'uppercase', color: GOLD, margin: '0 0 0.8rem', opacity: 0.9,
+          textShadow: '0 1px 8px rgba(0,0,0,1), 0 2px 20px rgba(0,0,0,0.95)'
+        }}>200 Hollycrest Drive &nbsp;&nbsp;|&nbsp;&nbsp; Pinehurst, NC</p>
 
         {/* GARRAN stacked line 1 */}
         <div style={{ overflow: 'hidden', lineHeight: 0.88 }}>
