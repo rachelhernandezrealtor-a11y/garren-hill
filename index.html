@@ -762,14 +762,17 @@ function Hero({ onInquire }) {
         paddingBottom: '1.2rem'
       }}>
         {/* Eyebrow */}
-        <p style={{
-          fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.45em',
-          textTransform: 'uppercase', color: GOLD, margin: '0 0 1rem', opacity: 0.9,
-          textShadow: '0 1px 8px rgba(0,0,0,0.95)'
-        }}>200 Hollycrest Drive &nbsp;&nbsp;|&nbsp;&nbsp; Pinehurst, NC</p>
+        <div style={{ display: 'inline-block', background: 'rgba(0,0,0,0.45)', 
+          padding: '0.35rem 0.8rem 0.35rem 0', marginBottom: '0.8rem', backdropFilter: 'none' }}>
+          <p style={{
+            fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.45em',
+            textTransform: 'uppercase', color: GOLD, margin: 0, opacity: 0.95,
+            textShadow: '0 1px 6px rgba(0,0,0,1)'
+          }}>200 Hollycrest Drive &nbsp;&nbsp;|&nbsp;&nbsp; Pinehurst, NC</p>
+        </div>
 
         {/* GARRAN stacked line 1 */}
-        <div style={{ overflow: 'hidden', lineHeight: 0.82 }}>
+        <div style={{ overflow: 'hidden', lineHeight: 0.88 }}>
           <span style={{
             fontFamily: SCRIPT,
             fontSize: 'clamp(5.5rem, 11vw, 12rem)',
@@ -786,13 +789,10 @@ function Hero({ onInquire }) {
           }}>Garran</span>
         </div>
 
-        {/* Gold rule between the two words */}
-        <div style={{ width: '85%', height: '1px',
-          background: 'linear-gradient(to right, rgba(201,169,110,0.75), rgba(201,169,110,0.08))',
-          margin: '0.3rem 0' }} />
+
 
         {/* HILL stacked line 2 */}
-        <div style={{ overflow: 'hidden' }}>
+        <div style={{ overflow: 'hidden', marginTop: '-0.15rem' }}>
           <span style={{
             fontFamily: SCRIPT,
             fontSize: 'clamp(5.5rem, 11vw, 12rem)',
@@ -814,7 +814,7 @@ function Hero({ onInquire }) {
           fontFamily: SERIF, fontStyle: 'italic', fontWeight: 400,
           fontSize: 'clamp(1.05rem, 1.25vw, 1.3rem)',
           color: 'rgba(245,240,232,0.9)',
-          margin: '1rem 0 0', letterSpacing: '0.06em', lineHeight: 1.5,
+          margin: '1.4rem 0 0', letterSpacing: '0.06em', lineHeight: 1.5,
           textShadow: '0 1px 12px rgba(0,0,0,1), 0 2px 24px rgba(0,0,0,0.9)'
         }}>Built in 1915.&nbsp; Neo-Georgian.&nbsp; Moore County, North Carolina.</p>
       </div>
