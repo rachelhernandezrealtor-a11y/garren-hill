@@ -751,46 +751,37 @@ function Hero({ onInquire }) {
         </div>
       </nav>
 
-      {/* title block -- bottom left, BIG script, house visible above */}
-      <div style={{
-        position: 'absolute', bottom: 'calc(clamp(12rem,20vw,18rem) + 8rem)', left: 0, right: 0, zIndex: 10,
-        display: 'flex', flexDirection: 'column', alignItems: 'flex-start',
-        paddingLeft: 'clamp(2.5rem, 6vw, 7rem)'
-      }}>
-        {/* eyebrow */}
-        <p style={{
-          fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.38em',
-          textTransform: 'uppercase', color: GOLD, margin: '0 0 0.6rem', opacity: 0.9
-        }}>
-          200 Hollycrest Drive &nbsp;&nbsp;|&nbsp;&nbsp; Pinehurst, NC &nbsp;&nbsp;|&nbsp;&nbsp; Est. 1916
-        </p>
-        {/* BIG Pinyon Script -- left-anchored, drop shadow so it reads on bright sky */}
-        <h1 style={{
-          fontFamily: SCRIPT,
-          fontSize: 'clamp(5.5rem, 11vw, 11rem)',
-          color: '#fff', lineHeight: 0.92, margin: 0,
-          textShadow: '0 3px 48px rgba(0,0,0,0.65), 0 1px 8px rgba(0,0,0,0.5)'
-        }}>
-          Garran Hill
-        </h1>
-        {/* subline */}
-        <p style={{
-          fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300,
-          fontSize: 'clamp(0.85rem, 1.1vw, 1rem)',
-          color: 'rgba(255,255,255,0.6)',
-          margin: '0.9rem 0 0', letterSpacing: '0.05em'
-        }}>
-          Built in 1915. Neo-Georgian. Moore County, North Carolina.
-        </p>
-      </div>
+
 
       {/* stat bar -- Sotheby's editorial with wax seal crest */}
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
         background: 'linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.88) 55%, transparent 100%)',
-        padding: 'clamp(3.5rem,6vw,5rem) clamp(3rem,8vw,9rem) clamp(2rem,3vw,2.8rem)' }}>
+        padding: '0 clamp(3rem,8vw,9rem) clamp(2rem,3vw,2.8rem)' }}>
 
-        {/* Gold rule */}
-        <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)', marginBottom: 'clamp(2rem,3.5vw,2.8rem)' }} />
+        {/* Eyebrow + Garran Hill script sitting ON the top gold rule */}
+        <div style={{ paddingTop: 'clamp(8rem,14vw,12rem)' }}>
+          <p style={{
+            fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.38em',
+            textTransform: 'uppercase', color: GOLD, margin: '0 0 0.5rem', opacity: 0.8
+          }}>
+            200 Hollycrest Drive &nbsp;&nbsp;|&nbsp;&nbsp; Pinehurst, NC &nbsp;&nbsp;|&nbsp;&nbsp; Est. 1916
+          </p>
+          <h1 style={{
+            fontFamily: SCRIPT,
+            fontSize: 'clamp(5rem, 10vw, 10rem)',
+            color: '#fff', lineHeight: 0.88, margin: '0 0 0',
+            textShadow: '0 3px 48px rgba(0,0,0,0.7), 0 1px 8px rgba(0,0,0,0.6)'
+          }}>Garran Hill</h1>
+          <p style={{
+            fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300,
+            fontSize: 'clamp(0.8rem, 1vw, 0.95rem)',
+            color: 'rgba(255,255,255,0.55)',
+            margin: '0.6rem 0 0', letterSpacing: '0.06em'
+          }}>Built in 1915. Neo-Georgian. Moore County, North Carolina.</p>
+        </div>
+
+        {/* Top gold rule — Garran Hill baseline rests here */}
+        <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)', margin: 'clamp(1.2rem,2vw,1.8rem) 0 clamp(1.5rem,2.5vw,2rem)' }} />
 
         <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-end', gap: '1rem' }}>
           {[['1916','Est.'],['4','Bedrooms'],['4 + 2','Baths + Powder'],['6,072 sq ft','Living Area'],['4.15 Acres','Land'],['$4,250,000','Offered At']].map(([v,l]) => (
@@ -809,7 +800,7 @@ function Hero({ onInquire }) {
           {/* WAX SEAL centered on the gold line */}
           <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)' }}>
             <img
-              src="https://media.base44.com/images/public/69e248a2469cc39540781cce/06bf40708_generated_image.png"
+              src="https://media.base44.com/images/public/69e248a2469cc39540781cce/5b3231cf8_generated_image.png"
               alt="Garran Hill"
               style={{
                 width: 'clamp(160px, 18vw, 240px)',
