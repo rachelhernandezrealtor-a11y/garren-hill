@@ -90,6 +90,7 @@ const I = {
   whp:         `${CDN}f_auto,q_auto,w_1600/${B}2e864596c_WalterHinesPage.jpeg`,
   betty:       own('ee869bbb3_BDumainewToddyHunter1970s.jpg'),
   roseMoney:   ownExt('53fbdc821_53fbdc821.jpg'),
+  roseGarden: ownExt('58a73d8a6_rosewall.jpg'),
   roseWall:    ownExt('58a73d8a6_rosewall.jpg'),
   iris:        ownExt('08572b50d_25AprIrisbluejustoutinsideyardbywall.jpg'),
   azalea:      own('a851234be_21AprAzaleasbackyardundermagnolialongline.jpg'),
