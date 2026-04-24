@@ -989,43 +989,71 @@ function GarranHillV6() {
       {/* == 01 HERO == */}
       <Hero onInquire={() => setShowInq(true)} />
 
-      {/* == 02 ARRIVAL -- THRESHOLD == */}
-      {/* -- Full-screen threshold: brick photo, quote, fades to black -- */}
+      {/* == 02 ARRIVAL -- THRESHOLD TEASER == */}
+      {/* Buyer scrolls off hero -- first breath -- weight of 1916 */}
       <div style={{
-        position: 'relative', width: '100%', height: '100vh', minHeight: 640,
+        position: 'relative', width: '100%', height: '100vh', minHeight: 680,
         overflow: 'hidden', margin: 0,
-        display: 'flex', alignItems: 'center', justifyContent: 'center'
+        display: 'flex', flexDirection: 'column',
+        alignItems: 'center', justifyContent: 'center'
       }}>
+        {/* Photo */}
         <div style={{
           position: 'absolute', inset: 0,
           backgroundImage: 'url(https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1920,c_limit/https://media.base44.com/images/public/69e248a2469cc39540781cce/7abb71910_200Holycrest-1179.jpg)',
-          backgroundSize: 'cover', backgroundPosition: 'center 72%'
+          backgroundSize: 'cover', backgroundPosition: 'center 68%'
         }} />
-        {/* gentle dark wash */}
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,10,10,0.35)' }} />
-        {/* fade to black at bottom - must be seamless into WHP */}
+        {/* Dark wash -- heavier at top, lighter in middle so brick reads */}
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,10,10,0.32)' }} />
+        {/* Fade from hero black at top */}
         <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%',
-          background: 'linear-gradient(to top, #0a0a0a 0%, transparent 100%)',
-          zIndex: 2
+          position: 'absolute', top: 0, left: 0, right: 0, height: '28%',
+          background: 'linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)',
+          zIndex: 2, pointerEvents: 'none'
         }} />
-        {/* The quote */}
-        <p style={{
-          position: 'relative', zIndex: 3,
-          fontFamily: "'Cormorant Garamond', Georgia, serif",
-          fontStyle: 'italic', fontWeight: 300,
-          fontSize: 'clamp(2.6rem, 5.5vw, 6.5rem)',
-          color: '#fff', lineHeight: 1.2, margin: 0,
-          textAlign: 'center',
-          textShadow: '0 2px 40px rgba(0,0,0,0.65)',
-          padding: '0 clamp(2rem, 10vw, 14rem)',
-          letterSpacing: '-0.015em',
-          marginBottom: '15vh'
-        }}>
-          The door has been open since 1916.
-        </p>
-      </div>
+        {/* Fade to black at bottom */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, height: '38%',
+          background: 'linear-gradient(to top, #0a0a0a 0%, transparent 100%)',
+          zIndex: 2, pointerEvents: 'none'
+        }} />
 
+        {/* Content -- centered, generous vertical space */}
+        <div style={{
+          position: 'relative', zIndex: 3,
+          display: 'flex', flexDirection: 'column', alignItems: 'center',
+          gap: 'clamp(2.5rem, 5vh, 4.5rem)',
+          padding: '0 clamp(2rem, 10vw, 14rem)',
+          marginBottom: '8vh'
+        }}>
+          {/* The quote -- large, italic, commanding */}
+          <p style={{
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontStyle: 'italic', fontWeight: 300,
+            fontSize: 'clamp(2.8rem, 6vw, 7rem)',
+            color: '#fff', lineHeight: 1.2, margin: 0,
+            textAlign: 'center',
+            textShadow: '0 2px 48px rgba(0,0,0,0.7)',
+            letterSpacing: '-0.015em'
+          }}>
+            The door has been open since 1916.
+          </p>
+
+          {/* Gold rule */}
+          <div style={{ width: 48, height: 1, background: 'rgba(201,169,110,0.7)' }} />
+
+          {/* Attribution -- the tease */}
+          <p style={{
+            fontFamily: 'sans-serif',
+            fontSize: '9px', letterSpacing: '0.38em',
+            textTransform: 'uppercase',
+            color: 'rgba(201,169,110,0.75)',
+            margin: 0, textAlign: 'center'
+          }}>
+            Walter Hines Page &nbsp;&nbsp;1855 - 1918
+          </p>
+        </div>
+      </div>
 
             {/* == 03 ENTRANCE HALL == */}
       <CinematicReveal
