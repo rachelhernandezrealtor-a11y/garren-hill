@@ -1036,7 +1036,7 @@ function GarranHillV6() {
         </div>
       </div>
 
-            {/* == 03 ENTRANCE HALL == */}
+                  {/* == 03 ENTRANCE HALL == */}
       <CinematicReveal
         eyebrow="The Entrance Hall"
         headline="The staircase has turned<br/><em style='font-weight:300'>the same curve since 1916.</em>"
@@ -1046,31 +1046,47 @@ function GarranHillV6() {
         onOpen={openLB}
       />
 
-      {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-        
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.whp})`, backgroundSize: 'cover', backgroundPosition: 'center 30%', filter: 'brightness(0.07) saturate(0.4)' }} />
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
-          <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
-          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
-            He named it Garran Hill. He never walked through the door.
+      {/* == QUOTE INTERSTITIAL -- words on dark, no box, no border == */}
+      <section style={{
+        background: '#0a0a0a',
+        padding: 'clamp(6rem,12vh,10rem) clamp(2rem,10vw,12rem)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        margin: 0
+      }}>
+        <div style={{ textAlign: 'center', maxWidth: 760 }}>
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.7)', margin: '0 auto clamp(2.5rem,5vh,4rem)' }} />
+          <p style={{
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontStyle: 'italic', fontWeight: 300,
+            fontSize: 'clamp(2rem, 4vw, 4.5rem)',
+            color: '#fff', margin: 0, lineHeight: 1.35,
+            letterSpacing: '-0.01em'
+          }}>
+            He named it Garran Hill.<br/>He never walked through the door.
           </p>
-          <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '1.8rem auto 0' }} />
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.7)', margin: 'clamp(2.5rem,5vh,4rem) auto 0' }} />
         </div>
       </section>
 
       {/* == 03b PINEHURST INTERSTITIAL == */}
-      <div id="estate" style={{ position: 'relative', overflow: 'hidden', minHeight: 'clamp(280px,35vh,420px)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${ext('0de69e38e_200HollycrestDrive-9.jpg')})`, backgroundSize: 'cover', backgroundPosition: 'center 60%', zIndex: 0 }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.82)', zIndex: 1 }} />
-        <div style={{ position: 'relative', zIndex: 2, padding: 'clamp(2rem,4vw,4rem) clamp(2rem,12vw,16rem)', textAlign: 'center' }}>
+      <div id="estate" style={{
+        position: 'relative', overflow: 'hidden',
+        minHeight: 'clamp(320px,42vh,500px)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center'
+      }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${ext('0de69e38e_200HollycrestDrive-9.jpg')})`, backgroundSize: 'cover', backgroundPosition: 'center 55%', zIndex: 0 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.72)', zIndex: 1 }} />
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '35%', background: 'linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)', zIndex: 2 }} />
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '35%', background: 'linear-gradient(to top, #0a0a0a 0%, transparent 100%)', zIndex: 2 }} />
+        <div style={{ position: 'relative', zIndex: 3, padding: 'clamp(2rem,4vw,4rem) clamp(2rem,12vw,16rem)', textAlign: 'center' }}>
           <Fade>
-            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(0.95rem,1.4vw,1.18rem)', color: CREAM, opacity: 0.72, lineHeight: 2.1, maxWidth: 720, margin: '0 auto' }}>
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.5vw,1.25rem)', color: CREAM, opacity: 0.8, lineHeight: 2.1, maxWidth: 680, margin: '0 auto' }}>
               Pinehurst was built by James Walker Tufts in 1895. Garran Hill was built two miles away in 1916. The same hands were working this land.
             </p>
           </Fade>
         </div>
       </div>
+
       {/* == 04 DRAWING ROOM == */}
       <CinematicReveal flip
         eyebrow="The Drawing Room"
