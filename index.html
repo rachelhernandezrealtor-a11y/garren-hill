@@ -82,6 +82,16 @@
   <script type="text/babel">
 const { useState, useEffect, useRef, useCallback } = React;
 
+function useW() {
+  const [w, setW] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+  useEffect(() => {
+    const fn = () => setW(window.innerWidth);
+    window.addEventListener('resize', fn);
+    return () => window.removeEventListener('resize', fn);
+  }, []);
+  return w;
+}
+
 // build: 20260424_PERFECT_v1
 
 /* ============================================================
@@ -708,6 +718,8 @@ function InquiryModal({ onClose }) {
    HERO
 ============================================================ */
 function Hero({ onInquire }) {
+  const w   = useW();
+  const mob = w < 768;
   const videoRef = useRef();
   useEffect(() => {
     const v = videoRef.current;
@@ -739,7 +751,7 @@ function Hero({ onInquire }) {
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,10,10,0.22) 0%, rgba(10,10,10,0.08) 40%, rgba(10,10,10,0.55) 78%, rgba(10,10,10,0.92) 100%)', zIndex: 2 }} />
 
       {/* nav */}
-      <nav style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 'clamp(1.4rem,3vw,2.2rem) clamp(1.8rem,4vw,3.5rem)' }}>
+      <nav style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10, display: mob ? 'none' : 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 'clamp(1.4rem,3vw,2.2rem) clamp(1.8rem,4vw,3.5rem)' }}>
         <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: 'clamp(1rem,1.5vw,1.18rem)', color: 'rgba(255,255,255,0.9)', letterSpacing: '0.04em' }}>Garran Hill</span>
         <div style={{ display: 'flex', gap: 'clamp(2rem,3vw,3.5rem)', alignItems: 'center' }}>
           {['The Estate', 'The History', 'The Grounds'].map(l => (
@@ -755,33 +767,33 @@ function Hero({ onInquire }) {
 
       {/* TITLE BLOCK -- sits above stat bar, all within viewport */}
       <div style={{
-        position: 'absolute', bottom: 'clamp(6rem,11vw,9rem)', left: 0, right: 0, zIndex: 10,
-        paddingLeft: 'clamp(2.5rem,6vw,7rem)'
+        position: 'absolute', bottom: mob ? 'clamp(5rem,18vw,7rem)' : 'clamp(6rem,11vw,9rem)', left: 0, right: 0, zIndex: 10,
+        paddingLeft: mob ? 'clamp(1.5rem,5vw,3rem)' : 'clamp(2.5rem,6vw,7rem)'
       }}>
         <p style={{
-          fontFamily: 'sans-serif', fontSize: 'clamp(9px,0.9vw,11px)', letterSpacing: '0.42em',
-          textTransform: 'uppercase', color: '#E8C878', margin: '0 0 0.6rem',
+          fontFamily: 'sans-serif', fontSize: mob ? '7px' : 'clamp(9px,0.9vw,11px)', letterSpacing: mob ? '0.22em' : '0.42em',
+          textTransform: 'uppercase', color: '#E8C878', margin: '0 0 0.5rem',
           textShadow: '0 0 18px rgba(232,200,120,0.7), 0 0 40px rgba(232,200,120,0.35), 0 1px 3px rgba(0,0,0,0.8)',
-          opacity: 1, fontWeight: 600
-        }}>200 Hollycrest Drive &nbsp;&nbsp;|&nbsp;&nbsp; Pinehurst, NC &nbsp;&nbsp;|&nbsp;&nbsp; Est. 1916</p>
+          opacity: 1, fontWeight: 600, whiteSpace: mob ? 'nowrap' : 'normal'
+        }}>200 Hollycrest Dr &nbsp;|&nbsp; Pinehurst, NC &nbsp;|&nbsp; Est. 1916</p>
 
         <h1 style={{
           fontFamily: SCRIPT,
-          fontSize: 'clamp(4rem, 7vw, 8.5rem)',
+          fontSize: mob ? 'clamp(3.5rem, 14vw, 5rem)' : 'clamp(4rem, 7vw, 8.5rem)',
           color: '#fff', lineHeight: 0.95, margin: 0,
           textShadow: '0 3px 48px rgba(0,0,0,0.7), 0 1px 8px rgba(0,0,0,0.6)'
         }}>Garran Hill</h1>
 
-        <div style={{ width: 'clamp(160px,35vw,400px)', height: '1px',
+        <div style={{ width: mob ? '60vw' : 'clamp(160px,35vw,400px)', height: '1px',
           background: 'linear-gradient(to right, rgba(201,169,110,0.7), rgba(201,169,110,0.1))',
           margin: '0.35rem 0 0.55rem' }} />
 
         <p style={{
           fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300,
-          fontSize: 'clamp(0.88rem, 1.05vw, 1rem)',
+          fontSize: mob ? '0.72rem' : 'clamp(0.88rem, 1.05vw, 1rem)',
           color: 'rgba(255,255,255,0.62)',
           margin: 0, letterSpacing: '0.04em'
-        }}>Built in 1915.&nbsp;&nbsp;Neo-Georgian.&nbsp;&nbsp;Moore County, North Carolina.</p>
+        }}>Built in 1915.&nbsp;&nbsp;Neo-Georgian.&nbsp;&nbsp;Moore County, NC.</p>
       </div>
 
       {/* STAT BAR -- tight, everything inside viewport */}
@@ -798,16 +810,16 @@ function Hero({ onInquire }) {
           {[['1916','Est.'],['4','Bedrooms'],['6','Bathrooms'],['6,072 sq ft','Living Area'],['4.15 Acres','Land'],['$4,250,000','Offered At']].map(([v,l]) => (
             <div key={l} style={{ textAlign: 'center', flex: 1 }}>
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
-                fontSize: 'clamp(1rem,1.8vw,1.9rem)', color: '#fff',
-                margin: '0 0 0.25rem', lineHeight: 1 }}>{v}</p>
-              <p style={{ fontFamily: 'sans-serif', fontSize: '6.5px', letterSpacing: '0.25em',
+                fontSize: mob ? 'clamp(0.65rem,3.2vw,1rem)' : 'clamp(1rem,1.8vw,1.9rem)', color: '#fff',
+                margin: '0 0 0.2rem', lineHeight: 1 }}>{v}</p>
+              <p style={{ fontFamily: 'sans-serif', fontSize: mob ? '5px' : '6.5px', letterSpacing: mob ? '0.12em' : '0.25em',
                 textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
             </div>
           ))}
         </div>
 
         {/* BOTTOM GOLD RULE -- seal straddles it */}
-        <div style={{ position: 'relative', marginTop: '0.75rem', paddingBottom: '3.5rem' }}>
+        {!mob && <div style={{ position: 'relative', marginTop: '0.75rem', paddingBottom: '3.5rem' }}>
           <div style={{ width: '100%', height: '1px',
             background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.25) 15%, rgba(201,169,110,0.25) 85%, transparent)' }} />
           <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', zIndex: 20 }}>
@@ -819,7 +831,7 @@ function Hero({ onInquire }) {
                 imageRendering: 'auto' }}
             />
           </div>
-        </div>
+        </div>}
       </div>
     </section>
   );
