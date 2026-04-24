@@ -23,21 +23,16 @@
     ::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 2px; }
 
     /* SEAMLESS CINEMATIC SCROLL -- one continuous film */
-    * { margin: 0; }
-    section, div[data-section] { margin: 0 !important; padding-top: 0 !important; border: none !important; outline: none !important; }
+    section { margin: 0 !important; border: none !important; outline: none !important; }
 
-    /* Image sections: deep gradient dissolve top + bottom, pull into adjacent sections */
-    .cinematic-section {
-      position: relative;
-      margin-top: -2px !important;
-      margin-bottom: -2px !important;
-    }
+    /* Image sections: gradient dissolve top + bottom into dark */
+    .cinematic-section { position: relative; }
     .cinematic-section::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: clamp(120px, 20vh, 220px);
-      background: linear-gradient(to bottom, #0a0a0a 0%, rgba(10,10,10,0.7) 60%, transparent 100%);
+      height: clamp(80px, 15vh, 140px);
+      background: linear-gradient(to bottom, #0a0a0a 0%, transparent 100%);
       z-index: 4;
       pointer-events: none;
     }
@@ -45,23 +40,19 @@
       content: '';
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      height: clamp(120px, 20vh, 220px);
-      background: linear-gradient(to top, #0a0a0a 0%, rgba(10,10,10,0.7) 60%, transparent 100%);
+      height: clamp(80px, 15vh, 140px);
+      background: linear-gradient(to top, #0a0a0a 0%, transparent 100%);
       z-index: 4;
       pointer-events: none;
     }
 
-    /* Gallery sections -- medium fade */
-    .gallery-section {
-      position: relative;
-      margin-top: -1px !important;
-      margin-bottom: -1px !important;
-    }
+    /* Gallery sections -- softer fade */
+    .gallery-section { position: relative; }
     .gallery-section::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: 80px;
+      height: 60px;
       background: linear-gradient(to bottom, #0a0a0a 0%, transparent 100%);
       z-index: 4;
       pointer-events: none;
@@ -70,17 +61,10 @@
       content: '';
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      height: 80px;
+      height: 60px;
       background: linear-gradient(to top, #0a0a0a 0%, transparent 100%);
       z-index: 4;
       pointer-events: none;
-    }
-
-    /* Dark text sections -- zero top padding, they just continue the dark */
-    .dark-section {
-      background: #0a0a0a !important;
-      padding-top: 0 !important;
-      margin: 0 !important;
     }
   </style>
 </head>
@@ -131,7 +115,7 @@ const ownExt = f => own(f, EXT);
 const I = {
   portico:      ext('fa8cec793_200HollycrestDrive-191.jpg'),
   entry:        pro('082d9b5c7_200Holycrest-1182.jpg'),
-  threshold:    pro('7abb71910_200Holycrest-1179.jpg'),
+  threshold:    own('7abb71910_200Holycrest-1179.jpg'),
   living:       pro('341c7343c_200Holycrest-1203.jpg'),
   wing:         own('0b06bdce9_Winglivingroom.jpg'),
   fireplace:    pro('5f5f87315_200HollycrestDrive-65fire.jpg'),
@@ -1020,7 +1004,7 @@ function GarranHillV6() {
       />
 
       {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: '0 2rem clamp(2.5rem,4vw,3.5rem)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
         
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url($I.whp)`, backgroundSize: 'cover', backgroundPosition: 'center 30%', filter: 'brightness(0.07) saturate(0.4)' }} />
         <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
@@ -1066,7 +1050,7 @@ function GarranHillV6() {
       />
 
       {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: '0 2rem clamp(2.5rem,4vw,3.5rem)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
         
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url($I.img1916)`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.07) saturate(0.4)' }} />
         <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
@@ -1121,7 +1105,7 @@ function GarranHillV6() {
       />
 
       {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: '0 2rem clamp(2.5rem,4vw,3.5rem)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
         
         <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
           <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
@@ -1226,7 +1210,7 @@ function GarranHillV6() {
       </section>
 
       {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: '0 2rem clamp(2.5rem,4vw,3.5rem)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
         
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url($I.iris)`, backgroundSize: 'cover', backgroundPosition: 'center 60%', filter: 'brightness(0.07) saturate(0.4)' }} />
         <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
@@ -1294,7 +1278,7 @@ function GarranHillV6() {
       </section>
 
       {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: '0 2rem clamp(2.5rem,4vw,3.5rem)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
         
         <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
           <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
