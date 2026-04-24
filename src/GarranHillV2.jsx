@@ -138,6 +138,138 @@ function Fade({ children, delay = 0, up = true }) {
   );
 }
 
+/* StaggerGallery -- photos stagger in as cards landing on a table */
+function StaggerGallery({ photos, onOpen }) {
+  if (!photos || !photos.length) return null;
+  const ref   = useRef();
+  const v     = useInView(ref, 0.08);
+  const total = photos.length;
+
+  /* layout: first photo is tall hero, rest are 2-col grid */
+  const hero   = photos[0];
+  const rest   = photos.slice(1);
+
+  return (
+    <div ref={ref} style={{ marginTop: '2.4rem' }}>
+      <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.38em', textTransform: 'uppercase', color: GOLD, opacity: 0.45, margin: '0 0 1rem' }}>
+        {total} {total === 1 ? 'image' : 'images'}
+      </p>
+
+      {/* Hero tile */}
+      <div
+        onClick={() => onOpen(photos, 0)}
+        style={{
+          width: '100%', aspectRatio: '16/9', position: 'relative', overflow: 'hidden', cursor: 'zoom-in', marginBottom: 4,
+          opacity: v ? 1 : 0, transform: v ? 'none' : 'translateY(40px) scale(0.97)',
+          transition: 'opacity 1.1s cubic-bezier(.22,1,.36,1) 0s, transform 1.1s cubic-bezier(.22,1,.36,1) 0s',
+        }}
+      >
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${hero.src})`, backgroundSize: 'cover', backgroundPosition: 'center', transition: 'transform 0.6s ease' }}
+          onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.03)'}
+          onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+        />
+        {total > 1 && (
+          <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0)', transition: 'background .3s' }}
+            onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.12)'}
+            onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0)'}
+          />
+        )}
+        {hero.caption && (
+          <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '2rem 1.2rem 1rem', background: 'linear-gradient(transparent, rgba(0,0,0,0.75))' }}>
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', color: 'rgba(255,255,255,0.7)', fontSize: '0.8rem', margin: 0 }}>{hero.caption}</p>
+          </div>
+        )}
+      </div>
+
+      {/* Rest grid */}
+      {rest.length > 0 && (
+        <div style={{ display: 'grid', gridTemplateColumns: rest.length === 1 ? '1fr' : '1fr 1fr', gap: 4 }}>
+          {rest.map((p, i) => {
+            const delay = 0.12 + i * 0.1;
+            const isLast = i === rest.length - 1;
+            const hiddenCount = total - 4;
+            const showOverlay = isLast && hiddenCount > 0 && i >= 2;
+            return (
+              <div key={i}
+                onClick={() => onOpen(photos, i + 1)}
+                style={{
+                  position: 'relative', aspectRatio: '4/3', overflow: 'hidden', cursor: 'zoom-in',
+                  opacity: v ? 1 : 0, transform: v ? 'none' : `translateY(50px) scale(0.95)`,
+                  transition: `opacity 1s cubic-bezier(.22,1,.36,1) ${delay}s, transform 1s cubic-bezier(.22,1,.36,1) ${delay}s`,
+                }}
+              >
+                <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${p.src})`, backgroundSize: 'cover', backgroundPosition: 'center', transition: 'transform 0.5s ease' }}
+                  onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
+                  onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                />
+                {showOverlay ? (
+                  <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.62)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span style={{ fontFamily: SERIF, fontStyle: 'italic', color: '#fff', fontSize: '1.1rem', letterSpacing: '0.02em' }}>+{hiddenCount + 1} more</span>
+                  </div>
+                ) : (
+                  <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0)', transition: 'background .28s' }}
+                    onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.18)'}
+                    onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0)'}
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* StickyNav -- appears after hero, anchors to sections */
+function StickyNav({ onInquire }) {
+  const [vis, setVis] = useState(false);
+  useEffect(() => {
+    const h = () => setVis(window.scrollY > window.innerHeight * 0.85);
+    window.addEventListener('scroll', h, { passive: true });
+    return () => window.removeEventListener('scroll', h);
+  }, []);
+
+  const links = [
+    { label: 'The Estate',    href: '#estate'      },
+    { label: 'The History',   href: '#history'     },
+    { label: 'The Grounds',   href: '#grounds'     },
+    { label: 'Inquire',       href: null           },
+  ];
+
+  return (
+    <nav style={{
+      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 500,
+      background: 'rgba(10,10,10,0.97)',
+      borderBottom: '1px solid rgba(255,255,255,0.07)',
+      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      padding: '0 clamp(1.5rem,4vw,3.5rem)',
+      height: 54,
+      transform: vis ? 'translateY(0)' : 'translateY(-100%)',
+      transition: 'transform 0.5s cubic-bezier(.22,1,.36,1)',
+      pointerEvents: vis ? 'all' : 'none',
+    }}>
+      <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: '1rem', color: 'rgba(255,255,255,0.88)', letterSpacing: '0.03em' }}>Garran Hill</span>
+      <div style={{ display: 'flex', gap: 'clamp(1.5rem,3vw,3rem)', alignItems: 'center' }}>
+        {links.map(l => l.href ? (
+          <a key={l.label} href={l.href} style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)', textDecoration: 'none', cursor: 'pointer' }}
+            onClick={e => {
+              e.preventDefault();
+              const el = document.querySelector(l.href);
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >{l.label}</a>
+        ) : (
+          <button key={l.label} onClick={onInquire}
+            style={{ background: 'none', border: 'none', borderBottom: `1px solid ${GOLD}`, color: GOLD, padding: '0.15rem 0', fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase', cursor: 'pointer' }}>
+            {l.label}
+          </button>
+        ))}
+      </div>
+    </nav>
+  );
+}
+
 function GoldLine({ center = false }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: center ? 'center' : 'flex-start', margin: '1.6rem 0' }}>
@@ -157,6 +289,68 @@ function Eye({ children, center = false }) {
     }}>
       {children}
     </span>
+  );
+}
+
+/* ============================================================
+   FIRE IGNITION GRID -- fires appear one by one as you scroll in
+============================================================ */
+function FireIgnitionGrid({ fires, onOpen }) {
+  const ref = useRef();
+  const v   = useInView(ref, 0.08);
+  const [hero, ...tiles] = fires;
+
+  return (
+    <div ref={ref} style={{ maxWidth: 1200, margin: '0 auto' }}>
+      {/* Hero fire -- full width */}
+      <div
+        onClick={() => onOpen(0)}
+        style={{
+          position: 'relative', width: '100%', height: 'clamp(300px,40vw,520px)',
+          overflow: 'hidden', cursor: 'zoom-in', marginBottom: 4,
+          opacity: v ? 1 : 0,
+          filter: v ? 'brightness(1)' : 'brightness(0.2)',
+          transform: v ? 'none' : 'scale(0.97)',
+          transition: 'opacity 1.2s cubic-bezier(.22,1,.36,1) 0s, filter 1.4s ease 0s, transform 1.2s cubic-bezier(.22,1,.36,1) 0s',
+        }}
+      >
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${hero.src})`, backgroundSize: 'cover', backgroundPosition: 'center', transition: 'transform 0.55s ease' }}
+          onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
+          onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+        />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%)' }} />
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '2.5rem 2.2rem 2rem' }}>
+          <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.5rem' }}>{hero.label}</p>
+          <p style={{ fontFamily: SERIF, fontStyle: 'italic', color: '#fff', fontSize: '1.1rem', margin: 0 }}>{hero.sub}</p>
+        </div>
+      </div>
+      {/* Tile row -- ignite one by one */}
+      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${tiles.length}, 1fr)`, gap: 4 }}>
+        {tiles.map((f, i) => (
+          <div key={i}
+            onClick={() => onOpen(i + 1)}
+            style={{
+              position: 'relative', height: 'clamp(180px,22vw,320px)',
+              overflow: 'hidden', cursor: 'zoom-in',
+              opacity: v ? 1 : 0,
+              filter: v ? 'brightness(1)' : 'brightness(0.05)',
+              transform: v ? 'none' : 'scale(0.94) translateY(30px)',
+              transition: `opacity 1s cubic-bezier(.22,1,.36,1) ${0.2 + i * 0.18}s, filter 1.3s ease ${0.2 + i * 0.18}s, transform 1s cubic-bezier(.22,1,.36,1) ${0.2 + i * 0.18}s`,
+            }}
+          >
+            <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${f.src})`, backgroundSize: 'cover', backgroundPosition: 'center', transition: 'transform 0.55s ease' }}
+              onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.06)'}
+              onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+            />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.78) 0%, transparent 60%)' }} />
+            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.5rem 1.2rem 1rem' }}>
+              <p style={{ fontFamily: 'sans-serif', fontSize: '6.5px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.3rem' }}>{f.label}</p>
+              <p style={{ fontFamily: SERIF, fontStyle: 'italic', color: 'rgba(255,255,255,0.8)', fontSize: '0.82rem', margin: 0 }}>{f.sub}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -255,12 +449,14 @@ function Lightbox({ photos, idx: startIdx, onClose }) {
 }
 
 /* ============================================================
-   FILM STRIP -- horizontal cinematic scroll
+   FILM STRIP -- horizontal cinematic scroll with stagger entrance
 ============================================================ */
 function FilmStrip({ photos, onOpen, tall = false }) {
   const scrollRef = useRef(null);
+  const wrapRef   = useRef(null);
   const [canLeft,  setCanLeft]  = useState(false);
   const [canRight, setCanRight] = useState(true);
+  const v = useInView(wrapRef, 0.1);
 
   const checkScroll = () => {
     const el = scrollRef.current;
@@ -284,22 +480,34 @@ function FilmStrip({ photos, onOpen, tall = false }) {
   const h = tall ? 'clamp(320px,38vw,540px)' : 'clamp(220px,28vw,400px)';
 
   return (
-    <div style={{ position: 'relative', width: '100%' }}>
+    <div ref={wrapRef} style={{ position: 'relative', width: '100%' }}>
       {canLeft && (
-        <button onClick={() => scroll(-1)} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-60%)', zIndex: 10, background: 'rgba(8,8,8,0.82)', border: `1px solid rgba(255,255,255,0.14)`, color: 'rgba(255,255,255,0.8)', width: 52, height: 52, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.6rem', cursor: 'pointer', backdropFilter: 'blur(8px)' }}>&#8249;</button>
+        <button onClick={() => scroll(-1)} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-60%)', zIndex: 10, background: 'rgba(8,8,8,0.82)', border: `1px solid rgba(255,255,255,0.14)`, color: 'rgba(255,255,255,0.8)', width: 52, height: 52, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.6rem', cursor: 'pointer' }}>&#8249;</button>
       )}
       {canRight && (
-        <button onClick={() => scroll(1)} style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-60%)', zIndex: 10, background: 'rgba(8,8,8,0.82)', border: `1px solid rgba(255,255,255,0.14)`, color: 'rgba(255,255,255,0.8)', width: 52, height: 52, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.6rem', cursor: 'pointer', backdropFilter: 'blur(8px)' }}>&#8250;</button>
+        <button onClick={() => scroll(1)} style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-60%)', zIndex: 10, background: 'rgba(8,8,8,0.82)', border: `1px solid rgba(255,255,255,0.14)`, color: 'rgba(255,255,255,0.8)', width: 52, height: 52, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.6rem', cursor: 'pointer' }}>&#8250;</button>
       )}
       <div ref={scrollRef} style={{ display: 'flex', overflowX: 'auto', scrollSnapType: 'x mandatory', gap: 3, scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
         {photos.map((p, i) => (
           <div key={i} onClick={() => onOpen(photos, i)}
-            style={{ flexShrink: 0, width: 'clamp(260px,36vw,500px)', height: h, scrollSnapAlign: 'start', position: 'relative', backgroundImage: `url(${p.src})`, backgroundSize: 'cover', backgroundPosition: 'center', cursor: 'zoom-in', overflow: 'hidden' }}>
+            style={{
+              flexShrink: 0, width: 'clamp(260px,36vw,500px)', height: h,
+              scrollSnapAlign: 'start', position: 'relative', overflow: 'hidden', cursor: 'zoom-in',
+              opacity: v ? 1 : 0,
+              transform: v ? 'none' : `translateY(60px) scale(0.93)`,
+              transition: `opacity 1s cubic-bezier(.22,1,.36,1) ${i * 0.1}s, transform 1s cubic-bezier(.22,1,.36,1) ${i * 0.1}s`,
+            }}>
+            <div
+              style={{ position: 'absolute', inset: 0, backgroundImage: `url(${p.src})`, backgroundSize: 'cover', backgroundPosition: 'center', transition: 'transform 0.55s ease' }}
+              onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
+              onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+            />
             <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0)', transition: 'background .3s' }}
-              onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.2)'}
-              onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0)'} />
+              onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.16)'}
+              onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0)'}
+            />
             {p.caption && (
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '2rem 1.2rem 1rem', background: 'linear-gradient(transparent, rgba(0,0,0,0.8))' }}>
+              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '2rem 1.2rem 1rem', background: 'linear-gradient(transparent, rgba(0,0,0,0.82))' }}>
                 <p style={{ fontFamily: SERIF, fontStyle: 'italic', color: 'rgba(255,255,255,0.72)', fontSize: '0.78rem', margin: 0, letterSpacing: '0.04em' }}>{p.caption}</p>
               </div>
             )}
@@ -314,6 +522,7 @@ function FilmStrip({ photos, onOpen, tall = false }) {
     </div>
   );
 }
+
 
 /* ============================================================
    MASONRY GALLERY -- Sotheby's editorial grid
@@ -541,7 +750,7 @@ function CinematicReveal({ eyebrow, headline, body, img, flip = false, photos, o
             dangerouslySetInnerHTML={{ __html: headline }} />
           <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.62, lineHeight: 2.15, margin: 0 }}>{body}</p>
           {subBody && <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.85rem,1vw,0.95rem)', color: CREAM, opacity: 0.45, lineHeight: 2, margin: '1rem 0 0' }}>{subBody}</p>}
-          {photos && photos.length > 0 && <MasonryGallery photos={photos} onOpen={onOpen} />}
+          {photos && photos.length > 0 && <StaggerGallery photos={photos} onOpen={onOpen} />}
         </Fade>
       </div>
       {/* image */}
@@ -691,6 +900,7 @@ export default function GarranHillV6() {
 
       {lb       && <Lightbox photos={lb.photos} idx={lb.idx} onClose={() => setLb(null)} />}
       {showInq  && <InquiryModal onClose={() => setShowInq(false)} />}
+      <StickyNav onInquire={() => setShowInq(true)} />
 
       {/* == 01 HERO == */}
       <Hero onInquire={() => setShowInq(true)} />
@@ -722,7 +932,7 @@ export default function GarranHillV6() {
       />
 
       {/* == 03b PINEHURST INTERSTITIAL == */}
-      <div style={{ background: '#040404', padding: 'clamp(3.5rem,7vw,5.5rem) clamp(2rem,12vw,16rem)', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+      <div id="estate" style={{ background: '#040404', padding: 'clamp(3.5rem,7vw,5.5rem) clamp(2rem,12vw,16rem)', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
         <Fade>
           <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(0.95rem,1.4vw,1.18rem)', color: CREAM, opacity: 0.52, lineHeight: 2.1, maxWidth: 720, margin: '0 auto' }}>
             Pinehurst was built by James Walker Tufts in 1895. Garran Hill was built two miles away in 1916. The same hands were working this land.
@@ -832,7 +1042,7 @@ export default function GarranHillV6() {
       />
 
       {/* == 09 WALTER HINES PAGE == */}
-      <section style={{ position: 'relative', minHeight: 'clamp(580px,80vh,920px)', overflow: 'hidden', display: 'flex', alignItems: 'stretch' }}>
+      <section id="history" style={{ position: 'relative', minHeight: 'clamp(580px,80vh,920px)', overflow: 'hidden', display: 'flex', alignItems: 'stretch' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.whp})`, backgroundSize: 'cover', backgroundPosition: 'center top', zIndex: 0 }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(4,4,4,0.97) 0%, rgba(4,4,4,0.88) 40%, rgba(4,4,4,0.38) 65%, transparent 82%)', zIndex: 1 }} />
         <div style={{ position: 'relative', zIndex: 2, width: '100%', display: 'flex', alignItems: 'center' }}>
@@ -927,41 +1137,23 @@ export default function GarranHillV6() {
             </h2>
           </div>
         </Fade>
-        {/* Two fire hero shots */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4, marginBottom: 4, maxWidth: 1200, margin: '0 auto 4px' }}>
-          {[{ src: I.fireplace, label: 'The Drawing Room', sub: 'Fire going, no one home yet.' }, { src: I.firePink, label: 'The Rose Suite', sub: 'The surround is carved plaster. The fire is real.' }].map((f, i) => (
-            <div key={i} onClick={() => openLB(G.fireplaces, i === 0 ? 0 : 1)}
-              style={{ position: 'relative', height: 'clamp(280px,36vw,480px)', backgroundImage: `url(${f.src})`, backgroundSize: 'cover', backgroundPosition: 'center', cursor: 'zoom-in', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 55%)' }} />
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '2rem 1.8rem 1.5rem' }}>
-                <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.4rem' }}>{f.label}</p>
-                <p style={{ fontFamily: SERIF, fontStyle: 'italic', color: '#fff', fontSize: '1rem', margin: 0 }}>{f.sub}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        {/* Five detail strips */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 4, maxWidth: 1200, margin: '0 auto' }}>
-          {[
-            { src: I.fireOrnate,   label: 'Master Wing',   sub: 'Ornate coffered overmantel.' },
-            { src: I.fireYellow,   label: 'Yellow Suite',  sub: 'Wood fire, three windows.' },
-            { src: I.fireDining,   label: 'Dining Room',   sub: 'Shell alcove + fire.' },
-            { src: I.fp4,          label: 'The Red Room',  sub: 'White surround. Gas log.' },
-            { src: I.firePinkWide, label: 'Rose Suite',    sub: 'Four-poster. Fire going.' },
-          ].map((f, i) => (
-            <div key={i} onClick={() => openLB(G.fireplaces, i + 2)}
-              style={{ position: 'relative', height: 'clamp(120px,16vw,200px)', backgroundImage: `url(${f.src})`, backgroundSize: 'cover', backgroundPosition: 'center', cursor: 'zoom-in', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.78) 0%, transparent 60%)' }} />
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1rem 0.9rem 0.7rem' }}>
-                <p style={{ fontFamily: 'sans-serif', fontSize: '6px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.25rem' }}>{f.label}</p>
-                <p style={{ fontFamily: SERIF, fontStyle: 'italic', color: 'rgba(255,255,255,0.72)', fontSize: '0.72rem', margin: 0 }}>{f.sub}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Ignition stagger grid -- fires appear one by one */}
+        {(() => {
+          const fires = [
+            { src: I.fireplace,   label: 'The Drawing Room',   sub: 'Fire going, no one home yet.' },
+            { src: I.firePink,    label: 'The Rose Suite',      sub: 'The surround is carved plaster. The fire is real.' },
+            { src: I.fireYellow,  label: 'The Yellow Suite',    sub: 'Four bedrooms. Each with its own fireplace.' },
+            { src: I.fireDining,  label: 'The Dining Room',     sub: 'Shell alcoves. Original. Still on every wall.' },
+            { src: I.fireOrnate,  label: 'The Master Wing',     sub: 'Every panel drawn from scratch to match a 1916 house.' },
+          ];
+          const ref = React.createRef();
+          return (
+            <FireIgnitionGrid fires={fires} onOpen={(i) => openLB(G.fireplaces, i)} />
+          );
+        })()}
       </section>
 
-      {/* == 12b DOORKNOB MOMENT == */}
+      /* == 12b DOORKNOB MOMENT == */}
       <section style={{ display: 'flex', minHeight: 'clamp(340px,45vh,560px)', background: DARK, overflow: 'hidden' }}>
         <div style={{ flex: '0 0 50%', backgroundImage: `url(${I.doorknob})`, backgroundSize: 'cover', backgroundPosition: 'right center', minHeight: 'clamp(340px,45vh,560px)' }} />
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 'clamp(3rem,6vw,5.5rem) clamp(2.5rem,5vw,5rem)' }}>
@@ -980,7 +1172,7 @@ export default function GarranHillV6() {
 
       {/* == 13 GROUNDS -- ROSE GARDEN == */}
       <FullBleed
-        src={I.roseMoney}
+ id="grounds"        src={I.roseMoney}
         darken={0.35}
         minH="80vh"
         bgPos="center 55%"
