@@ -815,7 +815,7 @@ export default function GarranHillV6() {
         </FadeIn>
       </div>
 
-      {/* 04 DRAWING ROOM */}}
+      {/* 04 DRAWING ROOM */}
       <CinematicReveal flip
         eyebrow="The Drawing Room"
         headline="Fire going, no one home yet.<br/><em style='font-weight:300'>Seven fireplaces. This is one.</em>"
@@ -930,7 +930,7 @@ export default function GarranHillV6() {
         </FadeIn>
       </div>
 
-      {/* 07 STUDY */}}
+      {/* 07 STUDY */}
       <CinematicReveal
         eyebrow="The Study"
         headline="Same panel details<br/><em style='font-weight:300'>as the dining room. Drawn that way.</em>"
@@ -959,7 +959,7 @@ export default function GarranHillV6() {
 
       {/* 08d BETTY DUMAINE INTERSTITIAL -- moved to Grounds section where she belongs */}
 
-      {/* 08c SEVEN FIREPLACES */}}
+      {/* 08c SEVEN FIREPLACES */}
       <section style={{ background: '#060606', padding: 'clamp(5rem,10vw,8rem) clamp(2rem,8vw,10rem)' }}>
         <FadeIn>
           <div style={{ marginBottom: 'clamp(3rem,6vw,5rem)' }}>
