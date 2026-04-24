@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-// build: 20260424005501
+// build: 20260424011951
 
 /* ============================================================
    GARRAN HILL V6 -- MASTER BUILD 2026-04-23
@@ -678,7 +678,6 @@ export default function GarranHillV6() {
     ],
     primary: [
       { src: I.bath,      caption: 'Primary Bath -- Freestanding Tub' },
-        headline="The master suite<br/><em style='font-weight:300'>was a commission, not a renovation.</em>"
     ],
     kitchen: [
       { src: I.kitchen,  caption: 'The Kitchen' },
