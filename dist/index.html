@@ -960,14 +960,17 @@ function GarranHillV6() {
       />
 
       {/* == 03b PINEHURST INTERSTITIAL == */}
-      <div id="estate" style={{ background: '#040404', padding: 'clamp(3.5rem,7vw,5.5rem) clamp(2rem,12vw,16rem)', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-        <Fade>
-          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(0.95rem,1.4vw,1.18rem)', color: CREAM, opacity: 0.52, lineHeight: 2.1, maxWidth: 720, margin: '0 auto' }}>
-            Pinehurst was built by James Walker Tufts in 1895. Garran Hill was built two miles away in 1916. The same hands were working this land.
-          </p>
-        </Fade>
+      <div id="estate" style={{ position: 'relative', overflow: 'hidden', minHeight: 'clamp(280px,35vh,420px)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${ext('0de69e38e_200HollycrestDrive-9.jpg')})`, backgroundSize: 'cover', backgroundPosition: 'center 60%', zIndex: 0 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.82)', zIndex: 1 }} />
+        <div style={{ position: 'relative', zIndex: 2, padding: 'clamp(3.5rem,7vw,5.5rem) clamp(2rem,12vw,16rem)', textAlign: 'center' }}>
+          <Fade>
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(0.95rem,1.4vw,1.18rem)', color: CREAM, opacity: 0.72, lineHeight: 2.1, maxWidth: 720, margin: '0 auto' }}>
+              Pinehurst was built by James Walker Tufts in 1895. Garran Hill was built two miles away in 1916. The same hands were working this land.
+            </p>
+          </Fade>
+        </div>
       </div>
-
       {/* == 04 DRAWING ROOM == */}
       <CinematicReveal flip
         eyebrow="The Drawing Room"
@@ -1000,17 +1003,18 @@ function GarranHillV6() {
         headline="Heart-pine floors.<br/><em style='font-weight:300'>Original to the house.</em>"
         body="The same boards laid in 1916. White cabinetry, three windows, a layout that has not changed because there was no reason to change it."
       />
-      <section style={{ background: '#070707', paddingBottom: 'clamp(3rem,5vw,5rem)' }}>
+      <section style={{ background: '#080808', paddingBottom: 'clamp(3rem,5vw,5rem)', paddingTop: 'clamp(0.5rem,1vw,1rem)' }}>
         <FilmStrip photos={G.kitchen} onOpen={openLB} />
       </section>
 
       {/* == 06b SUNROOM MOMENT == */}
-      <div style={{ background: '#050505', display: 'flex', flexWrap: 'wrap', gap: 3, alignItems: 'stretch', minHeight: 320 }}>
-        <div style={{ flex: '1 1 340px', padding: 'clamp(3rem,6vw,5rem) clamp(2rem,5vw,5rem)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <section style={{ display: 'flex', minHeight: 'clamp(360px,52vh,580px)', overflow: 'hidden' }}>
+        <div style={{ flex: '0 0 55%', backgroundImage: `url(${pro('b8fc16781_200Holycrest-1185.jpg')})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: 320 }} />
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 'clamp(3rem,6vw,5.5rem) clamp(2.5rem,5vw,5rem)', background: '#0a0a0a' }}>
           <Fade>
             <Eye>The Sunroom</Eye>
             <GoldLine />
-            <h3 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(1.8rem,3vw,3.5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.2rem', letterSpacing: '-0.01em' }}>
+            <h3 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,3.5vw,4.5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.2rem', letterSpacing: '-0.012em' }}>
               Light on three sides.<br /><em style={{ fontWeight: 300 }}>Morning through evening.</em>
             </h3>
             <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.58, lineHeight: 2.1, margin: 0 }}>
@@ -1018,14 +1022,7 @@ function GarranHillV6() {
             </p>
           </Fade>
         </div>
-        <div style={{ flex: '1 1 340px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3 }}>
-          {[{ src: I.sunroom, caption: 'The Sunroom' }, { src: I.sunroom2, caption: 'Morning through evening.' }].map((p, i) => (
-            <div key={i} onClick={() => openLB([{ src: I.sunroom, caption: 'The Sunroom' }, { src: I.sunroom2, caption: 'Morning through evening.' }], i)}
-              style={{ backgroundImage: `url(${p.src})`, backgroundSize: 'cover', backgroundPosition: 'center', cursor: 'zoom-in', minHeight: 220 }} />
-          ))}
-        </div>
-      </div>
-
+      </section>
       {/* == 07 LIBRARY == */}
       <CinematicReveal flip
         eyebrow="The Library"
@@ -1155,7 +1152,10 @@ function GarranHillV6() {
       />
 
       {/* == 12 SEVEN FIREPLACES == */}
-      <section style={{ background: '#060606', padding: 'clamp(5rem,9vw,8rem) clamp(2rem,6vw,6rem)' }}>
+      <section style={{ position: 'relative', padding: 'clamp(5rem,9vw,8rem) clamp(2rem,6vw,6rem)', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.fireplace})`, backgroundSize: 'cover', backgroundPosition: 'center', zIndex: 0 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.88)', zIndex: 1 }} />
+        <div style={{ position: 'relative', zIndex: 2 }}>
         <Fade>
           <div style={{ marginBottom: 'clamp(3rem,5vw,4.5rem)', textAlign: 'center' }}>
             <Eye center>The Fireplaces</Eye>
@@ -1275,7 +1275,10 @@ function GarranHillV6() {
       </FullBleed>
 
       {/* == 15 INFRASTRUCTURE == */}
-      <section style={{ background: '#050505', padding: 'clamp(5rem,9vw,8rem) clamp(2rem,8vw,10rem)' }}>
+      <section style={{ position: 'relative', padding: 'clamp(5rem,9vw,8rem) clamp(2rem,8vw,10rem)', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${ownExt('0275eccb6_200HollycrestDrive-225.jpg')})`, backgroundSize: 'cover', backgroundPosition: 'center 40%', zIndex: 0 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.91)', zIndex: 1 }} />
+        <div style={{ position: 'relative', zIndex: 2 }}>
         <Fade>
           <Eye>Infrastructure</Eye>
           <GoldLine />
@@ -1310,11 +1313,14 @@ function GarranHillV6() {
         headline="In 1916, those were saplings.<br/><em style='font-weight:300'>Now they are a forest.</em>"
         body="Walter Hines Page named this estate before the first stone was laid. The house was completed without him. What he started has grown in every direction."
         img={I.img1916}
-        dark
-      />
+             </div>
+      </section>
 
       {/* == 16 FULL GALLERY == */}
-      <section style={{ background: '#040404', padding: 'clamp(5rem,9vw,8rem) clamp(2rem,6vw,6rem)' }}>
+      <section style={{ position: 'relative', padding: 'clamp(5rem,9vw,8rem) clamp(2rem,6vw,6rem)', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.portico})`, backgroundSize: 'cover', backgroundPosition: 'center 25%', zIndex: 0 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.92)', zIndex: 1 }} />
+        <div style={{ position: 'relative', zIndex: 2 }}>
         <Fade>
           <div style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem,5vw,4rem)' }}>
             <Eye center>The Property</Eye>
@@ -1334,6 +1340,7 @@ function GarranHillV6() {
                 onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0)'} />
             </div>
           ))}
+        </div>
         </div>
       </section>
 
@@ -1378,6 +1385,5 @@ function GarranHillV6() {
 // Mount
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(React.createElement(GarranHillV6));
-  </script>
-</body>
-</html>
+  </script        </div>
+      </section>>
