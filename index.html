@@ -805,14 +805,16 @@ function Hero({ onInquire }) {
                 textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
             </div>
           ))}
-          {/* SEAL -- inline in stat bar */}
-          <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 1rem' }}>
+          {/* SEAL -- inline in stat bar, floats on gold rule */}
+          <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 1rem', position: 'relative' }}>
             <img
               src="https://media.base44.com/images/public/69e248a2469cc39540781cce/9e1738072_generated_image.png"
               alt="Garran Hill Seal"
               style={{ width: 'clamp(56px, 5vw, 76px)', height: 'auto',
-                filter: 'drop-shadow(0 0 14px rgba(201,169,110,0.45)) drop-shadow(0 4px 16px rgba(0,0,0,0.9))',
-                opacity: 0.93 }}
+                mixBlendMode: 'lighten',
+                filter: 'drop-shadow(0 0 12px rgba(201,169,110,0.5))',
+                opacity: 0.95,
+                marginTop: '-1.2rem' }}
             />
           </div>
           {[['6,072 sq ft','Living Area'],['4.15 Acres','Land'],['$4,250,000','Offered At']].map(([v,l]) => (
