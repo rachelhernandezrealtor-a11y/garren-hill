@@ -708,39 +708,23 @@ function InquiryModal({ onClose }) {
    HERO
 ============================================================ */
 function Hero({ onInquire }) {
-  const mob = window.innerWidth < 768;
-  const videoRef = useRef();
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (typeof Hls !== 'undefined' && Hls.isSupported()) {
-      const hls = new Hls({ startLevel: 3, autoStartLoad: true });
-      hls.loadSource(GH_VIDEO);
-      hls.attachMedia(v);
-      hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        v.play().catch(() => {});
-      });
-    } else if (v.canPlayType('application/vnd.apple.mpegurl')) {
-      v.src = GH_VIDEO;
-      v.addEventListener('loadedmetadata', () => v.play().catch(() => {}));
-    }
-  }, []);
+  const w   = useW();
+  const mob = w < 768;
 
   return (
     <section style={{ position: 'relative', height: '100vh', minHeight: 680, overflow: 'hidden', background: '#0a0a0a' }}>
-      {/* poster -- fallback while video loads */}
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${GH_POSTER})`, backgroundSize: 'cover', backgroundPosition: 'center 45%', zIndex: 0 }} />
-      {/* HLS video -- driveway approach, slow motion */}
-      <video ref={videoRef} autoPlay muted loop playsInline
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 45%', zIndex: 1, opacity: 0, transition: 'opacity 3s ease' }}
-        onCanPlay={e => { e.target.style.opacity = 1; }}
-        onPlaying={e => { e.target.style.opacity = 1; }}
-      />
+      {/* static hero -- portico with flag, Ken Burns slow scale */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 0,
+        backgroundImage: `url(${GH_POSTER})`,
+        backgroundSize: 'cover', backgroundPosition: 'center 42%',
+        animation: 'kenburns 18s ease-in-out infinite alternate'
+      }} />
       {/* gradient */}
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,10,10,0.22) 0%, rgba(10,10,10,0.08) 40%, rgba(10,10,10,0.55) 78%, rgba(10,10,10,0.92) 100%)', zIndex: 2 }} />
 
       {/* nav */}
-      <nav style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 'clamp(1.4rem,3vw,2.2rem) clamp(1.8rem,4vw,3.5rem)' }}>
+      <nav style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10, display: mob ? 'none' : 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 'clamp(1.4rem,3vw,2.2rem) clamp(1.8rem,4vw,3.5rem)' }}>
         <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: 'clamp(1rem,1.5vw,1.18rem)', color: 'rgba(255,255,255,0.9)', letterSpacing: '0.04em' }}>Garran Hill</span>
         <div style={{ display: 'flex', gap: 'clamp(2rem,3vw,3.5rem)', alignItems: 'center' }}>
           {['The Estate', 'The History', 'The Grounds'].map(l => (
@@ -754,83 +738,110 @@ function Hero({ onInquire }) {
 
 
 
-      {/* TITLE BLOCK -- anchored well above stat bar */}
+      {/* TITLE BLOCK */}
       <div style={{
-        position: 'absolute', bottom: 'clamp(11rem,18vw,15rem)', left: 0, right: 0, zIndex: 10,
-        paddingLeft: 'clamp(2.5rem,6vw,7rem)'
+        position: 'absolute',
+        bottom: mob ? 'clamp(5.5rem,18vw,7.5rem)' : '7.5rem',
+        left: 0, right: 0, zIndex: 10,
+        paddingLeft: mob ? 'clamp(1.2rem,4vw,2rem)' : 'clamp(2.5rem,5vw,5rem)'
       }}>
+        {/* gold address eyebrow */}
         <p style={{
-          fontFamily: 'sans-serif', fontSize: 'clamp(9px,0.9vw,11px)', letterSpacing: '0.42em',
-          textTransform: 'uppercase', color: '#E8C878', margin: '0 0 0.6rem',
-          textShadow: '0 0 18px rgba(232,200,120,0.7), 0 0 40px rgba(232,200,120,0.35), 0 1px 3px rgba(0,0,0,0.8)',
-          opacity: 1, fontWeight: 600
-        }}>200 Hollycrest Drive &nbsp;&nbsp;|&nbsp;&nbsp; Pinehurst, NC &nbsp;&nbsp;|&nbsp;&nbsp; Est. 1916</p>
+          fontFamily: 'sans-serif', fontSize: mob ? '7px' : '10px',
+          letterSpacing: '0.38em', textTransform: 'uppercase',
+          color: '#C9A96E', margin: '0 0 0.5rem', fontWeight: 600,
+          textShadow: '0 1px 6px rgba(0,0,0,0.95)'
+        }}>200 Hollycrest Dr &nbsp;|&nbsp; Pinehurst, NC &nbsp;|&nbsp; Est. 1916</p>
 
-        <h1 style={{
+        {/* GARRAN */}
+        <div style={{
           fontFamily: SCRIPT,
-          fontSize: 'clamp(4.5rem, 7vw, 9rem)',
-          color: '#fff', lineHeight: 0.95, margin: 0,
-          textShadow: '0 3px 48px rgba(0,0,0,0.7), 0 1px 8px rgba(0,0,0,0.6)'
-        }}>Garran Hill</h1>
+          fontSize: mob ? 'clamp(3.8rem,15vw,5.5rem)' : 'clamp(6rem,11vw,13rem)',
+          color: '#fff', lineHeight: 0.92,
+          textShadow: '0 4px 40px rgba(0,0,0,0.8)'
+        }}>Garran</div>
 
-        <div style={{ width: 'clamp(160px,35vw,400px)', height: '1px',
-          background: 'linear-gradient(to right, rgba(201,169,110,0.7), rgba(201,169,110,0.1))',
-          margin: '0.35rem 0 0.45rem' }} />
+        {/* HILL */}
+        <div style={{
+          fontFamily: SCRIPT,
+          fontSize: mob ? 'clamp(3.8rem,15vw,5.5rem)' : 'clamp(6rem,11vw,13rem)',
+          color: '#fff', lineHeight: 0.92,
+          textShadow: '0 4px 40px rgba(0,0,0,0.8)'
+        }}>Hill</div>
 
+        {/* subhead -- breathes below Hill, above gold rule */}
         <p style={{
           fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300,
-          fontSize: 'clamp(0.88rem, 1.05vw, 1rem)',
-          color: 'rgba(255,255,255,0.62)',
-          margin: 0, letterSpacing: '0.04em'
+          fontSize: mob ? '0.7rem' : 'clamp(0.82rem,1vw,0.95rem)',
+          color: 'rgba(255,255,255,0.58)',
+          margin: '0.7rem 0 0', letterSpacing: '0.05em'
         }}>Built in 1915.&nbsp;&nbsp;Neo-Georgian.&nbsp;&nbsp;Moore County, North Carolina.</p>
       </div>
 
-      {/* STAT BAR -- pinned to bottom, compact, seal inside */}
+      {/* STAT BAR -- gold rule top AND bottom, seal floats centered */}
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
-        background: 'linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.92) 60%, transparent 100%)',
-        padding: '0.6rem clamp(1.5rem,4vw,5rem) 0.8rem'
+        background: 'rgba(5,5,5,0.92)', overflow: 'hidden'
       }}>
-        {/* TOP GOLD LINE */}
+        {/* gold rule TOP */}
         <div style={{ width: '100%', height: '1px',
-          background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)',
-          marginBottom: '0.6rem' }} />
+          background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.7) 15%, rgba(201,169,110,0.7) 85%, transparent)' }} />
 
-        {/* STATS ROW */}
-        <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
-          {[['1916','Est.'],['4','Bedrooms'],['6','Bathrooms'],['6,072 sq ft','Living Area'],['4.15 Acres','Land'],['$4,250,000','Offered At']].map(([v,l]) => (
-            <div key={l} style={{ textAlign: 'center', flex: 1 }}>
-              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
-                fontSize: 'clamp(1rem,1.8vw,1.9rem)', color: '#fff',
-                margin: '0 0 0.2rem', lineHeight: 1 }}>{v}</p>
-              <p style={{ fontFamily: 'sans-serif', fontSize: '6.5px', letterSpacing: '0.25em',
-                textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
-            </div>
-          ))}
-        </div>
+        {/* Stats row */}
+        <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center',
+          padding: mob ? '0.6rem 0.5rem' : '0.65rem clamp(1rem,3vw,4rem)' }}>
 
-        {/* BOTTOM GOLD LINE with seal hanging below center */}
-        <div style={{ position: 'relative', marginTop: '0.6rem', height: '1px' }}>
-          <div style={{ width: '100%', height: '1px',
-            background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)' }} />
-          {/* SEAL centered below the line */}
-          <div style={{ position: 'absolute', left: '50%', top: '-30px', transform: 'translateX(-50%)',
-            width: '70px', height: '60px', background: '#0a0a0a', borderRadius: '40%',
-            display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          {['1916|Est.','4|Bedrooms','6|Bathrooms'].map(s => {
+            const [v,l] = s.split('|');
+            return (
+              <div key={l} style={{ textAlign: 'center', flex: 1 }}>
+                <p style={{ fontFamily: SERIF, fontWeight: 300,
+                  fontSize: mob ? 'clamp(0.7rem,3.5vw,1.1rem)' : 'clamp(1.1rem,1.8vw,1.9rem)', color: '#fff',
+                  margin: '0 0 0.12rem', lineHeight: 1 }}>{v}</p>
+                <p style={{ fontFamily: 'sans-serif', fontSize: mob ? '5px' : '6.5px', letterSpacing: '0.22em',
+                  textTransform: 'uppercase', color: 'rgba(201,169,110,0.65)', margin: 0 }}>{l}</p>
+              </div>
+            );
+          })}
+
+          {/* SEAL -- contained within stat bar, centered vertically */}
+          <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center',
+            position: 'relative', padding: '0 0.8rem' }}>
             <img
-              src="https://res.cloudinary.com/dghn2xpif/image/fetch/e_background_removal/f_png/q_auto/w_300/https://media.base44.com/images/public/69e248a2469cc39540781cce/2ff419b0b_200HollycrestDrive-10.jpg"
-              alt="Garran Hill Crest"
-              style={{ width: '64px', height: 'auto',
-                filter: 'drop-shadow(0 2px 8px rgba(201,169,110,0.5))',
-                opacity: 1 }}
-            />
+              src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/2e35b9077_crest_wax.png"
+              alt="Garran Hill Seal"
+              style={{
+                width: mob ? 'clamp(50px,10vw,65px)' : 'clamp(60px,5vw,75px)',
+                height: 'auto', display: 'block',
+                filter: 'drop-shadow(0 4px 16px rgba(0,0,0,0.95))'
+              }} />
           </div>
+
+          {['6,072 sq ft|Living Area','4.15 Acres|Land','$4,250,000|Offered At'].map(s => {
+            const [v,l] = s.split('|');
+            return (
+              <div key={l} style={{ textAlign: 'center', flex: 1 }}>
+                <p style={{ fontFamily: SERIF, fontWeight: 300,
+                  fontSize: mob ? 'clamp(0.7rem,3.5vw,1.1rem)' : 'clamp(1.1rem,1.8vw,1.9rem)', color: '#fff',
+                  margin: '0 0 0.12rem', lineHeight: 1 }}>{v}</p>
+                <p style={{ fontFamily: 'sans-serif', fontSize: mob ? '5px' : '6.5px', letterSpacing: '0.22em',
+                  textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
+              </div>
+            );
+          })}
         </div>
-        <div style={{ height: '2.2rem' }} /> {/* spacer so seal doesn't clip bottom */}
+
+        {/* gold rule BOTTOM */}
+        <div style={{ width: '100%', height: '1px',
+          background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.7) 15%, rgba(201,169,110,0.7) 85%, transparent)' }} />
       </div>
     </section>
   );
 }
+
+/* ============================================================
+   FULL BLEED PANEL -- parallax bg, text centered or left
+============================================================ */
 
 /* ============================================================
    FULL BLEED PANEL -- parallax bg, text centered or left
