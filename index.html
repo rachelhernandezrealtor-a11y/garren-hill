@@ -708,6 +708,7 @@ function InquiryModal({ onClose }) {
    HERO
 ============================================================ */
 function Hero({ onInquire }) {
+  const mob = window.innerWidth < 768;
   const videoRef = useRef();
   useEffect(() => {
     const v = videoRef.current;
