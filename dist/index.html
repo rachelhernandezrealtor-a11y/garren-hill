@@ -818,15 +818,14 @@ function Hero({ onInquire }) {
             );
           })}
 
-          {/* SEAL -- sits centered ON the bottom gold rule */}
+          {/* SEAL -- contained within stat bar, centered vertically */}
           <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            position: 'relative', padding: '0 0.6rem',
-            marginBottom: mob ? '-4rem' : '-5.5rem' }}>
+            position: 'relative', padding: '0 0.8rem' }}>
             <img
               src="https://media.base44.com/images/public/69e248a2469cc39540781cce/c38a41cd2_crest_v2.png"
               alt="Garran Hill Seal"
               style={{
-                width: mob ? 'clamp(100px,20vw,130px)' : 'clamp(180px,14vw,220px)',
+                width: mob ? 'clamp(60px,12vw,80px)' : 'clamp(80px,6vw,100px)',
                 height: 'auto', display: 'block',
                 filter: 'drop-shadow(0 4px 16px rgba(0,0,0,0.95))'
               }} />
