@@ -118,7 +118,7 @@ const ownExt = f => own(f, EXT);
 
 const I = {
   manorWide:    'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f0c9f09ef_gh_222_manor.jpg',
-  portico:      ext('71d1db961_up13.jpg'),
+  portico:      ownExt('20c972936_53B8155B-B804-4757-9B19-BF224F341BD0_4_5005_c.jpeg'),
   porticoTight: ownExt('20c972936_53B8155B-B804-4757-9B19-BF224F341BD0_4_5005_c.jpeg'),
   thresholdStone: ownExt('f9bd3a548_0DD31059-1694-42A4-83B6-225005E07494_1_102_o.jpg'),
   entry:        'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/376629f56_fix_entry.jpg',
@@ -141,21 +141,21 @@ const I = {
   kitchen3:     own('364c36c60_gh_200HollycrestDrive-41.jpg'),
   kitchen4:     own('2a25a2db3_gh_200HollycrestDrive-43.jpg'),
   kitchen5:     own('dc5868d03_gh_200HollycrestDrive-44.jpg'),
-  masterBed:    own('b6dd004e7_up3.jpg'),
+  masterBed:    own('d63e570fd_up11.jpg'),
   masterBed2:   own('d63e570fd_up11.jpg'),
   masterBed3:   own('bd1d5d147_up7.jpg'),
   masterBedBath: own('0f98e18b8_up10.jpg'),
   masterBedBath2: own('aa37219f4_up4.jpg'),
   masterBedBath3: own('c60b07c06_up9.jpg'),
-  masterBedCloset: own('f44ef0935_PrimarySuiteClosetSafe.jpg'),
+  masterBedCloset: own('0f98e18b8_up10.jpg'),
   bed2:         'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f747204e7_b5094de64_bed2.jpg',
   bed2b:        'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/656b97c53_8f5060238_bed2b.jpg',
   dressing:     own('f20c8cf4b_gh_200HollycrestDrive-81.jpg'),
   dressing2:    own('ce8ebff43_gh_200HollycrestDrive-83.jpg'),
   sunroom:      own('9275959cc_200Holycrest-1617.jpg'),
   sunroom2:     own('1c548e6ac_gh_200HollycrestDrive-72.jpg'),
-  porch:        own('770cc5e33_gh_200HollycrestDrive-151.jpg'),
-  sitting:      own('07dd22757_SITTINGROOMGUESTSUITE.jpg'),
+  porch:        own('a851234be_21AprAzaleasbackyardundermagnolialongline.jpg'),
+  sitting:      own('ce8ebff43_gh_200HollycrestDrive-83.jpg'),
   dining:       'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/5fdf42a3e_diningA.jpg',
   dining2:      'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/9de520d62_diningB.jpg',
   dining3:      'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/c124219a0_diningC.jpg',
@@ -174,12 +174,12 @@ const I = {
   iris:         ownExt('df7677353_up2.jpg'),
   azalea:       own('a851234be_21AprAzaleasbackyardundermagnolialongline.jpg'),
   poolWall:     own('e171592ba_up12.jpg'),
-  pool:         ext('3be937915_up6.jpg'),
-  aerial:       ext('12f2e7091_200HollycrestDrive-214.jpg'),
-  dusk2:        ext('0de69e38e_200HollycrestDrive-9.jpg'),
+  pool:         own('1c548e6ac_gh_200HollycrestDrive-72.jpg'),
+  aerial:       'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f0c9f09ef_gh_222_manor.jpg',
+  dusk2:        'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f0c9f09ef_gh_222_manor.jpg',
   twilight:     'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/70e262eac_up1.jpg',
   crest:        'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/98283beef_seal_3d_final.png',
-  bluefox:      own('75a1922cd_200HollycrestDrive-192.jpg'),
+  bluefox:      own('ee869bbb3_BDumainewToddyHunter1970s.jpg'),
   archDrawing:  `${CDN}f_auto,q_auto,w_1200/${B}4e275b5d5_IMG_4319.jpg`,
 };
 
@@ -894,8 +894,8 @@ function CinematicReveal({ eyebrow, headline, body, img, flip = false, photos, o
           {eyebrow && <GoldLine />}
           <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.2rem,4vw,5.5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.6rem', letterSpacing: '-0.012em' }}
             dangerouslySetInnerHTML={{ __html: headline }} />
-          <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.62, lineHeight: 2.15, margin: 0 }}>{body}</p>
-          {subBody && <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.85rem,1vw,0.95rem)', color: CREAM, opacity: 0.45, lineHeight: 2, margin: '1rem 0 0' }}>{subBody}</p>}
+          <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.78, lineHeight: 1.85, margin: 0 }}>{body}</p>
+          {subBody && <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.85rem,1vw,0.95rem)', color: CREAM, opacity: 0.65, lineHeight: 1.85, margin: '1rem 0 0' }}>{subBody}</p>}
           {photos && photos.length > 0 && <StaggerGallery photos={photos} onOpen={onOpen} />}
         </Fade>
       </div>
@@ -1069,7 +1069,7 @@ function GarranHillV6() {
         </Fade>
       </section>
 
-      {/* == 02b ESTATE WIDE == */}}
+      {/* == 02b ESTATE WIDE == */}
       <FullBleed
         src={I.manorWide}
         eyebrow="200 Hollycrest Drive -- Pinehurst, NC -- Est. 1916"
