@@ -68,6 +68,34 @@
       z-index: 4;
       pointer-events: none;
     }
+
+    /* ============================================================
+       MOBILE RESPONSIVE
+    ============================================================ */
+    @media (max-width: 768px) {
+      /* CinematicReveal: stack vertically -- photo top, text below */
+      .cinematic-reveal {
+        flex-direction: column !important;
+      }
+      .cinematic-reveal > div:first-child {
+        flex: none !important;
+        width: 100% !important;
+        padding: 2.5rem 1.5rem !important;
+        background: #0a0a0a !important;
+      }
+      .cinematic-reveal > div:last-child {
+        flex: none !important;
+        width: 100% !important;
+        min-height: 60vw !important;
+        order: -1;
+      }
+      /* Stat bar wrap */
+      .stat-bar { flex-wrap: wrap; gap: 0.5rem 1.5rem; padding: 1.2rem 1rem !important; }
+      .stat-bar > div { flex: 0 0 40%; }
+    }
+    @media (max-width: 480px) {
+      .cinematic-reveal > div:last-child { min-height: 72vw !important; }
+    }
   </style>
 </head>
 <body>
@@ -386,9 +414,9 @@ function GoldLine({ center = false }) {
 function Eye({ children, center = false }) {
   return (
     <span style={{
-      display: 'block', fontFamily: 'sans-serif', fontSize: '8px',
+      display: 'block', fontFamily: 'sans-serif', fontSize: 'clamp(7px,0.9vw,9px)',
       letterSpacing: '0.38em', textTransform: 'uppercase', color: GOLD,
-      marginBottom: '1.4rem', textAlign: center ? 'center' : 'left',
+      marginBottom: '1.2rem', textAlign: center ? 'center' : 'left',
     }}>
       {children}
     </span>
@@ -740,7 +768,7 @@ function Hero({ onInquire }) {
 
       {/* nav */}
       <nav style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10, display: mob ? 'none' : 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 'clamp(1.4rem,3vw,2.2rem) clamp(1.8rem,4vw,3.5rem)' }}>
-        <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: 'clamp(1rem,1.5vw,1.18rem)', color: 'rgba(255,255,255,0.9)', letterSpacing: '0.04em' }}>Garran Hill</span>
+        <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: 'clamp(1rem,1.8vw,1.18rem)', color: 'rgba(255,255,255,0.9)', letterSpacing: '0.04em' }}>Garran Hill</span>
         <div style={{ display: 'flex', gap: 'clamp(2rem,3vw,3.5rem)', alignItems: 'center' }}>
           {['The Estate', 'The History', 'The Grounds'].map(l => (
             <span key={l} style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', cursor: 'default' }}>{l}</span>
@@ -868,11 +896,11 @@ function FullBleed({ src, eyebrow, headline, sub, body, align = 'center', darken
           {eyebrow && <Eye center={align === 'center'}>{eyebrow}</Eye>}
           {eyebrow && <GoldLine center={align === 'center'} />}
           {headline && (
-            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.8rem,5.5vw,7rem)', color: '#fff', lineHeight: 1.08, margin: '0 0 1.6rem', letterSpacing: '-0.012em' }}
+            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.4rem,5vw,6.5rem)', color: '#fff', lineHeight: 1.08, margin: '0 0 1.6rem', letterSpacing: '-0.012em' }}
               dangerouslySetInnerHTML={{ __html: headline }} />
           )}
-          {sub && <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.5vw,1.3rem)', color: CREAM, opacity: 0.72, lineHeight: 1.8, margin: '0 0 1.4rem' }}>{sub}</p>}
-          {body && <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.6, lineHeight: 2.1, margin: 0 }}>{body}</p>}
+          {sub && <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.8vw,1.3rem)', color: CREAM, opacity: 0.82, lineHeight: 1.75, margin: '0 0 1.2rem' }}>{sub}</p>}
+          {body && <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.92rem,1.3vw,1rem)', color: CREAM, opacity: 0.78, lineHeight: 1.85, margin: 0 }}>{body}</p>}
           {children}
         </Fade>
       </div>
@@ -885,23 +913,40 @@ function FullBleed({ src, eyebrow, headline, sub, body, align = 'center', darken
 ============================================================ */
 function CinematicReveal({ eyebrow, headline, body, img, flip = false, photos, onOpen, dark = false, subBody, bgSize = 'cover', bgPos = 'center' }) {
   const bgRef = useParallax(0.12);
+  const isFlip = flip;
   return (
-    <section className="gallery-section" style={{ display: 'flex', flexDirection: flip ? 'row-reverse' : 'row', minHeight: 'clamp(520px,68vh,820px)', background: DARK, overflow: 'hidden', margin: 0 }}>
-      {/* text */}
-      <div style={{ flex: '0 0 clamp(320px,42%,560px)', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 'clamp(3.5rem,6vw,6rem) clamp(2.5rem,5vw,5rem)' }}>
+    <section className="gallery-section cinematic-reveal" style={{ display: 'flex', flexDirection: flip ? 'row-reverse' : 'row', minHeight: 'clamp(480px,65vh,800px)', background: DARK, overflow: 'hidden', margin: 0 }}>
+      {/* text panel -- atmosphere gradient bleeds toward photo */}
+      <div style={{
+        flex: '0 0 clamp(300px,40%,520px)',
+        display: 'flex', flexDirection: 'column', justifyContent: 'center',
+        padding: 'clamp(3rem,5vw,5rem) clamp(2.5rem,5vw,5rem)',
+        position: 'relative', zIndex: 2,
+        background: isFlip
+          ? 'linear-gradient(to left, #0a0a0a 60%, rgba(10,10,10,0.92) 100%)'
+          : 'linear-gradient(to right, #0a0a0a 60%, rgba(10,10,10,0.92) 100%)',
+      }}>
         <Fade>
           {eyebrow && <Eye>{eyebrow}</Eye>}
           {eyebrow && <GoldLine />}
-          <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.2rem,4vw,5.5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.6rem', letterSpacing: '-0.012em' }}
+          <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,3.8vw,5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.4rem', letterSpacing: '-0.012em' }}
             dangerouslySetInnerHTML={{ __html: headline }} />
-          <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.78, lineHeight: 1.85, margin: 0 }}>{body}</p>
-          {subBody && <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.85rem,1vw,0.95rem)', color: CREAM, opacity: 0.65, lineHeight: 1.85, margin: '1rem 0 0' }}>{subBody}</p>}
+          <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.35vw,1.05rem)', color: CREAM, opacity: 0.82, lineHeight: 1.8, margin: 0, maxWidth: 420 }}>{body}</p>
+          {subBody && <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,0.97rem)', color: CREAM, opacity: 0.65, lineHeight: 1.75, margin: '1rem 0 0', maxWidth: 400 }}>{subBody}</p>}
           {photos && photos.length > 0 && <StaggerGallery photos={photos} onOpen={onOpen} />}
         </Fade>
       </div>
-      {/* image */}
-      <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${img})`, backgroundSize: bgSize, backgroundPosition: bgPos, background: bgSize === 'contain' ? DARK : undefined }} />
+      {/* image panel */}
+      <div style={{ flex: 1, position: 'relative', overflow: 'hidden', minHeight: 'clamp(320px,55vh,700px)' }}>
+        <div ref={bgRef} style={{ position: 'absolute', inset: '-8% 0', backgroundImage: `url(${img})`, backgroundSize: bgSize, backgroundPosition: bgPos }} />
+        {/* edge bleed -- photo side fades toward text panel */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 2,
+          background: isFlip
+            ? 'linear-gradient(to right, transparent 65%, rgba(10,10,10,0.55) 100%)'
+            : 'linear-gradient(to left, transparent 65%, rgba(10,10,10,0.55) 100%)',
+          pointerEvents: 'none'
+        }} />
       </div>
     </section>
   );
@@ -921,7 +966,7 @@ function PullQuote({ quote, attr, bg }) {
       <div style={{ position: 'relative', zIndex: 2 }}>
         <Fade>
           <GoldLine center />
-          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem,3.2vw,3.5rem)', color: '#fff', lineHeight: 1.45, margin: '1.5rem auto', maxWidth: 860, letterSpacing: '-0.01em' }}>
+          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem,3.5vw,3.5rem)', color: '#fff', lineHeight: 1.45, margin: '1.5rem auto', maxWidth: 860, letterSpacing: '-0.01em' }}>
             "{quote}"
           </p>
           <GoldLine center />
@@ -940,7 +985,7 @@ function Footer({ onInquire }) {
     <footer id="inquiry-anchor" style={{ background: '#0a0a0a', borderTop: '1px solid rgba(255,255,255,0.06)', padding: 'clamp(4rem,8vw,7rem) clamp(2rem,8vw,10rem)', textAlign: 'center' }}>
       <Fade>
         <img src={I.crest} alt="Garran Hill" style={{ height: 70, opacity: 0.85, display: 'block', margin: '0 auto 2rem' }} />
-        <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.5vw,1.2rem)', color: CREAM, opacity: 0.55, marginBottom: '0.4rem' }}>200 Hollycrest Drive &nbsp;&bull;&nbsp; Pinehurst, NC 28374 &nbsp;&bull;&nbsp; Est. 1916</p>
+        <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.8vw,1.2rem)', color: CREAM, opacity: 0.55, marginBottom: '0.4rem' }}>200 Hollycrest Drive &nbsp;&bull;&nbsp; Pinehurst, NC 28374 &nbsp;&bull;&nbsp; Est. 1916</p>
         <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)', marginBottom: '2.5rem' }}>Represented exclusively by</p>
         <p style={{ fontFamily: SERIF, fontWeight: 500, fontSize: 'clamp(1.1rem,1.8vw,1.4rem)', color: '#fff', margin: '0 0 0.3rem' }}>Rachel Hernandez</p>
         <p style={{ fontFamily: 'sans-serif', fontSize: '7.5px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, opacity: 0.75, margin: '0 0 2.5rem' }}>Sotheby's International Realty</p>
@@ -1056,7 +1101,7 @@ function GarranHillV6() {
 
 
       {/* == 02 MANIFESTO == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(6rem,11vh,9rem) clamp(2rem,14vw,18rem)', textAlign: 'center', margin: 0 }}>
+      <section style={{ background: '#0a0a0a', padding: 'clamp(3.5rem,6vh,5.5rem) clamp(2rem,14vw,18rem)', textAlign: 'center', margin: 0 }}>
         <Fade>
           <Eye center>200 Hollycrest Drive -- Pinehurst, NC -- Est. 1916</Eye>
           <GoldLine center />
@@ -1112,7 +1157,7 @@ function GarranHillV6() {
             <div style={{ position: 'absolute', bottom: 'clamp(2.5rem,5vh,4rem)', left: 'clamp(2rem,5vw,4rem)', right: 'clamp(2rem,5vw,4rem)' }}>
               <p style={{ fontFamily: 'Georgia, serif', fontSize: 'clamp(0.65rem,1vw,0.78rem)', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#C9A96E', margin: '0 0 0.75rem' }}>The Foyer</p>
               <div style={{ width: 32, height: 1, background: 'rgba(201,169,110,0.6)', marginBottom: 'clamp(1rem,2.5vh,1.75rem)' }} />
-              <h2 style={{ fontFamily: 'Georgia, serif', fontSize: 'clamp(1.6rem,3.2vw,3rem)', fontWeight: 400, color: '#fff', margin: '0 0 clamp(1rem,2vh,1.5rem)', lineHeight: 1.2 }}>
+              <h2 style={{ fontFamily: 'Georgia, serif', fontSize: 'clamp(1.6rem,3.5vw,3rem)', fontWeight: 400, color: '#fff', margin: '0 0 clamp(1rem,2vh,1.5rem)', lineHeight: 1.2 }}>
                 The central axis runs straight through.<br/>
                 <em style={{ fontWeight: 300 }}>Visible the instant the door opens.</em>
               </h2>
@@ -1125,7 +1170,7 @@ function GarranHillV6() {
       </section>
 
       {/* == WHP QUOTE -- floats free on dark == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(6rem,12vh,10rem) clamp(2rem,10vw,12rem)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 0 }}>
+      <section style={{ background: '#0a0a0a', padding: 'clamp(3.5rem,6vh,5.5rem) clamp(2rem,10vw,12rem)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 0 }}>
         <div style={{ textAlign: 'center', maxWidth: 760 }}>
           <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.7)', margin: '0 auto clamp(2.5rem,5vh,4rem)' }} />
           <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(2rem,4vw,4.5rem)', color: '#fff', margin: 0, lineHeight: 1.35, letterSpacing: '-0.01em' }}>
@@ -1173,7 +1218,7 @@ function GarranHillV6() {
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(to top, #0a0a0a 0%, transparent 100%)', zIndex: 2 }} />
         <div style={{ position: 'relative', zIndex: 3, padding: 'clamp(2rem,4vw,4rem) clamp(2rem,12vw,16rem)', textAlign: 'center' }}>
           <Fade>
-            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.5vw,1.25rem)', color: CREAM, opacity: 0.8, lineHeight: 2.1, maxWidth: 680, margin: '0 auto' }}>
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.8vw,1.25rem)', color: CREAM, opacity: 0.8, lineHeight: 2.1, maxWidth: 680, margin: '0 auto' }}>
               Pinehurst was built by James Walker Tufts in 1895. Garran Hill was built two miles away in 1916. The same hands were working this land.
             </p>
           </Fade>
@@ -1193,7 +1238,7 @@ function GarranHillV6() {
       />
 
       {/* == 09b POWDER ROOM MOMENT -- dark interstitial == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(5rem,9vh,8rem) clamp(2rem,14vw,18rem)', textAlign: 'center' }}>
+      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vh,5rem) clamp(2rem,14vw,18rem)', textAlign: 'center' }}>
         <Fade>
           <Eye center>The Powder Room</Eye>
           <GoldLine center />
@@ -1261,7 +1306,7 @@ function GarranHillV6() {
             <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,1.1rem)', color: CREAM, opacity: 0.72, lineHeight: 2.15, margin: '0 0 1.4rem' }}>
               From London he wrote about the farm constantly. The farm -- the farm -- the farm. He died in Pinehurst in December 1918. He was carried off the train at Aberdeen. His last words: "Well, Frank, I did get here after all, didn't I?"
             </p>
-            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.4vw,1.2rem)', color: '#fff', opacity: 0.85, lineHeight: 1.8, margin: 0, maxWidth: 560 }}>
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.7vw,1.2rem)', color: '#fff', opacity: 0.85, lineHeight: 1.8, margin: 0, maxWidth: 560 }}>
               Westminster Abbey named him "The friend of Britain in her sorest need." The house he never slept in has outlasted everything.
             </p>
           </Fade>
@@ -1287,7 +1332,7 @@ function GarranHillV6() {
             <h3 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,3.5vw,4.5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.2rem', letterSpacing: '-0.012em' }}>
               Soaking tub.<br/><em style={{ fontWeight: 300 }}>Separate shower. Jacuzzi.</em>
             </h3>
-            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.55, lineHeight: 2.1, margin: 0 }}>
+            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.92rem,1.3vw,1rem)', color: CREAM, opacity: 0.55, lineHeight: 2.1, margin: 0 }}>
               Designed as a room. The proportions specified in the 2000 drawings -- not selected from a catalog. Two additional bedrooms also have whirlpool tubs. The house was built for people who intend to stay.
             </p>
           </Fade>
@@ -1306,13 +1351,13 @@ function GarranHillV6() {
       />
 
       {/* == 15 SEVEN FIREPLACES == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(5rem,8vw,7rem) clamp(2rem,6vw,5rem)' }}>
+      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,5rem) clamp(2rem,6vw,5rem)' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <Fade>
             <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'normal', fontWeight: 300, fontSize: 'clamp(4rem,10vw,12rem)', color: 'rgba(201,169,110,0.12)', lineHeight: 1, margin: '0 0 0.2rem', letterSpacing: '-0.02em', textAlign: 'left' }}>7</p>
             <Eye>Seven Fireplaces</Eye>
             <GoldLine />
-            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,1.05rem)', color: CREAM, opacity: 0.62, lineHeight: 2.1, maxWidth: 680, margin: '0 0 3.5rem' }}>
+            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.3vw,1.05rem)', color: CREAM, opacity: 0.62, lineHeight: 2.1, maxWidth: 680, margin: '0 0 3.5rem' }}>
               Every one original. Every one working. Six fitted with gas logs. The seventh -- the Drawing Room -- burns wood. The mantels were specified individually. No two are the same.
             </p>
           </Fade>
@@ -1344,7 +1389,7 @@ function GarranHillV6() {
               <h3 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.4rem,4vw,5.5rem)', color: '#fff', lineHeight: 1.05, margin: '0 0 1.8rem', letterSpacing: '-0.015em' }}>
                 Brass. Original.<br/><em style={{ fontWeight: 300, color: CREAM }}>Still on every door.</em>
               </h3>
-              <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1.05rem)', color: CREAM, opacity: 0.6, lineHeight: 2.2, margin: 0 }}>
+              <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.92rem,1.35vw,1.05rem)', color: CREAM, opacity: 0.6, lineHeight: 2.2, margin: 0 }}>
                 The key plates, the keys, the hinges -- specified in 1916, never replaced. You can feel the weight of them.
               </p>
             </Fade>
@@ -1419,17 +1464,17 @@ function GarranHillV6() {
         <div style={{ textAlign: 'center' }}>
           <Eye center>Blue Fox -- My Irish Hunter -- 1946 to 1969</Eye>
           <GoldLine center />
-          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem,3vw,3.2rem)', color: '#fff', lineHeight: 1.45, margin: '0 auto 1.4rem', maxWidth: 680, letterSpacing: '-0.01em' }}>
+          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem,3.4vw,3.2rem)', color: '#fff', lineHeight: 1.45, margin: '0 auto 1.4rem', maxWidth: 680, letterSpacing: '-0.01em' }}>
             Betty Dumaine put the first flowers here.<br/>Someone still does.
           </p>
-          <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.55, lineHeight: 2, maxWidth: 500, margin: '0 auto' }}>
+          <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.92rem,1.3vw,1rem)', color: CREAM, opacity: 0.55, lineHeight: 2, maxWidth: 500, margin: '0 auto' }}>
             Betty Dumaine's horse. Buried on the grounds she kept for twenty years. The stone has not moved since 1969.
           </p>
         </div>
       </FullBleed>
 
       {/* == 19 INFRASTRUCTURE == */}
-      <section style={{ position: 'relative', padding: 'clamp(5rem,9vw,8rem) clamp(2rem,8vw,10rem)', overflow: 'hidden' }}>
+      <section style={{ position: 'relative', padding: 'clamp(3rem,5vw,5rem) clamp(2rem,8vw,10rem)', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${ownExt('70e262eac_up1.jpg')})`, backgroundSize: 'cover', backgroundPosition: 'center 40%', zIndex: 0 }} />
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.91)', zIndex: 1 }} />
         <div style={{ position: 'relative', zIndex: 2 }}>
@@ -1454,7 +1499,7 @@ function GarranHillV6() {
               <Fade key={i}>
                 <div style={{ borderTop: '1px solid rgba(201,169,110,0.22)', paddingTop: 'clamp(1.2rem,2vw,1.6rem)' }}>
                   <p style={{ fontFamily: 'sans-serif', fontSize: '7.5px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.7rem' }}>{item.label}</p>
-                  <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1vw,0.98rem)', color: CREAM, opacity: 0.58, lineHeight: 1.9, margin: 0 }}>{item.body}</p>
+                  <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,0.98rem)', color: CREAM, opacity: 0.58, lineHeight: 1.9, margin: 0 }}>{item.body}</p>
                 </div>
               </Fade>
             ))}
@@ -1476,7 +1521,7 @@ function GarranHillV6() {
         <Fade>
           <Eye center>The Full Estate</Eye>
           <GoldLine center />
-          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.5vw,1.3rem)', color: CREAM, opacity: 0.5, textAlign: 'center', margin: '0 auto 3rem', maxWidth: 560 }}>
+          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.8vw,1.3rem)', color: CREAM, opacity: 0.5, textAlign: 'center', margin: '0 auto 3rem', maxWidth: 560 }}>
             Every room. Every detail. Every corner of 4.15 acres.
           </p>
         </Fade>
