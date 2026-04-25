@@ -1128,7 +1128,7 @@ function GarranHillV6() {
       <CinematicReveal
         eyebrow="The Entry Hall"
         headline="The house announces itself<br/><em style='font-weight:300'>the moment you cross the threshold.</em>"
-        body="GARRAN HILL 1916 -- laid in herringbone brick at the threshold. Specified on the drawings before a single brick was placed. The original leaded glass fanlight. Original wide-plank oak floors. Hallway casing so precise it reads as furniture. The central hall axis runs straight through to the library bookcases -- visible the instant the door opens. Closets behind every wall that looks solid. Doors that disappear."
+        body="GARRAN HILL 1916 -- laid in herringbone brick at the threshold. Specified on the drawings before a single brick was placed. The original leaded glass fanlight arches over the front door exactly as it did in 1916. Brass and porcelain chandelier. Wide-plank oak floors. A carved mahogany demilune console, a Persian runner, and through the arched doorway ahead -- the chinoiserie wallpaper of the powder room is visible before you have taken three steps inside. The house reveals itself slowly. It starts here."
         img={I.leadedGlass}
         photos={G.arrival}
         onOpen={openLB}
@@ -1183,6 +1183,22 @@ function GarranHillV6() {
         </div>
       </div>
 
+
+      {/* == POWDER ROOM == */}
+      <section style={{background:DARK, padding:'120px 0'}}>
+        <div style={{maxWidth:900, margin:'0 auto', padding:'0 40px', textAlign:'center'}}>
+          <div style={{color:GOLD, fontFamily:"'Helvetica Neue',sans-serif", fontSize:'0.7rem', letterSpacing:'0.25em', textTransform:'uppercase', marginBottom:32}}>The Powder Room</div>
+          <div style={{width:60, height:1, background:GOLD, margin:'0 auto 48px'}}></div>
+          <div style={{fontFamily:"'Cormorant Garamond',Georgia,serif", fontSize:'clamp(1.8rem,4vw,2.8rem)', color:'#fff', fontWeight:300, fontStyle:'italic', lineHeight:1.4, marginBottom:40}}>
+            The wallpaper was chosen.<br/>The sink was specified.<br/>The fabric was trimmed by hand.
+          </div>
+          <div style={{width:60, height:1, background:GOLD, margin:'0 auto 48px'}}></div>
+          <p style={{fontFamily:"Georgia,serif", fontSize:'1.05rem', color:CREAM, lineHeight:1.85, maxWidth:680, margin:'0 auto'}}>
+            Chinoiserie wallpaper -- floor to ceiling. Birds, peonies, herons, branches on a silvery ground. A gold-trimmed porcelain sink, hand-painted florals inside the basin. Brass faucets. A fabric skirt cut and trimmed to the vanity exactly. An arched mirrored cabinet with glass shelves, lit from within, displaying porcelain collected over decades. Two powder rooms. Both like this.
+          </p>
+        </div>
+      </section>
+
       {/* == 03b LIVING ROOM == */}
       <CinematicReveal
         eyebrow="THE LIVING ROOM -- 1916"
@@ -1208,7 +1224,7 @@ function GarranHillV6() {
       <CinematicReveal
         eyebrow="The Dining Room"
         headline="Formal by proportion.<br/><em style='font-weight:300'>Intimate by firelight.</em>"
-        body="The dining room fireplace is the seventh. Georgian wainscoting. Custom crown molding. A room designed for the kind of dinner that becomes a story."
+        body="Bay window on the north wall -- curved, floor to ceiling, nine-pane divided lights, facing the grounds. Brass and porcelain chandelier original to the restoration. Chippendale chairs. Persian rug. The fireplace mantel is Georgian carved white painted wood. Flanking it: two arched shell alcoves, scalloped tops, painted white, built-in cabinet below. They were drawn before a single piece of trim was cut. Off the dining room, through an arched opening: a paneled butler's niche, silver tea service on a carved sideboard. Not a hallway. An event. A room designed for the kind of dinner that becomes a story."
         img={I.dining}
         photos={G.dining}
         onOpen={openLB}
