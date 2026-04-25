@@ -1055,7 +1055,21 @@ function GarranHillV6() {
       <Hero onInquire={() => setShowInq(true)} />
 
 
-      {/* == 02 ESTATE OPENING == */}
+      {/* == 02 MANIFESTO == */}
+      <section style={{ background: '#0a0a0a', padding: 'clamp(6rem,11vh,9rem) clamp(2rem,14vw,18rem)', textAlign: 'center', margin: 0 }}>
+        <Fade>
+          <Eye center>200 Hollycrest Drive -- Pinehurst, NC -- Est. 1916</Eye>
+          <GoldLine center />
+          <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.5rem,5vw,6.5rem)', color: '#fff', lineHeight: 1.08, margin: '0 auto 1.8rem', letterSpacing: '-0.015em', maxWidth: 900 }}>
+            Some houses hold history.<br/><em style={{ fontWeight: 300 }}>This one shaped it.</em>
+          </h2>
+          <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,1.1rem)', color: CREAM, opacity: 0.55, lineHeight: 2.15, maxWidth: 640, margin: '0 auto' }}>
+            Neo-Georgian. Walter Hines Page. Built 1916. Restored 2000. Four and a half acres inside the Pinehurst ETJ. Seven fireplaces. One hundred and nine years of remarkable stewardship.
+          </p>
+        </Fade>
+      </section>
+
+      {/* == 02b ESTATE WIDE == */}}
       <FullBleed
         src={I.manorWide}
         eyebrow="200 Hollycrest Drive -- Pinehurst, NC -- Est. 1916"
@@ -1480,7 +1494,14 @@ function GarranHillV6() {
         headline="The world outside these gates<br/><em style='font-weight:300'>does not exist here.</em>"
       />
 
-      {/* == 23 TWILIGHT / FINAL == */}
+      {/* == ANN QUOTE -- The Current Stewards == */}
+      <PullQuote
+        quote="We fell in love with its character, its history, and the way it felt the moment we walked through the door."
+        attr="The Current Stewards -- 2001 to Present"
+        bg={I.roseMoney}
+      />
+
+            {/* == 23 TWILIGHT / FINAL == */}
       <FullBleed
         src={I.dusk2}
         darken={0.52}
@@ -1488,7 +1509,7 @@ function GarranHillV6() {
         bgPos="center"
         align="center"
         eyebrow="$4,250,000 -- Offered Exclusively"
-        headline="Garran Hill is ready.<br/><em style='font-weight:300'>The question is whether you are.</em>"
+        headline="Garran Hill is ready."
       >
         <div style={{ marginTop: '2.5rem', textAlign: 'center' }}>
           <button onClick={() => setShowInq(true)}
