@@ -754,9 +754,9 @@ function Hero({ onInquire }) {
 
 
 
-      {/* TITLE BLOCK -- sits above stat bar, all within viewport */}
+      {/* TITLE BLOCK -- anchored well above stat bar */}
       <div style={{
-        position: 'absolute', bottom: 'clamp(6rem,11vw,9rem)', left: 0, right: 0, zIndex: 10,
+        position: 'absolute', bottom: 'clamp(11rem,18vw,15rem)', left: 0, right: 0, zIndex: 10,
         paddingLeft: 'clamp(2.5rem,6vw,7rem)'
       }}>
         <p style={{
@@ -775,56 +775,58 @@ function Hero({ onInquire }) {
 
         <div style={{ width: 'clamp(160px,35vw,400px)', height: '1px',
           background: 'linear-gradient(to right, rgba(201,169,110,0.7), rgba(201,169,110,0.1))',
-          margin: '0.35rem 0 0.55rem' }} />
+          margin: '0.35rem 0 0.45rem' }} />
 
         <p style={{
           fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300,
           fontSize: 'clamp(0.88rem, 1.05vw, 1rem)',
           color: 'rgba(255,255,255,0.62)',
-          margin: '0 0 1.8rem', letterSpacing: '0.04em'
+          margin: 0, letterSpacing: '0.04em'
         }}>Built in 1915.&nbsp;&nbsp;Neo-Georgian.&nbsp;&nbsp;Moore County, North Carolina.</p>
       </div>
 
-      {/* STAT BAR -- tight, everything inside viewport */}
+      {/* STAT BAR -- pinned to bottom, compact, seal inside */}
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
-        background: 'linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.92) 65%, transparent 100%)',
-        padding: '0.8rem clamp(1.5rem,4vw,5rem) 1.2rem'
+        background: 'linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.92) 60%, transparent 100%)',
+        padding: '0.6rem clamp(1.5rem,4vw,5rem) 0.8rem'
       }}>
+        {/* TOP GOLD LINE */}
         <div style={{ width: '100%', height: '1px',
           background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)',
-          marginBottom: '0.75rem' }} />
+          marginBottom: '0.6rem' }} />
 
+        {/* STATS ROW */}
         <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
           {[['1916','Est.'],['4','Bedrooms'],['6','Bathrooms'],['6,072 sq ft','Living Area'],['4.15 Acres','Land'],['$4,250,000','Offered At']].map(([v,l]) => (
             <div key={l} style={{ textAlign: 'center', flex: 1 }}>
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
                 fontSize: 'clamp(1rem,1.8vw,1.9rem)', color: '#fff',
-                margin: '0 0 0.25rem', lineHeight: 1 }}>{v}</p>
+                margin: '0 0 0.2rem', lineHeight: 1 }}>{v}</p>
               <p style={{ fontFamily: 'sans-serif', fontSize: '6.5px', letterSpacing: '0.25em',
                 textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
             </div>
           ))}
         </div>
-        {/* BOTTOM GOLD LINE -- split into two halves, parting for the seal medallion */}
-        <div style={{ display: 'flex', alignItems: 'center', marginTop: '0.75rem', width: '100%' }}>
-          <div style={{ flex: 1, height: '1px',
-            background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 20%, rgba(201,169,110,0.55))',
-            marginRight: '1.5rem' }} />
-          {/* SEAL -- 3D wax, transparent PNG, no backing needed */}
-          <img
-            src="https://res.cloudinary.com/dghn2xpif/image/fetch/e_background_removal/f_png/q_auto/w_600/https://media.base44.com/images/public/69e248a2469cc39540781cce/2ff419b0b_200HollycrestDrive-10.jpg"
-            alt="Garran Hill Seal"
-            style={{ width: 'clamp(130px, 11vw, 160px)', height: 'auto',
-              filter: 'drop-shadow(0 4px 20px rgba(201,169,110,0.7))',
-              flexShrink: 0,
-              opacity: 1 }}
-          />
-          <div style={{ flex: 1, height: '1px',
-            background: 'linear-gradient(to left, transparent, rgba(201,169,110,0.55) 20%, rgba(201,169,110,0.55))',
-            marginLeft: '1.5rem' }} />
-        </div>
 
+        {/* BOTTOM GOLD LINE with seal hanging below center */}
+        <div style={{ position: 'relative', marginTop: '0.6rem', height: '1px' }}>
+          <div style={{ width: '100%', height: '1px',
+            background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)' }} />
+          {/* SEAL centered below the line */}
+          <div style={{ position: 'absolute', left: '50%', top: '-30px', transform: 'translateX(-50%)',
+            width: '70px', height: '60px', background: '#0a0a0a', borderRadius: '40%',
+            display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img
+              src="https://res.cloudinary.com/dghn2xpif/image/fetch/e_background_removal/f_png/q_auto/w_300/https://media.base44.com/images/public/69e248a2469cc39540781cce/2ff419b0b_200HollycrestDrive-10.jpg"
+              alt="Garran Hill Crest"
+              style={{ width: '64px', height: 'auto',
+                filter: 'drop-shadow(0 2px 8px rgba(201,169,110,0.5))',
+                opacity: 1 }}
+            />
+          </div>
+        </div>
+        <div style={{ height: '2.2rem' }} /> {/* spacer so seal doesn't clip bottom */}
       </div>
     </section>
   );
