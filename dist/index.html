@@ -795,7 +795,7 @@ function Hero({ onInquire }) {
       {/* STAT BAR -- gold rule top AND bottom, seal floats centered */}
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
-        background: 'rgba(5,5,5,0.92)', overflow: 'hidden'
+        background: 'rgba(5,5,5,0.92)'
       }}>
         {/* gold rule TOP */}
         <div style={{ width: '100%', height: '1px',
@@ -818,16 +818,19 @@ function Hero({ onInquire }) {
             );
           })}
 
-          {/* SEAL -- contained within stat bar, centered vertically */}
+          {/* SEAL -- fully contained, height-driven sizing */}
           <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            position: 'relative', padding: '0 0.8rem' }}>
+            padding: '0 0.6rem', overflow: 'hidden' }}>
             <img
-              src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/2e35b9077_crest_wax.png"
+              src="https://media.base44.com/images/public/69e248a2469cc39540781cce/ea9d25616_generated_image.png"
               alt="Garran Hill Seal"
               style={{
-                width: mob ? 'clamp(50px,10vw,65px)' : 'clamp(60px,5vw,75px)',
-                height: 'auto', display: 'block',
-                filter: 'drop-shadow(0 4px 16px rgba(0,0,0,0.95))'
+                height: mob ? '3.2rem' : '3.8rem',
+                width: 'auto',
+                maxHeight: '90%',
+                display: 'block',
+                objectFit: 'contain',
+                filter: 'drop-shadow(0 2px 12px rgba(0,0,0,0.9))'
               }} />
           </div>
 
