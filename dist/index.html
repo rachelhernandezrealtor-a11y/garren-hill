@@ -881,7 +881,7 @@ function FullBleed({ src, eyebrow, headline, sub, body, align = 'center', darken
 /* ============================================================
    CINEMATIC REVEAL -- text + image split
 ============================================================ */
-function CinematicReveal({ eyebrow, headline, body, img, flip = false, photos, onOpen, dark = false, subBody }) {
+function CinematicReveal({ eyebrow, headline, body, img, flip = false, photos, onOpen, dark = false, subBody, bgSize = 'cover', bgPos = 'center' }) {
   const bgRef = useParallax(0.12);
   return (
     <section className="gallery-section" style={{ display: 'flex', flexDirection: flip ? 'row-reverse' : 'row', minHeight: 'clamp(520px,68vh,820px)', background: DARK, overflow: 'hidden', margin: 0 }}>
@@ -899,7 +899,7 @@ function CinematicReveal({ eyebrow, headline, body, img, flip = false, photos, o
       </div>
       {/* image */}
       <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${img})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${img})`, backgroundSize: bgSize, backgroundPosition: bgPos, background: bgSize === 'contain' ? DARK : undefined }} />
       </div>
     </section>
   );
@@ -1067,6 +1067,8 @@ function GarranHillV6() {
         body="GARRAN HILL 1916 -- laid in herringbone brick at the threshold. Specified on the drawings before a single brick was placed. The original leaded glass fanlight arches over the front door exactly as it did in 1916. The arch repeats -- over every major interior door, through every passage, up to the arched cabinet in the powder room. The architect drew it that way throughout. Brass and porcelain chandelier. Wide-plank oak floors. A carved mahogany demilune console, a Persian runner, and through the arched doorway ahead -- the hand-painted chinoiserie wallpaper of the powder room is visible before you have taken three steps inside. The house reveals itself slowly. It starts here."
         img={I.thresholdStone}
         flip={false}
+        bgSize="contain"
+        bgPos="center"
       />
 
       {/* == FOYER == */}
