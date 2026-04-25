@@ -118,6 +118,8 @@ const ownExt = f => own(f, EXT);
 
 const I = {
   portico:      ext('fa8cec793_200HollycrestDrive-191.jpg'),
+  porticoTight: own('20c972936_53B8155B-B804-4757-9B19-BF224F341BD0_4_5005_c.jpeg'),
+  thresholdStone: own('f9bd3a548_0DD31059-1694-42A4-83B6-225005E07494_1_102_o.jpg'),
   entry:        pro('082d9b5c7_200Holycrest-1182.jpg'),
   threshold:    own('7abb71910_200Holycrest-1179.jpg'),
   living:       pro('341c7343c_200Holycrest-1203.jpg'),
@@ -1121,16 +1123,16 @@ function GarranHillV6() {
         eyebrow="NEO-GEORGIAN ARCHITECTURE -- 1916"
         headline="Built by Leonard Tufts' own craftsmen.<br/><em style='font-weight:300'>The same men who built Pinehurst.</em>"
         body="Longitudinal plan. Columned portico -- four columns, full entablature, drawn to exact Georgian proportion. Circular drive. Two primary stair cores. Original 1916 leaded glass sidelights and over-door fanlight at the front entry, preserved exactly as built. The proportions are correct because the original drawings survived. The new owner receives them."
-        img={I.portico}
+        img={I.porticoTight}
         flip={true}
       />
 
       {/* == 03 ENTRANCE HALL == */}
       <CinematicReveal
         eyebrow="The Entry Hall"
-        headline="The house announces itself<br/><em style='font-weight:300'>the moment you cross the threshold.</em>"
+        headline="GARRAN HILL 1916.<br/><em style='font-weight:300'>It has said that since the day it was laid.</em>"
         body="GARRAN HILL 1916 -- laid in herringbone brick at the threshold. Specified on the drawings before a single brick was placed. The original leaded glass fanlight arches over the front door exactly as it did in 1916. The arch repeats -- over every major interior door, through every passage, up to the arched cabinet in the powder room. The architect drew it that way throughout. Brass and porcelain chandelier. Wide-plank oak floors. A carved mahogany demilune console, a Persian runner, and through the arched doorway ahead -- the hand-painted chinoiserie wallpaper of the powder room is visible before you have taken three steps inside. The house reveals itself slowly. It starts here."
-        img={I.leadedGlass}
+        img={I.thresholdStone}
         photos={G.arrival}
         onOpen={openLB}
       />
