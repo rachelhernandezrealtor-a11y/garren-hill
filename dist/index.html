@@ -96,6 +96,15 @@
     @media (max-width: 480px) {
       .cinematic-reveal > div:last-child { min-height: 72vw !important; }
     }
+
+    @keyframes kenburns {
+      from { transform: scale(1.0) translateY(0px); }
+      to   { transform: scale(1.08) translateY(-12px); }
+    }
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
