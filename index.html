@@ -117,10 +117,11 @@ const ext    = f => pro(f, EXT);
 const ownExt = f => own(f, EXT);
 
 const I = {
+  manorWide:    'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f0c9f09ef_gh_222_manor.jpg',
   portico:      ext('71d1db961_up13.jpg'),
   porticoTight: ownExt('20c972936_53B8155B-B804-4757-9B19-BF224F341BD0_4_5005_c.jpeg'),
   thresholdStone: ownExt('f9bd3a548_0DD31059-1694-42A4-83B6-225005E07494_1_102_o.jpg'),
-  entry:        'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/b8fc16781_200Holycrest-1185.jpg',
+  entry:        'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/376629f56_fix_entry.jpg',
   threshold:    own('7abb71910_200Holycrest-1179.jpg'),
   living:       'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/6d0f31d8c_341c7343c_living.jpg',
   wing:         own('0b06bdce9_Winglivingroom.jpg'),
@@ -134,7 +135,7 @@ const I = {
   firePinkWide: 'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/2fe391e71_gh_65.jpg',
   fireOrnate:   'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f04d40de7_gh_fire65.jpg',
   stairHall:    'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/65f12d80d_gh_191_portico.jpg',
-  leadedGlass:  own('b8fc16781_200Holycrest-1185.jpg'),
+  leadedGlass:  own('376629f56_fix_entry.jpg'),
   kitchen:      own('acff7572b_gh_200HollycrestDrive-38.jpg'),
   kitchen2:     own('5123ec1dc_gh_200HollycrestDrive-40.jpg'),
   kitchen3:     own('364c36c60_gh_200HollycrestDrive-41.jpg'),
@@ -158,9 +159,9 @@ const I = {
   dining:       'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/5fdf42a3e_diningA.jpg',
   dining2:      'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/9de520d62_diningB.jpg',
   dining3:      'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/c124219a0_diningC.jpg',
-  office:       'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/81dc75094_1d3d71365_office.jpg',
+  office:       'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/dc7589cd2_fix_office.jpg',
   officeTall:   'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/98f3743de_92368fa78_officeTall.jpg',
-  library:      'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/886de882c_42dea0be0_library.jpg',
+  library:      'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/b19018a77_fix_library.jpg',
   libraryWide:  'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/42e740210_d8eb9d69a_libraryWide.jpg',
   bath:         own('a55b9a508_gh_200HollycrestDrive-96.jpg'),
   window:       own('b0965610e_21AprHHBRwindowviewdogwoodemergingazaleas.jpg'),
@@ -1052,6 +1053,26 @@ function GarranHillV6() {
 
       {/* == 01 HERO == */}
       <Hero onInquire={() => setShowInq(true)} />
+
+
+      {/* == 02 ESTATE OPENING -- manor intro == */}
+      <FullBleed
+        src={I.manorWide}
+        eyebrow="200 Hollycrest Drive -- Pinehurst, NC -- Est. 1916"
+        headline="Built in 1916.<br/><em style='font-weight:300'>Still the finest house in Moore County.</em>"
+        body="Neo-Georgian. Four columns. Circular drive. Seven fireplaces. Four and a half acres inside the Pinehurst ETJ. Recognized by the Village Historic Foundation. One hundred and nine years of remarkable stewardship -- and a restoration so precise the drawings survived. The new owner receives them."
+        darken={0.6}
+        minH="75vh"
+        align="center"
+      />
+
+      {/* == 02b WEE COTTAGE INTERSTITIAL == */}
+      <div style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,5rem) clamp(2rem,14vw,18rem)', textAlign: 'center' }}>
+        <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.6vw,1.4rem)', color: 'rgba(245,240,232,0.55)', lineHeight: 2, margin: '0 auto', maxWidth: 780 }}>
+          The Wee Cottage arrived by sky crane -- complete and self-contained, set on the grounds exactly where it was meant to be.
+          A guest house. A retreat. An answer to a question most properties never ask.
+        </p>
+      </div>
 
       {/* == ARCHITECTURE == */}
       <CinematicReveal
