@@ -806,19 +806,22 @@ function Hero({ onInquire }) {
             </div>
           ))}
         </div>
-        {/* BOTTOM GOLD LINE */}
-        <div style={{ width: '100%', height: '1px',
-          background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)',
-          marginTop: '0.75rem' }} />
-        {/* SEAL -- sits centered, straddling the bottom gold line */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '-48px' }}>
+        {/* BOTTOM GOLD LINE -- split into two halves, parting for the seal medallion */}
+        <div style={{ display: 'flex', alignItems: 'center', marginTop: '0.75rem', width: '100%' }}>
+          <div style={{ flex: 1, height: '1px',
+            background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 20%, rgba(201,169,110,0.55))',
+            marginRight: '0.75rem' }} />
+          {/* SEAL -- centered medallion, line parts around it */}
           <img
-            src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/c55963aa3_seal_transparent.png"
+            src="https://media.base44.com/images/public/69e248a2469cc39540781cce/be819ab2a_generated_image.png"
             alt="Garran Hill Seal"
             style={{ width: 'clamp(90px, 8vw, 110px)', height: 'auto',
               filter: 'drop-shadow(0 2px 12px rgba(201,169,110,0.5))',
-              opacity: 0.95 }}
+              opacity: 0.95, flexShrink: 0 }}
           />
+          <div style={{ flex: 1, height: '1px',
+            background: 'linear-gradient(to left, transparent, rgba(201,169,110,0.55) 20%, rgba(201,169,110,0.55))',
+            marginLeft: '0.75rem' }} />
         </div>
 
       </div>
