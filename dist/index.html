@@ -796,27 +796,7 @@ function Hero({ onInquire }) {
           marginBottom: '0.75rem' }} />
 
         <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
-          {[['1916','Est.'],['4','Bedrooms'],['6','Bathrooms']].map(([v,l]) => (
-            <div key={l} style={{ textAlign: 'center', flex: 1 }}>
-              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
-                fontSize: 'clamp(1rem,1.8vw,1.9rem)', color: '#fff',
-                margin: '0 0 0.25rem', lineHeight: 1 }}>{v}</p>
-              <p style={{ fontFamily: 'sans-serif', fontSize: '6.5px', letterSpacing: '0.25em',
-                textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
-            </div>
-          ))}
-          {/* SEAL -- inline in stat bar, floats on gold rule */}
-          <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 1rem', position: 'relative', background: 'transparent' }}>
-            <img
-              src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/c55963aa3_seal_transparent.png"
-              alt="Garran Hill Seal"
-              style={{ width: 'clamp(80px, 7vw, 110px)', height: 'auto',
-                filter: 'drop-shadow(0 0 8px rgba(201,169,110,0.4))',
-                opacity: 0.95,
-                marginTop: '0' }}
-            />
-          </div>
-          {[['6,072 sq ft','Living Area'],['4.15 Acres','Land'],['$4,250,000','Offered At']].map(([v,l]) => (
+          {[['1916','Est.'],['4','Bedrooms'],['6','Bathrooms'],['6,072 sq ft','Living Area'],['4.15 Acres','Land'],['$4,250,000','Offered At']].map(([v,l]) => (
             <div key={l} style={{ textAlign: 'center', flex: 1 }}>
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
                 fontSize: 'clamp(1rem,1.8vw,1.9rem)', color: '#fff',
@@ -826,9 +806,21 @@ function Hero({ onInquire }) {
             </div>
           ))}
         </div>
+        {/* BOTTOM GOLD LINE */}
         <div style={{ width: '100%', height: '1px',
           background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)',
           marginTop: '0.75rem' }} />
+        {/* SEAL -- hangs below bottom gold line, centered medallion */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '-1px' }}>
+          <img
+            src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/c55963aa3_seal_transparent.png"
+            alt="Garran Hill Seal"
+            style={{ width: 'clamp(90px, 8vw, 120px)', height: 'auto',
+              filter: 'drop-shadow(0 2px 12px rgba(201,169,110,0.5))',
+              opacity: 0.95,
+              marginTop: '0.5rem' }}
+          />
+        </div>
 
       </div>
     </section>
