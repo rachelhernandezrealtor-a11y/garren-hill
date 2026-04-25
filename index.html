@@ -805,6 +805,14 @@ function Hero({ onInquire }) {
           textShadow: '0 1px 6px rgba(0,0,0,0.95)'
         }}>200 Hollycrest Dr &nbsp;|&nbsp; Pinehurst, NC &nbsp;|&nbsp; Est. 1916</p>
 
+        {/* subhead */}
+        <p style={{
+          fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300,
+          fontSize: mob ? '0.72rem' : 'clamp(0.85rem,1vw,1rem)',
+          color: '#C9A96E', margin: '0 0 1.2rem', letterSpacing: '0.06em',
+          textShadow: '0 2px 8px rgba(0,0,0,0.99)'
+        }}>Built in 1915.&nbsp;&nbsp;Neo-Georgian.&nbsp;&nbsp;Moore County, North Carolina.</p>
+
         {/* GARRAN */}
         <div style={{
           fontFamily: SCRIPT,
@@ -821,12 +829,6 @@ function Hero({ onInquire }) {
           textShadow: '0 4px 40px rgba(0,0,0,0.8)'
         }}>Hill</div>
 
-        {/* subhead -- breathes below Hill, above gold rule */}
-        <p style={{
-          fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300,
-          fontSize: mob ? '0.7rem' : 'clamp(0.82rem,1vw,0.95rem)',
-          color: '#C9A96E', margin: '0.7rem 0 0', letterSpacing: '0.06em', textShadow: '0 2px 8px rgba(0,0,0,0.99)'
-        }}>Built in 1915.&nbsp;&nbsp;Neo-Georgian.&nbsp;&nbsp;Moore County, North Carolina.</p>
       </div>
 
       {/* STAT BAR -- gold rule top AND bottom, seal floats centered */}
