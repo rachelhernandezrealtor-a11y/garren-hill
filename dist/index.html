@@ -1055,170 +1055,108 @@ function GarranHillV6() {
       <Hero onInquire={() => setShowInq(true)} />
 
 
-      {/* == 02 ESTATE OPENING -- manor intro == */}
+      {/* == 02 ESTATE OPENING == */}
       <FullBleed
         src={I.manorWide}
         eyebrow="200 Hollycrest Drive -- Pinehurst, NC -- Est. 1916"
         headline="Built in 1916.<br/><em style='font-weight:300'>Still the finest house in Moore County.</em>"
-        body="Neo-Georgian. Four columns. Circular drive. Seven fireplaces. Four and a half acres inside the Pinehurst ETJ. Recognized by the Village Historic Foundation. One hundred and nine years of remarkable stewardship -- and a restoration so precise the drawings survived. The new owner receives them."
-        darken={0.6}
-        minH="75vh"
+        body="Neo-Georgian. Four columns. Circular drive. Seven fireplaces. 4.15 acres inside the Pinehurst ETJ. Recognized by the Village Historic Foundation. One hundred and nine years of remarkable stewardship -- and a restoration so meticulous the original drawings survived. The new owner receives all fifteen sheets."
+        darken={0.55}
+        minH="80vh"
         align="center"
       />
 
-      {/* == 02b WEE COTTAGE INTERSTITIAL == */}
-      <div style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,5rem) clamp(2rem,14vw,18rem)', textAlign: 'center' }}>
-        <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.6vw,1.4rem)', color: 'rgba(245,240,232,0.55)', lineHeight: 2, margin: '0 auto', maxWidth: 780 }}>
-          The Wee Cottage arrived by sky crane -- complete and self-contained, set on the grounds exactly where it was meant to be.
-          A guest house. A retreat. An answer to a question most properties never ask.
-        </p>
-      </div>
-
-      {/* == ARCHITECTURE == */}
+      {/* == 03 PORTICO / ARCHITECTURE == */}
       <CinematicReveal
-        eyebrow="NEO-GEORGIAN ARCHITECTURE -- 1916"
+        eyebrow="Neo-Georgian Architecture -- 1916"
         headline="Built by Leonard Tufts' own craftsmen.<br/><em style='font-weight:300'>The same men who built Pinehurst.</em>"
-        body="Longitudinal plan. Columned portico -- four columns, full entablature, drawn to exact Georgian proportion. Circular drive. Two primary stair cores. Original 1916 leaded glass sidelights and over-door fanlight at the front entry, preserved exactly as built. The proportions are correct because the original drawings survived. The new owner receives them."
+        body="Longitudinal plan. Columned portico -- four columns, full entablature, drawn to exact Georgian proportion. Two primary stair cores. Original 1916 leaded glass sidelights and over-door fanlight at the front entry, preserved exactly as built. The proportions are correct because the original drawings survived."
         img={I.porticoTight}
         flip={true}
       />
 
-      {/* == 03 ENTRANCE HALL == */}
+      {/* == 04 THRESHOLD == */}
       <CinematicReveal
-        eyebrow="The Entry Hall"
+        eyebrow="The Entry"
         headline="GARRAN HILL 1916.<br/><em style='font-weight:300'>It has said that since the day it was laid.</em>"
-        body="GARRAN HILL 1916 -- laid in herringbone brick at the threshold. Specified on the drawings before a single brick was placed. The original leaded glass fanlight arches over the front door exactly as it did in 1916. The arch repeats -- over every major interior door, through every passage, up to the arched cabinet in the powder room. The architect drew it that way throughout. Brass and porcelain chandelier. Wide-plank oak floors. A carved mahogany demilune console, a Persian runner, and through the arched doorway ahead -- the hand-painted chinoiserie wallpaper of the powder room is visible before you have taken three steps inside. The house reveals itself slowly. It starts here."
+        body="Laid in herringbone brick at the threshold. Specified on the drawings before a single brick was placed. The house announces itself before you step inside."
         img={I.thresholdStone}
         flip={false}
         bgSize="contain"
         bgPos="center"
       />
 
-      {/* == FOYER DIPTYCH == */}
+      {/* == 05 FOYER DIPTYCH == */}
       <section style={{ background: '#0a0a0a', margin: 0, padding: 0 }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gridTemplateRows: 'auto',
-          gap: 0,
-          position: 'relative',
-        }}>
-          {/* LEFT -- staircase hall, taller, offset down */}
-          <div style={{
-            position: 'relative',
-            marginTop: 'clamp(3rem, 6vw, 6rem)',
-            height: 'clamp(480px, 70vh, 780px)',
-          }}>
-            <div style={{
-              position: 'absolute', inset: 0,
-              backgroundImage: `url(${I.stairHall})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center top',
-            }} />
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0, position: 'relative' }}>
+          <div style={{ position: 'relative', marginTop: 'clamp(3rem,6vw,6rem)', height: 'clamp(480px,70vh,780px)' }}>
+            <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.stairHall})`, backgroundSize: 'cover', backgroundPosition: 'center top' }} />
           </div>
-
-          {/* RIGHT -- leaded glass / foyer shot, with copy overlaid */}
-          <div style={{
-            position: 'relative',
-            height: 'clamp(560px, 80vh, 860px)',
-          }}>
-            <div style={{
-              position: 'absolute', inset: 0,
-              backgroundImage: `url(${I.leadedGlass})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }} />
-            {/* Dark gradient for text legibility */}
-            <div style={{
-              position: 'absolute', inset: 0,
-              background: 'linear-gradient(to bottom, rgba(10,10,10,0.10) 0%, rgba(10,10,10,0.72) 100%)',
-            }} />
-            {/* Copy floating on image */}
-            <div style={{
-              position: 'absolute',
-              bottom: 'clamp(2.5rem, 5vh, 4rem)',
-              left: 'clamp(2rem, 5vw, 4rem)',
-              right: 'clamp(2rem, 5vw, 4rem)',
-            }}>
-              <p style={{
-                fontFamily: 'Georgia, serif',
-                fontSize: 'clamp(0.65rem, 1vw, 0.78rem)',
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                color: '#C9A96E',
-                margin: '0 0 0.75rem',
-              }}>The Foyer</p>
-              <div style={{
-                width: 32, height: 1,
-                background: 'rgba(201,169,110,0.6)',
-                marginBottom: 'clamp(1rem, 2.5vh, 1.75rem)',
-              }} />
-              <h2 style={{
-                fontFamily: 'Georgia, serif',
-                fontSize: 'clamp(1.6rem, 3.2vw, 3rem)',
-                fontWeight: 400,
-                color: '#fff',
-                margin: '0 0 clamp(1rem, 2vh, 1.5rem)',
-                lineHeight: 1.2,
-              }}>
+          <div style={{ position: 'relative', height: 'clamp(560px,80vh,860px)' }}>
+            <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.leadedGlass})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,10,10,0.08) 0%, rgba(10,10,10,0.75) 100%)' }} />
+            <div style={{ position: 'absolute', bottom: 'clamp(2.5rem,5vh,4rem)', left: 'clamp(2rem,5vw,4rem)', right: 'clamp(2rem,5vw,4rem)' }}>
+              <p style={{ fontFamily: 'Georgia, serif', fontSize: 'clamp(0.65rem,1vw,0.78rem)', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#C9A96E', margin: '0 0 0.75rem' }}>The Foyer</p>
+              <div style={{ width: 32, height: 1, background: 'rgba(201,169,110,0.6)', marginBottom: 'clamp(1rem,2.5vh,1.75rem)' }} />
+              <h2 style={{ fontFamily: 'Georgia, serif', fontSize: 'clamp(1.6rem,3.2vw,3rem)', fontWeight: 400, color: '#fff', margin: '0 0 clamp(1rem,2vh,1.5rem)', lineHeight: 1.2 }}>
                 The central axis runs straight through.<br/>
                 <em style={{ fontWeight: 300 }}>Visible the instant the door opens.</em>
               </h2>
-              <p style={{
-                fontFamily: 'Georgia, serif',
-                fontSize: 'clamp(0.85rem, 1.1vw, 1rem)',
-                color: 'rgba(245,240,232,0.88)',
-                lineHeight: 1.75,
-                margin: 0,
-                maxWidth: 480,
-              }}>
-                Wide-plank original oak floors. The staircase rises at the far end -- visible from the threshold. Three staircases in this house. The primary one begins here. Brass and porcelain chandelier. The hall axis carries through to the library bookcases at the back. The proportions were drawn that way in 1916.
+              <p style={{ fontFamily: 'Georgia, serif', fontSize: 'clamp(0.85rem,1.1vw,1rem)', color: 'rgba(245,240,232,0.85)', lineHeight: 1.75, margin: 0, maxWidth: 480 }}>
+                Original oak floors. Three staircases. The primary one begins here. Brass chandelier. The hall axis carries through to the library at the back -- drawn that way in 1916.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* == QUOTE INTERSTITIAL -- words on dark, no box, no border == */}
-      <section style={{
-        background: '#0a0a0a',
-        padding: 'clamp(6rem,12vh,10rem) clamp(2rem,10vw,12rem)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        margin: 0
-      }}>
+      {/* == WHP QUOTE -- floats free on dark == */}
+      <section style={{ background: '#0a0a0a', padding: 'clamp(6rem,12vh,10rem) clamp(2rem,10vw,12rem)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 0 }}>
         <div style={{ textAlign: 'center', maxWidth: 760 }}>
           <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.7)', margin: '0 auto clamp(2.5rem,5vh,4rem)' }} />
-          <p style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
-            fontStyle: 'italic', fontWeight: 300,
-            fontSize: 'clamp(2rem, 4vw, 4.5rem)',
-            color: '#fff', margin: 0, lineHeight: 1.35,
-            letterSpacing: '-0.01em'
-          }}>
+          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(2rem,4vw,4.5rem)', color: '#fff', margin: 0, lineHeight: 1.35, letterSpacing: '-0.01em' }}>
             He named it Garran Hill.<br/>He never walked through the door.
           </p>
           <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.7)', margin: 'clamp(2.5rem,5vh,4rem) auto 0' }} />
         </div>
       </section>
 
+      {/* == 06 LIVING ROOM == */}
+      <CinematicReveal flip
+        eyebrow="The Living Room -- 1916"
+        headline="They made it bigger<br/><em style='font-weight:300'>so they could dance.</em>"
+        body="Coffered ceiling. Carved molding at every beam intersection, drawn to match the profiles specified in 1916. Wide-plank original oak floors. The room was proportioned for dancing -- the steward knew this and kept the furniture out of the center. Every fabric sourced to period. Every wallpaper researched. The room reads as a single thought."
+        img={I.living}
+        dark
+      />
 
-      {/* == WINDOWS INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,4vw,3.5rem) 2rem', textAlign: 'center' }}>
-        <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.2rem,2vw,1.8rem)', color: '#fff', maxWidth: 560, margin: '0 auto', lineHeight: 1.6 }}>
-          Every window in the house replaced. Original proportions preserved. You would not know.
-        </p>
-      </section>
+      {/* == 07 DRAWING ROOM == */}
+      <CinematicReveal
+        eyebrow="The Drawing Room"
+        headline="Fire going,<br/><em style='font-weight:300'>no one home yet.</em>"
+        body="Original Georgian carved mantel. Delft tile surround -- blue and white, hand-painted, original to the room. Seven chairs in blue and white toile. Matching valances. Delft plates as art. Persian rug over wide-plank oak. A spiral staircase visible through the far doorway. The light arrives differently in the morning. The room has always known this."
+        img={I.fireplace}
+        photos={G.drawing}
+        onOpen={openLB}
+        dark
+      />
 
-      {/* == 03b PINEHURST INTERSTITIAL == */}
-      <div id="estate" style={{
-        position: 'relative', overflow: 'hidden',
-        minHeight: 'clamp(320px,42vh,500px)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center'
-      }}>
+      {/* == 08 DINING ROOM == */}
+      <CinematicReveal flip
+        eyebrow="The Dining Room"
+        headline="Formal by proportion.<br/><em style='font-weight:300'>Intimate by firelight.</em>"
+        body="Bay window on the north wall -- curved, floor to ceiling, nine-pane divided lights, looking onto the grounds. Georgian carved white mantel. Flanking it: arched shell alcoves, scalloped tops, built-in cabinet below -- drawn on the restoration plans before a single piece of trim was cut. Off the dining room, through its own arched opening: a paneled butler's niche with sideboard. A room that seats twelve without crowding."
+        img={I.dining}
+        photos={G.dining}
+        onOpen={openLB}
+      />
+
+      {/* == PINEHURST INTERSTITIAL == */}
+      <div id="estate" style={{ position: 'relative', overflow: 'hidden', minHeight: 'clamp(260px,36vh,420px)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${ext('0de69e38e_200HollycrestDrive-9.jpg')})`, backgroundSize: 'cover', backgroundPosition: 'center 55%', zIndex: 0 }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.72)', zIndex: 1 }} />
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '35%', background: 'linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)', zIndex: 2 }} />
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '35%', background: 'linear-gradient(to top, #0a0a0a 0%, transparent 100%)', zIndex: 2 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.76)', zIndex: 1 }} />
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)', zIndex: 2 }} />
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(to top, #0a0a0a 0%, transparent 100%)', zIndex: 2 }} />
         <div style={{ position: 'relative', zIndex: 3, padding: 'clamp(2rem,4vw,4rem) clamp(2rem,12vw,16rem)', textAlign: 'center' }}>
           <Fade>
             <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.5vw,1.25rem)', color: CREAM, opacity: 0.8, lineHeight: 2.1, maxWidth: 680, margin: '0 auto' }}>
@@ -1228,70 +1166,7 @@ function GarranHillV6() {
         </div>
       </div>
 
-
-      {/* == POWDER ROOM == */}
-      <section style={{background:DARK, padding:'120px 0'}}>
-        <div style={{maxWidth:900, margin:'0 auto', padding:'0 40px', textAlign:'center'}}>
-          <div style={{color:GOLD, fontFamily:"'Helvetica Neue',sans-serif", fontSize:'0.7rem', letterSpacing:'0.25em', textTransform:'uppercase', marginBottom:32}}>The Powder Room</div>
-          <div style={{width:60, height:1, background:GOLD, margin:'0 auto 48px'}}></div>
-          <div style={{fontFamily:"'Cormorant Garamond',Georgia,serif", fontSize:'clamp(1.8rem,4vw,2.8rem)', color:'#fff', fontWeight:300, fontStyle:'italic', lineHeight:1.4, marginBottom:40}}>
-            The wallpaper was chosen.<br/>The sink was specified.<br/>The fabric was trimmed by hand.
-          </div>
-          <div style={{width:60, height:1, background:GOLD, margin:'0 auto 48px'}}></div>
-          <p style={{fontFamily:"Georgia,serif", fontSize:'1.05rem', color:CREAM, lineHeight:1.85, maxWidth:680, margin:'0 auto'}}>
-            Two powder rooms. One on each floor. Both finished to the same standard. Pedestal sink. Brass fittings. Arched mirrored cabinet with glass shelves, lit from within. Hand-painted chinoiserie wallpaper -- floor to ceiling, birds, peonies, herons on a silvery ground. The arch of that cabinet matches every arch in the house. The wallpaper took months to source and weeks to hang. Nothing here was accidental.
-          </p>
-        </div>
-      </section>
-
-      {/* == 03b LIVING ROOM == */}
-      <CinematicReveal
-        eyebrow="THE LIVING ROOM -- 1916"
-        headline="They made it bigger<br/><em style='font-weight:300'>so they could dance.</em>"
-        body="Coffered ceiling. Georgian panel molding in a grid. Oak floors lifted, repaired, relaid exactly as they were. French doors to the rear grounds. The central axis runs from the threshold straight through to the library -- visible the instant the door opens. Two full seating areas. Room enough to dance. Every fabric, every wallpaper, every finish chosen because it belongs here. Not because it was available. Because it was right."
-        img={I.livingRoom}
-        photos={G.living}
-        onOpen={openLB}
-      />
-
-            {/* == 04 DRAWING ROOM == */}
-      <CinematicReveal flip
-        eyebrow="The Drawing Room"
-        headline="Fire going,<br/><em style='font-weight:300'>no one home yet.</em>"
-        body="Original Georgian carved mantel. Delft tile surround -- blue and white, hand-painted, original to the room. Lion andirons. The fireplace is the seventh. Seven chairs upholstered in blue and white toile. Matching valances, shaped and tailored. Blue and white Delft plates mounted as art. Persian rug over wide-plank oak. The room reads as a single thought -- every object in the same language. A spiral staircase visible through the far doorway. The light arrives differently in the morning than in the afternoon. The room has always known this."
-        img={I.fireplace}
-        photos={G.drawing}
-        onOpen={openLB}
-        dark
-      />
-
-      {/* == 05 DINING ROOM == */}
-      <CinematicReveal
-        eyebrow="The Dining Room"
-        headline="Formal by proportion.<br/><em style='font-weight:300'>Intimate by firelight.</em>"
-        body="Bay window on the north wall -- curved, floor to ceiling, nine-pane divided lights, looking directly onto the grounds. Brass and porcelain chandelier. Georgian carved white mantel. Flanking it on both sides: arched shell alcoves, scalloped tops, built-in cabinet below -- drawn on the restoration plans before a single piece of trim was cut. Off the dining room, through its own arched opening: a paneled butler's niche with sideboard. Not a hallway. An event. Wide-plank oak floors. Wainscoting. A room that seats twelve without crowding. A room designed for the kind of dinner that becomes a story."
-        img={I.dining}
-        photos={G.dining}
-        onOpen={openLB}
-      />
-
-      {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-        
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.img1916})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.07) saturate(0.4)' }} />
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
-          <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
-          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
-            In 1916, those were saplings. Now they are a forest.
-          </p>
-          <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '1.8rem auto 0' }} />
-        </div>
-      </section>
-
-      {/* == 05b KITCHEN BREATH == */}
-      <div style={{ background: '#0a0a0a', height: 'clamp(4rem,8vh,7rem)', margin: 0 }} />
-
-      {/* == 06 KITCHEN -- FULL SECTION == */}
+      {/* == 09 KITCHEN == */}
       <FullBleed
         src={I.kitchen}
         darken={0.48}
@@ -1299,31 +1174,26 @@ function GarranHillV6() {
         bgPos="center 40%"
         align="left"
         eyebrow="The Kitchen"
-        headline="White cabinetry. Dark granite.<br/><em style='font-weight:300'>Island. Three windows. Room to cook.</em>"
-        body="Built new in 2000. Reclaimed heart-pine floors. Custom cabinetry -- white uppers with glass fronts, dark painted lowers, two-tone throughout. Farmhouse apron sink. Soapstone counters. A wall of divided-light windows facing the grounds. The pantry door swings open -- floor-to-ceiling shelving on every face, two full towers, built for a house that is actually used. The original kitchen was in the basement. This one was built right. Every morning at 6:30, the deer come through."
+        headline="White cabinetry. Dark granite.<br/><em style='font-weight:300'>Room to cook.</em>"
+        body="Built new in 2000. Reclaimed heart-pine floors. Custom cabinetry -- white uppers with glass fronts, dark painted lowers. Farmhouse apron sink. Island. Three windows facing the grounds. The pantry door swings open -- floor-to-ceiling shelving on every face. Built for a house that is actually used. Every morning at 6:30, the deer come through."
       />
-      <section style={{ background: '#0a0a0a', paddingTop: 'clamp(2rem,4vh,3.5rem)', paddingBottom: '0' }}>
-        <FilmStrip photos={G.kitchen} onOpen={openLB} />
+
+      {/* == 09b POWDER ROOM MOMENT -- dark interstitial == */}
+      <section style={{ background: '#0a0a0a', padding: 'clamp(5rem,9vh,8rem) clamp(2rem,14vw,18rem)', textAlign: 'center' }}>
+        <Fade>
+          <Eye center>The Powder Room</Eye>
+          <GoldLine center />
+          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.5rem,2.8vw,3rem)', color: '#fff', lineHeight: 1.45, margin: '0 auto 1.2rem', maxWidth: 700 }}>
+            Hand-painted chinoiserie wallpaper. Tennessee marble. An arched cabinet that continues the motif of every door in the house.
+          </p>
+          <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.85rem,1.1vw,1rem)', color: CREAM, opacity: 0.45, lineHeight: 2, maxWidth: 520, margin: '0 auto' }}>
+            Fuchsia ground. The only room in the house that announces itself in color. The rest of the house is restrained. This room is not. It is correct that way.
+          </p>
+        </Fade>
       </section>
 
-      {/* == 06b SUNROOM MOMENT == */}
-      <section style={{ display: 'flex', minHeight: 'clamp(360px,52vh,580px)', overflow: 'hidden' }}>
-        <div style={{ flex: '0 0 55%', backgroundImage: `url(${I.sunroom})`, backgroundSize: 'cover', backgroundPosition: 'center center', minHeight: 380 }} />
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 'clamp(3rem,6vw,5.5rem) clamp(2.5rem,5vw,5rem)', background: '#0a0a0a' }}>
-          <Fade>
-            <Eye>The Sunroom</Eye>
-            <GoldLine />
-            <h3 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,3.5vw,4.5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.2rem', letterSpacing: '-0.012em' }}>
-              Three walls of windows.
-            </h3>
-            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.58, lineHeight: 2.1, margin: 0 }}>
-              French doors on three sides. Built-in bookshelves. Original oak floors. The room is completely its own thing.
-            </p>
-          </Fade>
-        </div>
-      </section>
-      {/* == 07 LIBRARY == */}
-      <CinematicReveal flip
+      {/* == 10 LIBRARY == */}
+      <CinematicReveal
         eyebrow="The Library"
         headline="Designed in 2000.<br/><em style='font-weight:300'>Built to last another century.</em>"
         body="The library sits at the exact center of the first floor. Kitchen to the left. Study to the right. The house was planned around it. Floor-to-ceiling shelving. Rolling ladder. Brass chandelier. It does not feel added. It feels inevitable."
@@ -1333,334 +1203,144 @@ function GarranHillV6() {
         dark
       />
 
-      {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-        
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
-          <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
-          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
-            Not original -- deliberate.
-          </p>
-          <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '1.8rem auto 0' }} />
-        </div>
-      </section>
-
-      {/* == 07b O'SHEA INTERSTITIAL == */}
-      <section style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(2.5rem,4vw,3.5rem) clamp(2rem,14vw,18rem)', textAlign: 'center' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.archDrawing})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'grayscale(100%)', zIndex: 0 }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.94)', zIndex: 1 }} />
-        <div style={{ position: 'relative', zIndex: 2 }}>
-          <Fade>
-            <Eye center>Thomas O'Shea, Architect -- Durham, NC -- January 2000</Eye>
-            <GoldLine center />
-            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.5rem,4.5vw,6rem)', color: '#fff', lineHeight: 1.12, margin: '2rem auto', letterSpacing: '-0.015em', maxWidth: 860 }}>
-              "Renovations and Additions."<br /><em style={{ fontWeight: 300, fontSize: '0.8em' }}>His word choice tells you everything.</em>
-            </h2>
-            <GoldLine center />
-            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,1.08rem)', color: CREAM, opacity: 0.72, lineHeight: 2.1, maxWidth: 720, margin: '2.5rem auto 0' }}>
-              The interior was gutted to the studs. Every pipe replaced. Every wire replaced. New Marvin windows throughout -- matched to the original profiles. Seven fireplaces cleaned, new dampers, gas logs fitted. A 250-gallon underground propane tank. The plumbing, the electrical, the mechanical -- all new. None of it visible. Then the finish work began. Fifteen sheets of drawings. Every cornice profile copied from what was already there. The study paneling specified as: 'same panel details as existing dining room panels.' The primary suite fireplace brackets drawn at full scale before a single piece was cut. The wainscoting drafted from scratch -- every profile specified, nothing approximated. That is not renovation. That is continuation. The result does not look like 2000. It looks like 1916.
-            </p>
-            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.5vw,1.35rem)', color: '#fff', opacity: 0.85, lineHeight: 1.7, margin: '2rem auto 0', maxWidth: 600 }}>
-              The drawings go to the new owner. All fifteen sheets.
-            </p>
-          </Fade>
-        </div>
-      </section>
-
-      {/* == 08 STUDY == */}
-      <CinematicReveal
+      {/* == 11 STUDY == */}
+      <CinematicReveal flip
         eyebrow="The Study"
         headline="Same panel details<br/><em style='font-weight:300'>as the dining room. Drawn that way.</em>"
-        body="Same profiles, same proportions -- 84 years apart. The 1916 millwork matched exactly. The Owner's Study sits apart from the sleeping rooms, accessed by its own private stair. You go there to think. The room does not announce itself. It simply holds."
+        body="Same profiles, same proportions -- 84 years apart. The 1916 millwork matched exactly. The study sits apart from the sleeping rooms, accessed by its own private stair. You go there to think. The room does not announce itself. It simply holds."
         img={I.officeTall}
         photos={G.study}
         onOpen={openLB}
       />
 
-
-
-      {/* == 11b SEVEN FIREPLACES == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(4rem,7vw,6rem) clamp(2rem,6vw,5rem)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ maxWidth: 760, textAlign: 'center' }}>
-          <p style={{ fontFamily: SERIF_ALT, fontStyle: 'normal', fontSize: 'clamp(0.6rem,0.9vw,0.75rem)', letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD, margin: '0 0 1.2rem' }}>Seven Fireplaces</p>
-          <div style={{ width: 40, height: 1, background: GOLD, margin: '0 auto 2.2rem' }} />
-          <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,4vw,3.8rem)', color: '#fff', margin: '0 0 1.8rem', lineHeight: 1.2 }}>
-            Every one original.<br/><em style={{ fontWeight: 300 }}>Every one working.</em>
-          </h2>
-          <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(1rem,1.4vw,1.2rem)', color: CREAM, lineHeight: 1.9, maxWidth: 600, margin: '0 auto' }}>
-            The seven carved mantels survived the 1998 restoration untouched. New dampers. Propane gas logs in six. The original craftsmanship intact. On a cold Pinehurst night, every room in this house can be warm.
-          </p>
-          <div style={{ width: 40, height: 1, background: GOLD, margin: '2.2rem auto 0' }} />
-        </div>
-      </section>
-
-      {/* == 09 WALTER HINES PAGE == */}
-      <section id="history" style={{ position: 'relative', minHeight: 'clamp(580px,80vh,920px)', overflow: 'hidden', display: 'flex', alignItems: 'stretch' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.whp})`, backgroundSize: 'cover', backgroundPosition: 'center top', zIndex: 0 }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(4,4,4,0.97) 0%, rgba(4,4,4,0.88) 40%, rgba(4,4,4,0.38) 65%, transparent 82%)', zIndex: 1 }} />
-        <div style={{ position: 'relative', zIndex: 2, width: '100%', display: 'flex', alignItems: 'center' }}>
+      {/* == O'SHEA INTERSTITIAL == */}
+      <section style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(4rem,7vw,6rem) clamp(2rem,14vw,18rem)', textAlign: 'center' }}>
+        <div style={{ position: 'absolute', inset: 0, background: '#0a0a0a', zIndex: 0 }} />
+        <div style={{ position: 'relative', zIndex: 2 }}>
           <Fade>
-            <div style={{ maxWidth: 'min(540px,50vw)', padding: 'clamp(5rem,9vw,9rem) clamp(2rem,6vw,7rem)' }}>
-              <Eye>The Man Who Built It</Eye>
-              <GoldLine />
-              <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.5rem,4.2vw,5.5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 2rem', letterSpacing: '-0.012em' }}>
-                He named it Garran Hill.<br /><em style={{ fontWeight: 300 }}>He never walked<br />through the door.</em>
-              </h2>
-              <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.85rem,1.05vw,0.96rem)', color: CREAM, opacity: 0.62, lineHeight: 2, margin: 0 }}>
-                February 1913. Walter Hines Page buys one thousand acres of Carolina sandhills. Names it Garran Hill. Plans to grow peaches. He has been dreaming of this land for years.
-
-The following month, Woodrow Wilson calls. He wants Page in London. Page goes.
-
-He sails May 15, 1913. He will not come home for five years.
-
-From Grosvenor Square he writes to his son Arthur. Not about the war. Not about the Kaiser. About the farm. "The farm -- the farm -- the farm." Three times. As if saying it enough would bring him back.
-
-He serves through the whole of the First World War. He watches Europe come apart. He holds the alliance together. He wears himself to nothing.
-
-December 1918. The war is over. Page is carried off the train at Aberdeen by his son Frank. "Well, Frank," he says. "I did get here after all, didn't I?"
-
-He dies ten days later. A rented cottage in Pinehurst. His son Ralph is already living at Garran Hill.
-
-Walter Hines Page never slept a night in the house he named.
-
-Westminster Abbey placed his likeness in stone. The inscription reads: The friend of Britain in her sorest need.
-
-The house has stood for 110 years. It is still here.
-              </p>
-            </div>
+            <Eye center>Thomas O'Shea, Architect -- Durham, NC -- 2000</Eye>
+            <GoldLine center />
+            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.2rem,4vw,5.5rem)', color: '#fff', lineHeight: 1.12, margin: '2rem auto', letterSpacing: '-0.015em', maxWidth: 860 }}>
+              The interior was gutted.<br/><em style={{ fontWeight: 300 }}>None of it visible now.</em>
+            </h2>
+            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,1.08rem)', color: CREAM, opacity: 0.65, lineHeight: 2.1, maxWidth: 720, margin: '0 auto' }}>
+              Every pipe replaced. Every wire replaced. New Marvin windows throughout -- matched to the original profiles. Seven fireplaces cleaned, new dampers, gas logs fitted. Then the finish work began. Fifteen sheets of drawings. Every cornice profile copied from what was already there. The primary suite fireplace brackets drawn at full scale before a single piece was cut. The result does not look like 2000. It looks like 1916. The drawings go to the new owner.
+            </p>
           </Fade>
         </div>
       </section>
 
-      {/* == 09b WESTMINSTER ABBEY QUOTE == */}
-      <PullQuote
-        quote="The friend of Britain in her sorest need."
-        attr="Westminster Abbey -- Memorial to Walter Hines Page -- 1918"
-      />
+      {/* == 12 WHP HISTORY == */}
+      <section style={{ position: 'relative', overflow: 'hidden', minHeight: 'clamp(600px,85vh,960px)', display: 'flex', alignItems: 'center' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.whp})`, backgroundSize: 'cover', backgroundPosition: 'center 15%', zIndex: 0 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(4,4,4,0.96) 0%, rgba(4,4,4,0.78) 42%, rgba(4,4,4,0.20) 100%)', zIndex: 1 }} />
+        <div style={{ position: 'relative', zIndex: 2, padding: 'clamp(4rem,8vw,7rem) clamp(2rem,8vw,10rem)', maxWidth: 680 }}>
+          <Fade>
+            <Eye>Walter Hines Page -- 1855 to 1918</Eye>
+            <GoldLine />
+            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.5rem,4.5vw,6rem)', color: '#fff', lineHeight: 1.08, margin: '0 0 2rem', letterSpacing: '-0.012em' }}>
+              He named it Garran Hill.<br/><em style={{ fontWeight: 300 }}>He never walked through the door.</em>
+            </h2>
+            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,1.1rem)', color: CREAM, opacity: 0.72, lineHeight: 2.15, margin: '0 0 1.4rem' }}>
+              Walter Hines Page bought a thousand-acre farm outside Pinehurst in February 1913. He named it Garran Hill. Six weeks later, Woodrow Wilson made him Ambassador to the Court of St. James. He sailed for London in May. He never came back.
+            </p>
+            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,1.1rem)', color: CREAM, opacity: 0.72, lineHeight: 2.15, margin: '0 0 1.4rem' }}>
+              From London he wrote about the farm constantly. The farm -- the farm -- the farm. He died in Pinehurst in December 1918. He was carried off the train at Aberdeen. His last words: "Well, Frank, I did get here after all, didn't I?"
+            </p>
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.4vw,1.2rem)', color: '#fff', opacity: 0.85, lineHeight: 1.8, margin: 0, maxWidth: 560 }}>
+              Westminster Abbey named him "The friend of Britain in her sorest need." The house he never slept in has outlasted everything.
+            </p>
+          </Fade>
+        </div>
+      </section>
 
-      {/* == 10 PRIMARY SUITE == */}
-      <FullBleed
-        src={I.masterBed}
-        darken={0.46}
-        minH="78vh"
-        bgPos="center 28%"
-        align="left"
+      {/* == 13 PRIMARY SUITE == */}
+      <CinematicReveal
         eyebrow="The Primary Suite"
         headline="The master suite was a commission,<br/><em style='font-weight:300'>not a renovation.</em>"
-        body="The primary suite did not exist in 1916. It was commissioned in 2000 -- drawn from scratch to match a house built 84 years earlier. The fireplace surround designed at full scale, every bracket specified before a single piece was cut. The tub enclosure designed by the architect. Not sourced. Not selected. Drawn. Wall panels floor to ceiling, stile and rail proportions pulled from the 1916 rooms. Her closet was built for a queen. His dressing room separate. A shower that does not apologize for itself. Windows drawn in elevation -- trim profile, surround, apron, all detailed. You cannot tell the difference. That was the point."
+        body="Drawn from scratch in 2000 to match the proportions of 1916. The fireplace brackets designed at full scale before a single piece was cut. Three closets. Primary bath with soaking tub and separate shower -- designed as a room, not a fixture list. The suite sits apart from the rest of the house. You enter it differently."
+        img={I.masterBedBath}
+        dark
       />
-      <section style={{ background: '#0a0a0a', paddingBottom: 'clamp(1rem,2vw,1.5rem)' }}>
-        <FilmStrip photos={G.primary} onOpen={openLB} tall />
-      </section>
 
-      {/* == 10b PRIMARY BATH SPLIT == */}
-      <section style={{ display: 'flex', minHeight: 'clamp(480px,62vh,760px)', background: '#0a0a0a', overflow: 'hidden' }}>
-        <div style={{ flex: '0 0 55%', backgroundImage: `url(${I.bath})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: 'clamp(480px,62vh,760px)' }} />
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 'clamp(3rem,6vw,5.5rem) clamp(2.5rem,5vw,5rem)' }}>
+      {/* == PRIMARY BATH SPLIT == */}
+      <section style={{ display: 'flex', minHeight: 'clamp(360px,52vh,580px)', overflow: 'hidden' }}>
+        <div style={{ flex: '0 0 55%', backgroundImage: `url(${I.masterBedBath2})`, backgroundSize: 'cover', backgroundPosition: 'center center', minHeight: 380 }} />
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 'clamp(3rem,6vw,5.5rem) clamp(2.5rem,5vw,5rem)', background: '#0a0a0a' }}>
           <Fade>
-            <Eye>Primary Bath</Eye>
+            <Eye>The Primary Bath</Eye>
             <GoldLine />
-            <h3 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,3.8vw,4.5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.5rem', letterSpacing: '-0.01em' }}>
-              Three whirlpool tubs.<br /><em style={{ fontWeight: 300 }}>One on each floor that matters.</em>
+            <h3 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,3.5vw,4.5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.2rem', letterSpacing: '-0.012em' }}>
+              Soaking tub.<br/><em style={{ fontWeight: 300 }}>Separate shower. Jacuzzi.</em>
             </h3>
-            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.6, lineHeight: 2.1, margin: 0 }}>
-              Freestanding tub. Three windows. Drawn by O'Shea to the same standard as the 1916 house it joined.
+            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.55, lineHeight: 2.1, margin: 0 }}>
+              Designed as a room. Not a fixture list. The proportions were specified in the 2000 drawings. Two additional bedrooms have their own whirlpool tubs. The house was built for people who stay.
             </p>
-            <div style={{ marginTop: '2.2rem', cursor: 'pointer' }} onClick={() => openLB(G.primary, 3)}>
-              <span style={{ fontFamily: 'sans-serif', fontSize: '7.5px', letterSpacing: '0.32em', textTransform: 'uppercase', color: GOLD, borderBottom: `1px solid ${GOLD}`, paddingBottom: '0.3rem' }}>View All Suite Photos</span>
-            </div>
           </Fade>
         </div>
       </section>
 
-      {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-        
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.iris})`, backgroundSize: 'cover', backgroundPosition: 'center 60%', filter: 'brightness(0.07) saturate(0.4)' }} />
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
-          <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
-          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
-            The world outside these gates does not exist here.
-          </p>
-          <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '1.8rem auto 0' }} />
-        </div>
-      </section>
-
-      {/* == 10c DOGWOOD WINDOW == */}
-      <FullBleed
-        src={I.window}
-        darken={0.52}
-        minH="55vh"
-        bgPos="center"
-        align="center"
-      >
-        <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.8rem,3.5vw,4rem)', color: '#fff', lineHeight: 1.4, margin: 0, letterSpacing: '-0.01em', textAlign: 'center' }}>
-          The dogwood blooms every April.<br /><span style={{ opacity: 0.65, fontSize: '0.72em' }}>The window has not moved.</span>
-        </p>
-      </FullBleed>
-
-      {/* == 11 BEDROOMS == */}
-      <CinematicReveal flip
+      {/* == 14 BEDROOMS == */}
+      <CinematicReveal
         eyebrow="The Other Bedrooms"
         headline="Three more rooms.<br/><em style='font-weight:300'>Each with its own fireplace.</em>"
-        body="The Rose Suite, the Yellow Suite, the Nursery -- each with original proportions, original fireplaces, original hardware. Closets behind walls that look like walls. Three staircases. The main stair turns the same curve it has turned since 1916. The entrance hall wainscoting drafted from scratch -- every profile specified, nothing approximated. The Yellow Suite and the Nursery open onto a shared balcony above the kitchen -- lattice railing drawn to spec, not chosen from a catalog. Nothing was combined. Nothing was converted."
+        body="The yellow bedroom and the nursery share a balcony over the grounds. The rose suite has a Georgian fireplace with original surround. Every room has its own bath. The Wee Cottage -- arrived by sky crane, set exactly where it was meant to be -- gives the property a fifth sleeping option entirely its own."
         img={I.bed2}
         photos={G.bedrooms}
         onOpen={openLB}
         dark
       />
 
-      {/* == 12 SEVEN FIREPLACES == */}
-      <section style={{ position: 'relative', padding: 'clamp(5rem,9vw,8rem) clamp(2rem,6vw,6rem)', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.fireplace})`, backgroundSize: 'cover', backgroundPosition: 'center', zIndex: 0 }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.88)', zIndex: 1 }} />
-        <div style={{ position: 'relative', zIndex: 2 }}>
-        <Fade>
-          <div style={{ marginBottom: 'clamp(3rem,5vw,4.5rem)', textAlign: 'center' }}>
-            <Eye center>The Fireplaces</Eye>
-            <GoldLine center />
-            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(4rem,8vw,10rem)', color: '#fff', lineHeight: 1.05, margin: '0 auto', letterSpacing: '-0.015em', maxWidth: 900, textAlign: 'center' }}>
-              Seven fireplaces.<br /><em style={{ fontWeight: 300 }}>Six of seven. Each lights<br />with one switch.</em>
-            </h2>
+      {/* == 15 SEVEN FIREPLACES == */}
+      <section style={{ background: '#0a0a0a', padding: 'clamp(5rem,8vw,7rem) clamp(2rem,6vw,5rem)' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <Fade>
+            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'normal', fontWeight: 300, fontSize: 'clamp(4rem,10vw,12rem)', color: 'rgba(201,169,110,0.12)', lineHeight: 1, margin: '0 0 0.2rem', letterSpacing: '-0.02em', textAlign: 'left' }}>7</p>
+            <Eye>Seven Fireplaces</Eye>
+            <GoldLine />
+            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,1.05rem)', color: CREAM, opacity: 0.62, lineHeight: 2.1, maxWidth: 680, margin: '0 0 3.5rem' }}>
+              Every one original. Every one working. Six fitted with gas logs. The seventh -- the Drawing Room -- burns wood. The mantels were specified individually. No two are the same.
+            </p>
+          </Fade>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 3 }}>
+            {G.fireplaces.map((p,i) => (
+              <div key={i} onClick={() => openLB(G.fireplaces, i)}
+                style={{ position: 'relative', paddingBottom: '75%', backgroundImage: `url(${p.src})`, backgroundSize: 'cover', backgroundPosition: 'center', cursor: 'zoom-in', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%)' }} />
+                <p style={{ position: 'absolute', bottom: '1rem', left: '1.2rem', fontFamily: SERIF, fontStyle: 'italic', fontSize: '0.85rem', color: 'rgba(255,255,255,0.7)', margin: 0 }}>{p.caption}</p>
+              </div>
+            ))}
           </div>
-        </Fade>
-        {/* Ignition stagger grid -- fires appear one by one */}
-        {(() => {
-          const fires = [
-            { src: I.fireplace,   label: 'The Drawing Room',   sub: 'Fire going, no one home yet.' },
-            { src: I.firePink,    label: 'The Rose Suite',      sub: 'The surround is carved plaster. The fire is real.' },
-            { src: I.fireYellow,  label: 'The Yellow Suite',    sub: 'Four bedrooms. Each with its own fireplace.' },
-            { src: I.fireDining,  label: 'The Dining Room',     sub: 'Shell alcoves. Original. Still on every wall.' },
-            { src: I.fireOrnate,  label: 'The Master Wing',     sub: 'Every panel drawn from scratch to match a 1916 house.' },
-          ];
-          const ref = React.createRef();
-          return (
-            <FireIgnitionGrid fires={fires} onOpen={(i) => openLB(G.fireplaces, i)} />
-          );
-        })()}
         </div>
       </section>
 
-      {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-        
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
-          <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
-          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
-            Seven fireplaces. Six with gas. All original.
-          </p>
-          <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '1.8rem auto 0' }} />
-        </div>
-      </section>
-
-      {/* == 12b DOORKNOB MOMENT == */}
-      <section style={{
-        position: 'relative',
-        overflow: 'hidden',
-        minHeight: 'clamp(520px,72vh,820px)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-        {/* liquid glass background -- layered radial gradients for depth */}
-        <div style={{
-          position: 'absolute', inset: 0, zIndex: 0,
-          background: 'radial-gradient(ellipse 80% 60% at 30% 50%, rgba(18,14,8,1) 0%, rgba(8,6,3,1) 55%, rgba(0,0,0,1) 100%)',
-        }} />
-        {/* shimmer layer 1 */}
-        <div style={{
-          position: 'absolute', inset: 0, zIndex: 1,
-          background: 'radial-gradient(ellipse 40% 70% at 62% 48%, rgba(201,169,110,0.07) 0%, transparent 65%)',
-          mixBlendMode: 'screen',
-        }} />
-        {/* shimmer layer 2 -- cool silver liquid reflection */}
-        <div style={{
-          position: 'absolute', inset: 0, zIndex: 2,
-          background: 'radial-gradient(ellipse 25% 55% at 58% 52%, rgba(255,255,255,0.04) 0%, transparent 70%)',
-          mixBlendMode: 'screen',
-        }} />
-        {/* bottom floor reflection gradient */}
-        <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0, height: '38%', zIndex: 3,
-          background: 'linear-gradient(to top, rgba(201,169,110,0.04) 0%, transparent 100%)',
-        }} />
-
-        {/* content: portrait photo + copy */}
-        <div style={{
-          position: 'relative', zIndex: 10,
-          display: 'flex',
-          flexWrap: 'wrap',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 'clamp(3rem,6vw,8rem)',
-          padding: 'clamp(4rem,8vw,7rem) clamp(2rem,8vw,10rem)',
-          width: '100%',
-          maxWidth: 1400,
-          margin: '0 auto',
-        }}>
-
-          {/* vertical doorknob portrait */}
+      {/* == DOORKNOB MOMENT == */}
+      <section style={{ position: 'relative', overflow: 'hidden', minHeight: 'clamp(520px,72vh,820px)', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0a0a' }}>
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0, background: 'radial-gradient(ellipse 80% 60% at 30% 50%, rgba(18,14,8,1) 0%, rgba(8,6,3,1) 55%, rgba(0,0,0,1) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'radial-gradient(ellipse 40% 70% at 62% 48%, rgba(201,169,110,0.07) 0%, transparent 65%)', mixBlendMode: 'screen' }} />
+        <div style={{ position: 'relative', zIndex: 10, display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: 'clamp(3rem,6vw,8rem)', padding: 'clamp(4rem,8vw,7rem) clamp(2rem,8vw,10rem)', width: '100%', maxWidth: 1200, margin: '0 auto' }}>
           <div style={{ position: 'relative', flex: '0 0 auto' }}>
-            {/* the photo -- tall portrait crop */}
-            <div style={{
-              width: 'clamp(220px,22vw,320px)',
-              height: 'clamp(380px,52vh,620px)',
-              backgroundImage: `url(${I.doorknob})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center center',
-              position: 'relative',
-              zIndex: 2,
-            }} />
-            {/* liquid mirror reflection below */}
-            <div style={{
-              position: 'absolute',
-              top: '100%',
-              left: 0,
-              right: 0,
-              height: 'clamp(80px,12vh,160px)',
-              backgroundImage: `url(${I.doorknob})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center center',
-              transform: 'scaleY(-1)',
-              maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.28) 0%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.28) 0%, transparent 100%)',
-              zIndex: 1,
-            }} />
+            <div style={{ width: 'clamp(220px,22vw,320px)', height: 'clamp(380px,52vh,620px)', backgroundImage: `url(${I.doorknob})`, backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative', zIndex: 2 }} />
+            <div style={{ position: 'absolute', top: '100%', left: 0, right: 0, height: 'clamp(80px,12vh,160px)', backgroundImage: `url(${I.doorknob})`, backgroundSize: 'cover', backgroundPosition: 'center', transform: 'scaleY(-1)', maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.28) 0%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.28) 0%, transparent 100%)', zIndex: 1 }} />
           </div>
-
-          {/* copy block */}
           <div style={{ flex: '1 1 280px', maxWidth: 460 }}>
             <Fade>
               <Eye>The Hardware</Eye>
               <GoldLine />
-              <h3 style={{
-                fontFamily: SERIF, fontWeight: 400,
-                fontSize: 'clamp(2.4rem,4vw,5.5rem)',
-                color: '#fff', lineHeight: 1.05,
-                margin: '0 0 1.8rem',
-                letterSpacing: '-0.015em',
-              }}>
-                Brass. Original.<br />
-                <em style={{ fontWeight: 300, color: CREAM }}>Still on every door.</em>
+              <h3 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.4rem,4vw,5.5rem)', color: '#fff', lineHeight: 1.05, margin: '0 0 1.8rem', letterSpacing: '-0.015em' }}>
+                Brass. Original.<br/><em style={{ fontWeight: 300, color: CREAM }}>Still on every door.</em>
               </h3>
-              <p style={{
-                fontFamily: SERIF, fontWeight: 300,
-                fontSize: 'clamp(0.88rem,1.1vw,1.05rem)',
-                color: CREAM, opacity: 0.6,
-                lineHeight: 2.2, margin: 0,
-                letterSpacing: '0.01em',
-              }}>
-                Brass. Original. Still on every door. The key plates, the keys, the hinges -- specified in 1916, never replaced. You can feel the weight of them.
+              <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1.05rem)', color: CREAM, opacity: 0.6, lineHeight: 2.2, margin: 0 }}>
+                The key plates, the keys, the hinges -- specified in 1916, never replaced. You can feel the weight of them.
               </p>
             </Fade>
           </div>
-
         </div>
       </section>
 
-      {/* == 13 GROUNDS -- ROSE GARDEN == */}
+      {/* == 16 GROUNDS == */}
       <FullBleed
- id="grounds"        src={I.roseMoney}
+        src={I.roseMoney}
         darken={0.35}
         minH="80vh"
         bgPos="center 55%"
@@ -1670,30 +1350,30 @@ The house has stood for 110 years. It is still here.
         body="4.15 acres within mature hardwoods. The rose garden was planted from bare ground over twenty years. There is nothing else like it in Pinehurst. A side porch with its own sink -- hot and cold -- cabinets, shelves. Built for someone who gardens seriously."
       />
 
-      {/* == 13a ROSE WALL PULL QUOTE == */}
+      {/* == ROSE WALL PULL QUOTE == */}
       <PullQuote
         quote="The wall does two things: it holds the pool and it holds the roses."
         bg={I.roseWall}
       />
 
-      {/* == 13b POOL + GARDEN STRIP == */}
-      <CinematicReveal
+      {/* == 17 POOL == */}
+      <CinematicReveal flip
         eyebrow="The Pool"
         headline="20 by 40.<br/><em style='font-weight:300'>Salt water. Converted 2022.</em>"
-        body="20 by 40. Salt water, converted 2022. Original brick surround. Wrought iron arch gates. Two tennis courts with night lighting. 28-zone irrigation from a 130-foot private well. All utilities underground."
+        body="20 by 40. Salt water, converted 2022. Original brick surround. Wrought iron arch gates. 28-zone irrigation from a 130-foot private well. All utilities underground. The pool sits at the edge of the rose garden -- the wall holds both."
         img={I.pool}
         photos={G.grounds}
         onOpen={openLB}
         dark
       />
 
-      {/* == 13c IRIS MOMENT == */}
+      {/* == IRIS / GARDEN STRIP == */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 3, maxHeight: 420 }}>
         {[
           { src: I.iris,    label: 'Irises',   body: 'April. Every year. Uninstructed.' },
           { src: I.azalea,  label: 'Azaleas',  body: 'Back yard. Under the magnolia.' },
           { src: I.sepia,   label: 'The Gate', body: 'Wrought iron. Original. Still on the hinges.' },
-        ].map((f, i) => (
+        ].map((f,i) => (
           <div key={i} onClick={() => openLB([{ src: f.src, caption: f.body }], 0)}
             style={{ position: 'relative', backgroundImage: `url(${f.src})`, backgroundSize: 'cover', backgroundPosition: 'center', cursor: 'zoom-in', minHeight: 280, overflow: 'hidden' }}>
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.78) 0%, transparent 55%)' }} />
@@ -1705,19 +1385,16 @@ The house has stood for 110 years. It is still here.
         ))}
       </div>
 
-      {/* == 14 STEWARDSHIP == */}
-      <CinematicReveal flip
+      {/* == 18 STEWARDSHIP / BETTY == */}
+      <CinematicReveal
         eyebrow="Stewardship"
         headline="She planted this garden from scratch.<br/><em style='font-weight:300'>This is what twenty years of care looks like.</em>"
-        body="The rose garden, the pool walk, the camellias along the pebble path -- Betty Dumaine planted all of it. She kept foxhounds and peacocks. The Queen of Thailand stayed here. Four families have called Garran Hill home. Each one added something. Nothing was taken away."
+        body="Betty Dumaine planted every rose. She kept foxhounds and peacocks. The Queen of Thailand stayed here. Four families have called Garran Hill home. Each one added something. Nothing was taken away."
         img={I.betty}
         dark
       />
 
-      {/* == 14b BLUE FOX BREATH == */}
-      <div style={{ background: '#0a0a0a', height: 'clamp(4rem, 10vh, 8rem)' }} />
-
-      {/* == 14c BLUE FOX == */}
+      {/* == BLUE FOX == */}
       <FullBleed
         src={I.bluefox}
         darken={0.55}
@@ -1729,7 +1406,7 @@ The house has stood for 110 years. It is still here.
           <Eye center>Blue Fox -- My Irish Hunter -- 1946 to 1969</Eye>
           <GoldLine center />
           <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem,3vw,3.2rem)', color: '#fff', lineHeight: 1.45, margin: '0 auto 1.4rem', maxWidth: 680, letterSpacing: '-0.01em' }}>
-            Betty Dumaine put the first flowers here.<br />Someone still does.
+            Betty Dumaine put the first flowers here.<br/>Someone still does.
           </p>
           <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.55, lineHeight: 2, maxWidth: 500, margin: '0 auto' }}>
             Betty Dumaine's horse. Buried on the grounds she kept for twenty years. The stone has not moved since 1969.
@@ -1737,118 +1414,83 @@ The house has stood for 110 years. It is still here.
         </div>
       </FullBleed>
 
-      {/* == 15 INFRASTRUCTURE == */}
+      {/* == 19 INFRASTRUCTURE == */}
       <section style={{ position: 'relative', padding: 'clamp(5rem,9vw,8rem) clamp(2rem,8vw,10rem)', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${ownExt('70e262eac_up1.jpg')})`, backgroundSize: 'cover', backgroundPosition: 'center 40%', zIndex: 0 }} />
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.91)', zIndex: 1 }} />
         <div style={{ position: 'relative', zIndex: 2 }}>
-        <Fade>
-          <Eye>Infrastructure</Eye>
-          <GoldLine />
-          <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(3rem,5.5vw,7rem)', color: '#fff', lineHeight: 1.06, margin: '0 0 3.5rem', letterSpacing: '-0.012em' }}>
-            Built to run.
-          </h2>
-        </Fade>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 'clamp(1.5rem,3vw,2.5rem) clamp(2rem,4vw,3.5rem)' }}>
-          {[
-            { label: 'Pool',              body: '20x40 salt water, converted 2022. Brick surround with original wrought iron gate.' },
-            { label: 'Hot Water',         body: 'Three heaters -- 80 gallon primary + two 40-gallon units. Three whirlpool tubs.' },
-            { label: 'Attic + Cedar Closet', body: '21x43 ft attic, fully floored. Cedar closet at the top of the third-floor stairs.' },
-            { label: 'The Basement', body: 'Stone walls. Four rooms. Climate controlled. Wine rack, refrigerator, freezer. The kind of basement that makes a house make sense.' },
-            { label: 'Fireplaces',        body: 'Seven fireplaces. Six of seven fitted with propane gas logs and wall-switch timers.' },
-            { label: 'Irrigation',        body: '28+ zones fed by a dedicated 130-foot deep well. Independent of the domestic system.' },
-            { label: 'Security',          body: 'Hard-wired 2000. Greensboro monitoring. Intercom via house phones.' },
-            { label: 'Parking',           body: '12+ cars northeast lot. Additional 6 at the pool lot.' },
-            { label: 'Arch Plans',        body: '15 sheets of O\'Shea drawings available to new owners.' },
-          ].map(({ label, body }) => (
-            <Fade key={label}>
-              <div style={{ borderTop: `1px solid rgba(255,255,255,0.07)`, paddingTop: '1.2rem' }}>
-                <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.6rem' }}>{label}</p>
-                <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.85rem,1vw,0.95rem)', color: CREAM, opacity: 0.55, lineHeight: 1.9, margin: 0 }}>{body}</p>
-              </div>
-            </Fade>
-          ))}
-        </div>
+          <Fade>
+            <Eye>Infrastructure</Eye>
+            <GoldLine />
+            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(3rem,5.5vw,7rem)', color: '#fff', lineHeight: 1.06, margin: '0 0 3.5rem', letterSpacing: '-0.012em' }}>
+              Built to run.
+            </h2>
+          </Fade>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 'clamp(1.5rem,3vw,2.5rem) clamp(2rem,4vw,3.5rem)' }}>
+            {[
+              { label: 'Pool',                  body: '20x40 salt water, converted 2022. Brick surround with original wrought iron gate.' },
+              { label: 'Hot Water',             body: 'Three heaters -- 80 gallon primary + two 40-gallon units. Three whirlpool tubs.' },
+              { label: 'Attic + Cedar Closet',  body: '21x43 ft attic, fully floored. Cedar closet at the top of the third-floor stairs.' },
+              { label: 'The Basement',          body: 'Stone walls. Four rooms. Climate controlled. Wine rack, refrigerator, freezer.' },
+              { label: 'Fireplaces',            body: 'Seven fireplaces. Six with gas logs. One wood-burning. All original. All working.' },
+              { label: 'Climate',               body: 'Five-zone system engineered to protect original architecture. 250-gallon underground propane.' },
+              { label: 'Water',                 body: '130-foot private well. 28-zone irrigation throughout the grounds.' },
+              { label: 'Parking',               body: 'Twelve cars northeast. Six at the pool. Circular drive. All within 4.15 gated acres.' },
+            ].map((item,i) => (
+              <Fade key={i}>
+                <div style={{ borderTop: '1px solid rgba(201,169,110,0.22)', paddingTop: 'clamp(1.2rem,2vw,1.6rem)' }}>
+                  <p style={{ fontFamily: 'sans-serif', fontSize: '7.5px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.7rem' }}>{item.label}</p>
+                  <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1vw,0.98rem)', color: CREAM, opacity: 0.58, lineHeight: 1.9, margin: 0 }}>{item.body}</p>
+                </div>
+              </Fade>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* == 15b 1916 ARCHIVE == */}
+      {/* == 20 1916 SAPLINGS == */}
       <CinematicReveal
         eyebrow="Est. 1916"
         headline="In 1916, those were saplings.<br/><em style='font-weight:300'>Now they are a forest.</em>"
-        body="Walter Hines Page named this estate before the first stone was laid. He never walked through the door. The house has been cared for ever since."
+        body="The oaks along the drive were planted with the house. One hundred and nine years. The canopy closes over the circular drive and does not let the outside world in. That is not an accident. The land was chosen for this."
         img={I.img1916}
-      />
-
-      {/* == 16 FULL GALLERY == */}
-      <section style={{ position: 'relative', padding: 'clamp(5rem,9vw,8rem) clamp(2rem,6vw,6rem)', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.portico})`, backgroundSize: 'cover', backgroundPosition: 'center 25%', zIndex: 0 }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.92)', zIndex: 1 }} />
-        <div style={{ position: 'relative', zIndex: 2 }}>
-        <Fade>
-          <div style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem,5vw,4rem)' }}>
-            <Eye center>The Property</Eye>
-            <GoldLine center />
-            <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,4vw,5rem)', color: '#fff', margin: '0 0 0.8rem', letterSpacing: '-0.01em' }}>
-              Every room. Every detail.
-            </h2>
-            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, color: CREAM, opacity: 0.45, fontSize: '0.95rem', margin: 0 }}>Select any image to open the full gallery.</p>
-          </div>
-        </Fade>
-        <div style={{ columns: 'clamp(200px,22vw,280px)', gap: 4 }}>
-          {G.all.map((p, i) => (
-            <div key={i} onClick={() => openLB(G.all, i)}
-              style={{ marginBottom: 4, breakInside: 'avoid', backgroundImage: `url(${p.src})`, backgroundSize: 'cover', paddingTop: i % 3 === 0 ? '75%' : i % 3 === 1 ? '60%' : '90%', cursor: 'zoom-in', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0)', transition: 'background .25s' }}
-                onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.2)'}
-                onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0)'} />
-            </div>
-          ))}
-        </div>
-        </div>
-      </section>
-
-      {/* == 17 AERIAL == */}
-      <FullBleed src={I.aerial} darken={0.3} minH="70vh" bgPos="center" align="center">
-        <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.5rem,2.8vw,3rem)', color: '#fff', lineHeight: 1.45, margin: 0, textAlign: 'center', letterSpacing: '-0.01em', opacity: 0.9 }}>
-          The world outside these gates<br />does not exist here.
-        </p>
-      </FullBleed>
-
-      {/* == 18 DUSK == */}
-      <CinematicReveal flip
-        eyebrow="200 Hollycrest Drive"
-        headline="The house is ready.<br/><em style='font-weight:300'>The question is whether you are.</em>"
-        body="Garran Hill has always been owned by one family at a time. Each one left it better than they found it. The opportunity to be next does not come twice."
-        img={I.dusk2}
         dark
       />
 
-      {/* == VIRTUAL TOUR == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(5rem,8vw,7rem) 2rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'relative', maxWidth: 680, margin: '0 auto' }}>
-          <p style={{ fontFamily: SERIF_ALT, fontSize: 'clamp(0.6rem,0.9vw,0.75rem)', letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD, margin: '0 0 1.2rem' }}>Virtual Tour</p>
-          <div style={{ width: 40, height: 1, background: GOLD, margin: '0 auto 2rem' }} />
-          <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,3.5vw,3.2rem)', color: '#fff', margin: '0 0 1.4rem', lineHeight: 1.25 }}>
-            Walk every room.<br/><em style={{ fontWeight: 300 }}>At your own pace.</em>
-          </h2>
-          <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.95rem,1.3vw,1.15rem)', color: CREAM, lineHeight: 1.9, margin: '0 0 2.4rem' }}>
-            The complete Matterport tour allows you to move through the house as if you were there -- every room, every stair, every view.
+      {/* == 21 FULL GALLERY == */}
+      <section id="gallery" style={{ background: '#0a0a0a', padding: 'clamp(4rem,7vw,6rem) clamp(1.5rem,4vw,3rem)' }}>
+        <Fade>
+          <Eye center>The Full Estate</Eye>
+          <GoldLine center />
+          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.5vw,1.3rem)', color: CREAM, opacity: 0.5, textAlign: 'center', margin: '0 auto 3rem', maxWidth: 560 }}>
+            Every room. Every detail. Every corner of 4.15 acres.
           </p>
-          <a href="https://my.matterport.com/show/?m=mfwyqT5Btwx" target="_blank" rel="noopener noreferrer"
-            style={{ display: 'inline-block', padding: '0.85rem 2.4rem', border: '1px solid #C9A96E', color: '#C9A96E', fontFamily: SERIF_ALT, fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}
-          >Enter the Virtual Tour</a>
-        </div>
+        </Fade>
+        <FilmStrip photos={G.all} onOpen={openLB} />
       </section>
 
-            {/* == 19 FINAL -- TWILIGHT == */}
-      <FullBleed src={I.twilight} darken={0.32} minH="85vh" bgPos="center 60%" align="center">
-        <div style={{ textAlign: 'center' }}>
-          <img src={I.crest} alt="" style={{ height: 64, opacity: 0.8, display: 'block', margin: '0 auto 2.5rem' }} />
-          <p style={{ fontFamily: SCRIPT, fontSize: 'clamp(3rem,7vw,7rem)', color: '#fff', margin: '0 0 1.5rem', lineHeight: 1, textShadow: '0 2px 30px rgba(0,0,0,0.4)' }}>Garran Hill</p>
-          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.4rem,2.5vw,2.5rem)', color: '#fff', margin: '0 0 2.5rem', opacity: 0.88, letterSpacing: '0.02em' }}>
-            Garran Hill is ready.
-          </p>
+      {/* == 22 AERIAL == */}
+      <FullBleed
+        src={I.aerial}
+        darken={0.45}
+        minH="75vh"
+        bgPos="center"
+        align="center"
+        eyebrow="4.15 Acres -- Pinehurst ETJ"
+        headline="The world outside these gates<br/><em style='font-weight:300'>does not exist here.</em>"
+      />
+
+      {/* == 23 TWILIGHT / FINAL == */}
+      <FullBleed
+        src={I.dusk2}
+        darken={0.52}
+        minH="80vh"
+        bgPos="center"
+        align="center"
+        eyebrow="$4,250,000 -- Offered Exclusively"
+        headline="Garran Hill is ready.<br/><em style='font-weight:300'>The question is whether you are.</em>"
+      >
+        <div style={{ marginTop: '2.5rem', textAlign: 'center' }}>
           <button onClick={() => setShowInq(true)}
             style={{ background: 'none', border: `1px solid ${GOLD}`, color: GOLD, padding: '0.85rem 2.8rem', fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.34em', textTransform: 'uppercase', cursor: 'pointer' }}>
             Private Inquiry
@@ -1856,7 +1498,8 @@ The house has stood for 110 years. It is still here.
         </div>
       </FullBleed>
 
-      {/* == FOOTER == */}
+
+            {/* == FOOTER == */}
       <Footer onInquire={() => setShowInq(true)} />
     </div>
   );
