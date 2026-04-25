@@ -803,7 +803,7 @@ function Hero({ onInquire }) {
 
         {/* Stats row */}
         <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center',
-          padding: mob ? '0.6rem 0.5rem' : '0.65rem clamp(1rem,3vw,4rem)' }}>
+          padding: mob ? '0.4rem 0.5rem' : '0.5rem clamp(1rem,3vw,4rem)', height: mob ? '3.6rem' : '4.2rem', boxSizing: 'border-box' }}>
 
           {['1916|Est.','4|Bedrooms','6|Bathrooms'].map(s => {
             const [v,l] = s.split('|');
@@ -818,19 +818,17 @@ function Hero({ onInquire }) {
             );
           })}
 
-          {/* SEAL -- fully contained, height-driven sizing */}
+          {/* SEAL -- transparent PNG, height locked to stat row */}
           <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            padding: '0 0.6rem', overflow: 'hidden' }}>
+            padding: '0 0.5rem', height: mob ? '3.6rem' : '4.2rem', overflow: 'hidden' }}>
             <img
-              src="https://media.base44.com/images/public/69e248a2469cc39540781cce/ea9d25616_generated_image.png"
+              src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/b477b87f6_crest_final_v2.png"
               alt="Garran Hill Seal"
               style={{
-                height: mob ? '3.2rem' : '3.8rem',
+                height: '100%',
                 width: 'auto',
-                maxHeight: '90%',
                 display: 'block',
-                objectFit: 'contain',
-                filter: 'drop-shadow(0 2px 12px rgba(0,0,0,0.9))'
+                filter: 'drop-shadow(0 2px 10px rgba(0,0,0,0.85))'
               }} />
           </div>
 
