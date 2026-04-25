@@ -262,7 +262,7 @@ function Fade({ children, delay = 0, up = true }) {
     <div ref={ref} style={{
       opacity:   v ? 1 : 0,
       transform: v ? 'none' : up ? 'translateY(32px)' : 'none',
-      transition: `opacity 1.4s cubic-bezier(.22,1,.36,1) ${delay}s, transform 1.4s cubic-bezier(.22,1,.36,1) ${delay}s`,
+      transition: `opacity 1.1s cubic-bezier(.22,1,.36,1) ${delay}s, transform 1.1s cubic-bezier(.22,1,.36,1) ${delay}s`,
     }}>
       {children}
     </div>
@@ -282,7 +282,7 @@ function StaggerGallery({ photos, onOpen }) {
 
   return (
     <div ref={ref} style={{ marginTop: '2.4rem' }}>
-      <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.38em', textTransform: 'uppercase', color: GOLD, opacity: 0.45, margin: '0 0 1rem' }}>
+      <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.42em', textTransform: 'uppercase', color: GOLD, opacity: 0.45, margin: '0 0 1rem' }}>
         {total} {total === 1 ? 'image' : 'images'}
       </p>
 
@@ -383,7 +383,7 @@ function StickyNav({ onInquire }) {
       <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: '1rem', color: 'rgba(255,255,255,0.88)', letterSpacing: '0.03em' }}>Garran Hill</span>
       <div style={{ display: 'flex', gap: 'clamp(1.5rem,3vw,3rem)', alignItems: 'center' }}>
         {links.map(l => l.href ? (
-          <a key={l.label} href={l.href} style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)', textDecoration: 'none', cursor: 'pointer' }}
+          <a key={l.label} href={l.href} style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.62)', textDecoration: 'none', cursor: 'pointer' }}
             onClick={e => {
               e.preventDefault();
               const el = document.querySelector(l.href);
@@ -404,9 +404,9 @@ function StickyNav({ onInquire }) {
 function GoldLine({ center = false }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: center ? 'center' : 'flex-start', margin: '1.6rem 0' }}>
-      <div style={{ width: 32, height: 1, background: `linear-gradient(to right, transparent, ${GOLD})`, transform: center ? 'scaleX(-1)' : 'none' }} />
+      <div style={{ width: 44, height: 1, background: `linear-gradient(to right, transparent, rgba(201,169,110,0.9))`, transform: center ? 'scaleX(-1)' : 'none' }} />
       <div style={{ width: 6, height: 6, borderRadius: '50%', border: `1px solid ${GOLD}`, margin: '0 8px', flexShrink: 0 }} />
-      <div style={{ width: 32, height: 1, background: `linear-gradient(to right, ${GOLD}, transparent)` }} />
+      <div style={{ width: 44, height: 1, background: `linear-gradient(to right, rgba(201,169,110,0.9), transparent)` }} />
     </div>
   );
 }
@@ -415,7 +415,7 @@ function Eye({ children, center = false }) {
   return (
     <span style={{
       display: 'block', fontFamily: 'sans-serif', fontSize: 'clamp(7px,0.9vw,9px)',
-      letterSpacing: '0.38em', textTransform: 'uppercase', color: GOLD,
+      letterSpacing: '0.42em', textTransform: 'uppercase', color: GOLD,
       marginBottom: '1.2rem', textAlign: center ? 'center' : 'left',
     }}>
       {children}
@@ -764,14 +764,14 @@ function Hero({ onInquire }) {
         animation: 'kenburns 18s ease-in-out infinite alternate'
       }} />
       {/* gradient */}
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,10,10,0.22) 0%, rgba(10,10,10,0.08) 40%, rgba(10,10,10,0.55) 78%, rgba(10,10,10,0.92) 100%)', zIndex: 2 }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,10,10,0.18) 0%, rgba(10,10,10,0.06) 35%, rgba(10,10,10,0.62) 72%, rgba(10,10,10,0.95) 100%)', zIndex: 2 }} />
 
       {/* nav */}
       <nav style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10, display: mob ? 'none' : 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 'clamp(1.4rem,3vw,2.2rem) clamp(1.8rem,4vw,3.5rem)' }}>
         <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: 'clamp(1rem,1.8vw,1.18rem)', color: 'rgba(255,255,255,0.9)', letterSpacing: '0.04em' }}>Garran Hill</span>
         <div style={{ display: 'flex', gap: 'clamp(2rem,3vw,3.5rem)', alignItems: 'center' }}>
           {['The Estate', 'The History', 'The Grounds'].map(l => (
-            <span key={l} style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', cursor: 'default' }}>{l}</span>
+            <span key={l} style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.62)', cursor: 'default' }}>{l}</span>
           ))}
           <button onClick={onInquire} style={{ background: 'none', border: 'none', borderBottom: `1px solid ${GOLD}`, color: GOLD, padding: '0.2rem 0', fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase', cursor: 'pointer' }}>
             Private Inquiry
@@ -834,16 +834,19 @@ function Hero({ onInquire }) {
         <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center',
           padding: mob ? '0.6rem 0.5rem' : '0.65rem clamp(1rem,3vw,4rem)' }}>
 
-          {['1916|Est.','4|Bedrooms','6|Bathrooms'].map(s => {
+          {['1916|Est.','4|Bedrooms','6|Bathrooms'].map((s, idx) => {
             const [v,l] = s.split('|');
             return (
-              <div key={l} style={{ textAlign: 'center', flex: 1 }}>
-                <p style={{ fontFamily: SERIF, fontWeight: 300,
-                  fontSize: mob ? 'clamp(0.7rem,3.5vw,1.1rem)' : 'clamp(1.1rem,1.8vw,1.9rem)', color: '#fff',
-                  margin: '0 0 0.12rem', lineHeight: 1 }}>{v}</p>
-                <p style={{ fontFamily: 'sans-serif', fontSize: mob ? '5px' : '6.5px', letterSpacing: '0.22em',
-                  textTransform: 'uppercase', color: 'rgba(201,169,110,0.65)', margin: 0 }}>{l}</p>
-              </div>
+              <React.Fragment key={l}>
+                {idx > 0 && !mob && <div style={{ width: 1, height: 28, background: 'linear-gradient(to bottom, transparent, rgba(201,169,110,0.35) 50%, transparent)', flexShrink: 0 }} />}
+                <div style={{ textAlign: 'center', flex: 1 }}>
+                  <p style={{ fontFamily: SERIF, fontWeight: 300,
+                    fontSize: mob ? 'clamp(0.7rem,3.5vw,1.1rem)' : 'clamp(1.1rem,1.8vw,1.9rem)', color: '#fff',
+                    margin: '0 0 0.12rem', lineHeight: 1 }}>{v}</p>
+                  <p style={{ fontFamily: 'sans-serif', fontSize: mob ? '5px' : '6.5px', letterSpacing: '0.22em',
+                    textTransform: 'uppercase', color: 'rgba(201,169,110,0.65)', margin: 0 }}>{l}</p>
+                </div>
+              </React.Fragment>
             );
           })}
 
@@ -858,16 +861,19 @@ function Hero({ onInquire }) {
               }} />
           </div>
 
-          {['6,072 sq ft|Living Area','4.15 Acres|Land','$4,250,000|Offered At'].map(s => {
+          {['6,072 sq ft|Living Area','4.15 Acres|Land','$4,250,000|Offered At'].map((s, idx) => {
             const [v,l] = s.split('|');
             return (
-              <div key={l} style={{ textAlign: 'center', flex: 1 }}>
-                <p style={{ fontFamily: SERIF, fontWeight: 300,
-                  fontSize: mob ? 'clamp(0.7rem,3.5vw,1.1rem)' : 'clamp(1.1rem,1.8vw,1.9rem)', color: '#fff',
-                  margin: '0 0 0.12rem', lineHeight: 1 }}>{v}</p>
-                <p style={{ fontFamily: 'sans-serif', fontSize: mob ? '5px' : '6.5px', letterSpacing: '0.22em',
-                  textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
-              </div>
+              <React.Fragment key={l}>
+                {!mob && <div style={{ width: 1, height: 28, background: 'linear-gradient(to bottom, transparent, rgba(201,169,110,0.35) 50%, transparent)', flexShrink: 0 }} />}
+                <div style={{ textAlign: 'center', flex: 1 }}>
+                  <p style={{ fontFamily: SERIF, fontWeight: 300,
+                    fontSize: mob ? 'clamp(0.7rem,3.5vw,1.1rem)' : 'clamp(1.1rem,1.8vw,1.9rem)', color: '#fff',
+                    margin: '0 0 0.12rem', lineHeight: 1 }}>{v}</p>
+                  <p style={{ fontFamily: 'sans-serif', fontSize: mob ? '5px' : '6.5px', letterSpacing: '0.22em',
+                    textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
+                </div>
+              </React.Fragment>
             );
           })}
         </div>
@@ -900,7 +906,7 @@ function FullBleed({ src, eyebrow, headline, sub, body, align = 'center', darken
               dangerouslySetInnerHTML={{ __html: headline }} />
           )}
           {sub && <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.8vw,1.3rem)', color: CREAM, opacity: 0.82, lineHeight: 1.75, margin: '0 0 1.2rem' }}>{sub}</p>}
-          {body && <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.92rem,1.3vw,1rem)', color: CREAM, opacity: 0.78, lineHeight: 1.85, margin: 0 }}>{body}</p>}
+          {body && <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.92rem,1.3vw,1rem)', color: CREAM, opacity: 0.82, lineHeight: 1.88, margin: 0 }}>{body}</p>}
           {children}
         </Fade>
       </div>
@@ -931,7 +937,7 @@ function CinematicReveal({ eyebrow, headline, body, img, flip = false, photos, o
           {eyebrow && <GoldLine />}
           <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,3.8vw,5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1.4rem', letterSpacing: '-0.012em' }}
             dangerouslySetInnerHTML={{ __html: headline }} />
-          <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.35vw,1.05rem)', color: CREAM, opacity: 0.82, lineHeight: 1.8, margin: 0, maxWidth: 420 }}>{body}</p>
+          <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.35vw,1.05rem)', color: CREAM, opacity: 0.86, lineHeight: 1.85, margin: 0, maxWidth: 420 }}>{body}</p>
           {subBody && <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,0.97rem)', color: CREAM, opacity: 0.65, lineHeight: 1.75, margin: '1rem 0 0', maxWidth: 400 }}>{subBody}</p>}
           {photos && photos.length > 0 && <StaggerGallery photos={photos} onOpen={onOpen} />}
         </Fade>
@@ -966,7 +972,7 @@ function PullQuote({ quote, attr, bg }) {
       <div style={{ position: 'relative', zIndex: 2 }}>
         <Fade>
           <GoldLine center />
-          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem,3.5vw,3.5rem)', color: '#fff', lineHeight: 1.45, margin: '1.5rem auto', maxWidth: 860, letterSpacing: '-0.01em' }}>
+          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.8rem,4vw,4rem)', color: '#fff', lineHeight: 1.42, margin: '1.5rem auto', maxWidth: 880, letterSpacing: '-0.01em' }}>
             "{quote}"
           </p>
           <GoldLine center />
@@ -1108,7 +1114,7 @@ function GarranHillV6() {
           <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.5rem,5vw,6.5rem)', color: '#fff', lineHeight: 1.08, margin: '0 auto 1.8rem', letterSpacing: '-0.015em', maxWidth: 900 }}>
             Some houses hold history.<br/><em style={{ fontWeight: 300 }}>This one shaped it.</em>
           </h2>
-          <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,1.1rem)', color: CREAM, opacity: 0.55, lineHeight: 2.15, maxWidth: 640, margin: '0 auto' }}>
+          <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,1.1rem)', color: CREAM, opacity: 0.72, lineHeight: 2.1, maxWidth: 640, margin: '0 auto' }}>
             Neo-Georgian. Four columns. Seven fireplaces. 4.15 acres. Built 1916 by the men who built Pinehurst. Restored 2000 to the original drawings. One hundred and nine years of remarkable stewardship.
           </p>
         </Fade>
