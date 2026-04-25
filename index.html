@@ -791,7 +791,7 @@ function Hero({ onInquire }) {
       {/* STAT BAR -- gold rule top AND bottom, seal floats centered */}
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
-        background: 'rgba(5,5,5,0.92)', overflow: 'hidden'
+        background: 'rgba(5,5,5,0.92)'
       }}>
         {/* gold rule TOP */}
         <div style={{ width: '100%', height: '1px',
@@ -814,8 +814,17 @@ function Hero({ onInquire }) {
             );
           })}
 
-          {/* SEAL -- spacer in stat row, actual seal hangs below via absolute */}
-          <div style={{ flex: '0 0 auto', width: mob ? 60 : 80, position: 'relative' }} />
+          {/* SEAL -- inline between stats, sized to fit between gold rules */}
+          <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 0.5rem' }}>
+            <img
+              src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/96ca27458_seal_final.png"
+              alt="Garran Hill Seal"
+              style={{
+                width: mob ? 'clamp(52px,11vw,68px)' : 'clamp(68px,5.5vw,82px)',
+                height: 'auto', display: 'block',
+                filter: 'drop-shadow(0 4px 14px rgba(0,0,0,0.98))'
+              }} />
+          </div>
 
           {['6,072 sq ft|Living Area','4.15 Acres|Land','$4,250,000|Offered At'].map(s => {
             const [v,l] = s.split('|');
