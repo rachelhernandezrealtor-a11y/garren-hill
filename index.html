@@ -814,18 +814,8 @@ function Hero({ onInquire }) {
             );
           })}
 
-          {/* SEAL -- contained within stat bar, centered vertically */}
-          <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            position: 'relative', padding: '0 0.8rem' }}>
-            <img
-              src="https://media.base44.com/images/public/69e248a2469cc39540781cce/93b1a62cf_generated_image.png"
-              alt="Garran Hill Seal"
-              style={{
-                width: mob ? 'clamp(50px,10vw,65px)' : 'clamp(60px,5vw,75px)',
-                height: 'auto', display: 'block',
-                filter: 'drop-shadow(0 4px 16px rgba(0,0,0,0.95))'
-              }} />
-          </div>
+          {/* SEAL -- spacer in stat row, actual seal hangs below via absolute */}
+          <div style={{ flex: '0 0 auto', width: mob ? 60 : 80, position: 'relative' }} />
 
           {['6,072 sq ft|Living Area','4.15 Acres|Land','$4,250,000|Offered At'].map(s => {
             const [v,l] = s.split('|');
@@ -842,8 +832,22 @@ function Hero({ onInquire }) {
         </div>
 
         {/* gold rule BOTTOM */}
-        <div style={{ width: '100%', height: '1px',
-          background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.7) 15%, rgba(201,169,110,0.7) 85%, transparent)' }} />
+        <div style={{ position: 'relative', width: '100%', height: '1px',
+          background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.7) 15%, rgba(201,169,110,0.7) 85%, transparent)' }}>
+          {/* SEAL -- hangs below bottom gold rule, centered medallion */}
+          <div style={{ position: 'absolute', left: '50%', top: '50%',
+            transform: 'translate(-50%, 0)',
+            zIndex: 20, pointerEvents: 'none' }}>
+            <img
+              src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/96ca27458_seal_final.png"
+              alt="Garran Hill Seal"
+              style={{
+                width: mob ? 'clamp(70px,14vw,90px)' : 'clamp(90px,6.5vw,110px)',
+                height: 'auto', display: 'block',
+                filter: 'drop-shadow(0 6px 20px rgba(0,0,0,0.98))'
+              }} />
+          </div>
+        </div>
       </div>
     </section>
   );
