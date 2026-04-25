@@ -181,6 +181,16 @@ const I = {
 /* ============================================================
    HOOKS
 ============================================================ */
+
+function useW() {
+  const [w, setW] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+  useEffect(() => {
+    const fn = () => setW(window.innerWidth);
+    window.addEventListener('resize', fn);
+    return () => window.removeEventListener('resize', fn);
+  }, []);
+  return w;
+}
 function useInView(ref, threshold = 0.15) {
   const [v, setV] = useState(false);
   useEffect(() => {
