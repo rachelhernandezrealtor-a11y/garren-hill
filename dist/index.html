@@ -982,14 +982,14 @@ function PullQuote({ quote, attr, bg }) {
 ============================================================ */
 function Footer({ onInquire }) {
   return (
-    <footer id="inquiry-anchor" style={{ background: '#0a0a0a', borderTop: '1px solid rgba(255,255,255,0.06)', padding: 'clamp(4rem,8vw,7rem) clamp(2rem,8vw,10rem)', textAlign: 'center' }}>
+    <footer id="inquiry-anchor" style={{ background: '#0a0a0a', borderTop: '1px solid rgba(255,255,255,0.06)', padding: 'clamp(3rem,5vw,4.5rem) clamp(2rem,8vw,10rem) clamp(1.5rem,2.5vw,2rem)', textAlign: 'center' }}>
       <Fade>
         <img src={I.crest} alt="Garran Hill" style={{ height: 70, opacity: 0.85, display: 'block', margin: '0 auto 2rem' }} />
         <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.8vw,1.2rem)', color: CREAM, opacity: 0.55, marginBottom: '0.4rem' }}>200 Hollycrest Drive &nbsp;&bull;&nbsp; Pinehurst, NC 28374 &nbsp;&bull;&nbsp; Est. 1916</p>
         <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)', marginBottom: '2.5rem' }}>Represented exclusively by</p>
         <p style={{ fontFamily: SERIF, fontWeight: 500, fontSize: 'clamp(1.1rem,1.8vw,1.4rem)', color: '#fff', margin: '0 0 0.3rem' }}>Rachel Hernandez</p>
         <p style={{ fontFamily: 'sans-serif', fontSize: '7.5px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, opacity: 0.75, margin: '0 0 2.5rem' }}>Sotheby's International Realty</p>
-        <button onClick={onInquire} style={{ background: 'none', border: `1px solid ${GOLD}`, color: GOLD, padding: '0.9rem 2.8rem', fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.34em', textTransform: 'uppercase', cursor: 'pointer', marginBottom: '3rem' }}>
+        <button onClick={onInquire} style={{ background: 'none', border: `1px solid ${GOLD}`, color: GOLD, padding: '0.9rem 2.8rem', fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.34em', textTransform: 'uppercase', cursor: 'pointer', marginBottom: '1.5rem' }}>
           Private Inquiry
         </button>
         <p style={{ fontFamily: 'sans-serif', fontSize: '6.5px', letterSpacing: '0.26em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.14)', margin: 0 }}>
@@ -1101,7 +1101,7 @@ function GarranHillV6() {
 
 
       {/* == 02 MANIFESTO == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(3.5rem,6vh,5.5rem) clamp(2rem,14vw,18rem)', textAlign: 'center', margin: 0 }}>
+      <section style={{ background: '#0a0a0a', padding: 'clamp(2rem,3.5vh,3rem) clamp(2rem,14vw,18rem) clamp(1.5rem,3vh,2.5rem)', textAlign: 'center', margin: 0 }}>
         <Fade>
           <Eye center>200 Hollycrest Drive -- Pinehurst, NC -- Est. 1916</Eye>
           <GoldLine center />
@@ -1170,8 +1170,9 @@ function GarranHillV6() {
       </section>
 
       {/* == WHP QUOTE -- floats free on dark == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(3.5rem,6vh,5.5rem) clamp(2rem,10vw,12rem)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 0 }}>
-        <div style={{ textAlign: 'center', maxWidth: 760 }}>
+      <section style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(3.5rem,6vh,5.5rem) clamp(2rem,10vw,12rem)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 0 }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${ext('0de69e38e_200HollycrestDrive-9.jpg')})`, backgroundSize: 'cover', backgroundPosition: 'center', zIndex: 0, opacity: 0.06 }} />
+        <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', maxWidth: 760 }}>
           <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.7)', margin: '0 auto clamp(2.5rem,5vh,4rem)' }} />
           <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(2rem,4vw,4.5rem)', color: '#fff', margin: 0, lineHeight: 1.35, letterSpacing: '-0.01em' }}>
             He named it Garran Hill.<br/>He never walked through the door.
@@ -1238,7 +1239,9 @@ function GarranHillV6() {
       />
 
       {/* == 09b POWDER ROOM MOMENT -- dark interstitial == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vh,5rem) clamp(2rem,14vw,18rem)', textAlign: 'center' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(3rem,5vh,5rem) clamp(2rem,14vw,18rem)', textAlign: 'center' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${own('886246096_200Holycrest-1701.jpg')})`, backgroundSize: 'cover', backgroundPosition: 'center', zIndex: 0, opacity: 0.05 }} />
+        <div style={{ position: 'relative', zIndex: 2 }}>
         <Fade>
           <Eye center>The Powder Room</Eye>
           <GoldLine center />
@@ -1282,7 +1285,7 @@ function GarranHillV6() {
             <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.2rem,4vw,5.5rem)', color: '#fff', lineHeight: 1.12, margin: '2rem auto', letterSpacing: '-0.015em', maxWidth: 860 }}>
               The interior was gutted.<br/><em style={{ fontWeight: 300 }}>None of it visible now.</em>
             </h2>
-            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,1.08rem)', color: CREAM, opacity: 0.65, lineHeight: 2.1, maxWidth: 720, margin: '0 auto' }}>
+            <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,1.08rem)', color: CREAM, opacity: 0.78, lineHeight: 2.1, maxWidth: 720, margin: '0 auto' }}>
               Every pipe replaced. Every wire replaced. New Marvin windows throughout -- matched to the original profiles. Seven fireplaces cleaned, new dampers, gas logs fitted. Then the finish work began. Fifteen sheets of drawings. Every cornice profile copied from what was already there. The primary suite fireplace brackets drawn at full scale before a single piece was cut. The result does not look like 2000. It looks like 1916. The drawings go to the new owner.
             </p>
           </Fade>
@@ -1497,9 +1500,9 @@ function GarranHillV6() {
               { label: 'Parking',               body: 'Twelve cars northeast. Six at the pool. Circular drive. All within 4.15 gated acres.' },
             ].map((item,i) => (
               <Fade key={i}>
-                <div style={{ borderTop: '1px solid rgba(201,169,110,0.22)', paddingTop: 'clamp(1.2rem,2vw,1.6rem)' }}>
+                <div style={{ borderTop: '1px solid rgba(201,169,110,0.45)', paddingTop: 'clamp(1.2rem,2vw,1.6rem)' }}>
                   <p style={{ fontFamily: 'sans-serif', fontSize: '7.5px', letterSpacing: '0.28em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.7rem' }}>{item.label}</p>
-                  <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,0.98rem)', color: CREAM, opacity: 0.58, lineHeight: 1.9, margin: 0 }}>{item.body}</p>
+                  <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.2vw,0.98rem)', color: CREAM, opacity: 0.75, lineHeight: 1.9, margin: 0 }}>{item.body}</p>
                 </div>
               </Fade>
             ))}
