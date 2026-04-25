@@ -1165,7 +1165,17 @@ function GarranHillV6() {
         </div>
       </div>
 
-      {/* == 04 DRAWING ROOM == */}
+      {/* == 03b LIVING ROOM == */}
+      <CinematicReveal
+        eyebrow="The Living Room"
+        headline="The room that holds<br/><em style='font-weight:300'>the whole house together.</em>"
+        body="Original Georgian carved mantel. Wide plank oak floors. Proportions drawn from the 1916 plans and rebuilt exactly to spec in the 1998 restoration. The room reads formal and feels effortless."
+        img={I.livingRoom}
+        photos={G.living}
+        onOpen={openLB}
+      />
+
+            {/* == 04 DRAWING ROOM == */}
       <CinematicReveal flip
         eyebrow="The Drawing Room"
         headline="Fire going,<br/><em style='font-weight:300'>no one home yet.</em>"
@@ -1179,8 +1189,8 @@ function GarranHillV6() {
       {/* == 05 DINING ROOM == */}
       <CinematicReveal
         eyebrow="The Dining Room"
-        headline="The shell cabinets were already there.<br/><em style='font-weight:300'>They are still there now.</em>"
-        body="Original shell cabinets. Original fireplace surround. The room seats twelve without feeling formal. It has been doing this since 1916."
+        headline="Formal by proportion.<br/><em style='font-weight:300'>Intimate by firelight.</em>"
+        body="The dining room fireplace is the seventh. Georgian wainscoting. Custom crown molding. A room designed for the kind of dinner that becomes a story."
         img={I.dining}
         photos={G.dining}
         onOpen={openLB}
@@ -1287,6 +1297,23 @@ function GarranHillV6() {
         photos={G.study}
         onOpen={openLB}
       />
+
+
+
+      {/* == 11b SEVEN FIREPLACES == */}
+      <section style={{ background: '#0a0a0a', padding: 'clamp(4rem,7vw,6rem) clamp(2rem,6vw,5rem)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ maxWidth: 760, textAlign: 'center' }}>
+          <p style={{ fontFamily: SERIF_ALT, fontStyle: 'normal', fontSize: 'clamp(0.6rem,0.9vw,0.75rem)', letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD, margin: '0 0 1.2rem' }}>Seven Fireplaces</p>
+          <div style={{ width: 40, height: 1, background: GOLD, margin: '0 auto 2.2rem' }} />
+          <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,4vw,3.8rem)', color: '#fff', margin: '0 0 1.8rem', lineHeight: 1.2 }}>
+            Every one original.<br/><em style={{ fontWeight: 300 }}>Every one working.</em>
+          </h2>
+          <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(1rem,1.4vw,1.2rem)', color: CREAM, lineHeight: 1.9, maxWidth: 600, margin: '0 auto' }}>
+            The seven carved mantels survived the 1998 restoration untouched. New dampers. Propane gas logs in six. The original craftsmanship intact. On a cold Pinehurst night, every room in this house can be warm.
+          </p>
+          <div style={{ width: 40, height: 1, background: GOLD, margin: '2.2rem auto 0' }} />
+        </div>
+      </section>
 
       {/* == 09 WALTER HINES PAGE == */}
       <section id="history" style={{ position: 'relative', minHeight: 'clamp(580px,80vh,920px)', overflow: 'hidden', display: 'flex', alignItems: 'stretch' }}>
@@ -1699,7 +1726,24 @@ function GarranHillV6() {
         dark
       />
 
-      {/* == 19 FINAL -- TWILIGHT == */}
+      {/* == VIRTUAL TOUR == */}
+      <section style={{ background: '#0a0a0a', padding: 'clamp(5rem,8vw,7rem) 2rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'relative', maxWidth: 680, margin: '0 auto' }}>
+          <p style={{ fontFamily: SERIF_ALT, fontSize: 'clamp(0.6rem,0.9vw,0.75rem)', letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD, margin: '0 0 1.2rem' }}>Virtual Tour</p>
+          <div style={{ width: 40, height: 1, background: GOLD, margin: '0 auto 2rem' }} />
+          <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,3.5vw,3.2rem)', color: '#fff', margin: '0 0 1.4rem', lineHeight: 1.25 }}>
+            Walk every room.<br/><em style={{ fontWeight: 300 }}>At your own pace.</em>
+          </h2>
+          <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.95rem,1.3vw,1.15rem)', color: CREAM, lineHeight: 1.9, margin: '0 0 2.4rem' }}>
+            The complete Matterport tour allows you to move through the house as if you were there -- every room, every stair, every view.
+          </p>
+          <a href="https://my.matterport.com/show/?m=mfwyqT5Btwx" target="_blank" rel="noopener noreferrer"
+            style={{ display: 'inline-block', padding: '0.85rem 2.4rem', border: '1px solid #C9A96E', color: '#C9A96E', fontFamily: SERIF_ALT, fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}
+          >Enter the Virtual Tour</a>
+        </div>
+      </section>
+
+            {/* == 19 FINAL -- TWILIGHT == */}
       <FullBleed src={I.twilight} darken={0.32} minH="85vh" bgPos="center 60%" align="center">
         <div style={{ textAlign: 'center' }}>
           <img src={I.crest} alt="" style={{ height: 64, opacity: 0.8, display: 'block', margin: '0 auto 2.5rem' }} />
