@@ -1099,15 +1099,15 @@ function GarranHillV6() {
           {/* Gold rule */}
           <div style={{ width: 48, height: 1, background: 'rgba(201,169,110,0.7)' }} />
 
-          {/* Attribution -- the tease */}
+          {/* Attribution -- year only, no gravestone dates */}
           <p style={{
             fontFamily: 'sans-serif',
             fontSize: '9px', letterSpacing: '0.38em',
             textTransform: 'uppercase',
-            color: 'rgba(201,169,110,0.75)',
+            color: 'rgba(201,169,110,0.65)',
             margin: 0, textAlign: 'center'
           }}>
-            Walter Hines Page &nbsp;&nbsp;1855 - 1918
+            Garran Hill &nbsp;&nbsp;&bull;&nbsp;&nbsp; Est. 1916
           </p>
         </div>
       </div>
@@ -1134,7 +1134,7 @@ function GarranHillV6() {
       <CinematicReveal
         eyebrow="The Foyer"
         headline="The central axis runs straight through.<br/><em style='font-weight:300'>Visible the instant the door opens.</em>"
-        body="Wide-plank original oak floors. The staircase rises at the far end -- visible from the threshold. Three staircases in this house. The primary one begins here. The hall axis carries through to the library bookcases at the back. The proportions were drawn that way in 1916."
+        body="Original oak floors. The staircase rises at the far end -- you can see it the moment the door opens. The hall axis carries straight through to the library at the back. The proportions were drawn that way in 1916. They have not been touched. You feel it before you understand it."
         img={I.leadedGlass}
         flip={true}
         photos={G.arrival}
@@ -1186,7 +1186,7 @@ function GarranHillV6() {
       <CinematicReveal flip
         eyebrow="The Drawing Room"
         headline="Fire going,<br/><em style='font-weight:300'>no one home yet.</em>"
-        body="Georgian carved mantel. Delft tile surround -- blue and white, hand-painted, original. Seven chairs in toile. Valances to match. Delft plates on the walls. This room was curated, not decorated. The difference is visible."
+        body="The fire is already going when you walk in. The Delft tiles are original -- blue and white, hand-painted, 1916. The toile was chosen to match them. Everything in this room was chosen to match something else. That is not decorating. That is a point of view held for a century."
         img={I.fireplace}
         photos={G.drawing}
         onOpen={openLB}
@@ -1247,7 +1247,7 @@ function GarranHillV6() {
               Three walls of windows.<br /><em style={{ fontWeight: 300 }}>Toile on every surface.</em>
             </h3>
             <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.58, lineHeight: 2.1, margin: 0 }}>
-              Toile on every wall. French doors on three sides. Built-in bookshelves. Original oak floors. The room is completely its own thing.
+              Toile on every wall. French doors on three sides. In the morning, light comes through all of them at once. You will want to sit here with coffee before anyone else is awake.
             </p>
           </Fade>
         </div>
@@ -1263,7 +1263,7 @@ function GarranHillV6() {
       <CinematicReveal flip
         eyebrow="The Library"
         headline="Designed in 2000.<br/><em style='font-weight:300'>Built to last another century.</em>"
-        body="Exact center of the first floor -- positioned that way in the plans. Built-in shelving on three walls. Rolling ladder. French doors to the rear grounds. Brass chandelier. Thomas O'Shea designed this room in 2000 to the same standard as the 1916 house it joined. It does not feel added. It feels inevitable."
+        body="Dead center of the first floor -- positioned that way in the 2000 plans. Built-in shelving on three walls, floor to ceiling. Rolling ladder. French doors to the rear grounds. Brass chandelier. O'Shea designed this room to the same standard as the 1916 house it joined. When you stand in it, you cannot find the seam."
         img={I.libraryWide}
         photos={G.library}
         onOpen={openLB}
@@ -1586,7 +1586,7 @@ Every door in this house opens with a brass key. The locks were specified in 191
       <CinematicReveal
         eyebrow="The Pool"
         headline="20 by 40.<br/><em style='font-weight:300'>Salt water. Converted 2022.</em>"
-        body="Salt water, 20x40, converted 2022. Original brick surround and wrought iron arch gate. The pool terrace sits behind the rose wall -- enclosed, private, correct. Parking for eighteen vehicles across two lots."
+        body="Salt water. 20 by 40. The brick surround is original. The wrought iron arch gate is original. The pool terrace sits entirely behind the rose wall. You cannot see it from the road. You cannot hear the road from it."
         img={I.pool}
         photos={G.grounds}
         onOpen={openLB}
@@ -1626,7 +1626,7 @@ Every door in this house opens with a brass key. The locks were specified in 191
       <CinematicReveal flip
         eyebrow="Stewardship"
         headline="She planted this garden from scratch.<br/><em style='font-weight:300'>This is what twenty years of care looks like.</em>"
-        body="She kept foxhounds and peacocks on the grounds. The Queen of Thailand stayed here during her tenure. She renamed the property Hollycrest -- a name it held for decades. Four generations of remarkable people have called this place home. Each one left it better."
+        body="She kept foxhounds and peacocks. She renamed the estate Hollycrest. The Queen of Thailand stayed here during a Pinehurst season and slept in one of those four bedrooms. Betty Dumaine is the reason this garden exists. She grew every rose from bare ground. She is why someone still puts flowers on Blue Fox's grave. That is who lived here."
         img={I.betty}
         dark
       />
@@ -1704,7 +1704,7 @@ Every door in this house opens with a brass key. The locks were specified in 191
       <CinematicReveal
         eyebrow="Est. 1916"
         headline="In 1916, those were saplings.<br/><em style='font-weight:300'>Now they are a forest.</em>"
-        body="Walter Hines Page named this estate before the first stone was laid. He wrote about it from London every week. Built by the same craftsmen who built Pinehurst. The house has been cared for by four families ever since. It does not feel like 110 years. It feels like now."
+        body="Walter Hines Page named this estate before a single stone was laid. He never slept here. Four families did. The craftsmen who built it were the same men building Pinehurst two miles away. Every one of them is gone. Every detail they cut and fitted is still here. That is not maintenance. That is devotion."
         img={I.img1916}
       />
 
@@ -1761,7 +1761,7 @@ Every door in this house opens with a brass key. The locks were specified in 191
       <CinematicReveal flip
         eyebrow="Offered Exclusively"
         headline="Garran Hill is ready.<br/><em style='font-weight:300'>The question is whether you are.</em>"
-        body="Four families. 110 years. Each one left it better than they found it. Within Pinehurst ETJ -- meaningful tax advantages for the next owner. Offered at $4,250,000. This is not a house that comes available twice."
+        body="Four families. 110 years. Each one received something -- and each one added something. The craftsmen who built it are gone. The architect who restored it is gone. What they made is standing. It is ready for the fifth family."
         img={I.dusk2}
         dark
       />
