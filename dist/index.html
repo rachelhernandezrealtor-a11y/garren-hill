@@ -1170,6 +1170,13 @@ function GarranHillV6() {
         dark
       />
 
+      {/* == 04b BREATH -- Drawing Room to Dining == */}
+      <div style={{ background: '#0a0a0a', padding: 'clamp(3rem,6vh,5rem) clamp(2rem,12vw,16rem)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ width: '100%', maxWidth: 480, textAlign: 'center' }}>
+          <div style={{ width: 1, height: 'clamp(3rem,6vh,5rem)', background: 'linear-gradient(to bottom, transparent, rgba(201,169,110,0.5), transparent)', margin: '0 auto' }} />
+        </div>
+      </div>
+
       {/* == 05 DINING ROOM == */}
       <CinematicReveal
         eyebrow="The Dining Room"
@@ -1180,21 +1187,16 @@ function GarranHillV6() {
         onOpen={openLB}
       />
 
-      {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-        
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.img1916})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.07) saturate(0.4)' }} />
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
-          <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
-          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
-            In 1916, those were saplings. Now they are a forest.
+      {/* == 05b KITCHEN BREATH -- naked dark text, no box == */}
+      <section style={{ background: '#0a0a0a', padding: 'clamp(5rem,10vh,8rem) clamp(2rem,10vw,14rem)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', maxWidth: 680 }}>
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: '0 auto clamp(2.5rem,5vh,3.5rem)' }} />
+          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.8rem,3.5vw,4rem)', color: '#fff', margin: 0, lineHeight: 1.38, letterSpacing: '-0.01em' }}>
+            The shell cabinets are original.<br />The kitchen is not. Both are right.
           </p>
-          <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '1.8rem auto 0' }} />
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: 'clamp(2.5rem,5vh,3.5rem) auto 0' }} />
         </div>
       </section>
-
-      {/* == 05b KITCHEN BREATH == */}
-      <div style={{ background: '#0a0a0a', height: 'clamp(4rem,8vh,7rem)', margin: 0 }} />
 
       {/* == 06 KITCHEN -- FULL SECTION == */}
       <FullBleed
@@ -1238,15 +1240,14 @@ function GarranHillV6() {
         dark
       />
 
-      {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-        
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
-          <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
-          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
-            Not original -- deliberate.
+      {/* == 07b BREATH -- Library to O'Shea -- naked dark == */}
+      <section style={{ background: '#0a0a0a', padding: 'clamp(5rem,10vh,8rem) clamp(2rem,10vw,14rem)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', maxWidth: 680 }}>
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: '0 auto clamp(2.5rem,5vh,3.5rem)' }} />
+          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.8rem,3.5vw,4rem)', color: '#fff', margin: 0, lineHeight: 1.38, letterSpacing: '-0.01em' }}>
+            Not original.<br />Deliberate.
           </p>
-          <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '1.8rem auto 0' }} />
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: 'clamp(2.5rem,5vh,3.5rem) auto 0' }} />
         </div>
       </section>
 
@@ -1343,16 +1344,14 @@ function GarranHillV6() {
         </div>
       </section>
 
-      {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-        
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.iris})`, backgroundSize: 'cover', backgroundPosition: 'center 60%', filter: 'brightness(0.07) saturate(0.4)' }} />
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
-          <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
-          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
-            The world outside these gates does not exist here.
+      {/* == BREATH -- suite to window -- naked dark, maximum vertical == */}
+      <section style={{ background: '#0a0a0a', padding: 'clamp(6rem,13vh,11rem) clamp(2rem,10vw,14rem)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', maxWidth: 760 }}>
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: '0 auto clamp(2.5rem,5vh,4rem)' }} />
+          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(2rem,4vw,4.8rem)', color: '#fff', margin: 0, lineHeight: 1.32, letterSpacing: '-0.015em' }}>
+            The world outside these gates<br />does not exist here.
           </p>
-          <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '1.8rem auto 0' }} />
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: 'clamp(2.5rem,5vh,4rem) auto 0' }} />
         </div>
       </section>
 
@@ -1373,7 +1372,7 @@ function GarranHillV6() {
       <CinematicReveal flip
         eyebrow="The Other Bedrooms"
         headline="Three more rooms.<br/><em style='font-weight:300'>Each with its own fireplace.</em>"
-        body="The Rose Suite, the Yellow Suite, the Nursery -- each with original proportions, original fireplaces, original hardware. The Yellow Suite and the Nursery open onto a shared balcony above the kitchen, with a view of the tennis courts and rear grounds. Nothing was combined. Nothing was converted."
+        body="The Rose Suite, the Yellow Suite, the Nursery -- each with original proportions, original fireplaces, original hardware. The Yellow Suite and the Nursery share a balcony above the kitchen, overlooking the rear grounds. Three Jacuzzi tubs across the upper floor. Nothing was combined. Nothing was converted."
         img={I.bed2}
         photos={G.bedrooms}
         onOpen={openLB}
@@ -1411,15 +1410,14 @@ function GarranHillV6() {
         </div>
       </section>
 
-      {/* == QUOTE INTERSTITIAL == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-        
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
-          <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
-          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
-            Seven fireplaces. Six with gas. All original.
+      {/* == BREATH -- bedrooms to fireplaces -- naked dark == */}
+      <section style={{ background: '#0a0a0a', padding: 'clamp(5rem,10vh,8rem) clamp(2rem,10vw,14rem)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', maxWidth: 680 }}>
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: '0 auto clamp(2.5rem,5vh,3.5rem)' }} />
+          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.8rem,3.5vw,4rem)', color: '#fff', margin: 0, lineHeight: 1.38, letterSpacing: '-0.01em' }}>
+            Seven fireplaces.<br />Six with gas. All original.
           </p>
-          <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '1.8rem auto 0' }} />
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: 'clamp(2.5rem,5vh,3.5rem) auto 0' }} />
         </div>
       </section>
 
