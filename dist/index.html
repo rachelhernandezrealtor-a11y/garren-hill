@@ -119,6 +119,7 @@ const I = {
   portico:      ext('fa8cec793_200HollycrestDrive-191.jpg'),
   entry:        pro('082d9b5c7_200Holycrest-1182.jpg'),
   threshold:    own('7abb71910_200Holycrest-1179.jpg'),
+  thresholdStone: ownExt('f9bd3a548_0DD31059-1694-42A4-83B6-225005E07494_1_102_o.jpg'),
   living:       pro('341c7343c_200Holycrest-1203.jpg'),
   wing:         own('0b06bdce9_Winglivingroom.jpg'),
   fireplace:    pro('5f5f87315_200HollycrestDrive-65fire.jpg'),
@@ -1095,12 +1096,24 @@ function GarranHillV6() {
         </div>
       </div>
 
-                  {/* == 03 ENTRANCE HALL == */}
+      {/* == 03 ENTRY HALL -- THRESHOLD STONE == */}
       <CinematicReveal
-        eyebrow="The Entrance Hall"
-        headline="The staircase has turned<br/><em style='font-weight:300'>the same curve since 1916.</em>"
-        body="Carved granite threshold. Mahogany stair volute. Leaded glass fanlight. The central axis runs straight from the front door to the library. It is visible from the moment the door opens."
+        eyebrow="The Entry Hall"
+        headline="GARRAN HILL 1916.<br/><em style='font-weight:300'>It has said that since the day it was laid.</em>"
+        body="GARRAN HILL 1916 -- laid in herringbone brick at the threshold. Specified on the drawings before a single brick was placed. The original leaded glass fanlight arches over the front door exactly as it did in 1916. The arch repeats -- over every major interior door, through every passage, up to the arched cabinet in the powder room. The architect drew it that way throughout. Brass and porcelain chandelier. Wide-plank oak floors. A carved mahogany demilune console, a Persian runner, and through the arched doorway ahead -- the hand-painted chinoiserie wallpaper of the powder room is visible before you have taken three steps inside. The house reveals itself slowly. It starts here."
+        img={I.thresholdStone}
+        flip={false}
+        bgSize="contain"
+        bgPos="center"
+      />
+
+      {/* == 04 FOYER -- AXIS + STAIRCASE == */}
+      <CinematicReveal
+        eyebrow="The Foyer"
+        headline="The central axis runs straight through.<br/><em style='font-weight:300'>Visible the instant the door opens.</em>"
+        body="Wide-plank original oak floors. The staircase rises at the far end -- visible from the threshold. Three staircases in this house. The primary one begins here. The hall axis carries through to the library bookcases at the back. The proportions were drawn that way in 1916."
         img={I.leadedGlass}
+        flip={true}
         photos={G.arrival}
         onOpen={openLB}
       />
@@ -1121,7 +1134,7 @@ function GarranHillV6() {
             color: '#fff', margin: 0, lineHeight: 1.35,
             letterSpacing: '-0.01em'
           }}>
-            He named it Garran Hill.<br/>He never walked through the door.
+            He named it Garran Hill.<br/>He longed for it every day he was gone.
           </p>
           <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.7)', margin: 'clamp(2.5rem,5vh,4rem) auto 0' }} />
         </div>
@@ -1279,7 +1292,7 @@ function GarranHillV6() {
               <Eye>The Man Who Built It</Eye>
               <GoldLine />
               <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.5rem,4.2vw,5.5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 2rem', letterSpacing: '-0.012em' }}>
-                He named it Garran Hill.<br /><em style={{ fontWeight: 300 }}>He never walked<br />through the door.</em>
+                He named it Garran Hill.<br /><em style={{ fontWeight: 300 }}>He longed for it<br />every day he was gone.</em>
               </h2>
               <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.85rem,1.05vw,0.96rem)', color: CREAM, opacity: 0.62, lineHeight: 2, margin: 0 }}>
                 Walter Hines Page purchased the land in February 1913 and named the estate Garran Hill. The following month, President Wilson appointed him Ambassador to the Court of St. James. He served in London through the First World War -- the most consequential years of the 20th century. He died in Pinehurst on December 21, 1918, and was honored in Westminster Abbey as "the friend of Britain in her sorest need." His son Ralph supervised its construction. The house was completed without him. It has stood for 110 years.
@@ -1632,7 +1645,7 @@ function GarranHillV6() {
       <CinematicReveal
         eyebrow="Est. 1916"
         headline="In 1916, those were saplings.<br/><em style='font-weight:300'>Now they are a forest.</em>"
-        body="Walter Hines Page named this estate before the first stone was laid. He never walked through the door. The house has been cared for ever since."
+        body="Walter Hines Page named this estate before the first stone was laid. He wrote about it from London every week. The house has been cared for ever since."
         img={I.img1916}
       />
 
