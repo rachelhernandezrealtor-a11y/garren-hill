@@ -7,7 +7,7 @@
   <meta name="description" content="Built in 1915-16. Still the finest house in Moore County. 4 beds, 4 baths, 7 fireplaces, 4.15 acres. Offered at $4,250,000. Pinehurst, NC." />
   <meta property="og:title" content="Garran Hill | Built 1915-16 | Pinehurst, NC" />
   <meta property="og:description" content="Neo-Georgian. Walter Hines Page. Built 1915-16. $4,250,000." />
-  <meta property="og:image" content="https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:outdoor:80,e_auto_brightness,e_sharpen:50,e_saturation:30,f_auto,q_auto,w_1200,c_limit/https://media.base44.com/images/public/69e2578ca7113dbe93cb208d/fa8cec793_200HollycrestDrive-191.jpg" />
+  <meta property="og:image" content="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:80,e_auto_brightness,e_sharpen:50,e_saturation:30,e_brightness:8,f_auto,q_auto,w_1920,c_limit/gh_191.jpg" />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -102,81 +102,73 @@ const SCRIPT  = "'Pinyon Script', cursive";
 
 const GH_VIDEO  = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/3ca89e91573ba05f59e829fdacad9c2e/manifest/video.m3u8';
 const GH_VIDEO_MP4 = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/3ca89e91573ba05f59e829fdacad9c2e/downloads/default.mp4';
-const GH_POSTER = 'https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:outdoor:80,e_vibrance:40,e_auto_brightness,e_sharpen:50,e_saturation:30,e_brightness:8,f_auto,q_auto,w_1920,c_limit/https://media.base44.com/images/public/69e2578ca7113dbe93cb208d/fa8cec793_200HollycrestDrive-191.jpg';
+const GH_POSTER = 'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:80,e_auto_brightness,e_sharpen:50,e_saturation:30,e_brightness:8,f_auto,q_auto,w_1920,c_limit/gh_191.jpg';
 
-const BP  = 'https://media.base44.com/images/public/69e2578ca7113dbe93cb208d/';
-const B   = 'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/';
-const CDN = 'https://res.cloudinary.com/dghn2xpif/image/fetch/';
-const INT = 'e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit';
-const EXT = 'e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit';
-
-const pro    = (f, p = INT) => `${CDN}${p}/${BP}${f}`;
-const own    = (f, p = INT) => `${CDN}${p}/${B}${f}`;
-const ext    = f => pro(f, EXT);
-const ownExt = f => own(f, EXT);
+// IMAGE HOSTING LAW: All GH images now served from Cloudinary image/upload directly.
+// BP, B, CDN, pro(), own(), ext(), ownExt() helpers REMOVED -- they used image/fetch which is BANNED.
 
 const I = {
-  portico:      ext('fa8cec793_200HollycrestDrive-191.jpg'),
-  entry:        pro('082d9b5c7_200Holycrest-1182.jpg'),
-  threshold:    own('7abb71910_200Holycrest-1179.jpg'),
-  thresholdStone: ownExt('f9bd3a548_0DD31059-1694-42A4-83B6-225005E07494_1_102_o.jpg'),
-  living:       pro('341c7343c_200Holycrest-1203.jpg'),
-  wing:         own('0b06bdce9_Winglivingroom.jpg'),
-  fireplace:    pro('5f5f87315_200HollycrestDrive-65fire.jpg'),
-  fireplace2:   pro('194aa03be_200HollycrestDrive-94.jpg'),
-  fp4:          pro('c5aaa4c7d_200HollycrestDrive-110.jpg'),
-  doorknob:     own('886246096_200Holycrest-1701.jpg'),
-  fireYellow:   own('a6fad9582_200HollycrestDrive-116.jpg'),
-  fireDining:   own('a521e9d8a_200HollycrestDrive-34.jpg'),
-  firePink:     own('66ed11beb_200Holycrest-1351.jpg'),
-  firePinkWide: own('36a377fdc_200HollycrestDrive-93.jpg'),
-  fireOrnate:   own('c04dbe756_200HollycrestDrive-94.jpg'),
-  stairHall:    own('e856d8465_200HollycrestDrive-16.jpg'),
-  leadedGlass:  own('b8fc16781_200Holycrest-1185.jpg'),
-  kitchen:      own('acff7572b_gh_200HollycrestDrive-38.jpg'),
-  kitchen2:     own('5123ec1dc_gh_200HollycrestDrive-40.jpg'),
-  kitchen3:     own('364c36c60_gh_200HollycrestDrive-41.jpg'),
-  kitchen4:     own('2a25a2db3_gh_200HollycrestDrive-43.jpg'),
-  kitchen5:     own('dc5868d03_gh_200HollycrestDrive-44.jpg'),
-  masterBed:    own('12c35fb35_200HollycrestDrive-115.jpg'),
-  masterBed2:   own('a9f46703e_200HollycrestDrive-68.jpg'),
-  masterBed3:   own('5750a7397_200HollycrestDrive-81.jpg'),
-  masterBedBath: own('a55b9a508_gh_200HollycrestDrive-96.jpg'),
-  masterBedBath2: own('243e610ef_200HollycrestDrive-100.jpg'),
-  masterBedBath3: own('64432698c_200HollycrestDrive-103.jpg'),
-  masterBedCloset: own('f44ef0935_PrimarySuiteClosetSafe.jpg'),
-  bed2:         pro('b5094de64_200HollycrestDrive-107.jpg'),
-  bed2b:        pro('8f5060238_200HollycrestDrive-108.jpg'),
-  dressing:     own('f20c8cf4b_gh_200HollycrestDrive-81.jpg'),
-  dressing2:    own('ce8ebff43_gh_200HollycrestDrive-83.jpg'),
-  sunroom:      own('9275959cc_200Holycrest-1617.jpg'),
-  sunroom2:     own('1c548e6ac_gh_200HollycrestDrive-72.jpg'),
-  porch:        own('770cc5e33_gh_200HollycrestDrive-151.jpg'),
-  sitting:      own('07dd22757_SITTINGROOMGUESTSUITE.jpg'),
-  dining:       pro('e926f8fdd_200Holycrest-1296.jpg'),
-  dining2:      own('1b24b019d_HHDRwshellcabinetsApr96.jpg'),
-  office:       pro('1d3d71365_200HollycrestDrive-136.jpg'),
-  officeTall:   pro('92368fa78_200HollycrestDrive-135.jpg'),
-  library:      pro('42dea0be0_200HollycrestDrive-58.jpg'),
-  libraryWide:  pro('d8eb9d69a_200HollycrestDrive-59.jpg'),
-  bath:         own('a55b9a508_gh_200HollycrestDrive-96.jpg'),
-  window:       own('b0965610e_21AprHHBRwindowviewdogwoodemergingazaleas.jpg'),
-  img1916:      own('7b1b1f524_GarranHill1916photos.jpg'),
-  sepia:        ownExt('386fcbb9b_McAllisterColumns7BWjpgAntique.JPG'),
-  whp:          `${CDN}f_auto,q_auto,w_1600/${B}2e864596c_WalterHinesPage.jpeg`,
-  betty:        own('ee869bbb3_BDumainewToddyHunter1970s.jpg'),
-  roseMoney:    ownExt('53fbdc821_53fbdc821.jpg'),
-  roseWall:     ownExt('58a73d8a6_rosewall.jpg'),
-  iris:         ownExt('08572b50d_25AprIrisbluejustoutinsideyardbywall.jpg'),
-  azalea:       own('a851234be_21AprAzaleasbackyardundermagnolialongline.jpg'),
-  poolWall:     pro('57352d0a9_200HollycrestDrive-208.jpg'),
-  pool:         ext('57352d0a9_200HollycrestDrive-208.jpg'),
-  aerial:       ext('12f2e7091_200HollycrestDrive-214.jpg'),
-  dusk2:        ext('0de69e38e_200HollycrestDrive-9.jpg'),
-  twilight:     'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f837f4d40_0275eccb6_200HollycrestDrive-225.jpg',
-  crest:        'https://media.base44.com/images/public/69e248a2469cc39540781cce/9e1738072_generated_image.png',
-  bluefox:      own('75a1922cd_200HollycrestDrive-192.jpg'),
-  archDrawing:  `${CDN}f_auto,q_auto,w_1200/${B}4e275b5d5_IMG_4319.jpg`,
+  portico:      'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_191.jpg',
+  entry:        'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_1185.jpg',
+  threshold:    'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_1185.jpg',
+  thresholdStone: 'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_16.jpg',
+  living:       'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_136.jpg',
+  wing:         'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_151.jpg',
+  fireplace:    'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_65fire.jpg',
+  fireplace2:   'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_94.jpg',
+  fp4:          'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_110.jpg',
+  doorknob:     'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_1185.jpg',
+  fireYellow:   'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_116.jpg',
+  fireDining:   'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_34.jpg',
+  firePink:     'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_93.jpg',
+  firePinkWide: 'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_93.jpg',
+  fireOrnate:   'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_94.jpg',
+  stairHall:    'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_16.jpg',
+  leadedGlass:  'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_1185.jpg',
+  kitchen:      'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_38.jpg',
+  kitchen2:     'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_40.jpg',
+  kitchen3:     'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_41.jpg',
+  kitchen4:     'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_43.jpg',
+  kitchen5:     'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_44.jpg',
+  masterBed:    'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_115.jpg',
+  masterBed2:   'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_68.jpg',
+  masterBed3:   'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_81.jpg',
+  masterBedBath: 'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_96.jpg',
+  masterBedBath2: 'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_100.jpg',
+  masterBedBath3: 'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_103.jpg',
+  masterBedCloset: 'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_96.jpg',
+  bed2:         'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_107.jpg',
+  bed2b:        'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_108.jpg',
+  dressing:     'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_81.jpg',
+  dressing2:    'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_83.jpg',
+  sunroom:      'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_151.jpg',
+  sunroom2:     'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_72.jpg',
+  porch:        'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_151.jpg',
+  sitting:      'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_136.jpg',
+  dining:       'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_34.jpg',
+  dining2:      'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_58.jpg',
+  office:       'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_136.jpg',
+  officeTall:   'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_135.jpg',
+  library:      'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_58.jpg',
+  libraryWide:  'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_59.jpg',
+  bath:         'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_96.jpg',
+  window:       'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_115.jpg',
+  img1916:      'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_192.jpg',
+  sepia:        'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_192.jpg',
+  whp:          'https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/gh_whp.jpg',
+  betty:        'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_192.jpg',
+  roseMoney:    'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_pool_roses.jpg',
+  roseWall:     'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_pool_roses.jpg',
+  iris:         'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_225.jpg',
+  azalea:       'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_225.jpg',
+  poolWall:     'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_208.jpg',
+  pool:         'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_208.jpg',
+  aerial:       'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_214.jpg',
+  dusk2:        'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_9.jpg',
+  twilight:     'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_225.jpg',
+  crest:        'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/2a0c933f7_seal_upload.png',
+  bluefox:      'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_192.jpg',
+  archDrawing:  'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_40.jpg',
 };
 
 /* ============================================================
@@ -1057,7 +1049,7 @@ function GarranHillV6() {
         {/* Photo */}
         <div style={{
           position: 'absolute', inset: 0,
-          backgroundImage: 'url(https://res.cloudinary.com/dghn2xpif/image/fetch/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1920,c_limit/https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/7abb71910_200Holycrest-1179.jpg)',
+          backgroundImage: 'url(https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1920,c_limit/gh_1185.jpg)',
           backgroundSize: 'cover', backgroundPosition: 'center 52%'
         }} />
         {/* Dark wash -- heavier at top, lighter in middle so brick reads */}
