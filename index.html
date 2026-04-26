@@ -1100,12 +1100,19 @@ function GarranHillV6() {
       <CinematicReveal
         eyebrow="The Entry Hall"
         headline="GARRAN HILL 1916.<br/><em style='font-weight:300'>It has said that since the day it was laid.</em>"
-        body="GARRAN HILL 1916 -- laid in herringbone brick at the threshold. Specified on the drawings before a single brick was placed. The original leaded glass fanlight arches over the front door exactly as it did in 1916. The arch repeats -- over every major interior door, through every passage, up to the arched cabinet in the powder room. The architect drew it that way throughout. Brass and porcelain chandelier. Wide-plank oak floors. A carved mahogany demilune console, a Persian runner, and through the arched doorway ahead -- the hand-painted chinoiserie wallpaper of the powder room is visible before you have taken three steps inside. The house reveals itself slowly. It starts here."
+        body="Laid in herringbone brick before a single room was framed. The original leaded glass fanlight. The arch that repeats over every major interior door. A carved mahogany demilune console, a Persian runner -- and through the doorway ahead, the hand-painted chinoiserie wallpaper of the powder room, visible before you have taken three steps inside. The house reveals itself slowly. It starts here."
         img={I.thresholdStone}
         flip={false}
         bgSize="contain"
         bgPos="center"
       />
+
+      {/* == 03b BREATH -- Entry to Foyer == */}
+      <section style={{ background: '#0a0a0a', padding: 'clamp(4rem,8vh,7rem) clamp(2rem,10vw,14rem)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', maxWidth: 560 }}>
+          <div style={{ width: 1, height: 'clamp(4rem,8vh,6rem)', background: 'linear-gradient(to bottom, transparent, rgba(201,169,110,0.55), transparent)', margin: '0 auto' }} />
+        </div>
+      </section>
 
       {/* == 04 FOYER -- AXIS + STAIRCASE == */}
       <CinematicReveal
@@ -1229,6 +1236,13 @@ function GarranHillV6() {
           </Fade>
         </div>
       </section>
+      {/* == 06c BREATH -- Sunroom to Library == */}
+      <section style={{ background: '#0a0a0a', padding: 'clamp(4rem,8vh,7rem) clamp(2rem,10vw,14rem)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', maxWidth: 560 }}>
+          <div style={{ width: 1, height: 'clamp(4rem,8vh,6rem)', background: 'linear-gradient(to bottom, transparent, rgba(201,169,110,0.55), transparent)', margin: '0 auto' }} />
+        </div>
+      </section>
+
       {/* == 07 LIBRARY == */}
       <CinematicReveal flip
         eyebrow="The Library"
@@ -1282,6 +1296,17 @@ function GarranHillV6() {
         photos={G.study}
         onOpen={openLB}
       />
+
+      {/* == 08b BREATH -- Study to WHP == */}
+      <section style={{ background: '#0a0a0a', padding: 'clamp(5rem,10vh,8rem) clamp(2rem,10vw,14rem)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', maxWidth: 680 }}>
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: '0 auto clamp(2.5rem,5vh,3.5rem)' }} />
+          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.8rem,3.5vw,4rem)', color: '#fff', margin: 0, lineHeight: 1.38, letterSpacing: '-0.01em' }}>
+            The hardware was specified in 1916.<br />It has not been replaced.
+          </p>
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: 'clamp(2.5rem,5vh,3.5rem) auto 0' }} />
+        </div>
+      </section>
 
       {/* == 09 WALTER HINES PAGE == */}
       <section id="history" style={{ position: 'relative', minHeight: 'clamp(580px,80vh,920px)', overflow: 'hidden', display: 'flex', alignItems: 'stretch' }}>
@@ -1573,6 +1598,17 @@ function GarranHillV6() {
         ))}
       </div>
 
+      {/* == 13d BREATH -- Garden grid to Stewardship == */}
+      <section style={{ background: '#0a0a0a', padding: 'clamp(5rem,10vh,8rem) clamp(2rem,10vw,14rem)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', maxWidth: 680 }}>
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: '0 auto clamp(2.5rem,5vh,3.5rem)' }} />
+          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.8rem,3.5vw,4rem)', color: '#fff', margin: 0, lineHeight: 1.38, letterSpacing: '-0.01em' }}>
+            A garden that has been loved<br />for sixty years.
+          </p>
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: 'clamp(2.5rem,5vh,3.5rem) auto 0' }} />
+        </div>
+      </section>
+
       {/* == 14 STEWARDSHIP == */}
       <CinematicReveal flip
         eyebrow="Stewardship"
@@ -1600,7 +1636,7 @@ function GarranHillV6() {
             Betty Dumaine put the first flowers here.<br />Someone still does.
           </p>
           <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.88rem,1.1vw,1rem)', color: CREAM, opacity: 0.55, lineHeight: 2, maxWidth: 500, margin: '0 auto' }}>
-            Buried on the grounds under a slate cover with a brass marker. The stone has not moved. Someone still puts flowers there.
+            Buried 10 by 16 feet. Slate cover, brass marker. The stone has not moved since 1969.
           </p>
         </div>
       </FullBleed>
@@ -1637,6 +1673,17 @@ function GarranHillV6() {
             </Fade>
           ))}
         </div>
+        </div>
+      </section>
+
+      {/* == 15c BREATH -- Infrastructure to 1916 Archive == */}
+      <section style={{ background: '#0a0a0a', padding: 'clamp(5rem,10vh,8rem) clamp(2rem,10vw,14rem)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', maxWidth: 680 }}>
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: '0 auto clamp(2.5rem,5vh,3.5rem)' }} />
+          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.8rem,3.5vw,4rem)', color: '#fff', margin: 0, lineHeight: 1.38, letterSpacing: '-0.01em' }}>
+            Four families. One standard.<br />It has not dropped.
+          </p>
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: 'clamp(2.5rem,5vh,3.5rem) auto 0' }} />
         </div>
       </section>
 
@@ -1682,6 +1729,17 @@ function GarranHillV6() {
           The world outside these gates<br />does not exist here.
         </p>
       </FullBleed>
+
+      {/* == 17b BREATH -- Aerial to Dusk == */}
+      <section style={{ background: '#0a0a0a', padding: 'clamp(5rem,10vh,8rem) clamp(2rem,10vw,14rem)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', maxWidth: 760 }}>
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: '0 auto clamp(2.5rem,5vh,4rem)' }} />
+          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(2rem,4vw,4.8rem)', color: '#fff', margin: 0, lineHeight: 1.32, letterSpacing: '-0.015em' }}>
+            4.15 acres.<br />One house. One family at a time.
+          </p>
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: 'clamp(2.5rem,5vh,4rem) auto 0' }} />
+        </div>
+      </section>
 
       {/* == 18 DUSK == */}
       <CinematicReveal flip
