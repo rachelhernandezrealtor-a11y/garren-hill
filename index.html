@@ -1718,9 +1718,9 @@ Every door in this house opens with a brass key. The locks were specified in 191
             <Eye center>The Full Estate</Eye>
             <GoldLine center />
             <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,4vw,5rem)', color: '#fff', margin: '0 0 0.8rem', letterSpacing: '-0.01em' }}>
-              Every room. Every detail.
+              The complete record.
             </h2>
-            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, color: CREAM, opacity: 0.45, fontSize: '0.95rem', margin: 0 }}>Select any image to open the full gallery.</p>
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, color: CREAM, opacity: 0.55, fontSize: 'clamp(0.9rem,1.1vw,1rem)', margin: 0, letterSpacing: '0.02em' }}>200 Hollycrest Drive &nbsp;&bull;&nbsp; Pinehurst, North Carolina</p>
           </div>
         </Fade>
         <div style={{ columns: 'clamp(200px,22vw,280px)', gap: 4 }}>
@@ -1738,8 +1738,8 @@ Every door in this house opens with a brass key. The locks were specified in 191
 
       {/* == 17 AERIAL == */}
       <FullBleed src={I.aerial} darken={0.28} minH="72vh" bgPos="center 40%" align="center">
-        <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.5rem,2.8vw,3rem)', color: '#fff', lineHeight: 1.45, margin: 0, textAlign: 'center', letterSpacing: '-0.01em', opacity: 0.9 }}>
-          The world outside these gates<br />does not exist here.
+        <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.8rem,3.2vw,3.8rem)', color: '#fff', lineHeight: 1.38, margin: 0, textAlign: 'center', letterSpacing: '-0.015em', textShadow: '0 2px 40px rgba(0,0,0,0.5)' }}>
+          4.15 acres.<br />Moore County, North Carolina.
         </p>
       </FullBleed>
 
@@ -1748,7 +1748,7 @@ Every door in this house opens with a brass key. The locks were specified in 191
         <div style={{ textAlign: 'center', maxWidth: 760 }}>
           <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: '0 auto clamp(2.5rem,5vh,4rem)' }} />
           <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(2rem,4vw,4.8rem)', color: '#fff', margin: 0, lineHeight: 1.32, letterSpacing: '-0.015em' }}>
-            4.15 acres.<br />One house. One family at a time.
+            One house.<br />One family at a time.
           </p>
           <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: 'clamp(2.5rem,5vh,4rem) auto 0' }} />
         </div>
@@ -1759,7 +1759,7 @@ Every door in this house opens with a brass key. The locks were specified in 191
 
       {/* == 18 DUSK == */}
       <CinematicReveal flip
-        eyebrow="200 Hollycrest Drive"
+        eyebrow="Offered Exclusively"
         headline="Garran Hill is ready.<br/><em style='font-weight:300'>The question is whether you are.</em>"
         body="Four families. 110 years. Each one left it better than they found it. Within Pinehurst ETJ -- meaningful tax advantages for the next owner. Offered at $4,250,000. This is not a house that comes available twice."
         img={I.dusk2}
@@ -1767,16 +1767,19 @@ Every door in this house opens with a brass key. The locks were specified in 191
       />
 
       {/* == 19 FINAL -- TWILIGHT == */}
-      <FullBleed src={I.twilight} darken={0.32} minH="85vh" bgPos="center 60%" align="center">
+      <FullBleed src={I.twilight} darken={0.28} minH="90vh" bgPos="center 55%" align="center">
         <div style={{ textAlign: 'center' }}>
-          <img src={I.crest} alt="" style={{ height: 64, opacity: 0.8, display: 'block', margin: '0 auto 2.5rem' }} />
-          <p style={{ fontFamily: SCRIPT, fontSize: 'clamp(3rem,7vw,7rem)', color: '#fff', margin: '0 0 1.5rem', lineHeight: 1, textShadow: '0 2px 30px rgba(0,0,0,0.4)' }}>Garran Hill</p>
-          <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.4rem,2.5vw,2.5rem)', color: '#fff', margin: '0 0 2.5rem', opacity: 0.88, letterSpacing: '0.02em' }}>
-            Garran Hill is ready.
+          <img src={I.crest} alt="" style={{ height: 72, opacity: 0.88, display: 'block', margin: '0 auto 3rem' }} />
+          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.5)', margin: '0 auto 2.5rem' }} />
+          <p style={{ fontFamily: SCRIPT, fontSize: 'clamp(3.5rem,8vw,9rem)', color: '#fff', margin: '0 0 2.5rem', lineHeight: 1, textShadow: '0 2px 40px rgba(0,0,0,0.5)' }}>Garran Hill</p>
+          <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.32em', textTransform: 'uppercase', color: GOLD, opacity: 0.9, margin: '0 0 3rem' }}>
+            Est. 1916 &nbsp;&nbsp;&bull;&nbsp;&nbsp; Pinehurst, NC &nbsp;&nbsp;&bull;&nbsp;&nbsp; $4,250,000
           </p>
           <button onClick={() => setShowInq(true)}
-            style={{ background: 'none', border: `1px solid ${GOLD}`, color: GOLD, padding: '0.85rem 2.8rem', fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.34em', textTransform: 'uppercase', cursor: 'pointer' }}>
-            Private Inquiry
+            style={{ background: 'none', border: `1px solid rgba(201,169,110,0.8)`, color: GOLD, padding: '1.1rem 3.5rem', fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.42em', textTransform: 'uppercase', cursor: 'pointer', transition: 'all 0.4s' }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(201,169,110,0.1)'; e.currentTarget.style.borderColor = GOLD; }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.borderColor = 'rgba(201,169,110,0.8)'; }}>
+            Request Private Showing
           </button>
         </div>
       </FullBleed>
