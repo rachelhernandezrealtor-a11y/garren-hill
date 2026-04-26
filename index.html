@@ -105,14 +105,14 @@ const GH_POSTER = 'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:o
 
 const BP = 'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_key/';
 const B = 'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_key/';
-const CDN = ''; // DEPRECATED - use direct upload
-const INT = 'e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit';
-const EXT = 'e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit';
-
-const pro    = (f, p = INT) => `${CDN}${p}/${BP}${f}`;
-const own    = (f, p = INT) => `${CDN}${p}/${B}${f}`;
-const ext    = f => pro(f, EXT);
-const ownExt = f => own(f, EXT);
+const BASE    = 'https://res.cloudinary.com/dghn2xpif/image/upload';
+const INT     = 'e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit';
+const EXT     = 'e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit';
+const GH      = 'gh_key';
+const pro     = f => `${BASE}/${INT}/${GH}/${f}`;
+const own     = f => `${BASE}/${INT}/${GH}/${f}`;
+const ext     = f => `${BASE}/${EXT}/${GH}/${f}`;
+const ownExt  = f => `${BASE}/${EXT}/${GH}/${f}`;
 
 const I = {
   portico:      ext('fa8cec793_200HollycrestDrive-191.jpg'),
@@ -161,7 +161,7 @@ const I = {
   window:       own('b0965610e_21AprHHBRwindowviewdogwoodemergingazaleas.jpg'),
   img1916:      own('7b1b1f524_GarranHill1916photos.jpg'),
   sepia:        ownExt('386fcbb9b_McAllisterColumns7BWjpgAntique.JPG'),
-  whp:          `${CDN}f_auto,q_auto,w_1600/${B}2e864596c_WalterHinesPage.jpeg`,
+  whp:          own("2e864596c_WalterHinesPage.jpeg"),
   betty:        own('ee869bbb3_BDumainewToddyHunter1970s.jpg'),
   roseMoney:    ownExt('53fbdc821_53fbdc821.jpg'),
   roseWall:     ownExt('58a73d8a6_rosewall.jpg'),
@@ -172,9 +172,9 @@ const I = {
   aerial:       ext('12f2e7091_200HollycrestDrive-214.jpg'),
   dusk2:        ext('0de69e38e_200HollycrestDrive-9.jpg'),
   twilight:     ext('0275eccb6_200HollycrestDrive-225.jpg'),
-  crest:        `${B}be819ab2a_generated_image.png`,
+  crest:        `https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/gh_key/be819ab2a_generated_image.png`,
   bluefox:      own('75a1922cd_200HollycrestDrive-192.jpg'),
-  archDrawing:  `${CDN}f_auto,q_auto,w_1200/${B}4e275b5d5_IMG_4319.jpg`,
+  archDrawing:  `https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1200/gh_key/4e275b5d5_IMG_4319.jpg`,
 };
 
 /* ============================================================
