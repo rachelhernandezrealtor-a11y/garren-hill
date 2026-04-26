@@ -1174,8 +1174,8 @@ function GarranHillV6() {
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '35%', background: 'linear-gradient(to top, #0a0a0a 0%, transparent 100%)', zIndex: 2 }} />
         <div style={{ position: 'relative', zIndex: 3, padding: 'clamp(2rem,4vw,4rem) clamp(2rem,12vw,16rem)', textAlign: 'center' }}>
           <Fade>
-            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1rem,1.5vw,1.25rem)', color: CREAM, opacity: 0.8, lineHeight: 2.1, maxWidth: 680, margin: '0 auto' }}>
-              Pinehurst was built by James Walker Tufts in 1895. Garran Hill was built two miles away in 1916. The same hands were working this land.
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.4rem,2.2vw,2.2rem)', color: '#fff', opacity: 0.88, lineHeight: 1.65, maxWidth: 680, margin: '0 auto', letterSpacing: '-0.01em' }}>
+              Pinehurst was built by James Walker Tufts in 1895.<br />Garran Hill was built two miles away in 1916.<br />The same hands were working this land.
             </p>
           </Fade>
         </div>
@@ -1450,14 +1450,10 @@ function GarranHillV6() {
         </div>
       </section>
 
-      {/* == BREATH -- bedrooms to fireplaces -- naked dark == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(5rem,10vh,8rem) clamp(2rem,10vw,14rem)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ textAlign: 'center', maxWidth: 680 }}>
-          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: '0 auto clamp(2.5rem,5vh,3.5rem)' }} />
-          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.8rem,3.5vw,4rem)', color: '#fff', margin: 0, lineHeight: 1.38, letterSpacing: '-0.01em' }}>
-            Seven fireplaces.<br />Six with gas. All original.
-          </p>
-          <div style={{ width: 40, height: 1, background: 'rgba(201,169,110,0.6)', margin: 'clamp(2.5rem,5vh,3.5rem) auto 0' }} />
+      {/* == BREATH -- bedrooms to fireplaces == */}
+      <section style={{ background: '#0a0a0a', padding: 'clamp(4rem,8vh,7rem) clamp(2rem,10vw,14rem)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', maxWidth: 560 }}>
+          <div style={{ width: 1, height: 'clamp(4rem,8vh,6rem)', background: 'linear-gradient(to bottom, transparent, rgba(201,169,110,0.55), transparent)', margin: '0 auto' }} />
         </div>
       </section>
 
@@ -1558,7 +1554,7 @@ function GarranHillV6() {
                 lineHeight: 2.2, margin: 0,
                 letterSpacing: '0.01em',
               }}>
-                The hardware was specified in 1916. It has not been replaced.
+Every door in this house opens with a brass key. The locks were specified in 1916. They have not been replaced. The mechanism still works. The weight of the key in your hand is the same weight it was the first time someone locked this house.
               </p>
             </Fade>
           </div>
@@ -1568,7 +1564,8 @@ function GarranHillV6() {
 
       {/* == 13 GROUNDS -- ROSE GARDEN == */}
       <FullBleed
- id="grounds"        src={I.roseMoney}
+        id="grounds"
+        src={I.roseMoney}
         darken={0.35}
         minH="80vh"
         bgPos="center 55%"
@@ -1580,7 +1577,7 @@ function GarranHillV6() {
 
       {/* == 13a ROSE WALL PULL QUOTE == */}
       <PullQuote
-        quote="The wall does two things: it holds the pool and it holds the roses."
+        quote="Twenty years of roses. She grew every one of them."
         bg={I.roseWall}
       />
 
@@ -1717,7 +1714,7 @@ function GarranHillV6() {
         <div style={{ position: 'relative', zIndex: 2 }}>
         <Fade>
           <div style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem,5vw,4rem)' }}>
-            <Eye center>The Property</Eye>
+            <Eye center>The Full Estate</Eye>
             <GoldLine center />
             <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2rem,4vw,5rem)', color: '#fff', margin: '0 0 0.8rem', letterSpacing: '-0.01em' }}>
               Every room. Every detail.
@@ -1739,7 +1736,7 @@ function GarranHillV6() {
       </section>
 
       {/* == 17 AERIAL == */}
-      <FullBleed src={I.aerial} darken={0.3} minH="70vh" bgPos="center" align="center">
+      <FullBleed src={I.aerial} darken={0.28} minH="72vh" bgPos="center 40%" align="center">
         <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.5rem,2.8vw,3rem)', color: '#fff', lineHeight: 1.45, margin: 0, textAlign: 'center', letterSpacing: '-0.01em', opacity: 0.9 }}>
           The world outside these gates<br />does not exist here.
         </p>
@@ -1756,11 +1753,14 @@ function GarranHillV6() {
         </div>
       </section>
 
+      {/* == 17c AERIAL COPY -- floats on the image == */}
+      {/* already rendered inside FullBleed above via children */}
+
       {/* == 18 DUSK == */}
       <CinematicReveal flip
         eyebrow="200 Hollycrest Drive"
         headline="Garran Hill is ready.<br/><em style='font-weight:300'>The question is whether you are.</em>"
-        body="Four families. 110 years. Each one left it better than they found it. Within Pinehurst ETJ -- meaningful tax advantages for the next owner. This is not a house that comes available twice."
+        body="Four families. 110 years. Each one left it better than they found it. Within Pinehurst ETJ -- meaningful tax advantages for the next owner. Offered at $4,250,000. This is not a house that comes available twice."
         img={I.dusk2}
         dark
       />
