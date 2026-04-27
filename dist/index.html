@@ -778,20 +778,34 @@ function Hero({ onInquire }) {
         <h1 style={{
           fontFamily: SCRIPT,
           fontSize: 'clamp(4.5rem, 7vw, 9rem)',
-          color: '#fff', lineHeight: 1.1, margin: '0 0 0.6rem',
+          color: '#fff', lineHeight: 1.1, margin: '0 0 1.2rem',
           textShadow: '0 3px 48px rgba(0,0,0,0.7), 0 1px 8px rgba(0,0,0,0.6)'
         }}>Garran Hill</h1>
 
-        <div style={{ width: 'clamp(160px,35vw,400px)', height: '1px',
-          background: 'linear-gradient(to right, rgba(201,169,110,0.7), rgba(201,169,110,0.1))',
-          margin: '0 0 0.8rem' }} />
-
-        <p style={{
-          fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300,
-          fontSize: 'clamp(0.88rem, 1.05vw, 1rem)',
-          color: 'rgba(255,255,255,0.62)',
-          margin: 0, letterSpacing: '0.04em'
-        }}>Neo-Georgian.&nbsp;&nbsp;Walter Hines Page.&nbsp;&nbsp;110 years of remarkable stewardship.</p>
+        {/* WAX SEAL — floats below headline, anchors the name to history */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', margin: '0 0 1.2rem' }}>
+          <img
+            src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777267295/gh_key/gh_wax_seal_transparent.png"
+            alt="Garran Hill Seal"
+            style={{
+              height: 'clamp(72px,8vw,100px)',
+              width: 'auto',
+              flexShrink: 0,
+              filter: 'drop-shadow(0 0 20px rgba(201,169,110,0.65)) drop-shadow(0 2px 12px rgba(0,0,0,0.9))'
+            }}
+          />
+          <div>
+            <div style={{ width: 'clamp(120px,28vw,320px)', height: '1px',
+              background: 'linear-gradient(to right, rgba(201,169,110,0.7), rgba(201,169,110,0.1))',
+              margin: '0 0 0.7rem' }} />
+            <p style={{
+              fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300,
+              fontSize: 'clamp(0.88rem, 1.05vw, 1rem)',
+              color: 'rgba(255,255,255,0.65)',
+              margin: 0, letterSpacing: '0.04em'
+            }}>Neo-Georgian.&nbsp;&nbsp;Walter Hines Page.&nbsp;&nbsp;110 years of remarkable stewardship.</p>
+          </div>
+        </div>
       </div>
 
       {/* STAT BAR -- pinned to bottom, compact, seal inside */}
