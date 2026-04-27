@@ -4,343 +4,301 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Garran Hill — 200 Hollycrest Drive, Pinehurst, NC | $4,250,000</title>
-  <meta name="description" content="Neo-Georgian. Walter Hines Page. Built 1915–16. $4,250,000." />
+  <meta name="description" content="Neo-Georgian estate. Built 1915–16. Pinehurst, North Carolina. $4,250,000." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Pinyon+Script&display=swap" rel="stylesheet" />
-
   <style>
-    /* ============================================================
-       DESIGN SYSTEM — defined once, inherited everywhere
-       No inline drift. No patchwork. One source of truth.
-    ============================================================ */
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --dark:   #0a0a0a;
       --gold:   #C9A96E;
       --cream:  #F5F0E8;
       --serif:  'Cormorant Garamond', Georgia, serif;
       --script: 'Pinyon Script', cursive;
-
-      /* TYPE SCALE — used everywhere, no exceptions */
-      --t-micro:    clamp(0.58rem, 0.68vw, 0.65rem);   /* eyebrows, captions */
-      --t-caption:  clamp(0.7rem,  0.85vw, 0.8rem);    /* sub-labels */
-      --t-body:     clamp(1rem,    1.2vw,  1.15rem);    /* body copy */
-      --t-body-lg:  clamp(1.1rem,  1.4vw,  1.3rem);    /* lead paragraphs */
-      --t-sub:      clamp(1.4rem,  2.2vw,  2rem);      /* subheadings */
-      --t-head:     clamp(2.8rem,  5vw,    5.5rem);    /* section headlines */
-      --t-display:  clamp(3.5rem,  6.5vw,  7.5rem);    /* large editorial titles */
-      --t-hero:     clamp(5rem,    10vw,   12rem);     /* hero name */
-
-      /* SPACING SCALE */
-      --sp-xs:  clamp(0.8rem, 1.5vw, 1.2rem);
-      --sp-sm:  clamp(1.5rem, 3vw,   2.5rem);
-      --sp-md:  clamp(3rem,   6vw,   5rem);
-      --sp-lg:  clamp(5rem,   9vw,   8rem);
-      --sp-xl:  clamp(7rem,   12vw,  11rem);
-
-      /* LAYOUT */
-      --max-text: 720px;
-      --max-wide: 1240px;
-      --col-pad:  clamp(2rem, 8vw, 9rem);
-
-      /* ANIMATION */
-      --ease-out: cubic-bezier(.16, 1, .3, 1);
+      --t-micro:   clamp(0.58rem, 0.7vw, 0.65rem);
+      --t-caption: clamp(0.72rem, 0.9vw, 0.82rem);
+      --t-body:    clamp(1.05rem, 1.25vw, 1.2rem);
+      --t-body-lg: clamp(1.15rem, 1.5vw, 1.35rem);
+      --t-sub:     clamp(1.5rem, 2.5vw, 2.2rem);
+      --t-head:    clamp(2.8rem, 5vw, 5.5rem);
+      --t-display: clamp(3.2rem, 6vw, 7rem);
+      --t-hero:    clamp(5rem, 10vw, 13rem);
+      --sp-xs: clamp(0.8rem, 1.5vw, 1.2rem);
+      --sp-sm: clamp(1.5rem, 3vw, 2.5rem);
+      --sp-md: clamp(3rem, 6vw, 5rem);
+      --sp-lg: clamp(5rem, 9vw, 8rem);
+      --sp-xl: clamp(7rem, 12vw, 11rem);
+      --col-pad: clamp(2rem, 8vw, 9rem);
+      --max-text: 680px;
+      --ease-out: cubic-bezier(.16,1,.3,1);
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--dark);
       color: var(--cream);
       font-family: var(--serif);
       -webkit-font-smoothing: antialiased;
-      font-size: 16px;
-      line-height: 1;
     }
-
     img { max-width: 100%; display: block; }
     button { cursor: pointer; font-family: var(--serif); }
-
     ::-webkit-scrollbar { width: 3px; }
     ::-webkit-scrollbar-track { background: var(--dark); }
     ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
-    /* ============================================================
-       UTILITY CLASSES
-    ============================================================ */
+    /* Custom cursor */
+    * { cursor: none !important; }
+    #cursor {
+      position: fixed;
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: transform 0.1s ease, opacity 0.3s ease;
+      mix-blend-mode: difference;
+    }
+    #cursor-ring {
+      position: fixed;
+      width: 32px; height: 32px;
+      border: 1px solid rgba(201,169,110,0.45);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: all 0.18s var(--ease-out);
+    }
 
+    /* Grain texture overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9000;
+      opacity: 0.55;
+    }
+
+    /* UTILITIES */
     .eyebrow {
       font-family: var(--serif);
       font-size: var(--t-micro);
       font-weight: 500;
-      letter-spacing: 0.42em;
+      letter-spacing: 0.44em;
       text-transform: uppercase;
       color: var(--gold);
       display: block;
       margin-bottom: 1.4rem;
     }
-
-    .gold-rule {
-      width: 40px;
-      height: 1px;
-      background: var(--gold);
-      opacity: 0.6;
-      margin-bottom: 1.8rem;
-    }
-
+    .gold-rule { width: 36px; height: 1px; background: var(--gold); opacity: 0.55; margin-bottom: 2rem; }
     .gold-rule.center { margin-left: auto; margin-right: auto; }
-
     .gold-rule-full {
       width: 100%;
       height: 1px;
-      background: linear-gradient(to right, transparent, rgba(201,169,110,0.5) 20%, rgba(201,169,110,0.5) 80%, transparent);
+      background: linear-gradient(to right, transparent, rgba(201,169,110,0.45) 20%, rgba(201,169,110,0.45) 80%, transparent);
+    }
+    .fade-top::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: clamp(70px,12vh,120px);
+      background: linear-gradient(to bottom, var(--dark), transparent);
+      z-index: 3; pointer-events: none;
+    }
+    .fade-bottom::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: clamp(70px,12vh,120px);
+      background: linear-gradient(to top, var(--dark), transparent);
+      z-index: 3; pointer-events: none;
     }
 
-    /* ============================================================
-       FADE-IN ON SCROLL
-    ============================================================ */
-    .fade-in {
+    /* SCROLL ANIMATIONS */
+    .reveal {
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 1.8s var(--ease-out), transform 1.8s var(--ease-out);
+      transform: translateY(22px);
+      transition: opacity 1.9s var(--ease-out), transform 1.9s var(--ease-out);
     }
-    .fade-in.visible {
-      opacity: 1;
-      transform: none;
-    }
-    .fade-in.delay-1 { transition-delay: 0.15s; }
-    .fade-in.delay-2 { transition-delay: 0.3s; }
-    .fade-in.delay-3 { transition-delay: 0.45s; }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal.d1 { transition-delay: 0.12s; }
+    .reveal.d2 { transition-delay: 0.26s; }
+    .reveal.d3 { transition-delay: 0.42s; }
+    .reveal.d4 { transition-delay: 0.6s; }
 
-    /* ============================================================
-       NAVIGATION
-    ============================================================ */
+    /* NAV */
     .nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
+      position: fixed; top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 1.6rem var(--col-pad);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: background 0.4s ease, padding 0.4s ease;
+      padding: 1.8rem var(--col-pad);
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.5s ease, padding 0.4s ease;
     }
-
     .nav.scrolled {
-      background: rgba(10,10,10,0.96);
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(201,169,110,0.1);
+      background: rgba(10,10,10,0.97);
+      padding-top: 1.1rem; padding-bottom: 1.1rem;
+      border-bottom: 1px solid rgba(201,169,110,0.08);
     }
-
     .nav-brand {
       font-family: var(--serif);
       font-size: var(--t-micro);
-      letter-spacing: 0.42em;
-      text-transform: uppercase;
-      color: rgba(245,240,232,0.55);
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      align-items: center;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: var(--serif);
-      font-size: var(--t-micro);
-      letter-spacing: 0.32em;
+      letter-spacing: 0.44em;
       text-transform: uppercase;
       color: rgba(245,240,232,0.45);
       text-decoration: none;
       transition: color 0.3s;
     }
-
+    .nav-brand:hover { color: var(--gold); }
+    .nav-links { display: flex; gap: 2.8rem; align-items: center; list-style: none; }
+    .nav-links a {
+      font-family: var(--serif);
+      font-size: var(--t-micro);
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.38);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
     .nav-links a:hover { color: var(--gold); }
-
     .nav-cta {
       font-family: var(--serif);
       font-size: var(--t-micro);
-      letter-spacing: 0.3em;
+      letter-spacing: 0.32em;
       text-transform: uppercase;
       color: var(--gold);
-      background: none;
-      border: none;
-      border-bottom: 1px solid var(--gold);
+      background: none; border: none;
+      border-bottom: 1px solid rgba(201,169,110,0.5);
       padding: 0.2rem 0;
-      transition: opacity 0.3s;
+      transition: opacity 0.3s, border-color 0.3s;
     }
+    .nav-cta:hover { opacity: 0.65; border-color: var(--gold); }
 
-    .nav-cta:hover { opacity: 0.7; }
-
-    /* ============================================================
-       HERO
-    ============================================================ */
+    /* HERO */
     .hero {
       position: relative;
-      height: 100vh;
-      min-height: 680px;
-      overflow: hidden;
-      background: var(--dark);
+      height: 100vh; min-height: 700px;
+      overflow: hidden; background: var(--dark);
     }
-
-    .hero-video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.72;
+    .hero-video-wrap {
+      position: absolute; inset: 0;
     }
-
+    .hero-video-wrap iframe {
+      width: 100%; height: 100%;
+      border: none; opacity: 0.68;
+    }
     .hero-overlay {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(10,10,10,0.15) 0%,
-        rgba(10,10,10,0.1) 40%,
-        rgba(10,10,10,0.55) 80%,
+        rgba(10,10,10,0.08) 0%,
+        rgba(10,10,10,0.05) 35%,
+        rgba(10,10,10,0.5) 75%,
         rgba(10,10,10,1) 100%
       );
       z-index: 2;
     }
-
-    .hero-content {
+    .hero-text {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 3;
-      padding: 0 var(--col-pad) 0;
+      bottom: 200px; left: 0; right: 0;
+      z-index: 4;
+      padding: 0 var(--col-pad);
     }
-
     .hero-eyebrow {
       font-family: var(--serif);
       font-size: var(--t-micro);
-      letter-spacing: 0.42em;
+      letter-spacing: 0.44em;
       text-transform: uppercase;
-      color: rgba(245,240,232,0.65);
+      color: rgba(245,240,232,0.55);
       display: block;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
     }
-
     .hero-title {
       font-family: var(--script);
       font-size: var(--t-hero);
       color: #fff;
-      line-height: 0.92;
-      margin-bottom: 0.8rem;
+      line-height: 0.9;
       font-weight: 400;
+      margin-bottom: 1.2rem;
     }
-
-    .hero-sub {
+    .hero-tour {
       font-family: var(--serif);
-      font-size: var(--t-body);
-      font-style: italic;
-      font-weight: 300;
-      color: rgba(245,240,232,0.72);
-      margin-bottom: 0;
-      letter-spacing: 0.01em;
+      font-size: var(--t-micro);
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.32);
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 0.4rem;
+      border-bottom: 1px solid rgba(245,240,232,0.12);
+      padding-bottom: 0.15rem;
+      transition: color 0.3s, border-color 0.3s;
     }
+    .hero-tour:hover { color: var(--gold); border-color: var(--gold); }
 
     /* STAT BAR */
     .stat-bar {
       position: absolute;
-      bottom: 0; left: 0; right: 0;
-      z-index: 10;
-      background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.95) 60%, transparent 100%);
-      padding: 0.6rem var(--col-pad) 0;
-      overflow: visible;
+      bottom: 0; left: 0; right: 0; z-index: 5;
+      padding: 0 var(--col-pad) 0;
     }
-
-    .stat-bar-row {
+    .stat-bar-inner {
+      padding: 0.6rem 0;
       display: flex;
       justify-content: space-around;
       align-items: center;
-      padding: 0.5rem 0;
     }
-
-    .stat-item {
-      text-align: center;
-      flex: 1;
-      min-width: 0;
-    }
-
+    .stat-item { text-align: center; flex: 1; min-width: 0; }
     .stat-value {
       font-family: var(--serif);
       font-weight: 300;
-      font-size: clamp(1rem, 1.8vw, 1.9rem);
+      font-size: clamp(0.95rem, 1.8vw, 1.9rem);
       color: #fff;
       line-height: 1;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.01em;
     }
-
     .stat-label {
       font-family: var(--serif);
       font-size: var(--t-micro);
-      letter-spacing: 0.36em;
+      letter-spacing: 0.38em;
       text-transform: uppercase;
-      color: rgba(201,169,110,0.75);
+      color: rgba(201,169,110,0.7);
     }
-
     .stat-crest img {
-      height: 52px;
-      opacity: 0.9;
+      height: 54px; margin: 0 auto;
+      filter: drop-shadow(0 0 12px rgba(201,169,110,0.4));
     }
 
     /* SEAL BRIDGE */
     .seal-bridge {
       position: relative;
-      height: 0;
-      z-index: 50;
-      display: flex;
-      justify-content: center;
+      height: 0; z-index: 50;
+      display: flex; justify-content: center;
     }
-
     .seal-bridge img {
-      position: absolute;
-      top: -70px;
-      height: 140px;
-      width: auto;
-      filter: drop-shadow(0 0 28px rgba(201,169,110,0.75)) drop-shadow(0 0 10px rgba(201,169,110,0.5));
+      position: absolute; top: -72px;
+      height: 144px; width: auto;
+      filter: drop-shadow(0 0 30px rgba(201,169,110,0.7)) drop-shadow(0 0 10px rgba(201,169,110,0.45));
     }
 
-    /* ============================================================
-       CINEMATIC REVEAL — the editorial workhorse
-       Left-aligned. Text left, image right (or flipped).
-       This is the section from the staircase screenshot.
-    ============================================================ */
+    /* CINEMATIC — the editorial workhorse */
     .cinematic {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: clamp(600px, 78vh, 960px);
+      min-height: clamp(600px, 76vh, 960px);
       background: var(--dark);
       overflow: hidden;
     }
-
     .cinematic.flip { direction: rtl; }
     .cinematic.flip > * { direction: ltr; }
-
     .cinematic-text {
-      display: flex;
-      flex-direction: column;
+      display: flex; flex-direction: column;
       justify-content: center;
-      padding: var(--sp-lg) var(--sp-md);
-      padding-right: clamp(3rem, 6vw, 7rem);
+      padding: var(--sp-lg) clamp(3rem,6vw,7rem) var(--sp-lg) var(--col-pad);
     }
-
     .cinematic.flip .cinematic-text {
-      padding-right: var(--sp-md);
-      padding-left: clamp(3rem, 6vw, 7rem);
+      padding: var(--sp-lg) var(--col-pad) var(--sp-lg) clamp(3rem,6vw,7rem);
     }
-
     .cinematic-headline {
       font-family: var(--serif);
       font-size: var(--t-head);
@@ -348,263 +306,159 @@
       color: #fff;
       line-height: 1.08;
       letter-spacing: -0.015em;
-      margin-bottom: 1.8rem;
+      margin-bottom: 2rem;
     }
-
-    /* The italic moment — mixed roman + italic in same headline */
-    .cinematic-headline em {
-      font-style: italic;
-      font-weight: 300;
-    }
-
+    .cinematic-headline em { font-style: italic; font-weight: 300; color: rgba(255,255,255,0.88); }
     .cinematic-body {
       font-family: var(--serif);
       font-size: var(--t-body);
       font-weight: 300;
       color: var(--cream);
-      opacity: 0.85;
-      line-height: 2.1;
-      max-width: 520px;
+      opacity: 0.82;
+      line-height: 2.15;
+      max-width: 500px;
     }
-
-    .cinematic-sub {
+    .cinematic-bridge {
       font-family: var(--serif);
       font-size: var(--t-body);
       font-style: italic;
       font-weight: 300;
       color: var(--cream);
-      opacity: 0.5;
-      line-height: 1.9;
-      margin-top: 1.2rem;
-      max-width: 520px;
+      opacity: 0.38;
+      line-height: 1;
+      margin-top: 2rem;
+      letter-spacing: 0.01em;
     }
-
     .cinematic-image {
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
-
-    .cinematic-image-inner {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      transition: transform 8s ease;
+    .cinematic-image-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform 9s ease;
     }
-
-    .cinematic:hover .cinematic-image-inner {
-      transform: scale(1.03);
-    }
-
-    /* Subtle gradient bleed from image into text */
+    .cinematic:hover .cinematic-image-bg { transform: scale(1.025); }
     .cinematic-image::before {
       content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      left: 0;
-      width: 80px;
+      position: absolute; top: 0; bottom: 0; left: 0;
+      width: 100px;
       background: linear-gradient(to right, var(--dark), transparent);
-      z-index: 2;
-      pointer-events: none;
+      z-index: 2; pointer-events: none;
     }
-
     .cinematic.flip .cinematic-image::before {
-      left: auto;
-      right: 0;
+      left: auto; right: 0;
       background: linear-gradient(to left, var(--dark), transparent);
     }
 
-    /* ============================================================
-       FULL BLEED — image with text floating on it
-    ============================================================ */
-    .full-bleed {
-      position: relative;
-      overflow: hidden;
-      min-height: clamp(500px, 72vh, 900px);
-      display: flex;
-      align-items: center;
-    }
-
-    .full-bleed-bg {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      transition: transform 8s ease;
-    }
-
-    .full-bleed:hover .full-bleed-bg { transform: scale(1.03); }
-
-    .full-bleed-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(8,8,8,0.52);
-      z-index: 1;
-    }
-
-    .full-bleed-content {
-      position: relative;
-      z-index: 2;
-      padding: var(--sp-lg) var(--col-pad);
-      max-width: calc(var(--max-text) + var(--col-pad) * 2);
-    }
-
-    .full-bleed.center .full-bleed-content {
-      max-width: 100%;
-      text-align: center;
-      margin: 0 auto;
-    }
-
-    .full-bleed-headline {
-      font-family: var(--serif);
-      font-size: var(--t-display);
-      font-weight: 400;
-      color: #fff;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.6rem;
-    }
-
-    .full-bleed-headline em { font-style: italic; font-weight: 300; }
-
-    .full-bleed-body {
-      font-family: var(--serif);
-      font-size: var(--t-body);
-      font-weight: 300;
-      color: var(--cream);
-      opacity: 0.82;
-      line-height: 2.1;
-      max-width: 540px;
-    }
-
-    /* ============================================================
-       INTERSTITIAL — dark, naked text, gold rules
-       Maximum authority. Nothing else on screen.
-    ============================================================ */
+    /* INTERSTITIAL — dark, naked, gold rules */
     .interstitial {
       background: var(--dark);
-      padding: var(--sp-xl) var(--col-pad);
+      padding: var(--sp-xl) clamp(2rem,14vw,18rem);
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      display: flex; flex-direction: column; align-items: center;
     }
-
     .interstitial-headline {
       font-family: var(--serif);
       font-size: var(--t-display);
       font-weight: 400;
       color: #fff;
-      line-height: 1.12;
+      line-height: 1.1;
       letter-spacing: -0.015em;
-      max-width: var(--max-text);
-      margin: 1.8rem auto;
+      max-width: 820px;
+      margin: 2rem auto;
     }
-
-    .interstitial-headline em {
-      font-style: italic;
-      font-weight: 300;
-      color: rgba(245,240,232,0.78);
-    }
-
+    .interstitial-headline em { font-style: italic; font-weight: 300; color: rgba(255,255,255,0.75); }
     .interstitial-body {
       font-family: var(--serif);
       font-size: var(--t-body-lg);
       font-weight: 300;
       color: var(--cream);
-      opacity: 0.72;
-      line-height: 2.0;
+      opacity: 0.65;
+      line-height: 2.1;
       max-width: 620px;
       margin: 0 auto;
     }
 
-    /* ============================================================
-       PULL QUOTE
-    ============================================================ */
-    .pull-quote {
+    /* NAKED BREATH — one line between sections */
+    .breath {
       background: var(--dark);
-      padding: var(--sp-xl) clamp(2rem, 14vw, 18rem);
+      padding: clamp(3.5rem,6vh,5.5rem) var(--col-pad);
       text-align: center;
     }
-
-    .pull-quote-text {
+    .breath-line {
       font-family: var(--serif);
-      font-size: clamp(1.6rem, 3.2vw, 3.5rem);
+      font-size: var(--t-body-lg);
       font-style: italic;
       font-weight: 300;
-      color: #fff;
-      line-height: 1.45;
-      letter-spacing: -0.01em;
-      max-width: 860px;
-      margin: 1.6rem auto;
+      color: rgba(245,240,232,0.3);
+      letter-spacing: 0.015em;
+      line-height: 1.6;
     }
 
-    .pull-quote-attr {
+    /* FULL BLEED */
+    .full-bleed {
+      position: relative; overflow: hidden;
+      min-height: clamp(500px, 70vh, 900px);
+      display: flex; align-items: center;
+    }
+    .full-bleed-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform 9s ease;
+    }
+    .full-bleed:hover .full-bleed-bg { transform: scale(1.025); }
+    .full-bleed-overlay {
+      position: absolute; inset: 0;
+      background: rgba(8,8,8,0.54); z-index: 1;
+    }
+    .full-bleed-content {
+      position: relative; z-index: 2;
+      padding: var(--sp-lg) var(--col-pad);
+    }
+    .full-bleed.center .full-bleed-content {
+      text-align: center; margin: 0 auto; width: 100%;
+    }
+    .full-bleed-headline {
       font-family: var(--serif);
-      font-size: var(--t-micro);
-      letter-spacing: 0.38em;
-      text-transform: uppercase;
-      color: rgba(245,240,232,0.25);
-      margin-top: 1.8rem;
+      font-size: var(--t-display);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.06;
+      letter-spacing: -0.018em;
+      margin-bottom: 1.8rem;
+    }
+    .full-bleed-headline em { font-style: italic; font-weight: 300; }
+    .full-bleed-body {
+      font-family: var(--serif);
+      font-size: var(--t-body);
+      font-weight: 300;
+      color: var(--cream);
+      opacity: 0.8;
+      line-height: 2.1;
+      max-width: 520px;
     }
 
-    /* ============================================================
-       CINEMATIC FADE OVERLAYS on image sections
-    ============================================================ */
-    .fade-top::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: clamp(80px, 14vh, 130px);
-      background: linear-gradient(to bottom, var(--dark), transparent);
-      z-index: 3;
-      pointer-events: none;
-    }
-
-    .fade-bottom::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: clamp(80px, 14vh, 130px);
-      background: linear-gradient(to top, var(--dark), transparent);
-      z-index: 3;
-      pointer-events: none;
-    }
-
-    /* ============================================================
-       WHP PORTRAIT SECTION
-    ============================================================ */
+    /* WHP SECTION */
     .whp-section {
       position: relative;
-      min-height: clamp(700px, 92vh, 1060px);
-      overflow: hidden;
-      display: flex;
-      align-items: stretch;
+      min-height: clamp(700px, 90vh, 1060px);
+      overflow: hidden; display: flex; align-items: stretch;
     }
-
-    .whp-portrait {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center top;
+    .whp-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center top;
     }
-
     .whp-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, rgba(10,10,10,0.92) 38%, rgba(10,10,10,0.3) 75%, rgba(10,10,10,0.1) 100%);
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(10,10,10,0.93) 35%, rgba(10,10,10,0.28) 72%, rgba(10,10,10,0.1) 100%);
       z-index: 1;
     }
-
     .whp-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
+      position: relative; z-index: 2;
+      display: flex; align-items: center;
       padding: var(--sp-lg) var(--col-pad);
       max-width: 680px;
     }
-
     .whp-headline {
       font-family: var(--serif);
       font-size: var(--t-display);
@@ -614,466 +468,569 @@
       letter-spacing: -0.015em;
       margin-bottom: 2rem;
     }
-
     .whp-headline em { font-style: italic; font-weight: 300; }
-
     .whp-body {
       font-family: var(--serif);
       font-size: var(--t-body);
       font-weight: 300;
       color: var(--cream);
-      opacity: 0.82;
-      line-height: 2.15;
+      opacity: 0.8;
+      line-height: 2.2;
+    }
+    .whp-quote {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(245,240,232,0.45);
+      margin-top: 1.8rem;
+      line-height: 1.7;
     }
 
-    /* ============================================================
-       FOOTER
-    ============================================================ */
+    /* BLUE FOX — standalone breath */
+    .blue-fox {
+      background: var(--dark);
+      padding: var(--sp-xl) clamp(2rem,16vw,20rem);
+      text-align: center;
+    }
+    .blue-fox-headline {
+      font-family: var(--serif);
+      font-size: clamp(1.3rem, 2.4vw, 2.6rem);
+      font-weight: 400;
+      color: rgba(245,240,232,0.72);
+      line-height: 1.7;
+      letter-spacing: -0.01em;
+      max-width: 760px;
+      margin: 1.8rem auto;
+    }
+    .blue-fox-close {
+      font-family: var(--serif);
+      font-size: var(--t-body-lg);
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(201,169,110,0.6);
+      margin-top: 1.4rem;
+      letter-spacing: 0.01em;
+    }
+
+    /* FOOTER */
     .footer {
       background: var(--dark);
-      border-top: 1px solid rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(255,255,255,0.05);
       padding: var(--sp-lg) var(--col-pad);
       text-align: center;
     }
 
-    .footer-agent {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(1.2rem, 2vw, 1.6rem);
-      color: #fff;
-      letter-spacing: 0.02em;
-      margin: 0 0 0.3rem;
-    }
-
-    .footer-brokerage {
-      font-family: var(--serif);
-      font-size: var(--t-caption);
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.85;
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-region {
-      font-family: var(--serif);
-      font-style: italic;
-      font-weight: 300;
-      font-size: 0.88rem;
-      color: var(--cream);
-      opacity: 0.3;
-    }
-
-    /* ============================================================
-       INQUIRY MODAL
-    ============================================================ */
+    /* INQUIRY MODAL */
     .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(5,5,5,0.92);
+      position: fixed; inset: 0;
+      background: rgba(5,5,5,0.94);
       z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       padding: 2rem;
     }
-
     .modal {
-      border: 1px solid rgba(201,169,110,0.35);
-      padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3.5rem);
-      max-width: 480px;
-      width: 100%;
+      border: 1px solid rgba(201,169,110,0.3);
+      padding: clamp(2.5rem,5vw,4rem) clamp(2rem,4vw,3.5rem);
+      max-width: 460px; width: 100%;
       position: relative;
     }
-
     .modal-close {
-      position: absolute;
-      top: 1.2rem; right: 1.5rem;
-      background: none;
-      border: none;
-      color: rgba(245,240,232,0.35);
-      font-size: 1.4rem;
+      position: absolute; top: 1.2rem; right: 1.5rem;
+      background: none; border: none;
+      color: rgba(245,240,232,0.25); font-size: 1.5rem;
       line-height: 1;
-      cursor: pointer;
     }
-
     .modal input, .modal textarea {
-      width: 100%;
-      background: none;
-      border: none;
-      border-bottom: 1px solid rgba(201,169,110,0.25);
-      color: var(--cream);
-      font-family: var(--serif);
-      font-size: var(--t-body);
-      font-weight: 300;
-      padding: 0.8rem 0;
-      margin-bottom: 1.4rem;
-      outline: none;
-      transition: border-color 0.3s;
+      width: 100%; background: none; border: none;
+      border-bottom: 1px solid rgba(201,169,110,0.2);
+      color: var(--cream); font-family: var(--serif);
+      font-size: var(--t-body); font-weight: 300;
+      padding: 0.9rem 0; margin-bottom: 1.5rem;
+      outline: none; transition: border-color 0.3s;
     }
-
-    .modal input:focus, .modal textarea:focus {
-      border-bottom-color: var(--gold);
-    }
-
+    .modal input:focus, .modal textarea:focus { border-bottom-color: var(--gold); }
     .modal input::placeholder, .modal textarea::placeholder {
-      color: rgba(245,240,232,0.25);
-      font-style: italic;
+      color: rgba(245,240,232,0.22); font-style: italic;
     }
-
     .modal-submit {
-      width: 100%;
-      background: none;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      padding: 1rem;
-      font-family: var(--serif);
-      font-size: var(--t-caption);
-      letter-spacing: 0.42em;
-      text-transform: uppercase;
-      cursor: pointer;
+      width: 100%; background: none;
+      border: 1px solid var(--gold); color: var(--gold);
+      padding: 1.1rem; font-family: var(--serif);
+      font-size: var(--t-micro); letter-spacing: 0.44em;
+      text-transform: uppercase; margin-top: 0.5rem;
       transition: background 0.3s, color 0.3s;
-      margin-top: 0.5rem;
     }
+    .modal-submit:hover { background: var(--gold); color: var(--dark); }
 
-    .modal-submit:hover {
-      background: var(--gold);
-      color: var(--dark);
-    }
+    /* COUNTER ANIMATION */
+    .count-up { display: inline-block; }
 
-    /* ============================================================
-       RESPONSIVE
-    ============================================================ */
     @media (max-width: 900px) {
-      .cinematic {
-        grid-template-columns: 1fr;
-        min-height: auto;
-      }
-
-      .cinematic-image {
-        height: clamp(320px, 55vw, 500px);
-        order: -1;
-      }
-
+      .cinematic { grid-template-columns: 1fr; min-height: auto; }
+      .cinematic-image { height: clamp(320px,52vw,500px); order: -1; }
       .cinematic-image::before { display: none; }
-
-      .cinematic-text {
+      .cinematic-text, .cinematic.flip .cinematic-text {
         padding: var(--sp-md) var(--col-pad);
       }
-
-      .cinematic.flip .cinematic-text {
-        padding: var(--sp-md) var(--col-pad);
-      }
-
       .whp-overlay {
-        background: linear-gradient(to bottom, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.88) 60%, rgba(10,10,10,0.98) 100%);
+        background: linear-gradient(to bottom, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.88) 55%, rgba(10,10,10,0.98) 100%);
       }
-
-      .whp-content {
-        align-items: flex-end;
-        padding-top: var(--sp-xl);
-      }
+      .whp-content { align-items: flex-end; padding-top: var(--sp-xl); max-width: 100%; }
+      .nav-links { display: none; }
     }
-
     @media (max-width: 640px) {
-      :root {
-        --col-pad: clamp(1.4rem, 5vw, 2.5rem);
-      }
-
-      .stat-bar-row {
-        flex-wrap: wrap;
-        gap: 1rem 0;
-      }
-
+      :root { --col-pad: clamp(1.4rem,5vw,2.5rem); }
       .stat-item { flex: 0 0 33.33%; }
       .stat-crest { display: none; }
-
-      .nav-links { display: none; }
-
-      .pull-quote {
-        padding: var(--sp-lg) clamp(1.5rem, 6vw, 4rem);
-      }
+      .blue-fox { padding: var(--sp-lg) clamp(1.5rem,6vw,4rem); }
     }
-
   </style>
 </head>
 <body>
 
-  <!-- NAVIGATION -->
-  <nav class="nav" id="nav">
-    <a href="#" class="nav-brand">Garran Hill</a>
-    <ul class="nav-links">
-      <li><a href="#estate">The Estate</a></li>
-      <li><a href="#history">The History</a></li>
-      <li><a href="#grounds">The Grounds</a></li>
-      <li><button class="nav-cta" onclick="openModal()">Private Inquiry</button></li>
-    </ul>
-  </nav>
+<!-- CUSTOM CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-brand">Garran Hill</a>
+  <ul class="nav-links">
+    <li><a href="#arrival">The Estate</a></li>
+    <li><a href="#history">The History</a></li>
+    <li><a href="#grounds">The Grounds</a></li>
+    <li><button class="nav-cta" onclick="openModal()">Private Inquiry</button></li>
+  </ul>
+</nav>
+
+<!-- ================================================================
+     BEAT 1 — HERO
+     Feel the place. No biography yet. Just the name and the land.
+================================================================ -->
+<section class="hero">
+  <div class="hero-video-wrap">
     <iframe
       src="https://iframe.cloudflarestream.com/ba88a34a312106b7bf9d00b52a452871?autoplay=true&muted=true&loop=true&controls=false&preload=true"
-      style="position:absolute;inset:0;width:100%;height:100%;border:none;opacity:0.72;"
       allow="autoplay"
     ></iframe>
-    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-overlay"></div>
 
-    <!-- HERO TEXT -->
-    <div style="position:absolute;bottom:180px;left:0;right:0;z-index:5;padding:0 var(--col-pad);">
-      <span class="hero-eyebrow fade-in">200 Hollycrest Drive &nbsp;|&nbsp; Pinehurst, NC &nbsp;|&nbsp; Est. 1916</span>
-      <h1 class="fade-in delay-1" style="font-family:var(--script);font-size:var(--t-hero);color:#fff;line-height:0.92;margin-bottom:0.8rem;font-weight:400;">Garran Hill</h1>
-      <p class="fade-in delay-2" style="font-family:var(--serif);font-size:var(--t-body);font-style:italic;font-weight:300;color:rgba(245,240,232,0.72);">Neo-Georgian. &nbsp;Walter Hines Page. &nbsp;110 years of remarkable stewardship.</p>
-    </div>
-
-    <!-- STAT BAR -->
-    <div class="stat-bar">
-      <div class="gold-rule-full"></div>
-      <div class="stat-bar-row">
-        <div class="stat-item">
-          <div class="stat-value">1916</div>
-          <div class="stat-label">Est.</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">4</div>
-          <div class="stat-label">Bedrooms</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">6</div>
-          <div class="stat-label">Bathrooms</div>
-        </div>
-        <div class="stat-crest stat-item">
-          <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777267295/gh_key/gh_wax_seal_transparent.png" alt="Garran Hill Crest" style="height:52px;margin:0 auto;" />
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">6,072 sq ft</div>
-          <div class="stat-label">Living Area</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">4.15 Acres</div>
-          <div class="stat-label">Land</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">$4,250,000</div>
-          <div class="stat-label">Offered At</div>
-        </div>
-      </div>
-      <div class="gold-rule-full" style="margin-top:0.6rem;"></div>
-      <div style="height:0.4rem;"></div>
-    </div>
-  </section>
-
-
-
-  <!-- SEAL BRIDGE -->
-  <div class="seal-bridge">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777267295/gh_key/gh_wax_seal_transparent.png" alt="Garran Hill" />
+  <div class="hero-text">
+    <span class="hero-eyebrow reveal">Pinehurst, North Carolina &nbsp;·&nbsp; Est. 1916</span>
+    <h1 class="hero-title reveal d1">Garran Hill</h1>
+    <a href="#arrival" class="hero-tour reveal d2">Tour the Estate</a>
   </div>
 
-  <!-- 01 HORSE POST -->
-  <section class="cinematic fade-top" id="estate">
-    <div class="cinematic-text fade-in">
-      <span class="eyebrow">The Arrival</span>
-      <div class="gold-rule"></div>
-      <h2 class="cinematic-headline">It has stood here<br><em>since before the columns<br>were raised.</em></h2>
-      <p class="cinematic-body">Some houses hold history. This one shaped it. Neo-Georgian architecture. Longitudinal plan. Columned portico. The proportions are correct because the original drawings survived.</p>
-      <p class="cinematic-sub">Four bedrooms. Six baths. Seven fireplaces. 6,072 square feet. 4.15 acres.</p>
-    </div>
-    <div class="cinematic-image">
-      <div class="cinematic-image-inner" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777276882/gh_key/gh_portico.jpg');"></div>
-    </div>
-  </section>
-
-  <!-- INTERSTITIAL 01 -->
-  <section class="interstitial fade-in">
-    <div class="gold-rule-full" style="width:100%;margin-bottom:0;"></div>
-    <h2 class="interstitial-headline" style="margin-top:var(--sp-lg);margin-bottom:var(--sp-lg);">
-      Built by Leonard Tufts' own craftsmen.<br>
-      <em>The same men who built Pinehurst.</em>
-    </h2>
-    <div class="gold-rule-full" style="width:100%;"></div>
-  </section>
-
-  <!-- 02 THRESHOLD / ENTRY -->
-  <section class="cinematic flip fade-bottom">
-    <div class="cinematic-text fade-in">
-      <span class="eyebrow">The Threshold</span>
-      <div class="gold-rule"></div>
-      <h2 class="cinematic-headline">The door has been open<br><em>since 1916.</em></h2>
-      <p class="cinematic-body">Original 1916 leaded glass sidelights and over-door fanlight at the front entry, preserved exactly as built. The hardware was specified in 1916. It has not been replaced. That is not maintenance. That is devotion.</p>
-    </div>
-    <div class="cinematic-image">
-      <div class="cinematic-image-inner" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:35,e_saturation:12,f_auto,q_auto,w_1920,c_limit/v1777276934/gh_key/gh_threshold_open.jpg');"></div>
-    </div>
-  </section>
-
-  <!-- 03 FOYER / STAIRCASE -->
-  <section class="cinematic">
-    <div class="cinematic-text fade-in">
-      <span class="eyebrow">The Interior</span>
-      <div class="gold-rule"></div>
-      <h2 class="cinematic-headline">Two primary stair cores.<br><em>Three staircases.<br>One axis.</em></h2>
-      <p class="cinematic-body">The foyer runs the full depth of the house. Original oak floors throughout. The proportions were drawn in 1915 and nothing has been changed that didn't need to be. Restored 1999–2001 by Thomas O'Shea.</p>
-    </div>
-    <div class="cinematic-image">
-      <div class="cinematic-image-inner" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777263004/gh_key/gh_threshold.jpg');"></div>
-    </div>
-  </section>
-
-  <!-- PULL QUOTE 01 -->
-  <section class="pull-quote fade-in">
+  <div class="stat-bar">
     <div class="gold-rule-full"></div>
-    <p class="pull-quote-text">"You cannot leave this room quickly."</p>
-    <div class="gold-rule-full"></div>
-    <p class="pull-quote-attr">The Library — Garran Hill</p>
-  </section>
-
-  <!-- 04 DRAWING ROOM -->
-  <section class="cinematic flip fade-top fade-bottom" id="grounds">
-    <div class="cinematic-text fade-in">
-      <span class="eyebrow">The Rooms</span>
-      <div class="gold-rule"></div>
-      <h2 class="cinematic-headline">Fire going.<br><em>No one home yet.</em></h2>
-      <p class="cinematic-body">Seven fireplaces. Six with propane gas logs. The drawing room Delft fireplace is original. Formal by proportion. Intimate by firelight. The sound that fills seventeen feet without effort.</p>
-    </div>
-    <div class="cinematic-image">
-      <div class="cinematic-image-inner" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777244065/gh_key/gh_65.jpg');"></div>
-    </div>
-  </section>
-
-  <!-- INTERSTITIAL 02 — WHP Setup -->
-  <section class="interstitial fade-in" id="history">
-    <div class="gold-rule-full" style="width:100%;"></div>
-    <p class="interstitial-headline" style="font-size:var(--t-sub);font-style:italic;opacity:0.6;margin:var(--sp-md) auto;">The History</p>
-    <h2 class="interstitial-headline">He named it Garran Hill.<br><em>He longed for it every day he was gone.</em></h2>
-    <p class="interstitial-body" style="margin-top:2rem;">He bought the land in February 1913. He commissioned the design. He directed the craftsmen. Walter Hines Page, publisher, ambassador, son of the South, never slept here. He died December 21, 1918, before the house was finished.</p>
-    <div class="gold-rule-full" style="width:100%;margin-top:var(--sp-md);"></div>
-  </section>
-
-  <!-- 05 WHP PORTRAIT -->
-  <section class="whp-section fade-top fade-bottom">
-    <div class="whp-portrait" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777244132/gh_key/gh_whp.jpg');background-position:center top;"></div>
-    <div class="whp-overlay"></div>
-    <div class="whp-content fade-in">
-      <div>
-        <span class="eyebrow">Walter Hines Page &nbsp;·&nbsp; 1855–1918</span>
-        <div class="gold-rule"></div>
-        <h2 class="whp-headline">Publisher. Ambassador.<br><em>The man who named<br>this hill.</em></h2>
-        <p class="whp-body">Editor of The Atlantic. Co-founder of Doubleday. U.S. Ambassador to Great Britain during the First World War. He carried a letter of introduction from Woodrow Wilson and the homesickness of a man who had built something beautiful on Carolina soil that he would never see finished.</p>
-        <p class="whp-body" style="margin-top:1.4rem;opacity:0.55;font-style:italic;">"Well, Frank, I did get here after all, didn't I?"</p>
+    <div class="stat-bar-inner">
+      <div class="stat-item">
+        <div class="stat-value"><span class="count-up" data-target="1916" data-fixed="1916">1916</span></div>
+        <div class="stat-label">Est.</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value"><span class="count-up" data-target="4">4</span></div>
+        <div class="stat-label">Bedrooms</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value"><span class="count-up" data-target="6">6</span></div>
+        <div class="stat-label">Baths</div>
+      </div>
+      <div class="stat-crest stat-item">
+        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777267295/gh_key/gh_wax_seal_transparent.png" alt="Garran Hill" />
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">6,072 <span style="font-size:0.65em;opacity:0.6;">sf</span></div>
+        <div class="stat-label">Living Area</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">4.15 <span style="font-size:0.65em;opacity:0.6;">ac</span></div>
+        <div class="stat-label">Land</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" style="font-size:clamp(0.85rem,1.5vw,1.6rem);">$4,250,000</div>
+        <div class="stat-label">Offered At</div>
       </div>
     </div>
-  </section>
-
-  <!-- PULL QUOTE 02 -->
-  <section class="pull-quote fade-in">
     <div class="gold-rule-full"></div>
-    <p class="pull-quote-text">"In 1916, those were saplings. Now they are a forest."</p>
-    <div class="gold-rule-full"></div>
-    <p class="pull-quote-attr">The Driveway — 110 years</p>
-  </section>
+    <div style="height:0.5rem;"></div>
+  </div>
+</section>
 
-  <!-- 06 GROUNDS / EXTERIOR -->
-  <section class="cinematic">
-    <div class="cinematic-text fade-in">
-      <span class="eyebrow">The Grounds</span>
-      <div class="gold-rule"></div>
-      <h2 class="cinematic-headline">4.15 acres.<br><em>The world outside<br>does not exist here.</em></h2>
-      <p class="cinematic-body">Salt water pool, 20 × 40 feet, installed 2022. Twenty-eight irrigation zones fed by a 130-foot well. Rose garden. Boxwood. Mature canopy. Twelve parking spaces.</p>
-      <p class="cinematic-sub">Someone still puts flowers on Blue Fox's grave.</p>
-    </div>
-    <div class="cinematic-image">
-      <div class="cinematic-image-inner" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777245826/gh_key/gh_ext__holycrestextf_3328.jpg');"></div>
-    </div>
-  </section>
+<!-- SEAL BRIDGE -->
+<div class="seal-bridge">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777267295/gh_key/gh_wax_seal_transparent.png" alt="Garran Hill Crest" />
+</div>
 
-  <!-- FINAL INTERSTITIAL -->
-  <section class="interstitial fade-in">
-    <div class="gold-rule-full" style="width:100%;"></div>
-    <h2 class="interstitial-headline" style="margin:var(--sp-lg) auto;">
-      It is ready for<br><em>the fifth family.</em>
+<!-- ================================================================
+     BEAT 2 — THE ARRIVAL
+     Something has been here longer than you.
+     Architecture. No specs. Just the weight of it.
+================================================================ -->
+<section class="cinematic fade-top" id="arrival">
+  <div class="cinematic-text">
+    <span class="eyebrow reveal">The Arrival</span>
+    <div class="gold-rule reveal d1"></div>
+    <h2 class="cinematic-headline reveal d1">
+      It has stood here<br>
+      <em>since before the columns<br>were raised.</em>
     </h2>
-    <div class="gold-rule-full" style="width:100%;"></div>
-  </section>
+    <p class="cinematic-body reveal d2">
+      Neo-Georgian. Longitudinal plan. Columned portico. Circular drive.
+      The proportions are correct because the original drawings survived.
+    </p>
+    <p class="cinematic-bridge reveal d3">Built by Leonard Tufts' own craftsmen.</p>
+  </div>
+  <div class="cinematic-image">
+    <div class="cinematic-image-bg" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777276882/gh_key/gh_portico.jpg');"></div>
+  </div>
+</section>
 
-  <!-- TWILIGHT CLOSING -->
-  <section class="full-bleed center fade-top" style="min-height:clamp(600px,85vh,1000px);">
-    <div class="full-bleed-bg" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777245820/gh_key/gh_ext__holycrestextf_3324.jpg');"></div>
-    <div class="full-bleed-overlay" style="background:rgba(8,8,8,0.62);"></div>
-    <div class="full-bleed-content fade-in" style="margin:0 auto;text-align:center;">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777267295/gh_key/gh_wax_seal_transparent.png" alt="Garran Hill" style="height:80px;margin:0 auto 2rem;filter:drop-shadow(0 0 20px rgba(201,169,110,0.6));" />
-      <p style="font-family:var(--script);font-size:clamp(3rem,6vw,6rem);color:#fff;line-height:1;margin-bottom:0.5rem;">Garran Hill</p>
-      <p style="font-family:var(--serif);font-size:var(--t-micro);letter-spacing:0.42em;text-transform:uppercase;color:rgba(245,240,232,0.55);margin-bottom:2.5rem;">Est. 1916 &nbsp;|&nbsp; Pinehurst, NC &nbsp;|&nbsp; $4,250,000</p>
-      <button class="nav-cta" onclick="openModal()" style="font-size:var(--t-caption);padding:0.4rem 0;">Request Private Showing</button>
-    </div>
-  </section>
+<!-- ================================================================
+     BEAT 3 — CONNECTIVE BREATH
+     The craftsmen line lands fully. The same men who built Pinehurst.
+================================================================ -->
+<section class="interstitial reveal">
+  <div class="gold-rule-full" style="width:100%;"></div>
+  <h2 class="interstitial-headline" style="margin:var(--sp-lg) auto;">
+    The same men<br><em>who built Pinehurst.</em>
+  </h2>
+  <div class="gold-rule-full" style="width:100%;"></div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777267295/gh_key/gh_wax_seal_transparent.png" alt="Garran Hill" style="height:60px;opacity:0.75;margin:0 auto 2rem;" />
-    <p style="font-family:var(--serif);font-style:italic;font-weight:300;font-size:var(--t-body);color:var(--cream);opacity:0.55;margin-bottom:0.4rem;">200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, NC 28374 &nbsp;·&nbsp; Est. 1916</p>
-    <div style="width:40px;height:1px;background:rgba(201,169,110,0.35);margin:0 auto 2rem;"></div>
-    <p style="font-family:var(--serif);font-size:var(--t-micro);letter-spacing:0.42em;text-transform:uppercase;color:rgba(245,240,232,0.25);margin-bottom:1rem;">Offered Exclusively By</p>
-    <p class="footer-agent">Rachel Hernandez</p>
-    <p class="footer-brokerage">Sotheby's International Realty</p>
-    <p class="footer-region">Pinehurst &nbsp;·&nbsp; Southern Pines &nbsp;·&nbsp; Moore County</p>
-    <p style="font-family:var(--serif);font-size:var(--t-micro);letter-spacing:0.2em;color:rgba(245,240,232,0.12);margin-top:3rem;">&copy; 2026 Sotheby's International Realty &nbsp;·&nbsp; All inquiries held in strict confidence</p>
-  </footer>
+<!-- ================================================================
+     BEAT 4 — THE THRESHOLD
+     The door opens. The poetry of devotion.
+     Hardware preserved. Not replaced. That is devotion.
+================================================================ -->
+<section class="cinematic flip fade-bottom">
+  <div class="cinematic-text">
+    <span class="eyebrow reveal">The Threshold</span>
+    <div class="gold-rule reveal d1"></div>
+    <h2 class="cinematic-headline reveal d1">
+      The door has been open<br>
+      <em>since 1916.</em>
+    </h2>
+    <p class="cinematic-body reveal d2">
+      Original leaded glass sidelights and over-door fanlight at the front entry,
+      preserved exactly as built. The hardware was specified in 1916.
+      It has not been replaced.
+    </p>
+    <p class="cinematic-bridge reveal d3">That is not maintenance. That is devotion.</p>
+  </div>
+  <div class="cinematic-image">
+    <div class="cinematic-image-bg" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:35,e_saturation:12,f_auto,q_auto,w_1920,c_limit/v1777276934/gh_key/gh_threshold_open.jpg');"></div>
+  </div>
+</section>
 
-  <!-- INQUIRY MODAL -->
-  <div class="modal-overlay" id="modal" style="display:none;">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal()">&times;</button>
-      <p style="font-family:var(--serif);font-size:var(--t-micro);letter-spacing:0.42em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;">Private Inquiry</p>
-      <p style="font-family:var(--serif);font-size:var(--t-micro);letter-spacing:0.28em;text-transform:uppercase;color:rgba(201,169,110,0.55);margin-bottom:2.5rem;">$4,250,000 &nbsp;&nbsp;|&nbsp;&nbsp; Offered Exclusively</p>
-      <form onsubmit="submitInquiry(event)">
-        <input type="text" placeholder="Your name" required />
-        <input type="email" placeholder="Email address" required />
-        <input type="tel" placeholder="Phone number" />
-        <textarea placeholder="Message (optional)" rows="3" style="resize:none;"></textarea>
-        <button type="submit" class="modal-submit">Request Private Showing</button>
-        <p style="font-family:var(--serif);font-size:var(--t-micro);letter-spacing:0.22em;text-transform:uppercase;color:rgba(245,240,232,0.15);text-align:center;margin-top:1.2rem;">All inquiries held in strict confidence</p>
-      </form>
+<!-- ================================================================
+     BEAT 5 — THE INTERIOR
+     You are inside before you've processed what you walked into.
+================================================================ -->
+<section class="cinematic fade-top">
+  <div class="cinematic-text">
+    <span class="eyebrow reveal">The Interior</span>
+    <div class="gold-rule reveal d1"></div>
+    <h2 class="cinematic-headline reveal d1">
+      You are inside<br>
+      <em>before you have processed<br>what you walked into.</em>
+    </h2>
+    <p class="cinematic-body reveal d2">
+      The foyer runs the full depth of the house. Original oak floors.
+      Two primary stair cores. The axis was drawn in 1915.
+      Restored 1999–2001 by Thomas O'Shea.
+    </p>
+    <p class="cinematic-bridge reveal d3">Nothing has been changed that didn't need to be.</p>
+  </div>
+  <div class="cinematic-image">
+    <div class="cinematic-image-bg" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777263004/gh_key/gh_threshold.jpg');"></div>
+  </div>
+</section>
+
+<!-- ================================================================
+     BEAT 6 — THE DRAWING ROOM
+     Fire going. No one home yet. Let the room breathe.
+================================================================ -->
+<section class="cinematic flip fade-bottom">
+  <div class="cinematic-text">
+    <span class="eyebrow reveal">The Drawing Room</span>
+    <div class="gold-rule reveal d1"></div>
+    <h2 class="cinematic-headline reveal d1">
+      Fire going.<br>
+      <em>No one home yet.</em>
+    </h2>
+    <p class="cinematic-body reveal d2">
+      The Delft-tiled fireplace is original. Formal by proportion.
+      Intimate by firelight. Seven fireplaces in this house.
+      This is the one you come back to.
+    </p>
+  </div>
+  <div class="cinematic-image">
+    <div class="cinematic-image-bg" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777244065/gh_key/gh_65.jpg');"></div>
+  </div>
+</section>
+
+<!-- ================================================================
+     BEAT 7 — THE LIBRARY
+     The quote is the HEADLINE here — earned, not previewed.
+================================================================ -->
+<section class="cinematic fade-top" id="library">
+  <div class="cinematic-text">
+    <span class="eyebrow reveal">The Library</span>
+    <div class="gold-rule reveal d1"></div>
+    <h2 class="cinematic-headline reveal d1">
+      You cannot leave<br>
+      <em>this room quickly.</em>
+    </h2>
+    <p class="cinematic-body reveal d2">
+      The books change. The shelves do not.
+      Original oak millwork. Tennessee marble. The light comes from the east
+      and stays longer than it should.
+    </p>
+  </div>
+  <div class="cinematic-image">
+    <div class="cinematic-image-bg" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777244062/gh_key/gh_136.jpg');"></div>
+  </div>
+</section>
+
+<!-- ================================================================
+     NAKED BREATH — between rooms and history
+================================================================ -->
+<div class="breath reveal">
+  <p class="breath-line">Seven rooms. Seven fireplaces. One house that has never forgotten who it is.</p>
+</div>
+
+<!-- ================================================================
+     BEAT 8 — THE PRIMARY SUITE
+================================================================ -->
+<section class="cinematic flip fade-bottom">
+  <div class="cinematic-text">
+    <span class="eyebrow reveal">The Primary Suite</span>
+    <div class="gold-rule reveal d1"></div>
+    <h2 class="cinematic-headline reveal d1">
+      Three Jacuzzi tubs.<br>
+      <em>A balcony over the garden.<br>Morning light from the east.</em>
+    </h2>
+    <p class="cinematic-body reveal d2">
+      The bedroom opens to a private balcony above the grounds.
+      Dressing room. Three full baths. The suite was designed for someone
+      who intended to stay.
+    </p>
+  </div>
+  <div class="cinematic-image">
+    <div class="cinematic-image-bg" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777244080/gh_key/gh_115.jpg');"></div>
+  </div>
+</section>
+
+<!-- ================================================================
+     BEAT 9 — THE HISTORY ARRIVES
+     First time Walter Hines Page is named.
+     The buyer has already fallen for the house. NOW they learn who built it.
+================================================================ -->
+<section class="interstitial reveal" id="history">
+  <div class="gold-rule-full" style="width:100%;"></div>
+  <p class="reveal d1" style="font-family:var(--serif);font-size:var(--t-micro);letter-spacing:0.44em;text-transform:uppercase;color:rgba(201,169,110,0.55);margin-top:var(--sp-lg);">The History</p>
+  <h2 class="interstitial-headline reveal d2" style="font-size:var(--t-display);">
+    He named it Garran Hill.<br>
+    <em>He longed for it every day<br>he was gone.</em>
+  </h2>
+  <p class="interstitial-body reveal d3">
+    He bought the land in February 1913. He commissioned the design.
+    He directed the craftsmen. Walter Hines Page — publisher, ambassador,
+    son of the South — never slept here.
+    He died on December 21, 1918, before the house was finished.
+  </p>
+  <div class="gold-rule-full" style="width:100%;margin-top:var(--sp-lg);"></div>
+</section>
+
+<!-- ================================================================
+     BEAT 10 — WHP PORTRAIT
+     His face. His story. The house he never saw finished.
+================================================================ -->
+<section class="whp-section fade-top fade-bottom">
+  <div class="whp-bg" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777244132/gh_key/gh_whp.jpg');"></div>
+  <div class="whp-overlay"></div>
+  <div class="whp-content">
+    <div class="reveal">
+      <span class="eyebrow">Walter Hines Page &nbsp;·&nbsp; 1855 – 1918</span>
+      <div class="gold-rule"></div>
+      <h2 class="whp-headline">
+        Publisher. Ambassador.<br>
+        <em>The man who named<br>this hill.</em>
+      </h2>
+      <p class="whp-body">
+        Editor of The Atlantic. Co-founder of Doubleday.
+        U.S. Ambassador to Great Britain during the First World War.
+        He carried a letter of introduction from Woodrow Wilson
+        and the homesickness of a man who had built something beautiful
+        on Carolina soil that he would never see finished.
+      </p>
+      <p class="whp-quote">"Well, Frank, I did get here after all, didn't I?"</p>
     </div>
   </div>
+</section>
 
-  <script>
-    // NAV SCROLL
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 80);
+<!-- ================================================================
+     BEAT 11 — THE GROUNDS
+     Saplings line lives HERE — as the entrance to the grounds.
+     Coming out of the house and into the land.
+================================================================ -->
+<section class="interstitial reveal" id="grounds">
+  <div class="gold-rule-full" style="width:100%;"></div>
+  <h2 class="interstitial-headline reveal d1" style="margin:var(--sp-lg) auto;">
+    In 1916, those were saplings.<br>
+    <em>Now they are a forest.</em>
+  </h2>
+  <div class="gold-rule-full" style="width:100%;"></div>
+</section>
+
+<section class="cinematic fade-top">
+  <div class="cinematic-text">
+    <span class="eyebrow reveal">The Grounds</span>
+    <div class="gold-rule reveal d1"></div>
+    <h2 class="cinematic-headline reveal d1">
+      4.15 acres.<br>
+      <em>The world outside<br>does not exist here.</em>
+    </h2>
+    <p class="cinematic-body reveal d2">
+      Salt water pool, 20 × 40 feet, installed 2022.
+      Rose garden. Mature boxwood. Twenty-eight irrigation zones
+      fed by a 130-foot well. Twelve parking spaces.
+      The canopy took 110 years to grow.
+    </p>
+  </div>
+  <div class="cinematic-image">
+    <div class="cinematic-image-bg" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777245826/gh_key/gh_ext__holycrestextf_3328.jpg');"></div>
+  </div>
+</section>
+
+<!-- ================================================================
+     BEAT 12 — BLUE FOX
+     Her own breath. Not buried in body copy. She earned this.
+================================================================ -->
+<section class="blue-fox reveal">
+  <div class="gold-rule-full" style="width:100%;"></div>
+  <p class="blue-fox-headline">
+    Betty Dumaine called her horse Blue Fox.
+    He is buried here, beneath a slate cover with a brass marker.
+  </p>
+  <p class="blue-fox-close">Someone still puts flowers there.</p>
+  <div class="gold-rule-full" style="width:100%;margin-top:var(--sp-md);"></div>
+</section>
+
+<!-- ================================================================
+     BEAT 13 — THE CLOSE
+     Everything that came before earns this single line.
+================================================================ -->
+<section class="interstitial reveal">
+  <div class="gold-rule-full" style="width:100%;"></div>
+  <h2 class="interstitial-headline" style="margin:var(--sp-lg) auto;font-size:var(--t-display);">
+    It is ready for<br><em>the fifth family.</em>
+  </h2>
+  <div class="gold-rule-full" style="width:100%;"></div>
+</section>
+
+<!-- ================================================================
+     BEAT 14 — TWILIGHT CLOSING
+================================================================ -->
+<section class="full-bleed center fade-top" style="min-height:clamp(600px,84vh,1000px);">
+  <div class="full-bleed-bg" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777245820/gh_key/gh_ext__holycrestextf_3324.jpg');"></div>
+  <div class="full-bleed-overlay" style="background:rgba(8,8,8,0.65);"></div>
+  <div class="full-bleed-content reveal" style="text-align:center;margin:0 auto;width:100%;">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777267295/gh_key/gh_wax_seal_transparent.png" alt="Garran Hill" style="height:82px;margin:0 auto 2.2rem;filter:drop-shadow(0 0 22px rgba(201,169,110,0.65));" />
+    <p style="font-family:var(--script);font-size:clamp(3rem,6vw,6.5rem);color:#fff;line-height:1;margin-bottom:0.6rem;font-weight:400;">Garran Hill</p>
+    <p style="font-family:var(--serif);font-size:var(--t-micro);letter-spacing:0.44em;text-transform:uppercase;color:rgba(245,240,232,0.5);margin-bottom:3rem;">Est. 1916 &nbsp;·&nbsp; Pinehurst, NC &nbsp;·&nbsp; $4,250,000</p>
+    <button class="nav-cta" onclick="openModal()" style="font-size:var(--t-caption);letter-spacing:0.36em;padding:0.3rem 0;">Request Private Showing</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777267295/gh_key/gh_wax_seal_transparent.png" alt="" style="height:56px;opacity:0.6;margin:0 auto 2rem;" />
+  <p style="font-family:var(--serif);font-style:italic;font-weight:300;font-size:var(--t-body);color:var(--cream);opacity:0.45;margin-bottom:1.6rem;">200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, NC 28374</p>
+  <div style="width:36px;height:1px;background:rgba(201,169,110,0.3);margin:0 auto 2rem;"></div>
+  <p style="font-family:var(--serif);font-size:var(--t-micro);letter-spacing:0.44em;text-transform:uppercase;color:rgba(245,240,232,0.2);margin-bottom:1rem;">Offered Exclusively By</p>
+  <p style="font-family:var(--serif);font-weight:400;font-size:clamp(1.2rem,2vw,1.6rem);color:#fff;margin-bottom:0.4rem;">Rachel Hernandez</p>
+  <p style="font-family:var(--serif);font-size:var(--t-caption);letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);opacity:0.8;margin-bottom:0.4rem;">Sotheby's International Realty</p>
+  <p style="font-family:var(--serif);font-style:italic;font-weight:300;font-size:0.85rem;color:var(--cream);opacity:0.25;">Pinehurst &nbsp;·&nbsp; Southern Pines &nbsp;·&nbsp; Moore County</p>
+  <p style="font-family:var(--serif);font-size:var(--t-micro);letter-spacing:0.18em;color:rgba(245,240,232,0.1);margin-top:3.5rem;">&copy; 2026 Sotheby's International Realty &nbsp;·&nbsp; All inquiries held in strict confidence</p>
+</footer>
+
+<!-- INQUIRY MODAL -->
+<div class="modal-overlay" id="modal" style="display:none;">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <p style="font-family:var(--serif);font-size:var(--t-micro);letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;">Private Inquiry</p>
+    <p style="font-family:var(--serif);font-size:var(--t-micro);letter-spacing:0.3em;text-transform:uppercase;color:rgba(201,169,110,0.5);margin-bottom:2.8rem;">$4,250,000 &nbsp;·&nbsp; Offered Exclusively by Sotheby's</p>
+    <form onsubmit="submitInquiry(event)">
+      <input type="text" placeholder="Your name" required />
+      <input type="email" placeholder="Email address" required />
+      <input type="tel" placeholder="Phone number" />
+      <textarea placeholder="Message (optional)" rows="3" style="resize:none;"></textarea>
+      <button type="submit" class="modal-submit">Request Private Showing</button>
+      <p style="font-family:var(--serif);font-size:var(--t-micro);letter-spacing:0.22em;text-transform:uppercase;color:rgba(245,240,232,0.12);text-align:center;margin-top:1.4rem;">All inquiries held in strict confidence</p>
+    </form>
+  </div>
+</div>
+
+<script>
+  // CUSTOM CURSOR
+  const cur = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function animCursor() {
+    cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+    rx += (mx - rx) * 0.14; ry += (my - ry) * 0.14;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animCursor);
+  }
+  animCursor();
+
+  // NAV SCROLL
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', scrollY > 60); });
+
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => obs.observe(r));
+
+  // STAT BAR NUMBER COUNTER
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const fixed = el.dataset.fixed;
+    if (fixed) { el.textContent = fixed; return; }
+    const duration = 1400;
+    const start = performance.now();
+    const from = Math.max(0, target - Math.ceil(target * 0.18));
+    function step(now) {
+      const t = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.round(from + (target - from) * ease).toLocaleString();
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const statObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.count-up').forEach(animateCounter);
+        statObs.unobserve(e.target);
+      }
     });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-bar').forEach(s => statObs.observe(s));
 
-    // FADE IN ON SCROLL
-    const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    faders.forEach(f => observer.observe(f));
-
-    // MODAL
-    function openModal() {
-      document.getElementById('modal').style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-      document.body.style.overflow = '';
-    }
-    document.getElementById('modal').addEventListener('click', e => {
-      if (e.target === document.getElementById('modal')) closeModal();
-    });
-
-    function submitInquiry(e) {
-      e.preventDefault();
-      closeModal();
-    }
-  </script>
-
+  // MODAL
+  function openModal() { document.getElementById('modal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+  function closeModal() { document.getElementById('modal').style.display = 'none'; document.body.style.overflow = ''; }
+  document.getElementById('modal').addEventListener('click', e => { if (e.target === document.getElementById('modal')) closeModal(); });
+  function submitInquiry(e) { e.preventDefault(); closeModal(); }
+</script>
 </body>
 </html>
