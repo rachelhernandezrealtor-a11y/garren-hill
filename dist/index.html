@@ -1044,7 +1044,7 @@ function GarranHillV6() {
       {/* == 01 HERO == */}
       <Hero onInquire={() => setShowInq(true)} />
 
-      {/* == 01b WHP PORTRAIT — editorial. Text floats bottom-left. His face breathes right. */}
+      {/* == 01b HOUSE INTRODUCTION — estate exterior, WHP woven in as origin == */}
       <section style={{
         position: 'relative',
         width: '100%',
@@ -1053,40 +1053,37 @@ function GarranHillV6() {
         overflow: 'hidden',
         margin: 0,
       }}>
-        {/* Portrait — full bleed, face sits right-center */}
+        {/* Front drive — the arrival shot */}
         <div style={{
           position: 'absolute', inset: 0,
-          backgroundImage: `url(${I.whp})`,
+          backgroundImage: `url(https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777243401/gh_exteriors/200holycrestf_1440.jpg)`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center top',
+          backgroundPosition: 'center 40%',
           zIndex: 0,
         }} />
 
-        {/* Left gradient — darkens where text lives, portrait stays vivid right */}
+        {/* Veil — darkens bottom-left where copy lives, right stays open */}
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(to right, rgba(4,4,4,0.82) 0%, rgba(4,4,4,0.52) 38%, rgba(4,4,4,0.08) 68%, rgba(4,4,4,0.0) 100%)',
+          background: 'linear-gradient(to top, rgba(4,4,4,0.88) 0%, rgba(4,4,4,0.52) 35%, rgba(4,4,4,0.08) 65%, rgba(4,4,4,0.0) 100%)',
           zIndex: 1,
         }} />
-
-        {/* Bottom fade — pulls into next section */}
+        {/* Top fade from stat bar */}
         <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0,
-          height: '28%',
-          background: 'linear-gradient(to bottom, rgba(10,10,10,0) 0%, rgba(10,10,10,1) 100%)',
+          position: 'absolute', top: 0, left: 0, right: 0, height: '18%',
+          background: 'linear-gradient(to bottom, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
           zIndex: 2,
         }} />
 
-        {/* Editorial text — bottom left, never touches his face */}
+        {/* Copy — bottom left */}
         <div style={{
           position: 'absolute',
           bottom: 'clamp(4rem,9vh,7rem)',
           left: 'clamp(2.5rem,7vw,8rem)',
-          maxWidth: 'min(560px,48vw)',
+          maxWidth: 'min(580px,52vw)',
           zIndex: 3,
         }}>
           <Fade>
-            {/* Address line — tiny gold caps */}
             <p style={{
               fontFamily: 'sans-serif',
               fontSize: 'clamp(7px,0.62vw,9px)',
@@ -1097,16 +1094,14 @@ function GarranHillV6() {
               fontWeight: 600,
             }}>200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, NC &nbsp;·&nbsp; Est. 1916</p>
 
-            {/* Gold rule */}
             <div style={{ width: 'clamp(40px,5vw,64px)', height: '1px', background: 'linear-gradient(to right, rgba(201,169,110,0.8), rgba(201,169,110,0.2))', marginBottom: 'clamp(1.4rem,3vh,2.2rem)' }} />
 
-            {/* Headline — Vogue scale */}
             <h2 style={{
               fontFamily: SERIF,
               fontWeight: 400,
-              fontSize: 'clamp(2.8rem,5.2vw,6.5rem)',
+              fontSize: 'clamp(2.4rem,4.4vw,5.8rem)',
               color: '#fff',
-              lineHeight: 1.06,
+              lineHeight: 1.08,
               margin: '0 0 clamp(1.4rem,3vh,2rem)',
               letterSpacing: '-0.015em',
             }}>
@@ -1114,10 +1109,8 @@ function GarranHillV6() {
               <em style={{ fontWeight: 300 }}>This one shaped it.</em>
             </h2>
 
-            {/* Gold rule */}
             <div style={{ width: 'clamp(40px,5vw,64px)', height: '1px', background: 'linear-gradient(to right, rgba(201,169,110,0.8), rgba(201,169,110,0.2))', marginBottom: 'clamp(1.4rem,3vh,2rem)' }} />
 
-            {/* Body — his story, spare and true */}
             <p style={{
               fontFamily: SERIF,
               fontWeight: 300,
@@ -1126,32 +1119,65 @@ function GarranHillV6() {
               opacity: 0.78,
               lineHeight: 2.05,
               margin: '0 0 clamp(1.2rem,2.5vh,1.8rem)',
-              maxWidth: 480,
+              maxWidth: 500,
             }}>
               Neo-Georgian. Four columns. Seven fireplaces. 4.15 acres. Built 1916 by the men who built Pinehurst. Restored 2000 to the original drawings. One hundred and nine years of remarkable stewardship.
             </p>
 
-            {/* Thin gold divider */}
             <div style={{ width: 'clamp(28px,3vw,40px)', height: '1px', background: 'rgba(201,169,110,0.4)', marginBottom: 'clamp(1.2rem,2.5vh,1.8rem)' }} />
 
-            {/* Walter — who he was */}
             <p style={{
               fontFamily: SERIF,
               fontWeight: 300,
               fontSize: 'clamp(0.78rem,0.88vw,0.92rem)',
               color: CREAM,
-              opacity: 0.55,
+              opacity: 0.52,
               lineHeight: 2.1,
               margin: 0,
               maxWidth: 460,
             }}>
-              Walter Hines Page bought 1,000 acres outside Pinehurst in February 1913 and named it Garran Hill. Six weeks later, Woodrow Wilson appointed him Ambassador to the Court of St. James. He sailed for London that May. From across the Atlantic, through the years of the First World War, he wrote home about the farm constantly — <em style={{ fontStyle: 'italic' }}>"The farm — the farm — the farm."</em> He never slept here. He was carried off the train at Aberdeen on December 21, 1918, and died that evening in Pinehurst. His last words: <em style={{ fontStyle: 'italic' }}>"Well, Frank, I did get here after all, didn't I?"</em>
+              Walter Hines Page named it before a single stone was laid.<br />He never slept here.
             </p>
+          </Fade>
+        </div>
+
+        {/* WHP portrait — inset bottom-right, like a portrait hanging in the house */}
+        <div style={{
+          position: 'absolute',
+          bottom: 'clamp(3rem,7vh,5rem)',
+          right: 'clamp(3rem,6vw,6rem)',
+          zIndex: 3,
+        }}>
+          <Fade>
+            <div style={{
+              width: 'clamp(110px,9vw,160px)',
+              aspectRatio: '3/4',
+              overflow: 'hidden',
+              border: '1px solid rgba(201,169,110,0.35)',
+              boxShadow: '0 8px 40px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.5)',
+              filter: 'sepia(0.18) brightness(0.88)',
+            }}>
+              <img
+                src={I.whp}
+                alt="Walter Hines Page"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+              />
+            </div>
+            <p style={{
+              fontFamily: 'sans-serif',
+              fontSize: 'clamp(6px,0.55vw,7px)',
+              letterSpacing: '0.38em',
+              textTransform: 'uppercase',
+              color: 'rgba(201,169,110,0.45)',
+              margin: '0.75rem 0 0',
+              textAlign: 'center',
+              fontWeight: 600,
+            }}>Walter Hines Page · 1913</p>
           </Fade>
         </div>
       </section>
 
-      {/* == 01b-EXT ARCHIVAL SEQUENCE — 1916 photos + 1931 brochure pull quote == */}
+            {/* == 01b-EXT ARCHIVAL SEQUENCE — 1916 photos + 1931 brochure pull quote == */}
 
       {/* 1916 — the house at completion, full-width cinematic */}
       <section style={{ position: 'relative', width: '100%', height: 'clamp(520px,72vh,860px)', overflow: 'hidden', margin: 0 }}>
