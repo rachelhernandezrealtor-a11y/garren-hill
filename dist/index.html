@@ -767,43 +767,29 @@ function Hero({ onInquire }) {
         background: 'linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.88) 55%, transparent 100%)',
         padding: 'clamp(3.5rem,6vw,5rem) clamp(3rem,8vw,9rem) clamp(2rem,3vw,2.8rem)' }}>
         <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)', marginBottom: 'clamp(1.6rem,3vw,2.4rem)' }} />
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 0 }}>
-          {[
-            { v: '1916', l: 'Est.' },
-            { v: '4 Beds', l: '' },
-            { v: '6 Baths', l: '' },
-          ].map(({ v, l }, i) => (
-            <React.Fragment key={v}>
-              <div style={{ textAlign: 'center', padding: '0 clamp(1.2rem,3vw,3rem)' }}>
-                <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
-                  fontSize: 'clamp(1.6rem,3vw,3.2rem)', color: '#ffffff',
-                  margin: '0 0 0.3rem', letterSpacing: '-0.01em', lineHeight: 1 }}>{v}</p>
-                {l && <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.28em',
-                  textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>}
-              </div>
-              <div style={{ width: 1, height: 36, background: 'rgba(201,169,110,0.35)', flexShrink: 0 }} />
-            </React.Fragment>
+        <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', gap: '0.5rem' }}>
+          {[['1916','Est.'],['4 Beds',''],['6 Baths','']].map(([v,l]) => (
+            <div key={v} style={{ textAlign: 'center', flex: 1 }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
+                fontSize: 'clamp(1.4rem,2.4vw,2.4rem)', color: '#ffffff',
+                margin: '0 0 0.3rem', letterSpacing: '-0.01em', lineHeight: 1 }}>{v}</p>
+              {l && <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.28em',
+                textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>}
+            </div>
           ))}
-          <div style={{ textAlign: 'center', padding: '0 clamp(1.2rem,3vw,3rem)' }}>
+          <div style={{ flex: '0 0 auto', textAlign: 'center', padding: '0 1rem' }}>
             <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777250826/gh_key/gh_crest_1777250825.png" alt="Garran Hill Seal"
-              style={{ width: 'clamp(62px,6vw,82px)', height: 'auto',
+              style={{ width: 'clamp(56px,6vw,76px)', height: 'auto',
                 filter: 'drop-shadow(0 4px 16px rgba(0,0,0,0.9)) drop-shadow(0 2px 6px rgba(0,0,0,0.8))' }} />
           </div>
-          {[
-            { v: '6,072 SF', l: 'Living Area' },
-            { v: '4.15 Acres', l: 'Land' },
-            { v: '$4,250,000', l: 'Offered At' },
-          ].map(({ v, l }, i) => (
-            <React.Fragment key={v}>
-              <div style={{ width: 1, height: 36, background: 'rgba(201,169,110,0.35)', flexShrink: 0 }} />
-              <div style={{ textAlign: 'center', padding: '0 clamp(1.2rem,3vw,3rem)' }}>
-                <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
-                  fontSize: 'clamp(1.6rem,3vw,3.2rem)', color: '#ffffff',
-                  margin: '0 0 0.3rem', letterSpacing: '-0.01em', lineHeight: 1 }}>{v}</p>
-                <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.28em',
-                  textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
-              </div>
-            </React.Fragment>
+          {[['6,072 sq ft','Living Area'],['4.15 Acres','Land'],['$4,250,000','Offered At']].map(([v,l]) => (
+            <div key={v} style={{ textAlign: 'center', flex: 1 }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
+                fontSize: 'clamp(1.4rem,2.4vw,2.4rem)', color: '#ffffff',
+                margin: '0 0 0.3rem', letterSpacing: '-0.01em', lineHeight: 1 }}>{v}</p>
+              <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.28em',
+                textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
+            </div>
           ))}
         </div>
         <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.2) 15%, rgba(201,169,110,0.2) 85%, transparent)', marginTop: 'clamp(1.6rem,2.5vw,2rem)' }} />
