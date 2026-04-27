@@ -740,7 +740,7 @@ function Hero({ onInquire }) {
   }, []);
 
   return (
-    <section style={{ position: 'relative', height: '100vh', minHeight: 680, overflow: 'visible', background: '#0a0a0a' }}>
+    <section style={{ position: 'relative', height: '100vh', minHeight: 680, overflow: 'hidden', background: '#0a0a0a' }}>
       {/* poster -- fallback while video loads */}
       <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${GH_POSTER})`, backgroundSize: 'cover', backgroundPosition: 'center 45%', zIndex: 0 }} />
       {/* HLS video -- driveway approach, slow motion */}
@@ -823,23 +823,37 @@ function Hero({ onInquire }) {
           ))}
         </div>
 
-        {/* BOTTOM GOLD LINE with seal hanging below center */}
+        {/* BOTTOM GOLD LINE */}
         <div style={{ position: 'relative', marginTop: '0.6rem', height: '1px' }}>
           <div style={{ width: '100%', height: '1px',
             background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)' }} />
-          {/* SEAL centered below the line */}
-          <div style={{ position: 'absolute', left: '50%', top: '-65px', transform: 'translateX(-50%)', zIndex: 30 }}>
-            <img
-              src={I.crest}
-              alt="Garran Hill Crest"
-              style={{ height: 140, width: 'auto', display: 'block', opacity: 1,
-                filter: 'drop-shadow(0 0 24px rgba(201,169,110,0.7)) drop-shadow(0 0 8px rgba(201,169,110,0.5))' }}
-            />
-          </div>
         </div>
         <div style={{ height: '0.4rem' }} />
       </div>
     </section>
+
+    {/* SEAL BRIDGE -- lives OUTSIDE the hero, bridges hero bottom to first content section */}
+    <div style={{
+      position: 'relative',
+      height: 0,
+      zIndex: 50,
+      display: 'flex',
+      justifyContent: 'center',
+    }}>
+      <img
+        src={I.crest}
+        alt="Garran Hill Crest"
+        style={{
+          position: 'absolute',
+          top: '-70px',
+          height: 140,
+          width: 'auto',
+          display: 'block',
+          opacity: 1,
+          filter: 'drop-shadow(0 0 24px rgba(201,169,110,0.7)) drop-shadow(0 0 8px rgba(201,169,110,0.5))'
+        }}
+      />
+    </div>
   );
 }
 
