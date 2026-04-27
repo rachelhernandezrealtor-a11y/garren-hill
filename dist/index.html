@@ -171,7 +171,7 @@ const I = {
   aerial:       ghExt('gh_222'),
   dusk2:        ghExt('gh_ext__holycrestextf_3324'),
   twilight:     ghExt('gh_ext__holycrestextf_3324'),
-  crest:        'https://res.cloudinary.com/dghn2xpif/image/upload/v1777260277/gh_key/gh_wax_stamp_3d.png',
+  crest:        'https://res.cloudinary.com/dghn2xpif/image/upload/v1777265217/gh_key/gh_wax_stamp_3d.png',
   bluefox:      ghExt('gh_ext__holycrestextf_3364_copy1'),
   archDrawing:  gh('gh_112'),
 };
@@ -1039,6 +1039,20 @@ function GarranHillV6() {
 
       {/* == 01 HERO == */}
       <Hero onInquire={() => setShowInq(true)} />
+
+      {/* == 02 MANIFESTO == */}
+      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,6vh,5rem) clamp(2rem,14vw,18rem) clamp(2.5rem,5vh,4rem)', textAlign: 'center', margin: 0 }}>
+        <Fade>
+          <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.38em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.65)', margin: '0 auto 1.2rem' }}>200 Hollycrest Drive &nbsp;&bull;&nbsp; Pinehurst, NC &nbsp;&bull;&nbsp; Est. 1916</p>
+          <div style={{ width: 48, height: 1, background: 'rgba(201,169,110,0.55)', margin: '0 auto 2.8rem' }} />
+          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 400, fontSize: 'clamp(2.5rem,5vw,6.5rem)', color: '#fff', lineHeight: 1.08, margin: '0 auto 2rem', letterSpacing: '-0.015em', maxWidth: 900 }}>
+            Some houses hold history.<br/><em style={{ fontWeight: 300 }}>This one shaped it.</em>
+          </h2>
+          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300, fontSize: 'clamp(0.95rem,1.2vw,1.15rem)', color: '#F5F0E8', opacity: 0.72, lineHeight: 2.1, maxWidth: 640, margin: '0 auto' }}>
+            Neo-Georgian. Four columns. Seven fireplaces. 4.15 acres.<br/>Built 1916 by the men who built Pinehurst.<br/>Restored 2000 to the original drawings.<br/>One hundred and nine years of remarkable stewardship.
+          </p>
+        </Fade>
+      </section>
 
       {/* == 02 ARRIVAL -- THRESHOLD TEASER == */}
       {/* Buyer scrolls off hero -- first breath -- weight of 1916 */}
