@@ -148,9 +148,17 @@ The beats are named for their emotional function, not their content.
 Content changes. Function never changes.
 
 **Beat 1 — HERO**
-Feel the place. No biography. No history yet.
-Just the name, the land, the video. Let it breathe.
-No owner names. No architect names. No dates except the year.
+The hero answers one question: what is the single thing that makes a buyer stop?
+That answer comes from the brief — not from a generic rule.
+
+For Garran Hill: the history IS the identity.
+"Neo-Georgian. Walter Hines Page. 110 years of remarkable stewardship." stays in the hero.
+A buyer who doesn't know WHP Googles him in 30 seconds. The house becomes something else entirely.
+The name is the seduction. It belongs at the top.
+
+For Flow Farm: the land and what's been built on it is the identity. No founder in the hero.
+
+Rule: No spec lists. No bed/bath count. One line of emotional truth. The video does the rest.
 
 **Beat 2 — THE ARRIVAL**
 Something has been here longer than you.
