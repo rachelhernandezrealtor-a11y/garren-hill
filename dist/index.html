@@ -1302,95 +1302,6 @@ function GarranHillV6() {
         </div>
       </section>
 
-      {/* == 01b HORSE POST — the sentinel. Been here since 1916. == */}
-      <section style={{
-        position: 'relative',
-        width: '100%',
-        height: '100vh',
-        minHeight: 680,
-        overflow: 'hidden',
-      }}>
-        <div style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: `url(https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777273864/gh_key/gh_horse_post.jpg)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center center',
-          zIndex: 0,
-        }} />
-        {/* Top fade from stat bar */}
-        <div style={{
-          position: 'absolute', top: 0, left: 0, right: 0, height: '22%',
-          background: 'linear-gradient(to bottom, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
-          zIndex: 2,
-        }} />
-        {/* Soft left veil for copy */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'linear-gradient(to right, rgba(4,4,4,0.72) 0%, rgba(4,4,4,0.32) 45%, rgba(4,4,4,0.0) 75%)',
-          zIndex: 1,
-        }} />
-        {/* Bottom fade to next section */}
-        <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0, height: '18%',
-          background: 'linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
-          zIndex: 2,
-        }} />
-
-        {/* Copy — upper left */}
-        <div style={{
-          position: 'absolute',
-          top: 'clamp(5rem,14vh,9rem)',
-          left: 'clamp(2.5rem,7vw,8rem)',
-          maxWidth: 'min(480px,44vw)',
-          zIndex: 3,
-        }}>
-          <Fade>
-            <p style={{
-              fontFamily: 'sans-serif',
-              fontSize: 'clamp(7px,0.6vw,9px)',
-              letterSpacing: '0.45em',
-              textTransform: 'uppercase',
-              color: 'rgba(201,169,110,0.65)',
-              margin: '0 0 clamp(1.2rem,2.5vh,1.8rem)',
-              fontWeight: 600,
-            }}>Garran Hill &nbsp;·&nbsp; Est. 1916</p>
-
-            <div style={{ width: 48, height: '1px', background: 'rgba(201,169,110,0.6)', marginBottom: 'clamp(1.4rem,3vh,2.2rem)' }} />
-
-            <h2 style={{
-              fontFamily: SERIF,
-              fontWeight: 300,
-              fontSize: 'clamp(2rem,3.6vw,4.8rem)',
-              color: '#fff',
-              lineHeight: 1.12,
-              margin: '0 0 clamp(1.4rem,3vh,2rem)',
-              letterSpacing: '-0.01em',
-            }}>
-              It has stood<br />at the entrance<br />
-              <em>since 1916.</em>
-            </h2>
-
-            <div style={{ width: 36, height: '1px', background: 'rgba(201,169,110,0.35)', margin: 'clamp(0.8rem,2vh,1.4rem) 0' }} />
-
-            <p style={{
-              fontFamily: SERIF,
-              fontWeight: 300,
-              fontStyle: 'italic',
-              fontSize: 'clamp(0.82rem,0.95vw,1rem)',
-              color: CREAM,
-              opacity: 0.62,
-              lineHeight: 1.9,
-              margin: 0,
-            }}>
-              Before the columns were raised.<br />
-              Before the first stone was laid.<br />
-              The horse was already here.
-            </p>
-          </Fade>
-        </div>
-      </section>
-
-      
       {/* == 01c HOUSE INTRODUCTION — three-panel contact strip + editorial copy == */}
 
       {/* Panel 1 — full-bleed exterior, the facade */}
@@ -1484,6 +1395,95 @@ function GarranHillV6() {
         </div>
       </section>
 
+      {/* == 01b HORSE POST — the sentinel. Been here since 1916. == */}
+      <section style={{
+        position: 'relative',
+        width: '100%',
+        height: '100vh',
+        minHeight: 680,
+        overflow: 'hidden',
+      }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: `url(https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777273864/gh_key/gh_horse_post.jpg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
+          zIndex: 0,
+        }} />
+        {/* Top fade from stat bar */}
+        <div style={{
+          position: 'absolute', top: 0, left: 0, right: 0, height: '22%',
+          background: 'linear-gradient(to bottom, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
+          zIndex: 2,
+        }} />
+        {/* Soft left veil for copy */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(to right, rgba(4,4,4,0.72) 0%, rgba(4,4,4,0.32) 45%, rgba(4,4,4,0.0) 75%)',
+          zIndex: 1,
+        }} />
+        {/* Bottom fade to next section */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, height: '18%',
+          background: 'linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
+          zIndex: 2,
+        }} />
+
+        {/* Copy — upper left */}
+        <div style={{
+          position: 'absolute',
+          top: 'clamp(5rem,14vh,9rem)',
+          left: 'clamp(2.5rem,7vw,8rem)',
+          maxWidth: 'min(480px,44vw)',
+          zIndex: 3,
+        }}>
+          <Fade>
+            <p style={{
+              fontFamily: 'sans-serif',
+              fontSize: 'clamp(7px,0.6vw,9px)',
+              letterSpacing: '0.45em',
+              textTransform: 'uppercase',
+              color: 'rgba(201,169,110,0.65)',
+              margin: '0 0 clamp(1.2rem,2.5vh,1.8rem)',
+              fontWeight: 600,
+            }}>Garran Hill &nbsp;·&nbsp; Est. 1916</p>
+
+            <div style={{ width: 48, height: '1px', background: 'rgba(201,169,110,0.6)', marginBottom: 'clamp(1.4rem,3vh,2.2rem)' }} />
+
+            <h2 style={{
+              fontFamily: SERIF,
+              fontWeight: 300,
+              fontSize: 'clamp(2rem,3.6vw,4.8rem)',
+              color: '#fff',
+              lineHeight: 1.12,
+              margin: '0 0 clamp(1.4rem,3vh,2rem)',
+              letterSpacing: '-0.01em',
+            }}>
+              It has stood<br />at the entrance<br />
+              <em>since 1916.</em>
+            </h2>
+
+            <div style={{ width: 36, height: '1px', background: 'rgba(201,169,110,0.35)', margin: 'clamp(0.8rem,2vh,1.4rem) 0' }} />
+
+            <p style={{
+              fontFamily: SERIF,
+              fontWeight: 300,
+              fontStyle: 'italic',
+              fontSize: 'clamp(0.82rem,0.95vw,1rem)',
+              color: CREAM,
+              opacity: 0.62,
+              lineHeight: 1.9,
+              margin: 0,
+            }}>
+              Before the columns were raised.<br />
+              Before the first stone was laid.<br />
+              The horse was already here.
+            </p>
+          </Fade>
+        </div>
+      </section>
+
+      
       {/* == 01d THEN & NOW — sapling split frame == */}
       <section style={{ background: '#0a0a0a', margin: 0, padding: 0 }}>
 
