@@ -1044,7 +1044,142 @@ function GarranHillV6() {
       {/* == 01 HERO == */}
       <Hero onInquire={() => setShowInq(true)} />
 
-      {/* == 01b HOUSE INTRODUCTION — estate exterior, WHP woven in as origin == */}
+      {/* == 01b HORSE POST — the sentinel. Been here since 1916. == */}
+      <section style={{
+        position: 'relative',
+        width: '100%',
+        height: '100vh',
+        minHeight: 680,
+        overflow: 'hidden',
+      }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: `url(https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777273864/gh_key/gh_horse_post.jpg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
+          zIndex: 0,
+        }} />
+        {/* Top fade from stat bar */}
+        <div style={{
+          position: 'absolute', top: 0, left: 0, right: 0, height: '22%',
+          background: 'linear-gradient(to bottom, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
+          zIndex: 2,
+        }} />
+        {/* Soft left veil for copy */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(to right, rgba(4,4,4,0.72) 0%, rgba(4,4,4,0.32) 45%, rgba(4,4,4,0.0) 75%)',
+          zIndex: 1,
+        }} />
+        {/* Bottom fade to next section */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, height: '18%',
+          background: 'linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
+          zIndex: 2,
+        }} />
+
+        {/* Copy — upper left */}
+        <div style={{
+          position: 'absolute',
+          top: 'clamp(5rem,14vh,9rem)',
+          left: 'clamp(2.5rem,7vw,8rem)',
+          maxWidth: 'min(480px,44vw)',
+          zIndex: 3,
+        }}>
+          <Fade>
+            <p style={{
+              fontFamily: 'sans-serif',
+              fontSize: 'clamp(7px,0.6vw,9px)',
+              letterSpacing: '0.45em',
+              textTransform: 'uppercase',
+              color: 'rgba(201,169,110,0.65)',
+              margin: '0 0 clamp(1.2rem,2.5vh,1.8rem)',
+              fontWeight: 600,
+            }}>Garran Hill &nbsp;·&nbsp; Est. 1916</p>
+
+            <div style={{ width: 48, height: '1px', background: 'rgba(201,169,110,0.6)', marginBottom: 'clamp(1.4rem,3vh,2.2rem)' }} />
+
+            <h2 style={{
+              fontFamily: SERIF,
+              fontWeight: 300,
+              fontSize: 'clamp(2rem,3.6vw,4.8rem)',
+              color: '#fff',
+              lineHeight: 1.12,
+              margin: '0 0 clamp(1.4rem,3vh,2rem)',
+              letterSpacing: '-0.01em',
+            }}>
+              It has stood<br />at the entrance<br />
+              <em>since 1916.</em>
+            </h2>
+          </Fade>
+        </div>
+      </section>
+
+      {/* == 01b-STONE GARRAN HILL MARKER — the name, set in the ground == */}
+      <section style={{
+        position: 'relative',
+        width: '100%',
+        height: '60vh',
+        minHeight: 400,
+        overflow: 'hidden',
+      }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: `url(https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777273864/gh_key/gh_stone_marker.jpg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 40%',
+          zIndex: 0,
+        }} />
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'rgba(4,4,4,0.42)',
+          zIndex: 1,
+        }} />
+        <div style={{
+          position: 'absolute', top: 0, left: 0, right: 0, height: '25%',
+          background: 'linear-gradient(to bottom, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
+          zIndex: 2,
+        }} />
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, height: '25%',
+          background: 'linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
+          zIndex: 2,
+        }} />
+
+        {/* Centered caption — the stone speaks for itself */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          flexDirection: 'column',
+          zIndex: 3,
+          textAlign: 'center',
+          padding: '0 2rem',
+        }}>
+          <Fade>
+            <p style={{
+              fontFamily: 'sans-serif',
+              fontSize: 'clamp(7px,0.6vw,9px)',
+              letterSpacing: '0.55em',
+              textTransform: 'uppercase',
+              color: 'rgba(201,169,110,0.55)',
+              margin: '0 0 1.2rem',
+              fontWeight: 600,
+            }}>200 Hollycrest Drive · Pinehurst, NC</p>
+            <div style={{ width: 40, height: '1px', background: 'rgba(201,169,110,0.5)', margin: '0 auto 1.6rem' }} />
+            <p style={{
+              fontFamily: SERIF,
+              fontWeight: 300,
+              fontSize: 'clamp(0.85rem,1vw,1.05rem)',
+              color: CREAM,
+              opacity: 0.72,
+              lineHeight: 2.1,
+              letterSpacing: '0.04em',
+            }}>The name was set before the house was built.<br />It has not moved since.</p>
+          </Fade>
+        </div>
+      </section>
+
+      {/* == 01c HOUSE INTRODUCTION — twilight facade, WHP woven in == */}
       <section style={{
         position: 'relative',
         width: '100%',
@@ -1053,7 +1188,6 @@ function GarranHillV6() {
         overflow: 'hidden',
         margin: 0,
       }}>
-        {/* Front drive — the arrival shot */}
         <div style={{
           position: 'absolute', inset: 0,
           backgroundImage: `url(https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777273491/gh_key/gh_drive222.jpg)`,
@@ -1061,14 +1195,11 @@ function GarranHillV6() {
           backgroundPosition: 'center 40%',
           zIndex: 0,
         }} />
-
-        {/* Veil — darkens bottom-left where copy lives, right stays open */}
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(to top, rgba(4,4,4,0.88) 0%, rgba(4,4,4,0.52) 35%, rgba(4,4,4,0.08) 65%, rgba(4,4,4,0.0) 100%)',
+          background: 'linear-gradient(to top, rgba(4,4,4,0.85) 0%, rgba(4,4,4,0.45) 40%, rgba(4,4,4,0.05) 70%, rgba(4,4,4,0.0) 100%)',
           zIndex: 1,
         }} />
-        {/* Top fade from stat bar */}
         <div style={{
           position: 'absolute', top: 0, left: 0, right: 0, height: '18%',
           background: 'linear-gradient(to bottom, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
@@ -1084,18 +1215,6 @@ function GarranHillV6() {
           zIndex: 3,
         }}>
           <Fade>
-            <p style={{
-              fontFamily: 'sans-serif',
-              fontSize: 'clamp(7px,0.62vw,9px)',
-              letterSpacing: '0.45em',
-              textTransform: 'uppercase',
-              color: 'rgba(201,169,110,0.7)',
-              margin: '0 0 clamp(1.2rem,2.5vh,1.8rem)',
-              fontWeight: 600,
-            }}>200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, NC &nbsp;·&nbsp; Est. 1916</p>
-
-            <div style={{ width: 'clamp(40px,5vw,64px)', height: '1px', background: 'linear-gradient(to right, rgba(201,169,110,0.8), rgba(201,169,110,0.2))', marginBottom: 'clamp(1.4rem,3vh,2.2rem)' }} />
-
             <h2 style={{
               fontFamily: SERIF,
               fontWeight: 400,
@@ -1108,9 +1227,7 @@ function GarranHillV6() {
               Some houses<br />hold history.<br />
               <em style={{ fontWeight: 300 }}>This one shaped it.</em>
             </h2>
-
-            <div style={{ width: 'clamp(40px,5vw,64px)', height: '1px', background: 'linear-gradient(to right, rgba(201,169,110,0.8), rgba(201,169,110,0.2))', marginBottom: 'clamp(1.4rem,3vh,2rem)' }} />
-
+            <div style={{ width: 56, height: '1px', background: 'rgba(201,169,110,0.7)', marginBottom: 'clamp(1.4rem,3vh,2rem)' }} />
             <p style={{
               fontFamily: SERIF,
               fontWeight: 300,
@@ -1123,15 +1240,13 @@ function GarranHillV6() {
             }}>
               Neo-Georgian. Four columns. Seven fireplaces. 4.15 acres. Built 1916 by the men who built Pinehurst. Restored 2000 to the original drawings. One hundred and nine years of remarkable stewardship.
             </p>
-
-            <div style={{ width: 'clamp(28px,3vw,40px)', height: '1px', background: 'rgba(201,169,110,0.4)', marginBottom: 'clamp(1.2rem,2.5vh,1.8rem)' }} />
-
+            <div style={{ width: 36, height: '1px', background: 'rgba(201,169,110,0.35)', marginBottom: 'clamp(1.2rem,2.5vh,1.8rem)' }} />
             <p style={{
               fontFamily: SERIF,
               fontWeight: 300,
               fontSize: 'clamp(0.78rem,0.88vw,0.92rem)',
               color: CREAM,
-              opacity: 0.52,
+              opacity: 0.5,
               lineHeight: 2.1,
               margin: 0,
               maxWidth: 460,
@@ -1141,7 +1256,7 @@ function GarranHillV6() {
           </Fade>
         </div>
 
-        {/* WHP portrait — inset bottom-right, like a portrait hanging in the house */}
+        {/* WHP portrait — inset bottom-right */}
         <div style={{
           position: 'absolute',
           bottom: 'clamp(3rem,7vh,5rem)',
@@ -1150,26 +1265,22 @@ function GarranHillV6() {
         }}>
           <Fade>
             <div style={{
-              width: 'clamp(110px,9vw,160px)',
+              width: 'clamp(100px,8vw,140px)',
               aspectRatio: '3/4',
               overflow: 'hidden',
-              border: '1px solid rgba(201,169,110,0.35)',
-              boxShadow: '0 8px 40px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.5)',
+              border: '1px solid rgba(201,169,110,0.3)',
+              boxShadow: '0 8px 40px rgba(0,0,0,0.7)',
               filter: 'sepia(0.18) brightness(0.88)',
             }}>
-              <img
-                src={I.whp}
-                alt="Walter Hines Page"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
-              />
+              <img src={I.whp} alt="Walter Hines Page" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
             </div>
             <p style={{
               fontFamily: 'sans-serif',
-              fontSize: 'clamp(6px,0.55vw,7px)',
+              fontSize: 'clamp(6px,0.52vw,7px)',
               letterSpacing: '0.38em',
               textTransform: 'uppercase',
-              color: 'rgba(201,169,110,0.45)',
-              margin: '0.75rem 0 0',
+              color: 'rgba(201,169,110,0.4)',
+              margin: '0.7rem 0 0',
               textAlign: 'center',
               fontWeight: 600,
             }}>Walter Hines Page · 1913</p>
