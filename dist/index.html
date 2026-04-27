@@ -171,7 +171,7 @@ const I = {
   aerial:       ghExt('gh_222'),
   dusk2:        ghExt('gh_ext__holycrestextf_3324'),
   twilight:     ghExt('gh_ext__holycrestextf_3324'),
-  crest:        'https://res.cloudinary.com/dghn2xpif/image/upload/v1777265217/gh_key/gh_wax_stamp_3d.png',
+  crest:        'https://res.cloudinary.com/dghn2xpif/image/upload/v1777260277/gh_key/gh_wax_stamp_3d.png',
   bluefox:      ghExt('gh_ext__holycrestextf_3364_copy1'),
   archDrawing:  gh('gh_112'),
 };
@@ -1040,20 +1040,6 @@ function GarranHillV6() {
       {/* == 01 HERO == */}
       <Hero onInquire={() => setShowInq(true)} />
 
-      {/* == 02 MANIFESTO == */}
-      <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,6vh,5rem) clamp(2rem,14vw,18rem) clamp(2.5rem,5vh,4rem)', textAlign: 'center', margin: 0 }}>
-        <Fade>
-          <p style={{ fontFamily: 'sans-serif', fontSize: '9px', letterSpacing: '0.38em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.65)', margin: '0 auto 1.2rem' }}>200 Hollycrest Drive &nbsp;&bull;&nbsp; Pinehurst, NC &nbsp;&bull;&nbsp; Est. 1916</p>
-          <div style={{ width: 48, height: 1, background: 'rgba(201,169,110,0.55)', margin: '0 auto 2.8rem' }} />
-          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 400, fontSize: 'clamp(2.5rem,5vw,6.5rem)', color: '#fff', lineHeight: 1.08, margin: '0 auto 2rem', letterSpacing: '-0.015em', maxWidth: 900 }}>
-            Some houses hold history.<br/><em style={{ fontWeight: 300 }}>This one shaped it.</em>
-          </h2>
-          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300, fontSize: 'clamp(0.95rem,1.2vw,1.15rem)', color: '#F5F0E8', opacity: 0.72, lineHeight: 2.1, maxWidth: 640, margin: '0 auto' }}>
-            Neo-Georgian. Four columns. Seven fireplaces. 4.15 acres.<br/>Built 1916 by the men who built Pinehurst.<br/>Restored 2000 to the original drawings.<br/>One hundred and nine years of remarkable stewardship.
-          </p>
-        </Fade>
-      </section>
-
       {/* == 02 ARRIVAL -- THRESHOLD TEASER == */}
       {/* Buyer scrolls off hero -- first breath -- weight of 1916 */}
       <div style={{
@@ -1332,20 +1318,46 @@ function GarranHillV6() {
         </div>
       </section>
 
-      {/* == 09 WALTER HINES PAGE == */}
-      <section id="history" style={{ position: 'relative', minHeight: 'clamp(580px,80vh,920px)', overflow: 'hidden', display: 'flex', alignItems: 'stretch' }}>
+{/* == 09 WALTER HINES PAGE — GLASS PANEL OVER FULL BLEED PORTRAIT == */}
+      <section id="history" style={{ position: 'relative', minHeight: 'clamp(640px,90vh,1000px)', overflow: 'hidden', display: 'flex', alignItems: 'stretch' }}>
+        {/* Full-bleed WHP oil painting — fixed behind everything */}
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.whp})`, backgroundSize: 'cover', backgroundPosition: 'center top', zIndex: 0 }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(4,4,4,0.97) 0%, rgba(4,4,4,0.88) 40%, rgba(4,4,4,0.38) 65%, transparent 82%)', zIndex: 1 }} />
+        {/* Very subtle dark veil so text stays legible — barely there */}
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.22)', zIndex: 1 }} />
+
+        {/* Glass panel — slides in from left on scroll */}
         <div style={{ position: 'relative', zIndex: 2, width: '100%', display: 'flex', alignItems: 'center' }}>
           <Fade>
-            <div style={{ maxWidth: 'min(540px,50vw)', padding: 'clamp(5rem,9vw,9rem) clamp(2rem,6vw,7rem)' }}>
+            <div style={{
+              maxWidth: 'min(580px,52vw)',
+              margin: 'clamp(4rem,8vw,8rem) clamp(2rem,6vw,7rem)',
+              padding: 'clamp(3rem,5vw,5rem) clamp(2.5rem,4vw,4.5rem)',
+              /* Glass effect */
+              background: 'rgba(255,255,255,0.07)',
+              backdropFilter: 'blur(18px) saturate(1.4)',
+              WebkitBackdropFilter: 'blur(18px) saturate(1.4)',
+              border: '1px solid rgba(201,169,110,0.25)',
+              borderRadius: '2px',
+              boxShadow: '0 8px 64px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.12)',
+              /* Glass reflection sheen — subtle diagonal highlight */
+              backgroundImage: 'linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0.07) 100%)',
+            }}>
+              {/* Wax seal floats above the panel */}
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
+                <img
+                  src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777267295/gh_key/gh_wax_seal_transparent.png"
+                  alt="Garran Hill seal"
+                  style={{ height: '120px', width: 'auto', filter: 'drop-shadow(0 4px 24px rgba(201,169,110,0.5)) drop-shadow(0 2px 8px rgba(0,0,0,0.8))' }}
+                />
+              </div>
+
               <Eye>The Man Who Built It</Eye>
               <GoldLine />
-              <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.5rem,4.2vw,5.5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 2rem', letterSpacing: '-0.012em' }}>
+              <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.2rem,3.8vw,5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 2rem', letterSpacing: '-0.012em' }}>
                 He named it Garran Hill.<br /><em style={{ fontWeight: 300 }}>He longed for it<br />every day he was gone.</em>
               </h2>
-              <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.92rem,1.1vw,1.02rem)', color: CREAM, opacity: 0.82, lineHeight: 2.05, margin: 0 }}>
-                Walter Hines Page bought 1,000 acres outside Pinehurst in February 1913 and named it Garran Hill. Six weeks later, Woodrow Wilson made him Ambassador to the Court of St. James. He sailed for London in May 1913. From London, he wrote about the farm constantly -- "The farm -- the farm -- the farm." He served through the First World War. He died in Pinehurst on December 21, 1918, carried off the train at Aberdeen. His last words: "Well, Frank, I did get here after all, didn't I?" Built by Leonard Tufts' own craftsmen -- the same men who built Pinehurst. It has stood for 110 years.
+              <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.92rem,1.05vw,1rem)', color: CREAM, opacity: 0.88, lineHeight: 2.05, margin: 0 }}>
+                Walter Hines Page bought 1,000 acres outside Pinehurst in February 1913 and named it Garran Hill. Six weeks later, Woodrow Wilson made him Ambassador to the Court of St. James. He sailed for London in May 1913. From London, he wrote about the farm constantly — <em>"The farm — the farm — the farm."</em> He served through the First World War. He died in Pinehurst on December 21, 1918, carried off the train at Aberdeen. His last words: <em>"Well, Frank, I did get here after all, didn't I?"</em> Built by Leonard Tufts' own craftsmen — the same men who built Pinehurst. It has stood for 110 years.
               </p>
             </div>
           </Fade>
