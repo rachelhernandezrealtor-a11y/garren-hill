@@ -763,62 +763,63 @@ function Hero({ onInquire }) {
 
 
 
-      {/* TITLE BLOCK — glass panel, sets the tone: welcome to luxury history */}
+      {/* TITLE BLOCK — glass panel over video, welcome to luxury history */}
       <div style={{
         position: 'absolute',
-        bottom: 'clamp(7rem,8vw,8rem)',
+        bottom: 'clamp(7rem,9vw,9rem)',
         left: 'clamp(2.5rem,6vw,7rem)',
         zIndex: 10,
-        maxWidth: 'min(580px,55vw)',
-        padding: 'clamp(2rem,3.5vw,3.5rem) clamp(2rem,3.5vw,3.5rem)',
-        /* Glass */
-        background: 'rgba(255,255,255,0.06)',
-        backdropFilter: 'blur(20px) saturate(1.5)',
-        WebkitBackdropFilter: 'blur(20px) saturate(1.5)',
-        border: '1px solid rgba(201,169,110,0.22)',
+        maxWidth: 'min(520px,48vw)',
+        padding: 'clamp(2.2rem,3.8vw,4rem) clamp(2.2rem,3.8vw,4rem)',
+        /* Glass — dark enough to show as a panel over the bright aerial */
+        background: 'rgba(8,8,8,0.62)',
+        backdropFilter: 'blur(24px) saturate(1.6) brightness(0.85)',
+        WebkitBackdropFilter: 'blur(24px) saturate(1.6) brightness(0.85)',
+        border: '1px solid rgba(201,169,110,0.28)',
         borderRadius: '2px',
-        boxShadow: '0 8px 64px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.10)',
-        backgroundImage: 'linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.06) 100%)',
+        boxShadow: '0 12px 80px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 0 0 1px rgba(201,169,110,0.06)',
+        /* Subtle glass sheen diagonal */
+        backgroundImage: 'linear-gradient(135deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0.01) 45%, rgba(255,255,255,0.03) 100%)',
       }}>
         {/* Wax seal — centered, crowns the panel */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.4rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.6rem' }}>
           <img
             src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777267295/gh_key/gh_wax_seal_transparent.png"
             alt="Garran Hill Seal"
             style={{
-              height: 'clamp(80px,9vw,110px)',
+              height: 'clamp(90px,10vw,120px)',
               width: 'auto',
-              filter: 'drop-shadow(0 0 22px rgba(201,169,110,0.7)) drop-shadow(0 3px 14px rgba(0,0,0,0.95))'
+              filter: 'drop-shadow(0 0 28px rgba(201,169,110,0.75)) drop-shadow(0 4px 18px rgba(0,0,0,0.98))'
             }}
           />
         </div>
 
         {/* Address eyebrow */}
         <p style={{
-          fontFamily: 'sans-serif', fontSize: 'clamp(8px,0.75vw,10px)', letterSpacing: '0.44em',
-          textTransform: 'uppercase', color: '#E8C878', margin: '0 0 0.9rem', textAlign: 'center',
-          textShadow: '0 0 18px rgba(232,200,120,0.5)',
+          fontFamily: 'sans-serif', fontSize: 'clamp(8px,0.72vw,10px)', letterSpacing: '0.44em',
+          textTransform: 'uppercase', color: '#E8C878', margin: '0 0 1rem', textAlign: 'center',
+          textShadow: '0 0 18px rgba(232,200,120,0.45)',
           fontWeight: 600
         }}>200 Hollycrest Drive &nbsp;&nbsp;|&nbsp;&nbsp; Pinehurst, NC &nbsp;&nbsp;|&nbsp;&nbsp; Est. 1916</p>
 
         {/* The name */}
         <h1 style={{
           fontFamily: SCRIPT,
-          fontSize: 'clamp(3.8rem, 6.5vw, 8rem)',
-          color: '#fff', lineHeight: 1.05, margin: '0 0 1rem', textAlign: 'center',
-          textShadow: '0 3px 48px rgba(0,0,0,0.6), 0 1px 8px rgba(0,0,0,0.5)'
+          fontSize: 'clamp(3.6rem, 6vw, 7.5rem)',
+          color: '#fff', lineHeight: 1.05, margin: '0 0 1.1rem', textAlign: 'center',
+          textShadow: '0 2px 32px rgba(0,0,0,0.8), 0 1px 6px rgba(0,0,0,0.9)'
         }}>Garran Hill</h1>
 
         {/* Gold rule */}
-        <div style={{ width: '60%', height: '1px', margin: '0 auto 1rem',
-          background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.65), transparent)' }} />
+        <div style={{ width: '55%', height: '1px', margin: '0 auto 1.1rem',
+          background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.7), transparent)' }} />
 
         {/* Subtext */}
         <p style={{
           fontFamily: SERIF, fontStyle: 'italic', fontWeight: 300,
-          fontSize: 'clamp(0.82rem, 0.95vw, 0.95rem)',
-          color: 'rgba(255,255,255,0.68)',
-          margin: 0, letterSpacing: '0.04em', textAlign: 'center', lineHeight: 1.8
+          fontSize: 'clamp(0.8rem, 0.9vw, 0.92rem)',
+          color: 'rgba(255,255,255,0.72)',
+          margin: 0, letterSpacing: '0.04em', textAlign: 'center', lineHeight: 1.9
         }}>Neo-Georgian.&nbsp;&nbsp;Walter Hines Page.&nbsp;&nbsp;110 years of remarkable stewardship.</p>
       </div>
 
