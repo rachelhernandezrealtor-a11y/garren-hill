@@ -1044,188 +1044,6 @@ function GarranHillV6() {
       {/* == 01 HERO == */}
       <Hero onInquire={() => setShowInq(true)} />
 
-      {/* == 01b HORSE POST — the sentinel. Been here since 1916. == */}
-      <section style={{
-        position: 'relative',
-        width: '100%',
-        height: '100vh',
-        minHeight: 680,
-        overflow: 'hidden',
-      }}>
-        <div style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: `url(https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777273864/gh_key/gh_horse_post.jpg)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center center',
-          zIndex: 0,
-        }} />
-        {/* Top fade from stat bar */}
-        <div style={{
-          position: 'absolute', top: 0, left: 0, right: 0, height: '22%',
-          background: 'linear-gradient(to bottom, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
-          zIndex: 2,
-        }} />
-        {/* Soft left veil for copy */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'linear-gradient(to right, rgba(4,4,4,0.72) 0%, rgba(4,4,4,0.32) 45%, rgba(4,4,4,0.0) 75%)',
-          zIndex: 1,
-        }} />
-        {/* Bottom fade to next section */}
-        <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0, height: '18%',
-          background: 'linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
-          zIndex: 2,
-        }} />
-
-        {/* Copy — upper left */}
-        <div style={{
-          position: 'absolute',
-          top: 'clamp(5rem,14vh,9rem)',
-          left: 'clamp(2.5rem,7vw,8rem)',
-          maxWidth: 'min(480px,44vw)',
-          zIndex: 3,
-        }}>
-          <Fade>
-            <p style={{
-              fontFamily: 'sans-serif',
-              fontSize: 'clamp(7px,0.6vw,9px)',
-              letterSpacing: '0.45em',
-              textTransform: 'uppercase',
-              color: 'rgba(201,169,110,0.65)',
-              margin: '0 0 clamp(1.2rem,2.5vh,1.8rem)',
-              fontWeight: 600,
-            }}>Garran Hill &nbsp;·&nbsp; Est. 1916</p>
-
-            <div style={{ width: 48, height: '1px', background: 'rgba(201,169,110,0.6)', marginBottom: 'clamp(1.4rem,3vh,2.2rem)' }} />
-
-            <h2 style={{
-              fontFamily: SERIF,
-              fontWeight: 300,
-              fontSize: 'clamp(2rem,3.6vw,4.8rem)',
-              color: '#fff',
-              lineHeight: 1.12,
-              margin: '0 0 clamp(1.4rem,3vh,2rem)',
-              letterSpacing: '-0.01em',
-            }}>
-              It has stood<br />at the entrance<br />
-              <em>since 1916.</em>
-            </h2>
-
-            <div style={{ width: 36, height: '1px', background: 'rgba(201,169,110,0.35)', margin: 'clamp(0.8rem,2vh,1.4rem) 0' }} />
-
-            <p style={{
-              fontFamily: SERIF,
-              fontWeight: 300,
-              fontStyle: 'italic',
-              fontSize: 'clamp(0.82rem,0.95vw,1rem)',
-              color: CREAM,
-              opacity: 0.62,
-              lineHeight: 1.9,
-              margin: 0,
-            }}>
-              Before the columns were raised.<br />
-              Before the first stone was laid.<br />
-              The horse was already here.
-            </p>
-          </Fade>
-        </div>
-      </section>
-
-      
-      {/* == 01c HOUSE INTRODUCTION — three-panel contact strip + editorial copy == */}
-
-      {/* Panel 1 — full-bleed exterior, the facade */}
-      <section style={{
-        position: 'relative', width: '100%', height: '85vh', minHeight: 560,
-        overflow: 'hidden', margin: 0,
-      }}>
-        <div style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: `url(${I.thresholdStone})`,
-          backgroundSize: 'cover', backgroundPosition: 'center 38%',
-        }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,6,6,0.22)' }} />
-        {/* top fade from WHP */}
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '22%', background: 'linear-gradient(to bottom, #0a0a0a, transparent)', zIndex: 2 }} />
-        {/* bottom fade to strip */}
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '30%', background: 'linear-gradient(to bottom, transparent, #0a0a0a)', zIndex: 2 }} />
-
-        {/* Floating caption — bottom right, editorial */}
-        <div style={{ position: 'absolute', bottom: 'clamp(2.5rem,6vh,5rem)', right: 'clamp(2.5rem,6vw,6rem)', zIndex: 3, textAlign: 'right' }}>
-          <Fade>
-            <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.42em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.65)', margin: '0 0 0.6rem' }}>200 Hollycrest Drive</p>
-            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.1rem,1.6vw,1.5rem)', color: 'rgba(255,255,255,0.82)', margin: 0, lineHeight: 1.5 }}>
-              Built by Leonard Tufts' own craftsmen.<br />Not one contractor. Not one season.
-            </p>
-          </Fade>
-        </div>
-      </section>
-
-      {/* == 01b-STONE GARRAN HILL MARKER — the name, set in the ground == */}
-      <section style={{
-        position: 'relative',
-        width: '100%',
-        height: '60vh',
-        minHeight: 400,
-        overflow: 'hidden',
-      }}>
-        <div style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: `url(https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777273864/gh_key/gh_stone_marker.jpg)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 40%',
-          zIndex: 0,
-        }} />
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'rgba(4,4,4,0.42)',
-          zIndex: 1,
-        }} />
-        <div style={{
-          position: 'absolute', top: 0, left: 0, right: 0, height: '25%',
-          background: 'linear-gradient(to bottom, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
-          zIndex: 2,
-        }} />
-        <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0, height: '25%',
-          background: 'linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
-          zIndex: 2,
-        }} />
-
-        {/* Centered caption — the stone speaks for itself */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          flexDirection: 'column',
-          zIndex: 3,
-          textAlign: 'center',
-          padding: '0 2rem',
-        }}>
-          <Fade>
-            <p style={{
-              fontFamily: 'sans-serif',
-              fontSize: 'clamp(7px,0.6vw,9px)',
-              letterSpacing: '0.55em',
-              textTransform: 'uppercase',
-              color: 'rgba(201,169,110,0.55)',
-              margin: '0 0 1.2rem',
-              fontWeight: 600,
-            }}>200 Hollycrest Drive · Pinehurst, NC</p>
-            <div style={{ width: 40, height: '1px', background: 'rgba(201,169,110,0.5)', margin: '0 auto 1.6rem' }} />
-            <p style={{
-              fontFamily: SERIF,
-              fontWeight: 300,
-              fontSize: 'clamp(0.85rem,1vw,1.05rem)',
-              color: CREAM,
-              opacity: 0.72,
-              lineHeight: 2.1,
-              letterSpacing: '0.04em',
-            }}>The name was set before the house was built.<br />It has not moved since.</p>
-          </Fade>
-        </div>
-      </section>
-
       {/* == 01c HOUSE INTRODUCTION — twilight facade, WHP woven in == */}
       <section style={{
         position: 'relative',
@@ -1480,6 +1298,188 @@ function GarranHillV6() {
               Restored to the original drawings. When you stand in it, you cannot find the seam.
             </p>
             <div style={{ width: 48, height: 1, background: 'rgba(201,169,110,0.5)', margin: '0 auto' }} />
+          </Fade>
+        </div>
+      </section>
+
+      {/* == 01b HORSE POST — the sentinel. Been here since 1916. == */}
+      <section style={{
+        position: 'relative',
+        width: '100%',
+        height: '100vh',
+        minHeight: 680,
+        overflow: 'hidden',
+      }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: `url(https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777273864/gh_key/gh_horse_post.jpg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
+          zIndex: 0,
+        }} />
+        {/* Top fade from stat bar */}
+        <div style={{
+          position: 'absolute', top: 0, left: 0, right: 0, height: '22%',
+          background: 'linear-gradient(to bottom, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
+          zIndex: 2,
+        }} />
+        {/* Soft left veil for copy */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(to right, rgba(4,4,4,0.72) 0%, rgba(4,4,4,0.32) 45%, rgba(4,4,4,0.0) 75%)',
+          zIndex: 1,
+        }} />
+        {/* Bottom fade to next section */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, height: '18%',
+          background: 'linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
+          zIndex: 2,
+        }} />
+
+        {/* Copy — upper left */}
+        <div style={{
+          position: 'absolute',
+          top: 'clamp(5rem,14vh,9rem)',
+          left: 'clamp(2.5rem,7vw,8rem)',
+          maxWidth: 'min(480px,44vw)',
+          zIndex: 3,
+        }}>
+          <Fade>
+            <p style={{
+              fontFamily: 'sans-serif',
+              fontSize: 'clamp(7px,0.6vw,9px)',
+              letterSpacing: '0.45em',
+              textTransform: 'uppercase',
+              color: 'rgba(201,169,110,0.65)',
+              margin: '0 0 clamp(1.2rem,2.5vh,1.8rem)',
+              fontWeight: 600,
+            }}>Garran Hill &nbsp;·&nbsp; Est. 1916</p>
+
+            <div style={{ width: 48, height: '1px', background: 'rgba(201,169,110,0.6)', marginBottom: 'clamp(1.4rem,3vh,2.2rem)' }} />
+
+            <h2 style={{
+              fontFamily: SERIF,
+              fontWeight: 300,
+              fontSize: 'clamp(2rem,3.6vw,4.8rem)',
+              color: '#fff',
+              lineHeight: 1.12,
+              margin: '0 0 clamp(1.4rem,3vh,2rem)',
+              letterSpacing: '-0.01em',
+            }}>
+              It has stood<br />at the entrance<br />
+              <em>since 1916.</em>
+            </h2>
+
+            <div style={{ width: 36, height: '1px', background: 'rgba(201,169,110,0.35)', margin: 'clamp(0.8rem,2vh,1.4rem) 0' }} />
+
+            <p style={{
+              fontFamily: SERIF,
+              fontWeight: 300,
+              fontStyle: 'italic',
+              fontSize: 'clamp(0.82rem,0.95vw,1rem)',
+              color: CREAM,
+              opacity: 0.62,
+              lineHeight: 1.9,
+              margin: 0,
+            }}>
+              Before the columns were raised.<br />
+              Before the first stone was laid.<br />
+              The horse was already here.
+            </p>
+          </Fade>
+        </div>
+      </section>
+
+      
+      {/* == 01c HOUSE INTRODUCTION — three-panel contact strip + editorial copy == */}
+
+      {/* Panel 1 — full-bleed exterior, the facade */}
+      <section style={{
+        position: 'relative', width: '100%', height: '85vh', minHeight: 560,
+        overflow: 'hidden', margin: 0,
+      }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: `url(${I.thresholdStone})`,
+          backgroundSize: 'cover', backgroundPosition: 'center 38%',
+        }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,6,6,0.22)' }} />
+        {/* top fade from WHP */}
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '22%', background: 'linear-gradient(to bottom, #0a0a0a, transparent)', zIndex: 2 }} />
+        {/* bottom fade to strip */}
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '30%', background: 'linear-gradient(to bottom, transparent, #0a0a0a)', zIndex: 2 }} />
+
+        {/* Floating caption — bottom right, editorial */}
+        <div style={{ position: 'absolute', bottom: 'clamp(2.5rem,6vh,5rem)', right: 'clamp(2.5rem,6vw,6rem)', zIndex: 3, textAlign: 'right' }}>
+          <Fade>
+            <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.42em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.65)', margin: '0 0 0.6rem' }}>200 Hollycrest Drive</p>
+            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.1rem,1.6vw,1.5rem)', color: 'rgba(255,255,255,0.82)', margin: 0, lineHeight: 1.5 }}>
+              Built by Leonard Tufts' own craftsmen.<br />Not one contractor. Not one season.
+            </p>
+          </Fade>
+        </div>
+      </section>
+
+      {/* == 01b-STONE GARRAN HILL MARKER — the name, set in the ground == */}
+      <section style={{
+        position: 'relative',
+        width: '100%',
+        height: '60vh',
+        minHeight: 400,
+        overflow: 'hidden',
+      }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: `url(https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777273864/gh_key/gh_stone_marker.jpg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 40%',
+          zIndex: 0,
+        }} />
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'rgba(4,4,4,0.42)',
+          zIndex: 1,
+        }} />
+        <div style={{
+          position: 'absolute', top: 0, left: 0, right: 0, height: '25%',
+          background: 'linear-gradient(to bottom, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
+          zIndex: 2,
+        }} />
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, height: '25%',
+          background: 'linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%)',
+          zIndex: 2,
+        }} />
+
+        {/* Centered caption — the stone speaks for itself */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          flexDirection: 'column',
+          zIndex: 3,
+          textAlign: 'center',
+          padding: '0 2rem',
+        }}>
+          <Fade>
+            <p style={{
+              fontFamily: 'sans-serif',
+              fontSize: 'clamp(7px,0.6vw,9px)',
+              letterSpacing: '0.55em',
+              textTransform: 'uppercase',
+              color: 'rgba(201,169,110,0.55)',
+              margin: '0 0 1.2rem',
+              fontWeight: 600,
+            }}>200 Hollycrest Drive · Pinehurst, NC</p>
+            <div style={{ width: 40, height: '1px', background: 'rgba(201,169,110,0.5)', margin: '0 auto 1.6rem' }} />
+            <p style={{
+              fontFamily: SERIF,
+              fontWeight: 300,
+              fontSize: 'clamp(0.85rem,1vw,1.05rem)',
+              color: CREAM,
+              opacity: 0.72,
+              lineHeight: 2.1,
+              letterSpacing: '0.04em',
+            }}>The name was set before the house was built.<br />It has not moved since.</p>
           </Fade>
         </div>
       </section>
