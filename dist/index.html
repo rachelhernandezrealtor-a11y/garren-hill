@@ -160,6 +160,8 @@ const I = {
   bath:         gh('gh_75'),
   window:       gh('gh_173'),
   img1916:      ghExt('gh_ext__holycrestextf_3364_copy1'),
+  sapling1916:  'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/7b1b1f524_GarranHill1916photos.jpg',
+  driveway2026: 'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777245584/gh_exteriors/holycrestextf_3328.jpg',
   sepia:        ghExt('gh_ext__holycrestextf_3324'),
   whp:          ghExt('gh_whp'),
   betty:        gh('gh_69'),
@@ -1240,6 +1242,66 @@ function GarranHillV6() {
             <div style={{ width: 48, height: 1, background: 'rgba(201,169,110,0.5)', margin: '0 auto' }} />
           </Fade>
         </div>
+      </section>
+
+      {/* == 01d THEN & NOW — sapling split frame == */}
+      <section style={{ background: '#0a0a0a', margin: 0, padding: 0 }}>
+
+        {/* Split: 1916 left | 2026 right */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3, width: '100%' }}>
+
+          {/* 1916 — the saplings */}
+          <div style={{ position: 'relative', height: 'clamp(420px,55vh,680px)', overflow: 'hidden' }}>
+            <div style={{
+              position: 'absolute', inset: 0,
+              backgroundImage: `url(${I.sapling1916})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center top',
+              filter: 'sepia(0.35) contrast(1.05)',
+            }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,6,6,0.35)' }} />
+            {/* Label */}
+            <div style={{ position: 'absolute', top: 'clamp(1.5rem,3vh,2.5rem)', left: 'clamp(1.5rem,2.5vw,2.5rem)', zIndex: 2 }}>
+              <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.45em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.75)', margin: 0 }}>1916</p>
+            </div>
+          </div>
+
+          {/* 2026 — the forest */}
+          <div style={{ position: 'relative', height: 'clamp(420px,55vh,680px)', overflow: 'hidden' }}>
+            <div style={{
+              position: 'absolute', inset: 0,
+              backgroundImage: `url(${I.driveway2026})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center top',
+            }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,6,6,0.18)' }} />
+            {/* Label */}
+            <div style={{ position: 'absolute', top: 'clamp(1.5rem,3vh,2.5rem)', right: 'clamp(1.5rem,2.5vw,2.5rem)', zIndex: 2, textAlign: 'right' }}>
+              <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.45em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.75)', margin: 0 }}>2026</p>
+            </div>
+          </div>
+
+        </div>
+
+        {/* The line */}
+        <div style={{ padding: 'clamp(3rem,6vh,5rem) clamp(2rem,12vw,16rem)', textAlign: 'center' }}>
+          <Fade>
+            <p style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontStyle: 'italic',
+              fontWeight: 300,
+              fontSize: 'clamp(1.6rem,3vw,3.4rem)',
+              color: '#fff',
+              lineHeight: 1.45,
+              margin: '0 auto',
+              maxWidth: 680,
+              letterSpacing: '-0.01em',
+            }}>
+              In 1916, those were saplings.<br />Now they are a forest.
+            </p>
+          </Fade>
+        </div>
+
       </section>
 
       {/* == 02 ARRIVAL -- THRESHOLD TEASER == */}
