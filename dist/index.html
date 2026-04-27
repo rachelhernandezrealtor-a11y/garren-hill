@@ -1041,7 +1041,7 @@ function GarranHillV6() {
       {showInq  && <InquiryModal onClose={() => setShowInq(false)} />}
       <StickyNav onInquire={() => setShowInq(true)} />
 
-      {/* == 01 HERO == DEPLOY-BUST-1 == */}
+      {/* == 01 HERO == */}
       <Hero onInquire={() => setShowInq(true)} />
 
       {/* == 01c HOUSE INTRODUCTION — twilight facade, WHP woven in == */}
@@ -1149,155 +1149,6 @@ function GarranHillV6() {
               textAlign: 'center',
               fontWeight: 600,
             }}>Walter Hines Page · 1913</p>
-          </Fade>
-        </div>
-      </section>
-
-            {/* == 01b-EXT ARCHIVAL SEQUENCE — 1916 photos + 1931 brochure pull quote == */}
-
-      {/* 1916 — the house at completion, full-width cinematic */}
-      <section style={{ position: 'relative', width: '100%', height: 'clamp(520px,72vh,860px)', overflow: 'hidden', margin: 0 }}>
-        {/* Grain overlay — archival feel */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: `url(https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:55,e_sharpen:20,f_auto,q_auto,w_1920,c_limit/v1777272689/gh_key/gh_1916sheet.jpg)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 18%',
-          filter: 'sepia(0.38) contrast(1.08) brightness(0.82)',
-          zIndex: 0,
-        }} />
-        {/* Dark veil — controlled, not heavy */}
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,6,6,0.42)', zIndex: 1 }} />
-        {/* Bottom fade into next section */}
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '35%', background: 'linear-gradient(to bottom, transparent, #0a0a0a)', zIndex: 2 }} />
-        {/* Top fade from WHP */}
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '20%', background: 'linear-gradient(to bottom, #0a0a0a, transparent)', zIndex: 2 }} />
-
-        {/* Copy — bottom left, restrained */}
-        <div style={{ position: 'absolute', bottom: 'clamp(4rem,10vh,7rem)', left: 'clamp(2.5rem,8vw,9rem)', zIndex: 3 }}>
-          <Fade>
-            <p style={{ fontFamily: 'sans-serif', fontSize: 'clamp(7px,0.6vw,9px)', letterSpacing: '0.5em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: '0 0 1rem', fontWeight: 600 }}>Garran Hill · 1916</p>
-            <p style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontStyle: 'italic', fontWeight: 300,
-              fontSize: 'clamp(1.6rem,3vw,3.4rem)',
-              color: '#fff', lineHeight: 1.28,
-              margin: 0, letterSpacing: '-0.01em',
-              textShadow: '0 2px 24px rgba(0,0,0,0.7)',
-            }}>
-              In 1916, those were saplings.<br />Now they are a forest.
-            </p>
-          </Fade>
-        </div>
-      </section>
-
-      {/* 1931 Brochure pull quote — dark interstitial, gold type, document texture */}
-      <section style={{
-        position: 'relative',
-        background: '#0a0a0a',
-        overflow: 'hidden',
-        padding: 'clamp(6rem,13vh,10rem) clamp(2rem,8vw,10rem)',
-        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-        textAlign: 'center',
-      }}>
-        {/* Brochure as faint background texture */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: `url(https://res.cloudinary.com/dghn2xpif/image/upload/e_grayscale,e_brightness:-60,e_contrast:-30,f_auto,q_auto,w_1400,c_limit/v1777272689/gh_key/gh_1931brochure.jpg)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          opacity: 0.07,
-          zIndex: 0,
-        }} />
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: 720 }}>
-          <Fade>
-            <div style={{ width: 'clamp(48px,6vw,80px)', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.7), transparent)', margin: '0 auto clamp(3rem,6vh,4.5rem)' }} />
-            <p style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontWeight: 400,
-              fontSize: 'clamp(2.2rem,4.5vw,5.5rem)',
-              color: '#C9A96E',
-              lineHeight: 1.15,
-              margin: '0 0 clamp(1.8rem,3.5vh,2.8rem)',
-              letterSpacing: '-0.01em',
-            }}>
-              Fireplace in every room.
-            </p>
-            <p style={{
-              fontFamily: 'sans-serif',
-              fontSize: 'clamp(7px,0.62vw,9px)',
-              letterSpacing: '0.48em',
-              textTransform: 'uppercase',
-              color: 'rgba(201,169,110,0.45)',
-              margin: '0 0 clamp(3rem,6vh,4.5rem)',
-              fontWeight: 600,
-            }}>The Page Estate &nbsp;·&nbsp; For Rent, Season 1931–32 &nbsp;·&nbsp; Two Miles West of Pinehurst</p>
-            <div style={{ width: 'clamp(48px,6vw,80px)', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.7), transparent)', margin: '0 auto' }} />
-          </Fade>
-        </div>
-      </section>
-
-      {/* Three-panel contact strip — library / drawing room fire / entry hall */}
-      <section style={{ background: '#0a0a0a', margin: 0, padding: 0 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 3, width: '100%' }}>
-
-          {/* Library */}
-          <div style={{ position: 'relative', height: 'clamp(320px,42vh,580px)', overflow: 'hidden' }}>
-            <div style={{
-              position: 'absolute', inset: 0,
-              backgroundImage: `url(${I.library})`,
-              backgroundSize: 'cover', backgroundPosition: 'center',
-            }} />
-            <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,6,6,0.28)' }} />
-            <div style={{ position: 'absolute', bottom: 'clamp(1.2rem,3vh,2.2rem)', left: 'clamp(1.2rem,2.5vw,2rem)', zIndex: 2 }}>
-              <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.7)', margin: 0 }}>The Library</p>
-            </div>
-          </div>
-
-          {/* Drawing Room fire */}
-          <div style={{ position: 'relative', height: 'clamp(320px,42vh,580px)', overflow: 'hidden' }}>
-            <div style={{
-              position: 'absolute', inset: 0,
-              backgroundImage: `url(${I.drawingRoomFire})`,
-              backgroundSize: 'cover', backgroundPosition: 'center',
-            }} />
-            <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,6,6,0.18)' }} />
-            <div style={{ position: 'absolute', bottom: 'clamp(1.2rem,3vh,2.2rem)', left: 'clamp(1.2rem,2.5vw,2rem)', zIndex: 2 }}>
-              <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.7)', margin: 0 }}>The Drawing Room</p>
-            </div>
-          </div>
-
-          {/* Entry Hall */}
-          <div style={{ position: 'relative', height: 'clamp(320px,42vh,580px)', overflow: 'hidden' }}>
-            <div style={{
-              position: 'absolute', inset: 0,
-              backgroundImage: `url(${I.entry})`,
-              backgroundSize: 'cover', backgroundPosition: 'center',
-            }} />
-            <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,6,6,0.28)' }} />
-            <div style={{ position: 'absolute', bottom: 'clamp(1.2rem,3vh,2.2rem)', left: 'clamp(1.2rem,2.5vw,2rem)', zIndex: 2 }}>
-              <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.7)', margin: 0 }}>The Entry Hall</p>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Editorial line below the strip */}
-        <div style={{ padding: 'clamp(3.5rem,7vh,5.5rem) clamp(2rem,12vw,16rem)', textAlign: 'center' }}>
-          <Fade>
-            <div style={{ width: 48, height: 1, background: 'rgba(201,169,110,0.5)', margin: '0 auto clamp(2rem,4vh,3rem)' }} />
-            <p style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontWeight: 300, fontStyle: 'italic',
-              fontSize: 'clamp(1.5rem,2.8vw,3rem)',
-              color: '#fff', lineHeight: 1.5,
-              margin: '0 auto clamp(1.8rem,3.5vh,2.8rem)',
-              maxWidth: 780,
-              letterSpacing: '-0.01em',
-            }}>
-              Restored to the original drawings. When you stand in it, you cannot find the seam.
-            </p>
-            <div style={{ width: 48, height: 1, background: 'rgba(201,169,110,0.5)', margin: '0 auto' }} />
           </Fade>
         </div>
       </section>
@@ -1484,6 +1335,157 @@ function GarranHillV6() {
       </section>
 
       
+            {/* == 01b-EXT ARCHIVAL SEQUENCE — 1916 photos + 1931 brochure pull quote == */}
+
+      {/* 1916 — the house at completion, full-width cinematic */}
+      <section style={{ position: 'relative', width: '100%', height: 'clamp(520px,72vh,860px)', overflow: 'hidden', margin: 0 }}>
+        {/* Grain overlay — archival feel */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: `url(https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:55,e_sharpen:20,f_auto,q_auto,w_1920,c_limit/v1777272689/gh_key/gh_1916sheet.jpg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 18%',
+          filter: 'sepia(0.38) contrast(1.08) brightness(0.82)',
+          zIndex: 0,
+        }} />
+        {/* Dark veil — controlled, not heavy */}
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,6,6,0.42)', zIndex: 1 }} />
+        {/* Bottom fade into next section */}
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '35%', background: 'linear-gradient(to bottom, transparent, #0a0a0a)', zIndex: 2 }} />
+        {/* Top fade from WHP */}
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '20%', background: 'linear-gradient(to bottom, #0a0a0a, transparent)', zIndex: 2 }} />
+
+        {/* Copy — bottom left, restrained */}
+        <div style={{ position: 'absolute', bottom: 'clamp(4rem,10vh,7rem)', left: 'clamp(2.5rem,8vw,9rem)', zIndex: 3 }}>
+          <Fade>
+            <p style={{ fontFamily: 'sans-serif', fontSize: 'clamp(7px,0.6vw,9px)', letterSpacing: '0.5em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: '0 0 1rem', fontWeight: 600 }}>Garran Hill · 1916</p>
+            <p style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontStyle: 'italic', fontWeight: 300,
+              fontSize: 'clamp(1.6rem,3vw,3.4rem)',
+              color: '#fff', lineHeight: 1.28,
+              margin: 0, letterSpacing: '-0.01em',
+              textShadow: '0 2px 24px rgba(0,0,0,0.7)',
+            }}>
+              In 1916, those were saplings.<br />Now they are a forest.
+            </p>
+          </Fade>
+        </div>
+      </section>
+
+      {/* 1931 Brochure pull quote — dark interstitial, gold type, document texture */}
+      <section style={{
+        position: 'relative',
+        background: '#0a0a0a',
+        overflow: 'hidden',
+        padding: 'clamp(6rem,13vh,10rem) clamp(2rem,8vw,10rem)',
+        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+        textAlign: 'center',
+      }}>
+        {/* Brochure as faint background texture */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: `url(https://res.cloudinary.com/dghn2xpif/image/upload/e_grayscale,e_brightness:-60,e_contrast:-30,f_auto,q_auto,w_1400,c_limit/v1777272689/gh_key/gh_1931brochure.jpg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.07,
+          zIndex: 0,
+        }} />
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: 720 }}>
+          <Fade>
+            <div style={{ width: 'clamp(48px,6vw,80px)', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.7), transparent)', margin: '0 auto clamp(3rem,6vh,4.5rem)' }} />
+            <p style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontWeight: 400,
+              fontSize: 'clamp(2.2rem,4.5vw,5.5rem)',
+              color: '#C9A96E',
+              lineHeight: 1.15,
+              margin: '0 0 clamp(1.8rem,3.5vh,2.8rem)',
+              letterSpacing: '-0.01em',
+            }}>
+              Fireplace in every room.
+            </p>
+            <p style={{
+              fontFamily: 'sans-serif',
+              fontSize: 'clamp(7px,0.62vw,9px)',
+              letterSpacing: '0.48em',
+              textTransform: 'uppercase',
+              color: 'rgba(201,169,110,0.45)',
+              margin: '0 0 clamp(3rem,6vh,4.5rem)',
+              fontWeight: 600,
+            }}>The Page Estate &nbsp;·&nbsp; For Rent, Season 1931–32 &nbsp;·&nbsp; Two Miles West of Pinehurst</p>
+            <div style={{ width: 'clamp(48px,6vw,80px)', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.7), transparent)', margin: '0 auto' }} />
+          </Fade>
+        </div>
+      </section>
+
+      {/* Three-panel contact strip — library / drawing room fire / entry hall */}
+      <section style={{ background: '#0a0a0a', margin: 0, padding: 0 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 3, width: '100%' }}>
+
+          {/* Library */}
+          <div style={{ position: 'relative', height: 'clamp(320px,42vh,580px)', overflow: 'hidden' }}>
+            <div style={{
+              position: 'absolute', inset: 0,
+              backgroundImage: `url(${I.library})`,
+              backgroundSize: 'cover', backgroundPosition: 'center',
+            }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,6,6,0.28)' }} />
+            <div style={{ position: 'absolute', bottom: 'clamp(1.2rem,3vh,2.2rem)', left: 'clamp(1.2rem,2.5vw,2rem)', zIndex: 2 }}>
+              <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.7)', margin: 0 }}>The Library</p>
+            </div>
+          </div>
+
+          {/* Drawing Room fire */}
+          <div style={{ position: 'relative', height: 'clamp(320px,42vh,580px)', overflow: 'hidden' }}>
+            <div style={{
+              position: 'absolute', inset: 0,
+              backgroundImage: `url(${I.drawingRoomFire})`,
+              backgroundSize: 'cover', backgroundPosition: 'center',
+            }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,6,6,0.18)' }} />
+            <div style={{ position: 'absolute', bottom: 'clamp(1.2rem,3vh,2.2rem)', left: 'clamp(1.2rem,2.5vw,2rem)', zIndex: 2 }}>
+              <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.7)', margin: 0 }}>The Drawing Room</p>
+            </div>
+          </div>
+
+          {/* Entry Hall */}
+          <div style={{ position: 'relative', height: 'clamp(320px,42vh,580px)', overflow: 'hidden' }}>
+            <div style={{
+              position: 'absolute', inset: 0,
+              backgroundImage: `url(${I.entry})`,
+              backgroundSize: 'cover', backgroundPosition: 'center',
+            }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,6,6,0.28)' }} />
+            <div style={{ position: 'absolute', bottom: 'clamp(1.2rem,3vh,2.2rem)', left: 'clamp(1.2rem,2.5vw,2rem)', zIndex: 2 }}>
+              <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.7)', margin: 0 }}>The Entry Hall</p>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Editorial line below the strip */}
+        <div style={{ padding: 'clamp(3.5rem,7vh,5.5rem) clamp(2rem,12vw,16rem)', textAlign: 'center' }}>
+          <Fade>
+            <div style={{ width: 48, height: 1, background: 'rgba(201,169,110,0.5)', margin: '0 auto clamp(2rem,4vh,3rem)' }} />
+            <p style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontWeight: 300, fontStyle: 'italic',
+              fontSize: 'clamp(1.5rem,2.8vw,3rem)',
+              color: '#fff', lineHeight: 1.5,
+              margin: '0 auto clamp(1.8rem,3.5vh,2.8rem)',
+              maxWidth: 780,
+              letterSpacing: '-0.01em',
+            }}>
+              Restored to the original drawings. When you stand in it, you cannot find the seam.
+            </p>
+            <div style={{ width: 48, height: 1, background: 'rgba(201,169,110,0.5)', margin: '0 auto' }} />
+          </Fade>
+        </div>
+      </section>
+
+
+
       {/* == 01d THEN & NOW — sapling split frame == */}
       <section style={{ background: '#0a0a0a', margin: 0, padding: 0 }}>
 
