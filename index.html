@@ -155,7 +155,7 @@ const I = {
   dining2:      'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65/e_brightness:12/e_shadow:-25/e_sharpen:45/e_saturation:18/f_auto/q_auto/w_1600/c_limit/v1777247298/gh_img/1b24b019d.jpg',
   office:       'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65/e_brightness:12/e_shadow:-25/e_sharpen:45/e_saturation:18/f_auto/q_auto/w_1600/c_limit/v1777244062/gh_key/gh_136.jpg',
   officeTall:   'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65/e_brightness:12/e_shadow:-25/e_sharpen:45/e_saturation:18/f_auto/q_auto/w_1600/c_limit/v1777244062/gh_key/gh_136.jpg',
-  library:      'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65/e_brightness:12/e_shadow:-25/e_sharpen:45/e_saturation:18/f_auto/q_auto/w_1600/c_limit/v1777244062/gh_key/gh_136.jpg',
+  library:      'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65/e_brightness:12/e_shadow:-25/e_sharpen:45/e_saturation:18/f_auto/q_auto/w_1600/c_limit/v1777249944/gh_img/42dea0be0.jpg',
   libraryWide:  'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65/e_brightness:12/e_shadow:-25/e_sharpen:45/e_saturation:18/f_auto/q_auto/w_1600/c_limit/v1777244085/gh_key/gh_173.jpg',
   bath:         'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65/e_brightness:12/e_shadow:-25/e_sharpen:45/e_saturation:18/f_auto/q_auto/w_1600/c_limit/v1777244071/gh_key/gh_93.jpg',
   window:       'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65/e_brightness:12/e_shadow:-25/e_sharpen:45/e_saturation:18/f_auto/q_auto/w_1600/c_limit/v1777247300/gh_img/b0965610e.jpg',
@@ -164,7 +164,7 @@ const I = {
   whp:          own("2e864596c_WalterHinesPage.jpeg"),
   betty:        'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65/e_brightness:12/e_shadow:-25/e_sharpen:45/e_saturation:18/f_auto/q_auto/w_1600/c_limit/v1777247304/gh_img/ee869bbb3.jpg',
   roseMoney:    'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70/e_auto_brightness/e_sharpen:35/e_saturation:22/f_auto/q_auto/w_1920/c_limit/v1777244087/gh_key/gh_75.jpg',
-  roseWall:     'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70/e_auto_brightness/e_sharpen:35/e_saturation:22/f_auto/q_auto/w_1920/c_limit/v1777244087/gh_key/gh_75.jpg',
+  roseWall:     'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70/e_auto_brightness/e_sharpen:35/e_saturation:22/f_auto/q_auto/w_1920/c_limit/v1777249929/gh_img/58a73d8a6_rosewall.jpg',
   iris:         'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70/e_auto_brightness/e_sharpen:35/e_saturation:22/f_auto/q_auto/w_1920/c_limit/v1777244088/gh_key/gh_222.jpg',
   azalea:       'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65/e_brightness:12/e_shadow:-25/e_sharpen:45/e_saturation:18/f_auto/q_auto/w_1600/c_limit/v1777247305/gh_img/a851234be.jpg',
   poolWall:     'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70/e_auto_brightness/e_sharpen:35/e_saturation:22/f_auto/q_auto/w_1920/c_limit/v1777244088/gh_key/gh_222.jpg',
@@ -768,28 +768,42 @@ function Hero({ onInquire }) {
         padding: 'clamp(3.5rem,6vw,5rem) clamp(3rem,8vw,9rem) clamp(2rem,3vw,2.8rem)' }}>
         <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)', marginBottom: 'clamp(1.6rem,3vw,2.4rem)' }} />
         <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', gap: '0.5rem' }}>
-          {[['1916','Est.'],['4 Beds',''],['6 Baths','']].map(([v,l]) => (
-            <div key={v} style={{ textAlign: 'center', flex: 1 }}>
-              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
-                fontSize: 'clamp(1.4rem,2.4vw,2.4rem)', color: '#ffffff',
-                margin: '0 0 0.3rem', letterSpacing: '-0.01em', lineHeight: 1 }}>{v}</p>
-              {l && <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.28em',
-                textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>}
-            </div>
+          {[
+            { v: '1916',        l: 'Est.' },
+            { v: '4 Beds',      l: '' },
+            { v: '6 Baths',     l: '' },
+          ].map(({ v, l }, i) => (
+            <React.Fragment key={v}>
+              <div style={{ textAlign: 'center', flex: 1 }}>
+                <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
+                  fontSize: 'clamp(1.4rem,2.4vw,2.4rem)', color: '#ffffff',
+                  margin: '0 0 0.3rem', letterSpacing: '-0.01em', lineHeight: 1 }}>{v}</p>
+                {l && <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.28em',
+                  textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>}
+              </div>
+              <div style={{ width: 1, height: 32, background: 'rgba(201,169,110,0.3)', flexShrink: 0 }} />
+            </React.Fragment>
           ))}
           <div style={{ flex: '0 0 auto', textAlign: 'center', padding: '0 1rem' }}>
             <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/2a0c933f7_seal_upload.png" alt="Garran Hill Seal"
               style={{ width: 'clamp(56px,6vw,76px)', height: 'auto',
                 filter: 'drop-shadow(0 4px 16px rgba(0,0,0,0.9)) drop-shadow(0 2px 6px rgba(0,0,0,0.8))' }} />
           </div>
-          {[['6,072 sq ft','Living Area'],['4.15 Acres','Land'],['$4,250,000','Offered At']].map(([v,l]) => (
-            <div key={v} style={{ textAlign: 'center', flex: 1 }}>
-              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
-                fontSize: 'clamp(1.4rem,2.4vw,2.4rem)', color: '#ffffff',
-                margin: '0 0 0.3rem', letterSpacing: '-0.01em', lineHeight: 1 }}>{v}</p>
-              <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.28em',
-                textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
-            </div>
+          {[
+            { v: '6,072 sq ft', l: 'Living Area' },
+            { v: '4.15 Acres',  l: 'Land' },
+            { v: '$4,250,000',  l: 'Offered At' },
+          ].map(({ v, l }, i) => (
+            <React.Fragment key={v}>
+              <div style={{ width: 1, height: 32, background: 'rgba(201,169,110,0.3)', flexShrink: 0 }} />
+              <div style={{ textAlign: 'center', flex: 1 }}>
+                <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
+                  fontSize: 'clamp(1.4rem,2.4vw,2.4rem)', color: '#ffffff',
+                  margin: '0 0 0.3rem', letterSpacing: '-0.01em', lineHeight: 1 }}>{v}</p>
+                <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.28em',
+                  textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
+              </div>
+            </React.Fragment>
           ))}
         </div>
         <div style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.2) 15%, rgba(201,169,110,0.2) 85%, transparent)', marginTop: 'clamp(1.6rem,2.5vw,2rem)' }} />
@@ -1136,8 +1150,8 @@ function GarranHillV6() {
       {/* == QUOTE INTERSTITIAL == */}
       <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
         
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.img}1916)`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.07) saturate(0.4)' }} />
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.img1916})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.07) saturate(0.4)' }} />
+        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', textAlign: 'center' }}>
           <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
           <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
             In 1916, those were saplings. Now they are a forest.
@@ -1194,7 +1208,7 @@ function GarranHillV6() {
       {/* == QUOTE INTERSTITIAL == */}
       <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
         
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
+        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', textAlign: 'center' }}>
           <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
           <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
             Not original -- deliberate.
@@ -1300,7 +1314,7 @@ function GarranHillV6() {
       <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
         
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.iris})`, backgroundSize: 'cover', backgroundPosition: 'center 60%', filter: 'brightness(0.07) saturate(0.4)' }} />
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
+        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', textAlign: 'center' }}>
           <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
           <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
             The world outside these gates does not exist here.
@@ -1367,7 +1381,7 @@ function GarranHillV6() {
       {/* == QUOTE INTERSTITIAL == */}
       <section style={{ background: '#0a0a0a', padding: 'clamp(3rem,5vw,4.5rem) 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
         
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', border: '1px solid rgba(201,169,110,0.25)', background: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
+        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: 'clamp(2rem,3.5vw,3rem) clamp(2rem,5vw,4rem)', textAlign: 'center' }}>
           <div style={{ width: 32, height: 1, background: '#C9A96E', margin: '0 auto 1.8rem' }} />
           <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.6rem, 3vw, 3.2rem)', color: '#fff', margin: 0, lineHeight: 1.45, letterSpacing: '0.01em' }}>
             Seven fireplaces. Six with gas. All original.
