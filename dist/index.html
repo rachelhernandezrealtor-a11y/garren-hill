@@ -740,7 +740,7 @@ function Hero({ onInquire }) {
   }, []);
 
   return (
-    <section style={{ position: 'relative', height: '100vh', minHeight: 680, overflow: 'hidden', background: '#0a0a0a' }}>
+    <section style={{ position: 'relative', height: '100vh', minHeight: 680, overflow: 'visible', background: '#0a0a0a' }}>
       {/* poster -- fallback while video loads */}
       <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${GH_POSTER})`, backgroundSize: 'cover', backgroundPosition: 'center 45%', zIndex: 0 }} />
       {/* HLS video -- driveway approach, slow motion */}
@@ -802,7 +802,8 @@ function Hero({ onInquire }) {
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
         background: 'linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.95) 55%, transparent 100%)',
-        padding: '0.6rem clamp(1.5rem,4vw,5rem) 0'
+        padding: '0.6rem clamp(1.5rem,4vw,5rem) 0',
+        overflow: 'visible'
       }}>
         {/* TOP GOLD LINE */}
         <div style={{ width: '100%', height: '1px',
@@ -1118,16 +1119,13 @@ function GarranHillV6() {
             <p style={{
               fontFamily: SERIF,
               fontWeight: 300,
-              fontSize: 'clamp(0.82rem,0.95vw,1rem)',
+              fontSize: 'clamp(1rem,1.2vw,1.2rem)',
               color: CREAM,
-              opacity: 0.72,
-              lineHeight: 2.1,
+              opacity: 0.88,
+              lineHeight: 1.9,
               margin: 0,
             }}>
-              Neo-Georgian. Four columns. Seven fireplaces. 4.15 acres.<br />
-              Built 1916 by the men who built Pinehurst.<br />
-              Restored 2000 to the original drawings.<br />
-              One hundred and nine years of remarkable stewardship.
+              Neo-Georgian. Four columns. Seven fireplaces. 4.15 acres. Built 1916 by the men who built Pinehurst. Restored 2000 to the original drawings. One hundred and nine years of remarkable stewardship.
             </p>
           </Fade>
         </div>
