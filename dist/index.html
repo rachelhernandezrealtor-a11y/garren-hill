@@ -155,6 +155,7 @@ const I = {
   office:       gh('gh_136'),
   officeTall:   gh('gh_136'),
   library:      gh('gh_136'),
+  drawingRoomFire: gh('gh_65'),  // Drawing room Delft fireplace — lit
   libraryWide:  gh('gh_136'),
   bath:         gh('gh_75'),
   window:       gh('gh_173'),
@@ -1143,6 +1144,100 @@ function GarranHillV6() {
             }}>
               Walter Hines Page bought 1,000 acres outside Pinehurst in February 1913 and named it Garran Hill. Six weeks later, Woodrow Wilson appointed him Ambassador to the Court of St. James. He sailed for London that May. From across the Atlantic, through the years of the First World War, he wrote home about the farm constantly — <em style={{ fontStyle: 'italic' }}>"The farm — the farm — the farm."</em> He never slept here. He was carried off the train at Aberdeen on December 21, 1918, and died that evening in Pinehurst. His last words: <em style={{ fontStyle: 'italic' }}>"Well, Frank, I did get here after all, didn't I?"</em>
             </p>
+          </Fade>
+        </div>
+      </section>
+
+      {/* == 01c HOUSE INTRODUCTION — three-panel contact strip + editorial copy == */}
+
+      {/* Panel 1 — full-bleed exterior, the facade */}
+      <section style={{
+        position: 'relative', width: '100%', height: '85vh', minHeight: 560,
+        overflow: 'hidden', margin: 0,
+      }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: `url(${I.thresholdStone})`,
+          backgroundSize: 'cover', backgroundPosition: 'center 38%',
+        }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,6,6,0.22)' }} />
+        {/* top fade from WHP */}
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '22%', background: 'linear-gradient(to bottom, #0a0a0a, transparent)', zIndex: 2 }} />
+        {/* bottom fade to strip */}
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '30%', background: 'linear-gradient(to bottom, transparent, #0a0a0a)', zIndex: 2 }} />
+
+        {/* Floating caption — bottom right, editorial */}
+        <div style={{ position: 'absolute', bottom: 'clamp(2.5rem,6vh,5rem)', right: 'clamp(2.5rem,6vw,6rem)', zIndex: 3, textAlign: 'right' }}>
+          <Fade>
+            <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.42em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.65)', margin: '0 0 0.6rem' }}>200 Hollycrest Drive</p>
+            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(1.1rem,1.6vw,1.5rem)', color: 'rgba(255,255,255,0.82)', margin: 0, lineHeight: 1.5 }}>
+              Built by Leonard Tufts' own craftsmen.<br />Not one contractor. Not one season.
+            </p>
+          </Fade>
+        </div>
+      </section>
+
+      {/* Three-panel contact strip — library / drawing room fire / entry hall */}
+      <section style={{ background: '#0a0a0a', margin: 0, padding: 0 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 3, width: '100%' }}>
+
+          {/* Library */}
+          <div style={{ position: 'relative', height: 'clamp(320px,42vh,580px)', overflow: 'hidden' }}>
+            <div style={{
+              position: 'absolute', inset: 0,
+              backgroundImage: `url(${I.library})`,
+              backgroundSize: 'cover', backgroundPosition: 'center',
+            }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,6,6,0.28)' }} />
+            <div style={{ position: 'absolute', bottom: 'clamp(1.2rem,3vh,2.2rem)', left: 'clamp(1.2rem,2.5vw,2rem)', zIndex: 2 }}>
+              <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.7)', margin: 0 }}>The Library</p>
+            </div>
+          </div>
+
+          {/* Drawing Room fire */}
+          <div style={{ position: 'relative', height: 'clamp(320px,42vh,580px)', overflow: 'hidden' }}>
+            <div style={{
+              position: 'absolute', inset: 0,
+              backgroundImage: `url(${I.drawingRoomFire})`,
+              backgroundSize: 'cover', backgroundPosition: 'center',
+            }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,6,6,0.18)' }} />
+            <div style={{ position: 'absolute', bottom: 'clamp(1.2rem,3vh,2.2rem)', left: 'clamp(1.2rem,2.5vw,2rem)', zIndex: 2 }}>
+              <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.7)', margin: 0 }}>The Drawing Room</p>
+            </div>
+          </div>
+
+          {/* Entry Hall */}
+          <div style={{ position: 'relative', height: 'clamp(320px,42vh,580px)', overflow: 'hidden' }}>
+            <div style={{
+              position: 'absolute', inset: 0,
+              backgroundImage: `url(${I.entry})`,
+              backgroundSize: 'cover', backgroundPosition: 'center',
+            }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,6,6,0.28)' }} />
+            <div style={{ position: 'absolute', bottom: 'clamp(1.2rem,3vh,2.2rem)', left: 'clamp(1.2rem,2.5vw,2rem)', zIndex: 2 }}>
+              <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(201,169,110,0.7)', margin: 0 }}>The Entry Hall</p>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Editorial line below the strip */}
+        <div style={{ padding: 'clamp(3.5rem,7vh,5.5rem) clamp(2rem,12vw,16rem)', textAlign: 'center' }}>
+          <Fade>
+            <div style={{ width: 48, height: 1, background: 'rgba(201,169,110,0.5)', margin: '0 auto clamp(2rem,4vh,3rem)' }} />
+            <p style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontWeight: 300, fontStyle: 'italic',
+              fontSize: 'clamp(1.5rem,2.8vw,3rem)',
+              color: '#fff', lineHeight: 1.5,
+              margin: '0 auto clamp(1.8rem,3.5vh,2.8rem)',
+              maxWidth: 780,
+              letterSpacing: '-0.01em',
+            }}>
+              Restored to the original drawings. When you stand in it, you cannot find the seam.
+            </p>
+            <div style={{ width: 48, height: 1, background: 'rgba(201,169,110,0.5)', margin: '0 auto' }} />
           </Fade>
         </div>
       </section>
