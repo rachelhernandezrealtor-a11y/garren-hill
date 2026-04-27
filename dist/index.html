@@ -802,7 +802,7 @@ function Hero({ onInquire }) {
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10,
         background: 'linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.95) 55%, transparent 100%)',
-        padding: '0.6rem clamp(1.5rem,4vw,5rem) 0.8rem'
+        padding: '0.6rem clamp(1.5rem,4vw,5rem) 0'
       }}>
         {/* TOP GOLD LINE */}
         <div style={{ width: '100%', height: '1px',
@@ -816,8 +816,8 @@ function Hero({ onInquire }) {
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300,
                 fontSize: 'clamp(1rem,1.8vw,1.9rem)', color: '#fff',
                 margin: '0 0 0.2rem', lineHeight: 1 }}>{v}</p>
-              <p style={{ fontFamily: 'sans-serif', fontSize: '6.5px', letterSpacing: '0.25em',
-                textTransform: 'uppercase', color: 'rgba(201,169,110,0.6)', margin: 0 }}>{l}</p>
+              <p style={{ fontFamily: 'sans-serif', fontSize: '8px', letterSpacing: '0.28em',
+                textTransform: 'uppercase', color: 'rgba(201,169,110,0.75)', margin: 0 }}>{l}</p>
             </div>
           ))}
         </div>
@@ -827,7 +827,7 @@ function Hero({ onInquire }) {
           <div style={{ width: '100%', height: '1px',
             background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.55) 15%, rgba(201,169,110,0.55) 85%, transparent)' }} />
           {/* SEAL centered below the line */}
-          <div style={{ position: 'absolute', left: '50%', top: '-70px', transform: 'translateX(-50%)' }}>
+          <div style={{ position: 'absolute', left: '50%', top: '-65px', transform: 'translateX(-50%)', zIndex: 20 }}>
             <img
               src={I.crest}
               alt="Garran Hill Crest"
@@ -836,7 +836,7 @@ function Hero({ onInquire }) {
             />
           </div>
         </div>
-        <div style={{ height: '2.2rem' }} /> {/* spacer so seal doesn't clip bottom */}
+        <div style={{ height: '0.4rem' }} />
       </div>
     </section>
   );
@@ -1052,6 +1052,7 @@ function GarranHillV6() {
         height: '100vh',
         minHeight: 680,
         overflow: 'hidden',
+        marginTop: '-4rem',
       }}>
         <div style={{
           position: 'absolute', inset: 0,
