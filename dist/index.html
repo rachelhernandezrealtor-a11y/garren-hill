@@ -43,16 +43,6 @@ body {
 /* ─────────────────────────────────────────────
    CUSTOM CURSOR
 ───────────────────────────────────────────── */
-.cursor-dot, .cursor-ring {
-  position: fixed;
-  pointer-events: none;
-  border-radius: 50%;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.3s;
-}
-.cursor-dot  { width: 5px; height: 5px; background: var(--gold); }
-.cursor-ring { width: 28px; height: 28px; border: 1px solid rgba(201,169,110,0.5); transition: width 0.2s, height 0.2s; }
 
 /* ─────────────────────────────────────────────
    NAV
@@ -980,8 +970,6 @@ footer {
 <body>
 
 <!-- CUSTOM CURSOR -->
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
 
 <!-- NAV -->
 <nav id="mainNav">
@@ -1436,13 +1424,6 @@ footer {
 </div>
 
 <script>
-// ── CURSOR
-const dot  = document.getElementById('cursorDot');
-const ring = document.getElementById('cursorRing');
-document.addEventListener('mousemove', e => {
-  dot.style.left  = e.clientX + 'px'; dot.style.top  = e.clientY + 'px';
-  ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
-});
 
 // ── NAV SCROLL
 const nav = document.getElementById('mainNav');
