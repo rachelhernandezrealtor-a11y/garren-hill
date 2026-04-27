@@ -740,6 +740,7 @@ function Hero({ onInquire }) {
   }, []);
 
   return (
+    <>
     <section style={{ position: 'relative', height: '100vh', minHeight: 680, overflow: 'hidden', background: '#0a0a0a' }}>
       {/* poster -- fallback while video loads */}
       <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${GH_POSTER})`, backgroundSize: 'cover', backgroundPosition: 'center 45%', zIndex: 0 }} />
@@ -854,6 +855,7 @@ function Hero({ onInquire }) {
         }}
       />
     </div>
+    </>
   );
 }
 
