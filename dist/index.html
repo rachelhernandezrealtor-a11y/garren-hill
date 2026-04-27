@@ -1318,45 +1318,71 @@ function GarranHillV6() {
         </div>
       </section>
 
-{/* == 09 WALTER HINES PAGE — GLASS PANEL OVER FULL BLEED PORTRAIT == */}
-      <section id="history" style={{ position: 'relative', minHeight: 'clamp(640px,90vh,1000px)', overflow: 'hidden', display: 'flex', alignItems: 'stretch' }}>
-        {/* Full-bleed WHP oil painting — fixed behind everything */}
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.whp})`, backgroundSize: 'cover', backgroundPosition: 'center top', zIndex: 0 }} />
-        {/* Very subtle dark veil so text stays legible — barely there */}
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,4,4,0.22)', zIndex: 1 }} />
+{/* == 09a SEAL INTERSTITIAL — sets the tone before history lands == */}
+      <section id="history" style={{
+        background: '#0a0a0a',
+        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+        padding: 'clamp(6rem,14vh,11rem) clamp(2rem,8vw,8rem)',
+        position: 'relative',
+      }}>
+        {/* Gold rule above */}
+        <div style={{ width: 'clamp(60px,8vw,100px)', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.7), transparent)', marginBottom: 'clamp(3.5rem,7vh,5.5rem)' }} />
 
-        {/* Glass panel — slides in from left on scroll */}
+        {/* The seal — alone, commanding */}
+        <Fade>
+          <img
+            src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777267295/gh_key/gh_wax_seal_transparent.png"
+            alt="Garran Hill — Est. 1916"
+            style={{
+              height: 'clamp(140px,18vw,220px)',
+              width: 'auto',
+              display: 'block',
+              filter: 'drop-shadow(0 0 40px rgba(201,169,110,0.55)) drop-shadow(0 0 80px rgba(201,169,110,0.25)) drop-shadow(0 4px 20px rgba(0,0,0,0.9))'
+            }}
+          />
+        </Fade>
+
+        {/* Single line beneath — just enough */}
+        <Fade>
+          <p style={{
+            fontFamily: 'sans-serif', fontSize: 'clamp(8px,0.72vw,10px)', letterSpacing: '0.5em',
+            textTransform: 'uppercase', color: 'rgba(201,169,110,0.55)',
+            margin: 'clamp(3rem,6vh,4.5rem) 0 0', textAlign: 'center', fontWeight: 600
+          }}>Garran Hill &nbsp;&nbsp;·&nbsp;&nbsp; Est. 1916 &nbsp;&nbsp;·&nbsp;&nbsp; Pinehurst, North Carolina</p>
+        </Fade>
+
+        {/* Gold rule below */}
+        <div style={{ width: 'clamp(60px,8vw,100px)', height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,169,110,0.7), transparent)', marginTop: 'clamp(3.5rem,7vh,5.5rem)' }} />
+      </section>
+
+      {/* == 09b WALTER HINES PAGE — OIL PORTRAIT + GLASS PANEL == */}
+      <section style={{ position: 'relative', minHeight: 'clamp(700px,95vh,1060px)', overflow: 'hidden', display: 'flex', alignItems: 'stretch' }}>
+        {/* WHP oil portrait — full bleed */}
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${I.whp})`, backgroundSize: 'cover', backgroundPosition: 'center top', zIndex: 0 }} />
+        {/* Subtle veil — left side only, so portrait stays vivid on the right */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(4,4,4,0.55) 0%, rgba(4,4,4,0.18) 55%, rgba(4,4,4,0.06) 100%)', zIndex: 1 }} />
+
+        {/* Glass panel — left side, portrait breathes on the right */}
         <div style={{ position: 'relative', zIndex: 2, width: '100%', display: 'flex', alignItems: 'center' }}>
           <Fade>
             <div style={{
-              maxWidth: 'min(580px,52vw)',
+              maxWidth: 'min(560px,50vw)',
               margin: 'clamp(4rem,8vw,8rem) clamp(2rem,6vw,7rem)',
               padding: 'clamp(3rem,5vw,5rem) clamp(2.5rem,4vw,4.5rem)',
-              /* Glass effect */
-              background: 'rgba(255,255,255,0.07)',
-              backdropFilter: 'blur(18px) saturate(1.4)',
-              WebkitBackdropFilter: 'blur(18px) saturate(1.4)',
-              border: '1px solid rgba(201,169,110,0.25)',
+              background: 'rgba(8,8,8,0.58)',
+              backdropFilter: 'blur(22px) saturate(1.5) brightness(0.82)',
+              WebkitBackdropFilter: 'blur(22px) saturate(1.5) brightness(0.82)',
+              border: '1px solid rgba(201,169,110,0.22)',
               borderRadius: '2px',
-              boxShadow: '0 8px 64px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.12)',
-              /* Glass reflection sheen — subtle diagonal highlight */
-              backgroundImage: 'linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0.07) 100%)',
+              boxShadow: '0 12px 80px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.08)',
+              backgroundImage: 'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 50%, rgba(255,255,255,0.04) 100%)',
             }}>
-              {/* Wax seal floats above the panel */}
-              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
-                <img
-                  src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777267295/gh_key/gh_wax_seal_transparent.png"
-                  alt="Garran Hill seal"
-                  style={{ height: '120px', width: 'auto', filter: 'drop-shadow(0 4px 24px rgba(201,169,110,0.5)) drop-shadow(0 2px 8px rgba(0,0,0,0.8))' }}
-                />
-              </div>
-
               <Eye>The Man Who Built It</Eye>
               <GoldLine />
-              <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.2rem,3.8vw,5rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 2rem', letterSpacing: '-0.012em' }}>
+              <h2 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: 'clamp(2.2rem,3.8vw,4.8rem)', color: '#fff', lineHeight: 1.12, margin: '0 0 2rem', letterSpacing: '-0.012em' }}>
                 He named it Garran Hill.<br /><em style={{ fontWeight: 300 }}>He longed for it<br />every day he was gone.</em>
               </h2>
-              <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.92rem,1.05vw,1rem)', color: CREAM, opacity: 0.88, lineHeight: 2.05, margin: 0 }}>
+              <p style={{ fontFamily: SERIF, fontWeight: 300, fontSize: 'clamp(0.9rem,1.02vw,1rem)', color: CREAM, opacity: 0.85, lineHeight: 2.1, margin: 0 }}>
                 Walter Hines Page bought 1,000 acres outside Pinehurst in February 1913 and named it Garran Hill. Six weeks later, Woodrow Wilson made him Ambassador to the Court of St. James. He sailed for London in May 1913. From London, he wrote about the farm constantly — <em>"The farm — the farm — the farm."</em> He served through the First World War. He died in Pinehurst on December 21, 1918, carried off the train at Aberdeen. His last words: <em>"Well, Frank, I did get here after all, didn't I?"</em> Built by Leonard Tufts' own craftsmen — the same men who built Pinehurst. It has stood for 110 years.
               </p>
             </div>
