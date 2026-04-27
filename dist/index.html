@@ -7,7 +7,7 @@
   <meta name="description" content="Built in 1915-16. Still the finest house in Moore County. 4 beds, 4 baths, 7 fireplaces, 4.15 acres. Offered at $4,250,000. Pinehurst, NC." />
   <meta property="og:title" content="Garran Hill | Built 1915-16 | Pinehurst, NC" />
   <meta property="og:description" content="Neo-Georgian. Walter Hines Page. Built 1915-16. $4,250,000." />
-  <meta property="og:image" content="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1200,c_limit/gh_key/gh_191" />
+  <meta property="og:image" content="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1200,c_limit/v1777244059/gh_key/gh_191.jpg" />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -102,13 +102,14 @@ const SCRIPT  = "'Pinyon Script', cursive";
 
 const GH_VIDEO  = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/ba88a34a312106b7bf9d00b52a452871/manifest/video.m3u8';
 const GH_VIDEO_MP4 = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/ba88a34a312106b7bf9d00b52a452871/downloads/default.mp4';
-const GH_POSTER = 'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_key/gh_191';
+const GH_POSTER = 'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777244059/gh_key/gh_191.jpg';
 
 const CDN_BASE = 'https://res.cloudinary.com/dghn2xpif/image/upload/';
 const INT = 'e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit';
-const EXT = 'e_improve:outdoor:70,e_auto_brightness,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit';
+const EXT = 'e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit';
 
-const gh    = (id, t = INT) => `${CDN_BASE}${t}/gh_key/${id}`;
+const GH_VERSIONS={"gh_110":"v1777244067.jpg","gh_112":"v1777244084.jpg","gh_115":"v1777244080.jpg","gh_116":"v1777244069.jpg","gh_1185":"v1777244093.jpg","gh_136":"v1777244062.jpg","gh_151":"v1777244063.jpg","gh_16":"v1777244061.jpg","gh_173":"v1777244085.jpg","gh_191":"v1777244059.jpg","gh_222":"v1777244088.jpg","gh_34":"v1777244070.jpg","gh_38":"v1777244073.jpg","gh_40":"v1777244074.jpg","gh_41":"v1777244075.jpg","gh_43":"v1777244077.jpg","gh_44":"v1777244079.jpg","gh_65":"v1777244065.jpg","gh_68":"v1777244081.jpg","gh_69":"v1777244090.jpg","gh_75":"v1777244087.jpg","gh_81":"v1777244083.jpg","gh_93":"v1777244071.jpg","gh_94":"v1777244066.jpg","gh_threshold":"v1777263004.jpg","gh_whp":"v1777244132.jpg","gh_ext__holycrestextf_3324":"v1777245820.jpg","gh_ext__holycrestextf_3327_copy1":"v1777245823.jpg","gh_ext__holycrestextf_3328":"v1777245826.jpg","gh_ext__holycrestextf_3364_copy1":"v1777245829.jpg"};
+const gh    = (id, t = INT) => { const ver=GH_VERSIONS[id]||''; const ext=ver?'.'+ver.split('.')[1]:''; const v=ver?'v'+ver.split('.')[0]+'/':''; return `${CDN_BASE}${t}/${v}gh_key/${id}${ext}`; };
 const ghExt = (id)          => gh(id, EXT);
 
 const I = {
