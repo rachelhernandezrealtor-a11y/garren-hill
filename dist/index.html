@@ -108,7 +108,7 @@ const CDN_BASE = 'https://res.cloudinary.com/dghn2xpif/image/upload/';
 const INT = 'e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit';
 const EXT = 'e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit';
 
-const GH_VERSIONS={"gh_110":"v1777244067.jpg","gh_112":"v1777244084.jpg","gh_115":"v1777244080.jpg","gh_116":"v1777244069.jpg","gh_1185":"v1777244093.jpg","gh_136":"v1777244062.jpg","gh_151":"v1777244063.jpg","gh_16":"v1777244061.jpg","gh_173":"v1777244085.jpg","gh_191":"v1777244059.jpg","gh_222":"v1777244088.jpg","gh_34":"v1777244070.jpg","gh_38":"v1777244073.jpg","gh_40":"v1777244074.jpg","gh_41":"v1777244075.jpg","gh_43":"v1777244077.jpg","gh_44":"v1777244079.jpg","gh_65":"v1777244065.jpg","gh_68":"v1777244081.jpg","gh_69":"v1777244090.jpg","gh_75":"v1777244087.jpg","gh_81":"v1777244083.jpg","gh_93":"v1777244071.jpg","gh_94":"v1777244066.jpg","gh_threshold":"v1777263004.jpg","gh_whp":"v1777244132.jpg","gh_ext__holycrestextf_3324":"v1777245820.jpg","gh_ext__holycrestextf_3327_copy1":"v1777245823.jpg","gh_ext__holycrestextf_3328":"v1777245826.jpg","gh_ext__holycrestextf_3364_copy1":"v1777245829.jpg"};
+const GH_VERSIONS={"gh_110":"v1777244067.jpg","gh_112":"v1777244084.jpg","gh_115":"v1777244080.jpg","gh_116":"v1777244069.jpg","gh_1185":"v1777244093.jpg","gh_136":"v1777244062.jpg","gh_151":"v1777244063.jpg","gh_16":"v1777244061.jpg","gh_173":"v1777244085.jpg","gh_191":"v1777244059.jpg","gh_222":"v1777244088.jpg","gh_34":"v1777244070.jpg","gh_38":"v1777244073.jpg","gh_40":"v1777244074.jpg","gh_41":"v1777244075.jpg","gh_43":"v1777244077.jpg","gh_44":"v1777244079.jpg","gh_65":"v1777244065.jpg","gh_68":"v1777244081.jpg","gh_69":"v1777244090.jpg","gh_75":"v1777244087.jpg","gh_81":"v1777244083.jpg","gh_93":"v1777244071.jpg","gh_94":"v1777244066.jpg","gh_threshold":"v1777263004.jpg","gh_whp":"v1777244132.jpg","gh_ext__holycrestextf_3324":"v1777245820.jpg","gh_ext__holycrestextf_3327_copy1":"v1777245823.jpg","gh_ext__holycrestextf_3328":"v1777245826.jpg","gh_ext__holycrestextf_3364_copy1":"v1777245829.jpg","gh_sapling1916":"v1777270125.jpg"};
 const gh    = (id, t = INT) => { const ver=GH_VERSIONS[id]||''; const ext=ver?'.'+ver.split('.')[1]:''; const vNum=ver?ver.split('.')[0].replace(/^v/,''):''; const v=vNum?'v'+vNum+'/':''; return `${CDN_BASE}${t}/${v}gh_key/${id}${ext}`; };
 const ghExt = (id)          => gh(id, EXT);
 
@@ -160,7 +160,7 @@ const I = {
   bath:         gh('gh_75'),
   window:       gh('gh_173'),
   img1916:      ghExt('gh_ext__holycrestextf_3364_copy1'),
-  sapling1916:  'https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/7b1b1f524_GarranHill1916photos.jpg',
+  sapling1916:  gh('gh_sapling1916', EXT),
   driveway2026: 'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777245584/gh_exteriors/holycrestextf_3328.jpg',
   sepia:        ghExt('gh_ext__holycrestextf_3324'),
   whp:          ghExt('gh_whp'),
