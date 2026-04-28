@@ -930,6 +930,65 @@
     flex: 0 0 40px;
   }
 
+
+  /* ─── Farm Ghost Lift-off ─────────────────────────────────────────────── */
+  /* Ghost text sits exactly over "The farm—the farm—the farm" on page 354  */
+  /* The text appears at ~82% from top, left-aligned, small document size    */
+  .whp-farm-ghost {
+    position: absolute;
+    /* Positioned over the "The farm—the farm—the farm" line in the image */
+    bottom: 19.5%;
+    left: 7%;
+    width: 86%;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.72rem;
+    font-style: italic;
+    color: rgba(245, 230, 190, 0.0);  /* starts invisible — blends with paper */
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    pointer-events: none;
+    z-index: 10;
+    transition: none;
+    /* Will be animated by JS scroll */
+    transform-origin: left center;
+    white-space: nowrap;
+  }
+  .whp-ghost-dash {
+    margin: 0 0.18em;
+  }
+  /* Phase 1: ghost appears (highlight over the document text) */
+  .whp-farm-ghost.phase-highlight {
+    color: rgba(201, 169, 110, 0.65);
+    transition: color 0.6s ease;
+  }
+  /* Phase 2: ghost begins to lift — blur background letter image */
+  .whp-farm-ghost.phase-lift {
+    color: rgba(201, 169, 110, 0.85);
+    transform: scale(1.8) translateY(-8px);
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.5s ease;
+  }
+  /* Phase 3: full float to quote size — letter image dims out */
+  .whp-farm-ghost.phase-float {
+    color: rgba(201, 169, 110, 0);
+    transform: scale(4.5) translateY(-22px);
+    transition: transform 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.7s ease, opacity 0.6s ease;
+  }
+  /* Letter panel image dims when ghost lifts off */
+  #whp-letter-p354.dimming img {
+    filter: sepia(0.6) brightness(0.6) contrast(0.9);
+    transition: filter 1.2s ease;
+  }
+  /* Farm quote hidden until ghost arrives */
+  #whp-farm-quote-text {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+  }
+  #whp-farm-quote-text.arrived {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   /* Beat D — Last words */
   .whp-last-beat {
     padding: 100px 10% 140px;
@@ -1113,16 +1172,14 @@
     </div>
   </div>
 
-  <!-- B: The farm quote -->
-  <div class="whp-farm-beat">
-    <div class="whp-farm-quote scroll-reveal">"The farm &mdash; the farm &mdash; the farm &mdash;"</div>
-    <div class="whp-farm-source scroll-reveal">The Life and Letters of Walter H. Page &nbsp;·&nbsp; Vol. I, P. 354 &nbsp;·&nbsp; 1923<br><span style="opacity:0.55; font-style:italic;">"The farm" was Garran Hill — one thousand acres in Moore County, purchased February 1913.</span></div>
-  </div>
-
-  <!-- C: Letter scans -->
-  <div class="whp-letters-beat">
-    <div class="whp-letter-panel scroll-reveal">
+  <!-- C: Letter scans (with lift-off ghost text) -->
+  <div class="whp-letters-beat" id="whp-letters-container">
+    <div class="whp-letter-panel scroll-reveal" id="whp-letter-p354" style="position:relative;">
       <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777391998/gh_key/gh_whp_letter1.png" alt="The Life and Letters of Walter H. Page — Page 354">
+      <!-- Ghost text that lifts off the page -->
+      <div class="whp-farm-ghost" id="whp-farm-ghost">
+        <span>The farm</span><span class="whp-ghost-dash">&mdash;</span><span>the farm</span><span class="whp-ghost-dash">&mdash;</span><span>the farm</span><span class="whp-ghost-dash">&mdash;</span>
+      </div>
       <div class="whp-letter-panel-label">Vol. I &nbsp;·&nbsp; Page 354 &nbsp;·&nbsp; 1923</div>
     </div>
     <div class="whp-letters-gap"></div>
@@ -1130,6 +1187,12 @@
       <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777392076/gh_key/gh_whp_letter2.png" alt="The Life and Letters of Walter H. Page — Page 356">
       <div class="whp-letter-panel-label">Vol. I &nbsp;·&nbsp; Page 356 &nbsp;·&nbsp; 1923</div>
     </div>
+  </div>
+
+  <!-- B: The farm quote (revealed by lift-off) -->
+  <div class="whp-farm-beat" id="whp-farm-landing">
+    <div class="whp-farm-quote" id="whp-farm-quote-text">"The farm &mdash; the farm &mdash; the farm &mdash;"</div>
+    <div class="whp-farm-source scroll-reveal">The Life and Letters of Walter H. Page &nbsp;·&nbsp; Vol. I, P. 354 &nbsp;·&nbsp; 1923<br><span style="opacity:0.55; font-style:italic;">"The farm" was Garran Hill — one thousand acres in Moore County, purchased February 1913.</span></div>
   </div>
 
   <!-- D: Last words -->
@@ -1489,6 +1552,73 @@
     e.preventDefault();
     e.target.innerHTML = '<p style="text-align:center;color:var(--gold);font-style:italic;font-size:1.1rem;padding:20px 0;">Thank you. Rachel will be in touch shortly.</p>';
   }
+
+  // ─── Farm Ghost Lift-off ─────────────────────────────────────────────────
+  (function() {
+    const ghost      = document.getElementById('whp-farm-ghost');
+    const letterPanel = document.getElementById('whp-letter-p354');
+    const quoteText  = document.getElementById('whp-farm-quote-text');
+    const landing    = document.getElementById('whp-farm-landing');
+
+    if (!ghost || !letterPanel || !quoteText || !landing) return;
+
+    let animated = false;
+
+    function getFarmProgress() {
+      const rect = letterPanel.getBoundingClientRect();
+      const viewH = window.innerHeight;
+      // Progress: 0 when top of panel hits 80% down viewport → 1 when panel center passes 20% down
+      const panelMid = rect.top + rect.height * 0.82; // where the text line is
+      const start = viewH * 0.85;
+      const end   = viewH * 0.15;
+      return Math.max(0, Math.min(1, (start - panelMid) / (start - end)));
+    }
+
+    function onScroll() {
+      if (animated) return;
+      const p = getFarmProgress();
+
+      if (p <= 0) {
+        ghost.className = 'whp-farm-ghost';
+        letterPanel.classList.remove('dimming');
+        return;
+      }
+
+      if (p < 0.25) {
+        // Phase 1: highlight appears over the document
+        ghost.className = 'whp-farm-ghost phase-highlight';
+        letterPanel.classList.remove('dimming');
+      } else if (p < 0.65) {
+        // Phase 2: starting to lift
+        ghost.className = 'whp-farm-ghost phase-lift';
+        letterPanel.classList.add('dimming');
+      } else if (p < 1.0) {
+        // Phase 3: floating up / fading out
+        ghost.className = 'whp-farm-ghost phase-float';
+        letterPanel.classList.add('dimming');
+      } else {
+        // Phase 4: landed — hide ghost, reveal the styled quote
+        ghost.style.opacity = '0';
+        ghost.style.transition = 'opacity 0.4s ease';
+        quoteText.classList.add('arrived');
+        animated = true;
+      }
+    }
+
+    // Also trigger quote reveal when landing section scrolls into view
+    const landingObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animated) {
+          quoteText.classList.add('arrived');
+        }
+      });
+    }, { threshold: 0.3 });
+    landingObserver.observe(landing);
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
 </script>
 
 <div id="build-tag" style="position:fixed;bottom:16px;right:16px;z-index:9999;background:rgba(0,0,0,0.75);border:1px solid #C9A96E;color:#C9A96E;font-family:monospace;font-size:11px;padding:6px 12px;letter-spacing:0.08em;pointer-events:none;">v3.0-beats-0-6 · REVIEW BUILD</div>
