@@ -628,36 +628,25 @@
     margin-top: 36px;
   }
 
-  /* ── BLEND LAYER — text color shift synced to image crossfade ── */
-  .kb-copy-top {
-    position: absolute;
-    inset: 0;
-    animation: kbPulseReverse 16s ease-in-out infinite;
-    animation-delay: 1s;
-    mix-blend-mode: luminosity;
-    pointer-events: none;
+  /* ── COLOR SHIFT — text warms as image crossfades to color ── */
+  @keyframes textColorShift {
+    0%, 30%  { color: #ffffff; }
+    50%, 70% { color: #f5e8c8; }
+    100%     { color: #ffffff; }
   }
-  .kb-copy-top .kb-headline {
-    color: #1a1008;
-    text-shadow: none;
+  @keyframes goldShift {
+    0%, 30%  { color: var(--gold); }
+    50%, 70% { color: #d4a843; }
+    100%     { color: var(--gold); }
   }
-  .kb-copy-top .kb-headline em {
-    color: #7a4a00;
+  .kb-copy-base .kb-headline {
+    animation: textColorShift 16s ease-in-out infinite;
   }
-  .kb-copy-top .kb-sub {
-    color: #1a1008;
-    text-shadow: none;
+  .kb-copy-base .kb-headline em {
+    animation: goldShift 16s ease-in-out infinite;
   }
-  .kb-copy-top .kb-sub--italic {
-    color: #7a4a00;
-  }
-  .kb-copy-top .kb-address {
-    color: #7a4a00;
-    text-shadow: none;
-  }
-  .kb-copy-top .kb-rule-top,
-  .kb-copy-top .kb-rule-bottom {
-    background: #7a4a00;
+  .kb-copy-base .kb-sub {
+    animation: textColorShift 16s ease-in-out infinite;
   }
 
   @media (max-width: 768px) {
@@ -728,7 +717,6 @@
     <div class="kb-lantern kb-lantern-right"></div>
   </div>
   <div class="kb-copy">
-    <!-- BASE LAYER — cream/gold, visible on sepia -->
     <div class="kb-copy-layer kb-copy-base">
       <span class="kb-rule-top kb-rule-top-anim"></span>
       <h2 class="kb-headline">
@@ -743,21 +731,7 @@
       <span class="kb-address kb-address-anim">200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, North Carolina &nbsp;·&nbsp; Est. 1916</span>
       <span class="kb-rule-bottom kb-rule-bottom-anim"></span>
     </div>
-    <!-- BLEND LAYER — dark tones, fades in with color photo via luminosity -->
-    <div class="kb-copy-layer kb-copy-top">
-      <span class="kb-rule-top"></span>
-      <h2 class="kb-headline">
-        <span>Some houses hold history.</span>
-        <em>This one shaped it.</em>
-      </h2>
-      <div class="kb-sublines">
-        <span class="kb-sub">Walter Hines Page built Garran Hill in 1916.</span>
-        <span class="kb-sub kb-sub--italic">Ambassador. Editor. Visionary.</span>
-        <span class="kb-sub">He gave it everything. And here it stays.</span>
-      </div>
-      <span class="kb-address">200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, North Carolina &nbsp;·&nbsp; Est. 1916</span>
-      <span class="kb-rule-bottom"></span>
-    </div>
+
   </div>
 </section>
 
