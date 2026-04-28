@@ -401,29 +401,35 @@
     transform-origin: center center;
   }
   .kb-gate .kb-sepia {
-    animation: kbZoom 14s ease-in-out infinite alternate, kbFadeOut 8s 6s forwards;
+    animation: kbZoomA 20s ease-in-out infinite alternate, kbPulse 16s ease-in-out infinite;
     z-index: 1;
   }
   .kb-gate .kb-color {
-    animation: kbZoom2 14s ease-in-out infinite alternate, kbFadeIn 8s 6s forwards;
-    opacity: 0;
+    animation: kbZoomB 20s ease-in-out infinite alternate, kbPulseReverse 16s ease-in-out infinite;
     z-index: 2;
   }
-  @keyframes kbZoom {
+  @keyframes kbZoomA {
     0%   { transform: scale(1.0) translate(0, 0); }
-    100% { transform: scale(1.08) translate(-1%, 1%); }
+    100% { transform: scale(1.09) translate(-1.5%, 1%); }
   }
-  @keyframes kbZoom2 {
-    0%   { transform: scale(1.08) translate(1%, 0); }
+  @keyframes kbZoomB {
+    0%   { transform: scale(1.09) translate(1%, -1%); }
     100% { transform: scale(1.0) translate(0, 0); }
   }
-  @keyframes kbFadeOut {
+  /* Infinite sepia→color→sepia loop: 16s total, 6s hold, 4s cross, 6s hold, 4s cross back */
+  @keyframes kbPulse {
     0%   { opacity: 1; }
-    100% { opacity: 0; }
-  }
-  @keyframes kbFadeIn {
-    0%   { opacity: 0; }
+    37%  { opacity: 1; }
+    62%  { opacity: 0; }
+    87%  { opacity: 0; }
     100% { opacity: 1; }
+  }
+  @keyframes kbPulseReverse {
+    0%   { opacity: 0; }
+    37%  { opacity: 0; }
+    62%  { opacity: 1; }
+    87%  { opacity: 1; }
+    100% { opacity: 0; }
   }
   .kb-overlay {
     position: absolute;
@@ -456,12 +462,16 @@
   }
   .kb-headline {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.4rem, 4.5vw, 6rem);
+    font-size: clamp(3rem, 6vw, 8rem);
     font-weight: 300;
-    line-height: 1.05;
+    line-height: 1.0;
     color: var(--cream);
-    margin-bottom: 28px;
-    letter-spacing: 0.01em;
+    margin-bottom: 32px;
+    letter-spacing: -0.01em;
+  }
+  .kb-headline em {
+    font-style: italic;
+    color: var(--gold);
   }
   .kb-sublines {
     display: flex;
@@ -485,6 +495,15 @@
     letter-spacing: 0.08em;
     color: var(--gold);
     opacity: 1;
+  }
+  .kb-sub--italic {
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    text-transform: none;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    opacity: 0.85;
   }
   .kb-rule-bottom {
     display: block;
@@ -538,7 +557,7 @@
   <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">Bedrooms</span></div>
   <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">Bathrooms</span></div>
   <div class="stat-crest-wrap">
-    <img class="stat-crest" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777267295/gh_key/gh_wax_seal_transparent.png" alt="Garran Hill Crest">
+    <img class="stat-crest" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777397863/gh_key/gh_wax_seal_v3.png" alt="Garran Hill Crest">
   </div>
   <div class="stat-item"><span class="stat-number">6,072</span><span class="stat-label">Sq Ft Living</span></div>
   <div class="stat-item"><span class="stat-number">4.15</span><span class="stat-label">Acres</span></div>
@@ -562,11 +581,11 @@
     <span class="kb-rule-top"></span>
     <h2 class="kb-headline">
       Some houses hold history.<br>
-      This one shaped it.
+      <em>This one shaped it.</em>
     </h2>
     <div class="kb-sublines">
       <span class="kb-sub">Walter Hines Page built Garran Hill in 1916.</span>
-      <span class="kb-sub"><em>Ambassador. Editor. Visionary.</em></span>
+      <span class="kb-sub kb-sub--italic">Ambassador. Editor. Visionary.</span>
       <span class="kb-sub">He gave it everything. And here it stays.</span>
     </div>
     <span class="kb-rule-bottom"></span>
