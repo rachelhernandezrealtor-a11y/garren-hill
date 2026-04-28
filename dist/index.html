@@ -57,7 +57,8 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 28px 48px;
-    background: linear-gradient(to bottom, rgba(10,10,10,0.85) 0%, transparent 100%);
+    background: rgba(10,10,10,0.0);
+    transition: background 0.4s ease;
   }
   .nav-logo {
     font-family: 'Cormorant Garamond', serif;
@@ -94,10 +95,10 @@
     position: absolute; inset: 0;
     background: linear-gradient(
       to bottom,
-      rgba(10,10,10,0.15) 0%,
-      rgba(10,10,10,0.1) 40%,
-      rgba(10,10,10,0.55) 75%,
-      rgba(10,10,10,0.9) 100%
+      rgba(10,10,10,0.5) 0%,
+      rgba(10,10,10,0.15) 35%,
+      rgba(10,10,10,0.5) 70%,
+      rgba(10,10,10,0.92) 100%
     );
     z-index: 1;
   }
@@ -138,13 +139,14 @@
 
   /* STAT BAR */
   .stat-bar {
-    position: relative;
+    position: sticky;
+    top: 0;
     background: var(--dark);
     border-top: 1px solid rgba(201,169,110,0.35);
     border-bottom: 1px solid rgba(201,169,110,0.35);
     display: flex; align-items: center; justify-content: center;
     gap: 0; padding: 0;
-    z-index: 10;
+    z-index: 90;
   }
   .stat-item {
     display: flex; flex-direction: column; align-items: center;
@@ -186,9 +188,9 @@
     position: absolute; inset: 0; z-index: 1;
     background: linear-gradient(
       to right,
-      rgba(10,10,10,0.78) 0%,
-      rgba(10,10,10,0.3) 55%,
-      rgba(10,10,10,0.05) 100%
+      rgba(10,10,10,0.88) 0%,
+      rgba(10,10,10,0.55) 50%,
+      rgba(10,10,10,0.1) 100%
     );
   }
   .full-bleed-overlay.bottom {
@@ -850,6 +852,16 @@
 </div>
 
 <script>
+// NAV SCROLL BEHAVIOR
+const navEl = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > window.innerHeight * 0.85) {
+    navEl.style.background = 'rgba(10,10,10,0.95)';
+  } else {
+    navEl.style.background = 'rgba(10,10,10,0.0)';
+  }
+});
+
 // CURSOR
 const dot = document.getElementById('cursorDot');
 const ring = document.getElementById('cursorRing');
