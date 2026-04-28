@@ -466,6 +466,8 @@
   }
   .kb-line-2 {
     display: block;
+    clear: both;
+    text-align: center;
     opacity: 0;
     animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 1.4s forwards;
   }
@@ -578,27 +580,25 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.2rem, 4.2vw, 5.8rem);
     font-weight: 200;
-    line-height: 1.0;
+    line-height: 1.05;
     color: rgba(255,255,255,0.93);
     margin-bottom: 14px;
     letter-spacing: 0.12em;
-    /* Engraved: dark below, faint light above — feels pressed into page */
     text-shadow:
       0 1px 0   rgba(0,0,0,0.9),
       0 2px 4px rgba(0,0,0,0.7),
       0 -1px 0  rgba(255,255,255,0.06);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.08em;
+    display: block;
+    text-align: center;
   }
-  /* Drop cap — the S becomes a sculptural object */
+  /* Drop cap — editorial. S + text are ONE object. */
   .kb-drop-cap {
     font-size: 3.4em;
     line-height: 0.72;
     float: left;
-    margin-right: 0.02em;
-    margin-top: 0.06em;
+    margin-right: 0.06em;
+    margin-top: 0.04em;
+    margin-bottom: -0.1em;
     font-weight: 200;
     font-family: 'Cormorant Garamond', serif;
     color: rgba(255,255,255,0.97);
@@ -608,7 +608,9 @@
       0 -1px 0  rgba(255,255,255,0.12);
   }
   .kb-line-1 {
-    overflow: hidden; /* clear float */
+    display: block;
+    overflow: hidden;
+    text-align: left;
   }
   .kb-headline em {
     font-style: italic;
