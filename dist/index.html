@@ -65,8 +65,8 @@
   .stat-item:last-child { border-right: none; }
   .stat-number { font-size: 1.05rem; font-weight: 300; letter-spacing: 0.06em; color: var(--cream); }
   .stat-label { font-size: 0.52rem; letter-spacing: 0.25em; font-weight: 400; color: var(--gold); text-transform: uppercase; margin-top: 4px; opacity: 0.8; }
-  .stat-crest-wrap { padding: 0 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; align-self: stretch; }
-  .stat-crest { height: 58px; width: auto; display: block; filter: drop-shadow(0 0 14px rgba(201,169,110,0.5)) drop-shadow(0 0 28px rgba(201,169,110,0.25)); }
+  .stat-crest-wrap { padding: 0 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; align-self: stretch; position: relative; overflow: visible; }
+  .stat-crest { height: 120px; width: auto; display: block; position: relative; top: -30px; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.6)); }
 
   /* BEAT 1 — ADDRESS */
   .address-beat {
@@ -281,8 +281,7 @@
     <div class="hero-eyebrow">200 Hollycrest Dr &nbsp;|&nbsp; Pinehurst, NC &nbsp;|&nbsp; Est. 1916</div>
     <div class="hero-title">Garran Hill</div>
     <div class="hero-rule"></div>
-    <div class="hero-subhead">Some houses hold history. <em style="color:#C9A96E;">This one shaped it.</em></div>
-    <div style="margin-top:16px; font-family:'Cormorant Garamond',serif; font-size:clamp(0.75rem,1vw,0.95rem); letter-spacing:0.18em; color:#F5F0E8; opacity:0.6; text-transform:uppercase; font-weight:400;">Built in 1916. Still the finest house in Moore County.</div>
+    <div class="hero-subhead"><em>Neo-Georgian.&nbsp; Walter Hines Page.&nbsp; 110 years of unbroken stewardship.</em></div>
     <a href="#history" class="hero-tour-link">Tour the Estate ↓</a>
   </div>
 
@@ -292,7 +291,7 @@
   <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">Bedrooms</span></div>
   <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">Bathrooms</span></div>
   <div class="stat-crest-wrap">
-    <img class="stat-crest" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777267295/gh_key/gh_wax_seal_transparent.png" alt="Garran Hill Crest">
+    <img class="stat-crest" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777258787/gh_key/gh_wax_stamp_3d.png" alt="Garran Hill Crest">
   </div>
   <div class="stat-item"><span class="stat-number">6,072</span><span class="stat-label">Sq Ft Living</span></div>
   <div class="stat-item"><span class="stat-number">4.15</span><span class="stat-label">Acres</span></div>
