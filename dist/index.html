@@ -448,6 +448,50 @@
     80%  { opacity: 0.70; transform: scale(1.09); }
     100% { opacity: 0.62; transform: scale(1.03); }
   }
+  @keyframes fadeUp {
+    0%   { opacity: 0; transform: translateY(18px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUpSub {
+    0%   { opacity: 0; transform: translateY(12px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── STAGGERED REVEAL ── */
+  .kb-line-1 {
+    display: block;
+    opacity: 0;
+    animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s forwards;
+  }
+  .kb-line-2 {
+    display: block;
+    opacity: 0;
+    animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 1.4s forwards;
+  }
+  .kb-rule-top-anim {
+    opacity: 0;
+    animation: fadeUpSub 0.7s ease 0.1s forwards;
+  }
+  .kb-sub-1 {
+    opacity: 0;
+    animation: fadeUpSub 0.7s ease 2.4s forwards;
+  }
+  .kb-sub-2 {
+    opacity: 0;
+    animation: fadeUpSub 0.7s ease 2.9s forwards;
+  }
+  .kb-sub-3 {
+    opacity: 0;
+    animation: fadeUpSub 0.7s ease 3.4s forwards;
+  }
+  .kb-address-anim {
+    opacity: 0;
+    animation: fadeUpSub 0.7s ease 4.0s forwards;
+  }
+  .kb-rule-bottom-anim {
+    opacity: 0;
+    animation: fadeUpSub 0.7s ease 4.4s forwards;
+  }
   .kb-lantern-glow {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -518,11 +562,14 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.4rem, 5vw, 6.5rem);
     font-weight: 300;
-    line-height: 1.0;
+    line-height: 1.1;
     color: #fff;
     margin-bottom: 36px;
     letter-spacing: -0.01em;
     text-shadow: 0 2px 40px rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 0.05em;
   }
   .kb-headline em {
     font-style: italic;
@@ -682,33 +729,33 @@
   <div class="kb-copy">
     <!-- BASE LAYER — cream/gold, visible on sepia -->
     <div class="kb-copy-layer kb-copy-base">
-      <span class="kb-rule-top"></span>
+      <span class="kb-rule-top kb-rule-top-anim"></span>
       <h2 class="kb-headline">
-        Some houses hold history.<br>
-        <em>This one shaped it.</em>
+        <span class="kb-line-1">Some houses hold history.</span>
+        <em class="kb-line-2">This one shaped it.</em>
       </h2>
       <div class="kb-sublines">
-        <span class="kb-sub">Walter Hines Page built Garran Hill in 1916.</span>
-        <span class="kb-sub kb-sub--italic">Ambassador. Editor. Visionary.</span>
-        <span class="kb-sub">He gave it everything. And here it stays.</span>
+        <span class="kb-sub kb-sub-1">Walter Hines Page built Garran Hill in 1916.</span>
+        <span class="kb-sub kb-sub--italic kb-sub-2">Ambassador. Editor. Visionary.</span>
+        <span class="kb-sub kb-sub-3">He gave it everything. And here it stays.</span>
       </div>
-      <span class="kb-address">200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, North Carolina &nbsp;·&nbsp; Est. 1916</span>
-      <span class="kb-rule-bottom"></span>
+      <span class="kb-address kb-address-anim">200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, North Carolina &nbsp;·&nbsp; Est. 1916</span>
+      <span class="kb-rule-bottom kb-rule-bottom-anim"></span>
     </div>
     <!-- BLEND LAYER — dark tones, fades in with color photo via luminosity -->
     <div class="kb-copy-layer kb-copy-top">
-      <span class="kb-rule-top"></span>
+      <span class="kb-rule-top kb-rule-top-anim"></span>
       <h2 class="kb-headline">
-        Some houses hold history.<br>
-        <em>This one shaped it.</em>
+        <span class="kb-line-1">Some houses hold history.</span>
+        <em class="kb-line-2">This one shaped it.</em>
       </h2>
       <div class="kb-sublines">
-        <span class="kb-sub">Walter Hines Page built Garran Hill in 1916.</span>
-        <span class="kb-sub kb-sub--italic">Ambassador. Editor. Visionary.</span>
-        <span class="kb-sub">He gave it everything. And here it stays.</span>
+        <span class="kb-sub kb-sub-1">Walter Hines Page built Garran Hill in 1916.</span>
+        <span class="kb-sub kb-sub--italic kb-sub-2">Ambassador. Editor. Visionary.</span>
+        <span class="kb-sub kb-sub-3">He gave it everything. And here it stays.</span>
       </div>
-      <span class="kb-address">200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, North Carolina &nbsp;·&nbsp; Est. 1916</span>
-      <span class="kb-rule-bottom"></span>
+      <span class="kb-address kb-address-anim">200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, North Carolina &nbsp;·&nbsp; Est. 1916</span>
+      <span class="kb-rule-bottom kb-rule-bottom-anim"></span>
     </div>
   </div>
 </section>
