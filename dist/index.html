@@ -90,7 +90,7 @@
   .address-rule { width: 120px; height: 1px; background: var(--gold); margin: 48px auto 0; opacity: 0.5; }
 
   /* BEAT 2 — WHP SECTION */
-  .whp-section { background: var(--dark); padding: 120px 72px; }
+  .whp-section { background: var(--dark); padding: 120px 72px; position: relative; overflow: hidden; }
   .whp-inner { max-width: 1200px; margin: 0 auto; }
   .whp-top { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; margin-bottom: 100px; }
   .whp-portrait-wrap { position: relative; }
@@ -701,6 +701,58 @@
     .kb-drop-cap { font-size: 3.2em; }
   }
 
+
+  /* WHP LETTERS BG — his correspondence as wallpaper */
+  .whp-letters-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .whp-letters-bg img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.055;
+    filter: sepia(0.6) brightness(1.1);
+    mix-blend-mode: screen;
+  }
+  .whp-inner { position: relative; z-index: 1; }
+
+  /* THRESHOLD PORTRAIT BLEED — WHP watching from the left */
+  .threshold-portrait-bleed {
+    position: absolute;
+    left: -6%;
+    top: 0;
+    bottom: 0;
+    width: 38%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .threshold-portrait-bleed img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+    filter: sepia(0.35) brightness(0.55) contrast(1.05);
+    opacity: 0.72;
+    mask-image: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 55%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 55%, rgba(0,0,0,0) 100%);
+  }
+  .threshold-content { position: relative; z-index: 2; padding: 100px 72px; max-width: 680px; margin-left: 28%; }
+
+  @media (max-width: 768px) {
+    .threshold-portrait-bleed { display: none; }
+    .threshold-content { margin-left: 0; padding: 60px 28px; max-width: 100%; }
+  }
+
 </style>
 </head>
 <body>
@@ -791,6 +843,9 @@
 
 <!-- BEAT 2 — WALTER HINES PAGE -->
 <section class="whp-section" id="whp">
+  <div class="whp-letters-bg" aria-hidden="true">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777244132/gh_key/gh_whp_letters1.jpg" alt="">
+  </div>
   <div class="whp-inner">
 
     <!-- Portrait + Bio -->
@@ -886,6 +941,9 @@
 <section class="threshold-beat fade-in" id="threshold">
   <img class="threshold-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777393131/gh_key/gh_threshold_stone_wide.jpg" alt="Garran Hill threshold — GARRAN HILL · 1916">
   <div class="threshold-overlay"></div>
+  <div class="threshold-portrait-bleed" aria-hidden="true">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777244059/gh_key/gh_191.jpg" alt="">
+  </div>
   <div class="threshold-content">
     <span class="threshold-eyebrow">The Threshold</span>
     <h2 class="threshold-headline">The door has been<br>open since 1916.</h2>
