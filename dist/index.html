@@ -460,6 +460,7 @@
   /* ── STAGGERED REVEAL ── */
   .kb-line-1 {
     display: block;
+    overflow: hidden;
     opacity: 0;
     animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s forwards;
   }
@@ -547,10 +548,12 @@
   .kb-copy {
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 900px;
     z-index: 4;
-    padding: 64px 72px 0;
+    padding: 72px 48px 0;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -590,18 +593,22 @@
     gap: 0.08em;
   }
   /* Drop cap — the S becomes a sculptural object */
-  .kb-line-1::first-letter {
-    font-size: 3.8em;
-    line-height: 0.72;
+  .kb-drop-cap {
+    font-size: 4.2em;
+    line-height: 0.68;
     float: left;
-    margin-right: 0.04em;
-    margin-top: 0.06em;
+    margin-right: 0.02em;
+    margin-top: 0.08em;
     font-weight: 200;
+    font-family: 'Cormorant Garamond', serif;
     color: rgba(255,255,255,0.97);
     text-shadow:
       0 2px 0   rgba(0,0,0,1),
-      0 3px 8px rgba(0,0,0,0.8),
-      0 -1px 0  rgba(255,255,255,0.1);
+      0 4px 10px rgba(0,0,0,0.8),
+      0 -1px 0  rgba(255,255,255,0.12);
+  }
+  .kb-line-1 {
+    overflow: hidden; /* clear float */
   }
   .kb-headline em {
     font-style: italic;
@@ -688,7 +695,7 @@
   @media (max-width: 768px) {
     .kb-copy { padding: 48px 28px 0; }
     .kb-headline { font-size: clamp(1.8rem, 6.5vw, 3rem); letter-spacing: 0.08em; }
-    .kb-line-1::first-letter { font-size: 3.2em; }
+    .kb-drop-cap { font-size: 3.2em; }
   }
 
 </style>
@@ -757,7 +764,7 @@
     <div class="kb-copy-layer kb-copy-base">
       <span class="kb-rule-top kb-rule-top-anim"></span>
       <h2 class="kb-headline">
-        <span class="kb-line-1">Some houses hold history.</span>
+        <span class="kb-line-1"><span class="kb-drop-cap">S</span>ome houses hold history.</span>
         <em class="kb-line-2">This one shaped it.</em>
       </h2>
       <div class="kb-sublines">
