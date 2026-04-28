@@ -67,28 +67,6 @@
   .stat-crest-wrap { padding: 0 40px; display: flex; align-items: center; justify-content: center; position: relative; flex-shrink: 0; }
   .stat-crest { height: 80px; width: auto; position: relative; top: -40px; filter: drop-shadow(0 0 14px rgba(201,169,110,0.5)) drop-shadow(0 0 28px rgba(201,169,110,0.25)); }
 
-  /* BEAT 1 — ADDRESS */
-  .address-beat {
-    background: var(--dark);
-    padding: 140px 72px;
-    text-align: center;
-    position: relative;
-  }
-  .address-beat::before { content: ''; display: block; width: 1px; height: 80px; background: rgba(201,169,110,0.3); margin: 0 auto 80px; }
-  .address-script {
-    font-family: 'Pinyon Script', cursive;
-    font-size: clamp(3.5rem, 6vw, 7rem);
-    color: var(--gold); line-height: 1.2;
-    display: block; margin-bottom: 10px;
-  }
-  .address-city {
-    font-family: 'Pinyon Script', cursive;
-    font-size: clamp(2.5rem, 4vw, 5rem);
-    color: var(--gold); opacity: 0.8; line-height: 1.2;
-    display: block;
-  }
-  .address-rule { width: 120px; height: 1px; background: var(--gold); margin: 48px auto 0; opacity: 0.5; }
-
   /* BEAT 3 — FACADE FULL BLEED */
   .facade-beat { position: relative; height: 92vh; overflow: hidden; }
   .facade-beat img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
@@ -307,6 +285,31 @@
     .stat-item { padding: 16px 16px; }
     .stat-label { font-size: 0.46rem; }
   }
+
+  /* ADDRESS LINE — after stat bar */
+  .address-line {
+    background: var(--dark);
+    padding: 64px 72px 56px;
+    text-align: center;
+    position: relative;
+  }
+  .address-line-script {
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(2.6rem, 4.5vw, 5.2rem);
+    color: var(--gold);
+    line-height: 1.1;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .address-line-city {
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.45);
+    display: block;
+    margin-bottom: 40px;
+  }
+  .address-line-rule { width: 80px; height: 1px; background: var(--gold); margin: 0 auto; opacity: 0.35; }
 
   /* KEN BURNS — GATE CROSSFADE */
   .kb-gate {
@@ -1029,6 +1032,13 @@
   <div class="stat-item"><span class="stat-number">6,072</span><span class="stat-label">Sq Ft Living</span></div>
   <div class="stat-item"><span class="stat-number">4.15</span><span class="stat-label">Acres</span></div>
   <div class="stat-item"><span class="stat-number">$4,250,000</span><span class="stat-label">Offered At</span></div>
+</div>
+
+<!-- ADDRESS LINE -->
+<div class="address-line">
+  <span class="address-line-script">200 Hollycrest Drive</span>
+  <span class="address-line-city">Pinehurst, North Carolina &nbsp;·&nbsp; Moore County &nbsp;·&nbsp; Est. 1916</span>
+  <div class="address-line-rule"></div>
 </div>
 
 <!-- KEN BURNS — GATE ARRIVAL / HISTORY BRIDGE -->
