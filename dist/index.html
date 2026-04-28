@@ -9,149 +9,539 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root { --dark: #0a0a0a; --gold: #C9A96E; --cream: #F5F0E8; --text: rgba(245,240,232,0.82); }
+  
+  :root {
+    --dark: #0a0a0a;
+    --gold: #C9A96E;
+    --cream: #F5F0E8;
+    --text: rgba(245,240,232,0.82);
+  }
+
   html { scroll-behavior: smooth; }
-  body { background: var(--dark); color: var(--cream); font-family: 'Cormorant Garamond', serif; cursor: none; overflow-x: hidden; }
+  
+  body {
+    background: var(--dark);
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    cursor: none;
+    overflow-x: hidden;
+  }
 
   /* CURSOR */
-  .cursor-dot { position:fixed; width:8px; height:8px; background:var(--gold); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:transform 0.1s ease; mix-blend-mode:difference; }
-  .cursor-ring { position:fixed; width:36px; height:36px; border:1px solid var(--gold); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:all 0.18s ease; opacity:0.6; }
+  .cursor-dot {
+    position: fixed; width: 8px; height: 8px;
+    background: var(--gold); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    position: fixed; width: 36px; height: 36px;
+    border: 1px solid var(--gold); border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: all 0.18s ease;
+    opacity: 0.6;
+  }
 
-  /* GRAIN */
-  body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9000; opacity:0.035; }
+  /* GRAIN TEXTURE */
+  body::after {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9000; opacity: 0.035;
+  }
 
   /* NAV */
-  nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:28px 48px; background:rgba(10,10,10,0.0); transition:background 0.4s ease; }
-  .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:400; letter-spacing:0.12em; color:var(--cream); opacity:0.9; text-decoration:none; }
-  .nav-links { display:flex; gap:40px; align-items:center; list-style:none; }
-  .nav-links a { font-size:0.7rem; letter-spacing:0.2em; font-weight:400; color:var(--cream); opacity:0.7; text-decoration:none; text-transform:uppercase; transition:opacity 0.3s; }
-  .nav-links a:hover { opacity:1; }
-  .nav-links .nav-cta a { color:var(--gold); opacity:1; border-bottom:1px solid var(--gold); padding-bottom:2px; }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 48px;
+    background: rgba(10,10,10,0.0);
+    transition: background 0.4s ease;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-weight: 400;
+    letter-spacing: 0.12em; color: var(--cream); opacity: 0.9;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex; gap: 40px; align-items: center;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.7rem; letter-spacing: 0.2em; font-weight: 400;
+    color: var(--cream); opacity: 0.7; text-decoration: none;
+    text-transform: uppercase; transition: opacity 0.3s;
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-links .nav-cta a {
+    color: var(--gold); opacity: 1; border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+  }
 
   /* HERO */
-  .hero { position:relative; height:100vh; width:100%; display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden; }
-  .hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
-  .hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.15) 35%, rgba(10,10,10,0.5) 70%, rgba(10,10,10,0.92) 100%); z-index:1; }
-  .hero-content { position:relative; z-index:2; padding:0 72px 120px; }
-  .hero-eyebrow { font-size:0.65rem; letter-spacing:0.28em; font-weight:400; color:var(--gold); text-transform:uppercase; opacity:0.9; margin-bottom:20px; }
-  .hero-title { font-family:'Pinyon Script',cursive; font-size:clamp(6rem,11vw,14rem); line-height:0.88; color:var(--cream); margin-bottom:28px; }
-  .hero-rule { width:80px; height:1px; background:var(--gold); margin-bottom:20px; opacity:0.7; }
-  .hero-subhead { font-size:clamp(1rem,1.4vw,1.3rem); font-style:italic; font-weight:300; color:var(--cream); opacity:0.78; letter-spacing:0.04em; }
-  .hero-tour-link { display:inline-block; margin-top:36px; font-size:0.65rem; letter-spacing:0.22em; color:var(--gold); text-decoration:none; text-transform:uppercase; opacity:0.8; transition:opacity 0.3s; }
-  .hero-tour-link:hover { opacity:1; }
+  .hero {
+    position: relative; height: 100vh; width: 100%;
+    display: flex; flex-direction: column;
+    justify-content: flex-end; overflow: hidden;
+  }
+  .hero-video {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; z-index: 0;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(10,10,10,0.5) 0%,
+      rgba(10,10,10,0.15) 35%,
+      rgba(10,10,10,0.5) 70%,
+      rgba(10,10,10,0.92) 100%
+    );
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 72px 0 72px;
+    padding-bottom: 120px;
+  }
+  .hero-eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.28em; font-weight: 400;
+    color: var(--gold); text-transform: uppercase; opacity: 0.9;
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(6rem, 11vw, 14rem);
+    line-height: 0.88; color: var(--cream);
+    margin-bottom: 28px;
+  }
+  .hero-rule { 
+    width: 80px; height: 1px; background: var(--gold); 
+    margin-bottom: 20px; opacity: 0.7;
+  }
+  .hero-subhead {
+    font-size: clamp(1rem, 1.4vw, 1.3rem);
+    font-style: italic; font-weight: 300;
+    color: var(--cream); opacity: 0.78;
+    letter-spacing: 0.04em;
+  }
+  .hero-tour-link {
+    display: inline-block; margin-top: 36px;
+    font-size: 0.65rem; letter-spacing: 0.22em;
+    color: var(--gold); text-decoration: none;
+    text-transform: uppercase; opacity: 0.8;
+    transition: opacity 0.3s;
+  }
+  .hero-tour-link:hover { opacity: 1; }
 
   /* STAT BAR */
-  .stat-bar { position:sticky; top:0; background:var(--dark); border-top:1px solid rgba(201,169,110,0.35); border-bottom:1px solid rgba(201,169,110,0.35); display:flex; align-items:center; justify-content:center; z-index:90; }
-  .stat-item { display:flex; flex-direction:column; align-items:center; padding:24px 36px; border-right:1px solid rgba(201,169,110,0.15); flex:1; }
-  .stat-item:last-child { border-right:none; }
-  .stat-number { font-size:1.1rem; font-weight:300; letter-spacing:0.06em; color:var(--cream); }
-  .stat-label { font-size:0.55rem; letter-spacing:0.25em; font-weight:400; color:var(--gold); text-transform:uppercase; margin-top:4px; opacity:0.8; }
-  .stat-crest-wrap { padding:0 48px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-  .stat-crest { height:72px; width:auto; filter:drop-shadow(0 0 12px rgba(201,169,110,0.5)) drop-shadow(0 0 24px rgba(201,169,110,0.25)); }
+  .stat-bar {
+    position: sticky;
+    top: 0;
+    background: var(--dark);
+    border-top: 1px solid rgba(201,169,110,0.35);
+    border-bottom: 1px solid rgba(201,169,110,0.35);
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; padding: 0;
+    z-index: 90;
+  }
+  .stat-item {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 22px 40px;
+    border-right: 1px solid rgba(201,169,110,0.15);
+    flex: 1;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-number {
+    font-size: 1.1rem; font-weight: 300; letter-spacing: 0.06em;
+    color: var(--cream);
+  }
+  .stat-label {
+    font-size: 0.55rem; letter-spacing: 0.25em; font-weight: 400;
+    color: var(--gold); text-transform: uppercase; margin-top: 4px; opacity: 0.8;
+  }
+  .stat-crest-wrap {
+    padding: 0 48px; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .stat-crest {
+    height: 72px; width: auto;
+    filter: drop-shadow(0 0 12px rgba(201,169,110,0.4));
+  }
 
-  /* FULL BLEED */
-  .full-bleed { position:relative; width:100%; min-height:88vh; display:flex; align-items:flex-end; overflow:hidden; }
-  .full-bleed img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
-  .full-bleed-overlay { position:absolute; inset:0; z-index:1; background:linear-gradient(to right, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.55) 50%, rgba(10,10,10,0.1) 100%); }
-  .full-bleed-overlay.bottom { background:linear-gradient(to bottom, rgba(10,10,10,0.05) 0%, rgba(10,10,10,0.3) 50%, rgba(10,10,10,0.85) 100%); }
-  .full-bleed-content { position:relative; z-index:2; padding:80px 72px; max-width:640px; }
-  .full-bleed-content.centered { max-width:100%; text-align:center; display:flex; flex-direction:column; align-items:center; padding:100px 72px; width:100%; }
+  /* SECTION COMPONENTS */
+  
+  /* Full bleed image section */
+  .full-bleed {
+    position: relative; width: 100%;
+    min-height: 88vh; display: flex; align-items: flex-end;
+    overflow: hidden;
+  }
+  .full-bleed img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; z-index: 0;
+  }
+  .full-bleed-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(
+      to right,
+      rgba(10,10,10,0.88) 0%,
+      rgba(10,10,10,0.55) 50%,
+      rgba(10,10,10,0.1) 100%
+    );
+  }
+  .full-bleed-overlay.bottom {
+    background: linear-gradient(
+      to bottom,
+      rgba(10,10,10,0.05) 0%,
+      rgba(10,10,10,0.3) 50%,
+      rgba(10,10,10,0.85) 100%
+    );
+  }
+  .full-bleed-content {
+    position: relative; z-index: 2;
+    padding: 80px 72px;
+    max-width: 640px;
+  }
+  .full-bleed-content.centered {
+    max-width: 100%; text-align: center;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 100px 72px;
+    width: 100%;
+  }
 
-  /* CINEMATIC */
-  .cinematic { display:grid; grid-template-columns:1fr 1fr; min-height:75vh; }
-  .cinematic.flip { direction:rtl; }
-  .cinematic.flip > * { direction:ltr; }
-  .cinematic-image { position:relative; overflow:hidden; }
-  .cinematic-image img { width:100%; height:100%; object-fit:cover; display:block; }
-  .cinematic-text { background:var(--dark); display:flex; flex-direction:column; justify-content:center; padding:80px 72px; }
+  /* Cinematic 50/50 */
+  .cinematic {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 75vh;
+  }
+  .cinematic.flip { direction: rtl; }
+  .cinematic.flip > * { direction: ltr; }
+  .cinematic-image {
+    position: relative; overflow: hidden;
+  }
+  .cinematic-image img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+  }
+  .cinematic-text {
+    background: var(--dark);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 72px;
+  }
 
-  /* INTERSTITIAL */
-  .interstitial { background:var(--dark); padding:100px 72px; text-align:center; position:relative; }
-  .interstitial::before { content:''; display:block; width:120px; height:1px; background:var(--gold); margin:0 auto 60px; }
-  .interstitial::after { content:''; display:block; width:120px; height:1px; background:var(--gold); margin:60px auto 0; }
+  /* Interstitial */
+  .interstitial {
+    background: var(--dark);
+    padding: 100px 72px;
+    text-align: center;
+    position: relative;
+  }
+  .interstitial::before {
+    content: ''; display: block;
+    width: 120px; height: 1px; background: var(--gold);
+    margin: 0 auto 60px;
+  }
+  .interstitial::after {
+    content: ''; display: block;
+    width: 120px; height: 1px; background: var(--gold);
+    margin: 60px auto 0;
+  }
+  
+  /* Breath — single naked line */
+  .breath {
+    background: var(--dark);
+    padding: 64px 72px;
+    text-align: center;
+  }
+  .breath p {
+    font-style: italic; font-size: clamp(1.2rem, 2vw, 1.8rem);
+    font-weight: 300; opacity: 0.45; letter-spacing: 0.04em;
+    color: var(--cream);
+  }
 
-  /* BREATH */
-  .breath { background:var(--dark); padding:64px 72px; text-align:center; }
-  .breath p { font-style:italic; font-size:clamp(1.2rem,2vw,1.8rem); font-weight:300; opacity:0.45; letter-spacing:0.04em; color:var(--cream); }
+  /* TYPOGRAPHY SYSTEM */
+  .eyebrow {
+    font-size: 0.62rem; letter-spacing: 0.28em; font-weight: 400;
+    color: var(--gold); text-transform: uppercase; opacity: 0.9;
+    margin-bottom: 20px; display: block;
+  }
+  
+  h2.section-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5.5vw, 6.5rem);
+    font-weight: 300; line-height: 1.0;
+    color: var(--cream); letter-spacing: -0.01em;
+    margin-bottom: 32px;
+  }
 
-  /* TYPOGRAPHY */
-  .eyebrow { font-size:0.62rem; letter-spacing:0.28em; font-weight:400; color:var(--gold); text-transform:uppercase; opacity:0.9; margin-bottom:20px; display:block; }
-  h2.section-headline { font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,5.5vw,6.5rem); font-weight:300; line-height:1.0; color:var(--cream); letter-spacing:-0.01em; margin-bottom:32px; }
-  .section-body { font-size:clamp(1rem,1.3vw,1.2rem); font-weight:300; line-height:1.75; color:var(--text); letter-spacing:0.01em; max-width:520px; }
-  .section-body p + p { margin-top:1.2em; }
-  .bridge-line { display:block; margin-top:36px; font-style:italic; font-size:1rem; color:var(--gold); opacity:0.8; letter-spacing:0.04em; }
-  blockquote.pull-quote { margin-top:40px; font-family:'Pinyon Script',cursive; font-size:clamp(2rem,3.5vw,4rem); line-height:1.1; color:var(--gold); }
-  .quote-attr { display:block; margin-top:14px; font-size:0.6rem; letter-spacing:0.22em; color:var(--cream); opacity:0.5; text-transform:uppercase; }
+  h2.section-headline.script {
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(3.5rem, 6vw, 8rem);
+    font-weight: 400; line-height: 0.9;
+  }
 
-  /* WHP */
-  .whp-section { position:relative; min-height:90vh; display:flex; align-items:center; overflow:hidden; }
-  .whp-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; z-index:0; filter:brightness(0.4) sepia(0.3); }
-  .whp-overlay { position:absolute; inset:0; z-index:1; background:linear-gradient(to right, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,0.3) 100%); }
-  .whp-content { position:relative; z-index:2; padding:100px 72px; max-width:680px; }
+  .section-body {
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    font-weight: 300; line-height: 1.75;
+    color: var(--text); letter-spacing: 0.01em;
+    max-width: 520px;
+  }
 
-  /* BLUE FOX */
-  .blue-fox { background:var(--dark); padding:120px 72px; text-align:center; position:relative; }
-  .blue-fox::before { content:''; display:block; width:80px; height:1px; background:var(--gold); margin:0 auto 72px; }
-  .blue-fox::after { content:''; display:block; width:80px; height:1px; background:var(--gold); margin:72px auto 0; }
-  .blue-fox h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,5rem); font-weight:300; line-height:1.15; color:var(--cream); margin-bottom:40px; max-width:700px; margin-left:auto; margin-right:auto; }
-  .blue-fox p { font-size:clamp(1rem,1.3vw,1.2rem); font-weight:300; line-height:1.75; color:var(--text); max-width:560px; margin:0 auto 1.2em; }
-  .blue-fox .locked-line { font-style:italic; font-size:clamp(1.2rem,2vw,1.8rem); color:var(--gold); opacity:0.9; margin-top:40px; display:block; }
+  .section-body p + p { margin-top: 1.2em; }
+
+  .bridge-line {
+    display: block; margin-top: 36px;
+    font-style: italic; font-size: 1rem;
+    color: var(--gold); opacity: 0.8; letter-spacing: 0.04em;
+  }
+
+  blockquote.pull-quote {
+    margin-top: 40px;
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(2rem, 3.5vw, 4rem);
+    line-height: 1.1; color: var(--gold);
+  }
+  .quote-attr {
+    display: block; margin-top: 14px;
+    font-size: 0.6rem; letter-spacing: 0.22em;
+    color: var(--cream); opacity: 0.5; text-transform: uppercase;
+  }
+
+  /* WHP PORTRAIT SECTION */
+  .whp-section {
+    position: relative; min-height: 90vh;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .whp-bg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center top; z-index: 0;
+    filter: brightness(0.4) sepia(0.3);
+  }
+  .whp-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(
+      to right,
+      rgba(10,10,10,0.92) 0%,
+      rgba(10,10,10,0.7) 50%,
+      rgba(10,10,10,0.3) 100%
+    );
+  }
+  .whp-content {
+    position: relative; z-index: 2;
+    padding: 100px 72px;
+    max-width: 680px;
+  }
+
+  /* BLUE FOX SECTION */
+  .blue-fox {
+    background: var(--dark);
+    padding: 120px 72px;
+    text-align: center;
+    position: relative;
+  }
+  .blue-fox::before {
+    content: ''; display: block;
+    width: 80px; height: 1px; background: var(--gold);
+    margin: 0 auto 72px;
+  }
+  .blue-fox::after {
+    content: ''; display: block;
+    width: 80px; height: 1px; background: var(--gold);
+    margin: 72px auto 0;
+  }
+  .blue-fox h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 4.5rem);
+    font-weight: 300; line-height: 1.1;
+    color: var(--cream); margin-bottom: 40px;
+    max-width: 680px; margin-left: auto; margin-right: auto;
+  }
+  .blue-fox p {
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    font-weight: 300; line-height: 1.8;
+    color: var(--text); max-width: 560px;
+    margin: 0 auto 24px;
+  }
+  .blue-fox .locked-line {
+    font-style: italic; font-size: clamp(1.2rem, 2vw, 1.8rem);
+    color: var(--gold); opacity: 0.9; margin-top: 8px;
+  }
 
   /* CLOSING */
-  .closing { position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; text-align:center; }
-  .closing-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
-  .closing-overlay { position:absolute; inset:0; z-index:1; background:rgba(10,10,10,0.72); }
-  .closing-content { position:relative; z-index:2; padding:80px 48px; }
-  .closing-crest { height:110px; width:auto; margin-bottom:40px; filter:drop-shadow(0 0 18px rgba(201,169,110,0.5)) drop-shadow(0 0 40px rgba(201,169,110,0.25)); }
-  .closing-title { font-family:'Pinyon Script',cursive; font-size:clamp(5rem,9vw,12rem); line-height:0.85; color:var(--cream); margin-bottom:32px; }
-  .closing-details { font-size:0.7rem; letter-spacing:0.25em; color:var(--gold); text-transform:uppercase; opacity:0.9; margin-bottom:20px; }
-  .closing-line { font-style:italic; font-size:clamp(1.2rem,2vw,1.8rem); font-weight:300; color:var(--cream); opacity:0.85; margin-bottom:56px; letter-spacing:0.03em; }
-  .closing-cta { display:inline-block; border:1px solid var(--gold); color:var(--gold); text-decoration:none; font-size:0.7rem; letter-spacing:0.22em; text-transform:uppercase; padding:18px 48px; transition:all 0.3s ease; cursor:none; }
-  .closing-cta:hover { background:var(--gold); color:var(--dark); }
-  .closing-confidence { margin-top:20px; font-size:0.58rem; letter-spacing:0.18em; color:var(--cream); opacity:0.4; text-transform:uppercase; }
+  .closing {
+    position: relative; min-height: 90vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; overflow: hidden;
+  }
+  .closing-bg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; z-index: 0;
+    filter: brightness(0.35);
+  }
+  .closing-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: rgba(10,10,10,0.55);
+  }
+  .closing-content {
+    position: relative; z-index: 2;
+    padding: 80px 48px;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 0;
+  }
+  .closing-crest {
+    height: 120px; width: auto; margin-bottom: 48px;
+    filter: drop-shadow(0 0 24px rgba(201,169,110,0.5));
+  }
+  .closing-title {
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(5rem, 9vw, 12rem);
+    line-height: 0.85; color: var(--cream);
+    margin-bottom: 32px;
+  }
+  .closing-details {
+    font-size: 0.7rem; letter-spacing: 0.25em;
+    color: var(--gold); text-transform: uppercase;
+    opacity: 0.9; margin-bottom: 20px;
+  }
+  .closing-line {
+    font-style: italic; font-size: clamp(1.2rem, 2vw, 1.8rem);
+    font-weight: 300; color: var(--cream); opacity: 0.85;
+    margin-bottom: 56px; letter-spacing: 0.03em;
+  }
+  .closing-cta {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold); text-decoration: none;
+    font-size: 0.7rem; letter-spacing: 0.22em;
+    text-transform: uppercase; padding: 18px 48px;
+    transition: all 0.3s ease;
+    cursor: none;
+  }
+  .closing-cta:hover {
+    background: var(--gold); color: var(--dark);
+  }
+  .closing-confidence {
+    margin-top: 20px; font-size: 0.58rem;
+    letter-spacing: 0.18em; color: var(--cream);
+    opacity: 0.4; text-transform: uppercase;
+  }
 
   /* FOOTER */
-  footer { background:var(--dark); border-top:1px solid rgba(201,169,110,0.2); padding:60px 72px; text-align:center; }
-  .footer-offered { font-size:0.58rem; letter-spacing:0.22em; color:var(--cream); opacity:0.45; text-transform:uppercase; margin-bottom:10px; }
-  .footer-agent { font-size:1.1rem; font-weight:400; font-style:italic; color:var(--cream); margin-bottom:6px; }
-  .footer-firm { font-size:0.65rem; letter-spacing:0.2em; color:var(--gold); text-transform:uppercase; }
+  footer {
+    background: var(--dark);
+    border-top: 1px solid rgba(201,169,110,0.2);
+    padding: 60px 72px;
+    text-align: center;
+  }
+  .footer-offered {
+    font-size: 0.58rem; letter-spacing: 0.22em;
+    color: var(--cream); opacity: 0.45;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .footer-agent {
+    font-size: 1.1rem; font-weight: 400; font-style: italic;
+    color: var(--cream); margin-bottom: 6px;
+  }
+  .footer-firm {
+    font-size: 0.65rem; letter-spacing: 0.2em;
+    color: var(--gold); text-transform: uppercase;
+  }
 
   /* MODAL */
-  .modal-overlay { position:fixed; inset:0; z-index:200; background:rgba(10,10,10,0.92); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity 0.4s ease; }
-  .modal-overlay.open { opacity:1; pointer-events:all; }
-  .modal { border:1px solid var(--gold); padding:64px 72px; max-width:540px; width:90%; text-align:center; position:relative; }
-  .modal-close { position:absolute; top:24px; right:32px; font-size:1.4rem; color:var(--cream); opacity:0.4; cursor:none; background:none; border:none; font-family:inherit; }
-  .modal h3 { font-size:clamp(1.8rem,3vw,2.8rem); font-weight:300; margin-bottom:12px; color:var(--cream); }
-  .modal p { font-style:italic; font-size:0.9rem; color:var(--text); margin-bottom:40px; letter-spacing:0.03em; }
-  .modal input, .modal textarea { width:100%; background:transparent; border:none; border-bottom:1px solid rgba(201,169,110,0.4); padding:14px 0; margin-bottom:24px; font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--cream); outline:none; transition:border-color 0.3s; }
-  .modal input::placeholder, .modal textarea::placeholder { color:rgba(245,240,232,0.35); font-style:italic; }
-  .modal input:focus, .modal textarea:focus { border-bottom-color:var(--gold); }
-  .modal textarea { height:80px; resize:none; }
-  .modal-submit { border:1px solid var(--gold); color:var(--gold); background:none; font-family:'Cormorant Garamond',serif; font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; padding:16px 40px; cursor:none; transition:all 0.3s; width:100%; margin-top:8px; }
-  .modal-submit:hover { background:var(--gold); color:var(--dark); }
-  .modal-confidence { margin-top:16px; font-size:0.56rem; letter-spacing:0.16em; color:var(--cream); opacity:0.35; text-transform:uppercase; }
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(10,10,10,0.92);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal {
+    border: 1px solid var(--gold);
+    padding: 64px 72px; max-width: 540px; width: 90%;
+    text-align: center;
+  }
+  .modal-close {
+    position: absolute; top: 24px; right: 32px;
+    font-size: 1.4rem; color: var(--cream); opacity: 0.4;
+    cursor: none; background: none; border: none;
+    font-family: inherit;
+  }
+  .modal h3 {
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 300; margin-bottom: 12px; color: var(--cream);
+  }
+  .modal p {
+    font-style: italic; font-size: 0.9rem;
+    color: var(--text); margin-bottom: 40px;
+    letter-spacing: 0.03em;
+  }
+  .modal input, .modal textarea {
+    width: 100%; background: transparent;
+    border: none; border-bottom: 1px solid rgba(201,169,110,0.4);
+    padding: 14px 0; margin-bottom: 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; color: var(--cream);
+    outline: none; transition: border-color 0.3s;
+  }
+  .modal input::placeholder, .modal textarea::placeholder {
+    color: rgba(245,240,232,0.35); font-style: italic;
+  }
+  .modal input:focus, .modal textarea:focus {
+    border-bottom-color: var(--gold);
+  }
+  .modal textarea { height: 80px; resize: none; }
+  .modal-submit {
+    border: 1px solid var(--gold);
+    color: var(--gold); background: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.68rem; letter-spacing: 0.22em;
+    text-transform: uppercase; padding: 16px 40px;
+    cursor: none; transition: all 0.3s;
+    width: 100%; margin-top: 8px;
+  }
+  .modal-submit:hover { background: var(--gold); color: var(--dark); }
+  .modal-confidence {
+    margin-top: 16px; font-size: 0.56rem;
+    letter-spacing: 0.16em; color: var(--cream);
+    opacity: 0.35; text-transform: uppercase;
+  }
 
-  /* ANIMATIONS */
-  .fade-up { opacity:0; transform:translateY(14px); transition:opacity 1.8s cubic-bezier(.16,1,.3,1), transform 1.8s cubic-bezier(.16,1,.3,1); }
-  .fade-up.visible { opacity:1; transform:translateY(0); }
+  /* FADE-IN ANIMATIONS */
+  .fade-up {
+    opacity: 0; transform: translateY(14px);
+    transition: opacity 1.8s cubic-bezier(.16,1,.3,1), transform 1.8s cubic-bezier(.16,1,.3,1);
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-  /* RESPONSIVE */
-  @media (max-width:900px) {
-    .cinematic { grid-template-columns:1fr; }
-    .cinematic-image { min-height:55vw; }
-    nav { padding:20px 24px; }
-    .nav-links { display:none; }
-    .hero-content, .full-bleed-content, .interstitial, .cinematic-text, .breath, .whp-content, .blue-fox, footer { padding-left:24px; padding-right:24px; }
-    .stat-item { padding:18px 20px; }
-    .stat-crest-wrap { padding:0 24px; }
+  /* COUNT-UP NUMBERS */
+  .count-up { display: inline-block; }
+
+  @media (max-width: 900px) {
+    .cinematic { grid-template-columns: 1fr; }
+    .cinematic-image { min-height: 55vw; }
+    nav { padding: 20px 24px; }
+    .hero-content, .full-bleed-content, .interstitial,
+    .cinematic-text, .breath, .whp-content, .blue-fox, footer {
+      padding-left: 24px; padding-right: 24px;
+    }
+    .nav-links { display: none; }
+    .stat-item { padding: 18px 20px; }
   }
 </style>
 </head>
 <body>
 
+<!-- CURSOR -->
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
+<!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">Garran Hill</a>
   <ul class="nav-links">
@@ -164,88 +554,128 @@
 
 <!-- BEAT 1: HERO -->
 <section class="hero" id="top">
-  <iframe src="https://customer-rkyp2qdqmdxsn0e8.cloudflarestream.com/ba88a34a312106b7bf9d00b52a452871/iframe?autoplay=true&muted=true&loop=true&controls=false&preload=auto" class="hero-video" allow="autoplay; fullscreen" frameborder="0" title="Garran Hill"></iframe>
+  <iframe
+    src="https://customer-rkyp2qdqmdxsn0e8.cloudflarestream.com/ba88a34a312106b7bf9d00b52a452871/iframe?autoplay=true&muted=true&loop=true&controls=false&preload=auto"
+    class="hero-video"
+    allow="autoplay; fullscreen"
+    frameborder="0"
+    title="Garran Hill"
+  ></iframe>
   <div class="hero-overlay"></div>
   <div class="hero-content fade-up">
-    <p class="hero-eyebrow">200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, NC &nbsp;&middot;&nbsp; Est. 1916</p>
+    <p class="hero-eyebrow">200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, NC &nbsp;·&nbsp; Est. 1916</p>
     <h1 class="hero-title">Garran Hill</h1>
     <div class="hero-rule"></div>
-    <p class="hero-subhead">Neo-Georgian.&nbsp; Walter Hines Page.&nbsp; 110 years of remarkable stewardship.</p>
-    <a href="#estate" class="hero-tour-link">Tour the Estate &darr;</a>
+    <p class="hero-subhead">Neo-Georgian.&nbsp; Walter Hines Page.&nbsp; 110 years of unbroken stewardship.</p>
+    <a href="#estate" class="hero-tour-link">Tour the Estate ↓</a>
   </div>
 </section>
 
 <!-- STAT BAR -->
 <div class="stat-bar" id="estate">
-  <div class="stat-item"><span class="stat-number">1916</span><span class="stat-label">Est.</span></div>
-  <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">Bedrooms</span></div>
-  <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">Bathrooms</span></div>
-  <div class="stat-crest-wrap">
-    <img class="stat-crest" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777258787/gh_key/gh_wax_stamp_3d.png" alt="Garran Hill Crest">
+  <div class="stat-item">
+    <span class="stat-number" data-count="1916" data-noanimate>1916</span>
+    <span class="stat-label">Est.</span>
   </div>
-  <div class="stat-item"><span class="stat-number">6,072 sq ft</span><span class="stat-label">Living Area</span></div>
-  <div class="stat-item"><span class="stat-number">4.15 Acres</span><span class="stat-label">Land</span></div>
-  <div class="stat-item"><span class="stat-number">$4,250,000</span><span class="stat-label">Offered At</span></div>
+  <div class="stat-item">
+    <span class="stat-number">4</span>
+    <span class="stat-label">Bedrooms</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">6</span>
+    <span class="stat-label">Bathrooms</span>
+  </div>
+  <div class="stat-crest-wrap">
+    <img class="stat-crest"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777258787/gh_key/gh_wax_stamp_3d.png"
+      alt="Garran Hill Crest">
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">6,072 sq ft</span>
+    <span class="stat-label">Living Area</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">4.15 Acres</span>
+    <span class="stat-label">Land</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">$4,250,000</span>
+    <span class="stat-label">Offered At</span>
+  </div>
 </div>
 
 <!-- BEAT 2: EXTERIOR WIDE -->
 <section class="full-bleed">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777329734/gh_key/gh_facade_front.jpg" alt="Garran Hill — Iron gates, lanterns, long driveway, house at end">
+  <img
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777329145/gh_key/gh_facade_wide.jpg"
+    alt="Garran Hill — Four-column Neo-Georgian facade">
   <div class="full-bleed-overlay"></div>
   <div class="full-bleed-content fade-up">
     <span class="eyebrow">The Estate</span>
     <h2 class="section-headline">Some houses<br>hold history.<br>This one shaped it.</h2>
-    <div class="section-body"><p>Neo-Georgian. Four columns. Seven fireplaces. 4.15 acres. Built in 1916 by the men who built Pinehurst. Restored to the original drawings in 2000. One hundred and ten years of unbroken stewardship.</p></div>
+    <div class="section-body">
+      <p>Neo-Georgian. Four columns. Seven fireplaces. 4.15 acres. Built in 1916 by the men who built Pinehurst. Restored to the original drawings in 2000. One hundred and ten years of unbroken stewardship.</p>
+    </div>
   </div>
 </section>
 
 <!-- INTERSTITIAL A: CRAFTSMEN -->
 <div class="interstitial fade-up">
-  <span class="eyebrow">Pinehurst, North Carolina &middot; 1916</span>
-  <h2 class="section-headline" style="max-width:700px;margin:0 auto 32px;">Built by Leonard Tufts'<br>own craftsmen.<br>The same men who built Pinehurst.</h2>
-  <p class="section-body" style="margin:0 auto;max-width:560px;text-align:center;">Four columns. Full entablature. Drawn to exact Georgian proportion and built that way. Three months were spent sourcing period-accurate brick for the portico restoration. The proportions are correct because the drawings survived.</p>
+  <span class="eyebrow">Pinehurst, North Carolina · 1916</span>
+  <h2 class="section-headline" style="max-width: 700px; margin: 0 auto 32px;">Built by Leonard Tufts'<br>own craftsmen.<br>The same men who built Pinehurst.</h2>
+  <p class="section-body" style="margin: 0 auto; max-width: 560px; text-align: center;">Four columns. Full entablature. Drawn to exact Georgian proportion and built that way. Three months were spent sourcing period-accurate brick for the portico restoration. The proportions are correct because the drawings survived.</p>
 </div>
 
-<!-- BEAT 3: PORTICO -->
+<!-- BEAT 3: GATE ARRIVAL -->
 <section class="full-bleed">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777276882/gh_key/gh_portico.jpg" alt="Garran Hill — Four-column Neo-Georgian portico, original brick steps">
+  <img
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777329146/gh_key/gh_gate_arrival.jpg"
+    alt="Garran Hill — Original iron gate arrival">
   <div class="full-bleed-overlay"></div>
   <div class="full-bleed-content fade-up">
     <span class="eyebrow">200 Hollycrest Drive</span>
     <h2 class="section-headline">The gate has been here<br>longer than the road.</h2>
-    <div class="section-body"><p>Wrought iron. Original hardware. The brick path beyond it was laid before a single wall was framed. This is where arrival begins &mdash; before the door, before the columns, before the house announces itself.</p></div>
+    <div class="section-body">
+      <p>Wrought iron. Original hardware. The brick path beyond it was laid before a single wall was framed. This is where arrival begins — before the door, before the columns, before the house announces itself.</p>
+    </div>
   </div>
 </section>
 
-<!-- BEAT 4: THRESHOLD -->
+<!-- BEAT 4: THRESHOLD (cinematic) -->
 <section class="cinematic" id="threshold">
   <div class="cinematic-image">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777329147/gh_key/gh_entry_hall.jpg" alt="Garran Hill — Entry hall, staircase, original oak floors">
+    <img
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777329147/gh_key/gh_entry_hall.jpg"
+      alt="Garran Hill — Entry hall, staircase, original oak floors">
   </div>
   <div class="cinematic-text fade-up">
     <span class="eyebrow">The Threshold</span>
     <h2 class="section-headline">The door has been<br>open since 1916.</h2>
     <div class="section-body">
       <p>The leaded glass sidelights and fanlight are original. The hardware was specified in 1916. It has not been replaced. That is not maintenance. That is devotion.</p>
-      <p>One detail makes everything clear: the inscription in the threshold &mdash; GARRAN HILL &middot; 1916. He named it before it existed. The house has been answering to that name ever since.</p>
+      <p>One detail makes everything clear: the inscription in the threshold — GARRAN HILL · 1916. He named it before it existed. The house has been answering to that name ever since.</p>
     </div>
     <span class="bridge-line">The house begins here.</span>
   </div>
 </section>
 
 <!-- BREATH -->
-<div class="breath"><p>In 1916, those were saplings. Now they are a forest.</p></div>
+<div class="breath">
+  <p>In 1916, those were saplings. Now they are a forest.</p>
+</div>
 
-<!-- BEAT 5: ENTRY HALL AXIS -->
+<!-- BEAT 5: INTERIOR AXIS -->
 <section class="cinematic flip">
   <div class="cinematic-image">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777270464/gh_key/gh_entry62.jpg" alt="Garran Hill — Central foyer, front door, original proportions">
+    <img
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777270464/gh_key/gh_entry62.jpg"
+      alt="Garran Hill — Central foyer axis, staircase">
   </div>
   <div class="cinematic-text fade-up">
     <span class="eyebrow">The Entry Hall</span>
     <h2 class="section-headline">The central axis<br>runs straight through.</h2>
     <div class="section-body">
-      <p>Original oak floors. The staircase rises at the far end &mdash; visible the instant the door opens. No wall has moved. The proportions were drawn in 1916 and they have not been touched.</p>
+      <p>Original oak floors. The staircase rises at the far end — visible the instant the door opens. No wall has moved. The proportions were drawn in 1916 and they have not been touched.</p>
       <p>You feel it before you understand it.</p>
     </div>
   </div>
@@ -253,13 +683,15 @@
 
 <!-- BEAT 6: DRAWING ROOM -->
 <section class="full-bleed">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777244083/gh_key/gh_81.jpg" alt="Garran Hill — Drawing room, fireplace, portrait above mantel">
+  <img
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777244132/gh_key/gh_whp.jpg"
+    alt="Garran Hill — Drawing room, Delft fireplace, fire lit">
   <div class="full-bleed-overlay"></div>
   <div class="full-bleed-content fade-up">
     <span class="eyebrow">The Drawing Room</span>
     <h2 class="section-headline">Fire going,<br>no one home yet.</h2>
     <div class="section-body">
-      <p>The Delft tile surround &mdash; blue and white, hand-painted &mdash; is original. The toile was sourced to match it. The seven chairs, the valances, the plates on the walls: everything in this room was chosen to respond to something else already there.</p>
+      <p>The Delft tile surround — blue and white, hand-painted — is original. The toile was sourced to match it. The seven chairs, the valances, the plates on the walls: everything in this room was chosen to respond to something else already there.</p>
       <p>That is not decorating. That is a century of conviction.</p>
     </div>
   </div>
@@ -268,84 +700,98 @@
 <!-- INTERSTITIAL B: DINING -->
 <div class="interstitial fade-up">
   <span class="eyebrow">The Dining Room</span>
-  <h2 class="section-headline" style="max-width:700px;margin:0 auto 32px;">The shell cabinets were already there.<br>They are still there now.</h2>
-  <p class="section-body" style="margin:0 auto;max-width:560px;text-align:center;">The frontispiece above the fireplace is original &mdash; carved in 1916, still in place. The shell cabinets have not moved. The room seats twelve without crowding. It holds the silence after dinner without trying.</p>
+  <h2 class="section-headline" style="max-width: 700px; margin: 0 auto 32px;">The shell cabinets were already there.<br>They are still there now.</h2>
+  <p class="section-body" style="margin: 0 auto; max-width: 560px; text-align: center;">The frontispiece above the fireplace is original — carved in 1916, still in place. The shell cabinets have not moved. The room seats twelve without crowding. It holds the silence after dinner without trying.</p>
 </div>
 
 <!-- BEAT 7: LIBRARY -->
 <section class="full-bleed" id="library">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777244065/gh_key/gh_65.jpg" alt="Garran Hill — Library, bookshelves, rolling ladder, fireplace, staircase">
+  <img
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1920,c_limit/v1777329149/gh_key/gh_library.jpg"
+    alt="Garran Hill — Library, floor-to-ceiling shelves">
   <div class="full-bleed-overlay bottom"></div>
   <div class="full-bleed-content centered fade-up">
     <span class="eyebrow" style="text-align:center;">The Library</span>
-    <h2 class="section-headline" style="text-align:center;max-width:700px;">The room the man who founded Doubleday<br>would have claimed.</h2>
-    <div class="section-body" style="max-width:560px;text-align:center;"><p>Dead center of the first floor &mdash; positioned that way in the 2000 plans. Built-in shelving on three walls, floor to ceiling. Rolling ladder. French doors to the rear grounds. When you stand in it, you cannot find the seam.</p></div>
+    <h2 class="section-headline" style="text-align:center; max-width:700px;">The room the man who founded Doubleday<br>would have claimed.</h2>
+    <div class="section-body" style="max-width: 560px; text-align:center;">
+      <p>Dead center of the first floor — positioned that way in the 2000 plans. Built-in shelving on three walls, floor to ceiling. Rolling ladder. French doors to the rear grounds. When you stand in it, you cannot find the seam.</p>
+    </div>
   </div>
 </section>
 
 <!-- O'SHEA INTERSTITIAL -->
 <div class="interstitial fade-up">
-  <span class="eyebrow">Thomas O'Shea, Architect &middot; Durham, NC &middot; January 2000</span>
-  <h2 class="section-headline" style="max-width:680px;margin:0 auto 32px;font-style:italic;">&ldquo;Renovations and Additions.&rdquo;<br>His word choice tells you everything.</h2>
-  <p class="section-body" style="margin:0 auto;max-width:580px;text-align:center;">Fifteen sheets of drawings. Every profile matched. Every cornice detail copied from what was already there. The study paneling: &ldquo;same panel details as existing dining room panels.&rdquo; That is not a contractor note. That is a preservation philosophy written into a construction document. The result does not feel added. It feels inevitable.</p>
+  <span class="eyebrow">Thomas O'Shea, Architect · Durham, NC · January 2000</span>
+  <h2 class="section-headline" style="max-width: 680px; margin: 0 auto 32px; font-style:italic;">"Renovations and Additions."<br>His word choice tells you everything.</h2>
+  <p class="section-body" style="margin: 0 auto; max-width: 580px; text-align: center;">Fifteen sheets of drawings. Every profile matched. Every cornice detail copied from what was already there. The study paneling: "same panel details as existing dining room panels." That is not a contractor note. That is a preservation philosophy written into a construction document. The result does not feel added. It feels inevitable.</p>
 </div>
 
 <!-- BREATH: HARDWARE -->
-<div class="breath"><p>The hardware was specified in 1916. It has not been replaced.</p></div>
+<div class="breath">
+  <p>The hardware was specified in 1916. It has not been replaced.</p>
+</div>
 
-<!-- BEAT 8: WHP HISTORY -->
+<!-- BEAT 10: WHP HISTORY -->
 <section class="whp-section" id="history">
-  <img class="whp-bg" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1920/v1777244132/gh_key/gh_whp.jpg" alt="Walter Hines Page">
+  <img class="whp-bg"
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1920/v1777244132/gh_key/gh_whp.jpg"
+    alt="Walter Hines Page">
   <div class="whp-overlay"></div>
   <div class="whp-content fade-up">
     <span class="eyebrow">The Man Who Built It</span>
     <h2 class="section-headline">He named it Garran Hill.<br>He longed for it<br>every day he was gone.</h2>
     <div class="section-body">
       <p>Walter Hines Page bought 1,000 acres outside Pinehurst in February 1913 and named it Garran Hill. Six weeks later, Woodrow Wilson made him Ambassador to the Court of St. James. He sailed for London in May 1913.</p>
-      <p>From London, he wrote about the farm constantly. &ldquo;The farm &mdash; the farm &mdash; the farm.&rdquo; He served through the First World War. He returned in December 1918, carried off the train at Aberdeen by his son. His last words: &ldquo;Well, Frank, I did get here after all, didn&rsquo;t I?&rdquo;</p>
-      <p>He died ten days later. He never spent a night at Garran Hill.</p>
+      <p>From London, he wrote about the farm constantly. "The farm — the farm — the farm." He served through the First World War. He returned in December 1918, carried off the train at Aberdeen by his son. His last words: "Well, Frank, I did get here after all, didn't I?"</p>
+      <p>He died that evening. He never spent a night at Garran Hill.</p>
     </div>
-    <blockquote class="pull-quote">&ldquo;The friend of Britain in her sorest need.&rdquo;</blockquote>
-    <span class="quote-attr">Westminster Abbey &middot; Memorial to Walter Hines Page &middot; 1918</span>
+    <blockquote class="pull-quote">"The friend of Britain in her sorest need."</blockquote>
+    <span class="quote-attr">Westminster Abbey · Memorial to Walter Hines Page · 1918</span>
   </div>
 </section>
 
 <!-- BEAT 9: PRIMARY SUITE -->
 <section class="cinematic">
   <div class="cinematic-image">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777244071/gh_key/gh_93.jpg" alt="Garran Hill — Primary suite, four-poster bed, lit fireplace, armchair">
+    <img
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777329150/gh_key/gh_primary_suite.jpg"
+      alt="Garran Hill — Primary suite, four-poster bed">
   </div>
   <div class="cinematic-text fade-up">
     <span class="eyebrow">The Primary Suite</span>
     <h2 class="section-headline">The master suite was<br>a commission,<br>not a renovation.</h2>
     <div class="section-body">
-      <p>Every panel, every cabinet, the fireplace surround, the tub surround &mdash; drawn from scratch in 2000 to match a house built 84 years earlier. You cannot tell the difference. That was the point.</p>
+      <p>Every panel, every cabinet, the fireplace surround, the tub surround — drawn from scratch in 2000 to match a house built 84 years earlier. You cannot tell the difference. That was the point.</p>
       <p>The dogwood blooms every April. The window has not moved.</p>
     </div>
   </div>
 </section>
 
-<!-- BEAT 10: GROUNDS -->
+<!-- BEAT 12: GROUNDS -->
 <section class="full-bleed" id="grounds">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777244059/gh_key/gh_191.jpg" alt="Garran Hill — Grounds, mature hardwoods, gardens">
+  <img
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777244059/gh_key/gh_191.jpg"
+    alt="Garran Hill — Grounds and gardens">
   <div class="full-bleed-overlay bottom"></div>
   <div class="full-bleed-content centered fade-up">
     <span class="eyebrow" style="text-align:center;">The Grounds</span>
-    <h2 class="section-headline" style="text-align:center;max-width:800px;">The world outside these gates<br>does not exist here.</h2>
-    <div class="section-body" style="max-width:560px;text-align:center;"><p>4.15 acres enclosed within mature hardwoods. 28-zone irrigation from a 130-foot private well. All utilities underground. The rose garden was built from bare ground over twenty years. There is nothing like it anywhere in Pinehurst.</p></div>
+    <h2 class="section-headline" style="text-align:center; max-width: 800px;">The world outside these gates<br>does not exist here.</h2>
+    <div class="section-body" style="max-width: 560px; text-align:center;">
+      <p>4.15 acres enclosed within mature hardwoods. 28-zone irrigation from a 130-foot private well. All utilities underground. The rose garden was built from bare ground over twenty years. There is nothing like it anywhere in Pinehurst.</p>
+    </div>
   </div>
 </section>
 
 <!-- POOL INTERSTITIAL -->
 <div class="interstitial fade-up">
   <span class="eyebrow">The Pool</span>
-  <h2 class="section-headline" style="max-width:600px;margin:0 auto 32px;">20 by 40.<br>Salt water. Converted 2022.</h2>
-  <p class="section-body" style="margin:0 auto;max-width:540px;text-align:center;">The brick surround is original. The wrought iron arch gate is original. The pool terrace sits entirely behind the rose wall. You cannot see it from the road. You cannot hear the road from it.</p>
+  <h2 class="section-headline" style="max-width: 600px; margin: 0 auto 32px;">20 by 40.<br>Salt water. Converted 2022.</h2>
+  <p class="section-body" style="margin: 0 auto; max-width: 540px; text-align: center;">The brick surround is original. The wrought iron arch gate is original. The pool terrace sits entirely behind the rose wall. You cannot see it from the road. You cannot hear the road from it.</p>
 </div>
 
-<!-- BEAT 11: BLUE FOX -->
+<!-- BEAT 13: BLUE FOX -->
 <section class="blue-fox">
-  <span class="eyebrow" style="display:block;text-align:center;margin-bottom:40px;">Stewardship &middot; Est. 1959</span>
+  <span class="eyebrow" style="display:block; text-align:center; margin-bottom:40px;">Stewardship · Est. 1959</span>
   <h2>Betty Dumaine kept foxhounds here.<br>And peacocks. And one Irish Hunter<br>named Blue Fox.</h2>
   <p>He is buried at the rear of the property, under a slate cover with a brass marker. A four-foot blue fox statue once marked the grave. It was lost after her death in 1980.</p>
   <p>The marker is still there.</p>
@@ -355,20 +801,26 @@
 <!-- STEWARDSHIP INTERSTITIAL -->
 <div class="interstitial fade-up">
   <span class="eyebrow">Stewardship</span>
-  <h2 class="section-headline" style="max-width:700px;margin:0 auto 32px;font-style:italic;">&ldquo;We fell in love with its character, its history,<br>and the way it felt the moment we walked<br>through the door.&rdquo;</h2>
+  <h2 class="section-headline" style="max-width: 700px; margin: 0 auto 32px; font-style: italic;">"We fell in love with its character, its history,<br>and the way it felt the moment we walked<br>through the door."</h2>
 </div>
 
 <!-- FIVE FAMILIES BREATH -->
-<div class="breath"><p>Four families. One hundred and ten years. The question is whether you are the fifth.</p></div>
+<div class="breath">
+  <p>Four families. One hundred and ten years. The question is whether you are the fifth.</p>
+</div>
 
-<!-- BEAT 12: CLOSING -->
+<!-- BEAT 14: CLOSING -->
 <section class="closing">
-  <img class="closing-bg" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777329734/gh_key/gh_facade_front.jpg" alt="Garran Hill — closing">
+  <img class="closing-bg"
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777329145/gh_key/gh_facade_wide.jpg"
+    alt="Garran Hill — twilight">
   <div class="closing-overlay"></div>
   <div class="closing-content">
-    <img class="closing-crest" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777258787/gh_key/gh_wax_stamp_3d.png" alt="Garran Hill Crest">
+    <img class="closing-crest"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777258787/gh_key/gh_wax_stamp_3d.png"
+      alt="Garran Hill Crest">
     <h2 class="closing-title">Garran Hill</h2>
-    <p class="closing-details">Est. 1916 &nbsp;&middot;&nbsp; Pinehurst, North Carolina &nbsp;&middot;&nbsp; $4,250,000</p>
+    <p class="closing-details">Est. 1916 &nbsp;·&nbsp; Pinehurst, North Carolina &nbsp;·&nbsp; $4,250,000</p>
     <p class="closing-line">Garran Hill is ready.</p>
     <a href="#" class="closing-cta" onclick="openModal(); return false;">Request Private Showing</a>
     <p class="closing-confidence">All inquiries held in strict confidence</p>
@@ -379,58 +831,86 @@
 <footer>
   <p class="footer-offered">Offered Exclusively By</p>
   <p class="footer-agent">Rachel Hernandez</p>
-  <p class="footer-firm">Sotheby's International Realty &middot; Pinehurst, NC</p>
+  <p class="footer-firm">Sotheby's International Realty</p>
 </footer>
 
 <!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">&#215;</button>
+  <div class="modal" style="position:relative;">
+    <button class="modal-close" onclick="closeModal()">×</button>
     <h3>Request Private Showing</h3>
-    <p>All inquiries held in strict confidence.</p>
-    <input type="text" placeholder="Your name" id="modalName">
-    <input type="email" placeholder="Email address" id="modalEmail">
-    <input type="tel" placeholder="Phone number" id="modalPhone">
-    <textarea placeholder="Message (optional)" id="modalMessage"></textarea>
-    <button class="modal-submit" onclick="submitInquiry()">Submit Inquiry</button>
+    <p>200 Hollycrest Drive · Pinehurst, NC · $4,250,000</p>
+    <form onsubmit="submitInquiry(event)">
+      <input type="text" placeholder="Your name" id="inqName" required>
+      <input type="email" placeholder="Email address" id="inqEmail" required>
+      <input type="tel" placeholder="Phone (optional)" id="inqPhone">
+      <textarea placeholder="Message (optional)" id="inqMessage"></textarea>
+      <button type="submit" class="modal-submit">Submit Inquiry</button>
+    </form>
     <p class="modal-confidence">All inquiries held in strict confidence</p>
   </div>
 </div>
 
-<!-- BUILD TAG -->
-<div id="build-tag" style="position:fixed;bottom:16px;right:16px;z-index:9999;background:rgba(0,0,0,0.75);border:1px solid #C9A96E;color:#C9A96E;font-family:monospace;font-size:11px;padding:6px 12px;letter-spacing:0.08em;pointer-events:none;">v4.0 &middot; REVIEW BUILD</div>
-
 <script>
-  const dot = document.getElementById('cursorDot');
-  const ring = document.getElementById('cursorRing');
-  document.addEventListener('mousemove', e => {
-    dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px';
-    ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
-  });
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  window.addEventListener('scroll', () => {
-    document.querySelector('nav').style.background = window.scrollY > 60 ? 'rgba(10,10,10,0.95)' : 'rgba(10,10,10,0)';
-  });
-  function openModal() { document.getElementById('modalOverlay').classList.add('open'); }
-  function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
-  document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
-  async function submitInquiry() {
-    const name = document.getElementById('modalName').value.trim();
-    const email = document.getElementById('modalEmail').value.trim();
-    const phone = document.getElementById('modalPhone').value.trim();
-    const message = document.getElementById('modalMessage').value.trim();
-    if (!name || !email) { alert('Please enter your name and email.'); return; }
-    try {
-      await fetch('https://api.base44.com/api/apps/69e248a2469cc39540781cce/entities/Inquiry', {
-        method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ name, email, phone, message, property:'Garran Hill', source:'Landing Page' })
-      });
-      closeModal(); alert('Thank you. We will be in touch shortly.');
-    } catch(err) { alert('Your inquiry has been received. Thank you.'); }
+// NAV SCROLL BEHAVIOR
+const navEl = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > window.innerHeight * 0.85) {
+    navEl.style.background = 'rgba(10,10,10,0.95)';
+  } else {
+    navEl.style.background = 'rgba(10,10,10,0.0)';
   }
+});
+
+// CURSOR
+const dot = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+  dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px';
+  ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
+});
+
+// FADE IN ON SCROLL
+const fadeEls = document.querySelectorAll('.fade-up');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+fadeEls.forEach(el => observer.observe(el));
+// Hero visible immediately
+document.querySelector('.hero .fade-up').classList.add('visible');
+
+// MODAL
+function openModal() {
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+document.getElementById('modalOverlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+});
+
+// INQUIRY SUBMISSION
+async function submitInquiry(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type=submit]');
+  btn.textContent = 'Sending...';
+  try {
+    await fetch('https://formspree.io/f/rachelhernandezrealtor', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: document.getElementById('inqName').value,
+        email: document.getElementById('inqEmail').value,
+        phone: document.getElementById('inqPhone').value,
+        message: document.getElementById('inqMessage').value,
+        property: 'Garran Hill — 200 Hollycrest Drive, Pinehurst NC $4,250,000'
+      })
+    });
+  } catch(err) {}
+  btn.textContent = 'Thank You';
+  setTimeout(closeModal, 2000);
+}
 </script>
 </body>
 </html>
