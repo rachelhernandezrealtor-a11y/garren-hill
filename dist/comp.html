@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Montserrat:wght@300&family=Pinyon+Script&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { 
+  width: 1600px; height: 800px; 
+  background: #0a0a0a; 
+  overflow: hidden;
+  position: relative;
+}
+
+.gate-half {
+  position: absolute; left: 0; top: 0;
+  width: 58%; height: 100%;
+  background: url("https://res.cloudinary.com/dghn2xpif/image/upload/v1777263004/gh_key/gh_gate_twilight.jpg") center/cover;
+}
+.gate-fade {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(10,10,10,0) 40%, rgba(10,10,10,1) 100%);
+}
+.gate-top {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(10,10,10,0.6) 0%, transparent 40%);
+}
+
+.gate-copy {
+  position: absolute;
+  bottom: 72px; left: 56px;
+}
+.headline {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 68px;
+  color: #F5F0E8;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 40px rgba(0,0,0,0.8);
+  display: block;
+  max-width: 560px;
+}
+.pull-quote {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 38px;
+  color: #C9A96E;
+  margin-top: 12px;
+  display: block;
+  letter-spacing: 0.02em;
+}
+.gold-rule {
+  display: block;
+  width: 80px; height: 1px;
+  background: #C9A96E;
+  margin-top: 28px;
+  opacity: 0.6;
+}
+
+/* WHP SIDE */
+.whp-half {
+  position: absolute; right: 0; top: 0;
+  width: 46%; height: 100%;
+}
+.whp-portrait {
+  position: absolute; right: -20px; top: 0;
+  height: 100%; width: auto;
+  object-fit: cover;
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 20%, rgba(0,0,0,1) 50%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 20%, rgba(0,0,0,1) 50%);
+  opacity: 0.85;
+}
+.whp-copy {
+  position: absolute;
+  bottom: 72px; left: 32px;
+}
+.whp-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  color: #F5F0E8;
+  opacity: 0.75;
+  text-transform: uppercase;
+  display: block;
+}
+.whp-titles {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: #C9A96E;
+  margin-top: 10px;
+  letter-spacing: 0.06em;
+  display: block;
+}
+.whp-built {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: #F5F0E8;
+  opacity: 0.6;
+  text-transform: uppercase;
+  margin-top: 14px;
+  display: block;
+}
+.whp-close {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 18px;
+  color: #C9A96E;
+  margin-top: 10px;
+  display: block;
+  opacity: 0.9;
+}
+
+/* STAT BAR */
+.stat-bar {
+  position: absolute; top: 0; left: 0; right: 0;
+  background: rgba(10,10,10,0.92);
+  border-bottom: 1px solid rgba(201,169,110,0.4);
+  display: flex; align-items: center; justify-content: center;
+  height: 64px;
+  gap: 0;
+}
+.stat-item {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 0 32px;
+  border-right: 1px solid rgba(201,169,110,0.12);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #C9A96E;
+  letter-spacing: 0.04em;
+}
+.stat-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 8px;
+  letter-spacing: 0.28em;
+  color: #F5F0E8;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin-top: 3px;
+}
+.stat-price .stat-num {
+  font-size: 20px;
+  letter-spacing: 0.06em;
+}
+</style>
+</head>
+<body>
+
+<div class="stat-bar">
+  <div class="stat-item"><span class="stat-num">4</span><span class="stat-label">Bedrooms</span></div>
+  <div class="stat-item"><span class="stat-num">6</span><span class="stat-label">Bathrooms</span></div>
+  <div class="stat-item"><span class="stat-num">6,072</span><span class="stat-label">Square Feet</span></div>
+  <div class="stat-item"><span class="stat-num">4.15</span><span class="stat-label">Acres</span></div>
+  <div class="stat-item stat-price"><span class="stat-num">$4,250,000</span><span class="stat-label">&nbsp;</span></div>
+</div>
+
+<div class="gate-half">
+  <div class="gate-fade"></div>
+  <div class="gate-top"></div>
+  <div class="gate-copy">
+    <span class="headline">Some houses hold<br>history.</span>
+    <span class="pull-quote">This one shaped it.</span>
+    <span class="gold-rule"></span>
+  </div>
+</div>
+
+<div class="whp-half">
+  <img class="whp-portrait" src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/2e864596c_WalterHinesPage.jpeg" />
+  <div class="whp-copy">
+    <span class="whp-name">Walter Hines Page,</span>
+    <span class="whp-titles">Ambassador.&nbsp; Editor.&nbsp; Visionary.</span>
+    <span class="whp-built">Built Garran Hill in 1916.</span>
+    <span class="whp-close">And here it stays.</span>
+  </div>
+</div>
+
+</body>
+</html>
