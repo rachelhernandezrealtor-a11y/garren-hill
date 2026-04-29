@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Montserrat:wght@300;400&display=swap');
 
 * { margin:0; padding:0; box-sizing:border-box; }
 html, body { width:100%; height:100vh; background:#0a0a0a; overflow:hidden; }
@@ -37,80 +37,113 @@ html, body { width:100%; height:100vh; background:#0a0a0a; overflow:hidden; }
   display:flex;
 }
 
-/* GATE 55% */
+/* GATE — left 52% */
 .gate {
-  position:relative; width:55%; height:100%; flex-shrink:0;
+  position:relative; width:52%; height:100%; flex-shrink:0;
   background:url("https://res.cloudinary.com/dghn2xpif/image/upload/v1777263004/gh_key/gh_gate_twilight.jpg") center/cover no-repeat;
 }
-.gate-r { position:absolute;inset:0; background:linear-gradient(to right,transparent 30%,rgba(10,10,10,.75) 72%,#0a0a0a 100%); }
-.gate-t { position:absolute;inset:0; background:linear-gradient(to bottom,rgba(10,10,10,.5) 0%,transparent 30%); }
-.gate-copy { position:absolute; bottom:68px; left:52px; max-width:440px; }
+.gate-r { 
+  position:absolute; inset:0; 
+  background:linear-gradient(to right, transparent 25%, rgba(10,10,10,0.6) 60%, rgba(10,10,10,0.97) 100%); 
+}
+.gate-t { 
+  position:absolute; inset:0; 
+  background:linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, transparent 28%); 
+}
+.gate-copy { 
+  position:absolute; bottom:72px; left:52px; max-width:420px; 
+}
 .headline {
   font-family:'Playfair Display',serif; font-weight:700;
-  font-size:clamp(44px,5vw,66px); color:#F5F0E8;
-  line-height:1.06; text-shadow:0 2px 40px rgba(0,0,0,.9); display:block;
+  font-size:clamp(42px,4.8vw,62px); color:#F5F0E8;
+  line-height:1.08; text-shadow:0 2px 40px rgba(0,0,0,0.95); display:block;
+}
+/* DROP CAP */
+.drop-cap {
+  float:left;
+  font-family:'Playfair Display',serif; font-weight:700;
+  font-size:5.4em; line-height:0.74;
+  color:#F5F0E8;
+  margin-right:0.04em;
+  margin-top:0.06em;
+  text-shadow:0 2px 40px rgba(0,0,0,0.95);
 }
 .pull {
   font-family:'Libre Baskerville',serif; font-style:italic;
-  font-size:clamp(24px,2.8vw,34px); color:#C9A96E;
-  margin-top:12px; display:block;
-  text-shadow:0 0 28px rgba(201,169,110,.55),0 2px 16px rgba(0,0,0,.8);
+  font-size:clamp(22px,2.6vw,32px); color:#C9A96E;
+  margin-top:18px; display:block; clear:both;
+  letter-spacing:0.04em;
+  text-shadow:0 0 32px rgba(201,169,110,0.6), 0 2px 16px rgba(0,0,0,0.9);
 }
-.rule { display:block; width:68px; height:1px; background:#C9A96E; margin-top:26px; opacity:.5; }
+.rule { display:block; width:64px; height:1px; background:#C9A96E; margin-top:28px; opacity:0.5; }
 
-/* WHP 45% — portrait centered, text below */
+/* WHP — right 48%, portrait FULL BODY glowing */
 .whp {
-  position:relative; width:45%; height:100%;
-  display:flex; align-items:center; justify-content:center;
+  position:relative; width:48%; height:100%;
+  display:flex; align-items:flex-end; justify-content:center;
   overflow:hidden;
+  /* warm amber ambient glow behind him */
+  background: radial-gradient(ellipse at 50% 38%, rgba(90,55,18,0.38) 0%, rgba(10,10,10,0) 68%);
 }
-/* black bleeds in from left */
+
+/* left bleed */
 .whp::before {
-  content:''; position:absolute; left:0; top:0; width:28%; height:100%;
-  background:linear-gradient(to right,#0a0a0a 0%,transparent 100%);
-  z-index:2; pointer-events:none;
+  content:''; position:absolute; left:0; top:0; width:22%; height:100%;
+  background:linear-gradient(to right, #0a0a0a 0%, transparent 100%);
+  z-index:3; pointer-events:none;
 }
-/* black bleeds in from right so portrait never hard-clips */
-.whp::after {
-  content:''; position:absolute; right:0; top:0; width:18%; height:100%;
-  background:linear-gradient(to left,#0a0a0a 0%,transparent 100%);
-  z-index:2; pointer-events:none;
+
+.portrait-wrap {
+  position:absolute;
+  top:0; left:0; right:0; bottom:0;
+  display:flex; align-items:center; justify-content:center;
+  z-index:1;
 }
 
 .portrait {
-  position:relative; z-index:1;
-  height:88%; width:auto;
-  max-width:100%;
-  object-fit:contain; object-position:top center;
-  opacity:.86;
+  height:100%;
+  width:auto;
+  max-width:none;
+  object-fit:contain;
+  object-position:top center;
+  /* The glow — warm amber filter + brightness lift */
+  filter: brightness(1.12) saturate(1.18) sepia(0.08) drop-shadow(0 0 48px rgba(180,120,40,0.55)) drop-shadow(0 0 120px rgba(140,85,20,0.3));
+  opacity:0.95;
 }
 
+/* right edge fade so portrait dissolves to black */
+.whp-fade-r {
+  position:absolute; right:0; top:0; width:18%; height:100%;
+  background:linear-gradient(to left, #0a0a0a 0%, transparent 100%);
+  z-index:3; pointer-events:none;
+}
+
+/* WHP copy — bottom left of panel */
 .whp-copy {
-  position:absolute; bottom:68px; left:0; right:0;
-  padding:0 36px;
-  z-index:3;
+  position:absolute; bottom:72px; left:44px; right:20px;
+  z-index:4;
 }
 .wname {
   font-family:'Montserrat',sans-serif; font-weight:300;
-  font-size:9.5px; letter-spacing:.34em; color:#F5F0E8;
-  opacity:.65; text-transform:uppercase; display:block;
+  font-size:9px; letter-spacing:0.38em; color:#F5F0E8;
+  opacity:0.62; text-transform:uppercase; display:block;
 }
 .wtitles {
   font-family:'Libre Baskerville',serif;
-  font-size:17px; color:#C9A96E;
-  margin-top:9px; letter-spacing:.04em; display:block;
-  text-shadow:0 0 20px rgba(201,169,110,.4);
+  font-size:18px; color:#C9A96E;
+  margin-top:10px; letter-spacing:0.05em; display:block;
+  text-shadow:0 0 24px rgba(201,169,110,0.5);
 }
 .wbuilt {
   font-family:'Montserrat',sans-serif; font-weight:300;
-  font-size:8.5px; letter-spacing:.28em; color:#F5F0E8;
-  opacity:.5; text-transform:uppercase; margin-top:13px; display:block;
+  font-size:8px; letter-spacing:0.3em; color:#F5F0E8;
+  opacity:0.48; text-transform:uppercase; margin-top:16px; display:block;
 }
 .wclose {
   font-family:'Libre Baskerville',serif; font-style:italic;
-  font-size:15px; color:#C9A96E;
-  margin-top:7px; display:block;
-  text-shadow:0 0 16px rgba(201,169,110,.35);
+  font-size:16px; color:#C9A96E;
+  margin-top:8px; display:block;
+  text-shadow:0 0 20px rgba(201,169,110,0.45);
 }
 </style>
 </head>
@@ -129,17 +162,20 @@ html, body { width:100%; height:100vh; background:#0a0a0a; overflow:hidden; }
     <div class="gate-r"></div>
     <div class="gate-t"></div>
     <div class="gate-copy">
-      <span class="headline">Some houses<br>hold history.</span>
+      <span class="headline"><span class="drop-cap">S</span>ome houses<br>hold history.</span>
       <span class="pull">This one shaped it.</span>
       <span class="rule"></span>
     </div>
   </div>
 
   <div class="whp">
-    <img class="portrait" src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/2e864596c_WalterHinesPage.jpeg" />
+    <div class="portrait-wrap">
+      <img class="portrait" src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/2e864596c_WalterHinesPage.jpeg" />
+    </div>
+    <div class="whp-fade-r"></div>
     <div class="whp-copy">
       <span class="wname">Walter Hines Page,</span>
-      <span class="wtitles">Ambassador.&nbsp; Editor.&nbsp; Visionary.</span>
+      <span class="wtitles">Ambassador.&nbsp;&nbsp;Editor.&nbsp;&nbsp;Visionary.</span>
       <span class="wbuilt">Built Garran Hill in 1916.</span>
       <span class="wclose">And here it stays.</span>
     </div>
