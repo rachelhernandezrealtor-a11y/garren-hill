@@ -1080,6 +1080,7 @@
         hls.loadSource(src);
         hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED, function() { video.play(); });
+        video.addEventListener('ended', function() { video.currentTime = 0; video.play(); });
       }
     })();
     </script>
