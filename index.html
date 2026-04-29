@@ -429,23 +429,26 @@
     animation: lanternFlicker2 2.8s ease-in-out infinite;
     animation-delay: 0.7s;
   }
-  /* Letter ghost — faint scan above dark overlay, below copy */
+  /* Letter ghost — faint scan, bottom 50% only, fades toward top */
   .kb-letter-ghost {
     position: absolute;
     inset: 0;
     z-index: 4;
     pointer-events: none;
     overflow: hidden;
+    /* Gradient mask: transparent top, visible bottom — letter only in dark zone */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 35%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.7) 100%);
+    mask-image: linear-gradient(to bottom, transparent 35%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.7) 100%);
   }
   .kb-letter-ghost img {
     position: absolute;
-    top: 50%;
+    top: 42%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-1.8deg);
-    width: 85%;
-    max-width: 900px;
-    opacity: 0.12;
-    filter: sepia(0.3) brightness(2.0) contrast(0.7);
+    transform: translateX(-52%) rotate(-1.8deg);
+    width: 88%;
+    max-width: 920px;
+    opacity: 0.22;
+    filter: sepia(0.4) brightness(1.8) contrast(0.65);
     mix-blend-mode: screen;
   }
 
