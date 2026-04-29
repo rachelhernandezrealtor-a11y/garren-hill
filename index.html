@@ -1482,26 +1482,67 @@
 <!-- CLOUDFLARE STREAM -->
 <script src="https://embed.cloudflare.com/player/v1/script.js"></script>
 
+
+
+<div id="build-tag" style="display:none;position:fixed;bottom:16px;right:16px;z-index:9999;background:rgba(0,0,0,0.75);border:1px solid #C9A96E;color:#C9A96E;font-family:monospace;font-size:11px;padding:6px 12px;letter-spacing:0.08em;pointer-events:none;">v3.1 · STAT BAR · 2026-04-28</div>
+
+
+  
+
 <script>
-  // NAV scroll
+  // ── NAV scroll ───────────────────────────────────────────────────────────
   const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // FADE IN observer
+  // ── FADE IN + SCROLL REVEAL observer ─────────────────────────────────────
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-in, .scroll-reveal').forEach(el => observer.observe(el));
 
-  // IN-VIEW observer — kb-gate + whp-seam section reveals
+  // ── KB GATE in-view trigger ───────────────────────────────────────────────
   const inViewObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); } });
   }, { threshold: 0.15 });
   document.querySelectorAll('.kb-gate').forEach(el => inViewObserver.observe(el));
 
-  // INQUIRY
+  // ── WHP TITLES BEAT — portrait + bio reveal ───────────────────────────────
+  const whpTitlesObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const portrait = e.target.querySelector('.whp-titles-right');
+        if (portrait) portrait.classList.add('visible');
+        const bio = e.target.querySelector('.whp-titles-bio');
+        if (bio) bio.classList.add('visible');
+        const eyebrow = e.target.querySelector('.whp-titles-eyebrow');
+        if (eyebrow) eyebrow.classList.add('visible');
+        const headline = e.target.querySelector('.whp-titles-headline');
+        if (headline) headline.classList.add('visible');
+        whpTitlesObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.whp-titles-beat').forEach(el => whpTitlesObserver.observe(el));
+
+  // ── WHP BEATS — letters, farm, last words ────────────────────────────────
+  const whpBeatObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('visible'));
+        whpBeatObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.whp-letters-beat, .whp-farm-beat, .whp-last-beat').forEach(el => whpBeatObserver.observe(el));
+
+  // ── INQUIRY modal ─────────────────────────────────────────────────────────
   function openInquiry() { document.getElementById('inquiry-modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
   function closeInquiry() { document.getElementById('inquiry-modal').classList.remove('open'); document.body.style.overflow = ''; }
   document.getElementById('inquiry-modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeInquiry(); });
@@ -1510,22 +1551,20 @@
     e.target.innerHTML = '<p style="text-align:center;color:var(--gold);font-style:italic;font-size:1.1rem;padding:20px 0;">Thank you. Rachel will be in touch shortly.</p>';
   }
 
-  // ─── Farm Ghost Lift-off ─────────────────────────────────────────────────
+  // ── FARM GHOST LIFT-OFF ───────────────────────────────────────────────────
   (function() {
-    const ghost      = document.getElementById('whp-farm-ghost');
+    const ghost       = document.getElementById('whp-farm-ghost');
     const letterPanel = document.getElementById('whp-letter-p354');
-    const quoteText  = document.getElementById('whp-farm-quote-text');
-    const landing    = document.getElementById('whp-farm-landing');
-
+    const quoteText   = document.getElementById('whp-farm-quote-text');
+    const landing     = document.getElementById('whp-farm-landing');
     if (!ghost || !letterPanel || !quoteText || !landing) return;
 
     let animated = false;
 
     function getFarmProgress() {
-      const rect = letterPanel.getBoundingClientRect();
+      const rect  = letterPanel.getBoundingClientRect();
       const viewH = window.innerHeight;
-      // Progress: 0 when top of panel hits 80% down viewport → 1 when panel center passes 20% down
-      const panelMid = rect.top + rect.height * 0.82; // where the text line is
+      const panelMid = rect.top + rect.height * 0.82;
       const start = viewH * 0.85;
       const end   = viewH * 0.15;
       return Math.max(0, Math.min(1, (start - panelMid) / (start - end)));
@@ -1534,27 +1573,21 @@
     function onScroll() {
       if (animated) return;
       const p = getFarmProgress();
-
       if (p <= 0) {
         ghost.className = 'whp-farm-ghost';
         letterPanel.classList.remove('dimming');
         return;
       }
-
       if (p < 0.25) {
-        // Phase 1: highlight appears over the document
         ghost.className = 'whp-farm-ghost phase-highlight';
         letterPanel.classList.remove('dimming');
       } else if (p < 0.65) {
-        // Phase 2: starting to lift
         ghost.className = 'whp-farm-ghost phase-lift';
         letterPanel.classList.add('dimming');
       } else if (p < 1.0) {
-        // Phase 3: floating up / fading out
         ghost.className = 'whp-farm-ghost phase-float';
         letterPanel.classList.add('dimming');
       } else {
-        // Phase 4: landed — hide ghost, reveal the styled quote
         ghost.style.opacity = '0';
         ghost.style.transition = 'opacity 0.4s ease';
         quoteText.classList.add('arrived');
@@ -1562,12 +1595,9 @@
       }
     }
 
-    // Also trigger quote reveal when landing section scrolls into view
     const landingObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting && !animated) {
-          quoteText.classList.add('arrived');
-        }
+        if (entry.isIntersecting && !animated) quoteText.classList.add('arrived');
       });
     }, { threshold: 0.3 });
     landingObserver.observe(landing);
@@ -1576,16 +1606,11 @@
     onScroll();
   })();
 
-  // KB Gate — trigger animations when section enters viewport
+  // ── KB GATE SCROLL OBSERVER ────────────────────────────────────────────
   (function() {
     const kbGate = document.querySelector('.kb-gate');
     if (!kbGate) return;
 
-    function triggerKB() {
-      kbGate.classList.add('in-view');
-    }
-
-    // Check if already in viewport on load
     function isInView(el) {
       const rect = el.getBoundingClientRect();
       return rect.top < window.innerHeight && rect.bottom > 0;
@@ -1594,7 +1619,7 @@
     const kbObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          triggerKB();
+          kbGate.classList.add('in-view');
           kbObserver.unobserve(kbGate);
         }
       });
@@ -1602,42 +1627,16 @@
 
     kbObserver.observe(kbGate);
 
-    // Also fire on scroll as fallback
     function onScrollKB() {
       if (isInView(kbGate)) {
-        triggerKB();
+        kbGate.classList.add('in-view');
         window.removeEventListener('scroll', onScrollKB);
       }
     }
     window.addEventListener('scroll', onScrollKB, { passive: true });
 
-    // Fire immediately if already visible (e.g. page loaded scrolled down)
-    if (isInView(kbGate)) {
-      triggerKB();
-    }
+    if (isInView(kbGate)) kbGate.classList.add('in-view');
   })();
-
 </script>
-
-<div id="build-tag" style="display:none;position:fixed;bottom:16px;right:16px;z-index:9999;background:rgba(0,0,0,0.75);border:1px solid #C9A96E;color:#C9A96E;font-family:monospace;font-size:11px;padding:6px 12px;letter-spacing:0.08em;pointer-events:none;">v3.1 · STAT BAR · 2026-04-28</div>
-
-
-  <script>
-    // KB Gate — fire animation only when section enters viewport
-    (function() {
-      var kbImg = document.querySelector('.kb-gate .kb-img');
-      if (!kbImg) return;
-      var fired = false;
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting && !fired) {
-            fired = true;
-            kbImg.style.animation = 'kbArrive 28s cubic-bezier(0.12, 0, 0.08, 1) forwards';
-          }
-        });
-      }, { threshold: 0.15 });
-      observer.observe(document.querySelector('.kb-gate'));
-    })();
-  </script>
 </body>
 </html>
