@@ -1205,21 +1205,7 @@
   </div>
 </section>
 
-<!-- WHP SEAM — the man slides in from history -->
-<section class="whp-seam" aria-label="Walter Hines Page — 1855–1918">
-  <!-- Left: year ghost + text -->
-  <div class="whp-seam-text">
-    <span class="whp-seam-year" aria-hidden="true">1916</span>
-    <span class="whp-seam-eyebrow">The man who built it</span>
-    <h2 class="whp-seam-headline">He never spent<br>a night here.</h2>
-    <span class="whp-seam-rule-line"></span>
-    <span class="whp-seam-caption">Walter Hines Page &nbsp;·&nbsp; 1855–1918</span>
-  </div>
-  <!-- Right: portrait floats in — archival, quiet -->
-  <div class="whp-seam-portrait">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777244132/gh_key/gh_whp.jpg" alt="Walter Hines Page">
-  </div>
-</section>
+
 
 <!-- BEAT 2 — WALTER HINES PAGE — scroll story -->
 <section class="whp-section" id="whp">
@@ -1630,7 +1616,7 @@
   const inViewObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); } });
   }, { threshold: 0.15 });
-  document.querySelectorAll('.kb-gate, .whp-seam').forEach(el => inViewObserver.observe(el));
+  document.querySelectorAll('.kb-gate').forEach(el => inViewObserver.observe(el));
 
   // INQUIRY
   function openInquiry() { document.getElementById('inquiry-modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
