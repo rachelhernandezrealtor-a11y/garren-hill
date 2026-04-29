@@ -288,10 +288,23 @@
 
   /* ADDRESS LINE — after stat bar */
   .address-line {
-    background: var(--dark);
-    padding: 64px 72px 56px;
+    background-image: url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777411343/gh_key/gh_gate_color.jpg');
+    background-size: cover;
+    background-position: center 40%;
+    padding: 100px 72px 90px;
     text-align: center;
     position: relative;
+  }
+  .address-line::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10,10,10,0.62);
+    z-index: 0;
+  }
+  .address-line > * {
+    position: relative;
+    z-index: 1;
   }
   .address-line-script {
     font-family: 'Pinyon Script', cursive;
