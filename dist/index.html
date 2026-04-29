@@ -292,7 +292,7 @@
   .address-line {
     background: var(--dark);
     padding: 64px 72px 56px;
-    text-align: center;
+    text-align: left;
     position: relative;
   }
   .address-line-script {
@@ -402,23 +402,22 @@
   /* Copy block */
   .kb-copy {
     position: absolute;
-    bottom: 22%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 820px;
+    bottom: 20%;
+    left: 8%;
+    width: 70%;
+    max-width: 860px;
     z-index: 5;
-    padding: 0 48px;
-    text-align: center;
+    padding: 0;
+    text-align: left;
   }
-  .kb-copy-layer { position: relative; display: flex; flex-direction: column; align-items: center; width: 100%; }
+  .kb-copy-layer { position: relative; display: flex; flex-direction: column; align-items: flex-start; width: 100%; }
   .kb-rule-top {
     display: block; width: 80px; height: 1px;
-    background: rgba(201,169,110,0.5); margin-bottom: 36px;
+    background: rgba(201,169,110,0.5); margin-bottom: 32px; margin-left: 0;
   }
   .kb-rule-bottom {
     display: block; width: 80px; height: 1px;
-    background: rgba(201,169,110,0.5); margin-top: 36px;
+    background: rgba(201,169,110,0.5); margin-top: 32px; margin-left: 0;
   }
   /* Animate rules */
   .kb-rule-top-anim, .kb-rule-bottom-anim { opacity: 0; transition: opacity 0.8s ease; }
@@ -438,14 +437,15 @@
       0 3px 8px rgba(0,0,0,0.8),
       0 -1px 0  rgba(255,255,255,0.04);
     display: block;
-    text-align: center;
+    text-align: left;
   }
   .kb-drop-cap {
-    font-size: 2.4em;
-    line-height: 0.78;
-    float: left;
-    margin-right: 0.04em;
-    margin-top: 0.06em;
+    font-size: 4.2em;
+    line-height: 0.72;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 0.01em;
+    margin-top: 0.02em;
     font-weight: 200;
     font-family: 'Cormorant Garamond', serif;
   }
@@ -466,11 +466,10 @@
   /* Address */
   .kb-address-wrapper {
     position: absolute;
-    bottom: 8%;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 7%;
+    left: 8%;
     z-index: 5;
-    text-align: center;
+    text-align: left;
     opacity: 0;
     transition: opacity 1.4s ease 2.4s;
   }
@@ -818,14 +817,14 @@
     letter-spacing: 0.18em;
     color: rgba(201,169,110,0.5);
     text-transform: uppercase;
-    text-align: center;
+    text-align: left;
     margin-top: 16px;
   }
 
   /* Beat B — The farm quote: full width, alone */
   .whp-farm-beat {
     padding: 100px 10%;
-    text-align: center;
+    text-align: left;
     position: relative;
   }
   .whp-farm-beat::before,
@@ -891,7 +890,7 @@
     letter-spacing: 0.15em;
     color: rgba(201,169,110,0.45);
     text-transform: uppercase;
-    text-align: center;
+    text-align: left;
     margin-top: 14px;
   }
   .whp-letters-gap {
@@ -961,7 +960,7 @@
   /* Beat D — Last words */
   .whp-last-beat {
     padding: 100px 10% 140px;
-    text-align: center;
+    text-align: left;
     position: relative;
   }
   .whp-last-beat::before {
