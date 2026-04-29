@@ -41,7 +41,36 @@
   /* HERO VIEWPORT — three-layer 100vh container */
   .hero-viewport { height: 100vh; width: 100%; display: flex; flex-direction: column; overflow: hidden; }
   .hero-top-nav { position: relative; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; flex-shrink: 0; border-bottom: none !important; box-shadow: none !important; background: transparent !important; }
-  .hero-bottom-nav { position: relative; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 48px; flex-shrink: 0; border-top: 2px solid rgba(201,169,110,0.9); box-shadow: 0 -4px 24px rgba(201,169,110,0.15); background: rgba(10,10,10,0.5); backdrop-filter: blur(6px); }
+  .hero-closing-nav {
+    position: relative;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 48px 18px;
+    flex-shrink: 0;
+    border-top: 1px solid rgba(185,154,106,0.25);
+    background: transparent;
+  }
+  .hero-closing-nav ul {
+    display: flex;
+    gap: 52px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .hero-closing-nav ul li a {
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 8.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.45);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .hero-closing-nav ul li a:hover {
+    color: rgba(185,154,106,0.8);
+  }
   .hero { position: relative; flex: 1; min-height: 0; width: 100%; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
   .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
   .hero-overlay {
@@ -1083,6 +1112,16 @@
 
 
 </div>
+
+<!-- HERO CLOSING NAV -->
+<nav class="hero-closing-nav">
+  <ul>
+    <li><a href="#estate">The Estate</a></li>
+    <li><a href="#history">The History</a></li>
+    <li><a href="#grounds">The Grounds</a></li>
+    <li><a href="#" onclick="openInquiry(); return false;">Private Inquiry</a></li>
+  </ul>
+</nav>
 
 <!-- STAT BAR -->
 <div class="stat-bar" id="history">
