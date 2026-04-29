@@ -227,7 +227,11 @@
     display: grid; 
     grid-template-columns: 1fr 1fr; 
     min-height: 85vh; 
-    overflow: hidden; 
+    overflow: hidden;
+    grid-auto-rows: 1fr;
+  }
+  .fullbleed-beat > * {
+    min-height: 85vh;
   }
   .fullbleed-beat.flip { 
     direction: rtl; 
