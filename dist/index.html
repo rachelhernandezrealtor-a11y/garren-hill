@@ -748,22 +748,22 @@
     color: rgba(245,240,232,0.45);
   }
 
-  /* Portrait — gentle fade-float, archival presence */
+  /* Portrait — ghost presence, barely there */
   .whp-seam-portrait {
     position: absolute;
-    right: 6%;
+    right: 7%;
     top: 50%;
-    transform: translateY(-50%) translateX(18px);
-    width: 28%;
-    max-width: 320px;
+    transform: translateY(-50%) translateX(12px);
+    width: 20%;
+    max-width: 240px;
     pointer-events: none;
     opacity: 0;
-    transition: transform 2.4s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity   2.8s ease;
+    transition: transform 3.2s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity   3.6s ease;
   }
   .whp-seam.in-view .whp-seam-portrait {
     transform: translateY(-50%) translateX(0);
-    opacity: 1;
+    opacity: 0.72;
   }
   .whp-seam-portrait img {
     width: 100%;
@@ -1171,7 +1171,7 @@
   </div>
   <!-- Right: portrait floats in — archival, quiet -->
   <div class="whp-seam-portrait">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777244132/gh_key/gh_whp.jpg" alt="Walter Hines Page">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777432283/gh_key/gh_whp_photo.jpg" alt="Walter Hines Page">
   </div>
 </section>
 
