@@ -1015,20 +1015,6 @@
     .whp-letters-gap { display: none; }
   }
 
-/* Narrative seam — silent transition breath */
-.narrative-seam {
-  padding: 60px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--dark);
-}
-.seam-rule {
-  width: 48px;
-  height: 1px;
-  background: var(--gold);
-  opacity: 0.25;
-}
 </style>
 </head>
 <body>
@@ -1101,10 +1087,7 @@
   </div>
 </section>
 
-<!-- SEAM: KB → WHP — silence before history speaks -->
-<div class="narrative-seam" aria-hidden="true">
-  <div class="seam-rule"></div>
-</div>
+
 
 <!-- BEAT 2 — WALTER HINES PAGE — scroll story -->
 <section class="whp-section" id="whp">
@@ -1291,7 +1274,7 @@
 <!-- ============================================================ -->
 <section class="interstitial fade-in">
   <div class="interstitial-rule"></div>
-  <p class="interstitial-text" style="font-size: clamp(1.4rem,2.2vw,2.2rem); font-style:italic; letter-spacing:0.02em; color: var(--cream);">In 1916, those were saplings.<br>Now they are a forest.</p>
+  <p class="interstitial-text">In 1916, those were saplings. Now they are a forest.</p>
   <div class="interstitial-rule-bottom"></div>
 </section>
 
@@ -1374,11 +1357,6 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- PRIMARY → GUEST ROOMS breath -->
-<div class="narrative-seam" aria-hidden="true">
-  <div class="seam-rule"></div>
-</div>
-
 <!-- BEAT 14 — BEDROOMS -->
 <!-- ============================================================ -->
 <section class="room-beat fade-in">
