@@ -402,15 +402,16 @@
   /* Copy block */
   .kb-copy {
     position: absolute;
-    bottom: 18%;
-    left: 8%;
-    width: 48%;
-    max-width: 660px;
+    bottom: 22%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1000px;
     z-index: 5;
-    padding: 0;
-    text-align: left;
+    padding: 0 48px;
+    text-align: center;
   }
-  .kb-copy-layer { position: relative; display: flex; flex-direction: column; align-items: flex-start; width: 100%; }
+  .kb-copy-layer { position: relative; display: flex; flex-direction: column; align-items: center; width: 100%; }
   .kb-rule-top {
     display: block; width: 80px; height: 1px;
     background: rgba(201,169,110,0.5); margin-bottom: 32px; margin-left: 0;
@@ -426,7 +427,7 @@
   /* Headline */
   .kb-headline {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.9rem, 3.4vw, 4.2rem);
+    font-size: clamp(2.8rem, 5.5vw, 7.2rem);
     font-weight: 200;
     line-height: 1.12;
     color: rgba(255,255,255,0.96);
@@ -437,17 +438,14 @@
       0 3px 8px rgba(0,0,0,0.8),
       0 -1px 0  rgba(255,255,255,0.04);
     display: block;
-    text-align: left;
+    text-align: center;
   }
   .kb-drop-cap {
-    font-size: 5.6em;
-    line-height: 0.74;
-    float: left;
-    margin-right: 0.06em;
-    margin-top: 0.00em;
-    margin-bottom: -0.1em;
-    font-weight: 200;
-    font-family: 'Cormorant Garamond', serif;
+    /* drop cap removed — letter treated as normal text */
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    font-family: inherit;
   }
   .kb-headline em {
     font-style: italic; font-weight: 300;
@@ -459,17 +457,18 @@
       0 -1px 0  rgba(200,169,80,0.1);
   }
   /* Reveal lines */
-  .kb-line-1 { opacity: 0; transform: translateY(18px); transition: opacity 1.2s ease, transform 1.2s ease; display: block; overflow: hidden; }
+  .kb-line-1 { opacity: 0; transform: translateY(18px); transition: opacity 1.2s ease, transform 1.2s ease; }
   .kb-gate.in-view .kb-line-1 { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
   .kb-line-2 { opacity: 0; transform: translateY(14px); transition: opacity 1.2s ease, transform 1.2s ease; }
   .kb-gate.in-view .kb-line-2 { opacity: 1; transform: translateY(0); transition-delay: 1.4s; }
   /* Address */
   .kb-address-wrapper {
     position: absolute;
-    bottom: 7%;
-    left: 8%;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 5;
-    text-align: left;
+    text-align: center;
     opacity: 0;
     transition: opacity 1.4s ease 2.4s;
   }
