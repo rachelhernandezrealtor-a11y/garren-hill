@@ -327,7 +327,7 @@
     object-fit: cover;
     object-position: center 60%;
     transform-origin: 50% 62%;
-    animation: kbArrive 28s cubic-bezier(0.12, 0, 0.08, 1) forwards;
+    animation: none;
     z-index: 1;
   }
   /* Directorial push — starts wide at the gate, slowly pulls you toward the house */
@@ -855,16 +855,50 @@
   .whp-titles-eyebrow.visible { opacity: 1; transform: translateY(0); }
   .whp-titles-headline {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.6rem, 5vw, 4.8rem);
     font-weight: 300;
-    line-height: 1.05;
+    line-height: 1.15;
     color: var(--cream);
     margin: 0 0 52px 0;
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 1.1s ease 0.2s, transform 1.1s ease 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
   .whp-titles-headline.visible { opacity: 1; transform: translateY(0); }
+  .whp-title-line { display: block; }
+  .whp-title-l1 {
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.55);
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+  .whp-title-l2 {
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1.05;
+    margin-bottom: 14px;
+  }
+  .whp-title-l3 {
+    font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.7);
+    font-weight: 300;
+    margin-bottom: 4px;
+  }
+  .whp-title-l4 {
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: 0.04em;
+    font-style: italic;
+  }
   .whp-titles-bio {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.08rem;
@@ -1201,7 +1235,12 @@
   <div class="whp-titles-beat">
     <div class="whp-titles-left">
       <span class="whp-titles-eyebrow scroll-reveal">The Man Who Built It</span>
-      <h2 class="whp-titles-headline scroll-reveal">Editor. Publisher.<br>Ambassador.<br>North Carolinian.</h2>
+      <h2 class="whp-titles-headline scroll-reveal">
+        <span class="whp-title-line whp-title-l1">Walter Hines Page,</span>
+        <span class="whp-title-line whp-title-l2"><em>Ambassador. Editor. Visionary.</em></span>
+        <span class="whp-title-line whp-title-l3">Built Garran Hill in 1916.</span>
+        <span class="whp-title-line whp-title-l4">And here it stays.</span>
+      </h2>
       <div class="whp-titles-bio scroll-reveal">
         <p>Born in Cary, North Carolina. Co-founder of Doubleday, Page &amp; Co. Editor of <em>The Atlantic Monthly</em>. In 1913, Woodrow Wilson appointed him Ambassador to the Court of St. James — the most important diplomatic post in the world as Europe moved toward war.</p>
         <p>From London, he wrote home constantly. Not about diplomacy. About the farm. When he wrote "the farm," he meant Garran Hill — all one thousand acres of it, purchased in February 1913, named by him, already under construction three thousand miles away.</p>
@@ -1713,5 +1752,23 @@
 
 <div id="build-tag" style="display:none;position:fixed;bottom:16px;right:16px;z-index:9999;background:rgba(0,0,0,0.75);border:1px solid #C9A96E;color:#C9A96E;font-family:monospace;font-size:11px;padding:6px 12px;letter-spacing:0.08em;pointer-events:none;">v3.1 · STAT BAR · 2026-04-28</div>
 
+
+  <script>
+    // KB Gate — fire animation only when section enters viewport
+    (function() {
+      var kbImg = document.querySelector('.kb-gate .kb-img');
+      if (!kbImg) return;
+      var fired = false;
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !fired) {
+            fired = true;
+            kbImg.style.animation = 'kbArrive 28s cubic-bezier(0.12, 0, 0.08, 1) forwards';
+          }
+        });
+      }, { threshold: 0.15 });
+      observer.observe(document.querySelector('.kb-gate'));
+    })();
+  </script>
 </body>
 </html>
