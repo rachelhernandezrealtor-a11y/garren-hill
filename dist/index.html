@@ -1042,6 +1042,7 @@
   }
 
 </style>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.7/dist/hls.min.js"></script>
 </head>
 <body>
 
@@ -1063,11 +1064,25 @@
 
   <!-- HERO BODY -->
   <section class="hero">
-    <stream src="f2f45700c0bc7f916720f56dc6bf1623"
-      class="hero-video"
-      autoplay muted loop playsinline
+    <video id="gh-hero-video" class="hero-video" autoplay muted loop playsinline
       poster="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777244059/gh_key/gh_191.jpg">
-    </stream>
+    </video>
+    <script>
+    (function() {
+      var video = document.getElementById('gh-hero-video');
+      var src = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/f2f45700c0bc7f916720f56dc6bf1623/manifest/video.m3u8';
+      if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        // Safari — native HLS
+        video.src = src;
+        video.play();
+      } else if (typeof Hls !== 'undefined' && Hls.isSupported()) {
+        var hls = new Hls();
+        hls.loadSource(src);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function() { video.play(); });
+      }
+    })();
+    </script>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-eyebrow" style="margin-bottom:8px;">200 Hollycrest Drive &nbsp;|&nbsp; Pinehurst, NC &nbsp;|&nbsp; Est. 1916</div>
@@ -1510,7 +1525,7 @@
 </div>
 
 <!-- CLOUDFLARE STREAM -->
-<script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>
+
 
 
 
