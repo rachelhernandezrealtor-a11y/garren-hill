@@ -2,166 +2,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Montserrat:wght@300&family=Pinyon+Script&display=swap');
 
 * { margin:0; padding:0; box-sizing:border-box; }
-body { 
-  width: 1600px; height: 800px; 
+html, body { 
+  width: 100%; 
+  height: 100vh;
   background: #0a0a0a; 
   overflow: hidden;
   position: relative;
 }
 
-/* GATE HALF — left 60% */
-.gate-half {
-  position: absolute; left: 0; top: 0;
-  width: 62%; height: 100%;
-  background: url("https://res.cloudinary.com/dghn2xpif/image/upload/v1777263004/gh_key/gh_gate_twilight.jpg") center/cover;
-}
-.gate-fade {
-  position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(10,10,10,0.1) 30%, rgba(10,10,10,0.85) 80%, rgba(10,10,10,1) 100%);
-}
-.gate-top {
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, transparent 35%);
-}
-
-.gate-copy {
-  position: absolute;
-  bottom: 80px; left: 64px;
-  max-width: 540px;
-}
-.headline {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: 72px;
-  color: #F5F0E8;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  text-shadow: 0 2px 48px rgba(0,0,0,0.9), 0 0 80px rgba(0,0,0,0.6);
-  display: block;
-}
-.pull-quote {
-  font-family: 'Libre Baskerville', serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: 36px;
-  color: #C9A96E;
-  margin-top: 14px;
-  display: block;
-  letter-spacing: 0.02em;
-  text-shadow: 0 0 32px rgba(201,169,110,0.4), 0 2px 20px rgba(0,0,0,0.8);
-}
-.gold-rule {
-  display: block;
-  width: 80px; height: 1px;
-  background: #C9A96E;
-  margin-top: 30px;
-  opacity: 0.55;
-}
-
-/* WHP HALF — right 40%, centered portrait, fully visible */
-.whp-half {
-  position: absolute; right: 0; top: 0;
-  width: 42%; height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* fade from black on left edge into portrait */
-.whp-half::before {
-  content: '';
-  position: absolute; left: 0; top: 0;
-  width: 35%; height: 100%;
-  background: linear-gradient(to right, #0a0a0a 0%, transparent 100%);
-  z-index: 2;
-  pointer-events: none;
-}
-
-.whp-portrait {
-  position: relative;
-  height: 96%;
-  width: auto;
-  object-fit: contain;
-  object-position: center top;
-  opacity: 0.88;
-  z-index: 1;
-  /* subtle dark vignette on right edge */
-  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0.7) 85%, rgba(0,0,0,0.3) 100%);
-  mask-image: linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0.7) 85%, rgba(0,0,0,0.3) 100%);
-}
-
-/* subtle ambient dark background behind portrait */
-.whp-bg {
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 60% 40%, rgba(30,20,10,0.4) 0%, rgba(10,10,10,0.0) 70%);
-  z-index: 0;
-}
-
-.whp-copy {
-  position: absolute;
-  bottom: 80px; 
-  left: 48px;
-  z-index: 3;
-}
-.whp-name {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
-  font-size: 11px;
-  letter-spacing: 0.36em;
-  color: #F5F0E8;
-  opacity: 0.7;
-  text-transform: uppercase;
-  display: block;
-}
-.whp-titles {
-  font-family: 'Libre Baskerville', serif;
-  font-weight: 400;
-  font-size: 20px;
-  color: #C9A96E;
-  margin-top: 10px;
-  letter-spacing: 0.05em;
-  display: block;
-  text-shadow: 0 0 24px rgba(201,169,110,0.35);
-}
-.whp-built {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
-  font-size: 10px;
-  letter-spacing: 0.30em;
-  color: #F5F0E8;
-  opacity: 0.55;
-  text-transform: uppercase;
-  margin-top: 16px;
-  display: block;
-}
-.whp-close {
-  font-family: 'Libre Baskerville', serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: 17px;
-  color: #C9A96E;
-  margin-top: 8px;
-  display: block;
-  opacity: 0.92;
-  text-shadow: 0 0 20px rgba(201,169,110,0.3);
-}
-
-/* STAT BAR — full width, top */
+/* STAT BAR */
 .stat-bar {
   position: absolute; top: 0; left: 0; right: 0;
-  background: rgba(10,10,10,0.88);
+  background: rgba(10,10,10,0.92);
   border-bottom: 1px solid rgba(201,169,110,0.38);
   display: flex; align-items: center; justify-content: center;
-  height: 60px;
+  height: 56px;
   z-index: 10;
 }
 .stat-item {
   display: flex; flex-direction: column; align-items: center;
-  padding: 0 40px;
+  padding: 0 28px;
   border-right: 1px solid rgba(201,169,110,0.12);
   flex: 1;
 }
@@ -169,23 +34,159 @@ body {
 .stat-num {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 15px;
   color: #C9A96E;
   letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 .stat-label {
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
-  font-size: 7px;
-  letter-spacing: 0.30em;
+  font-size: 6.5px;
+  letter-spacing: 0.28em;
   color: #F5F0E8;
   text-transform: uppercase;
   opacity: 0.5;
   margin-top: 3px;
+  white-space: nowrap;
 }
 .stat-price .stat-num {
-  font-size: 19px;
-  letter-spacing: 0.06em;
+  font-size: 17px;
+}
+
+/* LAYOUT: gate left, WHP right */
+.scene {
+  position: absolute;
+  top: 56px; left: 0; right: 0; bottom: 0;
+  display: flex;
+}
+
+/* GATE — 58% */
+.gate-half {
+  position: relative;
+  width: 58%;
+  height: 100%;
+  background: url("https://res.cloudinary.com/dghn2xpif/image/upload/v1777263004/gh_key/gh_gate_twilight.jpg") center/cover no-repeat;
+  flex-shrink: 0;
+}
+.gate-fade-right {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 35%, rgba(10,10,10,0.7) 70%, rgba(10,10,10,1) 100%);
+}
+.gate-fade-top {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, transparent 30%);
+}
+.gate-copy {
+  position: absolute;
+  bottom: 72px; left: 56px;
+  max-width: 480px;
+}
+.headline {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(52px, 5.5vw, 72px);
+  color: #F5F0E8;
+  line-height: 1.06;
+  text-shadow: 0 2px 40px rgba(0,0,0,0.9);
+  display: block;
+}
+.pull-quote {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-size: clamp(28px, 3vw, 38px);
+  color: #C9A96E;
+  margin-top: 12px;
+  display: block;
+  text-shadow: 0 0 28px rgba(201,169,110,0.5), 0 2px 16px rgba(0,0,0,0.8);
+}
+.gold-rule {
+  display: block; width: 72px; height: 1px;
+  background: #C9A96E; margin-top: 28px; opacity: 0.55;
+}
+
+/* WHP — 42% */
+.whp-half {
+  position: relative;
+  width: 42%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+/* Dark emergence from left */
+.whp-half::before {
+  content: '';
+  position: absolute; left: 0; top: 0;
+  width: 30%; height: 100%;
+  background: linear-gradient(to right, #0a0a0a 0%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+/* Subtle fade right edge */
+.whp-half::after {
+  content: '';
+  position: absolute; right: 0; top: 0;
+  width: 20%; height: 100%;
+  background: linear-gradient(to left, #0a0a0a 0%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+.whp-portrait {
+  position: relative;
+  height: 90%;
+  width: auto;
+  max-width: 85%;
+  object-fit: contain;
+  object-position: top center;
+  opacity: 0.86;
+  z-index: 1;
+}
+.whp-copy {
+  position: absolute;
+  bottom: 72px;
+  left: 40px;
+  z-index: 3;
+}
+.whp-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.34em;
+  color: #F5F0E8;
+  opacity: 0.65;
+  text-transform: uppercase;
+  display: block;
+}
+.whp-titles {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 18px;
+  color: #C9A96E;
+  margin-top: 10px;
+  letter-spacing: 0.04em;
+  display: block;
+  text-shadow: 0 0 20px rgba(201,169,110,0.4);
+}
+.whp-built {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  color: #F5F0E8;
+  opacity: 0.52;
+  text-transform: uppercase;
+  margin-top: 14px;
+  display: block;
+}
+.whp-close {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: #C9A96E;
+  margin-top: 8px;
+  display: block;
+  text-shadow: 0 0 18px rgba(201,169,110,0.35);
 }
 </style>
 </head>
@@ -199,24 +200,25 @@ body {
   <div class="stat-item stat-price"><span class="stat-num">$4,250,000</span><span class="stat-label">&nbsp;</span></div>
 </div>
 
-<div class="gate-half">
-  <div class="gate-fade"></div>
-  <div class="gate-top"></div>
-  <div class="gate-copy">
-    <span class="headline">Some houses<br>hold history.</span>
-    <span class="pull-quote">This one shaped it.</span>
-    <span class="gold-rule"></span>
+<div class="scene">
+  <div class="gate-half">
+    <div class="gate-fade-right"></div>
+    <div class="gate-fade-top"></div>
+    <div class="gate-copy">
+      <span class="headline">Some houses<br>hold history.</span>
+      <span class="pull-quote">This one shaped it.</span>
+      <span class="gold-rule"></span>
+    </div>
   </div>
-</div>
 
-<div class="whp-half">
-  <div class="whp-bg"></div>
-  <img class="whp-portrait" src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/2e864596c_WalterHinesPage.jpeg" />
-  <div class="whp-copy">
-    <span class="whp-name">Walter Hines Page,</span>
-    <span class="whp-titles">Ambassador.&nbsp; Editor.&nbsp; Visionary.</span>
-    <span class="whp-built">Built Garran Hill in 1916.</span>
-    <span class="whp-close">And here it stays.</span>
+  <div class="whp-half">
+    <img class="whp-portrait" src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/2e864596c_WalterHinesPage.jpeg" />
+    <div class="whp-copy">
+      <span class="whp-name">Walter Hines Page,</span>
+      <span class="whp-titles">Ambassador.&nbsp; Editor.&nbsp; Visionary.</span>
+      <span class="whp-built">Built Garran Hill in 1916.</span>
+      <span class="whp-close">And here it stays.</span>
+    </div>
   </div>
 </div>
 
