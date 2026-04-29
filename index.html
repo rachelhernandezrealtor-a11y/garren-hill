@@ -429,32 +429,6 @@
     animation: lanternFlicker2 2.8s ease-in-out infinite;
     animation-delay: 0.7s;
   }
-  /* Letter ghost — lives inside the dark vignette zone only, NOT over the gate photo */
-  .kb-letter-ghost {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 38%;          /* Only the bottom 38% — the dark strip where copy lives */
-    z-index: 4;
-    pointer-events: none;
-    overflow: hidden;
-    /* Fade in gently from top of this zone so no hard edge */
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
-    mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
-  }
-  .kb-letter-ghost img {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%) rotate(-1.5deg);
-    width: 100%;
-    max-width: 960px;
-    opacity: 0.13;
-    filter: sepia(0.3) brightness(2.2) contrast(0.6);
-    mix-blend-mode: screen;
-  }
-
   .kb-overlay {
     position: absolute;
     inset: 0;
@@ -494,6 +468,22 @@
     align-items: center;
     width: 100%;
   }
+  /* Letter ghost — contained INSIDE copy block only, never bleeds onto gate */
+  .kb-copy-base::before {
+    content: '';
+    position: absolute;
+    inset: -20px -30px;
+    background-image: url('https://res.cloudinary.com/dghn2xpif/image/upload/v1777391998/gh_key/gh_whp_letter1.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.07;
+    filter: sepia(0.2) brightness(1.6) contrast(0.6);
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 4px;
+  }
+  .kb-copy-base > * { position: relative; z-index: 1; }
   .kb-rule-top {
     display: block;
     width: 80px;
@@ -1214,9 +1204,6 @@
     alt="Garran Hill gate — twilight"
   />
   <div class="kb-overlay"></div>
-  <div class="kb-letter-ghost" aria-hidden="true">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777391998/gh_key/gh_whp_letter1.png" alt="">
-  </div>
   <div class="kb-lantern-glow">
     <div class="kb-lantern kb-lantern-left"></div>
     <div class="kb-lantern kb-lantern-right"></div>
