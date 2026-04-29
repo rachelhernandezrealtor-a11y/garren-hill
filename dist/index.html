@@ -38,7 +38,8 @@
   .nav-links .nav-cta a { color: var(--gold); opacity: 1; }
 
   /* HERO */
-  .hero { position: relative; height: calc(100vh - 76px); width: 100%; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
+  .hero-viewport { position: relative; height: 100vh; width: 100%; display: flex; flex-direction: column; overflow: hidden; }
+  .hero { position: relative; flex: 1; width: 100%; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
   .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
   .hero-overlay {
     position: absolute; inset: 0;
@@ -1043,34 +1044,49 @@
 </head>
 <body>
 
-<!-- NAV -->
+<!-- BEAT 0 — HERO VIEWPORT (top nav + hero + bottom nav = one viewport) -->
+<div class="hero-viewport" id="estate">
 
-<!-- BEAT 0 — HERO -->
-<section class="hero" id="estate">
-  <stream src="ba88a34a312106b7bf9d00b52a452871"
-    class="hero-video"
-    autoplay muted loop playsinline
-    poster="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777244059/gh_key/gh_191.jpg">
-  </stream>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow" style="margin-bottom:8px;">200 Hollycrest Drive &nbsp;|&nbsp; Pinehurst, NC &nbsp;|&nbsp; Est. 1916</div>
-    <div class="hero-title" style="white-space:nowrap;">Garran Hill</div>
-    <div class="hero-rule"></div>
-    <div class="hero-subhead">Neo-Georgian.&nbsp;&nbsp;Walter Hines Page.&nbsp;&nbsp;110 years of remarkable stewardship.</div>
-  </div>
-</section>
+  <!-- TOP NAV -->
+  <nav class="hero-top-nav" id="main-nav">
+    <a href="#" class="nav-logo">Garran Hill <span class="nav-est">Est. 1916</span></a>
+    <div class="nav-center">200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, NC</div>
+    <ul class="nav-links">
+      <li><a href="#estate">The Estate</a></li>
+      <li><a href="#history">The History</a></li>
+      <li><a href="#grounds">The Grounds</a></li>
+      <li class="nav-cta"><a href="#" onclick="openInquiry(); return false;">Private Inquiry</a></li>
+    </ul>
+  </nav>
 
-<!-- NAV — bottom of hero, gold hairline marks the page turn -->
-<nav id="main-nav">
-  <a href="#" class="nav-logo">Garran Hill</a>
-  <ul class="nav-links">
-    <li><a href="#estate">The Estate</a></li>
-    <li><a href="#history">The History</a></li>
-    <li><a href="#grounds">The Grounds</a></li>
-    <li class="nav-cta"><a href="#" onclick="openInquiry(); return false;">Private Inquiry</a></li>
-  </ul>
-</nav>
+  <!-- HERO -->
+  <section class="hero">
+    <stream src="ba88a34a312106b7bf9d00b52a452871"
+      class="hero-video"
+      autoplay muted loop playsinline
+      poster="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777244059/gh_key/gh_191.jpg">
+    </stream>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow" style="margin-bottom:8px;">200 Hollycrest Drive &nbsp;|&nbsp; Pinehurst, NC &nbsp;|&nbsp; Est. 1916</div>
+      <div class="hero-title" style="white-space:nowrap;">Garran Hill</div>
+      <div class="hero-rule"></div>
+      <div class="hero-subhead">Neo-Georgian.&nbsp;&nbsp;Walter Hines Page.&nbsp;&nbsp;110 years of remarkable stewardship.</div>
+    </div>
+  </section>
+
+  <!-- BOTTOM NAV — gold line = the threshold -->
+  <nav class="hero-bottom-nav">
+    <a href="#" class="nav-logo">Garran Hill</a>
+    <ul class="nav-links">
+      <li><a href="#estate">The Estate</a></li>
+      <li><a href="#history">The History</a></li>
+      <li><a href="#grounds">The Grounds</a></li>
+      <li class="nav-cta"><a href="#" onclick="openInquiry(); return false;">Private Inquiry</a></li>
+    </ul>
+  </nav>
+
+</div>
 
 <!-- STAT BAR -->
 <div class="stat-bar" id="history">
