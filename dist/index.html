@@ -554,6 +554,16 @@
     color: rgba(201,169,110,0.9);
     text-shadow: 0 1px 8px rgba(0,0,0,0.9);
   }
+  .kb-address-wrapper {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 10;
+  }
   .kb-address {
     display: block;
     font-family: 'Pinyon Script', cursive;
@@ -561,7 +571,6 @@
     letter-spacing: 0.03em;
     text-transform: none;
     color: rgba(201,169,110,0.97);
-    margin-top: 28px;
     text-shadow: 0 2px 20px rgba(0,0,0,1), 0 4px 40px rgba(0,0,0,0.9);
   }
   .kb-rule-bottom {
@@ -1155,8 +1164,10 @@
         <em class="kb-line-2">This one shaped it.</em>
       </h2>
       <span class="kb-rule-bottom kb-rule-bottom-anim"></span>
-      <span class="kb-address">200 Hollycrest Drive</span>
     </div>
+  </div>
+  <div class="kb-address-wrapper">
+    <span class="kb-address">200 Hollycrest Drive</span>
   </div>
 </section>
 
