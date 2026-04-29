@@ -62,8 +62,8 @@
   }
   .stat-item { display: flex; flex-direction: column; align-items: center; padding: 22px 36px; border-right: 1px solid rgba(201,169,110,0.15); flex: 1; }
   .stat-item:last-child { border-right: none; }
-  .stat-number { font-size: 1.35rem; font-weight: 200; letter-spacing: 0.1em; color: var(--gold); }
-  .stat-label { font-size: 0.46rem; letter-spacing: 0.28em; font-weight: 400; color: var(--cream); text-transform: uppercase; margin-top: 6px; opacity: 0.5; }
+  .stat-number { font-size: clamp(1.1rem, 1.6vw, 1.55rem); font-weight: 200; letter-spacing: 0.1em; color: var(--gold); }
+  .stat-label { font-size: clamp(0.42rem, 0.6vw, 0.52rem); letter-spacing: 0.28em; font-weight: 400; color: var(--cream); text-transform: uppercase; margin-top: 6px; opacity: 0.5; }
   .stat-crest-wrap { padding: 0 40px; display: flex; align-items: center; justify-content: center; position: relative; flex-shrink: 0; }
   .stat-crest { height: 80px; width: auto; position: relative; top: -40px; filter: drop-shadow(0 0 14px rgba(201,169,110,0.5)) drop-shadow(0 0 28px rgba(201,169,110,0.25)); }
 
@@ -75,7 +75,7 @@
 
   /* BEAT 4 — CRAFTSMEN */
   .craftsmen-beat { background: var(--dark); padding: 140px 72px; max-width: 900px; }
-  .craftsmen-eyebrow { font-size: 0.6rem; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; opacity: 0.75; margin-bottom: 36px; display: block; }
+  .craftsmen-eyebrow { font-size: clamp(0.58rem, 0.7vw, 0.68rem); letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; opacity: 0.75; margin-bottom: 36px; display: block; }
   .craftsmen-headline { font-size: clamp(3rem, 6vw, 7.5rem); font-weight: 300; line-height: 1.0; color: var(--cream); margin-bottom: 56px; }
   .craftsmen-rule { width: 80px; height: 1px; background: var(--gold); margin-bottom: 44px; opacity: 0.5; }
   .craftsmen-body { font-size: clamp(1rem, 1.3vw, 1.18rem); font-weight: 300; line-height: 1.85; color: var(--text); max-width: 560px; }
@@ -106,7 +106,7 @@
     background: linear-gradient(to bottom, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.6) 50%, rgba(10,10,10,0.2) 100%);
   }
   .threshold-content { position: relative; z-index: 2; padding: 100px 72px; max-width: 680px; }
-  .threshold-eyebrow { font-size: 0.6rem; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; opacity: 0.75; margin-bottom: 28px; display: block; }
+  .threshold-eyebrow { font-size: clamp(0.58rem, 0.7vw, 0.68rem); letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; opacity: 0.75; margin-bottom: 28px; display: block; }
   .threshold-headline { font-size: clamp(2.8rem, 5vw, 6rem); font-weight: 300; line-height: 1.05; color: var(--cream); margin-bottom: 48px; }
   .threshold-rule { width: 60px; height: 1px; background: var(--gold); margin-bottom: 40px; opacity: 0.5; }
   .threshold-body { font-size: clamp(1rem, 1.2vw, 1.15rem); font-weight: 300; line-height: 1.85; color: var(--text); }
@@ -215,10 +215,10 @@
   .room-img-wrap img { width: 100%; height: 520px; object-fit: cover; display: block; transition: transform 0.8s ease; }
   .room-img-wrap:hover img { transform: scale(1.02); }
   .room-text { display: flex; flex-direction: column; justify-content: center; }
-  .room-eyebrow { font-size: 0.6rem; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; opacity: 0.75; margin-bottom: 28px; display: block; }
+  .room-eyebrow { font-size: clamp(0.58rem, 0.7vw, 0.68rem); letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; opacity: 0.75; margin-bottom: 28px; display: block; }
   .room-headline { font-size: clamp(2.2rem, 3.5vw, 4.5rem); font-weight: 300; line-height: 1.05; color: var(--cream); margin-bottom: 36px; }
   .room-rule { width: 60px; height: 1px; background: var(--gold); margin-bottom: 32px; opacity: 0.5; }
-  .room-body { font-size: clamp(0.95rem, 1.15vw, 1.1rem); font-weight: 300; line-height: 1.9; color: var(--text); }
+  .room-body { font-size: clamp(1rem, 1.2vw, 1.12rem); font-weight: 300; line-height: 1.92; color: var(--text); }
   .room-body p + p { margin-top: 1.2em; }
 
   /* FULL-BLEED ROOM */
@@ -237,13 +237,13 @@
   /* INTERSTITIAL TEXT */
   .interstitial { background: var(--dark); padding: 100px 72px; text-align: center; }
   .interstitial-rule { width: 40px; height: 1px; background: var(--gold); margin: 0 auto 48px; opacity: 0.5; }
-  .interstitial-text { font-size: clamp(1.4rem, 2.5vw, 3rem); font-style: italic; font-weight: 300; line-height: 1.4; color: var(--cream); max-width: 680px; margin: 0 auto; }
+  .interstitial-text { font-size: clamp(1.4rem, 2.2vw, 2.6rem); font-style: italic; font-weight: 300; line-height: 1.45; color: var(--cream); max-width: 680px; margin: 0 auto; }
   .interstitial-text.gold { color: var(--gold); }
   .interstitial-rule-bottom { width: 40px; height: 1px; background: var(--gold); margin: 48px auto 0; opacity: 0.5; }
 
   /* INFRA GRID */
   .infra-beat { background: var(--dark); padding: 120px 72px; }
-  .infra-eyebrow { font-size: 0.6rem; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; opacity: 0.75; margin-bottom: 48px; display: block; }
+  .infra-eyebrow { font-size: clamp(0.58rem, 0.7vw, 0.68rem); letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; opacity: 0.75; margin-bottom: 48px; display: block; }
   .infra-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 1200px; }
   .infra-item { padding: 40px 36px; border: 1px solid rgba(201,169,110,0.1); }
   .infra-label { font-size: 0.55rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; display: block; opacity: 0.8; }
@@ -461,6 +461,21 @@
   .kb-gate.in-view .kb-line-1 { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
   .kb-line-2 { opacity: 0; transform: translateY(14px); transition: opacity 1.2s ease, transform 1.2s ease; }
   .kb-gate.in-view .kb-line-2 { opacity: 1; transform: translateY(0); transition-delay: 1.4s; }
+  .kb-line-3 {
+    display: block;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 1.0s ease, transform 1.0s ease;
+    font-style: normal;
+    font-size: clamp(0.6rem, 1vw, 0.82rem);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.7);
+    margin-top: 28px;
+    font-weight: 400;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.9);
+  }
+  .kb-gate.in-view .kb-line-3 { opacity: 1; transform: translateY(0); transition-delay: 2.4s; }
   /* Address */
   .kb-address-wrapper {
     position: absolute;
@@ -783,8 +798,8 @@
   }
   .whp-titles-bio {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.08rem;
-    line-height: 1.75;
+    font-size: clamp(1rem, 1.2vw, 1.12rem);
+    line-height: 1.82;
     color: rgba(245,240,232,0.78);
     display: flex;
     flex-direction: column;
@@ -1057,7 +1072,7 @@
   </div>
   <div class="stat-item"><span class="stat-number">6,072</span><span class="stat-label">square feet</span></div>
   <div class="stat-item"><span class="stat-number">4.15</span><span class="stat-label">ac</span></div>
-  <div class="stat-item"><span class="stat-number">$4,250,000</span></div>
+  <div class="stat-item"><span class="stat-number" style="font-size: clamp(1.1rem, 1.8vw, 1.75rem); letter-spacing: 0.06em;">$4,250,000</span></div>
 </div>
 
 <!-- KEN BURNS — GATE ARRIVAL / HISTORY BRIDGE -->
@@ -1078,6 +1093,7 @@
       <h2 class="kb-headline">
         <span class="kb-line-1"><span class="kb-drop-cap">S</span>ome houses hold history.</span>
         <em class="kb-line-2">This one shaped it.</em>
+        <span class="kb-line-3">1916.&nbsp; Walter Hines Page.&nbsp; Neo-Georgian.</span>
       </h2>
       <span class="kb-rule-bottom kb-rule-bottom-anim"></span>
     </div>
@@ -1165,8 +1181,8 @@
   <h2 class="craftsmen-headline">Built by Leonard Tufts' own craftsmen.<br>The same men who built Pinehurst.</h2>
   <div class="craftsmen-rule"></div>
   <div class="craftsmen-body">
-    <p>Four columns. Full entablature. Drawn to exact Georgian proportion and built that way — because the drawings specified it and the men building it knew the difference.</p>
-    <p>These were Leonard Tufts' own craftsmen. The same hands that raised the Pinehurst clubhouse, the Carolina Hotel, the cottages along the village green. Two miles away. The same standard. The same year.</p>
+    <p>Neo-Georgian. Four columns. Full entablature. Built by the men who built Pinehurst — and built to the same standard, two miles away, in the same year.</p>
+    <p>These were Leonard Tufts' own craftsmen. The same hands that raised the Carolina Hotel, the Pinehurst clubhouse, the cottages along the village green. When Page commissioned the house from London — Ambassador to the Court of St. James, writing home about the farm while Europe moved toward war — he knew exactly whose hands would build it.</p>
     <p>Three months were spent sourcing period-accurate brick for the portico alone. The proportions are correct because no one involved was willing to approximate.</p>
   </div>
 </section>
