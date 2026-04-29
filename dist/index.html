@@ -287,7 +287,29 @@
   }
 
   /* ADDRESS LINE — after stat bar */
-  
+  .address-line {
+    background: var(--dark);
+    padding: 64px 72px 56px;
+    text-align: center;
+    position: relative;
+  }
+  .address-line-script {
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(2.6rem, 4.5vw, 5.2rem);
+    color: var(--gold);
+    line-height: 1.1;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .address-line-city {
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.45);
+    display: block;
+    margin-bottom: 40px;
+  }
+  .address-line-rule { width: 80px; height: 1px; background: var(--gold); margin: 0 auto; opacity: 0.35; }
 
   /* KEN BURNS — GATE CROSSFADE */
   .kb-gate {
@@ -563,41 +585,6 @@
     color: rgba(201,169,110,0.9);
     text-shadow: 0 1px 8px rgba(0,0,0,0.9);
   }
-  .kb-address-overlay {
-  position: absolute;
-  top: 12%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  z-index: 3;
-  pointer-events: none;
-}
-.kb-address-script {
-  display: block;
-  font-family: 'Pinyon Script', cursive;
-  font-size: clamp(2.8rem, 6vw, 5rem);
-  color: var(--gold);
-  letter-spacing: 0.02em;
-  line-height: 1;
-  margin-bottom: 10px;
-}
-.kb-address-city {
-  display: block;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.22em;
-  color: var(--cream);
-  opacity: 0.65;
-  text-transform: uppercase;
-}
-.kb-address-rule {
-  width: 60px;
-  height: 1px;
-  background: var(--gold);
-  opacity: 0.4;
-  margin: 12px auto 0;
-}
-
   .kb-address {
     display: block;
     font-size: clamp(0.58rem, 0.75vw, 0.72rem);
@@ -1106,6 +1093,13 @@
   <div class="stat-item"><span class="stat-number">$4,250,000</span></div>
 </div>
 
+<!-- ADDRESS LINE -->
+<div class="address-line">
+  <span class="address-line-script">200 Hollycrest Drive</span>
+  <span class="address-line-city">Pinehurst, North Carolina &nbsp;·&nbsp; Moore County &nbsp;·&nbsp; Est. 1916</span>
+  <div class="address-line-rule"></div>
+</div>
+
 <!-- KEN BURNS — GATE ARRIVAL / HISTORY BRIDGE -->
 <section class="kb-gate" aria-label="Garran Hill gate — then and now">
   <img
@@ -1213,11 +1207,6 @@
 <div class="facade-beat fade-in">
   <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777329145/gh_key/gh_facade_wide.jpg" alt="Garran Hill — 200 Hollycrest Drive">
   <div class="facade-overlay"></div>
-  <div class="kb-address-overlay">
-    <span class="kb-address-script">200 Hollycrest Drive</span>
-    <span class="kb-address-city">Pinehurst, North Carolina &nbsp;·&nbsp; Moore County &nbsp;·&nbsp; Est. 1916</span>
-    <div class="kb-address-rule"></div>
-  </div>
   <div class="facade-caption">Pinehurst, North Carolina &nbsp;·&nbsp; 1916</div>
 </div>
 
