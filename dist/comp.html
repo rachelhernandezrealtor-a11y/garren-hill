@@ -2,191 +2,115 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1280">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Montserrat:wght@300&family=Pinyon+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Montserrat:wght@300&display=swap');
 
 * { margin:0; padding:0; box-sizing:border-box; }
-html, body { 
-  width: 100%; 
-  height: 100vh;
-  background: #0a0a0a; 
-  overflow: hidden;
-  position: relative;
-}
+html, body { width:100%; height:100vh; background:#0a0a0a; overflow:hidden; }
 
 /* STAT BAR */
 .stat-bar {
-  position: absolute; top: 0; left: 0; right: 0;
-  background: rgba(10,10,10,0.92);
-  border-bottom: 1px solid rgba(201,169,110,0.38);
-  display: flex; align-items: center; justify-content: center;
-  height: 56px;
-  z-index: 10;
+  position:absolute; top:0; left:0; right:0; height:52px;
+  background:rgba(10,10,10,0.94);
+  border-bottom:1px solid rgba(201,169,110,0.35);
+  display:flex; align-items:center; z-index:10;
 }
 .stat-item {
-  display: flex; flex-direction: column; align-items: center;
-  padding: 0 28px;
-  border-right: 1px solid rgba(201,169,110,0.12);
-  flex: 1;
+  display:flex; flex-direction:column; align-items:center;
+  flex:1; padding:0 16px;
+  border-right:1px solid rgba(201,169,110,0.1);
 }
-.stat-item:last-child { border-right: none; }
+.stat-item:last-child { border-right:none; }
 .stat-num {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: 15px;
-  color: #C9A96E;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
+  font-family:'Playfair Display',serif; font-weight:700;
+  font-size:14px; color:#C9A96E; letter-spacing:0.04em; white-space:nowrap;
 }
 .stat-label {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
-  font-size: 6.5px;
-  letter-spacing: 0.28em;
-  color: #F5F0E8;
-  text-transform: uppercase;
-  opacity: 0.5;
-  margin-top: 3px;
-  white-space: nowrap;
-}
-.stat-price .stat-num {
-  font-size: 17px;
+  font-family:'Montserrat',sans-serif; font-weight:300;
+  font-size:6px; letter-spacing:0.26em; color:#F5F0E8;
+  text-transform:uppercase; opacity:0.48; margin-top:3px; white-space:nowrap;
 }
 
-/* LAYOUT: gate left, WHP right */
+/* SCENE */
 .scene {
-  position: absolute;
-  top: 56px; left: 0; right: 0; bottom: 0;
-  display: flex;
+  position:absolute; top:52px; left:0; right:0; bottom:0;
+  display:flex;
 }
 
-/* GATE — 58% */
-.gate-half {
-  position: relative;
-  width: 58%;
-  height: 100%;
-  background: url("https://res.cloudinary.com/dghn2xpif/image/upload/v1777263004/gh_key/gh_gate_twilight.jpg") center/cover no-repeat;
-  flex-shrink: 0;
+/* GATE 55% */
+.gate {
+  position:relative; width:55%; height:100%; flex-shrink:0;
+  background:url("https://res.cloudinary.com/dghn2xpif/image/upload/v1777263004/gh_key/gh_gate_twilight.jpg") center/cover no-repeat;
 }
-.gate-fade-right {
-  position: absolute; inset: 0;
-  background: linear-gradient(to right, transparent 35%, rgba(10,10,10,0.7) 70%, rgba(10,10,10,1) 100%);
-}
-.gate-fade-top {
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, transparent 30%);
-}
-.gate-copy {
-  position: absolute;
-  bottom: 72px; left: 56px;
-  max-width: 480px;
-}
+.gate-r { position:absolute;inset:0; background:linear-gradient(to right,transparent 30%,rgba(10,10,10,.75) 72%,#0a0a0a 100%); }
+.gate-t { position:absolute;inset:0; background:linear-gradient(to bottom,rgba(10,10,10,.5) 0%,transparent 30%); }
+.gate-copy { position:absolute; bottom:68px; left:52px; max-width:440px; }
 .headline {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: clamp(52px, 5.5vw, 72px);
-  color: #F5F0E8;
-  line-height: 1.06;
-  text-shadow: 0 2px 40px rgba(0,0,0,0.9);
-  display: block;
+  font-family:'Playfair Display',serif; font-weight:700;
+  font-size:clamp(44px,5vw,66px); color:#F5F0E8;
+  line-height:1.06; text-shadow:0 2px 40px rgba(0,0,0,.9); display:block;
 }
-.pull-quote {
-  font-family: 'Libre Baskerville', serif;
-  font-style: italic;
-  font-size: clamp(28px, 3vw, 38px);
-  color: #C9A96E;
-  margin-top: 12px;
-  display: block;
-  text-shadow: 0 0 28px rgba(201,169,110,0.5), 0 2px 16px rgba(0,0,0,0.8);
+.pull {
+  font-family:'Libre Baskerville',serif; font-style:italic;
+  font-size:clamp(24px,2.8vw,34px); color:#C9A96E;
+  margin-top:12px; display:block;
+  text-shadow:0 0 28px rgba(201,169,110,.55),0 2px 16px rgba(0,0,0,.8);
 }
-.gold-rule {
-  display: block; width: 72px; height: 1px;
-  background: #C9A96E; margin-top: 28px; opacity: 0.55;
+.rule { display:block; width:68px; height:1px; background:#C9A96E; margin-top:26px; opacity:.5; }
+
+/* WHP 45% — portrait centered, text below */
+.whp {
+  position:relative; width:45%; height:100%;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+/* black bleeds in from left */
+.whp::before {
+  content:''; position:absolute; left:0; top:0; width:28%; height:100%;
+  background:linear-gradient(to right,#0a0a0a 0%,transparent 100%);
+  z-index:2; pointer-events:none;
+}
+/* black bleeds in from right so portrait never hard-clips */
+.whp::after {
+  content:''; position:absolute; right:0; top:0; width:18%; height:100%;
+  background:linear-gradient(to left,#0a0a0a 0%,transparent 100%);
+  z-index:2; pointer-events:none;
 }
 
-/* WHP — 42% */
-.whp-half {
-  position: relative;
-  width: 42%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+.portrait {
+  position:relative; z-index:1;
+  height:88%; width:auto;
+  max-width:100%;
+  object-fit:contain; object-position:top center;
+  opacity:.86;
 }
-/* Dark emergence from left */
-.whp-half::before {
-  content: '';
-  position: absolute; left: 0; top: 0;
-  width: 30%; height: 100%;
-  background: linear-gradient(to right, #0a0a0a 0%, transparent 100%);
-  z-index: 2;
-  pointer-events: none;
-}
-/* Subtle fade right edge */
-.whp-half::after {
-  content: '';
-  position: absolute; right: 0; top: 0;
-  width: 20%; height: 100%;
-  background: linear-gradient(to left, #0a0a0a 0%, transparent 100%);
-  z-index: 2;
-  pointer-events: none;
-}
-.whp-portrait {
-  position: relative;
-  height: 90%;
-  width: auto;
-  max-width: 85%;
-  object-fit: contain;
-  object-position: top center;
-  opacity: 0.86;
-  z-index: 1;
-}
+
 .whp-copy {
-  position: absolute;
-  bottom: 72px;
-  left: 40px;
-  z-index: 3;
+  position:absolute; bottom:68px; left:0; right:0;
+  padding:0 36px;
+  z-index:3;
 }
-.whp-name {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
-  font-size: 10px;
-  letter-spacing: 0.34em;
-  color: #F5F0E8;
-  opacity: 0.65;
-  text-transform: uppercase;
-  display: block;
+.wname {
+  font-family:'Montserrat',sans-serif; font-weight:300;
+  font-size:9.5px; letter-spacing:.34em; color:#F5F0E8;
+  opacity:.65; text-transform:uppercase; display:block;
 }
-.whp-titles {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 18px;
-  color: #C9A96E;
-  margin-top: 10px;
-  letter-spacing: 0.04em;
-  display: block;
-  text-shadow: 0 0 20px rgba(201,169,110,0.4);
+.wtitles {
+  font-family:'Libre Baskerville',serif;
+  font-size:17px; color:#C9A96E;
+  margin-top:9px; letter-spacing:.04em; display:block;
+  text-shadow:0 0 20px rgba(201,169,110,.4);
 }
-.whp-built {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
-  font-size: 9px;
-  letter-spacing: 0.28em;
-  color: #F5F0E8;
-  opacity: 0.52;
-  text-transform: uppercase;
-  margin-top: 14px;
-  display: block;
+.wbuilt {
+  font-family:'Montserrat',sans-serif; font-weight:300;
+  font-size:8.5px; letter-spacing:.28em; color:#F5F0E8;
+  opacity:.5; text-transform:uppercase; margin-top:13px; display:block;
 }
-.whp-close {
-  font-family: 'Libre Baskerville', serif;
-  font-style: italic;
-  font-size: 16px;
-  color: #C9A96E;
-  margin-top: 8px;
-  display: block;
-  text-shadow: 0 0 18px rgba(201,169,110,0.35);
+.wclose {
+  font-family:'Libre Baskerville',serif; font-style:italic;
+  font-size:15px; color:#C9A96E;
+  margin-top:7px; display:block;
+  text-shadow:0 0 16px rgba(201,169,110,.35);
 }
 </style>
 </head>
@@ -197,27 +121,27 @@ html, body {
   <div class="stat-item"><span class="stat-num">6</span><span class="stat-label">Bathrooms</span></div>
   <div class="stat-item"><span class="stat-num">6,072</span><span class="stat-label">Square Feet</span></div>
   <div class="stat-item"><span class="stat-num">4.15</span><span class="stat-label">Acres</span></div>
-  <div class="stat-item stat-price"><span class="stat-num">$4,250,000</span><span class="stat-label">&nbsp;</span></div>
+  <div class="stat-item"><span class="stat-num">$4,250,000</span><span class="stat-label">&nbsp;</span></div>
 </div>
 
 <div class="scene">
-  <div class="gate-half">
-    <div class="gate-fade-right"></div>
-    <div class="gate-fade-top"></div>
+  <div class="gate">
+    <div class="gate-r"></div>
+    <div class="gate-t"></div>
     <div class="gate-copy">
       <span class="headline">Some houses<br>hold history.</span>
-      <span class="pull-quote">This one shaped it.</span>
-      <span class="gold-rule"></span>
+      <span class="pull">This one shaped it.</span>
+      <span class="rule"></span>
     </div>
   </div>
 
-  <div class="whp-half">
-    <img class="whp-portrait" src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/2e864596c_WalterHinesPage.jpeg" />
+  <div class="whp">
+    <img class="portrait" src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/2e864596c_WalterHinesPage.jpeg" />
     <div class="whp-copy">
-      <span class="whp-name">Walter Hines Page,</span>
-      <span class="whp-titles">Ambassador.&nbsp; Editor.&nbsp; Visionary.</span>
-      <span class="whp-built">Built Garran Hill in 1916.</span>
-      <span class="whp-close">And here it stays.</span>
+      <span class="wname">Walter Hines Page,</span>
+      <span class="wtitles">Ambassador.&nbsp; Editor.&nbsp; Visionary.</span>
+      <span class="wbuilt">Built Garran Hill in 1916.</span>
+      <span class="wclose">And here it stays.</span>
     </div>
   </div>
 </div>
