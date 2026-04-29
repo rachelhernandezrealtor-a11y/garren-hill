@@ -145,11 +145,11 @@
     position: relative; min-height: 100vh;
     display: flex; align-items: center; justify-content: center;
     overflow: hidden;
+    background-image: url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777244059/gh_key/gh_191.jpg');
+    background-size: cover;
+    background-position: center top;
   }
-  .twilight-bg {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; object-position: center top; z-index: 0;
-  }
+  /* twilight-bg removed — using CSS bg */
   .twilight-overlay {
     position: absolute; inset: 0; z-index: 1;
     background: linear-gradient(to bottom,
@@ -1510,9 +1510,7 @@
 
 <!-- BEAT 7 — TWILIGHT CLOSING -->
 <section class="twilight-beat fade-in" id="grounds">
-  <img class="twilight-bg"
-    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777244059/gh_key/gh_191.jpg"
-    alt="Garran Hill — 200 Hollycrest Drive">
+  
   <div class="twilight-overlay"></div>
   <div class="twilight-content">
     <img class="twilight-seal"
