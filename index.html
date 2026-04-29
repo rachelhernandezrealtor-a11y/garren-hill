@@ -429,11 +429,11 @@
     animation: lanternFlicker2 2.8s ease-in-out infinite;
     animation-delay: 0.7s;
   }
-  /* Letter ghost — faint scan behind KB copy */
+  /* Letter ghost — faint scan above dark overlay, below copy */
   .kb-letter-ghost {
     position: absolute;
     inset: 0;
-    z-index: 2;
+    z-index: 4;
     pointer-events: none;
     overflow: hidden;
   }
@@ -444,9 +444,9 @@
     transform: translate(-50%, -50%) rotate(-1.8deg);
     width: 85%;
     max-width: 900px;
-    opacity: 0.18;
-    filter: sepia(1) brightness(0.6) contrast(1.2);
-    mix-blend-mode: multiply;
+    opacity: 0.12;
+    filter: sepia(0.3) brightness(2.0) contrast(0.7);
+    mix-blend-mode: screen;
   }
 
   .kb-overlay {
@@ -474,7 +474,7 @@
     transform: translateX(-50%);
     width: 100%;
     max-width: 780px;
-    z-index: 4;
+    z-index: 5;
     padding: 0 48px;
     text-align: center;
     display: flex;
