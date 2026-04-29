@@ -1042,7 +1042,6 @@
   }
 
 </style>
-<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.7/dist/hls.min.js"></script>
 </head>
 <body>
 
@@ -1064,28 +1063,9 @@
 
   <!-- HERO BODY -->
   <section class="hero">
-    <video id="gh-hero-video" class="hero-video" autoplay muted loop playsinline>
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="https://res.cloudinary.com/dghn2xpif/video/upload/q_auto:best,f_auto,vc_auto/Hero_Garran_qwzsiq.mp4" type="video/mp4">
     </video>
-    <script>
-    (function() {
-      var video = document.getElementById('gh-hero-video');
-      var src = 'https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/f2f45700c0bc7f916720f56dc6bf1623/manifest/video.m3u8';
-      if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        // Safari — native HLS
-        video.src = src;
-        video.play();
-      } else if (typeof Hls !== 'undefined' && Hls.isSupported()) {
-        var hls = new Hls({ startLevel: -1, capLevelToPlayerSize: false, maxBufferLength: 60 });
-        hls.loadSource(src);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
-          hls.currentLevel = data.levels.length - 1;
-          video.play();
-        });
-        video.addEventListener('ended', function() { video.currentTime = 0; video.play(); });
-      }
-    })();
-    </script>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-eyebrow" style="margin-bottom:8px;">200 Hollycrest Drive &nbsp;|&nbsp; Pinehurst, NC &nbsp;|&nbsp; Est. 1916</div>
