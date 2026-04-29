@@ -368,6 +368,23 @@
     overflow: hidden;
     background: var(--dark);
   }
+  /* KB image wrappers — lanterns ride inside the pan transform */
+  .kb-gate .kb-img-wrap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center center;
+    overflow: hidden;
+  }
+  .kb-gate .kb-sepia-wrap {
+    animation: kbZoomA 20s ease-in-out infinite alternate, kbPulse 16s ease-in-out infinite;
+    z-index: 1;
+  }
+  .kb-gate .kb-color-wrap {
+    animation: kbZoomB 20s ease-in-out infinite alternate, kbPulseReverse 16s ease-in-out infinite;
+    z-index: 2;
+  }
   .kb-gate .kb-img {
     position: absolute;
     inset: 0;
@@ -375,15 +392,6 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    transform-origin: center center;
-  }
-  .kb-gate .kb-sepia {
-    animation: kbZoomA 20s ease-in-out infinite alternate, kbPulse 16s ease-in-out infinite;
-    z-index: 1;
-  }
-  .kb-gate .kb-color {
-    animation: kbZoomB 20s ease-in-out infinite alternate, kbPulseReverse 16s ease-in-out infinite;
-    z-index: 2;
   }
   @keyframes kbZoomA {
     0%   { transform: scale(1.0) translate(0, 0); }
@@ -493,15 +501,11 @@
   .kb-gate.in-view .kb-rule-bottom-anim {
     animation: fadeUpSub 0.7s ease 4.4s forwards;
   }
-  .kb-lantern-glow {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    z-index: 3;
-    pointer-events: none;
-  }
   .kb-lantern {
     position: absolute;
     border-radius: 50%;
+    z-index: 2;
+    pointer-events: none;
     background: radial-gradient(ellipse at center,
       rgba(255,185,80,0.85) 0%,
       rgba(255,150,40,0.55) 20%,
@@ -1168,21 +1172,24 @@
 
 <!-- KEN BURNS — GATE ARRIVAL / HISTORY BRIDGE -->
 <section class="kb-gate" aria-label="Garran Hill gate — then and now">
-  <img
-    class="kb-img kb-sepia"
-    src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777411350/gh_key/gh_gate_sepia.jpg"
-    alt="Garran Hill gate — archival"
-  />
-  <img
-    class="kb-img kb-color"
-    src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777411343/gh_key/gh_gate_color.jpg"
-    alt="Garran Hill gate — today"
-  />
-  <div class="kb-overlay"></div>
-  <div class="kb-lantern-glow">
+  <div class="kb-img-wrap kb-sepia-wrap">
+    <img
+      class="kb-img kb-sepia"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777411350/gh_key/gh_gate_sepia.jpg"
+      alt="Garran Hill gate — archival"
+    />
     <div class="kb-lantern kb-lantern-left"></div>
+  </div>
+  <div class="kb-img-wrap kb-color-wrap">
+    <img
+      class="kb-img kb-color"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777411343/gh_key/gh_gate_color.jpg"
+      alt="Garran Hill gate — today"
+    />
     <div class="kb-lantern kb-lantern-right"></div>
   </div>
+  <div class="kb-overlay"></div>
+
   <div class="kb-address-script-wrap kb-address-script-anim">
     <span class="kb-address-script">200 Hollycrest Drive</span>
     <span class="kb-address-script-city">Pinehurst, North Carolina &nbsp;·&nbsp; Moore County &nbsp;·&nbsp; Est. 1916</span>
