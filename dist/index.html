@@ -38,8 +38,7 @@
   .nav-links .nav-cta a { color: var(--gold); opacity: 1; }
 
   /* HERO */
-  .hero-viewport { position: relative; height: 100vh; width: 100%; display: flex; flex-direction: column; overflow: hidden; }
-  .hero { position: relative; flex: 1; width: 100%; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
+  .hero { position: relative; height: calc(100vh - 76px); width: 100%; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
   .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
   .hero-overlay {
     position: absolute; inset: 0;
@@ -1044,13 +1043,14 @@
 </head>
 <body>
 
-<!-- BEAT 0 — HERO VIEWPORT (top nav + hero + bottom nav = one viewport) -->
+<!-- NAV -->
+
+<!-- BEAT 0 — HERO VIEWPORT: top nav + full-frame hero + gold-line bottom nav = one 100vh -->
 <div class="hero-viewport" id="estate">
 
-  <!-- TOP NAV -->
+  <!-- TOP NAV: clean, no border -->
   <nav class="hero-top-nav" id="main-nav">
     <a href="#" class="nav-logo">Garran Hill <span class="nav-est">Est. 1916</span></a>
-    <div class="nav-center">200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, NC</div>
     <ul class="nav-links">
       <li><a href="#estate">The Estate</a></li>
       <li><a href="#history">The History</a></li>
@@ -1059,7 +1059,7 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO BODY -->
   <section class="hero">
     <stream src="ba88a34a312106b7bf9d00b52a452871"
       class="hero-video"
@@ -1075,7 +1075,7 @@
     </div>
   </section>
 
-  <!-- BOTTOM NAV — gold line = the threshold -->
+  <!-- BOTTOM NAV: gold top-border = the threshold line -->
   <nav class="hero-bottom-nav">
     <a href="#" class="nav-logo">Garran Hill</a>
     <ul class="nav-links">
@@ -1099,7 +1099,6 @@
       <img class="stat-crest" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal/v1777397863/gh_key/gh_wax_seal_v3.png" alt="Garran Hill Crest" style="top: -52px;">
     </div>
   </div>
-</section>
 
 <!-- KEN BURNS — GATE ARRIVAL / HISTORY BRIDGE -->
 <section class="kb-gate" aria-label="Garran Hill gate">
