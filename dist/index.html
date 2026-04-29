@@ -206,8 +206,9 @@
 
 
   /* INTERIOR SECTIONS */
-  .room-beat { background: var(--dark); padding: 60px 72px; }
-  .room-beat-flip { background: var(--dark); padding: 60px 72px; }
+  .room-beat { background: var(--dark); padding: 72px 72px 48px; }
+  .room-beat-flip { background: var(--dark); padding: 48px 72px 72px; }
+  .room-beat + .room-beat, .room-beat + section, section + .room-beat { border-top: 1px solid rgba(201,169,110,0.06); }
   .room-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
   .room-inner.flip { direction: rtl; }
   .room-inner.flip > * { direction: ltr; }
@@ -359,43 +360,9 @@
       );
   }
   /* Lanterns */
-  .kb-lantern-glow {
-    position: absolute;
-    inset: 0;
-    z-index: 4;
-    pointer-events: none;
-  }
-  .kb-lantern {
-    position: absolute;
-    border-radius: 50%;
-    background: radial-gradient(ellipse at center,
-      rgba(255,185,80,0.85) 0%,
-      rgba(255,150,40,0.55) 20%,
-      rgba(255,120,20,0.3)  42%,
-      rgba(200,80,10,0.12)  62%,
-      transparent 80%
-    );
-    mix-blend-mode: screen;
-    pointer-events: none;
-  }
-  .kb-lantern-left {
-    width: 130px; height: 130px;
-    left: calc(8% - 65px); top: calc(17% - 65px);
-    animation: lanternFlicker 3.2s ease-in-out infinite;
-  }
-  .kb-lantern-right {
-    width: 120px; height: 120px;
-    left: calc(91% - 60px); top: calc(14% - 60px);
-    animation: lanternFlicker2 2.8s ease-in-out infinite;
-    animation-delay: 0.7s;
-  }
-  @keyframes lanternFlicker {
-    0%,100% { opacity: 0.9; transform: scale(1.0); }
     33%      { opacity: 0.75; transform: scale(0.96); }
     66%      { opacity: 0.95; transform: scale(1.03); }
   }
-  @keyframes lanternFlicker2 {
-    0%,100% { opacity: 0.85; transform: scale(1.0); }
     40%      { opacity: 0.7;  transform: scale(0.94); }
     70%      { opacity: 0.92; transform: scale(1.02); }
   }
@@ -501,9 +468,7 @@
     .kb-copy { padding: 0 24px; max-width: 100%; }
     .kb-headline { font-size: clamp(1.6rem, 6vw, 2.8rem); letter-spacing: 0.06em; }
     .kb-drop-cap { font-size: 2.0em; }
-    .kb-lantern-left { width: 80px; height: 80px; left: calc(9% - 40px); top: calc(25% - 40px); }
-    .kb-lantern-right { width: 75px; height: 75px; left: calc(91% - 37px); top: calc(22% - 37px); }
-  }
+    }
 
   }
 
@@ -1083,10 +1048,7 @@
     alt="Garran Hill gate — twilight"
   />
   <div class="kb-overlay"></div>
-  <div class="kb-lantern-glow">
-    <div class="kb-lantern kb-lantern-left"></div>
-    <div class="kb-lantern kb-lantern-right"></div>
-  </div>
+
   <div class="kb-copy">
     <div class="kb-copy-layer kb-copy-base">
       <span class="kb-rule-top kb-rule-top-anim"></span>
