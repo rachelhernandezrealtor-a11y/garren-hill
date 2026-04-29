@@ -13,145 +13,178 @@ body {
   position: relative;
 }
 
+/* GATE HALF — left 60% */
 .gate-half {
   position: absolute; left: 0; top: 0;
-  width: 58%; height: 100%;
+  width: 62%; height: 100%;
   background: url("https://res.cloudinary.com/dghn2xpif/image/upload/v1777263004/gh_key/gh_gate_twilight.jpg") center/cover;
 }
 .gate-fade {
   position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(10,10,10,0) 40%, rgba(10,10,10,1) 100%);
+  background: linear-gradient(to right, rgba(10,10,10,0.1) 30%, rgba(10,10,10,0.85) 80%, rgba(10,10,10,1) 100%);
 }
 .gate-top {
   position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(10,10,10,0.6) 0%, transparent 40%);
+  background: linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, transparent 35%);
 }
 
 .gate-copy {
   position: absolute;
-  bottom: 72px; left: 56px;
+  bottom: 80px; left: 64px;
+  max-width: 540px;
 }
 .headline {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 68px;
+  font-size: 72px;
   color: #F5F0E8;
   line-height: 1.05;
   letter-spacing: -0.01em;
-  text-shadow: 0 2px 40px rgba(0,0,0,0.8);
+  text-shadow: 0 2px 48px rgba(0,0,0,0.9), 0 0 80px rgba(0,0,0,0.6);
   display: block;
-  max-width: 560px;
 }
 .pull-quote {
   font-family: 'Libre Baskerville', serif;
   font-style: italic;
   font-weight: 400;
-  font-size: 38px;
+  font-size: 36px;
   color: #C9A96E;
-  margin-top: 12px;
+  margin-top: 14px;
   display: block;
   letter-spacing: 0.02em;
+  text-shadow: 0 0 32px rgba(201,169,110,0.4), 0 2px 20px rgba(0,0,0,0.8);
 }
 .gold-rule {
   display: block;
   width: 80px; height: 1px;
   background: #C9A96E;
-  margin-top: 28px;
-  opacity: 0.6;
+  margin-top: 30px;
+  opacity: 0.55;
 }
 
-/* WHP SIDE */
+/* WHP HALF — right 40%, centered portrait, fully visible */
 .whp-half {
   position: absolute; right: 0; top: 0;
-  width: 46%; height: 100%;
+  width: 42%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+/* fade from black on left edge into portrait */
+.whp-half::before {
+  content: '';
+  position: absolute; left: 0; top: 0;
+  width: 35%; height: 100%;
+  background: linear-gradient(to right, #0a0a0a 0%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
 .whp-portrait {
-  position: absolute; right: -20px; top: 0;
-  height: 100%; width: auto;
-  object-fit: cover;
-  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 20%, rgba(0,0,0,1) 50%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 20%, rgba(0,0,0,1) 50%);
-  opacity: 0.85;
+  position: relative;
+  height: 96%;
+  width: auto;
+  object-fit: contain;
+  object-position: center top;
+  opacity: 0.88;
+  z-index: 1;
+  /* subtle dark vignette on right edge */
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0.7) 85%, rgba(0,0,0,0.3) 100%);
+  mask-image: linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0.7) 85%, rgba(0,0,0,0.3) 100%);
 }
+
+/* subtle ambient dark background behind portrait */
+.whp-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 60% 40%, rgba(30,20,10,0.4) 0%, rgba(10,10,10,0.0) 70%);
+  z-index: 0;
+}
+
 .whp-copy {
   position: absolute;
-  bottom: 72px; left: 32px;
+  bottom: 80px; 
+  left: 48px;
+  z-index: 3;
 }
 .whp-name {
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
-  font-size: 13px;
-  letter-spacing: 0.32em;
+  font-size: 11px;
+  letter-spacing: 0.36em;
   color: #F5F0E8;
-  opacity: 0.75;
+  opacity: 0.7;
   text-transform: uppercase;
   display: block;
 }
 .whp-titles {
   font-family: 'Libre Baskerville', serif;
   font-weight: 400;
-  font-size: 22px;
+  font-size: 20px;
   color: #C9A96E;
   margin-top: 10px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   display: block;
+  text-shadow: 0 0 24px rgba(201,169,110,0.35);
 }
 .whp-built {
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
-  font-size: 11px;
-  letter-spacing: 0.28em;
+  font-size: 10px;
+  letter-spacing: 0.30em;
   color: #F5F0E8;
-  opacity: 0.6;
+  opacity: 0.55;
   text-transform: uppercase;
-  margin-top: 14px;
+  margin-top: 16px;
   display: block;
 }
 .whp-close {
   font-family: 'Libre Baskerville', serif;
   font-style: italic;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 17px;
   color: #C9A96E;
-  margin-top: 10px;
+  margin-top: 8px;
   display: block;
-  opacity: 0.9;
+  opacity: 0.92;
+  text-shadow: 0 0 20px rgba(201,169,110,0.3);
 }
 
-/* STAT BAR */
+/* STAT BAR — full width, top */
 .stat-bar {
   position: absolute; top: 0; left: 0; right: 0;
-  background: rgba(10,10,10,0.92);
-  border-bottom: 1px solid rgba(201,169,110,0.4);
+  background: rgba(10,10,10,0.88);
+  border-bottom: 1px solid rgba(201,169,110,0.38);
   display: flex; align-items: center; justify-content: center;
-  height: 64px;
-  gap: 0;
+  height: 60px;
+  z-index: 10;
 }
 .stat-item {
   display: flex; flex-direction: column; align-items: center;
-  padding: 0 32px;
+  padding: 0 40px;
   border-right: 1px solid rgba(201,169,110,0.12);
+  flex: 1;
 }
 .stat-item:last-child { border-right: none; }
 .stat-num {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 17px;
   color: #C9A96E;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
 }
 .stat-label {
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
-  font-size: 8px;
-  letter-spacing: 0.28em;
+  font-size: 7px;
+  letter-spacing: 0.30em;
   color: #F5F0E8;
   text-transform: uppercase;
-  opacity: 0.55;
+  opacity: 0.5;
   margin-top: 3px;
 }
 .stat-price .stat-num {
-  font-size: 20px;
+  font-size: 19px;
   letter-spacing: 0.06em;
 }
 </style>
@@ -170,13 +203,14 @@ body {
   <div class="gate-fade"></div>
   <div class="gate-top"></div>
   <div class="gate-copy">
-    <span class="headline">Some houses hold<br>history.</span>
+    <span class="headline">Some houses<br>hold history.</span>
     <span class="pull-quote">This one shaped it.</span>
     <span class="gold-rule"></span>
   </div>
 </div>
 
 <div class="whp-half">
+  <div class="whp-bg"></div>
   <img class="whp-portrait" src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/2e864596c_WalterHinesPage.jpeg" />
   <div class="whp-copy">
     <span class="whp-name">Walter Hines Page,</span>
