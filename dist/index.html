@@ -1075,10 +1075,13 @@
         video.src = src;
         video.play();
       } else if (typeof Hls !== 'undefined' && Hls.isSupported()) {
-        var hls = new Hls();
+        var hls = new Hls({ startLevel: -1, capLevelToPlayerSize: false, maxBufferLength: 60 });
         hls.loadSource(src);
         hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, function() { video.play(); });
+        hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
+          hls.currentLevel = data.levels.length - 1;
+          video.play();
+        });
         video.addEventListener('ended', function() { video.currentTime = 0; video.play(); });
       }
     })();
