@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root { --dark: #0a0a0a; --gold: #C9A96E; --cream: #F5F0E8; --text: rgba(245,240,232,0.82); }
+  :root { --dark: #0a0a0a; --gold: #C9A96E; --cream: #F5F0E8; --text: rgba(245,240,232,0.78); }
   html { scroll-behavior: smooth; }
   body { background: var(--dark); color: var(--cream); font-family: 'Cormorant Garamond', serif; overflow-x: hidden; }
 
@@ -28,10 +28,10 @@
     background: rgba(10,10,10,0.0);
     transition: background 0.4s ease;
   }
-  nav.scrolled { background: rgba(10,10,10,0.92); }
-  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 300; letter-spacing: 0.12em; color: var(--cream); opacity: 0.9; text-decoration: none; display: flex; align-items: baseline; gap: 8px; } .nav-est { font-size: 0.65rem; letter-spacing: 0.18em; color: var(--gold); opacity: 0.8; text-transform: uppercase; font-family: 'Cormorant Garamond', serif; } .nav-center { position: absolute; left: 50%; transform: translateX(-50%); font-family: 'Cormorant Garamond', serif; font-size: 0.7rem; letter-spacing: 0.18em; color: var(--cream); opacity: 0.6; text-transform: uppercase; pointer-events: none; }
+  nav.scrolled { background: rgba(10,10,10,0.95); border-bottom: 1px solid rgba(201,169,110,0.18); }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 400; letter-spacing: 0.12em; color: var(--cream); opacity: 0.9; text-decoration: none; display: flex; align-items: baseline; gap: 8px; } .nav-est { font-size: 0.65rem; letter-spacing: 0.18em; color: var(--gold); opacity: 0.8; text-transform: uppercase; font-family: 'Cormorant Garamond', serif; } .nav-center { position: absolute; left: 50%; transform: translateX(-50%); font-family: 'Cormorant Garamond', serif; font-size: 0.7rem; letter-spacing: 0.18em; color: var(--cream); opacity: 0.6; text-transform: uppercase; pointer-events: none; }
   .nav-links { display: flex; gap: 40px; align-items: center; list-style: none; }
-  .nav-links a { font-size: 0.7rem; letter-spacing: 0.2em; font-weight: 300; color: var(--cream); opacity: 0.7; text-decoration: none; text-transform: uppercase; transition: opacity 0.3s; }
+  .nav-links a { font-size: 0.68rem; letter-spacing: 0.24em; font-weight: 400; color: var(--cream); opacity: 0.6; text-decoration: none; text-transform: uppercase; transition: opacity 0.3s; }
   .nav-links a:hover { opacity: 1; }
   .nav-links .nav-cta a { color: var(--gold); opacity: 1; }
 
@@ -44,10 +44,10 @@
     z-index: 1;
   }
   .hero-content { position: relative; z-index: 2; padding: 0 72px 100px; }
-  .hero-eyebrow { font-size: 0.65rem; letter-spacing: 0.28em; font-weight: 300; color: var(--gold); text-transform: uppercase; opacity: 0.9; margin-bottom: 20px; }
+  .hero-eyebrow { font-size: 0.62rem; letter-spacing: 0.32em; font-weight: 400; color: var(--gold); text-transform: uppercase; opacity: 0.8; margin-bottom: 24px; }
   .hero-title { font-family: 'Pinyon Script', cursive; font-size: clamp(6rem, 11vw, 14rem); line-height: 0.88; color: var(--cream); margin-bottom: 28px; }
-  .hero-rule { width: 120px; height: 1px; background: var(--gold); margin-bottom: 20px; opacity: 0.7; }
-  .hero-subhead { font-size: clamp(1rem, 1.4vw, 1.3rem); font-style: italic; font-weight: 300; color: var(--cream); opacity: 0.78; letter-spacing: 0.04em; }
+  .hero-rule { width: 100px; height: 1px; background: var(--gold); margin-bottom: 24px; opacity: 0.5; }
+  .hero-subhead { font-size: clamp(1rem, 1.4vw, 1.3rem); font-style: italic; font-weight: 300; color: var(--cream); opacity: 0.72; letter-spacing: 0.06em; }
   .hero-tour-link { display: inline-block; margin-top: 36px; font-size: 0.65rem; letter-spacing: 0.18em; color: var(--gold); text-decoration: none; text-transform: none; opacity: 0.8; transition: opacity 0.3s; }
   .hero-tour-link:hover { opacity: 1; }
 
@@ -55,15 +55,15 @@
   .stat-bar {
     position: sticky; top: 0;
     background: var(--dark);
-    border-top: 1px solid rgba(201,169,110,0.45);
-    border-bottom: 1px solid rgba(201,169,110,0.45);
+    border-top: 1px solid rgba(201,169,110,0.3);
+    border-bottom: 1px solid rgba(201,169,110,0.3);
     display: flex; align-items: center; justify-content: center;
     z-index: 90;
   }
   .stat-item { display: flex; flex-direction: column; align-items: center; padding: 22px 36px; border-right: 1px solid rgba(201,169,110,0.15); flex: 1; }
   .stat-item:last-child { border-right: none; }
-  .stat-number { font-size: 1.4rem; font-weight: 200; letter-spacing: 0.06em; color: var(--gold); }
-  .stat-label { font-size: 0.48rem; letter-spacing: 0.22em; font-weight: 300; color: var(--cream); text-transform: uppercase; margin-top: 4px; opacity: 0.6; }
+  .stat-number { font-size: 1.35rem; font-weight: 200; letter-spacing: 0.1em; color: var(--gold); }
+  .stat-label { font-size: 0.46rem; letter-spacing: 0.28em; font-weight: 400; color: var(--cream); text-transform: uppercase; margin-top: 6px; opacity: 0.5; }
   .stat-crest-wrap { padding: 0 40px; display: flex; align-items: center; justify-content: center; position: relative; flex-shrink: 0; }
   .stat-crest { height: 80px; width: auto; position: relative; top: -40px; filter: drop-shadow(0 0 14px rgba(201,169,110,0.5)) drop-shadow(0 0 28px rgba(201,169,110,0.25)); }
 
@@ -75,7 +75,7 @@
 
   /* BEAT 4 — CRAFTSMEN */
   .craftsmen-beat { background: var(--dark); padding: 140px 72px; max-width: 900px; }
-  .craftsmen-eyebrow { font-size: 0.62rem; letter-spacing: 0.28em; color: var(--gold); text-transform: uppercase; opacity: 0.9; margin-bottom: 36px; display: block; }
+  .craftsmen-eyebrow { font-size: 0.6rem; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; opacity: 0.75; margin-bottom: 36px; display: block; }
   .craftsmen-headline { font-size: clamp(3rem, 6vw, 7.5rem); font-weight: 300; line-height: 1.0; color: var(--cream); margin-bottom: 56px; }
   .craftsmen-rule { width: 80px; height: 1px; background: var(--gold); margin-bottom: 44px; opacity: 0.5; }
   .craftsmen-body { font-size: clamp(1rem, 1.3vw, 1.18rem); font-weight: 300; line-height: 1.85; color: var(--text); max-width: 560px; }
@@ -106,7 +106,7 @@
     background: linear-gradient(to bottom, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.6) 50%, rgba(10,10,10,0.2) 100%);
   }
   .threshold-content { position: relative; z-index: 2; padding: 100px 72px; max-width: 680px; }
-  .threshold-eyebrow { font-size: 0.62rem; letter-spacing: 0.28em; color: var(--gold); text-transform: uppercase; opacity: 0.9; margin-bottom: 28px; display: block; }
+  .threshold-eyebrow { font-size: 0.6rem; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; opacity: 0.75; margin-bottom: 28px; display: block; }
   .threshold-headline { font-size: clamp(2.8rem, 5vw, 6rem); font-weight: 300; line-height: 1.05; color: var(--cream); margin-bottom: 48px; }
   .threshold-rule { width: 60px; height: 1px; background: var(--gold); margin-bottom: 40px; opacity: 0.5; }
   .threshold-body { font-size: clamp(1rem, 1.2vw, 1.15rem); font-weight: 300; line-height: 1.85; color: var(--text); }
@@ -124,20 +124,20 @@
   .inquiry-form input:focus, .inquiry-form textarea:focus { border-bottom-color: var(--gold); }
   .inquiry-form textarea { resize: none; height: 80px; }
   .inquiry-form input::placeholder, .inquiry-form textarea::placeholder { color: var(--cream); opacity: 0.35; letter-spacing: 0.06em; }
-  .inquiry-submit { width: 100%; padding: 16px; background: transparent; border: 1px solid var(--gold); color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; cursor: pointer; transition: all 0.3s; margin-top: 8px; }
+  .inquiry-submit { width: 100%; padding: 18px; background: transparent; border: 0.5px solid rgba(201,169,110,0.75); color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 0.65rem; letter-spacing: 0.32em; text-transform: uppercase; cursor: pointer; transition: all 0.4s; margin-top: 12px; }
   .inquiry-submit:hover { background: var(--gold); color: var(--dark); }
   .inquiry-confidence { margin-top: 20px; text-align: center; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); opacity: 0.3; }
   .inquiry-price { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--gold); opacity: 0.8; margin-bottom: 32px; }
 
   /* FOOTER */
-  footer { background: var(--dark); padding: 80px 72px 48px; border-top: 1px solid rgba(201,169,110,0.15); }
-  .footer-inner { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+  footer { background: var(--dark); padding: 120px 72px 64px; border-top: 1px solid rgba(201,169,110,0.12); }
+  .footer-inner { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px; }
   .footer-crest { background: transparent; }
   .footer-crest img { height: 64px; opacity: 0.85; mix-blend-mode: screen; filter: drop-shadow(0 0 12px rgba(201,169,110,0.4)); background: transparent; }
-  .footer-offered { font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); opacity: 0.7; }
-  .footer-agent { font-size: 1.3rem; font-weight: 300; letter-spacing: 0.08em; color: var(--cream); }
-  .footer-brokerage { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); opacity: 0.6; }
-  .footer-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(201,169,110,0.1); font-size: 0.55rem; letter-spacing: 0.15em; color: var(--cream); opacity: 0.3; }
+  .footer-offered { font-size: 0.52rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); opacity: 0.6; }
+  .footer-agent { font-size: 1.55rem; font-weight: 300; letter-spacing: 0.1em; color: var(--cream); }
+  .footer-brokerage { font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); opacity: 0.5; }
+  .footer-bottom { margin-top: 64px; padding-top: 28px; border-top: 1px solid rgba(201,169,110,0.08); font-size: 0.52rem; letter-spacing: 0.2em; color: var(--cream); opacity: 0.25; }
 
 
   /* BEAT 7 — TWILIGHT CLOSING */
@@ -145,18 +145,18 @@
     position: relative; min-height: 100vh;
     display: flex; align-items: center; justify-content: center;
     overflow: hidden;
-    background-image: url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777329145/gh_key/gh_facade_wide.jpg');
-    background-size: cover;
-    background-position: center top;
   }
-  /* twilight-bg removed — using CSS bg */
+  .twilight-bg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center top; z-index: 0;
+  }
   .twilight-overlay {
     position: absolute; inset: 0; z-index: 1;
     background: linear-gradient(to bottom,
-      rgba(10,10,10,0.2) 0%,
-      rgba(10,10,10,0.1) 25%,
-      rgba(10,10,10,0.45) 65%,
-      rgba(10,10,10,0.75) 100%
+      rgba(10,10,10,0.3) 0%,
+      rgba(10,10,10,0.15) 30%,
+      rgba(10,10,10,0.65) 70%,
+      rgba(10,10,10,0.95) 100%
     );
   }
   .twilight-content {
@@ -189,13 +189,13 @@
     opacity: 0.85; margin-bottom: 56px;
   }
   .twilight-cta {
-    display: inline-block; padding: 18px 48px;
-    border: 1px solid var(--gold); color: var(--gold);
+    display: inline-block; padding: 20px 64px;
+    border: 0.5px solid rgba(201,169,110,0.7); color: var(--gold);
     font-family: 'Cormorant Garamond', serif;
-    font-size: 0.68rem; letter-spacing: 0.28em;
+    font-size: 0.65rem; letter-spacing: 0.36em;
     text-transform: uppercase; text-decoration: none;
     cursor: pointer; background: transparent;
-    transition: all 0.4s ease;
+    transition: all 0.5s ease;
   }
   .twilight-cta:hover { background: var(--gold); color: var(--dark); }
   .twilight-grounds {
@@ -215,67 +215,19 @@
   .room-img-wrap img { width: 100%; height: 520px; object-fit: cover; display: block; transition: transform 0.8s ease; }
   .room-img-wrap:hover img { transform: scale(1.02); }
   .room-text { display: flex; flex-direction: column; justify-content: center; }
-  .room-eyebrow { font-size: 0.62rem; letter-spacing: 0.28em; color: var(--gold); text-transform: uppercase; opacity: 0.9; margin-bottom: 28px; display: block; }
+  .room-eyebrow { font-size: 0.6rem; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; opacity: 0.75; margin-bottom: 28px; display: block; }
   .room-headline { font-size: clamp(2.2rem, 3.5vw, 4.5rem); font-weight: 300; line-height: 1.05; color: var(--cream); margin-bottom: 36px; }
   .room-rule { width: 60px; height: 1px; background: var(--gold); margin-bottom: 32px; opacity: 0.5; }
   .room-body { font-size: clamp(0.95rem, 1.15vw, 1.1rem); font-weight: 300; line-height: 1.9; color: var(--text); }
   .room-body p + p { margin-top: 1.2em; }
 
   /* FULL-BLEED ROOM */
-  /* FULLBLEED SPLIT — text column left, photo right. No overlay text. */
-  .fullbleed-beat { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    min-height: 85vh; 
-    overflow: hidden;
-    grid-auto-rows: 1fr;
-  }
-  .fullbleed-beat > * {
-    min-height: 85vh;
-  }
-  .fullbleed-beat.flip { 
-    direction: rtl; 
-  }
-  .fullbleed-beat.flip > * { 
-    direction: ltr; 
-  }
-  .fullbleed-text-col { 
-    background: var(--dark); 
-    display: flex; 
-    align-items: center; 
-    padding: 100px 72px; 
-  }
-  .fullbleed-text-inner { 
-    max-width: 480px; 
-  }
-  .fullbleed-photo-col { 
-    position: relative; 
-    overflow: hidden; 
-  }
-  .fullbleed-photo-col img { 
-    position: absolute; 
-    inset: 0; 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    object-position: center; 
-    transition: transform 6s ease; 
-  }
-  .fullbleed-photo-col:hover img { 
-    transform: scale(1.03); 
-  }
-  /* Legacy — keep for any remaining uses */
-  .fullbleed-overlay-left { display: none; }
-  .fullbleed-overlay-dark { display: none; }
+  .fullbleed-beat { position: relative; min-height: 85vh; display: flex; align-items: center; overflow: hidden; }
+  .fullbleed-beat img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+  .fullbleed-overlay-left { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to right, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.55) 45%, rgba(10,10,10,0.1) 100%); }
+  .fullbleed-overlay-dark { position: absolute; inset: 0; z-index: 1; background: rgba(10,10,10,0.62); }
   .fullbleed-content { position: relative; z-index: 2; padding: 100px 72px; max-width: 640px; }
   .fullbleed-content.center { max-width: 100%; text-align: center; padding: 100px 72px; }
-  /* Mobile: stack vertically */
-  @media (max-width: 768px) {
-    .fullbleed-beat { grid-template-columns: 1fr; }
-    .fullbleed-photo-col { min-height: 55vw; position: relative; }
-    .fullbleed-photo-col img { position: absolute; }
-    .fullbleed-text-col { padding: 64px 32px; }
-  }
 
   /* FILM STRIP */
   .film-strip { display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; margin: 0; }
@@ -291,10 +243,10 @@
 
   /* INFRA GRID */
   .infra-beat { background: var(--dark); padding: 120px 72px; }
-  .infra-eyebrow { font-size: 0.62rem; letter-spacing: 0.28em; color: var(--gold); text-transform: uppercase; opacity: 0.9; margin-bottom: 48px; display: block; }
+  .infra-eyebrow { font-size: 0.6rem; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; opacity: 0.75; margin-bottom: 48px; display: block; }
   .infra-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 1200px; }
   .infra-item { padding: 40px 36px; border: 1px solid rgba(201,169,110,0.1); }
-  .infra-label { font-size: 0.58rem; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; display: block; }
+  .infra-label { font-size: 0.55rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; display: block; opacity: 0.8; }
   .infra-body { font-size: 0.95rem; font-weight: 300; line-height: 1.75; color: var(--text); }
 
   /* SPLIT PANELS */
@@ -655,7 +607,7 @@
   }
   .whp-seam-eyebrow {
     font-size: 0.62rem;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0.38em;
     text-transform: uppercase;
     color: rgba(201,169,110,0.7);
@@ -1063,28 +1015,7 @@
     .whp-letters-gap { display: none; }
   }
 
-/* Narrative seam — silent transition breath */
-.narrative-seam {
-  padding: 60px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--dark);
-}
-.seam-rule {
-  width: 48px;
-  height: 1px;
-  background: var(--gold);
-  opacity: 0.25;
-}
-
-  /* Smooth anchor scroll offset for sticky nav */
-  [id] { scroll-margin-top: 85px; }
-
-  /* Selection color — on-brand */
-  ::selection { background: rgba(201,169,110,0.2); color: #fff; }
 </style>
-  <link rel="preload" as="image" href="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777329145/gh_key/gh_facade_wide.jpg">
 </head>
 <body>
 
@@ -1156,10 +1087,7 @@
   </div>
 </section>
 
-<!-- SEAM: KB → WHP — silence before history speaks -->
-<div class="narrative-seam" aria-hidden="true">
-  <div class="seam-rule"></div>
-</div>
+
 
 <!-- BEAT 2 — WALTER HINES PAGE — scroll story -->
 <section class="whp-section" id="whp">
@@ -1238,8 +1166,8 @@
   <div class="craftsmen-rule"></div>
   <div class="craftsmen-body">
     <p>Four columns. Full entablature. Drawn to exact Georgian proportion and built that way.</p>
-    <p>Three months to find period-accurate brick for the portico. The proportions are correct because the drawings survived.</p>
-    <p>Fifteen original drawings by Thomas O'Shea document every decision made during the 1999–2001 restoration. They transfer with the property.</p>
+    <p>Three months were spent sourcing period-accurate brick for the portico restoration. The proportions are correct because the drawings survived.</p>
+    <p>Fifteen architectural drawings document every decision Thomas O'Shea made during the 1999–2001 restoration. They transfer with the property.</p>
   </div>
 </section>
 
@@ -1250,7 +1178,7 @@
     <div class="stewardship-devotion">That is not maintenance. That is devotion.</div>
     <div class="stewardship-rule"></div>
     <div class="stewardship-body">
-      <p>In 1999, Thomas O'Shea began a three-year restoration. Every window custom-made by Marvin. Every joint considered. General contractor: Dennis Dunagan.</p>
+      <p>In 1999, Thomas O'Shea began a three-year restoration. Every window custom-made by Marvin. Every joint considered. The general contractor was Dennis Dunagan.</p>
       <p>The hardware was specified in 1916. It has not been replaced. The leaded glass sidelights and fanlight are original. The original oak floors remain throughout — heart pine in the kitchen alone.</p>
       <p>Seven fireplaces. Three staircases. A stone-walled basement with four climate-controlled rooms. A 20×40 saltwater pool added in 2022. Twenty-eight irrigation zones fed by a 130-foot well.</p>
     </div>
@@ -1287,10 +1215,10 @@
 <section class="room-beat fade-in">
   <div class="room-inner">
     <div class="room-img-wrap">
-      <img src="https://media.base44.com/images/public/69e248a2469cc39540781cce/6d0f31d8c_341c7343c_living.jpg" alt="The Living Room — Garran Hill" loading="eager">
+      <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/6d0f31d8c_341c7343c_living.jpg" alt="The Living Room — Garran Hill" loading="lazy">
     </div>
     <div class="room-text">
-      <span class="room-eyebrow">The Living Room</span>
+      <span class="room-eyebrow">The Living Room — 1916</span>
       <h2 class="room-headline">They made it bigger<br><em style="font-weight:300">so they could dance.</em></h2>
       <div class="room-rule"></div>
       <div class="room-body">
@@ -1307,7 +1235,7 @@
 <section class="room-beat fade-in" style="background: #080808;">
   <div class="room-inner flip">
     <div class="room-img-wrap">
-      <img src="https://media.base44.com/images/public/69e248a2469cc39540781cce/f04d40de7_gh_fire65.jpg" alt="The Drawing Room — Delft fireplace" loading="eager">
+      <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f04d40de7_gh_fire65.jpg" alt="The Drawing Room — Delft fireplace" loading="lazy">
     </div>
     <div class="room-text">
       <span class="room-eyebrow">The Drawing Room</span>
@@ -1327,7 +1255,7 @@
 <section class="room-beat fade-in">
   <div class="room-inner">
     <div class="room-img-wrap">
-      <img src="https://media.base44.com/images/public/69e2578ca7113dbe93cb208d/7dbb52edc_200Holycrest-1308.jpg" alt="The Dining Room — Garran Hill" loading="eager">
+      <img src="https://base44.app/api/apps/69e2578ca7113dbe93cb208d/files/mp/public/69e2578ca7113dbe93cb208d/7dbb52edc_200Holycrest-1308.jpg" alt="The Dining Room — Garran Hill" loading="lazy">
     </div>
     <div class="room-text">
       <span class="room-eyebrow">The Dining Room</span>
@@ -1346,7 +1274,7 @@
 <!-- ============================================================ -->
 <section class="interstitial fade-in">
   <div class="interstitial-rule"></div>
-  <p class="interstitial-text" style="font-size: clamp(1.4rem,2.2vw,2.2rem); font-style:italic; letter-spacing:0.02em; color: var(--cream);">In 1916, those were saplings.<br>Now they are a forest.</p>
+  <p class="interstitial-text">In 1916, those were saplings. Now they are a forest.</p>
   <div class="interstitial-rule-bottom"></div>
 </section>
 
@@ -1354,25 +1282,23 @@
 <!-- BEAT 11 — KITCHEN FULL BLEED -->
 <!-- ============================================================ -->
 <section class="fullbleed-beat fade-in">
-  <div class="fullbleed-text-col">
-    <div class="fullbleed-text-inner">
-      <span class="room-eyebrow">The Kitchen</span>
-      <h2 class="room-headline" style="font-size: clamp(2.2rem,3.5vw,4.5rem);">White cabinetry.<br>Dark granite.<br><em style="font-weight:300">Island. Four windows.<br>Room to cook.</em></h2>
-      <div class="room-rule"></div>
-      <div class="room-body">
+  <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/acff7572b_gh_200HollycrestDrive-38.jpg" alt="The Kitchen — Garran Hill" loading="lazy">
+  <div class="fullbleed-overlay-left"></div>
+  <div class="fullbleed-content">
+    <span class="room-eyebrow">The Kitchen</span>
+    <h2 class="room-headline" style="font-size: clamp(2.2rem,3.5vw,4.5rem);">White cabinetry.<br>Dark granite.<br><em style="font-weight:300">Island. Four windows.<br>Room to cook.</em></h2>
+    <div class="room-rule"></div>
+    <div class="room-body">
       <p>Built new in 2000. Reclaimed heart-pine floors. Custom cabinetry — white uppers with glass fronts, dark painted lowers. Farmhouse apron sink. Soapstone counters. A wall of divided-light windows facing the grounds.</p>
       <p>The pantry door swings open — floor-to-ceiling shelving on every face, two full towers, built for a house that is actually used. Every morning at 6:30, the deer come through.</p>
     </div>
-    </div>
   </div>
-  <div class="fullbleed-photo-col">
-    <img src="https://media.base44.com/images/public/69e248a2469cc39540781cce/acff7572b_gh_200HollycrestDrive-38.jpg" alt="The Kitchen — Garran Hill" loading="eager">
-  </div></section>
+</section>
 <div class="film-strip" style="background: var(--dark); padding: 2px 0;">
-  <img src="https://media.base44.com/images/public/69e248a2469cc39540781cce/5123ec1dc_gh_200HollycrestDrive-40.jpg" alt="Kitchen island" loading="eager">
-  <img src="https://media.base44.com/images/public/69e248a2469cc39540781cce/364c36c60_gh_200HollycrestDrive-41.jpg" alt="Kitchen sink wall" loading="eager">
-  <img src="https://media.base44.com/images/public/69e248a2469cc39540781cce/2a25a2db3_gh_200HollycrestDrive-43.jpg" alt="Kitchen detail" loading="eager">
-  <img src="https://media.base44.com/images/public/69e248a2469cc39540781cce/dc5868d03_gh_200HollycrestDrive-44.jpg" alt="Kitchen range" loading="eager">
+  <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/5123ec1dc_gh_200HollycrestDrive-40.jpg" alt="Kitchen island" loading="lazy">
+  <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/364c36c60_gh_200HollycrestDrive-41.jpg" alt="Kitchen sink wall" loading="lazy">
+  <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/2a25a2db3_gh_200HollycrestDrive-43.jpg" alt="Kitchen detail" loading="lazy">
+  <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/dc5868d03_gh_200HollycrestDrive-44.jpg" alt="Kitchen range" loading="lazy">
 </div>
 
 <!-- ============================================================ -->
@@ -1381,7 +1307,7 @@
 <section class="room-beat fade-in" style="background: #080808;">
   <div class="room-inner flip">
     <div class="room-img-wrap">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777407424/gh_key/gh_library_hero.jpg" alt="The Library — Garran Hill" loading="eager">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777407424/gh_key/gh_library_hero.jpg" alt="The Library — Garran Hill" loading="lazy">
     </div>
     <div class="room-text">
       <span class="room-eyebrow">The Library</span>
@@ -1392,7 +1318,7 @@
         <p>It does not feel added. It feels inevitable.</p>
       </div>
       <div class="room-gallery" style="display:flex;gap:10px;margin-top:2rem;">
-        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1200,c_limit/v1777407432/gh_key/gh_library_detail.jpg" alt="Library shelving — Garran Hill" loading="eager" style="width:100%;max-width:320px;height:220px;object-fit:cover;opacity:0.9;">
+        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1200,c_limit/v1777407432/gh_key/gh_library_detail.jpg" alt="Library shelving — Garran Hill" loading="lazy" style="width:100%;max-width:320px;height:220px;object-fit:cover;opacity:0.9;">
       </div>
     </div>
   </div>
@@ -1409,21 +1335,19 @@
 <!-- ============================================================ -->
 <!-- BEAT 13 — PRIMARY SUITE -->
 <!-- ============================================================ -->
-<section class="fullbleed-beat flip fade-in">
-  <div class="fullbleed-text-col">
-    <div class="fullbleed-text-inner">
-      <span class="room-eyebrow">The Primary Suite</span>
-      <h2 class="room-headline" style="font-size: clamp(2.2rem,3.5vw,4.5rem);">The whole floor<br><em style="font-weight:300">belongs to it.</em></h2>
-      <div class="room-rule"></div>
-      <div class="room-body">
-      <p>The east wing belongs to the primary suite. Sitting room. Dressing room. Primary bath with whirlpool tub. Every window faces the grounds.</p>
+<section class="fullbleed-beat fade-in">
+  <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/b6dd004e7_up3.jpg" alt="Primary Suite — Garran Hill" loading="lazy">
+  <div class="fullbleed-overlay-left"></div>
+  <div class="fullbleed-content">
+    <span class="room-eyebrow">The Primary Suite</span>
+    <h2 class="room-headline" style="font-size: clamp(2.2rem,3.5vw,4.5rem);">The whole floor<br><em style="font-weight:300">belongs to it.</em></h2>
+    <div class="room-rule"></div>
+    <div class="room-body">
+      <p>The primary suite occupies the entire east wing of the second floor. Sitting room. Dressing room. Primary bath with whirlpool tub. Every window faces the grounds.</p>
       <p>The closet is behind a wall that looks like a wall. The bathroom floor is marble. The hardware is original. Nothing was approximated.</p>
     </div>
-    </div>
   </div>
-  <div class="fullbleed-photo-col">
-    <img src="https://media.base44.com/images/public/69e248a2469cc39540781cce/b6dd004e7_up3.jpg" alt="Primary Suite — Garran Hill" loading="eager">
-  </div></section>
+</section>
 
 <!-- JACUZZI INTERSTITIAL -->
 <section class="interstitial fade-in">
@@ -1433,17 +1357,12 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- PRIMARY → GUEST ROOMS breath -->
-<div class="narrative-seam" aria-hidden="true">
-  <div class="seam-rule"></div>
-</div>
-
 <!-- BEAT 14 — BEDROOMS -->
 <!-- ============================================================ -->
 <section class="room-beat fade-in">
   <div class="room-inner">
     <div class="room-img-wrap">
-      <img src="https://media.base44.com/images/public/69e248a2469cc39540781cce/9cf767cfb_gh_216.jpg" alt="Yellow Bedroom — Garran Hill" loading="eager">
+      <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/9cf767cfb_gh_216.jpg" alt="Yellow Bedroom — Garran Hill" loading="lazy">
     </div>
     <div class="room-text">
       <span class="room-eyebrow">The Guest Rooms</span>
@@ -1461,24 +1380,22 @@
 <!-- BEAT 15 — GROUNDS / ROSE GARDEN -->
 <!-- ============================================================ -->
 <section class="fullbleed-beat fade-in">
-  <div class="fullbleed-text-col">
-    <div class="fullbleed-text-inner">
-      <span class="room-eyebrow">The Grounds</span>
-      <h2 class="room-headline" style="font-size: clamp(2.2rem,3.5vw,4.5rem);">The rose garden runs<br><em style="font-weight:300">the full length<br>of the pool wall.</em></h2>
-      <div class="room-rule"></div>
-      <div class="room-body">
+  <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/e4aa14cad_up5.jpg" alt="Rose Garden — Garran Hill" loading="lazy" style="object-position: center 40%;">
+  <div class="fullbleed-overlay-left"></div>
+  <div class="fullbleed-content">
+    <span class="room-eyebrow">The Grounds</span>
+    <h2 class="room-headline" style="font-size: clamp(2.2rem,3.5vw,4.5rem);">The rose garden runs<br><em style="font-weight:300">the full length<br>of the pool wall.</em></h2>
+    <div class="room-rule"></div>
+    <div class="room-body">
       <p>The rose garden, the pool walk, the camellias along the pebble path — Betty Dumaine planted all of it. She kept foxhounds and peacocks. Four families have called Garran Hill home. Each one added something. Nothing was taken away.</p>
-      </div>
       <blockquote class="grounds-quote">The world outside these gates does not exist here.</blockquote>
     </div>
   </div>
-  <div class="fullbleed-photo-col">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777443296/gh_key/gh_grounds_up5.jpg" alt="Rose Garden — Garran Hill" loading="eager" style="object-position: center 40%;">
-  </div></section>
+</section>
 <div class="film-strip" style="background: var(--dark); padding: 2px 0;">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777443297/gh_key/gh_grounds_up12.jpg" alt="Pool arch and roses" loading="eager">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777443294/gh_key/gh_grounds_up8.jpg" alt="White roses" loading="eager">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777443295/gh_key/gh_grounds_up6.jpg" alt="Pool — 20x40 salt water" loading="eager">
+  <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/e171592ba_up12.jpg" alt="Pool arch and roses" loading="lazy">
+  <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/5b5d50472_up8.jpg" alt="White roses" loading="lazy">
+  <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/3be937915_up6.jpg" alt="Pool — 20x40 salt water" loading="lazy">
 </div>
 
 <!-- BLUE FOX INTERSTITIAL -->
@@ -1511,7 +1428,9 @@
 
 <!-- BEAT 7 — TWILIGHT CLOSING -->
 <section class="twilight-beat fade-in" id="grounds">
-  
+  <img class="twilight-bg"
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777244059/gh_key/gh_191.jpg"
+    alt="Garran Hill — 200 Hollycrest Drive">
   <div class="twilight-overlay"></div>
   <div class="twilight-content">
     <img class="twilight-seal"
