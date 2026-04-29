@@ -429,6 +429,26 @@
     animation: lanternFlicker2 2.8s ease-in-out infinite;
     animation-delay: 0.7s;
   }
+  /* Letter ghost — faint scan behind KB copy */
+  .kb-letter-ghost {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .kb-letter-ghost img {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%) rotate(-1.2deg);
+    width: 70%;
+    max-width: 800px;
+    opacity: 0.055;
+    filter: sepia(0.1) brightness(2.2) contrast(0.5);
+    mix-blend-mode: screen;
+  }
+
   .kb-overlay {
     position: absolute;
     inset: 0;
@@ -1188,6 +1208,9 @@
     alt="Garran Hill gate — twilight"
   />
   <div class="kb-overlay"></div>
+  <div class="kb-letter-ghost" aria-hidden="true">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777391998/gh_key/gh_whp_letter1.png" alt="">
+  </div>
   <div class="kb-lantern-glow">
     <div class="kb-lantern kb-lantern-left"></div>
     <div class="kb-lantern kb-lantern-right"></div>
