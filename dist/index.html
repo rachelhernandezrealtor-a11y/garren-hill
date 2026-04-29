@@ -748,54 +748,55 @@
     color: rgba(245,240,232,0.45);
   }
 
-  /* Portrait — slides in from right on scroll */
+  /* Portrait — gentle fade-float, archival presence */
   .whp-seam-portrait {
     position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 56%;
+    right: 6%;
+    top: 50%;
+    transform: translateY(-50%) translateX(18px);
+    width: 28%;
+    max-width: 320px;
     pointer-events: none;
-    transform: translateX(100%);
     opacity: 0;
-    transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity   1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 2.4s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity   2.8s ease;
   }
   .whp-seam.in-view .whp-seam-portrait {
-    transform: translateX(0);
+    transform: translateY(-50%) translateX(0);
     opacity: 1;
   }
   .whp-seam-portrait img {
     width: 100%;
-    height: 100%;
+    height: auto;
+    display: block;
     object-fit: cover;
     object-position: center top;
-    filter: sepia(0.35) brightness(0.82) contrast(1.08) grayscale(0.2);
-    mask-image: linear-gradient(to right,
-      rgba(0,0,0,0)    0%,
-      rgba(0,0,0,0.7)  18%,
-      rgba(0,0,0,1)    42%,
-      rgba(0,0,0,1)   100%);
-    -webkit-mask-image: linear-gradient(to right,
-      rgba(0,0,0,0)    0%,
-      rgba(0,0,0,0.7)  18%,
-      rgba(0,0,0,1)    42%,
-      rgba(0,0,0,1)   100%);
+    filter: sepia(0.45) brightness(0.78) contrast(1.1) grayscale(0.25);
+    mask-image: linear-gradient(to bottom,
+      rgba(0,0,0,1)    0%,
+      rgba(0,0,0,1)    70%,
+      rgba(0,0,0,0.4)  88%,
+      rgba(0,0,0,0)   100%);
+    -webkit-mask-image: linear-gradient(to bottom,
+      rgba(0,0,0,1)    0%,
+      rgba(0,0,0,1)    70%,
+      rgba(0,0,0,0.4)  88%,
+      rgba(0,0,0,0)   100%);
   }
 
-  /* Seam text animations */
+  /* Seam text animations — slow, like memory surfacing */
   .whp-seam-eyebrow,
   .whp-seam-headline,
   .whp-seam-rule-line,
   .whp-seam-caption {
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.9s ease, transform 0.9s ease;
+    transform: translateY(10px);
+    transition: opacity 1.6s ease, transform 1.6s ease;
   }
-  .whp-seam.in-view .whp-seam-eyebrow  { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
-  .whp-seam.in-view .whp-seam-headline { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
-  .whp-seam.in-view .whp-seam-rule-line{ opacity: 1; transform: translateY(0); transition-delay: 1.0s; }
-  .whp-seam.in-view .whp-seam-caption  { opacity: 1; transform: translateY(0); transition-delay: 1.2s; }
+  .whp-seam.in-view .whp-seam-eyebrow  { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+  .whp-seam.in-view .whp-seam-headline { opacity: 1; transform: translateY(0); transition-delay: 0.9s; }
+  .whp-seam.in-view .whp-seam-rule-line{ opacity: 1; transform: translateY(0); transition-delay: 1.5s; }
+  .whp-seam.in-view .whp-seam-caption  { opacity: 1; transform: translateY(0); transition-delay: 1.9s; }
 
   @media (max-width: 768px) {
     .whp-seam { height: auto; min-height: 80vh; flex-direction: column; justify-content: flex-end; padding-bottom: 48px; }
@@ -1168,9 +1169,9 @@
     <span class="whp-seam-rule-line"></span>
     <span class="whp-seam-caption">Walter Hines Page &nbsp;·&nbsp; 1855–1918</span>
   </div>
-  <!-- Right: portrait slides in -->
+  <!-- Right: portrait floats in — archival, quiet -->
   <div class="whp-seam-portrait">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777392167/gh_key/gh_whp_portrait_wide.png" alt="Walter Hines Page">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777244132/gh_key/gh_whp.jpg" alt="Walter Hines Page">
   </div>
 </section>
 
