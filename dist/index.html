@@ -24,11 +24,10 @@
   nav {
     position: relative; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 24px 48px;
-    background: transparent;
+    padding: 28px 48px;
+    background: var(--dark);
     border-top: none;
     border-bottom: 1px solid rgba(201,169,110,0.5);
-    flex-shrink: 0;
   }
   nav.scrolled { background: rgba(10,10,10,0.0); }
   .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 300; letter-spacing: 0.16em; color: var(--cream); opacity: 0.95; text-decoration: none; display: flex; align-items: baseline; gap: 8px; } .nav-est { font-size: 0.65rem; letter-spacing: 0.18em; color: var(--gold); opacity: 0.8; text-transform: uppercase; font-family: 'Cormorant Garamond', serif; } .nav-center { position: absolute; left: 50%; transform: translateX(-50%); font-family: 'Cormorant Garamond', serif; font-size: 0.7rem; letter-spacing: 0.18em; color: var(--cream); opacity: 0.6; text-transform: uppercase; pointer-events: none; }
@@ -1059,8 +1058,21 @@
     <div class="hero-rule"></div>
     <div class="hero-subhead">Neo-Georgian.&nbsp;&nbsp;Walter Hines Page.&nbsp;&nbsp;110 years of remarkable stewardship.</div>
   </div>
-  <!-- STAT BAR — anchored to bottom of hero viewport -->
-  <div class="stat-bar" id="history">
+</section>
+
+<!-- NAV — bottom of hero, gold hairline marks the page turn -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">Garran Hill</a>
+  <ul class="nav-links">
+    <li><a href="#estate">The Estate</a></li>
+    <li><a href="#history">The History</a></li>
+    <li><a href="#grounds">The Grounds</a></li>
+    <li class="nav-cta"><a href="#" onclick="openInquiry(); return false;">Private Inquiry</a></li>
+  </ul>
+</nav>
+
+<!-- STAT BAR -->
+<div class="stat-bar" id="history">
     <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">Bedrooms</span></div>
     <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">Bathrooms</span></div>
     <div class="stat-item"><span class="stat-number">6,072</span><span class="stat-label">Square Feet</span></div>
