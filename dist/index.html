@@ -1063,12 +1063,20 @@
 
   <!-- HERO BODY -->
   <section class="hero">
-    <iframe
-      src="https://customer-qqzxuq43g9w49ny2.cloudflarestream.com/f2f45700c0bc7f916720f56dc6bf1623/iframe?autoplay=true&muted=true&loop=true&controls=false&preload=true"
-      style="position:absolute;inset:0;width:100%;height:100%;border:none;object-fit:cover;z-index:0;"
-      allow="autoplay; fullscreen; picture-in-picture"
-      allowfullscreen
-    ></iframe>
+    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+      <source src="https://res.cloudinary.com/dghn2xpif/video/upload/q_auto:best,vc_h264,br_12000k,f_mp4/gh_key/gh_hero_video.mp4" type="video/mp4">
+    </video>
+    <script>
+      (function() {
+        var v = document.querySelector('.hero-video');
+        if (v) {
+          v.muted = true;
+          v.play().catch(function() {
+            document.addEventListener('click', function() { v.play(); }, { once: true });
+          });
+        }
+      })();
+    </script>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-eyebrow" style="margin-bottom:8px;">200 Hollycrest Drive &nbsp;|&nbsp; Pinehurst, NC &nbsp;|&nbsp; Est. 1916</div>
