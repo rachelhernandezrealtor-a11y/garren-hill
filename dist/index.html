@@ -325,6 +325,18 @@
     margin-bottom: -160px;
     z-index: 1;
   }
+  /* kb-stage wraps image + lantern glows — receives the Ken Burns transform */
+  .kb-stage {
+    position: absolute;
+    inset: 0;
+    transform-origin: center center;
+    transform: scale(1.08);
+    transition: transform 12s cubic-bezier(0.05, 0.1, 0.1, 1.0);
+    will-change: transform;
+  }
+  .kb-gate.in-view .kb-stage {
+    transform: scale(1.0);
+  }
   .kb-gate .kb-img {
     position: absolute;
     inset: 0;
@@ -332,13 +344,43 @@
     height: 100%;
     object-fit: cover;
     object-position: center 60%;
-    transform-origin: center center;
-    transform: scale(1.08);
-    transition: transform 12s cubic-bezier(0.05, 0.1, 0.1, 1.0);
-    will-change: transform;
   }
-  .kb-gate.in-view .kb-img {
-    transform: scale(1.0);
+  /* Lantern glow circles — live inside kb-stage, move with image */
+  .kb-lantern {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    background: radial-gradient(ellipse at center,
+      rgba(255,200,100,0.92) 0%,
+      rgba(255,160,50,0.65)  18%,
+      rgba(255,120,20,0.38)  40%,
+      rgba(200,80,10,0.15)   62%,
+      transparent            80%
+    );
+    animation: lanternFlicker 3.2s ease-in-out infinite;
+  }
+  /* Left lantern — post at ~9% left, ~19% top of image natural frame */
+  .kb-lantern-left {
+    width: 160px; height: 160px;
+    left: calc(9% - 80px);
+    top: calc(19% - 80px);
+    animation-duration: 3.4s;
+    animation-delay: 0s;
+  }
+  /* Right lantern — post at ~88% left, ~15% top */
+  .kb-lantern-right {
+    width: 140px; height: 140px;
+    left: calc(88% - 70px);
+    top: calc(15% - 70px);
+    animation-duration: 2.9s;
+    animation-delay: 0.8s;
+  }
+  @keyframes lanternFlicker {
+    0%,100% { opacity: 0.88; transform: scale(1.00); }
+    25%     { opacity: 0.72; transform: scale(0.96); }
+    55%     { opacity: 0.95; transform: scale(1.04); }
+    80%     { opacity: 0.78; transform: scale(0.98); }
   }
   .kb-overlay {
     position: absolute;
@@ -1042,11 +1084,16 @@
 
 <!-- KEN BURNS — GATE ARRIVAL / HISTORY BRIDGE -->
 <section class="kb-gate" aria-label="Garran Hill gate">
-  <img
-    class="kb-img"
-    src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777428893/gh_key/gh_gate_twilight.jpg"
-    alt="Garran Hill gate — twilight"
-  />
+  <div class="kb-stage">
+    <img
+      class="kb-img"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777428893/gh_key/gh_gate_twilight.jpg"
+      alt="Garran Hill gate — twilight"
+    />
+    <!-- Lantern glows — inside kb-stage so they transform WITH the image -->
+    <div class="kb-lantern kb-lantern-left"  aria-hidden="true"></div>
+    <div class="kb-lantern kb-lantern-right" aria-hidden="true"></div>
+  </div>
   <div class="kb-overlay"></div>
 
   <div class="kb-copy">
