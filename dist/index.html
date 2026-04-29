@@ -1638,15 +1638,41 @@
   (function() {
     const kbGate = document.querySelector('.kb-gate');
     if (!kbGate) return;
+
+    function triggerKB() {
+      kbGate.classList.add('in-view');
+    }
+
+    // Check if already in viewport on load
+    function isInView(el) {
+      const rect = el.getBoundingClientRect();
+      return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+
     const kbObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          kbGate.classList.add('in-view');
+          triggerKB();
           kbObserver.unobserve(kbGate);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.05, rootMargin: '0px 0px 100px 0px' });
+
     kbObserver.observe(kbGate);
+
+    // Also fire on scroll as fallback
+    function onScrollKB() {
+      if (isInView(kbGate)) {
+        triggerKB();
+        window.removeEventListener('scroll', onScrollKB);
+      }
+    }
+    window.addEventListener('scroll', onScrollKB, { passive: true });
+
+    // Fire immediately if already visible (e.g. page loaded scrolled down)
+    if (isInView(kbGate)) {
+      triggerKB();
+    }
   })();
 
 </script>
