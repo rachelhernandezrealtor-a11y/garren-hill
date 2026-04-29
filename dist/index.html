@@ -311,55 +311,6 @@
   }
   .address-line-rule { width: 80px; height: 1px; background: var(--gold); margin: 0 auto; opacity: 0.35; }
 
-  /* KB ADDRESS SCRIPT — floats on top of gate image */
-  .kb-address-script-wrap {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: clamp(48px, 7vh, 90px);
-    pointer-events: none;
-  }
-  .kb-address-script {
-    display: block;
-    font-family: 'Pinyon Script', cursive;
-    font-size: clamp(3.2rem, 5.5vw, 7rem);
-    color: var(--gold);
-    line-height: 1.05;
-    text-shadow: 0 2px 24px rgba(0,0,0,0.95), 0 4px 48px rgba(0,0,0,0.8);
-    letter-spacing: 0.01em;
-  }
-  .kb-address-script-city {
-    display: block;
-    font-size: clamp(0.52rem, 0.7vw, 0.68rem);
-    letter-spacing: 0.38em;
-    text-transform: uppercase;
-    color: rgba(245,240,232,0.55);
-    margin-top: 10px;
-    text-shadow: 0 1px 12px rgba(0,0,0,1);
-  }
-  .kb-address-script-rule {
-    width: 60px;
-    height: 1px;
-    background: rgba(201,169,110,0.4);
-    margin-top: 18px;
-  }
-  .kb-address-script-anim {
-    opacity: 0;
-  }
-  .kb-gate.in-view .kb-address-script-anim {
-    animation: fadeUpSub 0.9s ease 0.3s forwards;
-  }
-  @media (max-width: 768px) {
-    .kb-address-script { font-size: clamp(2.4rem, 9vw, 4rem); }
-    .kb-address-script-city { font-size: 0.48rem; letter-spacing: 0.22em; }
-    .kb-address-script-wrap { padding-top: 32px; }
-  }
-
   /* KEN BURNS — GATE CROSSFADE */
   .kb-gate {
     position: relative;
@@ -368,23 +319,6 @@
     overflow: hidden;
     background: var(--dark);
   }
-  /* KB image wrappers — lanterns ride inside the pan transform */
-  .kb-gate .kb-img-wrap {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    transform-origin: center center;
-    overflow: hidden;
-  }
-  .kb-gate .kb-sepia-wrap {
-    animation: kbZoomA 20s ease-in-out infinite alternate, kbPulse 16s ease-in-out infinite;
-    z-index: 1;
-  }
-  .kb-gate .kb-color-wrap {
-    animation: kbZoomB 20s ease-in-out infinite alternate, kbPulseReverse 16s ease-in-out infinite;
-    z-index: 2;
-  }
   .kb-gate .kb-img {
     position: absolute;
     inset: 0;
@@ -392,6 +326,15 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+    transform-origin: center center;
+  }
+  .kb-gate .kb-sepia {
+    animation: kbZoomA 20s ease-in-out infinite alternate, kbPulse 16s ease-in-out infinite;
+    z-index: 1;
+  }
+  .kb-gate .kb-color {
+    animation: kbZoomB 20s ease-in-out infinite alternate, kbPulseReverse 16s ease-in-out infinite;
+    z-index: 2;
   }
   @keyframes kbZoomA {
     0%   { transform: scale(1.0) translate(0, 0); }
@@ -458,8 +401,6 @@
     text-align: center;
     width: 100%;
     opacity: 0;
-  }
-  .kb-gate.in-view .kb-line-2 {
     animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 1.4s forwards;
   }
   .kb-rule-top-anim {
@@ -501,11 +442,15 @@
   .kb-gate.in-view .kb-rule-bottom-anim {
     animation: fadeUpSub 0.7s ease 4.4s forwards;
   }
+  .kb-lantern-glow {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 3;
+    pointer-events: none;
+  }
   .kb-lantern {
     position: absolute;
     border-radius: 50%;
-    z-index: 2;
-    pointer-events: none;
     background: radial-gradient(ellipse at center,
       rgba(255,185,80,0.85) 0%,
       rgba(255,150,40,0.55) 20%,
@@ -1172,28 +1117,20 @@
 
 <!-- KEN BURNS — GATE ARRIVAL / HISTORY BRIDGE -->
 <section class="kb-gate" aria-label="Garran Hill gate — then and now">
-  <div class="kb-img-wrap kb-sepia-wrap">
-    <img
-      class="kb-img kb-sepia"
-      src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777411350/gh_key/gh_gate_sepia.jpg"
-      alt="Garran Hill gate — archival"
-    />
-    <div class="kb-lantern kb-lantern-left"></div>
-  </div>
-  <div class="kb-img-wrap kb-color-wrap">
-    <img
-      class="kb-img kb-color"
-      src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777411343/gh_key/gh_gate_color.jpg"
-      alt="Garran Hill gate — today"
-    />
-    <div class="kb-lantern kb-lantern-right"></div>
-  </div>
+  <img
+    class="kb-img kb-sepia"
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777411350/gh_key/gh_gate_sepia.jpg"
+    alt="Garran Hill gate — archival"
+  />
+  <img
+    class="kb-img kb-color"
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777411343/gh_key/gh_gate_color.jpg"
+    alt="Garran Hill gate — today"
+  />
   <div class="kb-overlay"></div>
-
-  <div class="kb-address-script-wrap kb-address-script-anim">
-    <span class="kb-address-script">200 Hollycrest Drive</span>
-    <span class="kb-address-script-city">Pinehurst, North Carolina &nbsp;·&nbsp; Moore County &nbsp;·&nbsp; Est. 1916</span>
-    <div class="kb-address-script-rule"></div>
+  <div class="kb-lantern-glow">
+    <div class="kb-lantern kb-lantern-left"></div>
+    <div class="kb-lantern kb-lantern-right"></div>
   </div>
   <div class="kb-copy">
     <div class="kb-copy-layer kb-copy-base">
@@ -1203,9 +1140,7 @@
         <em class="kb-line-2">This one shaped it.</em>
       </h2>
       <div class="kb-sublines">
-        <span class="kb-sub kb-sub-1">Walter Hines Page, <em>Ambassador. Editor. Visionary.</em></span>
-        <span class="kb-sub kb-sub-2">Built Garran Hill in 1916.</span>
-        <span class="kb-sub kb-sub-3">And here it stays.</span>
+        <span class="kb-sub kb-sub-1">The gate has been open since 1916.</span>
       </div>
       <span class="kb-address kb-address-anim">200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, North Carolina &nbsp;·&nbsp; Est. 1916</span>
       <span class="kb-rule-bottom kb-rule-bottom-anim"></span>
