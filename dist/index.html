@@ -328,36 +328,13 @@
     object-position: center;
     transform-origin: center center;
   }
-  .kb-gate .kb-sepia {
-    animation: kbZoomA 20s ease-in-out infinite alternate, kbPulse 16s ease-in-out infinite;
+  .kb-gate .kb-img {
+    animation: kbBreath 20s ease-in-out infinite alternate;
     z-index: 1;
   }
-  .kb-gate .kb-color {
-    animation: kbZoomB 20s ease-in-out infinite alternate, kbPulseReverse 16s ease-in-out infinite;
-    z-index: 2;
-  }
-  @keyframes kbZoomA {
-    0%   { transform: scale(0.88) translate(0, 0); }
-    100% { transform: scale(0.96) translate(-1%, 0.5%); }
-  }
-  @keyframes kbZoomB {
+  @keyframes kbBreath {
     0%   { transform: scale(1.0) translate(0, 0); }
     100% { transform: scale(1.06) translate(0.5%, -0.5%); }
-  }
-  /* Infinite sepia→color→sepia loop: 16s total, 6s hold, 4s cross, 6s hold, 4s cross back */
-  @keyframes kbPulse {
-    0%   { opacity: 1; }
-    37%  { opacity: 1; }
-    62%  { opacity: 0; }
-    87%  { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  @keyframes kbPulseReverse {
-    0%   { opacity: 0; }
-    37%  { opacity: 0; }
-    62%  { opacity: 1; }
-    87%  { opacity: 1; }
-    100% { opacity: 0; }
   }
   @keyframes lanternFlicker {
     0%   { opacity: 0.55; transform: scale(1.0); }
@@ -1119,14 +1096,9 @@
 <!-- KEN BURNS — GATE ARRIVAL / HISTORY BRIDGE -->
 <section class="kb-gate" aria-label="Garran Hill gate — then and now">
   <img
-    class="kb-img kb-sepia"
-    src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777411350/gh_key/gh_gate_sepia.jpg"
-    alt="Garran Hill gate — archival"
-  />
-  <img
-    class="kb-img kb-color"
+    class="kb-img"
     src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777428893/gh_key/gh_gate_twilight.jpg"
-    alt="Garran Hill gate — today"
+    alt="Garran Hill gate — twilight"
   />
   <div class="kb-overlay"></div>
   <div class="kb-lantern-glow">
