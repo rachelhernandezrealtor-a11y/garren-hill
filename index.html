@@ -429,26 +429,29 @@
     animation: lanternFlicker2 2.8s ease-in-out infinite;
     animation-delay: 0.7s;
   }
-  /* Letter ghost — faint scan, bottom 50% only, fades toward top */
+  /* Letter ghost — lives inside the dark vignette zone only, NOT over the gate photo */
   .kb-letter-ghost {
     position: absolute;
-    inset: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 38%;          /* Only the bottom 38% — the dark strip where copy lives */
     z-index: 4;
     pointer-events: none;
     overflow: hidden;
-    /* Gradient mask: transparent top, visible bottom — letter only in dark zone */
-    -webkit-mask-image: linear-gradient(to bottom, transparent 35%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.7) 100%);
-    mask-image: linear-gradient(to bottom, transparent 35%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.7) 100%);
+    /* Fade in gently from top of this zone so no hard edge */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
   }
   .kb-letter-ghost img {
     position: absolute;
-    top: 42%;
+    top: 0;
     left: 50%;
-    transform: translateX(-52%) rotate(-1.8deg);
-    width: 88%;
-    max-width: 920px;
-    opacity: 0.22;
-    filter: sepia(0.4) brightness(1.8) contrast(0.65);
+    transform: translateX(-50%) rotate(-1.5deg);
+    width: 100%;
+    max-width: 960px;
+    opacity: 0.13;
+    filter: sepia(0.3) brightness(2.2) contrast(0.6);
     mix-blend-mode: screen;
   }
 
