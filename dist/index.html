@@ -40,37 +40,8 @@
   /* HERO */
   /* HERO VIEWPORT — three-layer 100vh container */
   .hero-viewport { height: 100vh; width: 100%; display: flex; flex-direction: column; overflow: hidden; }
-  .hero-top-nav { position: relative; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; flex-shrink: 0; border-bottom: none !important; box-shadow: none !important; background: transparent !important; }
-  .hero-closing-nav {
-    position: relative;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 48px 18px;
-    flex-shrink: 0;
-    border-top: 1px solid rgba(185,154,106,0.25);
-    background: transparent;
-  }
-  .hero-closing-nav ul {
-    display: flex;
-    gap: 52px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .hero-closing-nav ul li a {
-    font-family: 'Didact Gothic', sans-serif;
-    font-size: 8.5px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(245,240,232,0.45);
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  .hero-closing-nav ul li a:hover {
-    color: rgba(185,154,106,0.8);
-  }
+  .hero-top-nav { position: relative; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 48px; flex-shrink: 0; border-bottom: 1px solid rgba(201,169,110,0.18) !important; box-shadow: none !important; background: transparent !important; }
+
   .hero { position: relative; flex: 1; min-height: 0; width: 100%; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
   .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
   .hero-overlay {
@@ -78,11 +49,11 @@
     background: linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.15) 35%, rgba(10,10,10,0.5) 70%, rgba(10,10,10,0.92) 100%);
     z-index: 1;
   }
-  .hero-content { position: relative; z-index: 2; padding: 0 72px 36px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .hero-eyebrow { font-size: 0.62rem; letter-spacing: 0.32em; font-weight: 400; color: var(--gold); text-transform: uppercase; opacity: 0.8; margin-bottom: 24px; }
-  .hero-title { font-family: 'Pinyon Script', cursive; font-size: clamp(5rem, 10vw, 12rem); line-height: 0.88; color: var(--cream); margin-bottom: 20px; }
-  .hero-rule { width: 100px; height: 1px; background: var(--gold); margin-bottom: 16px; opacity: 0.5; }
-  .hero-subhead { font-size: clamp(1rem, 1.4vw, 1.3rem); font-style: italic; font-weight: 300; color: var(--cream); opacity: 0.72; letter-spacing: 0.06em; }
+  .hero-content { position: relative; z-index: 2; padding: 0 72px 44px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .hero-eyebrow { font-size: 0.62rem; letter-spacing: 0.32em; font-weight: 400; color: var(--gold); text-transform: uppercase; opacity: 0.8; margin-bottom: 14px; }
+  .hero-title { font-family: 'Pinyon Script', cursive; font-size: clamp(4.5rem, 9vw, 11rem); line-height: 0.88; color: var(--cream); margin-bottom: 16px; }
+  .hero-rule { width: 80px; height: 1px; background: var(--gold); margin-bottom: 12px; opacity: 0.5; }
+  .hero-subhead { font-size: clamp(0.88rem, 1.1vw, 1.1rem); font-style: italic; font-weight: 300; color: var(--cream); opacity: 0.72; letter-spacing: 0.06em; }
   .hero-tour-link { display: inline-block; margin-top: 36px; font-size: 0.65rem; letter-spacing: 0.18em; color: var(--gold); text-decoration: none; text-transform: none; opacity: 0.8; transition: opacity 0.3s; }
   .hero-tour-link:hover { opacity: 1; }
 
@@ -95,7 +66,7 @@
     display: flex; align-items: center; justify-content: center;
     z-index: 90;
   }
-  .stat-item { display: flex; flex-direction: column; align-items: center; padding: 22px 36px; border-right: 1px solid rgba(201,169,110,0.15); flex: 1; }
+  .stat-item { display: flex; flex-direction: column; align-items: center; padding: 14px 36px; border-right: 1px solid rgba(201,169,110,0.15); flex: 1; }
   .stat-item:last-child { border-right: none; }
   .stat-number { font-size: clamp(1.1rem, 1.6vw, 1.55rem); font-weight: 200; letter-spacing: 0.1em; color: var(--gold); }
   .stat-label { font-size: clamp(0.52rem, 0.7vw, 0.62rem); letter-spacing: 0.28em; font-weight: 300; font-family: 'Cormorant Garamond', serif; color: var(--cream); text-transform: uppercase; margin-top: 6px; opacity: 0.6; }
@@ -1108,30 +1079,16 @@
     </div>
   </section>
 
-  <!-- HERO CLOSING NAV: sits inside viewport, at hero base -->
-  <nav class="hero-closing-nav">
-    <ul>
-      <li><a href="#estate">The Estate</a></li>
-      <li><a href="#history">The History</a></li>
-      <li><a href="#grounds">The Grounds</a></li>
-      <li><a href="#" onclick="openInquiry(); return false;">Private Inquiry</a></li>
-    </ul>
-  </nav>
-
-</div>
-
-<!-- STAT BAR -->
-<div class="stat-bar" id="history">
+  <!-- STAT BAR — viewport bottom bookend, inside hero-viewport -->
+  <div class="stat-bar" id="history" style="flex-shrink:0; position:relative;">
     <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">Bedrooms</span></div>
     <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">Bathrooms</span></div>
     <div class="stat-item"><span class="stat-number">6,072</span><span class="stat-label">Square Feet</span></div>
     <div class="stat-item"><span class="stat-number">4.15</span><span class="stat-label">Acres</span></div>
     <div class="stat-item"><span class="stat-number" style="font-size: clamp(1.1rem, 1.8vw, 1.75rem); letter-spacing: 0.06em;">$4,250,000</span></div>
-    <!-- CREST: staged for placement — will return when design position confirmed -->
-    <!-- <div class="stat-crest-wrap" style="margin-left: auto;">
-      <img class="stat-crest" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal/v1777397863/gh_key/gh_wax_seal_v3.png" alt="Garran Hill Crest" style="top: -52px;">
-    </div> -->
   </div>
+
+</div><!-- END HERO VIEWPORT -->
 
 <!-- KEN BURNS — GATE ARRIVAL / HISTORY BRIDGE -->
 <section class="kb-gate" aria-label="Garran Hill gate">
