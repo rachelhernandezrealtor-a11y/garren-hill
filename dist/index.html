@@ -39,7 +39,13 @@
   .hero-top-nav { position: absolute; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 14px 48px; border-bottom: none; background: var(--dark); }
 
   .hero { position: relative; flex: 1; min-height: calc(100dvh - 80px); width: 100%; overflow: hidden; }
-  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; animation: videoFade 18s ease-in-out infinite; }
+  @keyframes videoFade {
+    0%   { opacity: 0; }
+    4%   { opacity: 1; }
+    88%  { opacity: 1; }
+    100% { opacity: 0; }
+  }
   .hero-overlay {
     position: absolute; inset: 0;
     background: linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.15) 35%, rgba(10,10,10,0.5) 70%, rgba(10,10,10,0.92) 100%);
@@ -1073,6 +1079,12 @@
           v.muted = true;
           v.play().catch(function() {
             document.addEventListener('click', function() { v.play(); }, { once: true });
+          });
+          v.addEventListener('loadedmetadata', function() {
+            var dur = v.duration;
+            if (dur && dur > 0) {
+              v.style.animation = 'videoFade ' + dur + 's ease-in-out infinite';
+            }
           });
         }
       })();
