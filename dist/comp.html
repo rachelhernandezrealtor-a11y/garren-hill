@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Montserrat:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;0,400&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Montserrat:wght@300;400&display=swap');
 
 * { margin:0; padding:0; box-sizing:border-box; }
 html, body { width:100%; height:100vh; background:#0a0a0a; overflow:hidden; }
@@ -11,139 +11,150 @@ html, body { width:100%; height:100vh; background:#0a0a0a; overflow:hidden; }
 /* STAT BAR */
 .stat-bar {
   position:absolute; top:0; left:0; right:0; height:52px;
-  background:rgba(10,10,10,0.94);
-  border-bottom:1px solid rgba(201,169,110,0.35);
+  background:rgba(10,10,10,0.96);
+  border-bottom:1px solid rgba(201,169,110,0.3);
   display:flex; align-items:center; z-index:10;
 }
 .stat-item {
   display:flex; flex-direction:column; align-items:center;
-  flex:1; padding:0 16px;
+  flex:1; padding:0 12px;
   border-right:1px solid rgba(201,169,110,0.1);
 }
 .stat-item:last-child { border-right:none; }
 .stat-num {
   font-family:'Playfair Display',serif; font-weight:700;
-  font-size:14px; color:#C9A96E; letter-spacing:0.04em; white-space:nowrap;
+  font-size:14px; color:#C9A96E; letter-spacing:0.05em; white-space:nowrap;
 }
 .stat-label {
   font-family:'Montserrat',sans-serif; font-weight:300;
   font-size:6px; letter-spacing:0.26em; color:#F5F0E8;
-  text-transform:uppercase; opacity:0.48; margin-top:3px; white-space:nowrap;
+  text-transform:uppercase; opacity:0.45; margin-top:3px; white-space:nowrap;
 }
 
 /* SCENE */
 .scene {
   position:absolute; top:52px; left:0; right:0; bottom:0;
-  display:flex;
+  display:flex; align-items:stretch;
 }
 
-/* GATE — left 52% */
+/* ── GATE LEFT 54% ── */
 .gate {
-  position:relative; width:52%; height:100%; flex-shrink:0;
+  position:relative; width:54%; flex-shrink:0;
   background:url("https://res.cloudinary.com/dghn2xpif/image/upload/v1777263004/gh_key/gh_gate_twilight.jpg") center/cover no-repeat;
 }
-.gate-r { 
-  position:absolute; inset:0; 
-  background:linear-gradient(to right, transparent 25%, rgba(10,10,10,0.6) 60%, rgba(10,10,10,0.97) 100%); 
-}
-.gate-t { 
-  position:absolute; inset:0; 
-  background:linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, transparent 28%); 
-}
-.gate-copy { 
-  position:absolute; bottom:72px; left:52px; max-width:420px; 
-}
-.headline {
-  font-family:'Playfair Display',serif; font-weight:700;
-  font-size:clamp(42px,4.8vw,62px); color:#F5F0E8;
-  line-height:1.08; text-shadow:0 2px 40px rgba(0,0,0,0.95); display:block;
-}
+.gate-r { position:absolute;inset:0; background:linear-gradient(to right,transparent 20%,rgba(10,10,10,0.55) 58%,rgba(10,10,10,0.98) 100%); }
+.gate-t { position:absolute;inset:0; background:linear-gradient(to bottom,rgba(10,10,10,0.52) 0%,transparent 30%); }
+
+.gate-copy { position:absolute; bottom:80px; left:56px; max-width:400px; }
+
 /* DROP CAP */
-.drop-cap {
+.drop-s {
   float:left;
   font-family:'Playfair Display',serif; font-weight:700;
-  font-size:5.4em; line-height:0.74;
+  font-size:6.2em; line-height:0.72;
   color:#F5F0E8;
-  margin-right:0.04em;
-  margin-top:0.06em;
-  text-shadow:0 2px 40px rgba(0,0,0,0.95);
+  margin-right:0.03em; margin-top:0.05em;
+  text-shadow:0 2px 48px rgba(0,0,0,1), 0 0 80px rgba(0,0,0,0.8);
+}
+.headline-rest {
+  font-family:'Playfair Display',serif; font-weight:700;
+  font-size:clamp(40px,4.4vw,58px); color:#F5F0E8;
+  line-height:1.1; text-shadow:0 2px 40px rgba(0,0,0,0.95); display:block;
 }
 .pull {
   font-family:'Libre Baskerville',serif; font-style:italic;
-  font-size:clamp(22px,2.6vw,32px); color:#C9A96E;
-  margin-top:18px; display:block; clear:both;
-  letter-spacing:0.04em;
-  text-shadow:0 0 32px rgba(201,169,110,0.6), 0 2px 16px rgba(0,0,0,0.9);
+  font-size:clamp(22px,2.5vw,30px); color:#C9A96E;
+  margin-top:20px; display:block; clear:both;
+  letter-spacing:0.06em;
+  text-shadow:0 0 36px rgba(201,169,110,0.65), 0 2px 16px rgba(0,0,0,0.9);
 }
-.rule { display:block; width:64px; height:1px; background:#C9A96E; margin-top:28px; opacity:0.5; }
+.rule { display:block; width:60px; height:1px; background:#C9A96E; margin-top:26px; opacity:0.48; }
 
-/* WHP — right 48%, portrait FULL BODY glowing */
+/* ── WHP RIGHT 46% — gallery portrait in darkness ── */
 .whp {
-  position:relative; width:48%; height:100%;
-  display:flex; align-items:flex-end; justify-content:center;
+  position:relative; width:46%;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:flex-start;
   overflow:hidden;
-  /* warm amber ambient glow behind him */
-  background: radial-gradient(ellipse at 50% 38%, rgba(90,55,18,0.38) 0%, rgba(10,10,10,0) 68%);
+  padding-top:24px;
 }
 
-/* left bleed */
+/* Warm amber glow radiating behind him */
+.whp-glow {
+  position:absolute;
+  top: -10%; left:50%; transform:translateX(-50%);
+  width:110%; height:80%;
+  background: radial-gradient(ellipse at 50% 35%, 
+    rgba(120,72,18,0.52) 0%, 
+    rgba(80,45,10,0.28) 35%, 
+    rgba(10,10,10,0) 70%);
+  z-index:0; pointer-events:none;
+}
+
+/* left bleed from gate */
 .whp::before {
-  content:''; position:absolute; left:0; top:0; width:22%; height:100%;
-  background:linear-gradient(to right, #0a0a0a 0%, transparent 100%);
+  content:''; position:absolute; left:0; top:0; width:20%; height:100%;
+  background:linear-gradient(to right,#0a0a0a 0%,transparent 100%);
   z-index:3; pointer-events:none;
 }
 
-.portrait-wrap {
-  position:absolute;
-  top:0; left:0; right:0; bottom:0;
-  display:flex; align-items:center; justify-content:center;
-  z-index:1;
+/* bottom dissolve — portrait fades into floor */
+.whp-fade-b {
+  position:absolute; bottom:0; left:0; right:0; height:30%;
+  background:linear-gradient(to top, #0a0a0a 0%, transparent 100%);
+  z-index:3; pointer-events:none;
+}
+
+/* right edge */
+.whp::after {
+  content:''; position:absolute; right:0; top:0; width:12%; height:100%;
+  background:linear-gradient(to left,#0a0a0a 0%,transparent 100%);
+  z-index:3; pointer-events:none;
 }
 
 .portrait {
-  height:100%;
-  width:auto;
-  max-width:none;
-  object-fit:contain;
-  object-position:top center;
-  /* The glow — warm amber filter + brightness lift */
-  filter: brightness(1.12) saturate(1.18) sepia(0.08) drop-shadow(0 0 48px rgba(180,120,40,0.55)) drop-shadow(0 0 120px rgba(140,85,20,0.3));
-  opacity:0.95;
+  position:relative; z-index:2;
+  height:78%; width:auto;
+  max-width:88%;
+  object-fit:contain; object-position:top center;
+  /* candlelit oil painting glow */
+  filter: 
+    brightness(1.15) 
+    saturate(1.22) 
+    sepia(0.12) 
+    contrast(1.05)
+    drop-shadow(0 0 40px rgba(180,110,30,0.70)) 
+    drop-shadow(0 0 100px rgba(140,80,15,0.45))
+    drop-shadow(0 8px 60px rgba(0,0,0,0.8));
 }
 
-/* right edge fade so portrait dissolves to black */
-.whp-fade-r {
-  position:absolute; right:0; top:0; width:18%; height:100%;
-  background:linear-gradient(to left, #0a0a0a 0%, transparent 100%);
-  z-index:3; pointer-events:none;
-}
-
-/* WHP copy — bottom left of panel */
+/* WHP copy — floats below portrait in the dark */
 .whp-copy {
-  position:absolute; bottom:72px; left:44px; right:20px;
-  z-index:4;
+  position:absolute; bottom:44px; left:0; right:0;
+  padding:0 40px;
+  z-index:4; text-align:left;
 }
 .wname {
   font-family:'Montserrat',sans-serif; font-weight:300;
-  font-size:9px; letter-spacing:0.38em; color:#F5F0E8;
-  opacity:0.62; text-transform:uppercase; display:block;
+  font-size:8.5px; letter-spacing:0.38em; color:#F5F0E8;
+  opacity:0.58; text-transform:uppercase; display:block;
 }
 .wtitles {
   font-family:'Libre Baskerville',serif;
-  font-size:18px; color:#C9A96E;
-  margin-top:10px; letter-spacing:0.05em; display:block;
-  text-shadow:0 0 24px rgba(201,169,110,0.5);
+  font-size:17px; color:#C9A96E;
+  margin-top:9px; letter-spacing:0.06em; display:block;
+  text-shadow:0 0 28px rgba(201,169,110,0.55);
 }
 .wbuilt {
   font-family:'Montserrat',sans-serif; font-weight:300;
-  font-size:8px; letter-spacing:0.3em; color:#F5F0E8;
-  opacity:0.48; text-transform:uppercase; margin-top:16px; display:block;
+  font-size:7.5px; letter-spacing:0.3em; color:#F5F0E8;
+  opacity:0.45; text-transform:uppercase; margin-top:14px; display:block;
 }
 .wclose {
   font-family:'Libre Baskerville',serif; font-style:italic;
-  font-size:16px; color:#C9A96E;
-  margin-top:8px; display:block;
-  text-shadow:0 0 20px rgba(201,169,110,0.45);
+  font-size:15px; color:#C9A96E;
+  margin-top:7px; display:block;
+  text-shadow:0 0 22px rgba(201,169,110,0.5);
 }
 </style>
 </head>
@@ -158,21 +169,23 @@ html, body { width:100%; height:100vh; background:#0a0a0a; overflow:hidden; }
 </div>
 
 <div class="scene">
+  <!-- GATE -->
   <div class="gate">
     <div class="gate-r"></div>
     <div class="gate-t"></div>
     <div class="gate-copy">
-      <span class="headline"><span class="drop-cap">S</span>ome houses<br>hold history.</span>
+      <span class="drop-s">S</span>
+      <span class="headline-rest">ome houses<br>hold history.</span>
       <span class="pull">This one shaped it.</span>
       <span class="rule"></span>
     </div>
   </div>
 
+  <!-- WHP -->
   <div class="whp">
-    <div class="portrait-wrap">
-      <img class="portrait" src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/2e864596c_WalterHinesPage.jpeg" />
-    </div>
-    <div class="whp-fade-r"></div>
+    <div class="whp-glow"></div>
+    <img class="portrait" src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/2e864596c_WalterHinesPage.jpeg" />
+    <div class="whp-fade-b"></div>
     <div class="whp-copy">
       <span class="wname">Walter Hines Page,</span>
       <span class="wtitles">Ambassador.&nbsp;&nbsp;Editor.&nbsp;&nbsp;Visionary.</span>
