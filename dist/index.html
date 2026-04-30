@@ -75,10 +75,10 @@
   }
   .stat-item { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 20px; border-right: 1px solid rgba(201,169,110,0.15); flex: 1; height: 100%; }
   .stat-item:last-child { border-right: none; }
-  .stat-number { font-size: clamp(1.0rem, 1.4vw, 1.35rem); font-weight: 200; letter-spacing: 0.1em; color: var(--gold); }
-  .stat-label { font-size: clamp(0.48rem, 0.6vw, 0.56rem); letter-spacing: 0.24em; font-weight: 300; font-family: 'Cormorant Garamond', serif; color: var(--cream); text-transform: uppercase; margin-top: 4px; opacity: 0.6; }
-  .stat-crest-wrap { padding: 0 40px; display: flex; align-items: center; justify-content: center; position: relative; flex-shrink: 0; }
-  .stat-crest { height: 80px; width: auto; position: relative; top: -40px; filter: drop-shadow(0 0 14px rgba(201,169,110,0.5)) drop-shadow(0 0 28px rgba(201,169,110,0.25)); }
+  .stat-number { font-size: clamp(0.9rem, 1.2vw, 1.15rem); font-weight: 200; letter-spacing: 0.08em; color: var(--gold); line-height: 1; }
+  .stat-label { font-size: clamp(0.48rem, 0.6vw, 0.56rem); letter-spacing: 0.24em; font-weight: 300; font-family: 'Cormorant Garamond', serif; color: var(--cream); text-transform: uppercase; margin-top: 3px; opacity: 0.6; }
+  .stat-crest-wrap { padding: 0 24px; display: flex; align-items: center; justify-content: center; position: relative; flex-shrink: 0; overflow: visible; }
+  .stat-crest { height: 48px; width: auto; position: relative; top: 0; filter: drop-shadow(0 0 12px rgba(201,169,110,0.45)) drop-shadow(0 0 24px rgba(201,169,110,0.2)); }
 
   /* BEAT 3 — FACADE FULL BLEED */
   .facade-beat { position: relative; height: 92vh; overflow: hidden; }
@@ -298,7 +298,7 @@
     .craftsmen-beat { max-width: 100%; }
     .threshold-content { padding: 60px 28px; }
     footer { padding: 60px 28px 40px; }
-    .stat-item { padding: 16px 16px; }
+    /* stat-item override removed */
     .stat-label { font-size: 0.46rem; }
   }
 
