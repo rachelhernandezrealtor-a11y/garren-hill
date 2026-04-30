@@ -1032,6 +1032,96 @@
     .whp-letters-gap { display: none; }
   }
 
+
+  /* ============================================================ */
+  /* KB GATE THEN/NOW SECTION                                      */
+  /* ============================================================ */
+  .kb-gate-section {
+    position: relative;
+    padding: 80px 0 64px;
+    background: #0a0a0a;
+    text-align: center;
+    overflow: hidden;
+  }
+  .kb-gate-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    color: rgba(201,169,110,0.55);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .kb-gate-stage {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+  .kb-gate-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .kb-gate-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  /* THEN layer sits on top, fades out then back in — 14s loop */
+  .kb-gate-then {
+    z-index: 2;
+    animation: kb-gate-crossfade 14s ease-in-out infinite;
+  }
+  .kb-gate-now {
+    z-index: 1;
+  }
+  @keyframes kb-gate-crossfade {
+    0%   { opacity: 1; }
+    35%  { opacity: 1; }
+    50%  { opacity: 0; }
+    85%  { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  /* Subtle Ken Burns push on each layer */
+  .kb-gate-then img {
+    animation: kb-push-then 14s ease-in-out infinite;
+  }
+  .kb-gate-now img {
+    animation: kb-push-now 14s ease-in-out infinite;
+  }
+  @keyframes kb-push-then {
+    0%   { transform: scale(1.04) translate(0.5%, 0.3%); }
+    50%  { transform: scale(1.00) translate(0%, 0%); }
+    100% { transform: scale(1.04) translate(0.5%, 0.3%); }
+  }
+  @keyframes kb-push-now {
+    0%   { transform: scale(1.00) translate(0%, 0%); }
+    50%  { transform: scale(1.04) translate(-0.5%, -0.2%); }
+    100% { transform: scale(1.00) translate(0%, 0%); }
+  }
+  .kb-gate-caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(245,240,232,0.65);
+    letter-spacing: 0.04em;
+    margin-top: 36px;
+    padding: 0 10%;
+    line-height: 1.6;
+  }
+  @media (max-width: 768px) {
+    .kb-gate-stage {
+      max-width: 100%;
+    }
+    .kb-gate-caption {
+      padding: 0 6%;
+    }
+  }
 </style>
 </head>
 <body>
@@ -1314,12 +1404,21 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- INTERSTITIAL — SAPLINGS -->
+<!-- BEAT — KB GATE THEN/NOW -->
 <!-- ============================================================ -->
-<section class="interstitial fade-in">
-  <div class="interstitial-rule"></div>
-  <p class="interstitial-text">In 1916, those were saplings. Now they are a forest.</p>
-  <div class="interstitial-rule-bottom"></div>
+<section class="kb-gate-section fade-in">
+  <div class="kb-gate-eyebrow">1916 &rarr; 2026</div>
+  <div class="kb-gate-stage">
+    <div class="kb-gate-frame kb-gate-then">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_fill,ar_16:9/v1777411350/gh_key/gh_gate_sepia.jpg"
+           alt="The gates of Garran Hill, 1916" loading="lazy">
+    </div>
+    <div class="kb-gate-frame kb-gate-now">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_fill,ar_16:9/v1777411343/gh_key/gh_gate_color.jpg"
+           alt="The gates of Garran Hill, 2026" loading="lazy">
+    </div>
+  </div>
+  <p class="kb-gate-caption">In 1916, those were saplings. Now they are a forest.</p>
 </section>
 
 <!-- ============================================================ -->
