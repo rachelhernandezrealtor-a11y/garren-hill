@@ -47,7 +47,7 @@
     100% { opacity: 0; }
   }
   .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.72) 100%); z-index: 2; }
-  .hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -52%); z-index: 3; display: flex; flex-direction: column; align-items: center; text-align: center; width: 90%; max-width: 1100px; }
+  .hero-content { position: absolute; top: 48%; left: 50%; transform: translate(-50%, -50%); z-index: 3; display: flex; flex-direction: column; align-items: center; text-align: center; width: 90%; max-width: 1100px; }
   .hero-eyebrow { font-size: 0.78rem; letter-spacing: 0.3em; font-weight: 400; color: #C9A96E; text-transform: uppercase; opacity: 1; margin-bottom: 28px; text-align: center; width: 100%; text-shadow: 0 0 20px rgba(201,169,110,0.2); }
   .hero-title { font-family: 'Pinyon Script', cursive; font-size: clamp(6rem, 13vw, 15rem); line-height: 0.88; color: #F0EBE0; margin-bottom: 20px; white-space: nowrap; opacity: 0.93; text-shadow: 0 1px 0 rgba(255,240,200,0.08), 0 -1px 3px rgba(0,0,0,0.7), 2px 3px 0 rgba(0,0,0,0.55), 0 6px 20px rgba(0,0,0,0.85), 0 0 60px rgba(0,0,0,0.7); }
   .hero-rule { width: 160px; height: 1px; background: linear-gradient(90deg, transparent, #C9A96E 20%, #C9A96E 80%, transparent); margin: 26px auto 30px auto; opacity: 0.8; }
@@ -73,7 +73,7 @@
   .stat-number { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 2.2vw, 2.1rem); font-weight: 300; color: #C9A96E; letter-spacing: 0.08em; line-height: 1; text-shadow: 0 0 18px rgba(201,169,110,0.22); }
   .stat-label { font-size: clamp(0.48rem, 0.58vw, 0.55rem); letter-spacing: 0.24em; font-weight: 300; font-family: 'Cormorant Garamond', serif; color: var(--cream); text-transform: uppercase; margin-top: 6px; opacity: 0.6; white-space: nowrap; }
   .stat-crest-wrap { padding: 0 24px; display: flex; align-items: center; justify-content: center; position: relative; flex-shrink: 0; overflow: visible; }
-  .stat-crest { height: 64px; width: auto; position: relative; top: -32px; filter: drop-shadow(0 0 14px rgba(201,169,110,0.5)) drop-shadow(0 0 28px rgba(201,169,110,0.25)); }
+  .stat-crest { height: 48px; width: auto; position: relative; top: 0; filter: drop-shadow(0 0 12px rgba(201,169,110,0.45)) drop-shadow(0 0 24px rgba(201,169,110,0.2)); }
 
   /* BEAT 3 — FACADE FULL BLEED */
   .facade-beat { position: relative; height: 92vh; overflow: hidden; }
@@ -285,7 +285,7 @@
   @media (max-width: 900px) {
     nav { padding: 20px 24px; position: absolute; bottom: 0; left: 0; right: 0; }
     .nav-links { display: none; }
-    .hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -52%); z-index: 3; display: flex; flex-direction: column; align-items: center; text-align: center; width: 90%; max-width: 1100px; }
+    .hero-content { position: absolute; top: 48%; left: 50%; transform: translate(-50%, -50%); z-index: 3; display: flex; flex-direction: column; align-items: center; text-align: center; width: 90%; max-width: 1100px; }
     .address-beat, .whp-section, .craftsmen-beat, .stewardship-beat { padding: 80px 28px; }
     .whp-top { grid-template-columns: 1fr; gap: 48px; }
     .whp-quotes { grid-template-columns: 1fr; }
