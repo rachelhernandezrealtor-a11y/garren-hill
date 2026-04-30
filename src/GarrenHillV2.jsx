@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garran Hill — 200 Hollycrest Drive, Pinehurst NC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @font-face {
+    font-family: 'Pinyon Script';
+    font-display: swap;
+  }
+  :root { --dark: #0a0a0a; --gold: #C9A96E; --cream: #F5F0E8; --text: rgba(245,240,232,0.82); }
+  html { scroll-behavior: smooth; }
+  body { background: var(--dark); color: var(--cream); font-family: 'Cormorant Garamond', serif; overflow-x: hidden; }
+
+  /* GRAIN */
+  body::after {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9000; opacity: 0.035;
+  }
+
+  /* NAV */
+  /* nav generic rule removed — hero-top-nav handles all nav styling */
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.0rem; font-weight: 300; letter-spacing: 0.16em; color: var(--cream); opacity: 0.95; text-decoration: none; display: flex; align-items: baseline; gap: 6px; position: relative; z-index: 2; } .nav-est { font-size: 0.65rem; letter-spacing: 0.18em; color: var(--gold); opacity: 0.8; text-transform: uppercase; font-family: 'Cormorant Garamond', serif; } .nav-crest-stamp { height: 44px; width: auto; opacity: 0.85; pointer-events: none; filter: sepia(0.4) brightness(1.3) drop-shadow(0 0 8px rgba(201,169,110,0.5)); flex-shrink: 0; } .nav-center { position: absolute; left: 50%; transform: translateX(-50%); font-family: 'Cormorant Garamond', serif; font-size: 0.7rem; letter-spacing: 0.18em; color: var(--cream); opacity: 0.6; text-transform: uppercase; pointer-events: none; }
+  .nav-links { display: flex; gap: 20px; align-items: center; list-style: none; justify-content: flex-end; }
+  .nav-links a { font-size: 0.62rem; letter-spacing: 0.22em; font-weight: 300; font-family: 'Cormorant Garamond', serif; color: var(--cream); opacity: 0.7; text-decoration: none; text-transform: uppercase; transition: opacity 0.3s; }
+  .nav-links a:hover { opacity: 1; }
+  .nav-links .nav-cta a { color: var(--gold); opacity: 1; }
+
+  /* HERO */
+  /* HERO VIEWPORT — three-layer 100vh container */
+  .hero-viewport { height: 100dvh; max-height: 100dvh; width: 100%; display: flex; flex-direction: column; overflow: visible; padding-top: 48px; box-sizing: border-box; }
+  .hero-top-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 14px 40px; background: rgba(10,10,10,0.85); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(201,169,110,0.04); }
+
+  .hero { position: relative; flex: 1; min-height: 0; width: 100%; overflow: hidden; }
+  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; filter: contrast(1.10) saturate(1.18) brightness(1.22); }
+  @keyframes videoFade {
+    0%   { opacity: 0; }
+    4%   { opacity: 1; }
+    88%  { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .hero-overlay { 
+    position: absolute; inset: 0; z-index: 2;
+    background:
+      linear-gradient(to bottom,
+        rgba(0,0,0,0.55) 0%,
+        rgba(0,0,0,0.15) 18%,
+        rgba(0,0,0,0.00) 35%,
+        rgba(0,0,0,0.00) 62%,
+        rgba(0,0,0,0.30) 80%,
+        rgba(0,0,0,0.70) 100%
+      );
+  }
+  .hero-content { position: absolute; top: 48%; left: 50%; transform: translate(-50%, -50%); z-index: 3; display: flex; flex-direction: column; align-items: center; text-align: center; width: 90%; max-width: 1100px; }
+  .hero-eyebrow { font-size: 0.78rem; letter-spacing: 0.3em; font-weight: 400; color: #C9A96E; text-transform: uppercase; opacity: 1; margin-bottom: 28px; text-align: center; width: 100%; text-shadow: 0 0 20px rgba(201,169,110,0.2); }
+  .hero-title { font-family: 'Pinyon Script', cursive; font-size: clamp(6rem, 13vw, 15rem); line-height: 0.88; color: #F5F0E8; margin-bottom: 20px; white-space: nowrap; opacity: 1; -webkit-text-stroke: 0.6px #F5F0E8; paint-order: stroke fill; text-shadow: 0 2px 8px rgba(0,0,0,0.95), 0 4px 32px rgba(0,0,0,0.85), 0 8px 64px rgba(0,0,0,0.6); }
+  .hero-rule { width: 200px; height: 1px; background: linear-gradient(90deg, transparent, #C9A96E 15%, #C9A96E 85%, transparent); margin: 28px auto 34px auto; opacity: 0.7; }
+  .hero-subhead { font-size: clamp(1.0rem, 1.3vw, 1.25rem); font-style: italic; font-weight: 300; color: var(--cream); opacity: 0.80; letter-spacing: 0.16em; margin-bottom: 0; text-align: center; width: 100%; }
+  .hero-tour-link { display: inline-block; margin-top: 36px; font-size: 0.65rem; letter-spacing: 0.18em; color: var(--gold); text-decoration: none; text-transform: none; opacity: 0.8; transition: opacity 0.3s; }
+  .hero-tour-link:hover { opacity: 1; }
+
+  /* STAT BAR */
+  .stat-bar {
+    flex-shrink: 0;
+    background: var(--dark);
+    border-top: 1px solid rgba(201,169,110,0.35);
+    border-bottom: none;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 90;
+    height: 80px;
+    min-height: 80px;
+    padding: 0 12px;
+    overflow: visible;
+  }
+  .stat-item { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 16px; border-right: 1px solid rgba(201,169,110,0.15); flex: 1; height: 100%; min-width: 0; }
+  .stat-item:last-child { border-right: none; }
+  .stat-number { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 2.2vw, 2.1rem); font-weight: 300; color: #C9A96E; letter-spacing: 0.08em; line-height: 1; text-shadow: 0 0 18px rgba(201,169,110,0.22); }
+  .stat-label { font-size: clamp(0.48rem, 0.58vw, 0.55rem); letter-spacing: 0.24em; font-weight: 300; font-family: 'Cormorant Garamond', serif; color: var(--cream); text-transform: uppercase; margin-top: 6px; opacity: 0.6; white-space: nowrap; }
+  .stat-crest-wrap { padding: 0 24px; display: flex; align-items: center; justify-content: center; position: relative; flex-shrink: 0; overflow: visible; }
+  .stat-crest { height: 52px; width: auto; display:block; filter: drop-shadow(0 0 12px rgba(201,169,110,0.45)) drop-shadow(0 0 24px rgba(201,169,110,0.2)); }
+
+  /* BEAT 4 — CRAFTSMEN */
+  .craftsmen-beat { background: var(--dark); padding: 130px 72px 110px; max-width: 900px; }
+  .craftsmen-eyebrow { font-size: clamp(0.58rem, 0.7vw, 0.68rem); letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; opacity: 0.75; margin-bottom: 24px; display: block; }
+  .craftsmen-headline { font-size: clamp(3rem, 6vw, 7.5rem); font-weight: 300; line-height: 1.0; color: var(--cream); margin-bottom: 36px; }
+  .craftsmen-rule { width: 80px; height: 1px; background: var(--gold); margin-bottom: 20px; opacity: 0.5; }
+  .craftsmen-body { font-size: clamp(1rem, 1.3vw, 1.18rem); font-weight: 300; line-height: 1.88; color: var(--text); max-width: 58ch; }
+  .craftsmen-body p + p { margin-top: 1.2em; }
+
+  /* BEAT 5 — STEWARDSHIP */
+  .stewardship-beat { background: var(--dark); padding: 130px 72px 110px; position: relative; }
+  .stewardship-beat::before { content: ''; display: block; width: 120px; height: 1px; background: var(--gold); margin-bottom: 48px; opacity: 0.4; }
+  .stewardship-inner { max-width: 760px; }
+  .stewardship-lead { font-size: clamp(1.6rem, 3vw, 3rem); font-weight: 300; font-style: italic; line-height: 1.3; color: var(--cream); margin-bottom: 20px; }
+  .stewardship-devotion { font-size: clamp(1.4rem, 2.5vw, 2.5rem); font-weight: 300; font-style: italic; color: var(--gold); margin-bottom: 44px; }
+  .stewardship-rule { width: 60px; height: 1px; background: rgba(201,169,110,0.35); margin-bottom: 36px; }
+  .stewardship-body { font-size: clamp(1rem, 1.2vw, 1.15rem); font-weight: 300; line-height: 1.85; color: var(--text); margin-bottom: 36px; }
+  .stewardship-body p + p { margin-top: 1.4em; }
+  .stewardship-quote {
+    border-left: 2px solid rgba(201,169,110,0.4);
+    padding-left: 32px;
+    font-style: italic; font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+    color: var(--cream); opacity: 0.82; line-height: 1.75;
+  }
+  .stewardship-beat::after { content: ''; display: block; width: 120px; height: 1px; background: var(--gold); margin-top: 48px; opacity: 0.4; }
+
+  /* BEAT 6 — THRESHOLD */
+  .threshold-beat { position: relative; min-height: 90vh; display: flex; align-items: flex-start; overflow: hidden; }
+  .threshold-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: bottom center; z-index: 0; }
+  .threshold-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.6) 50%, rgba(10,10,10,0.2) 100%);
+  }
+  .threshold-content { position: relative; z-index: 2; padding: 100px 72px; max-width: 680px; }
+  .threshold-eyebrow { font-size: clamp(0.58rem, 0.7vw, 0.68rem); letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; opacity: 0.65; margin-bottom: 32px; display: block; }
+  .threshold-headline { font-size: clamp(2.8rem, 5vw, 6rem); font-weight: 300; line-height: 1.08; color: var(--cream); margin-bottom: 56px; letter-spacing: 0.01em; }
+  .threshold-rule { width: 60px; height: 1px; background: var(--gold); margin-bottom: 40px; opacity: 0.5; }
+  .threshold-body { font-size: clamp(1rem, 1.2vw, 1.15rem); font-weight: 300; line-height: 1.85; color: var(--text); }
+  .threshold-body p + p { margin-top: 1.4em; }
+
+  /* INQUIRY MODAL */
+  .inquiry-modal { display: none; position: fixed; inset: 0; z-index: 9500; align-items: center; justify-content: center; background: rgba(10,10,10,0.88); }
+  .inquiry-modal.open { display: flex; }
+  .inquiry-box { background: var(--dark); border-bottom: 1px solid rgba(201,169,110,0.4); padding: 64px; max-width: 520px; width: 90%; position: relative; }
+  .inquiry-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--cream); opacity: 0.5; font-size: 1.4rem; cursor: pointer; font-family: 'Cormorant Garamond', serif; }
+  .inquiry-close:hover { opacity: 1; }
+  .inquiry-title { font-size: 1.6rem; font-weight: 300; letter-spacing: 0.04em; color: var(--cream); margin-bottom: 8px; }
+  .inquiry-sub { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); opacity: 0.7; margin-bottom: 40px; }
+  .inquiry-form input, .inquiry-form textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(201,169,110,0.25); color: var(--cream); padding: 12px 0; margin-bottom: 28px; font-family: 'Cormorant Garamond', serif; font-size: 1rem; outline: none; transition: border-color 0.3s; }
+  .inquiry-form input:focus, .inquiry-form textarea:focus { border-bottom-color: var(--gold); }
+  .inquiry-form textarea { resize: none; height: 80px; }
+  .inquiry-form input::placeholder, .inquiry-form textarea::placeholder { color: var(--cream); opacity: 0.35; letter-spacing: 0.06em; }
+  .inquiry-submit { width: 100%; padding: 18px; background: transparent; border: 0.5px solid rgba(201,169,110,0.75); color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 0.65rem; letter-spacing: 0.32em; text-transform: uppercase; cursor: pointer; transition: all 0.4s; margin-top: 12px; }
+  .inquiry-submit:hover { background: var(--gold); color: var(--dark); }
+  .inquiry-confidence { margin-top: 20px; text-align: center; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); opacity: 0.3; }
+  .inquiry-price { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--gold); opacity: 0.8; margin-bottom: 32px; }
+
+  /* FOOTER */
+  footer { background: var(--dark); padding: 160px 72px 80px; border-top: 1px solid rgba(201,169,110,0.12); }
+  .footer-inner { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 36px; }
+  .footer-crest { background: transparent; }
+  .footer-crest img { height: 80px; opacity: 0.9; mix-blend-mode: screen; filter: drop-shadow(0 0 16px rgba(201,169,110,0.45)); background: transparent; }
+  .footer-offered { font-size: 0.52rem; letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold); opacity: 0.7; }
+  .footer-agent { font-size: 1.75rem; font-weight: 300; letter-spacing: 0.12em; color: var(--cream); }
+  .footer-brokerage { font-size: 0.58rem; letter-spacing: 0.30em; text-transform: uppercase; color: var(--gold); opacity: 0.6; }
+  .footer-bottom { margin-top: 64px; padding-top: 28px; border-top: 1px solid rgba(201,169,110,0.08); font-size: 0.52rem; letter-spacing: 0.2em; color: var(--cream); opacity: 0.25; }
+
+
+  /* BEAT 7 — TWILIGHT CLOSING */
+  .twilight-beat {
+    position: relative; min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .twilight-bg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center top; z-index: 0;
+  }
+  .twilight-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to bottom,
+      rgba(10,10,10,0.3) 0%,
+      rgba(10,10,10,0.15) 30%,
+      rgba(10,10,10,0.65) 70%,
+      rgba(10,10,10,0.95) 100%
+    );
+  }
+  .twilight-content {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; padding: 160px 72px 120px;
+    max-width: 800px;
+  }
+  .twilight-seal {
+    height: 96px; width: auto; margin-bottom: 48px;
+    mix-blend-mode: screen;
+    filter: drop-shadow(0 0 20px rgba(201,169,110,0.5)) drop-shadow(0 0 40px rgba(201,169,110,0.2));
+  }
+  .twilight-title {
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(5rem, 9vw, 11rem);
+    line-height: 0.9; color: var(--cream);
+    margin-bottom: 40px;
+  }
+  .twilight-rule { width: 80px; height: 1px; background: var(--gold); margin: 0 auto 40px; opacity: 0.6; }
+  .twilight-caption {
+    font-size: clamp(0.85rem, 1.1vw, 1rem);
+    font-style: italic; font-weight: 300;
+    color: var(--cream); opacity: 0.65;
+    letter-spacing: 0.12em; margin-bottom: 16px;
+  }
+  .twilight-price {
+    font-size: 0.65rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    opacity: 0.85; margin-bottom: 56px;
+  }
+  .twilight-cta {
+    display: inline-block; padding: 20px 64px;
+    border: 0.5px solid rgba(201,169,110,0.7); color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.65rem; letter-spacing: 0.36em;
+    text-transform: uppercase; text-decoration: none;
+    cursor: pointer; background: transparent;
+    transition: all 0.5s ease;
+  }
+  .twilight-cta:hover { background: var(--gold); color: var(--dark); }
+  .twilight-grounds {
+    margin-top: 40px; font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    font-style: italic; color: var(--cream); opacity: 0.4;
+    letter-spacing: 0.06em;
+  }
+
+
+  /* INTERIOR SECTIONS */
+  .room-beat { background: var(--dark); padding: 110px 72px 72px; }
+  .room-beat-flip { background: var(--dark); padding: 72px 72px 110px; }
+  .room-beat + .room-beat, .room-beat + section, section + .room-beat { border-top: none; }
+  .room-beat + .room-beat::before, section + .room-beat::before {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+    margin: 0 auto 80px;
+    opacity: 0.4;
+  }
+  .room-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .room-inner.flip { direction: rtl; }
+  .room-inner.flip > * { direction: ltr; }
+  .room-img-wrap { position: relative; overflow: hidden; }
+  .room-img-wrap img { width: 100%; height: 580px; object-fit: cover; display: block; transition: transform 0.8s ease; }
+  .room-img-wrap:hover img { transform: scale(1.02); }
+  .room-text { display: flex; flex-direction: column; justify-content: center; }
+  .room-eyebrow { font-size: clamp(0.58rem, 0.7vw, 0.68rem); letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; opacity: 0.65; margin-bottom: 32px; display: block; }
+  .room-headline { font-size: clamp(2.2rem, 3.5vw, 4.5rem); font-weight: 300; line-height: 1.08; color: var(--cream); margin-bottom: 28px; }
+  .room-rule { width: 60px; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); margin-bottom: 40px; opacity: 0.45; }
+  .room-body { font-size: clamp(1rem, 1.2vw, 1.12rem); font-weight: 300; line-height: 1.92; color: var(--text); max-width: 62ch; }
+  .room-body p + p { margin-top: 1.2em; }
+
+  /* FULL-BLEED ROOM */
+  .fullbleed-beat { position: relative; min-height: 85vh; display: flex; align-items: center; overflow: hidden; }
+  .fullbleed-beat img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+  .fullbleed-overlay-left { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to right, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.55) 45%, rgba(10,10,10,0.1) 100%); }
+  .fullbleed-overlay-dark { position: absolute; inset: 0; z-index: 1; background: rgba(10,10,10,0.62); }
+  .fullbleed-content { position: relative; z-index: 2; padding: 120px 80px; max-width: 580px; }
+  .fullbleed-content.center { max-width: 100%; text-align: center; padding: 100px 72px; }
+
+  /* FILM STRIP */
+  .film-strip { display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; margin: 0; }
+  .film-strip::-webkit-scrollbar { display: none; }
+  .film-strip img { flex: 0 0 auto; height: 280px; width: auto; object-fit: cover; display: block; }
+
+  /* INTERSTITIAL TEXT */
+  .interstitial { background: var(--dark); padding: 48px 72px; text-align: center; }
+  .interstitial-rule { width: 40px; height: 1px; background: var(--gold); margin: 0 auto 24px; opacity: 0.5; }
+  .interstitial-text { font-size: clamp(1.4rem, 2.2vw, 2.6rem); font-style: italic; font-weight: 300; line-height: 1.45; color: var(--cream); max-width: 680px; margin: 0 auto; }
+  .interstitial-text.gold { color: var(--gold); }
+  .interstitial-rule-bottom { width: 40px; height: 1px; background: var(--gold); margin: 24px auto 0; opacity: 0.5; }
+
+  /* INFRA GRID */
+  .infra-beat { background: var(--dark); padding: 64px 72px; }
+  .infra-eyebrow { font-size: clamp(0.58rem, 0.7vw, 0.68rem); letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; opacity: 0.75; margin-bottom: 48px; display: block; }
+  .infra-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 1200px; }
+  .infra-item { padding: 40px 36px; border-bottom: 1px solid rgba(201,169,110,0.1); }
+  .infra-label { font-size: 0.55rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; display: block; opacity: 0.8; }
+  .infra-body { font-size: 0.95rem; font-weight: 300; line-height: 1.82; color: var(--text); letter-spacing: 0.01em; }
+
+  /* SPLIT PANELS */
+  .split-beat { display: grid; grid-template-columns: 1fr 1fr; min-height: 70vh; }
+  .split-img { overflow: hidden; }
+  .split-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .split-text { background: var(--dark); display: flex; flex-direction: column; justify-content: center; padding: 80px 64px; }
+
+  /* GROUNDS */
+  .grounds-quote { border-left: 2px solid rgba(201,169,110,0.4); padding-left: 32px; font-style: italic; font-size: clamp(1.05rem,1.4vw,1.3rem); color: var(--cream); opacity: 0.82; line-height: 1.75; margin: 40px 0; }
+
+  @media (max-width: 900px) {
+
+    .room-inner { grid-template-columns: 1fr; gap: 40px; }
+    .room-inner.flip { direction: ltr; }
+    .room-beat, .room-beat-flip, .interstitial, .fullbleed-content, .infra-beat { padding: 80px 28px; }
+    .infra-grid { grid-template-columns: 1fr 1fr; }
+    .split-beat { grid-template-columns: 1fr; }
+    .split-text { padding: 60px 28px; }
+    .film-strip img { height: 200px; }
+
+    nav { padding: 20px 24px; position: absolute; bottom: 0; left: 0; right: 0; }
+    .nav-links { display: none; }
+    .hero-content { position: absolute; top: 48%; left: 50%; transform: translate(-50%, -50%); z-index: 3; display: flex; flex-direction: column; align-items: center; text-align: center; width: 90%; max-width: 1100px; }
+    .address-beat, .whp-section, .craftsmen-beat, .stewardship-beat { padding: 80px 28px; }
+    .whp-top { grid-template-columns: 1fr; gap: 48px; }
+    .whp-quotes { grid-template-columns: 1fr; }
+    .whp-letters { grid-template-columns: 1fr; }
+    .craftsmen-beat { max-width: 100%; }
+    .threshold-content { padding: 60px 28px; }
+    footer { padding: 60px 28px 40px; }
+    /* stat-item override removed */
+    .stat-label { font-size: clamp(0.48rem, 0.58vw, 0.55rem); letter-spacing: 0.24em; font-weight: 300; font-family: 'Cormorant Garamond', serif; color: var(--cream); text-transform: uppercase; margin-top: 6px; opacity: 0.6; white-space: nowrap; }
+  }
+  /* FADE IN */
+  .fade-in { opacity: 0; transform: translateY(14px); transition: opacity 1.8s cubic-bezier(.16,1,.3,1), transform 1.8s cubic-bezier(.16,1,.3,1); }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .scroll-reveal { opacity: 0; transform: translateY(22px); transition: opacity 1.2s ease, transform 1.2s ease; }
+  .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+
+  
+
+  /* ADDRESS LINE — after stat bar */
+  .address-line {
+    background: var(--dark);
+    padding: 90px 72px 72px;
+    text-align: left;
+    position: relative;
+  }
+  .address-line-script {
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(2.6rem, 4.5vw, 5.2rem);
+    color: var(--gold);
+    line-height: 1.1;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .address-line-city {
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.45);
+    display: block;
+    margin-bottom: 40px;
+  }
+  .address-line-rule { width: 80px; height: 1px; background: var(--gold); margin: 0 auto; opacity: 0.35; }
+
+  /* KEN BURNS — GATE ARRIVAL */
+  /* ── KB GATE — seamless scroll into WHP ─────────────────────── */
+  .kb-gate {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: visible;
+    background: var(--dark);
+    margin-bottom: -160px;
+    z-index: 1;
+  }
+  /* kb-stage wraps image + lantern glows — receives the Ken Burns transform */
+  .kb-stage {
+    position: absolute;
+    inset: 0;
+    transform-origin: center center;
+    transform: scale(1.08);
+    transition: transform 12s cubic-bezier(0.05, 0.1, 0.1, 1.0);
+    will-change: transform;
+  }
+  .kb-gate.in-view .kb-stage {
+    transform: scale(1.0);
+  }
+  .kb-gate .kb-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 60%;
+  }
+  /* Lantern glow circles — live inside kb-stage, move with image */
+  .kb-lantern {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    background: radial-gradient(ellipse at center,
+      rgba(255,200,100,0.92) 0%,
+      rgba(255,160,50,0.65)  18%,
+      rgba(255,120,20,0.38)  40%,
+      rgba(200,80,10,0.15)   62%,
+      transparent            80%
+    );
+    animation: lanternFlicker 3.2s ease-in-out infinite;
+  }
+  /* Left lantern — post at ~9% left, ~19% top of image natural frame */
+  .kb-lantern-left {
+    width: 160px; height: 160px;
+    left: calc(9% - 80px);
+    top: calc(16% - 80px);
+    animation-duration: 3.4s;
+    animation-delay: 0s;
+  }
+  /* Right lantern — post at ~87% left, ~12% top */
+  .kb-lantern-right {
+    width: 140px; height: 140px;
+    left: calc(87% - 70px);
+    top: calc(12% - 70px);
+    animation-duration: 2.9s;
+    animation-delay: 0.8s;
+  }
+  @keyframes lanternFlicker {
+    0%,100% { opacity: 0.88; transform: scale(1.00); }
+    25%     { opacity: 0.72; transform: scale(0.96); }
+    55%     { opacity: 0.95; transform: scale(1.04); }
+    80%     { opacity: 0.78; transform: scale(0.98); }
+  }
+  .kb-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 0% 0%,   rgba(5,3,2,0.72) 0%, transparent 52%),
+      radial-gradient(ellipse at 100% 0%,  rgba(5,3,2,0.72) 0%, transparent 52%),
+      radial-gradient(ellipse at 0% 100%,  rgba(5,3,2,0.85) 0%, transparent 52%),
+      radial-gradient(ellipse at 100% 100%,rgba(5,3,2,0.85) 0%, transparent 52%),
+      linear-gradient(to bottom,
+        rgba(10,10,10,0.18) 0%,
+        rgba(10,10,10,0.0)  30%,
+        rgba(10,10,10,0.0)  48%,
+        rgba(10,10,10,0.55) 66%,
+        rgba(10,10,10,0.97) 88%,
+        rgba(10,10,10,1.0)  100%
+      );
+  }
+  /* Lanterns */
+    33%      { opacity: 0.75; transform: scale(0.96); }
+    66%      { opacity: 0.95; transform: scale(1.03); }
+  }
+    40%      { opacity: 0.7;  transform: scale(0.94); }
+    70%      { opacity: 0.92; transform: scale(1.02); }
+  }
+  /* Copy block */
+  .kb-copy {
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1000px;
+    z-index: 5;
+    padding: 0 48px;
+    text-align: center;
+  }
+  .kb-copy-layer { position: relative; display: flex; flex-direction: column; align-items: center; width: 100%; }
+  .kb-rule-top {
+    display: block; width: 80px; height: 1px;
+    background: rgba(201,169,110,0.5); margin-bottom: 32px; margin-left: 0;
+  }
+  .kb-rule-bottom {
+    display: block; width: 80px; height: 1px;
+    background: rgba(201,169,110,0.5); margin-top: 32px; margin-left: 0;
+  }
+  /* Animate rules */
+  .kb-rule-top-anim, .kb-rule-bottom-anim { opacity: 0; transition: opacity 0.8s ease; }
+  .kb-gate.in-view .kb-rule-top-anim { opacity: 1; transition-delay: 0.2s; }
+  .kb-gate.in-view .kb-rule-bottom-anim { opacity: 1; transition-delay: 2.8s; }
+  /* Headline */
+  .kb-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5.5vw, 7.2rem);
+    font-weight: 200;
+    line-height: 1.12;
+    color: rgba(255,255,255,0.96);
+    margin-bottom: 0;
+    letter-spacing: 0.08em;
+    text-shadow:
+      0 1px 0   rgba(0,0,0,0.95),
+      0 3px 8px rgba(0,0,0,0.8),
+      0 -1px 0  rgba(255,255,255,0.04);
+    display: block;
+    text-align: center;
+  }
+  .kb-drop-cap {
+    /* drop cap removed — letter treated as normal text */
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+  }
+  .kb-headline em {
+    font-style: italic; font-weight: 300;
+    color: var(--gold); letter-spacing: 0.14em;
+    display: block;
+    text-shadow:
+      0 1px 0   rgba(0,0,0,0.95),
+      0 3px 10px rgba(0,0,0,0.7),
+      0 -1px 0  rgba(200,169,80,0.1);
+  }
+  /* Reveal lines */
+  .kb-line-1 { opacity: 0; transform: translateY(18px); transition: opacity 1.2s ease, transform 1.2s ease; }
+  .kb-gate.in-view .kb-line-1 { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
+  .kb-line-2 { opacity: 0; transform: translateY(14px); transition: opacity 1.2s ease, transform 1.2s ease; }
+  .kb-gate.in-view .kb-line-2 { opacity: 1; transform: translateY(0); transition-delay: 1.4s; }
+  .kb-line-3 {
+    display: block;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 1.0s ease, transform 1.0s ease;
+    font-style: normal;
+    font-size: clamp(0.6rem, 1vw, 0.82rem);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.7);
+    margin-top: 28px;
+    font-weight: 400;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.9);
+  }
+  .kb-gate.in-view .kb-line-3 { opacity: 1; transform: translateY(0); transition-delay: 2.4s; }
+  /* Address */
+  .kb-address-wrapper {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1.4s ease 2.4s;
+  }
+  .kb-gate.in-view .kb-address-wrapper { opacity: 1; }
+  .kb-address {
+    display: block;
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(1.8rem, 3.2vw, 3.8rem);
+    letter-spacing: 0.03em;
+    color: rgba(201,169,110,0.97);
+    text-shadow: 0 2px 20px rgba(0,0,0,1), 0 4px 40px rgba(0,0,0,0.9);
+  }
+  /* Mobile */
+  @media (max-width: 768px) {
+    .kb-copy { padding: 0 24px; max-width: 100%; }
+    .kb-headline { font-size: clamp(1.6rem, 6vw, 2.8rem); letter-spacing: 0.06em; }
+    .kb-drop-cap { font-size: 2.0em; }
+    }
+
+  }
+
+
+  /* WHP LETTERS BG — his correspondence as wallpaper */
+  .whp-letters-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  /* Page 354 — top left area */
+  .whp-letters-bg .wlb-p1 {
+    position: absolute;
+    top: 3%;
+    left: -2%;
+    width: 55%;
+    opacity: 0.09;
+    filter: sepia(0.15) brightness(1.6) contrast(0.6);
+    mix-blend-mode: overlay;
+    transform: rotate(-1.5deg);
+  }
+  /* Page 356 — right side, offset */
+  .whp-letters-bg .wlb-p2 {
+    position: absolute;
+    top: 22%;
+    right: -3%;
+    width: 50%;
+    opacity: 0.07;
+    filter: sepia(0.15) brightness(1.6) contrast(0.6);
+    mix-blend-mode: overlay;
+    transform: rotate(1.2deg);
+  }
+  /* Page 354 repeat — lower left */
+  .whp-letters-bg .wlb-p3 {
+    position: absolute;
+    bottom: 15%;
+    left: 5%;
+    width: 45%;
+    opacity: 0.06;
+    filter: sepia(0.15) brightness(1.6) contrast(0.6);
+    mix-blend-mode: overlay;
+    transform: rotate(-0.8deg);
+  }
+  .whp-inner { position: relative; z-index: 1; }
+  /* All whp sub-sections need z-index above bg */
+  .whp-titles-beat, .whp-farm-beat, .whp-letters-beat, .whp-last-beat {
+    position: relative;
+    z-index: 1;
+  }
+
+
+  /* WHP PORTRAIT SEAM — after KB Gate, before the house begins */
+  /* ── WHP SEAM — archival photo slides in from right on scroll ── */
+  .whp-seam {
+    position: relative;
+    height: 100vh;
+    background: var(--dark);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Left text block */
+  .whp-seam-text {
+    position: relative;
+    z-index: 3;
+    padding-left: 10%;
+    max-width: 42%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .whp-seam-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(5rem, 12vw, 14rem);
+    font-weight: 200;
+    color: rgba(201,169,110,0.08);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: -0.15em;
+    display: block;
+    user-select: none;
+  }
+  .whp-seam-eyebrow {
+    font-size: 0.62rem;
+    font-weight: 400;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.7);
+    margin-bottom: 20px;
+    display: block;
+  }
+  .whp-seam-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 3.4rem);
+    font-weight: 200;
+    color: rgba(245,240,232,0.92);
+    line-height: 1.18;
+    letter-spacing: 0.06em;
+    margin: 0 0 28px 0;
+  }
+  .whp-seam-rule-line {
+    display: block;
+    width: 56px;
+    height: 1px;
+    background: rgba(201,169,110,0.4);
+    margin-bottom: 24px;
+  }
+  .whp-seam-caption {
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.45);
+  }
+
+  /* Portrait — ghost presence, barely there */
+  .whp-seam-portrait {
+    position: absolute;
+    right: 7%;
+    top: 50%;
+    transform: translateY(-50%) translateX(12px);
+    width: 20%;
+    max-width: 240px;
+    pointer-events: none;
+    opacity: 0;
+    transition: transform 3.2s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity   3.6s ease;
+  }
+  .whp-seam.in-view .whp-seam-portrait {
+    transform: translateY(-50%) translateX(0);
+    opacity: 0.72;
+  }
+  .whp-seam-portrait img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+    filter: sepia(0.45) brightness(0.78) contrast(1.1) grayscale(0.25);
+    mask-image: linear-gradient(to bottom,
+      rgba(0,0,0,1)    0%,
+      rgba(0,0,0,1)    70%,
+      rgba(0,0,0,0.4)  88%,
+      rgba(0,0,0,0)   100%);
+    -webkit-mask-image: linear-gradient(to bottom,
+      rgba(0,0,0,1)    0%,
+      rgba(0,0,0,1)    70%,
+      rgba(0,0,0,0.4)  88%,
+      rgba(0,0,0,0)   100%);
+  }
+
+  /* Seam text animations — slow, like memory surfacing */
+  .whp-seam-eyebrow,
+  .whp-seam-headline,
+  .whp-seam-rule-line,
+  .whp-seam-caption {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 1.6s ease, transform 1.6s ease;
+  }
+  .whp-seam.in-view .whp-seam-eyebrow  { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+  .whp-seam.in-view .whp-seam-headline { opacity: 1; transform: translateY(0); transition-delay: 0.9s; }
+  .whp-seam.in-view .whp-seam-rule-line{ opacity: 1; transform: translateY(0); transition-delay: 1.5s; }
+  .whp-seam.in-view .whp-seam-caption  { opacity: 1; transform: translateY(0); transition-delay: 1.9s; }
+
+  @media (max-width: 768px) {
+    .whp-seam { height: auto; min-height: 80vh; flex-direction: column; justify-content: flex-end; padding-bottom: 48px; }
+    .whp-seam-text { max-width: 90%; padding-left: 24px; position: relative; z-index: 3; }
+    .whp-seam-year { font-size: clamp(4rem, 20vw, 8rem); }
+    .whp-seam-portrait { width: 100%; height: 60vh; top: 0; bottom: auto; }
+    .whp-seam-portrait img {
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+    }
+  }
+
+
+  /* ═══════════════════════════════════════════════
+     WHP SCROLL STORY — continuous narrative
+  ═══════════════════════════════════════════════ */
+  .whp-section {
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    padding-top: 120px; /* absorbs the kb-gate negative margin overlap */
+  }
+
+  /* Beat A — Titles enter on scroll */
+  .whp-titles-beat {
+    padding: 40px 10% 72px 10%;
+    display: flex;
+    align-items: flex-start;
+    gap: 80px;
+    position: relative;
+  }
+  .whp-titles-left {
+    flex: 1;
+    max-width: 520px;
+  }
+  .whp-titles-eyebrow {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .whp-titles-eyebrow.visible { opacity: 1; transform: translateY(0); }
+  .whp-titles-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--cream);
+    margin: 0 0 52px 0;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 1.1s ease 0.2s, transform 1.1s ease 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .whp-titles-headline.visible { opacity: 1; transform: translateY(0); }
+  .whp-title-line { display: block; }
+  .whp-title-l1 {
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.55);
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+  .whp-title-l2 {
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1.05;
+    margin-bottom: 14px;
+  }
+  .whp-title-l3 {
+    font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.7);
+    font-weight: 300;
+    margin-bottom: 4px;
+  }
+  .whp-title-l4 {
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: 0.04em;
+    font-style: italic;
+  }
+  .whp-titles-bio {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 1.2vw, 1.12rem);
+    line-height: 1.82;
+    color: rgba(245,240,232,0.78);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease 0.5s, transform 1s ease 0.5s;
+  }
+  .whp-titles-bio.visible { opacity: 1; transform: translateY(0); }
+  .whp-titles-bio p { margin: 0; }
+  .whp-titles-right {
+    flex: 0 0 auto;
+    width: 38%;
+    position: sticky;
+    top: 120px;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 1.2s ease 0.3s, transform 1.2s ease 0.3s;
+  }
+  .whp-titles-right.visible { opacity: 1; transform: translateX(0); }
+  .whp-titles-right img {
+    width: 100%;
+    display: block;
+    filter: sepia(0.1) brightness(0.9) contrast(1.05);
+  }
+  .whp-titles-right-caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: rgba(201,169,110,0.5);
+    text-transform: uppercase;
+    text-align: left;
+    margin-top: 16px;
+  }
+
+  /* Beat B — The farm quote: full width, alone */
+  .whp-farm-beat {
+    padding: 64px 10%;
+    text-align: left;
+    position: relative;
+  }
+  .whp-farm-beat::before,
+  .whp-farm-beat::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 56px;
+    background: rgba(201,169,110,0.25);
+    margin: 0 auto;
+  }
+  .whp-farm-beat::before { margin-bottom: 36px; }
+  .whp-farm-beat::after  { margin-top: 36px; }
+  .whp-farm-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4.5vw, 4rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.2;
+    max-width: 760px;
+    margin: 0 auto 28px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.1s ease, transform 1.1s ease;
+  }
+  .whp-farm-quote.visible { opacity: 1; transform: translateY(0); }
+  .whp-farm-source {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: rgba(201,169,110,0.5);
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.9s ease 0.4s;
+  }
+  .whp-farm-source.visible { opacity: 1; }
+
+  /* Beat C — Letter scans */
+  .whp-letters-beat {
+    display: flex;
+    gap: 0;
+    padding: 0 10% 80px;
+    align-items: flex-start;
+  }
+  .whp-letter-panel {
+    flex: 1;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  .whp-letter-panel:nth-child(2) { transition-delay: 0.2s; }
+  .whp-letter-panel.visible { opacity: 1; transform: translateY(0); }
+  .whp-letter-panel img {
+    width: 100%;
+    display: block;
+    filter: sepia(0.25) brightness(0.92);
+  }
+  .whp-letter-panel-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    color: rgba(201,169,110,0.45);
+    text-transform: uppercase;
+    text-align: left;
+    margin-top: 14px;
+  }
+  .whp-letters-gap {
+    width: 40px;
+    flex: 0 0 40px;
+  }
+
+
+  /* ─── Farm Ghost Lift-off ─────────────────────────────────────────────── */
+  /* Ghost text sits exactly over "The farm—the farm—the farm" on page 354  */
+  /* The text appears at ~82% from top, left-aligned, small document size    */
+  .whp-farm-ghost {
+    position: absolute;
+    /* Positioned over the "The farm—the farm—the farm" line in the image */
+    bottom: 41%;
+    left: 9%;
+    width: 80%;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.72rem;
+    font-style: italic;
+    color: rgba(245, 230, 190, 0.0);  /* starts invisible — blends with paper */
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    pointer-events: none;
+    z-index: 10;
+    transition: none;
+    /* Will be animated by JS scroll */
+    transform-origin: left center;
+    white-space: nowrap;
+  }
+  .whp-ghost-dash {
+    margin: 0 0.18em;
+  }
+  /* Phase 1: ghost appears (highlight over the document text) */
+  .whp-farm-ghost.phase-highlight {
+    color: rgba(201, 169, 110, 0.65);
+    transition: color 0.6s ease;
+  }
+  /* Phase 2: ghost begins to lift — blur background letter image */
+  .whp-farm-ghost.phase-lift {
+    color: rgba(201, 169, 110, 0.85);
+    transform: scale(1.6) translateY(-6px);
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.5s ease;
+  }
+  /* Phase 3: full float to quote size — letter image dims out */
+  .whp-farm-ghost.phase-float {
+    color: rgba(201, 169, 110, 0);
+    transform: scale(3.2) translateY(-30px);
+    transition: transform 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.7s ease, opacity 0.6s ease;
+  }
+  /* Letter panel image dims when ghost lifts off */
+  #whp-letter-p354.dimming img {
+    filter: sepia(0.6) brightness(0.6) contrast(0.9);
+    transition: filter 1.2s ease;
+  }
+  /* Farm quote hidden until ghost arrives */
+  #whp-farm-quote-text {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+  }
+  #whp-farm-quote-text.arrived {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Beat D — Last words */
+  .whp-last-beat {
+    padding: 64px 10% 90px;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+  }
+  .whp-last-beat::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 80px;
+    background: rgba(201,169,110,0.25);
+    margin: 0 auto 80px;
+  }
+  .whp-last-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--cream);
+    margin: 0 auto 28px;
+    max-width: 700px;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 1.1s ease, transform 1.1s ease;
+  }
+  .whp-last-quote.visible { opacity: 1; transform: translateY(0); }
+  .whp-last-cite {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: rgba(201,169,110,0.5);
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.9s ease 0.5s;
+  }
+  .whp-last-cite.visible { opacity: 1; }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .whp-titles-beat {
+      flex-direction: column;
+      padding: 80px 28px 60px;
+      gap: 0;
+    }
+    .whp-titles-right {
+      width: 100%;
+      position: static;
+      margin-top: 48px;
+    }
+    .whp-farm-beat, .whp-last-beat { padding: 80px 28px; }
+    .whp-letters-beat {
+      flex-direction: column;
+      padding: 0 28px 60px;
+      gap: 32px;
+    }
+    .whp-letters-gap { display: none; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+
+<!-- BEAT 0 — HERO VIEWPORT: top nav + full-frame hero + gold-line bottom nav = one 100vh -->
+<div class="hero-viewport" id="estate">
+
+  <!-- TOP NAV: clean, no border -->
+  <nav class="hero-top-nav" id="main-nav">
+    <a href="#" class="nav-logo">Garran Hill <span class="nav-est">Est. 1916</span></a>
+    <ul class="nav-links">
+      <li><a href="#estate">The Estate</a></li>
+      <li><a href="#history">The History</a></li>
+      <li><a href="#grounds">The Grounds</a></li>
+      <li class="nav-cta"><a href="#" onclick="openInquiry(); return false;">Private Inquiry</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO BODY -->
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+      <source src="https://res.cloudinary.com/dghn2xpif/video/upload/v1777522818/gh_key/gh_hero_graded_v2.mp4" type="video/mp4">
+    </video>
+    <script>
+      (function() {
+        var v = document.querySelector('.hero-video');
+        if (v) {
+          v.muted = true;
+          v.play().catch(function() {
+            document.addEventListener('click', function() { v.play(); }, { once: true });
+          });
+          v.addEventListener('loadedmetadata', function() {
+            var dur = v.duration;
+            if (dur && dur > 0) {
+              v.style.animation = 'videoFade ' + dur + 's ease-in-out infinite';
+            }
+          });
+        }
+      })();
+    </script>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow" style="margin-bottom:20px;">200 Hollycrest Drive &nbsp;|&nbsp; Pinehurst, NC &nbsp;|&nbsp; Est. 1916</div>
+      <div class="hero-title" style="white-space:nowrap;">Garran Hill</div>
+      <div class="hero-rule"></div>
+      <div class="hero-subhead">Neo-Georgian.&nbsp;&nbsp;Walter Hines Page.&nbsp;&nbsp;110 years of remarkable stewardship.</div>
+    </div>
+  </section>
+
+  <!-- STAT BAR — inside 100dvh viewport, pinned to bottom -->
+  <div class="stat-bar" id="history">
+    <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">Bedrooms</span></div>
+    <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">Bathrooms</span></div>
+    <div class="stat-item"><span class="stat-number">6,072</span><span class="stat-label">Square Feet</span></div>
+    <div class="stat-item"><span class="stat-number">4.15</span><span class="stat-label">Acres</span></div>
+    <div class="stat-item"><span class="stat-number" style="font-size: clamp(1.1rem, 1.8vw, 1.75rem); letter-spacing: 0.06em;">$4,250,000</span><span class="stat-label">Exclusively Offered</span></div>
+  </div>
+</div><!-- END HERO VIEWPORT -->
+<!-- SCROLL HINT — sits between viewport and next section -->
+<div style="background:var(--dark); display:flex; justify-content:center; padding: 40px 0 44px; opacity:0.4;">
+  <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 1L9 9L17 1" stroke="#C9A96E" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+
+
+<!-- KEN BURNS — GATE ARRIVAL / HISTORY BRIDGE -->
+<section class="kb-gate" aria-label="Garran Hill gate">
+  <div class="kb-stage">
+    <img
+      class="kb-img"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777428893/gh_key/gh_gate_twilight.jpg"
+      alt="Garran Hill gate — twilight"
+    />
+    <!-- Lantern glows — inside kb-stage so they transform WITH the image -->
+    <div class="kb-lantern kb-lantern-left"  aria-hidden="true"></div>
+    <div class="kb-lantern kb-lantern-right" aria-hidden="true"></div>
+  </div>
+  <div class="kb-overlay"></div>
+
+  <div class="kb-copy">
+    <div class="kb-copy-layer kb-copy-base">
+      <span class="kb-rule-top kb-rule-top-anim"></span>
+      <h2 class="kb-headline">
+        <span class="kb-line-1"><span class="kb-drop-cap">S</span>ome houses hold history.</span>
+        <em class="kb-line-2">This one shaped it.</em>
+
+      </h2>
+      <span class="kb-rule-bottom kb-rule-bottom-anim"></span>
+    </div>
+  </div>
+  <div class="kb-address-wrapper">
+    <span class="kb-address">200 Hollycrest Drive</span>
+  </div>
+</section>
+
+
+
+<!-- BEAT 2 — WALTER HINES PAGE — scroll story -->
+<section class="whp-section" id="whp">
+
+  <!-- Archive letter texture — full section background -->
+  <div class="whp-letters-bg" aria-hidden="true">
+    <img class="wlb-p1" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777391998/gh_key/gh_whp_letter1.png" alt="">
+    <img class="wlb-p2" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777392076/gh_key/gh_whp_letter2.png" alt="">
+    <img class="wlb-p3" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777391998/gh_key/gh_whp_letter1.png" alt="">
+  </div>
+
+  <!-- BEAT A — Portrait + Titles + Biography -->
+  <div class="whp-titles-beat">
+    <div class="whp-titles-left">
+      <span class="whp-titles-eyebrow scroll-reveal">The Man Who Built It</span>
+      <h2 class="whp-titles-headline scroll-reveal">
+        <span class="whp-title-line whp-title-l1">Walter Hines Page,</span>
+        <span class="whp-title-line whp-title-l2"><em>Ambassador. Editor. Visionary.</em></span>
+        <span class="whp-title-line whp-title-l3">Built Garran Hill in 1916.</span>
+        <span class="whp-title-line whp-title-l4">And here it stays.</span>
+      </h2>
+      <div class="whp-titles-bio scroll-reveal">
+        <p>Born in Cary, North Carolina. Co-founder of Doubleday, Page &amp; Co. Editor of <em>The Atlantic Monthly</em>. In 1913, Woodrow Wilson appointed him Ambassador to the Court of St. James — the most important diplomatic post in the world as Europe moved toward war.</p>
+        <p>From London, he wrote home constantly. Not about diplomacy. About the farm. When he wrote "the farm," he meant Garran Hill — all one thousand acres of it, purchased in February 1913, named by him, already under construction three thousand miles away.</p>
+        <p>His son Ralph supervised the construction. Leonard Tufts provided the craftsmen — the same men building Pinehurst. The house was completed in 1915–16.</p>
+        <p>He returned to America in December 1918. He was carried off the train at Aberdeen station. He died ten days later. He never spent a night at Garran Hill.</p>
+      </div>
+    </div>
+    <div class="whp-titles-right scroll-reveal">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777392167/gh_key/gh_whp_portrait_wide.png" alt="Walter Hines Page">
+      <div class="whp-titles-right-caption">Walter Hines Page &nbsp;·&nbsp; 1855–1918</div>
+    </div>
+  </div>
+
+  <!-- BEAT B — Letter scans with farm ghost lift-off -->
+  <div class="whp-letters-beat" id="whp-letters-container">
+    <div class="whp-letter-panel scroll-reveal" id="whp-letter-p354" style="position:relative;">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777391998/gh_key/gh_whp_letter1.png" alt="The Life and Letters of Walter H. Page — Page 354">
+      <div class="whp-farm-ghost" id="whp-farm-ghost">
+        <span>The farm</span><span class="whp-ghost-dash">&mdash;</span><span>the farm</span><span class="whp-ghost-dash">&mdash;</span><span>the farm</span><span class="whp-ghost-dash">&mdash;</span>
+      </div>
+      <div class="whp-letter-panel-label">Vol. I &nbsp;·&nbsp; Page 354 &nbsp;·&nbsp; 1923</div>
+    </div>
+    <div class="whp-letters-gap"></div>
+    <div class="whp-letter-panel scroll-reveal">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777392076/gh_key/gh_whp_letter2.png" alt="The Life and Letters of Walter H. Page — Page 356">
+      <div class="whp-letter-panel-label">Vol. I &nbsp;·&nbsp; Page 356 &nbsp;·&nbsp; 1923</div>
+    </div>
+  </div>
+
+  <!-- BEAT C — Farm quote landed -->
+  <div class="whp-farm-beat" id="whp-farm-landing">
+    <div class="whp-farm-quote" id="whp-farm-quote-text">"The farm&thinsp;&mdash;&thinsp;the farm&thinsp;&mdash;&thinsp;<span style="white-space:nowrap;">the farm&thinsp;&mdash;"</span></div>
+    <div class="whp-farm-source scroll-reveal">The Life and Letters of Walter H. Page &nbsp;·&nbsp; Vol. I, P. 354 &nbsp;·&nbsp; 1923<br><span style="opacity:0.55; font-style:italic;">"The farm" was Garran Hill — one thousand acres in Moore County, purchased February 1913.</span></div>
+  </div>
+
+  <!-- BEAT D — Last words -->
+  <div class="whp-last-beat">
+    <div class="whp-last-quote scroll-reveal">"Well, Frank, I did get here after all, didn't I?"</div>
+    <div class="whp-last-cite scroll-reveal">Walter Hines Page &nbsp;·&nbsp; Aberdeen, NC &nbsp;·&nbsp; December 1918</div>
+  </div>
+
+</section>
+</div>
+
+<!-- BEAT 4 — CRAFTSMEN -->
+<section class="craftsmen-beat fade-in">
+  <span class="craftsmen-eyebrow">Pinehurst, North Carolina &nbsp;·&nbsp; 1916</span>
+  <h2 class="craftsmen-headline">Built by Leonard Tufts' own craftsmen.<br>The same men who built Pinehurst.</h2>
+  <div class="craftsmen-rule"></div>
+  <div class="craftsmen-body">
+    <p>Neo-Georgian. Four columns. Full entablature. Built by the men who built Pinehurst — and built to the same standard, two miles away, in the same year.</p>
+    <p>These were Leonard Tufts' own craftsmen. The same hands that raised the Carolina Hotel, the Pinehurst clubhouse, the cottages along the village green. When Page commissioned the house from London — Ambassador to the Court of St. James, writing home about the farm while Europe moved toward war — he knew exactly whose hands would build it.</p>
+    <p>Three months were spent sourcing period-accurate brick for the portico alone. The proportions are correct because no one involved was willing to approximate.</p>
+  </div>
+</section>
+
+<!-- BEAT 5 — STEWARDSHIP / BETTY DUMAINE / THE RENOVATION -->
+<section class="stewardship-beat fade-in">
+  <div class="stewardship-inner">
+    <div class="stewardship-lead">Four families. One hundred and ten years.<br>He never made it back. They carried it forward.</div>
+    <div class="stewardship-devotion">That is not maintenance. That is devotion.</div>
+    <div class="stewardship-rule"></div>
+    <div class="stewardship-body">
+      <p>After Walter Hines Page, the house passed to Betty Dumaine — a woman of particular character who understood exactly what she had been given. She renamed it Hollycrest. She planted the rose garden. She kept foxhounds and peacocks on the grounds. She received guests of some consequence. She lived here fully and gave the land everything she had.</p>
+      <p>When she died in 1980, Garran Hill had been alive for sixty-four years. The name she chose stayed on the deed. The name Page chose stayed in the stone.</p>
+      <p>By 1999, the house was ready to be understood again. The current stewards commissioned architect Thomas O'Shea of Durham, North Carolina, to lead a complete interior restoration — three years of work, executed by general contractor Dennis Dunagan. Every window in the house was removed and rebuilt to the original proportions by Marvin. Every joint was opened, considered, and closed correctly. The plumbing, the electrical, the five-zone climate system — all of it replaced from the inside out, without touching what the house looked like from the outside in.</p>
+      <p>Fifteen architectural drawings document every decision O'Shea made. They survive. They transfer with the property.</p>
+    </div>
+    <blockquote class="stewardship-quote">
+      "We fell in love with its character, its history, and the way it felt the moment we walked through the door."
+    </blockquote>
+  </div>
+</section>
+
+<!-- BEAT 6 — THRESHOLD -->
+<section class="threshold-beat fade-in" id="threshold">
+  <img class="threshold-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777393131/gh_key/gh_threshold_stone_wide.jpg" alt="Garran Hill threshold — GARRAN HILL · 1916">
+  <div class="threshold-overlay"></div>
+  <div class="threshold-content">
+    <span class="threshold-eyebrow">The Threshold</span>
+    <h2 class="threshold-headline">The door has been<br>open since 1916.</h2>
+    <div class="threshold-rule"></div>
+    <div class="threshold-body">
+      <p>The leaded glass sidelights and fanlight are original. The hardware was specified in 1916. It has not been replaced.</p>
+      <p>One detail makes everything clear: the inscription in the threshold — <em>GARRAN HILL · 1916</em>. He named it before it existed. The house has been answering to that name ever since.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- BEAT 8 — LIVING ROOM -->
+<!-- ============================================================ -->
+<section class="room-beat fade-in">
+  <div class="room-inner">
+    <div class="room-img-wrap">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_key/gh_38" alt="The Living Room — Garran Hill" loading="lazy">
+    </div>
+    <div class="room-text">
+      <span class="room-eyebrow">The Living Room — 1916</span>
+      <h2 class="room-headline">They made it bigger<br><em style="font-weight:300">so they could dance.</em></h2>
+      <div class="room-rule"></div>
+      <div class="room-body">
+        <p>Coffered ceiling. Georgian panel molding in a grid. Oak floors lifted, repaired, relaid exactly as they were. French doors to the rear grounds. The central axis runs from the threshold straight through to the library — visible the instant the door opens.</p>
+        <p>Two full seating areas. Room enough to dance. Every fabric, every finish chosen because it belongs here. Not because it was available. Because it was right.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- BEAT 9 — DRAWING ROOM -->
+<!-- ============================================================ -->
+<section class="room-beat fade-in" style="background: #080808;">
+  <div class="room-inner flip">
+    <div class="room-img-wrap">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_key/gh_drawing_room_fire" alt="The Drawing Room — Delft fireplace" loading="lazy">
+    </div>
+    <div class="room-text">
+      <span class="room-eyebrow">The Drawing Room</span>
+      <h2 class="room-headline">Fire going,<br><em style="font-weight:300">no one home yet.</em></h2>
+      <div class="room-rule"></div>
+      <div class="room-body">
+        <p>Original Georgian carved mantel. Delft tile surround — blue and white, hand-painted, original to the room. Lion andirons. Seven fireplaces in this house. This one is the seventh.</p>
+        <p>Persian rug over wide-plank oak. The room reads as a single thought — every object in the same language. A spiral staircase visible through the far doorway. The light arrives differently in the morning than in the afternoon. The room has always known this.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- BEAT 10 — DINING ROOM -->
+<!-- ============================================================ -->
+<section class="room-beat fade-in">
+  <div class="room-inner">
+    <div class="room-img-wrap">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_key/gh_dining_room" alt="The Dining Room — Garran Hill" loading="lazy">
+    </div>
+    <div class="room-text">
+      <span class="room-eyebrow">The Dining Room</span>
+      <h2 class="room-headline">Formal by proportion.<br><em style="font-weight:300">Intimate by firelight.</em></h2>
+      <div class="room-rule"></div>
+      <div class="room-body">
+        <p>Bay window on the north wall — curved, floor to ceiling, nine-pane divided lights, looking directly onto the grounds. Brass and porcelain chandelier. Flanking the fireplace on both sides: arched shell alcoves, scalloped tops, built-in cabinet below — drawn on the restoration plans before a single piece of trim was cut.</p>
+        <p>Off the dining room, through its own arched opening: a paneled butler's niche with sideboard. Not a hallway. An event. A room that seats twelve without crowding.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- INTERSTITIAL — SAPLINGS -->
+<!-- ============================================================ -->
+<section class="interstitial fade-in">
+  <div class="interstitial-rule"></div>
+  <p class="interstitial-text">In 1916, those were saplings. Now they are a forest.</p>
+  <div class="interstitial-rule-bottom"></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- BEAT 11 — KITCHEN FULL BLEED -->
+<!-- ============================================================ -->
+<section class="fullbleed-beat fade-in">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_key/gh_38" alt="The Kitchen — Garran Hill" loading="lazy">
+  <div class="fullbleed-overlay-left"></div>
+  <div class="fullbleed-content">
+    <span class="room-eyebrow">The Kitchen</span>
+    <h2 class="room-headline" style="font-size: clamp(2.2rem,3.5vw,4.5rem);">White cabinetry.<br>Dark granite.<br><em style="font-weight:300">Island. Four windows.<br>Room to cook.</em></h2>
+    <div class="room-rule"></div>
+    <div class="room-body">
+      <p>Built new in 2000. Reclaimed heart-pine floors. Custom cabinetry — white uppers with glass fronts, dark painted lowers. Farmhouse apron sink. Dark granite counters. A wall of divided-light windows facing the grounds.</p>
+      <p>The pantry door swings open — floor-to-ceiling shelving on every face, two full towers, built for a house that is actually used. Every morning at 6:30, the deer come through.</p>
+    </div>
+  </div>
+</section>
+<div class="film-strip" style="background: var(--dark); padding: 2px 0;">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_key/gh_40" alt="Kitchen island" loading="lazy">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_key/gh_41" alt="Kitchen sink wall" loading="lazy">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_key/gh_43" alt="Kitchen detail" loading="lazy">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_key/gh_44" alt="Kitchen range" loading="lazy">
+</div>
+
+<!-- ============================================================ -->
+<!-- BEAT 12 — LIBRARY -->
+<!-- ============================================================ -->
+<section class="room-beat fade-in" style="background: #080808;">
+  <div class="room-inner flip">
+    <div class="room-img-wrap">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777407424/gh_key/gh_library_hero.jpg" alt="The Library — Garran Hill" loading="lazy">
+    </div>
+    <div class="room-text">
+      <span class="room-eyebrow">The Library</span>
+      <h2 class="room-headline">Designed in 2000.<br><em style="font-weight:300">Built to last<br>another century.</em></h2>
+      <div class="room-rule"></div>
+      <div class="room-body">
+        <p>Dead center of the first floor — positioned that way in the 2000 plans. Built-in shelving on three walls, floor to ceiling. Rolling ladder. French doors to the rear grounds. Brass chandelier. O'Shea designed this room to the same standard as the 1916 house it joined. When you stand in it, you cannot find the seam.</p>
+        <p>It does not feel added. It feels inevitable.</p>
+      </div>
+      <div class="room-gallery" style="display:flex;gap:10px;margin-top:2rem;">
+        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1200,c_limit/v1777407432/gh_key/gh_library_detail.jpg" alt="Library shelving — Garran Hill" loading="lazy" style="width:100%;max-width:320px;height:220px;object-fit:cover;opacity:0.9;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOT ORIGINAL. DELIBERATE. INTERSTITIAL -->
+<section class="interstitial fade-in">
+  <div class="interstitial-rule"></div>
+  <p class="interstitial-text" style="font-size:clamp(1.8rem,3vw,3.2rem);font-style:italic;font-weight:300;"><em>Not original.<br>Deliberate.</em></p>
+  <p style="text-align:center;font-size:0.75rem;letter-spacing:0.2em;color:rgba(201,169,110,0.6);margin-top:1.5rem;text-transform:uppercase;">Thomas O'Shea, Architect &nbsp;·&nbsp; Durham, NC &nbsp;·&nbsp; January 2000</p>
+  <div class="interstitial-rule-bottom"></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- BEAT 13 — PRIMARY SUITE -->
+<!-- ============================================================ -->
+<section class="fullbleed-beat fade-in">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_key/gh_primary_suite" alt="Primary Suite — Garran Hill" loading="lazy">
+  <div class="fullbleed-overlay-left"></div>
+  <div class="fullbleed-content">
+    <span class="room-eyebrow">The Primary Suite</span>
+    <h2 class="room-headline" style="font-size: clamp(2.2rem,3.5vw,4.5rem);">The whole floor<br><em style="font-weight:300">belongs to it.</em></h2>
+    <div class="room-rule"></div>
+    <div class="room-body">
+      <p>The primary suite occupies the entire east wing of the second floor. Sitting room. Dressing room. A primary bath finished in marble. Every window faces the grounds.</p>
+      <p>The closet is behind a wall that looks like a wall. The bathroom floor is marble. The hardware is original. Nothing was approximated.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ============================================================ -->
+<!-- BEAT 14 — BEDROOMS -->
+<!-- ============================================================ -->
+<section class="room-beat fade-in">
+  <div class="room-inner">
+    <div class="room-img-wrap">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/gh_key/gh_65" alt="Yellow Bedroom — Garran Hill" loading="lazy">
+    </div>
+    <div class="room-text">
+      <span class="room-eyebrow">The Guest Rooms</span>
+      <h2 class="room-headline">The Rose Suite.<br>The Yellow Suite.<br><em style="font-weight:300">The Nursery.</em></h2>
+      <div class="room-rule"></div>
+      <div class="room-body">
+        <p>Each with original proportions, original fireplaces, original hardware. Closets behind walls that look like walls. The Yellow Suite and the Nursery open onto a shared balcony above the kitchen — lattice railing drawn to spec, not chosen from a catalog.</p>
+        <p>Nothing was combined. Nothing was converted. Three staircases. The main stair turns the same curve it has turned since 1916.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- BEAT 15 — GROUNDS / ROSE GARDEN -->
+<!-- ============================================================ -->
+<section class="fullbleed-beat fade-in">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_key/gh_grounds_up5" alt="Rose Garden — Garran Hill" loading="lazy" style="object-position: center 40%;">
+  <div class="fullbleed-overlay-left"></div>
+  <div class="fullbleed-content">
+    <span class="room-eyebrow">The Grounds</span>
+    <h2 class="room-headline" style="font-size: clamp(2.2rem,3.5vw,4.5rem);">The rose garden runs<br><em style="font-weight:300">the full length<br>of the pool wall.</em></h2>
+    <div class="room-rule"></div>
+    <div class="room-body">
+      <p>The rose garden, the pool walk, the camellias along the pebble path — Betty Dumaine planted all of it. She kept foxhounds and peacocks. Four families have called Garran Hill home. Each one added something. Nothing was taken away.</p>
+      <blockquote class="grounds-quote">The world outside these gates does not exist here.</blockquote>
+    </div>
+  </div>
+</section>
+<div class="film-strip" style="background: var(--dark); padding: 2px 0;">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_key/gh_grounds_up12" alt="Pool arch and roses" loading="lazy">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_key/gh_grounds_up8" alt="White roses" loading="lazy">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/gh_key/gh_grounds_up6" alt="Pool — 20x40 salt water" loading="lazy">
+</div>
+
+<!-- BLUE FOX INTERSTITIAL -->
+<section class="interstitial fade-in">
+  <div class="interstitial-rule"></div>
+  <p class="interstitial-text" style="font-size: clamp(1.1rem,1.8vw,1.6rem); color: var(--cream); opacity: 0.72; font-style: italic;">Someone still puts flowers there.</p>
+  <div class="interstitial-rule-bottom"></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- BEAT 16 — INFRASTRUCTURE -->
+<!-- ============================================================ -->
+<section class="infra-beat fade-in">
+  <div style="max-width: 1200px;">
+    <span class="infra-eyebrow">Built to Last — Systems &amp; Infrastructure</span>
+    <div class="infra-grid">
+      <div class="infra-item"><span class="infra-label">Pool</span><p class="infra-body">20×40 salt water. Converted 2022. Separate pool house. Parking for 6 at the pool lot.</p></div>
+      <div class="infra-item"><span class="infra-label">Fireplaces</span><p class="infra-body">Seven total. Six with propane gas logs. Original carved mantels throughout.</p></div>
+      <div class="infra-item"><span class="infra-label">Windows</span><p class="infra-body">Every window in the house replaced 1999–2001. Custom Marvin. Original proportions preserved. You would not know.</p></div>
+      <div class="infra-item"><span class="infra-label">Hot Water</span><p class="infra-body">Three heaters — 80-gallon primary + two 40-gallon units. Capacity for a house in continuous, serious use.</p></div>
+      <div class="infra-item"><span class="infra-label">Irrigation</span><p class="infra-body">28+ zones. Fed by a 130-foot private well. The grounds are managed, not maintained.</p></div>
+      <div class="infra-item"><span class="infra-label">Drawings</span><p class="infra-body">Fifteen original architectural drawings by Thomas O'Shea. They transfer with the property.</p></div>
+      <div class="infra-item"><span class="infra-label">Parking</span><p class="infra-body">12+ cars northeast lot. Additional 6 at the pool lot. Fully paved and lit.</p></div>
+      <div class="infra-item"><span class="infra-label">Security</span><p class="infra-body">Hard-wired remote monitoring. Greensboro-based service. All cameras.</p></div>
+      <div class="infra-item"><span class="infra-label">Basement</span><p class="infra-body">Stone-walled. Four rooms. Climate-controlled. Wine rack. The original kitchen was here. Now it is storage worthy of the house.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BEAT 7 — TWILIGHT CLOSING -->
+<section class="twilight-beat fade-in" id="grounds">
+  <img class="twilight-bg"
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777244059/gh_key/gh_191.jpg"
+    alt="Garran Hill — 200 Hollycrest Drive">
+  <div class="twilight-overlay"></div>
+  <div class="twilight-content">
+    <img class="twilight-seal"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal/v1777397863/gh_key/gh_wax_seal_v3.png"
+      alt="Garran Hill Crest">
+    <div class="twilight-title">Garran Hill</div>
+    <div class="twilight-rule"></div>
+    <div class="twilight-caption">Garran Hill is ready.</div>
+    <div class="twilight-caption" style="margin-top:8px; font-style:normal; opacity:0.5;">It is offered now for the first time.</div>
+    <div class="twilight-price">Est. 1916 &nbsp;·&nbsp; Pinehurst, NC &nbsp;·&nbsp; $4,250,000</div>
+    <a class="twilight-cta" href="#" onclick="openInquiry(); return false;">Request Private Showing</a>
+    <div class="twilight-grounds">The world outside these gates does not exist here.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-crest">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal/v1777397863/gh_key/gh_wax_seal_v3.png" alt="Garran Hill">
+    </div>
+    <div class="footer-offered">Offered Exclusively Through</div>
+    <div class="footer-agent">Rachel Hernandez</div>
+    <div class="footer-brokerage">Sotheby's International Realty &nbsp;·&nbsp; Pinehurst, North Carolina</div>
+    <div class="footer-bottom">© 2026 &nbsp;·&nbsp; All inquiries held in strict confidence &nbsp;·&nbsp; Garran Hill, Pinehurst, North Carolina</div>
+  </div>
+</footer>
+
+<!-- INQUIRY MODAL -->
+<div class="inquiry-modal" id="inquiry-modal">
+  <div class="inquiry-box">
+    <button class="inquiry-close" onclick="closeInquiry()">×</button>
+    <div class="inquiry-title">Request Private Showing</div>
+    <div class="inquiry-sub">200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, North Carolina</div>
+    <div class="inquiry-price">Exclusively Offered at $4,250,000</div>
+    <form class="inquiry-form" onsubmit="submitInquiry(event)">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="tel" placeholder="Phone (optional)">
+      <textarea placeholder="Message (optional)"></textarea>
+      <button type="submit" class="inquiry-submit">Send Inquiry</button>
+    </form>
+    <div class="inquiry-confidence">All inquiries held in strict confidence</div>
+  </div>
+</div>
+
+<!-- CLOUDFLARE STREAM -->
+
+
+<div id="build-tag" style="display:none;position:fixed;bottom:16px;right:16px;z-index:9999;background:rgba(0,0,0,0.75);border:1px solid #C9A96E;color:#C9A96E;font-family:monospace;font-size:11px;padding:6px 12px;letter-spacing:0.08em;pointer-events:none;">v3.1 · STAT BAR · 2026-04-28</div>
+
+
+  
+
+<script>
+  // ── NAV scroll ───────────────────────────────────────────────────────────
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── FADE IN + SCROLL REVEAL observer ─────────────────────────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in, .scroll-reveal').forEach(el => observer.observe(el));
+
+  // ── KB GATE in-view trigger ───────────────────────────────────────────────
+  const inViewObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.kb-gate').forEach(el => inViewObserver.observe(el));
+
+  // ── WHP TITLES BEAT — portrait + bio reveal ───────────────────────────────
+  const whpTitlesObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const portrait = e.target.querySelector('.whp-titles-right');
+        if (portrait) portrait.classList.add('visible');
+        const bio = e.target.querySelector('.whp-titles-bio');
+        if (bio) bio.classList.add('visible');
+        const eyebrow = e.target.querySelector('.whp-titles-eyebrow');
+        if (eyebrow) eyebrow.classList.add('visible');
+        const headline = e.target.querySelector('.whp-titles-headline');
+        if (headline) headline.classList.add('visible');
+        whpTitlesObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.whp-titles-beat').forEach(el => whpTitlesObserver.observe(el));
+
+  // ── WHP BEATS — letters, farm, last words ────────────────────────────────
+  const whpBeatObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('visible'));
+        whpBeatObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.whp-letters-beat, .whp-farm-beat, .whp-last-beat').forEach(el => whpBeatObserver.observe(el));
+
+  // ── INQUIRY modal ─────────────────────────────────────────────────────────
+  function openInquiry() { document.getElementById('inquiry-modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeInquiry() { document.getElementById('inquiry-modal').classList.remove('open'); document.body.style.overflow = ''; }
+  document.getElementById('inquiry-modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeInquiry(); });
+  function submitInquiry(e) {
+    e.preventDefault();
+    e.target.innerHTML = '<p style="text-align:center;color:var(--gold);font-style:italic;font-size:1.1rem;padding:20px 0;">Thank you. Rachel will be in touch shortly.</p>';
+  }
+
+  // ── FARM GHOST LIFT-OFF ───────────────────────────────────────────────────
+  (function() {
+    const ghost       = document.getElementById('whp-farm-ghost');
+    const letterPanel = document.getElementById('whp-letter-p354');
+    const quoteText   = document.getElementById('whp-farm-quote-text');
+    const landing     = document.getElementById('whp-farm-landing');
+    if (!ghost || !letterPanel || !quoteText || !landing) return;
+
+    let animated = false;
+
+    function getFarmProgress() {
+      const rect  = letterPanel.getBoundingClientRect();
+      const viewH = window.innerHeight;
+      const panelMid = rect.top + rect.height * 0.82;
+      const start = viewH * 0.85;
+      const end   = viewH * 0.15;
+      return Math.max(0, Math.min(1, (start - panelMid) / (start - end)));
+    }
+
+    function onScroll() {
+      if (animated) return;
+      const p = getFarmProgress();
+      if (p <= 0) {
+        ghost.className = 'whp-farm-ghost';
+        letterPanel.classList.remove('dimming');
+        return;
+      }
+      if (p < 0.25) {
+        ghost.className = 'whp-farm-ghost phase-highlight';
+        letterPanel.classList.remove('dimming');
+      } else if (p < 0.65) {
+        ghost.className = 'whp-farm-ghost phase-lift';
+        letterPanel.classList.add('dimming');
+      } else if (p < 1.0) {
+        ghost.className = 'whp-farm-ghost phase-float';
+        letterPanel.classList.add('dimming');
+      } else {
+        ghost.style.opacity = '0';
+        ghost.style.transition = 'opacity 0.4s ease';
+        quoteText.classList.add('arrived');
+        animated = true;
+      }
+    }
+
+    const landingObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animated) quoteText.classList.add('arrived');
+      });
+    }, { threshold: 0.3 });
+    landingObserver.observe(landing);
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  // ── KB GATE SCROLL OBSERVER ────────────────────────────────────────────
+  (function() {
+    const kbGate = document.querySelector('.kb-gate');
+    if (!kbGate) return;
+
+    function isInView(el) {
+      const rect = el.getBoundingClientRect();
+      return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+
+    const kbObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          kbGate.classList.add('in-view');
+          kbObserver.unobserve(kbGate);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px 100px 0px' });
+
+    kbObserver.observe(kbGate);
+
+    function onScrollKB() {
+      if (isInView(kbGate)) {
+        kbGate.classList.add('in-view');
+        window.removeEventListener('scroll', onScrollKB);
+      }
+    }
+    window.addEventListener('scroll', onScrollKB, { passive: true });
+
+    if (isInView(kbGate)) kbGate.classList.add('in-view');
+  })();
+</script>
+</body>
+</html>
