@@ -581,35 +581,9 @@
     position: relative;
     z-index: 1;
   }
-
-  /* THRESHOLD PORTRAIT BLEED — WHP watching from the left */
-  .threshold-portrait-bleed {
-    position: absolute;
-    left: -6%;
-    top: 0;
-    bottom: 0;
-    width: 38%;
-    z-index: 1;
-    pointer-events: none;
-    overflow: hidden;
-  }
-  .threshold-portrait-bleed img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: right center;
-    filter: sepia(0.35) brightness(0.55) contrast(1.05);
-    opacity: 0.72;
-    mask-image: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 55%, rgba(0,0,0,0) 100%);
-    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 55%, rgba(0,0,0,0) 100%);
-  }
-  .threshold-content { position: relative; z-index: 2; padding: 72px 72px; max-width: 680px; margin-left: 28%; }
+.threshold-content { position: relative; z-index: 2; padding: 72px 72px; max-width: 680px; margin-left: 28%; }
 
   @media (max-width: 768px) {
-    .threshold-portrait-bleed { display: none; }
     .threshold-content { margin-left: 0; padding: 60px 28px; max-width: 100%; }
   }
 
@@ -1254,9 +1228,6 @@
 <section class="threshold-beat fade-in" id="threshold">
   <img class="threshold-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777393131/gh_key/gh_threshold_stone_wide.jpg" alt="Garran Hill threshold — GARRAN HILL · 1916">
   <div class="threshold-overlay"></div>
-  <div class="threshold-portrait-bleed" aria-hidden="true">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777392167/gh_key/gh_whp_portrait_wide.png" alt="">
-  </div>
   <div class="threshold-content">
     <span class="threshold-eyebrow">The Threshold</span>
     <h2 class="threshold-headline">The door has been<br>open since 1916.</h2>
