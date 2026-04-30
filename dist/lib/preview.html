@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garran Hill — Image Registry Preview</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0a0a0a; color: #F5F0E8; font-family: 'Helvetica Neue', sans-serif; padding: 40px 20px; }
+    h1 { color: #C9A96E; font-size: 14px; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
+    p.sub { color: #888; font-size: 12px; margin-bottom: 40px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+    .slot { border: 1px solid #222; border-radius: 4px; overflow: hidden; }
+    .slot-label { padding: 10px 12px; background: #111; }
+    .slot-name { font-size: 11px; letter-spacing: 0.12em; color: #C9A96E; text-transform: uppercase; }
+    .slot-id { font-size: 10px; color: #555; margin-top: 3px; word-break: break-all; }
+    .slot-img { width: 100%; height: 200px; object-fit: cover; display: block; background: #1a1a1a; }
+    .slot-video { width: 100%; height: 200px; object-fit: cover; display: block; background: #1a1a1a; }
+    .slot-null { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; background: #111; color: #444; font-size: 11px; letter-spacing: 0.1em; }
+    .slot-locked { border-color: #C9A96E44; }
+    .badge { display: inline-block; font-size: 9px; letter-spacing: 0.1em; padding: 2px 6px; border-radius: 2px; margin-top: 4px; }
+    .badge-locked { background: #C9A96E22; color: #C9A96E; }
+    .badge-video { background: #4488ff22; color: #4488ff; }
+    .badge-missing { background: #ff444422; color: #ff4444; }
+    .section-head { grid-column: 1/-1; padding: 12px 0 4px; border-bottom: 1px solid #222; margin-top: 16px; }
+    .section-head h2 { font-size: 10px; letter-spacing: 0.2em; color: #555; text-transform: uppercase; }
+    #status { position: fixed; bottom: 20px; right: 20px; background: #111; border: 1px solid #C9A96E44; padding: 12px 16px; border-radius: 4px; font-size: 11px; color: #888; }
+    #status span { color: #C9A96E; }
+  </style>
+</head>
+<body>
+
+<h1>Garran Hill — Image Registry</h1>
+<p class="sub">Every slot in lib/images.js rendered live. Gold border = locked. Red = missing asset.</p>
+
+<div class="grid" id="grid"></div>
+<div id="status">Loading registry… <span id="counts"></span></div>
+
+<script type="module">
+  import { REGISTRY, TRANSFORMS, imageUrl, hasImage, missingSlots, unrenamedSlots } from './images.js';
+
+  const grid = document.getElementById('grid');
+  const counts = document.getElementById('counts');
+
+  const SECTIONS = {
+    'HERO': ['HERO_VIDEO','HERO_VIDEO_ALT'],
+    'NARRATIVE': ['KB_GATE','SAPLING_1916','THRESHOLD'],
+    'WALTER HINES PAGE': ['WHP_PORTRAIT','WHP_LETTER_1','WHP_LETTER_2'],
+    'ROOMS': ['ENTRY_HALL','LIVING_ROOM','FIREPLACE','LIBRARY_HERO','LIBRARY_DETAIL','ROOM_38','ROOM_40','ROOM_41','ROOM_43','ROOM_44','ROOM_216','STAIR'],
+    'GROUNDS': ['GROUNDS_1','GROUNDS_2','GROUNDS_3','GROUNDS_4'],
+    'HISTORY': ['DUMAINE'],
+    'BRAND': ['CLOSE_BG','WAX_SEAL'],
+  };
+
+  let total = 0, missing = 0, locked = 0;
+
+  for (const [section, slots] of Object.entries(SECTIONS)) {
+    const head = document.createElement('div');
+    head.className = 'section-head';
+    head.innerHTML = `<h2>${section}</h2>`;
+    grid.appendChild(head);
+
+    for (const slot of slots) {
+      const entry = REGISTRY[slot];
+      if (!entry) continue;
+      total++;
+
+      const isVideo = entry.video;
+      const isLocked = entry.locked;
+      const isMissing = entry.id === null;
+      if (isMissing) missing++;
+      if (isLocked) locked++;
+
+      const transform = isVideo ? '' : (slot.includes('GROUNDS') || slot === 'CLOSE_BG' ? TRANSFORMS.OUTDOOR : TRANSFORMS.INDOOR);
+      const url = imageUrl(slot, transform);
+
+      const card = document.createElement('div');
+      card.className = 'slot' + (isLocked ? ' slot-locked' : '');
+
+      let mediaHtml = '';
+      if (isMissing) {
+        mediaHtml = `<div class="slot-null">NO ASSET YET</div>`;
+      } else if (isVideo) {
+        mediaHtml = `<video class="slot-video" src="${url}" muted autoplay loop playsinline></video>`;
+      } else {
+        mediaHtml = `<img class="slot-img" src="${url}" loading="lazy" onerror="this.style.background='#2a0000';this.alt='LOAD ERROR'">`;
+      }
+
+      const badges = [
+        isLocked ? `<span class="badge badge-locked">LOCKED</span>` : '',
+        isVideo ? `<span class="badge badge-video">VIDEO</span>` : '',
+        isMissing ? `<span class="badge badge-missing">MISSING</span>` : '',
+      ].join('');
+
+      card.innerHTML = `
+        ${mediaHtml}
+        <div class="slot-label">
+          <div class="slot-name">${slot}</div>
+          <div class="slot-id">${entry.id || 'null'}</div>
+          <div>${badges}</div>
+        </div>
+      `;
+      grid.appendChild(card);
+    }
+  }
+
+  const unnamed = unrenamedSlots();
+  counts.innerHTML = `<span>${total}</span> slots &nbsp;·&nbsp; <span style="color:#ff6644">${missing}</span> missing &nbsp;·&nbsp; <span>${locked}</span> locked &nbsp;·&nbsp; <span style="color:#ffaa44">${unnamed.length}</span> unnamed`;
+  document.getElementById('status').title = 'Unnamed: ' + unnamed.join(', ');
+</script>
+
+</body>
+</html>
