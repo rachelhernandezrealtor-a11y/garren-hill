@@ -35,7 +35,7 @@
 
   /* HERO */
   /* HERO VIEWPORT — three-layer 100vh container */
-  .hero-viewport { height: 100dvh; max-height: 100dvh; width: 100%; display: flex; flex-direction: column; overflow: hidden; padding-top: 48px; }
+  .hero-viewport { height: 100dvh; max-height: 100dvh; width: 100%; display: flex; flex-direction: column; overflow: hidden; padding-top: 48px; box-sizing: border-box; }
   .hero-top-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 14px 40px; background: rgba(10,10,10,0.85); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(201,169,110,0.08); }
 
   .hero { position: relative; flex: 1; min-height: 0; width: 100%; overflow: hidden; }
@@ -48,9 +48,9 @@
   }
   .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.72) 100%); z-index: 2; }
   .hero-content { position: absolute; top: 48%; left: 50%; transform: translate(-50%, -50%); z-index: 3; display: flex; flex-direction: column; align-items: center; text-align: center; width: 90%; max-width: 1100px; }
-  .hero-eyebrow { font-size: 0.82rem; letter-spacing: 0.25em; font-weight: 400; color: var(--gold); text-transform: uppercase; opacity: 0.95; margin-bottom: 28px; text-align: center; width: 100%; }
-  .hero-title { font-family: 'Pinyon Script', cursive; font-size: clamp(6rem, 13vw, 15rem); line-height: 0.88; color: var(--cream); margin-bottom: 20px; white-space: nowrap; opacity: 1; text-shadow: 0 2px 40px rgba(0,0,0,0.9), 0 0 80px rgba(0,0,0,0.8), 2px 2px 6px rgba(0,0,0,0.95); }
-  .hero-rule { width: 120px; height: 1px; background: var(--gold); margin: 24px auto 28px auto; opacity: 0.6; }
+  .hero-eyebrow { font-size: 0.78rem; letter-spacing: 0.3em; font-weight: 400; color: #C9A96E; text-transform: uppercase; opacity: 1; margin-bottom: 28px; text-align: center; width: 100%; text-shadow: 0 0 20px rgba(201,169,110,0.2); }
+  .hero-title { font-family: 'Pinyon Script', cursive; font-size: clamp(6rem, 13vw, 15rem); line-height: 0.88; color: #F0EBE0; margin-bottom: 20px; white-space: nowrap; opacity: 0.93; text-shadow: 0 1px 0 rgba(255,240,200,0.08), 0 -1px 3px rgba(0,0,0,0.7), 2px 3px 0 rgba(0,0,0,0.55), 0 6px 20px rgba(0,0,0,0.85), 0 0 60px rgba(0,0,0,0.7); }
+  .hero-rule { width: 160px; height: 1px; background: linear-gradient(90deg, transparent, #C9A96E 20%, #C9A96E 80%, transparent); margin: 26px auto 30px auto; opacity: 0.8; }
   .hero-subhead { font-size: clamp(1.0rem, 1.3vw, 1.25rem); font-style: italic; font-weight: 300; color: var(--cream); opacity: 0.88; letter-spacing: 0.14em; margin-bottom: 0; text-align: center; width: 100%; }
   .hero-tour-link { display: inline-block; margin-top: 36px; font-size: 0.65rem; letter-spacing: 0.18em; color: var(--gold); text-decoration: none; text-transform: none; opacity: 0.8; transition: opacity 0.3s; }
   .hero-tour-link:hover { opacity: 1; }
@@ -63,14 +63,15 @@
     border-bottom: none;
     display: flex; align-items: center; justify-content: center;
     z-index: 90;
-    height: 72px;
-    padding-bottom: 0;
+    height: 80px;
+    min-height: 80px;
+    padding: 0 12px;
     overflow: visible;
   }
-  .stat-item { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 20px; border-right: 1px solid rgba(201,169,110,0.15); flex: 1; height: 100%; }
+  .stat-item { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 16px; border-right: 1px solid rgba(201,169,110,0.15); flex: 1; height: 100%; min-width: 0; }
   .stat-item:last-child { border-right: none; }
-  .stat-number { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 2.2vw, 2.1rem); font-weight: 300; color: var(--gold); letter-spacing: 0.06em; line-height: 1; }
-  .stat-label { font-size: clamp(0.45rem, 0.55vw, 0.52rem); letter-spacing: 0.28em; font-weight: 300; font-family: 'Cormorant Garamond', serif; color: var(--cream); text-transform: uppercase; margin-top: 5px; opacity: 0.55; }
+  .stat-number { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 2.2vw, 2.1rem); font-weight: 300; color: #C9A96E; letter-spacing: 0.08em; line-height: 1; text-shadow: 0 0 18px rgba(201,169,110,0.22); }
+  .stat-label { font-size: clamp(0.48rem, 0.58vw, 0.55rem); letter-spacing: 0.24em; font-weight: 300; font-family: 'Cormorant Garamond', serif; color: var(--cream); text-transform: uppercase; margin-top: 6px; opacity: 0.6; white-space: nowrap; }
   .stat-crest-wrap { padding: 0 24px; display: flex; align-items: center; justify-content: center; position: relative; flex-shrink: 0; overflow: visible; }
   .stat-crest { height: 64px; width: auto; position: relative; top: -32px; filter: drop-shadow(0 0 14px rgba(201,169,110,0.5)) drop-shadow(0 0 28px rgba(201,169,110,0.25)); }
 
@@ -293,7 +294,7 @@
     .threshold-content { padding: 60px 28px; }
     footer { padding: 60px 28px 40px; }
     /* stat-item override removed */
-    .stat-label { font-size: clamp(0.45rem, 0.55vw, 0.52rem); letter-spacing: 0.28em; font-weight: 300; font-family: 'Cormorant Garamond', serif; color: var(--cream); text-transform: uppercase; margin-top: 5px; opacity: 0.55; }
+    .stat-label { font-size: clamp(0.48rem, 0.58vw, 0.55rem); letter-spacing: 0.24em; font-weight: 300; font-family: 'Cormorant Garamond', serif; color: var(--cream); text-transform: uppercase; margin-top: 6px; opacity: 0.6; white-space: nowrap; }
   }
 
   /* ADDRESS LINE — after stat bar */
@@ -1099,6 +1100,7 @@
   <div class="stat-bar" id="history">
     <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">Bedrooms</span></div>
     <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">Bathrooms</span></div>
+    <div class="stat-crest-wrap"><img class="stat-crest" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal/v1777397863/gh_key/gh_wax_seal_v3.png" alt="Garran Hill Crest"></div>
     <div class="stat-item"><span class="stat-number">6,072</span><span class="stat-label">Square Feet</span></div>
     <div class="stat-item"><span class="stat-number">4.15</span><span class="stat-label">Acres</span></div>
     <div class="stat-item"><span class="stat-number" style="font-size: clamp(1.1rem, 1.8vw, 1.75rem); letter-spacing: 0.06em;">$4,250,000</span></div>
