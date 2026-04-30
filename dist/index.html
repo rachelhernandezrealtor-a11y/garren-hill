@@ -144,6 +144,20 @@
   /* FOOTER */
   footer { background: var(--dark); padding: 120px 72px 64px; border-top: 1px solid rgba(201,169,110,0.12); }
   .footer-inner { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px; }
+  .corner-crest {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 999;
+    pointer-events: none;
+  }
+  .corner-crest img {
+    height: 72px;
+    width: auto;
+    opacity: 0.82;
+    filter: drop-shadow(0 0 12px rgba(201,169,110,0.45)) drop-shadow(0 0 24px rgba(201,169,110,0.2));
+    mix-blend-mode: screen;
+  }
   .footer-crest { background: transparent; }
   .footer-crest img { height: 64px; opacity: 0.85; mix-blend-mode: screen; filter: drop-shadow(0 0 12px rgba(201,169,110,0.4)); background: transparent; }
   .footer-offered { font-size: 0.52rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); opacity: 0.6; }
@@ -1104,9 +1118,6 @@
   <div class="stat-bar" id="history">
     <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">Bedrooms</span></div>
     <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">Bathrooms</span></div>
-    <div class="stat-crest-wrap">
-      <img class="stat-crest" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal/v1777397863/gh_key/gh_wax_seal_v3.png" alt="Garran Hill crest">
-    </div>
     <div class="stat-item"><span class="stat-number">6,072</span><span class="stat-label">Square Feet</span></div>
     <div class="stat-item"><span class="stat-number">4.15</span><span class="stat-label">Acres</span></div>
     <div class="stat-item"><span class="stat-number" style="font-size: clamp(1.1rem, 1.8vw, 1.75rem); letter-spacing: 0.06em;">$4,250,000</span></div>
@@ -1694,5 +1705,9 @@
     if (isInView(kbGate)) kbGate.classList.add('in-view');
   })();
 </script>
+  <!-- CORNER CREST — fixed bottom right -->
+  <div class="corner-crest" aria-hidden="true">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal/v1777397863/gh_key/gh_wax_seal_v3.png" alt="Garran Hill crest">
+  </div>
 </body>
 </html>
