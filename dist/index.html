@@ -1105,11 +1105,11 @@
     <div class="stat-item"><span class="stat-number" style="font-size: clamp(1.1rem, 1.8vw, 1.75rem); letter-spacing: 0.06em;">$4,250,000</span></div>
   </div>
 </div><!-- END HERO VIEWPORT -->
-<!-- CREST — floats above stat bar, outside clip context -->
-<div style="position:relative; z-index:200; display:flex; justify-content:center; pointer-events:none; margin-bottom:0;">
+<!-- CREST — absolutely positioned, zero page-flow impact, floats above stat bar -->
+<div style="position:absolute; left:50%; transform:translateX(-50%); z-index:200; pointer-events:none; width:80px; height:80px; display:flex; align-items:center; justify-content:center; margin-top:-40px;">
   <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal/v1777397863/gh_key/gh_wax_seal_v3.png" 
        alt="Garran Hill Crest"
-       style="height:72px; width:auto; margin-top:-36px; filter: drop-shadow(0 0 14px rgba(201,169,110,0.5)) drop-shadow(0 0 28px rgba(201,169,110,0.25));">
+       style="height:72px; width:auto; filter: drop-shadow(0 0 14px rgba(201,169,110,0.5)) drop-shadow(0 0 28px rgba(201,169,110,0.25));">
 </div>
 <!-- SCROLL HINT — sits between viewport and next section -->
 <div style="background:var(--dark); display:flex; justify-content:center; padding: 40px 0 44px; opacity:0.4;">
