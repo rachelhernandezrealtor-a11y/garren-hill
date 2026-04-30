@@ -1,0 +1,5 @@
+# Static lib files — serve directly, never fall through to SPA
+/lib/*  /lib/:splat  200
+
+# SPA fallback — everything else goes to index.html
+/*  /index.html  200
