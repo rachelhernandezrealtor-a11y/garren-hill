@@ -47,14 +47,20 @@
     100% { opacity: 0; }
   }
   .hero-overlay {
-    position: absolute; inset: 0; z-index: 2; pointer-events: none;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.7) 100%);
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      rgba(10,10,10,0.15) 0%,
+      rgba(10,10,10,0.00) 30%,
+      rgba(10,10,10,0.00) 55%,
+      rgba(10,10,10,0.65) 100%
+    );
   }
-  .hero-content { position: absolute; top: 48%; left: 50%; transform: translate(-50%, -50%); z-index: 3; display: flex; flex-direction: column; align-items: center; text-align: center; width: 90%; max-width: 1100px; }
-  .hero-eyebrow { font-size: 0.78rem; letter-spacing: 0.3em; font-weight: 400; color: #C9A96E; text-transform: uppercase; opacity: 1; margin-bottom: 28px; text-align: center; width: 100%; text-shadow: 0 0 20px rgba(201,169,110,0.2); }
-  .hero-title { font-family: 'Pinyon Script', cursive; font-size: clamp(6rem, 13vw, 15rem); line-height: 0.88; color: #F5F0E8; margin-bottom: 20px; white-space: nowrap; opacity: 1; -webkit-text-stroke: 0.6px #F5F0E8; paint-order: stroke fill; text-shadow: 0 4px 40px rgba(0,0,0,0.8), 0 2px 12px rgba(0,0,0,0.6); }
-  .hero-rule { width: 200px; height: 1px; background: linear-gradient(90deg, transparent, #C9A96E 15%, #C9A96E 85%, transparent); margin: 28px auto 34px auto; opacity: 0.7; }
-  .hero-subhead { font-size: clamp(1.0rem, 1.3vw, 1.25rem); font-style: italic; font-weight: 300; color: var(--cream); opacity: 0.80; letter-spacing: 0.16em; margin-bottom: 0; text-align: center; width: 100%; }
+  .hero-content { position: absolute; bottom: 13%; left: 8%; z-index: 3; display: flex; flex-direction: column; align-items: flex-start; text-align: left; width: 90%; max-width: 900px; }
+  .hero-eyebrow { font-size: 0.78rem; letter-spacing: 0.3em; font-weight: 400; color: #C9A96E; text-transform: uppercase; opacity: 1; margin-bottom: 28px; text-align: left; width: 100%; text-shadow: 0 0 20px rgba(201,169,110,0.2); }
+  .hero-title { font-family: 'Pinyon Script', cursive; font-size: clamp(7rem, 16vw, 18rem); line-height: 0.88; color: #F5F0E8; margin-bottom: 24px; white-space: nowrap; opacity: 1; -webkit-text-stroke: 0.5px rgba(245,240,232,0.6); paint-order: stroke fill; text-shadow: 0 2px 60px rgba(0,0,0,0.9), 0 4px 20px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.5); }
+  .hero-rule { width: 200px; height: 1px; background: linear-gradient(90deg, #C9A96E 0%, #C9A96E 85%, transparent 100%); margin: 28px 0 34px 0; opacity: 0.7; }
+  .hero-subhead { font-size: clamp(1.0rem, 1.3vw, 1.25rem); font-style: italic; font-weight: 300; color: var(--cream); opacity: 0.80; letter-spacing: 0.16em; margin-bottom: 0; text-align: left; width: 100%; text-shadow: 0 2px 20px rgba(0,0,0,0.8); }
   .hero-tour-link { display: inline-block; margin-top: 36px; font-size: 0.65rem; letter-spacing: 0.18em; color: var(--gold); text-decoration: none; text-transform: none; opacity: 0.8; transition: opacity 0.3s; }
   .hero-tour-link:hover { opacity: 1; }
 
@@ -285,7 +291,7 @@
 
     nav { padding: 20px 24px; position: absolute; bottom: 0; left: 0; right: 0; }
     .nav-links { display: none; }
-    .hero-content { position: absolute; top: 48%; left: 50%; transform: translate(-50%, -50%); z-index: 3; display: flex; flex-direction: column; align-items: center; text-align: center; width: 90%; max-width: 1100px; }
+    .hero-content { position: absolute; bottom: 13%; left: 8%; z-index: 3; display: flex; flex-direction: column; align-items: flex-start; text-align: left; width: 90%; max-width: 900px; }
     .address-beat, .whp-section, .craftsmen-beat, .stewardship-beat { padding: 80px 28px; }
     .whp-top { grid-template-columns: 1fr; gap: 48px; }
     .whp-quotes { grid-template-columns: 1fr; }
