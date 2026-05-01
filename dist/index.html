@@ -291,6 +291,12 @@
     transition: all 0.5s ease;
   }
   .twilight-cta:hover { background: var(--gold); color: var(--dark); }
+  /* PLANS & TOUR */
+  .plans-beat { padding: 120px 40px; text-align: center; background: var(--dark); }
+  .plans-inner { display: flex; flex-direction: column; align-items: center; gap: 32px; }
+  .plans-eyebrow { font-family: 'Cormorant Garamond', serif; font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); opacity: 0.7; }
+  .plans-headline { font-family: 'Pinyon Script', cursive; font-size: clamp(2.8rem, 5vw, 4.2rem); color: var(--cream); font-weight: 400; margin: 0; }
+  @media (max-width: 768px) { .plans-beat { padding: 80px 24px; } }
   .twilight-grounds {
     margin-top: 40px; font-size: clamp(0.9rem, 1.2vw, 1.1rem);
     font-style: italic; color: var(--cream); opacity: 0.4;
@@ -1407,6 +1413,18 @@
     </div>
   </div>
 </section>
+
+<!-- ============================================================ -->
+<!-- BEAT 14B — PLANS & TOUR -->
+<!-- ============================================================ -->
+<section class="plans-beat fade-in">
+  <div class="plans-inner">
+    <span class="plans-eyebrow">Plans &amp; Tour</span>
+    <h2 class="plans-headline">Walk the house.</h2>
+    <a class="twilight-cta" href="https://my.matterport.com/show/?m=mfwyqT5Btwx" target="_blank" rel="noopener">Matterport 3D Tour &rarr;</a>
+  </div>
+</section>
+
 
 <!-- ============================================================ -->
 <!-- BEAT 15 — GROUNDS / ROSE GARDEN -->
