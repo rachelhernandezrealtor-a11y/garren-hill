@@ -52,7 +52,7 @@
       linear-gradient(180deg, rgba(10,10,10,0.10) 0%, rgba(10,10,10,0.0) 30%, rgba(10,10,10,0.0) 60%, rgba(10,10,10,0.50) 100%);
   }
   .hero-content { position: absolute; bottom: clamp(16px, 3.5vh, 48px); left: clamp(20px, 6vw, 96px); z-index: 3; display: flex; flex-direction: column; align-items: flex-start; text-align: left; width: clamp(320px, 48vw, 660px); }
-  .hero-eyebrow { font-size: clamp(0.6rem, 0.75vw, 0.82rem); letter-spacing: 0.3em; font-weight: 400; color: #C9A96E; text-transform: uppercase; opacity: 1; margin-bottom: clamp(14px, 1.8vh, 26px); text-align: left; width: 100%; text-shadow: 0 0 20px rgba(201,169,110,0.2); }
+  .hero-eyebrow { font-size: clamp(0.52rem, 0.7vw, 0.78rem); letter-spacing: clamp(0.12em, 0.3em, 0.3em); font-weight: 400; color: #C9A96E; text-transform: uppercase; opacity: 1; margin-bottom: clamp(14px, 1.8vh, 26px); text-align: left; width: 100%; white-space: nowrap; text-shadow: 0 0 20px rgba(201,169,110,0.2); }
   .hero-title { font-family: 'Pinyon Script', cursive; font-size: clamp(4.5rem, 9vw, 11rem); line-height: 0.88; color: #F5F0E8; margin-bottom: clamp(12px, 1.5vh, 22px); white-space: nowrap; opacity: 1; -webkit-text-stroke: 0.5px rgba(245,240,232,0.6); paint-order: stroke fill; text-shadow: 0 2px 60px rgba(0,0,0,0.9), 0 4px 20px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.5); }
   .hero-rule { width: 80px; height: 1px; background: #C9A96E; margin: clamp(10px, 1.4vh, 20px) 0 clamp(10px, 1.4vh, 20px) 0; opacity: 0.7; align-self: flex-start; }
   .hero-subhead { font-size: clamp(0.72rem, 0.9vw, 0.96rem); font-style: italic; font-weight: 300; color: var(--cream); opacity: 0.75; letter-spacing: 0.16em; margin-bottom: 0; text-align: left; width: 100%; text-shadow: 0 2px 20px rgba(0,0,0,0.8); }
@@ -992,6 +992,7 @@
   @media (max-width: 760px) {
     .hero-content { width: calc(100% - clamp(20px, 6vw, 40px) * 2); left: clamp(20px, 5vw, 40px); }
     .hero-title { font-size: clamp(3.8rem, 14vw, 7rem); }
+    .hero-eyebrow { font-size: clamp(0.42rem, 2.8vw, 0.62rem); letter-spacing: 0.12em; }
   }
 </style>
 </head>
@@ -1037,7 +1038,7 @@
     </script>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow" style="margin-bottom:20px;">200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, North Carolina</div>
+      <div class="hero-eyebrow">200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, North Carolina</div>
       <div class="hero-title" style="white-space:nowrap;">Garran Hill</div>
       <div class="hero-rule"></div>
       <div class="hero-subhead">Neo-Georgian.&nbsp;&nbsp;Walter Hines Page.&nbsp;&nbsp;110 years of stewardship.</div>
