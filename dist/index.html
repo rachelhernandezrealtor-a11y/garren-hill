@@ -39,6 +39,15 @@
 
   .hero { position: relative; flex: 1; min-height: 0; width: 100%; overflow: hidden; }
   .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;  }
+  .hero-loop-fade { position: absolute; inset: 0; z-index: 1; background: #000; pointer-events: none;
+    animation: loopFade 6s linear infinite; }
+  @keyframes loopFade {
+    0%   { opacity: 0.55; }   /* match dark first frame */
+    4%   { opacity: 0; }      /* fade out — video running */
+    82%  { opacity: 0; }      /* video running, bright */
+    96%  { opacity: 0.55; }   /* fade back to black before loop */
+    100% { opacity: 0.55; }   /* hold through loop restart */
+  }
   @keyframes videoFadeIn {
     from { opacity: 0; }
     to   { opacity: 1; }
@@ -1222,6 +1231,7 @@
         }
       })();
     </script>
+    <div class="hero-loop-fade"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-eyebrow">200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, North Carolina</div>
