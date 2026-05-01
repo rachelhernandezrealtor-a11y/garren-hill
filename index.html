@@ -1175,6 +1175,69 @@
     .room-inner, .fullbleed-content { padding: 0 var(--rail-tablet); }
   }
 
+  /* INTERSTITIAL FOX LINE */
+  .interstitial-foxline {
+    font-size: clamp(1rem, 1.6vw, 1.5rem);
+    color: var(--cream);
+    opacity: 0.68;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  /* CRAFTSMEN PULL LINES */
+  .craftsmen-pull { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.65; max-width: 60ch; }
+  .craftsmen-pull-lede { font-size: clamp(1.2rem, 1.8vw, 1.7rem); font-style: italic; color: var(--cream); opacity: 0.85; margin-top: 2.5rem; }
+  .craftsmen-pull-coda { font-size: clamp(0.95rem, 1.3vw, 1.2rem); color: var(--text); margin-top: 0.8rem; }
+  @media (max-width: 767px) {
+    .craftsmen-pull-lede { font-size: clamp(1.2rem, 5vw, 1.5rem); }
+  }
+
+  /* WHP LAST MEMORIAL */
+  .whp-last-memorial {
+    margin-top: 2.5rem;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    color: var(--cream);
+    opacity: 0.72;
+    line-height: 1.8;
+  }
+  .whp-memorial-cite {
+    font-style: normal;
+    font-size: 0.78em;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-top: 0.6em;
+    display: block;
+  }
+
+  /* INTRO BREATH — three opening paragraphs */
+  .intro-breath {
+    background: var(--dark);
+    padding: clamp(72px, 10vw, 140px) clamp(28px, 12vw, 200px);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .intro-para {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--cream);
+    opacity: 0.88;
+    margin-bottom: 1.8em;
+  }
+  .intro-para:last-child { margin-bottom: 0; }
+  @media (max-width: 767px) {
+    .intro-breath { padding: 64px 28px; max-width: 100%; }
+    .intro-para { font-size: clamp(1.1rem, 4.5vw, 1.25rem); }
+  }
+
   /* MOBILE RAIL */
   @media (max-width: 767px) {
     .craftsmen-beat, .stewardship-beat, .restoration-beat, .infra-beat {
@@ -1249,6 +1312,7 @@
     </div>
     <!-- Row 1 on mobile: 1916 · 4 · 6 -->
     <div class="stat-bar-row">
+      <div class="stat-item"><span class="stat-number">1916</span><span class="stat-label">Est.</span></div>
       <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">Bedrooms</span></div>
       <div class="stat-item"><span class="stat-number">4<span class="stat-unit" style="font-size:0.6em;opacity:0.7;"> Full &middot; 2 Powder</span></span><span class="stat-label">Baths</span></div>
     </div>
@@ -1272,10 +1336,10 @@
 </div>
 
 <!-- INTRO — breath section, no images -->
-<section class="intro-breath fade-in" style="background:var(--dark);padding:clamp(60px,8vw,120px) clamp(28px,8vw,160px);max-width:860px;margin:0 auto;">
-  <p class="intro-para" style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.6vw,1.35rem);font-style:italic;font-weight:300;line-height:1.85;color:var(--cream);opacity:0.88;margin-bottom:1.6em;">Walter Hines Page bought the land in 1913 and named the house before he sailed for London. He never lived to see it.</p>
-  <p class="intro-para" style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.6vw,1.35rem);font-style:italic;font-weight:300;line-height:1.85;color:var(--cream);opacity:0.88;margin-bottom:1.6em;">Betty Dumaine made it bloom. For twenty-five years, the gardens grew under her hand.</p>
-  <p class="intro-para" style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.6vw,1.35rem);font-style:italic;font-weight:300;line-height:1.85;color:var(--cream);opacity:0.88;">By 1998, the house had been empty fourteen years. Three years of restoration brought it back. The proof is inside.</p>
+<section class="intro-breath fade-in">
+  <p class="intro-para">Walter Hines Page bought the land in 1913 and named the house before he sailed for London. He never lived to see it.</p>
+  <p class="intro-para">Betty Dumaine made it bloom. For twenty-five years, the gardens grew under her hand.</p>
+  <p class="intro-para">By 1998, the house had been empty fourteen years. Three years of restoration brought it back. The proof is inside.</p>
 </section>
 
 <!-- KEN BURNS — GATE THEN/NOW (consolidated, after hero) -->
@@ -1301,11 +1365,11 @@
   <div class="craftsmen-rule"></div>
   <div class="craftsmen-body">
     <p>Neo-Georgian. Four columns. Full entablature. Built by the men who built Pinehurst — and built to the same standard, two miles away, in the same year.</p>
-    <p>These were Leonard Tufts' own craftsmen. The same hands that raised the Carolina Hotel, the Pinehurst clubhouse, the cottages along the village green. When Page commissioned the house from London — Ambassador to the Court of St. James, writing home about the farm while Europe moved toward war — he knew exactly whose hands would build it.</p>
+    <p>These were Leonard Tufts' own craftsmen. The same hands that raised the Carolina Hotel, the Pinehurst clubhouse, the cottages along the village green. Page commissioned the house from London. He knew exactly whose hands would build it.</p>
     <p>Three months were spent sourcing period-accurate brick for the portico alone. The proportions are correct because no one involved was willing to approximate.</p>
   </div>
-  <p class="craftsmen-pull" style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2vw,1.8rem);font-style:italic;font-weight:300;color:var(--cream);opacity:0.85;margin-top:2.5rem;line-height:1.5;max-width:58ch;">Four families. One hundred and ten years. He never made it back.</p>
-  <p class="craftsmen-pull" style="font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,1.4vw,1.3rem);font-weight:300;color:var(--text);margin-top:1rem;line-height:1.7;max-width:58ch;">That is not maintenance. <em>That is devotion.</em></p>
+  <p class="craftsmen-pull craftsmen-pull-lede">Four families. One hundred and ten years. He never made it back.</p>
+  <p class="craftsmen-pull craftsmen-pull-coda">That is not maintenance. <em>That is devotion.</em></p>
 </section>
 
 <!-- BEAT 6 — THRESHOLD -->
@@ -1405,17 +1469,19 @@
     <div class="whp-last-quote scroll-reveal">"Well, Frank, I did get here after all, didn't I?"</div>
     <div class="whp-last-cite scroll-reveal">Walter Hines Page &nbsp;·&nbsp; Aberdeen, NC &nbsp;·&nbsp; December 1918</div>
     <div class="whp-last-coda scroll-reveal">He died ten days later. He never spent a night in the house his son built for him.</div>
-    <div class="whp-last-memorial scroll-reveal" style="margin-top:2rem;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1rem,1.4vw,1.25rem);color:var(--cream);opacity:0.7;line-height:1.7;">
+    <div class="whp-last-memorial scroll-reveal">
       <em>&ldquo;The friend of Britain in her sorest need.&rdquo;</em><br>
-      <span style="font-style:normal;font-size:0.78em;letter-spacing:0.18em;text-transform:uppercase;opacity:0.6;margin-top:0.5em;display:block;">Westminster Abbey</span>
+      <span class="whp-memorial-cite">Westminster Abbey</span>
     </div>
   </div>
 
 </section>
-</div>
 
 <!-- BEAT 8 — LIVING ROOM -->
 <!-- ============================================================ -->
+<div class="whp-to-rooms-breath" style="background:var(--dark);height:clamp(60px,8vw,100px);display:flex;align-items:center;justify-content:center;">
+  <div style="width:40px;height:1px;background:var(--gold);opacity:0.2;"></div>
+</div>
 <section class="room-beat fade-in">
   <div class="room-inner">
     <div class="room-img-wrap">
@@ -1514,7 +1580,7 @@
       <p>The pantry door swings open — floor-to-ceiling shelving on every face, two full towers, built for a house that is actually used. Every morning at 6:30, the deer come through.</p>
     </div>
   </div>
-    <p class="room-pull" style="font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,1.4vw,1.25rem);font-style:italic;font-weight:300;color:var(--cream);opacity:0.82;margin-top:1.5rem;line-height:1.6;"><em>The shell cabinets are original. The kitchen is not. Both are right.</em></p>
+    <p class="room-pull"><em>The shell cabinets are original. The kitchen is not. Both are right.</em></p>
   </div>
 </section>
 <div class="film-strip" style="background: var(--dark); padding: 2px 0;">
@@ -1603,7 +1669,7 @@
 <!-- BLUE FOX INTERSTITIAL -->
 <section class="interstitial fade-in">
   <div class="interstitial-rule"></div>
-  <p class="interstitial-text" style="font-size: clamp(1.1rem,1.8vw,1.6rem); color: var(--cream); opacity: 0.72; font-style: italic;">Someone still puts flowers there.</p>
+  <p class="interstitial-text interstitial-foxline">Someone still puts flowers there.</p>
   <div class="interstitial-rule-bottom"></div>
 </section>
 
