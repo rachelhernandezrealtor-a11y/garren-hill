@@ -1071,6 +1071,28 @@
     50%  { transform: scale(1.04) translate(-0.5%, -0.2%); }
     100% { transform: scale(1.00) translate(0%, 0%); }
   }
+  .kb-gate-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4.5vw, 5.8rem);
+    font-weight: 200;
+    line-height: 1.15;
+    color: var(--cream);
+    letter-spacing: 0.06em;
+    text-align: center;
+    margin: 48px auto 0;
+    max-width: 900px;
+    padding: 0 clamp(24px, 6vw, 80px);
+  }
+  .kb-gate-headline em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold);
+    display: block;
+    margin-top: 0.1em;
+  }
+  @media (max-width: 767px) {
+    .kb-gate-headline { font-size: clamp(1.8rem, 7vw, 3rem); margin-top: 36px; }
+  }
   .kb-gate-caption {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(1.1rem, 2vw, 1.5rem);
@@ -1355,6 +1377,7 @@
            alt="The gates of Garran Hill, 2026" loading="lazy">
     </div>
   </div>
+  <h2 class="kb-gate-headline">Some houses hold history.<br><em>This one shaped it.</em></h2>
   <p class="kb-gate-caption">In 1916, those were saplings. Now they are a forest.</p>
 </section>
 
