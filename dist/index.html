@@ -6,7 +6,6 @@
 <title>Garran Hill — 200 Hollycrest Drive, Pinehurst NC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -150,7 +149,6 @@
   .footer-brokerage { font-size: 0.58rem; letter-spacing: 0.30em; text-transform: uppercase; color: var(--gold); opacity: 0.6; }
   .footer-bottom { margin-top: 64px; padding-top: 28px; border-top: 1px solid rgba(201,169,110,0.08); font-size: 0.52rem; letter-spacing: 0.2em; color: var(--cream); opacity: 0.25; }
 
-
   /* BEAT 7 — TWILIGHT CLOSING */
   .twilight-beat {
     position: relative; min-height: 100vh;
@@ -214,7 +212,6 @@
     font-style: italic; color: var(--cream); opacity: 0.4;
     letter-spacing: 0.06em;
   }
-
 
   /* INTERIOR SECTIONS */
   .room-beat { background: var(--dark); padding: 110px 72px 72px; }
@@ -535,7 +532,6 @@
 
   }
 
-
   /* WHP LETTERS BG — his correspondence as wallpaper */
   .whp-letters-bg {
     position: absolute;
@@ -584,132 +580,7 @@
     z-index: 1;
   }
 
-
-  /* WHP PORTRAIT SEAM — after KB Gate, before the house begins */
-  /* ── WHP SEAM — archival photo slides in from right on scroll ── */
-  .whp-seam {
-    position: relative;
-    height: 100vh;
-    background: var(--dark);
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-  }
-
-  /* Left text block */
-  .whp-seam-text {
-    position: relative;
-    z-index: 3;
-    padding-left: 10%;
-    max-width: 42%;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-  .whp-seam-year {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(5rem, 12vw, 14rem);
-    font-weight: 200;
-    color: rgba(201,169,110,0.08);
-    line-height: 1;
-    letter-spacing: -0.02em;
-    margin-bottom: -0.15em;
-    display: block;
-    user-select: none;
-  }
-  .whp-seam-eyebrow {
-    font-size: 0.62rem;
-    font-weight: 400;
-    letter-spacing: 0.38em;
-    text-transform: uppercase;
-    color: rgba(201,169,110,0.7);
-    margin-bottom: 20px;
-    display: block;
-  }
-  .whp-seam-headline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.8rem, 3vw, 3.4rem);
-    font-weight: 200;
-    color: rgba(245,240,232,0.92);
-    line-height: 1.18;
-    letter-spacing: 0.06em;
-    margin: 0 0 28px 0;
-  }
-  .whp-seam-rule-line {
-    display: block;
-    width: 56px;
-    height: 1px;
-    background: rgba(201,169,110,0.4);
-    margin-bottom: 24px;
-  }
-  .whp-seam-caption {
-    font-size: 0.68rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: rgba(245,240,232,0.45);
-  }
-
-  /* Portrait — ghost presence, barely there */
-  .whp-seam-portrait {
-    position: absolute;
-    right: 7%;
-    top: 50%;
-    transform: translateY(-50%) translateX(12px);
-    width: 20%;
-    max-width: 240px;
-    pointer-events: none;
-    opacity: 0;
-    transition: transform 3.2s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity   3.6s ease;
-  }
-  .whp-seam.in-view .whp-seam-portrait {
-    transform: translateY(-50%) translateX(0);
-    opacity: 0.72;
-  }
-  .whp-seam-portrait img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    object-position: center top;
-    filter: sepia(0.45) brightness(0.78) contrast(1.1) grayscale(0.25);
-    mask-image: linear-gradient(to bottom,
-      rgba(0,0,0,1)    0%,
-      rgba(0,0,0,1)    70%,
-      rgba(0,0,0,0.4)  88%,
-      rgba(0,0,0,0)   100%);
-    -webkit-mask-image: linear-gradient(to bottom,
-      rgba(0,0,0,1)    0%,
-      rgba(0,0,0,1)    70%,
-      rgba(0,0,0,0.4)  88%,
-      rgba(0,0,0,0)   100%);
-  }
-
-  /* Seam text animations — slow, like memory surfacing */
-  .whp-seam-eyebrow,
-  .whp-seam-headline,
-  .whp-seam-rule-line,
-  .whp-seam-caption {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 1.6s ease, transform 1.6s ease;
-  }
-  .whp-seam.in-view .whp-seam-eyebrow  { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
-  .whp-seam.in-view .whp-seam-headline { opacity: 1; transform: translateY(0); transition-delay: 0.9s; }
-  .whp-seam.in-view .whp-seam-rule-line{ opacity: 1; transform: translateY(0); transition-delay: 1.5s; }
-  .whp-seam.in-view .whp-seam-caption  { opacity: 1; transform: translateY(0); transition-delay: 1.9s; }
-
-  @media (max-width: 768px) {
-    .whp-seam { height: auto; min-height: 80vh; flex-direction: column; justify-content: flex-end; padding-bottom: 48px; }
-    .whp-seam-text { max-width: 90%; padding-left: 24px; position: relative; z-index: 3; }
-    .whp-seam-year { font-size: clamp(4rem, 20vw, 8rem); }
-    .whp-seam-portrait { width: 100%; height: 60vh; top: 0; bottom: auto; }
-    .whp-seam-portrait img {
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-    }
-  }
-
+  
 
   /* ═══════════════════════════════════════════════
      WHP SCROLL STORY — continuous narrative
@@ -914,7 +785,6 @@
     flex: 0 0 40px;
   }
 
-
   /* ─── Farm Ghost Lift-off ─────────────────────────────────────────────── */
   /* Ghost text sits exactly over "The farm—the farm—the farm" on page 354  */
   /* The text appears at ~82% from top, left-aligned, small document size    */
@@ -1032,7 +902,6 @@
     }
     .whp-letters-gap { display: none; }
   }
-
 
   /* ============================================================ */
   /* KB GATE THEN/NOW SECTION                                      */
@@ -1190,7 +1059,6 @@
   </svg>
 </div>
 
-
 <!-- KEN BURNS — GATE ARRIVAL / HISTORY BRIDGE -->
 <section class="kb-gate" aria-label="Garran Hill gate">
   <div class="kb-stage">
@@ -1221,8 +1089,6 @@
   </div>
 </section>
 
-
-
 <!-- BEAT 2 — WALTER HINES PAGE — scroll story -->
 <section class="whp-section" id="whp">
 
@@ -1251,11 +1117,7 @@
       </div>
     </div>
     <div class="whp-titles-right scroll-reveal">
-      <div style="position:relative; display:inline-block; width:100%;">
-        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777392167/gh_key/gh_whp_portrait_wide.png" alt="Walter Hines Page" style="width:100%;">
-        <div style="position:absolute;top:12px;left:12px;background:rgba(180,30,30,0.92);color:#fff;font-family:monospace;font-size:11px;padding:6px 12px;letter-spacing:0.08em;border:1px solid #ff6666;z-index:50;pointer-events:none;">⚠ PORTRAIT BLOCKED — artist attribution required before publish</div>
-      </div>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:0.72rem;letter-spacing:0.18em;color:#C9A96E;opacity:0.7;text-align:center;margin-top:8px;font-style:italic;">[ Artist · Medium · Year · Provenance — PENDING RACHEL ]</p>
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777392167/gh_key/gh_whp_portrait_wide.png" alt="Walter Hines Page" style="width:100%;">
       <div class="whp-titles-right-caption">
   Walter Hines Page, 1855–1918<br>
   American Ambassador to the Court of St James's<br>
@@ -1343,7 +1205,6 @@
   </div>
 </section>
 
-
 <!-- ============================================================ -->
 <!-- BEAT 8 — LIVING ROOM -->
 <!-- ============================================================ -->
@@ -1377,7 +1238,7 @@
       <h2 class="room-headline">Fire going,<br><em style="font-weight:300">no one home yet.</em></h2>
       <div class="room-rule"></div>
       <div class="room-body">
-        <p>Original Georgian carved mantel. Delft tile surround — blue and white, hand-painted, original to the room. Lion andirons. Seven fireplaces in this house. This one is the seventh.</p>
+        <p>Original Georgian carved mantel. Delft tile surround — blue and white, hand-painted, original to the room. Lion andirons. One of seven fireplaces in the house.</p>
         <p>Persian rug over wide-plank oak. The room reads as a single thought — every object in the same language. A spiral staircase visible through the far doorway. The light arrives differently in the morning than in the afternoon. The room has always known this.</p>
       </div>
     </div>
@@ -1567,7 +1428,6 @@
   </div>
 </section>
 
-
 <!-- BEAT 7 — TWILIGHT CLOSING -->
 <section class="twilight-beat fade-in" id="grounds">
   <img class="twilight-bg"
@@ -1620,9 +1480,6 @@
 </div>
 
 <!-- CLOUDFLARE STREAM -->
-
-
-
 
   
 
