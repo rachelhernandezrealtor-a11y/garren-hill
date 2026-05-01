@@ -119,8 +119,22 @@
     height: auto;
     display: block;
     background: transparent;
-    mix-blend-mode: screen;
     filter: drop-shadow(0 0 12px rgba(201,169,110,0.4));
+  }
+  .stat-crest-text {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    opacity: 0.85;
+    border: 1px solid rgba(201,169,110,0.35);
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
   }
   @media (max-width: 1023px) {
     .stat-bar { padding-left: clamp(16px, 4vw, 48px); padding-right: clamp(16px, 4vw, 48px); }
@@ -1090,7 +1104,7 @@
 
   <!-- HERO BODY -->
   <section class="hero">
-    <video class="hero-video" poster="https://media.base44.com/images/public/69e248a2469cc39540781cce/2b41ed355_2C09F909-ED78-46BC-A9A7-06D8DEA49A3D_1_105_c.jpg" autoplay muted loop playsinline preload="auto">
+    <video class="hero-video" poster="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1920/v1777244059/gh_key/gh_191.jpg" autoplay muted loop playsinline preload="auto">
       <source src="https://res.cloudinary.com/dghn2xpif/video/upload/v1777522818/gh_key/gh_hero_graded_v2.mp4" type="video/mp4">
     </video>
     <script>
@@ -1123,17 +1137,16 @@
   <div class="stat-bar" id="history">
     <!-- Mobile crest (top, hidden on desktop) -->
     <div class="stat-bar-mobile-crest">
-      <img class="stat-crest-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal,f_png,q_auto,w_120/v1777397863/gh_key/gh_wax_seal_v3.png" alt="Garran Hill Crest">
+      <div class="stat-crest-text">GH</div>
     </div>
     <!-- Row 1 on mobile: 1916 · 4 · 6 -->
     <div class="stat-bar-row">
-      <div class="stat-item"><span class="stat-number">1916</span><span class="stat-label">EST.</span></div>
       <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">Bedrooms</span></div>
       <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">Bathrooms</span></div>
     </div>
     <!-- Desktop crest (centered column, hidden on mobile) -->
     <div class="stat-crest-col">
-      <img class="stat-crest-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal,f_png,q_auto,w_120/v1777397863/gh_key/gh_wax_seal_v3.png" alt="Garran Hill Crest">
+      <div class="stat-crest-text">GH</div>
     </div>
     <!-- Row 2 on mobile: 6,072 sq ft · 4.15 Acres · $4,250,000 -->
     <div class="stat-bar-row">
