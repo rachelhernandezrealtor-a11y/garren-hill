@@ -1276,6 +1276,40 @@
     letter-spacing: 0.02em;
   }
 
+  /* BLUE FOX BEAT */
+  .bluefox-beat {
+    background: var(--dark);
+    padding: clamp(80px, 12vw, 140px) 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bluefox-inner {
+    max-width: 560px;
+    text-align: center;
+  }
+  .bluefox-setup {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+    font-weight: 300;
+    color: var(--cream);
+    opacity: 0.6;
+    letter-spacing: 0.04em;
+    line-height: 1.7;
+    margin-bottom: 1.4em;
+    font-style: italic;
+  }
+  .bluefox-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+    font-weight: 300;
+    color: var(--cream);
+    opacity: 0.9;
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+    margin: 0;
+  }
+
   /* CRAFTSMEN PULL LINES */
   .craftsmen-pull { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.65; max-width: 60ch; }
   .craftsmen-pull-lede { font-size: clamp(1.2rem, 1.8vw, 1.7rem); font-style: italic; color: var(--cream); opacity: 0.85; margin-top: 2.5rem; }
@@ -1782,11 +1816,13 @@
   <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777443295/gh_key/gh_grounds_up6.jpg" alt="Pool — 20x40 salt water" loading="lazy">
 </div>
 
-<!-- BLUE FOX INTERSTITIAL -->
-<section class="interstitial fade-in">
-  <div class="interstitial-rule"></div>
-  <p class="interstitial-text interstitial-foxline">Someone still puts flowers there.</p>
-  <div class="interstitial-rule-bottom"></div>
+<!-- BLUE FOX BEAT -->
+<section class="bluefox-beat fade-in">
+  <div class="bluefox-inner">
+    <p class="bluefox-setup">Betty Dumaine kept foxhounds here. And peacocks. And one Irish Hunter named Blue Fox.</p>
+    <p class="bluefox-setup">He is buried at the rear of the property.</p>
+    <p class="bluefox-line">Someone still puts flowers there.</p>
+  </div>
 </section>
 
 <!-- ============================================================ -->
