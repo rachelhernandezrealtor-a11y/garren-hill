@@ -617,46 +617,6 @@
   }
 
   /* WHP LETTERS BG — his correspondence as wallpaper */
-  .whp-letters-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-  }
-  /* Page 354 — top left area */
-  .whp-letters-bg .wlb-p1 {
-    position: absolute;
-    top: 3%;
-    left: -2%;
-    width: 55%;
-    opacity: 0.09;
-    filter: sepia(0.15) brightness(1.6) contrast(0.6);
-    mix-blend-mode: overlay;
-    transform: rotate(-1.5deg);
-  }
-  /* Page 356 — right side, offset */
-  .whp-letters-bg .wlb-p2 {
-    position: absolute;
-    top: 22%;
-    right: -3%;
-    width: 50%;
-    opacity: 0.07;
-    filter: sepia(0.15) brightness(1.6) contrast(0.6);
-    mix-blend-mode: overlay;
-    transform: rotate(1.2deg);
-  }
-  /* Page 354 repeat — lower left */
-  .whp-letters-bg .wlb-p3 {
-    position: absolute;
-    bottom: 15%;
-    left: 5%;
-    width: 45%;
-    opacity: 0.06;
-    filter: sepia(0.15) brightness(1.6) contrast(0.6);
-    mix-blend-mode: overlay;
-    transform: rotate(-0.8deg);
-  }
   .whp-inner { position: relative; z-index: 1; }
   /* All whp sub-sections need z-index above bg */
   .whp-titles-beat, .whp-farm-beat, .whp-letters-beat, .whp-last-beat {
@@ -1195,13 +1155,6 @@
 
 <!-- BEAT 2 — WALTER HINES PAGE — scroll story -->
 <section class="whp-section" id="whp">
-
-  <!-- Archive letter texture — full section background -->
-  <div class="whp-letters-bg" aria-hidden="true">
-    <img class="wlb-p1" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777391998/gh_key/gh_whp_letter1.png" alt="">
-    <img class="wlb-p2" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777392076/gh_key/gh_whp_letter2.png" alt="">
-    <img class="wlb-p3" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777391998/gh_key/gh_whp_letter1.png" alt="">
-  </div>
 
   <!-- BEAT A — Portrait + Titles + Biography -->
   <div class="whp-titles-beat">
