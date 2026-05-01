@@ -291,6 +291,17 @@
     transition: all 0.5s ease;
   }
   .twilight-cta:hover { background: var(--gold); color: var(--dark); }
+  /* IN PRINT */
+  .inprint-beat { padding: 100px 40px; background: var(--dark); }
+  .inprint-inner { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .inprint-eyebrow { font-family: 'Cormorant Garamond', serif; font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); opacity: 0.7; margin-bottom: 40px; }
+  .inprint-rule-top, .inprint-rule, .inprint-rule-bottom { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,169,110,0.35), transparent); margin: 28px 0; }
+  .inprint-item { width: 100%; text-align: center; padding: 8px 0; }
+  .inprint-issue { font-family: 'Cormorant Garamond', serif; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--cream); opacity: 0.45; margin: 0 0 10px; }
+  .inprint-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem, 1.8vw, 1.5rem); font-weight: 300; color: var(--cream); opacity: 0.88; margin: 0 0 10px; }
+  .inprint-byline { font-family: 'Cormorant Garamond', serif; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); opacity: 0.38; margin: 0; }
+  @media (max-width: 768px) { .inprint-beat { padding: 70px 24px; } }
+
   /* PLANS & TOUR */
   .plans-beat { padding: 120px 40px; text-align: center; background: var(--dark); }
   .plans-inner { display: flex; flex-direction: column; align-items: center; gap: 32px; }
@@ -1453,6 +1464,28 @@
   <div class="interstitial-rule"></div>
   <p class="interstitial-text" style="font-size: clamp(1.1rem,1.8vw,1.6rem); color: var(--cream); opacity: 0.72; font-style: italic;">Someone still puts flowers there.</p>
   <div class="interstitial-rule-bottom"></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- BEAT 15B — IN PRINT -->
+<!-- ============================================================ -->
+<section class="inprint-beat fade-in">
+  <div class="inprint-inner">
+    <span class="inprint-eyebrow">In Print</span>
+    <div class="inprint-rule-top"></div>
+    <div class="inprint-item">
+      <p class="inprint-issue">PineStraw Magazine &middot; September 2019</p>
+      <p class="inprint-title"><em>A Page Out of History</em></p>
+      <p class="inprint-byline">&mdash; Bill Case</p>
+    </div>
+    <div class="inprint-rule"></div>
+    <div class="inprint-item">
+      <p class="inprint-issue">PineStraw Magazine &middot; October 2019</p>
+      <p class="inprint-title"><em>Story of a House: Minding Their Manors</em></p>
+      <p class="inprint-byline">&mdash; Deborah Salomon &middot; Photography by John Koob Gessner</p>
+    </div>
+    <div class="inprint-rule-bottom"></div>
+  </div>
 </section>
 
 <!-- ============================================================ -->
