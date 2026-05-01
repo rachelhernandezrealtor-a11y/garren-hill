@@ -291,6 +291,35 @@
     transition: all 0.5s ease;
   }
   .twilight-cta:hover { background: var(--gold); color: var(--dark); }
+  /* THRESHOLD PULLED LINE */
+  .threshold-pull { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--gold); font-size: clamp(1rem, 1.4vw, 1.25rem); line-height: 1.65; margin-top: 1.8em; opacity: 0.9; }
+
+  /* WHP FARM ANCHOR LINE */
+  .whp-farm-anchor { font-family: 'Cormorant Garamond', serif; font-size: clamp(0.75rem, 0.95vw, 0.88rem); letter-spacing: 0.06em; color: var(--cream); opacity: 0.45; margin-top: 1.6em; line-height: 1.7; text-align: center; max-width: 540px; margin-left: auto; margin-right: auto; }
+
+  /* LAST WORDS CODA */
+  .whp-last-coda { font-family: 'Cormorant Garamond', serif; font-size: clamp(0.8rem, 1vw, 0.92rem); letter-spacing: 0.04em; color: var(--cream); opacity: 0.4; margin-top: 2em; line-height: 1.8; text-align: center; max-width: 560px; margin-left: auto; margin-right: auto; }
+
+  /* LIBRARY DETAIL CAPTION */
+  .room-detail-caption { font-family: 'Cormorant Garamond', serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream); opacity: 0.35; text-align: center; margin-top: 0.6em; }
+
+  /* DUMAINE — NEW ELEMENTS */
+  .stewardship-eyebrow { display: block; font-family: 'Cormorant Garamond', serif; font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); opacity: 0.7; margin-bottom: 1.2em; }
+  .stewardship-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 400; color: var(--cream); margin: 0 0 0.3em; }
+  .stewardship-subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.1rem, 1.6vw, 1.5rem); color: var(--gold); opacity: 0.75; margin-bottom: 0.4em; }
+
+  /* RESTORATION SECTION */
+  .restoration-beat { background: var(--dark); padding: 130px 72px 110px; position: relative; }
+  .restoration-beat::before { content: ''; display: block; width: 120px; height: 1px; background: var(--gold); opacity: 0.25; margin-bottom: 56px; }
+  .restoration-inner { max-width: 760px; }
+  .restoration-eyebrow { display: block; font-family: 'Cormorant Garamond', serif; font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); opacity: 0.7; margin-bottom: 1.2em; }
+  .restoration-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 3rem); font-weight: 400; color: var(--cream); line-height: 1.25; margin: 0 0 1.6em; }
+  .restoration-rule { width: 60px; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); margin-bottom: 2em; opacity: 0.45; }
+  .restoration-body { font-size: clamp(1rem, 1.2vw, 1.12rem); font-weight: 300; line-height: 1.92; color: var(--text); max-width: 680px; }
+  .restoration-body p + p { margin-top: 1.2em; }
+  .restoration-pull { font-style: italic; color: var(--gold); font-size: clamp(1rem, 1.15vw, 1.1rem); line-height: 1.7; margin-top: 2em; opacity: 0.92; }
+  @media (max-width: 768px) { .restoration-beat { padding: 80px 24px; } }
+
   /* IN PRINT */
   .inprint-beat { padding: 100px 40px; background: var(--dark); }
   .inprint-inner { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 0; }
@@ -1060,6 +1089,100 @@
     .hero-title { font-size: clamp(3.8rem, 14vw, 7rem); }
     .hero-eyebrow { font-size: clamp(0.42rem, 2.8vw, 0.62rem); letter-spacing: 0.12em; }
   }
+
+  /* ════════════════════════════════════════════════════════════
+     RESPONSIVE SPEC — LOCKED 2026-05-01
+     Breakpoints: Desktop ≥1024px | Tablet 768–1023 | Mobile <768
+     ════════════════════════════════════════════════════════════ */
+
+  /* PAGE RAIL */
+  :root {
+    --rail-desktop: clamp(48px, 6vw, 96px);
+    --rail-tablet:  clamp(32px, 5vw, 64px);
+    --rail-mobile:  clamp(20px, 5vw, 32px);
+  }
+
+  /* SECTION VERTICAL SPACING */
+  .room-beat, .fullbleed-beat, .craftsmen-beat, .stewardship-beat,
+  .restoration-beat, .threshold-beat, .plans-beat, .inprint-beat,
+  .infra-beat, .whp-section, .kb-gate-section {
+    box-sizing: border-box;
+  }
+
+  /* SECTION WIDTH CAPS */
+  .room-inner, .fullbleed-content, .whp-titles-beat,
+  .craftsmen-body, .restoration-inner, .stewardship-inner {
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .room-text, .threshold-body {
+    max-width: 720px;
+  }
+  .whp-farm-beat, .whp-last-beat, .inprint-inner {
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* TYPOGRAPHY CLAMPS — LOCKED */
+  .room-body p, .stewardship-body p, .restoration-body p,
+  .threshold-body p, .craftsmen-body p {
+    font-size: clamp(15px, 1.4vw, 19px);
+    line-height: 1.9;
+  }
+  .room-headline, .threshold-headline, .restoration-headline {
+    font-size: clamp(28px, 5vw, 56px);
+  }
+  .room-eyebrow, .plans-eyebrow, .inprint-eyebrow,
+  .stewardship-eyebrow, .restoration-eyebrow, .craftsmen-eyebrow,
+  .threshold-eyebrow {
+    font-size: clamp(9px, 0.9vw, 11px);
+  }
+  .room-pull, .restoration-pull, .threshold-pull {
+    font-size: clamp(20px, 3vw, 32px);
+    line-height: 1.45;
+  }
+
+  /* PRIMARY SUITE + KITCHEN gallery: responsive grid */
+  .room-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+  @media (max-width: 1023px) {
+    .room-grid-3 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 767px) {
+    .room-grid-3 { grid-template-columns: 1fr; }
+    .film-strip { flex-direction: column !important; }
+    .film-strip img { width: 100% !important; height: auto !important; }
+  }
+
+  /* TABLET RAIL */
+  @media (max-width: 1023px) and (min-width: 768px) {
+    .craftsmen-beat, .stewardship-beat, .restoration-beat, .infra-beat {
+      padding-left: var(--rail-tablet);
+      padding-right: var(--rail-tablet);
+    }
+    .room-inner, .fullbleed-content { padding: 0 var(--rail-tablet); }
+  }
+
+  /* MOBILE RAIL */
+  @media (max-width: 767px) {
+    .craftsmen-beat, .stewardship-beat, .restoration-beat, .infra-beat {
+      padding: clamp(56px, 8vh, 96px) var(--rail-mobile);
+    }
+    .room-inner { flex-direction: column !important; padding: 0 var(--rail-mobile); }
+    .room-inner.flip { flex-direction: column !important; }
+    .room-img-wrap { width: 100% !important; min-height: 60vw; }
+    .room-text { padding: 40px var(--rail-mobile) !important; }
+    .room-pull, .restoration-pull, .threshold-pull {
+      font-size: clamp(18px, 5vw, 26px);
+    }
+    .threshold-beat { min-height: 80vh; }
+  }
+
 </style>
 </head>
 <body>
@@ -1180,7 +1303,8 @@
     <div class="threshold-rule"></div>
     <div class="threshold-body">
       <p>The leaded glass sidelights and fanlight are original. The hardware was specified in 1916. It has not been replaced.</p>
-      <p>One detail makes everything clear: the inscription in the threshold — <em>GARRAN HILL · 1916</em>. He named it before it existed. The house has been answering to that name ever since.</p>
+      <p>One detail makes everything clear: the inscription in the threshold — <em>GARRAN HILL · 1916</em>.</p>
+      <p class="threshold-pull">He named it before it existed.<br>The house has been answering to that name ever since.</p>
     </div>
   </div>
 </section>
@@ -1265,6 +1389,7 @@
   <div class="whp-last-beat">
     <div class="whp-last-quote scroll-reveal">"Well, Frank, I did get here after all, didn't I?"</div>
     <div class="whp-last-cite scroll-reveal">Walter Hines Page &nbsp;·&nbsp; Aberdeen, NC &nbsp;·&nbsp; December 1918</div>
+    <div class="whp-last-coda scroll-reveal">He died ten days later. He never spent a night in the house his son built for him. Westminster Abbey: &ldquo;The friend of Britain in her sorest need.&rdquo;</div>
   </div>
 
 </section>
@@ -1283,7 +1408,8 @@
       <div class="room-rule"></div>
       <div class="room-body">
         <p>Coffered ceiling. Georgian panel molding in a grid. Oak floors lifted, repaired, relaid exactly as they were. French doors to the rear grounds. The central axis runs from the threshold straight through to the library — visible the instant the door opens.</p>
-        <p>Two full seating areas. Room enough to dance. Every fabric, every finish chosen because it belongs here. Not because it was available. Because it was right.</p>
+        <p>Two full seating areas. Every fabric, every finish chosen because it belongs here. Not because it was available. Because it was right.</p>
+        <p class="room-pull"><em>Room enough to dance.</em></p>
       </div>
     </div>
   </div>
@@ -1489,18 +1615,36 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- BEAT 5 — STEWARDSHIP / BETTY DUMAINE / THE RENOVATION -->
+<!-- BEAT 20 — BETTY DUMAINE -->
+<!-- ============================================================ -->
 <section class="stewardship-beat fade-in">
   <div class="stewardship-inner">
-    <div class="stewardship-lead">Four families. One hundred and ten years.<br>He never made it back. They carried it forward.</div>
-    <div class="stewardship-devotion">That is not maintenance. That is devotion.</div>
+    <span class="stewardship-eyebrow">The Steward &nbsp;·&nbsp; 1959&ndash;1984</span>
+    <h2 class="stewardship-name">Elizabeth &ldquo;Betty&rdquo; Dumaine</h2>
+    <div class="stewardship-subtitle"><em>Thanpuying</em></div>
     <div class="stewardship-rule"></div>
     <div class="stewardship-body">
-      <p>Elizabeth &ldquo;Betty&rdquo; Dumaine. Bostonian. 1900&ndash;1984. Daughter of industrialist Frederic C. Dumaine Sr. In 1919, at the Edith Johnson School in Cambridge, Massachusetts, the nineteen-year-old Betty had a roommate &mdash; Sangwan Chukramol, a young Thai woman studying in America. They became close friends. Sangwan would later marry Prince Mahidol of Songkla and become Srinagarindra, the Princess Mother of Thailand &mdash; mother to two kings.</p>
-      <p>Their friendship lasted Sangwan&rsquo;s lifetime. Betty ran the U.S. fundraising arm of the Princess Mother&rsquo;s charity from this house. The Thai royal family bestowed on her the title <em>Thanpuying</em> &mdash; the closest English equivalent is &ldquo;Lady.&rdquo; She arrived at Garran Hill in 1959 and stayed twenty-five years.</p>
-      <p>She planted the rose garden, the camellias, the magnolias, the dogwoods. The foundation she helped build &mdash; The Princess Mother&rsquo;s Charities Fund of Thailand &mdash; is still operating today.</p>
-      <p>By 1999, the house was ready to be understood again. The current stewards commissioned architect Thomas O'Shea of Durham, North Carolina, to lead a complete interior restoration — three years of work, executed by general contractor Dennis Dunagan. Every window in the house was removed and rebuilt to the original proportions by Marvin. Every joint was opened, considered, and closed correctly. The plumbing, the electrical, the five-zone climate system — all of it replaced from the inside out, without touching what the house looked like from the outside in.</p>
-      <p>Fifteen architectural drawings document every decision O'Shea made. They survive. They transfer with the property.</p>
+      <p>Bostonian. 1900&ndash;1984. Daughter of industrialist Frederic C. Dumaine Sr. In 1919, at the Edith Johnson School in Cambridge, Massachusetts, the nineteen-year-old Betty had a roommate &mdash; Sangwan Chukramol, a young Thai woman studying in America. They became close friends.</p>
+      <p>Sangwan would later marry Prince Mahidol of Songkla and become Srinagarindra, the Princess Mother of Thailand &mdash; mother to two kings.</p>
+      <p>Their friendship lasted Sangwan&rsquo;s lifetime. Betty ran the U.S. fundraising arm of the Princess Mother&rsquo;s charity from this house. The Thai royal family bestowed on her the title <em>Thanpuying</em> &mdash; the closest English equivalent is &ldquo;Lady.&rdquo;</p>
+      <p>She arrived at Garran Hill in 1959 and stayed twenty-five years. She planted the rose garden, the camellias, the magnolias, the dogwoods. The foundation she helped build &mdash; The Princess Mother&rsquo;s Charities Fund of Thailand &mdash; is still operating today.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- BEAT 21 — RESTORATION 1999–2001 -->
+<!-- ============================================================ -->
+<section class="restoration-beat fade-in">
+  <div class="restoration-inner">
+    <span class="restoration-eyebrow">The Restoration &nbsp;·&nbsp; 1999&ndash;2001</span>
+    <h2 class="restoration-headline">By 1999, the house was ready<br>to be understood again.</h2>
+    <div class="restoration-rule"></div>
+    <div class="restoration-body">
+      <p>The current stewards commissioned architect Thomas O&rsquo;Shea of Durham, North Carolina, to lead a complete interior restoration &mdash; three years of work, executed by general contractor Dennis Dunagan.</p>
+      <p>Every window in the house was removed and rebuilt to the original proportions by Marvin. Every joint was opened, considered, and closed correctly. The plumbing, the electrical, the five-zone climate system &mdash; all of it replaced from the inside out, without touching what the house looked like from the outside in.</p>
+      <p>Fifteen architectural drawings document every decision O&rsquo;Shea made. They survive. They transfer with the property.</p>
+      <p class="restoration-pull"><em>Original and restored are genuinely indistinguishable. That is the point.</em></p>
     </div>
   </div>
 </section>
