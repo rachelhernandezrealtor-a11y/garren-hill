@@ -35,7 +35,7 @@
   /* HERO */
   /* HERO VIEWPORT — three-layer 100vh container */
   .hero-viewport { height: 100dvh; max-height: 100dvh; width: 100%; display: flex; flex-direction: column; overflow: visible; padding-top: 0; box-sizing: border-box; }
-  .hero-top-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 14px 40px; background: transparent; backdrop-filter: none; border-bottom: none; transition: background 0.4s ease, backdrop-filter 0.4s ease; } .hero-top-nav.scrolled { background: rgba(10,10,10,0.88); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(201,169,110,0.08); }
+  .hero-top-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 14px 40px; background: transparent; backdrop-filter: none; border-bottom: 1px solid rgba(201,169,110,0.4); transition: background 0.4s ease, backdrop-filter 0.4s ease; } .hero-top-nav.scrolled { background: rgba(10,10,10,0.88); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(201,169,110,0.08); }
 
   .hero { position: relative; flex: 1; min-height: 0; width: 100%; overflow: hidden; }
   .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; filter: contrast(1.10) saturate(1.12) brightness(0.78); }
@@ -63,19 +63,19 @@
   .stat-bar {
     flex-shrink: 0;
     background: var(--dark);
-    border-top: 1px solid rgba(201,169,110,0.35);
-    border-bottom: none;
+    border-top: 1px solid rgba(201,169,110,0.4);
+    border-bottom: 1px solid rgba(201,169,110,0.4);
     display: flex; align-items: center; justify-content: center;
     z-index: 90;
-    height: 80px;
+    height: auto;
     min-height: 80px;
-    padding: 0 12px;
+    padding: clamp(24px, 3vw, 40px) 12px;
     overflow: visible;
   }
-  .stat-item { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 16px; border-right: 1px solid rgba(201,169,110,0.15); flex: 1; height: 100%; min-width: 0; }
-  .stat-item:last-child { border-right: none; }
-  .stat-number { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 2.2vw, 2.1rem); font-weight: 300; color: #C9A96E; letter-spacing: 0.08em; line-height: 1; text-shadow: 0 0 18px rgba(201,169,110,0.22); }
-  .stat-label { font-size: clamp(0.48rem, 0.58vw, 0.55rem); letter-spacing: 0.24em; font-weight: 300; font-family: 'Cormorant Garamond', serif; color: var(--cream); text-transform: uppercase; margin-top: 6px; opacity: 0.6; white-space: nowrap; }
+  .stat-item { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 clamp(12px, 2vw, 32px); position: relative; flex: 1; min-width: 0; }
+  .stat-item + .stat-item::before { content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 45%; background: #C9A96E; opacity: 0.35; }
+  .stat-number { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 2.4vw, 2rem); font-weight: 300; color: #C9A96E; letter-spacing: 0.02em; line-height: 1; text-shadow: 0 0 18px rgba(201,169,110,0.22); }
+  .stat-label { font-size: clamp(8px, 0.75vw, 10px); letter-spacing: 0.25em; font-weight: 400; font-family: 'Cormorant Garamond', serif; color: #9a9382; text-transform: uppercase; margin-top: 9px; white-space: nowrap; }
   .stat-crest-wrap { padding: 0 24px; display: flex; align-items: center; justify-content: center; position: relative; flex-shrink: 0; overflow: visible; }
   .stat-crest { height: 52px; width: auto; display:block; filter: drop-shadow(0 0 12px rgba(201,169,110,0.45)) drop-shadow(0 0 24px rgba(201,169,110,0.2)); }
 
@@ -293,7 +293,7 @@
     .threshold-content { padding: 60px 28px; }
     footer { padding: 60px 28px 40px; }
     /* stat-item override removed */
-    .stat-label { font-size: clamp(0.48rem, 0.58vw, 0.55rem); letter-spacing: 0.24em; font-weight: 300; font-family: 'Cormorant Garamond', serif; color: var(--cream); text-transform: uppercase; margin-top: 6px; opacity: 0.6; white-space: nowrap; }
+    .stat-label { font-size: clamp(8px, 0.75vw, 10px); letter-spacing: 0.25em; font-weight: 400; font-family: 'Cormorant Garamond', serif; color: #9a9382; text-transform: uppercase; margin-top: 9px; white-space: nowrap; }
   }
   /* FADE IN */
   .fade-in { opacity: 0; transform: translateY(14px); transition: opacity 1.8s cubic-bezier(.16,1,.3,1), transform 1.8s cubic-bezier(.16,1,.3,1); }
@@ -1050,7 +1050,7 @@
     <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">Bathrooms</span></div>
     <div class="stat-item"><span class="stat-number">6,072</span><span class="stat-label">Square Feet</span></div>
     <div class="stat-item"><span class="stat-number">4.15</span><span class="stat-label">Acres</span></div>
-    <div class="stat-item"><span class="stat-number" style="font-size: clamp(1.1rem, 1.8vw, 1.75rem); letter-spacing: 0.06em;">$4,250,000</span><span class="stat-label">Exclusively Offered</span></div>
+    <div class="stat-item"><span class="stat-number">$4,250,000</span><span class="stat-label">Exclusively Offered</span></div>
   </div>
 </div><!-- END HERO VIEWPORT -->
 <!-- SCROLL HINT — sits between viewport and next section -->
