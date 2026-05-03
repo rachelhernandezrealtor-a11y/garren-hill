@@ -1,0 +1,75 @@
+{
+  "name": "Rachel Studio Best Choice Engine",
+  "date": "2026-05-03",
+  "status": "active_backend_function",
+  "purpose": "Let AI compare choices inside a category and recommend the best fit for a specific property, while preserving Rachel/Rocky approval.",
+  "law": "AI recommends. Rachel/Rocky approve. Codex enforces.",
+  "endpoint": "POST /api/properties/:propertyId/best-choices",
+  "categories": {
+    "media": [
+      "hero_image",
+      "section_image",
+      "kitchen_candidate",
+      "gallery_order",
+      "video_thumbnail",
+      "mobile_crop",
+      "desktop_crop",
+      "enhancement_profile"
+    ],
+    "copy": [
+      "headline",
+      "eyebrow",
+      "closing_line",
+      "caption",
+      "inquiry_language",
+      "private_dossier_intro"
+    ],
+    "seo_source": [
+      "keyword_cluster",
+      "meta_title",
+      "meta_description",
+      "backlink_target",
+      "source_placement",
+      "schema_citation",
+      "alt_text",
+      "video_title"
+    ],
+    "design_experience": [
+      "section_order",
+      "visual_rhythm",
+      "motion_treatment",
+      "public_private_split",
+      "buyer_packet_angle",
+      "social_post_format"
+    ]
+  },
+  "score_against": [
+    "property_truth",
+    "buyer_voice_brand",
+    "creative_standard",
+    "selective_seo_strategy",
+    "source_support",
+    "visual_quality",
+    "mobile_desktop_fit",
+    "emotional_fit",
+    "conversion_clarity",
+    "compliance_risk",
+    "locked_asset_copy_rules"
+  ],
+  "output": [
+    "top_choice",
+    "ranked_candidates",
+    "score_total",
+    "score_breakdown",
+    "rationale",
+    "risk_warning",
+    "approval_status"
+  ],
+  "rules": [
+    "Never publish directly.",
+    "Never override locked assets or locked copy.",
+    "Never choose a high-risk candidate without explicit review.",
+    "Always return rationale and risk.",
+    "Rachel/Rocky approval is required before final use."
+  ]
+}
