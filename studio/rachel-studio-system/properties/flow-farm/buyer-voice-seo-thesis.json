@@ -1,0 +1,118 @@
+{
+  "property": "Flow Farm",
+  "date": "2026-05-03",
+  "status": "active_strategy_source_verification_required",
+  "coreInsight": "Flow Farm's authority is the farm. The farm is the key.",
+  "standardRelationship": {
+    "sharedWithGarranHill": [
+      "standard",
+      "excellence",
+      "responsive luxury site quality",
+      "source-backed storytelling",
+      "serious SEO",
+      "Rachel approval gate"
+    ],
+    "differentFromGarranHill": [
+      "buyer voice",
+      "authority source",
+      "SEO gravity",
+      "private dossier emphasis"
+    ]
+  },
+  "buyerGravity": [
+    "running farm system",
+    "land",
+    "infrastructure",
+    "buildable acreage",
+    "zoning and operational path",
+    "proximity to Pinehurst",
+    "commercial agritourism or wellness potential"
+  ],
+  "buyerArchetypes": [
+    "commercial_agritourism_developer",
+    "wellness_retreat_developer",
+    "sustainability_resilience_buyer",
+    "land_and_systems_buyer",
+    "family_compound_buyer",
+    "pinehurst_lifestyle_buyer",
+    "farm_food_sovereignty_buyer"
+  ],
+  "publicClaimSafety": {
+    "avoidUntilVerified": [
+      "no red tape",
+      "guaranteed approvals",
+      "USDA protected zoning",
+      "commercial use guaranteed",
+      "agritourism approved",
+      "development rights guaranteed"
+    ],
+    "saferDirectionsAfterVerification": [
+      "existing farm operation",
+      "established agricultural use",
+      "buildable acreage",
+      "zoning path already earned",
+      "operational infrastructure in place",
+      "development potential subject to buyer verification",
+      "rare land-and-systems offering near Pinehurst"
+    ]
+  },
+  "seoLanes": {
+    "primary": [
+      "Flow Farm",
+      "107 Linden Trail",
+      "Aberdeen NC farm estate",
+      "Pinehurst area farm estate",
+      "Pinehurst acreage estate",
+      "sustainable estate North Carolina",
+      "veganic farm estate",
+      "geothermal solar estate",
+      "buildable acreage near Pinehurst"
+    ],
+    "commercialDeveloper": [
+      "agritourism property near Pinehurst",
+      "wellness retreat property North Carolina",
+      "commercial farm estate near Pinehurst",
+      "buildable acreage near Pinehurst golf",
+      "farm property with infrastructure North Carolina",
+      "sustainable hospitality property North Carolina"
+    ],
+    "authoritySource": [
+      "USDA registered farm North Carolina",
+      "certified veganic farm",
+      "geothermal estate North Carolina",
+      "solar estate with battery backup",
+      "Pinehurst golf area acreage"
+    ]
+  },
+  "voiceTraits": [
+    "intelligent",
+    "capable",
+    "alive",
+    "operational",
+    "future_facing",
+    "grounded_in_systems",
+    "quietly_commercial_where_appropriate",
+    "kinetic"
+  ],
+  "privateDossierNeeds": [
+    "zoning_and_permitted_use_documents",
+    "usda_farm_registration_evidence",
+    "veganic_certification_evidence",
+    "buildable_acreage_map",
+    "utility_infrastructure_summary",
+    "geothermal_solar_generator_battery_docs",
+    "farm_operations_overview",
+    "crop_list",
+    "commercial_agritourism_possibility_memo",
+    "buyer_due_diligence_checklist"
+  ],
+  "sourceVerificationRequired": [
+    "exact_zoning_classification",
+    "agritourism_commercial_use_status",
+    "exact_usda_registration_language",
+    "exact_veganic_certification_language",
+    "buildable_acreage_documentation",
+    "distance_time_to_pinehurst_and_golf_anchor_points",
+    "mls_brokerage_compliance_limits"
+  ]
+}
