@@ -10,53 +10,120 @@
   html, body { height: 100%; width: 100%; background: #0a0a0a; overflow: hidden; font-family: 'Cormorant Garamond', serif; color: #F5F0E8; }
   .shell { display: flex; flex-direction: column; height: 100vh; width: 100vw; }
 
-  .topbar { height: 46px; background: #0d0d0d; border-bottom: 1px solid #1a1a1a; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; flex-shrink: 0; z-index: 10; }
+  /* TOP BAR */
+  .topbar { height: 46px; background: #0d0d0d; border-bottom: 1px solid #1a1a1a; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; flex-shrink: 0; z-index: 10; }
   .topbar-title { font-family: 'Pinyon Script', cursive; font-size: 26px; color: #C9A96E; }
-  .topbar-label { font-size: 9px; letter-spacing: 0.45em; color: #333; text-transform: uppercase; }
-  .topbar-links { display: flex; gap: 20px; align-items: center; }
-  .topbar-links a { font-size: 9px; letter-spacing: 0.35em; color: #C9A96E; text-transform: uppercase; text-decoration: none; opacity: 0.7; transition: opacity 0.2s; }
+  .topbar-label { font-size: 9px; letter-spacing: 0.4em; color: #333; text-transform: uppercase; }
+  .topbar-links { display: flex; gap: 16px; align-items: center; }
+  .topbar-links a { font-size: 9px; letter-spacing: 0.3em; color: #C9A96E; text-transform: uppercase; text-decoration: none; opacity: 0.6; transition: opacity 0.2s; }
   .topbar-links a:hover { opacity: 1; }
 
-  .split { display: flex; flex: 1; overflow: hidden; }
-  .panel { display: flex; flex-direction: column; overflow: hidden; position: relative; }
-  .panel-left { width: 42%; min-width: 340px; border-right: 1px solid #1a1a1a; }
-  .panel-right { flex: 1; background: #111; }
+  /* SPLIT */
+  .split { display: flex; flex: 1; overflow: hidden; position: relative; }
 
-  .panel-header { height: 38px; background: #0d0d0d; border-bottom: 1px solid #141414; display: flex; align-items: center; padding: 0 16px; flex-shrink: 0; gap: 12px; }
+  /* LEFT PANEL */
+  .panel-left {
+    width: 420px; min-width: 420px;
+    display: flex; flex-direction: column;
+    border-right: 1px solid #1a1a1a;
+    transition: width 0.3s ease, min-width 0.3s ease, opacity 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+  }
+  .panel-left.collapsed {
+    width: 0 !important;
+    min-width: 0 !important;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* CHAT TOGGLE TAB — floats on left edge of right panel */
+  .chat-tab {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    background: #0d0d0d;
+    border: 1px solid #2a2a2a;
+    border-left: none;
+    color: #C9A96E;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 14px 6px;
+    cursor: pointer;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transition: background 0.2s, border-color 0.2s;
+    display: none;
+    border-radius: 0 4px 4px 0;
+  }
+  .chat-tab:hover { background: #C9A96E11; border-color: #C9A96E; }
+  .chat-tab.visible { display: block; }
+
+  /* PANEL HEADERS */
+  .panel-header { height: 38px; background: #0d0d0d; border-bottom: 1px solid #141414; display: flex; align-items: center; padding: 0 14px; flex-shrink: 0; gap: 10px; }
   .panel-header-label { font-size: 9px; letter-spacing: 0.35em; color: #333; text-transform: uppercase; white-space: nowrap; }
-  .panel-header-dot { width: 6px; height: 6px; border-radius: 50%; background: #C9A96E; opacity: 0.5; flex-shrink: 0; margin-left: auto; }
+  .panel-header-dot { width: 6px; height: 6px; border-radius: 50%; background: #C9A96E; opacity: 0.5; flex-shrink: 0; }
 
-  .device-switcher { display: flex; gap: 4px; align-items: center; }
+  /* COLLAPSE BUTTON inside left panel header */
+  .collapse-btn {
+    margin-left: auto;
+    background: transparent;
+    border: 1px solid #1e1e1e;
+    color: #444;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .collapse-btn:hover { border-color: #C9A96E55; color: #C9A96E; }
+
+  iframe { display: block; border: none; }
+
+  /* Chat iframe fills left panel */
+  #chatFrame { width: 100%; flex: 1; }
+
+  /* RIGHT PANEL */
+  .panel-right { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: #111; min-width: 0; }
+
+  /* DEVICE SWITCHER */
+  .device-switcher { display: flex; gap: 4px; margin-left: auto; }
   .dev-btn { background: transparent; border: 1px solid #1e1e1e; color: #444; font-family: 'Cormorant Garamond', serif; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; padding: 4px 10px; cursor: pointer; transition: all 0.2s; }
   .dev-btn:hover { border-color: #C9A96E55; color: #C9A96E; }
   .dev-btn.active { border-color: #C9A96E; color: #C9A96E; background: #C9A96E11; }
 
-  .preview-wrap { flex: 1; display: flex; overflow: auto; background: #0a0a0a; transition: all 0.3s; }
+  /* PREVIEW WRAP */
+  .preview-wrap { flex: 1; display: flex; overflow: auto; transition: all 0.3s; }
 
-  /* Desktop */
-  .preview-wrap.desktop { align-items: stretch; justify-content: stretch; padding: 0; }
-  .preview-wrap.desktop .device-chrome { width: 100%; height: 100%; border-radius: 0; border: none; box-shadow: none; }
+  .preview-wrap.desktop { align-items: stretch; padding: 0; background: #0a0a0a; }
+  .preview-wrap.desktop .device-chrome { width: 100%; height: 100%; border-radius: 0; border: none; }
   .preview-wrap.desktop iframe { width: 100%; height: 100%; }
 
-  /* Tablet */
-  .preview-wrap.tablet { align-items: flex-start; justify-content: center; padding: 24px 0; background: #111; }
-  .preview-wrap.tablet .device-chrome { width: 768px; min-height: calc(100vh - 120px); border-radius: 14px; border: 2px solid #2a2a2a; box-shadow: 0 0 60px rgba(0,0,0,0.7); overflow: hidden; }
-  .preview-wrap.tablet iframe { width: 768px; height: calc(100vh - 120px); }
+  .preview-wrap.tablet { align-items: flex-start; justify-content: center; padding: 20px 0; background: #111; }
+  .preview-wrap.tablet .device-chrome { width: 768px; border-radius: 14px; border: 2px solid #2a2a2a; box-shadow: 0 0 60px rgba(0,0,0,0.7); overflow: hidden; }
+  .preview-wrap.tablet iframe { width: 768px; height: calc(100vh - 110px); }
 
-  /* Mobile */
-  .preview-wrap.mobile { align-items: flex-start; justify-content: center; padding: 24px 0; background: #111; }
-  .preview-wrap.mobile .device-chrome { width: 390px; min-height: calc(100vh - 120px); border-radius: 40px; border: 8px solid #2a2a2a; box-shadow: 0 0 80px rgba(0,0,0,0.9); overflow: hidden; position: relative; }
-  .preview-wrap.mobile .device-chrome::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 110px; height: 30px; background: #2a2a2a; border-radius: 0 0 18px 18px; z-index: 10; }
-  .preview-wrap.mobile iframe { width: 390px; height: calc(100vh - 120px); }
+  .preview-wrap.mobile { align-items: flex-start; justify-content: center; padding: 20px 0; background: #111; }
+  .preview-wrap.mobile .device-chrome { width: 390px; border-radius: 40px; border: 8px solid #2a2a2a; box-shadow: 0 0 80px rgba(0,0,0,0.9); overflow: hidden; position: relative; }
+  .preview-wrap.mobile .device-chrome::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 110px; height: 28px; background: #2a2a2a; border-radius: 0 0 16px 16px; z-index: 10; }
+  .preview-wrap.mobile iframe { width: 390px; height: calc(100vh - 110px); }
 
   .device-chrome { display: flex; flex-direction: column; background: #0a0a0a; }
-  iframe { display: block; border: none; }
 
+  /* DRAG */
   .drag-handle { width: 3px; background: #1a1a1a; cursor: col-resize; flex-shrink: 0; transition: background 0.2s; }
   .drag-handle:hover { background: #C9A96E; }
 
-  .preview-controls { position: absolute; bottom: 16px; right: 16px; display: flex; gap: 8px; z-index: 5; }
-  .ctrl-btn { background: rgba(10,10,10,0.9); border: 1px solid #2a2a2a; color: #C9A96E; font-family: 'Cormorant Garamond', serif; font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; padding: 8px 14px; cursor: pointer; transition: border-color 0.2s; }
+  /* CONTROLS */
+  .preview-controls { position: absolute; bottom: 14px; right: 14px; display: flex; gap: 8px; z-index: 5; }
+  .ctrl-btn { background: rgba(10,10,10,0.92); border: 1px solid #2a2a2a; color: #C9A96E; font-family: 'Cormorant Garamond', serif; font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; padding: 8px 14px; cursor: pointer; transition: border-color 0.2s; }
   .ctrl-btn:hover { border-color: #C9A96E; }
 </style>
 </head>
@@ -75,10 +142,11 @@
   <div class="split" id="split">
 
     <!-- LEFT — CHAT -->
-    <div class="panel panel-left" id="panelLeft">
+    <div class="panel-left" id="panelLeft">
       <div class="panel-header">
         <span class="panel-header-label">Rocky — AI</span>
         <div class="panel-header-dot"></div>
+        <button class="collapse-btn" onclick="toggleChat()">← Hide</button>
       </div>
       <iframe src="https://app.base44.com/superagent/69e248a2469cc39540781cce" title="Rocky Chat" allow="microphone" id="chatFrame"></iframe>
     </div>
@@ -86,13 +154,17 @@
     <div class="drag-handle" id="dragHandle"></div>
 
     <!-- RIGHT — SITE -->
-    <div class="panel panel-right" id="panelRight">
+    <div class="panel-right" id="panelRight" style="position:relative;">
+
+      <!-- CHAT TAB (shows when collapsed) -->
+      <button class="chat-tab" id="chatTab" onclick="toggleChat()">Rocky ›</button>
+
       <div class="panel-header">
         <span class="panel-header-label">Garran Hill — Live</span>
         <div class="device-switcher">
-          <button class="dev-btn active" id="btn-desktop" onclick="setDevice('desktop')">&#128444; Desktop</button>
-          <button class="dev-btn" id="btn-tablet" onclick="setDevice('tablet')">&#9645; Tablet</button>
-          <button class="dev-btn" id="btn-mobile" onclick="setDevice('mobile')">&#9646; Mobile</button>
+          <button class="dev-btn active" id="btn-desktop" onclick="setDevice('desktop')">Desktop</button>
+          <button class="dev-btn" id="btn-tablet" onclick="setDevice('tablet')">Tablet</button>
+          <button class="dev-btn" id="btn-mobile" onclick="setDevice('mobile')">Mobile</button>
         </div>
         <div class="panel-header-dot"></div>
       </div>
@@ -105,7 +177,7 @@
 
       <div class="preview-controls">
         <button class="ctrl-btn" onclick="refreshSite()">↺ Refresh</button>
-        <button class="ctrl-btn" onclick="window.open('https://garren-hill.pages.dev','_blank')">↗ Full Screen</button>
+        <button class="ctrl-btn" onclick="window.open('https://garren-hill.pages.dev','_blank')">↗ Full</button>
       </div>
     </div>
 
@@ -113,29 +185,53 @@
 </div>
 
 <script>
+  let chatVisible = true;
+
+  function toggleChat() {
+    chatVisible = !chatVisible;
+    const panel = document.getElementById('panelLeft');
+    const tab = document.getElementById('chatTab');
+    const drag = document.getElementById('dragHandle');
+    if (chatVisible) {
+      panel.classList.remove('collapsed');
+      tab.classList.remove('visible');
+      drag.style.display = '';
+    } else {
+      panel.classList.add('collapsed');
+      tab.classList.add('visible');
+      drag.style.display = 'none';
+    }
+  }
+
   function setDevice(device) {
-    const wrap = document.getElementById('previewWrap');
-    const frame = document.getElementById('siteFrame');
-    wrap.className = 'preview-wrap ' + device;
+    document.getElementById('previewWrap').className = 'preview-wrap ' + device;
     document.querySelectorAll('.dev-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('btn-' + device).classList.add('active');
+
+    // Auto-collapse chat on mobile/tablet for more room
+    if ((device === 'mobile' || device === 'tablet') && chatVisible) {
+      toggleChat();
+    }
+    if (device === 'desktop' && !chatVisible) {
+      toggleChat();
+    }
   }
 
   function refreshSite() {
     const f = document.getElementById('siteFrame');
-    const s = f.src; f.src = ''; setTimeout(() => { f.src = s; }, 50);
+    const s = f.src; f.src = ''; setTimeout(() => f.src = s, 50);
   }
 
+  // Draggable divider
   const handle = document.getElementById('dragHandle');
   const left = document.getElementById('panelLeft');
   const split = document.getElementById('split');
   let dragging = false;
-
   handle.addEventListener('mousedown', () => { dragging = true; document.body.style.cursor = 'col-resize'; document.body.style.userSelect = 'none'; });
   document.addEventListener('mousemove', e => {
     if (!dragging) return;
     const r = split.getBoundingClientRect();
-    let w = Math.max(280, Math.min(e.clientX - r.left, r.width - 280));
+    let w = Math.max(300, Math.min(e.clientX - r.left, r.width - 300));
     left.style.width = w + 'px'; left.style.minWidth = w + 'px';
   });
   document.addEventListener('mouseup', () => { dragging = false; document.body.style.cursor = ''; document.body.style.userSelect = ''; });
