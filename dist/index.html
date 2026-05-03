@@ -7,6 +7,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<!-- GSAP + ScrollTrigger + Lenis smooth scroll -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   @font-face {
@@ -20,7 +24,7 @@
   /* GRAIN */
   body::after {
     content: ''; position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.055'/%3E%3C/svg%3E");
     pointer-events: none; z-index: 9000; opacity: 0.035;
   }
 
@@ -58,7 +62,8 @@
       linear-gradient(90deg, rgba(10,10,10,0.48) 0%, rgba(10,10,10,0.22) 42%, rgba(10,10,10,0.0) 62%),
       linear-gradient(180deg, rgba(10,10,10,0.10) 0%, rgba(10,10,10,0.0) 30%, rgba(10,10,10,0.0) 60%, rgba(10,10,10,0.50) 100%);
   }
-  .hero-content { position: absolute; bottom: clamp(16px, 3.5vh, 48px); left: clamp(20px, 6vw, 96px); z-index: 3; display: flex; flex-direction: column; align-items: flex-start; text-align: left; width: clamp(320px, 48vw, 660px); }
+  .hero-content { position: absolute; bottom: clamp(16px, 3.5vh, 48px); left: clamp(20px, 6vw, 96px); z-index: 3; display: flex; flex-direction: column; align-items: flex-start; text-align: left; width: clamp(320px, 48vw, 660px);   perspective: 800px;
+  }
   .hero-eyebrow { font-size: clamp(0.52rem, 0.7vw, 0.78rem); letter-spacing: clamp(0.12em, 0.3em, 0.3em); font-weight: 400; color: #C9A96E; text-transform: uppercase; opacity: 1; margin-bottom: clamp(14px, 1.8vh, 26px); text-align: left; width: 100%; white-space: nowrap; text-shadow: 0 0 20px rgba(201,169,110,0.2); }
   .hero-title { font-family: 'Pinyon Script', cursive; font-size: clamp(4.5rem, 9vw, 11rem); line-height: 0.88; color: #F5F0E8; margin-bottom: clamp(12px, 1.5vh, 22px); white-space: nowrap; opacity: 1; -webkit-text-stroke: 0.5px rgba(245,240,232,0.6); paint-order: stroke fill; text-shadow: 0 2px 60px rgba(0,0,0,0.9), 0 4px 20px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.5); }
   .hero-rule { width: 80px; height: 1px; background: #C9A96E; margin: clamp(10px, 1.4vh, 20px) 0 clamp(10px, 1.4vh, 20px) 0; opacity: 0.7; align-self: flex-start; }
@@ -391,7 +396,11 @@
   .fullbleed-content.center { max-width: 100%; text-align: center; padding: 100px 72px; }
 
   /* FILM STRIP */
-  .film-strip { display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; margin: 0; }
+  .film-strip-wrap { overflow: hidden; width: 100%; }
+  .film-strip { display: flex; gap: 0; width: max-content; animation: marquee 40s linear infinite; }
+  .film-strip:hover { animation-play-state: paused; }
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .film-strip img { flex-shrink: 0; scroll-snap-align: start; }
   .film-strip::-webkit-scrollbar { display: none; }
   .film-strip img { flex: 0 0 auto; height: 280px; width: auto; object-fit: cover; display: block; }
 
@@ -1283,6 +1292,10 @@
 </style>
 </head>
 <body>
+<!-- Custom cursor -->
+<div id="scroll-progress" style="position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#C9A96E,rgba(201,169,110,0.3));z-index:99997;transition:width 0.05s linear;pointer-events:none;"></div>
+<div id="cursor-dot" style="position:fixed;top:0;left:0;width:8px;height:8px;background:#C9A96E;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform 0.15s ease,opacity 0.3s ease;opacity:0;mix-blend-mode:difference;"></div>
+<div id="cursor-ring" style="position:fixed;top:0;left:0;width:32px;height:32px;border:1px solid rgba(201,169,110,0.4);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:all 0.08s linear;opacity:0;"></div>
 
 <!-- NAV -->
 
@@ -1324,8 +1337,8 @@
     <div class="hero-loop-fade"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow">200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, North Carolina</div>
-      <div class="hero-title" style="white-space:nowrap;">Garran Hill</div>
+      <div class="hero-eyebrow" id="hero-eyebrow-typed"></div>
+      <div class="hero-title" id="hero-title-chars" style="white-space:nowrap;"><span class="char">G</span><span class="char">a</span><span class="char">r</span><span class="char">r</span><span class="char">a</span><span class="char">n</span><span class="char">&nbsp;</span><span class="char">H</span><span class="char">i</span><span class="char">l</span><span class="char">l</span></div>
       <div class="hero-rule"></div>
       <div class="hero-subhead">Neo-Georgian. &nbsp; Walter Hines Page. &nbsp; 110 years of remarkable stewardship.</div>
     </div>
@@ -1629,12 +1642,17 @@
     <p class="room-pull"><em>The floors are reclaimed heart-pine. Chosen. Not incidental.</em></p>
   </div>
 </section>
-<div class="film-strip" style="background: var(--dark); padding: 2px 0;">
+<div class="film-strip-wrap"><div class="film-strip" style="background: var(--dark); padding: 2px 0;">
   <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777568366/gh_key/gh_kitchen_island.jpg" alt="Kitchen island" loading="lazy">
   <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777568367/gh_key/gh_kitchen_sink.jpg" alt="Kitchen sink wall" loading="lazy">
   <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777568369/gh_key/gh_kitchen_detail.jpg" alt="Kitchen detail" loading="lazy">
   <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777568370/gh_key/gh_kitchen_range.jpg" alt="Kitchen range" loading="lazy">
-</div>
+
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777568366/gh_key/gh_kitchen_island.jpg" alt="Kitchen island" loading="lazy">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777568367/gh_key/gh_kitchen_sink.jpg" alt="Kitchen sink wall" loading="lazy">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777568369/gh_key/gh_kitchen_detail.jpg" alt="Kitchen detail" loading="lazy">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777568370/gh_key/gh_kitchen_range.jpg" alt="Kitchen range" loading="lazy">
+</div></div>
 
 <!-- ============================================================ -->
 <!-- BEAT 13 — PRIMARY SUITE -->
@@ -1862,6 +1880,177 @@
   
 
 <script>
+  // ── LENIS smooth scroll ─────────────────────────────────────────────────
+  const lenis = new Lenis({
+    duration: 1.4,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    direction: 'vertical',
+    smooth: true,
+  });
+  function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
+
+  // ── Custom cursor ────────────────────────────────────────────────────────
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  let mouseX = 0, mouseY = 0;
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    dot.style.left = mouseX + 'px'; dot.style.top = mouseY + 'px';
+    dot.style.opacity = '1';
+    ring.style.opacity = '1';
+    gsap.to(ring, { left: mouseX, top: mouseY, duration: 0.12, ease: 'power2.out' });
+  });
+  document.querySelectorAll('a, button, .ctrl-btn, .twilight-cta').forEach(el => {
+    el.addEventListener('mouseenter', () => { gsap.to(ring, { scale: 2.2, borderColor: 'rgba(201,169,110,0.8)', duration: 0.3 }); gsap.to(dot, { scale: 0.4, duration: 0.3 }); });
+    el.addEventListener('mouseleave', () => { gsap.to(ring, { scale: 1, borderColor: 'rgba(201,169,110,0.4)', duration: 0.3 }); gsap.to(dot, { scale: 1, duration: 0.3 }); });
+  });
+
+  // ── Typed hero eyebrow ─────────────────────────────────────────────────
+  (function() {
+    const el = document.getElementById('hero-eyebrow-typed');
+    if (!el) return;
+    const text = '200 Hollycrest Drive  ·  Pinehurst, North Carolina';
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        el.textContent = text.slice(0, ++i);
+        setTimeout(type, 38);
+      }
+    }
+    setTimeout(type, 300);
+  })();
+
+  // ── GSAP + ScrollTrigger setup ───────────────────────────────────────────
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero title character stagger entrance
+  gsap.from('#hero-title-chars .char', {
+    opacity: 0,
+    y: 60,
+    rotateX: -40,
+    stagger: 0.08,
+    duration: 1.4,
+    ease: 'power4.out',
+    delay: 0.8,
+  });
+
+  // Hero eyebrow + subhead
+  gsap.from('.hero-eyebrow', { opacity: 0, y: 20, duration: 1.2, delay: 0.4, ease: 'power3.out' });
+  gsap.from('.hero-rule', { scaleX: 0, duration: 1.6, delay: 1.8, ease: 'power3.inOut', transformOrigin: 'left center' });
+  gsap.from('.hero-subhead', { opacity: 0, y: 16, duration: 1.2, delay: 2.0, ease: 'power3.out' });
+
+  // Stat bar numbers count up
+  document.querySelectorAll('.stat-number').forEach(el => {
+    const raw = el.textContent.replace(/[^0-9.]/g, '');
+    if (!raw || isNaN(raw) || raw.length > 5) return;
+    const end = parseFloat(raw);
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 90%',
+      once: true,
+      onEnter: () => {
+        gsap.from({ val: 0 }, {
+          val: end,
+          duration: 1.8,
+          ease: 'power2.out',
+          onUpdate: function() {
+            el.textContent = (end % 1 === 0) ? Math.floor(this.targets()[0].val).toLocaleString() : this.targets()[0].val.toFixed(2);
+          }
+        });
+      }
+    });
+  });
+
+  // Parallax on every full-bleed image
+  document.querySelectorAll('.twilight-bg, .threshold-img').forEach(img => {
+    gsap.to(img, {
+      yPercent: -18,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: img.parentElement,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+      }
+    });
+  });
+
+  // Section headlines — slide up on scroll
+  gsap.utils.toArray('.craftsmen-headline, .threshold-headline, .restoration-headline, .stewardship-name, .whp-titles-headline').forEach(el => {
+    gsap.from(el, {
+      opacity: 0,
+      y: 50,
+      duration: 1.4,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+    });
+  });
+
+  // Body text — fade in staggered paragraphs
+  gsap.utils.toArray('.craftsmen-body p, .stewardship-body p, .restoration-body p').forEach((p, i) => {
+    gsap.from(p, {
+      opacity: 0,
+      y: 24,
+      duration: 1.1,
+      delay: i * 0.12,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: p, start: 'top 88%', once: true }
+    });
+  });
+
+  // Gold rules — draw left to right
+  gsap.utils.toArray('.craftsmen-rule, .threshold-rule, .restoration-rule, .stewardship-rule, .hero-rule').forEach(el => {
+    gsap.from(el, {
+      scaleX: 0,
+      duration: 1.4,
+      ease: 'power3.inOut',
+      transformOrigin: 'left center',
+      scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+    });
+  });
+
+  // Blue Fox interstitial — scale up from small
+  gsap.from('.interstitial-foxline', {
+    opacity: 0,
+    scale: 0.92,
+    duration: 1.8,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: '.interstitial-foxline', start: 'top 80%', once: true }
+  });
+
+  // KB Gate — parallax on bg images  
+  gsap.utils.toArray('.kb-img').forEach((img, i) => {
+    gsap.to(img, {
+      yPercent: -12,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.kb-gate-section',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1.5,
+      }
+    });
+  });
+
+  // Closing section — seal pulse
+  gsap.to('.twilight-seal', {
+    scale: 1.04,
+    duration: 3,
+    ease: 'sine.inOut',
+    yoyo: true,
+    repeat: -1,
+  });
+
+  // ── Scroll progress bar ─────────────────────────────────────────────────
+  const progressBar = document.getElementById('scroll-progress');
+  lenis.on('scroll', ({ progress }) => {
+    if (progressBar) progressBar.style.width = (progress * 100) + '%';
+  });
+
   // ── NAV scroll ───────────────────────────────────────────────────────────
   const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => {
