@@ -8,90 +8,61 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { height: 100%; width: 100%; background: #0a0a0a; overflow: hidden; font-family: 'Cormorant Garamond', serif; color: #F5F0E8; }
+
   .shell { display: flex; flex-direction: column; height: 100vh; width: 100vw; }
 
   /* TOP BAR */
-  .topbar { height: 46px; background: #0d0d0d; border-bottom: 1px solid #1a1a1a; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; flex-shrink: 0; z-index: 10; }
+  .topbar { height: 46px; min-height: 46px; background: #0d0d0d; border-bottom: 1px solid #1a1a1a; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; flex-shrink: 0; z-index: 10; }
   .topbar-title { font-family: 'Pinyon Script', cursive; font-size: 26px; color: #C9A96E; }
   .topbar-label { font-size: 9px; letter-spacing: 0.4em; color: #333; text-transform: uppercase; }
-  .topbar-links { display: flex; gap: 16px; align-items: center; }
-  .topbar-links a { font-size: 9px; letter-spacing: 0.3em; color: #C9A96E; text-transform: uppercase; text-decoration: none; opacity: 0.6; transition: opacity 0.2s; }
+  .topbar-links { display: flex; gap: 16px; }
+  .topbar-links a { font-size: 9px; letter-spacing: 0.3em; color: #C9A96E; text-transform: uppercase; text-decoration: none; opacity: 0.6; }
   .topbar-links a:hover { opacity: 1; }
 
   /* SPLIT */
-  .split { display: flex; flex: 1; overflow: hidden; position: relative; }
+  .split { display: flex; flex: 1; min-height: 0; overflow: hidden; position: relative; }
 
   /* LEFT PANEL */
-  .panel-left { height: 100%;
-    width: 420px; min-width: 420px;
-    display: flex; flex-direction: column;
+  .panel-left {
+    width: 420px;
+    min-width: 420px;
+    display: flex;
+    flex-direction: column;
     border-right: 1px solid #1a1a1a;
     transition: width 0.3s ease, min-width 0.3s ease, opacity 0.3s ease;
     overflow: hidden;
     position: relative;
     z-index: 2;
+    height: 100%;
   }
-  .panel-left.collapsed {
-    width: 0 !important;
-    min-width: 0 !important;
-    opacity: 0;
-    pointer-events: none;
-  }
+  .panel-left.collapsed { width: 0 !important; min-width: 0 !important; opacity: 0; pointer-events: none; }
 
-  /* CHAT TOGGLE TAB — floats on left edge of right panel */
-  .chat-tab {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 20;
-    background: #0d0d0d;
-    border: 1px solid #2a2a2a;
-    border-left: none;
-    color: #C9A96E;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 8px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    padding: 14px 6px;
-    cursor: pointer;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transition: background 0.2s, border-color 0.2s;
-    display: none;
-    border-radius: 0 4px 4px 0;
-  }
-  .chat-tab:hover { background: #C9A96E11; border-color: #C9A96E; }
-  .chat-tab.visible { display: block; }
-
-  /* PANEL HEADERS */
-  .panel-header { height: 38px; background: #0d0d0d; border-bottom: 1px solid #141414; display: flex; align-items: center; padding: 0 14px; flex-shrink: 0; gap: 10px; }
+  .panel-header { height: 36px; min-height: 36px; background: #0d0d0d; border-bottom: 1px solid #141414; display: flex; align-items: center; padding: 0 14px; flex-shrink: 0; gap: 10px; }
   .panel-header-label { font-size: 9px; letter-spacing: 0.35em; color: #333; text-transform: uppercase; white-space: nowrap; }
   .panel-header-dot { width: 6px; height: 6px; border-radius: 50%; background: #C9A96E; opacity: 0.5; flex-shrink: 0; }
-
-  /* COLLAPSE BUTTON inside left panel header */
-  .collapse-btn {
-    margin-left: auto;
-    background: transparent;
-    border: 1px solid #1e1e1e;
-    color: #444;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 8px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
+  .collapse-btn { margin-left: auto; background: transparent; border: 1px solid #1e1e1e; color: #444; font-family: 'Cormorant Garamond', serif; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; padding: 3px 8px; cursor: pointer; transition: all 0.2s; }
   .collapse-btn:hover { border-color: #C9A96E55; color: #C9A96E; }
 
-  iframe { display: block; border: none; }
+  /* CHAT IFRAME — fills all remaining height */
+  #chatFrame {
+    display: block;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    border: none;
+    background: #0a0a0a;
+  }
 
-  /* Chat iframe fills left panel */
-  #chatFrame { width: 100%; flex: 1; min-height: 0; height: 100%; }
+  /* CHAT TAB */
+  .chat-tab { position: absolute; left: 0; top: 50%; transform: translateY(-50%); z-index: 20; background: #0d0d0d; border: 1px solid #2a2a2a; border-left: none; color: #C9A96E; font-family: 'Cormorant Garamond', serif; font-size: 8px; letter-spacing: 0.25em; text-transform: uppercase; padding: 14px 6px; cursor: pointer; writing-mode: vertical-rl; display: none; border-radius: 0 4px 4px 0; }
+  .chat-tab.visible { display: block; }
+
+  /* DRAG */
+  .drag-handle { width: 3px; background: #1a1a1a; cursor: col-resize; flex-shrink: 0; transition: background 0.2s; }
+  .drag-handle:hover { background: #C9A96E; }
 
   /* RIGHT PANEL */
-  .panel-right { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: #111; min-width: 0; }
+  .panel-right { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: #111; min-width: 0; height: 100%; position: relative; }
 
   /* DEVICE SWITCHER */
   .device-switcher { display: flex; gap: 4px; margin-left: auto; }
@@ -100,26 +71,23 @@
   .dev-btn.active { border-color: #C9A96E; color: #C9A96E; background: #C9A96E11; }
 
   /* PREVIEW WRAP */
-  .preview-wrap { flex: 1; display: flex; overflow: auto; transition: all 0.3s; }
+  .preview-wrap { flex: 1; min-height: 0; display: flex; overflow: auto; }
 
-  .preview-wrap.desktop { align-items: stretch; padding: 0; background: #0a0a0a; }
+  .preview-wrap.desktop { background: #0a0a0a; align-items: stretch; }
   .preview-wrap.desktop .device-chrome { width: 100%; height: 100%; border-radius: 0; border: none; }
-  .preview-wrap.desktop iframe { width: 100%; height: 100%; }
+  .preview-wrap.desktop #siteFrame { width: 100%; height: 100%; }
 
-  .preview-wrap.tablet { align-items: flex-start; justify-content: center; padding: 20px 0; background: #111; }
+  .preview-wrap.tablet { background: #111; align-items: flex-start; justify-content: center; padding: 20px 0; }
   .preview-wrap.tablet .device-chrome { width: 768px; border-radius: 14px; border: 2px solid #2a2a2a; box-shadow: 0 0 60px rgba(0,0,0,0.7); overflow: hidden; }
-  .preview-wrap.tablet iframe { width: 768px; height: calc(100vh - 110px); }
+  .preview-wrap.tablet #siteFrame { width: 768px; height: calc(100vh - 120px); }
 
-  .preview-wrap.mobile { align-items: flex-start; justify-content: center; padding: 20px 0; background: #111; }
+  .preview-wrap.mobile { background: #111; align-items: flex-start; justify-content: center; padding: 20px 0; }
   .preview-wrap.mobile .device-chrome { width: 390px; border-radius: 40px; border: 8px solid #2a2a2a; box-shadow: 0 0 80px rgba(0,0,0,0.9); overflow: hidden; position: relative; }
   .preview-wrap.mobile .device-chrome::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 110px; height: 28px; background: #2a2a2a; border-radius: 0 0 16px 16px; z-index: 10; }
-  .preview-wrap.mobile iframe { width: 390px; height: calc(100vh - 110px); }
+  .preview-wrap.mobile #siteFrame { width: 390px; height: calc(100vh - 120px); }
 
   .device-chrome { display: flex; flex-direction: column; background: #0a0a0a; }
-
-  /* DRAG */
-  .drag-handle { width: 3px; background: #1a1a1a; cursor: col-resize; flex-shrink: 0; transition: background 0.2s; }
-  .drag-handle:hover { background: #C9A96E; }
+  #siteFrame { display: block; border: none; }
 
   /* CONTROLS */
   .preview-controls { position: absolute; bottom: 14px; right: 14px; display: flex; gap: 8px; z-index: 5; }
@@ -148,15 +116,18 @@
         <div class="panel-header-dot"></div>
         <button class="collapse-btn" onclick="toggleChat()">← Hide</button>
       </div>
-      <iframe src="https://app.base44.com/superagent/69e248a2469cc39540781cce" title="Rocky Chat" allow="microphone" id="chatFrame"></iframe>
+      <iframe
+        src="https://app.base44.com/superagent/69e248a2469cc39540781cce"
+        title="Rocky Chat"
+        allow="microphone"
+        id="chatFrame"
+      ></iframe>
     </div>
 
     <div class="drag-handle" id="dragHandle"></div>
 
     <!-- RIGHT — SITE -->
-    <div class="panel-right" id="panelRight" style="position:relative;">
-
-      <!-- CHAT TAB (shows when collapsed) -->
+    <div class="panel-right" id="panelRight">
       <button class="chat-tab" id="chatTab" onclick="toggleChat()">Rocky ›</button>
 
       <div class="panel-header">
@@ -189,32 +160,17 @@
 
   function toggleChat() {
     chatVisible = !chatVisible;
-    const panel = document.getElementById('panelLeft');
-    const tab = document.getElementById('chatTab');
-    const drag = document.getElementById('dragHandle');
-    if (chatVisible) {
-      panel.classList.remove('collapsed');
-      tab.classList.remove('visible');
-      drag.style.display = '';
-    } else {
-      panel.classList.add('collapsed');
-      tab.classList.add('visible');
-      drag.style.display = 'none';
-    }
+    document.getElementById('panelLeft').classList.toggle('collapsed', !chatVisible);
+    document.getElementById('chatTab').classList.toggle('visible', !chatVisible);
+    document.getElementById('dragHandle').style.display = chatVisible ? '' : 'none';
   }
 
   function setDevice(device) {
     document.getElementById('previewWrap').className = 'preview-wrap ' + device;
     document.querySelectorAll('.dev-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('btn-' + device).classList.add('active');
-
-    // Auto-collapse chat on mobile/tablet for more room
-    if ((device === 'mobile' || device === 'tablet') && chatVisible) {
-      toggleChat();
-    }
-    if (device === 'desktop' && !chatVisible) {
-      toggleChat();
-    }
+    if ((device === 'mobile' || device === 'tablet') && chatVisible) toggleChat();
+    if (device === 'desktop' && !chatVisible) toggleChat();
   }
 
   function refreshSite() {
