@@ -7,171 +7,62 @@
 <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; background: #0a0a0a; overflow: hidden; font-family: 'Cormorant Garamond', serif; color: #F5F0E8; }
+  .shell { display: flex; flex-direction: column; height: 100vh; width: 100vw; }
 
-  html, body {
-    height: 100%;
-    width: 100%;
-    background: #0a0a0a;
-    overflow: hidden;
-    font-family: 'Cormorant Garamond', serif;
-    color: #F5F0E8;
-  }
-
-  .shell {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 100vw;
-  }
-
-  /* TOP BAR */
-  .topbar {
-    height: 46px;
-    background: #0d0d0d;
-    border-bottom: 1px solid #1a1a1a;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
-    flex-shrink: 0;
-    z-index: 10;
-  }
-  .topbar-title {
-    font-family: 'Pinyon Script', cursive;
-    font-size: 26px;
-    color: #C9A96E;
-    letter-spacing: 0.02em;
-  }
-  .topbar-label {
-    font-size: 9px;
-    letter-spacing: 0.45em;
-    color: #333;
-    text-transform: uppercase;
-  }
-  .topbar-links {
-    display: flex;
-    gap: 20px;
-  }
-  .topbar-links a {
-    font-size: 9px;
-    letter-spacing: 0.35em;
-    color: #C9A96E;
-    text-transform: uppercase;
-    text-decoration: none;
-    opacity: 0.7;
-    transition: opacity 0.2s;
-  }
+  .topbar { height: 46px; background: #0d0d0d; border-bottom: 1px solid #1a1a1a; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; flex-shrink: 0; z-index: 10; }
+  .topbar-title { font-family: 'Pinyon Script', cursive; font-size: 26px; color: #C9A96E; }
+  .topbar-label { font-size: 9px; letter-spacing: 0.45em; color: #333; text-transform: uppercase; }
+  .topbar-links { display: flex; gap: 20px; align-items: center; }
+  .topbar-links a { font-size: 9px; letter-spacing: 0.35em; color: #C9A96E; text-transform: uppercase; text-decoration: none; opacity: 0.7; transition: opacity 0.2s; }
   .topbar-links a:hover { opacity: 1; }
 
-  /* SPLIT */
-  .split {
-    display: flex;
-    flex: 1;
-    overflow: hidden;
-  }
+  .split { display: flex; flex: 1; overflow: hidden; }
+  .panel { display: flex; flex-direction: column; overflow: hidden; position: relative; }
+  .panel-left { width: 42%; min-width: 340px; border-right: 1px solid #1a1a1a; }
+  .panel-right { flex: 1; background: #111; }
 
-  /* PANELS */
-  .panel {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    position: relative;
-  }
+  .panel-header { height: 38px; background: #0d0d0d; border-bottom: 1px solid #141414; display: flex; align-items: center; padding: 0 16px; flex-shrink: 0; gap: 12px; }
+  .panel-header-label { font-size: 9px; letter-spacing: 0.35em; color: #333; text-transform: uppercase; white-space: nowrap; }
+  .panel-header-dot { width: 6px; height: 6px; border-radius: 50%; background: #C9A96E; opacity: 0.5; flex-shrink: 0; margin-left: auto; }
 
-  .panel-left {
-    width: 42%;
-    min-width: 340px;
-    border-right: 1px solid #1a1a1a;
-  }
+  .device-switcher { display: flex; gap: 4px; align-items: center; }
+  .dev-btn { background: transparent; border: 1px solid #1e1e1e; color: #444; font-family: 'Cormorant Garamond', serif; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; padding: 4px 10px; cursor: pointer; transition: all 0.2s; }
+  .dev-btn:hover { border-color: #C9A96E55; color: #C9A96E; }
+  .dev-btn.active { border-color: #C9A96E; color: #C9A96E; background: #C9A96E11; }
 
-  .panel-right {
-    flex: 1;
-  }
+  .preview-wrap { flex: 1; display: flex; overflow: auto; background: #0a0a0a; transition: all 0.3s; }
 
-  .panel-header {
-    height: 34px;
-    background: #0d0d0d;
-    border-bottom: 1px solid #141414;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 16px;
-    flex-shrink: 0;
-  }
-  .panel-header-label {
-    font-size: 9px;
-    letter-spacing: 0.35em;
-    color: #333;
-    text-transform: uppercase;
-  }
-  .panel-header-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #C9A96E;
-    opacity: 0.5;
-  }
+  /* Desktop */
+  .preview-wrap.desktop { align-items: stretch; justify-content: stretch; padding: 0; }
+  .preview-wrap.desktop .device-chrome { width: 100%; height: 100%; border-radius: 0; border: none; box-shadow: none; }
+  .preview-wrap.desktop iframe { width: 100%; height: 100%; }
 
-  iframe {
-    flex: 1;
-    border: none;
-    width: 100%;
-    height: 100%;
-    background: #0a0a0a;
-  }
+  /* Tablet */
+  .preview-wrap.tablet { align-items: flex-start; justify-content: center; padding: 24px 0; background: #111; }
+  .preview-wrap.tablet .device-chrome { width: 768px; min-height: calc(100vh - 120px); border-radius: 14px; border: 2px solid #2a2a2a; box-shadow: 0 0 60px rgba(0,0,0,0.7); overflow: hidden; }
+  .preview-wrap.tablet iframe { width: 768px; height: calc(100vh - 120px); }
 
-  /* DIVIDER DRAG HANDLE */
-  .drag-handle {
-    width: 3px;
-    background: #1a1a1a;
-    cursor: col-resize;
-    flex-shrink: 0;
-    position: relative;
-    transition: background 0.2s;
-  }
+  /* Mobile */
+  .preview-wrap.mobile { align-items: flex-start; justify-content: center; padding: 24px 0; background: #111; }
+  .preview-wrap.mobile .device-chrome { width: 390px; min-height: calc(100vh - 120px); border-radius: 40px; border: 8px solid #2a2a2a; box-shadow: 0 0 80px rgba(0,0,0,0.9); overflow: hidden; position: relative; }
+  .preview-wrap.mobile .device-chrome::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 110px; height: 30px; background: #2a2a2a; border-radius: 0 0 18px 18px; z-index: 10; }
+  .preview-wrap.mobile iframe { width: 390px; height: calc(100vh - 120px); }
+
+  .device-chrome { display: flex; flex-direction: column; background: #0a0a0a; }
+  iframe { display: block; border: none; }
+
+  .drag-handle { width: 3px; background: #1a1a1a; cursor: col-resize; flex-shrink: 0; transition: background 0.2s; }
   .drag-handle:hover { background: #C9A96E; }
-  .drag-handle::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 1px;
-    height: 40px;
-    background: #C9A96E;
-    opacity: 0.4;
-    border-radius: 1px;
-  }
 
-  /* PREVIEW CONTROLS */
-  .preview-controls {
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
-    display: flex;
-    gap: 8px;
-    z-index: 5;
-  }
-  .ctrl-btn {
-    background: rgba(10,10,10,0.85);
-    border: 1px solid #2a2a2a;
-    color: #C9A96E;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 9px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    padding: 8px 14px;
-    cursor: pointer;
-    transition: border-color 0.2s;
-  }
+  .preview-controls { position: absolute; bottom: 16px; right: 16px; display: flex; gap: 8px; z-index: 5; }
+  .ctrl-btn { background: rgba(10,10,10,0.9); border: 1px solid #2a2a2a; color: #C9A96E; font-family: 'Cormorant Garamond', serif; font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; padding: 8px 14px; cursor: pointer; transition: border-color 0.2s; }
   .ctrl-btn:hover { border-color: #C9A96E; }
 </style>
 </head>
 <body>
-
 <div class="shell">
 
-  <!-- TOP BAR -->
   <div class="topbar">
     <div class="topbar-title">Rachel Hernandez Studio</div>
     <div class="topbar-label">Rocky + Rachel · Workshop</div>
@@ -181,41 +72,39 @@
     </div>
   </div>
 
-  <!-- SPLIT PANELS -->
   <div class="split" id="split">
 
-    <!-- LEFT — ROCKY CHAT -->
+    <!-- LEFT — CHAT -->
     <div class="panel panel-left" id="panelLeft">
       <div class="panel-header">
         <span class="panel-header-label">Rocky — AI</span>
         <div class="panel-header-dot"></div>
       </div>
-      <iframe
-        src="https://app.base44.com/superagent/69e248a2469cc39540781cce"
-        title="Rocky Chat"
-        allow="microphone"
-        id="chatFrame"
-      ></iframe>
+      <iframe src="https://app.base44.com/superagent/69e248a2469cc39540781cce" title="Rocky Chat" allow="microphone" id="chatFrame"></iframe>
     </div>
 
-    <!-- DRAG HANDLE -->
     <div class="drag-handle" id="dragHandle"></div>
 
-    <!-- RIGHT — LIVE SITE -->
+    <!-- RIGHT — SITE -->
     <div class="panel panel-right" id="panelRight">
       <div class="panel-header">
         <span class="panel-header-label">Garran Hill — Live</span>
+        <div class="device-switcher">
+          <button class="dev-btn active" id="btn-desktop" onclick="setDevice('desktop')">&#128444; Desktop</button>
+          <button class="dev-btn" id="btn-tablet" onclick="setDevice('tablet')">&#9645; Tablet</button>
+          <button class="dev-btn" id="btn-mobile" onclick="setDevice('mobile')">&#9646; Mobile</button>
+        </div>
         <div class="panel-header-dot"></div>
       </div>
-      <iframe
-        src="https://garren-hill.pages.dev"
-        title="Garran Hill Live"
-        id="siteFrame"
-      ></iframe>
 
-      <!-- REFRESH BUTTON -->
+      <div class="preview-wrap desktop" id="previewWrap">
+        <div class="device-chrome" id="deviceChrome">
+          <iframe src="https://garren-hill.pages.dev" title="Garran Hill" id="siteFrame"></iframe>
+        </div>
+      </div>
+
       <div class="preview-controls">
-        <button class="ctrl-btn" onclick="document.getElementById('siteFrame').src = document.getElementById('siteFrame').src">↺ Refresh</button>
+        <button class="ctrl-btn" onclick="refreshSite()">↺ Refresh</button>
         <button class="ctrl-btn" onclick="window.open('https://garren-hill.pages.dev','_blank')">↗ Full Screen</button>
       </div>
     </div>
@@ -224,33 +113,32 @@
 </div>
 
 <script>
-  // Draggable divider
+  function setDevice(device) {
+    const wrap = document.getElementById('previewWrap');
+    const frame = document.getElementById('siteFrame');
+    wrap.className = 'preview-wrap ' + device;
+    document.querySelectorAll('.dev-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('btn-' + device).classList.add('active');
+  }
+
+  function refreshSite() {
+    const f = document.getElementById('siteFrame');
+    const s = f.src; f.src = ''; setTimeout(() => { f.src = s; }, 50);
+  }
+
   const handle = document.getElementById('dragHandle');
   const left = document.getElementById('panelLeft');
   const split = document.getElementById('split');
   let dragging = false;
 
-  handle.addEventListener('mousedown', e => {
-    dragging = true;
-    document.body.style.cursor = 'col-resize';
-    document.body.style.userSelect = 'none';
-  });
-
+  handle.addEventListener('mousedown', () => { dragging = true; document.body.style.cursor = 'col-resize'; document.body.style.userSelect = 'none'; });
   document.addEventListener('mousemove', e => {
     if (!dragging) return;
-    const splitRect = split.getBoundingClientRect();
-    let newWidth = e.clientX - splitRect.left;
-    newWidth = Math.max(280, Math.min(newWidth, splitRect.width - 280));
-    left.style.width = newWidth + 'px';
-    left.style.minWidth = newWidth + 'px';
+    const r = split.getBoundingClientRect();
+    let w = Math.max(280, Math.min(e.clientX - r.left, r.width - 280));
+    left.style.width = w + 'px'; left.style.minWidth = w + 'px';
   });
-
-  document.addEventListener('mouseup', () => {
-    dragging = false;
-    document.body.style.cursor = '';
-    document.body.style.userSelect = '';
-  });
+  document.addEventListener('mouseup', () => { dragging = false; document.body.style.cursor = ''; document.body.style.userSelect = ''; });
 </script>
-
 </body>
 </html>
