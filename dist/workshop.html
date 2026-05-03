@@ -18,7 +18,6 @@
     padding: 0 24px; flex-shrink: 0; gap: 20px;
   }
   .topbar-title { font-family: 'Pinyon Script', cursive; font-size: 26px; color: #C9A96E; white-space: nowrap; }
-  .topbar-label { font-size: 9px; letter-spacing: 0.45em; color: #333; text-transform: uppercase; white-space: nowrap; }
 
   /* PROJECT SWITCHER */
   .project-switcher {
@@ -34,10 +33,6 @@
   .project-btn.active { border-color: #C9A96E; color: #C9A96E; background: #C9A96E0a; }
   .project-divider { font-size: 9px; color: #222; }
 
-  .topbar-links { display: flex; gap: 16px; flex-shrink: 0; }
-  .topbar-links a { font-size: 9px; letter-spacing: 0.35em; color: #C9A96E; text-transform: uppercase; text-decoration: none; opacity: 0.7; transition: opacity 0.2s; }
-  .topbar-links a:hover { opacity: 1; }
-
   /* SPLIT */
   .split { display: flex; flex: 1; overflow: hidden; }
 
@@ -45,7 +40,7 @@
   .drag-handle { width: 3px; background: #1a1a1a; cursor: col-resize; flex-shrink: 0; transition: background 0.2s; }
   .drag-handle:hover { background: #C9A96E; }
 
-  /* LEFT — CHAT */
+  /* LEFT — ROCKY CHAT (iframe) */
   .panel-left {
     width: 42%; min-width: 300px;
     display: flex; flex-direction: column; overflow: hidden;
@@ -57,55 +52,12 @@
     padding: 0 16px; flex-shrink: 0;
   }
   .panel-header-label { font-size: 9px; letter-spacing: 0.35em; color: #333; text-transform: uppercase; }
-  .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #C9A96E; opacity: 0.5; }
-  .status-dot.live { opacity: 1; animation: pulse 2s infinite; }
+  .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #C9A96E; animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-  .messages {
-    flex: 1; overflow-y: auto; padding: 20px 16px;
-    display: flex; flex-direction: column; gap: 16px;
-    scrollbar-width: thin; scrollbar-color: #1a1a1a #0a0a0a;
-  }
-  .messages::-webkit-scrollbar { width: 4px; }
-  .messages::-webkit-scrollbar-track { background: #0a0a0a; }
-  .messages::-webkit-scrollbar-thumb { background: #1a1a1a; }
+  .panel-left iframe { flex: 1; border: none; width: 100%; height: 100%; }
 
-  .msg { display: flex; flex-direction: column; gap: 4px; max-width: 88%; }
-  .msg.user { align-self: flex-end; align-items: flex-end; }
-  .msg.rocky { align-self: flex-start; align-items: flex-start; }
-  .msg-label { font-size: 8px; letter-spacing: 0.3em; color: #333; text-transform: uppercase; padding: 0 4px; }
-  .msg-bubble { padding: 10px 14px; font-size: 14px; font-weight: 300; line-height: 1.6; border: 1px solid #1a1a1a; }
-  .msg.user .msg-bubble { background: #0f0f0f; border-color: #C9A96E22; color: #F5F0E8; }
-  .msg.rocky .msg-bubble { background: #111; border-color: #1a1a1a; color: #e0d8cc; }
-
-  .typing { display: flex; align-items: center; gap: 4px; padding: 10px 14px; border: 1px solid #1a1a1a; background: #111; }
-  .typing span { width: 4px; height: 4px; border-radius: 50%; background: #C9A96E; animation: blink 1.2s infinite; }
-  .typing span:nth-child(2) { animation-delay: 0.2s; }
-  .typing span:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes blink { 0%,80%,100%{opacity:0.2} 40%{opacity:1} }
-
-  .input-area {
-    border-top: 1px solid #1a1a1a; padding: 12px 16px;
-    display: flex; gap: 10px; align-items: flex-end; background: #0d0d0d;
-  }
-  textarea {
-    flex: 1; background: #111; border: 1px solid #1e1e1e; color: #F5F0E8;
-    font-family: 'Cormorant Garamond', serif; font-size: 14px; font-weight: 300;
-    padding: 10px 12px; resize: none; outline: none; line-height: 1.5;
-    min-height: 42px; max-height: 120px; transition: border-color 0.2s;
-  }
-  textarea:focus { border-color: #C9A96E44; }
-  textarea::placeholder { color: #333; }
-  .send-btn {
-    background: transparent; border: 1px solid #C9A96E44; color: #C9A96E;
-    font-family: 'Cormorant Garamond', serif; font-size: 11px; letter-spacing: 0.3em;
-    text-transform: uppercase; padding: 10px 16px; cursor: pointer;
-    transition: all 0.2s; white-space: nowrap; height: 42px;
-  }
-  .send-btn:hover { background: #C9A96E11; border-color: #C9A96E; }
-  .send-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-
-  /* RIGHT — PREVIEW */
+  /* RIGHT — SITE PREVIEW */
   .panel-right { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
 
   .preview-header {
@@ -129,7 +81,7 @@
   }
   .ctrl-btn:hover { border-color: #C9A96E; }
 
-  /* SWITCHING OVERLAY */
+  /* SWITCH OVERLAY */
   .switch-overlay {
     position: absolute; inset: 0; background: #0a0a0a;
     display: flex; align-items: center; justify-content: center;
@@ -139,6 +91,15 @@
   .switch-overlay.visible { opacity: 1; pointer-events: all; }
   .switch-overlay-name { font-family: 'Pinyon Script', cursive; font-size: 36px; color: #C9A96E; }
   .switch-overlay-sub { font-size: 10px; letter-spacing: 0.4em; color: #444; text-transform: uppercase; }
+
+  /* NEW PROJECT PANEL */
+  .new-project-panel {
+    display: none; flex: 1; align-items: center; justify-content: center;
+    flex-direction: column; gap: 20px; padding: 40px;
+  }
+  .new-project-panel.visible { display: flex; }
+  .new-project-panel p { font-size: 13px; font-weight: 300; color: #666; letter-spacing: 0.1em; text-align: center; line-height: 1.8; }
+  .new-project-panel .np-label { font-size: 9px; letter-spacing: 0.4em; color: #C9A96E; text-transform: uppercase; }
 </style>
 </head>
 <body>
@@ -148,7 +109,6 @@
   <div class="topbar">
     <div class="topbar-title">Rachel Hernandez Studio</div>
 
-    <!-- PROJECT SWITCHER -->
     <div class="project-switcher">
       <button class="project-btn" id="btn-gh" onclick="switchProject('gh')">Garran Hill</button>
       <div class="project-divider">·</div>
@@ -157,29 +117,22 @@
       <button class="project-btn" id="btn-new" onclick="switchProject('new')" style="border-style:dashed;">+ New Project</button>
     </div>
 
-    <div class="topbar-links">
-      <a href="https://app.base44.com/superagent/69e248a2469cc39540781cce" target="_blank">↗ Rocky Full</a>
-    </div>
+    <div style="width:120px"></div><!-- spacer to balance -->
   </div>
 
   <div class="split" id="split">
 
-    <!-- LEFT — CHAT -->
+    <!-- LEFT — ROCKY CHAT -->
     <div class="panel-left" id="panelLeft">
       <div class="panel-header">
         <span class="panel-header-label">Rocky — AI</span>
-        <div class="status-dot live"></div>
+        <div class="status-dot"></div>
       </div>
-      <div class="messages" id="messages">
-        <div class="msg rocky">
-          <div class="msg-label">Rocky</div>
-          <div class="msg-bubble">Workshop upgraded. 🖤<br><br>Switch between <strong>Garran Hill</strong>, <strong>Flow Farm</strong>, or start a new project — top center. Rocky stays here. Preview switches on the right.<br><br>Currently showing: <strong>Flow Farm</strong> — ready for Farmer Mark.</div>
-        </div>
-      </div>
-      <div class="input-area">
-        <textarea id="msgInput" placeholder="Tell Rocky what to change..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
-        <button class="send-btn" id="sendBtn" onclick="sendMessage()">Send</button>
-      </div>
+      <iframe
+        src="https://app.base44.com/superagent/69e248a2469cc39540781cce"
+        title="Rocky Chat"
+        allow="clipboard-write"
+      ></iframe>
     </div>
 
     <!-- DRAG HANDLE -->
@@ -204,7 +157,13 @@
         id="siteFrame"
       ></iframe>
 
-      <div class="preview-controls">
+      <!-- NEW PROJECT PANEL -->
+      <div class="new-project-panel" id="newProjectPanel">
+        <div class="np-label">New Project</div>
+        <p>Tell Rocky the property name,<br>address, and price.<br><br>Rocky will build the site brief<br>and start the build.</p>
+      </div>
+
+      <div class="preview-controls" id="previewControls">
         <button class="ctrl-btn" onclick="refreshFrame()">↺ Refresh</button>
         <button class="ctrl-btn" onclick="openFull()">↗ Full Screen</button>
       </div>
@@ -214,9 +173,6 @@
 </div>
 
 <script>
-  const API_URL = "https://app.base44.com/api/apps/69e248a2469cc39540781cce/ai/chat";
-  let sessionId = null;
-  let isLoading = false;
   let currentProject = 'ff';
 
   const PROJECTS = {
@@ -249,37 +205,36 @@
     document.querySelectorAll('.project-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(proj.btnId).classList.add('active');
 
-    // Show overlay
-    const overlay = document.getElementById('switchOverlay');
-    document.getElementById('overlayName').textContent = proj.name;
-    overlay.classList.add('visible');
-
     // Update header
     document.getElementById('previewName').textContent = proj.name;
     document.getElementById('previewUrl').textContent = proj.displayUrl;
 
-    // Switch iframe
     const frame = document.getElementById('siteFrame');
-    if (proj.url) {
-      frame.src = proj.url + '?' + Date.now();
-      frame.onload = () => {
-        setTimeout(() => overlay.classList.remove('visible'), 300);
-      };
+    const newPanel = document.getElementById('newProjectPanel');
+    const controls = document.getElementById('previewControls');
+
+    if (key === 'new') {
+      frame.style.display = 'none';
+      newPanel.classList.add('visible');
+      controls.style.display = 'none';
     } else {
-      // New project — show placeholder
-      frame.src = 'about:blank';
-      setTimeout(() => {
-        overlay.classList.remove('visible');
-        addMessage('rocky', 'New project slot ready. Tell me the property name, address, and price — I\'ll start building the site brief.');
-      }, 600);
+      newPanel.classList.remove('visible');
+      frame.style.display = 'block';
+      controls.style.display = 'flex';
+
+      // Show overlay while loading
+      const overlay = document.getElementById('switchOverlay');
+      document.getElementById('overlayName').textContent = proj.name;
+      overlay.classList.add('visible');
+
+      frame.src = proj.url + '?' + Date.now();
+      frame.onload = () => setTimeout(() => overlay.classList.remove('visible'), 200);
     }
   }
 
   function refreshFrame() {
     const proj = PROJECTS[currentProject];
-    if (proj.url) {
-      document.getElementById('siteFrame').src = proj.url + '?' + Date.now();
-    }
+    if (proj.url) document.getElementById('siteFrame').src = proj.url + '?' + Date.now();
   }
 
   function openFull() {
@@ -301,80 +256,6 @@
     panelLeft.style.width = newW + 'px';
   });
   document.addEventListener('mouseup', () => { dragging = false; });
-
-  function autoResize(el) {
-    el.style.height = 'auto';
-    el.style.height = Math.min(el.scrollHeight, 120) + 'px';
-  }
-
-  function handleKey(e) {
-    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
-  }
-
-  function addMessage(role, text) {
-    const messages = document.getElementById('messages');
-    const div = document.createElement('div');
-    div.className = `msg ${role}`;
-    div.innerHTML = `
-      <div class="msg-label">${role === 'user' ? 'Rachel' : 'Rocky'}</div>
-      <div class="msg-bubble">${text.replace(/\n/g,'<br>')}</div>
-    `;
-    messages.appendChild(div);
-    messages.scrollTop = messages.scrollHeight;
-    return div;
-  }
-
-  function showTyping() {
-    const messages = document.getElementById('messages');
-    const div = document.createElement('div');
-    div.className = 'msg rocky'; div.id = 'typing-indicator';
-    div.innerHTML = `<div class="msg-label">Rocky</div><div class="typing"><span></span><span></span><span></span></div>`;
-    messages.appendChild(div);
-    messages.scrollTop = messages.scrollHeight;
-  }
-
-  function hideTyping() {
-    const el = document.getElementById('typing-indicator');
-    if (el) el.remove();
-  }
-
-  async function sendMessage() {
-    const input = document.getElementById('msgInput');
-    const btn = document.getElementById('sendBtn');
-    const text = input.value.trim();
-    if (!text || isLoading) return;
-
-    isLoading = true; btn.disabled = true;
-    input.value = ''; input.style.height = 'auto';
-
-    addMessage('user', text);
-    showTyping();
-
-    try {
-      const body = { message: text };
-      if (sessionId) body.session_id = sessionId;
-
-      const res = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-        credentials: 'include'
-      });
-
-      const data = await res.json();
-      hideTyping();
-      if (data.session_id) sessionId = data.session_id;
-      const reply = data.message || data.response || data.content || 'Got it — on it.';
-      addMessage('rocky', reply);
-
-    } catch(err) {
-      hideTyping();
-      addMessage('rocky', 'Connection dropped. Open Rocky Full (top right) to continue.');
-    }
-
-    isLoading = false; btn.disabled = false;
-    input.focus();
-  }
 </script>
 </body>
 </html>
