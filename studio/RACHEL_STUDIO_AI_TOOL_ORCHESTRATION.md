@@ -18,6 +18,7 @@ The platform coordinates them.
 | --- | --- |
 | Core Narrative | The spine: platform, backend, outputs, tools, truth, approval, evolution |
 | Buyer Voice Brand | Property-specific buyer psychology, language palette, public/private tone, search intent, and visual voice |
+| Best Choice Engine | Backend AI function that ranks the best options inside a category with score, rationale, risk, and approval status |
 | Best-Case Setup Plan | Safe target architecture for domains, backend, Cloudflare, media, AI tools, and launch flow |
 | Evolution Law | Versioned platform improvement loop so Rachel Studio keeps learning without becoming chaos |
 | Innovation Radar | Official-update watcher and scoring system for new AI tools, platform upgrades, SEO changes, media tools, and MCP capabilities |
@@ -62,6 +63,8 @@ Remotion should not replace the locked hero video unless Rachel explicitly chang
 Video AI should not invent property facts, publish directly, or replace original footage.
 
 SEO should not be an afterthought.
+
+The Best Choice Engine should not approve its own recommendation or publish directly.
 
 ## The Workflow
 
@@ -171,6 +174,7 @@ Inputs:
 
 - creative standard
 - buyer voice brand
+- best-choice recommendations
 - copy map
 - media map
 - source index
@@ -265,11 +269,12 @@ And Rachel Studio should route the work:
 1. Garran Hill site rebuild
 2. Garran Hill buyer voice brand lock
 3. Garran Hill complete photo map
-4. Garran Hill SEO gate
-5. Garran Hill responsive visual QA
-6. Garran Hill launch review board
-7. Flow Farm reuse
-8. Video/social module
-9. Source/backlink backend
-10. Sotheby's / MLS / IDX integrations if allowed
-11. Full MCP / connector layer
+4. Garran Hill best-choice decisions for unresolved media/copy/SEO categories
+5. Garran Hill SEO gate
+6. Garran Hill responsive visual QA
+7. Garran Hill launch review board
+8. Flow Farm reuse
+9. Video/social module
+10. Source/backlink backend
+11. Sotheby's / MLS / IDX integrations if allowed
+12. Full MCP / connector layer
