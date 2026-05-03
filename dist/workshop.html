@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Workshop — Rachel Hernandez Studio</title>
-<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:wght@200;300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,300&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { height: 100%; width: 100%; background: #0a0a0a; overflow: hidden; font-family: 'Cormorant Garamond', serif; color: #F5F0E8; }
@@ -13,93 +13,118 @@
 
   /* TOP BAR */
   .topbar {
-    height: 46px; background: #0d0d0d; border-bottom: 1px solid #1a1a1a;
+    height: 50px; background: #0d0d0d; border-bottom: 1px solid #1a1a1a;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 24px; flex-shrink: 0; gap: 20px;
+    padding: 0 20px; flex-shrink: 0; gap: 16px;
   }
-  .topbar-title { font-family: 'Pinyon Script', cursive; font-size: 26px; color: #C9A96E; white-space: nowrap; }
-
-  /* PROJECT SWITCHER */
+  .topbar-title {
+    font-family: 'Pinyon Script', cursive; font-size: 26px; color: #C9A96E; white-space: nowrap;
+  }
   .project-switcher {
     display: flex; align-items: center; gap: 6px; flex: 1; justify-content: center;
   }
   .project-btn {
     background: transparent; border: 1px solid #222;
-    color: #666; font-family: 'Cormorant Garamond', serif;
+    color: #555; font-family: 'Cormorant Garamond', serif;
     font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
-    padding: 6px 16px; cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    padding: 6px 18px; cursor: pointer; transition: all 0.2s; white-space: nowrap;
   }
-  .project-btn:hover { border-color: #C9A96E44; color: #C9A96E; }
-  .project-btn.active { border-color: #C9A96E; color: #C9A96E; background: #C9A96E0a; }
-  .project-divider { font-size: 9px; color: #222; }
+  .project-btn:hover { border-color: rgba(201,169,110,0.4); color: #C9A96E; }
+  .project-btn.active { border-color: #C9A96E; color: #C9A96E; background: rgba(201,169,110,0.05); }
 
-  /* SPLIT */
-  .split { display: flex; flex: 1; overflow: hidden; }
-
-  /* DRAG HANDLE */
-  .drag-handle { width: 3px; background: #1a1a1a; cursor: col-resize; flex-shrink: 0; transition: background 0.2s; }
-  .drag-handle:hover { background: #C9A96E; }
-
-  /* LEFT — ROCKY CHAT (iframe) */
-  .panel-left {
-    width: 42%; min-width: 300px;
-    display: flex; flex-direction: column; overflow: hidden;
-    border-right: 1px solid #1a1a1a;
+  /* ROCKY PANEL (left) */
+  .rocky-panel {
+    width: 380px; min-width: 320px; max-width: 420px;
+    display: flex; flex-direction: column;
+    background: #0d0d0d; border-right: 1px solid #1a1a1a;
+    flex-shrink: 0;
   }
   .panel-header {
-    height: 34px; background: #0d0d0d; border-bottom: 1px solid #141414;
+    height: 36px; background: #0d0d0d; border-bottom: 1px solid #141414;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 16px; flex-shrink: 0;
   }
-  .panel-header-label { font-size: 9px; letter-spacing: 0.35em; color: #333; text-transform: uppercase; }
-  .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #C9A96E; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .panel-label { font-size: 9px; letter-spacing: 0.35em; color: #333; text-transform: uppercase; }
+  .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #C9A96E; animation: pulse 2.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.25} }
 
-  .panel-left iframe { flex: 1; border: none; width: 100%; height: 100%; }
+  /* ROCKY CARD CONTENT */
+  .rocky-content {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 28px; padding: 32px 28px;
+  }
+  .rocky-seal {
+    width: 80px; height: 80px; object-fit: contain; opacity: 0.7;
+  }
+  .rocky-name {
+    font-family: 'Pinyon Script', cursive; font-size: 42px; color: #C9A96E;
+    text-align: center; line-height: 1;
+  }
+  .rocky-tagline {
+    font-size: 11px; letter-spacing: 0.3em; color: #444; text-transform: uppercase;
+    text-align: center; line-height: 1.8;
+  }
+  .rocky-divider { width: 40px; height: 1px; background: rgba(201,169,110,0.3); }
 
-  /* RIGHT — SITE PREVIEW */
-  .panel-right { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
+  .open-chat-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: transparent; border: 1px solid #C9A96E;
+    color: #C9A96E; font-family: 'Cormorant Garamond', serif;
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    padding: 12px 28px; cursor: pointer; text-decoration: none;
+    transition: all 0.25s;
+  }
+  .open-chat-btn:hover { background: rgba(201,169,110,0.08); }
+  .open-chat-btn svg { flex-shrink: 0; }
 
+  .shortcut-hint {
+    font-size: 10px; letter-spacing: 0.2em; color: #2a2a2a; text-transform: uppercase;
+    text-align: center;
+  }
+
+  /* QUICK NOTES */
+  .notes-area {
+    border-top: 1px solid #141414; padding: 16px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .notes-label { font-size: 9px; letter-spacing: 0.3em; color: #2a2a2a; text-transform: uppercase; }
+  .notes-input {
+    background: #111; border: 1px solid #1e1e1e; color: #666;
+    font-family: 'Cormorant Garamond', serif; font-size: 13px; line-height: 1.6;
+    padding: 10px 12px; resize: none; outline: none; height: 90px;
+    width: 100%; transition: border-color 0.2s;
+  }
+  .notes-input:focus { border-color: rgba(201,169,110,0.3); color: #F5F0E8; }
+  .notes-input::placeholder { color: #2a2a2a; }
+
+  /* SITE PREVIEW (right) */
+  .split { display: flex; flex: 1; overflow: hidden; }
+  .preview-panel { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
   .preview-header {
-    height: 34px; background: #0d0d0d; border-bottom: 1px solid #141414;
+    height: 36px; background: #0d0d0d; border-bottom: 1px solid #141414;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 16px; flex-shrink: 0;
+    padding: 0 16px; flex-shrink: 0; gap: 12px;
   }
-  .preview-property-name { font-size: 9px; letter-spacing: 0.35em; color: #C9A96E; text-transform: uppercase; }
-  .preview-url { font-size: 8px; letter-spacing: 0.2em; color: #333; }
+  .preview-url {
+    font-size: 10px; letter-spacing: 0.15em; color: #333;
+    font-family: 'Cormorant Garamond', serif; flex: 1;
+  }
+  .preview-actions { display: flex; gap: 8px; }
+  .preview-btn {
+    background: transparent; border: 1px solid #222; color: #444;
+    font-family: 'Cormorant Garamond', serif; font-size: 9px;
+    letter-spacing: 0.25em; text-transform: uppercase; padding: 4px 12px;
+    cursor: pointer; transition: all 0.2s; text-decoration: none;
+    display: inline-flex; align-items: center;
+  }
+  .preview-btn:hover { border-color: rgba(201,169,110,0.4); color: #C9A96E; }
+  .preview-panel iframe {
+    flex: 1; border: none; width: 100%; height: 100%;
+  }
 
-  .panel-right iframe { flex: 1; border: none; width: 100%; height: 100%; background: #0a0a0a; }
-
-  .preview-controls {
-    position: absolute; bottom: 16px; right: 16px;
-    display: flex; gap: 8px; z-index: 5;
-  }
-  .ctrl-btn {
-    background: rgba(10,10,10,0.9); border: 1px solid #2a2a2a; color: #C9A96E;
-    font-family: 'Cormorant Garamond', serif; font-size: 9px; letter-spacing: 0.3em;
-    text-transform: uppercase; padding: 8px 14px; cursor: pointer; transition: border-color 0.2s;
-  }
-  .ctrl-btn:hover { border-color: #C9A96E; }
-
-  /* SWITCH OVERLAY */
-  .switch-overlay {
-    position: absolute; inset: 0; background: #0a0a0a;
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column; gap: 16px; z-index: 10;
-    opacity: 0; pointer-events: none; transition: opacity 0.3s;
-  }
-  .switch-overlay.visible { opacity: 1; pointer-events: all; }
-  .switch-overlay-name { font-family: 'Pinyon Script', cursive; font-size: 36px; color: #C9A96E; }
-  .switch-overlay-sub { font-size: 10px; letter-spacing: 0.4em; color: #444; text-transform: uppercase; }
-
-  /* NEW PROJECT PANEL */
-  .new-project-panel {
-    display: none; flex: 1; align-items: center; justify-content: center;
-    flex-direction: column; gap: 20px; padding: 40px;
-  }
-  .new-project-panel.visible { display: flex; }
-  .new-project-panel p { font-size: 13px; font-weight: 300; color: #666; letter-spacing: 0.1em; text-align: center; line-height: 1.8; }
-  .new-project-panel .np-label { font-size: 9px; letter-spacing: 0.4em; color: #C9A96E; text-transform: uppercase; }
+  /* DRAG HANDLE */
+  .drag-handle { width: 3px; background: #1a1a1a; cursor: col-resize; flex-shrink: 0; transition: background 0.15s; }
+  .drag-handle:hover, .drag-handle.dragging { background: #C9A96E; }
 </style>
 </head>
 <body>
@@ -108,154 +133,113 @@
   <!-- TOP BAR -->
   <div class="topbar">
     <div class="topbar-title">Rachel Hernandez Studio</div>
-
     <div class="project-switcher">
-      <button class="project-btn" id="btn-gh" onclick="switchProject('gh')">Garran Hill</button>
-      <div class="project-divider">·</div>
-      <button class="project-btn active" id="btn-ff" onclick="switchProject('ff')">Flow Farm</button>
-      <div class="project-divider">·</div>
-      <button class="project-btn" id="btn-new" onclick="switchProject('new')" style="border-style:dashed;">+ New Project</button>
+      <button class="project-btn active" onclick="switchProject('gh')">Garran Hill</button>
+      <button class="project-btn" onclick="switchProject('ff')">Flow Farm</button>
+      <button class="project-btn" onclick="switchProject('new')">+ New Project</button>
     </div>
-
-    <div style="width:120px"></div><!-- spacer to balance -->
+    <a href="https://app.base44.com/superagent/69e248a2469cc39540781cce" target="_blank"
+       style="font-size:9px;letter-spacing:0.3em;color:#333;text-decoration:none;text-transform:uppercase;transition:color 0.2s;"
+       onmouseover="this.style.color='#C9A96E'" onmouseout="this.style.color='#333'">Open Rocky ↗</a>
   </div>
 
-  <div class="split" id="split">
+  <!-- MAIN SPLIT -->
+  <div class="split">
 
-    <!-- LEFT — ROCKY CHAT -->
-    <div class="panel-left" id="panelLeft">
+    <!-- LEFT — ROCKY PANEL -->
+    <div class="rocky-panel" id="rocky-panel">
       <div class="panel-header">
-        <span class="panel-header-label">Rocky — AI</span>
+        <span class="panel-label">Rocky</span>
         <div class="status-dot"></div>
       </div>
-      <iframe
-        src="https://app.base44.com/superagent/69e248a2469cc39540781cce"
-        title="Rocky Chat"
-        allow="clipboard-write"
-      ></iframe>
+
+      <div class="rocky-content">
+        <img class="rocky-seal"
+          src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777397863/gh_key/gh_wax_seal_v3.png"
+          alt="Studio seal">
+        <div class="rocky-name">Rocky</div>
+        <div class="rocky-divider"></div>
+        <div class="rocky-tagline">Your agent is standing by.<br>Open the chat to continue.</div>
+        <a class="open-chat-btn"
+           href="https://app.base44.com/superagent/69e248a2469cc39540781cce"
+           target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.5">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          Open Chat
+        </a>
+        <div class="shortcut-hint">Opens in new tab · Keep this window for preview</div>
+      </div>
+
+      <div class="notes-area">
+        <div class="notes-label">Session Notes</div>
+        <textarea class="notes-input" placeholder="Drop notes here as you work..."></textarea>
+      </div>
     </div>
 
     <!-- DRAG HANDLE -->
-    <div class="drag-handle" id="dragHandle"></div>
+    <div class="drag-handle" id="drag-handle"></div>
 
-    <!-- RIGHT — PREVIEW -->
-    <div class="panel-right" id="panelRight">
+    <!-- RIGHT — SITE PREVIEW -->
+    <div class="preview-panel">
       <div class="preview-header">
-        <span class="preview-property-name" id="previewName">Flow Farm</span>
-        <span class="preview-url" id="previewUrl">flowfarm-landing.pages.dev</span>
+        <span class="preview-url" id="preview-url">garren-hill.pages.dev</span>
+        <div class="preview-actions">
+          <button class="preview-btn" onclick="reloadPreview()">Refresh</button>
+          <a class="preview-btn" id="fullscreen-link" href="https://garren-hill.pages.dev" target="_blank">Full Screen ↗</a>
+        </div>
       </div>
-
-      <!-- SWITCH OVERLAY -->
-      <div class="switch-overlay" id="switchOverlay">
-        <div class="switch-overlay-name" id="overlayName">Flow Farm</div>
-        <div class="switch-overlay-sub">Loading preview...</div>
-      </div>
-
-      <iframe
-        src="https://flowfarm-landing.pages.dev"
-        title="Site Preview"
-        id="siteFrame"
-      ></iframe>
-
-      <!-- NEW PROJECT PANEL -->
-      <div class="new-project-panel" id="newProjectPanel">
-        <div class="np-label">New Project</div>
-        <p>Tell Rocky the property name,<br>address, and price.<br><br>Rocky will build the site brief<br>and start the build.</p>
-      </div>
-
-      <div class="preview-controls" id="previewControls">
-        <button class="ctrl-btn" onclick="refreshFrame()">↺ Refresh</button>
-        <button class="ctrl-btn" onclick="openFull()">↗ Full Screen</button>
-      </div>
+      <iframe id="site-preview" src="https://garren-hill.pages.dev" title="Site Preview"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock allow-top-navigation"></iframe>
     </div>
 
   </div>
 </div>
 
 <script>
-  let currentProject = 'ff';
-
-  const PROJECTS = {
-    gh: {
-      name: 'Garran Hill',
-      url: 'https://garren-hill.pages.dev',
-      displayUrl: 'garren-hill.pages.dev',
-      btnId: 'btn-gh'
-    },
-    ff: {
-      name: 'Flow Farm',
-      url: 'https://flowfarm-landing.pages.dev',
-      displayUrl: 'flowfarm-landing.pages.dev',
-      btnId: 'btn-ff'
-    },
-    new: {
-      name: 'New Project',
-      url: null,
-      displayUrl: '— not yet built —',
-      btnId: 'btn-new'
-    }
+  const projects = {
+    gh: { url: 'https://garren-hill.pages.dev', label: 'garren-hill.pages.dev' },
+    ff: { url: 'https://flowfarm-landing.pages.dev', label: 'flowfarm-landing.pages.dev' },
+    new: { url: 'about:blank', label: 'New Project' }
   };
 
   function switchProject(key) {
-    if (key === currentProject) return;
-    currentProject = key;
-    const proj = PROJECTS[key];
-
-    // Update buttons
-    document.querySelectorAll('.project-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById(proj.btnId).classList.add('active');
-
-    // Update header
-    document.getElementById('previewName').textContent = proj.name;
-    document.getElementById('previewUrl').textContent = proj.displayUrl;
-
-    const frame = document.getElementById('siteFrame');
-    const newPanel = document.getElementById('newProjectPanel');
-    const controls = document.getElementById('previewControls');
-
-    if (key === 'new') {
-      frame.style.display = 'none';
-      newPanel.classList.add('visible');
-      controls.style.display = 'none';
-    } else {
-      newPanel.classList.remove('visible');
-      frame.style.display = 'block';
-      controls.style.display = 'flex';
-
-      // Show overlay while loading
-      const overlay = document.getElementById('switchOverlay');
-      document.getElementById('overlayName').textContent = proj.name;
-      overlay.classList.add('visible');
-
-      frame.src = proj.url + '?' + Date.now();
-      frame.onload = () => setTimeout(() => overlay.classList.remove('visible'), 200);
-    }
+    document.querySelectorAll('.project-btn').forEach((b,i) => {
+      b.classList.toggle('active', ['gh','ff','new'][i] === key);
+    });
+    const p = projects[key];
+    document.getElementById('site-preview').src = p.url;
+    document.getElementById('preview-url').textContent = p.label;
+    document.getElementById('fullscreen-link').href = p.url;
   }
 
-  function refreshFrame() {
-    const proj = PROJECTS[currentProject];
-    if (proj.url) document.getElementById('siteFrame').src = proj.url + '?' + Date.now();
+  function reloadPreview() {
+    const f = document.getElementById('site-preview');
+    f.src = f.src;
   }
 
-  function openFull() {
-    const proj = PROJECTS[currentProject];
-    if (proj.url) window.open(proj.url, '_blank');
-  }
+  // Drag to resize
+  const handle = document.getElementById('drag-handle');
+  const leftPanel = document.getElementById('rocky-panel');
+  let dragging = false, startX = 0, startW = 0;
 
-  // DRAG RESIZE
-  const dragHandle = document.getElementById('dragHandle');
-  const panelLeft = document.getElementById('panelLeft');
-  const split = document.getElementById('split');
-  let dragging = false;
-
-  dragHandle.addEventListener('mousedown', e => { dragging = true; e.preventDefault(); });
+  handle.addEventListener('mousedown', e => {
+    dragging = true; startX = e.clientX; startW = leftPanel.offsetWidth;
+    handle.classList.add('dragging'); e.preventDefault();
+  });
   document.addEventListener('mousemove', e => {
     if (!dragging) return;
-    const rect = split.getBoundingClientRect();
-    const newW = Math.min(Math.max(e.clientX - rect.left, 280), rect.width - 280);
-    panelLeft.style.width = newW + 'px';
+    const newW = Math.max(280, Math.min(600, startW + (e.clientX - startX)));
+    leftPanel.style.width = newW + 'px';
   });
-  document.addEventListener('mouseup', () => { dragging = false; });
+  document.addEventListener('mouseup', () => {
+    dragging = false; handle.classList.remove('dragging');
+  });
+
+  // Persist notes in localStorage
+  const notesEl = document.querySelector('.notes-input');
+  notesEl.value = localStorage.getItem('workshop_notes') || '';
+  notesEl.addEventListener('input', () => localStorage.setItem('workshop_notes', notesEl.value));
 </script>
 </body>
 </html>
