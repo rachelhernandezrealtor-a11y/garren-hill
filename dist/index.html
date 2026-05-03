@@ -1285,54 +1285,6 @@
 <body>
 
 
-<!-- PW GATE -->
-<style>
-  #pw-gate {
-    position: fixed; inset: 0; z-index: 99999;
-    background: #0a0a0a;
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column; gap: 24px;
-  }
-  #pw-gate img { height: 64px; opacity: 0.85; }
-  #pw-gate input {
-    background: transparent;
-    border: none; border-bottom: 1px solid rgba(201,169,110,0.5);
-    color: #F5F0E8; font-family: 'Cormorant Garamond', serif;
-    font-size: 18px; letter-spacing: 0.2em; text-align: center;
-    padding: 12px 24px; outline: none; width: 260px;
-  }
-  #pw-gate input::placeholder { color: rgba(245,240,232,0.3); font-size:13px; letter-spacing:0.25em; }
-  #pw-gate .pw-label { font-family:'Cormorant Garamond',serif; font-size:11px; letter-spacing:0.3em; color:rgba(201,169,110,0.6); text-transform:uppercase; }
-  #pw-gate .pw-error { font-family:'Cormorant Garamond',serif; font-size:12px; letter-spacing:0.2em; color:rgba(201,169,110,0.5); display:none; }
-</style>
-
-<div id="pw-gate">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777397863/gh_key/gh_wax_seal_v3.png" alt="Garran Hill">
-  <div class="pw-label">Private Preview</div>
-  <input type="password" id="pw-input" placeholder="ENTER PASSWORD" autocomplete="off">
-  <div class="pw-error" id="pw-error">Not quite.</div>
-</div>
-<script>
-  (function() {
-    var stored = sessionStorage.getItem('gh_access');
-    if (stored === 'granted') {
-      document.getElementById('pw-gate').style.display = 'none';
-      return;
-    }
-    document.getElementById('pw-input').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') {
-        if (this.value === 'Rokymyheart') {
-          sessionStorage.setItem('gh_access', 'granted');
-          document.getElementById('pw-gate').style.display = 'none';
-        } else {
-          document.getElementById('pw-error').style.display = 'block';
-          this.value = '';
-        }
-      }
-    });
-  })();
-</script>
-<!-- END PW GATE -->
 <!-- NAV -->
 
 <!-- BEAT 0 — HERO VIEWPORT: top nav + full-frame hero + gold-line bottom nav = one 100vh -->
