@@ -11,111 +11,153 @@
 
   .shell { display: flex; flex-direction: column; height: 100vh; width: 100vw; }
 
-  .topbar { height: 46px; background: #0d0d0d; border-bottom: 1px solid #1a1a1a; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; flex-shrink: 0; }
-  .topbar-title { font-family: 'Pinyon Script', cursive; font-size: 26px; color: #C9A96E; }
-  .topbar-label { font-size: 9px; letter-spacing: 0.4em; color: #333; text-transform: uppercase; }
-  .topbar-links { display: flex; gap: 16px; }
-  .topbar-links a { font-size: 9px; letter-spacing: 0.3em; color: #C9A96E; text-transform: uppercase; text-decoration: none; opacity: 0.6; }
+  /* TOP BAR */
+  .topbar {
+    height: 46px; background: #0d0d0d; border-bottom: 1px solid #1a1a1a;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px; flex-shrink: 0; gap: 20px;
+  }
+  .topbar-title { font-family: 'Pinyon Script', cursive; font-size: 26px; color: #C9A96E; white-space: nowrap; }
+  .topbar-label { font-size: 9px; letter-spacing: 0.45em; color: #333; text-transform: uppercase; white-space: nowrap; }
+
+  /* PROJECT SWITCHER */
+  .project-switcher {
+    display: flex; align-items: center; gap: 6px; flex: 1; justify-content: center;
+  }
+  .project-btn {
+    background: transparent; border: 1px solid #222;
+    color: #666; font-family: 'Cormorant Garamond', serif;
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    padding: 6px 16px; cursor: pointer; transition: all 0.2s; white-space: nowrap;
+  }
+  .project-btn:hover { border-color: #C9A96E44; color: #C9A96E; }
+  .project-btn.active { border-color: #C9A96E; color: #C9A96E; background: #C9A96E0a; }
+  .project-divider { font-size: 9px; color: #222; }
+
+  .topbar-links { display: flex; gap: 16px; flex-shrink: 0; }
+  .topbar-links a { font-size: 9px; letter-spacing: 0.35em; color: #C9A96E; text-transform: uppercase; text-decoration: none; opacity: 0.7; transition: opacity 0.2s; }
   .topbar-links a:hover { opacity: 1; }
 
-  /* MAIN SPLIT — takes all remaining height */
-  .split {
-    display: flex;
-    flex: 1;
-    overflow: hidden;
-    height: calc(100vh - 46px);
-  }
+  /* SPLIT */
+  .split { display: flex; flex: 1; overflow: hidden; }
 
-  /* LEFT CHAT PANEL */
-  .panel-left {
-    width: 420px;
-    display: flex;
-    flex-direction: column;
-    border-right: 1px solid #1a1a1a;
-    overflow: hidden;
-    transition: width 0.3s, opacity 0.3s;
-    flex-shrink: 0;
-  }
-  .panel-left.collapsed { width: 0; opacity: 0; pointer-events: none; }
-
-  .panel-header {
-    height: 36px;
-    background: #0d0d0d;
-    border-bottom: 1px solid #141414;
-    display: flex;
-    align-items: center;
-    padding: 0 14px;
-    gap: 10px;
-    flex-shrink: 0;
-  }
-  .panel-header-label { font-size: 9px; letter-spacing: 0.35em; color: #333; text-transform: uppercase; }
-  .panel-header-dot { width: 6px; height: 6px; border-radius: 50%; background: #C9A96E; opacity: 0.5; }
-  .collapse-btn { margin-left: auto; background: transparent; border: 1px solid #1e1e1e; color: #555; font-family: 'Cormorant Garamond', serif; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; padding: 3px 8px; cursor: pointer; }
-  .collapse-btn:hover { border-color: #C9A96E; color: #C9A96E; }
-
-  /* THE KEY FIX — iframe must be position absolute to fill parent */
-  .chat-iframe-wrap {
-    position: relative;
-    flex: 1;
-    overflow: hidden;
-  }
-  #chatFrame {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  /* DRAG */
+  /* DRAG HANDLE */
   .drag-handle { width: 3px; background: #1a1a1a; cursor: col-resize; flex-shrink: 0; transition: background 0.2s; }
   .drag-handle:hover { background: #C9A96E; }
 
-  /* RIGHT PANEL */
-  .panel-right { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; min-width: 0; }
+  /* LEFT — CHAT */
+  .panel-left {
+    width: 42%; min-width: 300px;
+    display: flex; flex-direction: column; overflow: hidden;
+    border-right: 1px solid #1a1a1a;
+  }
+  .panel-header {
+    height: 34px; background: #0d0d0d; border-bottom: 1px solid #141414;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16px; flex-shrink: 0;
+  }
+  .panel-header-label { font-size: 9px; letter-spacing: 0.35em; color: #333; text-transform: uppercase; }
+  .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #C9A96E; opacity: 0.5; }
+  .status-dot.live { opacity: 1; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-  /* CHAT TAB */
-  .chat-tab { position: absolute; left: 0; top: 50%; transform: translateY(-50%); z-index: 20; background: #0d0d0d; border: 1px solid #2a2a2a; border-left: none; color: #C9A96E; font-family: 'Cormorant Garamond', serif; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; padding: 14px 6px; cursor: pointer; writing-mode: vertical-rl; border-radius: 0 4px 4px 0; display: none; }
-  .chat-tab.visible { display: block; }
+  .messages {
+    flex: 1; overflow-y: auto; padding: 20px 16px;
+    display: flex; flex-direction: column; gap: 16px;
+    scrollbar-width: thin; scrollbar-color: #1a1a1a #0a0a0a;
+  }
+  .messages::-webkit-scrollbar { width: 4px; }
+  .messages::-webkit-scrollbar-track { background: #0a0a0a; }
+  .messages::-webkit-scrollbar-thumb { background: #1a1a1a; }
 
-  /* DEVICE SWITCHER */
-  .device-switcher { display: flex; gap: 4px; margin-left: auto; }
-  .dev-btn { background: transparent; border: 1px solid #1e1e1e; color: #555; font-family: 'Cormorant Garamond', serif; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; padding: 4px 10px; cursor: pointer; transition: all 0.2s; }
-  .dev-btn:hover { border-color: #C9A96E55; color: #C9A96E; }
-  .dev-btn.active { border-color: #C9A96E; color: #C9A96E; background: #C9A96E11; }
+  .msg { display: flex; flex-direction: column; gap: 4px; max-width: 88%; }
+  .msg.user { align-self: flex-end; align-items: flex-end; }
+  .msg.rocky { align-self: flex-start; align-items: flex-start; }
+  .msg-label { font-size: 8px; letter-spacing: 0.3em; color: #333; text-transform: uppercase; padding: 0 4px; }
+  .msg-bubble { padding: 10px 14px; font-size: 14px; font-weight: 300; line-height: 1.6; border: 1px solid #1a1a1a; }
+  .msg.user .msg-bubble { background: #0f0f0f; border-color: #C9A96E22; color: #F5F0E8; }
+  .msg.rocky .msg-bubble { background: #111; border-color: #1a1a1a; color: #e0d8cc; }
 
-  /* SITE PREVIEW */
-  .preview-wrap { flex: 1; display: flex; overflow: auto; min-height: 0; }
+  .typing { display: flex; align-items: center; gap: 4px; padding: 10px 14px; border: 1px solid #1a1a1a; background: #111; }
+  .typing span { width: 4px; height: 4px; border-radius: 50%; background: #C9A96E; animation: blink 1.2s infinite; }
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes blink { 0%,80%,100%{opacity:0.2} 40%{opacity:1} }
 
-  .preview-wrap.desktop { background: #0a0a0a; }
-  .preview-wrap.desktop .device-chrome { width: 100%; display: flex; }
-  .preview-wrap.desktop #siteFrame { width: 100%; height: 100%; }
+  .input-area {
+    border-top: 1px solid #1a1a1a; padding: 12px 16px;
+    display: flex; gap: 10px; align-items: flex-end; background: #0d0d0d;
+  }
+  textarea {
+    flex: 1; background: #111; border: 1px solid #1e1e1e; color: #F5F0E8;
+    font-family: 'Cormorant Garamond', serif; font-size: 14px; font-weight: 300;
+    padding: 10px 12px; resize: none; outline: none; line-height: 1.5;
+    min-height: 42px; max-height: 120px; transition: border-color 0.2s;
+  }
+  textarea:focus { border-color: #C9A96E44; }
+  textarea::placeholder { color: #333; }
+  .send-btn {
+    background: transparent; border: 1px solid #C9A96E44; color: #C9A96E;
+    font-family: 'Cormorant Garamond', serif; font-size: 11px; letter-spacing: 0.3em;
+    text-transform: uppercase; padding: 10px 16px; cursor: pointer;
+    transition: all 0.2s; white-space: nowrap; height: 42px;
+  }
+  .send-btn:hover { background: #C9A96E11; border-color: #C9A96E; }
+  .send-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 
-  .preview-wrap.tablet { background: #111; align-items: flex-start; justify-content: center; padding: 20px 0; }
-  .preview-wrap.tablet .device-chrome { width: 768px; border-radius: 14px; border: 2px solid #2a2a2a; box-shadow: 0 0 60px rgba(0,0,0,0.7); overflow: hidden; flex-shrink: 0; }
-  .preview-wrap.tablet #siteFrame { width: 768px; height: calc(100vh - 120px); display: block; }
+  /* RIGHT — PREVIEW */
+  .panel-right { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
 
-  .preview-wrap.mobile { background: #111; align-items: flex-start; justify-content: center; padding: 20px 0; }
-  .preview-wrap.mobile .device-chrome { width: 390px; border-radius: 40px; border: 8px solid #2a2a2a; box-shadow: 0 0 80px rgba(0,0,0,0.9); overflow: hidden; position: relative; flex-shrink: 0; }
-  .preview-wrap.mobile .device-chrome::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 110px; height: 28px; background: #2a2a2a; border-radius: 0 0 16px 16px; z-index: 10; }
-  .preview-wrap.mobile #siteFrame { width: 390px; height: calc(100vh - 120px); display: block; }
+  .preview-header {
+    height: 34px; background: #0d0d0d; border-bottom: 1px solid #141414;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16px; flex-shrink: 0;
+  }
+  .preview-property-name { font-size: 9px; letter-spacing: 0.35em; color: #C9A96E; text-transform: uppercase; }
+  .preview-url { font-size: 8px; letter-spacing: 0.2em; color: #333; }
 
-  .device-chrome { display: flex; flex-direction: column; background: #0a0a0a; flex: 1; }
-  #siteFrame { border: none; }
+  .panel-right iframe { flex: 1; border: none; width: 100%; height: 100%; background: #0a0a0a; }
 
-  .preview-controls { position: absolute; bottom: 14px; right: 14px; display: flex; gap: 8px; z-index: 5; }
-  .ctrl-btn { background: rgba(10,10,10,0.92); border: 1px solid #2a2a2a; color: #C9A96E; font-family: 'Cormorant Garamond', serif; font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; padding: 8px 14px; cursor: pointer; }
+  .preview-controls {
+    position: absolute; bottom: 16px; right: 16px;
+    display: flex; gap: 8px; z-index: 5;
+  }
+  .ctrl-btn {
+    background: rgba(10,10,10,0.9); border: 1px solid #2a2a2a; color: #C9A96E;
+    font-family: 'Cormorant Garamond', serif; font-size: 9px; letter-spacing: 0.3em;
+    text-transform: uppercase; padding: 8px 14px; cursor: pointer; transition: border-color 0.2s;
+  }
   .ctrl-btn:hover { border-color: #C9A96E; }
+
+  /* SWITCHING OVERLAY */
+  .switch-overlay {
+    position: absolute; inset: 0; background: #0a0a0a;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 16px; z-index: 10;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  }
+  .switch-overlay.visible { opacity: 1; pointer-events: all; }
+  .switch-overlay-name { font-family: 'Pinyon Script', cursive; font-size: 36px; color: #C9A96E; }
+  .switch-overlay-sub { font-size: 10px; letter-spacing: 0.4em; color: #444; text-transform: uppercase; }
 </style>
 </head>
 <body>
 <div class="shell">
 
+  <!-- TOP BAR -->
   <div class="topbar">
     <div class="topbar-title">Rachel Hernandez Studio</div>
-    <div class="topbar-label">Rocky + Rachel · Workshop</div>
+
+    <!-- PROJECT SWITCHER -->
+    <div class="project-switcher">
+      <button class="project-btn" id="btn-gh" onclick="switchProject('gh')">Garran Hill</button>
+      <div class="project-divider">·</div>
+      <button class="project-btn active" id="btn-ff" onclick="switchProject('ff')">Flow Farm</button>
+      <div class="project-divider">·</div>
+      <button class="project-btn" id="btn-new" onclick="switchProject('new')" style="border-style:dashed;">+ New Project</button>
+    </div>
+
     <div class="topbar-links">
-      <a href="https://rachelhernandez.studio" target="_blank">↗ Live Site</a>
       <a href="https://app.base44.com/superagent/69e248a2469cc39540781cce" target="_blank">↗ Rocky Full</a>
     </div>
   </div>
@@ -126,44 +168,45 @@
     <div class="panel-left" id="panelLeft">
       <div class="panel-header">
         <span class="panel-header-label">Rocky — AI</span>
-        <div class="panel-header-dot"></div>
-        <button class="collapse-btn" onclick="toggleChat()">← Hide</button>
+        <div class="status-dot live"></div>
       </div>
-      <div class="chat-iframe-wrap">
-        <iframe
-          src="https://app.base44.com/superagent/69e248a2469cc39540781cce"
-          title="Rocky Chat"
-          allow="microphone"
-          id="chatFrame"
-        ></iframe>
+      <div class="messages" id="messages">
+        <div class="msg rocky">
+          <div class="msg-label">Rocky</div>
+          <div class="msg-bubble">Workshop upgraded. 🖤<br><br>Switch between <strong>Garran Hill</strong>, <strong>Flow Farm</strong>, or start a new project — top center. Rocky stays here. Preview switches on the right.<br><br>Currently showing: <strong>Flow Farm</strong> — ready for Farmer Mark.</div>
+        </div>
+      </div>
+      <div class="input-area">
+        <textarea id="msgInput" placeholder="Tell Rocky what to change..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+        <button class="send-btn" id="sendBtn" onclick="sendMessage()">Send</button>
       </div>
     </div>
 
+    <!-- DRAG HANDLE -->
     <div class="drag-handle" id="dragHandle"></div>
 
-    <!-- RIGHT — SITE -->
+    <!-- RIGHT — PREVIEW -->
     <div class="panel-right" id="panelRight">
-      <button class="chat-tab" id="chatTab" onclick="toggleChat()">Rocky ›</button>
-
-      <div class="panel-header">
-        <span class="panel-header-label">Garran Hill — Live</span>
-        <div class="device-switcher">
-          <button class="dev-btn active" id="btn-desktop" onclick="setDevice('desktop')">Desktop</button>
-          <button class="dev-btn" id="btn-tablet" onclick="setDevice('tablet')">Tablet</button>
-          <button class="dev-btn" id="btn-mobile" onclick="setDevice('mobile')">Mobile</button>
-        </div>
-        <div class="panel-header-dot"></div>
+      <div class="preview-header">
+        <span class="preview-property-name" id="previewName">Flow Farm</span>
+        <span class="preview-url" id="previewUrl">flowfarm-landing.pages.dev</span>
       </div>
 
-      <div class="preview-wrap desktop" id="previewWrap">
-        <div class="device-chrome" id="deviceChrome">
-          <iframe src="https://garren-hill.pages.dev" title="Garran Hill" id="siteFrame"></iframe>
-        </div>
+      <!-- SWITCH OVERLAY -->
+      <div class="switch-overlay" id="switchOverlay">
+        <div class="switch-overlay-name" id="overlayName">Flow Farm</div>
+        <div class="switch-overlay-sub">Loading preview...</div>
       </div>
+
+      <iframe
+        src="https://flowfarm-landing.pages.dev"
+        title="Site Preview"
+        id="siteFrame"
+      ></iframe>
 
       <div class="preview-controls">
-        <button class="ctrl-btn" onclick="refreshSite()">↺ Refresh</button>
-        <button class="ctrl-btn" onclick="window.open('https://garren-hill.pages.dev','_blank')">↗ Full</button>
+        <button class="ctrl-btn" onclick="refreshFrame()">↺ Refresh</button>
+        <button class="ctrl-btn" onclick="openFull()">↗ Full Screen</button>
       </div>
     </div>
 
@@ -171,40 +214,167 @@
 </div>
 
 <script>
-  let chatVisible = true;
+  const API_URL = "https://app.base44.com/api/apps/69e248a2469cc39540781cce/ai/chat";
+  let sessionId = null;
+  let isLoading = false;
+  let currentProject = 'ff';
 
-  function toggleChat() {
-    chatVisible = !chatVisible;
-    document.getElementById('panelLeft').classList.toggle('collapsed', !chatVisible);
-    document.getElementById('chatTab').classList.toggle('visible', !chatVisible);
-    document.getElementById('dragHandle').style.display = chatVisible ? '' : 'none';
+  const PROJECTS = {
+    gh: {
+      name: 'Garran Hill',
+      url: 'https://garren-hill.pages.dev',
+      displayUrl: 'garren-hill.pages.dev',
+      btnId: 'btn-gh'
+    },
+    ff: {
+      name: 'Flow Farm',
+      url: 'https://flowfarm-landing.pages.dev',
+      displayUrl: 'flowfarm-landing.pages.dev',
+      btnId: 'btn-ff'
+    },
+    new: {
+      name: 'New Project',
+      url: null,
+      displayUrl: '— not yet built —',
+      btnId: 'btn-new'
+    }
+  };
+
+  function switchProject(key) {
+    if (key === currentProject) return;
+    currentProject = key;
+    const proj = PROJECTS[key];
+
+    // Update buttons
+    document.querySelectorAll('.project-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(proj.btnId).classList.add('active');
+
+    // Show overlay
+    const overlay = document.getElementById('switchOverlay');
+    document.getElementById('overlayName').textContent = proj.name;
+    overlay.classList.add('visible');
+
+    // Update header
+    document.getElementById('previewName').textContent = proj.name;
+    document.getElementById('previewUrl').textContent = proj.displayUrl;
+
+    // Switch iframe
+    const frame = document.getElementById('siteFrame');
+    if (proj.url) {
+      frame.src = proj.url + '?' + Date.now();
+      frame.onload = () => {
+        setTimeout(() => overlay.classList.remove('visible'), 300);
+      };
+    } else {
+      // New project — show placeholder
+      frame.src = 'about:blank';
+      setTimeout(() => {
+        overlay.classList.remove('visible');
+        addMessage('rocky', 'New project slot ready. Tell me the property name, address, and price — I\'ll start building the site brief.');
+      }, 600);
+    }
   }
 
-  function setDevice(device) {
-    document.getElementById('previewWrap').className = 'preview-wrap ' + device;
-    document.querySelectorAll('.dev-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('btn-' + device).classList.add('active');
-    if ((device === 'mobile' || device === 'tablet') && chatVisible) toggleChat();
-    if (device === 'desktop' && !chatVisible) toggleChat();
+  function refreshFrame() {
+    const proj = PROJECTS[currentProject];
+    if (proj.url) {
+      document.getElementById('siteFrame').src = proj.url + '?' + Date.now();
+    }
   }
 
-  function refreshSite() {
-    const f = document.getElementById('siteFrame');
-    const s = f.src; f.src = ''; setTimeout(() => f.src = s, 50);
+  function openFull() {
+    const proj = PROJECTS[currentProject];
+    if (proj.url) window.open(proj.url, '_blank');
   }
 
-  const handle = document.getElementById('dragHandle');
-  const left = document.getElementById('panelLeft');
+  // DRAG RESIZE
+  const dragHandle = document.getElementById('dragHandle');
+  const panelLeft = document.getElementById('panelLeft');
   const split = document.getElementById('split');
   let dragging = false;
-  handle.addEventListener('mousedown', () => { dragging = true; document.body.style.cursor = 'col-resize'; document.body.style.userSelect = 'none'; });
+
+  dragHandle.addEventListener('mousedown', e => { dragging = true; e.preventDefault(); });
   document.addEventListener('mousemove', e => {
     if (!dragging) return;
-    const r = split.getBoundingClientRect();
-    let w = Math.max(300, Math.min(e.clientX - r.left, r.width - 300));
-    left.style.width = w + 'px';
+    const rect = split.getBoundingClientRect();
+    const newW = Math.min(Math.max(e.clientX - rect.left, 280), rect.width - 280);
+    panelLeft.style.width = newW + 'px';
   });
-  document.addEventListener('mouseup', () => { dragging = false; document.body.style.cursor = ''; document.body.style.userSelect = ''; });
+  document.addEventListener('mouseup', () => { dragging = false; });
+
+  function autoResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+  }
+
+  function handleKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+  }
+
+  function addMessage(role, text) {
+    const messages = document.getElementById('messages');
+    const div = document.createElement('div');
+    div.className = `msg ${role}`;
+    div.innerHTML = `
+      <div class="msg-label">${role === 'user' ? 'Rachel' : 'Rocky'}</div>
+      <div class="msg-bubble">${text.replace(/\n/g,'<br>')}</div>
+    `;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+    return div;
+  }
+
+  function showTyping() {
+    const messages = document.getElementById('messages');
+    const div = document.createElement('div');
+    div.className = 'msg rocky'; div.id = 'typing-indicator';
+    div.innerHTML = `<div class="msg-label">Rocky</div><div class="typing"><span></span><span></span><span></span></div>`;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function hideTyping() {
+    const el = document.getElementById('typing-indicator');
+    if (el) el.remove();
+  }
+
+  async function sendMessage() {
+    const input = document.getElementById('msgInput');
+    const btn = document.getElementById('sendBtn');
+    const text = input.value.trim();
+    if (!text || isLoading) return;
+
+    isLoading = true; btn.disabled = true;
+    input.value = ''; input.style.height = 'auto';
+
+    addMessage('user', text);
+    showTyping();
+
+    try {
+      const body = { message: text };
+      if (sessionId) body.session_id = sessionId;
+
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+        credentials: 'include'
+      });
+
+      const data = await res.json();
+      hideTyping();
+      if (data.session_id) sessionId = data.session_id;
+      const reply = data.message || data.response || data.content || 'Got it — on it.';
+      addMessage('rocky', reply);
+
+    } catch(err) {
+      hideTyping();
+      addMessage('rocky', 'Connection dropped. Open Rocky Full (top right) to continue.');
+    }
+
+    isLoading = false; btn.disabled = false;
+    input.focus();
+  }
 </script>
 </body>
 </html>
