@@ -175,80 +175,12 @@
   }
 
   /* BEAT 4 — CRAFTSMEN */
-  /* CRAFTSMEN — full bleed cinematic */
-  .craftsmen-beat {
-    position: relative;
-    min-height: 88vh;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-  }
-  .craftsmen-bg {
-    position: absolute;
-    inset: 0;
-    background-image: url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:55,e_brightness:8,e_sharpen:30,f_auto,q_auto,w_1920,c_limit/v1777244059/gh_key/gh_191.jpg');
-    background-size: cover;
-    background-position: center 30%;
-    z-index: 0;
-  }
-  .craftsmen-gradient {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, rgba(10,10,10,0.95) 38%, rgba(10,10,10,0.65) 62%, rgba(10,10,10,0.2) 100%);
-    z-index: 1;
-  }
-  .craftsmen-content {
-    position: relative;
-    z-index: 2;
-    width: min(52%, 580px);
-    padding: clamp(4rem, 8vw, 7rem) clamp(2.5rem, 5vw, 5.5rem);
-  }
-  .craftsmen-eyebrow {
-    font-size: clamp(0.55rem, 0.65vw, 0.65rem);
-    letter-spacing: 0.32em;
-    color: var(--gold);
-    text-transform: uppercase;
-    opacity: 0.8;
-    margin-bottom: 28px;
-    display: block;
-  }
-  .craftsmen-headline {
-    font-size: clamp(2.2rem, 3.8vw, 4.2rem);
-    font-weight: 300;
-    line-height: 1.08;
-    color: var(--cream);
-    margin-bottom: 32px;
-  }
-  .craftsmen-rule { width: 48px; height: 1px; background: var(--gold); margin-bottom: 28px; opacity: 0.55; }
-  .craftsmen-body {
-    font-size: clamp(0.95rem, 1.15vw, 1.08rem);
-    font-weight: 300;
-    line-height: 1.95;
-    color: rgba(245,240,232,0.88);
-    max-width: 52ch;
-  }
-  .craftsmen-body p + p { margin-top: 1.3em; }
-  .craftsmen-pull-lede {
-    margin-top: 2.4em;
-    font-size: clamp(1rem, 1.3vw, 1.15rem);
-    font-style: italic;
-    font-weight: 300;
-    color: var(--cream);
-    opacity: 0.75;
-    line-height: 1.6;
-  }
-  .craftsmen-pull-coda {
-    margin-top: 0.6em;
-    font-size: clamp(0.95rem, 1.15vw, 1.05rem);
-    font-weight: 300;
-    color: var(--cream);
-    opacity: 0.65;
-  }
-  @media (max-width: 768px) {
-    .craftsmen-beat { min-height: auto; }
-    .craftsmen-content { width: 100%; padding: 4rem 2rem; }
-    .craftsmen-gradient { background: linear-gradient(to bottom, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.92) 100%); }
-  }
+  .craftsmen-beat { background: var(--dark); padding: 130px 72px 110px; max-width: 900px; }
+  .craftsmen-eyebrow { font-size: clamp(0.58rem, 0.7vw, 0.68rem); letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; opacity: 0.75; margin-bottom: 24px; display: block; }
+  .craftsmen-headline { font-size: clamp(3rem, 6vw, 7.5rem); font-weight: 300; line-height: 1.0; color: var(--cream); margin-bottom: 36px; }
+  .craftsmen-rule { width: 80px; height: 1px; background: var(--gold); margin-bottom: 20px; opacity: 0.5; }
+  .craftsmen-body { font-size: clamp(1rem, 1.3vw, 1.18rem); font-weight: 300; line-height: 1.88; color: var(--text); max-width: 58ch; }
+  .craftsmen-body p + p { margin-top: 1.2em; }
 
   /* BEAT 5 — STEWARDSHIP */
   .stewardship-beat { background: var(--dark); padding: 130px 72px 110px; position: relative; }
@@ -268,18 +200,23 @@
   .stewardship-beat::after { content: ''; display: block; width: 120px; height: 1px; background: var(--gold); margin-top: 48px; opacity: 0.4; }
 
   /* BEAT 6 — THRESHOLD */
-  .threshold-beat { position: relative; min-height: 90vh; display: flex; align-items: flex-start; overflow: hidden; }
-  .threshold-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: bottom center; z-index: 0; }
+  .threshold-beat { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+  .threshold-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; z-index: 0; }
   .threshold-overlay {
     position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(to bottom, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.6) 50%, rgba(10,10,10,0.2) 100%);
+    background:
+      linear-gradient(to right, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.75) 42%, rgba(10,10,10,0.0) 72%),
+      linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.0) 40%, rgba(10,10,10,0.55) 100%);
   }
-  .threshold-content { position: relative; z-index: 2; padding: 100px 72px; max-width: 680px; }
-  .threshold-eyebrow { font-size: clamp(0.58rem, 0.7vw, 0.68rem); letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; opacity: 0.65; margin-bottom: 32px; display: block; }
-  .threshold-headline { font-size: clamp(2.8rem, 5vw, 6rem); font-weight: 300; line-height: 1.08; color: var(--cream); margin-bottom: 56px; letter-spacing: 0.01em; }
-  .threshold-rule { width: 60px; height: 1px; background: var(--gold); margin-bottom: 40px; opacity: 0.5; }
-  .threshold-body { font-size: clamp(1rem, 1.2vw, 1.15rem); font-weight: 300; line-height: 1.85; color: var(--text); }
-  .threshold-body p + p { margin-top: 1.4em; }
+  .threshold-content { position: relative; z-index: 2; padding: clamp(80px,10vw,140px) clamp(32px,8vw,96px); max-width: 580px; }
+  .threshold-eyebrow { font-size: clamp(0.55rem, 0.65vw, 0.65rem); letter-spacing: 0.38em; color: var(--gold); text-transform: uppercase; opacity: 0.6; margin-bottom: 28px; display: block; }
+  .threshold-headline { font-size: clamp(3rem, 5.5vw, 6.5rem); font-weight: 300; line-height: 1.0; color: var(--cream); margin-bottom: 48px; letter-spacing: -0.01em; }
+  .threshold-rule { width: 48px; height: 1px; background: var(--gold); margin-bottom: 36px; opacity: 0.45; }
+  .threshold-body { font-size: clamp(0.95rem, 1.1vw, 1.08rem); font-weight: 300; line-height: 1.9; color: var(--text); max-width: 46ch; }
+  .threshold-body p + p { margin-top: 1.6em; }
+  .threshold-cta { display: inline-block; margin-top: 3em; font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); opacity: 0.65; text-decoration: none; border-bottom: 1px solid rgba(201,169,110,0.25); padding-bottom: 3px; transition: opacity 0.3s; }
+  .threshold-cta:hover { opacity: 1; }
+  @media (max-width: 767px) { .threshold-content { padding: 80px 28px; max-width: 100%; } .threshold-headline { font-size: clamp(2.4rem, 8vw, 3.5rem); } }
 
   /* INQUIRY MODAL */
   .inquiry-modal { display: none; position: fixed; inset: 0; z-index: 9500; align-items: center; justify-content: center; background: rgba(10,10,10,0.88); }
@@ -1276,88 +1213,6 @@
     letter-spacing: 0.02em;
   }
 
-  /* ROOM BRIDGE LINE */
-  .room-bridge {
-    display: block;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(0.75rem, 1vw, 0.88rem);
-    font-style: italic;
-    font-weight: 300;
-    color: var(--gold);
-    opacity: 0.55;
-    letter-spacing: 0.12em;
-    margin-top: 1.6em;
-  }
-
-  /* FOUR FAMILIES BEAT */
-  .fourfamilies-beat {
-    background: var(--dark);
-    padding: clamp(90px, 14vw, 160px) 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .fourfamilies-inner {
-    max-width: 520px;
-    text-align: center;
-  }
-  .fourfamilies-line {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
-    font-weight: 200;
-    color: var(--cream);
-    opacity: 0.5;
-    letter-spacing: 0.12em;
-    line-height: 1.4;
-    margin-bottom: 0.6em;
-    text-transform: uppercase;
-  }
-  .fourfamilies-question {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.05rem, 1.6vw, 1.35rem);
-    font-weight: 300;
-    color: var(--cream);
-    opacity: 0.85;
-    letter-spacing: 0.06em;
-    line-height: 1.6;
-    margin-top: 1.4em;
-    font-style: italic;
-  }
-
-  /* BLUE FOX BEAT */
-  .bluefox-beat {
-    background: var(--dark);
-    padding: clamp(80px, 12vw, 140px) 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .bluefox-inner {
-    max-width: 560px;
-    text-align: center;
-  }
-  .bluefox-setup {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(0.95rem, 1.3vw, 1.15rem);
-    font-weight: 300;
-    color: var(--cream);
-    opacity: 0.6;
-    letter-spacing: 0.04em;
-    line-height: 1.7;
-    margin-bottom: 1.4em;
-    font-style: italic;
-  }
-  .bluefox-line {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.1rem, 1.6vw, 1.4rem);
-    font-weight: 300;
-    color: var(--cream);
-    opacity: 0.9;
-    letter-spacing: 0.08em;
-    line-height: 1.5;
-    margin: 0;
-  }
-
   /* CRAFTSMEN PULL LINES */
   .craftsmen-pull { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.65; max-width: 60ch; }
   .craftsmen-pull-lede { font-size: clamp(1.2rem, 1.8vw, 1.7rem); font-style: italic; color: var(--cream); opacity: 0.85; margin-top: 2.5rem; }
@@ -1501,18 +1356,11 @@
   </div>
 </div><!-- END HERO VIEWPORT -->
 <!-- SCROLL HINT — sits between viewport and next section -->
-<div style="background:var(--dark); display:flex; justify-content:center; padding: 40px 0 44px; opacity:0.4;">
+<div style="background:var(--dark); display:flex; justify-content:center; padding: 18px 0 20px; opacity:0.4;">
   <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M1 1L9 9L17 1" stroke="#C9A96E" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
 </div>
-
-<!-- INTRO — breath section, no images -->
-<section class="intro-breath fade-in">
-  <p class="intro-para">Walter Hines Page bought the land in 1913 and named the house before he sailed for London. He never lived to see it.</p>
-  <p class="intro-para">Betty Dumaine made it bloom. For twenty-five years, the gardens grew under her hand.</p>
-  <p class="intro-para">By 1998, the house had been empty fourteen years. Three years of restoration brought it back. The proof is inside.</p>
-</section>
 
 <!-- KEN BURNS — GATE THEN/NOW (consolidated, after hero) -->
 <section class="kb-gate-section fade-in">
@@ -1548,20 +1396,22 @@
 
 
 <!-- BEAT 4 — CRAFTSMEN -->
-<section class="craftsmen-beat fade-in">
-  <div class="craftsmen-bg"></div>
-  <div class="craftsmen-gradient"></div>
-  <div class="craftsmen-content">
-    <span class="craftsmen-eyebrow">NEO-GEORGIAN ARCHITECTURE &nbsp;--&nbsp; 1916</span>
-    <h2 class="craftsmen-headline">Built by Leonard Tufts' own craftsmen.<br><em style="font-weight:300">The same men who built Pinehurst.</em></h2>
+<section class="craftsmen-beat fade-in" style="position:relative; overflow:hidden; padding: 160px 72px 140px; max-width:100%;">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:25,e_saturation:15,f_auto,q_auto,w_1920,c_limit/v1777245588/gh_exteriors/holycrestextf_3364_copy1.jpg"
+    alt="Garran Hill — 1916"
+    style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;z-index:0;opacity:0.22;">
+  <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(105deg,rgba(10,10,10,0.96) 0%,rgba(10,10,10,0.75) 55%,rgba(10,10,10,0.4) 100%);"></div>
+  <div style="position:relative;z-index:2;max-width:900px;">
+    <span class="craftsmen-eyebrow">PINEHURST, NORTH CAROLINA &nbsp;·&nbsp; 1916</span>
+    <h2 class="craftsmen-headline">Built by Leonard Tufts' own craftsmen.<br>The same men who built Pinehurst.</h2>
     <div class="craftsmen-rule"></div>
     <div class="craftsmen-body">
       <p>Neo-Georgian. Four columns. Full entablature. Built by the men who built Pinehurst — and built to the same standard, two miles away, in the same year.</p>
       <p>These were Leonard Tufts' own craftsmen. The same hands that raised the Carolina Hotel, the Pinehurst clubhouse, the cottages along the village green. Page commissioned the house from London. He knew exactly whose hands would build it.</p>
       <p>Three months were spent sourcing period-accurate brick for the portico alone. The proportions are correct because no one involved was willing to approximate.</p>
     </div>
-    <p class="craftsmen-pull-lede">Four families. One hundred and ten years. He never made it back.</p>
-    <p class="craftsmen-pull-coda">That is not maintenance. <em>That is devotion.</em></p>
+    <p class="craftsmen-pull craftsmen-pull-lede">Four families. One hundred and ten years. He never made it back.</p>
+    <p class="craftsmen-pull craftsmen-pull-coda">That is not maintenance. <em>That is devotion.</em></p>
   </div>
 </section>
 
@@ -1575,10 +1425,10 @@
     <div class="threshold-rule"></div>
     <div class="threshold-body">
       <p>The leaded glass sidelights and fanlight are original. The hardware was specified in 1916. It has not been replaced.</p>
-      <p>One detail makes everything clear: the inscription in the threshold — <em>GARRAN HILL · 1916</em>.</p>
-      <p class="threshold-pull">He named it before it existed.<br>The house has been answering to that name ever since.</p>
-      <p style="margin-top: 2.5em;"><a href="https://my.matterport.com/show/?m=mfwyqT5Btwx" target="_blank" rel="noopener" style="font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.75; text-decoration: none; border-bottom: 1px solid rgba(201,169,110,0.3); padding-bottom: 2px;">Walk through every room &rarr;</a></p>
+      <p>One detail makes everything clear: the inscription in the threshold &mdash; <em>GARRAN HILL &middot; 1916</em>.</p>
+      <p>He named it before it existed. The house has been answering to that name ever since.</p>
     </div>
+    <a class="threshold-cta" href="https://my.matterport.com/show/?m=mfwyqT5Btwx" target="_blank" rel="noopener">Walk through every room &rarr;</a>
   </div>
 </section>
 
@@ -1592,7 +1442,7 @@
     </div>
     <div class="room-text">
       <span class="room-eyebrow">The Entry Hall</span>
-      <h2 class="room-headline">The staircase has turned<br><em style="font-weight:300">the same curve since 1916.</em></h2>
+      <h2 class="room-headline">The house announces itself the moment<br><em style="font-weight:300">you cross the threshold.</em></h2>
       <div class="room-rule"></div>
       <div class="room-body">
         <p>Original leaded glass sidelights and over-door fan. White raised-panel wainscoting to chair rail. Herringbone brick floor laid before a single wall was framed. The mahogany staircase volute turns the same curve it has turned since 1916. The hall axis carries straight through to the library at the back — visible the moment the door opens. Three staircases in this house. The proportions were drawn in 1916 and they have not been touched.</p>
@@ -1612,10 +1462,8 @@
     <div class="whp-titles-left">
       <span class="whp-titles-eyebrow scroll-reveal">The Man Who Built It</span>
       <h2 class="whp-titles-headline scroll-reveal">
-        <span class="whp-title-line whp-title-l1">Walter Hines Page,</span>
+        <span class="whp-title-line whp-title-l1">Walter Hines Page.</span>
         <span class="whp-title-line whp-title-l2"><em>Ambassador. Editor. Visionary.</em></span>
-        <span class="whp-title-line whp-title-l3">Built Garran Hill in 1916.</span>
-        <span class="whp-title-line whp-title-l4">And here it stays.</span>
       </h2>
       <div class="whp-titles-bio scroll-reveal">
         <p>Born in Cary, North Carolina. Co-founder of Doubleday, Page &amp; Co. Editor of <em>The Atlantic Monthly</em>. In 1913, Woodrow Wilson appointed him Ambassador to the Court of St. James — the most important diplomatic post in the world as Europe moved toward war.</p>
@@ -1710,8 +1558,7 @@
       <div class="room-body">
         <p>Original Georgian carved mantel. Delft tile surround — blue and white, hand-painted, original to the room. Lion andirons. One of seven fireplaces in the house.</p>
         <p>Persian rug over wide-plank oak. The room reads as a single thought — every object in the same language. A spiral staircase visible through the far doorway. The light arrives differently in the morning than in the afternoon. The room has always known this.</p>
-        <p class="room-pull"><em>Seven fireplaces. This is the one that matters.
-      <span class="room-bridge">The dining room holds the same silence.</span></em></p>
+        <p class="room-pull"><em>Seven fireplaces. This is the one that matters.</em></p>
       </div>
     </div>
   </div>
@@ -1752,7 +1599,8 @@
       <div class="room-rule"></div>
       <div class="room-body">
         <p>Dead center of the first floor — positioned that way in the 2000 plans. Built-in shelving on three walls, floor to ceiling. Rolling ladder. French doors to the rear grounds. Brass chandelier. O'Shea designed this room to the same standard as the 1916 house it joined. When you stand in it, you cannot find the seam.</p>
-        <p class="<p class="room-pull"><em>Dead center of the first floor. O’Shea placed it there deliberately. The library is where the house breathes.</em></p>
+        <p>It also became the planning center for the restoration itself — the architects worked from this room. Every decision about the house flowed through here.</p>
+        <p class="room-pull"><em>This room holds stories.</em></p>
       </div>
       <div class="room-gallery" style="display:flex;gap:10px;margin-top:2rem;">
         <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1200,c_limit/v1777407432/gh_key/gh_library_detail.jpg" alt="Library shelving — Garran Hill" loading="lazy" style="width:100%;max-width:320px;height:220px;object-fit:cover;opacity:0.9;">
@@ -1778,7 +1626,7 @@
       <p>The pantry door swings open — floor-to-ceiling shelving on every face, two full towers, built for a house that is actually used. Every morning at 6:30, the deer come through.</p>
     </div>
   </div>
-    <p class="<p class="room-pull"><em>The floors are reclaimed heart-pine. Chosen. Not incidental.</em></p>
+    <p class="room-pull"><em>The floors are reclaimed heart-pine. Chosen. Not incidental.</em></p>
   </div>
 </section>
 <div class="film-strip" style="background: var(--dark); padding: 2px 0;">
@@ -1800,8 +1648,9 @@
     <div class="room-rule"></div>
     <div class="room-body">
       <p>The primary suite occupies the entire east wing of the second floor. Sitting room. Dressing room. A primary bath finished in marble. Every window faces the grounds.</p>
+      <p>The suite did not exist in the original 1916 plan. It was designed entirely from scratch in 2000, to be indistinguishable from the house it joined.</p>
       <p>The closet is behind a wall that looks like a wall. The bathroom floor is marble. The hardware is original. Nothing was approximated.</p>
-    <p class="room-pull"><em>It does not feel added. It feels inevitable.</em></p>
+      <p class="room-pull"><em>It does not feel added. It feels inevitable.</em></p>
     </div>
   </div>
 </section>
@@ -1855,7 +1704,7 @@
     <div class="room-rule"></div>
     <div class="room-body">
       <p>The rose garden, the pool walk, the camellias along the pebble path — Betty Dumaine planted all of it. She kept foxhounds and peacocks. The gardens have been cultivated continuously for sixty years.</p>
-      <!-- grounds-quote moved to after Blue Fox -->
+      <blockquote class="grounds-quote">The world outside these gates does not exist here.</blockquote>
     </div>
   </div>
 </section>
@@ -1865,13 +1714,12 @@
   <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777443295/gh_key/gh_grounds_up6.jpg" alt="Pool — 20x40 salt water" loading="lazy">
 </div>
 
-<!-- BLUE FOX BEAT -->
-<section class="bluefox-beat fade-in">
-  <div class="bluefox-inner">
-    <p class="bluefox-setup">Betty Dumaine kept foxhounds here. And peacocks. And one Irish Hunter named Blue Fox.</p>
-    <p class="bluefox-setup">He is buried at the rear of the property.</p>
-    <p class="bluefox-line">Someone still puts flowers there.</p>
-  </div>
+<!-- BLUE FOX INTERSTITIAL -->
+<section class="interstitial fade-in" style="padding: 100px 72px; text-align:center; background:#080808; position:relative;">
+  <div style="width:40px;height:1px;background:rgba(201,169,110,0.4);margin:0 auto 56px;"></div>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.58rem,0.65vw,0.65rem);letter-spacing:0.38em;color:#C9A96E;text-transform:uppercase;opacity:0.6;margin-bottom:32px;">Blue Fox &nbsp;·&nbsp; Betty Dumaine&rsquo;s Irish Hunter &nbsp;·&nbsp; Buried on Grounds</p>
+  <p class="interstitial-text interstitial-foxline" style="font-size:clamp(1.6rem,2.8vw,3rem);font-style:italic;font-weight:200;color:#F5F0E8;max-width:600px;margin:0 auto;line-height:1.4;">Someone still puts flowers there.</p>
+  <div style="width:40px;height:1px;background:rgba(201,169,110,0.4);margin:56px auto 0;"></div>
 </section>
 
 <!-- ============================================================ -->
@@ -1899,7 +1747,8 @@
 <!-- ============================================================ -->
 <!-- BEAT 20 — BETTY DUMAINE -->
 <!-- ============================================================ -->
-<section class="stewardship-beat fade-in">
+<section class="stewardship-beat fade-in" style="padding:130px 0 110px;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 72px;display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:start;">
   <div class="stewardship-inner">
     <span class="stewardship-eyebrow">The Steward &nbsp;·&nbsp; 1959&ndash;1984</span>
     <h2 class="stewardship-name">Elizabeth &ldquo;Betty&rdquo; Dumaine</h2>
@@ -1911,6 +1760,13 @@
       <p>Their friendship lasted Sangwan&rsquo;s lifetime. Betty ran the U.S. fundraising arm of the Princess Mother&rsquo;s charity from this house. The Thai royal family bestowed on her the title <em>Thanpuying</em> &mdash; the closest English equivalent is &ldquo;Lady.&rdquo;</p>
       <p>She arrived at Garran Hill in 1959 and stayed twenty-five years. She planted the rose garden, the camellias, the magnolias, the dogwoods. The foundation she helped build &mdash; The Princess Mother&rsquo;s Charities Fund of Thailand &mdash; is still operating today.</p>
     </div>
+  </div>
+  <div style="padding-top:48px;">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_900,c_limit/v1777443296/gh_key/gh_grounds_up5.jpg"
+      alt="The rose garden — planted by Betty Dumaine"
+      style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;opacity:0.88;">
+    <p style="font-size:0.62rem;letter-spacing:0.28em;color:rgba(201,169,110,0.5);text-transform:uppercase;margin-top:14px;text-align:center;">The rose garden &nbsp;·&nbsp; planted by Betty Dumaine</p>
+  </div>
   </div>
 </section>
 
@@ -1951,16 +1807,6 @@
 </section>
 
 <!-- BEAT 7 — TWILIGHT CLOSING -->
-
-<!-- PRE-CLOSING INTERSTITIAL — Four Families -->
-<section class="fourfamilies-beat fade-in">
-  <div class="fourfamilies-inner">
-    <p class="fourfamilies-line">Four families.</p>
-    <p class="fourfamilies-line">One hundred and ten years.</p>
-    <p class="fourfamilies-question">The question is whether you are the fifth.</p>
-  </div>
-</section>
-
 <section class="twilight-beat fade-in" id="grounds">
   <img class="twilight-bg"
     src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777244059/gh_key/gh_191.jpg"
@@ -1976,6 +1822,7 @@
     <div class="twilight-caption" style="margin-top:8px; font-style:normal; opacity:0.5;">It is offered now for the first time.</div>
     <div class="twilight-price">Est. 1916 &nbsp;·&nbsp; Pinehurst, NC &nbsp;·&nbsp; $4,250,000</div>
     <a class="twilight-cta" href="#" onclick="openInquiry(); return false;">Request Private Showing</a>
+    <div class="twilight-grounds">The world outside these gates does not exist here.</div>
   </div>
 </section>
 
