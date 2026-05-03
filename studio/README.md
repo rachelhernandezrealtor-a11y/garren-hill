@@ -8,7 +8,9 @@ Rachel Studio is the production platform behind the luxury property sites. The p
 
 - `RACHEL_STUDIO_AI_TOOL_ORCHESTRATION.md` explains which tool does which job.
 - `RACHEL_STUDIO_INNOVATION_RADAR.md` defines how Rachel Studio watches current AI, SEO, backend, media, video, and MCP updates without chasing hype.
+- `RACHEL_STUDIO_SELECTIVE_SEO_STRATEGY.md` defines qualified-discovery SEO: public authority, private noindex dossier, structured data, image/video SEO, source-backed backlinks, and selective buyer intent.
 - `rachel-studio-system/innovation-radar.json` is the machine-readable radar configuration for future backend or MCP automation.
+- `rachel-studio-system/selective-seo-strategy.json` is the machine-readable selective SEO configuration for future launch checks and backend automation.
 
 ## Publishing Law
 
