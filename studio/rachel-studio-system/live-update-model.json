@@ -1,0 +1,74 @@
+{
+  "name": "Rachel Studio Live Update Model",
+  "created": "2026-05-03",
+  "status": "active_platform_decision_record",
+  "purpose": "Define how changeable listing data updates after a property site is live.",
+  "recommended_path": {
+    "near_term": "private_admin_panel",
+    "long_term": "database_driven_property_sites",
+    "current_code_updates": "reserved_for_locked_copy_design_and_approved_section_changes"
+  },
+  "safe_backend_driven_fields": [
+    "price",
+    "listing_status",
+    "mls_number",
+    "beds",
+    "baths",
+    "square_footage",
+    "acreage",
+    "lot_size",
+    "property_type",
+    "branded_url",
+    "unbranded_url",
+    "matterport_url",
+    "video_url",
+    "contact_form_destination",
+    "open_house_date_time",
+    "compliance_note",
+    "approved_source_links",
+    "schema_fields",
+    "meta_title",
+    "meta_description",
+    "open_graph_image"
+  ],
+  "approval_required_fields": [
+    "locked_copy",
+    "historical_claims",
+    "buyer_voice",
+    "editorial_section_order",
+    "hero_media",
+    "locked_assets",
+    "source_sensitive_language",
+    "private_owner_names",
+    "zoning_claims",
+    "commercial_claims",
+    "agritourism_claims",
+    "buyer_reliance_claims"
+  ],
+  "approval_states": [
+    "draft",
+    "ready_for_rocky_review",
+    "ready_for_rachel_review",
+    "approved_for_preview",
+    "approved_for_production",
+    "live_and_verified",
+    "rejected"
+  ],
+  "publish_flow": [
+    "update_value_in_admin_panel",
+    "mark_source_status",
+    "preview_site_updates",
+    "rachel_or_rocky_approval",
+    "publish_approved_value",
+    "verify_public_site",
+    "log_change"
+  ],
+  "technical_direction": {
+    "backend": "Cloudflare Workers",
+    "database": "Cloudflare D1",
+    "media": "Cloudinary references",
+    "ai_access": "controlled MCP tools",
+    "base44_role": "Rocky's memory and relationship layer, not the only permanent public listing data store"
+  },
+  "client_translation": "After launch, the property presentation stays current. Key listing data can be updated through a controlled process, so price, status, links, and approved details remain accurate without rebuilding the site every time."
+}
