@@ -6,6 +6,7 @@ Rachel Studio is the production platform behind the luxury property sites. The p
 
 ## Current Modules
 
+- `FLOW_FARM_BUYER_VOICE_SEO_THESIS.md` captures Flow Farm's distinct buyer/SEO gravity: the farm, land, infrastructure, buildable acreage, Pinehurst proximity, and commercial/agritourism possibility with source verification required before public claims.
 - `RACHEL_STUDIO_AI_TOOL_ORCHESTRATION.md` explains which tool does which job.
 - `RACHEL_STUDIO_BEST_CHOICE_ENGINE.md` defines the backend function for ranked choices inside a category, including score, rationale, risk, and approval status.
 - `RACHEL_STUDIO_BUYER_VOICE_BRAND_SYSTEM.md` defines how each listing gets its own buyer voice brand, language palette, buyer psychology, public/private tone, search intent, and anti-buyer list based on that property's truth.
@@ -14,6 +15,7 @@ Rachel Studio is the production platform behind the luxury property sites. The p
 - `rachel-studio-system/best-choice-engine.json` is the machine-readable best-choice configuration for future backend and MCP automation.
 - `rachel-studio-system/buyer-voice-brand-system.json` is the machine-readable buyer voice configuration for future property setup and launch checks.
 - `rachel-studio-system/innovation-radar.json` is the machine-readable radar configuration for future backend or MCP automation.
+- `rachel-studio-system/properties/flow-farm/buyer-voice-seo-thesis.json` is the machine-readable Flow Farm buyer/SEO thesis.
 - `rachel-studio-system/selective-seo-strategy.json` is the machine-readable selective SEO configuration for future launch checks and backend automation.
 
 ## Publishing Law
