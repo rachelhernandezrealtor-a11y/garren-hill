@@ -395,6 +395,27 @@ The goal is not "more people."
 
 The goal is "the right person says yes, finally this."
 
+## Buyer Voice Brand Connection
+
+Selective SEO is downstream of buyer voice brand.
+
+Each listing gets its own buyer voice brand, born from the property's truth.
+
+That voice decides:
+
+- which searches are worth owning
+- which searches are noise
+- which facts must be public
+- which details belong in the private noindex dossier
+- what kind of backlink authority matters
+- what image and video language feels true
+- how inquiry language should sound
+
+Use:
+
+- `RACHEL_STUDIO_BUYER_VOICE_BRAND_SYSTEM.md`
+- `rachel-studio-system/buyer-voice-brand-system.json`
+
 ## Sources Used For Strategy
 
 - Google Search Central: creating helpful, reliable, people-first content
