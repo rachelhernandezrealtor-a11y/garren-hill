@@ -17,6 +17,7 @@ The platform coordinates them.
 | Tool / Layer | Job |
 | --- | --- |
 | Core Narrative | The spine: platform, backend, outputs, tools, truth, approval, evolution |
+| Buyer Voice Brand | Property-specific buyer psychology, language palette, public/private tone, search intent, and visual voice |
 | Best-Case Setup Plan | Safe target architecture for domains, backend, Cloudflare, media, AI tools, and launch flow |
 | Evolution Law | Versioned platform improvement loop so Rachel Studio keeps learning without becoming chaos |
 | Innovation Radar | Official-update watcher and scoring system for new AI tools, platform upgrades, SEO changes, media tools, and MCP capabilities |
@@ -88,10 +89,40 @@ Output:
 - source-of-truth packet
 - human-readable Workspace record
 
-### 2. Visual Direction
+### 2. Buyer Voice Brand
 
 Inputs:
 
+- source truth
+- property facts
+- emotional gravity
+- buyer archetypes
+- anti-buyer list
+- public/private content split
+- SEO intent map
+
+Best tools:
+
+- Rachel
+- Rocky
+- Claude
+- NotebookLM
+- Codex checker
+
+Output:
+
+- buyer voice statement
+- language palette
+- search intent lanes
+- public page tone
+- private dossier tone
+- video/social voice
+
+### 3. Visual Direction
+
+Inputs:
+
+- buyer voice brand
 - latest creative draft
 - Rachel references
 - NotebookLM mockup notes
@@ -112,7 +143,7 @@ Output:
 - visual rules
 - no-go list
 
-### 3. Photo System
+### 4. Photo System
 
 Inputs:
 
@@ -134,11 +165,12 @@ Output:
 - alt text
 - approved/rejected statuses
 
-### 4. Site Build
+### 5. Site Build
 
 Inputs:
 
 - creative standard
+- buyer voice brand
 - copy map
 - media map
 - source index
@@ -156,10 +188,11 @@ Output:
 - launch checker report
 - SEO checker report
 
-### 5. Video And Social
+### 6. Video And Social
 
 Inputs:
 
+- buyer voice brand
 - approved photo map
 - approved copy
 - approved video assets
@@ -185,7 +218,7 @@ Output:
 - campaign captions
 - web hero/section video candidates
 
-### 6. Review And Launch
+### 7. Review And Launch
 
 Inputs:
 
@@ -230,12 +263,13 @@ And Rachel Studio should route the work:
 ## Current Implementation Order
 
 1. Garran Hill site rebuild
-2. Garran Hill complete photo map
-3. Garran Hill SEO gate
-4. Garran Hill responsive visual QA
-5. Garran Hill launch review board
-6. Flow Farm reuse
-7. Video/social module
-8. Source/backlink backend
-9. Sotheby's / MLS / IDX integrations if allowed
-10. Full MCP / connector layer
+2. Garran Hill buyer voice brand lock
+3. Garran Hill complete photo map
+4. Garran Hill SEO gate
+5. Garran Hill responsive visual QA
+6. Garran Hill launch review board
+7. Flow Farm reuse
+8. Video/social module
+9. Source/backlink backend
+10. Sotheby's / MLS / IDX integrations if allowed
+11. Full MCP / connector layer
