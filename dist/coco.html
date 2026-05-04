@@ -225,7 +225,10 @@
             })
           });
           const result = await response.json().catch(() => ({}));
-          if (!response.ok) throw new Error(result.error || result.next || "Studio AI lane is not connected on this page yet.");
+          if (!response.ok) {
+            const detail = result.error || result.next || "Studio AI lane is not connected on this page yet.";
+            throw new Error(`Status ${response.status}: ${detail}`);
+          }
           pending.textContent = result.answer || "Coco answered, but no answer text came through.";
         } catch (error) {
           pending.classList.add("error");
