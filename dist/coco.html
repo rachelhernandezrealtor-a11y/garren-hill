@@ -23,36 +23,48 @@
     body { overflow: hidden; }
     button, input, textarea, select { font: inherit; }
     a { color: var(--gold); }
-    .shell { display: grid; grid-template-columns: minmax(360px, 42vw) 1fr; height: 100dvh; min-height: 0; }
-    .left { border-right: 1px solid var(--line); display: grid; grid-template-rows: auto auto minmax(120px, 1fr) auto; height: 100dvh; min-height: 0; overflow-y: auto; background: linear-gradient(180deg, #0b0b0a, #11100f); }
-    .brand { padding: 28px 32px 22px; border-bottom: 1px solid rgba(201,169,110,.22); }
+    .shell { display: grid; grid-template-columns: minmax(420px, 46vw) 1fr; height: 100dvh; min-height: 0; }
+    .left { border-right: 1px solid var(--line); display: grid; grid-template-rows: auto auto minmax(280px, 1fr) auto; height: 100dvh; min-height: 0; overflow: hidden; background: linear-gradient(180deg, #0b0b0a, #11100f); }
+    .brand { padding: 22px 28px 18px; border-bottom: 1px solid rgba(201,169,110,.22); }
     .kicker { color: var(--gold); letter-spacing: .32em; text-transform: uppercase; font-size: .68rem; margin-bottom: 14px; }
-    h1 { font-size: clamp(4.5rem, 8vw, 7.5rem); font-weight: 300; line-height: .82; margin: 0; }
-    .sub { color: var(--muted); font-size: 1.18rem; line-height: 1.45; max-width: 42rem; margin-top: 22px; }
+    h1 { font-size: clamp(3.8rem, 6.4vw, 6.2rem); font-weight: 300; line-height: .82; margin: 0; }
+    .sub { color: var(--muted); font-size: 1.06rem; line-height: 1.35; max-width: 42rem; margin-top: 16px; }
     .status { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid rgba(201,169,110,.22); }
-    .status div { padding: 16px 18px; border-right: 1px solid rgba(201,169,110,.22); }
+    .status div { padding: 12px 16px; border-right: 1px solid rgba(201,169,110,.22); }
     .status div:last-child { border-right: 0; }
     .status strong { display: block; font-size: 1.05rem; color: var(--cream); }
     .status span { display: block; color: var(--muted); font-size: .86rem; line-height: 1.2; margin-top: 4px; }
-    .messages { overflow: auto; min-height: 0; padding: 24px 32px; display: flex; flex-direction: column; gap: 14px; }
-    .msg { border: 1px solid rgba(201,169,110,.28); padding: 18px 18px 16px; color: var(--cream); font-size: 1.08rem; line-height: 1.42; white-space: pre-wrap; background: rgba(255,255,255,.02); }
-    .msg.coco { border-color: rgba(201,169,110,.42); background: rgba(201,169,110,.045); }
+    .messages { overflow: auto; min-height: 0; padding: 18px 28px 22px; display: flex; flex-direction: column; gap: 16px; scroll-behavior: smooth; }
+    .msg { border: 1px solid rgba(201,169,110,.28); padding: 16px 18px; color: var(--cream); font-size: 1.08rem; line-height: 1.46; background: rgba(255,255,255,.02); }
+    .msg.user { align-self: flex-end; max-width: 88%; border-color: rgba(245,240,232,.22); background: rgba(245,240,232,.07); }
+    .msg.coco { width: 100%; border-color: rgba(201,169,110,.46); background: linear-gradient(180deg, rgba(201,169,110,.08), rgba(201,169,110,.035)); }
     .msg.error { color: var(--warn); border-color: rgba(214,160,138,.5); }
-    .composer { padding: 22px 32px 28px; border-top: 1px solid rgba(201,169,110,.22); background: #0c0c0b; }
-    .quick { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+    .speaker { color: var(--gold); letter-spacing: .22em; text-transform: uppercase; font-size: .66rem; margin-bottom: 9px; }
+    .msg-body { font-size: 1.12rem; }
+    .msg-body h2, .msg-body h3 { color: var(--cream); font-weight: 300; line-height: 1.13; margin: 6px 0 12px; }
+    .msg-body h2 { font-size: clamp(1.65rem, 2.1vw, 2.1rem); }
+    .msg-body h3 { font-size: clamp(1.25rem, 1.7vw, 1.55rem); color: var(--gold); }
+    .msg-body p { margin: 0 0 12px; }
+    .msg-body p:last-child { margin-bottom: 0; }
+    .msg-body ul, .msg-body ol { margin: 8px 0 14px 1.1rem; padding: 0; }
+    .msg-body li { margin: 6px 0; }
+    .msg-body strong { color: var(--cream); font-weight: 500; }
+    .msg-body em { color: rgba(245,240,232,.78); }
+    .composer { padding: 14px 28px 18px; border-top: 1px solid rgba(201,169,110,.22); background: #0c0c0b; }
+    .quick { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 10px; }
     .quick button, .send, .ghost, select, input, textarea {
       border: 1px solid var(--line);
       background: transparent;
       color: var(--cream);
       border-radius: 0;
     }
-    .quick button, .send, .ghost { cursor: pointer; padding: 13px 12px; }
+    .quick button, .send, .ghost { cursor: pointer; padding: 12px 10px; }
     .quick button:hover, .send:hover, .ghost:hover { background: var(--cream); color: var(--dark); }
-    textarea { width: 100%; min-height: 126px; resize: vertical; padding: 16px; font-size: 1.12rem; line-height: 1.35; outline: none; }
+    textarea { width: 100%; min-height: 86px; max-height: 160px; resize: vertical; padding: 14px 15px; font-size: 1.08rem; line-height: 1.32; outline: none; }
     textarea:focus, input:focus, select:focus { border-color: var(--gold); }
-    .row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; margin-top: 12px; align-items: stretch; }
+    .row { display: grid; grid-template-columns: minmax(130px, .7fr) minmax(150px, 1fr) auto; gap: 10px; margin-top: 10px; align-items: stretch; }
     select, input { padding: 12px 14px; min-width: 0; }
-    .hint { color: rgba(245,240,232,.42); font-size: .86rem; line-height: 1.3; margin-top: 12px; }
+    .hint { color: rgba(245,240,232,.42); font-size: .8rem; line-height: 1.25; margin-top: 9px; }
     .right { min-width: 0; display: grid; grid-template-rows: auto 1fr; height: 100dvh; min-height: 0; background: #050505; }
     .preview-head { display: grid; grid-template-columns: auto 1fr auto auto; gap: 12px; align-items: center; padding: 18px 22px; border-bottom: 1px solid var(--line); }
     .preview-title { font-size: 1.5rem; line-height: 1; }
@@ -87,7 +99,7 @@
       </section>
 
       <section id="messages" class="messages">
-        <div class="msg coco">Ready. Try: “Coco, look at Garran Hill like a luxury editorial director. Tell me what to fix first for today’s owner meeting.”</div>
+        <div class="msg coco"><div class="speaker">Coco</div><div class="msg-body">Ready. Try: “Coco, look at Garran Hill like a luxury editorial director. Tell me what to fix first for today’s owner meeting.”</div></div>
       </section>
 
       <form id="composer" class="composer">
@@ -105,7 +117,7 @@
             <option value="garran-hill">Garran Hill</option>
             <option value="flow-farm">Flow Farm</option>
           </select>
-          <input id="pin" autocomplete="current-password" placeholder="Admin key once, if asked">
+          <input id="pin" type="password" autocomplete="current-password" placeholder="Admin key once, if asked">
           <button class="send" type="submit">Ask Coco</button>
         </div>
         <details>
@@ -145,10 +157,93 @@
       const previewFrame = document.getElementById("previewFrame");
       const openPreview = document.getElementById("openPreview");
 
+      function escapeHtml(value) {
+        return String(value || "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      function inlineMarkdown(value) {
+        return escapeHtml(value)
+          .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+          .replace(/\*(.+?)\*/g, "<em>$1</em>");
+      }
+
+      function renderMarkdown(value) {
+        const lines = String(value || "").replace(/\r\n/g, "\n").split("\n");
+        const out = [];
+        let list = "";
+
+        function closeList() {
+          if (list) {
+            out.push(list + "</ul>");
+            list = "";
+          }
+        }
+
+        for (const raw of lines) {
+          const line = raw.trim();
+          if (!line) {
+            closeList();
+            continue;
+          }
+
+          if (line.startsWith("### ")) {
+            closeList();
+            out.push("<h3>" + inlineMarkdown(line.slice(4)) + "</h3>");
+            continue;
+          }
+
+          if (line.startsWith("## ")) {
+            closeList();
+            out.push("<h2>" + inlineMarkdown(line.slice(3)) + "</h2>");
+            continue;
+          }
+
+          if (/^[-*]\s+/.test(line)) {
+            if (!list) list = "<ul>";
+            list += "<li>" + inlineMarkdown(line.replace(/^[-*]\s+/, "")) + "</li>";
+            continue;
+          }
+
+          if (/^\d+\.\s+/.test(line)) {
+            if (!list) list = "<ul>";
+            list += "<li>" + inlineMarkdown(line.replace(/^\d+\.\s+/, "")) + "</li>";
+            continue;
+          }
+
+          closeList();
+          out.push("<p>" + inlineMarkdown(line) + "</p>");
+        }
+
+        closeList();
+        return out.join("");
+      }
+
+      function setMessage(el, text, markdown = false) {
+        const body = el.querySelector(".msg-body");
+        if (!body) return;
+        if (markdown) {
+          body.innerHTML = renderMarkdown(text);
+        } else {
+          body.textContent = text;
+        }
+        messages.scrollTop = messages.scrollHeight;
+      }
+
       function add(role, text, extra = "") {
         const el = document.createElement("div");
         el.className = ["msg", role, extra].filter(Boolean).join(" ");
-        el.textContent = text;
+        const label = document.createElement("div");
+        label.className = "speaker";
+        label.textContent = role === "user" ? "Rachel" : "Coco";
+        const body = document.createElement("div");
+        body.className = "msg-body";
+        body.textContent = text;
+        el.append(label, body);
         messages.appendChild(el);
         messages.scrollTop = messages.scrollHeight;
         return el;
@@ -189,6 +284,13 @@
           request.value = button.dataset.prompt;
           request.focus();
         });
+      });
+
+      request.addEventListener("keydown", (event) => {
+        if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
+          event.preventDefault();
+          form.requestSubmit();
+        }
       });
 
       form.addEventListener("submit", async (event) => {
@@ -233,13 +335,13 @@
             const detail = result.error || result.next || "Studio AI lane is not connected on this page yet.";
             throw new Error(`Status ${response.status}: ${detail}`);
           }
-          pending.textContent = result.answer || "Coco answered, but no answer text came through.";
+          setMessage(pending, result.answer || "Coco answered, but no answer text came through.", true);
         } catch (error) {
           pending.classList.add("error");
           const message = error.name === "AbortError"
             ? "The Studio AI request timed out after 45 seconds. The key is present, but the live worker is taking too long. Codex needs to deploy the simpler/Claude-ready worker patch."
             : (error.message || String(error));
-          pending.textContent = fallback(text) + "\n\nConnection note: " + message;
+          setMessage(pending, fallback(text) + "\n\nConnection note: " + message);
         }
       });
     })();
