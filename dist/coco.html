@@ -23,24 +23,27 @@
     body { overflow: hidden; }
     button, input, textarea, select { font: inherit; }
     a { color: var(--gold); }
-    .shell { display: grid; grid-template-columns: minmax(420px, 46vw) 1fr; height: 100dvh; min-height: 0; }
-    .left { border-right: 1px solid var(--line); display: grid; grid-template-rows: auto auto minmax(280px, 1fr) auto; height: 100dvh; min-height: 0; overflow: hidden; background: linear-gradient(180deg, #0b0b0a, #11100f); }
-    .brand { padding: 22px 28px 18px; border-bottom: 1px solid rgba(201,169,110,.22); }
-    .kicker { color: var(--gold); letter-spacing: .32em; text-transform: uppercase; font-size: .68rem; margin-bottom: 14px; }
-    h1 { font-size: clamp(3.8rem, 6.4vw, 6.2rem); font-weight: 300; line-height: .82; margin: 0; }
-    .sub { color: var(--muted); font-size: 1.06rem; line-height: 1.35; max-width: 42rem; margin-top: 16px; }
-    .status { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid rgba(201,169,110,.22); }
-    .status div { padding: 12px 16px; border-right: 1px solid rgba(201,169,110,.22); }
-    .status div:last-child { border-right: 0; }
-    .status strong { display: block; font-size: 1.05rem; color: var(--cream); }
-    .status span { display: block; color: var(--muted); font-size: .86rem; line-height: 1.2; margin-top: 4px; }
-    .messages { overflow: auto; min-height: 0; padding: 18px 28px 22px; display: flex; flex-direction: column; gap: 16px; scroll-behavior: smooth; }
+    .shell { display: grid; grid-template-columns: minmax(520px, 48vw) 1fr; height: 100dvh; min-height: 0; }
+    .left { border-right: 1px solid var(--line); height: 100dvh; min-height: 0; overflow: auto; background: linear-gradient(180deg, #0b0b0a, #11100f); overscroll-behavior: contain; }
+    .brand { padding: 16px 28px 14px; border-bottom: 1px solid rgba(201,169,110,.22); }
+    .kicker { color: var(--gold); letter-spacing: .32em; text-transform: uppercase; font-size: .66rem; margin-bottom: 10px; }
+    h1 { font-size: clamp(3.2rem, 5vw, 5rem); font-weight: 300; line-height: .82; margin: 0; }
+    .sub { color: var(--muted); font-size: 1rem; line-height: 1.3; max-width: 42rem; margin-top: 12px; }
+    .status { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; padding: 0 28px 14px; border-bottom: 1px solid rgba(201,169,110,.18); }
+    .status div { padding: 10px 0; border-top: 1px solid rgba(201,169,110,.18); }
+    .status div + div { padding-left: 18px; margin-left: 18px; border-left: 1px solid rgba(201,169,110,.16); }
+    .status strong { display: block; font-size: .98rem; color: var(--cream); }
+    .status span { display: block; color: var(--muted); font-size: .82rem; line-height: 1.16; margin-top: 3px; }
+    .messages { min-height: 48dvh; padding: 24px 28px 18px; display: flex; flex-direction: column; gap: 12px; scroll-behavior: smooth; }
     .msg { border: 1px solid rgba(201,169,110,.28); padding: 16px 18px; color: var(--cream); font-size: 1.08rem; line-height: 1.46; background: rgba(255,255,255,.02); }
-    .msg.user { align-self: flex-end; max-width: 88%; border-color: rgba(245,240,232,.22); background: rgba(245,240,232,.07); }
-    .msg.coco { width: 100%; border-color: rgba(201,169,110,.46); background: linear-gradient(180deg, rgba(201,169,110,.08), rgba(201,169,110,.035)); }
+    .msg.user { align-self: flex-end; max-width: 72%; max-height: 86px; overflow: auto; border-color: rgba(245,240,232,.18); background: rgba(245,240,232,.045); font-size: .92rem; line-height: 1.32; padding: 10px 12px; color: rgba(245,240,232,.72); }
+    .msg.user .speaker { margin-bottom: 5px; }
+    .msg.user .msg-body { font-size: .98rem; }
+    .msg.coco { width: 100%; min-height: clamp(280px, 42dvh, 560px); border-color: rgba(201,169,110,.52); background: linear-gradient(180deg, rgba(201,169,110,.1), rgba(201,169,110,.035)); }
     .msg.error { color: var(--warn); border-color: rgba(214,160,138,.5); }
     .speaker { color: var(--gold); letter-spacing: .22em; text-transform: uppercase; font-size: .66rem; margin-bottom: 9px; }
     .msg-body { font-size: 1.12rem; }
+    .msg.coco .msg-body { font-size: clamp(1.18rem, 1.35vw, 1.34rem); line-height: 1.42; }
     .msg-body h2, .msg-body h3 { color: var(--cream); font-weight: 300; line-height: 1.13; margin: 6px 0 12px; }
     .msg-body h2 { font-size: clamp(1.65rem, 2.1vw, 2.1rem); }
     .msg-body h3 { font-size: clamp(1.25rem, 1.7vw, 1.55rem); color: var(--gold); }
@@ -50,27 +53,28 @@
     .msg-body li { margin: 6px 0; }
     .msg-body strong { color: var(--cream); font-weight: 500; }
     .msg-body em { color: rgba(245,240,232,.78); }
-    .composer { padding: 14px 28px 18px; border-top: 1px solid rgba(201,169,110,.22); background: #0c0c0b; }
-    .quick { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 10px; }
+    .composer { position: sticky; bottom: 0; padding: 10px 28px 12px; border-top: 1px solid rgba(201,169,110,.2); background: linear-gradient(180deg, rgba(12,12,11,.94), #0c0c0b); }
+    .quick { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-bottom: 8px; }
     .quick button, .send, .ghost, select, input, textarea {
       border: 1px solid var(--line);
       background: transparent;
       color: var(--cream);
       border-radius: 0;
     }
-    .quick button, .send, .ghost { cursor: pointer; padding: 12px 10px; }
+    .quick button, .send, .ghost { cursor: pointer; padding: 9px 8px; }
+    .quick button { color: var(--muted); border-color: rgba(201,169,110,.2); }
     .quick button:hover, .send:hover, .ghost:hover { background: var(--cream); color: var(--dark); }
-    textarea { width: 100%; min-height: 86px; max-height: 160px; resize: vertical; padding: 14px 15px; font-size: 1.08rem; line-height: 1.32; outline: none; }
+    textarea { width: 100%; min-height: 54px; max-height: 92px; resize: vertical; padding: 11px 13px; font-size: .98rem; line-height: 1.25; outline: none; }
     textarea:focus, input:focus, select:focus { border-color: var(--gold); }
-    .row { display: grid; grid-template-columns: minmax(130px, .7fr) minmax(150px, 1fr) auto; gap: 10px; margin-top: 10px; align-items: stretch; }
-    select, input { padding: 12px 14px; min-width: 0; }
-    .hint { color: rgba(245,240,232,.42); font-size: .8rem; line-height: 1.25; margin-top: 9px; }
+    .row { display: grid; grid-template-columns: minmax(120px, .65fr) minmax(150px, 1fr) auto; gap: 9px; margin-top: 8px; align-items: stretch; }
+    select, input { padding: 10px 12px; min-width: 0; }
+    .hint { color: rgba(245,240,232,.42); font-size: .78rem; line-height: 1.2; margin-top: 7px; display: none; }
     .right { min-width: 0; display: grid; grid-template-rows: auto 1fr; height: 100dvh; min-height: 0; background: #050505; }
     .preview-head { display: grid; grid-template-columns: auto 1fr auto auto; gap: 12px; align-items: center; padding: 18px 22px; border-bottom: 1px solid var(--line); }
     .preview-title { font-size: 1.5rem; line-height: 1; }
     .preview-url { width: 100%; color: var(--cream); background: #0b0b0a; }
     iframe { width: 100%; height: 100%; border: 0; background: #000; }
-    details { border: 1px solid rgba(201,169,110,.24); padding: 12px 14px; margin-top: 12px; }
+    details { border: 1px solid rgba(201,169,110,.18); padding: 8px 10px; margin-top: 8px; }
     summary { color: var(--gold); cursor: pointer; letter-spacing: .16em; text-transform: uppercase; font-size: .78rem; }
     .note-list { color: var(--muted); margin: 12px 0 0 18px; padding: 0; line-height: 1.35; }
     @media (max-width: 900px) {
@@ -231,7 +235,7 @@
         } else {
           body.textContent = text;
         }
-        messages.scrollTop = messages.scrollHeight;
+        el.scrollIntoView({ block: "start", behavior: "smooth" });
       }
 
       function add(role, text, extra = "") {
@@ -245,7 +249,6 @@
         body.textContent = text;
         el.append(label, body);
         messages.appendChild(el);
-        messages.scrollTop = messages.scrollHeight;
         return el;
       }
 
@@ -297,8 +300,10 @@
         event.preventDefault();
         const text = request.value.trim();
         if (!text) return;
-        add("user", text);
+        messages.replaceChildren();
         const pending = add("coco", "Thinking with the Studio brief, locked laws, preview, photo/proof/SEO lanes, and launch gate...");
+        add("user", text);
+        pending.scrollIntoView({ block: "start", behavior: "smooth" });
         const key = clean(pin.value);
         try {
           if (key) {
