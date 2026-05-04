@@ -3,19 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
   <title>Coco Builder | Rachel Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
   <style>
-    :root { --dark: #0a0a0a; --panel: #11100f; --gold: #C9A96E; --cream: #F5F0E8; --muted: rgba(245,240,232,.58); --line: rgba(201,169,110,.34); --warn: #d6a08a; }
+    :root {
+      --dark: #0a0a0a;
+      --panel: #11100f;
+      --gold: #C9A96E;
+      --cream: #F5F0E8;
+      --muted: rgba(245,240,232,.58);
+      --line: rgba(201,169,110,.34);
+      --warn: #d6a08a;
+    }
     * { box-sizing: border-box; }
     html, body { margin: 0; min-height: 100%; background: var(--dark); color: var(--cream); font-family: "Cormorant Garamond", Georgia, serif; }
     body { overflow: hidden; }
     button, input, textarea, select { font: inherit; }
     a { color: var(--gold); }
-    .shell { display: grid; grid-template-columns: minmax(360px, 42vw) 1fr; min-height: 100dvh; }
-    .left { border-right: 1px solid var(--line); display: grid; grid-template-rows: auto auto 1fr auto; min-height: 100dvh; background: linear-gradient(180deg, #0b0b0a, #11100f); }
+    .shell { display: grid; grid-template-columns: minmax(360px, 42vw) 1fr; height: 100dvh; min-height: 0; }
+    .left { border-right: 1px solid var(--line); display: grid; grid-template-rows: auto auto minmax(120px, 1fr) auto; height: 100dvh; min-height: 0; overflow-y: auto; background: linear-gradient(180deg, #0b0b0a, #11100f); }
     .brand { padding: 28px 32px 22px; border-bottom: 1px solid rgba(201,169,110,.22); }
     .kicker { color: var(--gold); letter-spacing: .32em; text-transform: uppercase; font-size: .68rem; margin-bottom: 14px; }
     h1 { font-size: clamp(4.5rem, 8vw, 7.5rem); font-weight: 300; line-height: .82; margin: 0; }
@@ -25,13 +34,18 @@
     .status div:last-child { border-right: 0; }
     .status strong { display: block; font-size: 1.05rem; color: var(--cream); }
     .status span { display: block; color: var(--muted); font-size: .86rem; line-height: 1.2; margin-top: 4px; }
-    .messages { overflow: auto; padding: 24px 32px; display: flex; flex-direction: column; gap: 14px; }
+    .messages { overflow: auto; min-height: 0; padding: 24px 32px; display: flex; flex-direction: column; gap: 14px; }
     .msg { border: 1px solid rgba(201,169,110,.28); padding: 18px 18px 16px; color: var(--cream); font-size: 1.08rem; line-height: 1.42; white-space: pre-wrap; background: rgba(255,255,255,.02); }
     .msg.coco { border-color: rgba(201,169,110,.42); background: rgba(201,169,110,.045); }
     .msg.error { color: var(--warn); border-color: rgba(214,160,138,.5); }
     .composer { padding: 22px 32px 28px; border-top: 1px solid rgba(201,169,110,.22); background: #0c0c0b; }
     .quick { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
-    .quick button, .send, .ghost, select, input, textarea { border: 1px solid var(--line); background: transparent; color: var(--cream); border-radius: 0; }
+    .quick button, .send, .ghost, select, input, textarea {
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--cream);
+      border-radius: 0;
+    }
     .quick button, .send, .ghost { cursor: pointer; padding: 13px 12px; }
     .quick button:hover, .send:hover, .ghost:hover { background: var(--cream); color: var(--dark); }
     textarea { width: 100%; min-height: 126px; resize: vertical; padding: 16px; font-size: 1.12rem; line-height: 1.35; outline: none; }
@@ -39,7 +53,7 @@
     .row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; margin-top: 12px; align-items: stretch; }
     select, input { padding: 12px 14px; min-width: 0; }
     .hint { color: rgba(245,240,232,.42); font-size: .86rem; line-height: 1.3; margin-top: 12px; }
-    .right { min-width: 0; display: grid; grid-template-rows: auto 1fr; min-height: 100dvh; background: #050505; }
+    .right { min-width: 0; display: grid; grid-template-rows: auto 1fr; height: 100dvh; min-height: 0; background: #050505; }
     .preview-head { display: grid; grid-template-columns: auto 1fr auto auto; gap: 12px; align-items: center; padding: 18px 22px; border-bottom: 1px solid var(--line); }
     .preview-title { font-size: 1.5rem; line-height: 1; }
     .preview-url { width: 100%; color: var(--cream); background: #0b0b0a; }
@@ -47,7 +61,14 @@
     details { border: 1px solid rgba(201,169,110,.24); padding: 12px 14px; margin-top: 12px; }
     summary { color: var(--gold); cursor: pointer; letter-spacing: .16em; text-transform: uppercase; font-size: .78rem; }
     .note-list { color: var(--muted); margin: 12px 0 0 18px; padding: 0; line-height: 1.35; }
-    @media (max-width: 900px) { body { overflow: auto; } .shell { grid-template-columns: 1fr; } .left, .right { min-height: auto; } .right { height: 72dvh; } .status, .quick, .row { grid-template-columns: 1fr; } .preview-head { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) {
+      body { overflow: auto; }
+      .shell { grid-template-columns: 1fr; height: auto; min-height: 100dvh; }
+      .left, .right { height: auto; min-height: auto; overflow: visible; }
+      .right { height: 72dvh; }
+      .status, .quick, .row { grid-template-columns: 1fr; }
+      .preview-head { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -58,12 +79,17 @@
         <h1>Coco</h1>
         <div class="sub">One calm builder screen. Chat here. Preview stays beside you. Photos, proof, SEO, and launch stay protected until Rachel approves.</div>
       </header>
+
       <section class="status" aria-label="Current safety state">
         <div><strong>Draft</strong><span>Coco can think, write, rank, and organize.</span></div>
         <div><strong>Preview</strong><span>Codex can build protected changes.</span></div>
         <div><strong>Public</strong><span>Only after Rachel says go.</span></div>
       </section>
-      <section id="messages" class="messages"><div class="msg coco">Ready. Try: “Coco, look at Garran Hill like a luxury editorial director. Tell me what to fix first for today’s owner meeting.”</div></section>
+
+      <section id="messages" class="messages">
+        <div class="msg coco">Ready. Try: “Coco, look at Garran Hill like a luxury editorial director. Tell me what to fix first for today’s owner meeting.”</div>
+      </section>
+
       <form id="composer" class="composer">
         <div class="quick">
           <button type="button" data-prompt="Coco, look at Garran Hill like a luxury editorial director. Tell me what is not cohesive and the next five fixes in order.">Look</button>
@@ -74,23 +100,97 @@
           <button type="button" data-prompt="Coco, run the launch gate. What is draft, what is preview-ready, what is blocked, and what needs Rachel approval?">Launch</button>
         </div>
         <textarea id="request">Coco, help me finish Garran Hill today. I need the site to feel like Architectural Digest/Vogue-level luxury editorial, with better narrative flow, clearer photo choices, source-backed SEO proof, mobile readability, and owner-meeting confidence.</textarea>
-        <div class="row"><select id="propertyId"><option value="garran-hill">Garran Hill</option><option value="flow-farm">Flow Farm</option></select><input id="pin" autocomplete="current-password" placeholder="Admin key once, if asked"><button class="send" type="submit">Ask Coco</button></div>
-        <details><summary>Locked Laws</summary><ul class="note-list"><li>Hero video stays: Last_for_real_q0fqvw.</li><li>Wax seal stays: gh_wax_seal_v3.</li><li>Living room is the salon.</li><li>No private owner names on public site.</li><li>Page truth: he never spent a night here; do not claim the door.</li><li>Production stays protected until Rachel approves.</li></ul></details>
+        <div class="row">
+          <select id="propertyId">
+            <option value="garran-hill">Garran Hill</option>
+            <option value="flow-farm">Flow Farm</option>
+          </select>
+          <input id="pin" autocomplete="current-password" placeholder="Admin key once, if asked">
+          <button class="send" type="submit">Ask Coco</button>
+        </div>
+        <details>
+          <summary>Locked Laws</summary>
+          <ul class="note-list">
+            <li>Hero video stays: Last_for_real_q0fqvw.</li>
+            <li>Wax seal stays: gh_wax_seal_v3.</li>
+            <li>Living room is the salon.</li>
+            <li>No private owner names on public site.</li>
+            <li>Page truth: he never spent a night here; do not claim the door.</li>
+            <li>Production stays protected until Rachel approves.</li>
+          </ul>
+        </details>
         <div class="hint">If the full AI lane is not connected yet, this page still keeps your request and gives Codex a clean build instruction. No public changes happen from this screen.</div>
       </form>
     </section>
-    <section class="right"><header class="preview-head"><div class="preview-title">Preview</div><input id="previewUrl" class="preview-url" value="https://a8d26740.garren-hill.pages.dev"><button id="refresh" class="ghost" type="button">Refresh</button><a id="openPreview" class="ghost" href="https://a8d26740.garren-hill.pages.dev" target="_blank" rel="noreferrer">Open</a></header><iframe id="previewFrame" src="https://a8d26740.garren-hill.pages.dev" title="Property preview"></iframe></section>
+
+    <section class="right">
+      <header class="preview-head">
+        <div class="preview-title">Preview</div>
+        <input id="previewUrl" class="preview-url" value="https://a8d26740.garren-hill.pages.dev">
+        <button id="refresh" class="ghost" type="button">Refresh</button>
+        <a id="openPreview" class="ghost" href="https://a8d26740.garren-hill.pages.dev" target="_blank" rel="noreferrer">Open</a>
+      </header>
+      <iframe id="previewFrame" src="https://a8d26740.garren-hill.pages.dev" title="Property preview"></iframe>
+    </section>
   </main>
+
   <script>
     (() => {
-      const messages = document.getElementById("messages"), form = document.getElementById("composer"), request = document.getElementById("request"), pin = document.getElementById("pin"), propertyId = document.getElementById("propertyId"), previewUrl = document.getElementById("previewUrl"), previewFrame = document.getElementById("previewFrame"), openPreview = document.getElementById("openPreview");
-      function add(role, text, extra = "") { const el = document.createElement("div"); el.className = ["msg", role, extra].filter(Boolean).join(" "); el.textContent = text; messages.appendChild(el); messages.scrollTop = messages.scrollHeight; return el; }
-      function clean(value) { return String(value || "").trim().replace(/[^\x21-\x7E]/g, ""); }
-      function syncPreview(url) { previewFrame.src = url; openPreview.href = url; }
-      function fallback(text) { return ["Coco's live AI lane did not answer from this page yet. The request is still useful.", "", "What Codex should do next:", "1. Use the existing site, storyboard, and Studio memory.", "2. Build a protected preview change only.", "3. Focus on the exact request below.", "4. Stop before production until Rachel approves.", "", "Rachel request:", text].join("\n"); }
+      const messages = document.getElementById("messages");
+      const form = document.getElementById("composer");
+      const request = document.getElementById("request");
+      const pin = document.getElementById("pin");
+      const propertyId = document.getElementById("propertyId");
+      const previewUrl = document.getElementById("previewUrl");
+      const previewFrame = document.getElementById("previewFrame");
+      const openPreview = document.getElementById("openPreview");
+
+      function add(role, text, extra = "") {
+        const el = document.createElement("div");
+        el.className = ["msg", role, extra].filter(Boolean).join(" ");
+        el.textContent = text;
+        messages.appendChild(el);
+        messages.scrollTop = messages.scrollHeight;
+        return el;
+      }
+
+      function clean(value) {
+        return String(value || "").trim().replace(/[^\x21-\x7E]/g, "");
+      }
+
+      function syncPreview(url) {
+        previewFrame.src = url;
+        openPreview.href = url;
+      }
+
+      function fallback(text) {
+        return [
+          "Coco's live AI lane did not answer from this page yet. The request is still useful.",
+          "",
+          "What Codex should do next:",
+          "1. Use the existing site, storyboard, and Studio memory.",
+          "2. Build a protected preview change only.",
+          "3. Focus on the exact request below.",
+          "4. Stop before production until Rachel approves.",
+          "",
+          "Rachel request:",
+          text
+        ].join("\n");
+      }
+
       previewUrl.addEventListener("change", () => syncPreview(previewUrl.value));
-      document.getElementById("refresh").addEventListener("click", () => { const base = previewUrl.value.split("#")[0]; syncPreview(base + (base.includes("?") ? "&" : "?") + "cocoRefresh=" + Date.now()); });
-      document.querySelectorAll("[data-prompt]").forEach((button) => button.addEventListener("click", () => { request.value = button.dataset.prompt; request.focus(); }));
+      document.getElementById("refresh").addEventListener("click", () => {
+        const base = previewUrl.value.split("#")[0];
+        syncPreview(base + (base.includes("?") ? "&" : "?") + "cocoRefresh=" + Date.now());
+      });
+
+      document.querySelectorAll("[data-prompt]").forEach((button) => {
+        button.addEventListener("click", () => {
+          request.value = button.dataset.prompt;
+          request.focus();
+        });
+      });
+
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
         const text = request.value.trim();
@@ -100,12 +200,30 @@
         const key = clean(pin.value);
         try {
           if (key) {
-            const session = await fetch("/studio/session", { method: "POST", headers: { "content-type": "application/json" }, credentials: "same-origin", body: JSON.stringify({ pin: key }) });
+            const session = await fetch("/studio/session", {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              credentials: "same-origin",
+              body: JSON.stringify({ pin: key })
+            });
             if (session.ok) pin.value = "";
           }
           const headers = { "content-type": "application/json" };
           if (key) headers["x-rachel-studio-pin"] = key;
-          const response = await fetch("/studio/api/chat", { method: "POST", headers, credentials: "same-origin", body: JSON.stringify({ propertyId: propertyId.value, request: ["Coco, answer in plain English for Rachel inside the simple builder.", "Use Studio memory, locked laws, source truth, visual luxury standards, photos, proof, SEO, and launch safety.", "Current preview URL: " + previewUrl.value, text].join("\n\n") }) });
+          const response = await fetch("/studio/api/chat", {
+            method: "POST",
+            headers,
+            credentials: "same-origin",
+            body: JSON.stringify({
+              propertyId: propertyId.value,
+              request: [
+                "Coco, answer in plain English for Rachel inside the simple builder.",
+                "Use Studio memory, locked laws, source truth, visual luxury standards, photos, proof, SEO, and launch safety.",
+                "Current preview URL: " + previewUrl.value,
+                text
+              ].join("\n\n")
+            })
+          });
           const result = await response.json().catch(() => ({}));
           if (!response.ok) throw new Error(result.error || result.next || "Studio AI lane is not connected on this page yet.");
           pending.textContent = result.answer || "Coco answered, but no answer text came through.";
