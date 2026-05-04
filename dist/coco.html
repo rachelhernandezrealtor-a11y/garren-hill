@@ -210,10 +210,13 @@
           }
           const headers = { "content-type": "application/json" };
           if (key) headers["x-rachel-studio-pin"] = key;
+          const controller = new AbortController();
+          const timeout = setTimeout(() => controller.abort(), 45000);
           const response = await fetch("/studio/api/chat", {
             method: "POST",
             headers,
             credentials: "same-origin",
+            signal: controller.signal,
             body: JSON.stringify({
               propertyId: propertyId.value,
               request: [
@@ -224,6 +227,7 @@
               ].join("\n\n")
             })
           });
+          clearTimeout(timeout);
           const result = await response.json().catch(() => ({}));
           if (!response.ok) {
             const detail = result.error || result.next || "Studio AI lane is not connected on this page yet.";
@@ -232,7 +236,10 @@
           pending.textContent = result.answer || "Coco answered, but no answer text came through.";
         } catch (error) {
           pending.classList.add("error");
-          pending.textContent = fallback(text) + "\n\nConnection note: " + (error.message || String(error));
+          const message = error.name === "AbortError"
+            ? "The Studio AI request timed out after 45 seconds. The key is present, but the live worker is taking too long. Codex needs to deploy the simpler/Claude-ready worker patch."
+            : (error.message || String(error));
+          pending.textContent = fallback(text) + "\n\nConnection note: " + message;
         }
       });
     })();
