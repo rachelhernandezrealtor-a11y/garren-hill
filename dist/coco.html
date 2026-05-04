@@ -23,23 +23,23 @@
     body { overflow: hidden; }
     button, input, textarea, select { font: inherit; }
     a { color: var(--gold); }
-    .shell { display: grid; grid-template-columns: minmax(520px, 48vw) 1fr; height: 100dvh; min-height: 0; }
-    .left { border-right: 1px solid var(--line); height: 100dvh; min-height: 0; overflow: auto; background: linear-gradient(180deg, #0b0b0a, #11100f); overscroll-behavior: contain; }
-    .brand { padding: 16px 28px 14px; border-bottom: 1px solid rgba(201,169,110,.22); }
-    .kicker { color: var(--gold); letter-spacing: .32em; text-transform: uppercase; font-size: .66rem; margin-bottom: 10px; }
-    h1 { font-size: clamp(3.2rem, 5vw, 5rem); font-weight: 300; line-height: .82; margin: 0; }
-    .sub { color: var(--muted); font-size: 1rem; line-height: 1.3; max-width: 42rem; margin-top: 12px; }
-    .status { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; padding: 0 28px 14px; border-bottom: 1px solid rgba(201,169,110,.18); }
-    .status div { padding: 10px 0; border-top: 1px solid rgba(201,169,110,.18); }
-    .status div + div { padding-left: 18px; margin-left: 18px; border-left: 1px solid rgba(201,169,110,.16); }
+    .shell { display: grid; grid-template-columns: minmax(500px, 46vw) minmax(0, 1fr); height: 100dvh; min-height: 0; }
+    .left { border-right: 1px solid var(--line); display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 100dvh; min-height: 0; overflow: hidden; background: linear-gradient(180deg, #0b0b0a, #11100f); }
+    .brand { padding: 16px 28px 14px; border-bottom: 1px solid rgba(201,169,110,.18); }
+    .kicker { color: var(--gold); letter-spacing: .34em; text-transform: uppercase; font-size: .58rem; margin-bottom: 7px; }
+    h1 { font-size: clamp(3.15rem, 4.2vw, 4.35rem); font-weight: 300; line-height: .8; margin: 0; }
+    .sub { color: var(--muted); font-size: .95rem; line-height: 1.24; max-width: 42rem; margin-top: 9px; }
+    .status { display: none; grid-template-columns: repeat(3, 1fr); gap: 0; padding: 0 26px 12px; border-bottom: 1px solid rgba(201,169,110,.18); }
+    .status div { padding: 9px 0; border-top: 1px solid rgba(201,169,110,.16); }
+    .status div + div { padding-left: 16px; margin-left: 16px; border-left: 1px solid rgba(201,169,110,.14); }
     .status strong { display: block; font-size: .98rem; color: var(--cream); }
     .status span { display: block; color: var(--muted); font-size: .82rem; line-height: 1.16; margin-top: 3px; }
-    .messages { min-height: 48dvh; padding: 24px 28px 18px; display: flex; flex-direction: column; gap: 12px; scroll-behavior: smooth; }
+    .messages { overflow: auto; min-height: 0; padding: 22px 28px 28px; display: flex; flex-direction: column; gap: 14px; scroll-behavior: smooth; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
     .msg { border: 1px solid rgba(201,169,110,.28); padding: 16px 18px; color: var(--cream); font-size: 1.08rem; line-height: 1.46; background: rgba(255,255,255,.02); }
-    .msg.user { align-self: flex-end; max-width: 72%; max-height: 86px; overflow: auto; border-color: rgba(245,240,232,.18); background: rgba(245,240,232,.045); font-size: .92rem; line-height: 1.32; padding: 10px 12px; color: rgba(245,240,232,.72); }
-    .msg.user .speaker { margin-bottom: 5px; }
+    .msg.user { align-self: flex-end; max-width: 72%; max-height: 82px; overflow: auto; border-color: rgba(245,240,232,.18); background: rgba(245,240,232,.055); font-size: .9rem; line-height: 1.3; padding: 10px 12px; color: rgba(245,240,232,.7); }
+    .msg.user .speaker { margin-bottom: 5px; color: rgba(245,240,232,.5); }
     .msg.user .msg-body { font-size: .98rem; }
-    .msg.coco { width: 100%; min-height: clamp(280px, 42dvh, 560px); border-color: rgba(201,169,110,.52); background: linear-gradient(180deg, rgba(201,169,110,.1), rgba(201,169,110,.035)); }
+    .msg.coco { width: 100%; min-height: min(48dvh, 500px); border-color: rgba(201,169,110,.52); background: linear-gradient(180deg, rgba(201,169,110,.1), rgba(201,169,110,.035)); padding: 22px 24px; }
     .msg.error { color: var(--warn); border-color: rgba(214,160,138,.5); }
     .speaker { color: var(--gold); letter-spacing: .22em; text-transform: uppercase; font-size: .66rem; margin-bottom: 9px; }
     .msg-body { font-size: 1.12rem; }
@@ -53,7 +53,7 @@
     .msg-body li { margin: 6px 0; }
     .msg-body strong { color: var(--cream); font-weight: 500; }
     .msg-body em { color: rgba(245,240,232,.78); }
-    .composer { position: sticky; bottom: 0; padding: 10px 28px 12px; border-top: 1px solid rgba(201,169,110,.2); background: linear-gradient(180deg, rgba(12,12,11,.94), #0c0c0b); }
+    .composer { padding: 12px 28px 14px; border-top: 1px solid rgba(201,169,110,.2); background: #0c0c0b; }
     .quick { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-bottom: 8px; }
     .quick button, .send, .ghost, select, input, textarea {
       border: 1px solid var(--line);
@@ -62,9 +62,9 @@
       border-radius: 0;
     }
     .quick button, .send, .ghost { cursor: pointer; padding: 9px 8px; }
-    .quick button { color: var(--muted); border-color: rgba(201,169,110,.2); }
+    .quick button { color: var(--muted); border-color: rgba(201,169,110,.2); font-size: .84rem; }
     .quick button:hover, .send:hover, .ghost:hover { background: var(--cream); color: var(--dark); }
-    textarea { width: 100%; min-height: 54px; max-height: 92px; resize: vertical; padding: 11px 13px; font-size: .98rem; line-height: 1.25; outline: none; }
+    textarea { width: 100%; min-height: 54px; max-height: 74px; resize: none; padding: 12px 13px; font-size: 1rem; line-height: 1.25; outline: none; }
     textarea:focus, input:focus, select:focus { border-color: var(--gold); }
     .row { display: grid; grid-template-columns: minmax(120px, .65fr) minmax(150px, 1fr) auto; gap: 9px; margin-top: 8px; align-items: stretch; }
     select, input { padding: 10px 12px; min-width: 0; }
@@ -74,16 +74,37 @@
     .preview-title { font-size: 1.5rem; line-height: 1; }
     .preview-url { width: 100%; color: var(--cream); background: #0b0b0a; }
     iframe { width: 100%; height: 100%; border: 0; background: #000; }
-    details { border: 1px solid rgba(201,169,110,.18); padding: 8px 10px; margin-top: 8px; }
+    details { border: 1px solid rgba(201,169,110,.18); padding: 8px 10px; margin-top: 8px; display: none; }
     summary { color: var(--gold); cursor: pointer; letter-spacing: .16em; text-transform: uppercase; font-size: .78rem; }
     .note-list { color: var(--muted); margin: 12px 0 0 18px; padding: 0; line-height: 1.35; }
+    @media (max-width: 1180px) {
+      .shell { grid-template-columns: minmax(440px, 50vw) minmax(0, 1fr); }
+      .brand, .messages, .composer { padding-left: 20px; padding-right: 20px; }
+      .quick { grid-template-columns: repeat(3, 1fr); }
+      .msg.coco { min-height: min(50dvh, 470px); }
+      .preview-head { grid-template-columns: auto minmax(160px, 1fr) auto auto; gap: 8px; padding: 14px 16px; }
+    }
     @media (max-width: 900px) {
       body { overflow: auto; }
-      .shell { grid-template-columns: 1fr; height: auto; min-height: 100dvh; }
-      .left, .right { height: auto; min-height: auto; overflow: visible; }
-      .right { height: 72dvh; }
+      .shell { display: block; height: auto; min-height: 100dvh; }
+      .left { height: auto; min-height: 100dvh; overflow: visible; display: flex; flex-direction: column; }
+      .messages { min-height: 56dvh; overflow: visible; padding: 18px 18px 22px; }
+      .composer { position: sticky; bottom: 0; z-index: 10; padding: 10px 18px 12px; }
+      .right { height: 76dvh; min-height: 560px; }
+      .msg.coco { min-height: auto; padding: 18px; }
+      .msg.user { max-width: 88%; max-height: 120px; }
       .status, .quick, .row { grid-template-columns: 1fr; }
       .preview-head { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .brand { padding: 18px 16px 12px; }
+      h1 { font-size: 3.25rem; }
+      .sub { font-size: .92rem; }
+      .msg.coco .msg-body { font-size: 1.12rem; line-height: 1.4; }
+      .quick { display: grid; grid-template-columns: repeat(2, 1fr); }
+      .row { gap: 7px; }
+      .preview-title { font-size: 1.25rem; }
+      .right { height: 70dvh; min-height: 500px; }
     }
   </style>
 </head>
@@ -235,7 +256,7 @@
         } else {
           body.textContent = text;
         }
-        el.scrollIntoView({ block: "start", behavior: "smooth" });
+        messages.scrollTop = 0;
       }
 
       function add(role, text, extra = "") {
@@ -303,7 +324,7 @@
         messages.replaceChildren();
         const pending = add("coco", "Thinking with the Studio brief, locked laws, preview, photo/proof/SEO lanes, and launch gate...");
         add("user", text);
-        pending.scrollIntoView({ block: "start", behavior: "smooth" });
+        messages.scrollTop = 0;
         const key = clean(pin.value);
         try {
           if (key) {
