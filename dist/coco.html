@@ -23,7 +23,7 @@
     body { overflow: hidden; }
     button, input, textarea, select { font: inherit; }
     a { color: var(--gold); }
-    .shell { display: grid; grid-template-columns: minmax(500px, 46vw) minmax(0, 1fr); height: 100dvh; min-height: 0; }
+    .shell { display: grid; grid-template-columns: minmax(520px, 46vw) minmax(0, 1fr); height: 100dvh; min-height: 0; }
     .left { border-right: 1px solid var(--line); display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 100dvh; min-height: 0; overflow: hidden; background: linear-gradient(180deg, #0b0b0a, #11100f); }
     .brand { padding: 12px 24px 10px; border-bottom: 1px solid rgba(201,169,110,.18); }
     .kicker { color: var(--gold); letter-spacing: .34em; text-transform: uppercase; font-size: .58rem; margin-bottom: 7px; }
@@ -34,16 +34,16 @@
     .status div + div { padding-left: 16px; margin-left: 16px; border-left: 1px solid rgba(201,169,110,.14); }
     .status strong { display: block; font-size: .98rem; color: var(--cream); }
     .status span { display: block; color: var(--muted); font-size: .82rem; line-height: 1.16; margin-top: 3px; }
-    .messages { overflow-y: auto; min-height: 0; padding: 18px 24px 20px; display: flex; flex-direction: column; gap: 10px; scroll-behavior: smooth; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
-    .msg { max-width: min(88%, 720px); border: 1px solid rgba(201,169,110,.26); border-radius: 18px 18px 18px 6px; padding: 13px 15px; color: var(--cream); font-size: 1.04rem; line-height: 1.4; background: rgba(255,255,255,.025); }
-    .msg.user { align-self: flex-end; max-width: min(82%, 640px); border-radius: 18px 18px 6px 18px; border-color: rgba(245,240,232,.18); background: rgba(245,240,232,.1); color: rgba(245,240,232,.86); }
+    .messages { overflow-y: auto; min-height: 0; padding: 18px 24px 20px; display: flex; flex-direction: column; gap: 12px; scroll-behavior: smooth; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+    .msg { max-width: min(92%, 760px); border: 1px solid rgba(201,169,110,.26); border-radius: 18px 18px 18px 6px; padding: 14px 16px; color: var(--cream); font-size: 1.04rem; line-height: 1.4; background: rgba(255,255,255,.025); }
+    .msg.user { align-self: flex-end; max-width: min(74%, 540px); border-radius: 18px 18px 6px 18px; border-color: rgba(245,240,232,.18); background: rgba(245,240,232,.08); color: rgba(245,240,232,.86); }
     .msg.user .speaker { margin-bottom: 4px; color: rgba(245,240,232,.5); }
     .msg.user .msg-body { font-size: 1rem; }
-    .msg.coco { align-self: flex-start; border-color: rgba(201,169,110,.52); background: linear-gradient(180deg, rgba(201,169,110,.1), rgba(201,169,110,.035)); }
+    .msg.coco { align-self: flex-start; width: min(92%, 760px); border-color: rgba(201,169,110,.52); background: linear-gradient(180deg, rgba(201,169,110,.1), rgba(201,169,110,.035)); }
     .msg.error { color: var(--warn); border-color: rgba(214,160,138,.5); }
     .speaker { color: var(--gold); letter-spacing: .22em; text-transform: uppercase; font-size: .6rem; margin-bottom: 7px; }
     .msg-body { font-size: 1.05rem; }
-    .msg.coco .msg-body { font-size: clamp(1.04rem, 1.12vw, 1.16rem); line-height: 1.4; }
+    .msg.coco .msg-body { font-size: clamp(1.08rem, 1.15vw, 1.2rem); line-height: 1.42; }
     .msg-body h2, .msg-body h3 { color: var(--cream); font-weight: 300; line-height: 1.13; margin: 6px 0 12px; }
     .msg-body h2 { font-size: clamp(1.65rem, 2.1vw, 2.1rem); }
     .msg-body h3 { font-size: clamp(1.25rem, 1.7vw, 1.55rem); color: var(--gold); }
@@ -54,7 +54,7 @@
     .msg-body strong { color: var(--cream); font-weight: 500; }
     .msg-body em { color: rgba(245,240,232,.78); }
     .composer { padding: 10px 24px 12px; border-top: 1px solid rgba(201,169,110,.2); background: #0c0c0b; display: grid; gap: 8px; }
-    .quick { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; }
+    .quick { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; padding-bottom: 2px; }
     .quick button, .send, .ghost, select, input, textarea, .attach {
       border: 1px solid var(--line);
       background: transparent;
@@ -62,10 +62,10 @@
       border-radius: 0;
     }
     .quick button, .send, .ghost, .attach { cursor: pointer; padding: 9px 8px; }
-    .quick button { color: var(--muted); border-color: rgba(201,169,110,.2); font-size: .84rem; min-width: 80px; }
+    .quick button { color: var(--muted); border-color: rgba(201,169,110,.2); font-size: .82rem; min-width: 0; white-space: nowrap; }
     .quick button:hover, .send:hover, .ghost:hover { background: var(--cream); color: var(--dark); }
     .compose-line { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px; align-items: end; }
-    textarea { width: 100%; min-height: 48px; max-height: 118px; resize: none; padding: 11px 13px; font-size: 1rem; line-height: 1.28; outline: none; border-radius: 16px; }
+    textarea { width: 100%; min-height: 62px; max-height: 108px; resize: none; padding: 12px 14px; font-size: 1.02rem; line-height: 1.3; outline: none; border-radius: 16px; }
     textarea:focus, input:focus, select:focus { border-color: var(--gold); }
     .attach { width: 44px; min-width: 44px; height: 44px; border-radius: 50%; color: var(--gold); border-color: rgba(201,169,110,.32); font-size: 1.15rem; line-height: 1; }
     .send { min-width: 72px; height: 44px; border-radius: 22px; padding-left: 14px; padding-right: 14px; }
@@ -90,7 +90,7 @@
     summary { color: var(--gold); cursor: pointer; letter-spacing: .16em; text-transform: uppercase; font-size: .78rem; }
     .note-list { color: var(--muted); margin: 12px 0 0 18px; padding: 0; line-height: 1.35; }
     @media (max-width: 1180px) {
-      .shell { grid-template-columns: minmax(440px, 50vw) minmax(0, 1fr); }
+      .shell { grid-template-columns: minmax(470px, 50vw) minmax(0, 1fr); }
       .brand, .messages, .composer { padding-left: 20px; padding-right: 20px; }
       .preview-head { grid-template-columns: auto minmax(160px, 1fr) auto auto; gap: 8px; padding: 14px 16px; }
     }
@@ -103,7 +103,8 @@
       .right { height: 76dvh; min-height: 560px; }
       .msg.coco { min-height: auto; padding: 18px; }
       .msg.user { max-width: 88%; }
-      .status, .quick, .meta-row { grid-template-columns: 1fr; }
+      .status, .meta-row { grid-template-columns: 1fr; }
+      .quick { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .preview-head { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
@@ -142,6 +143,10 @@
           <button type="button" data-prompt="Coco, look at Garran Hill like a luxury editorial director. Tell me what is not cohesive and the next five fixes in order.">Look</button>
           <button type="button" data-prompt="Coco, tighten the Garran Hill opening narrative. Lead with provenance, the original name, restoration proof, and owner-meeting confidence.">Words</button>
           <button type="button" data-prompt="Coco, organize the Garran Hill photo map. Rank what should be hero, proof, gallery, detail, and mobile-safe.">Photos</button>
+          <button type="button" data-prompt="Coco, use the Rachel Studio front-end UI skill. Audit this screen and the property preview for calm UX, iMessage-style chat flow, responsive layout, touch targets, and visual polish.">Design</button>
+          <button type="button" data-prompt="Coco, run a mobile-first pass. Tell me what needs to change for phone buyers: type size, crop safety, touch flow, gallery behavior, page speed, and inquiry path.">Mobile</button>
+          <button type="button" data-prompt="Coco, design a next-level luxury gallery system for this property: hero, arrival, threshold, rooms, details, grounds, proof, and closing. Keep it repeatable for future listings.">Gallery</button>
+          <button type="button" data-prompt="Coco, help me use screenshots and uploads as your glasses. Tell me exactly what to upload next so you can judge the site and photos accurately.">Upload</button>
           <button type="button" data-prompt="Coco, create the owner-meeting proof talk track: website, SEO, backlinks, source truth, and why this helps Sotheby's PR.">Proof</button>
           <button type="button" data-prompt="Coco, create the SEO/source plan for Garran Hill. Include backlinks, citations, image SEO, schema, analytics, and client reporting.">SEO</button>
           <button type="button" data-prompt="Coco, run the launch gate. What is draft, what is preview-ready, what is blocked, and what needs Rachel approval?">Launch</button>
@@ -279,7 +284,7 @@
         messages.scrollTop = messages.scrollHeight;
       }
 
-      function add(role, text, extra = "") {
+      function add(role, text, extra = "", placement = "append") {
         const el = document.createElement("div");
         el.className = ["msg", role, extra].filter(Boolean).join(" ");
         const label = document.createElement("div");
@@ -289,7 +294,13 @@
         body.className = "msg-body";
         body.textContent = text;
         el.append(label, body);
-        messages.appendChild(el);
+        if (placement === "prepend") {
+          messages.prepend(el);
+          messages.scrollTop = 0;
+        } else {
+          messages.appendChild(el);
+          messages.scrollTop = messages.scrollHeight;
+        }
         return el;
       }
 
@@ -440,9 +451,9 @@
         const attachedText = attachments.length
           ? "\n\nAttached files:\n" + attachments.map((file) => `- ${file.name} (${file.type || "file"}, ${formatSize(file.size)})`).join("\n")
           : "";
-        const userBubble = add("user", text + attachedText);
-        const pending = add("coco", "Thinking with the Studio brief, locked laws, preview, photo/proof/SEO lanes, launch gate, and any attached files...");
-        messages.scrollTop = messages.scrollHeight;
+        add("user", text + attachedText, "", "prepend");
+        const pending = add("coco", "Thinking with the Studio brief, locked laws, preview, photo/proof/SEO lanes, launch gate, and any attached files...", "", "prepend");
+        messages.scrollTop = 0;
         const key = clean(pin.value);
         try {
           if (key) {
@@ -468,6 +479,7 @@
               request: [
                 "Coco, answer in plain English for Rachel inside the simple builder.",
                 "Use Studio memory, locked laws, source truth, visual luxury standards, photos, proof, SEO, and launch safety.",
+                "Use the Rachel Studio Front-End UI skill: chat-first builder, iMessage-like transcript, uploads/screenshots as glasses, responsive mobile QA, luxury gallery system, Figma/design-system lane when helpful, and protected preview-only changes.",
                 "Current preview URL: " + previewUrl.value,
                 attachments.length ? "Rachel attached files: " + attachments.map((file) => `${file.name} (${file.type || "file"}, ${formatSize(file.size)})`).join("; ") : "",
                 text
