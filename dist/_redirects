@@ -5,6 +5,8 @@
 /coco  /coco.html  200
 /studio  /coco.html  200
 /studio/*  /coco.html  200
+/workshop  /coco.html  200
+/workshop/*  /coco.html  200
 
 # SPA fallback — everything else goes to index.html
 /*  /index.html  200
