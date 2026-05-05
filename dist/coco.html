@@ -23,27 +23,28 @@
     body { overflow: hidden; }
     button, input, textarea, select { font: inherit; }
     a { color: var(--gold); }
-    .shell { display: grid; grid-template-columns: minmax(520px, 46vw) minmax(0, 1fr); height: 100dvh; min-height: 0; }
+    .shell { display: grid; grid-template-columns: minmax(600px, 46vw) minmax(0, 1fr); height: 100dvh; min-height: 0; }
     .left { border-right: 1px solid var(--line); display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 100dvh; min-height: 0; overflow: hidden; background: linear-gradient(180deg, #0b0b0a, #11100f); }
-    .brand { padding: 12px 24px 10px; border-bottom: 1px solid rgba(201,169,110,.18); }
-    .kicker { color: var(--gold); letter-spacing: .34em; text-transform: uppercase; font-size: .58rem; margin-bottom: 7px; }
-    h1 { font-size: clamp(2.35rem, 3.2vw, 3.45rem); font-weight: 300; line-height: .82; margin: 0; }
-    .sub { color: var(--muted); font-size: .9rem; line-height: 1.22; max-width: 42rem; margin-top: 7px; }
+    .brand { padding: 14px 28px 12px; border-bottom: 1px solid rgba(201,169,110,.18); }
+    .kicker { color: var(--gold); letter-spacing: .34em; text-transform: uppercase; font-size: .56rem; margin-bottom: 5px; }
+    h1 { font-size: clamp(2.25rem, 2.7vw, 3rem); font-weight: 300; line-height: .88; margin: 0; }
+    .sub { color: var(--muted); font-size: .9rem; line-height: 1.24; max-width: 42rem; margin-top: 7px; }
     .status { display: none; grid-template-columns: repeat(3, 1fr); gap: 0; padding: 0 26px 12px; border-bottom: 1px solid rgba(201,169,110,.18); }
     .status div { padding: 9px 0; border-top: 1px solid rgba(201,169,110,.16); }
     .status div + div { padding-left: 16px; margin-left: 16px; border-left: 1px solid rgba(201,169,110,.14); }
     .status strong { display: block; font-size: .98rem; color: var(--cream); }
     .status span { display: block; color: var(--muted); font-size: .82rem; line-height: 1.16; margin-top: 3px; }
-    .messages { overflow-y: auto; min-height: 0; padding: 18px 24px 20px; display: flex; flex-direction: column; gap: 12px; scroll-behavior: smooth; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
-    .msg { max-width: min(92%, 760px); border: 1px solid rgba(201,169,110,.26); border-radius: 18px 18px 18px 6px; padding: 14px 16px; color: var(--cream); font-size: 1.04rem; line-height: 1.4; background: rgba(255,255,255,.025); }
-    .msg.user { align-self: flex-end; max-width: min(74%, 540px); border-radius: 18px 18px 6px 18px; border-color: rgba(245,240,232,.18); background: rgba(245,240,232,.08); color: rgba(245,240,232,.86); }
+    .messages { overflow: hidden; min-height: 0; padding: 24px 28px 18px; display: grid; grid-template-rows: minmax(0, 1fr) auto; align-content: stretch; gap: 12px; }
+    .msg { max-width: min(91%, 780px); max-height: none; overflow: visible; border: 1px solid rgba(201,169,110,.26); border-radius: 24px 24px 24px 8px; padding: 17px 19px; color: var(--cream); font-size: 1.06rem; line-height: 1.42; background: rgba(255,255,255,.025); }
+    .msg.user { justify-self: end; align-self: end; max-width: min(78%, 560px); max-height: 88px; overflow: hidden; border-radius: 24px 24px 8px 24px; border-color: rgba(245,240,232,.18); background: rgba(245,240,232,.09); color: rgba(245,240,232,.92); padding: 12px 16px; }
     .msg.user .speaker { margin-bottom: 4px; color: rgba(245,240,232,.5); }
-    .msg.user .msg-body { font-size: 1rem; }
-    .msg.coco { align-self: flex-start; width: min(92%, 760px); border-color: rgba(201,169,110,.52); background: linear-gradient(180deg, rgba(201,169,110,.1), rgba(201,169,110,.035)); }
+    .msg.user .msg-body { font-size: .98rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .msg.coco { justify-self: start; align-self: stretch; width: 100%; min-height: 0; height: 100%; max-height: none; overflow: hidden; display: flex; flex-direction: column; border-color: rgba(201,169,110,.5); background: linear-gradient(180deg, rgba(201,169,110,.105), rgba(201,169,110,.035)); }
     .msg.error { color: var(--warn); border-color: rgba(214,160,138,.5); }
-    .speaker { color: var(--gold); letter-spacing: .22em; text-transform: uppercase; font-size: .6rem; margin-bottom: 7px; }
+    .speaker { color: var(--gold); letter-spacing: .22em; text-transform: uppercase; font-size: .58rem; margin-bottom: 7px; }
     .msg-body { font-size: 1.05rem; }
-    .msg.coco .msg-body { font-size: clamp(1.08rem, 1.15vw, 1.2rem); line-height: 1.42; }
+    .msg.coco .msg-body { font-size: clamp(1.08rem, 1.15vw, 1.2rem); line-height: 1.42; overflow-y: auto; padding-right: 5px; scrollbar-width: none; }
+    .msg.coco .msg-body::-webkit-scrollbar { display: none; }
     .msg-body h2, .msg-body h3 { color: var(--cream); font-weight: 300; line-height: 1.13; margin: 6px 0 12px; }
     .msg-body h2 { font-size: clamp(1.65rem, 2.1vw, 2.1rem); }
     .msg-body h3 { font-size: clamp(1.25rem, 1.7vw, 1.55rem); color: var(--gold); }
@@ -53,8 +54,9 @@
     .msg-body li { margin: 6px 0; }
     .msg-body strong { color: var(--cream); font-weight: 500; }
     .msg-body em { color: rgba(245,240,232,.78); }
-    .composer { padding: 10px 24px 12px; border-top: 1px solid rgba(201,169,110,.2); background: #0c0c0b; display: grid; gap: 8px; }
-    .quick { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; padding-bottom: 2px; }
+    .composer { padding: 12px 28px 14px; border-top: 1px solid rgba(201,169,110,.2); background: linear-gradient(180deg, rgba(12,12,11,.94), #0c0c0b); display: grid; gap: 8px; }
+    .quick { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 7px; padding-bottom: 0; overflow: visible; scrollbar-width: none; }
+    .quick::-webkit-scrollbar { display: none; }
     .quick button, .send, .ghost, select, input, textarea, .attach {
       border: 1px solid var(--line);
       background: transparent;
@@ -65,7 +67,8 @@
     .quick button { color: var(--muted); border-color: rgba(201,169,110,.2); font-size: .82rem; min-width: 0; white-space: nowrap; }
     .quick button:hover, .send:hover, .ghost:hover { background: var(--cream); color: var(--dark); }
     .compose-line { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px; align-items: end; }
-    textarea { width: 100%; min-height: 62px; max-height: 108px; resize: none; padding: 12px 14px; font-size: 1.02rem; line-height: 1.3; outline: none; border-radius: 16px; }
+    textarea { width: 100%; min-height: 58px; max-height: 86px; overflow-y: auto; resize: none; padding: 13px 16px; font-size: 1.02rem; line-height: 1.3; outline: none; border-radius: 24px; scrollbar-width: none; }
+    textarea::-webkit-scrollbar { display: none; }
     textarea:focus, input:focus, select:focus { border-color: var(--gold); }
     .attach { width: 44px; min-width: 44px; height: 44px; border-radius: 50%; color: var(--gold); border-color: rgba(201,169,110,.32); font-size: 1.15rem; line-height: 1; }
     .send { min-width: 72px; height: 44px; border-radius: 22px; padding-left: 14px; padding-right: 14px; }
@@ -77,42 +80,58 @@
     .file-name { overflow: hidden; text-overflow: ellipsis; }
     .remove-file { border: 0; background: transparent; color: rgba(245,240,232,.55); cursor: pointer; font-size: 1rem; line-height: 1; padding: 0 1px; }
     .remove-file:hover { color: var(--cream); }
-    .meta-row { display: grid; grid-template-columns: minmax(120px, .65fr) minmax(150px, 1fr); gap: 9px; align-items: stretch; }
+    .meta-row { display: grid; grid-template-columns: minmax(120px, .72fr) minmax(170px, 1fr); gap: 9px; align-items: stretch; }
     select, input { padding: 9px 11px; min-width: 0; border-radius: 14px; }
     .left.dragging .messages { outline: 1px solid var(--gold); outline-offset: -12px; background: rgba(201,169,110,.035); }
     .hint { color: rgba(245,240,232,.42); font-size: .78rem; line-height: 1.2; margin-top: 7px; display: none; }
-    .right { min-width: 0; display: grid; grid-template-rows: auto 1fr; height: 100dvh; min-height: 0; background: #050505; }
-    .preview-head { display: grid; grid-template-columns: auto 1fr auto auto; gap: 12px; align-items: center; padding: 18px 22px; border-bottom: 1px solid var(--line); }
-    .preview-title { font-size: 1.5rem; line-height: 1; }
+    .right { min-width: 0; display: grid; grid-template-rows: auto 1fr; height: 100dvh; min-height: 0; background: #050505; overflow: hidden; }
+    .preview-head { display: grid; grid-template-columns: auto auto minmax(180px, 1fr) auto auto; gap: 12px; align-items: center; padding: 18px 22px; border-bottom: 1px solid var(--line); }
+    .preview-title { font-size: 1.5rem; line-height: 1; white-space: nowrap; }
     .preview-url { width: 100%; color: var(--cream); background: #0b0b0a; }
+    .view-toggle { display: inline-flex; align-items: center; gap: 3px; border: 1px solid rgba(201,169,110,.3); border-radius: 999px; padding: 3px; background: rgba(245,240,232,.025); }
+    .view-toggle button { border: 0; border-radius: 999px; background: transparent; color: rgba(245,240,232,.55); padding: 7px 11px; cursor: pointer; font-size: .82rem; line-height: 1; }
+    .view-toggle button.active { background: var(--cream); color: var(--dark); }
+    .preview-stage { min-height: 0; overflow: auto; display: flex; justify-content: center; align-items: flex-start; background: #050505; padding: 16px; }
+    .preview-frame-wrap { position: relative; flex: 0 0 auto; min-width: 0; min-height: 0; }
+    .preview-frame-shell { width: 100%; height: 100%; min-height: 0; transition: width .25s ease, height .25s ease, border-radius .25s ease, margin .25s ease, transform .25s ease; border: 1px solid rgba(201,169,110,.24); background: #000; overflow: hidden; }
+    .preview-stage.desktop .preview-frame-shell { width: 1440px; transform-origin: top left; }
+    .preview-stage.tablet { align-items: flex-start; padding: 24px 0 34px; }
+    .preview-stage.tablet .preview-frame-wrap { width: min(768px, calc(100% - 28px)); height: 1024px; max-height: calc(100dvh - 130px); }
+    .preview-stage.tablet .preview-frame-shell { width: min(768px, calc(100% - 28px)); height: 1024px; max-height: calc(100dvh - 130px); border: 1px solid rgba(201,169,110,.34); border-radius: 24px; overflow: hidden; background: #000; box-shadow: 0 0 0 8px rgba(245,240,232,.03); }
+    .preview-stage.mobile { align-items: flex-start; padding: 26px 0 34px; }
+    .preview-stage.mobile .preview-frame-wrap { width: min(390px, calc(100% - 28px)); height: 844px; max-height: calc(100dvh - 130px); }
+    .preview-stage.mobile .preview-frame-shell { width: min(390px, calc(100% - 28px)); height: 844px; max-height: calc(100dvh - 130px); border: 1px solid rgba(201,169,110,.34); border-radius: 30px; overflow: hidden; background: #000; box-shadow: 0 0 0 8px rgba(245,240,232,.035); }
     iframe { width: 100%; height: 100%; border: 0; background: #000; }
     details { border: 1px solid rgba(201,169,110,.18); padding: 8px 10px; margin-top: 8px; display: none; }
     summary { color: var(--gold); cursor: pointer; letter-spacing: .16em; text-transform: uppercase; font-size: .78rem; }
     .note-list { color: var(--muted); margin: 12px 0 0 18px; padding: 0; line-height: 1.35; }
     @media (max-width: 1180px) {
-      .shell { grid-template-columns: minmax(470px, 50vw) minmax(0, 1fr); }
+      .shell { grid-template-columns: minmax(520px, 50vw) minmax(0, 1fr); }
       .brand, .messages, .composer { padding-left: 20px; padding-right: 20px; }
-      .preview-head { grid-template-columns: auto minmax(160px, 1fr) auto auto; gap: 8px; padding: 14px 16px; }
+      .preview-head { grid-template-columns: auto auto minmax(150px, 1fr) auto auto; gap: 8px; padding: 14px 16px; }
+      .view-toggle button { padding: 7px 9px; }
     }
     @media (max-width: 900px) {
       body { overflow: auto; }
       .shell { display: block; height: auto; min-height: 100dvh; }
       .left { height: 100dvh; min-height: 680px; overflow: hidden; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
-      .messages { min-height: 0; overflow-y: auto; padding: 18px 18px 18px; }
+      .messages { min-height: 0; overflow: hidden; padding: 18px 18px 16px; }
       .composer { position: sticky; bottom: 0; z-index: 10; padding: 10px 18px 12px; }
+      .quick { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .right { height: 76dvh; min-height: 560px; }
       .msg.coco { min-height: auto; padding: 18px; }
       .msg.user { max-width: 88%; }
       .status, .meta-row { grid-template-columns: 1fr; }
-      .quick { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .preview-head { grid-template-columns: 1fr; }
+      .view-toggle { width: 100%; justify-content: stretch; }
+      .view-toggle button { flex: 1; }
     }
     @media (max-width: 560px) {
       .brand { padding: 18px 16px 12px; }
       h1 { font-size: 3.25rem; }
       .sub { font-size: .92rem; }
       .msg.coco .msg-body { font-size: 1.12rem; line-height: 1.4; }
-      .quick { display: flex; }
+      .quick { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .meta-row { gap: 7px; }
       .preview-title { font-size: 1.25rem; }
       .right { height: 70dvh; min-height: 500px; }
@@ -155,7 +174,7 @@
         <div class="compose-line">
           <button id="attach" class="attach" type="button" aria-label="Attach screenshots or files">+</button>
           <input id="fileInput" class="file-input" type="file" multiple accept="image/*,.pdf,.doc,.docx,.txt,.md,.html">
-          <textarea id="request">Coco, help me finish Garran Hill today. I need the site to feel like Architectural Digest/Vogue-level luxury editorial, with better narrative flow, clearer photo choices, source-backed SEO proof, mobile readability, and owner-meeting confidence.</textarea>
+          <textarea id="request">Coco, look at Garran Hill like a luxury editorial director. Tell me what to fix first.</textarea>
           <button class="send" type="submit">Send</button>
         </div>
         <div class="meta-row">
@@ -182,12 +201,23 @@
 
     <section class="right">
       <header class="preview-head">
-        <div class="preview-title">Preview</div>
+        <div class="preview-title">Garran Hill Preview</div>
+        <div class="view-toggle" aria-label="Preview size">
+          <button id="desktopView" class="active" type="button" aria-pressed="true">Desktop</button>
+          <button id="tabletView" type="button" aria-pressed="false">Tablet</button>
+          <button id="mobileView" type="button" aria-pressed="false">Mobile</button>
+        </div>
         <input id="previewUrl" class="preview-url" value="https://a8d26740.garren-hill.pages.dev">
         <button id="refresh" class="ghost" type="button">Refresh</button>
         <a id="openPreview" class="ghost" href="https://a8d26740.garren-hill.pages.dev" target="_blank" rel="noreferrer">Open</a>
       </header>
-      <iframe id="previewFrame" src="https://a8d26740.garren-hill.pages.dev" title="Property preview"></iframe>
+      <div id="previewStage" class="preview-stage desktop">
+        <div id="previewWrap" class="preview-frame-wrap">
+          <div id="previewShell" class="preview-frame-shell">
+            <iframe id="previewFrame" src="https://a8d26740.garren-hill.pages.dev" title="Property preview"></iframe>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -202,10 +232,25 @@
       const previewUrl = document.getElementById("previewUrl");
       const previewFrame = document.getElementById("previewFrame");
       const openPreview = document.getElementById("openPreview");
+      const previewStage = document.getElementById("previewStage");
+      const previewWrap = document.getElementById("previewWrap");
+      const previewShell = document.getElementById("previewShell");
+      const desktopView = document.getElementById("desktopView");
+      const tabletView = document.getElementById("tabletView");
+      const mobileView = document.getElementById("mobileView");
       const attach = document.getElementById("attach");
       const fileInput = document.getElementById("fileInput");
       const fileList = document.getElementById("fileList");
       let attachments = [];
+
+      function keepMessageVisible() {
+        messages.scrollTop = 0;
+      }
+
+      function autoGrowRequest() {
+        request.style.height = "auto";
+        request.style.height = Math.min(86, Math.max(58, request.scrollHeight)) + "px";
+      }
 
       function escapeHtml(value) {
         return String(value || "")
@@ -281,7 +326,8 @@
         } else {
           body.textContent = text;
         }
-        messages.scrollTop = messages.scrollHeight;
+        body.scrollTop = 0;
+        keepMessageVisible();
       }
 
       function add(role, text, extra = "", placement = "append") {
@@ -296,10 +342,10 @@
         el.append(label, body);
         if (placement === "prepend") {
           messages.prepend(el);
-          messages.scrollTop = 0;
+          keepMessageVisible();
         } else {
           messages.appendChild(el);
-          messages.scrollTop = messages.scrollHeight;
+          keepMessageVisible();
         }
         return el;
       }
@@ -378,6 +424,7 @@
       function syncPreview(url) {
         previewFrame.src = url;
         openPreview.href = url;
+        sizePreview();
       }
 
       function fallback(text) {
@@ -401,9 +448,51 @@
         syncPreview(base + (base.includes("?") ? "&" : "?") + "cocoRefresh=" + Date.now());
       });
 
+      function setPreviewMode(mode) {
+        const desktop = mode === "desktop";
+        const tablet = mode === "tablet";
+        const mobile = mode === "mobile";
+        previewStage.classList.toggle("desktop", desktop);
+        previewStage.classList.toggle("tablet", tablet);
+        previewStage.classList.toggle("mobile", mobile);
+        desktopView.classList.toggle("active", desktop);
+        tabletView.classList.toggle("active", tablet);
+        mobileView.classList.toggle("active", mobile);
+        desktopView.setAttribute("aria-pressed", String(desktop));
+        tabletView.setAttribute("aria-pressed", String(tablet));
+        mobileView.setAttribute("aria-pressed", String(mobile));
+        sizePreview();
+      }
+
+      function sizePreview() {
+        if (previewStage.classList.contains("mobile") || previewStage.classList.contains("tablet")) {
+          previewWrap.removeAttribute("style");
+          previewShell.removeAttribute("style");
+          return;
+        }
+        const rect = previewStage.getBoundingClientRect();
+        const baseWidth = 1440;
+        const safeWidth = Math.max(320, rect.width - 32);
+        const safeHeight = Math.max(520, rect.height - 32);
+        const scale = Math.min(1, safeWidth / baseWidth);
+        const baseHeight = Math.max(900, Math.ceil(safeHeight / scale));
+        previewWrap.style.width = Math.round(baseWidth * scale) + "px";
+        previewWrap.style.height = Math.round(baseHeight * scale) + "px";
+        previewShell.style.width = baseWidth + "px";
+        previewShell.style.height = baseHeight + "px";
+        previewShell.style.transform = "scale(" + scale.toFixed(4) + ")";
+      }
+
+      desktopView.addEventListener("click", () => setPreviewMode("desktop"));
+      tabletView.addEventListener("click", () => setPreviewMode("tablet"));
+      mobileView.addEventListener("click", () => setPreviewMode("mobile"));
+      window.addEventListener("resize", sizePreview);
+      sizePreview();
+
       document.querySelectorAll("[data-prompt]").forEach((button) => {
         button.addEventListener("click", () => {
           request.value = button.dataset.prompt;
+          autoGrowRequest();
           request.focus();
         });
       });
@@ -444,6 +533,9 @@
         }
       });
 
+      request.addEventListener("input", autoGrowRequest);
+      autoGrowRequest();
+
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
         const text = request.value.trim();
@@ -451,9 +543,10 @@
         const attachedText = attachments.length
           ? "\n\nAttached files:\n" + attachments.map((file) => `- ${file.name} (${file.type || "file"}, ${formatSize(file.size)})`).join("\n")
           : "";
-        add("user", text + attachedText, "", "prepend");
-        const pending = add("coco", "Thinking with the Studio brief, locked laws, preview, photo/proof/SEO lanes, launch gate, and any attached files...", "", "prepend");
-        messages.scrollTop = 0;
+        messages.replaceChildren();
+        const pending = add("coco", "Thinking with the Studio brief, locked laws, preview, photo/proof/SEO lanes, launch gate, and any attached files...");
+        add("user", text + attachedText);
+        keepMessageVisible();
         const key = clean(pin.value);
         try {
           if (key) {
@@ -478,6 +571,7 @@
               propertyId: propertyId.value,
               request: [
                 "Coco, answer in plain English for Rachel inside the simple builder.",
+                "Keep the first answer visible in one screen: lead with the answer, then give no more than seven tight bullets unless Rachel asks for depth.",
                 "Use Studio memory, locked laws, source truth, visual luxury standards, photos, proof, SEO, and launch safety.",
                 "Use the Rachel Studio Front-End UI skill: chat-first builder, iMessage-like transcript, uploads/screenshots as glasses, responsive mobile QA, luxury gallery system, Figma/design-system lane when helpful, and protected preview-only changes.",
                 "Current preview URL: " + previewUrl.value,
@@ -500,6 +594,7 @@
           }
           setMessage(pending, result.answer || "Coco answered, but no answer text came through.", true);
           request.value = "";
+          autoGrowRequest();
           attachments = [];
           renderFiles();
         } catch (error) {
