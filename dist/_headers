@@ -5,3 +5,11 @@
 /coco.html
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store
+
+/workshop
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+
+/workshop.html
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
