@@ -1,12 +1,5 @@
 # Static lib files — serve directly, never fall through to SPA
 /lib/*  /lib/:splat  200
 
-# Private studio builder routes
-/coco  /coco.html  200
-/studio  /coco.html  200
-/studio/*  /coco.html  200
-/workshop  /coco.html  200
-/workshop/*  /coco.html  200
-
-# SPA fallback — everything else goes to index.html
+# Public studio placeholder. Private workspace lives behind the protected Worker route.
 /*  /index.html  200
