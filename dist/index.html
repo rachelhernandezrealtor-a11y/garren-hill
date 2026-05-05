@@ -4,17 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
-  <meta http-equiv="refresh" content="0; url=/coco">
-  <title>Rachel Studio</title>
+  <title>Coco Builder | Rachel Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
   <style>
     :root {
       --dark: #0a0a0a;
-      --gold: #C9A96E;
-      --cream: #F5F0E8;
-      --muted: rgba(245, 240, 232, .62);
+      --panel: #10100f;
+      --cream: #f5f0e8;
+      --muted: rgba(245, 240, 232, .66);
+      --soft: rgba(245, 240, 232, .05);
+      --gold: #c9a96e;
+      --line: rgba(201, 169, 110, .32);
+      --user: #f5f0e8;
+      --user-text: #0a0a0a;
+      --coco: rgba(245, 240, 232, .06);
+      --danger: #d8a28b;
     }
 
     * { box-sizing: border-box; }
@@ -28,63 +34,511 @@
       font-family: "Cormorant Garamond", Georgia, serif;
     }
 
-    body {
+    body { overflow: hidden; }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    a { color: inherit; }
+
+    .app {
+      height: 100vh;
       display: grid;
-      place-items: center;
-      padding: 32px;
+      grid-template-columns: minmax(390px, 44vw) minmax(520px, 1fr);
+      background: var(--dark);
     }
 
-    main {
-      width: min(620px, 100%);
-      border: 1px solid rgba(201, 169, 110, .34);
-      padding: clamp(32px, 7vw, 64px);
-      background: linear-gradient(180deg, rgba(201, 169, 110, .055), rgba(255, 255, 255, .018));
+    .left,
+    .right {
+      min-width: 0;
+      min-height: 0;
     }
 
-    .kicker {
+    .left {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      border-right: 1px solid var(--line);
+      background: linear-gradient(180deg, #11100f 0%, #0a0a0a 100%);
+    }
+
+    .brand {
+      padding: clamp(20px, 3vw, 34px);
+      border-bottom: 1px solid rgba(201, 169, 110, .22);
+    }
+
+    .eyebrow {
       color: var(--gold);
-      font-size: .72rem;
-      letter-spacing: .32em;
+      font-size: 12px;
       text-transform: uppercase;
-      margin-bottom: 18px;
+      margin: 0 0 8px;
     }
 
     h1 {
-      font-size: clamp(3rem, 9vw, 5rem);
+      margin: 0;
+      font-size: clamp(48px, 7vw, 92px);
+      line-height: .9;
       font-weight: 300;
-      line-height: .95;
-      margin: 0 0 18px;
     }
 
-    p {
+    .brand p {
+      margin: 14px 0 0;
+      max-width: 680px;
       color: var(--muted);
-      font-size: clamp(1.15rem, 2.5vw, 1.38rem);
-      line-height: 1.45;
-      margin: 0 0 28px;
+      font-size: clamp(18px, 2vw, 25px);
+      line-height: 1.25;
     }
 
-    a {
-      display: inline-block;
-      border: 1px solid rgba(201, 169, 110, .5);
+    .chat-shell {
+      min-height: 0;
+      display: grid;
+      grid-template-rows: 1fr;
+    }
+
+    .messages {
+      min-height: 0;
+      overflow: auto;
+      padding: clamp(18px, 2.6vw, 34px);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      scroll-behavior: smooth;
+    }
+
+    .bubble {
+      width: fit-content;
+      max-width: min(760px, 92%);
+      padding: 16px 19px;
+      border: 1px solid var(--line);
+      white-space: pre-wrap;
+      font-size: clamp(19px, 1.6vw, 25px);
+      line-height: 1.32;
+    }
+
+    .bubble.coco {
+      align-self: flex-start;
+      background: var(--coco);
       color: var(--cream);
-      padding: 13px 22px;
-      text-decoration: none;
-      font-size: 1.05rem;
     }
 
-    a:focus,
-    a:hover {
+    .bubble.user {
+      align-self: flex-end;
+      background: var(--user);
+      border-color: var(--user);
+      color: var(--user-text);
+    }
+
+    .bubble.error {
+      color: var(--danger);
+      border-color: rgba(216, 162, 139, .55);
+    }
+
+    .bubble small {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--gold);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .composer {
+      border-top: 1px solid rgba(201, 169, 110, .24);
+      padding: 16px clamp(18px, 2.6vw, 34px) 18px;
+      background: rgba(10, 10, 10, .96);
+    }
+
+    .quickbar {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .quickbar button,
+    .send,
+    .device button,
+    .open-link {
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--cream);
+      min-height: 44px;
+      padding: 9px 12px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: clamp(16px, 1.2vw, 20px);
+    }
+
+    .quickbar button:hover,
+    .device button.active,
+    .device button:hover,
+    .open-link:hover {
       background: var(--cream);
       color: var(--dark);
+    }
+
+    .input-row {
+      display: grid;
+      grid-template-columns: 48px 1fr 92px;
+      gap: 10px;
+      align-items: end;
+    }
+
+    .add {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--gold);
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    textarea {
+      width: 100%;
+      height: 86px;
+      max-height: 170px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      background: #0d0d0c;
+      color: var(--cream);
+      padding: 13px 15px;
+      font-size: clamp(18px, 1.4vw, 23px);
+      line-height: 1.25;
+    }
+
+    .send {
+      height: 48px;
+      background: var(--cream);
+      color: var(--dark);
+      border-color: var(--cream);
+    }
+
+    .meta-row {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 10px;
+    }
+
+    select,
+    input {
+      width: 100%;
+      min-height: 40px;
+      border: 1px solid var(--line);
+      background: #0d0d0c;
+      color: var(--cream);
+      padding: 8px 11px;
+      font-size: 17px;
+    }
+
+    .right {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      background: #050505;
+    }
+
+    .preview-head {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .preview-title {
+      font-size: clamp(25px, 2.5vw, 36px);
+      line-height: 1;
+    }
+
+    .preview-url {
+      min-width: 0;
+    }
+
+    .device {
+      display: flex;
+      gap: 7px;
+    }
+
+    .device button {
+      min-width: 48px;
+      min-height: 42px;
+      font-size: 16px;
+    }
+
+    .frame-stage {
+      min-height: 0;
+      overflow: auto;
+      display: grid;
+      place-items: stretch center;
+      padding: 0;
+      background: #020202;
+    }
+
+    .frame-wrap {
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      border-left: 0;
+      border-right: 0;
+      background: #000;
+    }
+
+    .frame-wrap.mobile {
+      width: 390px;
+      max-width: 100%;
+      height: calc(100vh - 84px);
+      margin: 0 auto;
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+    }
+
+    .frame-wrap.tablet {
+      width: 820px;
+      max-width: 100%;
+      height: calc(100vh - 84px);
+      margin: 0 auto;
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      min-height: calc(100vh - 84px);
+      border: 0;
+      background: #000;
+      display: block;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 980px) {
+      body { overflow: auto; }
+      .app {
+        min-height: 100vh;
+        height: auto;
+        grid-template-columns: 1fr;
+      }
+      .left { min-height: 82vh; border-right: 0; border-bottom: 1px solid var(--line); }
+      .right { min-height: 92vh; }
+      .quickbar { grid-template-columns: repeat(3, 1fr); }
+      .preview-head { grid-template-columns: 1fr; }
+      iframe { min-height: 74vh; }
+      .frame-wrap.mobile,
+      .frame-wrap.tablet { height: 74vh; }
+    }
+
+    @media (max-width: 560px) {
+      .brand { padding: 20px; }
+      .messages { padding: 18px; }
+      .composer { padding: 14px; }
+      .quickbar { grid-template-columns: repeat(2, 1fr); }
+      .input-row { grid-template-columns: 42px 1fr; }
+      .send { grid-column: 1 / -1; }
+      .meta-row { grid-template-columns: 1fr; }
+      .bubble { max-width: 96%; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <div class="kicker">Rachel Studio</div>
-    <h1>Opening Coco.</h1>
-    <p>This private studio route opens the builder directly. Garran Hill preview stays inside Coco.</p>
-    <a href="/coco">Open Coco</a>
+  <main class="app">
+    <section class="left" aria-label="Coco chat">
+      <header class="brand">
+        <p class="eyebrow">Rachel Studio | Coco</p>
+        <h1>Coco</h1>
+        <p>One calm builder room. Chat on the left. Live property preview on the right. Draft here; Rachel approves before anything public.</p>
+      </header>
+
+      <section class="chat-shell">
+        <div id="messages" class="messages" aria-live="polite">
+          <div class="bubble coco"><small>Coco</small>Ready. Try: “Coco, look at Garran Hill like a luxury editorial director. Tell me what to fix first for today’s owner meeting.”</div>
+        </div>
+      </section>
+
+      <form id="composer" class="composer">
+        <div class="quickbar" aria-label="Coco modes">
+          <button type="button" data-prompt="Coco, look at Garran Hill like a luxury editorial director. Separate visual issues, copy issues, photo issues, mobile issues, SEO/source issues, and the next safe fixes.">Look</button>
+          <button type="button" data-prompt="Coco, tighten the Garran Hill opening narrative. Lead with provenance, the original name, restoration proof, and owner-meeting confidence. Keep locked copy protected.">Words</button>
+          <button type="button" data-prompt="Coco, help choose stronger photos and gallery rhythm. Tell me what images should do emotionally, what is wrong now, and what needs Rachel approval.">Photos</button>
+          <button type="button" data-prompt="Coco, explain the source-backed proof and backlink strategy for Garran Hill in owner-friendly language.">Proof</button>
+          <button type="button" data-prompt="Coco, review SEO for Garran Hill: metadata, source authority, backlinks, image alt text, local discovery, analytics proof, and launch reporting.">SEO</button>
+          <button type="button" data-prompt="Coco, run the launch gate: mobile, copy, photos, SEO, locked laws, cache/build proof, and what blocks production.">Launch</button>
+        </div>
+
+        <label class="sr-only" for="request">Message Coco</label>
+        <div class="input-row">
+          <button class="add" type="button" title="Uploads are coming next">+</button>
+          <textarea id="request">Coco, help me finish Garran Hill today. I need the site to feel like Architectural Digest/Vogue-level luxury editorial, with better narrative flow, clearer photo choices, source-backed SEO proof, mobile readability, and owner-meeting confidence.</textarea>
+          <button class="send" type="submit">Send</button>
+        </div>
+
+        <div class="meta-row">
+          <select id="propertyId" aria-label="Property">
+            <option value="garran-hill">Garran Hill</option>
+            <option value="flow-farm">Flow Farm</option>
+          </select>
+          <input id="pin" type="password" autocomplete="off" placeholder="Admin key once, if asked">
+        </div>
+      </form>
+    </section>
+
+    <section class="right" aria-label="Live preview">
+      <header class="preview-head">
+        <div class="preview-title">Preview</div>
+        <input class="preview-url" id="previewUrl" value="https://a8d26740.garren-hill.pages.dev" aria-label="Preview URL">
+        <div class="device" aria-label="Preview size">
+          <button type="button" data-device="desktop" class="active">Desk</button>
+          <button type="button" data-device="tablet">Tab</button>
+          <button type="button" data-device="mobile">Phone</button>
+        </div>
+        <a class="open-link" id="openPreview" href="https://a8d26740.garren-hill.pages.dev" target="_blank" rel="noreferrer">Open</a>
+      </header>
+      <div class="frame-stage">
+        <div id="frameWrap" class="frame-wrap">
+          <iframe id="previewFrame" title="Property preview" src="https://a8d26740.garren-hill.pages.dev"></iframe>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <script>
+    (() => {
+      const form = document.getElementById('composer');
+      const request = document.getElementById('request');
+      const pin = document.getElementById('pin');
+      const propertyId = document.getElementById('propertyId');
+      const messages = document.getElementById('messages');
+      const previewUrl = document.getElementById('previewUrl');
+      const previewFrame = document.getElementById('previewFrame');
+      const openPreview = document.getElementById('openPreview');
+      const frameWrap = document.getElementById('frameWrap');
+
+      const defaults = {
+        'garran-hill': 'https://a8d26740.garren-hill.pages.dev',
+        'flow-farm': 'https://flowfarm-landing.pages.dev/'
+      };
+
+      function addBubble(role, text, isError) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble ' + role + (isError ? ' error' : '');
+        const who = document.createElement('small');
+        who.textContent = role === 'user' ? 'Rachel' : 'Coco';
+        bubble.appendChild(who);
+        bubble.append(document.createTextNode(text));
+        messages.appendChild(bubble);
+        messages.scrollTop = messages.scrollHeight;
+        return bubble;
+      }
+
+      function cleanPin(value) {
+        return String(value || '').trim().replace(/[^\x21-\x7E]/g, '');
+      }
+
+      function setPreview(url) {
+        previewUrl.value = url;
+        previewFrame.src = url;
+        openPreview.href = url;
+      }
+
+      document.querySelectorAll('[data-prompt]').forEach((button) => {
+        button.addEventListener('click', () => {
+          request.value = button.dataset.prompt;
+          request.focus();
+        });
+      });
+
+      document.querySelectorAll('[data-device]').forEach((button) => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('[data-device]').forEach((item) => item.classList.remove('active'));
+          button.classList.add('active');
+          frameWrap.className = 'frame-wrap ' + (button.dataset.device === 'desktop' ? '' : button.dataset.device);
+        });
+      });
+
+      propertyId.addEventListener('change', () => setPreview(defaults[propertyId.value] || defaults['garran-hill']));
+      previewUrl.addEventListener('change', () => setPreview(previewUrl.value));
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const text = request.value.trim();
+        if (!text) return;
+        addBubble('user', text);
+        const pending = addBubble('coco', 'Thinking with the Studio brief, locked laws, preview, photo/proof/SEO lanes, and launch gate...');
+
+        try {
+          const operatorKey = cleanPin(pin.value);
+          const headers = { 'content-type': 'application/json' };
+          if (operatorKey) headers['x-rachel-studio-pin'] = operatorKey;
+
+          if (operatorKey) {
+            const sessionResponse = await fetch('/studio/session', {
+              method: 'POST',
+              headers,
+              credentials: 'same-origin',
+              body: JSON.stringify({ pin: operatorKey })
+            });
+            if (!sessionResponse.ok) {
+              const sessionResult = await sessionResponse.json().catch(() => ({}));
+              throw new Error(sessionResult.error || 'The admin key did not match.');
+            }
+            pin.value = '';
+          }
+
+          const response = await fetch('/studio/api/chat', {
+            method: 'POST',
+            headers,
+            credentials: 'same-origin',
+            body: JSON.stringify({
+              propertyId: propertyId.value,
+              request: [
+                'Coco, answer inside the Rachel Studio builder.',
+                'Use the property truth, locked laws, luxury editorial standard, SEO/source strategy, and launch safety rules already established.',
+                'Be practical: explain what Rachel should do, what Codex should build, what needs approval, and what must stay protected.',
+                'Current preview URL: ' + previewUrl.value,
+                '',
+                text
+              ].join('\n')
+            })
+          });
+
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            if (response.status === 401) {
+              throw new Error(result.next || 'Open the admin key field once, paste the Studio key, and press Send again.');
+            }
+            throw new Error(result.error || result.next || 'Coco could not answer from the live AI lane yet.');
+          }
+
+          pending.textContent = '';
+          const label = document.createElement('small');
+          label.textContent = 'Coco';
+          pending.appendChild(label);
+          pending.append(document.createTextNode(result.answer || 'Coco answered, but no text came through.'));
+        } catch (error) {
+          pending.classList.add('error');
+          pending.textContent = '';
+          const label = document.createElement('small');
+          label.textContent = 'Coco';
+          pending.appendChild(label);
+          pending.append(document.createTextNode('That did not complete. ' + (error.message || String(error))));
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
