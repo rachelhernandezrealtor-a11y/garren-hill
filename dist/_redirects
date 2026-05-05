@@ -1,8 +1,5 @@
 # Static lib files — serve directly, never fall through to SPA
 /lib/*  /lib/:splat  200
 
-# Private Coco front door.
-/coco  /coco.html  200
-
 # Public studio placeholder. Private workspace lives behind the protected Worker route.
 /*  /index.html  200
