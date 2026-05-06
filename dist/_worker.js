@@ -8,18 +8,85 @@ const HEADERS = {
 };
 
 const NO_HAZE_CSS = `
-  /* Codex preview-only no-haze repair. Production remains untouched. */
-  body::after { display: none !important; }
+  /* Codex preview-only no-haze repair v2. Production remains untouched. */
+  body::before,
+  body::after {
+    content: none !important;
+    display: none !important;
+    opacity: 0 !important;
+    background: none !important;
+  }
+  * {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
   .hero-loop-fade { display: none !important; animation: none !important; opacity: 0 !important; }
-  .hero-video { filter: brightness(1.12) contrast(1.06) saturate(1.04) !important; }
+  .hero-video {
+    filter: brightness(1.18) contrast(1.08) saturate(1.06) !important;
+    opacity: 1 !important;
+  }
   .hero-overlay {
     background:
-      linear-gradient(90deg, rgba(10,10,10,0.28) 0%, rgba(10,10,10,0.12) 42%, rgba(10,10,10,0) 62%),
-      linear-gradient(180deg, rgba(10,10,10,0.04) 0%, rgba(10,10,10,0) 35%, rgba(10,10,10,0) 68%, rgba(10,10,10,0.24) 100%) !important;
+      linear-gradient(90deg, rgba(10,10,10,0.18) 0%, rgba(10,10,10,0.06) 42%, rgba(10,10,10,0) 62%),
+      linear-gradient(180deg, rgba(10,10,10,0.02) 0%, rgba(10,10,10,0) 35%, rgba(10,10,10,0) 68%, rgba(10,10,10,0.14) 100%) !important;
   }
   .hero-top-nav.scrolled { backdrop-filter: none !important; background: rgba(10,10,10,0.78) !important; }
+  .threshold-overlay {
+    background:
+      linear-gradient(to right, rgba(10,10,10,0.34) 0%, rgba(10,10,10,0.16) 42%, rgba(10,10,10,0) 72%),
+      linear-gradient(to bottom, rgba(10,10,10,0.08) 0%, rgba(10,10,10,0) 48%, rgba(10,10,10,0.20) 100%) !important;
+  }
+  .fullbleed-overlay-left {
+    background: linear-gradient(to right, rgba(10,10,10,0.34) 0%, rgba(10,10,10,0.14) 45%, rgba(10,10,10,0.02) 100%) !important;
+  }
+  .fullbleed-overlay-dark {
+    background: rgba(10,10,10,0.20) !important;
+  }
+  .twilight-overlay {
+    background: linear-gradient(to bottom,
+      rgba(10,10,10,0.12) 0%,
+      rgba(10,10,10,0.04) 30%,
+      rgba(10,10,10,0.28) 70%,
+      rgba(10,10,10,0.62) 100%
+    ) !important;
+  }
+  .kb-overlay {
+    background:
+      radial-gradient(ellipse at 0% 0%, rgba(5,3,2,0.20) 0%, transparent 52%),
+      radial-gradient(ellipse at 100% 0%, rgba(5,3,2,0.20) 0%, transparent 52%),
+      radial-gradient(ellipse at 0% 100%, rgba(5,3,2,0.28) 0%, transparent 52%),
+      radial-gradient(ellipse at 100% 100%, rgba(5,3,2,0.28) 0%, transparent 52%),
+      linear-gradient(to bottom,
+        rgba(10,10,10,0.06) 0%,
+        rgba(10,10,10,0) 48%,
+        rgba(10,10,10,0.22) 76%,
+        rgba(10,10,10,0.46) 100%
+      ) !important;
+  }
+  .threshold-img,
+  .fullbleed-beat img,
+  .twilight-bg,
+  .room-img-wrap img,
+  .kb-gate .kb-img,
+  .whp-titles-right img,
+  .whp-letter-panel img,
+  #whp-letter-p354.dimming img {
+    filter: none !important;
+    opacity: 1 !important;
+  }
+  section.fullbleed-beat > div[style*="background:linear-gradient"],
+  section.fullbleed-beat > div[style*="background: linear-gradient"],
+  section.fullbleed-beat > div[style*="rgba(10,10,10,0.72)"] {
+    background: linear-gradient(to right, rgba(10,10,10,0.34) 0%, rgba(10,10,10,0.06) 100%) !important;
+  }
   .fade-in,
   .scroll-reveal,
+  .kb-line-1,
+  .kb-line-2,
+  .kb-line-3,
+  .kb-address-wrapper,
+  .kb-rule-top-anim,
+  .kb-rule-bottom-anim,
   .whp-titles-eyebrow,
   .whp-titles-headline,
   .whp-titles-bio,
@@ -41,7 +108,7 @@ function applyPreviewCorrections(html) {
     .replace(/Last_Hero_3_ei2bur\.mp4/g, "Last_for_real_q0fqvw.mp4")
     .replace(/he never walked through the door/gi, "he never spent a night here");
 
-  if (!next.includes("Codex preview-only no-haze repair")) {
+  if (!next.includes("Codex preview-only no-haze repair v2")) {
     next = next.replace("</style>", `${NO_HAZE_CSS}\n</style>`);
   }
 
