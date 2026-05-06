@@ -2,515 +2,902 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex,nofollow">
-  <title>Coco Builder | Rachel Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Coco | Rachel Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --dark: #0a0a0a;
-      --panel: #11100f;
-      --gold: #C9A96E;
+      --ink: #050505;
+      --panel: #0d0c0b;
+      --panel-soft: #14110f;
       --cream: #F5F0E8;
-      --muted: rgba(245,240,232,.58);
-      --line: rgba(201,169,110,.34);
-      --warn: #d6a08a;
+      --muted: rgba(245, 240, 232, .58);
+      --quiet: rgba(245, 240, 232, .36);
+      --gold: #C9A96E;
+      --line: rgba(201, 169, 110, .32);
+      --line-soft: rgba(201, 169, 110, .18);
+      --good: rgba(245, 240, 232, .94);
+      --warn: #d9a88e;
+      color-scheme: dark;
     }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; min-height: 100%; background: var(--dark); color: var(--cream); font-family: "Cormorant Garamond", Georgia, serif; }
-    body { overflow: hidden; }
-    button, input, textarea, select { font: inherit; }
-    a { color: var(--gold); }
-    .shell { display: grid; grid-template-columns: minmax(520px, 46vw) minmax(0, 1fr); height: 100dvh; min-height: 0; }
-    .left { border-right: 1px solid var(--line); display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 100dvh; min-height: 0; overflow: hidden; background: linear-gradient(180deg, #0b0b0a, #11100f); }
-    .brand { padding: 12px 24px 10px; border-bottom: 1px solid rgba(201,169,110,.18); }
-    .kicker { color: var(--gold); letter-spacing: .34em; text-transform: uppercase; font-size: .58rem; margin-bottom: 7px; }
-    h1 { font-size: clamp(2.35rem, 3.2vw, 3.45rem); font-weight: 300; line-height: .82; margin: 0; }
-    .sub { color: var(--muted); font-size: .9rem; line-height: 1.22; max-width: 42rem; margin-top: 7px; }
-    .status { display: none; grid-template-columns: repeat(3, 1fr); gap: 0; padding: 0 26px 12px; border-bottom: 1px solid rgba(201,169,110,.18); }
-    .status div { padding: 9px 0; border-top: 1px solid rgba(201,169,110,.16); }
-    .status div + div { padding-left: 16px; margin-left: 16px; border-left: 1px solid rgba(201,169,110,.14); }
-    .status strong { display: block; font-size: .98rem; color: var(--cream); }
-    .status span { display: block; color: var(--muted); font-size: .82rem; line-height: 1.16; margin-top: 3px; }
-    .messages { overflow-y: auto; min-height: 0; padding: 18px 24px 20px; display: flex; flex-direction: column; gap: 12px; scroll-behavior: smooth; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
-    .msg { max-width: min(92%, 760px); border: 1px solid rgba(201,169,110,.26); border-radius: 18px 18px 18px 6px; padding: 14px 16px; color: var(--cream); font-size: 1.04rem; line-height: 1.4; background: rgba(255,255,255,.025); }
-    .msg.user { align-self: flex-end; max-width: min(74%, 540px); border-radius: 18px 18px 6px 18px; border-color: rgba(245,240,232,.18); background: rgba(245,240,232,.08); color: rgba(245,240,232,.86); }
-    .msg.user .speaker { margin-bottom: 4px; color: rgba(245,240,232,.5); }
-    .msg.user .msg-body { font-size: 1rem; }
-    .msg.coco { align-self: flex-start; width: min(92%, 760px); border-color: rgba(201,169,110,.52); background: linear-gradient(180deg, rgba(201,169,110,.1), rgba(201,169,110,.035)); }
-    .msg.error { color: var(--warn); border-color: rgba(214,160,138,.5); }
-    .speaker { color: var(--gold); letter-spacing: .22em; text-transform: uppercase; font-size: .6rem; margin-bottom: 7px; }
-    .msg-body { font-size: 1.05rem; }
-    .msg.coco .msg-body { font-size: clamp(1.08rem, 1.15vw, 1.2rem); line-height: 1.42; }
-    .msg-body h2, .msg-body h3 { color: var(--cream); font-weight: 300; line-height: 1.13; margin: 6px 0 12px; }
-    .msg-body h2 { font-size: clamp(1.65rem, 2.1vw, 2.1rem); }
-    .msg-body h3 { font-size: clamp(1.25rem, 1.7vw, 1.55rem); color: var(--gold); }
-    .msg-body p { margin: 0 0 12px; }
-    .msg-body p:last-child { margin-bottom: 0; }
-    .msg-body ul, .msg-body ol { margin: 8px 0 14px 1.1rem; padding: 0; }
-    .msg-body li { margin: 6px 0; }
-    .msg-body strong { color: var(--cream); font-weight: 500; }
-    .msg-body em { color: rgba(245,240,232,.78); }
-    .composer { padding: 10px 24px 12px; border-top: 1px solid rgba(201,169,110,.2); background: #0c0c0b; display: grid; gap: 8px; }
-    .quick { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; padding-bottom: 2px; }
-    .quick button, .send, .ghost, select, input, textarea, .attach {
-      border: 1px solid var(--line);
-      background: transparent;
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--dark);
       color: var(--cream);
+      font-family: "Cormorant Garamond", Georgia, serif;
+    }
+
+    body {
+      min-height: 100svh;
+      overflow: hidden;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
       border-radius: 0;
+      font: inherit;
     }
-    .quick button, .send, .ghost, .attach { cursor: pointer; padding: 9px 8px; }
-    .quick button { color: var(--muted); border-color: rgba(201,169,110,.2); font-size: .82rem; min-width: 0; white-space: nowrap; }
-    .quick button:hover, .send:hover, .ghost:hover { background: var(--cream); color: var(--dark); }
-    .compose-line { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px; align-items: end; }
-    textarea { width: 100%; min-height: 62px; max-height: 108px; resize: none; padding: 12px 14px; font-size: 1.02rem; line-height: 1.3; outline: none; border-radius: 16px; }
-    textarea:focus, input:focus, select:focus { border-color: var(--gold); }
-    .attach { width: 44px; min-width: 44px; height: 44px; border-radius: 50%; color: var(--gold); border-color: rgba(201,169,110,.32); font-size: 1.15rem; line-height: 1; }
-    .send { min-width: 72px; height: 44px; border-radius: 22px; padding-left: 14px; padding-right: 14px; }
-    .file-input { display: none; }
-    .file-list { display: flex; gap: 7px; overflow-x: auto; min-width: 0; padding-bottom: 2px; }
-    .file-list:not(:empty) { margin-top: 2px; }
-    .file-chip { display: inline-flex; align-items: center; gap: 7px; max-width: 210px; border: 1px solid rgba(201,169,110,.22); border-radius: 999px; background: rgba(245,240,232,.045); color: rgba(245,240,232,.78); padding: 6px 9px; font-size: .76rem; white-space: nowrap; }
-    .file-chip img { width: 28px; height: 28px; object-fit: cover; border: 1px solid rgba(201,169,110,.24); border-radius: 50%; }
-    .file-name { overflow: hidden; text-overflow: ellipsis; }
-    .remove-file { border: 0; background: transparent; color: rgba(245,240,232,.55); cursor: pointer; font-size: 1rem; line-height: 1; padding: 0 1px; }
-    .remove-file:hover { color: var(--cream); }
-    .meta-row { display: grid; grid-template-columns: minmax(120px, .65fr) minmax(150px, 1fr); gap: 9px; align-items: stretch; }
-    select, input { padding: 9px 11px; min-width: 0; border-radius: 14px; }
-    .left.dragging .messages { outline: 1px solid var(--gold); outline-offset: -12px; background: rgba(201,169,110,.035); }
-    .hint { color: rgba(245,240,232,.42); font-size: .78rem; line-height: 1.2; margin-top: 7px; display: none; }
-    .right { min-width: 0; display: grid; grid-template-rows: auto 1fr; height: 100dvh; min-height: 0; background: #050505; }
-    .preview-head { display: grid; grid-template-columns: auto 1fr auto auto; gap: 12px; align-items: center; padding: 18px 22px; border-bottom: 1px solid var(--line); }
-    .preview-title { font-size: 1.5rem; line-height: 1; }
-    .preview-url { width: 100%; color: var(--cream); background: #0b0b0a; }
-    iframe { width: 100%; height: 100%; border: 0; background: #000; }
-    details { border: 1px solid rgba(201,169,110,.18); padding: 8px 10px; margin-top: 8px; display: none; }
-    summary { color: var(--gold); cursor: pointer; letter-spacing: .16em; text-transform: uppercase; font-size: .78rem; }
-    .note-list { color: var(--muted); margin: 12px 0 0 18px; padding: 0; line-height: 1.35; }
-    @media (max-width: 1180px) {
-      .shell { grid-template-columns: minmax(470px, 50vw) minmax(0, 1fr); }
-      .brand, .messages, .composer { padding-left: 20px; padding-right: 20px; }
-      .preview-head { grid-template-columns: auto minmax(160px, 1fr) auto auto; gap: 8px; padding: 14px 16px; }
+
+    button {
+      cursor: pointer;
     }
-    @media (max-width: 900px) {
-      body { overflow: auto; }
-      .shell { display: block; height: auto; min-height: 100dvh; }
-      .left { height: 100dvh; min-height: 680px; overflow: hidden; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
-      .messages { min-height: 0; overflow-y: auto; padding: 18px 18px 18px; }
-      .composer { position: sticky; bottom: 0; z-index: 10; padding: 10px 18px 12px; }
-      .right { height: 76dvh; min-height: 560px; }
-      .msg.coco { min-height: auto; padding: 18px; }
-      .msg.user { max-width: 88%; }
-      .status, .meta-row { grid-template-columns: 1fr; }
-      .quick { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .preview-head { grid-template-columns: 1fr; }
+
+    .private-door {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: grid;
+      place-items: center;
+      padding: clamp(22px, 5vw, 48px);
+      background:
+        radial-gradient(circle at 50% 28%, rgba(201, 169, 110, .11), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, .025), transparent 42%),
+        var(--dark);
     }
-    @media (max-width: 560px) {
-      .brand { padding: 18px 16px 12px; }
-      h1 { font-size: 3.25rem; }
-      .sub { font-size: .92rem; }
-      .msg.coco .msg-body { font-size: 1.12rem; line-height: 1.4; }
-      .quick { display: flex; }
-      .meta-row { gap: 7px; }
-      .preview-title { font-size: 1.25rem; }
-      .right { height: 70dvh; min-height: 500px; }
+
+    .private-door.hidden {
+      display: none;
+    }
+
+    .door-card {
+      width: min(620px, 100%);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(201, 169, 110, .06), rgba(255, 255, 255, .018)), rgba(18, 16, 13, .94);
+      padding: clamp(30px, 6vw, 58px);
+      text-align: center;
+    }
+
+    .kicker {
+      color: var(--gold);
+      font-size: .72rem;
+      letter-spacing: .32em;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 0;
+    }
+
+    .door-card h1 {
+      font-size: clamp(3.4rem, 12vw, 6.6rem);
+      font-weight: 300;
+      line-height: .95;
+    }
+
+    .door-card p {
+      max-width: 430px;
+      margin: 22px auto 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2.6vw, 1.35rem);
+      line-height: 1.45;
+    }
+
+    .unlock-form {
+      display: grid;
+      max-width: 390px;
+      margin: 34px auto 0;
+      gap: 14px;
+    }
+
+    .field-label {
+      color: var(--gold);
+      font-size: .72rem;
+      letter-spacing: .22em;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    .text-field,
+    .select-field,
+    .send-button,
+    .plain-button,
+    .device-button,
+    .chip-button {
+      min-height: 48px;
+      border: 1px solid var(--line);
+      background: rgba(10, 10, 10, .72);
+      color: var(--cream);
+      padding: 12px 14px;
+    }
+
+    .text-field {
+      width: 100%;
+      text-align: center;
+      font-size: 1.16rem;
+    }
+
+    .text-field::placeholder,
+    textarea::placeholder {
+      color: rgba(245, 240, 232, .34);
+    }
+
+    .text-field:focus-visible,
+    textarea:focus-visible,
+    button:focus-visible,
+    select:focus-visible {
+      outline: 1px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .primary-button {
+      min-height: 54px;
+      border: 1px solid var(--cream);
+      background: var(--cream);
+      color: var(--dark);
+      font-size: 1.18rem;
+      padding: 14px 16px;
+    }
+
+    .door-note {
+      min-height: 1.4em;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .safe {
+      margin-top: 28px;
+      border-top: 1px solid rgba(245, 240, 232, .16);
+      padding-top: 18px;
+      color: rgba(245, 240, 232, .48);
+      font-size: .95rem;
+      line-height: 1.45;
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: minmax(360px, 42vw) minmax(420px, 58vw);
+      height: 100svh;
+      min-height: 0;
+      background: var(--dark);
+    }
+
+    .app.locked {
+      display: none;
+    }
+
+    .chat-panel,
+    .preview-panel {
+      min-width: 0;
+      min-height: 0;
+    }
+
+    .chat-panel {
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
+      border-right: 1px solid var(--line-soft);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, .025), transparent 34%),
+        var(--ink);
+    }
+
+    .brand-bar {
+      display: none;
+    }
+
+    .brand-bar h1 {
+      margin-top: 10px;
+      font-size: clamp(3.2rem, 7vw, 5.4rem);
+      font-weight: 300;
+      line-height: .9;
+    }
+
+    .brand-bar p {
+      max-width: 690px;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.45vw, 1.28rem);
+      line-height: 1.35;
+    }
+
+    .status-row {
+      display: none;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .status-card {
+      min-height: 92px;
+      border-right: 1px solid var(--line-soft);
+      padding: 18px 22px;
+    }
+
+    .status-card:last-child {
+      border-right: 0;
+    }
+
+    .status-card strong {
+      display: block;
+      font-size: 1.22rem;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .status-card span {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .conversation {
+      min-height: 0;
+      padding: clamp(18px, 2.6vw, 30px) clamp(18px, 3.2vw, 36px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(201, 169, 110, .5) transparent;
+    }
+
+    .conversation::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .conversation::-webkit-scrollbar-thumb {
+      background: rgba(201, 169, 110, .45);
+    }
+
+    .message-list {
+      display: flex;
+      min-height: 100%;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 14px;
+    }
+
+    .bubble {
+      width: fit-content;
+      max-width: min(760px, 92%);
+      border: 1px solid var(--line);
+      padding: clamp(16px, 2vw, 22px) clamp(18px, 2.4vw, 26px);
+      white-space: pre-wrap;
+      font-size: clamp(1.12rem, 1.45vw, 1.36rem);
+      line-height: 1.38;
+    }
+
+    .bubble .label {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--gold);
+      font-size: .68rem;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+    }
+
+    .bubble.coco {
+      background: linear-gradient(180deg, rgba(201, 169, 110, .07), rgba(255, 255, 255, .016));
+    }
+
+    .bubble.user {
+      align-self: flex-end;
+      border-color: rgba(245, 240, 232, .34);
+      background: rgba(245, 240, 232, .92);
+      color: var(--dark);
+    }
+
+    .bubble.user .label {
+      color: rgba(10, 10, 10, .56);
+    }
+
+    .bubble.error {
+      border-color: rgba(217, 168, 142, .7);
+      color: var(--warn);
+    }
+
+    .composer {
+      display: grid;
+      gap: 10px;
+      padding: 12px clamp(16px, 2.8vw, 28px) clamp(16px, 2.8vw, 24px);
+      border-top: 1px solid var(--line-soft);
+      background: rgba(5, 5, 5, .96);
+    }
+
+    .chips {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .chip-button {
+      min-height: 40px;
+      color: var(--muted);
+      font-size: .94rem;
+      transition: border-color .18s ease, color .18s ease, background .18s ease;
+    }
+
+    .chip-button.active,
+    .chip-button:hover {
+      border-color: var(--gold);
+      background: rgba(201, 169, 110, .08);
+      color: var(--cream);
+    }
+
+    .compose-line {
+      display: grid;
+      grid-template-columns: 54px 1fr 86px;
+      gap: 10px;
+      align-items: end;
+    }
+
+    .attach-wrap {
+      position: relative;
+    }
+
+    .attach-wrap input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .plain-button,
+    .send-button {
+      min-height: 54px;
+      color: var(--cream);
+      font-size: 1.1rem;
+    }
+
+    .plain-button {
+      width: 54px;
+      padding: 0;
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    .send-button {
+      border-color: var(--gold);
+      color: var(--cream);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 54px;
+      max-height: 132px;
+      border: 1px solid var(--line);
+      background: rgba(10, 10, 10, .78);
+      color: var(--cream);
+      padding: 14px 16px;
+      resize: none;
+      overflow: hidden;
+      font-size: clamp(1.05rem, 1.28vw, 1.22rem);
+      line-height: 1.28;
+    }
+
+    .utility-row {
+      display: grid;
+      grid-template-columns: minmax(150px, 220px) minmax(160px, 1fr);
+      gap: 10px;
+    }
+
+    .select-field {
+      width: 100%;
+      min-height: 46px;
+      color: var(--cream);
+      font-size: 1.06rem;
+    }
+
+    .hint-line {
+      color: var(--quiet);
+      font-size: .92rem;
+      line-height: 1.35;
+    }
+
+    .preview-panel {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      background: var(--dark);
+    }
+
+    .preview-top {
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: 8px;
+      align-items: center;
+      padding: 14px clamp(12px, 1.6vw, 20px);
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .preview-top h2 {
+      font-size: clamp(1.8rem, 2.4vw, 2.5rem);
+      font-weight: 300;
+    }
+
+    .preview-url {
+      min-width: 0;
+      border: 1px solid var(--line);
+      background: rgba(10, 10, 10, .75);
+      color: var(--cream);
+      min-height: 48px;
+      padding: 12px 16px;
+      font-size: clamp(1rem, 1.2vw, 1.18rem);
+    }
+
+    .preview-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .device-button {
+      min-width: 58px;
+      padding: 10px 9px;
+      color: var(--muted);
+    }
+
+    .device-button.active {
+      color: var(--cream);
+      border-color: var(--gold);
+      background: rgba(201, 169, 110, .08);
+    }
+
+    .preview-stage {
+      min-height: 0;
+      overflow: auto;
+      display: grid;
+      place-items: stretch center;
+      padding: 0;
+      background:
+        radial-gradient(circle at 50% 12%, rgba(201, 169, 110, .06), transparent 34%),
+        #020202;
+    }
+
+    .frame-wrap {
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      border-left: 1px solid rgba(201, 169, 110, .12);
+      border-right: 1px solid rgba(201, 169, 110, .12);
+      transition: width .2s ease;
+    }
+
+    .frame-wrap.tablet {
+      width: min(820px, 100%);
+    }
+
+    .frame-wrap.mobile {
+      width: min(430px, 100%);
+    }
+
+    iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+      border: 0;
+      background: #000;
+    }
+
+    @media (max-width: 820px) {
+      .app {
+        grid-template-columns: 1fr;
+        overflow: auto;
+      }
+
+      body {
+        overflow: auto;
+      }
+
+      .chat-panel {
+        min-height: 100svh;
+        border-right: 0;
+        border-bottom: 1px solid var(--line-soft);
+      }
+
+      .preview-panel {
+        min-height: 76svh;
+      }
+
+      .preview-stage {
+        min-height: 66svh;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .brand-bar {
+        padding: 22px 18px 16px;
+      }
+
+      .brand-bar h1 {
+        font-size: clamp(3.2rem, 22vw, 4.4rem);
+      }
+
+      .status-row {
+        grid-template-columns: 1fr;
+      }
+
+      .status-card {
+        min-height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--line-soft);
+      }
+
+      .chips {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .compose-line {
+        grid-template-columns: 48px 1fr 72px;
+      }
+
+      .plain-button,
+      .send-button {
+        min-height: 50px;
+      }
+
+      .preview-top {
+        grid-template-columns: 1fr;
+      }
+
+      .preview-actions {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .utility-row {
+        grid-template-columns: 1fr;
+      }
+
+      .bubble {
+        max-width: 96%;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="shell">
-    <section class="left">
-      <header class="brand">
+  <section id="privateDoor" class="private-door" aria-label="Private access">
+    <main class="door-card">
+      <div class="kicker">Rachel Studio</div>
+      <h1>Private.</h1>
+      <p>Coco opens after the Studio key unlocks this browser.</p>
+
+      <form id="unlockForm" class="unlock-form">
+        <label class="field-label" for="unlockPin">Studio key</label>
+        <input id="unlockPin" class="text-field" name="pin" type="password" autocomplete="current-password" placeholder="Enter admin code" required>
+        <button class="primary-button" type="submit">Open Coco</button>
+      </form>
+
+      <div id="doorNote" class="door-note" role="status"></div>
+      <div class="safe">Private workspace. Drafts, tools, and launch decisions stay protected here.</div>
+    </main>
+  </section>
+
+  <main id="app" class="app locked" aria-label="Coco workspace">
+    <section class="chat-panel" aria-label="Coco chat">
+      <header class="brand-bar">
         <div class="kicker">Rachel Studio | Coco</div>
         <h1>Coco</h1>
-        <div class="sub">One calm builder screen. Chat here. Preview stays beside you. Photos, proof, SEO, and launch stay protected until Rachel approves.</div>
+        <p>One calm builder screen. Chat here. Preview stays beside you. Photos, proof, SEO, and launch stay protected until Rachel approves.</p>
       </header>
 
-      <section class="status" aria-label="Current safety state">
-        <div><strong>Draft</strong><span>Coco can think, write, rank, and organize.</span></div>
-        <div><strong>Preview</strong><span>Codex can build protected changes.</span></div>
-        <div><strong>Public</strong><span>Only after Rachel says go.</span></div>
-      </section>
-
-      <section id="messages" class="messages">
-        <div class="msg coco"><div class="speaker">Coco</div><div class="msg-body">Ready. Try: “Coco, look at Garran Hill like a luxury editorial director. Tell me what to fix first for today’s owner meeting.”</div></div>
-      </section>
-
-      <form id="composer" class="composer">
-        <div class="quick">
-          <button type="button" data-prompt="Coco, look at Garran Hill like a luxury editorial director. Tell me what is not cohesive and the next five fixes in order.">Look</button>
-          <button type="button" data-prompt="Coco, tighten the Garran Hill opening narrative. Lead with provenance, the original name, restoration proof, and owner-meeting confidence.">Words</button>
-          <button type="button" data-prompt="Coco, organize the Garran Hill photo map. Rank what should be hero, proof, gallery, detail, and mobile-safe.">Photos</button>
-          <button type="button" data-prompt="Coco, use the Rachel Studio front-end UI skill. Audit this screen and the property preview for calm UX, iMessage-style chat flow, responsive layout, touch targets, and visual polish.">Design</button>
-          <button type="button" data-prompt="Coco, run a mobile-first pass. Tell me what needs to change for phone buyers: type size, crop safety, touch flow, gallery behavior, page speed, and inquiry path.">Mobile</button>
-          <button type="button" data-prompt="Coco, design a next-level luxury gallery system for this property: hero, arrival, threshold, rooms, details, grounds, proof, and closing. Keep it repeatable for future listings.">Gallery</button>
-          <button type="button" data-prompt="Coco, help me use screenshots and uploads as your glasses. Tell me exactly what to upload next so you can judge the site and photos accurately.">Upload</button>
-          <button type="button" data-prompt="Coco, create the owner-meeting proof talk track: website, SEO, backlinks, source truth, and why this helps Sotheby's PR.">Proof</button>
-          <button type="button" data-prompt="Coco, create the SEO/source plan for Garran Hill. Include backlinks, citations, image SEO, schema, analytics, and client reporting.">SEO</button>
-          <button type="button" data-prompt="Coco, run the launch gate. What is draft, what is preview-ready, what is blocked, and what needs Rachel approval?">Launch</button>
+      <section class="status-row" aria-label="Safety lanes">
+        <div class="status-card">
+          <strong>Draft</strong>
+          <span>Coco can think, write, rank, and organize.</span>
         </div>
-        <div id="fileList" class="file-list" aria-live="polite"></div>
+        <div class="status-card">
+          <strong>Preview</strong>
+          <span>Codex builds protected changes.</span>
+        </div>
+        <div class="status-card">
+          <strong>Public</strong>
+          <span>Only after Rachel says go.</span>
+        </div>
+      </section>
+
+      <section id="conversation" class="conversation" aria-live="polite">
+        <div id="messageList" class="message-list">
+          <article class="bubble coco">
+            <span class="label">Coco</span>
+            Ready. Try: "Coco, look at Garran Hill like a luxury editorial director. Tell me what to fix first for today's owner meeting."
+          </article>
+        </div>
+      </section>
+
+      <form id="chatForm" class="composer">
+        <div class="chips" aria-label="Coco modes">
+          <button class="chip-button active" type="button" data-mode="look">Look</button>
+          <button class="chip-button" type="button" data-mode="words">Words</button>
+          <button class="chip-button" type="button" data-mode="photos">Photos</button>
+          <button class="chip-button" type="button" data-mode="proof">Proof</button>
+          <button class="chip-button" type="button" data-mode="seo">SEO</button>
+          <button class="chip-button" type="button" data-mode="launch">Launch</button>
+        </div>
+
         <div class="compose-line">
-          <button id="attach" class="attach" type="button" aria-label="Attach screenshots or files">+</button>
-          <input id="fileInput" class="file-input" type="file" multiple accept="image/*,.pdf,.doc,.docx,.txt,.md,.html">
-          <textarea id="request">Coco, help me finish Garran Hill today. I need the site to feel like Architectural Digest/Vogue-level luxury editorial, with better narrative flow, clearer photo choices, source-backed SEO proof, mobile readability, and owner-meeting confidence.</textarea>
-          <button class="send" type="submit">Send</button>
+          <label class="attach-wrap" aria-label="Attach a file">
+            <span class="plain-button" aria-hidden="true">+</span>
+            <input id="fileInput" type="file" multiple accept="image/*,.pdf,.doc,.docx,.txt,.md">
+          </label>
+          <textarea id="request" rows="2" placeholder="Talk to Coco here...">Coco, help me finish Garran Hill today. I need the site to feel like Architectural Digest/Vogue-level luxury editorial, with better narrative flow, clearer photo choices, source-backed SEO proof, mobile readability, and owner-meeting confidence.</textarea>
+          <button class="send-button" type="submit">Send</button>
         </div>
-        <div class="meta-row">
-          <select id="propertyId">
+
+        <div class="utility-row">
+          <select id="propertyId" class="select-field" aria-label="Property">
             <option value="garran-hill">Garran Hill</option>
             <option value="flow-farm">Flow Farm</option>
           </select>
-          <input id="pin" type="password" autocomplete="current-password" placeholder="Admin key once, if asked">
+          <input id="inlinePin" class="text-field" type="password" autocomplete="current-password" placeholder="Studio key, only if asked">
         </div>
-        <details>
-          <summary>Locked Laws</summary>
-          <ul class="note-list">
-            <li>Hero video stays: Last_for_real_q0fqvw.</li>
-            <li>Wax seal stays: gh_wax_seal_v3.</li>
-            <li>Living room is the salon.</li>
-            <li>No private owner names on public site.</li>
-            <li>Page truth: he never spent a night here; do not claim the door.</li>
-            <li>Production stays protected until Rachel approves.</li>
-          </ul>
-        </details>
-        <div class="hint">If the full AI lane is not connected yet, this page still keeps your request and gives Codex a clean build instruction. No public changes happen from this screen.</div>
+
+        <div id="attachmentNote" class="hint-line">Screenshots can be selected here. Coco will know what file you attached; full visual reading is the next glasses layer.</div>
       </form>
     </section>
 
-    <section class="right">
-      <header class="preview-head">
-        <div class="preview-title">Preview</div>
-        <input id="previewUrl" class="preview-url" value="https://a8d26740.garren-hill.pages.dev">
-        <button id="refresh" class="ghost" type="button">Refresh</button>
-        <a id="openPreview" class="ghost" href="https://a8d26740.garren-hill.pages.dev" target="_blank" rel="noreferrer">Open</a>
+    <section class="preview-panel" aria-label="Protected preview">
+      <header class="preview-top">
+        <h2>Preview</h2>
+        <input id="previewUrl" class="preview-url" value="https://preview-garran-hill-safe-acc.garren-hill.pages.dev" aria-label="Preview URL">
+        <div class="preview-actions" aria-label="Preview size">
+          <button class="device-button active" type="button" data-device="desktop">Desk</button>
+          <button class="device-button" type="button" data-device="tablet">Tablet</button>
+          <button class="device-button" type="button" data-device="mobile">Mobile</button>
+        </div>
+        <div class="preview-actions">
+          <button id="refreshPreview" class="device-button" type="button">Refresh</button>
+          <a id="openPreview" class="device-button" href="https://preview-garran-hill-safe-acc.garren-hill.pages.dev" target="_blank" rel="noopener">Open</a>
+        </div>
       </header>
-      <iframe id="previewFrame" src="https://a8d26740.garren-hill.pages.dev" title="Property preview"></iframe>
+      <div class="preview-stage">
+        <div id="frameWrap" class="frame-wrap desktop">
+          <iframe id="previewFrame" title="Garran Hill preview" src="https://preview-garran-hill-safe-acc.garren-hill.pages.dev"></iframe>
+        </div>
+      </div>
     </section>
   </main>
 
   <script>
-    (() => {
-      const messages = document.getElementById("messages");
-      const form = document.getElementById("composer");
-      const request = document.getElementById("request");
-      const left = document.querySelector(".left");
-      const pin = document.getElementById("pin");
-      const propertyId = document.getElementById("propertyId");
-      const previewUrl = document.getElementById("previewUrl");
-      const previewFrame = document.getElementById("previewFrame");
-      const openPreview = document.getElementById("openPreview");
-      const attach = document.getElementById("attach");
-      const fileInput = document.getElementById("fileInput");
-      const fileList = document.getElementById("fileList");
-      let attachments = [];
+    const privateDoor = document.getElementById("privateDoor");
+    const app = document.getElementById("app");
+    const unlockForm = document.getElementById("unlockForm");
+    const unlockPin = document.getElementById("unlockPin");
+    const doorNote = document.getElementById("doorNote");
+    const chatForm = document.getElementById("chatForm");
+    const request = document.getElementById("request");
+    const inlinePin = document.getElementById("inlinePin");
+    const propertyId = document.getElementById("propertyId");
+    const messageList = document.getElementById("messageList");
+    const conversation = document.getElementById("conversation");
+    const previewUrl = document.getElementById("previewUrl");
+    const previewFrame = document.getElementById("previewFrame");
+    const openPreview = document.getElementById("openPreview");
+    const refreshPreview = document.getElementById("refreshPreview");
+    const frameWrap = document.getElementById("frameWrap");
+    const fileInput = document.getElementById("fileInput");
+    const attachmentNote = document.getElementById("attachmentNote");
 
-      function escapeHtml(value) {
-        return String(value || "")
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;")
-          .replace(/'/g, "&#039;");
+    let activeMode = "look";
+    let attachedNames = [];
+
+    const propertyDefaults = {
+      "garran-hill": "https://preview-garran-hill-safe-acc.garren-hill.pages.dev",
+      "flow-farm": "https://flowfarm-landing.pages.dev/"
+    };
+
+    const prompts = {
+      look: "Coco, look at the current preview like a luxury editorial director. Tell me the first three things to fix for today's owner meeting.",
+      words: "Coco, tighten the Garran Hill opening narrative. Keep it cinematic, true, mobile-readable, and not MLS.",
+      photos: "Coco, help me choose the strongest photo sequence for Garran Hill: hero, house reveal, threshold, rooms, circle, restoration, grounds, and Blue Fox.",
+      proof: "Coco, prepare the owner-facing proof: what is sourced, what needs approval, and what claims should not go public yet.",
+      seo: "Coco, explain the SEO and backlink strategy for Garran Hill in client-friendly language, with what we can prove and what we need next.",
+      launch: "Coco, give me the safest launch gate for Garran Hill: what is ready, what is blocked, and what Rachel must approve before public."
+    };
+
+    function enterWorkspace() {
+      privateDoor.classList.add("hidden");
+      app.classList.remove("locked");
+      request.focus();
+      syncPreview(previewUrl.value);
+    }
+
+    async function readPayload(response) {
+      const text = await response.text();
+      if (!text) return {};
+      try {
+        return JSON.parse(text);
+      } catch {
+        return { raw: text };
       }
+    }
 
-      function inlineMarkdown(value) {
-        return escapeHtml(value)
-          .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-          .replace(/\*(.+?)\*/g, "<em>$1</em>");
+    async function unlock(pin) {
+      const response = await fetch("/studio/session", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify({ pin })
+      });
+      const payload = await readPayload(response);
+      if (!response.ok) {
+        throw new Error(payload.next || payload.error || "That key did not unlock Coco.");
       }
+      sessionStorage.setItem("cocoUnlocked", "1");
+      return payload;
+    }
 
-      function renderMarkdown(value) {
-        const lines = String(value || "").replace(/\r\n/g, "\n").split("\n");
-        const out = [];
-        let list = "";
+    unlockForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      doorNote.textContent = "Checking the Studio key...";
+      try {
+        await unlock(unlockPin.value);
+        doorNote.textContent = "Unlocked. Opening Coco...";
+        enterWorkspace();
+      } catch (error) {
+        doorNote.textContent = error.message || "That did not unlock.";
+      }
+    });
 
-        function closeList() {
-          if (list) {
-            out.push(list + "</ul>");
-            list = "";
-          }
+    if (sessionStorage.getItem("cocoUnlocked") === "1") {
+      enterWorkspace();
+    }
+
+    function addMessage(role, text, options = {}) {
+      const article = document.createElement("article");
+      article.className = "bubble " + role + (options.error ? " error" : "");
+      const label = document.createElement("span");
+      label.className = "label";
+      label.textContent = role === "user" ? "Rachel" : "Coco";
+      article.appendChild(label);
+      article.appendChild(document.createTextNode(text));
+      messageList.appendChild(article);
+      conversation.scrollTop = conversation.scrollHeight;
+      return article;
+    }
+
+    function extractAnswer(payload) {
+      if (!payload || typeof payload !== "object") return "";
+      return payload.answer
+        || payload.response
+        || payload.text
+        || payload.result?.answer
+        || payload.result?.text
+        || payload.message
+        || payload.error
+        || payload.next
+        || "";
+    }
+
+    function buildRequestText(text) {
+      const attachmentText = attachedNames.length
+        ? "\n\nRachel attached files: " + attachedNames.join(", ") + ". Coco can use the file names as context, but full image reading is not connected on this page yet."
+        : "";
+      return [
+        "Coco, answer inside Rachel Studio.",
+        "Rachel wants one calm ChatGPT-like conversation, but with Garran Hill truth, locked laws, SEO/source needs, and preview context already loaded.",
+        "Mode: " + activeMode + ".",
+        "Current preview URL: " + previewUrl.value + ".",
+        "",
+        text + attachmentText
+      ].join("\n");
+    }
+
+    chatForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const text = request.value.trim();
+      if (!text) return;
+
+      addMessage("user", text);
+      request.value = "";
+      request.style.height = "54px";
+      const pending = addMessage("coco", "Thinking with the Studio brief, locked laws, preview, photo/proof/SEO lanes, and launch gate...");
+
+      try {
+        const pin = inlinePin.value.trim();
+        if (pin) {
+          await unlock(pin);
+          inlinePin.value = "";
         }
 
-        for (const raw of lines) {
-          const line = raw.trim();
-          if (!line) {
-            closeList();
-            continue;
-          }
-
-          if (line.startsWith("### ")) {
-            closeList();
-            out.push("<h3>" + inlineMarkdown(line.slice(4)) + "</h3>");
-            continue;
-          }
-
-          if (line.startsWith("## ")) {
-            closeList();
-            out.push("<h2>" + inlineMarkdown(line.slice(3)) + "</h2>");
-            continue;
-          }
-
-          if (/^[-*]\s+/.test(line)) {
-            if (!list) list = "<ul>";
-            list += "<li>" + inlineMarkdown(line.replace(/^[-*]\s+/, "")) + "</li>";
-            continue;
-          }
-
-          if (/^\d+\.\s+/.test(line)) {
-            if (!list) list = "<ul>";
-            list += "<li>" + inlineMarkdown(line.replace(/^\d+\.\s+/, "")) + "</li>";
-            continue;
-          }
-
-          closeList();
-          out.push("<p>" + inlineMarkdown(line) + "</p>");
-        }
-
-        closeList();
-        return out.join("");
-      }
-
-      function setMessage(el, text, markdown = false) {
-        const body = el.querySelector(".msg-body");
-        if (!body) return;
-        if (markdown) {
-          body.innerHTML = renderMarkdown(text);
-        } else {
-          body.textContent = text;
-        }
-        messages.scrollTop = messages.scrollHeight;
-      }
-
-      function add(role, text, extra = "", placement = "append") {
-        const el = document.createElement("div");
-        el.className = ["msg", role, extra].filter(Boolean).join(" ");
-        const label = document.createElement("div");
-        label.className = "speaker";
-        label.textContent = role === "user" ? "Rachel" : "Coco";
-        const body = document.createElement("div");
-        body.className = "msg-body";
-        body.textContent = text;
-        el.append(label, body);
-        if (placement === "prepend") {
-          messages.prepend(el);
-          messages.scrollTop = 0;
-        } else {
-          messages.appendChild(el);
-          messages.scrollTop = messages.scrollHeight;
-        }
-        return el;
-      }
-
-      function formatSize(bytes) {
-        if (!bytes) return "0 KB";
-        if (bytes < 1024 * 1024) return Math.round(bytes / 1024) + " KB";
-        return (bytes / 1024 / 1024).toFixed(1) + " MB";
-      }
-
-      function renderFiles() {
-        fileList.replaceChildren();
-        attachments.forEach((file) => {
-          const chip = document.createElement("div");
-          chip.className = "file-chip";
-          if (file.preview) {
-            const img = document.createElement("img");
-            img.src = file.preview;
-            img.alt = "";
-            chip.appendChild(img);
-          }
-          const name = document.createElement("span");
-          name.className = "file-name";
-          name.textContent = file.name + " · " + formatSize(file.size);
-          const remove = document.createElement("button");
-          remove.className = "remove-file";
-          remove.type = "button";
-          remove.textContent = "×";
-          remove.setAttribute("aria-label", "Remove " + file.name);
-          remove.addEventListener("click", () => {
-            attachments = attachments.filter((item) => item.id !== file.id);
-            renderFiles();
-          });
-          chip.append(name, remove);
-          fileList.appendChild(chip);
+        const response = await fetch("/studio/api/chat", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          credentials: "same-origin",
+          body: JSON.stringify({
+            propertyId: propertyId.value,
+            request: buildRequestText(text)
+          })
         });
-      }
+        const payload = await readPayload(response);
 
-      function readFile(file) {
-        return new Promise((resolve) => {
-          const item = {
-            id: `${file.name}-${file.size}-${file.lastModified}-${Math.random().toString(16).slice(2)}`,
-            name: file.name,
-            type: file.type || "application/octet-stream",
-            size: file.size,
-            preview: "",
-            dataUrl: ""
-          };
-
-          if (!file.type.startsWith("image/") || file.size > 7 * 1024 * 1024) {
-            resolve(item);
+        if (!response.ok) {
+          if (response.status === 401) {
+            sessionStorage.removeItem("cocoUnlocked");
+            pending.classList.add("error");
+            pending.lastChild.textContent = "Coco needs the Studio key once. Use the key box at the bottom, then press Send again.";
             return;
           }
-
-          const reader = new FileReader();
-          reader.onload = () => {
-            item.preview = String(reader.result || "");
-            item.dataUrl = item.preview;
-            resolve(item);
-          };
-          reader.onerror = () => resolve(item);
-          reader.readAsDataURL(file);
-        });
-      }
-
-      async function addFiles(files) {
-        const next = await Promise.all(Array.from(files || []).map(readFile));
-        attachments = attachments.concat(next).slice(0, 8);
-        renderFiles();
-      }
-
-      function clean(value) {
-        return String(value || "").trim().replace(/[^\x21-\x7E]/g, "");
-      }
-
-      function syncPreview(url) {
-        previewFrame.src = url;
-        openPreview.href = url;
-      }
-
-      function fallback(text) {
-        return [
-          "Coco's live AI lane did not answer from this page yet. The request is still useful.",
-          "",
-          "What Codex should do next:",
-          "1. Use the existing site, storyboard, and Studio memory.",
-          "2. Build a protected preview change only.",
-          "3. Focus on the exact request below.",
-          "4. Stop before production until Rachel approves.",
-          "",
-          "Rachel request:",
-          text
-        ].join("\n");
-      }
-
-      previewUrl.addEventListener("change", () => syncPreview(previewUrl.value));
-      document.getElementById("refresh").addEventListener("click", () => {
-        const base = previewUrl.value.split("#")[0];
-        syncPreview(base + (base.includes("?") ? "&" : "?") + "cocoRefresh=" + Date.now());
-      });
-
-      document.querySelectorAll("[data-prompt]").forEach((button) => {
-        button.addEventListener("click", () => {
-          request.value = button.dataset.prompt;
-          request.focus();
-        });
-      });
-
-      attach.addEventListener("click", () => fileInput.click());
-      fileInput.addEventListener("change", async () => {
-        await addFiles(fileInput.files);
-        fileInput.value = "";
-      });
-
-      request.addEventListener("paste", async (event) => {
-        const files = Array.from(event.clipboardData?.files || []);
-        if (!files.length) return;
-        event.preventDefault();
-        await addFiles(files);
-      });
-
-      ["dragenter", "dragover"].forEach((type) => {
-        left.addEventListener(type, (event) => {
-          event.preventDefault();
-          left.classList.add("dragging");
-        });
-      });
-
-      ["dragleave", "drop"].forEach((type) => {
-        left.addEventListener(type, () => left.classList.remove("dragging"));
-      });
-
-      left.addEventListener("drop", async (event) => {
-        event.preventDefault();
-        await addFiles(event.dataTransfer?.files);
-      });
-
-      request.addEventListener("keydown", (event) => {
-        if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
-          event.preventDefault();
-          form.requestSubmit();
+          throw new Error(extractAnswer(payload) || "Coco did not answer cleanly.");
         }
-      });
 
-      form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        const text = request.value.trim();
-        if (!text) return;
-        const attachedText = attachments.length
-          ? "\n\nAttached files:\n" + attachments.map((file) => `- ${file.name} (${file.type || "file"}, ${formatSize(file.size)})`).join("\n")
-          : "";
-        add("user", text + attachedText, "", "prepend");
-        const pending = add("coco", "Thinking with the Studio brief, locked laws, preview, photo/proof/SEO lanes, launch gate, and any attached files...", "", "prepend");
-        messages.scrollTop = 0;
-        const key = clean(pin.value);
-        try {
-          if (key) {
-            const session = await fetch("/studio/session", {
-              method: "POST",
-              headers: { "content-type": "application/json" },
-              credentials: "same-origin",
-              body: JSON.stringify({ pin: key })
-            });
-            if (session.ok) pin.value = "";
-          }
-          const headers = { "content-type": "application/json" };
-          if (key) headers["x-rachel-studio-pin"] = key;
-          const controller = new AbortController();
-          const timeout = setTimeout(() => controller.abort(), 45000);
-          const response = await fetch("/studio/api/chat", {
-            method: "POST",
-            headers,
-            credentials: "same-origin",
-            signal: controller.signal,
-            body: JSON.stringify({
-              propertyId: propertyId.value,
-              request: [
-                "Coco, answer in plain English for Rachel inside the simple builder.",
-                "Use Studio memory, locked laws, source truth, visual luxury standards, photos, proof, SEO, and launch safety.",
-                "Use the Rachel Studio Front-End UI skill: chat-first builder, iMessage-like transcript, uploads/screenshots as glasses, responsive mobile QA, luxury gallery system, Figma/design-system lane when helpful, and protected preview-only changes.",
-                "Current preview URL: " + previewUrl.value,
-                attachments.length ? "Rachel attached files: " + attachments.map((file) => `${file.name} (${file.type || "file"}, ${formatSize(file.size)})`).join("; ") : "",
-                text
-              ].filter(Boolean).join("\n\n"),
-              attachments: attachments.map((file) => ({
-                name: file.name,
-                type: file.type,
-                size: file.size,
-                dataUrl: file.dataUrl
-              }))
-            })
-          });
-          clearTimeout(timeout);
-          const result = await response.json().catch(() => ({}));
-          if (!response.ok) {
-            const detail = result.error || result.next || "Studio AI lane is not connected on this page yet.";
-            throw new Error(`Status ${response.status}: ${detail}`);
-          }
-          setMessage(pending, result.answer || "Coco answered, but no answer text came through.", true);
-          request.value = "";
-          attachments = [];
-          renderFiles();
-        } catch (error) {
-          pending.classList.add("error");
-          const message = error.name === "AbortError"
-            ? "The Studio AI request timed out after 45 seconds. The key is present, but the live worker is taking too long. Codex needs to deploy the simpler/Claude-ready worker patch."
-            : (error.message || String(error));
-          setMessage(pending, fallback(text) + "\n\nConnection note: " + message);
-        }
+        pending.lastChild.textContent = extractAnswer(payload) || "Coco answered, but no text came through.";
+      } catch (error) {
+        pending.classList.add("error");
+        pending.lastChild.textContent = "That did not complete. " + (error.message || String(error));
+      } finally {
+        conversation.scrollTop = conversation.scrollHeight;
+      }
+    });
+
+    request.addEventListener("input", () => {
+      request.style.height = "54px";
+      request.style.height = Math.min(request.scrollHeight, 132) + "px";
+    });
+
+    document.querySelectorAll("[data-mode]").forEach((button) => {
+      button.addEventListener("click", () => {
+        activeMode = button.dataset.mode;
+        document.querySelectorAll("[data-mode]").forEach((item) => item.classList.toggle("active", item === button));
+        request.value = prompts[activeMode] || "";
+        request.dispatchEvent(new Event("input"));
+        request.focus();
       });
-    })();
+    });
+
+    propertyId.addEventListener("change", () => {
+      previewUrl.value = propertyDefaults[propertyId.value] || propertyDefaults["garran-hill"];
+      syncPreview(previewUrl.value);
+    });
+
+    function syncPreview(url) {
+      const clean = String(url || propertyDefaults["garran-hill"]).trim();
+      previewFrame.src = clean;
+      openPreview.href = clean;
+    }
+
+    previewUrl.addEventListener("change", () => syncPreview(previewUrl.value));
+    refreshPreview.addEventListener("click", () => {
+      const base = previewUrl.value.split("#")[0].split("?")[0];
+      const refreshUrl = base + "?studioRefresh=" + Date.now();
+      syncPreview(refreshUrl);
+    });
+
+    document.querySelectorAll("[data-device]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const device = button.dataset.device;
+        document.querySelectorAll("[data-device]").forEach((item) => item.classList.toggle("active", item === button));
+        frameWrap.className = "frame-wrap " + device;
+      });
+    });
+
+    fileInput.addEventListener("change", () => {
+      attachedNames = Array.from(fileInput.files || []).map((file) => file.name);
+      attachmentNote.textContent = attachedNames.length
+        ? "Attached for the next message: " + attachedNames.join(", ") + ". Full visual reading comes next."
+        : "Screenshots can be selected here. Coco will know what file you attached; full visual reading is the next glasses layer.";
+    });
   </script>
 </body>
 </html>
