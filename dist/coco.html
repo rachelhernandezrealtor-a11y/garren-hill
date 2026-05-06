@@ -12,16 +12,21 @@
     :root {
       --dark: #0a0a0a;
       --ink: #050505;
-      --panel: #0d0c0b;
-      --panel-soft: #14110f;
+      --paper: #f4eee3;
+      --paper-soft: #faf6ee;
+      --paper-warm: #eadfcf;
       --cream: #F5F0E8;
-      --muted: rgba(245, 240, 232, .58);
-      --quiet: rgba(245, 240, 232, .36);
+      --cocoa: #241c17;
+      --taupe: #7c6e61;
+      --ribbon: #b52032;
+      --ribbon-dark: #8f1422;
+      --muted: rgba(36, 28, 23, .62);
+      --quiet: rgba(36, 28, 23, .42);
       --gold: #C9A96E;
-      --line: rgba(201, 169, 110, .32);
-      --line-soft: rgba(201, 169, 110, .18);
-      --good: rgba(245, 240, 232, .94);
-      --warn: #d9a88e;
+      --line: rgba(110, 82, 49, .24);
+      --line-soft: rgba(110, 82, 49, .14);
+      --good: rgba(36, 28, 23, .94);
+      --warn: #9c4d39;
       color-scheme: dark;
     }
 
@@ -131,8 +136,8 @@
     .chip-button {
       min-height: 48px;
       border: 1px solid var(--line);
-      background: rgba(10, 10, 10, .72);
-      color: var(--cream);
+      background: rgba(255, 252, 247, .72);
+      color: var(--cocoa);
       padding: 12px 14px;
     }
 
@@ -144,7 +149,7 @@
 
     .text-field::placeholder,
     textarea::placeholder {
-      color: rgba(245, 240, 232, .34);
+      color: rgba(36, 28, 23, .42);
     }
 
     .text-field:focus-visible,
@@ -200,30 +205,140 @@
 
     .chat-panel {
       display: grid;
-      grid-template-rows: minmax(0, 1fr) auto;
-      border-right: 1px solid var(--line-soft);
+      grid-template-rows: auto auto minmax(0, 1fr) auto;
+      border-right: 1px solid rgba(201, 169, 110, .2);
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, .025), transparent 34%),
-        var(--ink);
+        linear-gradient(180deg, rgba(255, 255, 255, .66), rgba(255, 255, 255, 0) 36%),
+        radial-gradient(circle at 10% 0%, rgba(181, 32, 50, .055), transparent 26%),
+        var(--paper);
+    }
+
+    .coco-bow {
+      position: relative;
+      display: inline-block;
+      flex: 0 0 auto;
+      width: 42px;
+      height: 30px;
+      pointer-events: none;
+    }
+
+    .coco-bow::before,
+    .coco-bow::after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      width: 19px;
+      height: 16px;
+      border: 1px solid rgba(255, 252, 247, .36);
+      background: var(--ribbon);
+    }
+
+    .coco-bow::before {
+      left: 0;
+      border-radius: 16px 8px 14px 10px;
+      transform: rotate(-18deg);
+    }
+
+    .coco-bow::after {
+      right: 0;
+      border-radius: 8px 16px 10px 14px;
+      transform: rotate(18deg);
+    }
+
+    .coco-bow span {
+      position: absolute;
+      top: 7px;
+      left: 50%;
+      z-index: 2;
+      width: 12px;
+      height: 18px;
+      border: 1px solid rgba(255, 252, 247, .3);
+      background: var(--ribbon-dark);
+      transform: translateX(-50%);
+    }
+
+    .coco-bow span::before,
+    .coco-bow span::after {
+      content: "";
+      position: absolute;
+      top: 13px;
+      width: 9px;
+      height: 12px;
+      background: #a71828;
+    }
+
+    .coco-bow span::before {
+      left: -5px;
+      transform: skewY(18deg);
+    }
+
+    .coco-bow span::after {
+      right: -5px;
+      transform: skewY(-18deg);
     }
 
     .brand-bar {
-      display: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 78px;
+      border-bottom: 1px solid var(--line-soft);
+      padding: 18px clamp(18px, 3vw, 34px);
     }
 
     .brand-bar h1 {
-      margin-top: 10px;
-      font-size: clamp(3.2rem, 7vw, 5.4rem);
-      font-weight: 300;
-      line-height: .9;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      color: var(--cocoa);
+      font-size: clamp(2rem, 3vw, 2.75rem);
+      font-weight: 400;
+      line-height: 1;
     }
 
     .brand-bar p {
-      max-width: 690px;
-      margin-top: 16px;
+      max-width: 250px;
+      margin: 0;
       color: var(--muted);
-      font-size: clamp(1.05rem, 1.45vw, 1.28rem);
-      line-height: 1.35;
+      font-size: .84rem;
+      letter-spacing: .14em;
+      line-height: 1.2;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .room-rail {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 1px;
+      border-bottom: 1px solid var(--line-soft);
+      background: var(--line-soft);
+    }
+
+    .room-button {
+      min-height: 48px;
+      border: 0;
+      background: rgba(250, 246, 238, .82);
+      color: rgba(36, 28, 23, .58);
+      padding: 11px 8px 10px;
+      font-size: .98rem;
+      letter-spacing: .02em;
+    }
+
+    .room-button.active {
+      background: var(--cocoa);
+      color: var(--cream);
+    }
+
+    .room-summary {
+      border-bottom: 1px solid var(--line-soft);
+      background: rgba(255, 252, 247, .52);
+      padding: 12px clamp(18px, 3vw, 34px);
+      color: var(--muted);
+      font-size: clamp(1rem, 1.2vw, 1.12rem);
+      line-height: 1.25;
     }
 
     .status-row {
@@ -260,7 +375,7 @@
       padding: clamp(18px, 2.6vw, 30px) clamp(18px, 3.2vw, 36px);
       overflow-y: auto;
       scrollbar-width: thin;
-      scrollbar-color: rgba(201, 169, 110, .5) transparent;
+      scrollbar-color: rgba(110, 82, 49, .28) transparent;
     }
 
     .conversation::-webkit-scrollbar {
@@ -268,7 +383,7 @@
     }
 
     .conversation::-webkit-scrollbar-thumb {
-      background: rgba(201, 169, 110, .45);
+      background: rgba(110, 82, 49, .28);
     }
 
     .message-list {
@@ -281,16 +396,18 @@
 
     .bubble {
       width: fit-content;
-      max-width: min(760px, 92%);
-      border: 1px solid var(--line);
-      padding: clamp(16px, 2vw, 22px) clamp(18px, 2.4vw, 26px);
+      max-width: min(680px, 84%);
+      border: 1px solid rgba(110, 82, 49, .16);
+      border-radius: 26px 26px 26px 8px;
+      padding: clamp(15px, 1.8vw, 20px) clamp(18px, 2.4vw, 24px);
       white-space: pre-wrap;
       font-size: clamp(1.12rem, 1.45vw, 1.36rem);
       line-height: 1.38;
+      color: var(--cocoa);
     }
 
     .bubble .label {
-      display: block;
+      display: none;
       margin-bottom: 10px;
       color: var(--gold);
       font-size: .68rem;
@@ -299,14 +416,15 @@
     }
 
     .bubble.coco {
-      background: linear-gradient(180deg, rgba(201, 169, 110, .07), rgba(255, 255, 255, .016));
+      background: rgba(255, 252, 247, .86);
     }
 
     .bubble.user {
       align-self: flex-end;
-      border-color: rgba(245, 240, 232, .34);
-      background: rgba(245, 240, 232, .92);
-      color: var(--dark);
+      border-radius: 26px 26px 8px 26px;
+      border-color: rgba(181, 32, 50, .16);
+      background: var(--ribbon);
+      color: var(--cream);
     }
 
     .bubble.user .label {
@@ -320,14 +438,16 @@
 
     .composer {
       display: grid;
-      gap: 10px;
-      padding: 12px clamp(16px, 2.8vw, 28px) clamp(16px, 2.8vw, 24px);
+      gap: 0;
+      padding: 16px clamp(16px, 2.8vw, 28px) clamp(16px, 2.8vw, 24px);
       border-top: 1px solid var(--line-soft);
-      background: rgba(5, 5, 5, .96);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, .36), rgba(255, 255, 255, 0)),
+        var(--paper-soft);
     }
 
     .chips {
-      display: grid;
+      display: none;
       grid-template-columns: repeat(6, minmax(0, 1fr));
       gap: 8px;
     }
@@ -343,18 +463,19 @@
     .chip-button:hover {
       border-color: var(--gold);
       background: rgba(201, 169, 110, .08);
-      color: var(--cream);
+      color: var(--cocoa);
     }
 
     .compose-line {
       display: grid;
-      grid-template-columns: 54px 1fr 86px;
-      gap: 10px;
+      grid-template-columns: minmax(0, 1fr) 82px;
+      gap: 8px;
       align-items: end;
     }
 
     .attach-wrap {
       position: relative;
+      display: none;
     }
 
     .attach-wrap input {
@@ -379,18 +500,21 @@
     }
 
     .send-button {
-      border-color: var(--gold);
+      border-color: var(--ribbon);
+      border-radius: 28px;
+      background: var(--ribbon);
       color: var(--cream);
     }
 
     textarea {
       width: 100%;
       min-height: 54px;
-      max-height: 132px;
+      max-height: 168px;
       border: 1px solid var(--line);
-      background: rgba(10, 10, 10, .78);
-      color: var(--cream);
-      padding: 14px 16px;
+      background: rgba(255, 252, 247, .88);
+      color: var(--cocoa);
+      border-radius: 28px;
+      padding: 15px 18px;
       resize: none;
       overflow: hidden;
       font-size: clamp(1.05rem, 1.28vw, 1.22rem);
@@ -398,7 +522,7 @@
     }
 
     .utility-row {
-      display: grid;
+      display: none;
       grid-template-columns: minmax(150px, 220px) minmax(160px, 1fr);
       gap: 10px;
     }
@@ -411,6 +535,7 @@
     }
 
     .hint-line {
+      display: none;
       color: var(--quiet);
       font-size: .92rem;
       line-height: 1.35;
@@ -527,11 +652,30 @@
 
     @media (max-width: 760px) {
       .brand-bar {
-        padding: 22px 18px 16px;
+        padding: 16px 18px;
       }
 
       .brand-bar h1 {
-        font-size: clamp(3.2rem, 22vw, 4.4rem);
+        font-size: clamp(2rem, 13vw, 2.6rem);
+      }
+
+      .brand-bar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .brand-bar p {
+        max-width: none;
+        text-align: left;
+      }
+
+      .room-rail {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .room-button {
+        font-size: .95rem;
       }
 
       .status-row {
@@ -549,7 +693,7 @@
       }
 
       .compose-line {
-        grid-template-columns: 48px 1fr 72px;
+        grid-template-columns: minmax(0, 1fr) 72px;
       }
 
       .plain-button,
@@ -577,30 +721,23 @@
   </style>
 </head>
 <body>
-  <section id="privateDoor" class="private-door" aria-label="Private access">
-    <main class="door-card">
-      <div class="kicker">Rachel Studio</div>
-      <h1>Private.</h1>
-      <p>Coco opens after the Studio key unlocks this browser.</p>
-
-      <form id="unlockForm" class="unlock-form">
-        <label class="field-label" for="unlockPin">Studio key</label>
-        <input id="unlockPin" class="text-field" name="pin" type="password" autocomplete="current-password" placeholder="Enter admin code" required>
-        <button class="primary-button" type="submit">Open Coco</button>
-      </form>
-
-      <div id="doorNote" class="door-note" role="status"></div>
-      <div class="safe">Private workspace. Drafts, tools, and launch decisions stay protected here.</div>
-    </main>
-  </section>
-
-  <main id="app" class="app locked" aria-label="Coco workspace">
+  <main id="app" class="app" aria-label="Coco workspace">
     <section class="chat-panel" aria-label="Coco chat">
       <header class="brand-bar">
-        <div class="kicker">Rachel Studio | Coco</div>
-        <h1>Coco</h1>
-        <p>One calm builder screen. Chat here. Preview stays beside you. Photos, proof, SEO, and launch stay protected until Rachel approves.</p>
+        <h1><span class="coco-bow" aria-hidden="true"><span></span></span>Coco</h1>
+        <p>Private Studio · Draft/Preview Only</p>
       </header>
+
+      <nav class="room-rail" aria-label="Coco rooms">
+        <button class="room-button active" type="button" data-room="today">Today</button>
+        <button class="room-button" type="button" data-room="properties">Properties</button>
+        <button class="room-button" type="button" data-room="decisions">Decisions</button>
+        <button class="room-button" type="button" data-room="content">Content</button>
+        <button class="room-button" type="button" data-room="authority">Authority</button>
+        <button class="room-button" type="button" data-room="launch">Launch</button>
+      </nav>
+
+      <div id="roomSummary" class="room-summary">Today: here is the next safest thing. Finish Garran Hill preview, resolve kitchen hero, complete the photo map, then run responsive QA.</div>
 
       <section class="status-row" aria-label="Safety lanes">
         <div class="status-card">
@@ -621,7 +758,7 @@
         <div id="messageList" class="message-list">
           <article class="bubble coco">
             <span class="label">Coco</span>
-            Ready. Try: "Coco, look at Garran Hill like a luxury editorial director. Tell me what to fix first for today's owner meeting."
+            Welcome to the Bow Room. I can help organize Garran Hill, check the laws, and keep the preview moving without touching production.
           </article>
         </div>
       </section>
@@ -641,7 +778,7 @@
             <span class="plain-button" aria-hidden="true">+</span>
             <input id="fileInput" type="file" multiple accept="image/*,.pdf,.doc,.docx,.txt,.md">
           </label>
-          <textarea id="request" rows="2" placeholder="Talk to Coco here...">Coco, help me finish Garran Hill today. I need the site to feel like Architectural Digest/Vogue-level luxury editorial, with better narrative flow, clearer photo choices, source-backed SEO proof, mobile readability, and owner-meeting confidence.</textarea>
+          <textarea id="request" rows="2" placeholder="Write to Coco...">Coco, we are making you a nice chat window with a pretty little bow just for you.</textarea>
           <button class="send-button" type="submit">Send</button>
         </div>
 
@@ -650,7 +787,6 @@
             <option value="garran-hill">Garran Hill</option>
             <option value="flow-farm">Flow Farm</option>
           </select>
-          <input id="inlinePin" class="text-field" type="password" autocomplete="current-password" placeholder="Studio key, only if asked">
         </div>
 
         <div id="attachmentNote" class="hint-line">Screenshots can be selected here. Coco will know what file you attached; full visual reading is the next glasses layer.</div>
@@ -680,14 +816,10 @@
   </main>
 
   <script>
-    const privateDoor = document.getElementById("privateDoor");
     const app = document.getElementById("app");
-    const unlockForm = document.getElementById("unlockForm");
-    const unlockPin = document.getElementById("unlockPin");
-    const doorNote = document.getElementById("doorNote");
     const chatForm = document.getElementById("chatForm");
     const request = document.getElementById("request");
-    const inlinePin = document.getElementById("inlinePin");
+    const roomSummary = document.getElementById("roomSummary");
     const propertyId = document.getElementById("propertyId");
     const messageList = document.getElementById("messageList");
     const conversation = document.getElementById("conversation");
@@ -707,17 +839,49 @@
       "flow-farm": "https://flowfarm-landing.pages.dev/"
     };
 
+    const rooms = {
+      today: {
+        mode: "look",
+        summary: "Today: here is the next safest thing. Finish Garran Hill preview, resolve kitchen hero, complete the photo map, then run responsive QA.",
+        prompt: "Coco, give me today's safest Garran Hill move. Keep it calm, useful, preview-only, and approval-gated."
+      },
+      properties: {
+        mode: "photos",
+        summary: "Properties: editorial launch board for Garran Hill, Flow Farm, and future listings. Garran Hill is active rebuild, not production ready.",
+        prompt: "Coco, show me the Garran Hill property board: blockers, locked assets, photo map status, and what Rachel needs to approve."
+      },
+      decisions: {
+        mode: "proof",
+        summary: "Decisions: catches every Rachel-approval item so nothing gets lost. First card: approve or reject kitchen hero gh_38.",
+        prompt: "Coco, build the decision queue. Start with: approve or reject kitchen hero gh_38. Keep it draft recommendation only."
+      },
+      content: {
+        mode: "words",
+        summary: "Content: draft room for owner updates, captions, site copy, buyer briefs, and Sotheby's materials. Drafts only.",
+        prompt: "Coco, organize the Garran Hill content room: owner update, site copy notes, caption ideas, and buyer brief drafts. Do not publish."
+      },
+      authority: {
+        mode: "seo",
+        summary: "Authority: serious SEO, source, citation, and backlink room. No unsupported claims and no fabricated proof.",
+        prompt: "Coco, organize the Garran Hill authority pass: SEO metadata, WHP source URL, schema/source links, backlink ideas, and unsupported-claim warnings."
+      },
+      launch: {
+        mode: "launch",
+        summary: "Launch: the gatekeeper. No public nonsense, no unsupported claims, no accidental production deploys.",
+        prompt: "Coco, give me the strict Garran Hill launch gate: ready, blocked, awaiting Rachel approval, and production still locked."
+      }
+    };
+
     const prompts = {
-      look: "Coco, look at the current preview like a luxury editorial director. Tell me the first three things to fix for today's owner meeting.",
-      words: "Coco, tighten the Garran Hill opening narrative. Keep it cinematic, true, mobile-readable, and not MLS.",
-      photos: "Coco, help me choose the strongest photo sequence for Garran Hill: hero, house reveal, threshold, rooms, circle, restoration, grounds, and Blue Fox.",
-      proof: "Coco, prepare the owner-facing proof: what is sourced, what needs approval, and what claims should not go public yet.",
-      seo: "Coco, explain the SEO and backlink strategy for Garran Hill in client-friendly language, with what we can prove and what we need next.",
-      launch: "Coco, give me the safest launch gate for Garran Hill: what is ready, what is blocked, and what Rachel must approve before public."
+      look: rooms.today.prompt,
+      words: rooms.content.prompt,
+      photos: rooms.properties.prompt,
+      proof: rooms.decisions.prompt,
+      seo: rooms.authority.prompt,
+      launch: rooms.launch.prompt
     };
 
     function enterWorkspace() {
-      privateDoor.classList.add("hidden");
       app.classList.remove("locked");
       request.focus();
       syncPreview(previewUrl.value);
@@ -733,36 +897,7 @@
       }
     }
 
-    async function unlock(pin) {
-      const response = await fetch("/studio/session", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        credentials: "same-origin",
-        body: JSON.stringify({ pin })
-      });
-      const payload = await readPayload(response);
-      if (!response.ok) {
-        throw new Error(payload.next || payload.error || "That key did not unlock Coco.");
-      }
-      sessionStorage.setItem("cocoUnlocked", "1");
-      return payload;
-    }
-
-    unlockForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      doorNote.textContent = "Checking the Studio key...";
-      try {
-        await unlock(unlockPin.value);
-        doorNote.textContent = "Unlocked. Opening Coco...";
-        enterWorkspace();
-      } catch (error) {
-        doorNote.textContent = error.message || "That did not unlock.";
-      }
-    });
-
-    if (sessionStorage.getItem("cocoUnlocked") === "1") {
-      enterWorkspace();
-    }
+    enterWorkspace();
 
     function addMessage(role, text, options = {}) {
       const article = document.createElement("article");
@@ -815,12 +950,6 @@
       const pending = addMessage("coco", "Thinking with the Studio brief, locked laws, preview, photo/proof/SEO lanes, and launch gate...");
 
       try {
-        const pin = inlinePin.value.trim();
-        if (pin) {
-          await unlock(pin);
-          inlinePin.value = "";
-        }
-
         const response = await fetch("/studio/api/chat", {
           method: "POST",
           headers: { "content-type": "application/json" },
@@ -834,9 +963,8 @@
 
         if (!response.ok) {
           if (response.status === 401) {
-            sessionStorage.removeItem("cocoUnlocked");
             pending.classList.add("error");
-            pending.lastChild.textContent = "Coco needs the Studio key once. Use the key box at the bottom, then press Send again.";
+            pending.lastChild.textContent = "This preview shell is open, but live Coco chat only answers after you unlock the real private Studio at rachelhernandez.studio/studio.";
             return;
           }
           throw new Error(extractAnswer(payload) || "Coco did not answer cleanly.");
@@ -861,6 +989,19 @@
         activeMode = button.dataset.mode;
         document.querySelectorAll("[data-mode]").forEach((item) => item.classList.toggle("active", item === button));
         request.value = prompts[activeMode] || "";
+        request.dispatchEvent(new Event("input"));
+        request.focus();
+      });
+    });
+
+    document.querySelectorAll("[data-room]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const room = rooms[button.dataset.room];
+        if (!room) return;
+        activeMode = room.mode;
+        document.querySelectorAll("[data-room]").forEach((item) => item.classList.toggle("active", item === button));
+        roomSummary.textContent = room.summary;
+        request.value = room.prompt;
         request.dispatchEvent(new Event("input"));
         request.focus();
       });
