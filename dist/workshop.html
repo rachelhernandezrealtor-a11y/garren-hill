@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
 <title>Workshop — Rachel Hernandez Studio</title>
 <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
@@ -84,6 +85,7 @@
     display: flex;
     flex: 1;
     overflow: hidden;
+    min-height: 0;
   }
 
   /* PANELS */
@@ -95,13 +97,15 @@
   }
 
   .panel-left {
-    width: 42%;
-    min-width: 340px;
+    width: 34%;
+    min-width: 320px;
     border-right: 1px solid #1a1a1a;
   }
 
   .panel-right {
     flex: 1;
+    min-width: 0;
+    background: #030303;
   }
 
   .panel-header {
@@ -114,11 +118,20 @@
     padding: 0 16px;
     flex-shrink: 0;
   }
+  .preview-header {
+    min-height: 44px;
+    height: auto;
+    gap: 14px;
+    padding: 7px 14px;
+  }
   .panel-header-label {
     font-size: 9px;
     letter-spacing: 0.35em;
     color: #333;
     text-transform: uppercase;
+  }
+  .preview-header .panel-header-label {
+    color: rgba(245,240,232,0.58);
   }
   .panel-header-dot {
     width: 6px;
@@ -162,13 +175,12 @@
   }
 
   /* PREVIEW CONTROLS */
+  .preview-toolbar,
   .preview-controls {
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
     display: flex;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 8px;
-    z-index: 5;
   }
   .ctrl-btn {
     background: rgba(10,10,10,0.85);
@@ -182,7 +194,83 @@
     cursor: pointer;
     transition: border-color 0.2s;
   }
-  .ctrl-btn:hover { border-color: #C9A96E; }
+  .ctrl-btn:hover,
+  .ctrl-btn.active {
+    border-color: #C9A96E;
+    color: #F5F0E8;
+    background: rgba(201,169,110,0.08);
+  }
+  .device-controls {
+    display: flex;
+    gap: 4px;
+    padding: 3px;
+    border: 1px solid rgba(201,169,110,0.22);
+    background: rgba(245,240,232,0.025);
+  }
+  .device-controls .ctrl-btn {
+    border-color: transparent;
+    background: transparent;
+    color: rgba(245,240,232,0.58);
+  }
+  .device-controls .ctrl-btn.active {
+    border-color: rgba(201,169,110,0.66);
+    color: #F5F0E8;
+    background: rgba(201,169,110,0.1);
+  }
+  .site-stage {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 16px;
+    background: #020202;
+  }
+  .site-frame-wrap {
+    flex: 0 0 auto;
+    min-width: 0;
+    min-height: 0;
+  }
+  .site-frame-shell {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    border: 1px solid rgba(201,169,110,0.24);
+    background: #000;
+    overflow: hidden;
+    transform-origin: top left;
+    transition: width 0.2s ease, height 0.2s ease, transform 0.2s ease;
+  }
+  .site-frame-shell iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+  }
+  .panel-right.tablet .site-frame-shell,
+  .panel-right.mobile .site-frame-shell {
+    border-color: rgba(201,169,110,0.36);
+  }
+  @media (max-width: 980px) {
+    .split {
+      flex-direction: column;
+    }
+    .panel-left {
+      width: 100%;
+      min-width: 0;
+      height: 42vh;
+      border-right: 0;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .drag-handle {
+      display: none;
+    }
+    .preview-header {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
 </style>
 </head>
 <body>
@@ -227,19 +315,28 @@
 
     <!-- RIGHT — LIVE SITE -->
     <div class="panel panel-right" id="panelRight">
-      <div class="panel-header">
-        <span class="panel-header-label" id="site-label">Garran Hill — Live</span>
-        <div class="panel-header-dot"></div>
+      <div class="panel-header preview-header">
+        <span class="panel-header-label" id="site-label">Garran Hill — Protected Preview</span>
+        <div class="preview-toolbar" aria-label="Preview controls">
+          <div class="device-controls" aria-label="Preview size">
+            <button class="ctrl-btn active" type="button" data-device="desktop">Desktop</button>
+            <button class="ctrl-btn" type="button" data-device="tablet">Tablet</button>
+            <button class="ctrl-btn" type="button" data-device="mobile">Mobile</button>
+          </div>
+          <button class="ctrl-btn" id="refresh-btn" type="button">Refresh</button>
+          <button class="ctrl-btn" id="fullscreen-btn" type="button">Open</button>
+        </div>
       </div>
-      <iframe
-        src="https://garren-hill.pages.dev"
-        title="Site Preview"
-        id="siteFrame"
-      ></iframe>
-
-      <div class="preview-controls">
-        <button class="ctrl-btn" onclick="document.getElementById('siteFrame').src = document.getElementById('siteFrame').src">↺ Refresh</button>
-        <button class="ctrl-btn" id="fullscreen-btn" onclick="window.open('https://garren-hill.pages.dev','_blank')">↗ Full Screen</button>
+      <div class="site-stage" id="siteStage">
+        <div class="site-frame-wrap" id="siteWrap">
+          <div class="site-frame-shell" id="siteShell">
+            <iframe
+              src="https://preview-garran-hill-safe-acc.garren-hill.pages.dev"
+              title="Site Preview"
+              id="siteFrame"
+            ></iframe>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -248,18 +345,74 @@
 
 <script>
   const projects = {
-    gh: { url: 'https://garren-hill.pages.dev', label: 'Garran Hill — Live' },
-    ff: { url: 'https://flowfarm-landing.pages.dev', label: 'Flow Farm — Live' }
+    gh: { url: 'https://preview-garran-hill-safe-acc.garren-hill.pages.dev', label: 'Garran Hill — Protected Preview' },
+    ff: { url: 'https://flowfarm-landing.pages.dev', label: 'Flow Farm — Preview' }
   };
+  const panelRight = document.getElementById('panelRight');
+  const siteStage = document.getElementById('siteStage');
+  const siteWrap = document.getElementById('siteWrap');
+  const siteShell = document.getElementById('siteShell');
+  const siteFrame = document.getElementById('siteFrame');
+  const fullscreenBtn = document.getElementById('fullscreen-btn');
+  let activeProject = 'gh';
+  let activeDevice = 'desktop';
 
   function switchProject(key, btn) {
     document.querySelectorAll('.proj-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+    activeProject = key;
     const p = projects[key];
-    document.getElementById('siteFrame').src = p.url;
+    siteFrame.src = p.url;
     document.getElementById('site-label').textContent = p.label;
-    document.getElementById('fullscreen-btn').onclick = () => window.open(p.url, '_blank');
+    sizePreview();
   }
+
+  function setDevice(device) {
+    activeDevice = device;
+    panelRight.classList.toggle('desktop', device === 'desktop');
+    panelRight.classList.toggle('tablet', device === 'tablet');
+    panelRight.classList.toggle('mobile', device === 'mobile');
+    document.querySelectorAll('[data-device]').forEach(button => {
+      const active = button.dataset.device === device;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+    sizePreview();
+  }
+
+  function sizePreview() {
+    const rect = siteStage.getBoundingClientRect();
+    const dimensions = {
+      desktop: { width: 1440, height: Math.max(900, rect.height - 32) },
+      tablet: { width: 820, height: 1080 },
+      mobile: { width: 390, height: 844 }
+    }[activeDevice];
+    const safeWidth = Math.max(320, rect.width - 32);
+    const safeHeight = Math.max(360, rect.height - 32);
+    const scale = Math.min(1, safeWidth / dimensions.width, safeHeight / dimensions.height);
+    const width = Math.round(dimensions.width * scale);
+    const height = Math.round(dimensions.height * scale);
+    siteWrap.style.width = width + 'px';
+    siteWrap.style.height = height + 'px';
+    siteShell.style.width = dimensions.width + 'px';
+    siteShell.style.height = dimensions.height + 'px';
+    siteShell.style.transform = 'scale(' + scale.toFixed(4) + ')';
+  }
+
+  function refreshSite() {
+    const base = siteFrame.src.split('#')[0];
+    siteFrame.src = base + (base.includes('?') ? '&' : '?') + 'workshopRefresh=' + Date.now();
+  }
+
+  document.querySelectorAll('[data-device]').forEach(button => {
+    button.addEventListener('click', () => setDevice(button.dataset.device));
+  });
+  document.getElementById('refresh-btn').addEventListener('click', refreshSite);
+  fullscreenBtn.addEventListener('click', () => {
+    window.open(projects[activeProject].url, '_blank', 'noopener');
+  });
+  window.addEventListener('resize', sizePreview);
+  setDevice('desktop');
 
   // Draggable divider
   const handle = document.getElementById('dragHandle');
@@ -280,6 +433,7 @@
     newWidth = Math.max(280, Math.min(newWidth, splitRect.width - 280));
     left.style.width = newWidth + 'px';
     left.style.minWidth = newWidth + 'px';
+    sizePreview();
   });
 
   document.addEventListener('mouseup', () => {
