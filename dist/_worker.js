@@ -11,13 +11,18 @@ const REFINED_HERO_TITLE_RULE =
   ".hero-title { font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-size: 8.4rem; line-height: 0.92; font-weight: 300; font-style: normal; letter-spacing: 0; color: #F5F0E8; margin-bottom: clamp(12px, 1.5vh, 22px); white-space: nowrap; opacity: 1; -webkit-text-stroke: 0; paint-order: normal; text-shadow: 0 2px 28px rgba(0,0,0,0.74), 0 1px 2px rgba(0,0,0,0.55); }";
 
 const NO_HAZE_CSS = `
-  /* Codex preview-only no-haze repair v4. Production remains untouched. */
+  /* Codex preview-only no-haze repair v5. Production remains untouched. */
+  html::before,
+  html::after,
   body::before,
   body::after {
     content: none !important;
     display: none !important;
     opacity: 0 !important;
     background: none !important;
+  }
+  html {
+    scroll-behavior: auto !important;
   }
   * {
     -webkit-backdrop-filter: none !important;
@@ -30,6 +35,17 @@ const NO_HAZE_CSS = `
     background: #0a0a0a !important;
   }
   .hero-loop-fade { display: none !important; animation: none !important; opacity: 0 !important; }
+  [class*="haze"],
+  [class*="mist"],
+  [class*="veil"],
+  .scroll-haze,
+  .scroll-fade {
+    display: none !important;
+    opacity: 0 !important;
+    animation: none !important;
+    transition: none !important;
+    pointer-events: none !important;
+  }
   .hero-video {
     filter: brightness(1.18) contrast(1.08) saturate(1.06) !important;
     opacity: 1 !important;
@@ -259,9 +275,15 @@ const NO_HAZE_CSS = `
   .kb-gate .kb-img,
   .whp-titles-right img,
   .whp-letter-panel img,
+  .whp-letter-panel.dimming img,
   #whp-letter-p354.dimming img {
     filter: none !important;
     opacity: 1 !important;
+  }
+  .whp-letter-panel.dimming,
+  #whp-letter-p354.dimming {
+    opacity: 1 !important;
+    filter: none !important;
   }
   section.fullbleed-beat > div[style*="background:linear-gradient"],
   section.fullbleed-beat > div[style*="background: linear-gradient"],
@@ -374,7 +396,7 @@ const LIVE_PREVIEW_BUILDER_SCRIPT = `
         const allowedHosts = [
           "res.cloudinary.com",
           "image.mux.com",
-          "customer-",
+          "customer-", // Cloudflare Stream host prefix fallback below
           window.location.host
         ];
         const isCloudflareStream = parsed.hostname.endsWith(".cloudflarestream.com");
@@ -585,7 +607,7 @@ function applyPreviewCorrections(html) {
       "She continued the property's tradition of private hospitality."
     );
 
-  if (!next.includes("Codex preview-only no-haze repair v4")) {
+  if (!next.includes("Codex preview-only no-haze repair v5") && !next.includes("Codex preview-only no-haze repair v4")) {
     next = next.replace("</style>", `${NO_HAZE_CSS}\n</style>`);
   }
 
