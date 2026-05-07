@@ -8,7 +8,7 @@ const HEADERS = {
 };
 
 const NO_HAZE_CSS = `
-  /* Codex preview-only no-haze repair v2. Production remains untouched. */
+  /* Codex preview-only no-haze repair v3. Production remains untouched. */
   body::before,
   body::after {
     content: none !important;
@@ -19,6 +19,12 @@ const NO_HAZE_CSS = `
   * {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
+  }
+  :root {
+    --text: rgba(245,240,232,0.94) !important;
+  }
+  body {
+    background: #0a0a0a !important;
   }
   .hero-loop-fade { display: none !important; animation: none !important; opacity: 0 !important; }
   .hero-video {
@@ -31,6 +37,73 @@ const NO_HAZE_CSS = `
       linear-gradient(180deg, rgba(10,10,10,0.02) 0%, rgba(10,10,10,0) 35%, rgba(10,10,10,0) 68%, rgba(10,10,10,0.14) 100%) !important;
   }
   .hero-top-nav.scrolled { backdrop-filter: none !important; background: rgba(10,10,10,0.78) !important; }
+  .address-beat,
+  .craftsmen-beat,
+  .stewardship-beat,
+  .restoration-beat,
+  .infra-beat,
+  .room-beat,
+  .room-beat-flip,
+  .whp-section,
+  .plans-beat,
+  .inprint-beat,
+  .interstitial {
+    opacity: 1 !important;
+    filter: none !important;
+  }
+  .craftsmen-headline,
+  .craftsmen-body,
+  .craftsmen-body p,
+  .craftsmen-pull,
+  .room-headline,
+  .room-body,
+  .room-body p,
+  .stewardship-headline,
+  .stewardship-body,
+  .restoration-headline,
+  .restoration-body,
+  .infra-headline,
+  .infra-body,
+  .plans-headline,
+  .plans-body,
+  .inprint-title,
+  .threshold-headline,
+  .threshold-body,
+  .threshold-body p,
+  .whp-titles-headline,
+  .whp-titles-bio,
+  .whp-titles-bio p,
+  .whp-farm-source,
+  .whp-last-coda {
+    color: rgba(245,240,232,0.94) !important;
+    opacity: 1 !important;
+    filter: none !important;
+    text-shadow: none !important;
+  }
+  .craftsmen-eyebrow,
+  .room-eyebrow,
+  .stewardship-eyebrow,
+  .restoration-eyebrow,
+  .infra-eyebrow,
+  .plans-eyebrow,
+  .inprint-eyebrow,
+  .threshold-eyebrow,
+  .whp-titles-eyebrow {
+    opacity: 0.92 !important;
+    color: #C9A96E !important;
+    filter: none !important;
+  }
+  .craftsmen-rule,
+  .room-rule,
+  .stewardship-beat::before,
+  .stewardship-beat::after,
+  .restoration-rule,
+  .threshold-rule,
+  .interstitial-rule,
+  .interstitial-rule-bottom {
+    opacity: 0.72 !important;
+    filter: none !important;
+  }
   .threshold-overlay {
     background:
       linear-gradient(to right, rgba(10,10,10,0.34) 0%, rgba(10,10,10,0.16) 42%, rgba(10,10,10,0) 72%),
@@ -81,6 +154,16 @@ const NO_HAZE_CSS = `
   }
   .fade-in,
   .scroll-reveal,
+  .address-beat,
+  .craftsmen-beat,
+  .stewardship-beat,
+  .restoration-beat,
+  .infra-beat,
+  .room-beat,
+  .room-beat-flip,
+  .plans-beat,
+  .inprint-beat,
+  .interstitial,
   .kb-line-1,
   .kb-line-2,
   .kb-line-3,
@@ -108,7 +191,7 @@ function applyPreviewCorrections(html) {
     .replace(/Last_Hero_3_ei2bur\.mp4/g, "Last_for_real_q0fqvw.mp4")
     .replace(/he never walked through the door/gi, "he never spent a night here");
 
-  if (!next.includes("Codex preview-only no-haze repair v2")) {
+  if (!next.includes("Codex preview-only no-haze repair v3")) {
     next = next.replace("</style>", `${NO_HAZE_CSS}\n</style>`);
   }
 
