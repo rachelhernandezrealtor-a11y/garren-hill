@@ -391,12 +391,14 @@
       min-height: 100%;
       flex-direction: column;
       justify-content: flex-end;
-      gap: 14px;
+      gap: 18px;
     }
 
     .bubble {
+      position: relative;
       width: fit-content;
       max-width: min(680px, 84%);
+      margin-left: 34px;
       border: 1px solid rgba(110, 82, 49, .16);
       border-radius: 26px 26px 26px 8px;
       padding: clamp(15px, 1.8vw, 20px) clamp(18px, 2.4vw, 24px);
@@ -407,12 +409,29 @@
     }
 
     .bubble .label {
-      display: none;
+      display: block;
       margin-bottom: 10px;
       color: var(--gold);
-      font-size: .68rem;
-      letter-spacing: .24em;
+      font-size: .72rem;
+      letter-spacing: .18em;
       text-transform: uppercase;
+    }
+
+    .bubble::before {
+      content: "C";
+      position: absolute;
+      top: 13px;
+      left: -34px;
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(201, 169, 110, .36);
+      border-radius: 999px;
+      background: rgba(255, 252, 247, .86);
+      color: var(--ribbon);
+      font: 700 .72rem/1 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
     }
 
     .bubble.coco {
@@ -421,14 +440,25 @@
 
     .bubble.user {
       align-self: flex-end;
+      margin-right: 34px;
+      margin-left: 0;
       border-radius: 26px 26px 8px 26px;
       border-color: rgba(181, 32, 50, .16);
       background: var(--ribbon);
       color: var(--cream);
     }
 
+    .bubble.user::before {
+      content: "R";
+      right: -34px;
+      left: auto;
+      border-color: rgba(181, 32, 50, .22);
+      background: var(--cream);
+      color: var(--ribbon);
+    }
+
     .bubble.user .label {
-      color: rgba(10, 10, 10, .56);
+      color: rgba(245, 240, 232, .76);
     }
 
     .bubble.error {
@@ -436,9 +466,66 @@
       color: var(--warn);
     }
 
+    .attachment-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 13px;
+      white-space: normal;
+    }
+
+    .attachment-chip {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 9px;
+      align-items: center;
+      max-width: min(280px, 100%);
+      border: 1px solid rgba(110, 82, 49, .16);
+      border-radius: 16px;
+      background: rgba(255, 252, 247, .54);
+      color: var(--cocoa);
+      padding: 7px 10px 7px 7px;
+      font: .82rem/1.2 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .bubble.user .attachment-chip {
+      border-color: rgba(245, 240, 232, .2);
+      background: rgba(245, 240, 232, .14);
+      color: var(--cream);
+    }
+
+    .attachment-thumb {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: rgba(10, 10, 10, .12);
+    }
+
+    .attachment-file {
+      display: grid;
+      min-width: 0;
+      gap: 2px;
+    }
+
+    .attachment-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .attachment-meta {
+      color: rgba(36, 28, 23, .48);
+      font-size: .72rem;
+    }
+
+    .bubble.user .attachment-meta {
+      color: rgba(245, 240, 232, .56);
+    }
+
     .composer {
       display: grid;
-      gap: 0;
+      gap: 10px;
       padding: 16px clamp(16px, 2.8vw, 28px) clamp(16px, 2.8vw, 24px);
       border-top: 1px solid var(--line-soft);
       background:
@@ -468,14 +555,17 @@
 
     .compose-line {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 82px;
+      grid-template-columns: 54px minmax(0, 1fr) 82px;
       gap: 8px;
       align-items: end;
     }
 
     .attach-wrap {
       position: relative;
-      display: none;
+      display: block;
+      width: 54px;
+      height: 54px;
+      align-self: end;
     }
 
     .attach-wrap input {
@@ -497,6 +587,12 @@
       padding: 0;
       font-size: 1.6rem;
       line-height: 1;
+      display: grid;
+      place-items: center;
+      border-color: rgba(181, 32, 50, .26);
+      border-radius: 999px;
+      background: rgba(255, 252, 247, .88);
+      color: var(--ribbon);
     }
 
     .send-button {
@@ -535,10 +631,25 @@
     }
 
     .hint-line {
-      display: none;
+      display: block;
       color: var(--quiet);
       font-size: .92rem;
       line-height: 1.35;
+    }
+
+    .attachment-tray {
+      display: none;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-height: 0;
+    }
+
+    .attachment-tray.has-files {
+      display: flex;
+    }
+
+    .attachment-tray .attachment-chip {
+      background: rgba(255, 252, 247, .76);
     }
 
     .preview-panel {
@@ -693,7 +804,7 @@
       }
 
       .compose-line {
-        grid-template-columns: minmax(0, 1fr) 72px;
+        grid-template-columns: 48px minmax(0, 1fr) 72px;
       }
 
       .plain-button,
@@ -774,13 +885,14 @@
         </div>
 
         <div class="compose-line">
-          <label class="attach-wrap" aria-label="Attach a file">
+          <label class="attach-wrap" aria-label="Attach screenshots or files for Coco">
             <span class="plain-button" aria-hidden="true">+</span>
             <input id="fileInput" type="file" multiple accept="image/*,.pdf,.doc,.docx,.txt,.md">
           </label>
           <textarea id="request" rows="2" placeholder="Write to Coco...">Coco, we are making you a nice chat window with a pretty little bow just for you.</textarea>
           <button class="send-button" type="submit">Send</button>
         </div>
+        <div id="attachmentTray" class="attachment-tray" aria-label="Attached files"></div>
 
         <div class="utility-row">
           <select id="propertyId" class="select-field" aria-label="Property">
@@ -789,7 +901,7 @@
           </select>
         </div>
 
-        <div id="attachmentNote" class="hint-line">Screenshots can be selected here. Coco will know what file you attached; full visual reading is the next glasses layer.</div>
+        <div id="attachmentNote" class="hint-line">Attach screenshots here when Coco needs her glasses. This preview records the files with your next note; live image reading connects in the private Studio lane.</div>
       </form>
     </section>
 
@@ -830,9 +942,11 @@
     const frameWrap = document.getElementById("frameWrap");
     const fileInput = document.getElementById("fileInput");
     const attachmentNote = document.getElementById("attachmentNote");
+    const attachmentTray = document.getElementById("attachmentTray");
 
     let activeMode = "look";
-    let attachedNames = [];
+    let attachedFiles = [];
+    const previewOnlyShell = location.protocol === "file:" || location.hostname.includes("garren-hill.pages.dev");
 
     const propertyDefaults = {
       "garran-hill": "https://preview-garran-hill-safe-acc.garren-hill.pages.dev",
@@ -899,6 +1013,61 @@
 
     enterWorkspace();
 
+    function fileKind(file) {
+      if (!file) return "file";
+      if (file.type && file.type.startsWith("image/")) return "screenshot";
+      const name = file.name || "";
+      const ext = name.includes(".") ? name.split(".").pop().toUpperCase() : "FILE";
+      return ext;
+    }
+
+    function fileSizeLabel(size) {
+      if (!Number.isFinite(size)) return "";
+      if (size < 1024) return size + " B";
+      if (size < 1024 * 1024) return Math.round(size / 1024) + " KB";
+      return (size / (1024 * 1024)).toFixed(1) + " MB";
+    }
+
+    function makeAttachmentChip(file) {
+      const chip = document.createElement("span");
+      chip.className = "attachment-chip";
+      if (file?.type?.startsWith("image/")) {
+        const image = document.createElement("img");
+        image.className = "attachment-thumb";
+        image.alt = "";
+        image.src = URL.createObjectURL(file);
+        image.addEventListener("load", () => URL.revokeObjectURL(image.src), { once: true });
+        chip.appendChild(image);
+      } else {
+        const icon = document.createElement("span");
+        icon.className = "attachment-thumb";
+        icon.textContent = "+";
+        icon.setAttribute("aria-hidden", "true");
+        chip.appendChild(icon);
+      }
+
+      const details = document.createElement("span");
+      details.className = "attachment-file";
+      const name = document.createElement("span");
+      name.className = "attachment-name";
+      name.textContent = file?.name || "Attached file";
+      const meta = document.createElement("span");
+      meta.className = "attachment-meta";
+      meta.textContent = [fileKind(file), fileSizeLabel(file?.size)].filter(Boolean).join(" · ");
+      details.append(name, meta);
+      chip.appendChild(details);
+      return chip;
+    }
+
+    function renderAttachmentTray() {
+      attachmentTray.innerHTML = "";
+      attachedFiles.forEach((file) => attachmentTray.appendChild(makeAttachmentChip(file)));
+      attachmentTray.classList.toggle("has-files", attachedFiles.length > 0);
+      attachmentNote.textContent = attachedFiles.length
+        ? attachedFiles.length + " attached for the next note. Coco will see the filenames here; full visual reading belongs to the private Studio glasses lane."
+        : "Attach screenshots here when Coco needs her glasses. This preview records the files with your next note; live image reading connects in the private Studio lane.";
+    }
+
     function addMessage(role, text, options = {}) {
       const article = document.createElement("article");
       article.className = "bubble " + role + (options.error ? " error" : "");
@@ -907,6 +1076,12 @@
       label.textContent = role === "user" ? "Rachel" : "Coco";
       article.appendChild(label);
       article.appendChild(document.createTextNode(text));
+      if (options.attachments?.length) {
+        const strip = document.createElement("div");
+        strip.className = "attachment-strip";
+        options.attachments.forEach((file) => strip.appendChild(makeAttachmentChip(file)));
+        article.appendChild(strip);
+      }
       messageList.appendChild(article);
       conversation.scrollTop = conversation.scrollHeight;
       return article;
@@ -926,8 +1101,8 @@
     }
 
     function buildRequestText(text) {
-      const attachmentText = attachedNames.length
-        ? "\n\nRachel attached files: " + attachedNames.join(", ") + ". Coco can use the file names as context, but full image reading is not connected on this page yet."
+      const attachmentText = attachedFiles.length
+        ? "\n\nRachel attached files: " + attachedFiles.map((file) => file.name).join(", ") + ". Coco can use the file names as context, but full image reading is not connected on this page yet."
         : "";
       return [
         "Coco, answer inside Rachel Studio.",
@@ -939,14 +1114,35 @@
       ].join("\n");
     }
 
+    function previewReply(text) {
+      const lower = text.toLowerCase();
+      if (lower.includes("haze")) {
+        return "I see the haze note. Codex is tightening the protected Garran Hill preview clarity pass now, especially the historical text sections after the hero. Production is still untouched.";
+      }
+      if (lower.includes("open") || lower.includes("hello") || lower.includes("coco")) {
+        return "I am here in the Bow Room preview. This shell can hold the conversation shape and protected preview; the live Coco brain, memory, and tools open from the private Studio door at rachelhernandez.studio/studio.";
+      }
+      return "Noted in preview mode. The Bow Room is open, the preview stays protected, and anything public still waits for Rachel approval.";
+    }
+
     chatForm.addEventListener("submit", async (event) => {
       event.preventDefault();
       const text = request.value.trim();
-      if (!text) return;
+      const filesForMessage = attachedFiles.slice();
+      if (!text && !filesForMessage.length) return;
 
-      addMessage("user", text);
+      addMessage("user", text || "Attached files for Coco.", { attachments: filesForMessage });
       request.value = "";
       request.style.height = "54px";
+      attachedFiles = [];
+      fileInput.value = "";
+      renderAttachmentTray();
+
+      if (previewOnlyShell) {
+        addMessage("coco", previewReply(text));
+        return;
+      }
+
       const pending = addMessage("coco", "Thinking with the Studio brief, locked laws, preview, photo/proof/SEO lanes, and launch gate...");
 
       try {
@@ -1034,11 +1230,11 @@
     });
 
     fileInput.addEventListener("change", () => {
-      attachedNames = Array.from(fileInput.files || []).map((file) => file.name);
-      attachmentNote.textContent = attachedNames.length
-        ? "Attached for the next message: " + attachedNames.join(", ") + ". Full visual reading comes next."
-        : "Screenshots can be selected here. Coco will know what file you attached; full visual reading is the next glasses layer.";
+      attachedFiles = Array.from(fileInput.files || []);
+      renderAttachmentTray();
     });
+
+    renderAttachmentTray();
   </script>
 </body>
 </html>
