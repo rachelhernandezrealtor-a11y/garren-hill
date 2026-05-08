@@ -1284,6 +1284,55 @@
 </head>
 <body>
 
+
+<!-- PW GATE -->
+<style>
+  #pw-gate {
+    position: fixed; inset: 0; z-index: 99999;
+    background: #0a0a0a;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 24px;
+  }
+  #pw-gate img { height: 64px; opacity: 0.85; }
+  #pw-gate input {
+    background: transparent;
+    border: none; border-bottom: 1px solid rgba(201,169,110,0.5);
+    color: #F5F0E8; font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; letter-spacing: 0.2em; text-align: center;
+    padding: 12px 24px; outline: none; width: 260px;
+  }
+  #pw-gate input::placeholder { color: rgba(245,240,232,0.3); font-size:13px; letter-spacing:0.25em; }
+  #pw-gate .pw-label { font-family:'Cormorant Garamond',serif; font-size:11px; letter-spacing:0.3em; color:rgba(201,169,110,0.6); text-transform:uppercase; }
+  #pw-gate .pw-error { font-family:'Cormorant Garamond',serif; font-size:12px; letter-spacing:0.2em; color:rgba(201,169,110,0.5); display:none; }
+</style>
+
+<div id="pw-gate">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777397863/gh_key/gh_wax_seal_v3.png" alt="Garran Hill">
+  <div class="pw-label">Private Preview</div>
+  <input type="password" id="pw-input" placeholder="ENTER PASSWORD" autocomplete="off">
+  <div class="pw-error" id="pw-error">Not quite.</div>
+</div>
+<script>
+  (function() {
+    var stored = sessionStorage.getItem('gh_access');
+    if (stored === 'granted') {
+      document.getElementById('pw-gate').style.display = 'none';
+      return;
+    }
+    document.getElementById('pw-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        if (this.value === 'Rokymyheart') {
+          sessionStorage.setItem('gh_access', 'granted');
+          document.getElementById('pw-gate').style.display = 'none';
+        } else {
+          document.getElementById('pw-error').style.display = 'block';
+          this.value = '';
+        }
+      }
+    });
+  })();
+</script>
+<!-- END PW GATE -->
 <!-- NAV -->
 
 <!-- BEAT 0 — HERO VIEWPORT: top nav + full-frame hero + gold-line bottom nav = one 100vh -->
@@ -1303,7 +1352,7 @@
   <!-- HERO BODY -->
   <section class="hero">
     <video class="hero-video" poster="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1920/v1777652169/gh_key/gh_hero_poster_loop.jpg" autoplay muted loop playsinline preload="auto">
-      <source src="https://res.cloudinary.com/dghn2xpif/video/upload/Last_Hero_3_ei2bur.mp4" type="video/mp4">
+      <source src="https://res.cloudinary.com/dghn2xpif/video/upload/Last_for_real_q0fqvw.mp4" type="video/mp4">
     </video>
     <script>
       (function() {
@@ -1381,32 +1430,38 @@
 
 
 <!-- ============================================================ -->
-<!-- INTRO — THREE ERAS. ONE HOUSE. -->
 <!-- ============================================================ -->
-<section class="address-beat fade-in" style="padding: 100px 72px 80px; text-align: center; max-width: 900px; margin: 0 auto;">
-  <span class="craftsmen-eyebrow" style="display:block; margin-bottom: 32px;">THREE ERAS. ONE HOUSE.</span>
-  <h2 class="craftsmen-headline" style="font-size: clamp(2rem, 3vw, 3.8rem); margin-bottom: 48px;">Before you walk in,<br><em>here is who walked here.</em></h2>
-  <div class="craftsmen-rule" style="margin: 0 auto 48px;"></div>
-  <div class="craftsmen-body" style="font-style: italic; font-size: clamp(1rem, 1.2vw, 1.15rem); line-height: 1.9; max-width: 680px; margin: 0 auto;">
-    <p style="margin-bottom: 1.6em;">Walter Hines Page bought the land in 1913 and named the house before he sailed for London. He never lived to see it.</p>
-    <p style="margin-bottom: 1.6em;">Betty Dumaine made it bloom. For twenty-five years, the gardens grew under her hand.</p>
-    <p>By 1998, the house had been empty fourteen years. Three years of restoration brought it back. The proof is inside.</p>
+<!-- SECTION 3 — OPENING STATEMENT -->
+<!-- ============================================================ -->
+<section class="address-beat scroll-reveal">
+  <div class="address-inner">
+    <div class="address-eyebrow">THE ESTATE</div>
+    <h2 class="address-headline">The door has been open<br><em>since 1916.</em></h2>
+    <div class="address-body">
+      <p>Neo-Georgian. Four columns. Original 1916 brick — three months were spent sourcing period-accurate replacements when restoration began. Seven fireplaces. 4.15 acres inside the Pinehurst ETJ. Six thousand and seventy-two square feet of living area. Twelve thousand six hundred eighty-one total.</p>
+      <p>Built by Leonard Tufts' own craftsmen — the same men who built Pinehurst.</p>
+    </div>
   </div>
 </section>
 
-
 <!-- BEAT 4 — CRAFTSMEN -->
-<section class="craftsmen-beat fade-in">
-  <span class="craftsmen-eyebrow">PINEHURST, NORTH CAROLINA &nbsp;·&nbsp; 1916</span>
-  <h2 class="craftsmen-headline">Built by Leonard Tufts' own craftsmen.<br>The same men who built Pinehurst.</h2>
-  <div class="craftsmen-rule"></div>
-  <div class="craftsmen-body">
-    <p>Neo-Georgian. Four columns. Full entablature. Built by the men who built Pinehurst — and built to the same standard, two miles away, in the same year.</p>
-    <p>These were Leonard Tufts' own craftsmen. The same hands that raised the Carolina Hotel, the Pinehurst clubhouse, the cottages along the village green. Page commissioned the house from London. He knew exactly whose hands would build it.</p>
-    <p>Three months were spent sourcing period-accurate brick for the portico alone. The proportions are correct because no one involved was willing to approximate.</p>
+<section class="craftsmen-beat fade-in" style="position:relative; overflow:hidden; padding: 160px 72px 140px; max-width:100%;">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/c_limit,w_1920,e_improve:outdoor:70,e_sharpen:25,e_saturation:15,f_auto,q_auto/v1777245588/gh_exteriors/holycrestextf_3364_copy1.jpg"
+    alt="Garran Hill — 1916"
+    style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;z-index:0;opacity:0.22;">
+  <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(105deg,rgba(10,10,10,0.96) 0%,rgba(10,10,10,0.75) 55%,rgba(10,10,10,0.4) 100%);"></div>
+  <div style="position:relative;z-index:2;max-width:900px;">
+    <span class="craftsmen-eyebrow">PINEHURST, NORTH CAROLINA &nbsp;·&nbsp; 1916</span>
+    <h2 class="craftsmen-headline">Built by Leonard Tufts' own craftsmen.<br>The same men who built Pinehurst.</h2>
+    <div class="craftsmen-rule"></div>
+    <div class="craftsmen-body">
+      <p>Neo-Georgian. Four columns. Full entablature. Built by the men who built Pinehurst — and built to the same standard, two miles away, in the same year.</p>
+      <p>These were Leonard Tufts' own craftsmen. The same hands that raised the Carolina Hotel, the Pinehurst clubhouse, the cottages along the village green. Page commissioned the house from London. He knew exactly whose hands would build it.</p>
+      <p>Three months were spent sourcing period-accurate brick for the portico alone. The proportions are correct because no one involved was willing to approximate.</p>
+    </div>
+    <p class="craftsmen-pull craftsmen-pull-lede">Four families. One hundred and ten years. He never made it back.</p>
+    <p class="craftsmen-pull craftsmen-pull-coda">That is not maintenance. <em>That is devotion.</em></p>
   </div>
-  <p class="craftsmen-pull craftsmen-pull-lede">Four families. One hundred and ten years. He never made it back.</p>
-  <p class="craftsmen-pull craftsmen-pull-coda">That is not maintenance. <em>That is devotion.</em></p>
 </section>
 
 <!-- BEAT 6 — THRESHOLD -->
@@ -1432,7 +1487,7 @@
 <section class="room-beat fade-in">
   <div class="room-inner">
     <div class="room-img-wrap">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777270464/gh_key/gh_entry62.jpg" alt="The Entry Hall — Garran Hill" loading="lazy">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/c_limit,w_1600,e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto/v1777270464/gh_key/gh_entry62.jpg" alt="The Entry Hall — Garran Hill" loading="lazy">
     </div>
     <div class="room-text">
       <span class="room-eyebrow">The Entry Hall</span>
@@ -1514,162 +1569,118 @@
 
 </section>
 
+<!-- ============================================================ -->
 <!-- BEAT 8 — LIVING ROOM -->
 <!-- ============================================================ -->
-<div class="whp-to-rooms-breath" style="background:var(--dark);height:clamp(60px,8vw,100px);display:flex;align-items:center;justify-content:center;">
-  <div style="width:40px;height:1px;background:var(--gold);opacity:0.2;"></div>
-</div>
-<section class="room-beat fade-in">
+<section class="room-beat scroll-reveal">
   <div class="room-inner">
-    <div class="room-img-wrap">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777568360/gh_key/gh_living_room.jpg" alt="The Living Room — Garran Hill" loading="lazy">
-    </div>
-    <div class="room-text">
-      <span class="room-eyebrow">The Living Room</span>
-      <h2 class="room-headline">They made it bigger<br><em style="font-weight:300">so they could dance.</em></h2>
-      <div class="room-rule"></div>
-      <div class="room-body">
-        <p>Coffered ceiling. Georgian panel molding in a grid. Oak floors lifted, repaired, relaid exactly as they were. French doors to the rear grounds. The central axis runs from the threshold straight through to the library — visible the instant the door opens.</p>
-        <p>Two full seating areas. Every fabric, every finish chosen because it belongs here. Not because it was available. Because it was right.</p>
-        <p class="room-pull"><em>Room enough to dance.</em></p>
-      </div>
+    <div class="room-eyebrow">THE LIVING ROOM</div>
+    <h2 class="room-headline">They made it bigger<br><em>so they could dance.</em></h2>
+    <div class="room-body">
+      <p>The salon runs nearly forty feet. Tall bare windows parade down both sides. One end anchored by a fireplace. The room was enlarged to its current proportions — then left alone. Coffered ceiling. All seven carved mantels saved from the original structure, repaired and reset.</p>
+      <p>It is a room that expects people in it.</p>
     </div>
   </div>
 </section>
 
+<!-- ============================================================ -->
 <!-- ============================================================ -->
 <!-- BEAT 9 — DRAWING ROOM -->
 <!-- ============================================================ -->
-<section class="room-beat fade-in" style="background: #080808;">
-  <div class="room-inner flip">
-    <div class="room-img-wrap">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777568362/gh_key/gh_drawing_room.jpg" alt="The Drawing Room — Delft fireplace" loading="lazy">
-    </div>
-    <div class="room-text">
-      <span class="room-eyebrow">The Drawing Room</span>
-      <h2 class="room-headline">Fire going,<br><em style="font-weight:300">no one home yet.</em></h2>
-      <div class="room-rule"></div>
-      <div class="room-body">
-        <p>Original Georgian carved mantel. Delft tile surround — blue and white, hand-painted, original to the room. Lion andirons. One of seven fireplaces in the house.</p>
-        <p>Persian rug over wide-plank oak. The room reads as a single thought — every object in the same language. A spiral staircase visible through the far doorway. The light arrives differently in the morning than in the afternoon. The room has always known this.</p>
-        <p class="room-pull"><em>Seven fireplaces. This is the one that matters.</em></p>
-      </div>
+<section class="room-beat scroll-reveal">
+  <div class="room-inner">
+    <div class="room-eyebrow">THE DRAWING ROOM</div>
+    <h2 class="room-headline">Fire going.<br><em>No one home yet.</em></h2>
+    <div class="room-body">
+      <p>Georgian carved mantel. Delft tile surround — blue and white, hand-painted, original. The arch motif that runs through the entire house appears here in the cabinetry, in the doorways, in the fanlights above. It was specified in 1916. It is still there.</p>
     </div>
   </div>
 </section>
 
+<!-- ============================================================ -->
 <!-- ============================================================ -->
 <!-- BEAT 10 — DINING ROOM -->
 <!-- ============================================================ -->
-<section class="room-beat fade-in">
+<section class="room-beat scroll-reveal">
   <div class="room-inner">
-    <div class="room-img-wrap">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777568363/gh_key/gh_dining_room.jpg" alt="The Dining Room — Garran Hill" loading="lazy">
-    </div>
-    <div class="room-text">
-      <span class="room-eyebrow">The Dining Room</span>
-      <h2 class="room-headline">Formal by proportion.<br><em style="font-weight:300">Intimate by firelight.</em></h2>
-      <div class="room-rule"></div>
-      <div class="room-body">
-        <p>Bay window on the north wall — curved, floor to ceiling, nine-pane divided lights, looking directly onto the grounds. Brass and porcelain chandelier. Flanking the fireplace on both sides: arched shell alcoves, scalloped tops, built-in cabinet below — drawn on the restoration plans before a single piece of trim was cut.</p>
-        <p>Off the dining room, through its own arched opening: a paneled butler's niche with sideboard. Not a hallway. An event. A room that seats twelve without crowding.</p>
-        <p class="room-pull"><em>The shell cabinets were already there in 1916. They are still there now.</em></p>
-      </div>
+    <div class="room-eyebrow">THE DINING ROOM</div>
+    <h2 class="room-headline">The shell cabinets were already there<br><em>in 1916.</em></h2>
+    <div class="room-body">
+      <p>Original frontpiece. Shell cabinets — still there. Butler's arched niche. Seventeen feet by nineteen. The room holds its proportions. It has not been asked to be something else.</p>
     </div>
   </div>
 </section>
 
+<!-- ============================================================ -->
 <!-- ============================================================ -->
 <!-- BEAT 11 — LIBRARY -->
 <!-- ============================================================ -->
-<section class="room-beat fade-in" style="background: #080808;">
-  <div class="room-inner flip">
-    <div class="room-img-wrap">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777407424/gh_key/gh_library_hero.jpg" alt="The Library — Garran Hill" loading="lazy">
-    </div>
-    <div class="room-text">
-      <span class="room-eyebrow">The Library</span>
-      <h2 class="room-headline">Designed in 2000.<br><em style="font-weight:300">Built to last<br>another century.</em></h2>
-      <div class="room-rule"></div>
-      <div class="room-body">
-        <p>Dead center of the first floor — positioned that way in the 2000 plans. Built-in shelving on three walls, floor to ceiling. Rolling ladder. French doors to the rear grounds. Brass chandelier. O'Shea designed this room to the same standard as the 1916 house it joined. When you stand in it, you cannot find the seam.</p>
-        <p>It also became the planning center for the restoration itself — the architects worked from this room. Every decision about the house flowed through here.</p>
-        <p class="room-pull"><em>This room holds stories.</em></p>
-      </div>
-      <div class="room-gallery" style="display:flex;gap:10px;margin-top:2rem;">
-        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1200,c_limit/v1777407432/gh_key/gh_library_detail.jpg" alt="Library shelving — Garran Hill" loading="lazy" style="width:100%;max-width:320px;height:220px;object-fit:cover;opacity:0.9;">
-      </div>
+<section class="room-beat scroll-reveal">
+  <div class="room-inner">
+    <div class="room-eyebrow">THE LIBRARY</div>
+    <h2 class="room-headline">Dead center of the first floor.<br><em>Positioned that way in the 2000 plans.</em></h2>
+    <div class="room-body">
+      <p>Built-in shelving on three walls. Floor to ceiling. Rolling ladder. French doors to the rear grounds. Brass chandelier. Designed in 2000 to the same standard as the 1916 house it joined.</p>
+      <p>When you stand in it, you cannot find the seam.</p>
     </div>
   </div>
 </section>
 
-
-
+<!-- ============================================================ -->
 <!-- ============================================================ -->
 <!-- BEAT 12 — KITCHEN FULL BLEED -->
 <!-- ============================================================ -->
-<section class="fullbleed-beat fade-in">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777568365/gh_key/gh_kitchen_overall.jpg" alt="The Kitchen — Garran Hill" loading="lazy">
-  <div class="fullbleed-overlay-left"></div>
-  <div class="fullbleed-content">
-    <span class="room-eyebrow">The Kitchen</span>
-    <h2 class="room-headline" style="font-size: clamp(2.2rem,3.5vw,4.5rem);">The shell cabinets are original.<br><em style="font-weight:300">The kitchen is not.</em></h2>
-    <div class="room-rule"></div>
-    <div class="room-body">
-      <p>Built new in 2000. Reclaimed heart-pine floors. Custom cabinetry — white uppers with glass fronts, dark painted lowers. Farmhouse apron sink. Dark granite counters. A wall of divided-light windows facing the grounds.</p>
-      <p>The pantry door swings open — floor-to-ceiling shelving on every face, two full towers, built for a house that is actually used. Every morning at 6:30, the deer come through.</p>
+<section class="fullbleed-beat scroll-reveal" style="min-height:80vh;">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/c_limit,w_1920,e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto/v1777270464/gh_key/gh_entry62.jpg" alt="Garran Hill Kitchen" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+  <div class="fullbleed-content" style="position:relative;z-index:2;max-width:640px;">
+    <div class="room-eyebrow" style="color:#C9A96E;">THE KITCHEN</div>
+    <h2 class="room-headline" style="color:#F5F0E8;">White cabinetry. Dark granite. Island.<br><em>Four windows.</em></h2>
+    <div class="room-body" style="color:rgba(245,240,232,0.82);">
+      <p>Reclaimed heart-pine floors — the only room in the house that departs from the original oak. Updated in 2000. Two farm sinks. The wall of windows faces an expanse of grass bordered by elder magnolias.</p>
+      <p>Every morning at 6:30, the deer come through.</p>
     </div>
   </div>
-    <p class="room-pull"><em>The floors are reclaimed heart-pine. Chosen. Not incidental.</em></p>
-  </div>
 </section>
-<div class="film-strip" style="background: var(--dark); padding: 2px 0;">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777568366/gh_key/gh_kitchen_island.jpg" alt="Kitchen island" loading="lazy">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777568367/gh_key/gh_kitchen_sink.jpg" alt="Kitchen sink wall" loading="lazy">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777568369/gh_key/gh_kitchen_detail.jpg" alt="Kitchen detail" loading="lazy">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777568370/gh_key/gh_kitchen_range.jpg" alt="Kitchen range" loading="lazy">
-</div>
 
+<!-- ============================================================ -->
 <!-- ============================================================ -->
 <!-- BEAT 13 — PRIMARY SUITE -->
 <!-- ============================================================ -->
-<section class="fullbleed-beat fade-in">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243474/gh_photos/200_hollycrest_drive-71.jpg" alt="Primary Suite — Garran Hill" loading="lazy">
-  <div class="fullbleed-overlay-left"></div>
-  <div class="fullbleed-content">
-    <span class="room-eyebrow">The Primary Suite</span>
-    <h2 class="room-headline" style="font-size: clamp(2.2rem,3.5vw,4.5rem);">The whole floor<br><em style="font-weight:300">belongs to it.</em></h2>
-    <div class="room-rule"></div>
+<section class="room-beat scroll-reveal">
+  <div class="room-inner">
+    <div class="room-eyebrow">THE PRIMARY SUITE</div>
+    <h2 class="room-headline">Designed from scratch in 2000<br><em>to match 1916 proportions.</em></h2>
     <div class="room-body">
-      <p>The primary suite occupies the entire east wing of the second floor. Sitting room. Dressing room. A primary bath finished in marble. Every window faces the grounds.</p>
-      <p>The suite did not exist in the original 1916 plan. It was designed entirely from scratch in 2000, to be indistinguishable from the house it joined.</p>
-      <p>The closet is behind a wall that looks like a wall. The bathroom floor is marble. The hardware is original. Nothing was approximated.</p>
-      <p class="room-pull"><em>It does not feel added. It feels inevitable.</em></p>
+      <p>Every component custom-designed. Fifteen architectural drawings document the decisions Thomas O'Shea made. They survive. They transfer with the property.</p>
+      <p>The balcony — 24 by 11 feet — faces the grounds. Three Jacuzzi tubs in the house. This is one of them.</p>
     </div>
   </div>
 </section>
-<section class="room-grid-3 fade-in" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:6px 0;">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243061/gh_interiors/200holycrest_1272.jpg" alt="Primary Suite — Garran Hill" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243096/gh_interiors/200holycrest_1329.jpg" alt="Primary Suite — Garran Hill" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243119/gh_interiors/200holycrest_1368.jpg" alt="Primary Suite — Garran Hill" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;">
-</section>
 
+<!-- ============================================================ -->
 <!-- ============================================================ -->
 <!-- BEAT 14 — BEDROOMS -->
 <!-- ============================================================ -->
-<section class="room-beat fade-in">
+<section class="room-beat scroll-reveal">
   <div class="room-inner">
-    <div class="room-img-wrap">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,w_1600,c_limit/v1777568374/gh_key/gh_yellow_bedroom.jpg" alt="Yellow Bedroom — Garran Hill" loading="lazy">
+    <div class="room-eyebrow">THE BEDROOMS</div>
+    <h2 class="room-headline">Four bedrooms.<br><em>Each one with a fireplace.</em></h2>
+    <div class="room-body">
+      <p>Three staircases. A 24-by-11-foot balcony from the yellow bedroom and nursery. The arch motif — every door, every fanlight — runs unbroken through all four floors. Proportions matched to 1916 in the 2000 drawings.</p>
     </div>
-    <div class="room-text">
-      <span class="room-eyebrow">The Guest Rooms</span>
-      <h2 class="room-headline">The Rose Suite.<br>The Yellow Suite.<br><em style="font-weight:300">The Nursery.</em></h2>
-      <div class="room-rule"></div>
-      <div class="room-body">
-        <p>Each with original proportions, original fireplaces, original hardware. Closets behind walls that look like walls. The Yellow Suite and the Nursery open onto a shared balcony above the kitchen — lattice railing drawn to spec, not chosen from a catalog.</p>
-        <p>Nothing was combined. Nothing was converted. Three staircases. The main stair turns the same curve it has turned since 1916.</p>
-      </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- POWDER ROOM INTERSTITIAL -->
+<!-- ============================================================ -->
+<section class="stewardship-beat scroll-reveal" style="padding:80px 72px;">
+  <div style="max-width:600px;">
+    <div class="stewardship-eyebrow">THE POWDER ROOM</div>
+    <h2 class="stewardship-name" style="font-size:clamp(24px,2.8vw,40px);">Fuchsia chinoiserie.<br><em>Tennessee marble.</em></h2>
+    <div class="stewardship-body">
+      <p>An arched cabinet — the arch motif, again, consistent through every door and every room since 1916. The brass hardware, original. The wallpaper, fuchsia. The vanity, Tennessee marble.</p>
+      <p>Every room needs a moment. This is that moment.</p>
     </div>
   </div>
 </section>
@@ -1687,106 +1698,121 @@
 
 
 <!-- ============================================================ -->
-<!-- BEAT 15 — GROUNDS / ROSE GARDEN -->
 <!-- ============================================================ -->
-<section class="fullbleed-beat fade-in">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777443296/gh_key/gh_grounds_up5.jpg" alt="Rose Garden — Garran Hill" loading="lazy" style="object-position: center 40%;">
-  <div class="fullbleed-overlay-left"></div>
-  <div class="fullbleed-content">
-    <span class="room-eyebrow">The Grounds</span>
-    <h2 <h2 class="room-headline" style="font-size: clamp(2.2rem,3.5vw,4.5rem);">A garden that has been <em>loved for sixty years.</em></h2>
-    <div class="room-rule"></div>
-    <div class="room-body">
-      <p>The rose garden, the pool walk, the camellias along the pebble path — Betty Dumaine planted all of it. She kept foxhounds and peacocks. The gardens have been cultivated continuously for sixty years.</p>
-      <blockquote class="grounds-quote">The world outside these gates does not exist here.</blockquote>
+<!-- BEAT 15 — GROUNDS -->
+<!-- ============================================================ -->
+<section class="fullbleed-beat scroll-reveal" style="min-height:90vh;">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/c_limit,w_1920,e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto/v1777270125/gh_key/gh_sapling1916.jpg" alt="Garran Hill Grounds" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+  <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,0.72) 0%,rgba(10,10,10,0.2) 100%);z-index:1;"></div>
+  <div class="fullbleed-content" style="position:relative;z-index:2;max-width:620px;">
+    <div class="room-eyebrow" style="color:#C9A96E;">4.15 ACRES</div>
+    <h2 class="room-headline" style="color:#F5F0E8;">The world outside these gates<br><em>does not exist here.</em></h2>
+    <div class="room-body" style="color:rgba(245,240,232,0.82);">
+      <p>Low-voltage landscape lighting along the entry drive. Underground utilities throughout. Twenty-eight irrigation zones fed by a 130-foot well. A 20-by-40-foot salt water pool, surrounded by a brick wall with iron gates. Restored in 2022.</p>
+      <p>The Wee Cottage — complete, self-contained — was moved to the grounds by sky crane.</p>
     </div>
+    <div class="room-eyebrow" style="color:rgba(201,169,110,0.55);margin-top:40px;font-size:10px;">IN 1916, THOSE WERE SAPLINGS. NOW THEY ARE A FOREST.</div>
   </div>
 </section>
-<div class="film-strip" style="background: var(--dark); padding: 2px 0;">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777443297/gh_key/gh_grounds_up12.jpg" alt="Pool arch and roses" loading="lazy">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777443294/gh_key/gh_grounds_up8.jpg" alt="White roses" loading="lazy">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777443295/gh_key/gh_grounds_up6.jpg" alt="Pool — 20x40 salt water" loading="lazy">
-</div>
 
 <!-- BLUE FOX INTERSTITIAL -->
-<section class="interstitial fade-in">
-  <div class="interstitial-rule"></div>
-  <p class="interstitial-text interstitial-foxline">Someone still puts flowers there.</p>
-  <div class="interstitial-rule-bottom"></div>
+<section class="interstitial fade-in" style="padding: 100px 72px; text-align:center; background:#080808; position:relative;">
+  <div style="width:40px;height:1px;background:rgba(201,169,110,0.4);margin:0 auto 56px;"></div>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.58rem,0.65vw,0.65rem);letter-spacing:0.38em;color:#C9A96E;text-transform:uppercase;opacity:0.6;margin-bottom:32px;">Blue Fox &nbsp;·&nbsp; Betty Dumaine&rsquo;s Irish Hunter &nbsp;·&nbsp; Buried on Grounds</p>
+  <p class="interstitial-text interstitial-foxline" style="font-size:clamp(1.6rem,2.8vw,3rem);font-style:italic;font-weight:200;color:#F5F0E8;max-width:600px;margin:0 auto;line-height:1.4;">Someone still puts flowers there.</p>
+  <div style="width:40px;height:1px;background:rgba(201,169,110,0.4);margin:56px auto 0;"></div>
 </section>
 
+<!-- ============================================================ -->
 <!-- ============================================================ -->
 <!-- BEAT 15B — IN PRINT -->
 <!-- ============================================================ -->
-<section class="inprint-beat fade-in">
-  <div class="inprint-inner">
-    <span class="inprint-eyebrow">In Print</span>
-    <div class="inprint-rule-top"></div>
-    <div class="inprint-item">
-      <p class="inprint-issue">PineStraw Magazine &middot; September 2019</p>
-      <p class="inprint-title"><em>A Page Out of History</em></p>
-      <p class="inprint-byline">&mdash; Bill Case</p>
-    </div>
-    <div class="inprint-rule"></div>
-    <div class="inprint-item">
-      <p class="inprint-issue">PineStraw Magazine &middot; October 2019</p>
-      <p class="inprint-title"><em>Story of a House: Minding Their Manors</em></p>
-      <p class="inprint-byline">&mdash; Deborah Salomon &middot; Photography by John Koob Gessner</p>
-    </div>
-    <div class="inprint-rule-bottom"></div>
+<section class="inprint-beat scroll-reveal">
+  <div class="inprint-inner" style="max-width:760px;margin:0 auto;text-align:center;">
+    <div class="room-eyebrow" style="text-align:center;">AS SEEN IN</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,2.4vw,28px);color:#F5F0E8;line-height:1.55;margin:32px 0;">&ldquo;What Ambassador Walter Hines Page started others have continued in a style both innovative and respectful of times when people paid calls, wrote thank-you notes and took Sunday drives.&rdquo;</div>
+    <div style="font-size:11px;letter-spacing:0.2em;color:rgba(201,169,110,0.6);font-family:'Cormorant Garamond',serif;">PINESTRAW MAGAZINE &nbsp;&middot;&nbsp; OCTOBER 2019</div>
   </div>
 </section>
 
 <!-- ============================================================ -->
 <!-- BEAT 20 — BETTY DUMAINE -->
 <!-- ============================================================ -->
-<section class="stewardship-beat fade-in">
+<section class="stewardship-beat scroll-reveal">
   <div class="stewardship-inner">
-    <span class="stewardship-eyebrow">The Steward &nbsp;·&nbsp; 1959&ndash;1984</span>
-    <h2 class="stewardship-name">Elizabeth &ldquo;Betty&rdquo; Dumaine</h2>
-    <div class="stewardship-subtitle"><em>Thanpuying</em></div>
-    <div class="stewardship-rule"></div>
+    <div class="stewardship-eyebrow">1959 – 1984</div>
+    <h2 class="stewardship-name">Betty Dumaine kept foxhounds here.<br><em>And peacocks. Known to be guard birds.</em></h2>
     <div class="stewardship-body">
-      <p>Bostonian. 1900&ndash;1984. Daughter of industrialist Frederic C. Dumaine Sr. In 1919, at the Edith Johnson School in Cambridge, Massachusetts, the nineteen-year-old Betty had a roommate &mdash; Sangwan Chukramol, a young Thai woman studying in America. They became close friends.</p>
-      <p>Sangwan would later marry Prince Mahidol of Songkla and become Srinagarindra, the Princess Mother of Thailand &mdash; mother to two kings.</p>
-      <p>Their friendship lasted Sangwan&rsquo;s lifetime. Betty ran the U.S. fundraising arm of the Princess Mother&rsquo;s charity from this house. The Thai royal family bestowed on her the title <em>Thanpuying</em> &mdash; the closest English equivalent is &ldquo;Lady.&rdquo;</p>
-      <p>She arrived at Garran Hill in 1959 and stayed twenty-five years. She planted the rose garden, the camellias, the magnolias, the dogwoods. The foundation she helped build &mdash; The Princess Mother&rsquo;s Charities Fund of Thailand &mdash; is still operating today.</p>
+      <p>Elizabeth Dumaine purchased the property in 1959. She was a foxhunter. She added stables, kennels, and an enclosure for peacocks. She renamed it Hollycrest. She hosted the Queen of Thailand — a college friend — and her entourage.</p>
+      <p>Her favorite horse is buried on the grounds.</p>
     </div>
   </div>
 </section>
 
+<!-- ============================================================ -->
 <!-- ============================================================ -->
 <!-- BEAT 21 — RESTORATION 1999–2001 -->
 <!-- ============================================================ -->
-<section class="restoration-beat fade-in">
-  <div class="restoration-inner">
-    <span class="restoration-eyebrow">The Restoration &nbsp;·&nbsp; 1999&ndash;2001</span>
-    <h2 class="restoration-headline">By 1999, the house was ready<br>to be understood again.</h2>
-    <div class="restoration-rule"></div>
+<section class="restoration-beat scroll-reveal">
+  <div class="restoration-inner" style="max-width:860px;margin:0 auto;">
+    <div class="restoration-eyebrow">1999 – 2001</div>
+    <h2 class="restoration-headline">Thomas O'Shea of Durham.<br><em>Three years. Every decision documented.</em></h2>
     <div class="restoration-body">
-      <p>Architect Thomas O&rsquo;Shea of Durham, North Carolina, led a complete interior restoration &mdash; three years of work, executed by general contractor Dennis Dunagan.</p>
-      <p>Every window in the house was removed and rebuilt to the original proportions by Marvin. Every joint was opened, considered, and closed correctly. The plumbing, the electrical, the five-zone climate system &mdash; all of it replaced from the inside out, without touching what the house looked like from the outside in.</p>
-      <p>Fifteen architectural drawings document every decision O&rsquo;Shea made. They survive. They transfer with the property.</p>
-      <p class="restoration-pull"><em>Original and restored are genuinely indistinguishable. That is the point.</em></p>
+      <p>Architect Thomas O'Shea led a complete interior restoration. General contractor: Dennis Dunagan. The interior was gutted. All plumbing and electrical replaced. Custom Marvin windows made to match the 1916 originals. A five-zone climate system engineered specifically to protect the original architecture above it.</p>
+      <p>All seven carved mantels saved. Most of the original oak flooring lifted, repaired, and relaid. The period-accurate portico brick took three months to source. They found matching ones. The house did not lose a single brick.</p>
+      <p>Fifteen architectural drawings survive. They transfer with the property.</p>
+    </div>
+    <div class="restoration-rule" style="width:80px;height:1px;background:#C9A96E;opacity:0.4;margin:48px 0 36px;"></div>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,2.2vw,26px);color:#C9A96E;line-height:1.4;">It does not feel added. <em>It feels inevitable.</em></div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PRESERVATION -->
+<!-- ============================================================ -->
+<section class="infra-beat scroll-reveal" style="padding-top:0;padding-bottom:80px;">
+  <div style="max-width:700px;margin:0 auto;border-left:1px solid rgba(201,169,110,0.25);padding-left:40px;">
+    <div class="room-eyebrow">PRESERVATION</div>
+    <h2 class="room-headline" style="font-size:clamp(22px,2.4vw,32px);margin-bottom:32px;">A candidate for the National Register<br><em>under Criterion B.</em></h2>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(15px,1.3vw,18px);color:rgba(245,240,232,0.72);line-height:1.9;">
+      <p>The Pines Preservation Guild visited in April 2024. A preservation easement is available: North Carolina tax credit of 25% of fair market value, up to $500,000. Federal income tax deduction potential for the buyer.</p>
+      <p>The property qualifies under Criterion B — associated with individuals making significant contributions to history. Fifteen architectural drawings transfer with the property.</p>
     </div>
   </div>
 </section>
 
+<!-- ============================================================ -->
 <!-- BEAT 16 — INFRASTRUCTURE -->
 <!-- ============================================================ -->
-<section class="infra-beat fade-in">
-  <div style="max-width: 1200px;">
-    <span class="infra-eyebrow">Built to Last — Systems &amp; Infrastructure</span>
-    <div class="infra-grid">
-      <div class="infra-item"><span class="infra-label">Pool</span><p class="infra-body">20×40 salt water. Converted 2022. Separate pool house. Parking for 6 at the pool lot.</p></div>
-      <div class="infra-item"><span class="infra-label">Fireplaces</span><p class="infra-body">Seven total. Six with propane gas logs. Original carved mantels throughout.</p></div>
-      <div class="infra-item"><span class="infra-label">Windows</span><p class="infra-body">Every window in the house replaced 1999–2001. Custom Marvin. Original proportions preserved. You would not know.</p></div>
-      <div class="infra-item"><span class="infra-label">Hot Water</span><p class="infra-body">Three heaters — 80-gallon primary + two 40-gallon units. Capacity for a house in continuous, serious use.</p></div>
-      <div class="infra-item"><span class="infra-label">Irrigation</span><p class="infra-body">28+ zones. Fed by a 130-foot private well. The grounds are managed, not maintained.</p></div>
-      <div class="infra-item"><span class="infra-label">Drawings</span><p class="infra-body">Fifteen original architectural drawings by Thomas O'Shea. They transfer with the property.</p></div>
-      <div class="infra-item"><span class="infra-label">Parking</span><p class="infra-body">12+ cars northeast lot. Additional 6 at the pool lot. Fully paved and lit.</p></div>
-      <div class="infra-item"><span class="infra-label">Security</span><p class="infra-body">Hard-wired remote monitoring. Greensboro-based service. All cameras.</p></div>
-      <div class="infra-item"><span class="infra-label">Basement</span><p class="infra-body">Stone-walled. Four rooms. Climate-controlled. Wine rack. The original kitchen was here. Now it is storage worthy of the house.</p></div>
+<section class="infra-beat scroll-reveal">
+  <div style="max-width:860px;margin:0 auto;">
+    <div class="room-eyebrow">THE INFRASTRUCTURE</div>
+    <h2 class="room-headline" style="margin-bottom:48px;">Built for a hundred years.<br><em>Maintained for the next.</em></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px 64px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(15px,1.3vw,17px);color:rgba(245,240,232,0.72);line-height:1.8;">
+      <div>
+        <div style="color:#C9A96E;font-size:10px;letter-spacing:0.2em;margin-bottom:12px;">CLIMATE</div>
+        Five-zone HVAC system engineered to protect original architecture
+      </div>
+      <div>
+        <div style="color:#C9A96E;font-size:10px;letter-spacing:0.2em;margin-bottom:12px;">WATER</div>
+        130-foot well · 28+ irrigation zones · Three Jacuzzi tubs<br>80-gallon + two 40-gallon electric water heaters
+      </div>
+      <div>
+        <div style="color:#C9A96E;font-size:10px;letter-spacing:0.2em;margin-bottom:12px;">POOL</div>
+        20 × 40 ft in-ground salt water pool · Brick surround · Iron gates · Restored 2022
+      </div>
+      <div>
+        <div style="color:#C9A96E;font-size:10px;letter-spacing:0.2em;margin-bottom:12px;">GROUNDS</div>
+        Low-voltage landscape lighting · Underground utilities · 12+ parking spaces NE lot
+      </div>
+      <div>
+        <div style="color:#C9A96E;font-size:10px;letter-spacing:0.2em;margin-bottom:12px;">WINDOWS</div>
+        Custom Marvin windows — made to 1916 specifications · 1999–2001
+      </div>
+      <div>
+        <div style="color:#C9A96E;font-size:10px;letter-spacing:0.2em;margin-bottom:12px;">LOCATION</div>
+        Within Pinehurst ETJ · Tax advantages apply · Village Historic Foundation
+      </div>
     </div>
   </div>
 </section>
@@ -1794,7 +1820,7 @@
 <!-- BEAT 7 — TWILIGHT CLOSING -->
 <section class="twilight-beat fade-in" id="grounds">
   <img class="twilight-bg"
-    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777244059/gh_key/gh_191.jpg"
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/c_limit,w_1920,e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto/v1777244059/gh_key/gh_191.jpg"
     alt="Garran Hill — 200 Hollycrest Drive">
   <div class="twilight-overlay"></div>
   <div class="twilight-content">
