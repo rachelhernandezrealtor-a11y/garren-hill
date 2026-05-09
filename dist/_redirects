@@ -1,5 +1,8 @@
-# Static lib files — serve directly, never fall through to SPA
+# Static lib files
 /lib/*  /lib/:splat  200
 
-# Public studio placeholder. Private workspace lives behind the protected Worker route.
+# Rocky studio — must come before the wildcard
+/rocky  /rocky.html  200
+
+# SPA fallback
 /*  /index.html  200
