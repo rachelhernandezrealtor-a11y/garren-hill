@@ -165,6 +165,16 @@ body {
   margin-top: var(--sp-sm);
 }
 
+/* Grid and flex children must NOT get the * + * margin-top */
+.split > *,
+.stat-numbers > *,
+.nav-links > *,
+.pull > *,
+.breath > *,
+.stat-bar > * {
+  margin-top: 0 !important;
+}
+
 /* Full-bleed image section */
 .full-img {
   position: relative;
@@ -310,7 +320,6 @@ body {
 
 /* ── TEXT SECTION — editorial full-width ── */
 .text-section {
-  padding: var(--sp-xl) var(--col-pad);
   position: relative;
 }
 .text-section .text-inner {
@@ -995,8 +1004,8 @@ nav::after {
   font-weight: 300;
   letter-spacing: 0.36em;
   text-transform: uppercase;
-  color: rgba(245,240,232,0.52);
-  text-decoration: none;
+  color: rgba(245,240,232,0.78) !important;
+  text-decoration: none !important;
   position: relative;
   padding-bottom: 3px;
   transition: color 0.3s;
