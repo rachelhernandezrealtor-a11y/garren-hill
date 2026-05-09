@@ -91,8 +91,7 @@
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
-<style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1
 :root {
   --dark: #0a0a0a;
   --gold: #C9A96E;
@@ -408,10 +407,10 @@ nav::after {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1rem, 1.55vw, 1.75rem);
   font-weight: 200;
-  background: linear-gradient(180deg, #F5E098 0%, #C9A96E 45%, #8B6914 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  
+  
+  
+  
   letter-spacing: 0.06em;
   line-height: 1.1;
   filter: drop-shadow(0 1px 3px rgba(0,0,0,0.8));
@@ -441,10 +440,10 @@ nav::after {
 .stat-price .stat-num {
   font-size: clamp(1.1rem, 1.7vw, 1.9rem);
   letter-spacing: 0.04em;
-  background: linear-gradient(135deg, #F5E098 0%, #C9A96E 40%, #F5E098 80%, #8B6914 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  
+  
+  
+  
 }
 
 /* ── SECTION BASE ── */
@@ -1318,6 +1317,251 @@ body::after {
   .section-num { display: none; }
   .split.hero-room { grid-template-columns: 1fr; padding: var(--sp-lg) 1.6rem; }
 }
+
+
+/* ═══════════════════════════════════════════════════════
+   GEORGIAN TYPOGRAPHIC SYSTEM
+   The letterforms of a 1916 Neo-Georgian estate.
+   Engraved. Proportional. At rest.
+   ═══════════════════════════════════════════════════════ */
+
+/* H2 — EB Garamond. As if carved. */
+h2 {
+  font-family: 'EB Garamond', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.9rem, 3.8vw, 3.4rem);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  margin-bottom: clamp(1.2rem, 2.2vw, 1.8rem);
+}
+/* Italic turns inside h2 */
+h2 em {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(245,240,232,0.88);
+}
+
+/* EYEBROW — room plaque. Tracked. Small. Certain. */
+.eyebrow {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(0.48rem, 0.72vw, 0.60rem);
+  font-weight: 300;
+  letter-spacing: 0.46em;
+  text-transform: uppercase;
+  color: rgba(201,169,110,0.82);
+  display: block;
+  margin-bottom: clamp(0.9rem, 1.5vw, 1.2rem);
+}
+
+/* BODY COPY — Georgian prose. Breathes. */
+.body-copy {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.08rem, 1.35vw, 1.25rem);
+  font-weight: 300;
+  line-height: 1.92;
+  color: rgba(245,240,232,0.80);
+  margin-bottom: clamp(1.2rem, 2vw, 1.7rem);
+}
+.body-copy + .body-copy {
+  color: rgba(245,240,232,0.66);
+}
+.body-copy strong, .body-copy b {
+  font-weight: 400;
+  color: rgba(245,240,232,0.92);
+}
+
+/* STAT NUMBERS — EB Garamond. A plaque, not a scoreboard. */
+.stat-num {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: clamp(1.0rem, 1.8vw, 1.7rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: 0.35rem;
+  /* Remove metallic gradient — plaques don't shimmer */
+  background: none;
+  
+  
+  
+}
+.stat-price .stat-num {
+  font-size: clamp(0.95rem, 1.6vw, 1.5rem);
+  color: rgba(201,169,110,0.92);
+  
+}
+.stat-lbl {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(0.42rem, 0.62vw, 0.54rem);
+  font-weight: 300;
+  letter-spacing: 0.40em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.42);
+}
+
+/* PULL QUOTES — Georgian italic. Weight of a letter. */
+.pull.cinematic blockquote {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: clamp(1.7rem, 3.4vw, 3.0rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.48;
+}
+.pull.intimate blockquote {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: clamp(1.25rem, 2.3vw, 2.0rem);
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(245,240,232,0.90);
+  line-height: 1.62;
+}
+.pull-attr {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(0.42rem, 0.62vw, 0.54rem);
+  letter-spacing: 0.40em;
+  text-transform: uppercase;
+  color: rgba(201,169,110,0.48);
+}
+
+/* ACT BREAK LABELS — the room card */
+.act-break-glyph {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(0.44rem, 0.64vw, 0.56rem);
+  letter-spacing: 0.52em;
+  text-transform: uppercase;
+  color: rgba(201,169,110,0.45);
+}
+
+/* HERO SUBHEAD — below Pinyon Script title */
+.hero-sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(0.58rem, 0.9vw, 0.78rem);
+  font-weight: 300;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.55);
+}
+
+/* SECTION NUM — barely present, architecturally placed */
+.section-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.40rem;
+  letter-spacing: 0.38em;
+  color: rgba(201,169,110,0.20);
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+}
+
+/* CLOSING / FINAL STATEMENT */
+.closing-script {
+  font-family: 'Pinyon Script', cursive;
+  font-size: clamp(3rem, 8vw, 7rem);
+  color: rgba(245,240,232,0.92);
+  line-height: 1.1;
+  margin-bottom: 2rem;
+}
+.closing-statement {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.55rem);
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(245,240,232,0.72);
+  line-height: 1.6;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* ── GEORGIAN ORNAMENTAL DIVIDER ── */
+/* The equivalent of a keystone or a door pediment */
+.georgian-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  padding: 0.8rem 0;
+}
+.georgian-ornament::before,
+.georgian-ornament::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(201,169,110,0.25) 60%,
+    rgba(201,169,110,0.40) 100%);
+}
+.georgian-ornament::after {
+  background: linear-gradient(270deg,
+    transparent,
+    rgba(201,169,110,0.25) 60%,
+    rgba(201,169,110,0.40) 100%);
+}
+.georgian-ornament-glyph {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.52rem;
+  color: rgba(201,169,110,0.45);
+  letter-spacing: 0.15em;
+  user-select: none;
+}
+
+/* ── MICRO-RULE — more Georgian: flush left, fixed 24px ── */
+.micro-rule {
+  width: 24px;
+  height: 1px;
+  background: rgba(201,169,110,0.55);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+/* ── NAV — Georgian: wider lettertracking on estate name ── */
+.nav-brand {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(0.50rem, 0.75vw, 0.65rem);
+  font-weight: 300;
+  letter-spacing: 0.44em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.80);
+  text-decoration: none;
+}
+nav a {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(0.46rem, 0.68vw, 0.58rem);
+  font-weight: 300;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.62);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 50%; right: 50%;
+  height: 1px;
+  background: rgba(201,169,110,0.65);
+  transition: left 0.3s ease, right 0.3s ease;
+}
+nav a:hover { color: rgba(245,240,232,0.90); }
+nav a:hover::after { left: 0; right: 0; }
+ero-room { grid-template-columns: 1fr; padding: var(--sp-lg) 1.6rem; }
+}
+
+/* ── GEORGIAN DROP CAP — Act opening. One per act. ── */
+.drop-cap::first-letter {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: clamp(3.8rem, 6vw, 5.5rem);
+  font-weight: 400;
+  float: left;
+  line-height: 0.82;
+  margin-right: 0.12em;
+  margin-top: 0.08em;
+  color: rgba(201,169,110,0.85);
+}
 </style>
 </head>
 <body>
@@ -1396,7 +1640,7 @@ body::after {
       <h2>Then the house appears.<em>Some houses hold history.<br>This one shaped it.</em></h2>
       <div class="gold-line"></div>
       <div class="body-text">
-        <p>Flemish bond brick. White portico. A circular lawn held before the entrance like a pause.</p>
+        <p class="drop-cap">Flemish bond brick. White portico. A circular lawn held before the entrance like a pause.</p>
         <p>Built 1915--16. Four columns. Original brick. The same hands that built Pinehurst.</p>
       </div>
     </div>
@@ -1438,7 +1682,7 @@ body::after {
       <h2>He named it Garran Hill.<em>He never spent a night here.</em></h2>
       <div class="gold-line"></div>
       <div class="body-text">
-        <p>He bought the land in February 1913. Named it Garran Hill. Six weeks later, Woodrow Wilson appointed him Ambassador to the Court of St. James.</p>
+        <p class="drop-cap">He bought the land in February 1913. Named it Garran Hill. Six weeks later, Woodrow Wilson appointed him Ambassador to the Court of St. James.</p>
         <p>He sailed for London. Into the war.</p>
         <p>The house was completed without him. His son Ralph supervised. From London, through four years, he wrote home about one thing.</p>
       </div>
@@ -1463,9 +1707,7 @@ body::after {
 
 <!-- LAST WORDS INTERSTITIAL -->
 <section class="breath">
-  <p class="breath-line">"Well, Frank, I did get here after all, didn't I?"</p>
-  <p class="breath-attr">Walter Hines Page &nbsp;&middot;&nbsp; Aberdeen, North Carolina &nbsp;&middot;&nbsp; December 1918</p>
-  <p style="font-size:0.5rem;letter-spacing:0.26em;text-transform:uppercase;color:rgba(245,240,232,0.3);margin-top:1rem;">He died ten days later.</p>
+  <div class="georgian-ornament reveal"><span class="georgian-ornament-glyph">◆</span></div>
 </section>
 
 <!-- THRESHOLD — SPLIT -->
@@ -1555,8 +1797,7 @@ body::after {
 
 <!-- POWDER ROOM INTERSTITIAL -->
 <section class="breath">
-  <p class="breath-line">Fuchsia chinoiserie.<br><em style="color:var(--gold);font-style:italic;">Tennessee marble.</em></p>
-  <p class="breath-attr">The Powder Room &nbsp;&middot;&nbsp; Garran Hill</p>
+  <div class="georgian-ornament reveal"><span class="georgian-ornament-glyph">◆</span></div>
 </section>
 
 <!-- DINING — SPLIT -->
@@ -1647,8 +1888,7 @@ body::after {
 
 <!-- IN PRINT -->
 <section class="breath">
-  <p class="breath-line">"What Ambassador Walter Hines Page started others have continued<br>in a style both innovative and respectful of times when people paid calls,<br>wrote thank-you notes and took Sunday drives."</p>
-  <p class="breath-attr">PineStraw Magazine &nbsp;&middot;&nbsp; October 2019</p>
+  <div class="georgian-ornament reveal"><span class="georgian-ornament-glyph">◆</span></div>
 </section>
 
 <!-- RESTORATION — SPLIT -->
@@ -1903,36 +2143,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     }, { passive: true });
   }
 
-  // ── 6. STAT COUNTER — numbers count up on entry ──
-  const statNums = document.querySelectorAll('.stat-num');
-  if (statNums.length) {
-    const counterObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        const el = e.target;
-        const raw = el.textContent.trim();
-        const numStr = raw.replace(/[$,]/g, '');
-        const num = parseFloat(numStr);
-        if (isNaN(num) || raw.includes('.') || raw.includes('$')) {
-          counterObs.unobserve(el); return;
-        }
-        const duration = 1100;
-        const start = performance.now();
-        const from = Math.max(0, Math.floor(num * 0.72));
-        function step(now) {
-          const t = Math.min((now - start) / duration, 1);
-          const ease = 1 - Math.pow(1 - t, 4);
-          el.textContent = Math.round(from + (num - from) * ease).toLocaleString();
-          if (t < 1) requestAnimationFrame(step);
-          else el.textContent = raw;
-        }
-        requestAnimationFrame(step);
-        counterObs.unobserve(el);
-      });
-    }, { threshold: 0.8 });
-    statNums.forEach(el => counterObs.observe(el));
-  }
-
+  // ── 6. STAT NUMBERS — facts, not performances. ──
   // ── 7. AMBIENT BODY GRADIENT — shifts as user reads deeper ──
   let lastSection = '';
   const bodyEl = document.body;
