@@ -301,34 +301,10 @@ nav::after {
   );
   z-index: 1;
 }
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 0 clamp(1.5rem, 6vw, 4rem);
-  margin-top: -4rem;
-}
-.hero-eyebrow {
-  font-size: clamp(0.48rem, 0.75vw, 0.62rem);
-  letter-spacing: 0.42em;
-  text-transform: uppercase;
-  color: var(--gold);
-  opacity: 0.9;
-  margin-bottom: 1.4rem;
-}
-.hero-title {
-  font-family: 'Pinyon Script', cursive;
-  font-size: clamp(3.5rem, 16vw, 14rem);
-  color: var(--cream);
-  line-height: 0.88;
-  margin-bottom: 1.6rem;
-}
-.hero-sub {
-  font-size: clamp(0.9rem, 1.5vw, 1.15rem);
-  font-style: italic;
-  letter-spacing: 0.16em;
-  color: rgba(245,240,232,0.65);
-}
+
+
+
+
 
 /* ── STAT BAR ── */
 
@@ -586,8 +562,8 @@ footer {
 
   /* Hero */
   .hero { min-height: 100svh; }
-  .hero-eyebrow { letter-spacing: 0.28em; margin-bottom: 0.8rem; }
-  .hero-sub { display: none; }
+  
+  
 
   /* Stat bar */
   
@@ -630,7 +606,7 @@ footer {
 
 /* 375px — iPhone SE */
 @media (max-width: 390px) {
-  .hero-title { font-size: clamp(3rem, 18vw, 5rem); }
+  
   
   .gallery-grid { grid-template-columns: 1fr; }
   .closing-script { font-size: clamp(2.8rem, 16vw, 5rem); }
@@ -1252,14 +1228,7 @@ h2 em {
 }
 
 /* HERO SUBHEAD — below Pinyon Script title */
-.hero-sub {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(0.58rem, 0.9vw, 0.78rem);
-  font-weight: 300;
-  letter-spacing: 0.38em;
-  text-transform: uppercase;
-  color: rgba(245,240,232,0.55);
-}
+
 
 /* SECTION NUM — barely present, architecturally placed */
 .section-num {
@@ -1560,6 +1529,80 @@ ero-room { grid-template-columns: 1fr; padding: var(--sp-lg) 1.6rem; }
   }
   .stat-lbl {
     font-size: 0.36rem;
+    letter-spacing: 0.28em;
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   HERO TYPE SYSTEM — proportional to the GIANT title
+   ══════════════════════════════════════════════════════ */
+
+/* Content container — centered, slightly above midpoint */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 clamp(1.5rem, 6vw, 4rem);
+  margin-top: -6vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* EYEBROW — address line. Small. Wide-tracked. Gold. */
+.hero-eyebrow {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(0.52rem, 0.72vw, 0.65rem);
+  font-weight: 300;
+  letter-spacing: 0.48em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.88;
+  margin-bottom: clamp(1.0rem, 2vh, 1.8rem);
+  line-height: 1;
+}
+
+/* TITLE — Pinyon Script. GIANT. The one dominant mark. */
+.hero-title {
+  font-family: 'Pinyon Script', cursive;
+  font-size: clamp(4.5rem, 14vw, 13rem);
+  color: var(--cream);
+  line-height: 0.88;
+  margin-bottom: clamp(0.8rem, 1.5vh, 1.4rem);
+  text-shadow:
+    0 2px 40px rgba(0,0,0,0.6),
+    0 0 80px rgba(0,0,0,0.35);
+}
+
+/* SUB — identifier. Cormorant. Tracked. Smaller than eyebrow. */
+.hero-sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(0.52rem, 0.78vw, 0.70rem);
+  font-weight: 300;
+  font-style: normal;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.52);
+  line-height: 1;
+}
+
+/* ── MOBILE — scale down, keep proportional ── */
+@media (max-width: 768px) {
+  .hero-content {
+    margin-top: -3vh;
+    padding: 0 1.2rem;
+  }
+  .hero-eyebrow {
+    font-size: 0.44rem;
+    letter-spacing: 0.32em;
+    margin-bottom: 0.8rem;
+  }
+  .hero-title {
+    font-size: clamp(3.5rem, 16vw, 5.5rem);
+    margin-bottom: 0.6rem;
+  }
+  .hero-sub {
+    font-size: 0.42rem;
     letter-spacing: 0.28em;
   }
 }
