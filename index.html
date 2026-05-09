@@ -789,6 +789,31 @@ ero-room { grid-template-columns: 1fr; padding: var(--sp-lg) 1.6rem; }
     letter-spacing: 0.28em;
   }
 }
+
+/* ── NAV SEAL — hard-locked height ── */
+.nav-seal {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+.nav-seal img {
+  height: 40px;
+  width: auto;
+  max-width: 80px;
+  opacity: 0.92;
+  filter:
+    drop-shadow(0 0 8px rgba(201,169,110,0.55))
+    drop-shadow(0 2px 12px rgba(0,0,0,0.9));
+  transition: opacity 0.3s, filter 0.3s;
+}
+.nav-seal img:hover {
+  opacity: 1;
+  filter:
+    drop-shadow(0 0 14px rgba(245,224,152,0.75))
+    drop-shadow(0 2px 12px rgba(0,0,0,0.9));
+}
+
 </style>
 </head>
 <body>
