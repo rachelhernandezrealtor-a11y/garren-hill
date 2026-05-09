@@ -13,380 +13,303 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--dark:#0a0a0a;--gold:#C9A96E;--cream:#F5F0E8;--rule:rgba(201,169,110,0.25)}
+:root{--dark:#0a0a0a;--gold:#C9A96E;--cream:#F5F0E8;--rule:rgba(201,169,110,0.22)}
 html{scroll-behavior:smooth}
-body{background:var(--dark);color:var(--cream);font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{background:var(--dark);color:var(--cream);font-family:"Cormorant Garamond",Georgia,serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--dark)}::-webkit-scrollbar-thumb{background:var(--gold)}
-
-/* DISSOLVE EDGES */
-.fade-edge{position:relative}
-.fade-edge::before{content:'';position:absolute;top:0;left:0;right:0;height:clamp(60px,12vh,120px);background:linear-gradient(to bottom,var(--dark),transparent);z-index:5;pointer-events:none}
-.fade-edge::after{content:'';position:absolute;bottom:0;left:0;right:0;height:clamp(60px,12vh,120px);background:linear-gradient(to top,var(--dark),transparent);z-index:5;pointer-events:none}
-
-/* NAV */
-nav#top{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,4vw,3.5rem);height:50px;background:rgba(10,10,10,0.96);border-bottom:1px solid var(--rule);transform:translateY(-100%);transition:transform 0.5s cubic-bezier(0.16,1,0.3,1)}
+.fade{position:relative}
+.fade::before{content:"";position:absolute;top:0;left:0;right:0;height:clamp(60px,11vh,110px);background:linear-gradient(to bottom,var(--dark),transparent);z-index:5;pointer-events:none}
+.fade::after{content:"";position:absolute;bottom:0;left:0;right:0;height:clamp(60px,11vh,110px);background:linear-gradient(to top,var(--dark),transparent);z-index:5;pointer-events:none}
+.fade.no-top::before{display:none}.fade.no-bot::after{display:none}
+nav#top{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,4vw,3.5rem);height:50px;background:rgba(10,10,10,0.97);border-bottom:1px solid var(--rule);transform:translateY(-100%);transition:transform 0.5s cubic-bezier(0.16,1,0.3,1)}
 nav#top.show{transform:translateY(0)}
 .n-name{font-style:italic;font-size:clamp(0.9rem,1.1vw,1rem);color:rgba(245,240,232,0.8);letter-spacing:0.05em}
 .n-links{display:flex;gap:clamp(1.5rem,2.5vw,3rem);align-items:center}
 .n-links a{font-family:sans-serif;font-size:7.5px;letter-spacing:0.32em;text-transform:uppercase;color:rgba(245,240,232,0.38);text-decoration:none;transition:color 0.3s}
-.n-links a:hover,.n-links a:focus{color:var(--gold)}
+.n-links a:hover{color:var(--gold)}
 .n-btn{background:none;border:none;border-bottom:1px solid var(--gold);color:var(--gold);padding:0.15rem 0;font-family:sans-serif;font-size:7.5px;letter-spacing:0.3em;text-transform:uppercase;cursor:pointer;transition:opacity 0.3s}
 .n-btn:hover{opacity:0.65}
-
-/* HERO */
 .hero{position:relative;height:100vh;min-height:640px;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244059/gh_key/gh_191.jpg') center 45%/cover no-repeat;z-index:0}
+.hero-bg{position:absolute;inset:0;background:url("https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244059/gh_key/gh_191.jpg") center 45%/cover no-repeat;z-index:0}
 .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;z-index:1}
-.hero-ov{position:absolute;inset:0;background:linear-gradient(rgba(10,10,10,0.15) 0%,rgba(10,10,10,0.05) 35%,rgba(10,10,10,0.5) 72%,rgba(10,10,10,0.95) 100%);z-index:2}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(rgba(10,10,10,0.12) 0%,rgba(10,10,10,0.04) 32%,rgba(10,10,10,0.48) 70%,rgba(10,10,10,0.96) 100%);z-index:2}
 .hero-nav{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:clamp(1.4rem,2.8vw,2.2rem) clamp(1.8rem,4vw,3.5rem)}
 .hero-nav-name{font-style:italic;font-size:clamp(1rem,1.4vw,1.1rem);color:rgba(255,255,255,0.82);letter-spacing:0.05em}
 .hero-nav-links{display:flex;gap:clamp(1.8rem,2.8vw,3.5rem);align-items:center}
 .hero-nav-links a{font-family:sans-serif;font-size:7.5px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.3s}
 .hero-nav-links a:hover{color:var(--gold)}
 .hero-nav-btn{background:none;border:none;border-bottom:1px solid var(--gold);color:var(--gold);padding:0.2rem 0;font-family:sans-serif;font-size:7.5px;letter-spacing:0.3em;text-transform:uppercase;cursor:pointer}
-.hero-ct{position:absolute;z-index:10;bottom:clamp(9rem,16vh,14rem);left:0;right:0;padding-left:clamp(2.5rem,6vw,7rem)}
-.ey{font-family:sans-serif;font-size:clamp(8px,0.8vw,10px);letter-spacing:0.4em;text-transform:uppercase;color:rgba(201,169,110,0.82);margin-bottom:0.75rem}
-.hero-ey{font-family:sans-serif;font-size:clamp(8.5px,0.85vw,10.5px);letter-spacing:0.42em;text-transform:uppercase;color:#e8c878;margin-bottom:0.65rem;text-shadow:0 0 20px rgba(232,200,120,0.6),0 1px 4px rgba(0,0,0,0.9)}
-.hero-h1{font-family:'Pinyon Script',cursive;font-size:clamp(5rem,8vw,10rem);color:#fff;line-height:0.92;margin:0;text-shadow:0 3px 50px rgba(0,0,0,0.65)}
-.hero-rule{width:clamp(140px,28vw,360px);height:1px;background:linear-gradient(to right,rgba(201,169,110,0.65),transparent);margin:0.4rem 0 0.5rem}
-.hero-sub{font-style:italic;font-weight:300;font-size:clamp(0.88rem,1.05vw,1.02rem);color:rgba(255,255,255,0.55);letter-spacing:0.03em}
-
-/* STAT BAR */
-.sbar{position:absolute;bottom:0;left:0;right:0;z-index:10;padding:0 clamp(1.5rem,4vw,5rem) 0.75rem}
-.sbar-line{height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.5) 12%,rgba(201,169,110,0.5) 88%,transparent);margin-bottom:0.55rem}
-.sbar-row{display:flex;justify-content:space-around;align-items:center}
-.si{text-align:center;flex:1}
-.si-n{font-weight:300;font-size:clamp(0.95rem,1.7vw,1.8rem);color:#fff;line-height:1;margin-bottom:0.18rem}
-.si-l{font-family:sans-serif;font-size:6px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(201,169,110,0.55)}
-.si-crest{flex:1.6;display:flex;justify-content:center;align-items:flex-end;padding-bottom:0.1rem}
-.si-crest img{width:clamp(34px,3.8vw,50px)}
-.sbar-line-b{height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.5) 12%,rgba(201,169,110,0.5) 88%,transparent);margin-top:0.55rem}
-
+.hero-ct{position:absolute;z-index:10;bottom:clamp(10rem,18vh,15rem);left:0;padding-left:clamp(2.5rem,6vw,7rem)}
+.hero-ey{font-family:sans-serif;font-size:clamp(8px,0.82vw,10px);letter-spacing:0.44em;text-transform:uppercase;color:#e8c878;margin-bottom:0.7rem;text-shadow:0 0 22px rgba(232,200,120,0.55),0 1px 4px rgba(0,0,0,0.9)}
+.hero-rule{width:clamp(140px,28vw,360px);height:1px;background:linear-gradient(to right,rgba(201,169,110,0.6),transparent);margin:0.45rem 0 0.55rem}
+.hero-sub{font-style:italic;font-weight:300;font-size:clamp(0.88rem,1.05vw,1.02rem);color:rgba(255,255,255,0.5);letter-spacing:0.03em}
+/* STAT BAR — clean build */
+.sbar{position:absolute;bottom:0;left:0;right:0;z-index:10;padding:0 clamp(1.5rem,5vw,6rem)}
+.sbar-hair{width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.45) 10%,rgba(201,169,110,0.45) 90%,transparent)}
+.sbar-row{display:flex;align-items:flex-end;justify-content:space-around;padding:0.5rem 0}
+.sc{text-align:center;flex:1;padding-bottom:0.55rem}
+.sc-n{font-weight:300;font-size:clamp(0.95rem,1.65vw,1.75rem);color:#fff;line-height:1;margin-bottom:0.2rem}
+.sc-l{font-family:sans-serif;font-size:6px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(201,169,110,0.55)}
+/* CREST — the focal point */
+.sc-crest{flex:1.6;display:flex;justify-content:center;align-items:flex-end;padding-bottom:0}
+.sc-crest img{width:clamp(60px,6vw,88px);display:block;margin-bottom:-1px;filter:drop-shadow(0 0 16px rgba(201,169,110,0.32))}
 /* LAYOUT */
 .tx{padding:clamp(4.5rem,9vh,8rem) clamp(2rem,12vw,16rem)}
-.tx-c{padding:clamp(4.5rem,9vh,8rem) clamp(2rem,12vw,16rem);text-align:center}
 .tx-wide{padding:clamp(4.5rem,9vh,8rem) clamp(2rem,8vw,10rem)}
 .mw{max-width:620px}
-.sr{width:clamp(24px,3.5vw,44px);height:1px;background:var(--gold);opacity:0.3;margin-bottom:clamp(16px,2.5vh,28px)}
+.sr{width:clamp(22px,3vw,40px);height:1px;background:var(--gold);opacity:0.28;margin-bottom:clamp(16px,2.5vh,26px)}
 .sr-c{margin-left:auto;margin-right:auto}
-
-/* TYPE */
-h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.75rem,3.3vw,3rem);line-height:1.15;color:var(--cream);margin-bottom:clamp(16px,2.5vh,28px)}
-h2 em{font-style:italic;color:rgba(245,240,232,0.85)}
-h3{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(1.05rem,1.7vw,1.45rem);color:rgba(245,240,232,0.62);margin-bottom:clamp(10px,1.5vh,18px);line-height:1.35}
+.ey{font-family:sans-serif;font-size:clamp(8px,0.8vw,10px);letter-spacing:0.4em;text-transform:uppercase;color:rgba(201,169,110,0.8);margin-bottom:0.75rem}
+h2{font-family:"Cormorant Garamond",serif;font-weight:300;font-size:clamp(1.75rem,3.3vw,3rem);line-height:1.14;color:var(--cream);margin-bottom:clamp(16px,2.5vh,26px)}
+h2 em{font-style:italic;color:rgba(245,240,232,0.82)}
 .bp{font-size:clamp(0.92rem,1.25vw,1.05rem);line-height:1.95;color:rgba(245,240,232,0.68);margin-bottom:clamp(12px,1.8vh,22px)}
-.bp-tight{font-size:clamp(0.92rem,1.25vw,1.05rem);line-height:1.65;color:rgba(245,240,232,0.68);margin-bottom:clamp(10px,1.5vh,16px)}
-.pull{font-style:italic;font-size:clamp(1.2rem,2.3vw,2rem);color:var(--gold);line-height:1.38;margin:clamp(20px,3vh,40px) 0}
-.cl{font-family:sans-serif;font-size:clamp(7px,0.72vw,8.5px);letter-spacing:0.28em;text-transform:uppercase;color:rgba(245,240,232,0.38);margin-top:clamp(16px,2.5vh,28px)}
-.cite{font-family:sans-serif;font-size:6.5px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(245,240,232,0.28)}
-.mlink{display:inline-block;margin-top:1.5rem;font-family:sans-serif;font-size:7.5px;letter-spacing:0.26em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,169,110,0.35);padding-bottom:2px;transition:opacity 0.3s}
+.bp-t{font-size:clamp(0.92rem,1.25vw,1.05rem);line-height:1.65;color:rgba(245,240,232,0.68);margin-bottom:clamp(10px,1.4vh,16px)}
+.pull{font-style:italic;font-size:clamp(1.2rem,2.4vw,2.1rem);color:var(--gold);line-height:1.36;margin:clamp(20px,3vh,40px) 0}
+.cl{font-family:sans-serif;font-size:clamp(7px,0.72vw,8.5px);letter-spacing:0.28em;text-transform:uppercase;color:rgba(245,240,232,0.35);margin-top:clamp(16px,2.5vh,26px)}
+.cite{font-family:sans-serif;font-size:6.5px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(245,240,232,0.26);margin-bottom:0.2rem}
+.mlink{display:inline-block;margin-top:1.5rem;font-family:sans-serif;font-size:7.5px;letter-spacing:0.26em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,169,110,0.32);padding-bottom:2px;transition:opacity 0.3s}
 .mlink:hover{opacity:0.6}
-
-/* FULL BLEED */
 .fb{position:relative;overflow:hidden}
 .fb img{width:100%;object-fit:cover;display:block}
-.fb-ov{position:absolute;inset:0;background:linear-gradient(rgba(10,10,10,0.12) 0%,rgba(10,10,10,0.48) 68%,rgba(10,10,10,0.88) 100%);z-index:2}
+.fb-ov{position:absolute;inset:0;background:linear-gradient(rgba(10,10,10,0.1) 0%,rgba(10,10,10,0.45) 65%,rgba(10,10,10,0.9) 100%);z-index:2}
 .fb-tx{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:clamp(2rem,4vh,5rem) clamp(2.5rem,5vw,7rem)}
-
-/* SPLIT */
-.sp{display:flex;min-height:clamp(560px,72vh,880px)}
+.sp{display:flex;min-height:clamp(540px,70vh,860px)}
 .sp.rv{flex-direction:row-reverse}
 .sp-img{flex:0 0 50%;overflow:hidden}
 .sp-img img{width:100%;height:100%;object-fit:cover}
 .sp-tx{flex:0 0 50%;display:flex;flex-direction:column;justify-content:center;padding:clamp(3rem,6vh,6rem) clamp(2.5rem,5vw,6rem)}
-
-/* INTERSTITIALS */
 .int{padding:clamp(5rem,11vh,10rem) clamp(2rem,8vw,10rem);text-align:center;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-.int.nt{border-top:none}
-.int.nb{border-bottom:none}
-.gq{font-style:italic;font-weight:300;font-size:clamp(1.6rem,3.8vw,3.4rem);color:var(--cream);line-height:1.28;max-width:860px;margin:0 auto 0.8rem}
-.at{font-family:sans-serif;font-size:clamp(7px,0.72vw,8.5px);letter-spacing:0.26em;text-transform:uppercase;color:rgba(201,169,110,0.6)}
-
-/* WHP */
+.int.nt{border-top:none}.int.nb{border-bottom:none}
+.gq{font-style:italic;font-weight:300;font-size:clamp(1.6rem,3.8vw,3.4rem);color:var(--cream);line-height:1.26;max-width:840px;margin:0 auto 0.8rem}
+.at{font-family:sans-serif;font-size:clamp(7px,0.72vw,8.5px);letter-spacing:0.26em;text-transform:uppercase;color:rgba(201,169,110,0.58)}
 .whp{display:flex}
-.whp-l{flex:0 0 clamp(240px,28vw,380px);padding:clamp(4rem,7vh,8rem) clamp(1.5rem,2.5vw,3.5rem) clamp(4rem,7vh,8rem) clamp(2.5rem,4vw,6rem);position:sticky;top:50px;align-self:flex-start}
-.whp-img{width:100%;max-width:280px;border:1px solid var(--rule)}
-.whp-cap{font-family:sans-serif;font-size:6.5px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(245,240,232,0.28);margin-top:9px;max-width:280px}
+.whp-l{flex:0 0 clamp(230px,27vw,370px);padding:clamp(4rem,7vh,8rem) clamp(1.5rem,2.5vw,3rem) clamp(4rem,7vh,8rem) clamp(2.5rem,4vw,6rem);position:sticky;top:50px;align-self:flex-start}
+.whp-img{width:100%;max-width:270px;border:1px solid var(--rule)}
+.whp-cap{font-family:sans-serif;font-size:6px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,240,232,0.26);margin-top:8px}
 .whp-r{flex:1;padding:clamp(4rem,7vh,8rem) clamp(2.5rem,5vw,7rem)}
-
-/* LETTERS / DOCS */
 .docs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(6px,1vw,14px);padding:0 clamp(2rem,8vw,10rem) clamp(3rem,5vh,5rem)}
-.docs img{width:100%;border:1px solid var(--rule);opacity:0.78}
-
-/* FILMSTRIP */
+.docs img{width:100%;border:1px solid var(--rule);opacity:0.75}
 .strip{overflow-x:auto;display:flex;gap:3px;scrollbar-width:none}
 .strip::-webkit-scrollbar{display:none}
 .strip img{height:clamp(200px,26vh,300px);width:auto;flex-shrink:0;object-fit:cover}
-
-/* GROUNDS GRID */
 .gg{display:grid;grid-template-columns:1fr 1fr;gap:3px}
-.gg-wide{grid-column:1/-1}
+.gg-w{grid-column:1/-1}
 .gg img{width:100%;object-fit:cover;display:block}
-
-/* PLANS */
-.plans{padding:clamp(4rem,8vh,7rem) clamp(2rem,6vw,8rem)}
-.plans-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(6px,1vw,14px);margin-top:clamp(20px,3.5vh,40px)}
-.plans-grid img{width:100%;border:1px solid var(--rule);opacity:0.82;transition:opacity 0.3s}
-.plans-grid img:hover{opacity:1}
-
-/* BLUE FOX */
+.plans{padding:clamp(4rem,8vh,7rem) clamp(2rem,6vw,8rem);border-top:1px solid var(--rule)}
+.plans-g{display:grid;grid-template-columns:1fr 1fr;gap:clamp(6px,1vw,14px);margin-top:clamp(20px,3vh,38px)}
+.plans-g img{width:100%;border:1px solid var(--rule);opacity:0.8;transition:opacity 0.3s}
+.plans-g img:hover{opacity:1}
 .bf{padding:clamp(6rem,13vh,12rem) clamp(2rem,8vw,10rem);text-align:center;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-.bf-q{font-style:italic;font-weight:300;font-size:clamp(2.2rem,5vw,4.5rem);color:var(--gold);line-height:1.2;margin-bottom:0.8rem}
-
-/* CLOSING */
+.bf-q{font-style:italic;font-weight:300;font-size:clamp(2.2rem,5vw,4.8rem);color:var(--gold);line-height:1.18;margin-bottom:0.8rem}
 .closing{position:relative;min-height:clamp(520px,72vh,820px);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
 .closing-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-.closing-ov{position:absolute;inset:0;background:rgba(10,10,10,0.7);z-index:1}
+.closing-ov{position:absolute;inset:0;background:rgba(10,10,10,0.68);z-index:1}
 .closing-ct{position:relative;z-index:2;padding:clamp(40px,7vh,80px) clamp(24px,6vw,80px)}
-.c-ey{font-family:sans-serif;font-size:clamp(7px,0.75vw,8.5px);letter-spacing:0.3em;text-transform:uppercase;color:rgba(245,240,232,0.5);margin-bottom:1.4rem}
-.c-script{font-family:'Pinyon Script',cursive;font-size:clamp(4rem,9.5vw,10rem);color:var(--cream);line-height:0.88;margin-bottom:0.6rem;text-shadow:0 2px 44px rgba(0,0,0,0.75)}
-.c-addr{font-family:sans-serif;font-size:clamp(7px,0.75vw,8.5px);letter-spacing:0.26em;text-transform:uppercase;color:rgba(245,240,232,0.55);margin-bottom:0.5rem}
-.c-price{font-size:clamp(1.1rem,2.3vw,1.8rem);color:var(--gold);letter-spacing:0.08em;margin-bottom:clamp(10px,1.8vh,20px)}
-.c-sub{font-style:italic;font-size:clamp(0.9rem,1.4vw,1.08rem);color:rgba(245,240,232,0.52);margin-bottom:clamp(28px,4.5vh,52px)}
+.c-ey{font-family:sans-serif;font-size:clamp(7px,0.72vw,8.5px);letter-spacing:0.3em;text-transform:uppercase;color:rgba(245,240,232,0.48);margin-bottom:1.4rem}
+.c-script{font-family:"Pinyon Script",cursive;font-size:clamp(4rem,9.5vw,10rem);color:var(--cream);line-height:0.88;margin-bottom:0.65rem;text-shadow:0 2px 44px rgba(0,0,0,0.75)}
+.c-addr{font-family:sans-serif;font-size:clamp(7px,0.72vw,8.5px);letter-spacing:0.26em;text-transform:uppercase;color:rgba(245,240,232,0.52);margin-bottom:0.5rem}
+.c-price{font-size:clamp(1.1rem,2.3vw,1.8rem);color:var(--gold);letter-spacing:0.08em;margin-bottom:clamp(14px,2vh,24px)}
+.c-sub{font-style:italic;font-size:clamp(0.9rem,1.4vw,1.08rem);color:rgba(245,240,232,0.48);margin-bottom:clamp(30px,5vh,56px)}
 .cta{display:inline-block;background:var(--gold);color:var(--dark);font-family:sans-serif;font-size:7.5px;letter-spacing:0.28em;text-transform:uppercase;padding:clamp(12px,1.8vh,18px) clamp(28px,4vw,52px);border:none;cursor:pointer;text-decoration:none;transition:opacity 0.3s}
 .cta:hover{opacity:0.8}
-
-/* FOOTER */
 footer{background:var(--dark);border-top:1px solid var(--rule);padding:clamp(22px,3.5vh,40px) clamp(2rem,5vw,6rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.ft{font-family:sans-serif;font-size:7px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,240,232,0.3);line-height:2}
-.ft-seal{width:clamp(28px,3vw,40px);opacity:0.4}
-
-/* MODAL */
+.ft{font-family:sans-serif;font-size:7px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,240,232,0.28);line-height:2}
+.ft-seal{width:clamp(28px,3vw,40px);opacity:0.38}
 .modal{display:none;position:fixed;inset:0;background:rgba(10,10,10,0.92);z-index:999;align-items:center;justify-content:center}
 .modal.open{display:flex}
 .modal-box{background:#111;border:1px solid var(--rule);padding:clamp(28px,5vh,52px) clamp(24px,5vw,52px);max-width:480px;width:92%}
 .modal-hd{font-size:clamp(1rem,1.7vw,1.25rem);font-weight:300;letter-spacing:0.08em;color:var(--cream);margin-bottom:clamp(16px,2.5vh,26px)}
-.modal-cl{float:right;background:none;border:none;color:rgba(245,240,232,0.35);font-size:1.25rem;cursor:pointer;margin-top:-4px}
+.modal-cl{float:right;background:none;border:none;color:rgba(245,240,232,0.32);font-size:1.25rem;cursor:pointer;margin-top:-4px}
 .modal-cl:hover{color:var(--cream)}
-.modal-box input,.modal-box textarea{width:100%;background:transparent;border:none;border-bottom:1px solid var(--rule);padding:9px 0;color:var(--cream);font-family:'Cormorant Garamond',serif;font-size:clamp(0.88rem,1.1vw,0.96rem);font-weight:300;outline:none;margin-bottom:clamp(12px,1.8vh,20px);display:block}
+.modal-box input,.modal-box textarea{width:100%;background:transparent;border:none;border-bottom:1px solid var(--rule);padding:9px 0;color:var(--cream);font-family:"Cormorant Garamond",serif;font-size:clamp(0.88rem,1.1vw,0.96rem);font-weight:300;outline:none;margin-bottom:clamp(12px,1.8vh,20px);display:block}
 .modal-box textarea{min-height:72px;resize:vertical}
-.modal-box input::placeholder,.modal-box textarea::placeholder{color:rgba(245,240,232,0.25)}
+.modal-box input::placeholder,.modal-box textarea::placeholder{color:rgba(245,240,232,0.22)}
 .modal-sub{background:var(--gold);color:var(--dark);border:none;padding:10px 34px;font-family:sans-serif;font-size:7.5px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;transition:opacity 0.3s;margin-top:4px}
 .modal-sub:hover{opacity:0.8}
-.modal-fn{font-family:sans-serif;font-size:6.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,240,232,0.22);margin-top:clamp(10px,1.6vh,18px)}
-
+.modal-fn{font-family:sans-serif;font-size:6.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,240,232,0.2);margin-top:clamp(10px,1.6vh,18px)}
 @media(max-width:768px){
-  .sp,.sp.rv{flex-direction:column}
-  .sp-img{min-height:clamp(260px,48vw,420px)}
-  .whp{flex-direction:column}
-  .whp-l{position:static;flex:none}
-  .gg{grid-template-columns:1fr}
-  .gg-wide{grid-column:1}
-  .hero-nav-links{display:none}
+  .sp,.sp.rv{flex-direction:column}.sp-img{min-height:clamp(260px,48vw,420px)}
+  .whp{flex-direction:column}.whp-l{position:static;flex:none}
+  .gg{grid-template-columns:1fr}.gg-w{grid-column:1}
+  .hero-nav-links,.n-links{display:none}
   .docs{grid-template-columns:1fr;padding:0 clamp(1.5rem,5vw,3rem) clamp(2rem,4vh,4rem)}
-  .plans-grid{grid-template-columns:1fr}
-  .n-links{display:none}
+  .plans-g{grid-template-columns:1fr}
 }
 @media(max-width:480px){
-  .sbar-row{flex-wrap:wrap}
-  .si{flex:0 0 33%;margin-bottom:0.4rem}
-  .si-crest{display:none}
+  .sbar-row{flex-wrap:wrap}.sc{flex:0 0 33%;margin-bottom:0.4rem}.sc-crest{display:none}
 }
 </style>
 </head>
 <body>
-
-<!-- STICKY NAV -->
 <nav id="top">
   <span class="n-name">Garran Hill</span>
   <div class="n-links">
-    <a href="#estate">The Estate</a>
-    <a href="#history">The History</a>
-    <a href="#rooms">The Rooms</a>
-    <a href="#grounds">The Grounds</a>
-    <a href="#restoration">The Restoration</a>
+    <a href="#estate">The Estate</a><a href="#history">The History</a><a href="#rooms">The Rooms</a><a href="#grounds">The Grounds</a><a href="#restoration">The Restoration</a>
     <button class="n-btn" onclick="openModal()">Private Inquiry</button>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
-  <video autoplay muted loop playsinline poster="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1/gh_key/gh_hero_poster_first.jpg">
+  <video autoplay muted loop playsinline poster="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1/gh_key/gh_191.jpg">
     <source src="https://res.cloudinary.com/dghn2xpif/video/upload/q_auto/v1/Last_for_real_q0fqvw.mp4" type="video/mp4">
   </video>
   <div class="hero-ov"></div>
   <nav class="hero-nav">
     <span class="hero-nav-name">Garran Hill</span>
     <div class="hero-nav-links">
-      <a href="#estate">The Estate</a>
-      <a href="#history">The History</a>
-      <a href="#rooms">The Rooms</a>
-      <a href="#grounds">The Grounds</a>
+      <a href="#estate">The Estate</a><a href="#history">The History</a><a href="#rooms">The Rooms</a><a href="#grounds">The Grounds</a>
       <button class="hero-nav-btn" onclick="openModal()">Private Inquiry</button>
     </div>
   </nav>
   <div class="hero-ct">
-    <p class="hero-ey">200 Hollycrest Drive &nbsp;&thinsp;&nbsp; Pinehurst, North Carolina &nbsp;&thinsp;&nbsp; Est. 1916</p>
-    <h1 style="font-family:'Pinyon Script',cursive;font-size:clamp(5rem,8vw,10rem);color:#fff;line-height:0.92;margin:0;text-shadow:0 3px 50px rgba(0,0,0,0.65)">Garran Hill</h1>
+    <p class="hero-ey">200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, North Carolina &nbsp;&middot;&nbsp; Est. 1916</p>
+    <h1 style="font-family:'Pinyon Script',cursive;font-size:clamp(5rem,8.5vw,10.5rem);color:#fff;line-height:0.9;margin:0;text-shadow:0 3px 52px rgba(0,0,0,0.65)">Garran Hill</h1>
     <div class="hero-rule"></div>
     <p class="hero-sub">Neo-Georgian.&nbsp;&nbsp;Walter Hines Page.&nbsp;&nbsp;Built 1916.</p>
   </div>
   <div class="sbar">
-    <div class="sbar-line"></div>
+    <div class="sbar-hair"></div>
     <div class="sbar-row">
-      <div class="si"><p class="si-n">1916</p><p class="si-l">Est.</p></div>
-      <div class="si"><p class="si-n">4</p><p class="si-l">Bedrooms</p></div>
-      <div class="si"><p class="si-n">6</p><p class="si-l">Bathrooms</p></div>
-      <div class="si-crest"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_180/v1777265217/gh_key/gh_wax_stamp_3d.png" alt="" style="width:clamp(52px,6vw,88px);margin-top:-1.4rem;filter:drop-shadow(0 2px 12px rgba(201,169,110,0.35));"></div>
-      <div class="si"><p class="si-n">6,072 SF</p><p class="si-l">Living Area</p></div>
-      <div class="si"><p class="si-n">4.15 Acres</p><p class="si-l">Grounds</p></div>
-      <div class="si"><p class="si-n">$4,250,000</p><p class="si-l">Offered At</p></div>
+      <div class="sc"><p class="sc-n">1916</p><p class="sc-l">Est.</p></div>
+      <div class="sc"><p class="sc-n">4</p><p class="sc-l">Bedrooms</p></div>
+      <div class="sc"><p class="sc-n">6</p><p class="sc-l">Bathrooms</p></div>
+      <div class="sc-crest">
+        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_200/v1777265217/gh_key/gh_wax_stamp_3d.png" alt="Garran Hill crest">
+      </div>
+      <div class="sc"><p class="sc-n">6,072 SF</p><p class="sc-l">Living Area</p></div>
+      <div class="sc"><p class="sc-n">4.15 Acres</p><p class="sc-l">Grounds</p></div>
+      <div class="sc"><p class="sc-n">$4,250,000</p><p class="sc-l">Offered At</p></div>
     </div>
-    <div class="sbar-line-b"></div>
+    <div class="sbar-hair"></div>
   </div>
 </section>
 
-<!-- KB GATE -->
-<section class="fade-edge fb" id="estate" style="min-height:clamp(500px,72vh,880px);">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1/gh_key/gh_ext__holycrestextf_3364_copy1.jpg" alt="Garran Hill" loading="lazy" style="width:100%;height:clamp(500px,72vh,880px);object-fit:cover;">
+<section class="fade no-top fb" id="estate" style="min-height:clamp(500px,72vh,880px);">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1/gh_key/gh_ext__holycrestextf_3364_copy1.jpg" alt="Garran Hill" loading="lazy" style="height:clamp(500px,72vh,880px);">
   <div class="fb-ov"></div>
   <div class="fb-tx">
-    <p class="ey">The Estate · Neo-Georgian</p>
-    <h2 style="max-width:560px;font-size:clamp(2rem,4vw,3.8rem);">Then the house appears.</h2>
-    <p style="font-size:clamp(0.88rem,1.2vw,1rem);color:rgba(245,240,232,0.58);line-height:1.75;max-width:420px;font-style:italic;">Flemish bond brick. White portico. A circular lawn held before the entrance like a pause.</p>
+    <p class="ey">The Estate &middot; Neo-Georgian</p>
+    <h2 style="font-size:clamp(2.2rem,4.5vw,4.2rem);max-width:540px;">Then the house appears.</h2>
+    <p style="font-style:italic;font-size:clamp(0.88rem,1.2vw,1rem);color:rgba(245,240,232,0.55);line-height:1.8;max-width:400px;">Flemish bond brick. White portico.<br>A circular lawn held before the entrance like a pause.</p>
   </div>
 </section>
 
-<!-- OPENING STATEMENT -->
-<section class="tx" id="estate-body">
+<section class="tx">
   <div class="mw">
-    <p class="ey">Garran Hill · 1916</p>
+    <p class="ey">Garran Hill &middot; 1916</p>
     <div class="sr"></div>
     <h2>The door has been open<br><em>since 1916.</em></h2>
     <p class="bp">Leonard Tufts' craftsmen built it. The same men who built Pinehurst.</p>
-    <p class="bp-tight">Seven fireplaces. Four columns. Original 1916 brick.<br>4.15 acres. 6,072 square feet.</p>
+    <p class="bp-t">Seven fireplaces. Four columns. Original 1916 brick.<br>4.15 acres. 6,072 square feet.</p>
     <p class="bp" style="margin-top:0.8rem;">It has not been divided. It has not been converted. It has not been asked to be something else.</p>
   </div>
 </section>
 
-<!-- WHP -->
 <section class="whp" id="history">
   <div class="whp-l">
-    <img class="whp-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_sharpen:45,f_auto,q_auto,c_limit,w_600/v1777244132/gh_key/gh_whp.jpg" alt="Walter Hines Page, Ambassador, London 1917" loading="lazy">
-    <p class="whp-cap">Walter Hines Page · László portrait · London, 1917</p>
+    <img class="whp-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_sharpen:45,f_auto,q_auto,c_limit,w_600/v1777244132/gh_key/gh_whp.jpg" alt="Walter Hines Page, London 1917" loading="lazy">
+    <p class="whp-cap">Walter Hines Page &middot; L&aacute;szl&oacute; portrait &middot; London, 1917</p>
   </div>
   <div class="whp-r">
-    <p class="ey">The History · Walter Hines Page</p>
+    <p class="ey">The History &middot; Walter Hines Page</p>
     <div class="sr"></div>
     <h2>He named it Garran Hill.<br><em>He never spent a night here.</em></h2>
     <p class="bp">He bought the land in February 1913. Named it Garran Hill. Six weeks later, Woodrow Wilson appointed him Ambassador to the Court of St. James.</p>
     <p class="bp">He sailed for London. Into the war.</p>
     <p class="bp">The house was completed without him. His son Ralph supervised. Leonard Tufts' craftsmen built it. From London, through four years, he wrote home about one thing.</p>
-    <div class="pull">"The farm — the farm — the farm."</div>
-    <p class="cite" style="margin-bottom:1.8rem;">The Life and Letters of Walter H. Page · Vol. I, P. 354 · 1923</p>
-    <p class="bp">He came home in December 1918. Carried from the train at Aberdeen — miles from his land. He died ten days later.</p>
+    <div class="pull">&ldquo;The farm &mdash; the farm &mdash; the farm.&rdquo;</div>
+    <p class="cite">The Life and Letters of Walter H. Page &middot; Vol. I, P. 354 &middot; 1923</p>
+    <p class="bp" style="margin-top:1.6rem;">He came home in December 1918. Carried from the train at Aberdeen &mdash; miles from his land. He died ten days later.</p>
     <p class="bp">He co-founded Doubleday, Page &amp; Co. He edited The Atlantic Monthly. He nominated Woodrow Wilson for the presidency.</p>
     <p class="cl">He never spent a night here.</p>
   </div>
 </section>
 
-<!-- WHP LETTERS -->
 <div class="docs">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_sharpen:35,f_auto,q_auto,c_limit,w_900/v1777244059/gh_key/gh_whp_letter1.jpg" alt="Walter Hines Page — letter from London" loading="lazy">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_sharpen:35,f_auto,q_auto,c_limit,w_900/v1777244132/gh_key/gh_whp_letter2.jpg" alt="Walter Hines Page — letter" loading="lazy">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_sharpen:35,f_auto,q_auto,c_limit,w_900/v1777244059/gh_key/gh_whp_letter1.jpg" alt="Walter Hines Page letter" loading="lazy">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_sharpen:35,f_auto,q_auto,c_limit,w_900/v1777244132/gh_key/gh_whp_letter2.jpg" alt="Walter Hines Page letter" loading="lazy">
 </div>
 
-<!-- LAST WORDS -->
 <div class="int">
-  <div class="gq">"Well, Frank, I did get here<br>after all, didn't I?"</div>
-  <div class="at" style="margin-top:0.6rem;">Walter Hines Page &nbsp;·&nbsp; Aberdeen, NC &nbsp;·&nbsp; December 1918</div>
-  <div class="at" style="margin-top:0.3rem;color:rgba(245,240,232,0.3);">He died ten days later.</div>
+  <div class="gq">&ldquo;Well, Frank, I did get here<br>after all, didn't I?&rdquo;</div>
+  <div class="at" style="margin-top:0.65rem;">Walter Hines Page &nbsp;&middot;&nbsp; Aberdeen, NC &nbsp;&middot;&nbsp; December 1918</div>
+  <div class="at" style="margin-top:0.3rem;color:rgba(245,240,232,0.28);">He died ten days later.</div>
 </div>
 
-<!-- THRESHOLD -->
-<section class="fade-edge sp" id="rooms">
-  <div class="sp-img">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1200/v1/gh_key/gh_entry_hall.jpg" alt="The entry hall — herringbone brick, leaded glass, mahogany stair" loading="lazy">
-  </div>
+<section class="fade no-top sp" id="rooms">
+  <div class="sp-img"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1200/v1/gh_key/gh_entry_hall.jpg" alt="The entry hall" loading="lazy"></div>
   <div class="sp-tx">
-    <p class="ey">The Threshold</p>
-    <div class="sr"></div>
+    <p class="ey">The Threshold</p><div class="sr"></div>
     <h2>The road carries the later name.<br><em>The threshold keeps the first.</em></h2>
     <p class="bp">The door has been open since 1916.</p>
-    <p class="bp-tight">Original leaded glass. Original hardware. Herringbone brick underfoot.</p>
+    <p class="bp-t">Original leaded glass. Original hardware.<br>Herringbone brick underfoot.</p>
     <p class="bp">The staircase has turned the same curve since 1916.</p>
-    <a class="mlink" href="https://my.matterport.com/show/?m=mfwyqT5Btwx" target="_blank" rel="noopener">→ Begin the 3D tour</a>
+    <a class="mlink" href="https://my.matterport.com/show/?m=mfwyqT5Btwx" target="_blank" rel="noopener">&rarr; Begin the 3D tour</a>
   </div>
 </section>
 
-<!-- STAIR INTERSTITIAL -->
-<div class="int nt nb" style="padding:clamp(2.5rem,5vh,4.5rem) clamp(2rem,10vw,14rem);">
-  <p style="font-style:italic;font-size:clamp(0.88rem,1.5vw,1.15rem);color:rgba(245,240,232,0.38);letter-spacing:0.04em;">The stair was redrawn from newel to cornice. Nothing was approximated.</p>
+<div class="int nt nb" style="padding:clamp(2.5rem,5vh,4rem) clamp(2rem,10vw,14rem);">
+  <p style="font-style:italic;font-size:clamp(0.85rem,1.4vw,1.1rem);color:rgba(245,240,232,0.35);letter-spacing:0.04em;">The stair was redrawn from newel to cornice. Nothing was approximated.</p>
 </div>
 
-<!-- SALON -->
-<section class="fade-edge fb" style="min-height:clamp(460px,66vh,820px);">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1/gh_key/gh_living_room.jpg" alt="The salon" loading="lazy" style="width:100%;height:clamp(460px,66vh,820px);object-fit:cover;">
+<section class="fade fb" style="min-height:clamp(460px,66vh,820px);">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1/gh_key/gh_living_room.jpg" alt="The salon" loading="lazy" style="height:clamp(460px,66vh,820px);">
   <div class="fb-ov"></div>
   <div class="fb-tx">
     <p class="ey">The Salon</p>
-    <h2 style="max-width:480px;">They made it bigger<br><em>so they could dance.</em></h2>
-    <p style="font-style:italic;color:rgba(245,240,232,0.5);font-size:clamp(0.88rem,1.1vw,1rem);">Nearly forty feet. Tall windows. Coffered ceiling. One fireplace.</p>
-    <p style="font-style:italic;color:rgba(245,240,232,0.4);font-size:clamp(0.82rem,1vw,0.94rem);margin-top:0.6rem;">It is a room that expects people in it.</p>
+    <h2 style="max-width:460px;">They made it bigger<br><em>so they could dance.</em></h2>
+    <p style="font-style:italic;color:rgba(245,240,232,0.48);font-size:clamp(0.88rem,1.1vw,1rem);">Nearly forty feet. Tall windows. Coffered ceiling. One fireplace.</p>
+    <p style="font-style:italic;color:rgba(245,240,232,0.36);font-size:clamp(0.82rem,1vw,0.94rem);margin-top:0.5rem;">It is a room that expects people in it.</p>
   </div>
 </section>
 
-<!-- DRAWING ROOM -->
-<section class="fade-edge sp rv">
-  <div class="sp-img">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1200/v1/gh_key/gh_drawing_room_fire.jpg" alt="The drawing room — Georgian mantel, Delft tile" loading="lazy">
-  </div>
+<section class="fade sp rv">
+  <div class="sp-img"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1200/v1/gh_key/gh_drawing_room_fire.jpg" alt="The drawing room" loading="lazy"></div>
   <div class="sp-tx">
-    <p class="ey">The Drawing Room</p>
-    <div class="sr"></div>
+    <p class="ey">The Drawing Room</p><div class="sr"></div>
     <h2>Fire going.<br><em>No one home yet.</em></h2>
-    <p class="bp-tight">Georgian carved mantel. Delft tile surround — hand-painted, original.</p>
-    <p class="bp-tight">The arch. The doorways. The fanlights.</p>
+    <p class="bp-t">Georgian carved mantel. Delft tile surround &mdash; hand-painted, original.</p>
+    <p class="bp-t">The arch. The doorways. The fanlights.</p>
     <p class="bp">Specified in 1916. Still there.</p>
   </div>
 </section>
 
-<!-- DINING ROOM -->
-<section class="fade-edge sp">
-  <div class="sp-img">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1200/v1/gh_key/gh_dining_room.jpg" alt="The dining room" loading="lazy">
-  </div>
+<section class="fade sp">
+  <div class="sp-img"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1200/v1/gh_key/gh_dining_room.jpg" alt="The dining room" loading="lazy"></div>
   <div class="sp-tx">
-    <p class="ey">The Dining Room</p>
-    <div class="sr"></div>
+    <p class="ey">The Dining Room</p><div class="sr"></div>
     <h2>The shell cabinets were already there<br><em>in 1916.</em></h2>
-    <p class="bp-tight">Original frontpiece. Butler's arched niche.</p>
+    <p class="bp-t">Original frontpiece. Butler's arched niche.</p>
     <p class="bp">17 by 19 feet. It has not been asked to be something else.</p>
   </div>
 </section>
 
-<!-- LIBRARY -->
-<section class="fade-edge fb" style="min-height:clamp(460px,66vh,820px);">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1/gh_key/gh_library.jpg" alt="The library" loading="lazy" style="width:100%;height:clamp(460px,66vh,820px);object-fit:cover;">
+<section class="fade fb" style="min-height:clamp(460px,66vh,820px);">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1/gh_key/gh_library.jpg" alt="The library" loading="lazy" style="height:clamp(460px,66vh,820px);">
   <div class="fb-ov"></div>
   <div class="fb-tx">
     <p class="ey">The Library</p>
     <h2>Not original.<br><em>Deliberate.</em></h2>
-    <p style="font-style:italic;color:rgba(245,240,232,0.5);font-size:clamp(0.88rem,1.1vw,1rem);max-width:460px;">Three walls. Floor to ceiling. Rolling ladder. French doors to the grounds.</p>
-    <p style="font-style:italic;color:rgba(245,240,232,0.38);font-size:clamp(0.82rem,1vw,0.94rem);margin-top:0.6rem;">When you stand in it, you cannot find the seam.</p>
+    <p style="font-style:italic;color:rgba(245,240,232,0.48);font-size:clamp(0.88rem,1.1vw,1rem);max-width:420px;">Three walls. Floor to ceiling. Rolling ladder. French doors to the grounds.</p>
+    <p style="font-style:italic;color:rgba(245,240,232,0.35);font-size:clamp(0.82rem,1vw,0.94rem);margin-top:0.5rem;">When you stand in it, you cannot find the seam.</p>
   </div>
 </section>
 
-<!-- KITCHEN -->
-<section class="fade-edge sp rv">
-  <div class="sp-img">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1200/v1/gh_key/gh_kitchen.jpg" alt="The kitchen" loading="lazy">
-  </div>
+<section class="fade sp rv">
+  <div class="sp-img"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1200/v1/gh_key/gh_kitchen.jpg" alt="The kitchen" loading="lazy"></div>
   <div class="sp-tx">
-    <p class="ey">The Kitchen</p>
-    <div class="sr"></div>
+    <p class="ey">The Kitchen</p><div class="sr"></div>
     <h2>The kitchen was not updated.<br><em>It was designed.</em></h2>
-    <p class="bp-tight">Reclaimed heart-pine floors — the only room that departs from the original oak.</p>
-    <p class="bp-tight">White cabinetry. Dark granite. Island. Four windows.</p>
+    <p class="bp-t">Reclaimed heart-pine floors &mdash; the only room that departs from the original oak.</p>
+    <p class="bp-t">White cabinetry. Dark granite. Island. Four windows.</p>
     <p class="bp">The wall of windows faces an expanse of grass bordered by elder magnolias.</p>
     <p class="bp">Every morning at 6:30, the deer come through.</p>
     <p class="cl">The shell cabinets are original. The kitchen is not. Both are right.</p>
   </div>
 </section>
 
-<!-- KITCHEN FILMSTRIP -->
 <div class="strip">
   <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_900/v1/gh_key/gh_kitchen_island.jpg" alt="" loading="lazy">
   <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_900/v1/gh_key/gh_kitchen_range.jpg" alt="" loading="lazy">
@@ -394,128 +317,107 @@ footer{background:var(--dark);border-top:1px solid var(--rule);padding:clamp(22p
   <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_900/v1/gh_key/gh_kitchen_overall.jpg" alt="" loading="lazy">
 </div>
 
-<!-- PRIMARY SUITE -->
-<section class="fade-edge sp">
-  <div class="sp-img">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1200/v1/gh_key/gh_primary_suite.jpg" alt="The primary suite" loading="lazy">
-  </div>
+<section class="fade sp">
+  <div class="sp-img"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1200/v1/gh_key/gh_primary_suite.jpg" alt="The primary suite" loading="lazy"></div>
   <div class="sp-tx">
-    <p class="ey">The Primary Suite</p>
-    <div class="sr"></div>
+    <p class="ey">The Primary Suite</p><div class="sr"></div>
     <h2>Custom wall panels. A fireplace.<br><em>Shower walls drawn at full tile detail.</em></h2>
     <p class="bp">Fifteen architectural drawings document the decisions Thomas O'Shea made in this room alone. They survive. They transfer with the property.</p>
-    <p class="bp">The primary balcony — 24 by 11 feet — faces the grounds.</p>
+    <p class="bp">The primary balcony &mdash; 24 by 11 feet &mdash; faces the grounds.</p>
   </div>
 </section>
 
-<!-- POWDER ROOM -->
 <div class="int">
   <p class="ey" style="margin-bottom:0.6rem;">The Powder Room</p>
   <div class="gq">Fuchsia chinoiserie.<br><em style="color:var(--gold);">Tennessee marble.</em></div>
 </div>
 
-<!-- GROUNDS -->
-<section id="grounds">
-  <div class="gg">
-    <img class="gg-wide" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1/gh_key/gh_facade_wide.jpg" alt="Garran Hill grounds" loading="lazy" style="height:clamp(380px,58vh,700px);">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1200/v1/gh_key/gh_grounds_up6.jpg" alt="The grounds" loading="lazy" style="height:clamp(240px,34vh,440px);">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1200/v1/gh_key/gh_terrace.jpg" alt="The terrace" loading="lazy" style="height:clamp(240px,34vh,440px);">
-  </div>
+<section class="gg" id="grounds">
+  <img class="gg-w" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1/gh_key/gh_facade_wide.jpg" alt="Garran Hill grounds" loading="lazy" style="height:clamp(380px,58vh,700px);">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1200/v1/gh_key/gh_grounds_up6.jpg" alt="The grounds" loading="lazy" style="height:clamp(240px,34vh,440px);">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1200/v1/gh_key/gh_terrace.jpg" alt="The terrace" loading="lazy" style="height:clamp(240px,34vh,440px);">
 </section>
+
 <section class="tx">
   <div class="mw">
-    <p class="ey">4.15 Acres · Private Grounds</p>
-    <div class="sr"></div>
+    <p class="ey">4.15 Acres &middot; Private Grounds</p><div class="sr"></div>
     <h2>The world outside these gates<br><em>does not exist here.</em></h2>
-    <p class="bp-tight">Twenty-eight irrigation zones. 130-foot well. Underground utilities throughout.</p>
+    <p class="bp-t">Twenty-eight irrigation zones. 130-foot well. Underground utilities throughout.</p>
     <p class="bp">A 20-by-40 salt water pool, surrounded by a brick wall with iron gates. Restored 2022.</p>
-    <p class="bp">The Wee Cottage — complete, self-contained — moved to the grounds by sky crane.</p>
+    <p class="bp">The Wee Cottage &mdash; complete, self-contained &mdash; moved to the grounds by sky crane.</p>
   </div>
 </section>
 
-<!-- SAPLING -->
-<section class="fade-edge fb" style="min-height:clamp(360px,52vh,680px);">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777270125/gh_key/gh_sapling1916.jpg" alt="The trees of Garran Hill — 1916" loading="lazy" style="width:100%;height:clamp(360px,52vh,680px);object-fit:cover;">
-  <div style="position:absolute;inset:0;background:rgba(10,10,10,0.54);z-index:2;"></div>
+<section class="fade fb" style="min-height:clamp(340px,50vh,640px);">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777270125/gh_key/gh_sapling1916.jpg" alt="Trees at Garran Hill" loading="lazy" style="height:clamp(340px,50vh,640px);">
+  <div style="position:absolute;inset:0;background:rgba(10,10,10,0.52);z-index:2;"></div>
   <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3;padding:clamp(2rem,5vw,8rem);">
-    <p style="font-style:italic;font-size:clamp(1rem,2.2vw,1.6rem);color:rgba(245,240,232,0.52);text-align:center;max-width:540px;line-height:1.65;">In 1916, those were saplings.<br>Now they are a forest.</p>
+    <p style="font-style:italic;font-size:clamp(1rem,2.2vw,1.6rem);color:rgba(245,240,232,0.48);text-align:center;line-height:1.7;">In 1916, those were saplings.<br>Now they are a forest.</p>
   </div>
 </section>
 
-<!-- BLUE FOX -->
 <div class="bf">
   <div class="bf-q">Someone still puts flowers there.</div>
-  <div class="at">Blue Fox &nbsp;·&nbsp; Betty Dumaine's Irish Hunter &nbsp;·&nbsp; Buried on the grounds</div>
+  <div class="at">Blue Fox &nbsp;&middot;&nbsp; Betty Dumaine's Irish Hunter &nbsp;&middot;&nbsp; Buried on the grounds</div>
 </div>
 
-<!-- BETTY DUMAINE -->
-<section class="fade-edge sp rv">
-  <div class="sp-img">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1200/v1/gh_key/gh_stone_marker.jpg" alt="Blue Fox — stone memorial on the grounds" loading="lazy">
-  </div>
+<section class="fade sp rv">
+  <div class="sp-img"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1200/v1/gh_key/gh_stone_marker.jpg" alt="Blue Fox memorial" loading="lazy"></div>
   <div class="sp-tx">
-    <p class="ey">1959 – 1984</p>
-    <div class="sr"></div>
+    <p class="ey">1959 &ndash; 1984</p><div class="sr"></div>
     <h2>Some places remember<br><em>who loved them.</em></h2>
-    <p class="bp">Elizabeth Dumaine purchased the property in 1959. She was a foxhunter. She added stables, kennels, and an enclosure for peacocks — known to be guard birds. She changed the name to Hollycrest.</p>
+    <p class="bp">Elizabeth Dumaine purchased the property in 1959. She was a foxhunter. She added stables, kennels, and an enclosure for peacocks &mdash; known to be guard birds. She changed the name to Hollycrest.</p>
     <p class="bp">Her favorite horse is buried on the grounds.</p>
     <p class="bp">Blue Fox. Someone still puts flowers there.</p>
   </div>
 </section>
 
-<!-- IN PRINT -->
 <div class="int">
   <p class="ey" style="margin-bottom:1rem;">As Seen In</p>
-  <div class="pull" style="max-width:760px;margin:0 auto 1rem;font-size:clamp(1rem,1.9vw,1.5rem);text-align:center;">"What Ambassador Walter Hines Page started others have continued in a style both innovative and respectful of times when people paid calls, wrote thank-you notes and took Sunday drives."</div>
-  <div class="at">PineStraw Magazine &nbsp;·&nbsp; October 2019</div>
+  <div class="pull" style="max-width:740px;margin:0 auto 1rem;font-size:clamp(1rem,1.9vw,1.5rem);text-align:center;">&ldquo;What Ambassador Walter Hines Page started others have continued in a style both innovative and respectful of times when people paid calls, wrote thank-you notes and took Sunday drives.&rdquo;</div>
+  <div class="at">PineStraw Magazine &nbsp;&middot;&nbsp; October 2019</div>
 </div>
 
-<!-- RESTORATION -->
 <section class="tx-wide" id="restoration">
-  <div style="max-width:700px;">
-    <p class="ey">The Restoration · 1999–2001</p>
-    <div class="sr"></div>
+  <div style="max-width:680px;">
+    <p class="ey">The Restoration &middot; 1999&ndash;2001</p><div class="sr"></div>
     <h2>Beauty was not enough.<br><em>The house needed discipline.</em></h2>
     <p class="bp">In 1999, Thomas O'Shea drew the house from scratch. Every room measured. Every cornice profiled. Every proportion committed to paper before a single board was replaced.</p>
     <p class="bp">Contractor Dennis Dunagan spent three years executing those drawings.</p>
-    <p class="bp-tight">All seven carved mantels saved. Original oak flooring lifted, repaired, relaid. Period-accurate portico brick — three months to source. Custom Marvin windows made to the 1916 profile.</p>
+    <p class="bp-t">All seven carved mantels saved. Original oak flooring lifted, repaired, relaid. Period-accurate portico brick &mdash; three months to source. Custom Marvin windows made to the 1916 profile.</p>
     <p class="bp" style="margin-top:0.8rem;">What stands today is what was designed.</p>
-    <div class="pull" style="max-width:520px;">It does not feel added.<br>It feels inevitable.</div>
+    <div class="pull" style="max-width:500px;">It does not feel added.<br>It feels inevitable.</div>
   </div>
 </section>
 
-<!-- PLANS -->
-<div class="plans" style="border-top:1px solid var(--rule);">
+<div class="plans">
   <p class="ey" style="text-align:center;margin-bottom:0.4rem;">The Plans</p>
   <div class="sr sr-c"></div>
-  <p style="text-align:center;font-style:italic;font-size:clamp(0.82rem,1.1vw,0.96rem);color:rgba(245,240,232,0.38);">Thomas O'Shea · Durham · 1999–2001</p>
-  <div class="plans-grid">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_sharpen:35,f_auto,q_auto,c_limit,w_900/v1/gh_key/gh_plan_oshe_p01.jpg" alt="Restoration drawing — entrance hall" loading="lazy">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_sharpen:35,f_auto,q_auto,c_limit,w_900/v1/gh_key/gh_plan_oshe_p02.jpg" alt="Restoration drawing — salon" loading="lazy">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_sharpen:35,f_auto,q_auto,c_limit,w_900/v1/gh_key/gh_plan_oshe_p03.jpg" alt="Restoration drawing — library" loading="lazy">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_sharpen:35,f_auto,q_auto,c_limit,w_900/v1/gh_key/gh_plan_oshe_p04.jpg" alt="Restoration drawing — primary suite" loading="lazy">
+  <p style="text-align:center;font-style:italic;font-size:clamp(0.82rem,1.1vw,0.95rem);color:rgba(245,240,232,0.35);">Thomas O'Shea &middot; Durham &middot; 1999&ndash;2001</p>
+  <div class="plans-g">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_sharpen:35,f_auto,q_auto,c_limit,w_900/v1/gh_key/gh_plan_oshe_p01.jpg" alt="Restoration drawing" loading="lazy">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_sharpen:35,f_auto,q_auto,c_limit,w_900/v1/gh_key/gh_plan_oshe_p02.jpg" alt="Restoration drawing" loading="lazy">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_sharpen:35,f_auto,q_auto,c_limit,w_900/v1/gh_key/gh_plan_oshe_p03.jpg" alt="Restoration drawing" loading="lazy">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_sharpen:35,f_auto,q_auto,c_limit,w_900/v1/gh_key/gh_plan_oshe_p04.jpg" alt="Restoration drawing" loading="lazy">
   </div>
 </div>
 
-<!-- PRESERVATION -->
 <section class="tx" style="border-top:1px solid var(--rule);">
   <div class="mw">
-    <p class="ey">National Register · Criterion B</p>
-    <div class="sr"></div>
+    <p class="ey">National Register &middot; Criterion B</p><div class="sr"></div>
     <h2>Every claim is sourced.<br><em>Every fact is verified.</em></h2>
-    <p class="bp">The Pines Preservation Guild visited April 2024. The property qualifies under Criterion B — significant association with a figure of national importance.</p>
+    <p class="bp">The Pines Preservation Guild visited April 2024. The property qualifies under Criterion B &mdash; significant association with a figure of national importance.</p>
     <p class="bp">A preservation easement is available. North Carolina tax credit: 25% of fair market value, up to $500,000.</p>
   </div>
 </section>
 
-<!-- CLOSING -->
 <section class="closing">
   <img class="closing-bg" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1/gh_key/gh_facade_front.jpg" alt="Garran Hill" loading="lazy">
   <div class="closing-ov"></div>
   <div class="closing-ct">
     <p class="c-ey">Offered by Sotheby's International Realty</p>
     <div class="c-script">Garran Hill</div>
-    <p class="c-addr">200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, North Carolina</p>
+    <p class="c-addr">200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, North Carolina</p>
     <p class="c-price">$4,250,000</p>
     <p class="c-sub">For the next steward.</p>
     <button class="cta" onclick="openModal()">Request a Private Showing</button>
@@ -523,14 +425,10 @@ footer{background:var(--dark);border-top:1px solid var(--rule);padding:clamp(22p
 </section>
 
 <footer>
-  <div class="ft">
-    Rachel Hernandez &nbsp;·&nbsp; Sotheby's International Realty &nbsp;·&nbsp; Pinehurst, NC<br>
-    All inquiries held in strict confidence.
-  </div>
+  <div class="ft">Rachel Hernandez &nbsp;&middot;&nbsp; Sotheby's International Realty &nbsp;&middot;&nbsp; Pinehurst, NC<br>All inquiries held in strict confidence.</div>
   <img class="ft-seal" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_80/v1777397863/gh_key/gh_wax_seal_v3.png" alt="">
 </footer>
 
-<!-- MODAL -->
 <div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
   <div class="modal-box">
     <button class="modal-cl" onclick="closeModal()">&times;</button>
@@ -547,24 +445,24 @@ footer{background:var(--dark);border-top:1px solid var(--rule);padding:clamp(22p
 </div>
 
 <script>
-const hero=document.getElementById('hero');
-const nav=document.getElementById('top');
-new IntersectionObserver(([e])=>nav.classList.toggle('show',!e.isIntersecting),{threshold:0.05}).observe(hero);
-function openModal(){document.getElementById('modal').classList.add('open')}
-function closeModal(){document.getElementById('modal').classList.remove('open')}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+const hero=document.getElementById("hero");
+const nav=document.getElementById("top");
+new IntersectionObserver(([e])=>nav.classList.toggle("show",!e.isIntersecting),{threshold:0.05}).observe(hero);
+function openModal(){document.getElementById("modal").classList.add("open")}
+function closeModal(){document.getElementById("modal").classList.remove("open")}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
 function submitInquiry(e){
   e.preventDefault();const f=e.target;
-  fetch('https://app.base44.com/api/apps/69e248a2469cc39540781cce/entities/Inquiry',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({name:f.name.value,email:f.email.value,phone:f.phone.value,message:f.message.value,property:'Garran Hill',source:'Website'})
-  }).finally(()=>{closeModal();alert('Thank you. We will be in touch shortly.')});
+  fetch("https://app.base44.com/api/apps/69e248a2469cc39540781cce/entities/Inquiry",{
+    method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({name:f.name.value,email:f.email.value,phone:f.phone.value,message:f.message.value,property:"Garran Hill",source:"Website"})
+  }).finally(()=>{closeModal();alert("Thank you. We will be in touch shortly.")});
 }
-const vid=document.querySelector('video');
-if(vid){vid.addEventListener('timeupdate',()=>{
+const vid=document.querySelector("video");
+if(vid){vid.addEventListener("timeupdate",()=>{
   if(vid.duration&&vid.currentTime>vid.duration-0.8)
     vid.style.opacity=String(Math.max(0,1-(vid.currentTime-(vid.duration-0.8))/0.8));
-  else vid.style.opacity='1';
+  else vid.style.opacity="1";
 });}
 </script>
 </body>
