@@ -156,7 +156,7 @@
 
   /* STAT BAR */
   .stat-bar {
-    background: rgba(10,10,10,0.80);
+    background: rgba(10,10,10,0.92);
     padding: clamp(1.2rem, 2vw, 1.8rem) clamp(2rem, 4vw, 4rem);
     display: flex;
     align-items: center;
@@ -167,6 +167,7 @@
     box-sizing: border-box;
     backdrop-filter: blur(6px);
     flex-wrap: nowrap;
+    overflow: hidden;
   }
   .stat-bar::before, .stat-bar::after {
     content: '';
@@ -216,9 +217,12 @@
     flex-shrink: 0;
   }
   .stat-crest img {
-    height: clamp(52px, 5.5vw, 72px);
+    height: clamp(44px, 4.5vw, 62px);
     width: auto;
     opacity: 0.95;
+    display: block;
+    position: relative;
+    z-index: 3;
   }
 
   /* KB GATE SECTION */
