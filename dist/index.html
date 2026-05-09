@@ -197,82 +197,67 @@ footer{padding:clamp(2.5rem,5vw,4rem) clamp(2rem,5vw,5rem);border-top:1px solid 
   filter:blur(8px);
   z-index:-1;
 }
-/* ═══ STAT BAR — STAR BUILD ═══ */
-.stat-bar-wrap{
-  position:absolute;
-  bottom:0;left:0;right:0;
-  background:rgba(10,10,10,0.96);
-  border-top:1px solid rgba(201,169,110,0.25);
-  z-index:10;
-  overflow:visible;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding-bottom:1.2rem;
+/* ═══ STAT BAR FINAL FINAL ═══ */
+.stat-bar-wrap {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(10,10,10,0.97);
+  border-top: 1px solid rgba(201,169,110,0.25);
+  z-index: 10;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1.4rem;
 }
-/* CREST — the star, rises out of the bar */
-.stat-crest{
-  position:relative;
-  top:-90px;
-  margin-bottom:-70px;
-  z-index:20;
+.stat-crest {
+  position: relative;
+  top: -100px;
+  margin-bottom: -80px;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
 }
-.stat-crest img{
-  height:clamp(140px,16vw,220px);
-  width:auto;
-  display:block;
+.stat-crest img {
+  height: clamp(140px, 16vw, 210px);
+  width: auto;
+  display: block;
   filter:
-    drop-shadow(0 20px 40px rgba(0,0,0,1))
-    drop-shadow(0 8px 16px rgba(0,0,0,0.95))
-    drop-shadow(0 0 50px rgba(201,169,110,0.5));
+    drop-shadow(0 20px 44px rgba(0,0,0,1))
+    drop-shadow(0 0 50px rgba(201,169,110,0.45));
 }
-/* Gold glow pool under crest */
-.stat-crest::after{
-  content:'';
-  position:absolute;
-  bottom:-8px;
-  left:50%;
-  transform:translateX(-50%);
-  width:140px;
-  height:30px;
-  background:radial-gradient(ellipse,rgba(201,169,110,0.6) 0%,transparent 70%);
-  filter:blur(8px);
-  border-radius:50%;
+.stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-/* STAT ROW — centered, tight, elegant */
-.stat-row{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:0;
+.stat-item {
+  text-align: center;
+  padding: 0 2.5rem;
 }
-.stat-item{
-  text-align:center;
-  padding:0 2.8rem;
+.stat-number {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 1.7vw, 1.9rem);
+  font-weight: 300;
+  color: #C9A96E;
+  letter-spacing: 0.05em;
+  line-height: 1;
 }
-.stat-number{
-  display:block;
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.2rem,1.8vw,2rem);
-  font-weight:300;
-  color:#C9A96E;
-  letter-spacing:0.05em;
-  line-height:1;
+.stat-label {
+  display: block;
+  font-size: clamp(0.38rem, 0.46vw, 0.5rem);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.4);
+  margin-top: 0.35rem;
+  white-space: nowrap;
 }
-.stat-label{
-  display:block;
-  font-size:clamp(0.4rem,0.5vw,0.55rem);
-  letter-spacing:0.25em;
-  text-transform:uppercase;
-  color:rgba(245,240,232,0.45);
-  margin-top:0.35rem;
-  white-space:nowrap;
-}
-.stat-divider{
-  width:1px;
-  height:1.6rem;
-  background:rgba(201,169,110,0.2);
-  flex-shrink:0;
+.stat-divider {
+  width: 1px;
+  height: 1.5rem;
+  background: rgba(201,169,110,0.2);
+  flex-shrink: 0;
 }
 
 </style>
@@ -308,22 +293,22 @@ footer{padding:clamp(2.5rem,5vw,4rem) clamp(2rem,5vw,5rem);border-top:1px solid 
     <p class="hero-sub">Neo-Georgian &nbsp;&middot;&nbsp; Walter Hines Page &nbsp;&middot;&nbsp; Built 1916</p>
   </div>
   <div class="stat-bar-wrap">
-      <div class="stat-crest">
-        <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f878acd0f_crest_3d_gloss_fresh.png" alt="Garran Hill Crest" />
-      </div>
-      <div class="stat-row">
-        <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">Bedrooms</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">Bathrooms</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat-item"><span class="stat-number">6,072</span><span class="stat-label">Living Area</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat-item"><span class="stat-number">4.15</span><span class="stat-label">Acres</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat-item"><span class="stat-number">$4,250,000</span><span class="stat-label">&nbsp;</span></div>
-      </div>
-    </div>
-    </div>
+  <div class="stat-crest">
+    <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/f878acd0f_crest_3d_gloss_fresh.png" alt="Garran Hill Crest" />
+  </div>
+  <div class="stat-row">
+    <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">Bedrooms</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">Bathrooms</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><span class="stat-number">6,072</span><span class="stat-label">Living Area</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><span class="stat-number">4.15</span><span class="stat-label">Acres</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><span class="stat-number">$4,250,000</span><span class="stat-label">&nbsp;</span></div>
+  </div>
+</div>
+  </div>
 </section>
 
 <!-- KB GATE — ARRIVAL -->
