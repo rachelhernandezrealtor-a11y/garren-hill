@@ -531,9 +531,10 @@ footer {
   .stat-crest-wrap img { width: 70px; height: 70px; }
   .stat-numbers { flex-wrap: wrap; gap: 0; row-gap: 0.6rem; }
   .stat-item { padding: 0 0.5rem; min-width: 30%; }
-  .stat-divider { display: none; }
+  .stat-price { min-width: 100% !important; text-align: center; }
+  .stat-div { display: none; }
   .stat-num { font-size: 0.95rem; }
-  .stat-label { font-size: 0.38rem; letter-spacing: 0.22em; }
+  .stat-lbl { font-size: 0.38rem; letter-spacing: 0.22em; }
 
   /* Typography */
   h2 { font-size: clamp(1.5rem, 7vw, 2.6rem); margin-bottom: 1.4rem; }
@@ -722,7 +723,7 @@ section + section {
       <div class="stat-div"></div>
       <div class="stat-item"><span class="stat-num">4.15</span><span class="stat-lbl">Acres</span></div>
       <div class="stat-div"></div>
-      <div class="stat-item"><span class="stat-num">$4,250,000</span><span class="stat-lbl">&nbsp;</span></div>
+      <div class="stat-item stat-price"><span class="stat-num">$4,250,000</span><span class="stat-lbl">&nbsp;</span></div>
     </div>
   </div>
 </section>
