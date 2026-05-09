@@ -37,8 +37,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 /* STAT BAR */
 .stat-bar-wrap{position:absolute;bottom:0;left:0;right:0;display:flex;align-items:stretch;z-index:10;overflow:visible;}
 .stat-bar-left,.stat-bar-right{flex:1;background:rgba(10,10,10,0.96);display:flex;align-items:center;justify-content:space-around;padding:clamp(0.9rem,1.8vw,1.5rem) clamp(0.8rem,2vw,2rem);border-top:1px solid rgba(201,169,110,0.25);}
-.stat-bar-center{width:clamp(160px,16vw,220px);flex-shrink:0;background:transparent;position:relative;z-index:15;}
-.stat-crest{position:absolute;left:50%;top:50%;transform:translate(-50%,-68%);z-index:20;pointer-events:none;}
+.stat-bar-center{width:clamp(160px,16vw,220px);flex-shrink:0;background:rgba(10,10,10,0.96);position:relative;z-index:15;border-top:1px solid rgba(201,169,110,0.25);}
+.stat-crest{position:absolute;left:50%;top:0;transform:translate(-50%,-55%);z-index:20;pointer-events:none;}
 .stat-crest img{height:clamp(130px,14vw,190px);width:auto;display:block;filter:drop-shadow(0 6px 24px rgba(0,0,0,0.98)) drop-shadow(0 0 12px rgba(201,169,110,0.2));transition:filter 0.3s;}
 .stat-item{text-align:center;}
 .stat-number{display:block;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(0.95rem,1.6vw,1.8rem);color:var(--gold);letter-spacing:0.01em;line-height:1.1;white-space:nowrap;}
