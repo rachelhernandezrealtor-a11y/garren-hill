@@ -296,16 +296,20 @@
     flex-shrink: 0;
   }
 
-  .stat-crest {
-    height: clamp(60px, 8vw, 90px);
-    width: auto;
-    background: transparent;
-    display: block;
-    margin-top: -2rem;
-    margin-bottom: -2rem;
+  .stat-crest-wrap {
+    padding: 0 clamp(1.5rem, 3vw, 3.5rem);
+    display: flex;
+    align-items: center;
     position: relative;
     z-index: 2;
-    filter: drop-shadow(0 2px 16px rgba(201,169,110,0.4));
+    margin-top: -1.5rem;
+    margin-bottom: -1.5rem;
+  }
+  .stat-crest {
+    height: clamp(70px, 9vw, 100px);
+    width: auto;
+    mix-blend-mode: lighten;
+    opacity: 0.9;
   }
 
   /* ── HERO ── */
@@ -429,6 +433,8 @@
     :root { --section-pad-v: 2.5rem; }
     section { padding: 2.5rem 0; }
   }
+
+
 </style>
 </head>
 <body>
@@ -472,9 +478,12 @@
     <span class="stat-number">6</span>
     <span class="stat-label">Bathrooms</span>
   </div>
-  <div class="stat-crest">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778338868/gh_key/gh_crest_transparent_v1.png"
-         alt="Garran Hill crest">
+  <div class="stat-crest-wrap">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_png,q_auto/v1777397863/gh_key/gh_wax_seal_v3.png"
+         class="stat-crest" alt="Garran Hill crest">
+  </div>
+    <div class="stat-crest-diamond">◆</div>
+    <div class="stat-crest-line"></div>
   </div>
   <div class="stat-item">
     <span class="stat-number">6,072</span>
