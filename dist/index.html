@@ -98,6 +98,17 @@
   --gold: #C9A96E;
   --cream: #F5F0E8;
   --mid: #1a1a1a;
+
+  /* ── SPACING SYSTEM — ONE RHYTHM ── */
+  --sp-unit: clamp(0.9rem, 1.8vw, 1.4rem);
+  --sp-xs:   calc(var(--sp-unit) * 1);
+  --sp-sm:   calc(var(--sp-unit) * 2);
+  --sp-md:   calc(var(--sp-unit) * 4.5);
+  --sp-lg:   calc(var(--sp-unit) * 7);
+  --sp-xl:   calc(var(--sp-unit) * 11);
+  --col-pad: clamp(2.5rem, 8vw, 9rem);
+  --col-mid: clamp(1.8rem, 5vw, 5.5rem);
+  --max-text: 660px;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -441,7 +452,7 @@ section { position: relative; }
 
 /* ── BREATH INTERSTITIAL ── */
 .breath {
-  padding: clamp(5rem, 10vw, 9rem) clamp(2rem, 10vw, 10rem);
+  padding: var(--sp-xl) var(--col-pad);
   text-align: center;
   border-top: 1px solid rgba(201,169,110,0.12);
   border-bottom: 1px solid rgba(201,169,110,0.12);
@@ -488,14 +499,14 @@ section { position: relative; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(5rem, 8vw, 8rem) clamp(2.5rem, 5vw, 5rem);
+  padding: var(--sp-lg) var(--col-mid);
   background: var(--dark);
 }
 .split-text.mid { background: var(--mid); }
 
 /* ── FULL TEXT SECTION ── */
 .text-section {
-  padding: clamp(5rem, 11vw, 10rem) clamp(2rem, 12vw, 14rem);
+  padding: var(--sp-xl) var(--col-pad);
   text-align: center;
   background: var(--dark);
 }
@@ -503,7 +514,7 @@ section { position: relative; }
 
 /* ── PULL QUOTE ── */
 .pull {
-  padding: clamp(4rem, 8vw, 7rem) clamp(2rem, 14vw, 16rem);
+  padding: var(--sp-xl) clamp(3rem, 15vw, 18rem);
   text-align: center;
   background: var(--dark);
   border-top: 1px solid rgba(201,169,110,0.12);
@@ -535,7 +546,7 @@ section { position: relative; }
   text-transform: uppercase;
   color: var(--gold);
   opacity: 0.88;
-  margin-bottom: 1.8rem;
+  margin-bottom: clamp(0.8rem, 1.4vw, 1.1rem);
   display: block;
 }
 h2 {
@@ -544,7 +555,7 @@ h2 {
   font-weight: 200;
   line-height: 1.15;
   color: var(--cream);
-  margin-bottom: 2.2rem;
+  margin-bottom: clamp(1.2rem, 2.2vw, 1.8rem);
 }
 h2 em {
   font-style: italic;
@@ -570,7 +581,7 @@ h2 em {
 
 /* ── GALLERY ── */
 .gallery-section {
-  padding: clamp(5rem, 8vw, 8rem) clamp(1.5rem, 4vw, 4rem);
+  padding: var(--sp-lg) var(--col-mid);
   background: var(--mid);
 }
 .gallery-grid {
@@ -636,7 +647,7 @@ h2 em {
 
 /* ── MATTERPORT ── */
 .matterport-section {
-  padding: clamp(3.5rem, 7vw, 6rem) clamp(2rem, 8vw, 8rem);
+  padding: var(--sp-lg) var(--col-mid);
   text-align: center;
   background: var(--dark);
   border-top: 1px solid rgba(201,169,110,0.1);
@@ -644,7 +655,7 @@ h2 em {
 
 /* ── INQUIRY ── */
 .inquiry {
-  padding: clamp(4rem, 9vw, 8rem) clamp(2rem, 10vw, 10rem);
+  padding: var(--sp-lg) var(--col-pad);
   text-align: center;
   background: var(--mid);
 }
@@ -691,7 +702,7 @@ h2 em {
 
 /* ── CLOSING ── */
 .closing {
-  padding: clamp(5rem, 10vw, 9rem) clamp(2rem, 10vw, 10rem);
+  padding: var(--sp-xl) var(--col-pad);
   text-align: center;
   background: var(--dark);
   border-top: 1px solid rgba(201,169,110,0.12);
@@ -778,7 +789,7 @@ footer {
   .stat-lbl { font-size: 0.38rem; letter-spacing: 0.22em; }
 
   /* Typography */
-  h2 { font-size: clamp(1.5rem, 7vw, 2.6rem); margin-bottom: 1.4rem; }
+  h2 { font-size: clamp(1.5rem, 7vw, 2.6rem); margin-bottom: clamp(0.9rem, 1.8vw, 1.4rem); }
   .pull-quote { font-size: clamp(1.3rem, 6vw, 2.2rem); }
 
   /* Sections */
@@ -1021,6 +1032,73 @@ nav.scrolled {
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--dark); }
 ::-webkit-scrollbar-thumb { background: var(--gold-mid); border-radius: 2px; }
+
+/* ── EDITORIAL GOLD HAIRLINES — SECTION DIVIDERS ── */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right,
+    transparent 0%,
+    rgba(201,169,110,0.0) 5%,
+    rgba(201,169,110,0.3) 25%,
+    rgba(245,224,152,0.5) 50%,
+    rgba(201,169,110,0.3) 75%,
+    rgba(201,169,110,0.0) 95%,
+    transparent 100%);
+  margin: 0;
+}
+
+/* Act break — wider, more present */
+.act-break {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-md) var(--col-pad);
+  gap: 1.8rem;
+}
+.act-break::before, .act-break::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right,
+    transparent,
+    rgba(201,169,110,0.35) 40%,
+    rgba(245,224,152,0.55) 100%);
+}
+.act-break::after {
+  background: linear-gradient(to left,
+    transparent,
+    rgba(201,169,110,0.35) 40%,
+    rgba(245,224,152,0.55) 100%);
+}
+.act-break-glyph {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: rgba(201,169,110,0.5);
+  white-space: nowrap;
+}
+
+/* Typography rhythm */
+
+
+.body-copy {
+  margin-bottom: clamp(1.2rem, 2vw, 1.6rem);
+  line-height: 1.88;
+}
+
+/* Split gap — consistent */
+.split {
+  gap: clamp(4rem, 7vw, 7rem);
+}
+
+/* Pull quote — more silence around it */
+.pull-quote {
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>
 </head>
 <body>
@@ -1168,6 +1246,8 @@ nav.scrolled {
 </section>
 
 <!-- THRESHOLD — SPLIT -->
+<div class="section-divider"></div>
+<div class="act-break reveal"><span class="act-break-glyph">The House</span></div>
 <section id="rooms">
   <div class="split">
     <div class="split-text reveal">
@@ -1289,6 +1369,8 @@ nav.scrolled {
 </section>
 
 <!-- GROUNDS — SPLIT -->
+<div class="section-divider"></div>
+<div class="act-break reveal"><span class="act-break-glyph">The Grounds</span></div>
 <section id="grounds">
   <div class="split">
     <div class="split-text reveal">
@@ -1339,6 +1421,8 @@ nav.scrolled {
 </section>
 
 <!-- RESTORATION — SPLIT -->
+<div class="section-divider"></div>
+<div class="act-break reveal"><span class="act-break-glyph">The Restoration</span></div>
 <section id="restoration">
   <div class="split">
     <div class="split-text mid">
@@ -1368,6 +1452,7 @@ nav.scrolled {
 </section>
 
 <!-- GALLERY -->
+<div class="section-divider"></div>
 <section class="gallery-section" id="gallery">
   <span class="eyebrow" style="display:block;text-align:center;">Gallery</span>
   <h2 style="text-align:center;max-width:480px;margin:0 auto;">The rooms.<em>The grounds. The detail.</em></h2>
