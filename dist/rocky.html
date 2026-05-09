@@ -7,179 +7,261 @@
   <title>Rocky | Rachel Studio</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Pinyon+Script&display=swap" rel="stylesheet">
   <style>
-    :root{--dark:#0a0a0a;--gold:#C9A96E;--cream:#F5F0E8;--muted:rgba(245,240,232,.58);--faint:rgba(245,240,232,.10);--line:rgba(201,169,110,.28);--panel:rgba(14,12,10,.96);}
-    *{box-sizing:border-box;margin:0;padding:0;}
-    html,body{background:var(--dark);color:var(--cream);font-family:"Cormorant Garamond",Georgia,serif;height:100%;overflow:hidden;}
+    :root {
+      --dark: #0a0a0a;
+      --gold: #C9A96E;
+      --cream: #F5F0E8;
+      --muted: rgba(245,240,232,.55);
+      --line: rgba(201,169,110,.25);
+      --panel: rgba(12,10,8,.97);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; background: var(--dark); color: var(--cream); font-family: "Cormorant Garamond", Georgia, serif; overflow: hidden; }
 
     /* ── DOOR ── */
-    #door{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:var(--dark);}
-    #door::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,169,110,.10),transparent 55%);pointer-events:none;}
-    .dp{position:relative;z-index:1;width:min(480px,100%);border:1px solid var(--line);background:linear-gradient(180deg,rgba(201,169,110,.05),transparent),var(--panel);padding:clamp(36px,7vw,64px);text-align:center;}
-    .seal{width:60px;height:60px;margin-bottom:22px;opacity:.90;}
-    .kicker{font-size:.66rem;letter-spacing:.34em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;}
-    .dt{font-family:"Pinyon Script",cursive;font-size:clamp(4.5rem,14vw,8rem);line-height:.90;color:var(--cream);margin-bottom:18px;}
-    .ds{font-size:clamp(.95rem,2.2vw,1.1rem);font-weight:300;color:var(--muted);font-style:italic;line-height:1.45;margin-bottom:32px;}
-    .df{display:grid;gap:12px;max-width:320px;margin:0 auto;}
-    .df label{font-size:.66rem;letter-spacing:.24em;color:var(--gold);text-transform:uppercase;text-align:left;}
-    .df input{width:100%;min-height:50px;background:rgba(10,10,10,.70);border:1px solid var(--line);color:var(--cream);font-family:inherit;font-size:1.1rem;padding:13px 16px;text-align:center;letter-spacing:.08em;}
-    .df input:focus-visible{outline:1px solid var(--gold);outline-offset:2px;}
-    .db{width:100%;min-height:50px;background:var(--cream);color:var(--dark);border:none;font-family:inherit;font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;transition:opacity .18s;}
-    .db:hover{opacity:.88;}
-    .dm{min-height:1.4em;margin-top:12px;font-size:.92rem;color:var(--muted);font-style:italic;}
-    .dn{margin-top:24px;padding-top:18px;border-top:1px solid var(--faint);font-size:.72rem;color:rgba(245,240,232,.28);letter-spacing:.08em;line-height:1.6;}
+    #door {
+      position: fixed; inset: 0; z-index: 200;
+      display: grid; place-items: center;
+      background: var(--dark);
+    }
+    #door::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(201,169,110,.12), transparent 60%);
+      pointer-events: none;
+    }
+    .door-card {
+      position: relative; z-index: 1;
+      width: min(420px, 90vw);
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: clamp(40px,8vw,72px) clamp(32px,6vw,56px);
+      text-align: center;
+    }
+    .door-seal {
+      width: 56px; height: 56px;
+      margin: 0 auto 20px;
+      opacity: .92;
+      display: block;
+    }
+    .door-eyebrow {
+      font-size: .6rem; letter-spacing: .36em;
+      color: var(--gold); text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .door-name {
+      font-family: "Pinyon Script", cursive;
+      font-size: clamp(5rem,16vw,9rem);
+      line-height: .88;
+      color: var(--cream);
+      margin-bottom: 20px;
+    }
+    .door-sub {
+      font-size: clamp(.9rem,2vw,1.05rem);
+      font-weight: 300; font-style: italic;
+      color: var(--muted); line-height: 1.5;
+      margin-bottom: 34px;
+    }
+    .door-field { display: grid; gap: 8px; max-width: 280px; margin: 0 auto 0; }
+    .door-field label { font-size: .58rem; letter-spacing: .24em; color: var(--gold); text-transform: uppercase; text-align: left; }
+    .door-field input {
+      width: 100%; min-height: 48px;
+      background: rgba(10,10,10,.8);
+      border: 1px solid var(--line);
+      color: var(--cream);
+      font-family: inherit; font-size: 1.1rem;
+      padding: 12px 16px; text-align: center;
+      letter-spacing: .1em;
+      transition: border-color .2s;
+    }
+    .door-field input:focus-visible { outline: none; border-color: var(--gold); }
+    .door-btn {
+      margin-top: 12px;
+      width: 100%; min-height: 48px;
+      background: var(--cream); color: var(--dark);
+      border: none; font-family: inherit;
+      font-size: .68rem; letter-spacing: .24em; text-transform: uppercase;
+      cursor: pointer; transition: opacity .18s;
+    }
+    .door-btn:hover { opacity: .86; }
+    .door-msg { min-height: 1.4em; margin-top: 10px; font-size: .88rem; color: var(--muted); font-style: italic; }
+    .door-foot {
+      margin-top: 28px; padding-top: 18px;
+      border-top: 1px solid rgba(245,240,232,.08);
+      font-size: .6rem; letter-spacing: .08em;
+      color: rgba(245,240,232,.22); line-height: 1.7;
+    }
 
     /* ── STUDIO ── */
-    #studio{display:none;height:100vh;flex-direction:column;}
+    #studio {
+      display: none;
+      position: fixed; inset: 0;
+      flex-direction: column;
+    }
 
     /* TOP BAR */
-    .s-top{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;border-bottom:1px solid var(--line);background:var(--panel);flex-shrink:0;gap:12px;}
-    .s-brand{display:flex;align-items:center;gap:10px;}
-    .s-brand img{width:26px;height:26px;opacity:.85;}
-    .s-brand-name{font-family:"Pinyon Script",cursive;font-size:1.5rem;line-height:1;}
-    .s-brand-sub{font-size:.52rem;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-top:2px;}
-    .s-clock{font-size:.58rem;letter-spacing:.14em;color:rgba(245,240,232,.30);text-transform:uppercase;}
-    .s-actions{display:flex;align-items:center;gap:8px;}
-    .s-btn{background:none;border:1px solid var(--line);color:var(--muted);font-family:inherit;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px;cursor:pointer;transition:border-color .18s,color .18s;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;}
-    .s-btn:hover,.s-btn.active{border-color:var(--gold);color:var(--gold);}
-    /* Rocky button — gold filled */
-    .s-btn-rocky{background:var(--gold);color:var(--dark);border:1px solid var(--gold);font-family:inherit;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;padding:6px 14px;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;font-weight:600;}
-    .s-btn-rocky:hover{opacity:.88;}
+    .bar {
+      flex-shrink: 0;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 0 16px;
+      height: 46px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+      z-index: 10;
+    }
+    .bar-left { display: flex; align-items: center; gap: 10px; }
+    .bar-seal { width: 22px; height: 22px; opacity: .85; }
+    .bar-title { font-family: "Pinyon Script", cursive; font-size: 1.4rem; line-height: 1; }
+    .bar-sub { font-size: .5rem; letter-spacing: .28em; color: var(--gold); text-transform: uppercase; margin-top: 2px; }
 
-    /* FULL-WIDTH PREVIEW */
-    .s-body{flex:1;display:flex;flex-direction:column;overflow:hidden;height:calc(100vh - 52px);}
+    .bar-tabs { display: flex; gap: 4px; }
+    .tab {
+      background: none; border: 1px solid transparent;
+      color: rgba(245,240,232,.35);
+      font-family: inherit; font-size: .56rem; letter-spacing: .2em; text-transform: uppercase;
+      padding: 5px 11px; cursor: pointer; transition: all .15s;
+    }
+    .tab:hover { color: var(--cream); border-color: var(--line); }
+    .tab.active { color: var(--gold); border-color: var(--gold); }
 
-    /* PREVIEW BAR */
-    .preview-bar{display:flex;align-items:center;gap:8px;padding:7px 12px;border-bottom:1px solid var(--line);background:rgba(14,12,10,.90);flex-shrink:0;}
-    .preview-bar input{flex:1;background:rgba(10,10,10,.70);border:1px solid var(--line);color:var(--cream);font-family:inherit;font-size:.80rem;padding:6px 10px;min-width:0;}
-    .preview-bar input:focus-visible{outline:1px solid var(--gold);outline-offset:1px;}
-    .preview-bar button{background:var(--cream);color:var(--dark);border:none;font-family:inherit;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;padding:6px 12px;cursor:pointer;}
-    .preview-bar button:hover{opacity:.85;}
-    .vp-tabs{display:flex;gap:5px;flex-shrink:0;}
-    .vp-tab{background:none;border:1px solid var(--line);color:var(--muted);font-family:inherit;font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;padding:5px 9px;cursor:pointer;}
-    .vp-tab:hover,.vp-tab.active{border-color:var(--gold);color:var(--gold);}
+    .bar-right { display: flex; align-items: center; gap: 8px; }
+    .vp-btn {
+      background: none; border: 1px solid var(--line);
+      color: var(--muted); font-family: inherit;
+      font-size: .52rem; letter-spacing: .16em; text-transform: uppercase;
+      padding: 4px 9px; cursor: pointer; transition: all .15s;
+    }
+    .vp-btn:hover, .vp-btn.active { border-color: var(--gold); color: var(--gold); }
+    .open-rocky {
+      background: var(--gold); color: var(--dark);
+      border: 1px solid var(--gold);
+      font-family: inherit; font-size: .56rem; letter-spacing: .22em; text-transform: uppercase;
+      padding: 6px 14px; cursor: pointer; font-weight: 600;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 5px;
+      transition: opacity .15s;
+    }
+    .open-rocky:hover { opacity: .85; }
 
-    /* PREVIEW FRAME */
-    .preview-wrap{flex:1;overflow:hidden;position:relative;display:flex;align-items:flex-start;justify-content:center;background:#111;}
-    .preview-wrap iframe{border:none;height:100%;background:#111;transition:width .2s;}
-    .preview-wrap iframe.desktop{width:100%;}
-    .preview-wrap iframe.mobile{width:390px;border-left:1px solid var(--line);border-right:1px solid var(--line);}
-    .preview-wrap iframe.tablet{width:768px;}
+    /* PREVIEW */
+    .preview-wrap {
+      flex: 1;
+      display: flex; align-items: stretch; justify-content: center;
+      background: #0d0d0d;
+      overflow: hidden;
+      position: relative;
+    }
+    .preview-wrap iframe {
+      border: none; height: 100%;
+      transition: width .2s ease;
+    }
+    .preview-wrap iframe.vp-desktop { width: 100%; }
+    .preview-wrap iframe.vp-tablet  { width: 768px; border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+    .preview-wrap iframe.vp-mobile  { width: 390px; border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
 
-    .preview-label{font-size:.52rem;letter-spacing:.18em;color:rgba(245,240,232,.22);text-transform:uppercase;padding:4px 12px;border-top:1px solid var(--faint);flex-shrink:0;background:var(--dark);}
+    /* STATUS DOT */
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: #3ecf6e; display: inline-block; margin-right: 5px; }
+    .bar-status { font-size: .52rem; letter-spacing: .12em; color: rgba(245,240,232,.28); text-transform: uppercase; display: flex; align-items: center; }
   </style>
 </head>
 <body>
 
 <!-- DOOR -->
 <div id="door">
-  <div class="dp">
-    <img class="seal" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777397863/gh_key/gh_wax_seal_v3.png" alt="Rocky seal">
-    <div class="kicker">Rachel Studio</div>
-    <div class="dt">Rocky</div>
-    <p class="ds">The studio opens after the key.</p>
-    <form class="df" id="uf">
-      <label for="key">Studio key</label>
-      <input id="key" type="password" placeholder="·····" autocomplete="current-password" required>
-      <button class="db" type="submit">Open Studio</button>
+  <div class="door-card">
+    <img class="door-seal" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777397863/gh_key/gh_wax_seal_v3.png" alt="">
+    <div class="door-eyebrow">Rachel Studio · Private</div>
+    <div class="door-name">Rocky</div>
+    <p class="door-sub">The studio opens after the key.</p>
+    <form class="door-field" id="doorForm">
+      <label for="keyInput">Studio key</label>
+      <input id="keyInput" type="password" placeholder="·  ·  ·  ·  ·" autocomplete="current-password" required>
+      <button class="door-btn" type="submit">Open</button>
     </form>
-    <div class="dm" id="dm"></div>
-    <div class="dn">Private workspace · not for buyers · not indexed<br>Rocky · rachelhernandez.studio</div>
+    <div class="door-msg" id="doorMsg"></div>
+    <div class="door-foot">Private workspace · not for buyers · not indexed</div>
   </div>
 </div>
 
 <!-- STUDIO -->
 <div id="studio">
-
-  <!-- TOP BAR -->
-  <div class="s-top">
-    <div class="s-brand">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777397863/gh_key/gh_wax_seal_v3.png" alt="seal">
+  <div class="bar">
+    <div class="bar-left">
+      <img class="bar-seal" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777397863/gh_key/gh_wax_seal_v3.png" alt="">
       <div>
-        <div class="s-brand-name">Rocky</div>
-        <div class="s-brand-sub">Rachel Studio · Private</div>
+        <div class="bar-title">Rocky</div>
+        <div class="bar-sub">Rachel Studio</div>
       </div>
     </div>
 
-    <div class="s-actions">
-      <button class="s-btn" onclick="loadPreview('https://garren-hill.pages.dev')">Garran Hill</button>
-      <button class="s-btn" onclick="loadPreview('https://flowfarm-landing.pages.dev')">Flow Farm</button>
-      <button class="s-btn" onclick="document.getElementById('pf').src=document.getElementById('pu').value">↺ Reload</button>
-      <!-- This opens Rocky in a new tab — never inside an iframe -->
-      <a class="s-btn-rocky" href="https://app.base44.com/superagent/69e248a2469cc39540781cce" target="_blank" rel="noopener">Open Rocky ↗</a>
+    <div class="bar-tabs">
+      <button class="tab active" onclick="loadSite('gh', this)">Garran Hill</button>
+      <button class="tab" onclick="loadSite('ff', this)">Flow Farm</button>
     </div>
 
-    <div class="s-clock" id="clock"></div>
+    <div class="bar-right">
+      <button class="vp-btn active" onclick="setVp('desktop',this)">Desktop</button>
+      <button class="vp-btn" onclick="setVp('tablet',this)">Tablet</button>
+      <button class="vp-btn" onclick="setVp('mobile',this)">Mobile</button>
+      <button class="vp-btn" onclick="reloadFrame()">↺</button>
+      <a class="open-rocky" href="https://app.base44.com/superagent/69e248a2469cc39540781cce" target="_blank" rel="noopener">Open Rocky ↗</a>
+    </div>
   </div>
 
-  <!-- PREVIEW ONLY — full width -->
-  <div class="s-body">
-    <div class="preview-bar">
-      <input id="pu" type="url" value="https://garren-hill.pages.dev" placeholder="Enter URL…">
-      <div class="vp-tabs">
-        <button class="vp-tab active" onclick="setView('desktop',this)">Desktop</button>
-        <button class="vp-tab" onclick="setView('tablet',this)">Tablet</button>
-        <button class="vp-tab" onclick="setView('mobile',this)">Mobile</button>
-      </div>
-      <button onclick="lp()">Load</button>
-    </div>
-    <div class="preview-wrap">
-      <iframe id="pf" src="https://garren-hill.pages.dev" class="desktop" allowfullscreen title="Site Preview"></iframe>
-    </div>
-    <div class="preview-label" id="pl">garren-hill.pages.dev · desktop</div>
+  <div class="preview-wrap">
+    <iframe id="frame" src="https://garren-hill.pages.dev" class="vp-desktop" title="Site Preview" allowfullscreen></iframe>
   </div>
-
 </div>
 
 <script>
-  const K = 'rokymyheart';
+  const PASS = 'rokymyheart';
+  const SITES = {
+    gh: 'https://garren-hill.pages.dev',
+    ff: 'https://flowfarm-landing.pages.dev'
+  };
 
-  // Clock
-  function tick(){
-    const e=document.getElementById('clock');
-    if(e) e.textContent=new Date().toLocaleString('en-US',{timeZone:'America/New_York',weekday:'short',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'})+' ET';
-  }
-  tick(); setInterval(tick,30000);
+  // Restore session
+  if (sessionStorage.getItem('rs_open') === '1') openStudio();
 
-  // Preview
-  function lp(){
-    const u=document.getElementById('pu').value.trim();
-    if(!u) return;
-    document.getElementById('pf').src=u;
-    const host=u.replace(/https?:\/\//,'').split('/')[0];
-    document.getElementById('pl').textContent=host+' · '+curView;
-  }
-  function loadPreview(url){
-    document.getElementById('pu').value=url;
-    lp();
-  }
-  document.getElementById('pu').addEventListener('keydown',e=>{if(e.key==='Enter')lp();});
-
-  // Viewport
-  let curView='desktop';
-  function setView(v,btn){
-    curView=v;
-    document.querySelectorAll('.vp-tab').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const pf=document.getElementById('pf');
-    pf.className=v;
-    const host=document.getElementById('pu').value.replace(/https?:\/\//,'').split('/')[0];
-    document.getElementById('pl').textContent=host+' · '+v;
-  }
-
-  // Door
-  if(sessionStorage.getItem('so')==='1') open();
-  document.getElementById('uf').addEventListener('submit',e=>{
+  document.getElementById('doorForm').addEventListener('submit', e => {
     e.preventDefault();
-    const v=document.getElementById('key').value.trim().toLowerCase();
-    if(v===K) open();
-    else{document.getElementById('dm').textContent='That key did not unlock. Try again.';document.getElementById('key').value='';}
+    const v = document.getElementById('keyInput').value.trim().toLowerCase();
+    if (v === PASS) {
+      openStudio();
+    } else {
+      document.getElementById('doorMsg').textContent = 'That key didn\'t work. Try again.';
+      document.getElementById('keyInput').value = '';
+    }
   });
-  function open(){
-    sessionStorage.setItem('so','1');
-    document.getElementById('door').style.display='none';
-    const s=document.getElementById('studio');
-    s.style.display='flex';
-    s.style.flexDirection='column';
+
+  function openStudio() {
+    sessionStorage.setItem('rs_open', '1');
+    document.getElementById('door').style.display = 'none';
+    const s = document.getElementById('studio');
+    s.style.display = 'flex';
+    s.style.flexDirection = 'column';
+  }
+
+  let curVp = 'desktop';
+
+  function loadSite(key, btn) {
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('frame').src = SITES[key];
+  }
+
+  function setVp(vp, btn) {
+    curVp = vp;
+    document.querySelectorAll('.vp-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = document.getElementById('frame');
+    f.className = 'vp-' + vp;
+  }
+
+  function reloadFrame() {
+    const f = document.getElementById('frame');
+    f.src = f.src;
   }
 </script>
 </body>
