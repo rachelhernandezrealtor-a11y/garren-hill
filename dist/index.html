@@ -209,23 +209,28 @@
     background: rgba(201,169,110,0.22);
     flex-shrink: 0;
   }
+  .stat-crest-spacer {
+    width: clamp(80px, 9vw, 110px);
+    flex-shrink: 0;
+  }
+
   .stat-crest {
-    padding: 0 clamp(0.8rem, 1.5vw, 1.8rem);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-    position: relative;
+    pointer-events: none;
   }
   .stat-crest img {
-    height: clamp(56px, 6vw, 80px);
+    height: clamp(60px, 7vw, 90px);
     width: auto;
-    opacity: 0.95;
+    opacity: 1;
     display: block;
-    position: relative;
-    z-index: 3;
-    margin-top: -12px;
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.8));
   }
 
   /* KB GATE SECTION */
@@ -351,11 +356,10 @@
       <span class="stat-number">4</span>
       <span class="stat-label">Full · 2 Powder</span>
     </div>
-    <div class="stat-divider"></div>
+    <div class="stat-crest-spacer"></div>
     <div class="stat-crest">
       <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1777265217/gh_key/gh_wax_stamp_3d.png" alt="Garran Hill Crest">
     </div>
-    <div class="stat-divider"></div>
     <div class="stat-item">
       <span class="stat-number">6,072 sq ft</span>
       <span class="stat-label">Living Area</span>
