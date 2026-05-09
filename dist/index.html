@@ -94,6 +94,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&display=swap" rel="stylesheet" />
 <style> * { direction: ltr; }
 
+:root {
+  --dark: #0a0a0a;
+  --gold: #C9A96E;
+  --cream: #F5F0E8;
+  --mid: #1a1a1a;
+
+  /* ── SPACING SYSTEM ── */
+  --sp-unit: clamp(0.9rem, 1.8vw, 1.4rem);
+  --sp-xs:   calc(var(--sp-unit) * 1);
+  --sp-sm:   calc(var(--sp-unit) * 2);
+  --sp-md:   calc(var(--sp-unit) * 4.5);
+  --sp-lg:   calc(var(--sp-unit) * 7);
+  --sp-xl:   calc(var(--sp-unit) * 11);
+  --col-pad: clamp(2.5rem, 8vw, 9rem);
+  --col-mid: clamp(1.8rem, 5vw, 5.5rem);
+  --max-text: 660px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--dark);
+  color: var(--cream);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  line-height: 1.7;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+
 /* ── HERO ROOM — The Library ── */
 /* One room commands. The rest support. */
 .split.hero-room {
