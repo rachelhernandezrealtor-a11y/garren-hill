@@ -296,28 +296,6 @@
     flex-shrink: 0;
   }
 
-  .stat-crest-img {
-    width: 130px;
-    height: auto;
-    display: block;
-    background: transparent;
-    filter: drop-shadow(0 0 12px rgba(201,169,110,0.4));
-    margin-top: -1.5rem;
-    margin-bottom: -1.5rem;
-    position: relative;
-    z-index: 2;
-  }
-  .stat-crest-img {
-    width: 130px;
-    height: auto;
-    display: block;
-    background: transparent;
-    filter: drop-shadow(0 0 12px rgba(201,169,110,0.4));
-    margin-top: -1.5rem;
-    margin-bottom: -1.5rem;
-    position: relative;
-    z-index: 2;
-  }
 
   /* ── HERO ── */
   .hero {
@@ -442,6 +420,27 @@
   }
 
 
+
+  /* STAT CREST */
+  .stat-crest-col {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 clamp(12px, 2vw, 28px);
+    position: relative;
+    z-index: 2;
+  }
+  .stat-crest-img {
+    width: clamp(80px, 9vw, 120px);
+    height: auto;
+    display: block;
+    background: transparent;
+    filter: drop-shadow(0 0 10px rgba(201,169,110,0.45));
+    margin-top: -1.8rem;
+    margin-bottom: -1.8rem;
+  }
+
 </style>
 </head>
 <body>
@@ -477,20 +476,20 @@
 
 <!-- STAT BAR -->
 <div class="stat-bar">
-  <div class="stat-item">
-    <span class="stat-number">4</span>
-    <span class="stat-label">Bedrooms</span>
+  <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">Bedrooms</span></div>
+  <div class="stat-divider"></div>
+  <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">Bathrooms</span></div>
+  <div class="stat-divider"></div>
+  <div class="stat-crest-col">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778339788/gh_key/gh_crest_v3.png" class="stat-crest-img" alt="Garran Hill">
   </div>
-  <div class="stat-item">
-    <span class="stat-number">6</span>
-    <span class="stat-label">Bathrooms</span>
-  </div>
-  <div class="stat-crest-wrap">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal/v1777397863/gh_key/gh_wax_seal_v3.png"
-         class="stat-crest-img" alt="Garran Hill crest">
-  </div>
-    <div class="stat-crest-diamond">◆</div>
-    <div class="stat-crest-line"></div>
+  <div class="stat-divider"></div>
+  <div class="stat-item"><span class="stat-number">6,072</span><span class="stat-label">Square Feet</span></div>
+  <div class="stat-divider"></div>
+  <div class="stat-item"><span class="stat-number">4.15</span><span class="stat-label">Acres</span></div>
+  <div class="stat-divider"></div>
+  <div class="stat-item"><span class="stat-number">$4,250,000</span><span class="stat-label">&nbsp;</span></div>
+</div>
   </div>
   <div class="stat-item">
     <span class="stat-number">6,072</span>
