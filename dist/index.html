@@ -37,9 +37,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
    The center div is transparent. The crest sits in the transparent zone.
    No mask hacks. No overflow issues. Just physics. */
 .stat-bar-wrap{position:relative;width:100%;display:flex;align-items:stretch;z-index:10;overflow:visible;}
-.stat-bar-left{flex:1;background:rgba(10,10,10,0.92);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:space-around;padding:clamp(1.2rem,2vw,1.8rem) clamp(1.5rem,3vw,3rem);border-top:1px solid rgba(201,169,110,0.28);border-bottom:1px solid rgba(201,169,110,0.28);}
-.stat-bar-right{flex:1;background:rgba(10,10,10,0.92);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:space-around;padding:clamp(1.2rem,2vw,1.8rem) clamp(1.5rem,3vw,3rem);border-top:1px solid rgba(201,169,110,0.28);border-bottom:1px solid rgba(201,169,110,0.28);}
-.stat-bar-center{width:clamp(120px,12vw,155px);flex-shrink:0;background:transparent;position:relative;}
+.stat-bar-left{flex:1;background:rgba(10,10,10,0.94);display:flex;align-items:center;justify-content:space-around;padding:clamp(1.2rem,2vw,1.8rem) clamp(1.5rem,3vw,3rem);border-top:1px solid rgba(201,169,110,0.28);border-bottom:1px solid rgba(201,169,110,0.28);}
+.stat-bar-right{flex:1;background:rgba(10,10,10,0.94);display:flex;align-items:center;justify-content:space-around;padding:clamp(1.2rem,2vw,1.8rem) clamp(1.5rem,3vw,3rem);border-top:1px solid rgba(201,169,110,0.28);border-bottom:1px solid rgba(201,169,110,0.28);}
+.stat-bar-center{width:clamp(120px,12vw,155px);flex-shrink:0;background:transparent;position:relative;z-index:15;}
 .stat-crest{position:absolute;left:50%;top:50%;transform:translate(-50%,-62%);z-index:20;pointer-events:none;}
 .stat-crest img{height:clamp(90px,10vw,130px);width:auto;display:block;filter:drop-shadow(0 2px 14px rgba(0,0,0,0.8));}
 .stat-item{text-align:center;}
