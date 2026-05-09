@@ -409,22 +409,24 @@ h2 em {
 }
 .inquiry-form {
   max-width: 520px;
-  margin: 3rem auto 0;
+  margin: 4rem auto 0;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.8rem;
 }
 .inquiry-form input,
 .inquiry-form textarea {
-  background: rgba(245,240,232,0.05);
-  border: 1px solid rgba(201,169,110,0.2);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(201,169,110,0.3);
   color: var(--cream);
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
   font-weight: 300;
-  padding: 0.9rem 1.2rem;
+  letter-spacing: 0.05em;
+  padding: 1rem 0;
   outline: none;
-  transition: border-color 0.3s;
+  transition: border-color 0.35s;
   width: 100%;
 }
 .inquiry-form input:focus,
@@ -455,30 +457,32 @@ h2 em {
 }
 .closing-script {
   font-family: 'Pinyon Script', cursive;
-  font-size: clamp(4rem, 10vw, 9rem);
-  color: rgba(245,240,232,0.92);
-  line-height: 0.9;
-  margin: 2.2rem 0 1.8rem;
+  font-size: clamp(4.5rem, 12vw, 11rem);
+  color: rgba(245,240,232,0.94);
+  line-height: 0.88;
+  margin: 2.8rem 0 2rem;
 }
 .closing-address {
   font-size: clamp(0.48rem, 0.7vw, 0.6rem);
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(245,240,232,0.45);
-  margin: 1.4rem 0 0.6rem;
+  color: rgba(245,240,232,0.55);
+  margin: 1.8rem 0 0.8rem;
 }
 .closing-price {
   font-size: clamp(1.4rem, 2.5vw, 2.2rem);
   font-weight: 300;
   color: var(--gold);
   letter-spacing: 0.06em;
-  margin: 0.4rem 0 2.4rem;
+  margin: 0.6rem 0 3.2rem;
 }
 .closing-italic {
   font-style: italic;
-  font-size: clamp(1rem, 1.8vw, 1.3rem);
-  color: rgba(245,240,232,0.55);
-  margin-top: 2.5rem;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 200;
+  color: rgba(245,240,232,0.6);
+  letter-spacing: 0.04em;
+  margin-top: 3rem;
 }
 
 /* ── FOOTER ── */
@@ -520,6 +524,39 @@ footer {
 
 section + section {
   border-top: 1px solid rgba(201,169,110,0.06);
+}
+
+.inquiry-form input::placeholder,
+.inquiry-form textarea::placeholder {
+  color: rgba(245,240,232,0.28);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: clamp(0.42rem, 0.62vw, 0.54rem);
+}
+.inquiry-form input:focus,
+.inquiry-form textarea:focus {
+  border-bottom-color: rgba(201,169,110,0.75);
+}
+
+.closing-hairline {
+  width: clamp(40px, 8vw, 80px);
+  height: 1px;
+  background: rgba(201,169,110,0.4);
+  margin: 0 auto 2.5rem;
+}
+.closing-statement {
+  max-width: 420px;
+  margin: 0 auto 3rem;
+}
+.closing-statement p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-weight: 200;
+  font-style: italic;
+  color: rgba(245,240,232,0.7);
+  letter-spacing: 0.04em;
+  line-height: 1.8;
+  margin: 0;
 }
 </style>
 </head>
@@ -890,14 +927,15 @@ section + section {
 <!-- INQUIRY -->
 <section class="inquiry" id="inquiry">
   <span class="eyebrow">Sotheby's International Realty</span>
-  <h2 style="max-width:520px;margin:0 auto;">Request a private showing.</h2>
+  <h2 style="max-width:520px;margin:0 auto;font-weight:200;">The house is available for<em> private viewing.</em></h2>
   <form class="inquiry-form" action="https://formsubmit.co/rachelhernandezrealtor@gmail.com" method="POST">
     <input type="hidden" name="_subject" value="Garran Hill — Private Showing Request">
     <input type="hidden" name="_captcha" value="false">
-    <input type="text" name="name" placeholder="Name" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="tel" name="phone" placeholder="Phone">
-    <textarea name="message" placeholder="Message"></textarea>
+    <input type="hidden" name="_next" value="https://garren-hill.pages.dev/?thankyou=1">
+    <input type="text" name="name" placeholder="Your name" required>
+    <input type="email" name="email" placeholder="Email address" required>
+    <input type="tel" name="phone" placeholder="Phone number">
+    <textarea name="message" placeholder="How may we assist you"></textarea>
     <button type="submit" class="btn-gold">Send Inquiry</button>
   </form>
 </section>
@@ -905,11 +943,16 @@ section + section {
 <!-- CLOSING -->
 <section class="closing">
   <span class="eyebrow">Offered by Sotheby's International Realty</span>
+  <div class="closing-hairline"></div>
   <div class="closing-script">Garran Hill</div>
   <p class="closing-address">200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, North Carolina</p>
   <p class="closing-price">$4,250,000</p>
+  <div class="closing-statement">
+    <p>Garran Hill is ready.</p>
+    <p>It is offered now for the first time.</p>
+  </div>
   <a href="#inquiry" class="btn-gold">Request a Private Showing</a>
-  <p class="closing-italic">For the next steward.</p>
+  <p class="closing-italic">Rachel Hernandez &nbsp;&middot;&nbsp; Sotheby's International Realty</p>
 </section>
 
 <!-- FOOTER -->
