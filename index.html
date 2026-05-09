@@ -139,7 +139,7 @@ section.hero {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   z-index: 10;
-  padding: 0 clamp(2rem, 6vw, 6rem) 1.8rem;
+  padding: clamp(0.6rem, 1.2vw, 1.2rem) clamp(2rem, 6vw, 6rem) 1.6rem;
   background: linear-gradient(
     180deg,
     rgba(5,5,5,0) 0%,
@@ -163,42 +163,9 @@ section.hero {
 }
 
 /* Crest — floats centered above stat numbers */
-.stat-crest-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  position: relative;
-  width: 100%;
-  height: 0;
-  z-index: 20;
-  pointer-events: none;
-  margin-bottom: 0;
-}
-.stat-crest-wrap img {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  height: clamp(100px, 10vw, 140px);
-  width: auto;
-  display: block;
-  filter:
-    drop-shadow(0 -6px 20px rgba(0,0,0,0.95))
-    drop-shadow(0 0 40px rgba(0,0,0,0.98))
-    drop-shadow(0 8px 24px rgba(0,0,0,0.98))
-    drop-shadow(0 0 30px rgba(201,169,110,0.30))
-    drop-shadow(0 0 14px rgba(245,224,152,0.18));
-  animation: crestPulse 4s ease-in-out infinite;
-  transition: transform 0.4s ease, filter 0.4s ease;
-}
-@keyframes crestPulse {
-  0%, 100% {
-    filter:
-      drop-shadow(0 -6px 20px rgba(0,0,0,0.95))
-      drop-shadow(0 0 40px rgba(0,0,0,0.98))
-      drop-shadow(0 0 30px rgba(201,169,110,0.28))
-      drop-shadow(0 0 14px rgba(245,224,152,0.16));
-  }
+
+
+
   50% {
     filter:
       drop-shadow(0 -6px 20px rgba(0,0,0,0.95))
@@ -207,20 +174,18 @@ section.hero {
       drop-shadow(0 0 22px rgba(245,224,152,0.28));
   }
 }
-.stat-crest-wrap img:hover {
-  transform: translateX(-50%) translateY(-5px) scale(1.04);
-  animation: none;
-}
+
 
 /* Stat numbers row — centered, with space for crest above */
 .stat-numbers {
+  align-items: center;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
   gap: 0;
   width: 100%;
-  padding-top: clamp(80px, 9vw, 120px);
+  
 }
 .stat-item {
   display: flex;
@@ -270,19 +235,20 @@ section.hero {
 
 /* Mobile stat bar */
 @media (max-width: 768px) {
-  .stat-bar { padding: 0 1.2rem 1.4rem; }
+  .stat-bar { padding: clamp(0.6rem, 1.2vw, 1.2rem) clamp(2rem, 6vw, 6rem) 1.6rem; }
   .stat-numbers {
+  align-items: center;
     flex-wrap: wrap;
     gap: 0;
     row-gap: 0.6rem;
-    padding-top: clamp(60px, 16vw, 90px);
+    
   }
   .stat-item { padding: 0 0.7rem; min-width: 28%; }
   .stat-price { min-width: 100%; text-align: center; padding-top: 0.4rem; }
   .stat-div { display: none; }
   .stat-num { font-size: 1.1rem; }
   .stat-lbl { font-size: 0.62rem; letter-spacing: 0.26em; }
-  .stat-crest-wrap img { height: 72px; }
+  
 }
 
 
@@ -1538,6 +1504,63 @@ ero-room { grid-template-columns: 1fr; padding: var(--sp-lg) 1.6rem; }
     rgba(201,169,110,0.45) 0%,
     transparent 100%);
 }
+
+/* ══ CREST — centered in stat bar row, floats upward ══ */
+.stat-crest-wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  padding: 0 clamp(1.2rem, 2.5vw, 2.8rem);
+}
+.stat-crest-wrap img {
+  height: clamp(90px, 9vw, 130px);
+  width: auto;
+  display: block;
+  position: relative;
+  bottom: clamp(18px, 2.5vw, 32px);
+  filter:
+    drop-shadow(0 -4px 16px rgba(0,0,0,0.98))
+    drop-shadow(0 0 32px rgba(0,0,0,0.98))
+    drop-shadow(0 6px 20px rgba(0,0,0,0.98))
+    drop-shadow(0 0 24px rgba(201,169,110,0.28))
+    drop-shadow(0 0 12px rgba(245,224,152,0.16));
+  animation: crestPulse 4.5s ease-in-out infinite;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+.stat-crest-wrap img:hover {
+  transform: translateY(-6px) scale(1.05);
+  animation: none;
+  filter:
+    drop-shadow(0 -4px 16px rgba(0,0,0,0.98))
+    drop-shadow(0 0 32px rgba(0,0,0,0.98))
+    drop-shadow(0 0 40px rgba(201,169,110,0.45))
+    drop-shadow(0 0 20px rgba(245,224,152,0.30));
+}
+@keyframes crestPulse {
+  0%, 100% {
+    filter:
+      drop-shadow(0 -4px 16px rgba(0,0,0,0.98))
+      drop-shadow(0 0 32px rgba(0,0,0,0.98))
+      drop-shadow(0 0 22px rgba(201,169,110,0.25))
+      drop-shadow(0 0 10px rgba(245,224,152,0.14));
+  }
+  50% {
+    filter:
+      drop-shadow(0 -4px 16px rgba(0,0,0,0.98))
+      drop-shadow(0 0 32px rgba(0,0,0,0.98))
+      drop-shadow(0 0 38px rgba(201,169,110,0.40))
+      drop-shadow(0 0 18px rgba(245,224,152,0.26));
+  }
+}
+
+/* Mobile: hide crest in stat bar, keep numbers clean */
+@media (max-width: 768px) {
+  .stat-crest-wrap { display: none; }
+  .stat-numbers {
+  align-items: center; padding-top: 0; }
+}
 </style>
 </head>
 <body>
@@ -1592,19 +1615,20 @@ ero-room { grid-template-columns: 1fr; padding: var(--sp-lg) 1.6rem; }
 
   <!-- STAT BAR -->
   <div class="stat-bar">
-    <div class="stat-crest-wrap">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest">
-    </div>
-    <div class="stat-numbers stagger">
+    <div class="stat-numbers">
       <div class="stat-item"><span class="stat-num">4</span><span class="stat-lbl">Bedrooms</span></div>
       <div class="stat-div"></div>
       <div class="stat-item"><span class="stat-num">6</span><span class="stat-lbl">Bathrooms</span></div>
+      <div class="stat-div"></div>
+      <div class="stat-crest-wrap">
+        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest">
+      </div>
       <div class="stat-div"></div>
       <div class="stat-item"><span class="stat-num">6,072</span><span class="stat-lbl">Living Area</span></div>
       <div class="stat-div"></div>
       <div class="stat-item"><span class="stat-num">4.15</span><span class="stat-lbl">Acres</span></div>
       <div class="stat-div"></div>
-      <div class="stat-item stat-price"><span class="stat-num">$4,250,000</span><span class="stat-lbl">&nbsp;</span></div>
+      <div class="stat-item stat-price"><span class="stat-num">$4,250,000</span></div>
     </div>
   </div>
 </section>
