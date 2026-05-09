@@ -156,34 +156,34 @@
 
   /* STAT BAR */
   .stat-bar {
+    position: relative;
+    width: 100%;
     background: rgba(10,10,10,0.92);
-    padding: clamp(1.2rem, 2vw, 1.8rem) clamp(2rem, 4vw, 4rem);
+    backdrop-filter: blur(6px);
+    padding: clamp(1.4rem, 2.2vw, 2rem) clamp(2rem, 4vw, 4rem);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    box-sizing: border-box;
-    backdrop-filter: blur(6px);
     flex-wrap: nowrap;
     overflow: visible;
+    z-index: 5;
+    box-sizing: border-box;
   }
-  .stat-bar::before, .stat-bar::after {
+  .stat-bar::before {
     content: '';
     position: absolute;
-    left: clamp(2rem, 4vw, 4rem);
-    right: clamp(2rem, 4vw, 4rem);
+    top: 0; left: clamp(2rem,4vw,4rem); right: clamp(2rem,4vw,4rem);
     height: 1px;
     background: rgba(201,169,110,0.35);
   }
-  .stat-bar::before { top: 0; }
-  .stat-bar::after { bottom: 0; }
-  .stat-item {
-    text-align: center;
-    padding: 0;
-    flex: 1;
+  .stat-bar::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: clamp(2rem,4vw,4rem); right: clamp(2rem,4vw,4rem);
+    height: 1px;
+    background: rgba(201,169,110,0.35);
   }
+  .stat-item { text-align: center; flex: 1; }
   .stat-number {
     display: block;
     font-family: 'Cormorant Garamond', serif;
@@ -196,41 +196,36 @@
   }
   .stat-label {
     display: block;
-    font-size: clamp(0.36rem, 0.48vw, 0.5rem);
+    font-size: clamp(0.5rem, 0.6vw, 0.62rem);
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(245,240,232,0.45);
-    margin-top: 0.32rem;
+    color: rgba(245,240,232,0.5);
+    margin-top: 0.3rem;
     white-space: nowrap;
   }
   .stat-divider {
-    width: 1px;
-    height: 2rem;
-    background: rgba(201,169,110,0.22);
+    width: 1px; height: 2rem;
+    background: rgba(201,169,110,0.25);
     flex-shrink: 0;
   }
-  .stat-crest-spacer {
-    width: clamp(80px, 9vw, 110px);
+  .stat-crest-gap {
+    width: clamp(100px, 11vw, 140px);
     flex-shrink: 0;
   }
-
+  /* Crest rises above bar — no clipping because bar is outside hero */
   .stat-crest {
     position: absolute;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    top: 0;
+    transform: translate(-50%, -52%);
+    z-index: 20;
     pointer-events: none;
   }
   .stat-crest img {
-    height: clamp(60px, 7vw, 90px);
+    height: clamp(80px, 9vw, 116px);
     width: auto;
-    opacity: 1;
     display: block;
-    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.8));
+    filter: drop-shadow(0 4px 20px rgba(0,0,0,1));
   }
 
   /* KB GATE SECTION */
@@ -341,43 +336,41 @@
   </div>
 </section>
 
-<!-- STAT BAR — outside hero so crest can float above without clip -->
+<!-- STAT BAR — sibling to hero, crest floats above freely -->
 <div class="stat-bar">
-  <div class="stat-crest-wrap">
+  <div class="stat-crest">
     <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1777265217/gh_key/gh_wax_stamp_3d.png" alt="Garran Hill Crest">
   </div>
-  <div class="stat-bar-inner">
-    <div class="stat-item">
-      <span class="stat-number">1916</span>
-      <span class="stat-label">Est.</span>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item">
-      <span class="stat-number">4</span>
-      <span class="stat-label">Bedrooms</span>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item">
-      <span class="stat-number">4</span>
-      <span class="stat-label">Full · 2 Powder</span>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-crest-spacer"></div>
-    <div class="stat-divider"></div>
-    <div class="stat-item">
-      <span class="stat-number">6,072 sq ft</span>
-      <span class="stat-label">Living Area</span>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item">
-      <span class="stat-number">4.15 Acres</span>
-      <span class="stat-label">Land</span>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item">
-      <span class="stat-number">$4,250,000</span>
-      <span class="stat-label">Offered At</span>
-    </div>
+  <div class="stat-item">
+    <span class="stat-number">1916</span>
+    <span class="stat-label">Est.</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-number">4</span>
+    <span class="stat-label">Bedrooms</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-number">4</span>
+    <span class="stat-label">Full · 2 Powder</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-crest-gap"></div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-number">6,072 sq ft</span>
+    <span class="stat-label">Living Area</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-number">4.15 Acres</span>
+    <span class="stat-label">Land</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-number">$4,250,000</span>
+    <span class="stat-label">Offered At</span>
   </div>
 </div>
 
