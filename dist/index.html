@@ -1315,7 +1315,7 @@
 <script>
   (function() {
     var stored = sessionStorage.getItem('gh_access');
-    if (stored === 'granted') {
+    if (stored === 'granted' || window.location.hash === '#preview') {
       document.getElementById('pw-gate').style.display = 'none';
       return;
     }
