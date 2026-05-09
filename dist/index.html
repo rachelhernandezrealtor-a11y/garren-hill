@@ -167,7 +167,7 @@
     box-sizing: border-box;
     backdrop-filter: blur(6px);
     flex-wrap: nowrap;
-    overflow: hidden;
+    overflow: visible;
   }
   .stat-bar::before, .stat-bar::after {
     content: '';
@@ -215,14 +215,17 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    position: relative;
   }
   .stat-crest img {
-    height: clamp(44px, 4.5vw, 62px);
+    height: clamp(56px, 6vw, 80px);
     width: auto;
     opacity: 0.95;
     display: block;
     position: relative;
     z-index: 3;
+    margin-top: -12px;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
   }
 
   /* KB GATE SECTION */
