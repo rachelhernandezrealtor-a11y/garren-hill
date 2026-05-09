@@ -35,17 +35,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-sub{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(0.95rem,1.7vw,1.2rem);letter-spacing:0.18em;color:var(--cream);opacity:0.7;}
 
 /* STAT BAR */
-.stat-bar-wrap{position:absolute;bottom:0;left:0;right:0;display:flex;align-items:stretch;z-index:10;overflow:visible;height:clamp(70px,8vw,100px);}
-.stat-bar-left{flex:1;background:rgba(10,10,10,0.96);display:flex;align-items:center;justify-content:space-around;padding:clamp(0.9rem,1.8vw,1.5rem) clamp(1.5rem,3vw,3rem);border-top:1px solid rgba(201,169,110,0.25);}
-.stat-bar-right{flex:1;background:rgba(10,10,10,0.96);display:flex;align-items:center;justify-content:space-around;padding:clamp(0.9rem,1.8vw,1.5rem) clamp(1.5rem,3vw,3rem);border-top:1px solid rgba(201,169,110,0.25);}
-.stat-bar-center{width:clamp(200px,20vw,260px);flex-shrink:0;background:transparent;position:relative;z-index:15;align-self:stretch;}
-.stat-crest{position:absolute;left:50%;top:50%;transform:translate(-50%,-72%);z-index:20;pointer-events:none;}
-.stat-crest::after{content:'';position:absolute;left:50%;bottom:-18px;transform:translateX(-50%);width:160px;height:40px;background:radial-gradient(ellipse at center, rgba(201,169,110,0.65) 0%, rgba(201,169,110,0.22) 40%, transparent 72%);border-radius:50%;filter:blur(8px);z-index:-1;}
-.stat-crest img{height:clamp(150px,16vw,230px);width:auto;display:block;filter:drop-shadow(0 20px 40px rgba(0,0,0,1)) drop-shadow(0 8px 16px rgba(0,0,0,0.95)) drop-shadow(0 0 30px rgba(201,169,110,0.35));transform:perspective(600px) rotateX(6deg);transform-origin:center bottom;transition:filter 0.3s;}
-.stat-item{text-align:center;}
-.stat-number{display:block;font-family:"Cormorant Garamond",serif;font-size:clamp(1.1rem,1.8vw,2rem);font-weight:300;color:#C9A96E;letter-spacing:0.06em;line-height:1;}
-.stat-label{display:block;font-size:clamp(0.4rem,0.52vw,0.55rem);letter-spacing:0.22em;text-transform:uppercase;color:rgba(245,240,232,0.4);margin-top:0.28rem;white-space:nowrap;}
-.stat-divider{width:1px;height:1.5rem;background:rgba(201,169,110,0.18);flex-shrink:0;}
+
+
+
+
+
+
+
+
+
+
+
 
 /* SECTION SHARED */
 section{position:relative;}
@@ -139,10 +139,10 @@ footer{padding:clamp(2.5rem,5vw,4rem) clamp(2rem,5vw,5rem);border-top:1px solid 
   nav{padding:1rem 1.5rem;}
   .nav-links{display:none;}
   .hero{max-height:none;}
-  .stat-bar-wrap{flex-direction:column;position:relative;}
-  .stat-bar-left,.stat-bar-right{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:0.5rem;padding:0.8rem;}
-  .stat-bar-center{display:none;}
-  .stat-number{font-size:1.1rem;}
+  
+  .stat-bar-left,
+  
+  
   .split,.split.reverse{flex-direction:column;max-height:none;}
   .split-img{min-height:260px;max-height:380px;}
   .split-text{padding:3rem 1.8rem;}
@@ -158,6 +158,98 @@ footer{padding:clamp(2.5rem,5vw,4rem) clamp(2rem,5vw,5rem);border-top:1px solid 
 }
 @media(min-width:769px) and (max-width:1280px){
   .section-headline{font-size:clamp(2.2rem,4.5vw,3.8rem);}
+}
+
+/* ═══ STAT BAR — CLEAN BUILD ═══ */
+.stat-bar-wrap{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  display:grid;
+  grid-template-columns:1fr 220px 1fr;
+  height:90px;
+  z-index:10;
+  overflow:visible;
+}
+.stat-bar-left,
+.stat-bar-right{
+  background:rgba(10,10,10,0.96);
+  border-top:1px solid rgba(201,169,110,0.25);
+  display:flex;
+  align-items:center;
+  justify-content:space-evenly;
+  padding:0 2rem;
+}
+.stat-bar-center{
+  background:transparent;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.stat-item{
+  text-align:center;
+  flex-shrink:0;
+}
+.stat-number{
+  display:block;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1rem,1.6vw,1.8rem);
+  font-weight:300;
+  color:#C9A96E;
+  letter-spacing:0.05em;
+  line-height:1;
+}
+.stat-label{
+  display:block;
+  font-size:clamp(0.38rem,0.48vw,0.52rem);
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:rgba(245,240,232,0.45);
+  margin-top:0.3rem;
+  white-space:nowrap;
+}
+.stat-divider{
+  width:1px;
+  height:1.4rem;
+  background:rgba(201,169,110,0.2);
+  flex-shrink:0;
+}
+/* THE STAR */
+.stat-crest{
+  position:absolute;
+  left:50%;
+  bottom:12px;
+  transform:translateX(-50%);
+  z-index:20;
+  pointer-events:none;
+}
+.stat-crest img{
+  height:clamp(140px,15vw,210px);
+  width:auto;
+  display:block;
+  filter:
+    drop-shadow(0 22px 44px rgba(0,0,0,1))
+    drop-shadow(0 8px 18px rgba(0,0,0,0.95))
+    drop-shadow(0 0 32px rgba(201,169,110,0.4));
+  transform:perspective(700px) rotateX(5deg);
+  transform-origin:center bottom;
+}
+/* Gold glow pool beneath the crest */
+.stat-crest::after{
+  content:'';
+  position:absolute;
+  left:50%;
+  bottom:-14px;
+  transform:translateX(-50%);
+  width:140px;
+  height:36px;
+  background:radial-gradient(ellipse at center,
+    rgba(201,169,110,0.6) 0%,
+    rgba(201,169,110,0.2) 40%,
+    transparent 72%);
+  border-radius:50%;
+  filter:blur(8px);
+  z-index:-1;
 }
 </style>
 </head>
@@ -192,25 +284,25 @@ footer{padding:clamp(2.5rem,5vw,4rem) clamp(2rem,5vw,5rem);border-top:1px solid 
     <p class="hero-sub">Neo-Georgian &nbsp;&middot;&nbsp; Walter Hines Page &nbsp;&middot;&nbsp; Built 1916</p>
   </div>
   <div class="stat-bar-wrap">
-    <div class="stat-bar-left">
-      <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">Bedrooms</span></div>
-      <div class="stat-divider"></div>
-      <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">Bathrooms</span></div>
-    </div>
-    <div class="stat-bar-center">
-      <div class="stat-crest">
-        <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/69e698f45_crest_3d_gloss.png" alt="Garran Hill Crest" />
+      <div class="stat-bar-left">
+        <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">Bedrooms</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">Bathrooms</span></div>
+      </div>
+      <div class="stat-bar-center">
+        <div class="stat-crest">
+          <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/69e698f45_crest_3d_gloss.png" alt="Garran Hill Crest" />
+        </div>
+      </div>
+      <div class="stat-bar-right">
+        <div class="stat-item"><span class="stat-number">6,072</span><span class="stat-label">Living Area</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><span class="stat-number">4.15</span><span class="stat-label">Acres</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><span class="stat-number">$4,250,000</span><span class="stat-label">&nbsp;</span></div>
       </div>
     </div>
-    <div class="stat-bar-right">
-      <div class="stat-item"><span class="stat-number">6,072</span><span class="stat-label">Sq Ft</span></div>
-      <div class="stat-divider"></div>
-      <div class="stat-item"><span class="stat-number">4.15</span><span class="stat-label">Acres</span></div>
-      <div class="stat-divider"></div>
-      <div class="stat-item"><span class="stat-number">$4,250,000</span><span class="stat-label">&nbsp;</span></div>
     </div>
-  </div>
-  </div>
 </section>
 
 <!-- KB GATE — ARRIVAL -->
