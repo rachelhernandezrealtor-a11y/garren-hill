@@ -119,7 +119,12 @@
     position: relative;
     z-index: 2;
     text-align: center;
-    padding: 0 clamp(1rem, 5vw, 3rem);
+    padding: clamp(6rem, 15vh, 12rem) clamp(1rem, 5vw, 3rem) 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .hero-eyebrow {
@@ -151,14 +156,16 @@
 
   /* STAT BAR */
   .stat-bar {
-    background: var(--dark);
-    padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 6vw, 5rem);
+    background: rgba(10,10,10,0.85);
+    padding: clamp(1.2rem, 2.5vw, 2rem) clamp(1.5rem, 6vw, 5rem);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0;
     flex-wrap: wrap;
     position: relative;
+    z-index: 2;
+    width: 100%;
   }
 
   .stat-bar::before, .stat-bar::after {
@@ -610,33 +617,6 @@
     <p class="hero-sub">Neo-Georgian &nbsp;·&nbsp; Walter Hines Page &nbsp;·&nbsp; Built 1916</p>
   </div>
 </section>
-
-<!-- STAT BAR -->
-<div class="stat-bar">
-  <div class="stat-item">
-    <span class="stat-number">4</span>
-    <span class="stat-label">Bedrooms</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-number">6</span>
-    <span class="stat-label">Bathrooms</span>
-  </div>
-  <div class="stat-crest">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1777265217/gh_key/gh_wax_stamp_3d.png"
-         alt="Garran Hill crest">
-  </div>
-  <div class="stat-item">
-    <span class="stat-number">6,072</span>
-    <span class="stat-label">Square Feet</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-number">4.15</span>
-    <span class="stat-label">Acres</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-number">$4,250,000</span>
-  </div>
-</div>
 
 <!-- KB GATE — ARRIVAL -->
 <section id="estate">
