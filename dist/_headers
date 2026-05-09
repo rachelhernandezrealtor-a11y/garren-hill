@@ -13,3 +13,11 @@
 /workshop.html
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store
+
+/rocky
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+
+/rocky.html
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store

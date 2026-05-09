@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rocky — Rachel Studio</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a0a;
+    color: #F5F0E8;
+    font-family: 'Courier New', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+  .seal {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 24px;
+    opacity: 0.9;
+  }
+  h1 {
+    font-family: 'Georgia', serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: #C9A96E;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: #555;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+  .card {
+    background: #111;
+    border: 1px solid #222;
+    border-left: 2px solid #C9A96E;
+    padding: 24px 32px;
+    max-width: 600px;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  .card-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: #C9A96E;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #1a1a1a;
+    font-size: 0.8rem;
+  }
+  .status-row:last-child { border-bottom: none; }
+  .label { color: #888; }
+  .value { color: #F5F0E8; }
+  .ok { color: #5a9e6f; }
+  .warn { color: #C9A96E; }
+  .err { color: #9e5a5a; }
+  .dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+  .dot.ok { background: #5a9e6f; }
+  .dot.warn { background: #C9A96E; }
+  .dot.err { background: #9e5a5a; }
+  .note {
+    font-size: 0.7rem;
+    color: #444;
+    text-align: center;
+    margin-top: 32px;
+    letter-spacing: 0.1em;
+  }
+  .timestamp {
+    font-size: 0.65rem;
+    color: #333;
+    text-align: center;
+    margin-top: 8px;
+    letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+
+<img class="seal"
+  src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777397863/gh_key/gh_wax_seal_v3.png"
+  alt="Rachel Studio">
+
+<h1>Rocky</h1>
+<p class="subtitle">Rachel Studio · Private Workspace</p>
+
+<div class="card">
+  <div class="card-title">Platform Status</div>
+
+  <div class="status-row">
+    <span class="label">rachelhernandez.studio</span>
+    <span class="value ok"><span class="dot ok"></span>Live · HTTP 200</span>
+  </div>
+  <div class="status-row">
+    <span class="label">Garran Hill Pages</span>
+    <span class="value ok"><span class="dot ok"></span>garren-hill.pages.dev</span>
+  </div>
+  <div class="status-row">
+    <span class="label">Flow Farm Pages</span>
+    <span class="value warn"><span class="dot warn"></span>flowfarm-landing.pages.dev</span>
+  </div>
+  <div class="status-row">
+    <span class="label">MCP Worker</span>
+    <span class="value ok"><span class="dot ok"></span>rachel-studio-mcp · Active</span>
+  </div>
+  <div class="status-row">
+    <span class="label">Cloudinary</span>
+    <span class="value ok"><span class="dot ok"></span>dghn2xpif · gh_key/</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Locked Assets</div>
+
+  <div class="status-row">
+    <span class="label">Hero Video</span>
+    <span class="value">Last_for_real_q0fqvw · LOCKED</span>
+  </div>
+  <div class="status-row">
+    <span class="label">Wax Seal</span>
+    <span class="value">gh_wax_seal_v3 · LOCKED</span>
+  </div>
+  <div class="status-row">
+    <span class="label">Stat Crest</span>
+    <span class="value">gh_wax_stamp_3d · LOCKED</span>
+  </div>
+  <div class="status-row">
+    <span class="label">Kitchen Photo</span>
+    <span class="value warn"><span class="dot warn"></span>Pending Rachel approval</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Rocky on Base44</div>
+
+  <div class="status-row">
+    <span class="label">Chat</span>
+    <span class="value"><a href="https://app.base44.com/superagent/69e248a2469cc39540781cce" style="color:#C9A96E;text-decoration:none;">Open Rocky ↗</a></span>
+  </div>
+  <div class="status-row">
+    <span class="label">Memory</span>
+    <span class="value ok"><span class="dot ok"></span>All laws preserved</span>
+  </div>
+  <div class="status-row">
+    <span class="label">Build lane</span>
+    <span class="value">Codex · Rocky reads only</span>
+  </div>
+</div>
+
+<p class="note">Private workspace — not for buyers — not indexed</p>
+<p class="timestamp" id="ts"></p>
+
+<script>
+  document.getElementById('ts').textContent =
+    'Last loaded: ' + new Date().toLocaleString('en-US', {
+      timeZone: 'America/New_York',
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+      hour: '2-digit', minute: '2-digit'
+    }) + ' ET';
+</script>
+
+</body>
+</html>
