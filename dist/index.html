@@ -139,13 +139,9 @@ section.hero {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   z-index: 10;
-  padding: clamp(1.0rem, 1.5vw, 1.5rem) clamp(1.5rem, 5vw, 5rem) clamp(1.0rem, 1.5vw, 1.5rem);
-  background: linear-gradient(
-    180deg,
-    rgba(5,5,5,0) 0%,
-    rgba(5,5,5,0.55) 40%,
-    rgba(5,5,5,0.82) 100%
-  );
+  padding: 1.2rem clamp(1.5rem, 5vw, 5rem) 1.4rem;
+  background: linear-gradient(180deg,rgba(5,5,5,0) 0%,rgba(5,5,5,0.65) 40%,rgba(5,5,5,0.88) 100%);
+  overflow: visible;
 }
 .stat-bar::before {
   content: '';
@@ -180,18 +176,18 @@ section.hero {
 .stat-numbers {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
   gap: 0;
   width: 100%;
-  min-height: 0;
+  position: relative;
 }
 .stat-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   text-align: center;
   padding: 0 clamp(1.0rem, 2.2vw, 2.6rem);
   flex-shrink: 0;
@@ -237,22 +233,29 @@ section.hero {
 
 /* Mobile stat bar */
 @media (max-width: 768px) {
-  .stat-bar { padding: clamp(1.0rem, 1.5vw, 1.5rem) clamp(1.5rem, 5vw, 5rem) clamp(1.0rem, 1.5vw, 1.5rem); }
+  .stat-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 10;
+  padding: 1.2rem clamp(1.5rem, 5vw, 5rem) 1.4rem;
+  background: linear-gradient(180deg,rgba(5,5,5,0) 0%,rgba(5,5,5,0.65) 40%,rgba(5,5,5,0.88) 100%);
+  overflow: visible;
+}
   .stat-numbers {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
   gap: 0;
   width: 100%;
-  min-height: 0;
+  position: relative;
 }
   .stat-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   text-align: center;
   padding: 0 clamp(1.0rem, 2.2vw, 2.6rem);
   flex-shrink: 0;
@@ -1522,31 +1525,27 @@ ero-room { grid-template-columns: 1fr; padding: var(--sp-lg) 1.6rem; }
 /* ══ CREST — centered in stat bar row, floats upward ══ */
 .stat-crest-wrap {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  flex-grow: 0;
-  align-self: flex-end;
   position: relative;
   padding: 0 clamp(1.0rem, 2vw, 2.4rem);
-  height: auto;
-  overflow: visible;
+  height: 3rem;
 }
 .stat-crest-wrap img {
-  height: clamp(80px, 8vw, 115px);
+  height: clamp(72px, 7vw, 100px);
   width: auto;
   display: block;
-  position: relative;
-  margin-bottom: clamp(14px, 2vw, 26px);
-  flex-shrink: 0;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
   filter:
     drop-shadow(0 -4px 16px rgba(0,0,0,0.98))
-    drop-shadow(0 0 32px rgba(0,0,0,0.98))
-    drop-shadow(0 6px 20px rgba(0,0,0,0.98))
-    drop-shadow(0 0 24px rgba(201,169,110,0.28))
-    drop-shadow(0 0 12px rgba(245,224,152,0.16));
+    drop-shadow(0 0 28px rgba(0,0,0,0.98))
+    drop-shadow(0 0 22px rgba(201,169,110,0.28));
   animation: crestPulse 4.5s ease-in-out infinite;
-  transition: transform 0.4s ease, filter 0.4s ease;
+  transition: transform 0.4s ease;
 }
 .stat-crest-wrap img:hover {
   transform: translateY(-6px) scale(1.05);
@@ -1578,25 +1577,22 @@ ero-room { grid-template-columns: 1fr; padding: var(--sp-lg) 1.6rem; }
 @media (max-width: 768px) {
   .stat-crest-wrap {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  flex-grow: 0;
-  align-self: flex-end;
   position: relative;
   padding: 0 clamp(1.0rem, 2vw, 2.4rem);
-  height: auto;
-  overflow: visible;
+  height: 3rem;
 }
   .stat-numbers {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
   gap: 0;
   width: 100%;
-  min-height: 0;
+  position: relative;
 }
 }
 </style>
