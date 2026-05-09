@@ -24,7 +24,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-inquiry{font-size:clamp(0.5rem,0.75vw,0.65rem);letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(201,169,110,0.4);padding:0.5rem 1rem;}
 
 /* HERO */
-.hero{position:relative;height:100vh;min-height:600px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.hero{position:relative;height:100vh;min-height:600px;overflow:visible;display:flex;flex-direction:column;align-items:center;justify-content:center;}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.25) 0%,rgba(10,10,10,0.15) 40%,rgba(10,10,10,0.55) 80%,rgba(10,10,10,0.95) 100%);z-index:1;}
 .hero-content{position:relative;z-index:2;text-align:center;padding:0 clamp(1rem,5vw,3rem);display:flex;flex-direction:column;align-items:center;}
@@ -36,7 +36,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
    This is the definitive fix. The dark bar is two separate divs.
    The center div is transparent. The crest sits in the transparent zone.
    No mask hacks. No overflow issues. Just physics. */
-.stat-bar-wrap{position:relative;width:100%;display:flex;align-items:stretch;z-index:10;overflow:visible;}
+.stat-bar-wrap{position:absolute;bottom:0;left:0;right:0;display:flex;align-items:stretch;z-index:10;overflow:visible;}
 .stat-bar-left{flex:1;background:rgba(10,10,10,0.94);display:flex;align-items:center;justify-content:space-around;padding:clamp(1.2rem,2vw,1.8rem) clamp(1.5rem,3vw,3rem);border-top:1px solid rgba(201,169,110,0.28);border-bottom:1px solid rgba(201,169,110,0.28);}
 .stat-bar-right{flex:1;background:rgba(10,10,10,0.94);display:flex;align-items:center;justify-content:space-around;padding:clamp(1.2rem,2vw,1.8rem) clamp(1.5rem,3vw,3rem);border-top:1px solid rgba(201,169,110,0.28);border-bottom:1px solid rgba(201,169,110,0.28);}
 .stat-bar-center{width:clamp(120px,12vw,155px);flex-shrink:0;background:transparent;position:relative;z-index:15;}
@@ -126,48 +126,362 @@ footer{background:#050505;padding:clamp(2.5rem,5vh,4rem) clamp(2rem,6vw,6rem);di
     <h1 class="hero-title">Garran Hill</h1>
     <p class="hero-sub">Neo-Georgian &nbsp;&middot;&nbsp; Walter Hines Page &nbsp;&middot;&nbsp; Built 1916</p>
   </div>
+
+
+  <!-- STAT BAR — split left/right, transparent center, crest floats freely -->
+  <div class="stat-bar-wrap">
+    <div class="stat-bar-left">
+      <div class="stat-item">
+        <span class="stat-number">1916</span>
+        <span class="stat-label">Est.</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number">4</span>
+        <span class="stat-label">Bedrooms</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number">4</span>
+        <span class="stat-label">Full &middot; 2 Powder</span>
+      </div>
+    </div>
+    <div class="stat-bar-center">
+      <div class="stat-crest">
+        <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/9df7c03f6_crest_clean.png" alt="Garran Hill Crest">
+      </div>
+    </div>
+    <div class="stat-bar-right">
+      <div class="stat-item">
+        <span class="stat-number">6,072 sq ft</span>
+        <span class="stat-label">Living Area</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number">4.15 Acres</span>
+        <span class="stat-label">Land</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number">$4,250,000</span>
+        <span class="stat-label">Offered At</span>
+      </div>
+    </div>
+  </div>
+  
+  </section>
+  
+  ang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garran Hill · 200 Hollycrest Drive · Pinehurst, NC · $4,250,000</title>
+  <meta name="description" content="Garran Hill. Neo-Georgian estate. Walter Hines Page. Built 1916. 6,072 SF. 4.15 acres. Pinehurst, North Carolina. Offered at $4,250,000 by Sotheby's International Realty.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--dark:#0a0a0a;--gold:#C9A96E;--cream:#F5F0E8;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--dark);color:var(--cream);font-family:'Cormorant Garamond',serif;font-weight:300;overflow-x:hidden;}
+  
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:clamp(1rem,2vw,1.5rem) clamp(1.5rem,5vw,4rem);background:linear-gradient(to bottom,rgba(10,10,10,0.92) 0%,transparent 100%);}
+  .nav-seal{width:40px;height:40px;object-fit:contain;}
+  .nav-links{display:flex;list-style:none;gap:clamp(1.2rem,2.5vw,2.5rem);}
+  .nav-links a{font-size:clamp(0.5rem,0.75vw,0.65rem);letter-spacing:0.28em;text-transform:uppercase;color:rgba(245,240,232,0.75);text-decoration:none;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-inquiry{font-size:clamp(0.5rem,0.75vw,0.65rem);letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(201,169,110,0.4);padding:0.5rem 1rem;}
+  
+  /* HERO */
+  .hero{position:relative;height:100vh;min-height:600px;overflow:visible;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.25) 0%,rgba(10,10,10,0.15) 40%,rgba(10,10,10,0.55) 80%,rgba(10,10,10,0.95) 100%);z-index:1;}
+  .hero-content{position:relative;z-index:2;text-align:center;padding:0 clamp(1rem,5vw,3rem);display:flex;flex-direction:column;align-items:center;}
+  .hero-eyebrow{font-size:clamp(0.5rem,0.85vw,0.62rem);letter-spacing:0.38em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem;opacity:0.9;}
+  .hero-title{font-family:'Pinyon Script',cursive;font-size:clamp(5rem,17vw,15rem);color:var(--cream);line-height:0.85;margin-bottom:2rem;}
+  .hero-sub{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(0.85rem,1.6vw,1.05rem);letter-spacing:0.14em;color:var(--cream);opacity:0.75;}
+  
+  /* STAT BAR — split left/right with transparent center gap
+     This is the definitive fix. The dark bar is two separate divs.
+     The center div is transparent. The crest sits in the transparent zone.
+     No mask hacks. No overflow issues. Just physics. */
+  .stat-bar-wrap{position:absolute;bottom:0;left:0;right:0;display:flex;align-items:stretch;z-index:10;overflow:visible;}
+  .stat-bar-left{flex:1;background:rgba(10,10,10,0.94);display:flex;align-items:center;justify-content:space-around;padding:clamp(1.2rem,2vw,1.8rem) clamp(1.5rem,3vw,3rem);border-top:1px solid rgba(201,169,110,0.28);border-bottom:1px solid rgba(201,169,110,0.28);}
+  .stat-bar-right{flex:1;background:rgba(10,10,10,0.94);display:flex;align-items:center;justify-content:space-around;padding:clamp(1.2rem,2vw,1.8rem) clamp(1.5rem,3vw,3rem);border-top:1px solid rgba(201,169,110,0.28);border-bottom:1px solid rgba(201,169,110,0.28);}
+  .stat-bar-center{width:clamp(120px,12vw,155px);flex-shrink:0;background:transparent;position:relative;z-index:15;}
+  .stat-crest{position:absolute;left:50%;top:50%;transform:translate(-50%,-62%);z-index:20;pointer-events:none;}
+  .stat-crest img{height:clamp(90px,10vw,130px);width:auto;display:block;filter:drop-shadow(0 2px 14px rgba(0,0,0,0.8));}
+  .stat-item{text-align:center;}
+  .stat-number{display:block;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1rem,1.7vw,1.9rem);color:var(--gold);letter-spacing:0.02em;line-height:1.15;white-space:nowrap;}
+  .stat-label{display:block;font-size:clamp(0.44rem,0.55vw,0.58rem);letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,240,232,0.45);margin-top:0.28rem;white-space:nowrap;}
+  .stat-divider{width:1px;height:1.8rem;background:rgba(201,169,110,0.2);flex-shrink:0;}
+  
+  /* SHARED */
+  .full-bleed{display:block;width:100%;height:clamp(420px,60vh,720px);object-fit:cover;object-position:center;}
+  .full-bleed-tall{display:block;width:100%;height:100vh;min-height:560px;object-fit:cover;object-position:center;}
+  .text-section{padding:clamp(5rem,10vw,8rem) clamp(2rem,8vw,9rem);max-width:820px;}
+  .text-section-center{padding:clamp(5rem,10vw,8rem) clamp(2rem,8vw,9rem);max-width:720px;margin:0 auto;text-align:center;}
+  .eyebrow{font-size:clamp(0.48rem,0.8vw,0.6rem);letter-spacing:0.38em;text-transform:uppercase;color:var(--gold);opacity:0.85;margin-bottom:1.4rem;}
+  .section-headline{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,4vw,3.6rem);color:var(--cream);line-height:1.2;margin-bottom:2rem;letter-spacing:0.01em;}
+  .section-headline em{font-style:italic;}
+  .gold-rule{width:48px;height:1px;background:var(--gold);opacity:0.55;margin-bottom:2rem;}
+  .body-text{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1rem,1.4vw,1.2rem);color:rgba(245,240,232,0.75);line-height:1.9;letter-spacing:0.02em;margin-bottom:1.2rem;}
+  
+  /* PULL QUOTE */
+  .pull-quote{padding:clamp(5rem,10vh,8rem) clamp(2rem,8vw,9rem);font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(1.8rem,3.5vw,3rem);color:var(--cream);line-height:1.3;border-left:1px solid rgba(201,169,110,0.4);margin:0 clamp(2rem,8vw,9rem);}
+  .pull-attribution{display:block;font-style:normal;font-size:clamp(0.5rem,0.8vw,0.62rem);letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);opacity:0.7;margin-top:1.8rem;}
+  
+  /* INTERSTITIAL */
+  .interstitial{background:var(--dark);padding:clamp(5rem,12vh,9rem) clamp(2rem,8vw,9rem);text-align:center;border-top:1px solid rgba(201,169,110,0.12);border-bottom:1px solid rgba(201,169,110,0.12);}
+  .interstitial-quote{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(1.6rem,3vw,2.6rem);color:var(--cream);line-height:1.4;margin-bottom:2rem;}
+  .interstitial-attr{display:block;font-size:clamp(0.5rem,0.8vw,0.62rem);letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);opacity:0.7;margin-bottom:0.8rem;}
+  .interstitial-note{display:block;font-style:italic;font-size:clamp(0.85rem,1.2vw,1rem);color:rgba(245,240,232,0.35);}
+  
+  /* PHOTO GRID */
+  .photo-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+  .photo-grid-2 img{width:100%;height:clamp(320px,42vw,580px);object-fit:cover;display:block;}
+  
+  /* PRESS */
+  .press-quote{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(1rem,1.6vw,1.3rem);color:rgba(245,240,232,0.7);line-height:1.8;margin-bottom:1.2rem;}
+  .press-source{font-size:clamp(0.5rem,0.75vw,0.6rem);letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);opacity:0.65;}
+  .source-note{font-size:clamp(0.48rem,0.7vw,0.58rem);letter-spacing:0.2em;text-transform:uppercase;color:rgba(201,169,110,0.45);margin-top:2rem;}
+  
+  /* CLOSING */
+  .closing{padding:clamp(7rem,14vh,11rem) clamp(2rem,8vw,9rem);text-align:center;max-width:680px;margin:0 auto;}
+  .closing-headline{font-family:'Pinyon Script',cursive;font-size:clamp(3.5rem,8vw,7rem);color:var(--cream);line-height:1;margin-bottom:2.5rem;}
+  .closing-body{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1rem,1.4vw,1.15rem);color:rgba(245,240,232,0.65);line-height:1.9;letter-spacing:0.02em;margin-bottom:3rem;}
+  .inquiry-block{border:1px solid rgba(201,169,110,0.35);padding:clamp(2.5rem,5vw,4rem) clamp(2rem,4vw,3.5rem);margin-top:1rem;}
+  .inquiry-label{font-size:clamp(0.48rem,0.8vw,0.6rem);letter-spacing:0.38em;text-transform:uppercase;color:var(--gold);opacity:0.75;margin-bottom:1.5rem;}
+  .inquiry-name{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.1rem,1.8vw,1.4rem);color:var(--cream);margin-bottom:0.5rem;}
+  .inquiry-detail{font-size:clamp(0.75rem,1.1vw,0.9rem);color:rgba(201,169,110,0.7);letter-spacing:0.08em;line-height:1.8;}
+  
+  /* FOOTER */
+  footer{background:#050505;padding:clamp(2.5rem,5vh,4rem) clamp(2rem,6vw,6rem);display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(201,169,110,0.1);flex-wrap:wrap;gap:1.5rem;}
+  .footer-copy{font-size:clamp(0.42rem,0.65vw,0.55rem);letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,240,232,0.3);line-height:1.9;}
+  
+  /* RESPONSIVE */
+  @media(max-width:768px){
+    .nav-links{display:none;}
+    .photo-grid-2{grid-template-columns:1fr;}
+    .stat-divider{display:none;}
+    .stat-bar-left,.stat-bar-right{flex-direction:column;gap:0.6rem;padding:1rem;}
+    .stat-bar-center{width:80px;}
+  }
+  </style>
+  </head>
+  <body>
+  
+  <!-- NAV -->
+  <nav>
+    <img class="nav-seal" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1777397863/gh_key/gh_wax_seal_v3.png" alt="Garran Hill seal">
+    <ul class="nav-links">
+      <li><a href="#estate">The Estate</a></li>
+      <li><a href="#history">The History</a></li>
+      <li><a href="#rooms">The Rooms</a></li>
+      <li><a href="#grounds">The Grounds</a></li>
+      <li><a href="#restoration">The Restoration</a></li>
+    </ul>
+    <a href="#inquiry" class="nav-inquiry">Private Showing</a>
+  </nav>
+  
+  <!-- HERO -->
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+      <source src="https://res.cloudinary.com/dghn2xpif/video/upload/f_mp4,vc_h264/ROCKY_x8kc19.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, North Carolina &nbsp;&middot;&nbsp; Est. 1916</p>
+      <h1 class="hero-title">Garran Hill</h1>
+      <p class="hero-sub">Neo-Georgian &nbsp;&middot;&nbsp; Walter Hines Page &nbsp;&middot;&nbsp; Built 1916</p>
+    </div>
+  </section>
+
 </section>
 
-<!-- STAT BAR — split left/right, transparent center, crest floats freely -->
-<div class="stat-bar-wrap">
-  <div class="stat-bar-left">
-    <div class="stat-item">
-      <span class="stat-number">1916</span>
-      <span class="stat-label">Est.</span>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item">
-      <span class="stat-number">4</span>
-      <span class="stat-label">Bedrooms</span>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item">
-      <span class="stat-number">4</span>
-      <span class="stat-label">Full &middot; 2 Powder</span>
-    </div>
+
+
+<!-- KB GATE — ARRIVAL -->
+<section id="estate">
+  <img class="full-bleed-tall" loading="lazy"
+       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1778342120/gh_key/gh_kb_gate_twilight.jpg"
+       alt="Garran Hill KB Gate at twilight">
+  <div class="text-section">
+    <p class="eyebrow">The Estate &nbsp;&middot;&nbsp; Neo-Georgian</p>
+    <h2 class="section-headline">Some houses hold history.<br><em>This one shaped it.</em></h2>
+    <div class="gold-rule"></div>
+    <p class="body-text">Ordered by Walter Hines Page in 1913. Completed by Leonard Tufts' craftsmen in 1916.</p>
+    <p class="body-text">Flemish bond brick. A brick water table at the foundation. White portico. Paired chimneys. A circular lawn held before the entrance like a pause.</p>
   </div>
-  <div class="stat-bar-center">
-    <div class="stat-crest">
-      <img src="https://base44.app/api/apps/69e248a2469cc39540781cce/files/mp/public/69e248a2469cc39540781cce/9df7c03f6_crest_clean.png" alt="Garran Hill Crest">
-    </div>
+</section>
+
+<!-- FACADE -->
+<div class="photo-grid-2">
+  <img loading="lazy" src="https://media.base44.com/images/public/69e248a2469cc39540781cce/cb55c98c1_1380BFFE-8D5D-4617-B652-4322572E383E_1_105_c.jpg" alt="Garran Hill full facade">
+  <img loading="lazy" src="https://media.base44.com/images/public/69e248a2469cc39540781cce/6110af5dd_83D450FC-AF67-4846-8B6D-13BDEAC53899_1_105_c.jpg" alt="Garran Hill portico">
+</div>
+
+<!-- OPENING STATEMENT -->
+<div class="text-section-center">
+  <p class="eyebrow">Garran Hill &nbsp;&middot;&nbsp; 1916</p>
+  <h2 class="section-headline" style="font-size:clamp(1.5rem,2.8vw,2.2rem);">The door has been open <em>since 1916.</em></h2>
+  <div class="gold-rule" style="margin:2rem auto;"></div>
+  <p class="body-text">Seven fireplaces. Four columns. Original 1916 brick. 4.15 acres. 6,072 square feet.</p>
+  <p class="body-text">It has not been divided. It has not been converted. It has not been asked to be something else.</p>
+</div>
+
+<!-- THRESHOLD -->
+<img class="full-bleed-tall" loading="lazy"
+     src="https://media.base44.com/images/public/69e248a2469cc39540781cce/0175b0b9b_0DD31059-1694-42A4-83B6-225005E07494_1_102_o.jpg"
+     alt="Garran Hill threshold — 1916 carved in stone">
+
+<!-- HISTORY -->
+<section id="history">
+  <div class="text-section">
+    <p class="eyebrow">The History &nbsp;&middot;&nbsp; Walter Hines Page</p>
+    <h2 class="section-headline">He named it Garran Hill.<br><em>He never spent a night here.</em></h2>
+    <div class="gold-rule"></div>
+    <p class="body-text">He bought the land in February 1913. Named it Garran Hill. Six weeks later, Woodrow Wilson appointed him Ambassador to the Court of St. James.</p>
+    <p class="body-text">He sailed for London. Into the war.</p>
+    <p class="body-text">The house was completed without him. His son Ralph supervised. Leonard Tufts' craftsmen built it. From London, through four years of war, he wrote home about one thing.</p>
   </div>
-  <div class="stat-bar-right">
-    <div class="stat-item">
-      <span class="stat-number">6,072 sq ft</span>
-      <span class="stat-label">Living Area</span>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item">
-      <span class="stat-number">4.15 Acres</span>
-      <span class="stat-label">Land</span>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item">
-      <span class="stat-number">$4,250,000</span>
-      <span class="stat-label">Offered At</span>
-    </div>
+</section>
+
+<div class="pull-quote">
+  &ldquo;The farm &mdash; the farm &mdash; the farm.&rdquo;
+  <span class="pull-attribution">The Life and Letters of Walter H. Page &nbsp;&middot;&nbsp; Vol. I, P. 354 &nbsp;&middot;&nbsp; 1923</span>
+</div>
+
+<div class="text-section">
+  <p class="body-text">He came home in December 1918. Carried from the train at Aberdeen. He died ten days later.</p>
+  <p class="body-text">He co-founded Doubleday, Page &amp; Co. He edited The Atlantic Monthly. He nominated Woodrow Wilson for the presidency.</p>
+  <p class="body-text" style="opacity:0.45;font-style:italic;">He never spent a night here.</p>
+  <p class="source-note">Source: PineStraw Magazine &ldquo;A Page Out of History&rdquo; &middot; October 2019</p>
+</div>
+
+<div class="interstitial">
+  <p class="interstitial-quote">&ldquo;Well, Frank, I did get here after all, didn&rsquo;t I?&rdquo;</p>
+  <span class="interstitial-attr">Walter Hines Page &nbsp;&middot;&nbsp; Aberdeen, NC &nbsp;&middot;&nbsp; December 1918</span>
+  <span class="interstitial-note">He died ten days later.</span>
+</div>
+
+<img class="full-bleed" loading="lazy"
+     src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/gh_key/gh_whp.jpg"
+     alt="Walter Hines Page">
+
+<div class="text-section">
+  <p class="eyebrow" style="margin-bottom:1.5rem;">As Seen In</p>
+  <p class="press-quote">&ldquo;What Ambassador Walter Hines Page started, others have continued in a style both innovative and respectful of times when people paid calls, wrote thank-you notes and took Sunday drives.&rdquo;</p>
+  <p class="press-source">PineStraw Magazine &nbsp;&middot;&nbsp; October 2019</p>
+</div>
+
+<!-- THE ROOMS -->
+<section id="rooms">
+
+  <img class="full-bleed-tall" loading="lazy"
+       src="https://media.base44.com/images/public/69e248a2469cc39540781cce/c7bde0110_EC68C892-35D3-4572-B97B-668A070C3EF5_1_105_c.jpeg"
+       alt="Garran Hill mahogany staircase">
+  <div class="text-section">
+    <p class="eyebrow">The Threshold</p>
+    <h2 class="section-headline">The staircase has turned <em>the same curve since 1916.</em></h2>
+    <p class="body-text">Mahogany volute. Original leaded glass. Herringbone brick underfoot. Arched fanlights overhead.</p>
+  </div>
+
+  <img class="full-bleed-tall" loading="lazy"
+       src="https://media.base44.com/images/public/69e248a2469cc39540781cce/74f5a5ab5_3B488976-C1EC-4C26-BA9B-E4718B3136F3_1_105_c.jpg"
+       alt="Garran Hill library">
+  <div class="text-section">
+    <p class="eyebrow">The Library</p>
+    <h2 class="section-headline">Three walls of shelving.<br><em>A rolling ladder.</em></h2>
+    <p class="body-text">French doors to the garden. The kind of room that makes you want to stay.</p>
+  </div>
+
+  <div class="photo-grid-2">
+    <img loading="lazy" src="https://media.base44.com/images/public/69e248a2469cc39540781cce/d7ca0e73e_DD2E540E-8038-4811-99FE-808CFA3AF926_1_105_c.jpg" alt="Garran Hill drawing room">
+    <img loading="lazy" src="https://media.base44.com/images/public/69e248a2469cc39540781cce/eeb65403d_B2D6906B-D392-407F-B10F-A93616E1F151_1_105_c.jpg" alt="Garran Hill dining room">
+  </div>
+  <div class="text-section">
+    <p class="eyebrow">The Rooms</p>
+    <h2 class="section-headline">Georgian mantel. Delft tile.<br><em>Original shell cabinets.</em></h2>
+    <p class="body-text">The drawing room holds a Georgian mantel with original Delft tile surround. The dining room: shell cabinets, original 1916 plasterwork, intact.</p>
+  </div>
+
+  <img class="full-bleed" loading="lazy"
+       src="https://media.base44.com/images/public/69e248a2469cc39540781cce/f750622fd_F090AB56-FFEF-4054-9CE4-DF6AD400C166_1_105_c.jpg"
+       alt="Garran Hill kitchen">
+  <div class="text-section">
+    <p class="eyebrow">The Kitchen</p>
+    <h2 class="section-headline">White cabinetry. Dark granite.<br><em>Heart pine underfoot.</em></h2>
+    <p class="body-text">Island. Four windows. Room to cook. Heart-pine floors &mdash; the only room in the house that holds them.</p>
+  </div>
+
+</section>
+
+<!-- GROUNDS -->
+<section id="grounds">
+  <img class="full-bleed-tall" loading="lazy"
+       src="https://media.base44.com/images/public/69e248a2469cc39540781cce/9f6a674e2_4D56D9D8-A71D-45D7-86B8-9EA232C57835_1_105_c.jpg"
+       alt="Garran Hill grounds">
+  <div class="text-section">
+    <p class="eyebrow">The Grounds &nbsp;&middot;&nbsp; 4.15 Acres</p>
+    <h2 class="section-headline">In 1916, those were saplings.<br><em>Now they are a forest.</em></h2>
+    <div class="gold-rule"></div>
+    <p class="body-text">The world outside these gates does not exist here.</p>
+    <p class="body-text">Salt water pool, 20&times;40 ft. Installed 2022. Four acres of hardwood canopy.</p>
+  </div>
+</section>
+
+<div class="interstitial">
+  <p class="interstitial-quote">&ldquo;Someone still puts flowers there.&rdquo;</p>
+  <span class="interstitial-attr">Blue Fox &nbsp;&middot;&nbsp; Betty Dumaine&rsquo;s horse &nbsp;&middot;&nbsp; buried on the grounds</span>
+  <span class="interstitial-note">1959 &ndash; 1984</span>
+</div>
+
+<!-- RESTORATION -->
+<section id="restoration">
+  <div class="text-section">
+    <p class="eyebrow">The Restoration &nbsp;&middot;&nbsp; 1999&ndash;2001</p>
+    <h2 class="section-headline">Thomas O&rsquo;Shea.<br><em>Two years. Done right.</em></h2>
+    <div class="gold-rule"></div>
+    <p class="body-text">General contractor Dennis Dunagan. The original materials were preserved where possible. The intention was stewardship, not renovation.</p>
+    <p class="body-text">Seven fireplaces, six on propane. Oak floors throughout. The mahogany staircase untouched.</p>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<div class="closing" id="inquiry">
+  <div class="closing-headline">Garran Hill</div>
+  <p class="closing-body">Garran Hill is ready.<br>It is offered now for the first time.</p>
+  <div class="gold-rule" style="margin:0 auto 3rem;"></div>
+  <div class="inquiry-block">
+    <p class="inquiry-label">Private Showing &nbsp;&middot;&nbsp; Sotheby&rsquo;s International Realty</p>
+    <p class="inquiry-name">Rachel Hernandez</p>
+    <p class="inquiry-detail">
+      rachelhernandezrealtor@gmail.com<br>
+      Sotheby&rsquo;s International Realty &nbsp;&middot;&nbsp; Pinehurst, NC<br>
+      $4,250,000
+    </p>
   </div>
 </div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">
+    &copy; 2026 Garran Hill &nbsp;&middot;&nbsp; 200 Hollycrest Drive, Pinehurst, NC<br>
+    Represented by Rachel Hernandez &nbsp;&middot;&nbsp; Sotheby&rsquo;s International Realty
+  </div>
+  <img class="nav-seal" style="opacity:0.3;"
+       src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1777397863/gh_key/gh_wax_seal_v3.png"
+       alt="Garran Hill">
+</footer>
+
+</body>
+</html
+
+
 
 <!-- KB GATE — ARRIVAL -->
 <section id="estate">
