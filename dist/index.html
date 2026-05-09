@@ -160,61 +160,6 @@ footer{padding:clamp(2.5rem,5vw,4rem) clamp(2rem,5vw,5rem);border-top:1px solid 
   .section-headline{font-size:clamp(2.2rem,4.5vw,3.8rem);}
 }
 
-/* ═══ STAT BAR — CLEAN BUILD ═══ */
-.stat-bar-wrap{
-  position:absolute;
-  bottom:0;left:0;right:0;
-  display:grid;
-  grid-template-columns:1fr 260px 1fr;
-  height:110px;
-  z-index:10;
-  overflow:visible;
-}
-.stat-bar-left,
-.stat-bar-right{
-  background:rgba(10,10,10,0.96);
-  border-top:1px solid rgba(201,169,110,0.25);
-  display:flex;
-  align-items:center;
-  justify-content:space-evenly;
-  padding:0 2rem;
-}
-.stat-bar-center{
-  background:transparent;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:110px;
-}
-.stat-item{
-  text-align:center;
-  flex-shrink:0;
-}
-.stat-number{
-  display:block;
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1rem,1.6vw,1.8rem);
-  font-weight:300;
-  color:#C9A96E;
-  letter-spacing:0.05em;
-  line-height:1;
-}
-.stat-label{
-  display:block;
-  font-size:clamp(0.38rem,0.48vw,0.52rem);
-  letter-spacing:0.22em;
-  text-transform:uppercase;
-  color:rgba(245,240,232,0.45);
-  margin-top:0.3rem;
-  white-space:nowrap;
-}
-.stat-divider{
-  width:1px;
-  height:1.4rem;
-  background:rgba(201,169,110,0.2);
-  flex-shrink:0;
-}
 /* THE STAR */
 .stat-crest{
   position:absolute;
@@ -252,6 +197,96 @@ footer{padding:clamp(2.5rem,5vw,4rem) clamp(2rem,5vw,5rem);border-top:1px solid 
   filter:blur(8px);
   z-index:-1;
 }
+/* ═══ STAT BAR — FINAL ═══ */
+.stat-bar-wrap{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  display:grid;
+  grid-template-columns:1fr 280px 1fr;
+  height:100px;
+  z-index:10;
+  overflow:visible;
+}
+.stat-bar-left,
+.stat-bar-right{
+  background:rgba(10,10,10,0.96);
+  border-top:1px solid rgba(201,169,110,0.3);
+  display:flex;
+  align-items:center;
+  justify-content:space-evenly;
+  padding:0 2.5rem;
+}
+.stat-bar-center{
+  background:transparent;
+  position:relative;
+  height:100px;
+}
+.stat-item{
+  text-align:center;
+  flex-shrink:0;
+}
+.stat-number{
+  display:block;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.1rem,1.7vw,1.9rem);
+  font-weight:300;
+  color:#C9A96E;
+  letter-spacing:0.05em;
+  line-height:1;
+}
+.stat-label{
+  display:block;
+  font-size:clamp(0.38rem,0.48vw,0.52rem);
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:rgba(245,240,232,0.45);
+  margin-top:0.3rem;
+  white-space:nowrap;
+}
+.stat-divider{
+  width:1px;
+  height:1.4rem;
+  background:rgba(201,169,110,0.2);
+  flex-shrink:0;
+}
+/* THE STAR — floats up into hero video */
+.stat-crest{
+  position:absolute;
+  left:50%;
+  bottom:30px;
+  transform:translateX(-50%);
+  z-index:20;
+  pointer-events:none;
+}
+.stat-crest img{
+  height:clamp(200px,21vw,300px);
+  width:auto;
+  display:block;
+  filter:
+    drop-shadow(0 24px 48px rgba(0,0,0,1))
+    drop-shadow(0 10px 20px rgba(0,0,0,0.95))
+    drop-shadow(0 0 40px rgba(201,169,110,0.45));
+  transform:perspective(700px) rotateX(5deg);
+  transform-origin:center bottom;
+}
+/* Gold glow pool */
+.stat-crest::after{
+  content:'';
+  position:absolute;
+  left:50%;
+  bottom:-10px;
+  transform:translateX(-50%);
+  width:160px;
+  height:40px;
+  background:radial-gradient(ellipse at center,
+    rgba(201,169,110,0.65) 0%,
+    rgba(201,169,110,0.2) 45%,
+    transparent 72%);
+  border-radius:50%;
+  filter:blur(10px);
+  z-index:-1;
+}
+
 </style>
 </head>
 <body>
