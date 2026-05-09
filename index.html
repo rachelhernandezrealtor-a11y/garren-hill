@@ -903,9 +903,129 @@ section + section {
   }
 }
 .nav-links-mobile { display: none; }
+
+/* ── CUSTOM CURSOR ── */
+* { cursor: none !important; }
+#cursor {
+  position: fixed;
+  width: 7px; height: 7px;
+  background: #C9A96E;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: transform 0.1s ease, opacity 0.3s ease, width 0.2s, height 0.2s;
+  mix-blend-mode: difference;
+}
+#cursor-ring {
+  position: fixed;
+  width: 28px; height: 28px;
+  border: 1px solid rgba(201,169,110,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: all 0.16s cubic-bezier(.16,1,.3,1);
+}
+body:hover #cursor { opacity: 1; }
+a:hover ~ #cursor, button:hover ~ #cursor { transform: translate(-50%,-50%) scale(2.2); }
+
+/* ── FILM GRAIN OVERLAY ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9000;
+  opacity: 0.5;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-slow {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 1.3s cubic-bezier(.16,1,.3,1), transform 1.3s cubic-bezier(.16,1,.3,1);
+}
+.reveal-slow.in { opacity: 1; transform: translateY(0); }
+
+/* ── NAV SCROLLED STATE ── */
+nav.scrolled {
+  height: 58px;
+  background: rgba(4,4,4,0.92);
+  backdrop-filter: blur(28px) saturate(1.8);
+}
+
+/* ── CREST — FULL LUXURY 3D TREATMENT ── */
+.stat-crest-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: -105px;
+  margin-bottom: 0.4rem;
+  position: relative;
+  z-index: 20;
+}
+.stat-crest-wrap img {
+  height: clamp(160px, 16vw, 220px);
+  width: auto;
+  filter:
+    drop-shadow(0 -8px 24px rgba(0,0,0,1))
+    drop-shadow(0 0 60px rgba(0,0,0,0.98))
+    drop-shadow(0 10px 32px rgba(0,0,0,1))
+    drop-shadow(0 0 40px rgba(201,169,110,0.35))
+    drop-shadow(0 0 18px rgba(245,224,152,0.22));
+  animation: crestGlow 4s ease-in-out infinite;
+  transform: translateY(0);
+  transition: transform 0.5s cubic-bezier(.16,1,.3,1), filter 0.5s ease;
+}
+.stat-crest-wrap img:hover {
+  transform: translateY(-6px) scale(1.03);
+  filter:
+    drop-shadow(0 -10px 30px rgba(0,0,0,1))
+    drop-shadow(0 0 70px rgba(0,0,0,0.98))
+    drop-shadow(0 14px 40px rgba(0,0,0,1))
+    drop-shadow(0 0 55px rgba(201,169,110,0.55))
+    drop-shadow(0 0 28px rgba(245,224,152,0.38));
+  animation: none;
+}
+
+@keyframes crestGlow {
+  0%, 100% {
+    filter:
+      drop-shadow(0 -8px 24px rgba(0,0,0,1))
+      drop-shadow(0 0 60px rgba(0,0,0,0.98))
+      drop-shadow(0 10px 32px rgba(0,0,0,1))
+      drop-shadow(0 0 40px rgba(201,169,110,0.35))
+      drop-shadow(0 0 18px rgba(245,224,152,0.22));
+  }
+  50% {
+    filter:
+      drop-shadow(0 -8px 24px rgba(0,0,0,1))
+      drop-shadow(0 0 60px rgba(0,0,0,0.98))
+      drop-shadow(0 10px 32px rgba(0,0,0,1))
+      drop-shadow(0 0 55px rgba(201,169,110,0.5))
+      drop-shadow(0 0 30px rgba(245,224,152,0.35));
+  }
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--gold-mid); border-radius: 2px; }
 </style>
 </head>
 <body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
 
 <!-- NAV -->
 <nav>
@@ -972,7 +1092,7 @@ section + section {
 <!-- KB GATE — SPLIT: TEXT LEFT, IMAGE RIGHT -->
 <section id="estate">
   <div class="split">
-    <div class="split-text">
+    <div class="split-text reveal">
       <span class="eyebrow">The Estate &nbsp;&middot;&nbsp; Neo-Georgian</span>
       <h2>Then the house appears.<em>Some houses hold history.<br>This one shaped it.</em></h2>
       <div class="gold-line"></div>
@@ -1027,7 +1147,7 @@ section + section {
 
 <!-- FARM PULL QUOTE -->
 <section class="pull">
-  <p class="pull-quote">"The farm -- the farm -- the farm."</p>
+  <p class="pull-quote reveal-slow">"The farm -- the farm -- the farm."</p>
   <p class="pull-attr">Walter Hines Page &nbsp;&middot;&nbsp; The Life and Letters of Walter H. Page, Vol. I, P. 354 &nbsp;&middot;&nbsp; 1923</p>
 </section>
 
@@ -1050,7 +1170,7 @@ section + section {
 <!-- THRESHOLD — SPLIT -->
 <section id="rooms">
   <div class="split">
-    <div class="split-text">
+    <div class="split-text reveal">
       <span class="eyebrow">The Threshold</span>
       <h2>The road carries the later name.<em>The threshold keeps the first.</em></h2>
       <div class="gold-line"></div>
@@ -1075,7 +1195,7 @@ section + section {
     <div class="split-img">
       <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777270464/gh_key/gh_lib58.jpg" alt="The Library">
     </div>
-    <div class="split-text">
+    <div class="split-text reveal">
       <span class="eyebrow">The Library</span>
       <h2>Not original.<em>Deliberate.</em></h2>
       <div class="gold-line"></div>
@@ -1113,7 +1233,7 @@ section + section {
     <div class="split-img">
       <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777270464/gh_key/gh_kitchen49.jpg" alt="The Kitchen">
     </div>
-    <div class="split-text">
+    <div class="split-text reveal">
       <span class="eyebrow">The Kitchen</span>
       <h2>The kitchen was not updated.<em>It was designed.</em></h2>
       <div class="gold-line"></div>
@@ -1135,7 +1255,7 @@ section + section {
 <!-- DINING — SPLIT -->
 <section>
   <div class="split">
-    <div class="split-text">
+    <div class="split-text reveal">
       <span class="eyebrow">The Dining Room</span>
       <h2>The shell cabinets were already there<em>in 1916.</em></h2>
       <div class="gold-line"></div>
@@ -1171,7 +1291,7 @@ section + section {
 <!-- GROUNDS — SPLIT -->
 <section id="grounds">
   <div class="split">
-    <div class="split-text">
+    <div class="split-text reveal">
       <span class="eyebrow">4.15 Acres &nbsp;&middot;&nbsp; Private Grounds</span>
       <h2>The world outside these gates<em>does not exist here.</em></h2>
       <div class="gold-line"></div>
@@ -1189,7 +1309,7 @@ section + section {
 
 <!-- BLUE FOX -->
 <section class="pull">
-  <p class="pull-quote" style="color:var(--gold);font-size:clamp(2rem,4.5vw,4rem);">Someone still puts flowers there.</p>
+  <p class="pull-quote reveal-slow" style="color:var(--gold);font-size:clamp(2rem,4.5vw,4rem);">Someone still puts flowers there.</p>
   <p class="pull-attr">Blue Fox &nbsp;&middot;&nbsp; Betty Dumaine's Irish Hunter &nbsp;&middot;&nbsp; Buried on the Grounds</p>
 </section>
 
@@ -1199,7 +1319,7 @@ section + section {
     <div class="split-img">
       <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777270125/gh_key/gh_sapling1916.jpg" alt="Garran Hill">
     </div>
-    <div class="split-text">
+    <div class="split-text reveal">
       <span class="eyebrow">1959 – 1984</span>
       <h2>Some places remember<em>who loved them.</em></h2>
       <div class="gold-line"></div>
@@ -1238,7 +1358,7 @@ section + section {
 </section>
 
 <!-- PRESERVATION -->
-<section class="text-section">
+<section class="text-section reveal">
   <span class="eyebrow">National Register &nbsp;&middot;&nbsp; Criterion B</span>
   <h2 style="max-width:620px;margin:0 auto 1.8rem;">Every claim is sourced.<em>Every fact is verified.</em></h2>
   <div class="body-text" style="margin:0 auto;text-align:center;max-width:540px;">
@@ -1370,6 +1490,91 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     }
   });
 });
+</script>
+
+<script>
+// ── CUSTOM CURSOR ──
+(function() {
+  const cur = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  if (!cur || !ring) return;
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  const links = document.querySelectorAll('a, button, label');
+  links.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cur.style.width = '14px'; cur.style.height = '14px';
+      ring.style.width = '44px'; ring.style.height = '44px';
+      ring.style.borderColor = 'rgba(245,224,152,0.7)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cur.style.width = '7px'; cur.style.height = '7px';
+      ring.style.width = '28px'; ring.style.height = '28px';
+      ring.style.borderColor = 'rgba(201,169,110,0.5)';
+    });
+  });
+  function animCursor() {
+    cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animCursor);
+  }
+  animCursor();
+})();
+
+// ── NAV SCROLL STATE ──
+(function() {
+  const nav = document.querySelector('nav');
+  if (!nav) return;
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+})();
+
+// ── SCROLL REVEAL ──
+(function() {
+  const els = document.querySelectorAll('.reveal, .reveal-slow');
+  if (!els.length) return;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(el => obs.observe(el));
+})();
+
+// ── STAT COUNTER ANIMATION ──
+(function() {
+  const statNums = document.querySelectorAll('.stat-num');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const raw = el.textContent.trim();
+      // Only animate pure numbers or numbers with commas
+      const numMatch = raw.replace(/,/g,'').match(/^(\d+)$/);
+      if (!numMatch) return; // skip $4,250,000 and "SF", "AC" etc
+      const target = parseInt(numMatch[1]);
+      const duration = 1200;
+      const start = performance.now();
+      const from = Math.max(0, target - Math.ceil(target * 0.25));
+      function step(now) {
+        const t = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - t, 3);
+        const val = Math.round(from + (target - from) * ease);
+        el.textContent = val.toLocaleString();
+        if (t < 1) requestAnimationFrame(step);
+        else el.textContent = raw; // restore original
+      }
+      requestAnimationFrame(step);
+      obs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  statNums.forEach(el => obs.observe(el));
+})();
 </script>
 </body>
 </html>
