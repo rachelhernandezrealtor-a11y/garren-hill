@@ -331,97 +331,17 @@ nav::after {
 }
 
 /* ── STAT BAR ── */
-.stat-bar {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  z-index: 10;
-  background: linear-gradient(180deg,
-    rgba(6,6,6,0.82) 0%,
-    rgba(8,8,8,0.97) 40%,
-    rgba(10,10,10,1) 100%);
-  border-top: 1px solid transparent;
-  background-clip: padding-box;
-  box-shadow:
-    0 -1px 0 rgba(201,169,110,0.18),
-    0 -2px 0 rgba(201,169,110,0.05),
-    inset 0 1px 0 rgba(255,255,255,0.03);
-  padding: 0 2rem 1.8rem;
-}
-.stat-bar::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 5%; right: 5%;
-  height: 1px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(245,224,152,0.15) 10%,
-    rgba(201,169,110,0.55) 35%,
-    rgba(245,224,152,0.8) 50%,
-    rgba(201,169,110,0.55) 65%,
-    rgba(245,224,152,0.15) 90%,
-    transparent 100%);
-  pointer-events: none;
-}
 
 
 
-.stat-numbers {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0;
-}
-.stat-item {
-  text-align: center;
-  padding: 0 clamp(1rem, 2.5vw, 2.4rem);
-}
-.stat-num {
-  display: block;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1rem, 1.55vw, 1.75rem);
-  font-weight: 200;
-  
-  
-  
-  
-  letter-spacing: 0.06em;
-  line-height: 1.1;
-  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.8));
-}
-.stat-lbl {
-  display: block;
-  font-size: clamp(0.34rem, 0.55vw, 0.48rem);
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: rgba(201,169,110,0.45);
-  margin-top: 0.25rem;
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-}
-.stat-div {
-  width: 1px;
-  height: 28px;
-  background: linear-gradient(180deg,
-    transparent 0%,
-    rgba(201,169,110,0.35) 30%,
-    rgba(245,224,152,0.55) 50%,
-    rgba(201,169,110,0.35) 70%,
-    transparent 100%);
-  align-self: center;
-  flex-shrink: 0;
-}
-.stat-price .stat-num {
-  font-size: clamp(1.1rem, 1.7vw, 1.9rem);
-  letter-spacing: 0.04em;
-  
-  
-  
-  
-}
 
-/* ── SECTION BASE ── */
-section { position: relative; }
+
+
+
+
+
+
+
 
 /* ── FULL TEXT SECTION ── */
 .text-section {
@@ -670,15 +590,15 @@ footer {
   .hero-sub { display: none; }
 
   /* Stat bar */
-  .stat-bar { padding: 0 0.5rem 1rem; }
   
   
-  .stat-numbers { flex-wrap: wrap; gap: 0; row-gap: 0.6rem; }
-  .stat-item { padding: 0 0.5rem; min-width: 30%; }
-  .stat-price { min-width: 100% !important; text-align: center; }
-  .stat-div { display: none; }
-  .stat-num { font-size: 0.95rem; }
-  .stat-lbl { font-size: 0.38rem; letter-spacing: 0.22em; }
+  
+  
+  
+  
+  
+  
+  
 
   /* Typography */
   h2 { font-size: clamp(1.5rem, 7vw, 2.6rem); margin-bottom: clamp(0.9rem, 1.8vw, 1.4rem); }
@@ -711,7 +631,7 @@ footer {
 /* 375px — iPhone SE */
 @media (max-width: 390px) {
   .hero-title { font-size: clamp(3rem, 18vw, 5rem); }
-  .stat-item { min-width: 45%; }
+  
   .gallery-grid { grid-template-columns: 1fr; }
   .closing-script { font-size: clamp(2.8rem, 16vw, 5rem); }
 }
@@ -1304,43 +1224,8 @@ h2 em {
 }
 
 /* STAT NUMBERS — EB Garamond. A plaque, not a scoreboard. */
-.stat-num {
-  font-family: 'EB Garamond', Georgia, serif;
-  font-size: clamp(1.0rem, 1.8vw, 1.7rem);
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  color: var(--cream);
-  line-height: 1;
-  margin-bottom: 0.35rem;
-  /* Remove metallic gradient — plaques don't shimmer */
-  background: none;
-  
-  
-  
-}
-.stat-price .stat-num {
-  font-size: clamp(0.95rem, 1.6vw, 1.5rem);
-  color: rgba(201,169,110,0.92);
-  
-}
-.stat-lbl {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(0.42rem, 0.62vw, 0.54rem);
-  font-weight: 300;
-  letter-spacing: 0.40em;
-  text-transform: uppercase;
-  color: rgba(245,240,232,0.42);
-}
 
-/* PULL QUOTES — Georgian italic. Weight of a letter. */
-.pull.cinematic blockquote {
-  font-family: 'EB Garamond', Georgia, serif;
-  font-size: clamp(1.7rem, 3.4vw, 3.0rem);
-  font-weight: 400;
-  font-style: italic;
-  color: var(--cream);
-  line-height: 1.48;
-}
+
 .pull.intimate blockquote {
   font-family: 'EB Garamond', Georgia, serif;
   font-size: clamp(1.25rem, 2.3vw, 2.0rem);
@@ -1534,6 +1419,149 @@ ero-room { grid-template-columns: 1fr; padding: var(--sp-lg) 1.6rem; }
 @media (max-width: 768px) {
   .stat-crest-wrap { margin-top: -48px; margin-bottom: 0; }
   .stat-crest-wrap img { height: 64px; width: auto; }
+}
+
+/* ══════════════════════════════════════════════════════
+   THE STAT BAR — DEFINITIVE
+   Sits at viewport floor. One row. Gold on dark.
+   The house speaks. The numbers confirm.
+   ══════════════════════════════════════════════════════ */
+
+/* Container — locks to bottom of 100vh hero */
+.stat-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 10;
+  padding: 1.8rem clamp(2rem, 6vw, 6rem) 1.6rem;
+  background: linear-gradient(
+    180deg,
+    rgba(5,5,5,0) 0%,
+    rgba(8,8,8,0.88) 28%,
+    rgba(10,10,10,0.98) 60%,
+    rgba(10,10,10,1) 100%
+  );
+}
+
+/* Metallic gold hairline across the top */
+.stat-bar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 8%; right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(201,169,110,0.08) 5%,
+    rgba(201,169,110,0.45) 25%,
+    rgba(245,224,152,0.85) 50%,
+    rgba(201,169,110,0.45) 75%,
+    rgba(201,169,110,0.08) 95%,
+    transparent 100%);
+  pointer-events: none;
+}
+
+/* Numbers row — single centered flex line */
+.stat-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0;
+  width: 100%;
+}
+
+/* Each stat block */
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 clamp(1.4rem, 3vw, 3.2rem);
+  flex-shrink: 0;
+}
+
+/* The number — EB Garamond, cream, engraved weight */
+.stat-num {
+  display: block;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: clamp(1.15rem, 1.75vw, 2.0rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #F5F0E8;
+  line-height: 1;
+  margin-bottom: 0.45rem;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.9);
+}
+
+/* The label — Cormorant, tracked, warm gold */
+.stat-lbl {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(0.38rem, 0.56vw, 0.50rem);
+  font-weight: 300;
+  letter-spacing: 0.46em;
+  text-transform: uppercase;
+  color: rgba(201,169,110,0.72);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Hairline divider between stats */
+.stat-div {
+  width: 1px;
+  height: 32px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(201,169,110,0.22) 20%,
+    rgba(245,224,152,0.50) 50%,
+    rgba(201,169,110,0.22) 80%,
+    transparent 100%);
+  align-self: center;
+}
+
+/* Price — full gold, slightly larger */
+.stat-price .stat-num {
+  font-size: clamp(1.1rem, 1.7vw, 1.95rem);
+  color: #C9A96E;
+  letter-spacing: 0.05em;
+  text-shadow: 
+    0 0 24px rgba(201,169,110,0.18),
+    0 1px 12px rgba(0,0,0,0.9);
+}
+.stat-price .stat-lbl {
+  color: rgba(201,169,110,0.45);
+}
+
+/* Mobile — 2-col wrap */
+@media (max-width: 768px) {
+  .stat-bar {
+    padding: 1.2rem 1.2rem 1.2rem;
+  }
+  .stat-numbers {
+    flex-wrap: wrap;
+    gap: 0;
+    row-gap: 0.8rem;
+    justify-content: center;
+  }
+  .stat-item {
+    padding: 0 0.8rem;
+    min-width: 30%;
+  }
+  .stat-price {
+    min-width: 100%;
+    text-align: center;
+    padding-top: 0.4rem;
+  }
+  .stat-div {
+    display: none;
+  }
+  .stat-num {
+    font-size: 1.05rem;
+  }
+  .stat-lbl {
+    font-size: 0.36rem;
+    letter-spacing: 0.28em;
+  }
 }
 </style>
 </head>
