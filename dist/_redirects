@@ -4,10 +4,8 @@
 # Rocky studio — must come before the wildcard
 /rocky  /rocky.html  200
 
-# Studio preview — private page (splat must precede SPA wildcard)
-/studio-preview  /studio-preview/index.html  200
-/studio-preview/  /studio-preview/index.html  200
-/studio-preview/*  /studio-preview/:splat  200
+# Studio preview — private page
+/studio-preview  /studio-preview.html  200
 
 # SPA fallback
 /*  /index.html  200
