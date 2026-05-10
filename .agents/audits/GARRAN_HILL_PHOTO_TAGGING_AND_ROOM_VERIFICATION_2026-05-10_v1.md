@@ -1,4 +1,4 @@
-# GARRAN HILL — PHOTO TAGGING + ROOM VERIFICATION AUDIT
+# GARRAN HILL — PHOTO TAGGING + ROOM VERIFICATION AUDIT v1
 # Date: 2026-05-10
 # Cloudinary access: CONFIRMED (read-only)
 # Matterport: URL accessible — room navigation requires human
@@ -8,99 +8,180 @@
 
 ---
 
-## SUMMARY
+## SUMMARY COUNTS
 
-- Homepage images audited: 18 unique public IDs
-- Room cards audited: 20
-- Confirmed mislabels: 0 (suspected 2)
-- Suspected mislabels: 2
-- Photos needing Rachel confirmation: 10
-- Photos needing Matterport confirmation: 6
-- Proposed tag corrections: 10 (none applied)
-- New photo candidates found for empty cards: 8 rooms
+| Item | Count |
+|---|---|
+| Homepage images audited | 18 |
+| Room cards audited | 20 |
+| Locked brand assets (not audited) | 2 |
+| Confirmed mislabels | 0 |
+| Suspected mislabels | 2 |
+| Photos needing Rachel confirmation | 9 |
+| Photos needing Matterport confirmation | 6 |
+| Proposed tag corrections | 11 (none applied) |
+| Rooms with confirmed Cloudinary candidates now available | 10 |
+| Rachel-confirmed facts new this session | 1 (Blue Fox ✅) |
+
+---
+
+## CLOUDINARY ACCESS: CONFIRMED
+
+## MATTERPORT ACCESS: URL ACCESSIBLE
+https://my.matterport.com/show/?m=mfwyqT5Btwx
+Rocky can confirm the URL is live. Room-level navigation requires Rachel to walk the scan.
 
 ---
 
 ## CRITICAL FINDINGS
 
-### FINDING 1 — Staircase image is tagged room_foyer
-`gh_interiors/200holycrest_1182` is tagged `room_foyer` but used on the site as the staircase section and staircase card.
+### 1. STAIRCASE CARD USES FOYER-TAGGED IMAGE ⚠️
+`gh_interiors/200holycrest_1182` is tagged `room_foyer` and is currently powering:
+- The staircase section split
+- The staircase room card
 
-This is not necessarily wrong — the mahogany volute staircase rises directly from the foyer and the AI likely tagged the larger space. But it means:
-- The foyer card and the staircase card are both using images tagged room_foyer
-- 10 genuine room_hallway_stairs images exist and are unused on the site
-- The staircase card should use a room_hallway_stairs image for accuracy
+The mahogany volute staircase rises directly from the foyer, so the AI tagged the broader entry space rather than the staircase itself. This is a probable mislabel — the image most likely shows the staircase rising from the foyer, not the foyer floor plan.
 
-**Recommended fix:** Swap staircase card to `200holycrest_1338` (4024×6048, tall format, room_hallway_stairs). Rachel confirm.
+**10 correctly tagged room_hallway_stairs images exist and are unused on the site.**
+Best replacement candidates (all Pam Jensen masters):
+- `200holycrest_1215` — 3966×5594 (17MB) — tall portrait format
+- `200holycrest_1338` — 4024×6048 (16MB) — very tall, strong stair geometry
+- `200holycrest_1569` — 5044×3699 (16MB) — landscape, wider view
 
-### FINDING 2 — Twilight hero tagged room_pool
-`gh_exteriors/holycrestextf_3327` is tagged `room_pool` but serves as the twilight full-bleed emotional closer.
-
-Twilight = house facade lit at dusk. Pool = ground-level water shot. These are different subjects and different emotional registers. The tag is almost certainly wrong for this image's actual content.
-
-**Recommended fix:** Rachel confirm image content. If it is the twilight facade (as used), retag to room_exterior_twilight. 10 actual pool images exist under room_pool tag.
-
-### FINDING 3 — Pool card uses wrong image
-The Pool & Terrace card currently uses `200_hollycrest_drive_192` (tagged room_gardens) as the pool thumbnail. This shows the canopy/grounds, not the pool. 10 actual room_pool images exist.
-
-**Recommended fix:** Replace pool card with `holycrestextf_3334` or `200_hollycrest_drive_177` (both tagged room_pool). Move 200_hollycrest_drive_192 to the Gardens card where it belongs.
-
-### FINDING 4 — gh_img/Winglivingroom suspicious tag
-`gh_img/Winglivingroom` is tagged `room_lower_level_office`. The public ID contains "Winglivingroom" which suggests it may show a wing/living area, not the lower-level office. This needs investigation before use.
-
-### FINDING 5 — Primary Bath has candidates (Jewel Box/Mirror Bath gap can be filled)
-10 images tagged `room_primary_bath` exist (200holycrest_1362–1383). The two largest files (1371, 1374 at 6048×4024) are the best candidates for the Jewel Box Bath feature. Rachel needs to identify which image shows the mirror/marble ornament treatment.
+**Action required:** Rachel picks one. Next build ticket swaps the card.
 
 ---
 
-## ROOMS WITH PHOTO GAPS — CONFIRMED CANDIDATES NOW AVAILABLE
+### 2. TWILIGHT FULL-BLEED TAGGED room_pool ⚠️
+`gh_exteriors/holycrestextf_3327` is tagged `room_pool` but serves as the twilight full-bleed emotional closer — the last cinematic image before the inquiry section.
 
-| Room | Gap Status | Best Candidate | Tag |
-|---|---|---|---|
-| Staircase (card fix) | ⚠️ Mislabeled | 200holycrest_1338 | room_hallway_stairs |
-| Primary Bath / Jewel Box | 🔴 Empty | 200holycrest_1371 or 1374 | room_primary_bath |
-| Sunroom | 🔴 Empty | 200holycrest_1617 | room_sunroom |
-| Pool & Terrace (card fix) | ⚠️ Wrong image | holycrestextf_3334 | room_pool |
-| Wee Cottage | 🔴 Empty | holycrestextf_3345 or 3361 | room_outbuildings |
-| Lower-Level Office | 🔴 Empty (with caveat) | 200_hollycrest_drive_137 | room_lower_level_office |
-| Laundry | 🔴 Empty | 200holycrest_1497 | room_laundry |
-| Gardens card | ⚠️ Misassigned | 200_hollycrest_drive_192 | room_gardens |
+A twilight exterior (house lit at dusk, facade centered) is a completely different subject from a pool area shot (water, deck, enclosure). This tag is almost certainly wrong for the image's actual content.
+
+**Action required:** Rachel confirms which this is. If twilight: retag in dedicated ticket. 10 separate room_pool images exist for actual pool use.
 
 ---
 
-## PROPOSED NEXT LIVE BUILD TICKET
+### 3. POOL CARD USES WRONG IMAGE ⚠️
+`gh_photos/200_hollycrest_drive_192` (tagged `room_gardens`) is currently powering the Pool & Terrace room card. This shows the mature canopy / aerial grounds — not the pool.
 
-**PHOTO CARD ACCURACY + MISSING ROOM CARDS v1**
-
-Scope:
-1. Swap staircase card image from 1182 (room_foyer) to confirmed room_hallway_stairs candidate
-2. Swap pool card image from 200_hollycrest_drive_192 (room_gardens) to actual room_pool image
-3. Move 200_hollycrest_drive_192 to gardens card (correct use)
-4. Add Wee Cottage card photo from room_outbuildings candidates
-5. Add sunroom card photo from room_sunroom candidates
-6. Add primary bath card photo from room_primary_bath candidates (Rachel picks)
-7. Add laundry card photo
-8. Add lower-level office card photo (pending Winglivingroom investigation)
-
-**Dependencies before build:**
-- Rachel confirms 1182 content (staircase or foyer)
-- Rachel confirms holycrestextf_3327 content (twilight or pool)
-- Rachel picks primary bath / Jewel Box candidate from 1362–1383
-- Rachel picks staircase candidate from room_hallway_stairs set
-- Rachel picks Wee Cottage angle from outbuildings set
+**Fix:** Move 200_hollycrest_drive_192 to the Gardens & Grounds card (correct use). Replace pool card with `holycrestextf_3334` or `drive_177` (both tagged room_pool).
 
 ---
 
-## TAG CORRECTION QUEUE (DO NOT APPLY YET — SEPARATE TICKET REQUIRED)
+### 4. BLUE FOX CONFIRMED ✅
+Rachel has visually confirmed `gh_img/75a1922cd` as the Blue Fox stone marker.
 
-10 corrections proposed. All documented in PHOTO_TRUTH_LAYER_v1.md.
-Apply only after Rachel confirms each item.
-Apply in a single dedicated Cloudinary tagging ticket with Rachel approval.
+The inscription reads:
+> MY IRISH HUNTER / BLUE FOX / 1946–1965
+
+This image is currently tagged: `act_evidence, room_grounds_details, archival, blue_fox`
+
+The `blue_fox` tag is already present. Additional tags (hollycrest, dumaine, grave_marker, stone_marker, act_land) to be added in dedicated tagging ticket.
+
+This image replaces the `GH_BLUE_FOX_IMAGE_PENDING` placeholder in the #hollycrest section.
 
 ---
 
-*Audit: 2026-05-10*
-*By: Rocky*
+### 5. PRIMARY BATH / JEWEL BOX — CANDIDATES CONFIRMED, PICK NEEDED
+10 large Pam Jensen images exist tagged `room_primary_bath` (200holycrest_1362–1398).
+Three largest: 1371 (18MB), 1365 (17MB), 1395 (17MB).
+
+Rachel needs to identify which image shows the mirror / marble / ornament treatment that is the Jewel Box.
+
+---
+
+### 6. LOWER-LEVEL OFFICE — REAL CANDIDATES CONFIRMED
+5 large Pam Jensen images exist tagged `room_lower_level_office`:
+1605 (20MB), 1608 (19MB), 1581 (18MB), 1602 (18MB), 1599 (16MB).
+
+Previous session flagged `gh_img/Winglivingroom` as suspicious. The Pam Jensen set above supersedes that concern — use these instead.
+
+---
+
+### 7. PRIMARY CLOSET — CANDIDATES FOUND (PREVIOUSLY UNKNOWN)
+5 Pam Jensen images exist tagged `room_primary_closet`:
+1422 (17MB), 1419 (17MB), 1413 (15MB), 1410 (14MB), 1269 (12MB)
+
+This fills a gap that was marked pending. Rachel pick needed.
+
+---
+
+## PHOTOS NEEDING RACHEL VISUAL CONFIRMATION
+
+| Asset | Question | Priority |
+|---|---|---|
+| `gh_interiors/200holycrest_1182` | Staircase from foyer — or foyer itself? | HIGH |
+| `gh_exteriors/holycrestextf_3327` | Twilight facade or pool area? | HIGH |
+| `gh_interiors/200holycrest_1371` etc | Which is the Jewel Box / Mirror Bath? | HIGH |
+| `gh_exteriors/holycrestextf_3361` etc | Which Wee Cottage angle is strongest? | MEDIUM |
+| `gh_img/ee869bbb3` (dumaine tag) | Who/what is this? Rights clear? | HIGH |
+| `gh_img/7b1b1f524` (architectural) | Is this an O'Shea restoration drawing? | MEDIUM |
+| `gh_key/gh_whp_letter1` | Authentic WHP letter — whose hand, what letter? | HIGH |
+| `gh_key/gh_whp_wikimedia` | License confirmed for commercial use? | HIGH |
+| Staircase card pick | From: 1215, 1338, 1569 — Rachel choose 1 | HIGH |
+
+---
+
+## PHOTOS NEEDING MATTERPORT CONFIRMATION
+
+| Room | Question |
+|---|---|
+| Staircase vs. foyer | Where does 1182 sit in the floor plan? |
+| Twilight / pool | Pool area or front facade? |
+| Lower-level office | Confirm separation from wing/common areas |
+| Sunroom | Kitchen flow or back hall connection? |
+| Primary bath | Which candidate shows the Jewel Box space? |
+| Primary closet | Confirm these are the dressing suite, not passage closets |
+
+---
+
+## PROPOSED TAG CORRECTIONS — 11 ITEMS
+
+Not applied. Require dedicated tagging ticket + Rachel approval.
+All documented in full in GARRAN_HILL_PHOTO_TRUTH_LAYER_v1.md.
+
+Priority order:
+1. `gh_img/75a1922cd` — add grave_marker/hollycrest/dumaine tags (Rachel confirmed)
+2. `gh_interiors/200holycrest_1182` — resolve foyer vs. staircase
+3. `gh_exteriors/holycrestextf_3327` — resolve twilight vs. pool
+4. `gh_key/gh_threshold_stone` — add inscription/evidence tags (no harm, additive)
+5. `gh_key/gh_whp_wikimedia` — add WHP/portrait/public_domain after license confirm
+6–11. All others pending individual confirms
+
+---
+
+## RECOMMENDED NEXT LIVE BUILD TICKET
+
+**PHOTO CARD ACCURACY + PENDING ROOM CARDS v1**
+
+Scope (all changes to dist/index.html only):
+1. Swap staircase card from 1182 → confirmed room_hallway_stairs pick
+2. Swap pool card from 200_hollycrest_drive_192 → actual room_pool image
+3. Reassign 200_hollycrest_drive_192 to gardens card
+4. Add Blue Fox image (75a1922cd) to #hollycrest section — Rachel confirmed
+5. Add Wee Cottage card photo — Rachel pick
+6. Add Sunroom card photo — Rachel pick
+7. Add Primary Bath / Jewel Box card — Rachel pick
+8. Add Primary Closet card — Rachel pick (candidates now confirmed)
+9. Add Lower-Level Office card — Rachel pick
+10. Upgrade Laundry card with 200holycrest_1497
+
+**Gate:** Rachel picks for items 1, 5, 6, 7, 8, 9 first.
+Items 2, 3, 4, 10 can be built immediately.
+
+---
+
+## FILES REFERENCED
+
+| File | Purpose |
+|---|---|
+| `.agents/photo-maps/GARRAN_HILL_PHOTO_TRUTH_LAYER_v1.md` | Full truth ladder + candidate lists |
+| `.agents/audits/GARRAN_HILL_PHOTO_TAGGING_AND_ROOM_VERIFICATION_2026-05-10_v1.md` | This file |
+| `.agents/GH_CLOUDINARY_PHOTO_GUIDE.md` | Master photo inventory — source of truth |
+
+---
+
+*Audit: 2026-05-10 — Rocky*
 *dist/index.html: NOT EDITED*
 *Live site: NOT CHANGED*
 *Cloudinary: NOT MODIFIED*
