@@ -240,17 +240,19 @@
     -webkit-backdrop-filter: none;
     overflow: visible;
   }
-  /* Single whisper-thin gold line — just enough to mark the ground */
+  /* TOP FRAME LINE — matches bottom, plaque effect */
   .stat-bar::before {
     content: '';
     position: absolute; top: 0; left: 0; right: 0; height: 1px;
     background: linear-gradient(90deg,
       transparent 0%,
-      transparent 15%,
-      rgba(201,169,110,0.18) 35%,
-      rgba(201,169,110,0.32) 50%,
-      rgba(201,169,110,0.18) 65%,
-      transparent 85%,
+      transparent 8%,
+      rgba(190,162,105,0.25) 28%,
+      rgba(200,171,120,0.55) 42%,
+      rgba(210,182,132,0.72) 50%,
+      rgba(200,171,120,0.55) 58%,
+      rgba(190,162,105,0.25) 72%,
+      transparent 92%,
       transparent 100%);
   }
   .stat-bar::after {
