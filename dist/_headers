@@ -1,3 +1,11 @@
+/studio-preview
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+
+/studio-preview/
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+
 /coco
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store
