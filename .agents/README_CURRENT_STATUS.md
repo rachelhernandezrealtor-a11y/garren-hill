@@ -60,6 +60,24 @@ This standard covers:
 
 ---
 
+---
+
+## PUBLIC BROKERAGE CONTACT — GARRAN HILL (CONFIRMED 2026-05-10)
+
+| Field | Value |
+|---|---|
+| Agent | Rachel Hernandez |
+| Brokerage | Pines Sotheby's International Realty |
+| Location | Southern Pines, North Carolina |
+| Public email | rachel.hernandez@sothebysrealty.com |
+| Phone | **Not public — do not display** |
+
+All mailto: links on the site use rachel.hernandez@sothebysrealty.com.
+Gmail address removed from all public-facing HTML.
+Footer added with contact block.
+Schema broker block added (no telephone field).
+
+
 ## PHOTOS
 - Cloudinary: `dghn2xpif`
 - `gh_interiors` + `gh_exteriors` = Pam Jensen masters ← prefer these

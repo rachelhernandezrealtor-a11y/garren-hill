@@ -322,3 +322,63 @@ Plus property-specific banned phrases documented in each property's Fact Guardra
 
 *Next update: when Flow Farm proves or improves a pattern.*
 *Maintained by: Rocky. Approved by: Rachel.*
+
+---
+
+## 12. PUBLIC CONTACT STANDARD
+
+Every Rachel Studio property site must define these fields before launch:
+
+| Field | Required | Notes |
+|---|---|---|
+| Agent public name | Yes | e.g. Rachel Hernandez |
+| Brokerage name | Yes | Full official name — e.g. Pines Sotheby's International Realty |
+| Brokerage location | Yes | City, State |
+| Public email | Yes | Must be confirmed before launch |
+| Phone display | No | Only if Rachel explicitly approves — default is no phone shown |
+
+### Rules
+
+- **Never expose private owner contact details** on any public-facing page, schema, or form action.
+- **Never expose source-document private emails** (e.g. owner Gmail addresses found in research files).
+- **If phone is not approved, do not show phone publicly.** Absence is the correct default.
+- **Inquiry forms may collect buyer phone numbers** (buyer's own number for showing coordination) without displaying the agent's phone number.
+- **Public email must be confirmed before launch.** If not confirmed, use a placeholder comment and do not ship.
+- **Schema broker block must include name and email only** — no telephone field unless Rachel approves.
+- **Footer contact block is required on every property site.** Minimum: agent name, brokerage, location, email.
+- **All mailto: links must use the confirmed public email.** Never use a Gmail or private research address as the public mailto target.
+- **No phone number patterns anywhere in public HTML** — not in schema, not in footer, not in copy.
+
+### Garran Hill — Confirmed Public Contact
+
+| Field | Value |
+|---|---|
+| Agent | Rachel Hernandez |
+| Brokerage | Pines Sotheby's International Realty |
+| Location | Southern Pines, North Carolina |
+| Public email | rachel.hernandez@sothebysrealty.com |
+| Phone | Not public — do not display |
+
+### Pre-Launch Checklist (per property)
+
+- [ ] Public email confirmed with agent
+- [ ] Brokerage name confirmed (full official name)
+- [ ] Brokerage location confirmed
+- [ ] Footer contact block present
+- [ ] All mailto: targets use confirmed public email
+- [ ] No phone numbers in public HTML
+- [ ] No private owner emails in public HTML
+- [ ] Schema broker block present, no telephone field
+- [ ] Inquiry form fallback uses confirmed public email
+
+---
+
+## VERSION HISTORY (updated)
+
+| Version | Date | Notes |
+|---|---|---|
+| v1.0 | 2026-05-10 | Initial standard |
+| v1.1 | 2026-05-10 | Added Section 11: Photo Truth Layer |
+| v1.2 | 2026-05-10 | Added Section 12: Public Contact Standard — confirmed contact for Garran Hill |
+
+*Maintained by: Rocky. Approved by: Rachel.*
