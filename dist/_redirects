@@ -4,16 +4,14 @@
 # Rocky studio — must come before the wildcard
 /rocky  /rocky.html  200
 
-# Studio preview — private page (two routes)
-# /studio-preview → blocked by CF Access policy; workaround at /rachel-studio-preview/
-/studio-preview  /studio-preview.html  200
-/studio-preview/*  /studio-preview/index.html  200
-
 # Rachel Studio preview — Access-safe branded alias
-# Serves the same dist/studio-preview/index.html file
-/rachel-studio-preview  /studio-preview.html  200
-/rachel-studio-preview/  /studio-preview/index.html  200
-/rachel-studio-preview/*  /studio-preview/index.html  200
+# Serves rachel-studio-preview.html (flat file copy, not /studio-preview/* which is Access-blocked)
+/rachel-studio-preview  /rachel-studio-preview.html  200
+/rachel-studio-preview/  /rachel-studio-preview.html  200
+
+# Studio preview original paths (blocked by CF Access on rachelhernandez.studio, works on pages.dev)
+/studio-preview  /studio-preview.html  200
+/studio-preview/  /studio-preview/index.html  200
 
 # SPA fallback
 /*  /index.html  200
