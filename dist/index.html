@@ -1300,7 +1300,14 @@
     .then-now-then { opacity: 0 !important; } /* mobile: NOW only, no animation */
   }
 
-  </style>
+  
+  @keyframes secretFade {
+    0%   { opacity: 1; }
+    40%  { opacity: 1; }
+    60%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+</style>
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -2017,11 +2024,16 @@
       <p>The house still knows how to keep a secret.</p>
     </div>
   </div>
-  <div class="split-img img-reveal">
-    <img loading="lazy" decoding="async"
+  <div class="split-img img-reveal" style="position:relative;overflow:hidden;">
+    <!-- crossfade: closed panel fades to open compartment -->
+    <img class="secret-closed" loading="lazy" decoding="async"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243373/gh_interiors/200holycrest_1692.jpg"
+      alt="Garran Hill foyer stair — the hidden panel, flush and invisible"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;animation:secretFade 6s ease-in-out 2s infinite alternate;">
+    <img class="secret-open" loading="lazy" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243375/gh_interiors/200holycrest_1695.jpg"
-      alt="Garran Hill foyer stair — the hidden panel compartment flush with the paneling under the landing">
-    <!-- GH_PHOTO_PLACED: 200holycrest_1695, room_foyer, Rachel confirmed hidden compartment under stair landing -->
+      alt="Garran Hill foyer stair — the hidden compartment open under the stair landing"
+      style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
   </div>
 </section>
 
