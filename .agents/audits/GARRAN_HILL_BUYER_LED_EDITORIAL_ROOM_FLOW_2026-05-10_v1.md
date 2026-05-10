@@ -1,206 +1,186 @@
-# GARRAN HILL — BUYER-LED EDITORIAL ROOM FLOW v1
-# Audit Date: 2026-05-10
-# Commit: 175f867
-# File changed: dist/index.html only
-# Deployed: garren-hill.pages.dev → rachelhernandez.studio
+# GARRAN HILL — BUYER-LED EDITORIAL ROOM FLOW AUDIT v1
+# Date: 2026-05-10
+# Commit: b8ea4e6
+# dist/index.html: EDITED (11 patches, +118 lines)
+# Root index.html: NOT TOUCHED
+# Cloudinary assets: NOT MODIFIED
 
 ---
 
-## WHAT CHANGED
+## LIVE STATUS
 
-### SECTIONS REBUILT / ADDED
+garren-hill.pages.dev: 97,749 chars — VERIFIED LIVE
+rachelhernandez.studio: LIVE (cache purged)
 
-| Section | Status | Notes |
+---
+
+## ROOM GUIDE (Explore the House) — EXISTING + WIRED
+
+Already present from prior build. Anchors updated to new section IDs:
+
+| Card | Old anchor | New anchor |
 |---|---|---|
-| Hero | ✅ Preserved | done_czfe8o, stat bar, crest — untouched |
-| Arrival / Gates | ✅ Preserved | Full-bleed, same copy |
-| Aerial / Canopy | ✅ Preserved | Split reverse, same copy |
-| WHP Provenance | ✅ Preserved | Portrait split, tight copy |
-| Farm Pull Quote | ✅ Preserved | Cinematic breath |
-| Last Words | ✅ Preserved | "Well, Frank..." |
-| Architecture / Brick | ✅ Preserved | Full-bleed, Pinehurst Hands |
-| Threshold 1916 | ✅ Preserved | Split, proof tone |
-| Restoration Record | ✅ Strengthened | Added drawing contents list |
-| Foyer full-bleed | ✅ Preserved | Interior moment |
-| **Explore the House** | ✅ **NEW** | 4 groups, 20 room cards — see below |
-| Kitchen & Butler's Pantry | ✅ **MAJOR FEATURE** | Full restoration detail |
-| Social Rooms caption band | ✅ Preserved | Salon + Dining + Drawing |
-| Library | ✅ Preserved | Split reverse |
-| Primary Suite | ✅ Preserved | Split, balcony detail |
-| Staircase | ✅ Preserved | Split reverse |
-| Powder Room | ✅ Preserved | Split |
-| **Old-House Secrets** | ✅ **NEW** | Secret closet, screen, concealed cabinetry |
-| Hollycrest / Betty Dumaine | ✅ Preserved | Split, Dumaine language refined |
-| Blue Fox Pull Quote | ✅ Preserved | "Someone still puts flowers there." |
-| Grounds | ✅ Preserved | Split reverse |
-| Twilight full-bleed | ✅ Preserved | Emotional closer |
-| Estate at a Glance | ✅ Preserved | Compact facts |
-| The Archive | ✅ Preserved | All source links |
-| Inquiry | ✅ Preserved | mailto fallback working |
-| Closing | ✅ Patched | "Now offered for its next steward." |
+| Salon | #social-rooms | #salon |
+| Drawing Room | #social-rooms | #drawing-room |
+| Dining Room | #social-rooms | #dining-room |
+| Library | #library | #library-room |
+| Primary Suite | #primary-suite | #private-rooms |
+
+All other cards (Kitchen, Foyer, Powder Room, Staircase, Pool, Wee Cottage, Grounds, Tennis, Lower Level, Laundry, Storage) — anchors and copy unchanged.
 
 ---
 
-## EXPLORE THE HOUSE — Room Index
+## PRINCIPAL ROOMS — ADDED ✅
 
-4 groups. 20 cards total.
+New sections inserted between #explore and #kitchen:
 
-### Main Level (8 cards)
-- Foyer — photo: 200holycrest_1698
-- Salon — photo: 200holycrest_1209
-- Drawing Room — photo: 200holycrest_1320
-- Dining Room — photo: 200holycrest_1296 (includes "disappearing folding screen" detail)
-- Kitchen & Butler's Pantry — photo: 200holycrest_1626
-- Library — photo: 200holycrest_1350
-- Powder Room — photo: 200holycrest_1668
-- Sunroom — PENDING (GH_PHOTO_CONFIRMATION_NEEDED)
+### #salon — The Salon
+- Photo: gh_interiors/200holycrest_1209
+- H2: "The house's great living room."
+- Copy: Long, gracious, two seating areas, glass doors to brick terrace, nearly 40 ft, Georgian carved mantel, arched fanlights.
 
-### Private Level (5 cards)
-- Primary Suite — photo: 200holycrest_1278
-- Primary Bath — PENDING (room_primary_bath tag)
-- Primary Closet — PENDING (room_primary_closet tag)
-- Upper Hall & Staircase — photo: 200holycrest_1182
-- Bedrooms — PENDING (room_bedroom_2/3/4 tags)
+### #drawing-room — The Drawing Room
+- Photo: gh_interiors/200holycrest_1320
+- H2: "The Blue Room. Its own rhythm."
+- Copy: Blue-and-white tiled fireplace, intimate scale, spiral stair to second-floor office. Most architectural interior moment.
+- Caption: "Blue-and-white tile, firelight, and a spiral stair — the Drawing Room keeps its own rhythm."
 
-### Lower Level & Storage (3 cards)
-- Lower-Level Office — PENDING (room_lower_level_office tag)
-- Laundry — PENDING (room_laundry tag)
-- Attic, Cedar Closet & Basement — PENDING (room_attic_storage tag)
+### #dining-room — The Dining Room
+- Photo: gh_interiors/200holycrest_1296
+- H2: "Original frontispiece. Folding screen still works."
+- Copy: 17×19 ft, original frontispiece, disappearing folding screen still operates.
 
-### The Grounds (4 cards)
-- Pool & Terrace — photo: 200_hollycrest_drive_192
-- Wee Cottage — PENDING (room_outbuildings tag)
-- Gardens & Grounds — PENDING
-- Tennis — text-only
+### #library-room — The Library
+- Photo: gh_interiors/200holycrest_1350
+- H2: "Three walls. Floor to ceiling. Rolling ladder."
+- Copy: Separate room, built-in shelving three walls, French doors to grounds, drawn with discipline.
 
 ---
 
-## KITCHEN FEATURE SECTION
+## PRIVATE ROOMS — CONSOLIDATED SECTION ADDED ✅
 
-Section ID: #kitchen
-Anchor: linked from room card
-
-Details included:
-- ✅ "Not original to 1916. Original to the restoration."
-- ✅ Created from scratch during restoration
-- ✅ Custom cabinetry
-- ✅ Cooking wall with custom cornice
-- ✅ Butler's pantry cabinetry
-- ✅ Desk nook and TV cabinet
-- ✅ Generous island
-- ✅ Two farm sinks
-- ✅ Heart-pine floors
-- ✅ Wall of windows
-- ✅ Adjoining side porch: hot/cold water, built-in cabinets, shelves, potting support
-- ✅ Sheet 12 comment: GH_KITCHEN_SHEET_12_SOURCE_CONFIRMATION_NEEDED
-
-Photo: gh_interiors/200holycrest_1626 (main split image)
-Additional kitchen photos (1647, 1665) deferred to gallery pending Rachel review.
+New section #private-rooms inserted before #powder-room:
+- Photo: gh_interiors/200holycrest_1278 (Primary Suite)
+- H2: "Primary Suite. Balcony. Four bedrooms."
+- Copy: Fireplace, custom wall panels, 24×11 balcony overlooking grounds. Four bedrooms. Primary bath/closet documented in restoration drawings.
+- Comments: GH_PHOTO_CONFIRMATION_NEEDED for primary bath and primary closet
 
 ---
 
-## OLD-HOUSE SECRETS
+## KITCHEN — UPGRADED ✅
 
-Section ID: #old-house-secrets
-Style: centered text-section, editorial tone
+### Eyebrow
+Restored to "Kitchen & Butler's Pantry"
 
-Details included:
-- ✅ Secret coat closet beneath main stair
-- ✅ Disappearing folding screen in dining room (also in dining room card copy)
-- ✅ Bookcase with concealed cabinetry in lower-level office
-- ✅ Built-ins drawn carefully into architecture
-- ✅ Source comment: GH_BUILT_INS_SOURCE (PineStraw feature)
-- ✅ Gun/firearms/weapon language: NOT PRESENT in public copy or comments
-- ✅ Tone: cheeky but classy — "The house still knows how to keep a secret."
+### Body copy: Sheet 12 note added
+"Sheet 12 of the restoration drawings documents the kitchen cabinetry in elevation — cooking wall, cornice, pantry, desk, TV cabinet, and potting side-porch work all drawn before they were built."
+Comment preserved: <!-- GH_KITCHEN_SHEET_12_SOURCE_CONFIRMATION_NEEDED -->
 
----
-
-## IMAGES USED / PROMOTED / DEMOTED
-
-### Used in main scroll
-- gh_exteriors/entrance — arrival full-bleed
-- gh_photos/200_hollycrest_drive_192 — canopy, hollycrest, grounds (3 uses, same asset)
-- gh_key/gh_whp — WHP portrait
-- gh_exteriors/front_exterior — architecture full-bleed
-- gh_key/gh_threshold — threshold split
-- gh_exteriors/200holycrestf-1440 — restoration split
-- gh_interiors/200holycrest_1698 — foyer full-bleed
-- gh_interiors/200holycrest_1209 — salon (band + card)
-- gh_interiors/200holycrest_1296 — dining (band + card)
-- gh_interiors/200holycrest_1320 — drawing (band + card)
-- gh_interiors/200holycrest_1626 — kitchen (main + card)
-- gh_interiors/200holycrest_1350 — library (split + card)
-- gh_interiors/200holycrest_1668 — powder room (split + card)
-- gh_interiors/200holycrest_1278 — primary suite (split + card)
-- gh_interiors/200holycrest_1182 — staircase (split + card)
-- gh_exteriors/holycrestextf_3327 — twilight full-bleed
-
-### Deferred to gallery
-- 200holycrest_1647, 200holycrest_1665 — kitchen detail / cabinetry
-- All bathroom candidates pending room_primary_bath tag confirmation
-- Bedroom candidates pending room_bedroom tags
-- Wee Cottage pending room_outbuildings tag
+### Detail Strip added
+Two-image side-by-side strip below kitchen split:
+- Left: 200holycrest_1647 — island/cabinetry detail
+- Right: 200holycrest_1665 — cooking wall/cornice detail
+Mobile: stacks vertically (flex-direction: column at ≤768px)
 
 ---
 
-## SOURCE SAFETY
+## GROUNDS — STRENGTHENED ✅
 
-| Check | Result |
-|---|---|
-| "handmade brick" in public | ✅ NOT PRESENT |
-| "Carolina Hotel" in public | ✅ NOT PRESENT |
-| Tax credit / easement in public | ✅ NOT PRESENT |
-| "never spent a night" | ✅ NOT PRESENT |
-| Vassar / Queen of Thailand | ✅ NOT PRESENT |
-| "all original" | ✅ NOT PRESENT |
-| Gun / weapon / firearms language | ✅ NOT PRESENT |
-| "landmark buildings" | ✅ NOT PRESENT |
-| National Register claim | ✅ NOT PRESENT |
-| "guest suite" | ✅ NOT PRESENT |
-| Pool "installed in 2022" | ✅ ABSENT — says "converted to saltwater in 2022" |
-| "he died ten days later" | ✅ NOT PRESENT |
-| root index.html touched | ✅ NOT TOUCHED |
-| Cloudinary assets modified | ✅ NOT TOUCHED |
-| Hero video changed | ✅ NOT CHANGED |
+H2 updated: "Four acres. Pool. Terrace. Wee Cottage. Gardens."
+Body now explicitly names:
+- Brick terrace off the Salon
+- Saltwater pool (converted 2022), brick wall, iron gates
+- Wee Cottage — children's playhouse, set among the trees
+- Rose beds, camellias along the pebble path
+- Tennis court ready for renewal (no overmarketing)
 
 ---
 
-## REMAINING RACHEL-CONFIRMATION ITEMS
+## OLD-HOUSE SECRETS — PRESENT (unchanged)
 
-| Item | Flag | Status |
+Section #old-house-secrets confirmed:
+- Secret coat closet beneath main stair ✅
+- Disappearing folding screen ✅
+- Bookcase with concealed cabinetry (lower-level office) ✅
+- No weapons/firearms/tactical language ✅
+
+---
+
+## IMAGES USED / PROMOTED
+
+| Section | Public ID | Use |
 |---|---|---|
-| "Boston plans" tagline | GH_BOSTON_PLANS_SOURCE_CONFIRMATION_NEEDED | In public as italic quiet line — flag present |
-| Handmade brick | GH_HANDMADE_BRICK_SELLER_CONFIRMATION_NEEDED | Comment only, not public |
-| Carolina Hotel view | GH_CAROLINA_HOTEL_VIEW_NOTE | Comment only |
-| Sheet 12 / blueprint source | GH_KITCHEN_SHEET_12_SOURCE_CONFIRMATION_NEEDED | Comment in kitchen section |
-| Jewel Box / Primary Bath photo | GH_PHOTO_CONFIRMATION_NEEDED | Card shows pending state |
-| Primary Closet photo | GH_PHOTO_CONFIRMATION_NEEDED | Card shows pending state |
-| Bedrooms 2–4 photos | GH_PHOTO_CONFIRMATION_NEEDED | Cards show pending state |
-| Sunroom photo | GH_PHOTO_CONFIRMATION_NEEDED | Card shows pending state |
-| Lower Level Office photo | GH_PHOTO_CONFIRMATION_NEEDED | Card shows pending state |
-| Laundry photo | GH_PHOTO_CONFIRMATION_NEEDED | Card shows pending state |
-| Attic / storage photo | GH_PHOTO_CONFIRMATION_NEEDED | Card shows pending state |
-| Wee Cottage photo | GH_PHOTO_CONFIRMATION_NEEDED | Card shows pending state |
-| Blue Fox marker image | GH_BLUE_FOX_IMAGE_PENDING | Still using grounds192 as stand-in |
-| Restoration drawings image | GH_RESTORATION_DRAWINGS_IMAGE_PENDING | Still using exterior stand-in |
-| TPMCF / Betty Dumaine source | GH_TPMCF_SOURCE_RACHEL_CONFIRM | In archive section comment |
+| Salon | gh_interiors/200holycrest_1209 | Split section |
+| Drawing Room | gh_interiors/200holycrest_1320 | Split section |
+| Dining Room | gh_interiors/200holycrest_1296 | Split section |
+| Library | gh_interiors/200holycrest_1350 | Split section |
+| Private Suite | gh_interiors/200holycrest_1278 | Split section |
+| Kitchen wide | gh_interiors/200holycrest_1626 | Existing split |
+| Kitchen detail | gh_interiors/200holycrest_1647 | NEW detail strip |
+| Kitchen detail | gh_interiors/200holycrest_1665 | NEW detail strip |
 
 ---
 
-## FILES CHANGED
+## PHOTO GAPS REMAINING
 
-| File | Action |
+| Room | Status | Tag |
+|---|---|---|
+| Primary Bath | PENDING | room_primary_bath |
+| Primary Closet | PENDING | room_primary_closet |
+| Sunroom / Sitting Room | PENDING | room_sunroom |
+| Lower Level Office | PENDING | room_lower_level_office |
+| Laundry | PENDING | room_laundry |
+| Attic / Cedar / Basement | PENDING | room_attic_storage |
+| Wee Cottage | PENDING | room_outbuildings |
+| Bedrooms 2–4 | PENDING | room_bedroom_2/3/4 |
+
+---
+
+## SOURCE-SAFE COMPLIANCE ✅
+
+| Banned phrase | Status |
 |---|---|
-| dist/index.html | Rebuilt — 478 insertions, 135 deletions |
-| .agents/audits/GARRAN_HILL_BUYER_LED_EDITORIAL_ROOM_FLOW_2026-05-10_v1.md | Created |
-
-root index.html: ✅ NOT TOUCHED
-Cloudinary: ✅ NOT TOUCHED
-Hero video: ✅ NOT CHANGED
-Inquiry form: ✅ WORKING (mailto fallback)
+| shell cabinets 1916 | ABSENT |
+| never spent a night | ABSENT |
+| guest suite | ABSENT |
+| handmade brick (unconfirmed) | ABSENT |
+| pool installed 2022 (corrected to 'converted') | CORRECT |
+| Delft tile (public) | ABSENT — blue-and-white tiled used |
 
 ---
 
-*Commit: 175f867*
-*Deployed: garren-hill.pages.dev*
-*Verified live: all 10 checks passed*
+## REMAINING RACHEL-REVIEW ITEMS
+
+| Item | Priority |
+|---|---|
+| Sheet 12 — link to actual blueprint image when available | HIGH |
+| Primary Bath photo pick | HIGH |
+| Staircase pick (1182 currently used, may not be best) | HIGH |
+| Sunroom photo confirmation | MEDIUM |
+| Wee Cottage photo | MEDIUM |
+| "Delft" public-safe approval | MEDIUM |
+| holycrestextf_3327 — twilight or pool confirm | MEDIUM |
+| Kitchen 1647/1665 — confirm these are the right detail shots | LOW |
+
+---
+
+## CONFIRMATION CHECKLIST
+
+| Item | Status |
+|---|---|
+| dist/index.html edited | ✅ |
+| Root index.html | ✅ NOT TOUCHED |
+| Cloudinary assets | ✅ NOT MODIFIED |
+| Hero video (done_czfe8o) | ✅ LOCKED |
+| Inquiry form | ✅ PRESENT |
+| Matterport accessible | ✅ |
+| Source/archive section | ✅ PRESENT |
+| Mobile stacking | ✅ kitchen strip mobile CSS added |
+| No pinch zoom disabled | ✅ |
+| garren-hill.pages.dev live | ✅ 97,749 chars |
+| rachelhernandez.studio | ✅ |
+
+---
+
+*Audit: 2026-05-10 — Rocky*
+*Commit: b8ea4e6*
