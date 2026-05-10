@@ -1,19 +1,39 @@
 # GARRAN HILL — CURRENT STATUS BOARD
-**Last updated:** 2026-05-10 (Global Style Alignment v1) by Rocky
+**Last updated:** 2026-05-10 (Rachel Studio Global Standard v1 created) by Rocky
 
 > Quick reference for any agent entering this project. Read this first.
 
 ---
 
-## ⚡ GLOBAL STANDARDS — READ BEFORE ANY DESIGN PASS
+## ⚡ RACHEL STUDIO GLOBAL STANDARD — READ BEFORE ANY PROPERTY BUILD
+
+**Rachel Studio Global Standard v1 now exists.**
+Future properties should begin from this standard before property-specific facts are added.
+
+File: `.agents/rules/RACHEL_STUDIO_GLOBAL_STANDARD_v1.md`
+
+This standard covers:
+- Core principle (facts fixed, copy open)
+- Rachel's role as creative director + approval layer
+- Full property build stack (11 required deliverables)
+- Design standard (typography, spacing, mobile, luxury immersive layer)
+- Copy standard (voice, do/don't, the seduction law)
+- Photo standard (required fields per image)
+- Source standard (hierarchy: primary → institutional → owner → journalism → oral history)
+- Build workflow (12-step repeatable order)
+- Agent rules (no agent overrides Rachel)
+- Garran Hill as the model and proof of concept
+
+---
+
+## ⚡ GARRAN HILL-SPECIFIC STANDARDS
 
 1. **Source truth must be checked before style work.** Run the unsafe phrase scan against `dist/index.html` before touching anything.
 2. **Verify served site matches dist/index.html** — fetch live URL, compare. If MD5 differs (beyond Cloudflare email obfuscation), diagnose route/cache mismatch before proceeding.
-3. **Global style/truth standard now exists:** `.agents/rules/RACHEL_STUDIO_GLOBAL_STYLE_AND_TRUTH_STANDARD_v1.md`
-4. This standard applies to Garran Hill and all future Rachel Studio properties.
-5. **Typography baseline:** EB Garamond at weight 400 for body copy. Cormorant Garamond for headings. Pinyon Script for estate name only.
-6. **Section breathing room:** Desktop sections spacious, not jammed. Mobile sections edited, not compressed.
-7. **Mobile cursor:** Always scoped to `(hover: hover) and (pointer: fine)` — never apply `cursor: none` globally.
+3. **Global style/truth standard:** `.agents/rules/RACHEL_STUDIO_GLOBAL_STYLE_AND_TRUTH_STANDARD_v1.md`
+4. **Typography baseline:** EB Garamond at weight 400 for body copy. Cormorant Garamond for headings. Pinyon Script for estate name only.
+5. **Section breathing room:** Desktop sections spacious, not jammed. Mobile sections edited, not compressed.
+6. **Mobile cursor:** Always scoped to `(hover: hover) and (pointer: fine)` — never apply `cursor: none` globally.
 
 ---
 
@@ -66,12 +86,13 @@
 ## NEXT BUILD ORDER
 1. ✅ Global Style + Truth Standard created
 2. ✅ Global Style Alignment patch deployed
-3. Rachel approves contact sheet
-4. Photo implementation — approved only
-5. Pinehurst Hands / Brick Thread — Rachel confirms Boston plans + Tufts craftsmen sourcing
-6. Mobile QA sign-off
-7. SEO / backlink section
-8. Domain / launch gate
+3. ✅ Rachel Studio Global Standard v1 created
+4. Rachel approves contact sheet
+5. Photo implementation — approved only
+6. Pinehurst Hands / Brick Thread — Rachel confirms Boston plans + Tufts craftsmen sourcing
+7. Mobile QA sign-off
+8. SEO / backlink section
+9. Domain / launch gate
 
 ---
 
@@ -90,4 +111,5 @@
 ---
 
 *Full detail: `.agents/master/GARRAN_HILL_MASTER_SYNC_ADDENDUM_2026-05-10.md`*
-*Global style standard: `.agents/rules/RACHEL_STUDIO_GLOBAL_STYLE_AND_TRUTH_STANDARD_v1.md`*
+*Garran Hill style standard: `.agents/rules/RACHEL_STUDIO_GLOBAL_STYLE_AND_TRUTH_STANDARD_v1.md`*
+*Rachel Studio global standard: `.agents/rules/RACHEL_STUDIO_GLOBAL_STANDARD_v1.md`*
