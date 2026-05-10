@@ -954,6 +954,42 @@
   @media (max-width: 400px) { .room-cards { grid-template-columns: 1fr; } }
   /* ── END BUYER-LED ROOM INDEX v1 ── */
 
+
+  /* Pending room card — elegant hold state */
+  .room-card--text .room-card-img {
+    background: rgba(10,10,10,0.6);
+    border: 1px solid rgba(201,169,110,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+  }
+  .room-card-img--pending { position: relative; overflow: hidden; }
+  .room-card-placeholder {
+    display: none; /* hidden from buyer — no broken state visible */
+  }
+  .room-card--text .room-card-img::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: rgba(201,169,110,0.35);
+    margin: 0 auto;
+  }
+
+  /* Mobile social rooms band fix */
+  @media (max-width: 768px) {
+    .caption-band .caption-row {
+      flex-direction: column;
+      gap: var(--sp-lg);
+    }
+    .caption-band .caption-item {
+      width: 100%;
+    }
+    .caption-band .caption-img {
+      max-height: 280px;
+    }
+  }
 </style>
 
   <!-- JSON-LD -->
@@ -1215,12 +1251,12 @@
         <a class="room-card" href="#social-rooms">
           <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243041/gh_interiors/200holycrest_1209.jpg" alt="Salon"></div>
           <p class="room-card-name">Salon</p>
-          <p class="room-card-line">Georgian carved mantel, Delft tile, arched fanlights.</p>
+          <p class="room-card-line">Georgian carved mantel, formal fireplace surround, arched fanlights.</p>
         </a>
         <a class="room-card" href="#social-rooms">
           <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243086/gh_interiors/200holycrest_1320.jpg" alt="Drawing Room"></div>
           <p class="room-card-name">Drawing Room</p>
-          <p class="room-card-line">Enlarged during restoration. Georgian mantel. Delft tile returned.</p>
+          <p class="room-card-line">Enlarged during restoration. Georgian mantel. Formal fireplace surround.</p>
         </a>
         <a class="room-card" href="#social-rooms">
           <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243067/gh_interiors/200holycrest_1296.jpg" alt="Dining Room"></div>
@@ -1313,7 +1349,7 @@
       <h3 class="room-group-label">The Grounds</h3>
       <div class="room-cards">
         <a class="room-card" href="#grounds">
-          <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_800/v1777244072/gh_photos/200_hollycrest_drive_192.jpg" alt="Pool and grounds"></div>
+          <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_800/v1777244483/gh_exteriors/holycrestextf_3334.jpg" alt="Garran Hill pool — 20×40 saltwater, brick wall, iron gates"></div>
           <p class="room-card-name">Pool &amp; Terrace</p>
           <p class="room-card-line">20 &times; 40 saltwater pool, brick wall, iron gates. Converted 2022.</p>
         </a>
@@ -1370,9 +1406,9 @@
     <div class="caption-row">
       <div class="caption-item">
         <div class="caption-img img-reveal">
-          <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243041/gh_interiors/200holycrest_1209.jpg" alt="Salon — Georgian carved mantel, Delft tile">
+          <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243041/gh_interiors/200holycrest_1209.jpg" alt="Salon — Georgian carved mantel, formal fireplace surround">
         </div>
-        <p class="caption-label">The Salon &mdash; Georgian carved mantel. Delft tile surround. Arched fanlights still there.</p>
+        <p class="caption-label">The Salon &mdash; Georgian carved mantel. Formal fireplace surround. Arched fanlights still there.</p>
       </div>
       <div class="caption-item">
         <div class="caption-img img-reveal">
@@ -1382,9 +1418,9 @@
       </div>
       <div class="caption-item">
         <div class="caption-img img-reveal">
-          <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243086/gh_interiors/200holycrest_1320.jpg" alt="Drawing Room — Georgian mantel, Delft tile">
+          <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243086/gh_interiors/200holycrest_1320.jpg" alt="Drawing Room — Georgian mantel, formal fireplace surround">
         </div>
-        <p class="caption-label">The Drawing Room &mdash; Made larger for the restoration. Delft tile came back with it.</p>
+        <p class="caption-label">The Drawing Room &mdash; Made larger for the restoration. Formal fireplace surround restored with it.</p>
       </div>
     </div>
   </div>
@@ -1493,13 +1529,13 @@
       <h2>Horses. Hounds. Peacocks.<em>Native hollies on every path.</em></h2>
       <div class="body-text reveal">
         <p>Elizabeth &#8220;Betty&#8221; Dumaine purchased Garran Hill in 1959 and renamed it Hollycrest. She stewarded it until 1984.</p>
-        <p>Betty Dumaine&#8217;s Hollycrest years carried horses, hounds, peacocks, native hollies, and international polish. She named her Irish Hunter Blue Fox. He is buried somewhere on these grounds.</p>
+        <p>Betty Dumaine&#8217;s Hollycrest years carried horses, hounds, peacocks, native hollies, and old Pinehurst lore to the estate. Her Irish hunter, Blue Fox, is buried on the grounds. Someone still puts flowers there.</p>
       </div>
     </div>
     <div class="split-img img-reveal">
-      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244072/gh_photos/200_hollycrest_drive_192.jpg"
-        alt="Garran Hill grounds — estate memorial, Pinehurst NC">
-      <!-- GH_BLUE_FOX_IMAGE_PENDING: replace with confirmed marker image when Rachel approves -->
+      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777247310/gh_img/75a1922cd.jpg"
+        alt="Blue Fox grave marker — MY IRISH HUNTER / BLUE FOX / 1946–1965, Garran Hill grounds">
+      <!-- GH_BLUE_FOX_CONFIRMED: Rachel confirmed 2026-05-10. Inscription: MY IRISH HUNTER / BLUE FOX / 1946–1965 -->
     </div>
   </div>
 </section>
@@ -1514,7 +1550,7 @@
   <div class="split reverse">
     <div class="split-img img-reveal">
       <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244072/gh_photos/200_hollycrest_drive_192.jpg"
-        alt="Garran Hill pool — 20&times;40 concrete, brick wall, iron gates, Pinehurst NC">
+        alt="Garran Hill grounds — four acres, mature canopy, estate approach, Pinehurst NC">
     </div>
     <div class="split-text">
       <span class="micro-rule reveal"></span>
@@ -1534,7 +1570,7 @@
 <section class="full-bleed-section" id="twilight">
   <div class="full-bleed-img img-reveal">
     <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777243290/gh_exteriors/holycrestextf_3327.jpg"
-      alt="Garran Hill at twilight — lit windows at dusk, Pinehurst NC">
+      alt="Garran Hill exterior at dusk — four acres, estate grounds, Pinehurst NC">
   </div>
   <div class="full-bleed-caption full-bleed-caption--center reveal">
     <span class="eyebrow">Garran Hill &middot; At Dusk</span>
