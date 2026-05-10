@@ -4,12 +4,8 @@
 # Rocky studio — must come before the wildcard
 /rocky  /rocky.html  200
 
-# Rachel Studio preview — Access-safe branded alias
-# Serves rachel-studio-preview.html (flat file copy, not /studio-preview/* which is Access-blocked)
-/rachel-studio-preview  /rachel-studio-preview.html  200
-/rachel-studio-preview/  /rachel-studio-preview.html  200
-
-# Studio preview original paths (blocked by CF Access on rachelhernandez.studio, works on pages.dev)
+# Studio preview original paths (note: /studio-preview/* is blocked by CF Access on rachelhernandez.studio)
+# Use rachelhernandez.studio/rachel-studio-preview instead (served by CF Pretty URLs from rachel-studio-preview.html)
 /studio-preview  /studio-preview.html  200
 /studio-preview/  /studio-preview/index.html  200
 
