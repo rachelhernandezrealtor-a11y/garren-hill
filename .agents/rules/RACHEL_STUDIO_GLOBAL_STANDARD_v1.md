@@ -257,6 +257,50 @@ Garran Hill taught us:
 
 Every future property begins here, before property-specific facts are added.
 
+
+## 11. PHOTO TRUTH LAYER
+
+AI tags are a starting point. They are not truth.
+
+Every important image used on a property site must pass through the Truth Ladder before live use:
+
+```
+1. Cloudinary public ID confirmed in inventory
+2. AI tag / room tag reviewed (starting point only)
+3. Visual confirmation: does the image actually show that room / feature?
+4. Matterport or floor-plan cross-reference if room location is uncertain
+5. Rachel approval for signature, hero, and evidence-layer images
+6. Cleared for live site use
+```
+
+### Rules
+
+- Do not publish room-specific claims based solely on AI tags.
+- A staircase shot from the foyer will be tagged room_foyer by AI. Verify.
+- A pool shot tagged room_pool may actually be a twilight facade. Verify.
+- Mislabel corrections must be proposed first, documented in the Photo Truth Layer file, and applied only in a separate approved Cloudinary tagging ticket.
+- Never rename, retag, move, delete, or overwrite Cloudinary assets without a dedicated approved tagging ticket.
+- Every future property build gets a Photo Truth Layer document before final room section build.
+
+### What Matterport Can Verify
+- Room name and location in the floor plan
+- Room adjacency and flow
+- Whether two photos show the same space from different angles
+- Whether a feature belongs to Kitchen vs. Butler's Pantry vs. Back Hall
+- Balcony connections and circulation paths
+
+### Signature Image Approval
+- Hero images: Rachel approval required before lock
+- Jewel Box / Mirror Bath: Rachel visual confirm required — do not label without confirmation
+- Blue Fox / Dumaine: Rachel confirm content and rights before public use
+- Archival / letter images: Rachel confirm authenticity and rights before any live use
+
+### Reference Files
+- Photo Truth Layer: `.agents/photo-maps/GARRAN_HILL_PHOTO_TRUTH_LAYER_v1.md`
+- Tag correction queue: documented in Truth Layer — apply separately
+- Applies to: Garran Hill ✓ (audited 2026-05-10), Flow Farm (next build), every future property
+
+---
 ---
 
 ## APPENDIX — BANNED PHRASES (universal)
@@ -274,6 +318,7 @@ Plus property-specific banned phrases documented in each property's Fact Guardra
 | Version | Date | Notes |
 |---|---|---|
 | v1.0 | 2026-05-10 | Initial standard — distilled from Garran Hill proof of concept |
+| v1.1 | 2026-05-10 | Added Section 11: Photo Truth Layer — AI tags are starting point, not truth |
 
 *Next update: when Flow Farm proves or improves a pattern.*
 *Maintained by: Rocky. Approved by: Rachel.*
