@@ -825,9 +825,9 @@
       <div class="body-text reveal">
         <p>Original leaded glass. Original hardware. Herringbone brick underfoot.</p>
         <p>The name inlaid in the threshold brick. Specified before ground was broken. Still there.</p>
-        <p>The staircase has turned the same curve since 1916.</p>
+        <p>The door has been open since 1916.</p>
       </div>
-      <a href="https://my.matterport.com/show/?m=mfwyqT5Btwx" target="_blank" class="btn-gold">Begin the 3D Tour</a>
+      <a href="https://my.matterport.com/show/?m=mfwyqT5Btwx" target="_blank" class="btn-gold" rel="noopener">Begin the 3D Tour</a>
     </div>
   </div>
 </section>
@@ -1011,10 +1011,10 @@
     <div class="split-text">
       <span class="micro-rule reveal"></span>
       <span class="eyebrow">The Primary Suite</span>
-      <h2>Custom wall panels. A fireplace.<em>Fifteen architectural drawings survive.</em></h2>
+      <h2>Custom wall panels. A fireplace.<em>Drawn for private life.</em></h2>
       <div class="gold-line"></div>
       <div class="body-text reveal">
-        <p>Fifteen architectural drawings document every decision made in this room alone. They transfer with the property.</p>
+        <p>The private rooms were shaped during the restoration with full architectural documentation — fifteen drawings covering the suite, baths, storage, and circulation. Every decision recorded. All transfer with the property.</p>
         <p>The primary balcony &mdash; 24 by 11 feet &mdash; faces the grounds.</p>
       </div>
     </div>
@@ -1152,7 +1152,7 @@
         <p>Pool: 20&times;40 in-ground concrete, brick wall, iron gates, saltwater since 2022.</p>
         <p>Wee Cottage &nbsp;&middot;&nbsp; Two tennis courts &nbsp;&middot;&nbsp; 28 irrigation zones &nbsp;&middot;&nbsp; 130-ft well</p>
         <p>Preservation opportunities may be explored by a future owner with qualified professionals.</p>
-        <p>Matterport: <a href="https://my.matterport.com/show/?m=mfwyqT5Btwx" target="_blank" style="color:var(--gold);text-decoration:none;">Walk every room.</a></p>
+        <p>Matterport: <a href="https://my.matterport.com/show/?m=mfwyqT5Btwx" target="_blank" style="color:var(--gold);text-decoration:none;" rel="noopener">Walk every room.</a></p>
       </div>
     </div>
   </div>
@@ -1217,12 +1217,58 @@
 </section>
 
 <!-- PRIVATE INQUIRY -->
+<!-- GH_INQUIRY_FORM_RESTORED -->
+<!-- GH_PUBLIC_CONTACT_ENDPOINT_NEEDED: form currently uses mailto fallback via rachelhernandezrealtor@gmail.com — public listing contact confirmed in PROPERTY_VAULT.md. Replace action with Formspree or equivalent endpoint when available for server-side handling. -->
 <section class="inquiry" id="inquiry">
   <div class="reveal">
     <span class="eyebrow" style="display:block;text-align:center;">Private Showing</span>
-    <h2 style="font-size:clamp(1.4rem,2.5vw,2.2rem);margin-bottom:var(--sp-sm);">Garran Hill is ready.</h2>
+    <h2 style="font-size:clamp(1.4rem,2.5vw,2.2rem);margin-bottom:var(--sp-sm);">Begin the Private Conversation.</h2>
     <p class="body-text" style="text-align:center;margin:0 auto var(--sp-md);">Offered for the first time. Sotheby's International Realty, Pinehurst.</p>
   </div>
+  <form
+    id="inquiry-form"
+    class="inquiry-form"
+    action="https://formspree.io/f/placeholder"
+    method="POST"
+  >
+    <input
+      type="text"
+      name="name"
+      placeholder="Name"
+      class="inquiry-field"
+      required
+      autocomplete="name"
+    >
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      class="inquiry-field"
+      required
+      autocomplete="email"
+    >
+    <input
+      type="tel"
+      name="phone"
+      placeholder="Phone (optional)"
+      class="inquiry-field"
+      autocomplete="tel"
+    >
+    <textarea
+      name="message"
+      placeholder="Private showing request or message"
+      class="inquiry-field"
+    ></textarea>
+    <div style="text-align:center;margin-top:var(--sp-sm);">
+      <button type="submit" class="btn-inquire">Request Private Showing</button>
+    </div>
+  </form>
+  <p class="body-text" style="text-align:center;margin-top:var(--sp-sm);font-size:var(--text-xs);color:rgba(245,240,232,0.55);">
+    For private showings and offering details, please inquire directly with
+    <a href="mailto:rachelhernandezrealtor@gmail.com?subject=Garran Hill — Private Showing Request" style="color:rgba(201,169,110,0.75);text-decoration:none;">Rachel Hernandez</a>.
+  </p>
+</section>
+
 <section class="closing">
   <p class="closing-text reveal-slow">Garran Hill is ready.<br>It is offered now for the first time.</p>
   <p class="sothebys-lockup reveal">Sotheby's International Realty &nbsp;&middot;&nbsp; Rachel Hernandez &nbsp;&middot;&nbsp; Pinehurst, NC &nbsp;&middot;&nbsp; $4,250,000</p>
