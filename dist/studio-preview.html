@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+<!-- RACHEL_STUDIO_PRIVATE_PREVIEW_V1 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Rachel Studio — Private Preview</title>
-  <meta name="description" content="Rachel Studio: a source-backed editorial system for turning significant listings into cinematic, searchable, buyer-ready property worlds.">
+  <title>Rachel Studio Preview</title>
+  <meta name="description" content="Rachel Studio: private property publishing for extraordinary homes. A source-backed editorial system for significant listings.">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,31 +14,35 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
 
   <style>
-    /* ── ROOT ─────────────────────────────────────────── */
+
+    /* ─────────────────────────────────────────────────────
+       ROOT — DESIGN TOKENS
+    ───────────────────────────────────────────────────── */
     :root {
       --dark:   #0a0a0a;
       --gold:   #C9A96E;
-      --gold-lt:#F5E098;
+      --gold-hi:#F5E098;
       --cream:  #F5F0E8;
-      --dim:    rgba(245,240,232,0.70);
-      --muted:  rgba(245,240,232,0.42);
 
-      --sp-xs:  clamp(0.9rem,  1.4vw, 1.2rem);
-      --sp-sm:  clamp(1.6rem,  2.8vw, 2.4rem);
-      --sp-md:  clamp(3.2rem,  5.5vw, 5.0rem);
-      --sp-lg:  clamp(5.0rem,  8vw,   8.0rem);
-      --sp-xl:  clamp(7.0rem, 12vw,  12.0rem);
-      --col:    clamp(2rem,    7vw,   8rem);
+      /* spacing */
+      --sp-xs:  clamp(0.9rem,  1.4vw,  1.2rem);
+      --sp-sm:  clamp(1.6rem,  2.8vw,  2.6rem);
+      --sp-md:  clamp(3.0rem,  5vw,    5.0rem);
+      --sp-lg:  clamp(5.0rem,  8vw,    8.5rem);
+      --sp-xl:  clamp(7.5rem, 12vw,   13.0rem);
+      --col:    clamp(1.8rem,  7vw,    8.0rem);
+      --col-mid:clamp(1.4rem,  4.5vw,  5.5rem);
       --max-w:  1100px;
-      --max-t:  660px;
+      --max-t:  680px;
 
-      --tx-xs:  clamp(0.62rem, 0.8vw,  0.72rem);
-      --tx-sm:  clamp(0.82rem, 1.1vw,  0.98rem);
-      --tx-base:clamp(1.0rem,  1.5vw,  1.2rem);
-      --tx-md:  clamp(1.25rem, 2vw,    1.65rem);
-      --tx-lg:  clamp(1.8rem,  3vw,    2.8rem);
-      --tx-xl:  clamp(2.6rem,  5vw,    5.0rem);
-      --tx-hero:clamp(3.8rem, 10vw,    9.5rem);
+      /* type scale */
+      --tx-xs:   clamp(0.60rem, 0.78vw, 0.70rem);
+      --tx-sm:   clamp(0.82rem, 1.1vw,  0.98rem);
+      --tx-base: clamp(1.05rem, 1.5vw,  1.22rem);
+      --tx-md:   clamp(1.3rem,  2.2vw,  1.75rem);
+      --tx-lg:   clamp(1.9rem,  3.2vw,  2.9rem);
+      --tx-xl:   clamp(2.6rem,  5.2vw,  5.0rem);
+      --tx-hero: clamp(4.5rem, 13vw,   11.5rem);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -57,16 +62,16 @@
       content: '';
       position: fixed; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 9000; opacity: 0.45;
+      pointer-events: none; z-index: 9000; opacity: 0.48;
     }
 
-    /* gold cursor */
+    /* gold cursor — dot only, no ring */
     * { cursor: none !important; }
     #cursor {
       position: fixed; width: 7px; height: 7px;
       background: var(--gold); border-radius: 50%;
       pointer-events: none; z-index: 9999;
-      transform: translate(-50%,-50%);
+      transform: translate(-50%, -50%);
       transition: transform 0.1s ease;
       mix-blend-mode: difference;
     }
@@ -76,103 +81,140 @@
     ::-webkit-scrollbar-track { background: var(--dark); }
     ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
-    /* ── SCROLL REVEAL ─────────────────────────────────── */
+    /* ─────────────────────────────────────────────────────
+       REVEAL SYSTEM
+    ───────────────────────────────────────────────────── */
     .reveal {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.9s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1);
+      opacity: 0; transform: translateY(26px);
+      transition: opacity 0.9s cubic-bezier(.16,1,.3,1),
+                  transform 0.9s cubic-bezier(.16,1,.3,1);
     }
     .reveal.in { opacity: 1; transform: translateY(0); }
+
     .reveal-slow {
-      opacity: 0; transform: translateY(14px);
-      transition: opacity 1.3s cubic-bezier(.16,1,.3,1), transform 1.3s cubic-bezier(.16,1,.3,1);
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 1.3s cubic-bezier(.16,1,.3,1),
+                  transform 1.3s cubic-bezier(.16,1,.3,1);
     }
     .reveal-slow.in { opacity: 1; transform: translateY(0); }
 
-    /* ── NAV ───────────────────────────────────────────── */
+    /* ─────────────────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────────────────── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 800;
-      height: 68px;
+      height: 70px;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 var(--col);
-      background: rgba(5,5,5,0.62);
-      backdrop-filter: blur(20px) saturate(1.5);
-      transition: height 0.3s, background 0.3s;
+      background: rgba(5,5,5,0.60);
+      backdrop-filter: blur(22px) saturate(1.5);
+      transition: height 0.3s ease, background 0.3s ease;
     }
     nav::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg,
-        transparent 0%, rgba(245,224,152,0.2) 10%,
-        rgba(201,169,110,0.65) 30%, #F5E098 50%,
-        rgba(201,169,110,0.65) 70%, rgba(245,224,152,0.2) 90%, transparent 100%);
+        transparent 0%,
+        rgba(245,224,152,0.18) 8%,
+        rgba(201,169,110,0.62) 28%,
+        #F5E098 50%,
+        rgba(201,169,110,0.62) 72%,
+        rgba(245,224,152,0.18) 92%,
+        transparent 100%);
     }
-    nav.scrolled { height: 54px; background: rgba(4,4,4,0.92); }
+    nav.scrolled { height: 55px; background: rgba(4,4,4,0.93); }
 
     .nav-wordmark {
-      display: flex; flex-direction: column; gap: 0; line-height: 1.1;
+      display: flex; flex-direction: column;
+      gap: 0; line-height: 1.05;
     }
-    .nav-est {
-      font-size: 0.48rem; letter-spacing: 0.5em; text-transform: uppercase;
-      color: rgba(201,169,110,0.5);
+    .nav-kicker {
+      font-size: 0.46rem; letter-spacing: 0.52em; text-transform: uppercase;
+      color: rgba(201,169,110,0.48);
     }
-    .nav-title {
+    .nav-name {
       font-family: 'Pinyon Script', cursive;
-      font-size: clamp(1.3rem, 2vw, 1.8rem);
+      font-size: clamp(1.25rem, 2vw, 1.75rem);
       color: var(--cream);
       letter-spacing: 0.02em;
     }
     .nav-sub {
-      font-size: 0.44rem; letter-spacing: 0.42em; text-transform: uppercase;
-      color: rgba(245,240,232,0.35);
+      font-size: 0.42rem; letter-spacing: 0.42em; text-transform: uppercase;
+      color: rgba(245,240,232,0.30);
     }
     .nav-cta a {
-      font-size: 0.55rem; letter-spacing: 0.38em; text-transform: uppercase;
-      color: var(--gold); text-decoration: none;
-      border: 1px solid rgba(201,169,110,0.35);
-      padding: 0.6rem 1.4rem;
-      transition: all 0.3s;
+      font-size: 0.54rem; letter-spacing: 0.36em; text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,169,110,0.32);
+      padding: 0.55rem 1.4rem;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
     }
     .nav-cta a:hover { background: var(--gold); color: var(--dark); }
 
-    /* ── GOLD HAIRLINE ─────────────────────────────────── */
+    /* ─────────────────────────────────────────────────────
+       GOLD HAIRLINE + ACT LABELS
+    ───────────────────────────────────────────────────── */
     .hairline {
       width: 100%; height: 1px;
       background: linear-gradient(to right,
-        transparent 0%, rgba(201,169,110,0.0) 5%,
-        rgba(201,169,110,0.28) 25%, rgba(245,224,152,0.45) 50%,
-        rgba(201,169,110,0.28) 75%, rgba(201,169,110,0.0) 95%, transparent 100%);
+        transparent 0%, rgba(201,169,110,0) 5%,
+        rgba(201,169,110,0.28) 24%,
+        rgba(245,224,152,0.44) 50%,
+        rgba(201,169,110,0.28) 76%,
+        rgba(201,169,110,0) 95%, transparent 100%);
     }
-    .act-label {
+    .act-break {
       display: flex; align-items: center; justify-content: center;
-      padding: var(--sp-sm) var(--col); gap: 1.6rem;
+      padding: var(--sp-sm) var(--col); gap: 1.8rem;
     }
-    .act-label::before, .act-label::after {
+    .act-break::before, .act-break::after {
       content: ''; flex: 1; height: 1px;
       background: linear-gradient(to right,
-        transparent, rgba(201,169,110,0.3) 40%, rgba(245,224,152,0.5) 100%);
+        transparent, rgba(201,169,110,0.3) 40%, rgba(245,224,152,0.52) 100%);
     }
-    .act-label::after {
+    .act-break::after {
       background: linear-gradient(to left,
-        transparent, rgba(201,169,110,0.3) 40%, rgba(245,224,152,0.5) 100%);
+        transparent, rgba(201,169,110,0.3) 40%, rgba(245,224,152,0.52) 100%);
     }
-    .act-label span {
+    .act-break span {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 0.52rem; letter-spacing: 0.5em; text-transform: uppercase;
-      color: rgba(201,169,110,0.45); white-space: nowrap;
+      font-size: 0.50rem; letter-spacing: 0.52em; text-transform: uppercase;
+      color: rgba(201,169,110,0.44); white-space: nowrap;
     }
 
-    /* ── EYEBROW / GOLD LINE ───────────────────────────── */
+    /* ─────────────────────────────────────────────────────
+       SHARED TYPOGRAPHY
+    ───────────────────────────────────────────────────── */
     .eyebrow {
-      font-size: var(--tx-xs); letter-spacing: 0.42em; text-transform: uppercase;
-      color: rgba(201,169,110,0.62);
-      display: block; margin-bottom: clamp(0.7rem,1.2vw,1rem);
+      display: block;
+      font-size: var(--tx-xs); letter-spacing: 0.44em; text-transform: uppercase;
+      color: rgba(201,169,110,0.60);
+      margin-bottom: clamp(0.7rem, 1.2vw, 1rem);
     }
-    .gold-line {
-      width: 3rem; height: 1px;
+    .gold-rule {
+      width: 2.8rem; height: 1px;
       background: linear-gradient(to right, var(--gold), transparent);
-      margin: clamp(0.9rem,1.6vw,1.3rem) 0;
+      margin: clamp(0.8rem,1.4vw,1.2rem) 0;
+    }
+    .gold-rule.center { margin-left: auto; margin-right: auto; }
+
+    h2.section-head {
+      font-size: var(--tx-lg); font-weight: 300; font-style: italic;
+      color: var(--cream); line-height: 1.22;
+      margin-bottom: clamp(1rem, 1.8vw, 1.6rem);
+    }
+    p.body {
+      font-size: var(--tx-base);
+      color: rgba(245,240,232,0.80);
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+      max-width: var(--max-t);
     }
 
-    /* ── HERO ──────────────────────────────────────────── */
+    /* ─────────────────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────────────────── */
     .hero {
       position: relative; min-height: 100svh;
       display: flex; flex-direction: column;
@@ -183,447 +225,515 @@
     .hero-bg {
       position: absolute; inset: 0;
       background-image: url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777243323/gh_exteriors/front_exterior.jpg');
-      background-size: cover; background-position: center 30%;
+      background-size: cover;
+      background-position: center 28%;
     }
     .hero-bg::after {
       content: ''; position: absolute; inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(5,5,5,0.55) 0%,
-        rgba(5,5,5,0.35) 30%,
-        rgba(5,5,5,0.55) 65%,
-        rgba(5,5,5,0.92) 100%
+        rgba(5,5,5,0.52) 0%,
+        rgba(5,5,5,0.28) 28%,
+        rgba(5,5,5,0.52) 62%,
+        rgba(5,5,5,0.94) 100%
       );
     }
-    .hero-content {
+    .hero-inner {
       position: relative; z-index: 2;
       padding: var(--sp-xl) var(--col) var(--sp-lg);
-      max-width: 900px;
+      max-width: 860px;
     }
-    .hero-eyebrow {
-      font-size: var(--tx-xs); letter-spacing: 0.55em; text-transform: uppercase;
-      color: rgba(201,169,110,0.65); margin-bottom: var(--sp-sm);
+    .hero-kicker {
       display: block;
+      font-size: var(--tx-xs); letter-spacing: 0.56em; text-transform: uppercase;
+      color: rgba(201,169,110,0.62);
+      margin-bottom: clamp(0.8rem, 1.4vw, 1.2rem);
     }
     .hero-name {
       font-family: 'Pinyon Script', cursive;
       font-size: var(--tx-hero);
       color: var(--cream);
-      line-height: 0.95;
-      margin-bottom: clamp(1rem, 2vw, 1.6rem);
-      text-shadow: 0 2px 40px rgba(0,0,0,0.8);
+      line-height: 0.92;
+      margin-bottom: clamp(1rem, 2vw, 1.8rem);
+      text-shadow: 0 2px 48px rgba(0,0,0,0.85);
     }
     .hero-hairline {
-      width: clamp(3rem, 8vw, 6rem); height: 1px;
+      width: clamp(3rem, 7vw, 5.5rem); height: 1px;
       background: linear-gradient(to right, transparent, var(--gold), transparent);
-      margin: 0 auto clamp(1rem,2vw,1.6rem);
-    }
-    .hero-sub {
-      font-size: var(--tx-md);
-      color: rgba(245,240,232,0.82);
-      font-style: italic;
-      max-width: 680px; margin: 0 auto clamp(0.8rem,1.5vw,1.2rem);
-      line-height: 1.5;
+      margin: 0 auto clamp(1rem, 1.8vw, 1.5rem);
     }
     .hero-subline {
+      font-size: var(--tx-md); font-style: italic;
+      color: rgba(245,240,232,0.82);
+      max-width: 580px; margin: 0 auto clamp(0.8rem,1.4vw,1.2rem);
+      line-height: 1.48;
+    }
+    .hero-intro {
       font-size: var(--tx-sm);
-      color: rgba(245,240,232,0.55);
-      max-width: 580px; margin: 0 auto;
-      line-height: 1.7;
+      color: rgba(245,240,232,0.54);
+      max-width: 540px; margin: 0 auto;
+      line-height: 1.78;
     }
-    .hero-scroll-cue {
-      position: absolute; bottom: 2.5rem; left: 50%;
+    .hero-scroll {
+      position: absolute; bottom: 2.4rem; left: 50%;
       transform: translateX(-50%);
-      font-size: var(--tx-xs); letter-spacing: 0.4em; text-transform: uppercase;
-      color: rgba(201,169,110,0.38);
-      z-index: 2;
+      font-size: var(--tx-xs); letter-spacing: 0.42em; text-transform: uppercase;
+      color: rgba(201,169,110,0.35); z-index: 2;
     }
 
-    /* ── SECTIONS ──────────────────────────────────────── */
-    section { padding: var(--sp-lg) var(--col); }
-    section.narrow { max-width: var(--max-w); margin: 0 auto; }
+    /* ─────────────────────────────────────────────────────
+       SECTION WRAPPER
+    ───────────────────────────────────────────────────── */
+    .sec {
+      padding: var(--sp-lg) var(--col);
+    }
+    .sec-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .sec.center { text-align: center; }
+    .sec.center p.body { margin-left: auto; margin-right: auto; }
+    .sec.center .gold-rule { margin-left: auto; margin-right: auto; }
 
-    /* case study — full split */
+    /* ─────────────────────────────────────────────────────
+       SECTION 1 — CASE STUDY SPLIT
+    ───────────────────────────────────────────────────── */
     .case-split {
-      display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem,6vw,6rem);
-      max-width: var(--max-w); margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3.5rem, 6.5vw, 7rem);
       align-items: center;
     }
-    .case-img {
-      position: relative; height: clamp(340px, 50vw, 580px);
+    .case-img-wrap {
+      position: relative;
+      height: clamp(340px, 48vw, 600px);
       overflow: hidden;
     }
-    .case-img img {
-      position: absolute; inset: 0; width: 100%; height: 100%;
+    .case-img-wrap img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
       object-fit: cover; object-position: center;
     }
-    .case-text h2 {
-      font-size: var(--tx-lg); font-weight: 300; font-style: italic;
-      color: var(--cream); line-height: 1.25;
-      margin-bottom: clamp(1rem,2vw,1.6rem);
-    }
-    .case-text p {
-      font-size: var(--tx-base); color: var(--dim);
-      line-height: 1.9; margin-bottom: 1.2rem;
-    }
-    .case-text a.btn {
+    .case-text h2 { margin-bottom: 0; }
+    .case-text .body { max-width: 100%; }
+    .case-text a.link-out {
       display: inline-block; margin-top: var(--sp-xs);
       font-size: var(--tx-xs); letter-spacing: 0.38em; text-transform: uppercase;
-      color: var(--gold); border: 1px solid rgba(201,169,110,0.4);
-      padding: 0.8rem 2rem; text-decoration: none;
-      transition: all 0.3s;
+      color: var(--gold); text-decoration: none;
+      border: 1px solid rgba(201,169,110,0.35);
+      padding: 0.7rem 1.8rem;
+      transition: background 0.28s, color 0.28s;
     }
-    .case-text a.btn:hover { background: var(--gold); color: var(--dark); }
+    .case-text a.link-out:hover { background: var(--gold); color: var(--dark); }
 
-    /* what rachel studio does — 4 cards */
+    /* ─────────────────────────────────────────────────────
+       SECTION 2 — FOUR CARDS
+    ───────────────────────────────────────────────────── */
+    .cards-intro {
+      text-align: center;
+      margin-bottom: var(--sp-md);
+    }
     .cards-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: clamp(1.2rem, 2.5vw, 2rem);
-      max-width: var(--max-w); margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(1.2rem, 2.4vw, 2.2rem);
     }
     .card {
-      border-top: 1px solid rgba(201,169,110,0.22);
-      padding-top: clamp(1.2rem, 2vw, 1.8rem);
+      border-top: 1px solid rgba(201,169,110,0.20);
+      padding-top: clamp(1.2rem, 1.8vw, 1.8rem);
     }
     .card-title {
-      font-size: var(--tx-sm); letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 0.9rem; display: block;
+      display: block;
+      font-size: var(--tx-xs); letter-spacing: 0.30em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.85rem;
     }
     .card p {
-      font-size: var(--tx-sm); color: var(--dim); line-height: 1.8;
+      font-size: var(--tx-sm);
+      color: rgba(245,240,232,0.72);
+      line-height: 1.82;
     }
 
-    /* system layers */
-    .layers-list {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 0.6rem 2rem;
-      max-width: var(--max-t); margin: var(--sp-sm) auto 0;
+    /* ─────────────────────────────────────────────────────
+       SECTION 3 — SYSTEM LAYERS
+    ───────────────────────────────────────────────────── */
+    .system-body {
+      max-width: var(--max-t);
+      margin: 0 auto;
     }
-    .layer-item {
-      font-size: var(--tx-sm); color: var(--dim);
+    .layers-note {
+      font-size: var(--tx-sm);
+      color: rgba(245,240,232,0.55);
+      line-height: 1.88; font-style: italic;
+      margin: var(--sp-sm) auto 0;
+      max-width: var(--max-t);
+      border-top: 1px solid rgba(201,169,110,0.10);
+      padding-top: var(--sp-xs);
+    }
+    .layers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 0.55rem 2.4rem;
+      margin: var(--sp-sm) 0 0;
+      max-width: var(--max-t);
+    }
+    .layer {
       display: flex; align-items: center; gap: 0.7rem;
+      font-size: var(--tx-sm);
+      color: rgba(245,240,232,0.75);
     }
-    .layer-item::before {
+    .layer::before {
       content: '';
-      display: inline-block; width: 18px; height: 1px;
+      display: inline-block; width: 16px; height: 1px;
       background: var(--gold); flex-shrink: 0;
     }
 
-    /* before the site */
-    .before-text {
-      max-width: var(--max-t); margin: 0 auto;
-      text-align: center;
-    }
-    .before-text p {
-      font-size: var(--tx-md); color: var(--dim);
-      font-style: italic; line-height: 1.65;
-    }
-
-    /* what makes this different — 5 statements */
+    /* ─────────────────────────────────────────────────────
+       SECTION 4 — WHAT MAKES THIS DIFFERENT
+    ───────────────────────────────────────────────────── */
     .statements {
-      max-width: 560px; margin: var(--sp-sm) auto 0;
-      display: flex; flex-direction: column; gap: 1.1rem;
+      max-width: 520px;
+      margin: var(--sp-sm) auto 0;
+      display: flex; flex-direction: column;
+      gap: 1.05rem;
     }
     .statement {
-      font-size: var(--tx-base); color: rgba(245,240,232,0.80);
-      padding-left: 1.4rem; position: relative; line-height: 1.6;
+      position: relative;
+      padding-left: 1.5rem;
+      font-size: var(--tx-base);
+      color: rgba(245,240,232,0.82);
+      line-height: 1.6;
     }
     .statement::before {
       content: '';
       position: absolute; left: 0; top: 50%; transform: translateY(-50%);
-      width: 12px; height: 1px; background: var(--gold);
+      width: 12px; height: 1px;
+      background: var(--gold);
     }
 
-    /* proof points */
+    /* ─────────────────────────────────────────────────────
+       SECTION 5 — PROOF POINTS
+    ───────────────────────────────────────────────────── */
     .proof-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 0.5rem 2.5rem;
-      max-width: 720px; margin: var(--sp-sm) auto 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 0 2.8rem;
+      max-width: 740px;
+      margin: var(--sp-sm) auto 0;
     }
     .proof-item {
-      font-size: var(--tx-xs); letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(201,169,110,0.60);
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(201,169,110,0.1);
+      font-size: var(--tx-xs); letter-spacing: 0.20em; text-transform: uppercase;
+      color: rgba(201,169,110,0.58);
+      padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(201,169,110,0.09);
     }
 
-    /* CTA section */
-    .cta-section {
-      text-align: center;
+    /* ─────────────────────────────────────────────────────
+       SECTION 6 — CTA
+    ───────────────────────────────────────────────────── */
+    .cta-wrap {
       padding: var(--sp-xl) var(--col);
-      border-top: 1px solid rgba(201,169,110,0.08);
+      text-align: center;
+      border-top: 1px solid rgba(201,169,110,0.06);
     }
-    .cta-section h2 {
+    .cta-wrap h2 {
       font-size: var(--tx-xl); font-weight: 300; font-style: italic;
-      color: var(--cream); margin-bottom: var(--sp-xs); line-height: 1.15;
+      color: var(--cream);
+      margin-bottom: var(--sp-xs); line-height: 1.12;
     }
-    .cta-section p {
-      font-size: var(--tx-base); color: var(--dim);
-      max-width: 480px; margin: 0 auto var(--sp-sm);
-      line-height: 1.8;
+    .cta-wrap p {
+      font-size: var(--tx-base);
+      color: rgba(245,240,232,0.70);
+      max-width: 420px; margin: 0 auto var(--sp-sm);
+      line-height: 1.85;
     }
     .btn-cta {
       display: inline-block;
-      font-size: var(--tx-xs); letter-spacing: 0.42em; text-transform: uppercase;
-      color: var(--gold); border: 1px solid rgba(201,169,110,0.45);
-      padding: 1rem 3rem; text-decoration: none;
-      transition: all 0.3s;
+      font-size: var(--tx-xs); letter-spacing: 0.44em; text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,169,110,0.42);
+      padding: 1rem 3rem;
+      text-decoration: none;
+      transition: background 0.28s, color 0.28s;
     }
     .btn-cta:hover { background: var(--gold); color: var(--dark); }
 
-    /* closing lockup */
-    .closing-lockup {
-      text-align: center; padding: var(--sp-md) var(--col);
+    /* ─────────────────────────────────────────────────────
+       CLOSING MARK
+    ───────────────────────────────────────────────────── */
+    .closing {
+      padding: var(--sp-md) var(--col);
+      text-align: center;
       font-size: var(--tx-xs); letter-spacing: 0.38em; text-transform: uppercase;
-      color: rgba(201,169,110,0.4);
-      border-top: 1px solid rgba(201,169,110,0.06);
+      color: rgba(201,169,110,0.35);
+      border-top: 1px solid rgba(201,169,110,0.05);
     }
 
-    /* text center helper */
-    .tc { text-align: center; }
-    .mx { max-width: var(--max-t); margin: 0 auto; }
-
-    /* ── RESPONSIVE ────────────────────────────────────── */
-    @media (max-width: 900px) {
-      .case-split { grid-template-columns: 1fr; }
-      .case-img { height: clamp(260px, 55vw, 400px); }
-      .cards-grid { grid-template-columns: 1fr 1fr; }
+    /* ─────────────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────────────── */
+    @media (max-width: 920px) {
+      .case-split {
+        grid-template-columns: 1fr;
+        gap: clamp(2rem, 5vw, 3.5rem);
+      }
+      .case-img-wrap {
+        height: clamp(260px, 52vw, 420px);
+      }
+      .cards-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
-    @media (max-width: 600px) {
-      section { padding: var(--sp-md) 1.5rem; }
+    @media (max-width: 620px) {
+      .sec { padding: var(--sp-md) 1.6rem; }
+      .cta-wrap { padding: var(--sp-lg) 1.6rem; }
       .cards-grid { grid-template-columns: 1fr; }
       .nav-cta { display: none; }
-      .hero-content { padding: calc(var(--sp-xl) + 2rem) 1.5rem var(--sp-lg); }
+      .hero-inner { padding-top: calc(var(--sp-xl) + 3rem); }
     }
+
   </style>
 </head>
 <body>
 
-<!-- Gold cursor -->
+<!-- gold cursor -->
 <div id="cursor"></div>
 
-<!-- NAV -->
-<nav id="main-nav">
+<!-- ══════════════════════════════════════════
+     NAV
+     ══════════════════════════════════════════ -->
+<nav id="nav">
   <div class="nav-wordmark">
-    <span class="nav-est">Private Preview</span>
-    <span class="nav-title">Rachel Studio</span>
+    <span class="nav-kicker">Private Preview</span>
+    <span class="nav-name">Rachel Studio</span>
     <span class="nav-sub">rachelhernandez.studio</span>
   </div>
   <div class="nav-cta">
-    <a href="#private-cta">Request Preview</a>
+    <a href="#cta">Request Preview</a>
   </div>
 </nav>
 
-<!-- ════════════════════════════════
+<!-- ══════════════════════════════════════════
      HERO
-     ════════════════════════════════ -->
+     ══════════════════════════════════════════ -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-content">
-    <span class="hero-eyebrow reveal">Private Property Publishing</span>
+  <div class="hero-inner">
+    <span class="hero-kicker reveal">Private Property Publishing</span>
     <div class="hero-name reveal">Rachel Studio</div>
     <div class="hero-hairline"></div>
-    <p class="hero-sub reveal">
-      Private Property Publishing for Extraordinary Homes.
-    </p>
-    <p class="hero-subline reveal-slow">
-      A source-backed editorial system for turning significant listings into cinematic, searchable, buyer-ready property worlds.
-    </p>
+    <p class="hero-subline reveal">Private Property Publishing for Extraordinary Homes.</p>
+    <p class="hero-intro reveal-slow">A source-backed editorial system for turning significant listings into cinematic, searchable, buyer-ready property worlds.</p>
   </div>
-  <div class="hero-scroll-cue">The System ↓</div>
+  <div class="hero-scroll">The System&nbsp;&darr;</div>
 </section>
 
-<!-- ════════════════════════════════
-     ACT 1 — THE CASE STUDY
-     ════════════════════════════════ -->
+<!-- ══════════════════════════════════════════
+     SECTION 1 — THE CASE STUDY: GARRAN HILL
+     ══════════════════════════════════════════ -->
 <div class="hairline"></div>
-<div class="act-label"><span>The Case Study</span></div>
+<div class="act-break"><span>The Case Study</span></div>
 
-<section>
-  <div class="case-split">
-    <div class="case-img reveal">
-      <img
-        loading="lazy" decoding="async"
-        src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244109/gh_photos/200_hollycrest_drive_220.jpg"
-        alt="Garran Hill — 200 Hollycrest Drive, Pinehurst, NC — Neo-Georgian estate, built 1915–16">
-    </div>
-    <div class="case-text">
-      <span class="eyebrow reveal">Garran Hill &nbsp;&middot;&nbsp; Pinehurst, NC</span>
-      <h2 class="reveal">A source-backed editorial estate presentation.</h2>
-      <div class="gold-line"></div>
-      <div class="reveal">
-        <p>Garran Hill is not a normal property page. It is a source-backed editorial estate presentation built from verified history, architectural evidence, restoration records, and photo-led storytelling.</p>
-        <p>Built in 1915–16 for Walter Hines Page — diplomat, publisher, Ambassador to the Court of St. James's. Listed at $4,250,000 by Sotheby's International Realty, Pinehurst.</p>
+<section class="sec">
+  <div class="sec-inner">
+    <div class="case-split">
+
+      <div class="case-img-wrap reveal">
+        <img
+          src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777243323/gh_exteriors/front_exterior.jpg"
+          alt="Garran Hill — 200 Hollycrest Drive, Pinehurst, NC — Neo-Georgian estate built 1915–16 for Walter Hines Page"
+          loading="lazy" decoding="async">
       </div>
-      <a href="https://rachelhernandez.studio/" class="btn reveal" target="_blank" rel="noopener">View the Estate Site</a>
+
+      <div class="case-text">
+        <span class="eyebrow reveal">Garran Hill &nbsp;·&nbsp; Pinehurst, NC &nbsp;·&nbsp; Est. 1916</span>
+        <h2 class="section-head reveal">A House With Provenance.<br>A Site With Proof.</h2>
+        <div class="gold-rule reveal"></div>
+        <p class="body reveal">
+          Garran Hill is not a normal property page. It is a source-backed editorial estate presentation built from verified history, architectural evidence, restoration records, and photo-led storytelling.
+        </p>
+        <a
+          href="https://rachelhernandez.studio/"
+          class="link-out reveal"
+          target="_blank"
+          rel="noopener"
+        >View the Estate Site</a>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════
-     ACT 2 — WHAT RACHEL STUDIO DOES
-     ════════════════════════════════ -->
+<!-- ══════════════════════════════════════════
+     SECTION 2 — WHAT RACHEL STUDIO DOES
+     ══════════════════════════════════════════ -->
 <div class="hairline"></div>
-<div class="act-label"><span>What Rachel Studio Does</span></div>
+<div class="act-break"><span>What Rachel Studio Does</span></div>
 
-<section>
-  <div class="tc mx reveal" style="margin-bottom:var(--sp-md);">
-    <span class="eyebrow tc">The Four Layers</span>
-    <p style="font-size:var(--tx-md);font-style:italic;color:var(--dim);line-height:1.5;">Every listing is built on the same rigorous foundation.</p>
-  </div>
-  <div class="cards-grid">
-    <div class="card reveal">
-      <span class="card-title">Research</span>
-      <p>Verified provenance, source citations, historical guardrails, and public-safe copy. Every claim earns its place.</p>
+<section class="sec center">
+  <div class="sec-inner">
+
+    <div class="cards-intro">
+      <span class="eyebrow reveal">The Four Layers</span>
+      <h2 class="section-head reveal" style="max-width:520px; margin: 0 auto;">Every listing is built on the same rigorous foundation.</h2>
     </div>
-    <div class="card reveal">
-      <span class="card-title">Media</span>
-      <p>Cloudinary photo systems, room tagging, narrative photo maps, mobile crop notes, and image-by-image captions.</p>
-    </div>
-    <div class="card reveal">
-      <span class="card-title">Publishing</span>
-      <p>Luxury single-property websites with cinematic pacing, buyer facts, inquiry paths, mobile polish, and SEO foundations.</p>
-    </div>
-    <div class="card reveal">
-      <span class="card-title">Stewardship</span>
-      <p>Rachel remains the taste, truth, and approval layer. AI assists production. Rachel protects the standard.</p>
+
+    <div class="cards-grid">
+
+      <div class="card reveal">
+        <span class="card-title">Research</span>
+        <p>Verified provenance, source citations, historical guardrails, and public-safe copy.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="card-title">Media</span>
+        <p>Cloudinary photo systems, room tagging, narrative photo maps, mobile crop notes, and image-by-image captions.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="card-title">Publishing</span>
+        <p>Luxury single-property websites with cinematic pacing, buyer facts, inquiry paths, mobile polish, and SEO foundations.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="card-title">Stewardship</span>
+        <p>Rachel remains the taste, truth, and approval layer. AI assists production; Rachel protects the standard.</p>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════
-     ACT 3 — THE GARRAN HILL SYSTEM
-     ════════════════════════════════ -->
+<!-- ══════════════════════════════════════════
+     SECTION 3 — THE GARRAN HILL SYSTEM
+     ══════════════════════════════════════════ -->
 <div class="hairline"></div>
-<div class="act-label"><span>The Production System</span></div>
+<div class="act-break"><span>The System</span></div>
 
-<section>
-  <div class="tc mx" style="margin-bottom:var(--sp-md);">
-    <span class="eyebrow reveal">Garran Hill — Production Layers</span>
-    <h2 class="reveal" style="font-size:var(--tx-lg);font-weight:300;font-style:italic;color:var(--cream);line-height:1.3;margin-bottom:1.2rem;">
-      Everything visible<br>is backed by a system invisible to buyers.
-    </h2>
-    <div class="gold-line" style="margin:0 auto 1.4rem;"></div>
-    <div class="reveal" style="font-size:var(--tx-base);color:var(--dim);line-height:1.9;max-width:600px;margin:0 auto;">
-      <p>The Garran Hill research citation document consolidates verified historical research and supersedes earlier drafts. The Cloudinary system organises 392 property photos — plus 11 locked hero assets — by room, act, photographer, and narrative use. Owner-provided notes and architectural drawings inform buyer-function facts and restoration details; private documents are never publicly exposed.</p>
+<section class="sec">
+  <div class="sec-inner">
+    <div class="system-body">
+
+      <span class="eyebrow reveal">The Garran Hill System</span>
+      <h2 class="section-head reveal">Before the Site,<br>There Is a System.</h2>
+      <div class="gold-rule reveal"></div>
+      <p class="body reveal">
+        Every final page is built from a private working structure: facts, sources, photos, captions, mobile notes, SEO language, and approval gates. The public site is only the visible surface.
+      </p>
+
+      <div class="layers-grid reveal">
+        <div class="layer">Historical research &amp; citation file</div>
+        <div class="layer">Cloudinary photo map</div>
+        <div class="layer">Restoration record</div>
+        <div class="layer">Source-backed copy</div>
+        <div class="layer">Buyer-function grid</div>
+        <div class="layer">Mobile-first website</div>
+        <div class="layer">Inquiry path</div>
+        <div class="layer">Domain / SEO launch gate</div>
+      </div>
+
+      <p class="layers-note reveal-slow">
+        The Garran Hill citation file consolidates verified historical research and supersedes earlier drafts.
+        The Cloudinary system organises the property photo library by room, narrative act, photographer, and story use.
+        Owner-provided notes and architectural drawings inform buyer-function facts and restoration details,
+        but private documents are not publicly exposed.
+      </p>
+
     </div>
   </div>
-  <div class="layers-list reveal">
-    <div class="layer-item">Historical research &amp; citation file</div>
-    <div class="layer-item">Cloudinary photo map</div>
-    <div class="layer-item">Restoration record</div>
-    <div class="layer-item">Source-backed copy</div>
-    <div class="layer-item">Buyer-function grid</div>
-    <div class="layer-item">Mobile-first website</div>
-    <div class="layer-item">Inquiry path</div>
-    <div class="layer-item">Domain / SEO launch gate</div>
-  </div>
 </section>
 
-<!-- ════════════════════════════════
-     ACT 4 — BEFORE THE SITE
-     ════════════════════════════════ -->
+<!-- ══════════════════════════════════════════
+     SECTION 4 — WHAT MAKES THIS DIFFERENT
+     ══════════════════════════════════════════ -->
 <div class="hairline"></div>
-<div class="act-label"><span>The Surface and the Structure</span></div>
+<div class="act-break"><span>The Standard</span></div>
 
-<section>
-  <div class="before-text">
-    <span class="eyebrow reveal tc">Before the Site, There Is a System</span>
-    <p class="reveal-slow">
-      Every final page is built from a private working structure: facts, sources, photos, captions, mobile notes, SEO language, and approval gates. The public site is only the visible surface.
-    </p>
-  </div>
-</section>
-
-<!-- ════════════════════════════════
-     ACT 5 — WHAT MAKES THIS DIFFERENT
-     ════════════════════════════════ -->
-<div class="hairline"></div>
-<div class="act-label"><span>The Standard</span></div>
-
-<section>
-  <div class="tc">
+<section class="sec center">
+  <div class="sec-inner">
     <span class="eyebrow reveal">What Makes This Different</span>
-    <h2 class="reveal" style="font-size:var(--tx-lg);font-weight:300;font-style:italic;color:var(--cream);margin-bottom:var(--sp-sm);">
-      Every element earns its place.
-    </h2>
-  </div>
-  <div class="statements">
-    <div class="statement reveal">Every photo has a job.</div>
-    <div class="statement reveal">Every claim has a source.</div>
-    <div class="statement reveal">Every section serves the buyer.</div>
-    <div class="statement reveal">Every historical detail is treated with care.</div>
-    <div class="statement reveal">Every listing becomes its own editorial world.</div>
+    <h2 class="section-head reveal" style="max-width:480px; margin:0 auto;">Every element earns its place.</h2>
+    <div class="statements">
+      <div class="statement reveal">Every photo has a job.</div>
+      <div class="statement reveal">Every claim has a source.</div>
+      <div class="statement reveal">Every section serves the buyer.</div>
+      <div class="statement reveal">Every historical detail is treated with care.</div>
+      <div class="statement reveal">Every listing becomes its own editorial world.</div>
+    </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════
-     ACT 6 — PROOF POINTS
-     ════════════════════════════════ -->
+<!-- ══════════════════════════════════════════
+     SECTION 5 — PROOF POINTS
+     ══════════════════════════════════════════ -->
 <div class="hairline"></div>
-<div class="act-label"><span>Proof Points</span></div>
+<div class="act-break"><span>Proof Points</span></div>
 
-<section>
-  <div class="tc" style="margin-bottom:var(--sp-sm);">
-    <span class="eyebrow reveal">The System Delivers</span>
-  </div>
-  <div class="proof-grid reveal">
-    <div class="proof-item">Source-backed history</div>
-    <div class="proof-item">Photo-led narrative architecture</div>
-    <div class="proof-item">Mobile-first luxury design</div>
-    <div class="proof-item">Buyer-ready facts</div>
-    <div class="proof-item">Inquiry conversion path</div>
-    <div class="proof-item">SEO &amp; source-link strategy</div>
-    <div class="proof-item">Private approval workflow</div>
-    <div class="proof-item">Reusable system for future listings</div>
+<section class="sec center">
+  <div class="sec-inner">
+    <span class="eyebrow reveal">The Deliverables</span>
+    <div class="proof-grid reveal">
+      <div class="proof-item">Source-backed history</div>
+      <div class="proof-item">Photo-led narrative architecture</div>
+      <div class="proof-item">Mobile-first luxury design</div>
+      <div class="proof-item">Buyer-ready facts</div>
+      <div class="proof-item">Inquiry conversion path</div>
+      <div class="proof-item">SEO &amp; source-link strategy</div>
+      <div class="proof-item">Private approval workflow</div>
+      <div class="proof-item">Reusable system for future listings</div>
+    </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════
-     CTA
-     ════════════════════════════════ -->
+<!-- ══════════════════════════════════════════
+     SECTION 6 — PRIVATE PREVIEW CTA
+     ══════════════════════════════════════════ -->
 <div class="hairline"></div>
 
-<section class="cta-section" id="private-cta">
+<div class="cta-wrap" id="cta">
   <span class="eyebrow reveal">Private Studio Preview</span>
   <h2 class="reveal">This Is the New Standard.</h2>
   <p class="reveal">Rachel Studio is built for properties that deserve more than a listing page.</p>
   <a
-    href="mailto:rachelhernandezrealtor@gmail.com?subject=Rachel Studio — Private Preview Request"
+    href="mailto:rachelhernandezrealtor@gmail.com?subject=Rachel%20Studio%20%E2%80%94%20Private%20Preview%20Request"
     class="btn-cta reveal"
   >Request a Private Studio Preview</a>
-</section>
-
-<!-- CLOSING -->
-<div class="closing-lockup reveal">
-  Rachel Hernandez &nbsp;&middot;&nbsp; Sotheby&rsquo;s International Realty &nbsp;&middot;&nbsp; Pinehurst, NC
 </div>
 
-<!-- ── SCRIPTS ─────────────────────────────────────────── -->
-<script>
-(function() {
+<!-- CLOSING -->
+<div class="closing reveal">
+  Rachel Hernandez &nbsp;·&nbsp; Sotheby&rsquo;s International Realty &nbsp;·&nbsp; Pinehurst, NC
+</div>
 
-  // Cursor
-  const cursor = document.getElementById('cursor');
-  if (cursor) {
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top  = e.clientY + 'px';
+<!-- ══════════════════════════════════════════
+     SCRIPTS
+     ══════════════════════════════════════════ -->
+<script>
+(function () {
+
+  // Gold cursor
+  var cur = document.getElementById('cursor');
+  if (cur) {
+    document.addEventListener('mousemove', function (e) {
+      cur.style.left = e.clientX + 'px';
+      cur.style.top  = e.clientY + 'px';
     });
   }
 
   // Nav scroll state
-  const nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 55);
   }, { passive: true });
 
   // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal, .reveal-slow');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); } });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => observer.observe(el));
+  var els = document.querySelectorAll('.reveal, .reveal-slow');
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) e.target.classList.add('in');
+    });
+  }, { threshold: 0.10 });
+  els.forEach(function (el) { obs.observe(el); });
 
 })();
 </script>
