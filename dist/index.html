@@ -602,6 +602,10 @@
   }
   .tour-btn.tour-btn--primary:hover { background: rgba(201,169,110,0.14); }
   @media (max-width: 768px) {
+    .kitchen-detail-strip { flex-direction: column; max-height: none; }
+    .kitchen-detail-strip > div { height: 45vw; }
+  }
+    @media (max-width: 768px) {
     .tour-btn { min-width:0; width:100%; max-width:340px; text-align:center; }
     .tour-actions { padding: 0 1.5rem; }
   }
@@ -1303,17 +1307,17 @@
           <p class="room-card-name">Foyer</p>
           <p class="room-card-line">Herringbone brick, mahogany volute stair, original leaded glass.</p>
         </a>
-        <a class="room-card" href="#social-rooms">
+        <a class="room-card" href="#salon">
           <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243041/gh_interiors/200holycrest_1209.jpg" alt="Salon"></div>
           <p class="room-card-name">Salon</p>
           <p class="room-card-line">The house's great living room — two seating areas, terrace doors, and room to gather.</p>
         </a>
-        <a class="room-card" href="#social-rooms">
+        <a class="room-card" href="#drawing-room">
           <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243086/gh_interiors/200holycrest_1320.jpg" alt="Drawing Room"></div>
           <p class="room-card-name">Drawing Room</p>
           <p class="room-card-line">The Blue Room: tiled fireplace, intimate scale, and a spiral stair to the office above.</p>
         </a>
-        <a class="room-card" href="#social-rooms">
+        <a class="room-card" href="#dining-room">
           <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243067/gh_interiors/200holycrest_1296.jpg" alt="Dining Room"></div>
           <p class="room-card-name">Dining Room</p>
           <p class="room-card-line">Original frontispiece. 17 &times; 19 ft. A disappearing folding screen still works.</p>
@@ -1324,7 +1328,7 @@
           <!-- GH_PHOTO_CONFIRMATION_NEEDED: Butler's Pantry — verify photo shows pantry/service before adding label -->
           <p class="room-card-line">Custom cabinetry, two farm sinks, island, heart-pine floors, wall of windows.</p>
         </a>
-        <a class="room-card" href="#library">
+        <a class="room-card" href="#library-room">
           <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243111/gh_interiors/200holycrest_1350.jpg" alt="Library"></div>
           <p class="room-card-name">Library</p>
           <p class="room-card-line">Built-in shelving, books, and quiet proportion — drawn into the restoration with discipline.</p>
@@ -1346,7 +1350,7 @@
     <div class="room-group">
       <h3 class="room-group-label">Private Level</h3>
       <div class="room-cards">
-        <a class="room-card" href="#primary-suite">
+        <a class="room-card" href="#private-rooms">
           <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243064/gh_interiors/200holycrest_1278.jpg" alt="Primary Suite"></div>
           <p class="room-card-name">Primary Suite</p>
           <p class="room-card-line">Custom wall panels, fireplace, 24 &times; 11 ft balcony overlooking grounds.</p>
@@ -1435,6 +1439,78 @@
 
 <!-- KITCHEN — major feature -->
 <!-- GH_KITCHEN_SHEET_12_SOURCE_CONFIRMATION_NEEDED -->
+<!-- ── PRINCIPAL ROOMS ─────────────────────────────────────── -->
+
+<!-- SALON — full split -->
+<section class="split" id="salon">
+  <div class="split-img img-reveal">
+    <img loading="lazy" decoding="async"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243041/gh_interiors/200holycrest_1209.jpg"
+      alt="Salon — the house's great living room, two seating areas and terrace doors, Garran Hill">
+  </div>
+  <div class="split-text">
+    <span class="micro-rule reveal"></span>
+    <span class="eyebrow">The Salon</span>
+    <h2>The house&#8217;s<em> great living room.</em></h2>
+    <div class="body-text reveal">
+      <p>Long, gracious, and arranged in two seating areas. Glass doors open to the brick terrace. Nearly forty feet from end to end, the Salon divides naturally into a room for conversation and a room for gathering. Georgian carved mantel. Arched fanlights.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DRAWING ROOM — reverse split -->
+<section class="split reverse" id="drawing-room">
+  <div class="split-img img-reveal">
+    <img loading="lazy" decoding="async"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243086/gh_interiors/200holycrest_1320.jpg"
+      alt="Drawing Room — the Blue Room, blue-and-white tiled fireplace and spiral stair, Garran Hill">
+  </div>
+  <div class="split-text">
+    <span class="micro-rule reveal"></span>
+    <span class="eyebrow">The Drawing Room</span>
+    <h2>The Blue Room.<em> Its own rhythm.</em></h2>
+    <div class="body-text reveal">
+      <p>Blue-and-white tiled fireplace. Intimate scale. A custom spiral stair rises from the room to the second-floor office above. The Drawing Room is the house&#8217;s most architectural interior moment &mdash; built for someone who collected quietly and thought deeply.</p>
+      <p class="caption-label">"Blue-and-white tile, firelight, and a spiral stair &mdash; the Drawing Room keeps its own rhythm."</p>
+    </div>
+  </div>
+</section>
+
+<!-- DINING ROOM — intimate section -->
+<section class="split" id="dining-room">
+  <div class="split-img img-reveal">
+    <img loading="lazy" decoding="async"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243067/gh_interiors/200holycrest_1296.jpg"
+      alt="Garran Hill dining room — original frontispiece, 17×19, disappearing folding screen">
+  </div>
+  <div class="split-text">
+    <span class="micro-rule reveal"></span>
+    <span class="eyebrow">The Dining Room</span>
+    <h2>Original frontispiece.<em> Folding screen still works.</em></h2>
+    <div class="body-text reveal">
+      <p>17 &times; 19 ft. The frontispiece is original. A disappearing folding screen in the dining room wall still operates as it was intended. The dining room was designed to open or close as the occasion required &mdash; and it still does.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LIBRARY — reverse -->
+<section class="split reverse" id="library-room">
+  <div class="split-img img-reveal">
+    <img loading="lazy" decoding="async"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243111/gh_interiors/200holycrest_1350.jpg"
+      alt="Garran Hill library — three walls of shelving, rolling ladder, French doors">
+  </div>
+  <div class="split-text">
+    <span class="micro-rule reveal"></span>
+    <span class="eyebrow">The Library</span>
+    <h2>Three walls.<em> Floor to ceiling. Rolling ladder.</em></h2>
+    <div class="body-text reveal">
+      <p>A separate room &mdash; quiet, proportioned, and complete. Built-in shelving on three walls. French doors to the grounds. Drawn into the restoration with such discipline that the room feels inevitable.</p>
+      <p>When you stand in it, you cannot find the seam.</p>
+    </div>
+  </div>
+</section>
+
 <section id="kitchen">
   <div class="split">
     <div class="split-img img-reveal">
@@ -1443,14 +1519,27 @@
     </div>
     <div class="split-text">
       <span class="micro-rule reveal"></span>
-      <span class="eyebrow">Kitchen</span><!-- GH_PHOTO_CONFIRMATION_NEEDED: Butler's Pantry -->
+      <span class="eyebrow">Kitchen &amp; Butler&#8217;s Pantry</span>
       <h2>Not original to 1916.<em>Original to the restoration.</em></h2>
       <div class="body-text reveal">
-        <p>Created from scratch during the restoration. Custom cabinetry throughout: cooking wall with custom cornice, butler&#8217;s pantry, desk nook, and TV cabinet.</p>
-        <p>Generous island. Two farm sinks. Heart-pine floors. A wall of windows.</p>
-        <p>The adjoining side porch carries hot and cold water, built-in cabinets and shelves &#8212; full potting and grounds support. The kitchen runs the full service life of the house.</p>
+        <p>Created from scratch during the restoration. Custom cabinetry throughout: cooking wall with custom cornice, butler&#8217;s pantry cabinetry, desk nook, and TV cabinet. Generous island. Two farm sinks. Heart-pine floors. A wall of windows.</p>
+        <p>The adjoining side porch carries hot and cold water, built-in cabinets and shelves &mdash; full potting and grounds support. The kitchen runs the full service life of the house.</p>
+        <p class="caption-label" style="margin-top:var(--sp-sm);">Sheet 12 of the restoration drawings documents the kitchen cabinetry in elevation &mdash; cooking wall, cornice, pantry, desk, TV cabinet, and potting side-porch work all drawn before they were built.</p>
         <!-- GH_KITCHEN_SHEET_12_SOURCE_CONFIRMATION_NEEDED -->
       </div>
+    </div>
+  </div>
+  <!-- Kitchen detail strip -->
+  <div class="kitchen-detail-strip reveal" style="display:flex;gap:0;margin-top:0;max-height:38vh;overflow:hidden;">
+    <div style="flex:1;overflow:hidden;position:relative;">
+      <img loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;"
+        src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_900/v1777243338/gh_interiors/200holycrest_1647.jpg"
+        alt="Garran Hill kitchen — island, cabinetry detail, heart-pine floors">
+    </div>
+    <div style="flex:1;overflow:hidden;position:relative;">
+      <img loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;"
+        src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_900/v1777243356/gh_interiors/200holycrest_1665.jpg"
+        alt="Garran Hill kitchen — custom cornice, cooking wall, cabinetry">
     </div>
   </div>
 </section>
@@ -1539,6 +1628,26 @@
     <div class="split-img img-reveal">
       <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243025/gh_interiors/200holycrest_1182.jpg"
         alt="Garran Hill staircase — mahogany volute, 1916">
+    </div>
+  </div>
+</section>
+
+<!-- ── PRIVATE ROOMS ───────────────────────────────────────── -->
+<section class="split reverse" id="private-rooms">
+  <div class="split-img img-reveal">
+    <img loading="lazy" decoding="async"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243064/gh_interiors/200holycrest_1278.jpg"
+      alt="Garran Hill primary suite — custom wall panels, fireplace, balcony overlooking grounds">
+  </div>
+  <div class="split-text">
+    <span class="micro-rule reveal"></span>
+    <span class="eyebrow">Private Rooms</span>
+    <h2>Primary Suite.<em> Balcony. Four bedrooms.</em></h2>
+    <div class="body-text reveal">
+      <p>The primary suite has a fireplace, custom wall panels, and a 24 &times; 11 ft balcony overlooking the grounds. Four bedrooms total &mdash; each shaped during restoration for proportion and light.</p>
+      <p>Primary bath, primary closet, and upper hall all documented in the restoration drawings. The private floor was treated with the same architectural discipline as the social rooms below.</p>
+      <!-- GH_PHOTO_CONFIRMATION_NEEDED: primary bath — room_primary_bath tag -->
+      <!-- GH_PHOTO_CONFIRMATION_NEEDED: primary closet — room_primary_closet tag -->
     </div>
   </div>
 </section>
