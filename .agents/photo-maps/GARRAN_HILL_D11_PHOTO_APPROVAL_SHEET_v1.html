@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garran Hill — Photo Approval Sheet D11</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #111; color: #f0ebe0; font-family: 'Georgia', serif; padding: 2rem 1.5rem; }
+  h1 { font-size: 1.6rem; color: #c9a96e; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .subtitle { color: rgba(240,235,224,0.55); font-size: 0.85rem; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+  .note { background: rgba(201,169,110,0.12); border-left: 3px solid #c9a96e; padding: 0.8rem 1rem; margin: 1.5rem 0 2rem; font-size: 0.92rem; color: #f0ebe0; font-style: italic; }
+  .section-title { font-size: 1.1rem; color: #c9a96e; letter-spacing: 0.2em; text-transform: uppercase; padding: 1rem 0 0.6rem; border-top: 1px solid rgba(201,169,110,0.25); margin-top: 2.5rem; }
+  .section-title:first-of-type { margin-top: 0; border-top: none; }
+
+  /* Single placement card */
+  .card { background: #1a1a1a; border: 1px solid rgba(201,169,110,0.2); border-radius: 4px; margin-bottom: 2rem; overflow: hidden; display: grid; grid-template-columns: 280px 1fr; }
+  @media(max-width:700px){ .card { grid-template-columns: 1fr; } }
+  .card-img { position: relative; height: 210px; background: #222; }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card-img .pid-label { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.72); font-size: 0.68rem; color: rgba(201,169,110,0.8); padding: 4px 8px; font-family: monospace; }
+  .card-body { padding: 1.2rem 1.4rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .card-room { font-size: 1rem; color: #c9a96e; letter-spacing: 0.1em; text-transform: uppercase; }
+  .card-desc { font-size: 0.88rem; color: rgba(240,235,224,0.7); line-height: 1.5; }
+  .badge { display: inline-block; font-size: 0.72rem; padding: 2px 8px; border-radius: 20px; font-family: sans-serif; letter-spacing: 0.05em; }
+  .badge-likely { background: rgba(201,169,110,0.2); color: #c9a96e; border: 1px solid rgba(201,169,110,0.4); }
+  .badge-verified { background: rgba(80,180,100,0.2); color: #8ee09a; border: 1px solid rgba(80,180,100,0.4); }
+  .decisions { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.5rem; }
+  .decisions label { display: flex; align-items: center; gap: 0.6rem; font-size: 0.88rem; color: rgba(240,235,224,0.85); cursor: pointer; }
+  .decisions input[type=radio] { accent-color: #c9a96e; width: 15px; height: 15px; }
+  .notes-line { margin-top: 0.5rem; }
+  .notes-line input { width: 100%; background: #111; border: 1px solid rgba(201,169,110,0.25); color: #f0ebe0; padding: 6px 10px; font-size: 0.82rem; font-family: Georgia, serif; border-radius: 3px; }
+  .notes-line input::placeholder { color: rgba(240,235,224,0.3); }
+
+  /* Comparison strip */
+  .compare-strip { margin-bottom: 2.5rem; }
+  .compare-label { font-size: 0.82rem; color: rgba(240,235,224,0.5); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.8rem; }
+  .compare-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+  .compare-item { background: #1a1a1a; border: 2px solid transparent; border-radius: 4px; overflow: hidden; cursor: pointer; transition: border-color 0.2s; }
+  .compare-item:hover { border-color: rgba(201,169,110,0.5); }
+  .compare-item.selected { border-color: #c9a96e; }
+  .compare-item img { width: 100%; height: 160px; object-fit: cover; display: block; }
+  .compare-item-label { padding: 6px 10px; font-size: 0.72rem; font-family: monospace; color: rgba(201,169,110,0.75); display: flex; justify-content: space-between; align-items: center; }
+  .compare-item-label span { color: rgba(240,235,224,0.45); font-size: 0.68rem; }
+  .compare-pick { display: flex; align-items: center; gap: 0.5rem; padding: 4px 10px 8px; }
+  .compare-pick input[type=radio] { accent-color: #c9a96e; }
+  .compare-pick label { font-size: 0.8rem; color: rgba(240,235,224,0.7); cursor: pointer; }
+  .pick-answer { background: rgba(201,169,110,0.1); border: 1px solid rgba(201,169,110,0.3); border-radius: 3px; padding: 0.7rem 1rem; margin-top: 0.5rem; font-size: 0.85rem; }
+  .pick-answer strong { color: #c9a96e; }
+
+  /* Priority table */
+  .priority-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 1rem; }
+  .priority-table th { text-align: left; padding: 0.5rem 0.8rem; color: #c9a96e; border-bottom: 1px solid rgba(201,169,110,0.3); font-weight: normal; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.75rem; }
+  .priority-table td { padding: 0.5rem 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: rgba(240,235,224,0.75); vertical-align: top; }
+  .priority-table tr:hover td { background: rgba(201,169,110,0.05); }
+  .pri-high { color: #e8a87c; font-size: 0.72rem; font-family: sans-serif; }
+  .pri-med { color: rgba(240,235,224,0.5); font-size: 0.72rem; font-family: sans-serif; }
+</style>
+</head>
+<body>
+
+<h1>Garran Hill — Photo Approval Sheet</h1>
+<p class="subtitle">D11 · Photo Placement Sprint · May 10 2026</p>
+
+<div class="note">
+  AI tags are a starting point, not truth. Rachel approval turns LIKELY into VERIFIED.<br>
+  Look at each photo. Check your decision. Rocky applies all changes in one ticket.
+</div>
+
+<!-- PRIORITY TABLE -->
+<div class="section-title">Approve These First</div>
+<table class="priority-table">
+  <tr><th>#</th><th>Room / Section</th><th>Current ID</th><th>Why it matters</th></tr>
+  <tr><td>1</td><td>Primary Bath / Jewel Box</td><td style="font-family:monospace;font-size:0.8rem;">1371 (working pick)</td><td><span class="pri-high">HIGH — appears in 2 places</span></td></tr>
+  <tr><td>2</td><td>Wee Cottage</td><td style="font-family:monospace;font-size:0.8rem;">holycrestextf_3361</td><td><span class="pri-high">HIGH — confirm correct structure</span></td></tr>
+  <tr><td>3</td><td>Twilight closer</td><td style="font-family:monospace;font-size:0.8rem;">200_drive_220</td><td><span class="pri-high">HIGH — replaced pool bleed</span></td></tr>
+  <tr><td>4</td><td>Sunroom card</td><td style="font-family:monospace;font-size:0.8rem;">1428</td><td><span class="pri-med">MEDIUM</span></td></tr>
+  <tr><td>5</td><td>Staircase section</td><td style="font-family:monospace;font-size:0.8rem;">1182</td><td><span class="pri-med">MEDIUM — upgrade available</span></td></tr>
+  <tr><td>6</td><td>Bedrooms card</td><td style="font-family:monospace;font-size:0.8rem;">1512</td><td><span class="pri-med">MEDIUM</span></td></tr>
+  <tr><td>7</td><td>Lower Office</td><td style="font-family:monospace;font-size:0.8rem;">1605</td><td><span class="pri-med">MEDIUM</span></td></tr>
+  <tr><td>8</td><td>Primary Closet</td><td style="font-family:monospace;font-size:0.8rem;">1422</td><td><span class="pri-med">MEDIUM</span></td></tr>
+  <tr><td>9</td><td>Laundry card</td><td style="font-family:monospace;font-size:0.8rem;">1494</td><td><span class="pri-med">LOW — small file</span></td></tr>
+  <tr><td>10</td><td>Gardens card</td><td style="font-family:monospace;font-size:0.8rem;">1437</td><td><span class="pri-med">LOW</span></td></tr>
+</table>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION A — SINGLE PLACEMENTS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<div class="section-title">Section A — Room Cards (single placement each)</div>
+
+<!-- A1 SUNROOM -->
+<div class="card">
+  <div class="card-img">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_560,h_420,c_fill,f_auto,q_auto/v1777243169/gh_interiors/200holycrest_1428.jpg" alt="Sunroom">
+    <div class="pid-label">200holycrest_1428 · room_sunroom · Pam Jensen</div>
+  </div>
+  <div class="card-body">
+    <div class="card-room">A1 — Sunroom / Sitting Room</div>
+    <div class="card-desc">Should show: light-filled passage connecting interior to grounds.<br>Tag: room_sunroom. Largest Pam Jensen sunroom file.</div>
+    <span class="badge badge-likely">LIKELY</span>
+    <div class="decisions">
+      <label><input type="radio" name="a1" value="approved"> ✅ Approved — this IS the sunroom</label>
+      <label><input type="radio" name="a1" value="replace"> 🔄 Replace — write ID below</label>
+      <label><input type="radio" name="a1" value="gallery"> 📁 Gallery only</label>
+      <label><input type="radio" name="a1" value="no"> ❌ Do not use</label>
+    </div>
+    <div class="notes-line"><input type="text" placeholder="Replacement ID or notes…"></div>
+  </div>
+</div>
+
+<!-- A2 PRIMARY CLOSET -->
+<div class="card">
+  <div class="card-img">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_560,h_420,c_fill,f_auto,q_auto/v1777243161/gh_interiors/200holycrest_1422.jpg" alt="Primary Closet">
+    <div class="pid-label">200holycrest_1422 · room_primary_closet · Pam Jensen</div>
+  </div>
+  <div class="card-body">
+    <div class="card-room">A2 — Primary Closet &amp; Dressing</div>
+    <div class="card-desc">Should show: designed storage space — "Storage designed, not afterthought."<br>Tag: room_primary_closet. Largest Pam Jensen closet file (16.8MB).</div>
+    <span class="badge badge-likely">LIKELY</span>
+    <div class="decisions">
+      <label><input type="radio" name="a2" value="approved"> ✅ Approved</label>
+      <label><input type="radio" name="a2" value="replace"> 🔄 Replace</label>
+      <label><input type="radio" name="a2" value="gallery"> 📁 Gallery only</label>
+      <label><input type="radio" name="a2" value="no"> ❌ Do not use</label>
+    </div>
+    <div class="notes-line"><input type="text" placeholder="Replacement ID or notes…"></div>
+  </div>
+</div>
+
+<!-- A3 BEDROOMS -->
+<div class="card">
+  <div class="card-img">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_560,h_420,c_fill,f_auto,q_auto/v1777243208/gh_interiors/200holycrest_1512.jpg" alt="Bedrooms">
+    <div class="pid-label">200holycrest_1512 · room_bedroom_3 · Pam Jensen</div>
+  </div>
+  <div class="card-body">
+    <div class="card-room">A3 — Bedrooms (group card)</div>
+    <div class="card-desc">Should show: one guest-quality bedroom representing all four.<br>Tag: room_bedroom_3. Largest bedroom file across all bedroom tags (19.5MB).</div>
+    <span class="badge badge-likely">LIKELY</span>
+    <div class="decisions">
+      <label><input type="radio" name="a3" value="approved"> ✅ Approved</label>
+      <label><input type="radio" name="a3" value="replace"> 🔄 Replace</label>
+      <label><input type="radio" name="a3" value="gallery"> 📁 Gallery only</label>
+      <label><input type="radio" name="a3" value="no"> ❌ Do not use</label>
+    </div>
+    <div class="notes-line"><input type="text" placeholder="Replacement ID or notes…"></div>
+  </div>
+</div>
+
+<!-- A4 LOWER OFFICE -->
+<div class="card">
+  <div class="card-img">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_560,h_420,c_fill,f_auto,q_auto/v1777243300/gh_interiors/200holycrest_1605.jpg" alt="Lower Office">
+    <div class="pid-label">200holycrest_1605 · room_lower_level_office · Pam Jensen</div>
+  </div>
+  <div class="card-body">
+    <div class="card-room">A4 — Lower-Level Office</div>
+    <div class="card-desc">Should show: built-in bookcase with concealed cabinetry.<br>Tag: room_lower_level_office. Largest file (19.8MB).</div>
+    <span class="badge badge-likely">LIKELY</span>
+    <div class="decisions">
+      <label><input type="radio" name="a4" value="approved"> ✅ Approved — built-ins visible</label>
+      <label><input type="radio" name="a4" value="replace"> 🔄 Replace</label>
+      <label><input type="radio" name="a4" value="gallery"> 📁 Gallery only</label>
+      <label><input type="radio" name="a4" value="no"> ❌ Do not use</label>
+    </div>
+    <div class="notes-line"><input type="text" placeholder="Replacement ID or notes…"></div>
+  </div>
+</div>
+
+<!-- A5 LAUNDRY -->
+<div class="card">
+  <div class="card-img">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_560,h_420,c_fill,f_auto,q_auto/v1777244413/gh_interiors/200holycrest_1494.jpg" alt="Laundry">
+    <div class="pid-label">200holycrest_1494 · room_laundry · Pam Jensen · 1.6MB</div>
+  </div>
+  <div class="card-body">
+    <div class="card-room">A5 — Laundry</div>
+    <div class="card-desc">Should show: organized laundry / service room.<br>⚠️ Only 1.6MB — smaller file. Check it looks sharp enough at card size.</div>
+    <span class="badge badge-likely">LIKELY</span>
+    <div class="decisions">
+      <label><input type="radio" name="a5" value="approved"> ✅ Approved — looks fine</label>
+      <label><input type="radio" name="a5" value="replace"> 🔄 Replace</label>
+      <label><input type="radio" name="a5" value="gallery"> 📁 Gallery only</label>
+      <label><input type="radio" name="a5" value="no"> ❌ Do not use</label>
+    </div>
+    <div class="notes-line"><input type="text" placeholder="Replacement ID or notes…"></div>
+  </div>
+</div>
+
+<!-- A6 GARDENS -->
+<div class="card">
+  <div class="card-img">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_560,h_420,c_fill,f_auto,q_auto/v1777244430/gh_exteriors/200holycrest_1437.jpg" alt="Gardens">
+    <div class="pid-label">200holycrest_1437 · room_gardens · Pam Jensen exterior</div>
+  </div>
+  <div class="card-body">
+    <div class="card-room">A6 — Gardens &amp; Grounds card</div>
+    <div class="card-desc">Should show: estate grounds — mature canopy, 28-zone irrigation, 4.15 acres.<br>Tag: room_gardens. Largest Pam Jensen grounds exterior.</div>
+    <span class="badge badge-likely">LIKELY</span>
+    <div class="decisions">
+      <label><input type="radio" name="a6" value="approved"> ✅ Approved</label>
+      <label><input type="radio" name="a6" value="replace"> 🔄 Replace</label>
+      <label><input type="radio" name="a6" value="gallery"> 📁 Gallery only</label>
+      <label><input type="radio" name="a6" value="no"> ❌ Do not use</label>
+    </div>
+    <div class="notes-line"><input type="text" placeholder="Replacement ID or notes…"></div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION B — WEE COTTAGE (pick one of 3) -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="section-title">Section B — Wee Cottage (confirm correct structure)</div>
+<p style="font-size:0.85rem;color:rgba(240,235,224,0.55);margin-bottom:1.2rem;">Current pick: <code style="color:#c9a96e;">holycrestextf_3361</code>. All three are tagged room_outbuildings. Which one is actually the playhouse?</p>
+
+<div class="compare-strip">
+  <div class="compare-grid">
+    <div class="compare-item">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_400,h_300,c_fill,f_auto,q_auto/v1777244497/gh_exteriors/holycrestextf_3361.jpg" alt="3361">
+      <div class="compare-item-label">holycrestextf_3361 <span>CURRENT</span></div>
+      <div class="compare-pick"><input type="radio" name="cottage" id="c1" value="3361"><label for="c1">This IS the Wee Cottage</label></div>
+    </div>
+    <div class="compare-item">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_400,h_300,c_fill,f_auto,q_auto/v1777244478/gh_exteriors/holycrestextf_3346.jpg" alt="3346">
+      <div class="compare-item-label">holycrestextf_3346</div>
+      <div class="compare-pick"><input type="radio" name="cottage" id="c2" value="3346"><label for="c2">Use this one instead</label></div>
+    </div>
+    <div class="compare-item">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_400,h_300,c_fill,f_auto,q_auto/v1777244472/gh_exteriors/holycrestextf_3345.jpg" alt="3345">
+      <div class="compare-item-label">holycrestextf_3345</div>
+      <div class="compare-pick"><input type="radio" name="cottage" id="c3" value="3345"><label for="c3">Use this one instead</label></div>
+    </div>
+  </div>
+  <div style="margin-top:0.8rem;">
+    <label style="font-size:0.83rem;color:rgba(240,235,224,0.5);">None of these / pull the card entirely:</label>
+    <input type="radio" name="cottage" value="none" style="margin-left:0.5rem;accent-color:#c9a96e;">
+  </div>
+  <div class="notes-line" style="margin-top:0.6rem;"><input type="text" placeholder="Notes…"></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION C — PRIMARY BATH (pick one of 5) -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="section-title">Section C — Primary Bath / Jewel Box Bath (pick one of 5)</div>
+<p style="font-size:0.85rem;color:rgba(240,235,224,0.55);margin-bottom:1.2rem;">This photo appears in <strong style="color:#c9a96e;">two places</strong>: the room guide card AND the Jewel Box Bath split section. Current pick: <code style="color:#c9a96e;">1371</code>. All five are Pam Jensen, tagged room_primary_bath.</p>
+
+<div class="compare-strip">
+  <div class="compare-grid">
+    <div class="compare-item">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_400,h_300,c_fill,f_auto,q_auto/v1777243121/gh_interiors/200holycrest_1371.jpg" alt="1371">
+      <div class="compare-item-label">200holycrest_1371 <span>18.5MB · CURRENT</span></div>
+      <div class="compare-pick"><input type="radio" name="bath" id="b1" value="1371"><label for="b1">Use this one</label></div>
+    </div>
+    <div class="compare-item">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_400,h_300,c_fill,f_auto,q_auto/v1777243116/gh_interiors/200holycrest_1365.jpg" alt="1365">
+      <div class="compare-item-label">200holycrest_1365 <span>17.3MB</span></div>
+      <div class="compare-pick"><input type="radio" name="bath" id="b2" value="1365"><label for="b2">Use this one</label></div>
+    </div>
+    <div class="compare-item">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_400,h_300,c_fill,f_auto,q_auto/v1777243153/gh_interiors/200holycrest_1395.jpg" alt="1395">
+      <div class="compare-item-label">200holycrest_1395 <span>17.1MB</span></div>
+      <div class="compare-pick"><input type="radio" name="bath" id="b3" value="1395"><label for="b3">Use this one</label></div>
+    </div>
+    <div class="compare-item">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_400,h_300,c_fill,f_auto,q_auto/v1777243124/gh_interiors/200holycrest_1374.jpg" alt="1374">
+      <div class="compare-item-label">200holycrest_1374 <span>15.7MB</span></div>
+      <div class="compare-pick"><input type="radio" name="bath" id="b4" value="1374"><label for="b4">Use this one</label></div>
+    </div>
+    <div class="compare-item">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_400,h_300,c_fill,f_auto,q_auto/v1777243145/gh_interiors/200holycrest_1383.jpg" alt="1383">
+      <div class="compare-item-label">200holycrest_1383 <span>14.7MB</span></div>
+      <div class="compare-pick"><input type="radio" name="bath" id="b5" value="1383"><label for="b5">Use this one</label></div>
+    </div>
+  </div>
+  <div style="margin-top:0.8rem;">
+    <input type="radio" name="bath" value="none" style="accent-color:#c9a96e;"> <span style="font-size:0.83rem;color:rgba(240,235,224,0.5);">None of these — do not use a bath photo here</span>
+  </div>
+  <div class="notes-line" style="margin-top:0.6rem;"><input type="text" placeholder="Notes or pick…"></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION D — STAIRCASE (keep 1182 or upgrade) -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="section-title">Section D — Staircase / Hallway (keep or upgrade)</div>
+<p style="font-size:0.85rem;color:rgba(240,235,224,0.55);margin-bottom:1.2rem;">Current site uses <code style="color:#c9a96e;">1182</code>. Five Pam Jensen hallway/staircase masters are now available. Keep or upgrade?</p>
+
+<div class="compare-strip">
+  <div class="compare-grid">
+    <div class="compare-item">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_400,h_300,c_fill,f_auto,q_auto/v1777243025/gh_interiors/200holycrest_1182.jpg" alt="1182">
+      <div class="compare-item-label">200holycrest_1182 <span>CURRENT</span></div>
+      <div class="compare-pick"><input type="radio" name="stair" id="s0" value="1182"><label for="s0">Keep this</label></div>
+    </div>
+    <div class="compare-item">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_400,h_300,c_fill,f_auto,q_auto/v1777243048/gh_interiors/200holycrest_1215.jpg" alt="1215">
+      <div class="compare-item-label">200holycrest_1215 <span>17.3MB · portrait</span></div>
+      <div class="compare-pick"><input type="radio" name="stair" id="s1" value="1215"><label for="s1">Use this one</label></div>
+    </div>
+    <div class="compare-item">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_400,h_300,c_fill,f_auto,q_auto/v1777243236/gh_interiors/200holycrest_1569.jpg" alt="1569">
+      <div class="compare-item-label">200holycrest_1569 <span>16.1MB · landscape</span></div>
+      <div class="compare-pick"><input type="radio" name="stair" id="s2" value="1569"><label for="s2">Use this one</label></div>
+    </div>
+    <div class="compare-item">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_400,h_300,c_fill,f_auto,q_auto/v1777243102/gh_interiors/200holycrest_1338.jpg" alt="1338">
+      <div class="compare-item-label">200holycrest_1338 <span>16.0MB · portrait</span></div>
+      <div class="compare-pick"><input type="radio" name="stair" id="s3" value="1338"><label for="s3">Use this one</label></div>
+    </div>
+    <div class="compare-item">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_400,h_300,c_fill,f_auto,q_auto/v1777243197/gh_interiors/200holycrest_1506.jpg" alt="1506">
+      <div class="compare-item-label">200holycrest_1506 <span>13.4MB · portrait</span></div>
+      <div class="compare-pick"><input type="radio" name="stair" id="s4" value="1506"><label for="s4">Use this one</label></div>
+    </div>
+    <div class="compare-item">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_400,h_300,c_fill,f_auto,q_auto/v1777243214/gh_interiors/200holycrest_1533.jpg" alt="1533">
+      <div class="compare-item-label">200holycrest_1533 <span>12.2MB · landscape</span></div>
+      <div class="compare-pick"><input type="radio" name="stair" id="s5" value="1533"><label for="s5">Use this one</label></div>
+    </div>
+  </div>
+  <div class="notes-line" style="margin-top:0.6rem;"><input type="text" placeholder="Notes…"></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION E — TWILIGHT CLOSER (confirm or swap) -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="section-title">Section E — Twilight Estate Closer</div>
+<p style="font-size:0.85rem;color:rgba(240,235,224,0.55);margin-bottom:0.6rem;">The old twilight image was <code style="color:#c9a96e;">holycrestextf_3327</code> — but it's tagged <strong>room_pool</strong>, not twilight. Rocky replaced it with <code style="color:#c9a96e;">200_hollycrest_drive_220</code> (tagged room_twilight). All four below are twilight candidates.</p>
+<p style="font-size:0.83rem;color:rgba(201,169,110,0.6);margin-bottom:1.2rem;">Note: 3327 stays in the pool/grounds section where it belongs. Do not restore it as twilight unless it genuinely reads as dusk.</p>
+
+<div class="compare-strip">
+  <div class="compare-grid">
+    <div class="compare-item">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_400,h_300,c_fill,f_auto,q_auto/v1777244109/gh_photos/200_hollycrest_drive_220.jpg" alt="220">
+      <div class="compare-item-label">200_drive_220 <span>CURRENT</span></div>
+      <div class="compare-pick"><input type="radio" name="twilight" id="t1" value="220"><label for="t1">Keep this — reads as dusk</label></div>
+    </div>
+    <div class="compare-item">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_400,h_300,c_fill,f_auto,q_auto/v1777244092/gh_photos/200_hollycrest_drive_221.jpg" alt="221">
+      <div class="compare-item-label">200_drive_221 <span>room_twilight</span></div>
+      <div class="compare-pick"><input type="radio" name="twilight" id="t2" value="221"><label for="t2">Use 221 instead</label></div>
+    </div>
+    <div class="compare-item">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_400,h_300,c_fill,f_auto,q_auto/v1777244093/gh_photos/200_hollycrest_drive_222.jpg" alt="222">
+      <div class="compare-item-label">200_drive_222 <span>room_twilight</span></div>
+      <div class="compare-pick"><input type="radio" name="twilight" id="t3" value="222"><label for="t3">Use 222 instead</label></div>
+    </div>
+    <div class="compare-item">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_400,h_300,c_fill,f_auto,q_auto/v1777244095/gh_photos/200_hollycrest_drive_224.jpg" alt="224">
+      <div class="compare-item-label">200_drive_224 <span>room_twilight</span></div>
+      <div class="compare-pick"><input type="radio" name="twilight" id="t4" value="224"><label for="t4">Use 224 instead</label></div>
+    </div>
+  </div>
+  <div class="notes-line" style="margin-top:0.6rem;"><input type="text" placeholder="Notes…"></div>
+</div>
+
+
+<!-- FOOTER -->
+<div style="margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(201,169,110,0.2);font-size:0.78rem;color:rgba(240,235,224,0.3);text-align:center;letter-spacing:0.08em;">
+  GARRAN HILL · PHOTO APPROVAL SHEET D11 · ROCKY 2026-05-10 · NO SITE CHANGES MADE
+</div>
+
+</body>
+</html>
