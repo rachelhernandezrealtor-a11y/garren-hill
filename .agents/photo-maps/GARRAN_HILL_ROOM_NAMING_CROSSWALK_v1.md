@@ -370,3 +370,36 @@ Please confirm each of the following:
 *Crosswalk v1 — 2026-05-10 — Rocky*
 *Cloudinary: READ-ONLY*
 *dist/index.html: NOT EDITED*
+
+---
+
+## LOCKED ROOM TRUTH — RACHEL CONFIRMED MAY 10, 2026
+
+### SALON = Living Room ✅ LOCKED
+- Long formal living room, ~40 ft, two seating areas, glass doors to brick terrace/patio
+- Blueprint label: "Living Room / Living Room Reflected Ceiling Plan"
+- PineStraw: blush pink salon, nearly 40 feet, divided into conversation areas
+- Photo: 200holycrest_1209 ✅
+- AI tag room_salon: CONFIRMED ACCURATE
+- DO NOT call this Drawing Room. DO NOT assign blue tile/spiral stair to this room.
+
+### DRAWING ROOM = Blue Room ✅ LOCKED
+- The room with blue-and-white tiled fireplace + custom spiral staircase to second-floor office/TV room
+- PineStraw: Ann's Blue Room, Delft collections, tiles framing fireplace, second-floor office above
+- Photo: 200holycrest_1320 ✅
+- AI tag room_drawing_room: CONFIRMED ACCURATE
+- Public copy: "blue-and-white tiled fireplace" — "Delft" held pending Rachel public-safe approval
+- Spiral stair confirmed HERE, not in Library or Salon
+
+### LIBRARY = Separate Room ✅ CLARIFIED
+- Separate room, NOT the Blue Room, NOT the spiral stair room
+- Three walls built-in shelving, rolling ladder, French doors to grounds
+- Photo: 200holycrest_1350 ✅
+- Do not assign blue tile or spiral stair to Library
+
+### KITCHEN — Butler's Pantry HELD
+- Section label reduced to "Kitchen" only
+- Butler's Pantry mentioned in body copy as a feature (source-confirmed) but NOT as section label
+- A photo showing pantry/service cabinetry must be confirmed before adding Butler's Pantry as a labeled card
+
+---

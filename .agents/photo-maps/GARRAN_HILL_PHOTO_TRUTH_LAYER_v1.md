@@ -205,3 +205,22 @@ Waiting on Rachel picks before the next live build ticket.
 *Maintained by: Rocky*
 *Cloudinary: READ-ONLY — 0 assets modified*
 *Blue Fox confirmed by Rachel: 2026-05-10*
+
+---
+
+## RACHEL VISUAL CONFIRMATION — MAY 10, 2026
+
+Rachel confirmed the Salon / Drawing Room distinction:
+
+- Salon (room_salon tag): CONFIRMED = formal living room, two seating areas, terrace doors
+- Drawing Room (room_drawing_room tag): CONFIRMED = Blue Room, blue-and-white tiled fireplace, spiral stair to office
+- Library: CONFIRMED separate from Drawing Room and Salon
+
+### AI CONFLICT NOTE
+Any Cloudinary AI tag that conflicts with the above should be treated as suspect until corrected by a separate tagging ticket. The room_salon and room_drawing_room tags on Pam Jensen masters are confirmed accurate. Do not rely on AI captions that may describe fireplace details incorrectly.
+
+### Blue Fox: CONFIRMED 2026-05-10
+- gh_img/75a1922cd: Rachel confirmed — grave marker, inscription MY IRISH HUNTER / BLUE FOX / 1946-1965
+- In use on live site in #hollycrest section ✅
+
+---
