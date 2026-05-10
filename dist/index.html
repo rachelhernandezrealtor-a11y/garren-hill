@@ -237,18 +237,7 @@ h2 em{font-style:italic;font-weight:300}
 section.text-full{padding:var(--sp-xl) var(--col-pad);max-width:1400px;margin:0 auto}
 section.split{display:flex;align-items:stretch;min-height:70vh;padding:var(--sp-lg) var(--col-mid);gap:clamp(4rem,7vw,7rem)}
 section.split.reverse{flex-direction:row-reverse}
-.split-img{flex:1;min-height:480px;max-height:80vh;overflow:hidden;position:relative}
-.split-img img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center;display:block}
-
-/* All section images constrained */
-.kb-gate img,.hero-room img,.kb-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
-.gallery-item img{width:100%;height:100%;object-fit:cover;display:block}
-
-/* WHP portrait — keep aspect ratio, max height */
-.whp-portrait img{width:100%;max-height:600px;object-fit:cover;object-position:top center;display:block}
-
-/* Full-width section images */
-section img:not(.stat-crest-wrap img):not(.nav-wordmark img){max-width:100%}
+.split-img{flex:1;min-height:480px;background-size:cover;background-position:center;background-repeat:no-repeat}
 .split-text{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:560px}
 .split-text h2{font-size:clamp(1.8rem,3.5vw,3.2rem)}
 
@@ -358,11 +347,6 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
   section.split{padding:var(--sp-md) var(--col-mid)}
   section.text-full{padding:var(--sp-lg) clamp(2rem,6vw,6rem)}
 }
-
-/* Safety: raw img tags in sections never overflow */
-section img:not(.split-img img):not(.split-img picture){max-width:100%;height:auto}
-.split-img img,.split-img picture{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.split-img{position:relative}
 </style>
 </head>
 <body>
@@ -817,11 +801,11 @@ const gallery = [
   'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/gh_interiors/200holycrest_1203.jpg',
   'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/gh_interiors/200holycrest_1278.jpg',
   'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/gh_interiors/200holycrest_1668.jpg',
-  'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777263004/gh_key/gh_threshold.jpg',
+  'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777263004/gh_key/gh_threshold.jpg',
   'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/gh_photos/200_hollycrest_drive_192.jpg',
   'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/gh_interiors/200holycrest_1182.jpg',
   'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/gh_interiors/200holycrest_1344.jpg',
-  'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244059/gh_key/gh_191.jpg'
+  'https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,w_1920,c_limit/v1777244059/gh_key/gh_191.jpg'
 ];
 let currentIdx = 0;
 
