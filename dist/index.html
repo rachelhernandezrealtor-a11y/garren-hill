@@ -850,32 +850,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
   // ── 1. MAGNETIC CURSOR ──
   // Gold dot + trailing ring. Physics-based lag. Grows on interactive elements.
   const cur = document.getElementById('cursor');
-  const ring = document.getElementById('cursor-ring');
-  if (cur && ring) {
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    let raf;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-    const interactives = document.querySelectorAll('a, button, label, .stat-crest-wrap img');
-    interactives.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cur.style.width = '12px'; cur.style.height = '12px';
-        ring.style.width = '42px'; ring.style.height = '42px';
-        ring.style.borderColor = 'rgba(245,224,152,0.75)';
-        ring.style.background = 'rgba(201,169,110,0.04)';
-      });
-      el.addEventListener('mouseleave', () => {
-        cur.style.width = '7px'; cur.style.height = '7px';
-        ring.style.width = '28px'; ring.style.height = '28px';
-        ring.style.borderColor = 'rgba(201,169,110,0.5)';
-        ring.style.background = 'none';
-      });
-    });
-    function animCursor() {
-      cur.style.left = mx + 'px'; cur.style.top = my + 'px';
-      rx += (mx - rx) * 0.11; ry += (my - ry) * 0.11;
-      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-      raf = requestAnimationFrame(animCursor);
-    }
+  
     animCursor();
   }
 
