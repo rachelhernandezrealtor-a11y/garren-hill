@@ -546,11 +546,66 @@
   .lb-prev { left: 1.5rem; }
   .lb-next { right: 1.5rem; }
 
-  /* § 18. MATTERPORT */
-  .matterport-section { padding: var(--sp-lg) var(--col-mid); }
-  .matterport-section iframe { width: 100%; height: 520px; border: none; display: block; }
-
-  /* § 19. INQUIRY */
+  /* § 18. PRIVATE TOUR */
+  .private-tour-section {
+    padding: clamp(4rem,8vw,8rem) var(--col-mid);
+    text-align: center;
+    border-top: 1px solid rgba(201,169,110,0.18);
+    border-bottom: 1px solid rgba(201,169,110,0.18);
+  }
+  .private-tour-passage {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: clamp(0.65rem,0.8vw,0.72rem);
+    letter-spacing: 0.28em;
+    color: rgba(201,169,110,0.55);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: var(--sp-lg);
+  }
+  .private-tour-section .body-text {
+    max-width: 52ch;
+    margin: 0 auto var(--sp-lg);
+    text-align: center;
+  }
+  .tour-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: var(--sp-lg);
+  }
+  .tour-btn {
+    display: inline-block;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: clamp(0.72rem,0.9vw,0.82rem);
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--gold);
+    border: 1px solid rgba(201,169,110,0.45);
+    padding: 0.9em 2.8em;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
+    min-width: 260px;
+  }
+  .tour-btn:hover {
+    background: rgba(201,169,110,0.08);
+    border-color: rgba(201,169,110,0.9);
+    color: var(--cream);
+  }
+  .tour-btn.tour-btn--primary {
+    border-color: rgba(201,169,110,0.75);
+    color: var(--cream);
+    background: rgba(201,169,110,0.06);
+  }
+  .tour-btn.tour-btn--primary:hover { background: rgba(201,169,110,0.14); }
+  @media (max-width: 768px) {
+    .tour-btn { min-width:0; width:100%; max-width:340px; text-align:center; }
+    .tour-actions { padding: 0 1.5rem; }
+  }
+    /* § 19. INQUIRY */
   .inquiry { padding: var(--sp-lg) var(--col-pad); max-width: 700px; margin: 0 auto; text-align: center; }
   .inquiry-form { text-align: left; margin-top: var(--sp-md); }
   .inquiry-field {
@@ -1653,12 +1708,28 @@
 </div>
 
 <!-- MATTERPORT -->
-<section class="matterport-section">
-  <div class="reveal" style="text-align:center;margin-bottom:var(--sp-md);">
-    <span class="eyebrow" style="display:block;text-align:center;">Virtual Tour</span>
-    <h2 style="font-size:clamp(1.2rem,2vw,2rem);">Walk every room. Begin anywhere.</h2>
+<!-- GH_MATTERPORT_PRESENTATION_UPGRADE -->
+<section class="private-tour-section" id="virtual-tour">
+  <span class="micro-rule" style="display:block;width:40px;height:1px;background:rgba(201,169,110,0.4);margin:0 auto var(--sp-md);"></span>
+  <span class="eyebrow" style="display:block;text-align:center;margin-bottom:var(--sp-sm);">Private Tour</span>
+  <h2 style="text-align:center;margin-bottom:var(--sp-md);">Step inside Garran Hill<em> from wherever you are.</em></h2>
+  <div class="body-text" style="max-width:52ch;margin:0 auto var(--sp-lg);text-align:center;">
+    <p>For buyers beginning at a distance, the virtual tour offers a quiet first passage through the house &mdash; from threshold to principal rooms, private spaces, and grounds.</p>
   </div>
-  <iframe src="https://my.matterport.com/show/?m=mfwyqT5Btwx" allowfullscreen allow="xr-spatial-tracking" loading="lazy"></iframe>
+  <span class="private-tour-passage">Virtual Passage &middot; Private Showing &middot; Estate Details</span>
+  <div class="tour-actions">
+    <a class="tour-btn tour-btn--primary"
+       href="https://my.matterport.com/show/?m=mfwyqT5Btwx"
+       target="_blank" rel="noopener">
+      Enter the Virtual Tour
+    </a>
+    <a class="tour-btn" href="#inquiry">
+      Request Private Showing
+    </a>
+    <a class="tour-btn" href="#features">
+      Explore House Features
+    </a>
+  </div>
 </section>
 
 <!-- PRIVATE INQUIRY -->
