@@ -1418,17 +1418,17 @@
 
 <section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;">
   <!-- Letter scan underlay -->
-  <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:40,o_8,f_auto,q_auto,c_limit,w_1200/v1777391998/gh_key/gh_whp_letter1.jpg" alt="" role="presentation"
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:40,f_auto,q_auto,c_limit,w_1200/v1777391998/gh_key/gh_whp_letter1.jpg" alt="" role="presentation"
       style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.07;filter:sepia(60%);">
   </div>
   <div class="split" style="position:relative;z-index:1;align-items:center;">
-    <!-- WHP portrait — portrait ratio, contained, never cropped -->
-    <div class="split-img img-reveal" style="display:flex;align-items:center;justify-content:center;padding:var(--sp-md) 0;background:transparent;">
+    <!-- Portrait container — flex centering, NO split-img class so CSS doesn't force absolute -->
+    <div class="img-reveal" style="flex:1;display:flex;align-items:center;justify-content:center;padding:var(--sp-md) 0;min-height:320px;">
       <img loading="lazy" decoding="async"
         src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_700/v1777244132/gh_key/gh_whp.jpg"
         alt="Walter Hines Page — publisher, ambassador, builder of Garran Hill"
-        style="width:auto;height:auto;max-width:100%;max-height:560px;display:block;margin:0 auto;">
+        style="display:block;width:100%;max-width:420px;height:auto;">
     </div>
     <div class="split-text">
       <span class="micro-rule reveal"></span>
