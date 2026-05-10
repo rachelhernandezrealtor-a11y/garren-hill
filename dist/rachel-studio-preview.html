@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<!-- RACHEL_STUDIO_PRIVATE_PREVIEW_V1 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Rachel Studio Preview</title>
+  <meta name="description" content="Rachel Studio: private property publishing for extraordinary homes. A source-backed editorial system for significant listings.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* ─────────────────────────────────────────────────────
+       ROOT — DESIGN TOKENS
+    ───────────────────────────────────────────────────── */
+    :root {
+      --dark:   #0a0a0a;
+      --gold:   #C9A96E;
+      --gold-hi:#F5E098;
+      --cream:  #F5F0E8;
+
+      /* spacing */
+      --sp-xs:  clamp(0.9rem,  1.4vw,  1.2rem);
+      --sp-sm:  clamp(1.6rem,  2.8vw,  2.6rem);
+      --sp-md:  clamp(3.0rem,  5vw,    5.0rem);
+      --sp-lg:  clamp(5.0rem,  8vw,    8.5rem);
+      --sp-xl:  clamp(7.5rem, 12vw,   13.0rem);
+      --col:    clamp(1.8rem,  7vw,    8.0rem);
+      --col-mid:clamp(1.4rem,  4.5vw,  5.5rem);
+      --max-w:  1100px;
+      --max-t:  680px;
+
+      /* type scale */
+      --tx-xs:   clamp(0.60rem, 0.78vw, 0.70rem);
+      --tx-sm:   clamp(0.82rem, 1.1vw,  0.98rem);
+      --tx-base: clamp(1.05rem, 1.5vw,  1.22rem);
+      --tx-md:   clamp(1.3rem,  2.2vw,  1.75rem);
+      --tx-lg:   clamp(1.9rem,  3.2vw,  2.9rem);
+      --tx-xl:   clamp(2.6rem,  5.2vw,  5.0rem);
+      --tx-hero: clamp(4.5rem, 13vw,   11.5rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      line-height: 1.88;
+      overflow-x: hidden;
+    }
+
+    /* film grain */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9000; opacity: 0.48;
+    }
+
+    /* gold cursor — dot only, no ring */
+    * { cursor: none !important; }
+    #cursor {
+      position: fixed; width: 7px; height: 7px;
+      background: var(--gold); border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease;
+      mix-blend-mode: difference;
+    }
+
+    /* gold scrollbar */
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* ─────────────────────────────────────────────────────
+       REVEAL SYSTEM
+    ───────────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(26px);
+      transition: opacity 0.9s cubic-bezier(.16,1,.3,1),
+                  transform 0.9s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    .reveal-slow {
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 1.3s cubic-bezier(.16,1,.3,1),
+                  transform 1.3s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal-slow.in { opacity: 1; transform: translateY(0); }
+
+    /* ─────────────────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 800;
+      height: 70px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--col);
+      background: rgba(5,5,5,0.60);
+      backdrop-filter: blur(22px) saturate(1.5);
+      transition: height 0.3s ease, background 0.3s ease;
+    }
+    nav::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(245,224,152,0.18) 8%,
+        rgba(201,169,110,0.62) 28%,
+        #F5E098 50%,
+        rgba(201,169,110,0.62) 72%,
+        rgba(245,224,152,0.18) 92%,
+        transparent 100%);
+    }
+    nav.scrolled { height: 55px; background: rgba(4,4,4,0.93); }
+
+    .nav-wordmark {
+      display: flex; flex-direction: column;
+      gap: 0; line-height: 1.05;
+    }
+    .nav-kicker {
+      font-size: 0.46rem; letter-spacing: 0.52em; text-transform: uppercase;
+      color: rgba(201,169,110,0.48);
+    }
+    .nav-name {
+      font-family: 'Pinyon Script', cursive;
+      font-size: clamp(1.25rem, 2vw, 1.75rem);
+      color: var(--cream);
+      letter-spacing: 0.02em;
+    }
+    .nav-sub {
+      font-size: 0.42rem; letter-spacing: 0.42em; text-transform: uppercase;
+      color: rgba(245,240,232,0.30);
+    }
+    .nav-cta a {
+      font-size: 0.54rem; letter-spacing: 0.36em; text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,169,110,0.32);
+      padding: 0.55rem 1.4rem;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+    .nav-cta a:hover { background: var(--gold); color: var(--dark); }
+
+    /* ─────────────────────────────────────────────────────
+       GOLD HAIRLINE + ACT LABELS
+    ───────────────────────────────────────────────────── */
+    .hairline {
+      width: 100%; height: 1px;
+      background: linear-gradient(to right,
+        transparent 0%, rgba(201,169,110,0) 5%,
+        rgba(201,169,110,0.28) 24%,
+        rgba(245,224,152,0.44) 50%,
+        rgba(201,169,110,0.28) 76%,
+        rgba(201,169,110,0) 95%, transparent 100%);
+    }
+    .act-break {
+      display: flex; align-items: center; justify-content: center;
+      padding: var(--sp-sm) var(--col); gap: 1.8rem;
+    }
+    .act-break::before, .act-break::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(to right,
+        transparent, rgba(201,169,110,0.3) 40%, rgba(245,224,152,0.52) 100%);
+    }
+    .act-break::after {
+      background: linear-gradient(to left,
+        transparent, rgba(201,169,110,0.3) 40%, rgba(245,224,152,0.52) 100%);
+    }
+    .act-break span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.50rem; letter-spacing: 0.52em; text-transform: uppercase;
+      color: rgba(201,169,110,0.44); white-space: nowrap;
+    }
+
+    /* ─────────────────────────────────────────────────────
+       SHARED TYPOGRAPHY
+    ───────────────────────────────────────────────────── */
+    .eyebrow {
+      display: block;
+      font-size: var(--tx-xs); letter-spacing: 0.44em; text-transform: uppercase;
+      color: rgba(201,169,110,0.60);
+      margin-bottom: clamp(0.7rem, 1.2vw, 1rem);
+    }
+    .gold-rule {
+      width: 2.8rem; height: 1px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      margin: clamp(0.8rem,1.4vw,1.2rem) 0;
+    }
+    .gold-rule.center { margin-left: auto; margin-right: auto; }
+
+    h2.section-head {
+      font-size: var(--tx-lg); font-weight: 300; font-style: italic;
+      color: var(--cream); line-height: 1.22;
+      margin-bottom: clamp(1rem, 1.8vw, 1.6rem);
+    }
+    p.body {
+      font-size: var(--tx-base);
+      color: rgba(245,240,232,0.80);
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+      max-width: var(--max-t);
+    }
+
+    /* ─────────────────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────────────────── */
+    .hero {
+      position: relative; min-height: 100svh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777243323/gh_exteriors/front_exterior.jpg');
+      background-size: cover;
+      background-position: center 28%;
+    }
+    .hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(5,5,5,0.52) 0%,
+        rgba(5,5,5,0.28) 28%,
+        rgba(5,5,5,0.52) 62%,
+        rgba(5,5,5,0.94) 100%
+      );
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      padding: var(--sp-xl) var(--col) var(--sp-lg);
+      max-width: 860px;
+    }
+    .hero-kicker {
+      display: block;
+      font-size: var(--tx-xs); letter-spacing: 0.56em; text-transform: uppercase;
+      color: rgba(201,169,110,0.62);
+      margin-bottom: clamp(0.8rem, 1.4vw, 1.2rem);
+    }
+    .hero-name {
+      font-family: 'Pinyon Script', cursive;
+      font-size: var(--tx-hero);
+      color: var(--cream);
+      line-height: 0.92;
+      margin-bottom: clamp(1rem, 2vw, 1.8rem);
+      text-shadow: 0 2px 48px rgba(0,0,0,0.85);
+    }
+    .hero-hairline {
+      width: clamp(3rem, 7vw, 5.5rem); height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 0 auto clamp(1rem, 1.8vw, 1.5rem);
+    }
+    .hero-subline {
+      font-size: var(--tx-md); font-style: italic;
+      color: rgba(245,240,232,0.82);
+      max-width: 580px; margin: 0 auto clamp(0.8rem,1.4vw,1.2rem);
+      line-height: 1.48;
+    }
+    .hero-intro {
+      font-size: var(--tx-sm);
+      color: rgba(245,240,232,0.54);
+      max-width: 540px; margin: 0 auto;
+      line-height: 1.78;
+    }
+    .hero-scroll {
+      position: absolute; bottom: 2.4rem; left: 50%;
+      transform: translateX(-50%);
+      font-size: var(--tx-xs); letter-spacing: 0.42em; text-transform: uppercase;
+      color: rgba(201,169,110,0.35); z-index: 2;
+    }
+
+    /* ─────────────────────────────────────────────────────
+       SECTION WRAPPER
+    ───────────────────────────────────────────────────── */
+    .sec {
+      padding: var(--sp-lg) var(--col);
+    }
+    .sec-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .sec.center { text-align: center; }
+    .sec.center p.body { margin-left: auto; margin-right: auto; }
+    .sec.center .gold-rule { margin-left: auto; margin-right: auto; }
+
+    /* ─────────────────────────────────────────────────────
+       SECTION 1 — CASE STUDY SPLIT
+    ───────────────────────────────────────────────────── */
+    .case-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3.5rem, 6.5vw, 7rem);
+      align-items: center;
+    }
+    .case-img-wrap {
+      position: relative;
+      height: clamp(340px, 48vw, 600px);
+      overflow: hidden;
+    }
+    .case-img-wrap img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+    }
+    .case-text h2 { margin-bottom: 0; }
+    .case-text .body { max-width: 100%; }
+    .case-text a.link-out {
+      display: inline-block; margin-top: var(--sp-xs);
+      font-size: var(--tx-xs); letter-spacing: 0.38em; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+      border: 1px solid rgba(201,169,110,0.35);
+      padding: 0.7rem 1.8rem;
+      transition: background 0.28s, color 0.28s;
+    }
+    .case-text a.link-out:hover { background: var(--gold); color: var(--dark); }
+
+    /* ─────────────────────────────────────────────────────
+       SECTION 2 — FOUR CARDS
+    ───────────────────────────────────────────────────── */
+    .cards-intro {
+      text-align: center;
+      margin-bottom: var(--sp-md);
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(1.2rem, 2.4vw, 2.2rem);
+    }
+    .card {
+      border-top: 1px solid rgba(201,169,110,0.20);
+      padding-top: clamp(1.2rem, 1.8vw, 1.8rem);
+    }
+    .card-title {
+      display: block;
+      font-size: var(--tx-xs); letter-spacing: 0.30em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.85rem;
+    }
+    .card p {
+      font-size: var(--tx-sm);
+      color: rgba(245,240,232,0.72);
+      line-height: 1.82;
+    }
+
+    /* ─────────────────────────────────────────────────────
+       SECTION 3 — SYSTEM LAYERS
+    ───────────────────────────────────────────────────── */
+    .system-body {
+      max-width: var(--max-t);
+      margin: 0 auto;
+    }
+    .layers-note {
+      font-size: var(--tx-sm);
+      color: rgba(245,240,232,0.55);
+      line-height: 1.88; font-style: italic;
+      margin: var(--sp-sm) auto 0;
+      max-width: var(--max-t);
+      border-top: 1px solid rgba(201,169,110,0.10);
+      padding-top: var(--sp-xs);
+    }
+    .layers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 0.55rem 2.4rem;
+      margin: var(--sp-sm) 0 0;
+      max-width: var(--max-t);
+    }
+    .layer {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-size: var(--tx-sm);
+      color: rgba(245,240,232,0.75);
+    }
+    .layer::before {
+      content: '';
+      display: inline-block; width: 16px; height: 1px;
+      background: var(--gold); flex-shrink: 0;
+    }
+
+    /* ─────────────────────────────────────────────────────
+       SECTION 4 — WHAT MAKES THIS DIFFERENT
+    ───────────────────────────────────────────────────── */
+    .statements {
+      max-width: 520px;
+      margin: var(--sp-sm) auto 0;
+      display: flex; flex-direction: column;
+      gap: 1.05rem;
+    }
+    .statement {
+      position: relative;
+      padding-left: 1.5rem;
+      font-size: var(--tx-base);
+      color: rgba(245,240,232,0.82);
+      line-height: 1.6;
+    }
+    .statement::before {
+      content: '';
+      position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+      width: 12px; height: 1px;
+      background: var(--gold);
+    }
+
+    /* ─────────────────────────────────────────────────────
+       SECTION 5 — PROOF POINTS
+    ───────────────────────────────────────────────────── */
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 0 2.8rem;
+      max-width: 740px;
+      margin: var(--sp-sm) auto 0;
+    }
+    .proof-item {
+      font-size: var(--tx-xs); letter-spacing: 0.20em; text-transform: uppercase;
+      color: rgba(201,169,110,0.58);
+      padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(201,169,110,0.09);
+    }
+
+    /* ─────────────────────────────────────────────────────
+       SECTION 6 — CTA
+    ───────────────────────────────────────────────────── */
+    .cta-wrap {
+      padding: var(--sp-xl) var(--col);
+      text-align: center;
+      border-top: 1px solid rgba(201,169,110,0.06);
+    }
+    .cta-wrap h2 {
+      font-size: var(--tx-xl); font-weight: 300; font-style: italic;
+      color: var(--cream);
+      margin-bottom: var(--sp-xs); line-height: 1.12;
+    }
+    .cta-wrap p {
+      font-size: var(--tx-base);
+      color: rgba(245,240,232,0.70);
+      max-width: 420px; margin: 0 auto var(--sp-sm);
+      line-height: 1.85;
+    }
+    .btn-cta {
+      display: inline-block;
+      font-size: var(--tx-xs); letter-spacing: 0.44em; text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,169,110,0.42);
+      padding: 1rem 3rem;
+      text-decoration: none;
+      transition: background 0.28s, color 0.28s;
+    }
+    .btn-cta:hover { background: var(--gold); color: var(--dark); }
+
+    /* ─────────────────────────────────────────────────────
+       CLOSING MARK
+    ───────────────────────────────────────────────────── */
+    .closing {
+      padding: var(--sp-md) var(--col);
+      text-align: center;
+      font-size: var(--tx-xs); letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(201,169,110,0.35);
+      border-top: 1px solid rgba(201,169,110,0.05);
+    }
+
+    /* ─────────────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────────────── */
+    @media (max-width: 920px) {
+      .case-split {
+        grid-template-columns: 1fr;
+        gap: clamp(2rem, 5vw, 3.5rem);
+      }
+      .case-img-wrap {
+        height: clamp(260px, 52vw, 420px);
+      }
+      .cards-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 620px) {
+      .sec { padding: var(--sp-md) 1.6rem; }
+      .cta-wrap { padding: var(--sp-lg) 1.6rem; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .nav-cta { display: none; }
+      .hero-inner { padding-top: calc(var(--sp-xl) + 3rem); }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- gold cursor -->
+<div id="cursor"></div>
+
+<!-- ══════════════════════════════════════════
+     NAV
+     ══════════════════════════════════════════ -->
+<nav id="nav">
+  <div class="nav-wordmark">
+    <span class="nav-kicker">Private Preview</span>
+    <span class="nav-name">Rachel Studio</span>
+    <span class="nav-sub">rachelhernandez.studio</span>
+  </div>
+  <div class="nav-cta">
+    <a href="#cta">Request Preview</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <span class="hero-kicker reveal">Private Property Publishing</span>
+    <div class="hero-name reveal">Rachel Studio</div>
+    <div class="hero-hairline"></div>
+    <p class="hero-subline reveal">Private Property Publishing for Extraordinary Homes.</p>
+    <p class="hero-intro reveal-slow">A source-backed editorial system for turning significant listings into cinematic, searchable, buyer-ready property worlds.</p>
+  </div>
+  <div class="hero-scroll">The System&nbsp;&darr;</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 1 — THE CASE STUDY: GARRAN HILL
+     ══════════════════════════════════════════ -->
+<div class="hairline"></div>
+<div class="act-break"><span>The Case Study</span></div>
+
+<section class="sec">
+  <div class="sec-inner">
+    <div class="case-split">
+
+      <div class="case-img-wrap reveal">
+        <img
+          src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777243323/gh_exteriors/front_exterior.jpg"
+          alt="Garran Hill — 200 Hollycrest Drive, Pinehurst, NC — Neo-Georgian estate built 1915–16 for Walter Hines Page"
+          loading="lazy" decoding="async">
+      </div>
+
+      <div class="case-text">
+        <span class="eyebrow reveal">Garran Hill &nbsp;·&nbsp; Pinehurst, NC &nbsp;·&nbsp; Est. 1916</span>
+        <h2 class="section-head reveal">A House With Provenance.<br>A Site With Proof.</h2>
+        <div class="gold-rule reveal"></div>
+        <p class="body reveal">
+          Garran Hill is not a normal property page. It is a source-backed editorial estate presentation built from verified history, architectural evidence, restoration records, and photo-led storytelling.
+        </p>
+        <a
+          href="https://rachelhernandez.studio/"
+          class="link-out reveal"
+          target="_blank"
+          rel="noopener"
+        >View the Estate Site</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 2 — WHAT RACHEL STUDIO DOES
+     ══════════════════════════════════════════ -->
+<div class="hairline"></div>
+<div class="act-break"><span>What Rachel Studio Does</span></div>
+
+<section class="sec center">
+  <div class="sec-inner">
+
+    <div class="cards-intro">
+      <span class="eyebrow reveal">The Four Layers</span>
+      <h2 class="section-head reveal" style="max-width:520px; margin: 0 auto;">Every listing is built on the same rigorous foundation.</h2>
+    </div>
+
+    <div class="cards-grid">
+
+      <div class="card reveal">
+        <span class="card-title">Research</span>
+        <p>Verified provenance, source citations, historical guardrails, and public-safe copy.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="card-title">Media</span>
+        <p>Cloudinary photo systems, room tagging, narrative photo maps, mobile crop notes, and image-by-image captions.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="card-title">Publishing</span>
+        <p>Luxury single-property websites with cinematic pacing, buyer facts, inquiry paths, mobile polish, and SEO foundations.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="card-title">Stewardship</span>
+        <p>Rachel remains the taste, truth, and approval layer. AI assists production; Rachel protects the standard.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 3 — THE GARRAN HILL SYSTEM
+     ══════════════════════════════════════════ -->
+<div class="hairline"></div>
+<div class="act-break"><span>The System</span></div>
+
+<section class="sec">
+  <div class="sec-inner">
+    <div class="system-body">
+
+      <span class="eyebrow reveal">The Garran Hill System</span>
+      <h2 class="section-head reveal">Before the Site,<br>There Is a System.</h2>
+      <div class="gold-rule reveal"></div>
+      <p class="body reveal">
+        Every final page is built from a private working structure: facts, sources, photos, captions, mobile notes, SEO language, and approval gates. The public site is only the visible surface.
+      </p>
+
+      <div class="layers-grid reveal">
+        <div class="layer">Historical research &amp; citation file</div>
+        <div class="layer">Cloudinary photo map</div>
+        <div class="layer">Restoration record</div>
+        <div class="layer">Source-backed copy</div>
+        <div class="layer">Buyer-function grid</div>
+        <div class="layer">Mobile-first website</div>
+        <div class="layer">Inquiry path</div>
+        <div class="layer">Domain / SEO launch gate</div>
+      </div>
+
+      <p class="layers-note reveal-slow">
+        The Garran Hill citation file consolidates verified historical research and supersedes earlier drafts.
+        The Cloudinary system organises the property photo library by room, narrative act, photographer, and story use.
+        Owner-provided notes and architectural drawings inform buyer-function facts and restoration details,
+        but private documents are not publicly exposed.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 4 — WHAT MAKES THIS DIFFERENT
+     ══════════════════════════════════════════ -->
+<div class="hairline"></div>
+<div class="act-break"><span>The Standard</span></div>
+
+<section class="sec center">
+  <div class="sec-inner">
+    <span class="eyebrow reveal">What Makes This Different</span>
+    <h2 class="section-head reveal" style="max-width:480px; margin:0 auto;">Every element earns its place.</h2>
+    <div class="statements">
+      <div class="statement reveal">Every photo has a job.</div>
+      <div class="statement reveal">Every claim has a source.</div>
+      <div class="statement reveal">Every section serves the buyer.</div>
+      <div class="statement reveal">Every historical detail is treated with care.</div>
+      <div class="statement reveal">Every listing becomes its own editorial world.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 5 — PROOF POINTS
+     ══════════════════════════════════════════ -->
+<div class="hairline"></div>
+<div class="act-break"><span>Proof Points</span></div>
+
+<section class="sec center">
+  <div class="sec-inner">
+    <span class="eyebrow reveal">The Deliverables</span>
+    <div class="proof-grid reveal">
+      <div class="proof-item">Source-backed history</div>
+      <div class="proof-item">Photo-led narrative architecture</div>
+      <div class="proof-item">Mobile-first luxury design</div>
+      <div class="proof-item">Buyer-ready facts</div>
+      <div class="proof-item">Inquiry conversion path</div>
+      <div class="proof-item">SEO &amp; source-link strategy</div>
+      <div class="proof-item">Private approval workflow</div>
+      <div class="proof-item">Reusable system for future listings</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 6 — PRIVATE PREVIEW CTA
+     ══════════════════════════════════════════ -->
+<div class="hairline"></div>
+
+<div class="cta-wrap" id="cta">
+  <span class="eyebrow reveal">Private Studio Preview</span>
+  <h2 class="reveal">This Is the New Standard.</h2>
+  <p class="reveal">Rachel Studio is built for properties that deserve more than a listing page.</p>
+  <a
+    href="mailto:rachelhernandezrealtor@gmail.com?subject=Rachel%20Studio%20%E2%80%94%20Private%20Preview%20Request"
+    class="btn-cta reveal"
+  >Request a Private Studio Preview</a>
+</div>
+
+<!-- CLOSING -->
+<div class="closing reveal">
+  Rachel Hernandez &nbsp;·&nbsp; Sotheby&rsquo;s International Realty &nbsp;·&nbsp; Pinehurst, NC
+</div>
+
+<!-- ══════════════════════════════════════════
+     SCRIPTS
+     ══════════════════════════════════════════ -->
+<script>
+(function () {
+
+  // Gold cursor
+  var cur = document.getElementById('cursor');
+  if (cur) {
+    document.addEventListener('mousemove', function (e) {
+      cur.style.left = e.clientX + 'px';
+      cur.style.top  = e.clientY + 'px';
+    });
+  }
+
+  // Nav scroll state
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 55);
+  }, { passive: true });
+
+  // Scroll reveal
+  var els = document.querySelectorAll('.reveal, .reveal-slow');
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) e.target.classList.add('in');
+    });
+  }, { threshold: 0.10 });
+  els.forEach(function (el) { obs.observe(el); });
+
+})();
+</script>
+
+</body>
+</html>
