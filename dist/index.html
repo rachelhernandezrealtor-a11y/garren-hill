@@ -1049,6 +1049,221 @@
       max-height: 280px;
     }
   }
+
+  /* ═══════════════════════════════════════════════════════════════
+     RACHEL STUDIO EDITORIAL LAYOUT SYSTEM v1
+     Reusable across all future property sites.
+     Rocky + Rachel, 2026-05-10
+  ═══════════════════════════════════════════════════════════════ */
+
+  /* A. editorial-fullbleed — for cinematic act openers */
+  .editorial-fullbleed {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* B. editorial-split / editorial-split.reverse — alternating splits */
+  .editorial-split {
+    display: flex;
+    align-items: stretch;
+    min-height: 70vh;
+    padding: clamp(4rem, 7vw, 7.5rem) var(--col-mid);
+    gap: clamp(2.5rem, 5vw, 5rem);
+  }
+  .editorial-split.reverse { flex-direction: row-reverse; }
+  .editorial-split .split-img {
+    position: relative;
+    flex: 1;
+    min-height: 480px;
+    overflow: hidden;
+  }
+  .editorial-split .split-img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .editorial-split .split-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--sp-sm);
+  }
+
+  /* C. vertical-pair — two portrait images side by side */
+  .vertical-pair {
+    display: flex;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    padding: clamp(4rem, 7vw, 7rem) var(--col-mid);
+    align-items: flex-start;
+  }
+  .vertical-pair-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-xs);
+  }
+  .vertical-pair-card .vp-img {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    background: #111;
+  }
+  .vertical-pair-card .vp-img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(.16,1,.3,1);
+  }
+  .vertical-pair-card:hover .vp-img img {
+    transform: scale(1.025);
+  }
+  .vertical-pair-caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: var(--text-xs);
+    letter-spacing: 0.06em;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.6;
+    padding-top: var(--sp-xs);
+    border-top: 1px solid rgba(201,169,110,0.18);
+    font-style: italic;
+  }
+  .vertical-pair-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4em;
+    opacity: 0.7;
+  }
+
+  /* D. feature-inset — small editorial inset within a section */
+  .feature-inset {
+    margin-top: var(--sp-sm);
+    padding: var(--sp-sm) var(--sp-sm);
+    border-left: 1px solid rgba(201,169,110,0.25);
+    background: rgba(255,255,255,0.025);
+  }
+  .feature-inset-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    margin-bottom: var(--sp-xs);
+  }
+  .feature-inset-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .feature-inset-label {
+    font-size: 0.5rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.65;
+    margin-bottom: 0.3em;
+  }
+  .feature-inset p {
+    font-size: var(--text-xs);
+    color: rgba(245,240,232,0.6);
+    line-height: 1.7;
+  }
+
+  /* E. section-breath / whisper-thread — between acts */
+  .section-breath {
+    padding: var(--sp-xl) var(--col-pad);
+    text-align: center;
+    position: relative;
+  }
+  .whisper-thread {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.35);
+  }
+
+  /* F. act-transition — gold hairline + act label */
+  .act-transition {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-sm);
+    padding: var(--sp-md) var(--col-pad);
+  }
+  .act-transition::before,
+  .act-transition::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right,
+      transparent, rgba(201,169,110,0.3) 40%, rgba(245,224,152,0.5) 100%);
+  }
+  .act-transition::after {
+    background: linear-gradient(to left,
+      transparent, rgba(201,169,110,0.3) 40%, rgba(245,224,152,0.5) 100%);
+  }
+  .act-label {
+    font-size: 0.5rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.4);
+    white-space: nowrap;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  /* Staggered vertical-pair reveal */
+  .vertical-pair-card:nth-child(1) { transition-delay: 0s; }
+  .vertical-pair-card:nth-child(2) { transition-delay: 0.12s; }
+  .vertical-pair-card .vp-img img {
+    opacity: 0;
+    transform: scale(1.04);
+    transition: opacity 1s cubic-bezier(.16,1,.3,1), transform 1.2s cubic-bezier(.16,1,.3,1);
+  }
+  .vertical-pair-card .vp-img.in img {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Reduced-motion: disable non-essential animation */
+  @media (prefers-reduced-motion: reduce) {
+    .vertical-pair-card .vp-img img,
+    .editorial-fullbleed img,
+    .reveal, .reveal-slow, .img-reveal {
+      transition: none !important;
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+  /* Mobile: vertical-pair stacks */
+  @media (max-width: 768px) {
+    .vertical-pair {
+      flex-direction: column;
+      padding: var(--sp-lg) var(--col-pad);
+    }
+    .vertical-pair-card .vp-img {
+      aspect-ratio: 3 / 2;
+    }
+    .editorial-split,
+    .editorial-split.reverse {
+      flex-direction: column;
+      min-height: unset;
+    }
+    .editorial-split .split-img {
+      min-height: 50vw;
+    }
+    .feature-inset {
+      margin-top: var(--sp-xs);
+    }
+  }
 </style>
 
   <!-- JSON-LD -->
@@ -1269,6 +1484,8 @@
 <!-- ── ACT IV: RESTORATION ──────────────────────────────── -->
 
 <!-- GH_RESTORATION_DRAWINGS_IMAGE_PENDING -->
+
+<div class="act-transition reveal"><span class="act-label">Restoration</span></div>
 <section id="restoration-record">
   <div class="split reverse">
     <div class="split-text">
@@ -1450,7 +1667,7 @@
 <!-- ── PRINCIPAL ROOMS ─────────────────────────────────────── -->
 
 <!-- SALON — full split -->
-<section class="split" id="salon">
+<section class="editorial-split" id="salon">
   <div class="split-img img-reveal">
     <img loading="lazy" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243041/gh_interiors/200holycrest_1209.jpg"
@@ -1467,7 +1684,7 @@
 </section>
 
 <!-- DRAWING ROOM — reverse split -->
-<section class="split reverse" id="drawing-room">
+<section class="editorial-split reverse" id="drawing-room">
   <div class="split-img img-reveal">
     <img loading="lazy" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243086/gh_interiors/200holycrest_1320.jpg"
@@ -1485,7 +1702,7 @@
 </section>
 
 <!-- DINING ROOM — intimate section -->
-<section class="split" id="dining-room">
+<section class="editorial-split" id="dining-room">
   <div class="split-img img-reveal">
     <img loading="lazy" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243067/gh_interiors/200holycrest_1296.jpg"
@@ -1502,7 +1719,7 @@
 </section>
 
 <!-- LIBRARY — reverse -->
-<section class="split reverse" id="library-room">
+<section class="editorial-split reverse" id="library-room">
   <div class="split-img img-reveal">
     <img loading="lazy" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243111/gh_interiors/200holycrest_1350.jpg"
@@ -1641,7 +1858,7 @@
 </section>
 
 <!-- ── PRIVATE ROOMS ───────────────────────────────────────── -->
-<section class="split reverse" id="private-rooms">
+<section class="editorial-split" id="private-rooms">
   <div class="split-img img-reveal">
     <img loading="lazy" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243064/gh_interiors/200holycrest_1278.jpg"
@@ -1661,7 +1878,7 @@
 </section>
 
 <!-- JEWEL BOX BATH -->
-<section class="split reverse" id="jewel-box-bath" style="padding-top:0;">
+<section class="editorial-split" id="jewel-box-bath" style="padding-top:0;">
   <div class="split-text">
     <span class="micro-rule reveal"></span>
     <span class="eyebrow">Primary Bath &middot; The Jewel Box</span>
@@ -1745,6 +1962,8 @@
 <!-- ── ACT VIII: GROUNDS SEQUENCE ──────────────────────────── -->
 
 <!-- BRICK TERRACE -->
+
+<div class="act-transition reveal"><span class="act-label">The Grounds</span></div>
 <section id="terrace" class="split">
   <div class="split-img img-reveal">
     <img loading="lazy" decoding="async"
@@ -1842,6 +2061,8 @@
 
 <!-- ── ACT IX: TWILIGHT + RECORD ─────────────────────────── -->
 
+
+<div class="act-transition reveal"><span class="act-label">The Estate</span></div>
 <section class="full-bleed-section" id="twilight">
   <div class="full-bleed-img img-reveal">
     <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_800/v1777244095/gh_photos/200_hollycrest_drive_224.jpg"
@@ -2118,6 +2339,16 @@
   }
 
 })();
+
+  // Vertical-pair image reveal
+  (function(){
+    const vps = document.querySelectorAll('.vp-img');
+    if (!vps.length) return;
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }});
+    }, { threshold: 0.15 });
+    vps.forEach(el => obs.observe(el));
+  })();
 </script>
 
 <!-- ═══ FOOTER ═══ -->
