@@ -1416,20 +1416,30 @@
 
 
 
-<section id="history">
-  <div class="split">
+<section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;">
+  <!-- Letter scan underlay — barely there, sepia, behind everything -->
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:40,o_8,f_auto,q_auto,c_limit,w_1200/v1777391998/gh_key/gh_whp_letter1.jpg"
+      alt="" role="presentation"
+      style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.08;filter:sepia(60%);">
+  </div>
+  <div class="split" style="position:relative;z-index:1;">
     <div class="split-img img-reveal" style="min-height:420px;max-height:none;">
-      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_800/v1777244132/gh_key/gh_whp.jpg" style="object-fit:contain;background:#0a0a0a;"
+      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_800/v1777244132/gh_key/gh_whp.jpg"
+        style="object-fit:contain;background:transparent;"
         alt="Walter Hines Page — publisher, ambassador, builder of Garran Hill">
     </div>
     <div class="split-text">
       <span class="micro-rule reveal"></span>
       <span class="eyebrow">Walter Hines Page &middot; 1855&ndash;1918</span>
-      <h2>He named it Garran Hill.<em>The Moore County life he imagined remained largely unrealized.</em></h2>
+      <h2>He named it Garran Hill.<em> The Moore County life he imagined remained largely unrealized.</em></h2>
       <div class="body-text reveal">
         <p>He bought the land in February 1913 and named it Garran Hill. Six weeks later, Woodrow Wilson appointed him Ambassador to the Court of St. James.</p>
         <p>He sailed for London. Construction was supervised by his son Ralph Page, from Boston architectural plans, with builders from Leonard Tufts&#8217; Pinehurst building world.</p>
         <p>He wrote home about one thing.</p>
+        <p style="font-style:italic;color:rgba(201,169,110,0.9);margin-top:1.2rem;">&#8220;Build the farm, therefore; and let me hear at every stage of that happy game.&#8221;</p>
+        <p class="micro-rule" style="margin-top:0.6rem;font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(201,169,110,0.45);">Walter Hines Page &mdash; Letter to Ralph Page, 1918</p>
+        <p style="margin-top:1.4rem;">Co-founder of Doubleday, Page &amp; Co. Editor of <em>The Atlantic Monthly.</em> A plaque in Westminster Abbey. Garran Hill was built for a life Page never had the chance to live.</p>
       </div>
     </div>
   </div>
@@ -1519,40 +1529,14 @@
   <p class="pull-quote reveal-slow">&#8220;The farm &mdash; the farm &mdash; the farm.&#8221;</p>
 </section>
 
-<section class="text-section">
-  <div class="body-text reveal" style="max-width:var(--max-lead);margin:0 auto;text-align:center;">
-    <p style="font-style:italic;color:rgba(245,240,232,0.85);">&#8220;Well, Frank, I did get here after all, didn&#8217;t I?&#8221;</p>
-    <p>Co-founder of Doubleday, Page &amp; Co. Editor of <em>The Atlantic Monthly</em>. A plaque in Westminster Abbey.</p>
-    <p>Garran Hill was built for a life Page never had the chance to live.</p>
-  </div>
-</section>
+
 
 <!-- ── ACT III: ARCHITECTURE + PROOF ───────────────────── -->
 
 <!-- GH_BOSTON_PLANS_SOURCE_CONFIRMATION_NEEDED -->
 <!-- GH_HANDMADE_BRICK_SELLER_CONFIRMATION_NEEDED -->
 <!-- ── WHP LETTER UNDERLAY + QUOTE ─────────────────────────── -->
-<section id="whp-letter" aria-label="Walter Hines Page — letter to Ralph, 1918" style="position:relative;overflow:hidden;padding:var(--sp-xl) var(--col-pad);text-align:center;background:var(--dark);">
-  <!-- Letter scan as barely-there paper underlay -->
-  <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:70,e_brightness:-10,f_auto,q_auto,c_limit,w_800/v1777391998/gh_key/gh_whp_letter1.jpg"
-      alt=""
-      style="width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.06;filter:sepia(80%) contrast(0.85);">
-  </div>
-  <!-- Gold hairline top -->
-  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent 0%,rgba(201,169,110,0.0) 5%,rgba(201,169,110,0.3) 25%,rgba(245,224,152,0.5) 50%,rgba(201,169,110,0.3) 75%,rgba(201,169,110,0.0) 95%,transparent 100%);"></div>
-  <!-- Quote -->
-  <div style="position:relative;z-index:1;max-width:680px;margin:0 auto;">
-    <blockquote class="reveal-slow" style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2.8vw,2.1rem);font-weight:300;font-style:italic;color:var(--cream);line-height:1.65;margin:0 0 var(--sp-sm) 0;">
-      &ldquo;Build the farm, therefore; and let me hear at every stage of that happy game.&rdquo;
-    </blockquote>
-    <cite style="display:block;font-family:'Cormorant Garamond',serif;font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:rgba(201,169,110,0.55);font-style:normal;margin-top:var(--sp-xs);">
-      Walter Hines Page &mdash; letter to Ralph Page, 1918
-    </cite>
-  </div>
-  <!-- Gold hairline bottom -->
-  <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent 0%,rgba(201,169,110,0.0) 5%,rgba(201,169,110,0.3) 25%,rgba(245,224,152,0.5) 50%,rgba(201,169,110,0.3) 75%,rgba(201,169,110,0.0) 95%,transparent 100%);"></div>
-</section>
+
 
 
 <section class="full-bleed-section" id="architecture">
