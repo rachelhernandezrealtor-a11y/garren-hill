@@ -117,13 +117,13 @@
   }
   nav.scrolled { height: 58px; background: rgba(4,4,4,0.92); }
   .nav-wordmark { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; gap: 0.1rem; }
-  .nav-est { font-size: 0.44rem; letter-spacing: 0.55em; text-transform: uppercase; color: rgba(201,169,110,0.5); }
+  .nav-est { font-size: 0.44rem; letter-spacing: 0.55em; text-transform: uppercase; color: rgba(201,169,110,0.82); }
   .nav-name { font-size: clamp(0.65rem, 0.9vw, 0.8rem); letter-spacing: 0.38em; text-transform: uppercase; color: var(--cream); font-weight: 300; }
-  .nav-year { font-size: 0.44rem; letter-spacing: 0.55em; text-transform: uppercase; color: rgba(201,169,110,0.5); }
+  .nav-year { font-size: 0.44rem; letter-spacing: 0.55em; text-transform: uppercase; color: rgba(201,169,110,0.82); }
   .nav-links { display: flex; gap: clamp(1.5rem, 3vw, 3rem); }
   .nav-links a {
     font-size: 0.52rem; letter-spacing: 0.45em; text-transform: uppercase;
-    color: rgba(245,240,232,0.55); position: relative; padding-bottom: 3px;
+    color: rgba(245,240,232,0.82); position: relative; padding-bottom: 3px;
     transition: color 0.3s;
   }
   .nav-links a::after {
@@ -135,7 +135,7 @@
   .nav-links a:hover::after { left: 0; right: 0; }
   .nav-cta a {
     font-size: 0.48rem; letter-spacing: 0.42em; text-transform: uppercase;
-    color: var(--gold); border: 1px solid rgba(201,169,110,0.4);
+    color: var(--gold); border: 1px solid rgba(201,169,110,0.78);
     padding: 0.55rem 1.4rem; transition: all 0.3s;
   }
   .nav-cta a:hover { background: var(--gold); color: var(--dark); border-color: transparent; }
@@ -166,26 +166,26 @@
     background: linear-gradient(to right, transparent, rgba(201,169,110,0.35) 40%, rgba(245,224,152,0.55) 100%);
   }
   .act-break::after { background: linear-gradient(to left, transparent, rgba(201,169,110,0.35) 40%, rgba(245,224,152,0.55) 100%); }
-  .act-break-glyph { font-family: 'Cormorant Garamond', serif; font-size: 0.55rem; letter-spacing: 0.5em; text-transform: uppercase; color: rgba(201,169,110,0.5); white-space: nowrap; }
+  .act-break-glyph { font-family: 'Cormorant Garamond', serif; font-size: 0.55rem; letter-spacing: 0.5em; text-transform: uppercase; color: rgba(201,169,110,0.82); white-space: nowrap; }
 
   /* § 8. TYPOGRAPHY */
   .eyebrow { font-size: var(--text-xs); font-weight: 300; letter-spacing: 0.48em; text-transform: uppercase; color: rgba(201,169,110,0.72); margin-bottom: clamp(1rem, 1.6vw, 1.4rem); display: block; }
   .gold-line { width: clamp(2rem, 5vw, 4rem); height: 1px; background: linear-gradient(90deg, rgba(201,169,110,0.8), transparent); margin-bottom: var(--sp-sm); }
-  .body-text { font-size: var(--text-base); line-height: 1.95; color: rgba(245,240,232,0.85); max-width: var(--max-text); }
+  .body-text { font-size: var(--text-base); line-height: 1.95; color: rgba(245,240,232,0.88); max-width: var(--max-text); }
   .body-text p { margin-bottom: clamp(1.4rem, 2.2vw, 1.9rem); font-size: var(--text-base); }
   .body-text p:last-child { margin-bottom: 0; }
   h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.1; color: var(--cream); }
   h2 { font-size: var(--text-lg); margin-bottom: clamp(1.4rem, 2.4vw, 2.2rem); }
-  h2 em { display: block; font-style: italic; color: rgba(245,240,232,0.62); font-size: var(--text-md);margin-top: 0.3rem; }
+  h2 em { display: block; font-style: italic; color: rgba(245,240,232,0.85); font-size: var(--text-md);margin-top: 0.3rem; }
   .pull-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.8rem); font-weight: 300; font-style: italic; line-height: 1.4; color: var(--cream); }
-  .pull-attr { font-size: 0.58rem; letter-spacing: 0.38em; text-transform: uppercase; color: rgba(201,169,110,0.45); margin-top: 1.8rem; display: block; }
+  .pull-attr { font-size: 0.58rem; letter-spacing: 0.38em; text-transform: uppercase; color: rgba(201,169,110,0.80); margin-top: 1.8rem; display: block; }
   .drop-cap::first-letter { font-size: 3.2em; float: left; line-height: 0.8; margin: 0.08em 0.1em 0 0; color: var(--gold); font-weight: 300; }
   .micro-rule { display: block; width: 2.5rem; height: 1px; background: rgba(201,169,110,0.4); margin-bottom: var(--sp-xs); }
-  .img-caption { font-size: 0.62rem; letter-spacing: 0.22em; color: rgba(201,169,110,0.3); margin-top: 0.8rem; padding-left: 0.8rem; border-left: 1px solid rgba(201,169,110,0.18); display: block; }
+  .img-caption { font-size: 0.62rem; letter-spacing: 0.22em; color: rgba(201,169,110,0.72); margin-top: 0.8rem; padding-left: 0.8rem; border-left: 1px solid rgba(201,169,110,0.18); display: block; }
   .btn-gold {
     display: inline-block;
     font-size: 0.55rem; letter-spacing: 0.4em; text-transform: uppercase;
-    color: var(--gold); border: 1px solid rgba(201,169,110,0.4);
+    color: var(--gold); border: 1px solid rgba(201,169,110,0.78);
     padding: 0.75rem 2rem; margin-top: var(--sp-sm);
     transition: all 0.3s;
   }
@@ -217,7 +217,7 @@
     align-items: center; justify-content: center; text-align: center;
     padding: 0 clamp(1.5rem, 6vw, 8rem); padding-bottom: 14vh;
   }
-  .hero-eyebrow { font-size: clamp(0.5rem, 0.72vw, 0.62rem); letter-spacing: 0.62em; text-transform: uppercase; color: rgba(245,240,232,0.45); margin-bottom: 1.4rem; font-weight: 300; display: flex; align-items: center; justify-content: center; gap: 1.4rem; } .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: clamp(1.5rem, 4vw, 4rem); height: 1px; background: linear-gradient(to right, transparent, rgba(201,169,110,0.4)); flex-shrink: 0; } .hero-eyebrow::after { background: linear-gradient(to left, transparent, rgba(201,169,110,0.4)); }
+  .hero-eyebrow { font-size: clamp(0.5rem, 0.72vw, 0.62rem); letter-spacing: 0.62em; text-transform: uppercase; color: rgba(245,240,232,0.75); margin-bottom: 1.4rem; font-weight: 300; display: flex; align-items: center; justify-content: center; gap: 1.4rem; } .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: clamp(1.5rem, 4vw, 4rem); height: 1px; background: linear-gradient(to right, transparent, rgba(201,169,110,0.78)); flex-shrink: 0; } .hero-eyebrow::after { background: linear-gradient(to left, transparent, rgba(201,169,110,0.78)); }
   .hero-title {
     font-family: 'Pinyon Script', cursive; font-weight: 400;
     font-size: clamp(5rem, 16vw, 14rem); color: var(--cream);
@@ -225,7 +225,7 @@
     text-shadow: 0 2px 40px rgba(0,0,0,0.8), 0 0 80px rgba(0,0,0,0.5);
     margin-bottom: 0.6rem;
   }
-  .hero-sub { font-size: clamp(0.48rem, 0.7vw, 0.6rem); letter-spacing: 0.52em; text-transform: uppercase; color: rgba(245,240,232,0.35); font-weight: 300; margin-top: 0.2rem; } .hero-sub::before { content: ''; display: block; width: clamp(1.5rem, 3vw, 3rem); height: 1px; background: linear-gradient(to right, transparent, rgba(201,169,110,0.35), transparent); margin: 0.9rem auto 0.9rem; }
+  .hero-sub { font-size: clamp(0.48rem, 0.7vw, 0.6rem); letter-spacing: 0.52em; text-transform: uppercase; color: rgba(245,240,232,0.68); font-weight: 300; margin-top: 0.2rem; } .hero-sub::before { content: ''; display: block; width: clamp(1.5rem, 3vw, 3rem); height: 1px; background: linear-gradient(to right, transparent, rgba(201,169,110,0.75), transparent); margin: 0.9rem auto 0.9rem; }
 
   /* § 10. JEWELED BELT — the hero wears this at its waist */
   /*
@@ -304,7 +304,7 @@
   }
   .stat-lbl {
     display: block; font-size: 0.36rem; letter-spacing: 0.58em;
-    text-transform: uppercase; color: rgba(245,240,232,0.2);
+    text-transform: uppercase; color: rgba(245,240,232,0.42);
     margin-top: 0.45rem; font-weight: 300;
   }
   /* DIVIDERS — fine gold settings between stones */
@@ -493,7 +493,7 @@
     background: linear-gradient(to right, transparent, rgba(201,169,110,0.28));
   }
   .georgian-ornament::after { background: linear-gradient(to left, transparent, rgba(201,169,110,0.28)); }
-  .georgian-ornament-glyph { font-size: 0.55rem; color: rgba(201,169,110,0.35); letter-spacing: 0.3em; }
+  .georgian-ornament-glyph { font-size: 0.55rem; color: rgba(201,169,110,0.75); letter-spacing: 0.3em; }
 
   /* § 16. GALLERY */
   .gallery-section { padding: var(--sp-lg) var(--col-mid); }
@@ -565,7 +565,7 @@
   /* § 20. CLOSING */
   .closing { padding: var(--sp-xl) var(--col-pad); text-align: center; border-top: 1px solid rgba(201,169,110,0.1); }
   .closing-text { font-size: clamp(1.4rem, 2.8vw, 2.4rem); font-style: italic; color: var(--cream); max-width: 700px; margin: 0 auto; line-height: 1.5; }
-  .sothebys-lockup { margin-top: var(--sp-lg); font-size: 0.55rem; letter-spacing: 0.45em; text-transform: uppercase; color: rgba(201,169,110,0.4); }
+  .sothebys-lockup { margin-top: var(--sp-lg); font-size: 0.55rem; letter-spacing: 0.45em; text-transform: uppercase; color: rgba(201,169,110,0.78); }
 
   /* § 21. MOBILE */
   @media (max-width: 768px) {
@@ -749,7 +749,7 @@
 <section class="text-section">
   <div class="body-text reveal" style="margin: 0 auto; text-align: center;">
     <p>He came home in December 1918. Carried from the train at Aberdeen -- miles from his land. He died ten days later.</p>
-    <p style="font-style: italic; color: rgba(245,240,232,0.62); margin-top: var(--sp-sm);">"Well, Frank, I did get here after all, didn't I?"</p>
+    <p style="font-style: italic; color: rgba(245,240,232,0.85); margin-top: var(--sp-sm);">"Well, Frank, I did get here after all, didn't I?"</p>
     <p>Co-founder of Doubleday, Page &amp; Co. Editor of The Atlantic Monthly. He nominated Woodrow Wilson for the presidency. A plaque in Westminster Abbey.</p>
     <p>He never spent a night here.</p>
   </div>
