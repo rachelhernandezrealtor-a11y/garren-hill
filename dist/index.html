@@ -204,12 +204,13 @@
   .hero-overlay {
     position: absolute; inset: 0; z-index: 1;
     background: linear-gradient(180deg,
-      rgba(5,5,5,0.12) 0%,
-      rgba(5,5,5,0.05) 25%,
-      rgba(5,5,5,0.05) 50%,
-      rgba(5,5,5,0.35) 72%,
-      rgba(5,5,5,0.70) 88%,
-      rgba(5,5,5,0.88) 100%);
+      rgba(5,5,5,0.10) 0%,
+      rgba(5,5,5,0.04) 20%,
+      rgba(5,5,5,0.04) 45%,
+      rgba(5,5,5,0.22) 62%,
+      rgba(5,5,5,0.58) 78%,
+      rgba(5,5,5,0.82) 88%,
+      rgba(5,5,5,0.97) 100%);
   }
   .hero-text {
     position: absolute; inset: 0; z-index: 2;
@@ -227,56 +228,32 @@
   }
   .hero-sub { font-size: clamp(0.48rem, 0.7vw, 0.6rem); letter-spacing: 0.52em; text-transform: uppercase; color: rgba(245,240,232,0.68); font-weight: 300; margin-top: 0.2rem; } .hero-sub::before { content: ''; display: block; width: clamp(1.5rem, 3vw, 3rem); height: 1px; background: linear-gradient(to right, transparent, rgba(201,169,110,0.75), transparent); margin: 0.9rem auto 0.9rem; }
 
-  /* § 10. JEWELED BELT — the hero wears this at its waist */
-  /*
-     The belt is not a bar. It is jewelry.
-     Video lives behind it. Glass sits in front.
-     Two gold hairlines — top and bottom — the clasp edges.
-     Crest is the buckle. Numbers are the stones set in the band.
-  */
+  /* § 10. HERO BOTTOM — numbers and crest emerge from darkness, no visible band */
   .stat-bar {
     position: absolute; bottom: 0; left: 0; right: 0; z-index: 10;
     display: flex; align-items: center; justify-content: center;
     padding: 0 clamp(2rem, 6vw, 8rem);
     height: 96px;
-    /* layered glass — see the video through it */
-    background:
-      linear-gradient(180deg,
-        rgba(4,4,4,0.55) 0%,
-        rgba(6,5,3,0.72) 40%,
-        rgba(8,6,2,0.82) 100%);
-    backdrop-filter: blur(18px) saturate(1.3) brightness(0.92);
-    -webkit-backdrop-filter: blur(18px) saturate(1.3) brightness(0.92);
+    /* NO visible band — content emerges from the hero's own darkness */
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     overflow: visible;
   }
-  /* TOP CLASP — gold hairline, radiates from center */
+  /* Single whisper-thin gold line — just enough to mark the ground */
   .stat-bar::before {
     content: '';
     position: absolute; top: 0; left: 0; right: 0; height: 1px;
     background: linear-gradient(90deg,
       transparent 0%,
-      rgba(201,169,110,0.0) 5%,
-      rgba(201,169,110,0.4) 25%,
-      rgba(245,224,152,0.75) 45%,
-      rgba(255,242,180,0.9) 50%,
-      rgba(245,224,152,0.75) 55%,
-      rgba(201,169,110,0.4) 75%,
-      rgba(201,169,110,0.0) 95%,
-      transparent 100%);
-  }
-  /* BOTTOM CLASP — fainter echo */
-  .stat-bar::after {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg,
-      transparent 0%,
-      rgba(201,169,110,0.0) 10%,
+      transparent 15%,
       rgba(201,169,110,0.18) 35%,
-      rgba(201,169,110,0.28) 50%,
+      rgba(201,169,110,0.32) 50%,
       rgba(201,169,110,0.18) 65%,
-      rgba(201,169,110,0.0) 90%,
+      transparent 85%,
       transparent 100%);
   }
+  .stat-bar::after { display: none; }
   .stat-numbers {
     display: flex; align-items: center; justify-content: center;
     width: 100%; gap: 0;
@@ -294,13 +271,12 @@
     display: block;
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(1rem, 1.6vw, 1.45rem); font-weight: 300;
-    color: var(--gold);
+    color: #c8ab78;  /* --gold pulled 5° cooler — aged, not warm brass */
     letter-spacing: 0.1em;
     line-height: 1;
-    /* engraved into gold — shadow cuts down, light lifts top edge */
     text-shadow:
       0 1px 2px rgba(0,0,0,0.95),
-      0 -1px 0 rgba(255,248,200,0.08);
+      0 -1px 0 rgba(220,210,185,0.06);
   }
   .stat-lbl {
     display: block; font-size: 0.36rem; letter-spacing: 0.58em;
@@ -313,7 +289,7 @@
     background: linear-gradient(to bottom,
       transparent,
       rgba(201,169,110,0.22) 20%,
-      rgba(201,169,110,0.35) 50%,
+      rgba(190,162,105,0.32) 50%,
       rgba(201,169,110,0.22) 80%,
       transparent);
   }
@@ -358,12 +334,13 @@
     height: clamp(130px, 14vw, 192px); width: auto; display: block;
     transform: translateY(-58px);
     /* hard engraved shadow — no glow, no candy */
+    /* sepia+hue pulls the gold cooler — aged platinum not warm brass */
     filter:
+      sepia(0.15) hue-rotate(-8deg) saturate(0.88) brightness(1.05)
       drop-shadow(0 2px 1px rgba(0,0,0,1))
       drop-shadow(0 5px 10px rgba(0,0,0,0.98))
-      drop-shadow(0 12px 36px rgba(0,0,0,0.92))
-      drop-shadow(0 -3px 5px rgba(0,0,0,0.88))
-      drop-shadow(0 0 1px rgba(201,169,110,0.45));
+      drop-shadow(0 14px 40px rgba(0,0,0,0.94))
+      drop-shadow(0 -3px 5px rgba(0,0,0,0.88));
     animation: buckleFloat 7s ease-in-out infinite;
     transition: transform 0.7s cubic-bezier(.16,1,.3,1), filter 0.7s ease;
     image-rendering: -webkit-optimize-contrast;
@@ -373,11 +350,11 @@
   .stat-crest-wrap img:hover {
     transform: translateY(-70px) scale(1.04);
     filter:
+      sepia(0.15) hue-rotate(-8deg) saturate(0.88) brightness(1.08)
       drop-shadow(0 6px 3px rgba(0,0,0,1))
-      drop-shadow(0 12px 24px rgba(0,0,0,0.98))
-      drop-shadow(0 28px 56px rgba(0,0,0,0.85))
-      drop-shadow(0 -4px 6px rgba(0,0,0,0.88))
-      drop-shadow(0 0 1px rgba(201,169,110,0.5));
+      drop-shadow(0 14px 28px rgba(0,0,0,0.98))
+      drop-shadow(0 32px 60px rgba(0,0,0,0.88))
+      drop-shadow(0 -4px 6px rgba(0,0,0,0.88));
     animation: none;
   }
   /* Float — barely moves. A pendant in still air. */
