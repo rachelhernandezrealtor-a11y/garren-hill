@@ -1263,7 +1263,7 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    padding-bottom: env(safe-area-inset-bottom, 0px);
+    overflow: visible;
   }
 
   /* Gold hairlines — top and bottom of belt */
@@ -1296,13 +1296,11 @@
 
   /* Crest: belt buckle — centered, sits on the bottom line with slight overhang */
   .stat-belt-crest {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    /* Crest hangs below bottom gold line — ~20% of crest height */
-    margin-bottom: clamp(-26px, -2.6vw, -20px);
-    z-index: 2;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(39%);
+    z-index: 30;
     pointer-events: none;
   }
   .stat-belt-crest img {
