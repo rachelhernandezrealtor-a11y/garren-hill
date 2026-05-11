@@ -282,17 +282,12 @@
   .hero-overlay {
     position: absolute; inset: 0;
     background:
-      /* side vignettes */
-      linear-gradient(to right, rgba(11,11,11,0.55) 0%, transparent 18%, transparent 82%, rgba(11,11,11,0.55) 100%),
-      /* top-to-bottom */
-      linear-gradient(
-        to bottom,
-        rgba(11,11,11,0.35) 0%,
-        rgba(11,11,11,0.0) 35%,
-        rgba(11,11,11,0.0) 55%,
-        rgba(11,11,11,0.72) 80%,
-        rgba(11,11,11,0.95) 100%
-      );
+      /* side vignettes — softer */
+      linear-gradient(to right, rgba(11,11,11,0.42) 0%, transparent 22%, transparent 78%, rgba(11,11,11,0.42) 100%),
+      /* top dark cap — holds nav */
+      linear-gradient(to bottom, rgba(11,11,11,0.55) 0%, transparent 20%),
+      /* bottom — stat belt emerges from dark */
+      linear-gradient(to top, rgba(11,11,11,1.0) 0%, rgba(11,11,11,0.88) 12%, rgba(11,11,11,0.0) 42%);
   }
   .hero-content {
     position: relative; z-index: 2;
@@ -305,20 +300,21 @@
   }
   .hero-eyebrow {
     font-family: 'Instrument Sans', sans-serif;
-    font-size: var(--label);
+    font-size: clamp(0.58rem, 0.75vw, 0.72rem);
     font-weight: 400;
-    letter-spacing: 0.28em;
+    letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: rgba(196,162,101,0.8);
-    margin-bottom: clamp(1.2rem, 2.5vw, 2.2rem);
+    color: rgba(196,162,101,0.5);
+    margin-bottom: clamp(1.6rem, 3vw, 2.8rem);
   }
   .hero-name {
     font-family: 'Pinyon Script', cursive;
     font-size: var(--hero);
     color: var(--text-primary);
-    line-height: 0.82;
-    letter-spacing: -0.01em;
-    margin-bottom: clamp(1.4rem, 2.8vw, 2.4rem);
+    line-height: 0.78;
+    letter-spacing: -0.02em;
+    margin-bottom: clamp(1.8rem, 3.2vw, 3rem);
+    text-shadow: 0 2px 40px rgba(0,0,0,0.6), 0 1px 8px rgba(0,0,0,0.4);
   }
   .hero-rule {
     width: clamp(60px, 8vw, 110px);
@@ -328,11 +324,12 @@
   }
   .hero-sub {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.0rem, 1.4vw, 1.35rem);
+    font-size: clamp(0.95rem, 1.25vw, 1.2rem);
     font-style: italic;
     font-weight: 300;
-    color: rgba(240,235,227,0.62);
-    letter-spacing: 0.12em;
+    color: rgba(235,228,212,0.55);
+    letter-spacing: 0.16em;
+    text-shadow: 0 1px 12px rgba(0,0,0,0.5);
   }
 
   /* § JEWELED BELT STAT BAR ──────────────────────────────────────────── */
@@ -372,8 +369,9 @@
     width: auto;
     transform: translateY(-42px);
     filter:
-      drop-shadow(0 4px 18px rgba(0,0,0,0.9))
-      drop-shadow(0 0 6px rgba(196,162,101,0.12));
+      brightness(1.08) contrast(1.12) saturate(0.85)
+      drop-shadow(0 6px 22px rgba(0,0,0,0.95))
+      drop-shadow(0 1px 2px rgba(0,0,0,0.8));
   }
   .stat-item {
     text-align: center;
