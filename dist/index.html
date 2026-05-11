@@ -2289,7 +2289,7 @@
   }
 
   // 3. SCROLL PROGRESS
-  // KB GATE PARALLAX
+  // KB GATE PARALLAX — horizontal pan on scroll
   const kbImg = document.querySelector('.kb-gate-img img');
   if (kbImg) {
     window.addEventListener('scroll', () => {
@@ -2297,11 +2297,11 @@
       if (!section) return;
       const rect = section.getBoundingClientRect();
       const viewH = window.innerHeight;
-      // only animate when section is in viewport
       if (rect.bottom < 0 || rect.top > viewH) return;
       const progress = (viewH - rect.top) / (viewH + rect.height);
-      const shift = (progress - 0.5) * 80; // ±40px drift
-      kbImg.style.objectPosition = `center calc(50% + ${shift}px)`;
+      // pan left to right as user scrolls: 30% → 70%
+      const x = 30 + (progress * 40);
+      kbImg.style.objectPosition = `${x}% 50%`;
     }, { passive: true });
   }
 
