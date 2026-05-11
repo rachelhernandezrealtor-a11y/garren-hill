@@ -2289,6 +2289,23 @@
   }
 
   // 3. SCROLL PROGRESS
+  // KB GATE PARALLAX
+  const kbImg = document.querySelector('.kb-gate-img img');
+  if (kbImg) {
+    window.addEventListener('scroll', () => {
+      const section = kbImg.closest('.kb-gate');
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      const viewH = window.innerHeight;
+      // only animate when section is in viewport
+      if (rect.bottom < 0 || rect.top > viewH) return;
+      const progress = (viewH - rect.top) / (viewH + rect.height);
+      const shift = (progress - 0.5) * 80; // ±40px drift
+      kbImg.style.objectPosition = `center calc(50% + ${shift}px)`;
+    }, { passive: true });
+  }
+
+
   const prog = document.getElementById('scroll-progress');
   if (prog) {
     window.addEventListener('scroll', () => {
