@@ -1927,8 +1927,20 @@
 
 <!-- STAIRCASE + POWDER -->
 <section class="breath short"></section>
-<section id="staircase">
-  <div class="split reverse">
+<section id="staircase" style="position:relative;overflow:hidden;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 160" aria-hidden="true"
+  style="position:absolute;right:52%;top:50%;transform:translate(50%,-50%);
+         width:clamp(120px,18vw,220px);height:auto;opacity:0.06;
+         fill:none;stroke:#C9A96E;stroke-linecap:round;stroke-linejoin:round;
+         pointer-events:none;z-index:0;">
+  <circle cx="30" cy="24" r="20" stroke-width="2.5"/>
+  <circle cx="30" cy="24" r="8" stroke-width="2"/>
+  <line x1="30" y1="44" x2="30" y2="152" stroke-width="2.5"/>
+  <line x1="30" y1="100" x2="46" y2="100" stroke-width="2.5"/>
+  <line x1="30" y1="118" x2="46" y2="118" stroke-width="2.5"/>
+  <line x1="30" y1="136" x2="42" y2="136" stroke-width="2.5"/>
+</svg>
+  <div class="split reverse" style="position:relative;z-index:1;">
     <div class="split-text">
       <span class="micro-rule reveal"></span>
       <span class="eyebrow">The Staircase &middot; 1916</span>
