@@ -101,7 +101,7 @@
     padding: 0 var(--col-pad);
     background: rgba(5,5,5,0.68);
     backdrop-filter: blur(22px) saturate(1.6);
-    
+    border-bottom: 1px solid rgba(201,168,76,0.18);
     transition: height 0.3s ease, background 0.3s ease;
   }
   nav::before {
@@ -200,32 +200,32 @@
   .hero-overlay {
     position: absolute; inset: 0; z-index: 1;
     background: linear-gradient(180deg,
-      rgba(5,5,5,0.10) 0%,
-      rgba(5,5,5,0.04) 20%,
-      rgba(5,5,5,0.04) 45%,
-      rgba(5,5,5,0.22) 62%,
-      rgba(5,5,5,0.58) 78%,
-      rgba(5,5,5,0.72) 90%,
-      rgba(5,5,5,0.60) 97%,
-      rgba(5,5,5,0.42) 100%);
+      rgba(5,5,5,0.18) 0%,
+      rgba(5,5,5,0.06) 18%,
+      rgba(5,5,5,0.04) 42%,
+      rgba(5,5,5,0.28) 60%,
+      rgba(5,5,5,0.65) 76%,
+      rgba(5,5,5,0.85) 90%,
+      rgba(5,5,5,0.92) 100%);
   }
   .hero-text {
     position: absolute; inset: 0; z-index: 2;
     display: flex; flex-direction: column;
-    align-items: center; justify-content: flex-start; text-align: center;
+    align-items: center; justify-content: center; text-align: center;
     padding: 0 clamp(1.5rem, 6vw, 8rem);
-    padding-top: clamp(5rem, 14vh, 10rem);
-    padding-bottom: 0;
+    padding-top: clamp(4rem, 8vh, 7rem);
+    padding-bottom: clamp(8rem, 22vh, 16rem);
   }
-  .hero-eyebrow { font-size: clamp(0.5rem, 0.72vw, 0.62rem); letter-spacing: 0.62em; text-transform: uppercase; color: rgba(245,240,232,0.75); margin-bottom: 1.4rem; font-weight: 300; display: flex; align-items: center; justify-content: center; gap: 1.4rem; } .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: clamp(1.5rem, 4vw, 4rem); height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.78)); flex-shrink: 0; } .hero-eyebrow::after { background: linear-gradient(to left, transparent, rgba(201,168,76,0.78)); }
+  .hero-eyebrow { font-size: clamp(0.52rem, 0.75vw, 0.65rem); letter-spacing: 0.55em; text-transform: uppercase; color: rgba(245,240,232,0.82); margin-bottom: 1.8rem; font-weight: 300; display: flex; align-items: center; justify-content: center; gap: 1.4rem; } .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: clamp(1.5rem, 4vw, 4rem); height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.78)); flex-shrink: 0; } .hero-eyebrow::after { background: linear-gradient(to left, transparent, rgba(201,168,76,0.78)); }
   .hero-title {
     font-family: 'Pinyon Script', cursive; font-weight: 400;
-    font-size: clamp(5rem, 16vw, 14rem); color: var(--cream);
-    line-height: 0.9;
-    text-shadow: 0 2px 40px rgba(0,0,0,0.8), 0 0 80px rgba(0,0,0,0.5);
-    margin-bottom: 0.6rem;
+    font-size: clamp(5.5rem, 17vw, 15rem); color: var(--cream);
+    line-height: 0.88;
+    text-shadow: 0 2px 60px rgba(0,0,0,0.85), 0 0 100px rgba(0,0,0,0.55);
+    margin-bottom: 1.2rem;
+    margin-top: 0;
   }
-  .hero-sub { font-size: clamp(0.48rem, 0.7vw, 0.6rem); letter-spacing: 0.52em; text-transform: uppercase; color: rgba(245,240,232,0.68); font-weight: 300; margin-top: 0.2rem; } .hero-sub::before { content: ''; display: block; width: clamp(1.5rem, 3vw, 3rem); height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.75), transparent); margin: 0.9rem auto 0.9rem; }
+  .hero-sub { font-size: clamp(0.5rem, 0.72vw, 0.62rem); letter-spacing: 0.5em; text-transform: uppercase; color: rgba(232,197,90,0.65); font-weight: 300; margin-top: 0.3rem; } .hero-sub::before { content: ''; display: block; width: clamp(1.5rem, 3vw, 3rem); height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.75), transparent); margin: 0.9rem auto 0.9rem; }
 
   /* § 10. HERO BOTTOM — numbers and crest emerge from darkness, no visible band */
   .stat-bar {
@@ -236,8 +236,8 @@
     /* very subtle dark base so gold line has contrast */
     background: linear-gradient(180deg,
       rgba(4,4,4,0.0) 0%,
-      rgba(4,4,4,0.35) 60%,
-      rgba(4,4,4,0.55) 100%);
+      rgba(4,4,4,0.55) 55%,
+      rgba(4,4,4,0.82) 100%);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     overflow: visible;
@@ -291,11 +291,11 @@
   .stat-wing.right { justify-content: flex-start; }
   /* STAT ITEMS — engraved settings */
   .stat-item { text-align: center; flex-shrink: 0; }
-  .stat-num { color: #C9A84C; font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 2vw, 1.6rem); font-weight: 300; letter-spacing: 0.08em; }
+  .stat-num { color: #C9A84C; font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem, 2.2vw, 1.75rem); font-weight: 300; letter-spacing: 0.08em; }
   .stat-lbl {
-    display: block; font-size: 0.36rem; letter-spacing: 0.58em;
-    text-transform: uppercase; color: rgba(245,240,232,0.48);
-    margin-top: 0.45rem; font-weight: 300;
+    display: block; font-size: 0.38rem; letter-spacing: 0.55em;
+    text-transform: uppercase; color: rgba(245,240,232,0.58);
+    margin-top: 0.5rem; font-weight: 300;
   }
   /* DIVIDERS — fine gold settings between stones */
   .stat-div {
