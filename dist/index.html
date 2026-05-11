@@ -427,30 +427,29 @@
     width: clamp(120px, 14vw, 180px);
   }
 
-  /* ═══ HERO CREST — absolute buckle on hero section ═══
-   * Centered X. Bottom of crest = bottom of hero (viewport bottom).
-   * hero overflow:hidden keeps it within 100vh.
-   * Crown rises above the top gold line naturally.
+  /* ── CREST: absolute belt buckle ──────────────────────────────────────────
+   * Sits on the belt. Crown rises above top gold line.
+   * Base barely crosses the bottom gold line — just touching viewport bottom.
+   * Belt overflow:visible lets it bleed past both lines.
    */
-  .hero-crest {
+  .jb-crest {
     position: absolute;
-    bottom: 0;                  /* base touches the bottom gold line */
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
+    pointer-events: none;
     display: flex;
     align-items: flex-end;
-    pointer-events: none;
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
-
-  .hero-crest img {
+  .jb-crest img {
     height: clamp(140px, 16vw, 200px);
     width: auto;
     display: block;
     filter:
       drop-shadow(0 3px 20px rgba(0,0,0,1))
-      drop-shadow(0 1px 6px rgba(0,0,0,0.9));
+      drop-shadow(0 1px 8px rgba(0,0,0,0.95));
   }
 
   @media (max-width: 768px) {
@@ -1215,7 +1214,7 @@
 <section class="hero" id="top" aria-label="Garran Hill hero">
   <video class="hero-video" autoplay muted loop playsinline preload="auto"
     poster="https://res.cloudinary.com/dghn2xpif/video/upload/so_0/v1777503272/gh_key/done_czfe8o.jpg"
-    src="https://res.cloudinary.com/dghn2xpif/video/upload/done_czfe8o.mp4">
+    src="https://res.cloudinary.com/dghn2xpif/video/upload/v1777503272/gh_key/done_czfe8o.mp4">
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -1226,55 +1225,47 @@
   </div>
   <!-- ══ JEWELED BELT ══ -->
   <div class="jeweled-belt">
-    <!-- Gold top hairline -->
-    <div class="jb-line jb-line-top"></div>
-    <!-- Number row -->
-    <div class="jb-body">
-    <!-- Numbers left wing -->
-    <div class="jb-wing jb-wing-left">
-      <div class="jb-stat">
-        <span class="stat-num">4</span>
-        <span class="stat-label">Bedrooms</span>
-      </div>
-      <div class="jb-stat">
-        <span class="stat-num">6</span>
-        <span class="stat-label">Bathrooms</span>
-      </div>
-      <div class="jb-stat">
-        <span class="stat-num">6,072</span>
-        <span class="stat-label">Sq Ft</span>
-      </div>
-    </div>
-    <!-- Crest buckle — rises above top line, hangs below bottom line -->
+    <!-- Single absolute crest — belt buckle. Crown above top line, base at bottom line. -->
     <div class="jb-crest">
       <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
            alt="Garran Hill Crest">
     </div>
-    <!-- Crest spacer — keeps numbers away from center where crest overlaps -->
-    <div class="jb-crest-space"></div>
-    <!-- Numbers right wing -->
-    <div class="jb-wing jb-wing-right">
-      <div class="jb-stat">
-        <span class="stat-num">4.15</span>
-        <span class="stat-label">Acres</span>
+    <!-- Gold top hairline -->
+    <div class="jb-line jb-line-top"></div>
+    <!-- Number row: left wing | space for crest | right wing -->
+    <div class="jb-body">
+      <div class="jb-wing jb-wing-left">
+        <div class="jb-stat">
+          <span class="stat-num">4</span>
+          <span class="stat-label">Bedrooms</span>
+        </div>
+        <div class="jb-stat">
+          <span class="stat-num">6</span>
+          <span class="stat-label">Bathrooms</span>
+        </div>
+        <div class="jb-stat">
+          <span class="stat-num">6,072</span>
+          <span class="stat-label">Sq Ft</span>
+        </div>
       </div>
-      <div class="jb-stat">
-        <span class="stat-num">Est. 1916</span>
-        <span class="stat-label">Established</span>
+      <div class="jb-crest-space"></div>
+      <div class="jb-wing jb-wing-right">
+        <div class="jb-stat">
+          <span class="stat-num">4.15</span>
+          <span class="stat-label">Acres</span>
+        </div>
+        <div class="jb-stat">
+          <span class="stat-num">Est. 1916</span>
+          <span class="stat-label">Established</span>
+        </div>
+        <div class="jb-stat">
+          <span class="stat-num">$4,250,000</span>
+          <span class="stat-label">Offered At</span>
+        </div>
       </div>
-      <div class="jb-stat">
-        <span class="stat-num">$4,250,000</span>
-        <span class="stat-label">Offered At</span>
-      </div>
-    </div>
     </div><!-- /.jb-body -->
     <!-- Gold bottom hairline -->
     <div class="jb-line jb-line-bottom"></div>
-    <!-- CREST: absolute on belt, base at bottom gold line, crown rises above top line -->
-    <div class="hero-crest">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
-           alt="Garran Hill Crest">
-    </div>
   </div>
 </section>
 
