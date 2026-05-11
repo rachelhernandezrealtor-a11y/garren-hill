@@ -271,7 +271,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: visible;
     background: var(--bg-primary);
   }
   .hero-video {
@@ -433,12 +433,9 @@
    * Base barely crosses the bottom gold line — just touching viewport bottom.
    * Belt overflow:visible lets it bleed past both lines.
    */
-  .jb-crest {
+    .jb-crest {
     position: absolute;
-    /* bottom: base of crest sits at the bottom gold line.
-       The belt itself is position:absolute bottom:0 on the hero.
-       So bottom:2px = just above the bottom hairline = base barely crosses it. */
-    bottom: 2px;
+    bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
@@ -446,10 +443,8 @@
     display: flex;
     align-items: flex-end;
   }
-  .jb-crest img {
-    /* Belt is ~70px tall. Crest at 200px rises 130px above the top line.
-       That's the buckle above the belt. Base barely at viewport bottom. */
-    height: clamp(220px, 26vw, 320px);
+    .jb-crest img {
+    height: clamp(160px, 17vw, 210px);
     width: auto;
     display: block;
     filter:
