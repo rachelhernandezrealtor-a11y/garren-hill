@@ -1400,63 +1400,69 @@
       </div>
       <!-- CREST THRONE — focal point -->
       <div class="stat-crest-throne" style="display:flex;align-items:center;justify-content:center;gap:clamp(0.8rem,2vw,2.2rem);flex-shrink:0;padding:0 clamp(1.5rem,3vw,4rem);">
-        <!-- Left key ornament -->
-        <div style="display:flex;align-items:center;gap:clamp(0.4rem,0.8vw,0.9rem);opacity:0.85;">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 80" style="width:20px;height:auto;opacity:0.88;fill:none;stroke:url(#kg);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;">
+        <!-- Left crossed keys -->
+        <div style="display:flex;align-items:center;justify-content:center;opacity:0.9;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 80" style="width:36px;height:auto;opacity:0.88;fill:none;stroke-linecap:round;stroke-linejoin:round;">
   <defs>
-    <linearGradient id="kg" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="ckg1" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#F5E098"/>
       <stop offset="50%" stop-color="#C9A96E"/>
       <stop offset="100%" stop-color="#8B6914"/>
     </linearGradient>
   </defs>
-  <!-- bow (ring at top) -->
-  <circle cx="16" cy="12" r="9" stroke-width="1.6"/>
-  <!-- keyhole inside bow -->
-  <circle cx="16" cy="12" r="3.5" stroke-width="1.2"/>
-  <!-- shaft -->
-  <line x1="16" y1="21" x2="16" y2="72"/>
-  <!-- teeth -->
-  <line x1="16" y1="52" x2="22" y2="52"/>
-  <line x1="16" y1="60" x2="22" y2="60"/>
-  <line x1="16" y1="68" x2="20" y2="68"/>
+  <!-- Key 1 — angled left -->
+  <g transform="rotate(-30,32,40)" stroke="url(#ckg1)" stroke-width="1.5">
+    <circle cx="20" cy="14" r="8"/>
+    <circle cx="20" cy="14" r="3"/>
+    <line x1="20" y1="22" x2="20" y2="68"/>
+    <line x1="20" y1="48" x2="26" y2="48"/>
+    <line x1="20" y1="57" x2="26" y2="57"/>
+    <line x1="20" y1="65" x2="24" y2="65"/>
+  </g>
+  <!-- Key 2 — angled right -->
+  <g transform="rotate(30,44,40)" stroke="url(#ckg1)" stroke-width="1.5">
+    <circle cx="44" cy="14" r="8"/>
+    <circle cx="44" cy="14" r="3"/>
+    <line x1="44" y1="22" x2="44" y2="68"/>
+    <line x1="44" y1="48" x2="38" y2="48"/>
+    <line x1="44" y1="57" x2="38" y2="57"/>
+    <line x1="44" y1="65" x2="40" y2="65"/>
+  </g>
 </svg>
-          <div style="width:1px;height:2.2rem;background:linear-gradient(to bottom,transparent,rgba(201,169,110,0.4) 40%,rgba(245,224,152,0.55) 50%,rgba(201,169,110,0.4) 60%,transparent);"></div>
         </div>
         <!-- Crest -->
         <div class="stat-crest-wrap">
           <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" width="185" height="185">
         </div>
-        <!-- Right key ornament -->
-        <div style="display:flex;align-items:center;gap:clamp(0.4rem,0.8vw,0.9rem);opacity:0.85;">
-          <div style="width:1px;height:2.2rem;background:linear-gradient(to bottom,transparent,rgba(201,169,110,0.4) 40%,rgba(245,224,152,0.55) 50%,rgba(201,169,110,0.4) 60%,transparent);"></div>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 80" style="width:20px;height:auto;opacity:0.88;fill:none;stroke:url(#kgr);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1);">
+        <!-- Right crossed keys -->
+        <div style="display:flex;align-items:center;justify-content:center;opacity:0.9;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 80" style="width:36px;height:auto;opacity:0.88;fill:none;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1);">
   <defs>
-    <linearGradient id="kgr" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="ckg2" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#F5E098"/>
       <stop offset="50%" stop-color="#C9A96E"/>
       <stop offset="100%" stop-color="#8B6914"/>
     </linearGradient>
   </defs>
-  <circle cx="16" cy="12" r="9" stroke-width="1.6"/>
-  <circle cx="16" cy="12" r="3.5" stroke-width="1.2"/>
-  <line x1="16" y1="21" x2="16" y2="72"/>
-  <line x1="16" y1="52" x2="22" y2="52"/>
-  <line x1="16" y1="60" x2="22" y2="60"/>
-  <line x1="16" y1="68" x2="20" y2="68"/>
+  <g transform="rotate(-30,32,40)" stroke="url(#ckg2)" stroke-width="1.5">
+    <circle cx="20" cy="14" r="8"/>
+    <circle cx="20" cy="14" r="3"/>
+    <line x1="20" y1="22" x2="20" y2="68"/>
+    <line x1="20" y1="48" x2="26" y2="48"/>
+    <line x1="20" y1="57" x2="26" y2="57"/>
+    <line x1="20" y1="65" x2="24" y2="65"/>
+  </g>
+  <g transform="rotate(30,44,40)" stroke="url(#ckg2)" stroke-width="1.5">
+    <circle cx="44" cy="14" r="8"/>
+    <circle cx="44" cy="14" r="3"/>
+    <line x1="44" y1="22" x2="44" y2="68"/>
+    <line x1="44" y1="48" x2="38" y2="48"/>
+    <line x1="44" y1="57" x2="38" y2="57"/>
+    <line x1="44" y1="65" x2="40" y2="65"/>
+  </g>
 </svg>
         </div>
-      </div>
-      <!-- RIGHT WING -->
-      <div class="stat-wing right">
-        <div class="stat-item"><span class="stat-num">4.15</span><span class="stat-lbl">Acres</span></div>
-        <div class="stat-div"></div>
-        <div class="stat-item"><span class="stat-num">Est. 1916</span><span class="stat-lbl">Built</span></div>
-        <div class="stat-div"></div>
-        <div class="stat-item stat-price"><span class="stat-num">$4,250,000</span></div>
-      </div>
-    </div>
-  </div>
+      </div></div>
 </section>
 
 <section id="then-now" class="editorial-fullbleed" aria-label="Then and now: Garran Hill across a century" style="position:relative;margin-bottom:0;padding-bottom:0;background:#0a0a0a;">
