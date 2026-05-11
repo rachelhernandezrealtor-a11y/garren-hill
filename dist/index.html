@@ -333,7 +333,7 @@
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
     padding: 0 clamp(2rem, 4vw, 5.5rem);
-    position: relative;
+    position: static;
   }
   /* Gold filigree lines extending from buckle into the band */
   .stat-crest-throne::before,
@@ -363,15 +363,16 @@
   }
   .stat-crest-wrap {
     display: flex; align-items: center; justify-content: center;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    z-index: 20;
   }
   /* THE BUCKLE — reach out and grab it */
   .stat-crest-wrap img {
     height: clamp(180px, 20vw, 260px); width: auto; display: block;
     transform: translateY(-50%) !important;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    margin-left: calc(clamp(180px, 20vw, 260px) * -0.45);
     animation: none !important;
     transition: none !important;
     filter:
