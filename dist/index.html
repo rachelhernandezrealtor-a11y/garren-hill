@@ -260,7 +260,7 @@
   }
   .stat-numbers {
     display: flex; align-items: center; justify-content: center;
-    width: 100%; gap: 0; flex: 1; padding-bottom: 6px;
+    width: 100%; gap: 0; flex: 1;
   }
   /* WINGS — the stones flanking the buckle */
   .stat-wing {
@@ -1347,30 +1347,34 @@
     <p class="hero-sub">Neo-Georgian &nbsp;&middot;&nbsp; Built 1915–16 for Walter Hines Page</p>
   </div>
   <div class="stat-bar">
+    <!-- top gold hairline -->
+    <div style="position:absolute;top:0;left:0;right:0;height:1px;z-index:25;background:linear-gradient(90deg,transparent 0%,transparent 8%,rgba(180,150,95,0.35) 18%,rgba(201,168,76,0.65) 35%,rgba(201,168,76,0.9) 50%,rgba(201,168,76,0.65) 65%,rgba(180,150,95,0.35) 82%,transparent 92%,transparent 100%);"></div>
+    <!-- CREST — absolutely centered, floats above bar -->
+    <div style="position:absolute;left:50%;top:0;transform:translate(-50%,-60%);z-index:100;pointer-events:none;">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" style="height:clamp(160px,16vw,220px);width:auto;display:block;filter:drop-shadow(0 8px 28px rgba(0,0,0,0.98)) drop-shadow(0 2px 6px rgba(0,0,0,1));">
+    </div>
+    <!-- STAT NUMBERS ROW -->
     <div class="stat-numbers">
       <!-- LEFT WING: 3 stats -->
-      <div class="stat-wing" style="flex:1;display:flex;align-items:center;justify-content:flex-end;gap:clamp(1rem,2.5vw,3.5rem);">
+      <div class="stat-wing" style="flex:1;display:flex;align-items:center;justify-content:flex-end;gap:clamp(1.2rem,3vw,4rem);">
         <div class="stat-item"><span class="stat-num">4</span><span class="stat-lbl">Bedrooms</span></div>
         <div class="stat-div"></div>
         <div class="stat-item"><span class="stat-num">6</span><span class="stat-lbl">Bathrooms</span></div>
         <div class="stat-div"></div>
         <div class="stat-item"><span class="stat-num">6,072</span><span class="stat-lbl">Sq Ft</span></div>
-        <div class="stat-div"></div>
       </div>
-      <!-- CREST — the star, centered -->
-      <div class="stat-crest-wrap" style="flex-shrink:0;padding:0 clamp(0.5rem,1.5vw,2rem);display:flex;align-items:center;justify-content:center;">
-        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" style="height:clamp(200px,20vw,280px);width:auto;display:block;position:relative;z-index:100;transform:translateY(-95px);filter:drop-shadow(0 8px 28px rgba(0,0,0,0.98)) drop-shadow(0 2px 6px rgba(0,0,0,1));">
-      </div>
+      <!-- CENTER SPACER — holds space for crest -->
+      <div style="flex-shrink:0;width:clamp(140px,14vw,200px);"></div>
       <!-- RIGHT WING: 2 stats -->
-      <div class="stat-wing" style="flex:1;display:flex;align-items:center;justify-content:flex-start;gap:clamp(1rem,2.5vw,3.5rem);">
-        <div class="stat-div"></div>
+      <div class="stat-wing" style="flex:1;display:flex;align-items:center;justify-content:flex-start;gap:clamp(1.2rem,3vw,4rem);">
         <div class="stat-item"><span class="stat-num">4.15</span><span class="stat-lbl">Acres</span></div>
         <div class="stat-div"></div>
         <div class="stat-item"><span class="stat-num">$4,250,000</span><span class="stat-lbl">Offered at</span></div>
       </div>
     </div>
     <!-- bottom gold hairline -->
-  <div style="position:absolute;bottom:22px;left:0;right:0;height:1px;z-index:25;background:linear-gradient(90deg,transparent 0%,transparent 8%,rgba(180,150,95,0.35) 18%,rgba(201,168,76,0.65) 35%,rgba(201,168,76,0.9) 50%,rgba(201,168,76,0.65) 65%,rgba(180,150,95,0.35) 82%,transparent 92%,transparent 100%);"></div>
+    <div style="position:absolute;bottom:20px;left:0;right:0;height:1px;z-index:25;background:linear-gradient(90deg,transparent 0%,transparent 8%,rgba(180,150,95,0.35) 18%,rgba(201,168,76,0.65) 35%,rgba(201,168,76,0.9) 50%,rgba(201,168,76,0.65) 65%,rgba(180,150,95,0.35) 82%,transparent 92%,transparent 100%);"></div>
+  </div>
 </section>
 
 <section id="then-now" class="editorial-fullbleed" aria-label="Then and now: Garran Hill across a century" style="position:relative;margin-bottom:0;padding-bottom:0;background:#0a0a0a;">
