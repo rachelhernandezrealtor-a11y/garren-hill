@@ -367,7 +367,7 @@
   /* THE BUCKLE — reach out and grab it */
   .stat-crest-wrap img {
     height: clamp(180px, 20vw, 260px); width: auto; display: block;
-    transform: translateY(-60px);
+    transform: translateY(-60px) !important;
     animation: none !important;
     transition: none !important;
     filter:
@@ -377,7 +377,7 @@
     image-rendering: crisp-edges;
   }
   /* Hover — lifts toward you, shadow deepens as if physically rising */
-  .stat-crest-wrap img:hover { transform: translateY(0) !important; animation: none !important; transition: none !important; }
+  .stat-crest-wrap img:hover { transform: translateY(-60px) !important; animation: none !important; transition: none !important; }
   .stat-price .stat-num {
     font-size: clamp(0.92rem, 1.55vw, 1.35rem);
     letter-spacing: 0.06em;
