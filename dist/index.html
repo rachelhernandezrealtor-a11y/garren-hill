@@ -473,6 +473,8 @@
     width: 100%; max-width: var(--max-site);
     aspect-ratio: 16/9;
     object-fit: cover;
+    animation: kenBurns 12s ease-out forwards;
+    transform-origin: center center;
   }
   .arrival-bridge .arrival-text {
     max-width: var(--max-lead);
@@ -1183,6 +1185,10 @@
 
   /* ══ END STYLES ══════════════════════════════════════════════════════ */
   
+    @keyframes kenBurns {
+    0%   { transform: scale(1.0); }
+    100% { transform: scale(1.08); }
+  }
   </style>
 
 </head>
@@ -1268,6 +1274,7 @@
     <div class="jb-line jb-line-bottom"></div>
   </div>
 </section>
+
 
 <!-- First Scroll Bridge — SLOW -->
 <section class="arrival-bridge" id="arrival" aria-label="First arrival">
@@ -1927,26 +1934,5 @@ document.getElementById('inquiry-form').addEventListener('submit', async (e) => 
 });
 </script>
 
-<script>
-  (function() {
-    function positionBelt() {
-      var hero = document.querySelector('.hero');
-      var belt = document.querySelector('.stat-belt');
-      if (!hero || !belt) return;
-      // Force hero to exactly 100vh
-      hero.style.position = 'relative';
-      hero.style.height = '100vh';
-      hero.style.overflow = 'hidden';
-      // Force belt to bottom of hero
-      belt.style.position = 'absolute';
-      belt.style.bottom = '0';
-      belt.style.left = '0';
-      belt.style.right = '0';
-      belt.style.zIndex = '10';
-    }
-    positionBelt();
-    window.addEventListener('resize', positionBelt);
-  })();
-</script>
 </body>
 </html>
