@@ -352,8 +352,10 @@
     position: relative;
     width: 100%;
     flex-shrink: 0;
-    padding-bottom: env(safe-area-inset-bottom, 0px);
     z-index: 3;
+    /* Extra top padding so crest crown rises above the top gold line */
+    padding-top: clamp(50px, 6vw, 80px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
   /* TOP GOLD HAIRLINE */
@@ -394,23 +396,36 @@
       rgba(196,162,101,0.2) 88%, transparent 100%);
   }
 
-  /* CREST — dominant focal point, fully within hero bounds */
+  /* CREST — belt buckle, pierces both gold lines */
   .stat-crest-wrap {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    /* Full height of stat-belt so it spans top-to-bottom hairlines */
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    z-index: 10;
+    z-index: 20;
+    pointer-events: none;
   }
 
   .stat-crest-wrap img {
-    height: clamp(140px, 14vw, 200px);
+    /* Taller than the stat-bar so it pierces both hairlines */
+    height: clamp(100px, 12vw, 160px);
     width: auto;
     display: block;
+    /* Very subtle glow — engraved depth, not applied gold */
     filter:
-      drop-shadow(0 0 40px rgba(196,162,101,0.3))
-      drop-shadow(0 8px 28px rgba(0,0,0,0.98))
-      drop-shadow(0 2px 6px rgba(0,0,0,0.85));
+      drop-shadow(0 2px 8px rgba(0,0,0,0.95))
+      drop-shadow(0 1px 3px rgba(0,0,0,0.8));
+  }
+
+  /* CREST SPACER — keeps grid center column balanced */
+  .stat-crest-spacer {
+    width: clamp(100px, 12vw, 160px);
+    height: 1px;
   }
 
   /* STAT ITEMS */
@@ -1253,7 +1268,12 @@
       </div>
     </div>
     <div class="stat-belt-bottom-line"></div>
+  <!-- CREST: absolute belt buckle, pierces both gold lines -->
+  <div class="stat-crest-wrap">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
+         alt="Garran Hill Crest">
   </div>
+</div>
 </section>
 
 <!-- First Scroll Bridge — SLOW -->
