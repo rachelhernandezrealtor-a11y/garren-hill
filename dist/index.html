@@ -1257,7 +1257,7 @@
      ============================================================ */
   .stat-belt {
     position: absolute;
-    bottom: clamp(45px, 5vw, 60px);
+    bottom: clamp(60px, 6.5vw, 80px);
     left: 0; right: 0;
     z-index: 20;
     display: flex;
@@ -1316,10 +1316,11 @@
   /* Wings: numbers on each side */
   .stat-wing {
     flex: 1;
+    min-width: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(0.8rem, 2vw, 2.5rem);
+    gap: clamp(0.6rem, 1.5vw, 2rem);
     padding: clamp(0.8rem, 1.5vw, 1.4rem) 0;
   }
   .stat-item {
@@ -1365,7 +1366,13 @@
     .stat-wing { gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
   }
 
-  </style>
+  
+  .stat-crest-spacer {
+    flex: 0 0 clamp(80px, 8vw, 110px);
+    height: 1px;
+    pointer-events: none;
+  }
+</style>
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -1451,10 +1458,12 @@
         <div class="stat-div"></div>
         <div class="stat-item"><span class="stat-num">6,072</span><span class="stat-lbl">Sq Ft</span></div>
       </div>
-      <!-- CREST THRONE — belt buckle, barely hangs below bottom line -->
+      <!-- CREST THRONE — absolute positioned, spacer reserves center width -->
       <div class="stat-belt-crest">
         <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest">
       </div>
+      <!-- Spacer: reserves horizontal space so wings don't collapse into center -->
+      <div class="stat-crest-spacer" aria-hidden="true"></div>
       <!-- RIGHT WING -->
       <div class="stat-wing right">
         <div class="stat-item"><span class="stat-num">4.15</span><span class="stat-lbl">Acres</span></div>
