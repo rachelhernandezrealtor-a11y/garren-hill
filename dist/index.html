@@ -267,11 +267,10 @@
   ──────────────────────────────────────────────────────────────────── */
   .hero {
     position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: visible;
+    width: 100%; height: 100vh;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
     background: var(--bg-primary);
   }
   .hero-video {
@@ -283,23 +282,20 @@
   .hero-overlay {
     position: absolute; inset: 0;
     background:
-      /* side vignettes */
-      linear-gradient(to right, rgba(11,11,11,0.28) 0%, transparent 18%, transparent 82%, rgba(11,11,11,0.28) 100%),
-      /* top dark cap */
-      linear-gradient(to bottom, rgba(11,11,11,0.60) 0%, transparent 16%),
-      /* bottom — belt area reads on video */
-      linear-gradient(to top, rgba(11,11,11,0.82) 0%, rgba(11,11,11,0.58) 22%, rgba(11,11,11,0.0) 50%);
+      /* side vignettes — softer */
+      linear-gradient(to right, rgba(11,11,11,0.42) 0%, transparent 22%, transparent 78%, rgba(11,11,11,0.42) 100%),
+      /* top dark cap — holds nav */
+      linear-gradient(to bottom, rgba(11,11,11,0.55) 0%, transparent 20%),
+      /* bottom — stat belt emerges from dark */
+      linear-gradient(to top, rgba(11,11,11,1.0) 0%, rgba(11,11,11,0.88) 12%, rgba(11,11,11,0.0) 42%);
   }
   .hero-content {
-    position: relative;
-    z-index: 2;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    position: relative; z-index: 2;
     text-align: center;
+    display: flex; flex-direction: column;
+    align-items: center;
     padding: 0 var(--col-pad);
+    margin-top: -100px;
     gap: 0;
   }
   .hero-eyebrow {
@@ -336,119 +332,114 @@
     text-shadow: 0 1px 12px rgba(0,0,0,0.5);
   }
 
-  /* § JEWELED BELT ────────────────────────────────────────────────────── */
+  /* § JEWELED BELT STAT BAR ──────────────────────────────────────────── */
   /*
-   * Layout: the belt is a FLEX ROW — left-wing | crest | right-wing
-   * The crest is taller than the belt body, so it naturally overflows:
-   *   - crown rises above the top gold line
-   *   - base hangs below the bottom gold line toward the viewport edge
-   * The two gold lines are full-width divs above and below the flex row.
-   * We use negative margin on the crest to pull it past both lines.
-   */
+     ARCHITECTURE:
+     .stat-belt  → position:absolute, bottom:0, full width
+                   The ENTIRE belt — lines + bar + crest — lives here.
+                   Two gold hairlines are ::before and ::after on .stat-belt.
+     .stat-bar   → the numbers row. Normal flow height (~70px).
+     .stat-crest-wrap → position:absolute, centered on the belt.
+                        bottom of crest = 4px below bottom hairline.
+                        No translateY. No margins. Pure absolute coords.
+  */
 
-  /* ══ JEWELED BELT — complete rewrite ══════════════════════════════════════
- * One flat structure. Belt sits at absolute bottom of hero.
- * Crest is in normal flow, centered, sized large. It overflows the belt
- * upward (overflow:visible on belt) and the base sits at/just below the
- * bottom gold line (negative margin-bottom on crest).
- * NO absolute positioning on the crest. No tricks.
- */
-  .jeweled-belt {
+  .stat-belt {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
+    bottom: 0; left: 0; right: 0;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    z-index: 3;
     overflow: visible;
-    background: transparent;
+    display: block;
   }
 
-  /* Bottom dark panel — behind the numbers only */
-  .jb-panel {
+  /* TOP GOLD HAIRLINE — rendered by .stat-crest-wrap::before, glued to crest */
+  .stat-belt-top-line { display: none; }
+
+  /* STAT ROW */
+  .stat-bar {
+    width: 100%;
     background: rgba(8,8,8,0.85);
     backdrop-filter: blur(18px) saturate(1.2);
-    width: 100%;
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-
-  /* Gold hairlines */
-  .jb-line {
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to right,
-      transparent 0%,
-      rgba(196,162,101,0.3) 5%,
-      rgba(196,162,101,0.85) 25%,
-      rgba(245,224,152,1.0) 50%,
-      rgba(196,162,101,0.85) 75%,
-      rgba(196,162,101,0.3) 95%,
-      transparent 100%);
-  }
-
-  /* Crest sits in normal flow — centered, rises above belt via negative margin-top */
-  .jb-crest-wrap {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    overflow: visible;
-    /* Pull crest DOWN so base is just below bottom gold line */
-    margin-bottom: -68px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto 1fr 1fr;
+    align-items: center;
+    padding: clamp(12px, 1.8vw, 20px) var(--col-pad);
+    gap: 0;
     position: relative;
-    z-index: 30;
+    overflow: visible;
   }
 
-  .jb-crest-wrap img {
-    height: clamp(240px, 22vw, 300px);
+  /* BOTTOM GOLD HAIRLINE */
+  .stat-belt-bottom-line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right,
+      transparent 0%, rgba(196,162,101,0.2) 12%,
+      rgba(196,162,101,0.65) 38%,
+      rgba(245,224,152,0.95) 50%,
+      rgba(196,162,101,0.65) 62%,
+      rgba(196,162,101,0.2) 88%, transparent 100%);
+  }
+
+  /* CREST — in grid flow, lifts above bar via translateY */
+  .stat-crest-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    overflow: visible;
+  }
+
+  /* TOP GOLD LINE — glued to crest crown, moves with it */
+  .stat-crest-wrap::before {
+    content: '';
+    position: absolute;
+    top: -38px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 1px;
+    background: linear-gradient(to right,
+      transparent 0%, rgba(196,162,101,0.2) 12%,
+      rgba(196,162,101,0.65) 38%,
+      rgba(245,224,152,0.95) 50%,
+      rgba(196,162,101,0.65) 62%,
+      rgba(196,162,101,0.2) 88%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .stat-crest-wrap img {
+    height: clamp(200px, 18vw, 260px);
     width: auto;
     display: block;
+    transform: translateY(-38px);
     filter:
-      drop-shadow(0 3px 24px rgba(0,0,0,1))
-      drop-shadow(0 1px 8px rgba(0,0,0,0.95));
+      drop-shadow(0 8px 28px rgba(0,0,0,0.98))
+      drop-shadow(0 2px 6px rgba(0,0,0,0.85));
   }
 
-  /* Number row */
-  .jb-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: clamp(10px, 1.5vw, 18px) var(--col-pad);
-    gap: 0;
-  }
-
-  .jb-wing {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
-
-  /* Reserve center space for the crest visual */
-  .jb-crest-space {
-    flex-shrink: 0;
-    width: clamp(180px, 20vw, 260px);
-  }
-
-  .jb-stat {
+  /* STAT ITEMS */
+  .stat-item {
+    text-align: center;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    text-align: center;
   }
-
   .stat-num {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.6rem, 2.2vw, 2.4rem);
+    font-size: clamp(1.6rem, 2.4vw, 2.6rem);
     font-weight: 300;
     line-height: 1;
-    background: linear-gradient(180deg, #F5E098 0%, #C4A265 45%, #8B6914 100%);
+    background: linear-gradient(180deg, var(--gold-hi) 0%, var(--gold) 45%, #8B6914 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     letter-spacing: 0.02em;
   }
-
   .stat-label {
     font-family: 'Instrument Sans', sans-serif;
     font-size: 0.58rem;
@@ -457,12 +448,22 @@
     text-transform: uppercase;
     color: rgba(196,162,101,0.55);
   }
+  .stat-offered {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(196,162,101,0.4);
+    margin-top: 2px;
+  }
 
   @media (max-width: 768px) {
-    .jb-crest-wrap { display: none; }
-    .jb-crest-space { display: none; }
-    .jb-wing { justify-content: space-evenly; }
-    .jb-body { padding: clamp(8px,2vw,14px) 1rem; }
+    .stat-bar {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      padding: clamp(10px, 2vw, 16px) 1rem;
+    }
+    .stat-crest-wrap { display: none; }
   }
 
   /* § ACT I — ARRIVAL ─────────────────────────────────────────────────
@@ -1187,9 +1188,7 @@
   }
 
   /* ══ END STYLES ══════════════════════════════════════════════════════ */
-  
   </style>
-
 </head>
 
 <body>
@@ -1218,8 +1217,8 @@
 ═══════════════════════════════════════ -->
 <section class="hero" id="top" aria-label="Garran Hill hero">
   <video class="hero-video" autoplay muted loop playsinline preload="auto"
-    poster="https://res.cloudinary.com/dghn2xpif/video/upload/so_0/v1777503272/gh_key/done_czfe8o.jpg"
-    src="https://res.cloudinary.com/dghn2xpif/video/upload/v1777503272/gh_key/done_czfe8o.mp4">
+    poster="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1600/v1777263004/gh_key/gh_threshold.jpg"
+    src="https://res.cloudinary.com/dghn2xpif/video/upload/f_mp4,vc_h264/done_czfe8o">
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -1228,49 +1227,36 @@
     <div class="hero-rule"></div>
     <p class="hero-sub">Neo-Georgian.&nbsp; Walter Hines Page.&nbsp; Built 1916.</p>
   </div>
-  <!-- ══ JEWELED BELT ══ -->
-  <div class="jeweled-belt">
-    <!-- Crest: in normal flow, overflows belt upward, base at bottom gold line -->
-    <div class="jb-crest-wrap">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
-           alt="Garran Hill Crest">
-    </div>
-    <!-- Dark panel wraps the gold lines and number row -->
-    <div class="jb-panel">
-      <div class="jb-line jb-line-top"></div>
-      <div class="jb-body">
-        <div class="jb-wing jb-wing-left">
-          <div class="jb-stat">
-            <span class="stat-num">4</span>
-            <span class="stat-label">Bedrooms</span>
-          </div>
-          <div class="jb-stat">
-            <span class="stat-num">6</span>
-            <span class="stat-label">Bathrooms</span>
-          </div>
-          <div class="jb-stat">
-            <span class="stat-num">6,072</span>
-            <span class="stat-label">Sq Ft</span>
-          </div>
-        </div>
-        <div class="jb-crest-space"></div>
-        <div class="jb-wing jb-wing-right">
-          <div class="jb-stat">
-            <span class="stat-num">4.15</span>
-            <span class="stat-label">Acres</span>
-          </div>
-          <div class="jb-stat">
-            <span class="stat-num">Est. 1916</span>
-            <span class="stat-label">Established</span>
-          </div>
-          <div class="jb-stat">
-            <span class="stat-num">$4,250,000</span>
-            <span class="stat-label">Offered At</span>
-          </div>
-        </div>
+  <!-- Jeweled Belt -->
+  <div class="stat-belt">
+    <div class="stat-belt-top-line"></div>
+    <div class="stat-bar">
+      <div class="stat-item">
+        <span class="stat-num">4</span>
+        <span class="stat-label">Bedrooms</span>
       </div>
-      <div class="jb-line jb-line-bottom"></div>
+      <div class="stat-item">
+        <span class="stat-num">6</span>
+        <span class="stat-label">Bathrooms</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">6,072</span>
+        <span class="stat-label">Sq Ft</span>
+      </div>
+      <div class="stat-crest-wrap">
+        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
+             alt="Garran Hill Crest" width="240" height="240">
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">4.15</span>
+        <span class="stat-label">Acres</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">$4,250,000</span>
+        <span class="stat-label">Offered at</span>
+      </div>
     </div>
+    <div class="stat-belt-bottom-line"></div>
   </div>
 </section>
 
@@ -1930,28 +1916,6 @@ document.getElementById('inquiry-form').addEventListener('submit', async (e) => 
   btn.disabled = false;
   btn.textContent = 'Request a Private Showing';
 });
-</script>
-
-<script>
-  (function() {
-    function positionBelt() {
-      var hero = document.querySelector('.hero');
-      var belt = document.querySelector('.stat-belt');
-      if (!hero || !belt) return;
-      // Force hero to exactly 100vh
-      hero.style.position = 'relative';
-      hero.style.height = '100vh';
-      hero.style.overflow = 'hidden';
-      // Force belt to bottom of hero
-      belt.style.position = 'absolute';
-      belt.style.bottom = '0';
-      belt.style.left = '0';
-      belt.style.right = '0';
-      belt.style.zIndex = '10';
-    }
-    positionBelt();
-    window.addEventListener('resize', positionBelt);
-  })();
 </script>
 </body>
 </html>
