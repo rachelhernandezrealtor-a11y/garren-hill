@@ -229,7 +229,7 @@
 
   /* § 10. HERO BOTTOM — numbers and crest emerge from darkness, no visible band */
   .stat-bar {
-    position: absolute; bottom: 0; left: 0; right: 0; z-index: 10;
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 30;
     display: flex; align-items: center; justify-content: center;
     padding: 0 clamp(1rem, 3vw, 4rem);
     height: 100px;
@@ -325,6 +325,7 @@
   }
   .stat-crest-wrap {
     display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 50;
   }
   /* THE BUCKLE — reach out and grab it */
   .stat-crest-wrap img {
@@ -1357,7 +1358,7 @@
       </div>
       <!-- CREST — centered buckle -->
       <div class="stat-crest-wrap" style="flex-shrink:0;padding:0 clamp(1rem,2.5vw,3rem);display:flex;align-items:center;justify-content:center;">
-        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" style="height:clamp(160px,18vw,230px);width:auto;display:block;transform:translateY(-103px);filter:brightness(0.72) contrast(1.1) drop-shadow(0 4px 18px rgba(0,0,0,0.95)) drop-shadow(0 1px 3px rgba(0,0,0,1));">
+        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" style="height:clamp(160px,18vw,230px);width:auto;display:block;position:relative;z-index:100;transform:translateY(-103px);filter:brightness(0.72) contrast(1.1) drop-shadow(0 4px 18px rgba(0,0,0,0.95)) drop-shadow(0 1px 3px rgba(0,0,0,1));">
       </div>
       <!-- RIGHT WING -->
       <div class="stat-wing" style="flex:1;display:flex;align-items:center;justify-content:flex-start;gap:clamp(1rem,2.5vw,3.5rem);">
