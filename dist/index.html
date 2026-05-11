@@ -119,7 +119,7 @@
   .nav-links { display: flex; gap: clamp(1.5rem, 3vw, 3rem); }
   .nav-links a {
     font-size: 0.52rem; letter-spacing: 0.45em; text-transform: uppercase;
-    color: rgba(245,240,232,0.82); position: relative; padding-bottom: 3px;
+    color: rgba(245,240,232,1); position: relative; padding-bottom: 3px;
     transition: color 0.3s;
   }
   .nav-links a::after {
@@ -200,13 +200,13 @@
   .hero-overlay {
     position: absolute; inset: 0; z-index: 1;
     background: linear-gradient(180deg,
-      rgba(5,5,5,0.18) 0%,
-      rgba(5,5,5,0.06) 18%,
-      rgba(5,5,5,0.04) 42%,
-      rgba(5,5,5,0.28) 60%,
-      rgba(5,5,5,0.65) 76%,
-      rgba(5,5,5,0.85) 90%,
-      rgba(5,5,5,0.92) 100%);
+      rgba(5,5,5,0.28) 0%,
+      rgba(5,5,5,0.22) 18%,
+      rgba(5,5,5,0.35) 42%,
+      rgba(5,5,5,0.45) 60%,
+      rgba(5,5,5,0.72) 76%,
+      rgba(5,5,5,0.88) 90%,
+      rgba(5,5,5,0.95) 100%);
   }
   .hero-text {
     position: absolute; inset: 0; z-index: 2;
@@ -216,16 +216,16 @@
     padding-top: clamp(4rem, 8vh, 7rem);
     padding-bottom: clamp(8rem, 22vh, 16rem);
   }
-  .hero-eyebrow { font-size: clamp(0.52rem, 0.75vw, 0.65rem); letter-spacing: 0.55em; text-transform: uppercase; color: rgba(245,240,232,0.82); margin-bottom: 1.8rem; font-weight: 300; display: flex; align-items: center; justify-content: center; gap: 1.4rem; } .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: clamp(1.5rem, 4vw, 4rem); height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.78)); flex-shrink: 0; } .hero-eyebrow::after { background: linear-gradient(to left, transparent, rgba(201,168,76,0.78)); }
+  .hero-eyebrow { font-size: clamp(0.52rem, 0.75vw, 0.65rem); letter-spacing: 0.55em; text-transform: uppercase; color: rgba(245,240,232,1); margin-bottom: 1.8rem; font-weight: 300; display: flex; align-items: center; justify-content: center; gap: 1.4rem; } .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: clamp(1.5rem, 4vw, 4rem); height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.78)); flex-shrink: 0; } .hero-eyebrow::after { background: linear-gradient(to left, transparent, rgba(201,168,76,0.78)); }
   .hero-title {
     font-family: 'Pinyon Script', cursive; font-weight: 400;
     font-size: clamp(5.5rem, 17vw, 15rem); color: var(--cream);
     line-height: 0.88;
-    text-shadow: 0 2px 60px rgba(0,0,0,0.85), 0 0 100px rgba(0,0,0,0.55);
+    text-shadow: 0 2px 40px rgba(0,0,0,0.98), 0 0 80px rgba(0,0,0,0.92), 0 4px 120px rgba(0,0,0,0.85);
     margin-bottom: 1.2rem;
     margin-top: 0;
   }
-  .hero-sub { font-size: clamp(0.5rem, 0.72vw, 0.62rem); letter-spacing: 0.5em; text-transform: uppercase; color: rgba(232,197,90,0.65); font-weight: 300; margin-top: 0.3rem; } .hero-sub::before { content: ''; display: block; width: clamp(1.5rem, 3vw, 3rem); height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.75), transparent); margin: 0.9rem auto 0.9rem; }
+  .hero-sub { font-size: clamp(0.5rem, 0.72vw, 0.62rem); letter-spacing: 0.5em; text-transform: uppercase; color: rgba(232,197,90,1); font-weight: 300; margin-top: 0.3rem; } .hero-sub::before { content: ''; display: block; width: clamp(1.5rem, 3vw, 3rem); height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.75), transparent); margin: 0.9rem auto 0.9rem; }
 
   /* § 10. HERO BOTTOM — numbers and crest emerge from darkness, no visible band */
   .stat-bar {
