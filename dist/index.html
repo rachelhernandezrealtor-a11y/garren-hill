@@ -1341,7 +1341,7 @@
 <!-- GH_PIPELINE_TEST_CONFIRMED -->
 <!-- GH_SOURCE_FACT_SAFETY_PASS_V2 -->
 
-<div id="cursor"></div>
+
 <div id="scroll-progress"></div>
 
 <!-- NAV -->
@@ -2181,10 +2181,7 @@
   // 1. CURSOR
   const cursor = document.getElementById('cursor');
   if (cursor) {
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top  = e.clientY + 'px';
-    });
+    
   }
 
   // 2. NAV SCROLL STATE
