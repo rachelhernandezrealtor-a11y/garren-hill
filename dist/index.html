@@ -433,9 +433,9 @@
    * Base barely crosses the bottom gold line — just touching viewport bottom.
    * Belt overflow:visible lets it bleed past both lines.
    */
-    .jb-crest {
+  .jb-crest {
     position: absolute;
-    bottom: -10px;
+    bottom: -4px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
@@ -1225,15 +1225,15 @@
   </div>
   <!-- ══ JEWELED BELT ══ -->
   <div class="jeweled-belt">
-    <!-- Single absolute crest — belt buckle. Crown above top line, base at bottom line. -->
-    <div class="jb-crest">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
-           alt="Garran Hill Crest">
-    </div>
     <!-- Gold top hairline -->
     <div class="jb-line jb-line-top"></div>
-    <!-- Number row: left wing | space for crest | right wing -->
+    <!-- Number row: left wing | crest centered absolute | right wing -->
     <div class="jb-body">
+      <!-- Crest: absolute to jb-body, rises above top line, base at bottom line -->
+      <div class="jb-crest">
+        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
+             alt="Garran Hill Crest">
+      </div>
       <div class="jb-wing jb-wing-left">
         <div class="jb-stat">
           <span class="stat-num">4</span>
