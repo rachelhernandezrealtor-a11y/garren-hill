@@ -251,23 +251,7 @@
     -webkit-backdrop-filter: none;
     overflow: visible;
   }
-  /* TOP FRAME LINE — now an inline div, moves with crest */
-  .stat-bar-top-line {
-    position: absolute; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg,
-      transparent 0%,
-      transparent 8%,
-      rgba(190,162,105,0.55) 15%,
-      rgba(210,180,130,0.88) 32%,
-      rgba(232,200,148,1.0)  48%,
-      rgba(245,215,158,1.0)  50%,
-      rgba(232,200,148,1.0)  52%,
-      rgba(210,180,130,0.88) 68%,
-      rgba(190,162,105,0.55) 85%,
-      transparent 97%,
-      transparent 100%);
-    pointer-events: none;
-  }
+  
   .stat-bar::after {
     content: '';
     position: absolute; bottom: 42px; left: 0; right: 0; height: 2px; z-index: 20;
@@ -361,38 +345,14 @@
       rgba(201,169,110,0.5) 60%,
       rgba(245,224,152,0.7) 100%);
   }
-  /* TOP GOLD LINE — glued to crest top, moves with crest */
-  .stat-crest-wrap::before {
-    content: '';
-    position: absolute;
-    top: -158px;
-    left: 50%; transform: translateX(-50%);
-    width: 100vw;
-    height: 1px;
-    background: linear-gradient(90deg,
-      transparent 0%,
-      transparent 8%,
-      rgba(190,162,105,0.55) 15%,
-      rgba(210,180,130,0.88) 32%,
-      rgba(232,200,148,1.0)  48%,
-      rgba(245,215,158,1.0)  50%,
-      rgba(232,200,148,1.0)  52%,
-      rgba(210,180,130,0.88) 68%,
-      rgba(190,162,105,0.55) 85%,
-      transparent 97%,
-      transparent 100%);
-    pointer-events: none;
-    z-index: 25;
-  }
   .stat-crest-wrap {
     display: flex; align-items: center; justify-content: center;
     position: relative; z-index: 50;
-    overflow: visible;
   }
   /* THE BUCKLE — reach out and grab it */
   .stat-crest-wrap img {
     height: clamp(200px, 18vw, 260px); width: auto; display: block;
-    transform: translateY(-38px) !important;
+    transform: none;
     position: relative; z-index: 50;
     /* hard engraved shadow — no glow, no candy */
     /* sepia+hue pulls the gold cooler — aged platinum not warm brass */
@@ -410,7 +370,7 @@
   transition: none !important;
 }
   /* Hover — lifts toward you, shadow deepens as if physically rising */
-  .stat-crest-wrap img:hover { transform: translateY(-38px) !important; transition: none !important; }
+  .stat-crest-wrap img:hover { transform: none; transition: none !important; }
   /* Float — barely moves. A pendant in still air. */
   
     50%       { transform: translateY(-64px); }
@@ -1335,6 +1295,46 @@
     70%  { opacity: 0; }
     100% { opacity: 0; }
   }
+
+  /* ── CREST UNIT — one container, three elements, moves as one ── */
+  .crest-unit {
+    position: absolute;
+    bottom: 9px;          /* sits above the stat-bar bottom hairline */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    z-index: 30;
+    pointer-events: none;
+  }
+  .crest-unit-line {
+    width: 100vw;
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      transparent 8%,
+      rgba(190,162,105,0.55) 15%,
+      rgba(210,180,130,0.88) 32%,
+      rgba(232,200,148,1.0)  48%,
+      rgba(245,215,158,1.0)  50%,
+      rgba(232,200,148,1.0)  52%,
+      rgba(210,180,130,0.88) 68%,
+      rgba(190,162,105,0.55) 85%,
+      transparent 97%,
+      transparent 100%);
+  }
+  .crest-unit-img {
+    height: clamp(160px, 16vw, 220px);
+    width: auto;
+    display: block;
+    filter:
+      drop-shadow(0 0 32px rgba(201,169,110,0.28))
+      drop-shadow(0 8px 24px rgba(0,0,0,0.95))
+      drop-shadow(0 -4px 16px rgba(0,0,0,0.9));
+  }
+
 </style>
 
   <!-- JSON-LD -->
@@ -1419,10 +1419,10 @@
         <div class="stat-item"><span class="stat-num">6,072</span><span class="stat-lbl">Sq Ft</span></div>
       </div>
       <!-- CREST THRONE — focal point -->
-      <div class="stat-crest-throne">
-        <div class="stat-crest-wrap">
-          <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" width="185" height="185">
-        </div>
+      <div class="crest-unit">
+        <div class="crest-unit-line top-line"></div>
+        <img class="crest-unit-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest">
+        <div class="crest-unit-line bottom-line"></div>
       </div>
       <!-- RIGHT WING -->
       <div class="stat-wing right">
