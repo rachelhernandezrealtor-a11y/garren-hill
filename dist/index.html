@@ -346,19 +346,32 @@
    * We use negative margin on the crest to pull it past both lines.
    */
 
+  /* ══ JEWELED BELT — complete rewrite ══════════════════════════════════════
+ * One flat structure. Belt sits at absolute bottom of hero.
+ * Crest is in normal flow, centered, sized large. It overflows the belt
+ * upward (overflow:visible on belt) and the base sits at/just below the
+ * bottom gold line (negative margin-bottom on crest).
+ * NO absolute positioning on the crest. No tricks.
+ */
   .jeweled-belt {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 10;
-    background: rgba(8,8,8,0.82);
-    backdrop-filter: blur(18px) saturate(1.2);
     overflow: visible;
+    background: transparent;
+  }
+
+  /* Bottom dark panel — behind the numbers only */
+  .jb-panel {
+    background: rgba(8,8,8,0.85);
+    backdrop-filter: blur(18px) saturate(1.2);
+    width: 100%;
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
-  /* Two gold bars — full width, above and below the number row */
+  /* Gold hairlines */
   .jb-line {
     width: 100%;
     height: 2px;
@@ -372,7 +385,28 @@
       transparent 100%);
   }
 
-  /* The number row — flex, crest centered between two wings */
+  /* Crest sits in normal flow — centered, rises above belt via negative margin-top */
+  .jb-crest-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: visible;
+    /* Pull crest DOWN so base is just below bottom gold line */
+    margin-bottom: -8px;
+    position: relative;
+    z-index: 30;
+  }
+
+  .jb-crest-wrap img {
+    height: clamp(240px, 22vw, 300px);
+    width: auto;
+    display: block;
+    filter:
+      drop-shadow(0 3px 24px rgba(0,0,0,1))
+      drop-shadow(0 1px 8px rgba(0,0,0,0.95));
+  }
+
+  /* Number row */
   .jb-body {
     display: flex;
     align-items: center;
@@ -380,16 +414,19 @@
     width: 100%;
     padding: clamp(10px, 1.5vw, 18px) var(--col-pad);
     gap: 0;
-    position: relative;
-    overflow: visible;
   }
 
-  /* Wings — equal flex, stats spaced evenly */
   .jb-wing {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: space-around;
+  }
+
+  /* Reserve center space for the crest visual */
+  .jb-crest-space {
+    flex-shrink: 0;
+    width: clamp(180px, 20vw, 260px);
   }
 
   .jb-stat {
@@ -400,13 +437,12 @@
     text-align: center;
   }
 
-  /* Stat typography */
   .stat-num {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(1.6rem, 2.2vw, 2.4rem);
     font-weight: 300;
     line-height: 1;
-    background: linear-gradient(180deg, var(--gold-hi) 0%, var(--gold) 45%, #8B6914 100%);
+    background: linear-gradient(180deg, #F5E098 0%, #C4A265 45%, #8B6914 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -422,43 +458,12 @@
     color: rgba(196,162,101,0.55);
   }
 
-  /* Crest spacer — reserves center space so numbers don't overlap crest */
-  .jb-crest-space {
-    flex-shrink: 0;
-    width: clamp(200px, 22vw, 280px);
-  }
-
-  /* ── CREST: absolute belt buckle ──────────────────────────────────────────
-   * Sits on the belt. Crown rises above top gold line.
-   * Base barely crosses the bottom gold line — just touching viewport bottom.
-   * Belt overflow:visible lets it bleed past both lines.
-   */
-  .jb-crest {
-    position: absolute;
-    bottom: -4px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 20;
-    pointer-events: none;
-    display: flex;
-    align-items: flex-end;
-  }
-    .jb-crest img {
-    height: clamp(240px, 22vw, 300px);
-    width: auto;
-    display: block;
-    filter:
-      drop-shadow(0 3px 20px rgba(0,0,0,1))
-      drop-shadow(0 1px 8px rgba(0,0,0,0.95));
-  }
-
   @media (max-width: 768px) {
-    .jb-crest { display: none; }
+    .jb-crest-wrap { display: none; }
+    .jb-crest-space { display: none; }
     .jb-wing { justify-content: space-evenly; }
     .jb-body { padding: clamp(8px,2vw,14px) 1rem; }
   }
-
-  
 
   /* § ACT I — ARRIVAL ─────────────────────────────────────────────────
      SPEED: SLOW. First impression. One image. One feeling.
@@ -1225,47 +1230,47 @@
   </div>
   <!-- ══ JEWELED BELT ══ -->
   <div class="jeweled-belt">
-    <!-- Gold top hairline -->
-    <div class="jb-line jb-line-top"></div>
-    <!-- Number row: left wing | crest centered absolute | right wing -->
-    <div class="jb-body">
-      <!-- Crest: absolute to jb-body, rises above top line, base at bottom line -->
-      <div class="jb-crest">
-        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
-             alt="Garran Hill Crest">
+    <!-- Crest: in normal flow, overflows belt upward, base at bottom gold line -->
+    <div class="jb-crest-wrap">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
+           alt="Garran Hill Crest">
+    </div>
+    <!-- Dark panel wraps the gold lines and number row -->
+    <div class="jb-panel">
+      <div class="jb-line jb-line-top"></div>
+      <div class="jb-body">
+        <div class="jb-wing jb-wing-left">
+          <div class="jb-stat">
+            <span class="stat-num">4</span>
+            <span class="stat-label">Bedrooms</span>
+          </div>
+          <div class="jb-stat">
+            <span class="stat-num">6</span>
+            <span class="stat-label">Bathrooms</span>
+          </div>
+          <div class="jb-stat">
+            <span class="stat-num">6,072</span>
+            <span class="stat-label">Sq Ft</span>
+          </div>
+        </div>
+        <div class="jb-crest-space"></div>
+        <div class="jb-wing jb-wing-right">
+          <div class="jb-stat">
+            <span class="stat-num">4.15</span>
+            <span class="stat-label">Acres</span>
+          </div>
+          <div class="jb-stat">
+            <span class="stat-num">Est. 1916</span>
+            <span class="stat-label">Established</span>
+          </div>
+          <div class="jb-stat">
+            <span class="stat-num">$4,250,000</span>
+            <span class="stat-label">Offered At</span>
+          </div>
+        </div>
       </div>
-      <div class="jb-wing jb-wing-left">
-        <div class="jb-stat">
-          <span class="stat-num">4</span>
-          <span class="stat-label">Bedrooms</span>
-        </div>
-        <div class="jb-stat">
-          <span class="stat-num">6</span>
-          <span class="stat-label">Bathrooms</span>
-        </div>
-        <div class="jb-stat">
-          <span class="stat-num">6,072</span>
-          <span class="stat-label">Sq Ft</span>
-        </div>
-      </div>
-      <div class="jb-crest-space"></div>
-      <div class="jb-wing jb-wing-right">
-        <div class="jb-stat">
-          <span class="stat-num">4.15</span>
-          <span class="stat-label">Acres</span>
-        </div>
-        <div class="jb-stat">
-          <span class="stat-num">Est. 1916</span>
-          <span class="stat-label">Established</span>
-        </div>
-        <div class="jb-stat">
-          <span class="stat-num">$4,250,000</span>
-          <span class="stat-label">Offered At</span>
-        </div>
-      </div>
-    </div><!-- /.jb-body -->
-    <!-- Gold bottom hairline -->
-    <div class="jb-line jb-line-bottom"></div>
+      <div class="jb-line jb-line-bottom"></div>
+    </div>
   </div>
 </section>
 
