@@ -308,7 +308,11 @@
     text-shadow:
       0 1px 2px rgba(0,0,0,0.95),
       0 -1px 0 rgba(220,210,185,0.06);
-  }
+  
+    background: linear-gradient(180deg, #F5E098 0%, #C9A96E 45%, #8B6914 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;}
   .stat-lbl {
     display: block; font-size: 0.36rem; letter-spacing: 0.58em;
     text-transform: uppercase; color: rgba(245,240,232,0.42);
@@ -363,7 +367,7 @@
   /* THE BUCKLE — reach out and grab it */
   .stat-crest-wrap img {
     height: clamp(130px, 14vw, 192px); width: auto; display: block;
-    transform: translateY(-58px);
+    transform: translateY(80px);
     /* hard engraved shadow — no glow, no candy */
     /* sepia+hue pulls the gold cooler — aged platinum not warm brass */
     filter:
@@ -390,7 +394,7 @@
   }
   /* Float — barely moves. A pendant in still air. */
   @keyframes buckleFloat {
-    0%, 100% { transform: translateY(-58px); }
+    0%, 100% { transform: translateY(80px); }
     50%       { transform: translateY(-64px); }
   }
   .stat-price .stat-num {
