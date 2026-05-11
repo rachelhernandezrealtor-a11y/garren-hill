@@ -376,7 +376,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr auto 1fr 1fr;
     align-items: center;
-    padding: clamp(18px, 2.4vw, 28px) var(--col-pad);
+    padding: clamp(10px, 1.4vw, 16px) var(--col-pad);
     gap: 0;
     position: relative;
     overflow: visible;
@@ -394,20 +394,17 @@
       rgba(196,162,101,0.2) 88%, transparent 100%);
   }
 
-  /* CREST — centered in stat bar, no translateY, contained within hero */
+  /* CREST — dominant focal point, fully within hero bounds */
   .stat-crest-wrap {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     z-index: 10;
-    /* negative vertical margin so crest slightly overlaps the gold lines */
-    margin-top: -24px;
-    margin-bottom: -24px;
   }
 
   .stat-crest-wrap img {
-    height: clamp(160px, 16vw, 220px);
+    height: clamp(100px, 12vw, 160px);
     width: auto;
     display: block;
     filter:
