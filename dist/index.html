@@ -1380,6 +1380,32 @@
     .stat-belt-crest { display: none; }
     .stat-wing { gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
   }
+
+  /* TOP GOLD LINE — pseudo-element on crest, travels with it always */
+  .stat-belt-crest::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent 0%, transparent 5%,
+      rgba(190,162,105,0.4) 12%,
+      rgba(210,180,130,0.75) 28%,
+      rgba(232,200,148,0.95) 46%,
+      rgba(245,215,158,1.0)  50%,
+      rgba(232,200,148,0.95) 54%,
+      rgba(210,180,130,0.75) 72%,
+      rgba(190,162,105,0.4) 88%,
+      transparent 95%, transparent 100%);
+    pointer-events: none;
+  }
+  /* Make .stat-belt-crest position:relative so ::before anchors to it */
+  .stat-belt-crest {
+    position: relative;
+  }
 </style>
 
   <!-- JSON-LD -->
@@ -1454,9 +1480,7 @@
     <p class="hero-sub">Neo-Georgian &nbsp;&middot;&nbsp; Built 1915–16 for Walter Hines Page</p>
   </div>
   <div class="stat-belt">
-    <!-- TOP GOLD HAIRLINE — runs full width -->
-    <div class="stat-belt-line"></div>
-    <!-- BODY: wings + crest, all on one row -->
+    <!-- TOP GOLD HAIRLINE — runs full width --><!-- BODY: wings + crest, all on one row -->
     <div class="stat-belt-body">
       <!-- LEFT WING -->
       <div class="stat-wing">
