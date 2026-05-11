@@ -1338,11 +1338,7 @@
     <div style="position:absolute;top:0;left:0;right:0;height:1px;z-index:25;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,0.0) 5%,rgba(201,169,110,0.5) 25%,rgba(245,224,152,0.85) 50%,rgba(201,169,110,0.5) 75%,rgba(201,169,110,0.0) 95%,transparent 100%);"></div>
     <!-- BOTTOM hairline -->
     <div style="position:absolute;bottom:18px;left:0;right:0;height:1px;z-index:25;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,0.0) 5%,rgba(201,169,110,0.85) 20%,rgba(245,224,152,1.0) 50%,rgba(201,169,110,0.85) 80%,rgba(201,169,110,0.0) 95%,transparent 100%);box-shadow:0 0 6px rgba(201,169,110,0.5);"></div>
-    <!-- CREST: centered ON top hairline — half above into hero, half below into bar -->
-    <div style="position:absolute;left:50%;top:0;transform:translate(-50%,-60%);z-index:100;pointer-events:none;">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" style="height:clamp(200px,20vw,280px);width:auto;display:block;filter:drop-shadow(0 8px 28px rgba(0,0,0,0.98)) drop-shadow(0 2px 6px rgba(0,0,0,1));">
-    </div>
-    <!-- STAT NUMBERS: centered between two hairlines -->
+    <!-- STAT NUMBERS + CREST inline flex -->
     <div class="stat-numbers">
       <div class="stat-wing" style="flex:1;display:flex;align-items:center;justify-content:flex-end;gap:clamp(1.2rem,3vw,4rem);">
         <div class="stat-item"><span class="stat-num">4</span><span class="stat-lbl">Bedrooms</span></div>
@@ -1351,7 +1347,10 @@
         <div class="stat-div"></div>
         <div class="stat-item"><span class="stat-num">6,072</span><span class="stat-lbl">Sq Ft</span></div>
       </div>
-      <div style="flex-shrink:0;width:clamp(140px,14vw,200px);"></div>
+      <!-- CREST: inline center, floats up via translateY -->
+      <div style="flex-shrink:0;display:flex;align-items:center;justify-content:center;padding:0 clamp(1rem,2.5vw,3rem);">
+        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" style="height:clamp(200px,20vw,280px);width:auto;display:block;transform:translateY(-60%);z-index:100;position:relative;filter:drop-shadow(0 8px 28px rgba(0,0,0,0.98)) drop-shadow(0 2px 6px rgba(0,0,0,1));">
+      </div>
       <div class="stat-wing" style="flex:1;display:flex;align-items:center;justify-content:flex-start;gap:clamp(1.2rem,3vw,4rem);">
         <div class="stat-item"><span class="stat-num">4.15</span><span class="stat-lbl">Acres</span></div>
         <div class="stat-div"></div>
