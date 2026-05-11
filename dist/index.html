@@ -368,21 +368,19 @@
   .stat-crest-wrap img {
     height: clamp(130px, 14vw, 192px); width: auto; display: block;
     transform: translateY(80px);
-    /* hard engraved shadow — no glow, no candy */
-    /* sepia+hue pulls the gold cooler — aged platinum not warm brass */
+    animation: none !important;
+    transition: none !important;
     filter:
       sepia(0.15) hue-rotate(-8deg) saturate(0.88) brightness(1.05)
       drop-shadow(0 2px 1px rgba(0,0,0,1))
       drop-shadow(0 5px 10px rgba(0,0,0,0.98))
       drop-shadow(0 14px 40px rgba(0,0,0,0.94))
       drop-shadow(0 -3px 5px rgba(0,0,0,0.88));
-    /* animation removed — crest is static */
-    /* transition: none */
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
   }
   /* Hover — lifts toward you, shadow deepens as if physically rising */
-  .stat-crest-wrap img:hover { /* no hover movement */ }
+  .stat-crest-wrap img:hover { transform: translateY(80px) !important; animation: none !important; transition: none !important; }
   .stat-price .stat-num {
     font-size: clamp(0.92rem, 1.55vw, 1.35rem);
     letter-spacing: 0.06em;
