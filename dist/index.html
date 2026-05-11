@@ -1183,6 +1183,22 @@
   }
 
   /* ══ END STYLES ══════════════════════════════════════════════════════ */
+  
+  /* EMERGENCY OVERRIDE — BELT MUST BE INSIDE HERO */
+  section.hero {
+    position: relative !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+    overflow: hidden !important;
+  }
+  section.hero .stat-belt {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 10 !important;
+  }
   </style>
 </head>
 
