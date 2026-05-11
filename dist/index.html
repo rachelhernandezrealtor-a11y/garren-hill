@@ -283,12 +283,12 @@
   .hero-overlay {
     position: absolute; inset: 0;
     background:
-      /* side vignettes — softer */
-      linear-gradient(to right, rgba(11,11,11,0.42) 0%, transparent 22%, transparent 78%, rgba(11,11,11,0.42) 100%),
-      /* top dark cap — holds nav */
-      linear-gradient(to bottom, rgba(11,11,11,0.55) 0%, transparent 20%),
-      /* bottom — stat belt emerges from dark */
-      linear-gradient(to top, rgba(11,11,11,1.0) 0%, rgba(11,11,11,0.88) 12%, rgba(11,11,11,0.0) 42%);
+      /* side vignettes */
+      linear-gradient(to right, rgba(11,11,11,0.35) 0%, transparent 18%, transparent 82%, rgba(11,11,11,0.35) 100%),
+      /* top dark cap */
+      linear-gradient(to bottom, rgba(11,11,11,0.65) 0%, transparent 18%),
+      /* bottom fade — stat belt reads on video */
+      linear-gradient(to top, rgba(11,11,11,0.96) 0%, rgba(11,11,11,0.78) 18%, rgba(11,11,11,0.0) 45%);
   }
   .hero-content {
     position: relative;
@@ -353,11 +353,12 @@
   */
 
   .stat-belt {
-    position: relative;
-    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     padding-bottom: env(safe-area-inset-bottom, 0px);
     z-index: 3;
-    flex-shrink: 0;
   }
 
   /* TOP GOLD HAIRLINE */
@@ -1194,8 +1195,10 @@
     overflow: hidden !important;
   }
   section.hero .stat-belt {
-    position: relative !important;
-    flex-shrink: 0 !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
     z-index: 10 !important;
   }
   </style>
