@@ -376,7 +376,7 @@
       drop-shadow(0 5px 10px rgba(0,0,0,0.98))
       drop-shadow(0 14px 40px rgba(0,0,0,0.94))
       drop-shadow(0 -3px 5px rgba(0,0,0,0.88));
-    animation: buckleFloat 7s ease-in-out infinite;
+    /* animation removed — crest is static */
     transition: transform 0.7s cubic-bezier(.16,1,.3,1), filter 0.7s ease;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
@@ -393,8 +393,6 @@
     animation: none;
   }
   /* Float — barely moves. A pendant in still air. */
-  @keyframes buckleFloat {
-    0%, 100% { transform: translateY(80px); }
     50%       { transform: translateY(-64px); }
   }
   .stat-price .stat-num {
