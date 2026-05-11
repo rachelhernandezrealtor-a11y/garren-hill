@@ -71,7 +71,7 @@
     flex-shrink: 0;
     background: rgba(10,10,10,0.85);
     border-top: 1px solid rgba(201,169,110,0.3);
-    border-bottom: 1px solid rgba(201,169,110,0.3);
+    border-bottom: 1px solid rgba(201,169,110,0.35);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -80,6 +80,7 @@
     padding: clamp(28px, 3vw, 44px) clamp(20px, 6vw, 96px);
     box-sizing: border-box;
     overflow: visible;
+    position: relative;
   }
   .stat-item {
     display: flex;
@@ -126,7 +127,9 @@
     height: auto;
     display: block;
     background: transparent;
-    filter: drop-shadow(0 0 12px rgba(201,169,110,0.4));
+    position: relative;
+    transform: translateY(52px);
+    filter: drop-shadow(0 4px 20px rgba(0,0,0,0.98)) drop-shadow(0 0 10px rgba(0,0,0,0.8));
   }
   .stat-crest-text {
     font-family: "Cormorant Garamond", serif;
