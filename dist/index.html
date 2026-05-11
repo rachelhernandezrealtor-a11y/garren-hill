@@ -362,6 +362,29 @@
       rgba(201,169,110,0.5) 60%,
       rgba(245,224,152,0.7) 100%);
   }
+  /* TOP GOLD LINE — glued to crest top, moves with crest */
+  .stat-crest-wrap::before {
+    content: '';
+    position: absolute;
+    top: -38px;
+    left: 50%; transform: translateX(-50%);
+    width: 100vw;
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      transparent 8%,
+      rgba(190,162,105,0.55) 15%,
+      rgba(210,180,130,0.88) 32%,
+      rgba(232,200,148,1.0)  48%,
+      rgba(245,215,158,1.0)  50%,
+      rgba(232,200,148,1.0)  52%,
+      rgba(210,180,130,0.88) 68%,
+      rgba(190,162,105,0.55) 85%,
+      transparent 97%,
+      transparent 100%);
+    pointer-events: none;
+    z-index: 25;
+  }
   .stat-crest-wrap {
     display: flex; align-items: center; justify-content: center;
     position: relative; z-index: 50;
@@ -1386,7 +1409,6 @@
     <p class="hero-sub">Neo-Georgian &nbsp;&middot;&nbsp; Built 1915–16 for Walter Hines Page</p>
   </div>
   <div class="stat-bar">
-    <div class="stat-bar-top-line" style="top:-158px;"></div>
     <div class="stat-numbers">
       <!-- LEFT WING -->
       <div class="stat-wing">
