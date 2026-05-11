@@ -1313,7 +1313,7 @@
 
   /* CREST — in-flow center item, bigger, hangs below bottom line */
   .stat-belt-crest {
-    flex: 0 0 auto;
+    flex: 0 0 clamp(120px, 13vw, 160px);  /* locked width — wings get the rest */
     display: flex;
     align-items: flex-end;
     justify-content: center;
