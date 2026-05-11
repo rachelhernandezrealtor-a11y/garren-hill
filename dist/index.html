@@ -271,7 +271,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: visible;
+    overflow: hidden;
     background: var(--bg-primary);
   }
   .hero-video {
@@ -350,11 +350,11 @@
     position: relative;
     width: 100%;
     flex-shrink: 0;
+    margin-top: auto;           /* pins belt to bottom of 100vh hero */
     background: rgba(8,8,8,0.82);
     backdrop-filter: blur(18px) saturate(1.2);
+    overflow: visible;          /* lets crest pierce upward and downward */
     padding-bottom: env(safe-area-inset-bottom, 0px);
-    /* Extra bottom padding so crest base has room to hang below bottom line */
-    padding-bottom: max(env(safe-area-inset-bottom, 0px), 0px);
   }
 
   /* Two gold bars — full width, above and below the number row */
@@ -424,7 +424,7 @@
   /* Crest spacer — reserves center space so numbers don't overlap crest */
   .jb-crest-space {
     flex-shrink: 0;
-    width: clamp(280px, 32vw, 400px);
+    width: clamp(120px, 14vw, 180px);
   }
 
   /* ═══ HERO CREST — absolute buckle on hero section ═══
@@ -434,20 +434,18 @@
    */
   .hero-crest {
     position: absolute;
-    bottom: 0;
+    bottom: 0;                  /* base touches the bottom gold line */
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
     display: flex;
     align-items: flex-end;
     pointer-events: none;
-    /* Push base slightly below bottom line — the 1px bottom hairline
-       is the visual floor. The crest base sits right at it. */
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
   .hero-crest img {
-    height: clamp(280px, 32vw, 400px);
+    height: clamp(140px, 16vw, 200px);
     width: auto;
     display: block;
     filter:
@@ -1272,11 +1270,11 @@
     </div><!-- /.jb-body -->
     <!-- Gold bottom hairline -->
     <div class="jb-line jb-line-bottom"></div>
-  </div>
-  <!-- ═══ CREST: absolute on hero, pierces belt from above ═══ -->
-  <div class="hero-crest">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
-         alt="Garran Hill Crest">
+    <!-- CREST: absolute on belt, base at bottom gold line, crown rises above top line -->
+    <div class="hero-crest">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
+           alt="Garran Hill Crest">
+    </div>
   </div>
 </section>
 
