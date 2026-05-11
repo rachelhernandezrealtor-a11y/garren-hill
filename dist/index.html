@@ -1381,35 +1381,18 @@
     .stat-wing { gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
   }
 
-  /* TOP GOLD LINE — on stat-belt-body, crowns the numbers row */
-  .stat-belt-body {
-    position: relative;
-  }
-  .stat-belt-body::before {
-    content: '';
+  /* CREST — absolutely positioned on .stat-belt, rises above top line */
+  .stat-belt-crest {
     position: absolute;
-    top: 0;
+    bottom: 1px;          /* sits on the bottom gold line */
     left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    height: 1px;
-    background: linear-gradient(90deg,
-      transparent 0%, transparent 5%,
-      rgba(190,162,105,0.4) 12%,
-      rgba(210,180,130,0.75) 28%,
-      rgba(232,200,148,0.95) 46%,
-      rgba(245,215,158,1.0)  50%,
-      rgba(232,200,148,0.95) 54%,
-      rgba(210,180,130,0.75) 72%,
-      rgba(190,162,105,0.4) 88%,
-      transparent 95%, transparent 100%);
+    transform: translateX(-50%) translateY(28%);  /* 28% hang below bottom line */
+    z-index: 30;
     pointer-events: none;
   }
-  /* Crest rises above the body row — pull it up with negative margin */
-  .stat-belt-crest {
-    position: relative;  /* for z-index */
-    margin-top: clamp(-120px, -12vw, -160px);  /* pulls crest UP above top gold line */
-  }
+  /* Make belt position:relative so crest absolute works */
+  .stat-belt { position: absolute; }  /* already set, but ensure relative context */
+
 </style>
 
   <!-- JSON-LD -->
@@ -1484,7 +1467,9 @@
     <p class="hero-sub">Neo-Georgian &nbsp;&middot;&nbsp; Built 1915–16 for Walter Hines Page</p>
   </div>
   <div class="stat-belt">
-    <!-- TOP GOLD HAIRLINE — runs full width --><!-- BODY: wings + crest, all on one row -->
+    <!-- TOP GOLD HAIRLINE — runs full width -->
+    <div class="stat-belt-line" aria-hidden="true"></div>
+    <!-- BODY: wings + crest, all on one row -->
     <div class="stat-belt-body">
       <!-- LEFT WING -->
       <div class="stat-wing">
