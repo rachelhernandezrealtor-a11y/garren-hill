@@ -349,6 +349,7 @@
     bottom: 0; left: 0; right: 0;
     padding-bottom: env(safe-area-inset-bottom, 0px);
     z-index: 3;
+    overflow: visible;
   }
 
   /* TOP GOLD HAIRLINE */
@@ -389,22 +390,24 @@
       rgba(196,162,101,0.2) 88%, transparent 100%);
   }
 
-  /* CREST — absolute, centered, straddles both hairlines */
+  /* CREST — absolute on .stat-belt, rises UP through both hairlines */
+  /* .stat-belt height = 1px top + stat-bar height + 1px bottom        */
+  /* crest bottom = 0 on .stat-belt = exactly at the bottom hairline    */
+  /* crest rises upward (it's tall) through the top hairline and hero   */
   .stat-crest-wrap {
     display: flex;
     align-items: flex-end;
     justify-content: center;
     position: absolute;
     left: 50%;
-    /* bottom: sits so crest base is ~6px below the bottom hairline */
-    bottom: -6px;
+    bottom: 0;
     transform: translateX(-50%);
     z-index: 10;
     pointer-events: none;
   }
 
   .stat-crest-wrap img {
-    height: clamp(200px, 26vw, 320px);
+    height: clamp(220px, 28vw, 340px);
     width: auto;
     display: block;
     filter:
