@@ -1202,6 +1202,36 @@
     z-index: 10 !important;
   }
   </style>
+
+<script id="diag-script">
+window.addEventListener('load', function() {
+  var hero = document.querySelector('section.hero');
+  var belt = document.querySelector('.stat-belt');
+  var cs_hero = window.getComputedStyle(hero);
+  var cs_belt = window.getComputedStyle(belt);
+  
+  var log = {
+    hero_height: cs_hero.height,
+    hero_position: cs_hero.position,
+    hero_overflow: cs_hero.overflow,
+    hero_display: cs_hero.display,
+    hero_offsetHeight: hero.offsetHeight,
+    hero_BCR: JSON.stringify(hero.getBoundingClientRect()),
+    belt_position: cs_belt.position,
+    belt_bottom: cs_belt.bottom,
+    belt_BCR: JSON.stringify(belt.getBoundingClientRect()),
+    belt_offsetHeight: belt.offsetHeight,
+    vh: window.innerHeight
+  };
+  
+  // Write to a visible div
+  var d = document.createElement('div');
+  d.id = 'diag-output';
+  d.style.cssText = 'position:fixed;top:0;left:0;background:red;color:white;z-index:99999;font-size:10px;padding:4px;white-space:pre;';
+  d.textContent = JSON.stringify(log, null, 2);
+  document.body.appendChild(d);
+});
+</script>
 </head>
 
 <body>
