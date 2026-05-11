@@ -1305,6 +1305,34 @@
     70%  { opacity: 0; }
     100% { opacity: 0; }
   }
+
+  /* ── THEN / NOW KEN BURNS ── */
+  .then-now-wrap .then-now-now {
+    animation: kenBurnsNow 8s ease-in-out infinite alternate;
+  }
+  .then-now-wrap .then-now-then {
+    animation: kenBurnsThen 16s ease-in-out infinite;
+  }
+  @keyframes kenBurnsThen {
+    0%   { opacity: 0; transform: scale(1.03); }
+    20%  { opacity: 0; }
+    35%  { opacity: 0.88; }
+    65%  { opacity: 0.88; }
+    80%  { opacity: 0; }
+    100% { opacity: 0; transform: scale(1.06); }
+  }
+  .then-now-wrap .then-now-then.active ~ .then-label,
+  .then-now-wrap:hover .then-label { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) {
+    .then-now-now, .then-now-then { animation: none !important; }
+    .then-now-then { opacity: 0.5 !important; }
+  }
+  @media (max-width: 768px) {
+    .then-now-wrap { height: 52vw !important; min-height: 280px; }
+    .then-now-now, .then-now-then { animation: none !important; }
+    .then-now-then { opacity: 0 !important; }
+  }
+
 </style>
 
   <!-- JSON-LD -->
@@ -1405,6 +1433,30 @@
     </div>
   </div>
 </section>
+<section id="then-now" class="editorial-fullbleed" aria-label="Then and now: Garran Hill across a century">
+  <div class="then-now-wrap" style="position:relative;width:100%;height:clamp(60vh,75vh,88vh);overflow:hidden;">
+    <!-- NOW — modern exterior, underneath -->
+    <img class="then-now-img then-now-now img-reveal"
+      loading="lazy" decoding="async"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244059/gh_key/gh_191.jpg"
+      alt="Garran Hill today — the estate as it stands"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;">
+    <!-- THEN — sepia gate, fades over -->
+    <img class="then-now-img then-now-then"
+      loading="lazy" decoding="async"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:60,e_sharpen:15,f_auto,q_auto,c_limit,w_1600/v1777411350/gh_key/gh_gate_sepia.jpg"
+      alt="Garran Hill — the old gate, early period photograph"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:0;">
+    <div class="then-now-caption reveal" style="position:absolute;bottom:0;left:0;right:0;padding:clamp(2rem,5vw,4rem) var(--col-pad);background:linear-gradient(to top,rgba(8,8,8,0.82) 0%,transparent 100%);z-index:2;">
+      <span class="eyebrow" style="display:block;margin-bottom:0.6em;">Garran Hill &middot; Then &amp; Now</span>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.6rem);font-weight:300;color:var(--cream);max-width:580px;line-height:1.5;font-style:italic;">One century between the photographs. The gate remains.</p>
+    </div>
+    <div class="then-label" style="position:absolute;top:clamp(1.5rem,3vw,2.5rem);left:var(--col-pad);z-index:3;opacity:0;transition:opacity 0.8s ease;">
+      <span style="font-size:0.48rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(245,224,152,0.6);font-family:'Cormorant Garamond',serif;">Then</span>
+    </div>
+  </div>
+</section>
+
 
 <section id="then-now" class="editorial-fullbleed" aria-label="Then and now: Garran Hill across a century">
   <div class="then-now-wrap" style="position:relative;width:100%;height:clamp(60vh,75vh,88vh);overflow:hidden;">
