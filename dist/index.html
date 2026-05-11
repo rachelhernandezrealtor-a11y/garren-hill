@@ -238,7 +238,7 @@
 
   /* § 10. HERO BOTTOM — numbers and crest emerge from darkness, no visible band */
   .stat-bar {
-    position: absolute; bottom: 0; left: 0; right: 0; z-index: 10;
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 20;
     display: flex; align-items: center; justify-content: center;
     padding: 0 clamp(2rem, 6vw, 8rem);
     height: 96px;
@@ -363,11 +363,13 @@
   }
   .stat-crest-wrap {
     display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 50;
   }
   /* THE BUCKLE — reach out and grab it */
   .stat-crest-wrap img {
     height: clamp(160px, 16vw, 220px); width: auto; display: block;
     transform: translateY(64px) !important;
+    position: relative; z-index: 50;
     /* hard engraved shadow — no glow, no candy */
     /* sepia+hue pulls the gold cooler — aged platinum not warm brass */
     filter:
