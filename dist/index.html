@@ -101,7 +101,7 @@
     padding: 0 var(--col-pad);
     background: rgba(5,5,5,0.68);
     backdrop-filter: blur(22px) saturate(1.6);
-    box-shadow: 0 1px 0 rgba(201,169,110,0.28), 0 16px 48px rgba(0,0,0,0.6);
+    
     transition: height 0.3s ease, background 0.3s ease;
   }
   nav::before {
@@ -290,18 +290,7 @@
   .stat-wing.right { justify-content: flex-start; }
   /* STAT ITEMS — engraved settings */
   .stat-item { text-align: center; flex-shrink: 0; }
-  .stat-num {
-    display: block;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1rem, 1.6vw, 1.45rem); font-weight: 300;
-    letter-spacing: 0.1em;
-    line-height: 1;
-    background: linear-gradient(180deg, #F5E098 0%, #C9A96E 50%, #8B6914 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.9));
-  }
+  .stat-num { color: #C9A96E; font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 2vw, 1.6rem); font-weight: 300; letter-spacing: 0.08em; }
   .stat-lbl {
     display: block; font-size: 0.36rem; letter-spacing: 0.58em;
     text-transform: uppercase; color: rgba(245,240,232,0.48);
@@ -357,11 +346,7 @@
   .stat-crest-wrap img {
     height: clamp(120px, 12vw, 170px); width: auto; display: block;
     transform: translateY(-28px);
-    filter:
-      drop-shadow(0 2px 4px rgba(0,0,0,1))
-      drop-shadow(0 8px 20px rgba(0,0,0,0.98))
-      drop-shadow(0 24px 50px rgba(0,0,0,0.92))
-      drop-shadow(0 0 30px rgba(201,169,110,0.28));
+    filter: drop-shadow(0 6px 24px rgba(0,0,0,0.95)) drop-shadow(0 2px 4px rgba(0,0,0,1));
     animation: buckleFloat 7s ease-in-out infinite;
     transition: transform 0.7s cubic-bezier(.16,1,.3,1), filter 0.7s ease;
   }
@@ -378,8 +363,7 @@
     animation: none;
   }
   /* Float — barely moves. A pendant in still air. */
-  @keyframes buckleFloat {
-    0%, 100% { transform: translateY(-58px); }
+  @keyframes buckleFloat { 0%,100%{transform:translateY(-28px)} 50%{transform:translateY(-32px)} }
     50%       { transform: translateY(-64px); }
   }
   .stat-price .stat-num {
