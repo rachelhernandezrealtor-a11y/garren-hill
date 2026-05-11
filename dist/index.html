@@ -1262,7 +1262,7 @@
 
   .stat-belt {
     position: absolute;
-    bottom: clamp(55px, 5.5vw, 68px);  /* lifts belt so crest hang is fully visible */
+    bottom: clamp(36px, 3.5vw, 48px);  /* hang = ~26px below bottom line */
     left: 0;
     right: 0;
     z-index: 20;
@@ -1322,7 +1322,7 @@
        Visible seal = ~62% = 149px. Half visible = 75px.
        Want ~50px of visible seal below line.
        translateY = 50px + 43px = 93px = ~39% of 240px → use 38% */
-    transform: translateY(38%);
+    transform: translateY(28%);  /* 28% of 260px = 73px down, 73-47 = 26px visible hang */
     z-index: 30;
     pointer-events: none;
   }
