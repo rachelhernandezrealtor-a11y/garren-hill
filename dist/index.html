@@ -199,21 +199,23 @@
   }
   .hero-overlay {
     position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(180deg,
-      rgba(5,5,5,0.28) 0%,
-      rgba(5,5,5,0.22) 18%,
-      rgba(5,5,5,0.35) 42%,
-      rgba(5,5,5,0.45) 60%,
-      rgba(5,5,5,0.72) 76%,
-      rgba(5,5,5,0.88) 90%,
-      rgba(5,5,5,0.95) 100%);
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 38%, rgba(5,5,5,0.55) 0%, transparent 100%),
+      linear-gradient(180deg,
+      rgba(5,5,5,0.45) 0%,
+      rgba(5,5,5,0.28) 20%,
+      rgba(5,5,5,0.42) 45%,
+      rgba(5,5,5,0.58) 62%,
+      rgba(5,5,5,0.78) 78%,
+      rgba(5,5,5,0.90) 90%,
+      rgba(5,5,5,0.96) 100%);
   }
   .hero-text {
     position: absolute; inset: 0; z-index: 2;
     display: flex; flex-direction: column;
     align-items: center; justify-content: flex-start; text-align: center;
     padding: 0 clamp(1.5rem, 6vw, 8rem);
-    padding-top: clamp(7rem, 14vh, 11rem);
+    padding-top: clamp(5rem, 18vh, 9rem);
     padding-bottom: clamp(8rem, 22vh, 16rem);
   }
   .hero-eyebrow { font-size: clamp(0.52rem, 0.75vw, 0.65rem); letter-spacing: 0.55em; text-transform: uppercase; color: rgba(245,240,232,1); margin-bottom: 1.8rem; font-weight: 300; display: flex; align-items: center; justify-content: center; gap: 1.4rem; } .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: clamp(1.5rem, 4vw, 4rem); height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.78)); flex-shrink: 0; } .hero-eyebrow::after { background: linear-gradient(to left, transparent, rgba(201,168,76,0.78)); }
