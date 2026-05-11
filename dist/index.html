@@ -1912,5 +1912,27 @@ document.getElementById('inquiry-form').addEventListener('submit', async (e) => 
   btn.textContent = 'Request a Private Showing';
 });
 </script>
+
+<script>
+  (function() {
+    function positionBelt() {
+      var hero = document.querySelector('.hero');
+      var belt = document.querySelector('.stat-belt');
+      if (!hero || !belt) return;
+      // Force hero to exactly 100vh
+      hero.style.position = 'relative';
+      hero.style.height = '100vh';
+      hero.style.overflow = 'hidden';
+      // Force belt to bottom of hero
+      belt.style.position = 'absolute';
+      belt.style.bottom = '0';
+      belt.style.left = '0';
+      belt.style.right = '0';
+      belt.style.zIndex = '10';
+    }
+    positionBelt();
+    window.addEventListener('resize', positionBelt);
+  })();
+</script>
 </body>
 </html>
