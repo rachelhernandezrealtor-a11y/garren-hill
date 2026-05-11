@@ -1253,20 +1253,26 @@
 
 
   /* ============================================================
-     STAT BELT — one container, everything moves together
+     STAT BELT — FINAL ARCHITECTURE
+     One absolutely-positioned container on the hero.
+     Move .stat-belt bottom = move everything as one unit.
+     Structure: top-line | body (wing | CREST | wing) | bottom-line
+     Crest is IN-FLOW flex item — no absolute positioning.
      ============================================================ */
+
   .stat-belt {
     position: absolute;
-    bottom: clamp(60px, 6.5vw, 80px);
-    left: 0; right: 0;
+    bottom: 0;                    /* anchor to bottom of hero */
+    left: 0;
+    right: 0;
     z-index: 20;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    overflow: visible;
+    overflow: visible;            /* crest hangs below */
   }
 
-  /* Gold hairlines — top and bottom of belt */
+  /* Gold hairlines */
   .stat-belt-line {
     width: 100%;
     height: 1px;
@@ -1285,50 +1291,58 @@
       transparent 100%);
   }
 
-  /* Body row: left wing | crest | right wing */
+  /* Body: left wing | CREST | right wing — all in normal flex flow */
   .stat-belt-body {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;        /* all items anchor to bottom gold line */
+    justify-content: space-between;
     width: 100%;
-    padding: 0 clamp(1.5rem, 5vw, 5rem);
+    padding: 0 clamp(2rem, 5vw, 6rem);
   }
 
-  /* Crest: belt buckle — centered, sits on the bottom line with slight overhang */
-  .stat-belt-crest {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%) translateY(39%);
-    z-index: 30;
-    pointer-events: none;
-  }
-  .stat-belt-crest img {
-    height: clamp(160px, 16vw, 220px);
-    width: auto;
-    display: block;
-    filter:
-      drop-shadow(0 0 28px rgba(0,0,0,0.95))
-      drop-shadow(0 0 14px rgba(201,169,110,0.3));
-    pointer-events: none;
-  }
-
-  /* Wings: numbers on each side */
+  /* Wings: equal width, numbers centered */
   .stat-wing {
     flex: 1 1 0;
     min-width: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: nowrap;
-    gap: clamp(0.5rem, 1.2vw, 1.8rem);
-    padding: clamp(0.8rem, 1.5vw, 1.4rem) 0;
+    gap: clamp(0.6rem, 1.4vw, 2rem);
+    padding: clamp(1rem, 1.8vw, 1.6rem) 0;
   }
+
+  /* CREST — in-flow center item, bigger, hangs below bottom line */
+  .stat-belt-crest {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    /* Pull crest DOWN so it hangs below the bottom line.
+       PNG height = 240px. Bottom transparent pad ~18% = 43px.
+       Visible seal = ~62% = 149px. Half visible = 75px.
+       Want ~50px of visible seal below line.
+       translateY = 50px + 43px = 93px = ~39% of 240px → use 38% */
+    transform: translateY(38%);
+    z-index: 30;
+    pointer-events: none;
+  }
+  .stat-belt-crest img {
+    height: clamp(200px, 20vw, 260px);   /* BIGGER — it's the focal point */
+    width: auto;
+    display: block;
+    filter:
+      drop-shadow(0 0 36px rgba(0,0,0,1))
+      drop-shadow(0 0 18px rgba(201,169,110,0.4));
+    pointer-events: none;
+  }
+
+  /* Stat items */
   .stat-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.25rem;
+    white-space: nowrap;
   }
   .stat-num {
     font-family: 'Cormorant Garamond', serif;
@@ -1359,19 +1373,12 @@
     font-size: clamp(0.9rem, 1.6vw, 1.4rem);
   }
 
-  /* Mobile: stack wings vertically, hide crest on very small screens */
+  /* Mobile */
   @media (max-width: 600px) {
-    .stat-belt { bottom: 20px; }
+    .stat-belt { bottom: 0; }
     .stat-belt-body { flex-direction: column; gap: 0.5rem; padding: 0 1rem; }
     .stat-belt-crest { display: none; }
     .stat-wing { gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
-  }
-
-  
-  .stat-crest-spacer {
-    flex: 0 0 clamp(60px, 6vw, 80px);
-    height: 1px;
-    pointer-events: none;
   }
 </style>
 
@@ -1459,12 +1466,10 @@
         <div class="stat-div"></div>
         <div class="stat-item"><span class="stat-num">6,072</span><span class="stat-lbl">Sq Ft</span></div>
       </div>
-      <!-- CREST THRONE — absolute positioned, spacer reserves center width -->
+      <!-- CREST — in-flow focal point, straddles bottom gold line -->
       <div class="stat-belt-crest">
         <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest">
       </div>
-      <!-- Spacer: reserves horizontal space so wings don't collapse into center -->
-      <div class="stat-crest-spacer" aria-hidden="true"></div>
       <!-- RIGHT WING -->
       <div class="stat-wing right">
         <div class="stat-item"><span class="stat-num">4.15</span><span class="stat-lbl">Acres</span></div>
