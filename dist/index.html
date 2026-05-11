@@ -367,7 +367,7 @@
   /* THE BUCKLE — reach out and grab it */
   .stat-crest-wrap img {
     height: clamp(130px, 14vw, 192px); width: auto; display: block;
-    transform: translateY(80px);
+    transform: translateY(80px) !important;
     /* hard engraved shadow — no glow, no candy */
     /* sepia+hue pulls the gold cooler — aged platinum not warm brass */
     filter:
@@ -376,25 +376,17 @@
       drop-shadow(0 5px 10px rgba(0,0,0,0.98))
       drop-shadow(0 14px 40px rgba(0,0,0,0.94))
       drop-shadow(0 -3px 5px rgba(0,0,0,0.88));
-    animation: buckleFloat 7s ease-in-out infinite;
+    animation: none !important;
     transition: transform 0.7s cubic-bezier(.16,1,.3,1), filter 0.7s ease;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
-  }
+    animation: none !important;
+  transition: none !important;
+}
   /* Hover — lifts toward you, shadow deepens as if physically rising */
-  .stat-crest-wrap img:hover {
-    transform: translateY(-70px) scale(1.04);
-    filter:
-      sepia(0.15) hue-rotate(-8deg) saturate(0.88) brightness(1.08)
-      drop-shadow(0 6px 3px rgba(0,0,0,1))
-      drop-shadow(0 14px 28px rgba(0,0,0,0.98))
-      drop-shadow(0 32px 60px rgba(0,0,0,0.88))
-      drop-shadow(0 -4px 6px rgba(0,0,0,0.88));
-    animation: none;
-  }
+  .stat-crest-wrap img:hover { transform: translateY(80px) !important; }
   /* Float — barely moves. A pendant in still air. */
-  @keyframes buckleFloat {
-    0%, 100% { transform: translateY(80px); }
+  
     50%       { transform: translateY(-64px); }
   }
   .stat-price .stat-num {
@@ -666,7 +658,7 @@
     .stat-bar { padding: 0 1rem; height: 72px; }
     .stat-numbers { gap: 0.6rem; }
     .stat-lbl { display: none; }
-    .stat-crest-wrap img { height: clamp(75px, 16vw, 105px); transform: translateY(-32px); }
+    .stat-crest-wrap img { height: clamp(75px, 16vw, 105px); transform: translateY(-32px) !important; }
     .stat-div { height: 1.5rem; }
     .kb-gate { min-height: 70vh; }
     .inquiry { padding: var(--sp-lg) 1.5rem; }
