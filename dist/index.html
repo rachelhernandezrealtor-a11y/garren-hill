@@ -53,11 +53,7 @@
   /* § 1. RESET */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   /* Custom cursor on desktop fine-pointer only */
-  @media (hover: hover) and (pointer: fine) {
-    /* cursor: default */
-  }
-  @media (hover: none), (pointer: coarse) {
-    * { cursor: auto !important; }
+  /* cursor-media removed */
     #cursor { display: none !important; }
   }
   html { scroll-behavior: smooth; }
@@ -356,8 +352,8 @@
   }
   /* THE BUCKLE — reach out and grab it */
   .stat-crest-wrap img {
-    height: clamp(148px, 15vw, 210px); width: auto; display: block;
-    transform: translateY(-38px);
+    height: clamp(120px, 12vw, 170px); width: auto; display: block;
+    transform: translateY(-28px);
     filter:
       sepia(0.06) hue-rotate(-5deg) saturate(1.1) brightness(1.15) contrast(1.12)
       drop-shadow(0 0 2px rgba(245,224,152,1))
