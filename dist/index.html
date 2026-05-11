@@ -212,8 +212,10 @@
   .hero-text {
     position: absolute; inset: 0; z-index: 2;
     display: flex; flex-direction: column;
-    align-items: center; justify-content: center; text-align: center;
-    padding: 0 clamp(1.5rem, 6vw, 8rem); padding-bottom: 14vh;
+    align-items: center; justify-content: flex-start; text-align: center;
+    padding: 0 clamp(1.5rem, 6vw, 8rem);
+    padding-top: clamp(5rem, 14vh, 10rem);
+    padding-bottom: 0;
   }
   .hero-eyebrow { font-size: clamp(0.5rem, 0.72vw, 0.62rem); letter-spacing: 0.62em; text-transform: uppercase; color: rgba(245,240,232,0.75); margin-bottom: 1.4rem; font-weight: 300; display: flex; align-items: center; justify-content: center; gap: 1.4rem; } .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: clamp(1.5rem, 4vw, 4rem); height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.78)); flex-shrink: 0; } .hero-eyebrow::after { background: linear-gradient(to left, transparent, rgba(201,168,76,0.78)); }
   .hero-title {
@@ -230,7 +232,7 @@
     position: absolute; bottom: 0; left: 0; right: 0; z-index: 10;
     display: flex; align-items: center; justify-content: center;
     padding: 0 clamp(1rem, 3vw, 4rem);
-    height: 88px;
+    height: 100px;
     /* very subtle dark base so gold line has contrast */
     background: linear-gradient(180deg,
       rgba(4,4,4,0.0) 0%,
@@ -1363,7 +1365,7 @@
   <div class="stat-bar">
     <div class="stat-numbers">
       <!-- LEFT WING -->
-      <div class="stat-wing" style="flex:1;display:flex;align-items:center;justify-content:flex-end;gap:clamp(0.6rem,1.5vw,2rem);">
+      <div class="stat-wing" style="flex:1;display:flex;align-items:center;justify-content:flex-end;gap:clamp(1rem,2.5vw,3.5rem);">
         <div class="stat-item"><span class="stat-num">4</span><span class="stat-lbl">Bedrooms</span></div>
         <div class="stat-div"></div>
         <div class="stat-item"><span class="stat-num">6</span><span class="stat-lbl">Bathrooms</span></div>
@@ -1372,10 +1374,10 @@
       </div>
       <!-- CREST — centered buckle -->
       <div class="stat-crest-wrap" style="flex-shrink:0;padding:0 clamp(1rem,2.5vw,3rem);display:flex;align-items:center;justify-content:center;">
-        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" style="height:clamp(140px,16vw,210px);width:auto;display:block;transform:translateY(-36px);filter:drop-shadow(0 4px 18px rgba(0,0,0,0.95)) drop-shadow(0 1px 3px rgba(0,0,0,1));">
+        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" style="height:clamp(160px,18vw,230px);width:auto;display:block;transform:translateY(-52px);filter:drop-shadow(0 4px 18px rgba(0,0,0,0.95)) drop-shadow(0 1px 3px rgba(0,0,0,1));">
       </div>
       <!-- RIGHT WING -->
-      <div class="stat-wing" style="flex:1;display:flex;align-items:center;justify-content:flex-start;gap:clamp(0.6rem,1.5vw,2rem);">
+      <div class="stat-wing" style="flex:1;display:flex;align-items:center;justify-content:flex-start;gap:clamp(1rem,2.5vw,3.5rem);">
         <div class="stat-item"><span class="stat-num">4.15</span><span class="stat-lbl">Acres</span></div>
         <div class="stat-div"></div>
         <div class="stat-item"><span class="stat-num">$4,250,000</span><span class="stat-lbl">Offered at</span></div>
