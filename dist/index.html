@@ -353,8 +353,8 @@
     width: 100%;
     flex-shrink: 0;
     z-index: 3;
-    /* Extra top padding so crest crown rises above the top gold line */
-    padding-top: clamp(50px, 6vw, 80px);
+    /* Crest crown needs room above the top hairline */
+    padding-top: clamp(40px, 5vw, 64px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
@@ -396,35 +396,34 @@
       rgba(196,162,101,0.2) 88%, transparent 100%);
   }
 
-  /* CREST — belt buckle, pierces both gold lines */
+  /* CREST — belt buckle
+     Rises through top gold line, hangs off bottom line toward viewport edge */
   .stat-crest-wrap {
     position: absolute;
     left: 50%;
-    top: 0;
+    /* Anchor crest bottom near the bottom of the stat-belt */
+    bottom: clamp(6px, 1vw, 12px);
     transform: translateX(-50%);
-    /* Full height of stat-belt so it spans top-to-bottom hairlines */
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     z-index: 20;
     pointer-events: none;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
   }
 
   .stat-crest-wrap img {
-    /* Taller than the stat-bar so it pierces both hairlines */
-    height: clamp(100px, 12vw, 160px);
+    /* Tall enough to pierce both gold lines — crown above top, base below bottom */
+    height: clamp(160px, 18vw, 240px);
     width: auto;
     display: block;
-    /* Very subtle glow — engraved depth, not applied gold */
     filter:
-      drop-shadow(0 2px 8px rgba(0,0,0,0.95))
-      drop-shadow(0 1px 3px rgba(0,0,0,0.8));
+      drop-shadow(0 2px 12px rgba(0,0,0,0.98))
+      drop-shadow(0 1px 4px rgba(0,0,0,0.85));
   }
 
   /* CREST SPACER — keeps grid center column balanced */
   .stat-crest-spacer {
-    width: clamp(100px, 12vw, 160px);
+    width: clamp(160px, 18vw, 240px);
     height: 1px;
   }
 
