@@ -233,7 +233,6 @@
     display: flex; align-items: center; justify-content: center;
     padding: 0 clamp(1rem, 3vw, 4rem);
     height: 130px;
-    transform: translateZ(0);
     /* very subtle dark base so gold line has contrast */
     background: linear-gradient(180deg,
       rgba(4,4,4,0.0) 0%,
@@ -1340,17 +1339,17 @@
     <!-- BOTTOM hairline -->
     <div style="position:absolute;bottom:18px;left:0;right:0;height:1px;z-index:25;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,0.0) 5%,rgba(201,169,110,0.85) 20%,rgba(245,224,152,1.0) 50%,rgba(201,169,110,0.85) 80%,rgba(201,169,110,0.0) 95%,transparent 100%);box-shadow:0 0 6px rgba(201,169,110,0.5);"></div>
     <!-- STAT NUMBERS + CREST inline flex -->
-    <div class="stat-numbers" style="align-items:flex-end;">
-      <div class="stat-wing" style="flex:1;display:flex;align-items:center;justify-content:flex-end;gap:clamp(1.2rem,3vw,4rem);padding-bottom:22px;">
+    <div class="stat-numbers">
+      <div class="stat-wing" style="flex:1;display:flex;align-items:center;justify-content:flex-end;gap:clamp(1.2rem,3vw,4rem);">
         <div class="stat-item"><span class="stat-num">4</span><span class="stat-lbl">Bedrooms</span></div>
         <div class="stat-div"></div>
         <div class="stat-item"><span class="stat-num">6</span><span class="stat-lbl">Bathrooms</span></div>
         <div class="stat-div"></div>
         <div class="stat-item"><span class="stat-num">6,072</span><span class="stat-lbl">Sq Ft</span></div>
       </div>
-      <!-- CREST: flex item, margin-bottom pulls it to sit on bottom line -->
-      <div style="flex-shrink:0;display:flex;align-items:flex-end;justify-content:center;padding:0 clamp(0.8rem,2vw,2.5rem);margin-bottom:18px;">
-        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" style="height:clamp(200px,20vw,280px);width:auto;display:block;transform:translateY(50%);filter:drop-shadow(0 8px 28px rgba(0,0,0,0.98)) drop-shadow(0 2px 6px rgba(0,0,0,1));">
+      <!-- CREST: centered in flex row, translateY lifts it to sit ON bottom line -->
+      <div style="flex-shrink:0;display:flex;align-items:center;justify-content:center;padding:0 clamp(0.8rem,2vw,2.5rem);">
+        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" style="height:clamp(200px,20vw,280px);width:auto;display:block;transform:translateY(27px);filter:drop-shadow(0 8px 28px rgba(0,0,0,0.98)) drop-shadow(0 2px 6px rgba(0,0,0,1));">
       </div>
       <div class="stat-wing" style="flex:1;display:flex;align-items:center;justify-content:flex-start;gap:clamp(1.2rem,3vw,4rem);">
         <div class="stat-item"><span class="stat-num">4.15</span><span class="stat-lbl">Acres</span></div>
