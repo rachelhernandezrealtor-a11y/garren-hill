@@ -642,7 +642,7 @@
     .split-text { max-width: 100%; }
     .split-text.mid { padding-top: 0; justify-content: flex-start; }
 
-    .hero-title { font-size: clamp(3.5rem, 18vw, 6rem); }
+    
     section.pull, section.pull.cinematic, section.pull.intimate { padding: clamp(3rem, 10vw, 5rem) 1.5rem; }
     .text-section, .text-section.alt { padding: var(--sp-lg) 1.5rem; }
     .breath { padding: var(--sp-lg) 1.5rem; }
@@ -661,7 +661,7 @@
     h2 { text-wrap: unset; }
   }
   @media (max-width: 375px) {
-    .hero-title { font-size: 3rem; }
+    
     .stat-num { font-size: 0.85rem; }
     .gallery-grid { grid-template-columns: 1fr; }
   }
@@ -1049,7 +1049,15 @@
   .editorial-fullbleed {
     position: relative;
     width: 100%;
+    min-height: 70vh;
     overflow: hidden;
+  }
+  .editorial-fullbleed > img,
+  .editorial-fullbleed .then-now-wrap,
+  .editorial-fullbleed .split-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   /* B. editorial-split / editorial-split.reverse — alternating splits */
