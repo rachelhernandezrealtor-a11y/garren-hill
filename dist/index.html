@@ -1381,8 +1381,11 @@
     .stat-wing { gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
   }
 
-  /* TOP GOLD LINE — pseudo-element on crest, travels with it always */
-  .stat-belt-crest::before {
+  /* TOP GOLD LINE — on stat-belt-body, crowns the numbers row */
+  .stat-belt-body {
+    position: relative;
+  }
+  .stat-belt-body::before {
     content: '';
     position: absolute;
     top: 0;
@@ -1402,9 +1405,10 @@
       transparent 95%, transparent 100%);
     pointer-events: none;
   }
-  /* Make .stat-belt-crest position:relative so ::before anchors to it */
+  /* Crest rises above the body row — pull it up with negative margin */
   .stat-belt-crest {
-    position: relative;
+    position: relative;  /* for z-index */
+    margin-top: clamp(-120px, -12vw, -160px);  /* pulls crest UP above top gold line */
   }
 </style>
 
