@@ -54,7 +54,7 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   /* Custom cursor on desktop fine-pointer only */
   @media (hover: hover) and (pointer: fine) {
-    * { cursor: none !important; }
+    /* cursor: default */
   }
   @media (hover: none), (pointer: coarse) {
     * { cursor: auto !important; }
@@ -88,14 +88,7 @@
   }
 
   /* § 3. CURSOR — gold dot only, no ring */
-  #cursor {
-    position: fixed; width: 7px; height: 7px;
-    background: var(--gold); border-radius: 50%;
-    pointer-events: none; z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease;
-    mix-blend-mode: difference;
-  }
+  #cursor { display: none !important; }
 
   /* § 4. SCROLL PROGRESS */
   #scroll-progress {
@@ -1345,7 +1338,7 @@
 <!-- GH_PIPELINE_TEST_CONFIRMED -->
 <!-- GH_SOURCE_FACT_SAFETY_PASS_V2 -->
 
-<div id="cursor"></div>
+
 <div id="scroll-progress"></div>
 
 <!-- NAV -->
