@@ -354,7 +354,7 @@
     flex-shrink: 0;
     z-index: 3;
     /* Crest crown needs room above the top hairline */
-    padding-top: clamp(40px, 5vw, 64px);
+    padding-top: clamp(60px, 8vw, 100px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
@@ -401,8 +401,8 @@
   .stat-crest-wrap {
     position: absolute;
     left: 50%;
-    /* Anchor crest bottom near the bottom of the stat-belt */
-    bottom: clamp(6px, 1vw, 12px);
+    /* Base hangs just below the bottom gold line — almost touching viewport bottom */
+    bottom: -clamp(18px, 2.5vw, 32px);
     transform: translateX(-50%);
     z-index: 20;
     pointer-events: none;
@@ -412,8 +412,7 @@
   }
 
   .stat-crest-wrap img {
-    /* Tall enough to pierce both gold lines — crown above top, base below bottom */
-    height: clamp(160px, 18vw, 240px);
+    height: clamp(200px, 22vw, 300px);
     width: auto;
     display: block;
     filter:
@@ -423,7 +422,7 @@
 
   /* CREST SPACER — keeps grid center column balanced */
   .stat-crest-spacer {
-    width: clamp(160px, 18vw, 240px);
+    width: clamp(200px, 22vw, 300px);
     height: 1px;
   }
 
