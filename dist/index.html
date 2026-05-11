@@ -252,10 +252,9 @@
     -webkit-backdrop-filter: none;
     overflow: visible;
   }
-  /* TOP FRAME LINE — matches bottom, plaque effect */
-  .stat-bar::before {
-    content: '';
-    position: absolute; top: -186px; left: 0; right: 0; height: 1px;
+  /* TOP FRAME LINE — now an inline div, moves with crest */
+  .stat-bar-top-line {
+    position: absolute; left: 0; right: 0; height: 1px;
     background: linear-gradient(90deg,
       transparent 0%,
       transparent 8%,
@@ -268,6 +267,7 @@
       rgba(190,162,105,0.55) 85%,
       transparent 97%,
       transparent 100%);
+    pointer-events: none;
   }
   .stat-bar::after {
     content: '';
@@ -1386,6 +1386,7 @@
     <p class="hero-sub">Neo-Georgian &nbsp;&middot;&nbsp; Built 1915–16 for Walter Hines Page</p>
   </div>
   <div class="stat-bar">
+    <div class="stat-bar-top-line" style="top:-158px;"></div>
     <div class="stat-numbers">
       <!-- LEFT WING -->
       <div class="stat-wing">
