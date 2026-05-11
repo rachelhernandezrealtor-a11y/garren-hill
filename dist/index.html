@@ -241,7 +241,7 @@
     position: absolute; bottom: 0; left: 0; right: 0; z-index: 10;
     display: flex; align-items: center; justify-content: center;
     padding: 0 clamp(2rem, 6vw, 8rem);
-    height: 118px;
+    height: 104px;
     /* very subtle dark base so gold line has contrast */
     background: linear-gradient(180deg,
       rgba(4,4,4,0.0) 0%,
@@ -329,7 +329,7 @@
   .stat-crest-throne {
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
-    padding: 0 clamp(2.5rem, 5vw, 7rem);
+    padding: 0 clamp(1.8rem, 3.5vw, 5rem);
     position: relative;
   }
   /* Gold filigree lines extending from buckle into the band */
@@ -363,8 +363,8 @@
   }
   /* THE BUCKLE — reach out and grab it */
   .stat-crest-wrap img {
-    height: clamp(200px, 22vw, 300px); width: auto; display: block;
-    transform: translateY(-95px);
+    height: clamp(148px, 15vw, 210px); width: auto; display: block;
+    transform: translateY(-68px);
     filter:
       sepia(0.06) hue-rotate(-5deg) saturate(1.1) brightness(1.15) contrast(1.12)
       drop-shadow(0 0 2px rgba(245,224,152,1))
@@ -380,7 +380,7 @@
   }
   /* Hover — lifts toward you, shadow deepens as if physically rising */
   .stat-crest-wrap img:hover {
-    transform: translateY(-110px) scale(1.07);
+    transform: translateY(-80px) scale(1.04);
     filter:
       sepia(0.06) hue-rotate(-5deg) saturate(1.15) brightness(1.22) contrast(1.14)
       drop-shadow(0 0 3px rgba(245,224,152,1))
@@ -664,7 +664,7 @@
     .stat-bar { padding: 0 1rem; height: 72px; }
     .stat-numbers { gap: 0.6rem; }
     .stat-lbl { display: none; }
-    .stat-crest-wrap img { height: clamp(100px, 20vw, 130px); transform: translateY(-44px); }
+    .stat-crest-wrap img { height: clamp(80px, 16vw, 100px); transform: translateY(-34px); }
     .stat-div { height: 1.5rem; }
     .kb-gate { min-height: 70vh; }
     .inquiry { padding: var(--sp-lg) 1.5rem; }
@@ -1400,33 +1400,23 @@
       </div>
       <!-- CREST THRONE — focal point -->
       <div class="stat-crest-throne" style="display:flex;align-items:center;justify-content:center;gap:clamp(0.8rem,2vw,2.2rem);flex-shrink:0;padding:0 clamp(1.5rem,3vw,4rem);">
-        <!-- Left crossed keys -->
-        <div style="display:flex;align-items:center;justify-content:center;opacity:0.9;">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 80" style="width:36px;height:auto;opacity:0.88;fill:none;stroke-linecap:round;stroke-linejoin:round;">
+        <!-- Left key -->
+        <div style="display:flex;align-items:center;justify-content:center;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 56" style="width:11px;height:auto;opacity:0.55;fill:none;stroke-linecap:round;stroke-linejoin:round;">
   <defs>
-    <linearGradient id="ckg1" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="sk1" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#F5E098"/>
-      <stop offset="50%" stop-color="#C9A96E"/>
-      <stop offset="100%" stop-color="#8B6914"/>
+      <stop offset="60%" stop-color="#C9A96E"/>
+      <stop offset="100%" stop-color="#9B7A2E"/>
     </linearGradient>
   </defs>
-  <!-- Key 1 — angled left -->
-  <g transform="rotate(-30,32,40)" stroke="url(#ckg1)" stroke-width="1.5">
-    <circle cx="20" cy="14" r="8"/>
-    <circle cx="20" cy="14" r="3"/>
-    <line x1="20" y1="22" x2="20" y2="68"/>
-    <line x1="20" y1="48" x2="26" y2="48"/>
-    <line x1="20" y1="57" x2="26" y2="57"/>
-    <line x1="20" y1="65" x2="24" y2="65"/>
-  </g>
-  <!-- Key 2 — angled right -->
-  <g transform="rotate(30,44,40)" stroke="url(#ckg1)" stroke-width="1.5">
-    <circle cx="44" cy="14" r="8"/>
-    <circle cx="44" cy="14" r="3"/>
-    <line x1="44" y1="22" x2="44" y2="68"/>
-    <line x1="44" y1="48" x2="38" y2="48"/>
-    <line x1="44" y1="57" x2="38" y2="57"/>
-    <line x1="44" y1="65" x2="40" y2="65"/>
+  <g stroke="url(#sk1)" stroke-width="1.2">
+    <circle cx="10" cy="8" r="6.5"/>
+    <circle cx="10" cy="8" r="2.5"/>
+    <line x1="10" y1="14.5" x2="10" y2="52"/>
+    <line x1="10" y1="36" x2="15" y2="36"/>
+    <line x1="10" y1="44" x2="15" y2="44"/>
+    <line x1="10" y1="50" x2="14" y2="50"/>
   </g>
 </svg>
         </div>
@@ -1434,31 +1424,23 @@
         <div class="stat-crest-wrap">
           <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" width="185" height="185">
         </div>
-        <!-- Right crossed keys -->
-        <div style="display:flex;align-items:center;justify-content:center;opacity:0.9;">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 80" style="width:36px;height:auto;opacity:0.88;fill:none;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1);">
+        <!-- Right key -->
+        <div style="display:flex;align-items:center;justify-content:center;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 56" style="width:11px;height:auto;opacity:0.55;fill:none;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1);">
   <defs>
-    <linearGradient id="ckg2" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="sk2" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#F5E098"/>
-      <stop offset="50%" stop-color="#C9A96E"/>
-      <stop offset="100%" stop-color="#8B6914"/>
+      <stop offset="60%" stop-color="#C9A96E"/>
+      <stop offset="100%" stop-color="#9B7A2E"/>
     </linearGradient>
   </defs>
-  <g transform="rotate(-30,32,40)" stroke="url(#ckg2)" stroke-width="1.5">
-    <circle cx="20" cy="14" r="8"/>
-    <circle cx="20" cy="14" r="3"/>
-    <line x1="20" y1="22" x2="20" y2="68"/>
-    <line x1="20" y1="48" x2="26" y2="48"/>
-    <line x1="20" y1="57" x2="26" y2="57"/>
-    <line x1="20" y1="65" x2="24" y2="65"/>
-  </g>
-  <g transform="rotate(30,44,40)" stroke="url(#ckg2)" stroke-width="1.5">
-    <circle cx="44" cy="14" r="8"/>
-    <circle cx="44" cy="14" r="3"/>
-    <line x1="44" y1="22" x2="44" y2="68"/>
-    <line x1="44" y1="48" x2="38" y2="48"/>
-    <line x1="44" y1="57" x2="38" y2="57"/>
-    <line x1="44" y1="65" x2="40" y2="65"/>
+  <g stroke="url(#sk2)" stroke-width="1.2">
+    <circle cx="10" cy="8" r="6.5"/>
+    <circle cx="10" cy="8" r="2.5"/>
+    <line x1="10" y1="14.5" x2="10" y2="52"/>
+    <line x1="10" y1="36" x2="15" y2="36"/>
+    <line x1="10" y1="44" x2="15" y2="44"/>
+    <line x1="10" y1="50" x2="14" y2="50"/>
   </g>
 </svg>
         </div>
