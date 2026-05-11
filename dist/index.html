@@ -211,9 +211,9 @@
   .hero-text {
     position: absolute; inset: 0; z-index: 2;
     display: flex; flex-direction: column;
-    align-items: center; justify-content: center; text-align: center;
+    align-items: center; justify-content: flex-start; text-align: center;
     padding: 0 clamp(1.5rem, 6vw, 8rem);
-    padding-top: clamp(4rem, 8vh, 7rem);
+    padding-top: clamp(7rem, 14vh, 11rem);
     padding-bottom: clamp(8rem, 22vh, 16rem);
   }
   .hero-eyebrow { font-size: clamp(0.52rem, 0.75vw, 0.65rem); letter-spacing: 0.55em; text-transform: uppercase; color: rgba(245,240,232,1); margin-bottom: 1.8rem; font-weight: 300; display: flex; align-items: center; justify-content: center; gap: 1.4rem; } .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: clamp(1.5rem, 4vw, 4rem); height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.78)); flex-shrink: 0; } .hero-eyebrow::after { background: linear-gradient(to left, transparent, rgba(201,168,76,0.78)); }
@@ -1341,7 +1341,7 @@
     <div style="position:absolute;bottom:18px;left:0;right:0;height:1px;z-index:25;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,0.0) 5%,rgba(201,169,110,0.85) 20%,rgba(245,224,152,1.0) 50%,rgba(201,169,110,0.85) 80%,rgba(201,169,110,0.0) 95%,transparent 100%);box-shadow:0 0 6px rgba(201,169,110,0.5);"></div>
     <!-- CREST: centered ON top hairline — half above into hero, half below into bar -->
     <div style="position:absolute;left:50%;top:0;transform:translate(-50%,-60%);z-index:100;pointer-events:none;">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" style="height:clamp(200px,20vw,280px);width:auto;display:block;transform:translateY(80px);filter:drop-shadow(0 8px 28px rgba(0,0,0,0.98)) drop-shadow(0 2px 6px rgba(0,0,0,1));">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" style="height:clamp(200px,20vw,280px);width:auto;display:block;transform:translateY(80px);filter:drop-shadow(0 0 6px rgba(0,0,0,1)) drop-shadow(0 0 20px rgba(0,0,0,1)) drop-shadow(0 8px 28px rgba(0,0,0,0.98)) drop-shadow(0 2px 6px rgba(0,0,0,1));">
     </div>
     <!-- STAT NUMBERS: centered between two hairlines -->
     <div class="stat-numbers">
