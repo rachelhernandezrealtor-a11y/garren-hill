@@ -347,13 +347,14 @@
    */
 
   .jeweled-belt {
-    position: relative;
-    width: 100%;
-    flex-shrink: 0;
-    margin-top: auto;           /* pins belt to bottom of 100vh hero */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
     background: rgba(8,8,8,0.82);
     backdrop-filter: blur(18px) saturate(1.2);
-    overflow: visible;          /* lets crest pierce upward and downward */
+    overflow: visible;
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
