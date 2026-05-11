@@ -240,7 +240,7 @@
   .stat-bar {
     position: absolute; bottom: 0; left: 0; right: 0; z-index: 10;
     display: flex; align-items: center; justify-content: center;
-    padding: 0 clamp(2rem, 6vw, 8rem);
+    padding: 0 clamp(1rem, 3vw, 4rem);
     height: 104px;
     /* very subtle dark base so gold line has contrast */
     background: linear-gradient(180deg,
@@ -287,12 +287,12 @@
   }
   .stat-numbers {
     display: flex; align-items: center; justify-content: center;
-    width: 100%; gap: 0;
+    width: 100%; gap: 0; flex: 1;
   }
   /* WINGS — the stones flanking the buckle */
   .stat-wing {
     display: flex; align-items: center;
-    gap: clamp(1.4rem, 2.8vw, 3.8rem);
+    gap: clamp(1.2rem, 2.2vw, 3rem);
     flex: 1; justify-content: flex-end;
   }
   .stat-wing.right { justify-content: flex-start; }
@@ -1399,7 +1399,7 @@
         <div class="stat-item"><span class="stat-num">6,072</span><span class="stat-lbl">Sq Ft</span></div>
       </div>
       <!-- CREST THRONE — focal point -->
-      <div class="stat-crest-throne" style="display:flex;align-items:center;justify-content:center;gap:clamp(0.8rem,2vw,2.2rem);flex-shrink:0;padding:0 clamp(1.5rem,3vw,4rem);">
+      <div class="stat-crest-throne" style="display:flex;align-items:center;justify-content:center;gap:clamp(1rem,2vw,2.5rem);flex-shrink:0;padding:0 clamp(1.5rem,2.5vw,3.5rem);">
         <!-- Left key -->
         <div style="display:flex;align-items:center;justify-content:center;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 56" style="width:11px;height:auto;opacity:0.55;fill:none;stroke-linecap:round;stroke-linejoin:round;">
