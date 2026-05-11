@@ -94,7 +94,7 @@
     pointer-events: none; z-index: 9999;
     transform: translate(-50%, -50%);
     transition: transform 0.1s ease;
-    mix-blend-mode: normal;
+    mix-blend-mode: difference;
   }
 
   /* § 4. SCROLL PROGRESS */
@@ -201,7 +201,7 @@
   /* § 9. HERO */
   section.hero {
     position: relative; width: 100%; height: 100vh;
-    min-height: 640px; overflow: visible;
+    min-height: 640px; overflow: hidden;
   }
   section.hero video {
     position: absolute; inset: 0;
@@ -242,8 +242,6 @@
     display: flex; align-items: center; justify-content: center;
     padding: 0 clamp(2rem, 6vw, 8rem);
     height: 96px;
-    min-height: 96px;
-    max-height: 96px;
     /* very subtle dark base so gold line has contrast */
     background: linear-gradient(180deg,
       rgba(4,4,4,0.0) 0%,
@@ -336,8 +334,6 @@
     flex-shrink: 0;
     padding: 0 clamp(2rem, 4vw, 5.5rem);
     position: relative;
-    height: 0;
-    overflow: visible;
   }
   /* Gold filigree lines extending from buckle into the band */
   .stat-crest-throne::before,
@@ -370,16 +366,37 @@
   }
   /* THE BUCKLE — reach out and grab it */
   .stat-crest-wrap img {
-    height: clamp(180px, 20vw, 260px); width: auto; display: block;
-    transform: translateY(-48px) !important;
-    animation: none !important;
-    transition: none !important;
+    height: clamp(130px, 14vw, 192px); width: auto; display: block;
+    transform: translateY(80px);
+    /* hard engraved shadow — no glow, no candy */
+    /* sepia+hue pulls the gold cooler — aged platinum not warm brass */
     filter:
-      drop-shadow(0 2px 6px rgba(0,0,0,0.85))
-      drop-shadow(0 6px 20px rgba(0,0,0,0.6));
+      sepia(0.15) hue-rotate(-8deg) saturate(0.88) brightness(1.05)
+      drop-shadow(0 2px 1px rgba(0,0,0,1))
+      drop-shadow(0 5px 10px rgba(0,0,0,0.98))
+      drop-shadow(0 14px 40px rgba(0,0,0,0.94))
+      drop-shadow(0 -3px 5px rgba(0,0,0,0.88));
+    animation: buckleFloat 7s ease-in-out infinite;
+    transition: transform 0.7s cubic-bezier(.16,1,.3,1), filter 0.7s ease;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
   }
   /* Hover — lifts toward you, shadow deepens as if physically rising */
-  .stat-crest-wrap img:hover { transform: translateY(-48px) !important; }
+  .stat-crest-wrap img:hover {
+    transform: translateY(-70px) scale(1.04);
+    filter:
+      sepia(0.15) hue-rotate(-8deg) saturate(0.88) brightness(1.08)
+      drop-shadow(0 6px 3px rgba(0,0,0,1))
+      drop-shadow(0 14px 28px rgba(0,0,0,0.98))
+      drop-shadow(0 32px 60px rgba(0,0,0,0.88))
+      drop-shadow(0 -4px 6px rgba(0,0,0,0.88));
+    animation: none;
+  }
+  /* Float — barely moves. A pendant in still air. */
+  @keyframes buckleFloat {
+    0%, 100% { transform: translateY(80px); }
+    50%       { transform: translateY(-64px); }
+  }
   .stat-price .stat-num {
     font-size: clamp(0.92rem, 1.55vw, 1.35rem);
     letter-spacing: 0.06em;
@@ -449,8 +466,7 @@
   .kb-gate-img img {
     position: absolute; inset: 0;
     width: 100%; height: 100%;
-    object-fit: cover; object-position: 20% 50%; display: block;
-    animation: filmPan 28s linear infinite alternate;
+    object-fit: cover; object-position: center; display: block;
   }
   .kb-gate-img::after {
     content: ''; position: absolute; inset: 0;
@@ -642,7 +658,7 @@
     .split-text { max-width: 100%; }
     .split-text.mid { padding-top: 0; justify-content: flex-start; }
 
-    
+    .hero-title { font-size: clamp(3.5rem, 18vw, 6rem); }
     section.pull, section.pull.cinematic, section.pull.intimate { padding: clamp(3rem, 10vw, 5rem) 1.5rem; }
     .text-section, .text-section.alt { padding: var(--sp-lg) 1.5rem; }
     .breath { padding: var(--sp-lg) 1.5rem; }
@@ -661,7 +677,7 @@
     h2 { text-wrap: unset; }
   }
   @media (max-width: 375px) {
-    
+    .hero-title { font-size: 3rem; }
     .stat-num { font-size: 0.85rem; }
     .gallery-grid { grid-template-columns: 1fr; }
   }
@@ -1049,15 +1065,7 @@
   .editorial-fullbleed {
     position: relative;
     width: 100%;
-    min-height: 70vh;
     overflow: hidden;
-  }
-  .editorial-fullbleed > img,
-  .editorial-fullbleed .then-now-wrap,
-  .editorial-fullbleed .split-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 
   /* B. editorial-split / editorial-split.reverse — alternating splits */
@@ -1269,10 +1277,6 @@
   .then-now-wrap .then-now-then {
     animation: kenBurnsThen 16s ease-in-out infinite;
   }
-  @keyframes filmPan {
-    0%   { object-position: 20% 50%; }
-    100% { object-position: 80% 50%; }
-  }
   @keyframes kenBurnsNow {
     0%   { transform: scale(1.0);   }
     100% { transform: scale(1.05);  }
@@ -1313,34 +1317,6 @@
     70%  { opacity: 0; }
     100% { opacity: 0; }
   }
-
-  /* ── THEN / NOW KEN BURNS ── */
-  .then-now-wrap .then-now-now {
-    animation: kenBurnsNow 8s ease-in-out infinite alternate;
-  }
-  .then-now-wrap .then-now-then {
-    animation: kenBurnsThen 16s ease-in-out infinite;
-  }
-  @keyframes kenBurnsThen {
-    0%   { opacity: 0; transform: scale(1.03); }
-    20%  { opacity: 0; }
-    35%  { opacity: 0.88; }
-    65%  { opacity: 0.88; }
-    80%  { opacity: 0; }
-    100% { opacity: 0; transform: scale(1.06); }
-  }
-  .then-now-wrap .then-now-then.active ~ .then-label,
-  .then-now-wrap:hover .then-label { opacity: 1; }
-  @media (prefers-reduced-motion: reduce) {
-    .then-now-now, .then-now-then { animation: none !important; }
-    .then-now-then { opacity: 0.5 !important; }
-  }
-  @media (max-width: 768px) {
-    .then-now-wrap { height: 52vw !important; min-height: 280px; }
-    .then-now-now, .then-now-then { animation: none !important; }
-    .then-now-then { opacity: 0 !important; }
-  }
-
 </style>
 
   <!-- JSON-LD -->
@@ -1412,7 +1388,7 @@
   <div class="hero-text">
     <p class="hero-eyebrow">200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, North Carolina &nbsp;&middot;&nbsp; Est. 1916</p>
     <h1 class="hero-title">Garran Hill</h1>
-    <p class="hero-sub">Some houses are built for arrival. Garran Hill was built for return.</p>
+    <p class="hero-sub">Neo-Georgian &nbsp;&middot;&nbsp; Built 1915–16 for Walter Hines Page</p>
   </div>
   <div class="stat-bar">
     <div class="stat-numbers">
@@ -1442,7 +1418,6 @@
   </div>
 </section>
 
-
 <section id="then-now" class="editorial-fullbleed" aria-label="Then and now: Garran Hill across a century">
   <div class="then-now-wrap" style="position:relative;width:100%;height:clamp(60vh,75vh,88vh);overflow:hidden;">
     <!-- NOW — modern exterior, underneath -->
@@ -1459,7 +1434,7 @@
       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:0;">
     <!-- Overlay caption -->
     <div class="then-now-caption reveal" style="position:absolute;bottom:0;left:0;right:0;padding:clamp(2rem,5vw,4rem) var(--col-pad);background:linear-gradient(to top,rgba(8,8,8,0.82) 0%,transparent 100%);z-index:2;">
-      <span class="eyebrow" style="display:block;margin-bottom:0.6em;">A Century Between the Gates</span>
+      <span class="eyebrow" style="display:block;margin-bottom:0.6em;">Garran Hill &middot; Then &amp; Now</span>
       <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.6rem);font-weight:300;color:var(--cream);max-width:580px;line-height:1.5;font-style:italic;">One century between the photographs. The gate remains.</p>
     </div>
     <!-- THEN label — fades in with the sepia image -->
@@ -1468,7 +1443,7 @@
     </div>
   
     <!-- KB Gate overlay text -->
-    <div class="reveal" style="position:absolute;bottom:0;left:0;right:0;z-index:4;padding:clamp(2.5rem,5vw,4rem) clamp(2rem,6vw,8rem);background:linear-gradient(to top,rgba(5,5,5,0.65) 0%,rgba(5,5,5,0.3) 45%,transparent 100%);text-align:center;">
+    <div class="reveal" style="position:absolute;bottom:0;left:0;right:0;z-index:4;padding:clamp(2.5rem,5vw,4rem) clamp(2rem,6vw,8rem);background:linear-gradient(to top,rgba(5,5,5,0.85) 0%,rgba(5,5,5,0.5) 55%,transparent 100%);text-align:center;">
       <span class="eyebrow" style="color:rgba(201,169,110,0.8);">The Estate &middot; Pinehurst, NC</span>
       <h2 style="font-size:clamp(1.6rem,3.5vw,2.6rem);margin-top:0.8rem;color:#F5F0E8;">Some houses hold history.<em> This one shaped it.</em></h2>
       <p class="body-text" style="margin-top:1rem;max-width:600px;margin-left:auto;margin-right:auto;color:rgba(245,240,232,0.8);">The gates have opened onto the same circular drive since 1916. The house at the end of it has not moved.</p>
@@ -1481,7 +1456,7 @@
     <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:40,f_auto,q_auto,c_limit,w_1200/v1777391998/gh_key/gh_whp_letter1.jpg" alt="" role="presentation"
       style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.07;filter:sepia(60%);">
   </div>
-  <div class="editorial-split" style="position:relative;z-index:1;align-items:center;">
+  <div class="split" style="position:relative;z-index:1;align-items:center;">
     <!-- Portrait container — flex centering, NO split-img class so CSS doesn't force absolute -->
     <div class="img-reveal" style="flex:1;display:flex;align-items:center;justify-content:center;padding:var(--sp-md) 0;min-height:320px;">
       <img loading="lazy" decoding="async"
@@ -1492,7 +1467,7 @@
     <div class="split-text">
       <span class="micro-rule reveal"></span>
       <span class="eyebrow">Walter Hines Page &middot; 1855&ndash;1918</span>
-      <span class="eyebrow" style="display:block;margin-bottom:0.5em;">The House of Return</span><h2>He named it Garran Hill.<em> The Moore County life he imagined remained largely unrealized.</em></h2>
+      <h2>He named it Garran Hill.<em> The Moore County life he imagined remained largely unrealized.</em></h2>
       <div class="body-text reveal">
         <p>He bought the land in February 1913 and named it Garran Hill. Six weeks later, Woodrow Wilson appointed him Ambassador to the Court of St. James.</p>
         <p>He sailed for London. Construction was supervised by his son Ralph Page, from Boston architectural plans, with builders from Leonard Tufts&#8217; Pinehurst building world.</p>
@@ -1530,13 +1505,13 @@
   <div class="full-bleed-caption full-bleed-caption--bottom reveal">
     <span class="eyebrow">Neo-Georgian &middot; 1915&ndash;16</span>
     <h2>Pinehurst Hands.<em>Neo-Georgian discipline.</em></h2>
-    <p class="body-text">Built from an architect&#8217;s plans under Ralph Page&#8217;s supervision, shaped by builders from Leonard Tufts&#8217; Pinehurst building world. Full-brick Neo-Georgian construction. Red handmade brick laid in Flemish bond, grounded by a traditional water table. During restoration, matching the original brick became an act of devotion — the search took three months. White portico. Four columns.</p>
+    <p class="body-text">Built from an architect&#8217;s plans under Ralph Page&#8217;s supervision, shaped by builders from Leonard Tufts&#8217; Pinehurst building world. Flemish bond brick. White portico. Four columns.</p>
     <p class="body-text" style="font-style:italic;opacity:0.6;font-size:var(--text-sm);margin-top:0.5em;">Boston plans. Pinehurst hands. Garran Hill in brick, 1916.</p>
   </div>
 </section>
 
 <section id="threshold">
-  <div class="editorial-split">
+  <div class="split">
     <div class="split-img img-reveal">
       <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777263004/gh_key/gh_threshold.jpg"
         alt="Garran Hill 1916 threshold inscription — herringbone brick">
@@ -1546,7 +1521,7 @@
       <span class="eyebrow">The Threshold &middot; 1916</span>
       <h2>GARRAN HILL &middot; 1916.<em>The threshold still says what the house has always known.</em></h2>
       <div class="body-text reveal">
-        <p>Herringbone brick underfoot. Original leaded glass overhead. At the threshold, the original name remains underfoot: Garran Hill, 1916.</p>
+        <p>Herringbone brick underfoot. Original leaded glass overhead. The name inlaid before ground was broken.</p>
       </div>
       <a href="https://my.matterport.com/show/?m=mfwyqT5Btwx" target="_blank" class="btn-gold" rel="noopener">Begin the 3D Tour</a>
     </div>
@@ -1561,12 +1536,11 @@
 <div class="section-divider" style="width:100%;height:1px;background:linear-gradient(to right,transparent 0%,rgba(201,169,110,0.0) 5%,rgba(201,169,110,0.3) 25%,rgba(245,224,152,0.5) 50%,rgba(201,169,110,0.3) 75%,rgba(201,169,110,0.0) 95%,transparent 100%);margin:0;"></div>
 <div class="act-transition reveal"><span class="act-label">Restoration</span></div>
 <section id="restoration-record">
-  <div class="editorial-split reverse">
+  <div class="split reverse">
     <div class="split-text">
       <span class="micro-rule reveal"></span>
       <span class="eyebrow">The Restoration Record &middot; 1999&ndash;2001</span>
       <h2>Preserved. Restored.<em>Redrawn.</em></h2>
-      <p class="pull-line" style="font-style:italic;color:var(--gold);font-size:clamp(1rem,1.8vw,1.3rem);margin-bottom:1.2em;">Not renovated into anonymity. Restored back into itself.</p>
       <div class="body-text reveal">
         <p>The restoration did not make Garran Hill new. It made the house legible again.</p>
         <p>Architect Thomas O&#8217;Shea. 36 drawings &mdash; elevations, floor plans, foundation, framing, portico, kitchen, primary suite, library built-ins, trim profiles. Every decision documented before a board came down.</p>
@@ -1802,7 +1776,7 @@
 <!-- LIBRARY — reverse -->
 
 <section id="kitchen">
-  <div class="editorial-split">
+  <div class="split">
     <div class="split-img img-reveal" style="position:relative;min-height:480px;overflow:hidden;">
     <img loading="lazy" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243342/gh_interiors/200holycrest_1656.jpg"
@@ -1817,7 +1791,6 @@
       <span class="micro-rule reveal"></span>
       <span class="eyebrow">Kitchen &amp; Butler&#8217;s Pantry</span>
       <h2>Not original to 1916.<em>Original to the restoration.</em></h2>
-      <p style="font-style:italic;color:var(--gold);font-size:clamp(0.95rem,1.6vw,1.2rem);margin:0.8em 0 1.2em;">The kitchen is not original to 1916. It is original to the restoration.</p>
       <div class="body-text reveal">
         <p>Created from scratch during the restoration. Custom cabinetry throughout: cooking wall with custom cornice, butler&#8217;s pantry cabinetry, desk nook, and TV cabinet. Generous island. Two farm sinks. Heart-pine floors. A wall of windows.</p>
         <p>The adjoining side porch carries hot and cold water, built-in cabinets and shelves &mdash; full potting and grounds support. The kitchen runs the full service life of the house.</p>
@@ -1830,7 +1803,7 @@
   <div class="kitchen-detail-strip reveal" style="display:flex;gap:0;margin-top:0;max-height:38vh;overflow:hidden;">
     <div style="flex:1;overflow:hidden;position:relative;">
       <img loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;"
-        src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_900/v1777243338/gh_interiors/200holycrest_1650.jpg"
+        src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_900/v1777243338/gh_interiors/200holycrest_1647.jpg"
         alt="Garran Hill kitchen — island, cabinetry detail, heart-pine floors">
     </div>
     <div style="flex:1;overflow:hidden;position:relative;">
@@ -1845,7 +1818,7 @@
 
 <!-- LIBRARY -->
 <section id="library">
-  <div class="editorial-split reverse">
+  <div class="split reverse">
     <div class="split-text">
       <span class="micro-rule reveal"></span>
       <span class="eyebrow">The Library</span>
@@ -1856,7 +1829,7 @@
       </div>
     </div>
     <div class="split-img img-reveal">
-      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243111/gh_interiors/200holycrest_1350.jpg"
+      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243291/gh_interiors/200holycrest_1599.jpg"
         alt="Library — three walls of floor-to-ceiling shelving, rolling ladder, Garran Hill">
     </div>
   </div>
@@ -1864,9 +1837,9 @@
 
 <!-- PRIMARY SUITE -->
 <section id="primary-suite">
-  <div class="editorial-split">
+  <div class="split">
     <div class="split-img img-reveal">
-      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243053/gh_interiors/200holycrest_1266.jpg"
+      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244627/gh_photos/200_hollycrest_drive_71.jpg"
         alt="Garran Hill — primary suite, master bedroom">
     </div>
     <div class="split-text">
@@ -1885,7 +1858,7 @@
 <!-- STAIRCASE + POWDER -->
 <section class="breath short"></section>
 <section id="staircase">
-  <div class="editorial-split reverse">
+  <div class="split reverse">
     <div class="split-text">
       <span class="micro-rule reveal"></span>
       <span class="eyebrow">The Staircase &middot; 1916</span>
@@ -1926,9 +1899,9 @@
 
 
 <section id="powder-room">
-  <div class="editorial-split">
+  <div class="split">
     <div class="split-img img-reveal" style="max-height:65vh;">
-      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243050/gh_interiors/200holycrest_1218.jpg"
+      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243355/gh_interiors/200holycrest_1668.jpg"
         alt="Garran Hill powder room — fuchsia chinoiserie, Tennessee marble">
     </div>
     <div class="split-text">
@@ -1944,7 +1917,7 @@
 
 <!-- OLD-HOUSE SECRETS -->
 <!-- GH_BUILT_INS_SOURCE: PineStraw feature supports secret coat closet, disappearing screen, concealed cabinetry. DO NOT use gun/firearms/weapon language publicly. -->
-<section class="editorial-split reverse" id="old-house-secrets">
+<section class="split reverse" id="old-house-secrets">
   <div class="split-text reveal">
     <span class="micro-rule"></span>
     <span class="eyebrow">The House Keeps Secrets</span>
@@ -1972,7 +1945,7 @@
 
 <!-- GH_BLUE_FOX_IMAGE_CONFIRMATION_NEEDED -->
 <section id="hollycrest">
-  <div class="editorial-split">
+  <div class="split">
     <div class="split-text">
       <span class="micro-rule reveal"></span>
       <span class="eyebrow">The Hollycrest Years &middot; Betty Dumaine</span>
@@ -2001,7 +1974,7 @@
 
 <div class="section-divider" style="width:100%;height:1px;background:linear-gradient(to right,transparent 0%,rgba(201,169,110,0.0) 5%,rgba(201,169,110,0.3) 25%,rgba(245,224,152,0.5) 50%,rgba(201,169,110,0.3) 75%,rgba(201,169,110,0.0) 95%,transparent 100%);margin:0;"></div>
 <div class="act-transition reveal"><span class="act-label">The Grounds</span></div>
-<section id="terrace" class="editorial-split">
+<section id="terrace" class="split">
   <div class="split-img img-reveal">
     <img loading="lazy" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244781/gh_photos/200_hollycrest_drive_158.jpg"
@@ -2010,7 +1983,7 @@
   <div class="split-text">
     <span class="micro-rule reveal"></span>
     <span class="eyebrow">The Grounds &middot; Brick Terrace</span>
-    <h2>The brick terrace.<em>Built the same year as the house.</em></h2>
+    <h2>The Brick Terrace</h2>
     <div class="body-text reveal">
       <p>The terrace connects house to lawn, dining room to garden, and daily life to the grounds. It is the outdoor room that does the most work.</p>
       <p style="font-style:italic;opacity:0.6;font-size:var(--text-xs);margin-top:var(--sp-xs);">Brick underfoot. French doors behind. Garden beyond.</p>
@@ -2027,13 +2000,13 @@
   </div>
   <div class="full-bleed-caption full-bleed-caption--center reveal">
     <span class="eyebrow">Pool Garden &middot; 20 &times; 40</span>
-    <h2>The pool garden.<em>Saltwater. Surrounded by hedgerow and sky.</em></h2>
+    <h2>Pool Garden</h2>
     <p class="body-text">Through old iron gates, the 20&times;40 in-ground concrete pool catches afternoon light inside its brick walls. Converted from chlorine to saltwater in 2022, it belongs to the landscape rather than interrupting it.</p>
   </div>
 </section>
 
 <!-- WEE COTTAGE — editorial pair -->
-<section id="wee-cottage" class="editorial-split reverse">
+<section id="wee-cottage" class="split reverse">
   <div class="split-img img-reveal">
     <img loading="lazy" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244472/gh_exteriors/holycrestextf_3345.jpg"
@@ -2042,7 +2015,7 @@
   <div class="split-text">
     <span class="micro-rule reveal"></span>
     <span class="eyebrow">The Wee Cottage</span>
-    <h2>The Wee Cottage.<em>Built as the children's playhouse. Still standing.</em></h2>
+    <h2>The Wee Cottage</h2>
     <div class="body-text reveal">
       <p>Set within the rear grounds, the Wee Cottage is a children&#8217;s playhouse &mdash; scaled for imagination, not overnight guests. It belongs to the estate&#8217;s gentler side: gardens, paths, shade, and the kind of discovery buyers remember after the tour ends.</p>
       <p style="font-style:italic;opacity:0.6;font-size:var(--text-xs);margin-top:var(--sp-xs);">A small house within the larger story.</p>
@@ -2057,11 +2030,11 @@
 </section>
 
 <!-- TENNIS — copy-led, image right -->
-<section id="tennis" class="editorial-split">
+<section id="tennis" class="split">
   <div class="split-text">
     <span class="micro-rule reveal"></span>
     <span class="eyebrow">The Sporting Grounds</span>
-    <h2>The court is ready.<em>It has been waiting since the Dumaine years.</em></h2>
+    <h2>Tennis Ready<em> for Renewal.</em></h2>
     <div class="body-text reveal">
       <p>The sporting grounds include a tennis court, laid out in the Dumaine years, awaiting its next chapter.</p>
     </div>
@@ -2074,9 +2047,9 @@
 </section>
 
 <!-- ── AERIAL CLOSER ─────────────────────────────────────── -->
-<section id="aerial-closer" class="editorial-fullbleed" style="position:relative;width:100%;min-height:70vh;overflow:hidden;">
+<section id="aerial-closer" style="position:relative;width:100%;min-height:70vh;overflow:hidden;">
   <img loading="lazy" decoding="async"
-    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244503/gh_exteriors/holycrestextf_3364.jpg"
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244096/gh_photos/200_hollycrest_drive_225.jpg"
     alt="Garran Hill aerial — 4.15 acres, the estate from above, Pinehurst NC"
     style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;filter:brightness(0.80);">
   <div class="reveal" style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70vh;padding:var(--sp-lg) var(--col-pad);text-align:center;">
@@ -2104,7 +2077,7 @@
 <div class="act-transition reveal"><span class="act-label">The Estate</span></div>
 <section class="full-bleed-section" id="twilight">
   <div class="full-bleed-img img-reveal">
-    <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,f_auto,q_auto,c_limit,w_1920/v1777244670/gh_photos/200_hollycrest_drive_219.jpg"
+    <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_800/v1777244095/gh_photos/200_hollycrest_drive_224.jpg"
       alt="Garran Hill exterior at dusk — four acres, estate grounds, Pinehurst NC">
   </div>
   <div class="full-bleed-caption full-bleed-caption--center reveal">
@@ -2156,7 +2129,7 @@
 <section class="inquiry" id="inquiry">
   <div class="reveal">
     <span class="eyebrow" style="display:block;text-align:center;">Private Showing</span>
-    <h2 style="font-size:clamp(1.4rem,2.5vw,2.2rem);margin-bottom:var(--sp-sm);">Garran Hill is not simply for sale. It is being entrusted forward.</h2>
+    <h2 style="font-size:clamp(1.4rem,2.5vw,2.2rem);margin-bottom:var(--sp-sm);">Begin the Private Conversation.</h2>
     <p class="body-text" style="text-align:center;margin:0 auto var(--sp-md);">For private showings and offering details, please inquire directly with Rachel Hernandez at Pines Sotheby's International Realty.</p>
   </div>
   <form
@@ -2229,9 +2202,6 @@
   }
 
   // 3. SCROLL PROGRESS
-  // KB gate: CSS film pan animation
-
-
   const prog = document.getElementById('scroll-progress');
   if (prog) {
     window.addEventListener('scroll', () => {
