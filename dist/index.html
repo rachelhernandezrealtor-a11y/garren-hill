@@ -2159,9 +2159,9 @@
   @keyframes hf6-fade {
     0%    { opacity: 0; }
     82%   { opacity: 0; }
-    85%   { opacity: 0.82; }  /* old frame */
-    98%   { opacity: 0.82; }
-    100%  { opacity: 0.82; }  /* stays on, wraps to F1 */
+    85%   { opacity: 0.82; }
+    97%   { opacity: 0.82; }
+    100%  { opacity: 0; }
   }
 
   /* ── KEN BURNS: slow zoom + drift per frame ── */
@@ -2378,6 +2378,11 @@
     .letter-ghost-text { transform: rotate(-1.5deg); }
   }
 
+
+  @keyframes poster-fadeout {
+    from { opacity: 0.88; }
+    to   { opacity: 0; }
+  }
 </style>
 
   <!-- JSON-LD -->
@@ -3179,7 +3184,7 @@ blockquote.in {
   <img class="hero-poster-bg" 
        src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:72,e_sharpen:30,e_saturation:14,f_auto,q_auto,c_limit,w_1920/v1777648663/gh_key/gh_hero_poster_azalea.jpg"
        alt="" aria-hidden="true" loading="eager" decoding="sync"
-       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;z-index:0;opacity:0.88;">
+       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;z-index:0;opacity:0.88;animation:poster-fadeout 3s 0.5s ease-in forwards;">
   <!-- PHOTO REEL — flowers + twilight — no aerials -->
   <div class="hero-reel" aria-hidden="true">
     <!-- F1 NEW — azalea bloom, color arrival -->
