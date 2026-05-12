@@ -1873,6 +1873,104 @@
     color: rgba(245,240,232,0.95);
     border-color: rgba(201,169,110,0.7);
   }
+
+  /* ══════════════════════════════════════════════════════
+     SPLIT SECTION FIX — proper height + full image fill
+  ══════════════════════════════════════════════════════ */
+
+  /* Base split layout */
+  .editorial-split,
+  .split {
+    display: flex !important;
+    align-items: stretch !important;
+    min-height: 80vh !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    overflow: hidden !important;
+  }
+  .editorial-split.reverse,
+  .split.reverse {
+    flex-direction: row-reverse !important;
+  }
+
+  /* Image panel — takes exactly half, fills full height */
+  .editorial-split .split-img,
+  .split .split-img {
+    flex: 0 0 52% !important;
+    width: 52% !important;
+    min-height: 80vh !important;
+    position: relative !important;
+    overflow: hidden !important;
+    background: #0a0a0a !important;
+  }
+
+  /* The primary image fills the panel completely */
+  .editorial-split .split-img > img:first-child,
+  .split .split-img > img:first-child {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    display: block !important;
+  }
+
+  /* Kill all floating overlay second images — gone */
+  .editorial-split .split-img > img:not(:first-child),
+  .split .split-img > img:not(:first-child) {
+    display: none !important;
+  }
+
+  /* Text panel */
+  .editorial-split .split-text,
+  .split .split-text {
+    flex: 0 0 48% !important;
+    width: 48% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    padding: clamp(3rem, 6vw, 7rem) clamp(2.5rem, 5vw, 6rem) !important;
+    max-width: none !important;
+    background: #0a0a0a !important;
+  }
+
+  /* Mobile: stack */
+  @media (max-width: 768px) {
+    .editorial-split,
+    .split {
+      flex-direction: column !important;
+      min-height: auto !important;
+    }
+    .editorial-split .split-img,
+    .split .split-img {
+      flex: none !important;
+      width: 100% !important;
+      min-height: 55vw !important;
+    }
+    .editorial-split .split-text,
+    .split .split-text {
+      flex: none !important;
+      width: 100% !important;
+      padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 5vw, 3rem) !important;
+    }
+    .editorial-split.reverse,
+    .split.reverse {
+      flex-direction: column !important;
+    }
+  }
+
+  /* ── KITCHEN special: 4 images — show only first as hero, rest hidden ── */
+  .split#kitchen .split-img > img:not(:first-child) {
+    display: none !important;
+  }
+
+  /* ── OLD HOUSE SECRETS: same treatment ── */
+  .split#old-house-secrets .split-img > img:not(:first-child) {
+    display: none !important;
+  }
 </style>
 
   <!-- JSON-LD -->
@@ -2162,7 +2260,7 @@
 <!-- SALON — full split -->
 <section class="editorial-split" id="salon">
   <!-- Two-photo salon gallery — 1203 (wide/tapestry) + 1209 (second angle) -->
-  <div class="split-img img-reveal" style="position:relative;min-height:480px;overflow:hidden;">
+  <div class="split-img img-reveal" style="position:relative;overflow:hidden;">
     <img loading="lazy" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243041/gh_interiors/200holycrest_1203.jpg"
       alt="Salon — wide view, tapestry wall, coffered ceiling, French doors to terrace"
@@ -2237,7 +2335,7 @@
 
 <section id="kitchen">
   <div class="split">
-    <div class="split-img img-reveal" style="position:relative;min-height:480px;overflow:hidden;">
+    <div class="split-img img-reveal" style="position:relative;overflow:hidden;">
     <img loading="lazy" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243342/gh_interiors/200holycrest_1656.jpg"
       alt="Kitchen — white cabinetry, dark granite, island, four windows, heart-pine floors"
@@ -2430,7 +2528,7 @@
       <p>The house still knows how to keep a secret.</p>
     </div>
   </div>
-  <div class="split-img img-reveal" style="position:relative;overflow:hidden;min-height:420px;">
+  <div class="split-img img-reveal" style="position:relative;overflow:hidden;">
     <!-- BOTTOM: door open — compartment revealed -->
     <img loading="lazy" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243375/gh_interiors/200holycrest_1695.jpg"
