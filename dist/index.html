@@ -422,23 +422,25 @@
   .stat-item { text-align: center; flex-shrink: 0; }
   .stat-num {
     display: block;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1rem, 1.6vw, 1.45rem); font-weight: 300;
-    color: #c8ab78;  /* --gold pulled 5° cooler — aged, not warm brass */
-    letter-spacing: 0.1em;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.05rem, 1.8vw, 1.55rem);
+    font-weight: 300;
+    letter-spacing: 0.05em;
     line-height: 1;
-    text-shadow:
-      0 1px 2px rgba(0,0,0,0.95),
-      0 -1px 0 rgba(220,210,185,0.06);
-  
     background: linear-gradient(180deg, #F5E098 0%, #C9A96E 45%, #8B6914 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;}
+    background-clip: text;
+  }
   .stat-lbl {
-    display: block; font-size: 0.36rem; letter-spacing: 0.58em;
-    text-transform: uppercase; color: rgba(245,240,232,0.42);
-    margin-top: 0.45rem; font-weight: 300;
+    display: block;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(0.5rem, 0.65vw, 0.62rem);
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.6);
+    margin-top: 0.3rem;
+    line-height: 1;
   }
   /* DIVIDERS — fine gold settings between stones */
   .stat-div {
@@ -511,27 +513,24 @@
     position: relative; z-index: 50;
   }
   /* THE CREST — sits inside the belt, framed by gold lines */
-  .stat-crest-wrap img {
-    height: clamp(200px, 18vw, 260px);
-    width: auto;
-    display: block;
-    transform: translateY(-38px) !important;
-    filter:
-      drop-shadow(0 -8px 24px rgba(0,0,0,1))
-      drop-shadow(0 0 60px rgba(0,0,0,0.98))
-      drop-shadow(0 10px 32px rgba(0,0,0,1))
-      drop-shadow(0 0 40px rgba(201,169,110,0.35))
-      drop-shadow(0 0 18px rgba(245,224,152,0.22));
-  }
+  
   /* Hover — lifts toward you, shadow deepens as if physically rising */
-  .stat-crest-wrap img:hover { transform: translateY(-44px) scale(1.03) !important; }
+  
   /* Float — barely moves. A pendant in still air. */
   
     50%       { transform: translateY(-64px); }
   }
   .stat-price .stat-num {
-    font-size: clamp(0.92rem, 1.55vw, 1.35rem);
-    letter-spacing: 0.06em;
+    display: block;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.05rem, 1.8vw, 1.55rem);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    background: linear-gradient(180deg, #F5E098 0%, #C9A96E 45%, #8B6914 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   /* § 11. SPLIT SECTIONS — THE CORE LAYOUT ENGINE */
@@ -797,19 +796,17 @@
     .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
     .stat-bar { padding: 0 1rem; height: 72px; }
     .stat-numbers { gap: 0.6rem; }
-    .stat-lbl { display: none; }
-    .stat-crest-wrap img {
-    height: clamp(200px, 18vw, 260px);
-    width: auto;
+    .stat-lbl {
     display: block;
-    transform: translateY(-38px) !important;
-    filter:
-      drop-shadow(0 -8px 24px rgba(0,0,0,1))
-      drop-shadow(0 0 60px rgba(0,0,0,0.98))
-      drop-shadow(0 10px 32px rgba(0,0,0,1))
-      drop-shadow(0 0 40px rgba(201,169,110,0.35))
-      drop-shadow(0 0 18px rgba(245,224,152,0.22));
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(0.5rem, 0.65vw, 0.62rem);
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.6);
+    margin-top: 0.3rem;
+    line-height: 1;
   }
+    
     .stat-div { height: 1.5rem; }
     .kb-gate { min-height: 70vh; }
     .inquiry { padding: var(--sp-lg) 1.5rem; }
@@ -821,7 +818,18 @@
   }
   @media (max-width: 375px) {
     .hero-title { font-size: 3rem; }
-    .stat-num { font-size: 0.85rem; }
+    .stat-num {
+    display: block;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.05rem, 1.8vw, 1.55rem);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    background: linear-gradient(180deg, #F5E098 0%, #C9A96E 45%, #8B6914 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
     .gallery-grid { grid-template-columns: 1fr; }
   }
   
@@ -1540,9 +1548,14 @@
 
   /* Stat bar labels — unified */
   .stat-lbl {
-    font-family: 'Cormorant Garamond', Georgia, serif !important;
-    letter-spacing: 0.18em;
-    font-size: clamp(0.42rem, 0.6vw, 0.52rem);
+    display: block;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(0.5rem, 0.65vw, 0.62rem);
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.6);
+    margin-top: 0.3rem;
+    line-height: 1;
   }
 
   /* Source/caption text */
@@ -1769,22 +1782,26 @@
 
   /* ── STAT BAR TYPOGRAPHY ── */
   .stat-num {
-    font-family: 'Cormorant Garamond', Georgia, serif !important;
-    font-weight: 300 !important;
-    font-size: clamp(1.1rem, 1.8vw, 1.6rem) !important;
-    letter-spacing: 0.06em !important;
+    display: block;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.05rem, 1.8vw, 1.55rem);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1;
     background: linear-gradient(180deg, #F5E098 0%, #C9A96E 45%, #8B6914 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .stat-lbl {
-    font-family: 'Cormorant Garamond', Georgia, serif !important;
-    font-size: clamp(0.4rem, 0.55vw, 0.5rem) !important;
-    letter-spacing: 0.25em !important;
-    text-transform: uppercase !important;
-    font-weight: 400 !important;
-    color: rgba(245,240,232,0.55) !important;
+    display: block;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(0.5rem, 0.65vw, 0.62rem);
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.6);
+    margin-top: 0.3rem;
+    line-height: 1;
   }
 
   /* ── CAPTIONS ── */
@@ -2060,6 +2077,64 @@
     margin: 0 auto clamp(1.2rem, 2vw, 1.6rem);
   }
 
+
+  /* THE CREST — 3D Bronze Medallion Treatment */
+  .stat-crest-wrap img {
+    height: clamp(200px, 18vw, 260px);
+    width: auto;
+    display: block;
+    transform: translateY(-38px);
+    transition: transform 0.4s cubic-bezier(.16,1,.3,1), filter 0.4s ease;
+    animation: crestBreathe 5s ease-in-out infinite;
+    filter:
+      /* Edge definition — lifts crest off dark background */
+      drop-shadow(0 0 1px rgba(245,224,152,0.9))
+      /* Upper-left light source — simulates raised relief */
+      drop-shadow(-3px -3px 6px rgba(245,224,152,0.55))
+      /* Lower-right shadow — gives depth, pushes it forward */
+      drop-shadow(4px 6px 12px rgba(0,0,0,0.95))
+      drop-shadow(2px 3px 6px rgba(0,0,0,0.9))
+      /* Ambient gold glow — bronze in warm light */
+      drop-shadow(0 0 28px rgba(201,169,110,0.45))
+      drop-shadow(0 0 14px rgba(201,169,110,0.3))
+      /* Deep ground shadow — anchors it, stops it floating cheap */
+      drop-shadow(0 18px 40px rgba(0,0,0,0.85));
+  }
+
+  @keyframes crestBreathe {
+    0%, 100% {
+      filter:
+        drop-shadow(0 0 1px rgba(245,224,152,0.9))
+        drop-shadow(-3px -3px 6px rgba(245,224,152,0.55))
+        drop-shadow(4px 6px 12px rgba(0,0,0,0.95))
+        drop-shadow(2px 3px 6px rgba(0,0,0,0.9))
+        drop-shadow(0 0 28px rgba(201,169,110,0.45))
+        drop-shadow(0 0 14px rgba(201,169,110,0.3))
+        drop-shadow(0 18px 40px rgba(0,0,0,0.85));
+    }
+    50% {
+      filter:
+        drop-shadow(0 0 2px rgba(245,224,152,1))
+        drop-shadow(-4px -4px 8px rgba(245,224,152,0.7))
+        drop-shadow(4px 6px 14px rgba(0,0,0,0.98))
+        drop-shadow(2px 3px 7px rgba(0,0,0,0.95))
+        drop-shadow(0 0 40px rgba(201,169,110,0.6))
+        drop-shadow(0 0 20px rgba(245,224,152,0.35))
+        drop-shadow(0 20px 50px rgba(0,0,0,0.9));
+    }
+  }
+
+  .stat-crest-wrap img:hover {
+    transform: translateY(-44px) scale(1.04);
+    filter:
+      drop-shadow(0 0 2px rgba(245,224,152,1))
+      drop-shadow(-5px -5px 10px rgba(245,224,152,0.8))
+      drop-shadow(5px 8px 16px rgba(0,0,0,1))
+      drop-shadow(3px 4px 8px rgba(0,0,0,0.95))
+      drop-shadow(0 0 50px rgba(201,169,110,0.7))
+      drop-shadow(0 0 25px rgba(245,224,152,0.45))
+      drop-shadow(0 22px 55px rgba(0,0,0,0.95));
+  }
 </style>
 
   <!-- JSON-LD -->
@@ -2154,25 +2229,47 @@
     <div class="stat-numbers">
       <!-- LEFT WING -->
       <div class="stat-wing">
-        <div class="stat-item"><span class="stat-num">4</span><span class="stat-lbl">Bedrooms</span></div>
+        <div class="stat-item">
+          <span class="stat-num">4</span>
+          <span class="stat-lbl">Bedrooms</span>
+        </div>
         <div class="stat-div"></div>
-        <div class="stat-item"><span class="stat-num">6</span><span class="stat-lbl">Bathrooms</span></div>
+        <div class="stat-item">
+          <span class="stat-num">6</span>
+          <span class="stat-lbl">Bathrooms</span>
+        </div>
         <div class="stat-div"></div>
-        <div class="stat-item"><span class="stat-num">6,072</span><span class="stat-lbl">Sq Ft</span></div>
+        <div class="stat-item">
+          <span class="stat-num">6,072</span>
+          <span class="stat-lbl">Sq&thinsp;Ft</span>
+        </div>
       </div>
+
       <!-- CREST THRONE -->
       <div class="stat-crest-throne">
         <div class="stat-crest-wrap">
-          <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" width="185" height="185">
+          <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
+               alt="Garran Hill Estate Crest — Pinehurst NC 1916"
+               width="220" height="220" loading="eager">
         </div>
       </div>
+
       <!-- RIGHT WING -->
       <div class="stat-wing right">
-        <div class="stat-item"><span class="stat-num">4.15</span><span class="stat-lbl">Acres</span></div>
+        <div class="stat-item">
+          <span class="stat-num">4.15</span>
+          <span class="stat-lbl">Acres</span>
+        </div>
         <div class="stat-div"></div>
-        <div class="stat-item"><span class="stat-num">Est. 1916</span><span class="stat-lbl">Built</span></div>
+        <div class="stat-item">
+          <span class="stat-num">Est.&thinsp;1916</span>
+          <span class="stat-lbl">Built</span>
+        </div>
         <div class="stat-div"></div>
-        <div class="stat-item stat-price"><span class="stat-num">$4,250,000</span></div>
+        <div class="stat-item stat-price">
+          <span class="stat-num">$4,250,000</span>
+          <span class="stat-lbl">Offered&thinsp;At</span>
+        </div>
       </div>
     </div>
   </div>
