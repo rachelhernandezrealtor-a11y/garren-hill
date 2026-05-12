@@ -2267,6 +2267,8 @@
     z-index: 0;
     overflow: hidden;
     pointer-events: none;
+    /* Belt-and-suspenders: container-level opacity cap */
+    opacity: 0.55;
   }
 
   /* Layer 1 — large background inscription, very faint */
@@ -2826,6 +2828,14 @@ section {
   overflow: hidden;
 }
 
+/* Hero must be full viewport — all children are absolute */
+#top {
+  min-height: 100vh;
+  min-height: 100svh;
+  height: 100vh;
+  position: relative;
+}
+
 /* Dark narrative sections — tighter top, breathe more bottom */
 #history,
 #whp-quote,
@@ -3160,6 +3170,11 @@ blockquote.in {
 <!-- HERO VIDEO: current site uses done_czfe8o. Earlier rule named Last_for_real_q0fqvw. CONFLICT — Rachel-confirmation-needed. Not changed. -->
 <section class="hero" id="top">
 
+  <!-- POSTER: eager-loaded fallback so hero is never black on first paint -->
+  <img class="hero-poster-bg" 
+       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:72,e_sharpen:30,e_saturation:14,f_auto,q_auto,c_limit,w_1920/v1777648663/gh_key/gh_hero_poster_azalea.jpg"
+       alt="" aria-hidden="true" loading="eager" decoding="sync"
+       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;z-index:0;opacity:0.88;">
   <!-- PHOTO REEL — flowers + twilight — no aerials -->
   <div class="hero-reel" aria-hidden="true">
     <div class="hero-frame hf1" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777648663/gh_key/gh_hero_poster_azalea.jpg');"></div>
