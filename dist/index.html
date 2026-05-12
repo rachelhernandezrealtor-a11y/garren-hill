@@ -1287,9 +1287,9 @@
   .section-title {
     font-family: 'Cormorant Garamond', Georgia, serif ;
     font-weight: 300 ;
-    font-size: clamp(2.2rem, 4.5vw, 4.2rem) ;
+    font-size: clamp(1.8rem, 2.8vw, 3.2rem) ;
     color: var(--cream) ;
-    line-height: 1.12 ;
+    line-height: 1.18 ;
     letter-spacing: 0.01em ;
     margin-bottom: clamp(1rem, 2vw, 1.8rem) ;
     max-width: 22ch;
@@ -2734,7 +2734,28 @@
   }
 }
 
+/* ══ H2 CANONICAL — one rule, full cascade ══
+   Replaces ALL conflicting h2 rules. Apply before media queries. */
+section h2,
+.section-headline,
+.section-title {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 300 !important;
+  font-size: clamp(1.8rem, 2.8vw, 3.2rem) !important;
+  line-height: 1.18 !important;
+  color: var(--cream) !important;
+  letter-spacing: 0.01em !important;
+  max-width: 24ch;
+}
+
+/* ── KB GATE: the drop-cap headline is intentionally different ── */
+.headline-drop {
+  font-size: clamp(2.4rem, 3.8vw, 4.2rem) !important;
+  max-width: 18ch;
+}
+
 /* ── MOBILE ── */
+
 @media (max-width: 768px) {
   .hero { min-height: 680px; }
   .hero-stage { padding: 72px 1.5rem 130px; }
@@ -3270,7 +3291,7 @@ blockquote.in {
     <!-- THEN — sepia gate, fades over -->
     <img class="then-now-img then-now-then"
       loading="lazy" decoding="async"
-      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:60,e_sharpen:15,f_auto,q_auto,c_limit,w_1600/v1777411350/gh_key/gh_gate_sepia.jpg"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:60,e_sharpen:15,f_auto,q_auto,c_limit,w_1600/v1777244059/gh_key/gh_191.jpg"
       alt="Garran Hill — the old gate, early period photograph"
       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:0;">
     <!-- GAS LAMP AMBER BLOOM — pulses with the sepia flicker -->
@@ -3295,36 +3316,7 @@ blockquote.in {
  <!-- Top blend — fades from #0a0a0a at top into section -->
  <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:18vh;background:linear-gradient(to bottom,#0a0a0a 0%,rgba(10,10,10,0.6) 40%,transparent 100%);z-index:2;pointer-events:none;"></div>
  <!-- WHP GHOST MANUSCRIPT — 4 layers of aged text atmosphere -->
- <div class="letter-ghost" aria-hidden="true">
-
-   <!-- Layer 1: Large hero inscription — the farm letter -->
-   <div class="lg-layer-1">
-     <span>Build the farm, therefore;</span>
-     <span>and let me hear at every stage</span>
-     <span>of that happy game.</span>
-   </div>
-
-   <!-- Layer 2: Secondary passages — letter fragments, smaller -->
-   <div class="lg-layer-2">
-     <span>The land itself is the legacy. The house is only proof of it.</span>
-     <span>I have been thinking of the farm at Pinehurst since February.</span>
-     <span>Ralph will see to the construction. The craftsmen are Tufts&#8217;s men.</span>
-     <span>One thousand acres of Carolina pine land, taken whole.</span>
-   </div>
-
-   <!-- Layer 3: Attribution and date — bottom corner whisper -->
-   <div class="lg-layer-3">
-     <span>W.H.P. to Ralph Page, 1913</span>
-     <span>Life and Letters, Vol. I, p. 356</span>
-     <span>Garran Hill &#8212; Est. 1916</span>
-   </div>
-
-   <!-- Layer 4: Vertical watermark word -->
-   <div class="lg-layer-4">
-     <span>Hollycrest</span>
-   </div>
-
- </div>
+ <!-- ghost text removed -->
 <div class="split" style="position:relative;z-index:1;align-items:center;">
  <!-- Portrait container -->
  <div class="img-reveal" style="flex:1;display:flex;align-items:center;justify-content:center;padding:var(--sp-md) 0;min-height:320px;">
