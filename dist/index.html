@@ -2200,13 +2200,29 @@
     will-change: opacity;
   }
   /* Frame 1: azalea — 0s–10s */
-  .hf1 { animation: hf1 40s 0s linear infinite both; background-position: center 55%; }
-  /* Frame 2: flowers at stone marker — 10s–20s */
-  .hf2 { animation: hf2 40s 0s linear infinite both; background-position: center 50%; }
-  /* Frame 3: exterior grounds — 20s–30s */
-  .hf3 { animation: hf3 40s 0s linear infinite both; background-position: center 40%; }
-  /* Frame 4: twilight — 30s–40s */
-  .hf4 { animation: hf4 40s 0s linear infinite both; background-position: center 38%; }
+  /* Ken Burns per frame — slow zoom + drift, unique start position each */
+  .hf1 { animation: hf1 40s 0s linear infinite both, kb1 40s 0s ease-in-out infinite both; }
+  .hf2 { animation: hf2 40s 0s linear infinite both, kb2 40s 0s ease-in-out infinite both; }
+  .hf3 { animation: hf3 40s 0s linear infinite both, kb3 40s 0s ease-in-out infinite both; }
+  .hf4 { animation: hf4 40s 0s linear infinite both, kb4 40s 0s ease-in-out infinite both; }
+
+  /* Ken Burns keyframes — scale + translate, each frame drifts differently */
+  @keyframes kb1 {
+    0%   { transform: scale(1.00) translate(0%, 0%); }
+    100% { transform: scale(1.10) translate(-1.5%, -1%); }
+  }
+  @keyframes kb2 {
+    0%   { transform: scale(1.08) translate(-1%, 0%); }
+    100% { transform: scale(1.00) translate(0.5%, 1%); }
+  }
+  @keyframes kb3 {
+    0%   { transform: scale(1.00) translate(1%, -0.5%); }
+    100% { transform: scale(1.10) translate(-0.5%, 0.5%); }
+  }
+  @keyframes kb4 {
+    0%   { transform: scale(1.06) translate(0.5%, 1%); }
+    100% { transform: scale(1.00) translate(-1%, -0.5%); }
+  }
 
   /* 4-frame reel — 10s per frame, 2s crossfade, 40s cycle */
   /* Frame is visible for 8s, overlaps 2s with next */
