@@ -2652,13 +2652,13 @@
   position: absolute;
   bottom: 0; left: 0; right: 0;
   z-index: 20;
-  height: 80px;
+  height: 96px;
   overflow: visible;
-  /* Pure obsidian ground — the crest floats above light */
+  /* Deep obsidian base — crest floats above, numbers read clean */
   background: linear-gradient(180deg,
     rgba(4,4,4,0.0)  0%,
-    rgba(4,4,4,0.40) 40%,
-    rgba(4,4,4,0.78) 100%);
+    rgba(4,4,4,0.50) 45%,
+    rgba(4,4,4,0.88) 100%);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
@@ -2670,13 +2670,13 @@
   top: 0; left: 0; right: 0; height: 1px;
   background: linear-gradient(90deg,
     transparent 0%,
-    rgba(190,162,105,0.0) 4%,
-    rgba(210,180,130,0.55) 16%,
-    rgba(238,208,152,0.90) 34%,
-    rgba(252,228,168,1.0)  50%,
-    rgba(238,208,152,0.90) 66%,
-    rgba(210,180,130,0.55) 84%,
-    rgba(190,162,105,0.0) 96%,
+    rgba(190,162,105,0.0) 3%,
+    rgba(210,180,130,0.65) 14%,
+    rgba(238,208,152,0.95) 32%,
+    rgba(255,235,175,1.0)  50%,
+    rgba(238,208,152,0.95) 68%,
+    rgba(210,180,130,0.65) 86%,
+    rgba(190,162,105,0.0) 97%,
     transparent 100%);
   pointer-events: none;
   z-index: 21;
@@ -2726,12 +2726,11 @@
 .stat-num {
   display: block;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1.0rem, 1.6vw, 1.45rem);
+  font-size: clamp(1.05rem, 1.7vw, 1.55rem);
   font-weight: 300;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.10em;
   line-height: 1;
-  /* Champagne-platinum — not gold, lighter */
-  background: linear-gradient(180deg, #EFE0B8 0%, #D4B97A 50%, #B8955A 100%);
+  background: linear-gradient(180deg, #F2E4C0 0%, #D8C082 50%, #B8955A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -2773,44 +2772,49 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 clamp(2rem, 3.5vw, 5rem);
+  /* wide lateral breathing room so crest commands the bar */
+  padding: 0 clamp(2.5rem, 4vw, 6rem);
   z-index: 30;
-  margin-top: -180px;
+  /* Pull higher into hero — crest is a crown, not a badge */
+  margin-top: -260px;
   overflow: visible;
 }
 
 .stat-crest-wrap img {
-  height: clamp(200px, 20vw, 280px);
+  /* BIG — this is the crowned jewel of the page */
+  height: clamp(280px, 26vw, 360px);
   width: auto;
   display: block;
   position: relative;
-  transform: translateY(38px);
-  /* Aged platinum — cool, refined, not warm gold blob */
+  /* Anchor bottom to belt line — lower portion crosses through */
+  transform: translateY(-38px);
+  /* Royal seal — warm gold, deep shadows, luminous glow */
   filter:
-    sepia(0.18) hue-rotate(-6deg) saturate(0.82) brightness(1.08)
-    drop-shadow(0 2px 18px rgba(0,0,0,0.70))
-    drop-shadow(0 8px 32px rgba(0,0,0,0.55))
-    drop-shadow(0 0 28px rgba(212,192,145,0.18))
-    drop-shadow(0 0 12px rgba(235,218,175,0.12));
-  animation: crestBreath 7s ease-in-out infinite;
+    sepia(0.12) hue-rotate(-4deg) saturate(1.05) brightness(1.12)
+    drop-shadow(0 0 0 1px rgba(0,0,0,0.0))
+    drop-shadow(0 4px 28px rgba(0,0,0,0.80))
+    drop-shadow(0 12px 48px rgba(0,0,0,0.65))
+    drop-shadow(0 0 40px rgba(201,169,110,0.28))
+    drop-shadow(0 0 18px rgba(245,224,152,0.20));
+  animation: crestBreath 6s ease-in-out infinite;
 }
 
 @keyframes crestBreath {
-  0%,100% {
+  0%, 100% {
     filter:
-      sepia(0.18) hue-rotate(-6deg) saturate(0.82) brightness(1.06)
-      drop-shadow(0 2px 18px rgba(0,0,0,0.70))
-      drop-shadow(0 8px 32px rgba(0,0,0,0.55))
-      drop-shadow(0 0 22px rgba(212,192,145,0.14))
-      drop-shadow(0 0 10px rgba(235,218,175,0.10));
+      sepia(0.12) hue-rotate(-4deg) saturate(1.05) brightness(1.10)
+      drop-shadow(0 4px 28px rgba(0,0,0,0.80))
+      drop-shadow(0 12px 48px rgba(0,0,0,0.65))
+      drop-shadow(0 0 32px rgba(201,169,110,0.22))
+      drop-shadow(0 0 14px rgba(245,224,152,0.16));
   }
   50% {
     filter:
-      sepia(0.18) hue-rotate(-6deg) saturate(0.82) brightness(1.10)
-      drop-shadow(0 2px 18px rgba(0,0,0,0.70))
-      drop-shadow(0 8px 32px rgba(0,0,0,0.55))
-      drop-shadow(0 0 32px rgba(212,192,145,0.22))
-      drop-shadow(0 0 16px rgba(235,218,175,0.16));
+      sepia(0.12) hue-rotate(-4deg) saturate(1.05) brightness(1.15)
+      drop-shadow(0 4px 28px rgba(0,0,0,0.80))
+      drop-shadow(0 12px 48px rgba(0,0,0,0.65))
+      drop-shadow(0 0 52px rgba(201,169,110,0.38))
+      drop-shadow(0 0 26px rgba(245,224,152,0.28));
   }
 }
 
