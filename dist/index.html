@@ -2427,13 +2427,13 @@
 .hero-stage {
   position: absolute;
   inset: 0;
-  z-index: 3;
+  z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 64px clamp(2rem, 6vw, 8rem) 160px;
+  padding: 72px clamp(2rem, 6vw, 8rem) 130px;
 }
 
 /* ── EYEBROW ── */
@@ -2464,9 +2464,9 @@
   font-family: 'Pinyon Script', cursive;
   font-weight: 400;
   font-size: clamp(6rem, 18vw, 16rem);
-  color: #F5F0E8;
+  color: rgba(245,240,232,0.97);
   line-height: 0.86;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.04), 0 2px 10px rgba(0,0,0,0.38);
+  text-shadow: 0 2px 40px rgba(0,0,0,0.90), 0 4px 80px rgba(0,0,0,0.70), 0 1px 0 rgba(255,255,255,0.03);
   margin: 0 0 clamp(1rem, 2vw, 1.8rem);
   letter-spacing: -0.01em;
 }
@@ -3041,18 +3041,18 @@ blockquote.in {
   z-index: 2;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 50% 45%,
-      transparent 35%,
-      rgba(10,10,10,0.28) 62%,
-      rgba(10,10,10,0.78) 100%
+    radial-gradient(ellipse at 50% 42%,
+      transparent 42%,
+      rgba(10,10,10,0.20) 65%,
+      rgba(10,10,10,0.75) 100%
     ),
     linear-gradient(
       to bottom,
-      rgba(10,10,10,0.38) 0%,
-      rgba(10,10,10,0.08) 18%,
-      transparent 38%,
-      transparent 55%,
-      rgba(10,10,10,0.78) 100%
+      rgba(10,10,10,0.42) 0%,
+      rgba(10,10,10,0.04) 12%,
+      transparent 26%,
+      transparent 58%,
+      rgba(10,10,10,0.85) 100%
     );
 }
 
