@@ -2120,90 +2120,91 @@
     will-change: opacity, transform;
   }
   /* Each frame: opacity crossfade + Ken Burns transform, 40s cycle */
-  .hf1 { animation: hf1-fade 40s 0s linear infinite both, hf1-kb 40s 0s ease-in-out infinite both; background-position: center 55%; }
-  .hf2 { animation: hf2-fade 40s 0s linear infinite both, hf2-kb 40s 0s ease-in-out infinite both; background-position: center 48%; }
-  .hf3 { animation: hf3-fade 40s 0s linear infinite both, hf3-kb 40s 0s ease-in-out infinite both; background-position: center 42%; }
-  .hf4 { animation: hf4-fade 40s 0s linear infinite both, hf4-kb 40s 0s ease-in-out infinite both; background-position: center 38%; }
+  /* ── 6-FRAME HERO REEL — 60s cycle, old/new alternating ── */
+  /* OLD frames (.hf-old) get a warm sepia treatment */
+  .hf-old {
+    filter: sepia(45%) contrast(0.94) brightness(0.92);
+  }
 
-  /* ── OPACITY: frame 1 on immediately at 0%, 10s per frame ── */
+  /* Animation: each frame fades over a 60s loop */
+  .hf1 { animation: hf1-fade 60s 0s linear infinite both, hf1-kb 60s 0s ease-in-out infinite both; background-position: center 55%; }
+  .hf2 { animation: hf2-fade 60s 0s linear infinite both, hf2-kb 60s 0s ease-in-out infinite both; background-position: center top; }
+  .hf3 { animation: hf3-fade 60s 0s linear infinite both, hf3-kb 60s 0s ease-in-out infinite both; background-position: center 42%; }
+  .hf4 { animation: hf4-fade 60s 0s linear infinite both, hf4-kb 60s 0s ease-in-out infinite both; background-position: center 38%; }
+  .hf5 { animation: hf5-fade 60s 0s linear infinite both, hf5-kb 60s 0s ease-in-out infinite both; background-position: center 48%; }
+  .hf6 { animation: hf6-fade 60s 0s linear infinite both, hf6-kb 60s 0s ease-in-out infinite both; background-position: center 52%; }
+
+  /* ── OPACITY KEYFRAMES (60s cycle) ── */
   @keyframes hf1-fade {
-    0%   { opacity: 0.88; }
-    20%  { opacity: 0.88; }
-    27%  { opacity: 0; }
-    100% { opacity: 0; }
+    0%    { opacity: 0.88; }  /* on immediately */
+    15%   { opacity: 0.88; }
+    18%   { opacity: 0; }
+    100%  { opacity: 0; }
   }
   @keyframes hf2-fade {
-    0%   { opacity: 0; }
-    20%  { opacity: 0; }
-    27%  { opacity: 0.88; }
-    45%  { opacity: 0.88; }
-    52%  { opacity: 0; }
-    100% { opacity: 0; }
+    0%    { opacity: 0; }
+    15%   { opacity: 0; }
+    18%   { opacity: 0.82; }  /* old frame — slightly lower */
+    32%   { opacity: 0.82; }
+    35%   { opacity: 0; }
+    100%  { opacity: 0; }
   }
   @keyframes hf3-fade {
-    0%   { opacity: 0; }
-    45%  { opacity: 0; }
-    52%  { opacity: 0.88; }
-    70%  { opacity: 0.88; }
-    77%  { opacity: 0; }
-    100% { opacity: 0; }
+    0%    { opacity: 0; }
+    32%   { opacity: 0; }
+    35%   { opacity: 0.88; }
+    48%   { opacity: 0.88; }
+    51%   { opacity: 0; }
+    100%  { opacity: 0; }
   }
   @keyframes hf4-fade {
-    0%   { opacity: 0; }
-    70%  { opacity: 0; }
-    77%  { opacity: 0.88; }
-    95%  { opacity: 0.88; }
-    100% { opacity: 0.88; }
+    0%    { opacity: 0; }
+    48%   { opacity: 0; }
+    51%   { opacity: 0.82; }  /* old frame */
+    65%   { opacity: 0.82; }
+    68%   { opacity: 0; }
+    100%  { opacity: 0; }
+  }
+  @keyframes hf5-fade {
+    0%    { opacity: 0; }
+    65%   { opacity: 0; }
+    68%   { opacity: 0.88; }
+    82%   { opacity: 0.88; }
+    85%   { opacity: 0; }
+    100%  { opacity: 0; }
+  }
+  @keyframes hf6-fade {
+    0%    { opacity: 0; }
+    82%   { opacity: 0; }
+    85%   { opacity: 0.82; }  /* old frame */
+    98%   { opacity: 0.82; }
+    100%  { opacity: 0.82; }  /* stays on, wraps to F1 */
   }
 
   /* ── KEN BURNS: slow zoom + drift per frame ── */
   @keyframes hf1-kb {
     0%   { transform: scale(1.00) translate(0%,    0%); }
-    100% { transform: scale(1.08) translate(-1.2%, -0.8%); }
+    100% { transform: scale(1.07) translate(-1.0%, -0.6%); }
   }
   @keyframes hf2-kb {
-    0%   { transform: scale(1.07) translate(-0.8%, 0%); }
-    100% { transform: scale(1.00) translate(0.5%,  0.8%); }
+    0%   { transform: scale(1.06) translate(-0.6%, 0%); }
+    100% { transform: scale(1.00) translate(0.4%,  0.6%); }
   }
   @keyframes hf3-kb {
-    0%   { transform: scale(1.00) translate(0.8%,  -0.4%); }
-    100% { transform: scale(1.08) translate(-0.4%, 0.4%); }
+    0%   { transform: scale(1.00) translate(0.6%,  -0.3%); }
+    100% { transform: scale(1.07) translate(-0.3%, 0.3%); }
   }
   @keyframes hf4-kb {
-    0%   { transform: scale(1.05) translate(0.4%,  0.8%); }
-    100% { transform: scale(1.00) translate(-0.8%, -0.4%); }
+    0%   { transform: scale(1.04) translate(0.3%,  0.6%); }
+    100% { transform: scale(1.00) translate(-0.6%, -0.3%); }
   }
-
-  /* 4-frame reel — 10s per frame, 2s crossfade, 40s cycle */
-  /* Frame is visible for 8s, overlaps 2s with next */
-  @keyframes hf1 {
-    0%    { opacity: 0.88; }   /* instant on — frame 1 visible on load */
-    20%   { opacity: 0.88; }
-    25%   { opacity: 0; }
-    100%  { opacity: 0; }
+  @keyframes hf5-kb {
+    0%   { transform: scale(1.00) translate(-0.4%, 0.2%); }
+    100% { transform: scale(1.07) translate(0.6%,  -0.4%); }
   }
-  @keyframes hf2 {
-    0%    { opacity: 0; }
-    20%   { opacity: 0; }
-    25%   { opacity: 0.88; }
-    45%   { opacity: 0.88; }
-    50%   { opacity: 0; }
-    100%  { opacity: 0; }
-  }
-  @keyframes hf3 {
-    0%    { opacity: 0; }
-    45%   { opacity: 0; }
-    50%   { opacity: 0.88; }
-    70%   { opacity: 0.88; }
-    75%   { opacity: 0; }
-    100%  { opacity: 0; }
-  }
-  @keyframes hf4 {
-    0%    { opacity: 0; }
-    70%   { opacity: 0; }
-    75%   { opacity: 0.88; }
-    95%   { opacity: 0.88; }
-    100%  { opacity: 0.88; }  /* stays on so loop back to frame 1 is seamless */
+  @keyframes hf6-kb {
+    0%   { transform: scale(1.05) translate(0.2%,  -0.4%); }
+    100% { transform: scale(1.00) translate(-0.4%, 0.2%); }
   }
   .hero-overlay {
     position: absolute;
@@ -3198,10 +3199,18 @@ blockquote.in {
        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;z-index:0;opacity:0.88;">
   <!-- PHOTO REEL — flowers + twilight — no aerials -->
   <div class="hero-reel" aria-hidden="true">
+    <!-- F1 NEW — azalea bloom, color arrival -->
     <div class="hero-frame hf1" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777648663/gh_key/gh_hero_poster_azalea.jpg');"></div>
-    <div class="hero-frame hf2" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244072/gh_photos/200_hollycrest_drive_192.jpg');"></div>
-    <div class="hero-frame hf3" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244523/gh_exteriors/holycrestextf_3327.jpg');"></div>
-    <div class="hero-frame hf4" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244670/gh_photos/200_hollycrest_drive_220.jpg');"></div>
+    <!-- F2 OLD — 1916 estate exterior, sepia then -->
+    <div class="hero-frame hf2 hf-old" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244059/gh_key/gh_191.jpg');"></div>
+    <!-- F3 NEW — twilight facade, cinematic now -->
+    <div class="hero-frame hf3" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244670/gh_photos/200_hollycrest_drive_220.jpg');"></div>
+    <!-- F4 OLD — 1916 sapling landscape, then -->
+    <div class="hero-frame hf4 hf-old" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777270125/gh_key/gh_sapling1916.jpg');"></div>
+    <!-- F5 NEW — front exterior full circle, now -->
+    <div class="hero-frame hf5" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243323/gh_exteriors/front_exterior.jpg');"></div>
+    <!-- F6 OLD — horse post / Dumaine era grounds, then -->
+    <div class="hero-frame hf6 hf-old" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777273864/gh_key/gh_horse_post.jpg');"></div>
   </div>
   <div class="hero-overlay"></div>
 
