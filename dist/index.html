@@ -2216,8 +2216,8 @@
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: clamp(160px, 28vh, 320px);
-    background: linear-gradient(to bottom, #0a0a0a 0%, rgba(10,10,10,0.7) 40%, transparent 100%);
+    height: clamp(200px, 35vh, 420px);
+    background: linear-gradient(to bottom, #0a0a0a 0%, rgba(10,10,10,0.6) 55%, transparent 100%);
     z-index: 2;
     pointer-events: none;
   }
@@ -2235,7 +2235,7 @@
     overflow: hidden;
     pointer-events: none;
     /* Belt-and-suspenders: container-level opacity cap */
-    opacity: 0.55;
+    opacity: 0.22;
   }
 
   /* Layer 1 — large background inscription, very faint */
@@ -2257,7 +2257,7 @@
     font-weight: 300;
     font-style: italic;
     font-size: clamp(2.2rem, 4.5vw, 5.5rem);
-    color: rgba(201,169,110,0.042);
+    color: rgba(201,169,110,0.028);
     letter-spacing: 0.02em;
     white-space: nowrap;
     line-height: 1.35;
@@ -3302,36 +3302,19 @@ blockquote.in {
 <div class="act-break-diamond"></div>
   <div class="act-break-diamond"></div>
 </div>
-<section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;margin-top:-12vh;padding-top:12vh;">
+<section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;margin-top:-20vh;">
  <!-- Top blend — fades from #0a0a0a at top into section -->
- <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:18vh;background:linear-gradient(to bottom,#0a0a0a 0%,rgba(10,10,10,0.6) 40%,transparent 100%);z-index:2;pointer-events:none;"></div>
+ <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:28vh;background:linear-gradient(to bottom,#0a0a0a 0%,rgba(10,10,10,0.5) 50%,transparent 100%);z-index:2;pointer-events:none;"></div>
  <!-- WHP GHOST MANUSCRIPT — 4 layers of aged text atmosphere -->
- <!-- WHP GHOST MANUSCRIPT — 4 layers of aged text atmosphere -->
+ <!-- WHP GHOST MANUSCRIPT — atmosphere layer only, never readable -->
 <div class="letter-ghost" aria-hidden="true">
-  <!-- Layer 1: large background inscription -->
+  <!-- Layer 1 only: huge faint background inscription — sensed not read -->
   <div class="lg-layer-1">
     <span class="lg-line-1">Build the farm&mdash;therefore&mdash;and let me hear</span>
     <span class="lg-line-2">at every stage of that happy game.</span>
     <span class="lg-line-3">&nbsp;</span>
     <span class="lg-line-4">I think of Garran Hill every day.</span>
     <span class="lg-line-5">It is the only place I want to be.</span>
-  </div>
-  <!-- Layer 2: secondary smaller text, different angle -->
-  <div class="lg-layer-2">
-    <span>The Ambassador has not forgotten the farm.</span>
-    <span>He wrote of the oak floors, the volute stair,</span>
-    <span>the light through the arched fanlights at morning.</span>
-    <span>He wrote of coming home.</span>
-  </div>
-  <!-- Layer 3: attribution / date, bottom corner -->
-  <div class="lg-layer-3">
-    <span>Walter Hines Page</span>
-    <span>London, 1916</span>
-    <span>To his son Ralph</span>
-  </div>
-  <!-- Layer 4: large watermark word, rotated -->
-  <div class="lg-layer-4">
-    <span>Hollycrest</span>
   </div>
 </div>
 <div class="split" style="position:relative;z-index:1;align-items:center;">
