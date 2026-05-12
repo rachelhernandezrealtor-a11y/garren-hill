@@ -264,8 +264,6 @@
   
   /* Float — barely moves. A pendant in still air. */
   
-    50%       { transform: translateY(-64px); }
-  }
   
 
   /* § 11. SPLIT SECTIONS — THE CORE LAYOUT ENGINE */
@@ -358,7 +356,6 @@
   }
 
   /* § 14. TEXT SECTIONS */
-  .text-/* section-padding-conflict removed */
   .text-section.alt { text-align: left; max-width: none; margin: 0; }
 
   /* § 15. BREATH / INTERSTITIAL */
@@ -373,7 +370,6 @@
   .georgian-ornament-glyph { font-size: 0.55rem; color: rgba(201,169,110,0.75); letter-spacing: 0.3em; }
 
   /* § 16. GALLERY */
-  .gallery-/* section-padding-conflict removed */
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -414,7 +410,6 @@
   .lb-next { right: 1.5rem; }
 
   /* § 18. PRIVATE TOUR */
-  .private-tour-/* section-padding-conflict removed */
   .private-tour-passage {
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: clamp(0.65rem,0.8vw,0.72rem);
@@ -424,7 +419,6 @@
     display: block;
     margin-bottom: var(--sp-lg);
   }
-  .private-tour-section /* bt-conflict removed */
   .tour-actions {
     display: flex;
     flex-direction: column;
@@ -1142,12 +1136,6 @@
     90%  { opacity: 0.08; transform: scale(1.02); filter: brightness(0.2) sepia(1.0); }
     100% { opacity: 0;    transform: scale(1.04); filter: brightness(0.0) sepia(1.0); }
   }
-    20%  { opacity: 0; }
-    35%  { opacity: 0.88; }
-    65%  { opacity: 0.88; }
-    80%  { opacity: 0; }
-    100% { opacity: 0; transform: scale(1.06); }
-  }
   .then-now-wrap .then-now-then.active ~ .then-label,
   .then-now-wrap:hover .then-label { opacity: 1; }
 
@@ -1163,12 +1151,6 @@
     .then-now-then { opacity: 0 ; } /* mobile: NOW only, no animation */
   }
 
-  
-  
-    40%  { opacity: 1; }
-    60%  { opacity: 0; }
-    100% { opacity: 0; }
-  }
 
   @keyframes revealSecret {
     0%   { opacity: 1; }
@@ -1870,12 +1852,7 @@
     }
     .split { gap: clamp(3rem, 5vw, 6rem); }
     .split-text { padding: clamp(3rem, 5vw, 5rem) 0; }
-    .body-text p, p/* bt-conflict removed */ht: 1.82;
-    }
-    /* removed: .pull-quote 1280px scoped */
-    /* removed: .eyebrow old (1280px scoped) */
-    /* act-break-conflict removed */
-    /* section-padding-media-conflict removed */
+    .body-text p, p.body-text { line-height: 1.82; }
   }
 
   /* ── TYPOGRAPHY RHYTHM ────────────────────────────────────────── */
