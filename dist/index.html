@@ -2599,6 +2599,165 @@ blockquote.in {
   transform: translateY(0);
 }
 
+
+  /* ═══════════════════════════════════════════════════
+     SPACING + TYPOGRAPHY AUTHORITY PASS — 2026-05-12
+     These rules override all earlier conflicting values.
+     DO NOT add rules above this block that conflict.
+  ═══════════════════════════════════════════════════ */
+
+  /* ── H2: ONE CANONICAL SIZE ── */
+  h2 {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-weight: 300 !important;
+    font-size: clamp(2.2rem, 3.8vw, 4rem) !important;
+    line-height: 1.08 !important;
+    color: var(--cream) !important;
+    max-width: 22ch;
+    margin-bottom: clamp(1.2rem, 2.2vw, 1.8rem) !important;
+    text-wrap: balance;
+  }
+  /* h2 italic second line — slightly smaller, true italic breathing room */
+  h2 em {
+    display: block !important;
+    font-style: italic !important;
+    font-size: 0.88em !important;
+    color: rgba(245,240,232,0.78) !important;
+    margin-top: 0.25em !important;
+    font-weight: 300 !important;
+  }
+  /* Pull quotes get their own h2 override — they are always centered, never capped at 22ch */
+  .pull-quote h2,
+  .whp-quote h2,
+  section#whp-quote h2 {
+    max-width: none !important;
+    text-align: center !important;
+    font-size: clamp(2rem, 3.5vw, 3.6rem) !important;
+  }
+  /* Full-bleed captions get slightly smaller h2 — they sit over images */
+  .full-bleed-caption h2 {
+    font-size: clamp(1.8rem, 3vw, 3.2rem) !important;
+    max-width: 28ch !important;
+    margin-bottom: 0.5em !important;
+  }
+
+  /* ── EYEBROW: CONSISTENT ACROSS ALL CONTEXTS ── */
+  .eyebrow, span.eyebrow {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: clamp(0.52rem, 0.65vw, 0.6rem) !important;
+    letter-spacing: 0.45em !important;
+    text-transform: uppercase !important;
+    color: rgba(201,169,110,0.75) !important;
+    display: block !important;
+    margin-bottom: clamp(0.7rem, 1.2vw, 1rem) !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+  }
+
+  /* ── MICRO-RULE: GOLD HAIRLINE ABOVE EYEBROW ── */
+  .micro-rule {
+    display: block !important;
+    width: 2.4rem !important;
+    height: 1px !important;
+    background: rgba(201,169,110,0.5) !important;
+    margin-bottom: clamp(1rem, 1.8vw, 1.4rem) !important;
+  }
+
+  /* ── EDITORIAL SPLIT: CANONICAL PADDING ── */
+  .editorial-split {
+    display: flex !important;
+    align-items: stretch !important;
+    min-height: 80vh !important;
+    padding: var(--sp-lg) var(--col-mid) !important;
+    gap: clamp(3rem, 5.5vw, 6rem) !important;
+  }
+  .editorial-split.reverse {
+    flex-direction: row-reverse !important;
+  }
+  .editorial-split .split-img {
+    flex: 0 0 52% !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+  .editorial-split .split-text {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* ── BODY TEXT: CANONICAL SIZING ── */
+  .body-text p,
+  .split-text p,
+  div.body-text > p {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-weight: 300 !important;
+    font-size: clamp(1.05rem, 1.35vw, 1.2rem) !important;
+    line-height: 1.88 !important;
+    color: rgba(245,240,232,0.72) !important;
+    margin-bottom: clamp(1.1rem, 1.8vw, 1.5rem) !important;
+    max-width: 58ch;
+    letter-spacing: 0.01em;
+  }
+  .body-text p:last-child,
+  .split-text p:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* ── SPLIT SECTIONS (non-editorial-split) ── */
+  .split {
+    display: flex !important;
+    align-items: stretch !important;
+    min-height: 78vh !important;
+    padding: var(--sp-lg) var(--col-mid) !important;
+    gap: clamp(3rem, 5.5vw, 6rem) !important;
+  }
+  .split .split-text {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    padding: 0 !important;
+  }
+  .split .split-img {
+    flex: 0 0 52% !important;
+    position: relative !important;
+    overflow: hidden !important;
+    min-height: 60vh !important;
+  }
+
+  /* ── SECTION DIVIDERS: CONSISTENT VERTICAL BREATHING ── */
+  .section-divider {
+    width: 100% !important;
+    height: 1px !important;
+    background: linear-gradient(to right,
+      transparent 0%,
+      rgba(201,169,110,0.0) 5%,
+      rgba(201,169,110,0.28) 25%,
+      rgba(245,224,152,0.45) 50%,
+      rgba(201,169,110,0.28) 75%,
+      rgba(201,169,110,0.0) 95%,
+      transparent 100%) !important;
+    margin: 0 !important;
+  }
+
+  /* ── ACT BREAK LABELS: TIGHT AND CONSISTENT ── */
+  .act-break {
+    padding: var(--sp-sm) var(--col-pad) !important;
+  }
+  .act-break-glyph {
+    font-size: 0.5rem !important;
+    letter-spacing: 0.52em !important;
+    color: rgba(201,169,110,0.4) !important;
+  }
+
+  /* ── REMOVE DEAD EDITORIAL BRIDGE SECTION STYLES ──
+     The #explore section was removed. These rules are now orphaned.
+     Setting them to display:none just in case any HTML remains. */
+  .editorial-bridge { display: none !important; }
+
 </style>
 </head>
 <body>
@@ -2752,7 +2911,7 @@ blockquote.in {
     <!-- KB Gate overlay text -->
     <div class="reveal" style="position:absolute;bottom:0;left:0;right:0;z-index:4;padding:clamp(2.5rem,5vw,4rem) clamp(2rem,6vw,8rem);background:linear-gradient(to top,rgba(5,5,5,0.65) 0%,rgba(5,5,5,0.3) 45%,transparent 100%);text-align:center;">
       <span class="eyebrow" style="color:rgba(201,169,110,0.8);">The Estate &middot; Pinehurst, NC</span>
-      <h2 style="font-size:clamp(1.6rem,3.5vw,2.6rem);margin-top:0.8rem;color:#F5F0E8;">Some houses hold history.<em> This one shaped it.</em></h2>
+      <h2 style="font-size:clamp(2.4rem,4.5vw,4.8rem);margin-top:0.8rem;color:#F5F0E8;font-weight:300;line-height:1.08;max-width:none;">Some houses hold history.<em> This one shaped it.</em></h2>
       <p class="body-text" style="margin-top:1rem;max-width:600px;margin-left:auto;margin-right:auto;color:rgba(245,240,232,0.8);">The gates have opened onto the same circular drive since 1916. The house at the end of it has not moved.</p>
     </div></div>
 </section>
@@ -2787,7 +2946,7 @@ blockquote.in {
   <section id="whp-quote" style="position:relative;background:#0a0a0a;padding:clamp(5rem,12vw,10rem) clamp(3rem,15vw,18rem);text-align:center;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243079/gh_interiors/200holycrest_1308.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.12;display:block;"></div>
   <div class="section-content" style="position:relative;z-index:1;width:100%;">
     <blockquote class="pull-quote reveal-slow" style="border:none;margin:0;padding:0;">
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:300;font-style:italic;color:#F5F0E8;line-height:1.5;letter-spacing:0.02em;margin-bottom:clamp(1.5rem,3vw,2.5rem);">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,5.5rem);font-weight:300;font-style:italic;color:#F5F0E8;line-height:1.5;letter-spacing:0.02em;margin-bottom:clamp(1.5rem,3vw,2.5rem);">
         &ldquo;The farm &mdash; the farm &mdash; the farm.&rdquo;
       </p>
       <cite style="font-family:'Cormorant Garamond',serif;font-size:0.72rem;letter-spacing:0.35em;text-transform:uppercase;color:rgba(201,169,110,0.6);font-style:normal;">
@@ -3132,7 +3291,7 @@ blockquote.in {
 </section>
 
 <!-- JEWEL BOX BATH -->
-<section class="editorial-split" id="jewel-box-bath" style="padding-top:0;">
+<section class="editorial-split" id="jewel-box-bath" >
   <div class="split-text">
     <span class="micro-rule reveal"></span>
     <span class="eyebrow">The Primary Bath</span>
@@ -3370,7 +3529,7 @@ blockquote.in {
   </div>
 </section>
 
-<section id="restoration" class="text-section">
+<section id="restoration" style="padding: var(--sp-xl) var(--col-pad);">
   <div class="section-divider"></div>
   <div style="max-width:680px;margin:0 auto;">
     <div class="body-text reveal" style="text-align:center;">
@@ -3429,11 +3588,11 @@ blockquote.in {
 <!-- PRIVATE INQUIRY -->
 <!-- GH_INQUIRY_FORM_RESTORED -->
 <!-- GH_PUBLIC_CONTACT_ENDPOINT_NEEDED: form currently uses mailto fallback via rachel.hernandez@sothebysrealty.com — public listing contact confirmed in PROPERTY_VAULT.md. Replace action with Formspree or equivalent endpoint when available for server-side handling. -->
-<section class="inquiry" id="inquiry" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777428893/gh_key/gh_gate_twilight.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.14;display:block;"></div>
+<section class="inquiry" id="inquiry" style="padding: var(--sp-lg) var(--col-pad);"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777428893/gh_key/gh_gate_twilight.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.14;display:block;"></div>
   <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <div class="reveal">
     <span class="eyebrow" style="display:block;text-align:center;">Private Showing</span>
-    <h2 style="font-size:clamp(1.4rem,2.5vw,2.2rem);margin-bottom:var(--sp-sm);">Begin the Private Conversation.</h2>
+    <h2 style="font-size:clamp(2.2rem,3.5vw,3.8rem);margin-bottom:var(--sp-sm);">Begin the Private Conversation.</h2>
     
   </div>
   <form
