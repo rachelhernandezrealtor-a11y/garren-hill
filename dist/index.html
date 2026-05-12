@@ -198,10 +198,16 @@
 
   
   /* § 9. HERO */
-  section/* ═══════════════════════════════════════════════════════
-   HERO — FLOWER SLIDESHOW + ASYMMETRIC EDITORIAL LAYOUT
-   LOCKED 2026-05-11
-═══════════════════════════════════════════════════════ */
+  section.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 640px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: var(--dark);
+  }
 
 
 /* ── FLOWER SLIDESHOW ── */
