@@ -2125,16 +2125,7 @@
   .section-gap-lg { margin-top: clamp(3rem, 6vw, 7rem); }
 
   /* ── DROP CAP REFINEMENT ──────────────────────────────────────── */
-  .drop-cap::first-letter {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(3.2rem, 5.5vw, 5rem);
-    font-weight: 300;
-    color: rgba(201,169,110,0.85);
-    float: left;
-    line-height: 0.82;
-    margin: 0.1em 0.12em 0 0;
-    padding: 0;
-  }
+  /* drop-cap first-letter removed */
 
   /* ── STAT BAR NUMBERS ─────────────────────────────────────────── */
   .stat-value {
@@ -2301,6 +2292,18 @@
     p.body-text, .body-text p { font-size: 1rem; line-height: 1.78; }
   }
 
+
+  /* ── HEADLINE DROP — single editorial initial ────────────────────────────── */
+  /* Used only on the KB gate headline: "Some houses hold history." */
+  .headline-drop {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.15em;
+    font-weight: 300;
+    color: rgba(201,169,110,0.82);
+    font-style: italic;
+    line-height: 1;
+    display: inline;
+  }
 </style>
 
   <!-- JSON-LD -->
@@ -3150,8 +3153,8 @@ blockquote.in {
     <!-- KB Gate overlay text -->
     <div class="reveal" style="position:absolute;bottom:0;left:0;right:0;z-index:4;padding:clamp(2.5rem,5vw,4rem) clamp(2rem,6vw,8rem);background:linear-gradient(to top,rgba(5,5,5,0.65) 0%,rgba(5,5,5,0.3) 45%,transparent 100%);text-align:center;">
       <span class="eyebrow" style="color:rgba(201,169,110,0.8);">The Estate &middot; Pinehurst, NC</span>
-      <h2 style="font-size:clamp(2.4rem,4.5vw,4.8rem);margin-top:0.8rem;color:#F5F0E8;font-weight:300;line-height:1.08;max-width:none;">Some houses hold history.<em> This one shaped it.</em></h2>
-      <p class="drop-cap body-text" style="margin-top:1rem;max-width:600px;margin-left:auto;margin-right:auto;color:rgba(245,240,232,0.8);">The gates have opened onto the same circular drive since 1916. The house at the end of it has not moved.</p>
+      <h2 style="font-size:clamp(2.4rem,4.5vw,4.8rem);margin-top:0.8rem;color:#F5F0E8;font-weight:300;line-height:1.08;max-width:none;"><span class="headline-drop">S</span>ome houses hold history.<em> This one shaped it.</em></h2>
+      <p class="body-text" style="margin-top:1rem;max-width:600px;margin-left:auto;margin-right:auto;color:rgba(245,240,232,0.8);">The gates have opened onto the same circular drive since 1916. The house at the end of it has not moved.</p>
     </div></div>
 </section>
 
@@ -3177,7 +3180,7 @@ blockquote.in {
  <span class="eyebrow">Walter Hines Page &middot; 1855&ndash;1918</span>
  <h2>Appointed by Wilson.<em> He held the alliance from London.</em></h2>
  <div class="body-text reveal">
- <p class="drop-cap">Born in Cary, North Carolina. Co-founder of Doubleday, Page &amp; Company. Editor of <em>The Atlantic Monthly.</em> Appointed by Woodrow Wilson as Ambassador to the Court of St. James in 1913 &mdash; and kept there through the years the world came apart.</p>
+ <p class="">Born in Cary, North Carolina. Co-founder of Doubleday, Page &amp; Company. Editor of <em>The Atlantic Monthly.</em> Appointed by Woodrow Wilson as Ambassador to the Court of St. James in 1913 &mdash; and kept there through the years the world came apart.</p>
  <p>From London, he commissioned Garran Hill to be built on his family&rsquo;s Moore County acres. He named it himself. Page returned from London in December 1918. He died ten days later.</p>
 <blockquote class="reveal" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1rem,1.5vw,1.3rem);font-weight:300;color:rgba(201,169,110,0.85);margin:1.5rem 0;">“Well, Frank, I did get here after all, didn't I?” — Aberdeen station, December 1918.</blockquote>
  <p style="font-style:italic;color:rgba(201,169,110,0.9);margin-top:1.2rem;">&#8220;Build the farm, therefore; and let me hear at every stage of that happy game.&#8221;</p>
@@ -3234,7 +3237,7 @@ blockquote.in {
   <div class="full-bleed-caption full-bleed-caption--bottom reveal">
     <span class="eyebrow">Built in Brick</span>
     <h2>Pinehurst hands.<em> A century of brick and proportion.</em></h2>
-    <p class="body-text drop-cap">Garran Hill's authority begins in its masonry: full-brick Neo-Georgian construction, red handmade brick laid in Flemish bond, and a traditional water table grounding the facade. The brickwork, the arched fanlights, the entry floor — all built by hand in Moore County between 1915 and 1916. During restoration, matching the original brick alone took three months. That is the standard to which every decision was held.</p>
+    <p class="body-text">Garran Hill's authority begins in its masonry: full-brick Neo-Georgian construction, red handmade brick laid in Flemish bond, and a traditional water table grounding the facade. The brickwork, the arched fanlights, the entry floor — all built by hand in Moore County between 1915 and 1916. During restoration, matching the original brick alone took three months. That is the standard to which every decision was held.</p>
     <p class="body-text" style="font-style:italic;opacity:0.6;font-size:var(--text-sm);margin-top:0.5em;">Boston plans. Pinehurst hands. Garran Hill in brick, 1916.</p>
   </div>
   </div>
@@ -3276,7 +3279,7 @@ blockquote.in {
       <span class="eyebrow">The Restoration &middot; 1999&ndash;2001</span>
       <h2>What was original<em> stayed original.</em></h2>
       <div class="body-text reveal">
-        <p class="drop-cap">The restoration did not make Garran Hill new. It made it whole again.
+        <p class="">The restoration did not make Garran Hill new. It made it whole again.
 
 Original elements remain where they matter most: carved fireplace mantels, oak flooring, leaded-glass sidelights, the arched fanlight at the entry, solid-wood interior doors, brass key plates, and the dining room frontispiece. New systems were woven behind old grace.
 
@@ -3667,7 +3670,7 @@ Not renovated into anonymity. Restored back into itself.</p>
       <span class="eyebrow">A Private History &middot; 1959&ndash;1984</span>
       <h2>Horses. Hounds. Peacocks.<em> Native hollies on every path.</em></h2>
       <div class="body-text reveal">
-        <p class="drop-cap">Betty Dumaine kept this land for twenty-five years. Left to Duke University after her death. Advertised in Atlanta and New York. No buyer came. The house waited. She brought horses to the grounds of Garran Hill — thoroughbreds, hunters, a life organized around animals and land and the particular pleasure of a place that required real attention. She renamed the property Hollycrest — for the large native hollies at the front of the house. They are still there. One horse she buried here. Blue Fox. The stone is still standing in the shade of the trees she planted. The iron post beside the drive still carries the ring. Someone still puts flowers at the grave.</p>
+        <p class="">Betty Dumaine kept this land for twenty-five years. Left to Duke University after her death. Advertised in Atlanta and New York. No buyer came. The house waited. She brought horses to the grounds of Garran Hill — thoroughbreds, hunters, a life organized around animals and land and the particular pleasure of a place that required real attention. She renamed the property Hollycrest — for the large native hollies at the front of the house. They are still there. One horse she buried here. Blue Fox. The stone is still standing in the shade of the trees she planted. The iron post beside the drive still carries the ring. Someone still puts flowers at the grave.</p>
         <p>Betty Dumaine&#8217;s Hollycrest years carried horses, hounds, peacocks, native hollies, and old Pinehurst lore to the estate. Her Irish hunter, Blue Fox, is buried on the grounds. Someone still puts flowers there. There was once a four-foot statue of a blue fox beside the grave. It disappeared after she died.</p>
       </div>
     </div>
@@ -3702,7 +3705,7 @@ Not renovated into anonymity. Restored back into itself.</p>
     <span class="eyebrow">The Terrace &middot; Open Air</span>
     <h2>The world outside these gates<em> does not exist here.</em></h2>
     <div class="body-text reveal">
-      <p class="drop-cap">The terrace opens off the Salon through glass doors. Brick underfoot — the same material as the house, the same that engraves 1916 at the threshold. The lattice railing is white. The loungers face outward toward the treeline. On a clear afternoon the sky above the canopy is an uninterrupted blue. This is where the house ends and the land begins.</p>
+      <p class="">The terrace opens off the Salon through glass doors. Brick underfoot — the same material as the house, the same that engraves 1916 at the threshold. The lattice railing is white. The loungers face outward toward the treeline. On a clear afternoon the sky above the canopy is an uninterrupted blue. This is where the house ends and the land begins.</p>
       <p style="font-style:italic;opacity:0.6;font-size:var(--text-xs);margin-top:var(--sp-xs);">Brick underfoot. French doors behind. Garden beyond.</p>
     </div>
   </div>
