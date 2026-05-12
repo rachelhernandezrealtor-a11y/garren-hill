@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- build: 20260512195924 -->
+<!-- build: 20260512200203 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -279,6 +279,23 @@
     gap: 0;
     padding: 0 clamp(1rem, 3vw, 3rem);
   }
+  /* ── CREST: absolute child of stat-bar, sits ON belt ── */
+  .stat-crest-wrap {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 16px;
+    width: 88px;
+    height: 88px;
+    z-index: 20;
+    filter: drop-shadow(0 4px 18px rgba(0,0,0,0.95));
+    pointer-events: none;
+  }
+  .stat-crest-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 
   /* WINGS — flanking sets of stats */
   .stat-wing {
@@ -331,36 +348,6 @@
   }
 
   /* CREST WRAP — centers the crest, lets it rise above */
-  .stat-crest-wrap {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 28px;
-    width: 88px;
-    height: 88px;
-    z-index: 20;
-    filter: drop-shadow(0 4px 18px rgba(0,0,0,0.95));
-    pointer-events: none;
-    overflow: visible;
-  }
-  .stat-crest-wrap img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  .stat-crest-wrap img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  .stat-crest-wrap img {
-    width: clamp(140px, 16vw, 200px);
-    height: auto;
-    display: block;
-    margin-top: clamp(-60px, -5vw, -48px);
-    filter: drop-shadow(0 4px 18px rgba(0,0,0,0.7));
-    animation: crest-float 6s ease-in-out infinite;
-  }
 
   @keyframes crest-float {
     0%, 100% { transform: translateY(0); }
@@ -369,20 +356,12 @@
 
   /* MOBILE — stack stats */
   @media (max-width: 768px) {
-    .stat-inner {
-      flex-direction: column;
-      gap: 1.2rem;
-      padding: 1.6rem 1.4rem;
-    }
+    
     .stat-wing,
     .stat-wing.stat-wing-right {
       justify-content: center;
       flex-wrap: wrap;
       gap: 0;
-    }
-    .stat-crest-wrap img {
-      margin-top: 0;
-      width: 100px;
     }
   }
 
@@ -2449,16 +2428,6 @@
     visibility: visible !important;
     opacity: 1 !important;
   }
-
-
-  .stat-crest-wrap::before {
-    content: '';
-    position: absolute;
-    inset: -8px;
-    background: radial-gradient(ellipse, rgba(6,6,6,0.85) 55%, transparent 80%);
-    border-radius: 50%;
-    z-index: -1;
-  }
 </style>
 
   <!-- JSON-LD -->
@@ -2629,19 +2598,7 @@
    THE JEWELED BELT — BELT BUCKLE MODEL
    ══════════════════════════════════════════ */
 
-.stat-bar {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  z-index: 20;
-  height: 96px;
-  overflow: visible;
-  /* Deep obsidian base — crest floats above, numbers read clean */
-  background: linear-gradient(180deg,
-    rgba(4,4,4,0.0)  0%,
-    rgba(4,4,4,0.50) 45%,
-    rgba(4,4,4,0.88) 100%);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
-}
+
 
 /* THE BELT LINE — the one line the buckle sits on */
 /* This is the bottom edge of the belt, like a leather strap */
@@ -2681,15 +2638,7 @@
 .stat-top-line { display: none; }
 
 /* inner flex row */
-.stat-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  padding: 0 clamp(2rem, 5vw, 7rem);
-  overflow: visible;
-}
+
 
 /* wings */
 .stat-wing {
@@ -2737,38 +2686,6 @@
    Lower portion crosses through the line.
    Like a real buckle on a leather strap.
    ══════════════════════════════════ */
-.stat-crest-wrap {
-  flex-shrink: 0;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* wide lateral breathing room so crest commands the bar */
-  padding: 0 clamp(2.5rem, 4vw, 6rem);
-  z-index: 30;
-  /* Pull higher into hero — crest is a crown, not a badge */
-  margin-top: -260px;
-  overflow: visible;
-}
-
-.stat-crest-wrap img {
-  /* BIG — this is the crowned jewel of the page */
-  height: clamp(280px, 26vw, 360px);
-  width: auto;
-  display: block;
-  position: relative;
-  /* Anchor bottom to belt line — lower portion crosses through */
-  transform: translateY(-26px);
-  /* Royal seal — warm gold, deep shadows, luminous glow */
-  filter:
-    sepia(0.12) hue-rotate(-4deg) saturate(1.05) brightness(1.12)
-    drop-shadow(0 0 0 1px rgba(0,0,0,0.0))
-    drop-shadow(0 4px 28px rgba(0,0,0,0.80))
-    drop-shadow(0 12px 48px rgba(0,0,0,0.65))
-    drop-shadow(0 0 40px rgba(201,169,110,0.28))
-    drop-shadow(0 0 18px rgba(245,224,152,0.20));
-  animation: crestBreath 6s ease-in-out infinite;
-}
 
 @keyframes crestBreath {
   0%, 100% {
@@ -2816,28 +2733,10 @@ section h2,
   .hero-stage { padding: 72px 1.5rem 130px; }
   .hero-title { font-size: clamp(5rem, 26vw, 8.5rem); }
   .hero-spine, .hero-year { display: none; }
-  .stat-inner { padding: 0 0.6rem; }
+  
   .stat-wing { gap: clamp(0.7rem, 2.5vw, 1.4rem); }
   /* stat-lbl: consolidated above */
   .stat-num { font-size: clamp(0.85rem, 3.8vw, 1.1rem); }
-  .stat-crest-wrap { 
-    padding: 0 clamp(0.6rem, 2vw, 1.4rem);
-    margin-top: -80px;
-  }
-  .stat-crest-wrap img {
-    height: clamp(200px, 18vw, 260px); width: auto; display: block;
-    transform: translateY(-26px);
-    position: relative; z-index: 50;
-    filter:
-      sepia(0.15) hue-rotate(-8deg) saturate(0.88) brightness(1.05)
-      drop-shadow(0 10px 24px rgba(0,0,0,0.38))
-      drop-shadow(0 5px 14px rgba(0,0,0,0.38))
-      drop-shadow(0 10px 28px rgba(0,0,0,0.32))
-      drop-shadow(0 -2px 6px rgba(0,0,0,0.28));
-    animation: none !important;
-    transition: none !important;
-    image-rendering: -webkit-optimize-contrast;
-  }
 }
 @media (max-width: 480px) {
   .stat-div { display: none; }
@@ -3204,7 +3103,7 @@ blockquote.in {
   .stat-item { white-space: nowrap !important; }
   .stat-num  { white-space: nowrap !important; }
   /* stat-lbl: consolidated above */
-  .stat-bar  { overflow: visible !important; }
+  
 
 </style>
 </head>
@@ -3293,13 +3192,6 @@ blockquote.in {
           <span class="stat-num">6,072</span>
           <span class="stat-lbl">Sq&thinsp;Ft</span>
         </div>
-      </div>
-
-      <!-- CREST: rises above the belt -->
-      <div class="stat-spacer" style="width:80px;flex-shrink:0;"></div><div class="stat-crest-wrap">
-        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
-             alt="Garran Hill Estate Crest — Pinehurst NC 1916"
-             loading="eager">
       </div>
 
       <!-- RIGHT WING -->
