@@ -198,6 +198,7 @@
   }
   .btn-gold:hover { background: var(--gold); color: var(--dark); }
 
+  
   /* § 9. HERO */
   section.hero {
     position: relative; width: 100%; height: 100vh;
@@ -238,12 +239,11 @@
 
   /* § 10. HERO BOTTOM — numbers and crest emerge from darkness, no visible band */
   .stat-bar {
-    position: absolute; bottom: 0; left: 0; right: 0; z-index: 10;
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 20;
     display: flex; align-items: center; justify-content: center;
     padding: 0 clamp(2rem, 6vw, 8rem);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
     height: 96px;
-    min-height: 96px;
-    max-height: 96px;
     /* very subtle dark base so gold line has contrast */
     background: linear-gradient(180deg,
       rgba(4,4,4,0.0) 0%,
@@ -253,10 +253,9 @@
     -webkit-backdrop-filter: none;
     overflow: visible;
   }
-  /* TOP FRAME LINE — matches bottom, plaque effect */
-  .stat-bar::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  /* TOP FRAME LINE — now an inline div, moves with crest */
+  .stat-bar-top-line {
+    position: absolute; left: 0; right: 0; height: 1px;
     background: linear-gradient(90deg,
       transparent 0%,
       transparent 8%,
@@ -269,10 +268,11 @@
       rgba(190,162,105,0.55) 85%,
       transparent 97%,
       transparent 100%);
+    pointer-events: none;
   }
   .stat-bar::after {
     content: '';
-    position: absolute; bottom: 0; left: 0; right: 0; height: 2px; z-index: 20;
+    position: absolute; bottom: 42px; left: 0; right: 0; height: 2px; z-index: 20;
     background: linear-gradient(90deg,
       transparent 0%,
       transparent 4%,
@@ -336,8 +336,6 @@
     flex-shrink: 0;
     padding: 0 clamp(2rem, 4vw, 5.5rem);
     position: relative;
-    height: 0;
-    overflow: visible;
   }
   /* Gold filigree lines extending from buckle into the band */
   .stat-crest-throne::before,
@@ -365,21 +363,59 @@
       rgba(201,169,110,0.5) 60%,
       rgba(245,224,152,0.7) 100%);
   }
+  /* TOP GOLD LINE — glued to crest top, moves with crest */
+  .stat-crest-wrap::before {
+    content: '';
+    position: absolute;
+    top: -38px;
+    left: 50%; transform: translateX(-50%);
+    width: 100vw;
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      transparent 8%,
+      rgba(190,162,105,0.55) 15%,
+      rgba(210,180,130,0.88) 32%,
+      rgba(232,200,148,1.0)  48%,
+      rgba(245,215,158,1.0)  50%,
+      rgba(232,200,148,1.0)  52%,
+      rgba(210,180,130,0.88) 68%,
+      rgba(190,162,105,0.55) 85%,
+      transparent 97%,
+      transparent 100%);
+    pointer-events: none;
+    z-index: 25;
+  }
   .stat-crest-wrap {
     display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 50;
   }
   /* THE BUCKLE — reach out and grab it */
   .stat-crest-wrap img {
-    height: clamp(180px, 20vw, 260px); width: auto; display: block;
-    transform: translateY(-48px) !important;
+    height: clamp(200px, 18vw, 260px); width: auto; display: block;
+    transform: translateY(-38px) !important;
+    position: relative; z-index: 50;
+    /* hard engraved shadow — no glow, no candy */
+    /* sepia+hue pulls the gold cooler — aged platinum not warm brass */
+    filter:
+      sepia(0.15) hue-rotate(-8deg) saturate(0.88) brightness(1.05)
+      drop-shadow(0 2px 1px rgba(0,0,0,1))
+      drop-shadow(0 5px 10px rgba(0,0,0,0.98))
+      drop-shadow(0 14px 40px rgba(0,0,0,0.94))
+      drop-shadow(0 -3px 5px rgba(0,0,0,0.88));
     animation: none !important;
     transition: none !important;
-    filter:
-      drop-shadow(0 2px 6px rgba(0,0,0,0.85))
-      drop-shadow(0 6px 20px rgba(0,0,0,0.6));
-  }
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    animation: none !important;
+  transition: none !important;
+}
   /* Hover — lifts toward you, shadow deepens as if physically rising */
-  .stat-crest-wrap img:hover { transform: translateY(-48px) !important; }
+  .stat-crest-wrap img:hover { transform: translateY(-38px) !important; transition: none !important; }
+  /* Float — barely moves. A pendant in still air. */
+  
+    50%       { transform: translateY(-64px); }
+  }
   .stat-price .stat-num {
     font-size: clamp(0.92rem, 1.55vw, 1.35rem);
     letter-spacing: 0.06em;
@@ -449,8 +485,7 @@
   .kb-gate-img img {
     position: absolute; inset: 0;
     width: 100%; height: 100%;
-    object-fit: cover; object-position: 20% 50%; display: block;
-    animation: filmPan 28s linear infinite alternate;
+    object-fit: cover; object-position: center; display: block;
   }
   .kb-gate-img::after {
     content: ''; position: absolute; inset: 0;
@@ -650,7 +685,7 @@
     .stat-bar { padding: 0 1rem; height: 72px; }
     .stat-numbers { gap: 0.6rem; }
     .stat-lbl { display: none; }
-    .stat-crest-wrap img { height: clamp(75px, 16vw, 105px); transform: translateY(-32px); }
+    .stat-crest-wrap img { height: clamp(75px, 16vw, 105px); transform: translateY(-32px) !important; }
     .stat-div { height: 1.5rem; }
     .kb-gate { min-height: 70vh; }
     .inquiry { padding: var(--sp-lg) 1.5rem; }
@@ -1261,10 +1296,6 @@
   .then-now-wrap .then-now-then {
     animation: kenBurnsThen 16s ease-in-out infinite;
   }
-  @keyframes filmPan {
-    0%   { object-position: 20% 50%; }
-    100% { object-position: 80% 50%; }
-  }
   @keyframes kenBurnsNow {
     0%   { transform: scale(1.0);   }
     100% { transform: scale(1.05);  }
@@ -1305,87 +1336,6 @@
     70%  { opacity: 0; }
     100% { opacity: 0; }
   }
-
-  /* ── THEN / NOW KEN BURNS ── */
-  .then-now-wrap .then-now-now {
-    animation: kenBurnsNow 8s ease-in-out infinite alternate;
-  }
-  .then-now-wrap .then-now-then {
-    animation: kenBurnsThen 16s ease-in-out infinite;
-  }
-  @keyframes kenBurnsThen {
-    0%   { opacity: 0; transform: scale(1.03); }
-    20%  { opacity: 0; }
-    35%  { opacity: 0.88; }
-    65%  { opacity: 0.88; }
-    80%  { opacity: 0; }
-    100% { opacity: 0; transform: scale(1.06); }
-  }
-  .then-now-wrap .then-now-then.active ~ .then-label,
-  .then-now-wrap:hover .then-label { opacity: 1; }
-  @media (prefers-reduced-motion: reduce) {
-    .then-now-now, .then-now-then { animation: none !important; }
-    .then-now-then { opacity: 0.5 !important; }
-  }
-  @media (max-width: 768px) {
-    .then-now-wrap { height: 52vw !important; min-height: 280px; }
-    .then-now-now, .then-now-then { animation: none !important; }
-    .then-now-then { opacity: 0 !important; }
-  }
-
-
-  /* ══ JEWELED BELT — pinned to hero bottom ══ */
-  .jeweled-belt {
-    position: absolute; bottom: 0; left: 0; right: 0; z-index: 10;
-    display: flex; flex-direction: column; align-items: center;
-    overflow: visible;
-  }
-  .jb-crest {
-    position: relative; z-index: 12;
-    display: flex; align-items: flex-end; justify-content: center;
-    margin-bottom: -2px;
-  }
-  .jb-crest img {
-    height: clamp(160px, 18vw, 220px); width: auto;
-    display: block;
-    filter: drop-shadow(0 0 40px rgba(0,0,0,0.9));
-  }
-  .jb-line { width: 100%; height: 1px; z-index: 11; }
-  .jb-line-top {
-    background: linear-gradient(90deg, transparent 0%, rgba(196,162,101,0.8) 20%, #C4A265 50%, rgba(196,162,101,0.8) 80%, transparent 100%);
-  }
-  .jb-line-bottom {
-    background: linear-gradient(90deg, transparent 0%, rgba(196,162,101,0.6) 20%, #C4A265 50%, rgba(196,162,101,0.6) 80%, transparent 100%);
-  }
-  .jb-body {
-    display: flex; align-items: center; justify-content: center;
-    width: 100%; padding: 0.6rem clamp(1rem, 4vw, 5rem);
-    background: linear-gradient(180deg, rgba(4,4,4,0.0) 0%, rgba(4,4,4,0.55) 100%);
-    gap: 0;
-  }
-  .jb-wing { display: flex; gap: clamp(1.5rem, 4vw, 4rem); align-items: center; flex: 1; justify-content: center; }
-  .jb-crest-space { width: clamp(160px, 18vw, 220px); flex-shrink: 0; }
-  .jb-stat { text-align: center; }
-  .jb-stat .stat-num {
-    display: block;
-    font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 2vw, 1.5rem); font-weight: 300;
-    background: linear-gradient(180deg, #F5E098 0%, #C9A96E 45%, #8B6914 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    letter-spacing: 0.05em;
-  }
-  .jb-stat .stat-label {
-    display: block;
-    font-size: 0.42rem; letter-spacing: 0.45em; text-transform: uppercase;
-    color: rgba(245,240,232,0.5); margin-top: 0.2rem;
-    font-family: 'Cormorant Garamond', serif;
-  }
-  @media (max-width: 768px) {
-    .jb-crest img { height: clamp(80px, 18vw, 120px); }
-    .jb-wing { gap: clamp(0.8rem, 3vw, 1.5rem); }
-    .jb-crest-space { width: clamp(80px, 18vw, 120px); }
-    .jb-stat .stat-num { font-size: clamp(0.75rem, 3vw, 1rem); }
-  }
-
 </style>
 
   <!-- JSON-LD -->
@@ -1448,71 +1398,42 @@
 
 <!-- ═══ ACT 0 — HERO ═══ -->
 <!-- HERO VIDEO: current site uses done_czfe8o. Earlier rule named Last_for_real_q0fqvw. CONFLICT — Rachel-confirmation-needed. Not changed. -->
-<section class="hero" id="top" aria-label="Garran Hill hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto"
-    poster="https://res.cloudinary.com/dghn2xpif/image/upload/v1777263004/gh_key/gh_threshold.jpg"
-    src="https://res.cloudinary.com/dghn2xpif/video/upload/v1777503272/gh_key/done_czfe8o.mp4">
+<section class="hero" id="top">
+  <video autoplay muted loop playsinline preload="auto"
+    src="https://res.cloudinary.com/dghn2xpif/video/upload/f_mp4,vc_h264/done_czfe8o"
+    poster="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777263004/gh_key/gh_threshold.jpg">
   </video>
-  <script>
-    (function(){
-      var v = document.querySelector('.hero-video');
-      if(v){
-        v.play().catch(function(){
-          v.setAttribute('controls','');
-        });
-      }
-    })();
-  </script>
   <div class="hero-overlay"></div>
   <div class="hero-text">
-    <p class="hero-eyebrow">200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, North Carolina &nbsp;·&nbsp; Est. 1916</p>
+    <p class="hero-eyebrow">200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, North Carolina &nbsp;&middot;&nbsp; Est. 1916</p>
     <h1 class="hero-title">Garran Hill</h1>
-    <div class="hero-rule"></div>
-    <p class="hero-sub">Neo-Georgian.&nbsp; Walter Hines Page.&nbsp; Built 1916.</p>
+    <p class="hero-sub">Neo-Georgian &nbsp;&middot;&nbsp; Built 1915–16 for Walter Hines Page</p>
   </div>
-  <!-- ══ JEWELED BELT ══ -->
-  <div class="jeweled-belt">
-    <!-- Single absolute crest — belt buckle. Crown above top line, base at bottom line. -->
-    <div class="jb-crest">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
-           alt="Garran Hill Crest">
+  <div class="stat-bar">
+    <div class="stat-numbers">
+      <!-- LEFT WING -->
+      <div class="stat-wing">
+        <div class="stat-item"><span class="stat-num">4</span><span class="stat-lbl">Bedrooms</span></div>
+        <div class="stat-div"></div>
+        <div class="stat-item"><span class="stat-num">6</span><span class="stat-lbl">Bathrooms</span></div>
+        <div class="stat-div"></div>
+        <div class="stat-item"><span class="stat-num">6,072</span><span class="stat-lbl">Sq Ft</span></div>
+      </div>
+      <!-- CREST THRONE — focal point -->
+      <div class="stat-crest-throne">
+        <div class="stat-crest-wrap">
+          <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" width="185" height="185">
+        </div>
+      </div>
+      <!-- RIGHT WING -->
+      <div class="stat-wing right">
+        <div class="stat-item"><span class="stat-num">4.15</span><span class="stat-lbl">Acres</span></div>
+        <div class="stat-div"></div>
+        <div class="stat-item"><span class="stat-num">Est. 1916</span><span class="stat-lbl">Built</span></div>
+        <div class="stat-div"></div>
+        <div class="stat-item stat-price"><span class="stat-num">$4,250,000</span></div>
+      </div>
     </div>
-    <!-- Gold top hairline -->
-    <div class="jb-line jb-line-top"></div>
-    <!-- Number row: left wing | space for crest | right wing -->
-    <div class="jb-body">
-      <div class="jb-wing jb-wing-left">
-        <div class="jb-stat">
-          <span class="stat-num">4</span>
-          <span class="stat-label">Bedrooms</span>
-        </div>
-        <div class="jb-stat">
-          <span class="stat-num">6</span>
-          <span class="stat-label">Bathrooms</span>
-        </div>
-        <div class="jb-stat">
-          <span class="stat-num">6,072</span>
-          <span class="stat-label">Sq Ft</span>
-        </div>
-      </div>
-      <div class="jb-crest-space"></div>
-      <div class="jb-wing jb-wing-right">
-        <div class="jb-stat">
-          <span class="stat-num">4.15</span>
-          <span class="stat-label">Acres</span>
-        </div>
-        <div class="jb-stat">
-          <span class="stat-num">Est. 1916</span>
-          <span class="stat-label">Established</span>
-        </div>
-        <div class="jb-stat">
-          <span class="stat-num">$4,250,000</span>
-          <span class="stat-label">Offered At</span>
-        </div>
-      </div>
-    </div><!-- /.jb-body -->
-    <!-- Gold bottom hairline -->
-    <div class="jb-line jb-line-bottom"></div>
   </div>
 </section>
 
