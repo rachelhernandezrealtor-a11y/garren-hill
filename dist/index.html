@@ -2470,6 +2470,17 @@
     from { opacity: 0.88; }
     to   { opacity: 0; }
   }
+
+  /* ── HERO VIDEO — locked done_czfe8o ── */
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    z-index: 0;
+  }
 </style>
 
   <!-- JSON-LD -->
@@ -3267,26 +3278,14 @@ blockquote.in {
 <!-- HERO VIDEO: current site uses done_czfe8o. Earlier rule named Last_for_real_q0fqvw. CONFLICT — Rachel-confirmation-needed. Not changed. -->
 <section class="hero" id="top">
 
-  <!-- POSTER: eager-loaded fallback so hero is never black on first paint -->
-  <img class="hero-poster-bg" 
-       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:72,e_sharpen:30,e_saturation:14,f_auto,q_auto,c_limit,w_1920/v1777648663/gh_key/gh_hero_poster_azalea.jpg"
-       alt="" aria-hidden="true" loading="eager" decoding="sync"
-       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;z-index:0;opacity:0.88;animation:poster-fadeout 3s 0.5s ease-in forwards;">
-  <!-- PHOTO REEL — flowers + twilight — no aerials -->
-  <div class="hero-reel" aria-hidden="true">
-    <!-- F1 NEW — azalea bloom, color arrival -->
-    <div class="hero-frame hf1" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777648663/gh_key/gh_hero_poster_azalea.jpg');"></div>
-    <!-- F2 OLD — 1916 estate exterior, sepia then -->
-    <div class="hero-frame hf2 hf-old" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244059/gh_key/gh_191.jpg');"></div>
-    <!-- F3 NEW — twilight facade, cinematic now -->
-    <div class="hero-frame hf3" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244670/gh_photos/200_hollycrest_drive_220.jpg');"></div>
-    <!-- F4 OLD — 1916 sapling landscape, then -->
-    <div class="hero-frame hf4 hf-old" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777270125/gh_key/gh_sapling1916.jpg');"></div>
-    <!-- F5 NEW — front exterior full circle, now -->
-    <div class="hero-frame hf5" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777263004/gh_key/gh_threshold.jpg');"></div>
-    <!-- F6 OLD — horse post / Dumaine era grounds, then -->
-    <div class="hero-frame hf6 hf-old" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777270464/gh_key/gh_entry62.jpg');"></div>
-  </div>
+  <!-- HERO VIDEO — LOCKED: done_czfe8o — NEVER SWAP -->
+  <video
+    class="hero-video"
+    autoplay muted loop playsinline
+    poster="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777648663/gh_key/gh_hero_poster_azalea.jpg"
+  >
+    <source src="https://res.cloudinary.com/dghn2xpif/video/upload/f_auto,q_auto/v1777503272/gh_key/done_czfe8o.mp4" type="video/mp4">
+  </video>
   <div class="hero-overlay"></div>
 
   <!-- VERTICAL ADDRESS EYEBROW — LEFT SPINE -->
