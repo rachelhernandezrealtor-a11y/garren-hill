@@ -2081,7 +2081,169 @@
     object-position: center;
   }
 
-  </style>
+  
+
+  /* ══════════════════════════════════════════════════════════════════
+     DESIGN PASS — Rocky 2026-05-12
+     Desktop breakpoint + spacing + typography tightening
+  ══════════════════════════════════════════════════════════════════ */
+
+  /* ── DESKTOP 1280px+ ─────────────────────────────────────────── */
+  @media (min-width: 1280px) {
+    :root {
+      --col-pad: clamp(5rem, 10vw, 12rem);
+      --col-mid: clamp(6rem, 14vw, 16rem);
+    }
+    .split { gap: clamp(3rem, 5vw, 6rem); }
+    .split-text { padding: clamp(3rem, 5vw, 5rem) 0; }
+    .body-text p, p.body-text {
+      max-width: 58ch;
+      font-size: clamp(1.05rem, 1.1vw, 1.18rem);
+      line-height: 1.82;
+    }
+    .pull-quote {
+      font-size: clamp(1.4rem, 1.8vw, 2rem);
+      max-width: 720px;
+    }
+    .eyebrow {
+      font-size: clamp(0.62rem, 0.7vw, 0.72rem);
+      letter-spacing: 0.22em;
+    }
+    .act-break { margin: clamp(4rem, 7vw, 8rem) auto; }
+    section { padding-top: clamp(5rem, 8vw, 9rem); padding-bottom: clamp(5rem, 8vw, 9rem); }
+  }
+
+  /* ── TYPOGRAPHY RHYTHM ────────────────────────────────────────── */
+  .eyebrow {
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    font-size: clamp(0.58rem, 0.75vw, 0.7rem);
+    font-weight: 500;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.7);
+    display: block;
+    margin-bottom: 0.6em;
+  }
+
+  /* ── BODY TEXT RHYTHM ─────────────────────────────────────────── */
+  .body-text p, p.body-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(1.02rem, 1.15vw, 1.15rem);
+    line-height: 1.85;
+    letter-spacing: 0.01em;
+    color: rgba(245,240,232,0.82);
+    max-width: 62ch;
+  }
+
+  /* ── PULL QUOTE ───────────────────────────────────────────────── */
+  .pull-quote {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.25rem, 1.6vw, 1.85rem);
+    line-height: 1.55;
+    letter-spacing: 0.005em;
+    color: rgba(245,240,232,0.88);
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* ── MICRO RULE ───────────────────────────────────────────────── */
+  .micro-rule {
+    display: block;
+    width: clamp(24px, 4vw, 40px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,169,110,0.55), transparent);
+    margin: 0 0 clamp(1rem, 2vw, 1.6rem);
+  }
+
+  /* ── ACT BREAK DIVIDER ────────────────────────────────────────── */
+  .act-break {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    margin: clamp(3rem, 6vw, 7rem) auto;
+    max-width: 320px;
+    opacity: 0.45;
+  }
+  .act-break::before,
+  .act-break::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(201,169,110,0.5);
+  }
+  .act-break-diamond {
+    width: 5px;
+    height: 5px;
+    background: rgba(201,169,110,0.6);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  /* ── SECTION SPACING RHYTHM ───────────────────────────────────── */
+  section + section {
+    border-top: none;
+  }
+  .section-gap-xl { margin-top: clamp(4rem, 8vw, 10rem); }
+  .section-gap-lg { margin-top: clamp(3rem, 6vw, 7rem); }
+
+  /* ── DROP CAP REFINEMENT ──────────────────────────────────────── */
+  .drop-cap::first-letter {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(3.2rem, 5.5vw, 5rem);
+    font-weight: 300;
+    color: rgba(201,169,110,0.85);
+    float: left;
+    line-height: 0.82;
+    margin: 0.1em 0.12em 0 0;
+    padding: 0;
+  }
+
+  /* ── STAT BAR NUMBERS ─────────────────────────────────────────── */
+  .stat-value {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(1.1rem, 1.4vw, 1.5rem);
+    letter-spacing: 0.04em;
+    color: rgba(245,240,232,0.9);
+  }
+  .stat-label {
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    font-size: clamp(0.48rem, 0.6vw, 0.58rem);
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.55);
+  }
+
+  /* ── IMAGE CAPTION ────────────────────────────────────────────── */
+  figcaption, .img-caption {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(0.72rem, 0.85vw, 0.82rem);
+    letter-spacing: 0.04em;
+    color: rgba(201,169,110,0.55);
+    margin-top: 0.5em;
+    text-align: center;
+  }
+
+  /* ── ROOM CARD CAPTION ────────────────────────────────────────── */
+  .room-caption, .room-card-caption {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(0.8rem, 0.95vw, 0.92rem);
+    line-height: 1.55;
+    letter-spacing: 0.02em;
+    color: rgba(245,240,232,0.75);
+  }
+
+</style>
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -2931,10 +3093,16 @@ blockquote.in {
     <div class="reveal" style="position:absolute;bottom:0;left:0;right:0;z-index:4;padding:clamp(2.5rem,5vw,4rem) clamp(2rem,6vw,8rem);background:linear-gradient(to top,rgba(5,5,5,0.65) 0%,rgba(5,5,5,0.3) 45%,transparent 100%);text-align:center;">
       <span class="eyebrow" style="color:rgba(201,169,110,0.8);">The Estate &middot; Pinehurst, NC</span>
       <h2 style="font-size:clamp(2.4rem,4.5vw,4.8rem);margin-top:0.8rem;color:#F5F0E8;font-weight:300;line-height:1.08;max-width:none;">Some houses hold history.<em> This one shaped it.</em></h2>
-      <p class="body-text" style="margin-top:1rem;max-width:600px;margin-left:auto;margin-right:auto;color:rgba(245,240,232,0.8);">The gates have opened onto the same circular drive since 1916. The house at the end of it has not moved.</p>
+      <p class="drop-cap body-text" style="margin-top:1rem;max-width:600px;margin-left:auto;margin-right:auto;color:rgba(245,240,232,0.8);">The gates have opened onto the same circular drive since 1916. The house at the end of it has not moved.</p>
     </div></div>
 </section>
 
+
+<div class="act-break" aria-hidden="true">
+  <div class="act-break-diamond"></div>
+  <div class="act-break-diamond"></div>
+  <div class="act-break-diamond"></div>
+</div>
 <section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;">
  <!-- Letter scan underlay -->
  
@@ -2993,6 +3161,12 @@ blockquote.in {
 
 
 
+
+<div class="act-break" aria-hidden="true">
+  <div class="act-break-diamond"></div>
+  <div class="act-break-diamond"></div>
+  <div class="act-break-diamond"></div>
+</div>
 <section class="full-bleed-section" id="architecture" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243317/gh_exteriors/200holycrestf-1440_28z.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:0.12;filter:grayscale(40%);display:block;"></div>
   <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <div class="full-bleed-img img-reveal">
@@ -3002,7 +3176,7 @@ blockquote.in {
   <div class="full-bleed-caption full-bleed-caption--bottom reveal">
     <span class="eyebrow">Built in Brick</span>
     <h2>Pinehurst hands.<em> A century of brick and proportion.</em></h2>
-    <p class="body-text">Garran Hill's authority begins in its masonry: full-brick Neo-Georgian construction, red handmade brick laid in Flemish bond, and a traditional water table grounding the facade. The brickwork, the arched fanlights, the entry floor — all built by hand in Moore County between 1915 and 1916. During restoration, matching the original brick alone took three months. That is the standard to which every decision was held.</p>
+    <p class="body-text drop-cap">Garran Hill's authority begins in its masonry: full-brick Neo-Georgian construction, red handmade brick laid in Flemish bond, and a traditional water table grounding the facade. The brickwork, the arched fanlights, the entry floor — all built by hand in Moore County between 1915 and 1916. During restoration, matching the original brick alone took three months. That is the standard to which every decision was held.</p>
     <p class="body-text" style="font-style:italic;opacity:0.6;font-size:var(--text-sm);margin-top:0.5em;">Boston plans. Pinehurst hands. Garran Hill in brick, 1916.</p>
   </div>
   </div>
@@ -3105,6 +3279,12 @@ Not renovated into anonymity. Restored back into itself.</p>
 
 <!-- ── ACT V: EXPLORE THE HOUSE ─────────────────────────── -->
 
+
+<div class="act-break" aria-hidden="true">
+  <div class="act-break-diamond"></div>
+  <div class="act-break-diamond"></div>
+  <div class="act-break-diamond"></div>
+</div>
 <section class="full-bleed-section interior-moment" id="rooms">
   <div class="full-bleed-img img-reveal">
     <img loading="lazy" decoding="async"
@@ -3415,6 +3595,12 @@ Not renovated into anonymity. Restored back into itself.</p>
 <!-- ── ACT VII: HOLLYCREST / LEGEND ─────────────────────── -->
 
 <!-- GH_BLUE_FOX_IMAGE_CONFIRMATION_NEEDED -->
+
+<div class="act-break" aria-hidden="true">
+  <div class="act-break-diamond"></div>
+  <div class="act-break-diamond"></div>
+  <div class="act-break-diamond"></div>
+</div>
 <section id="hollycrest" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244086/gh_photos/200_hollycrest_drive_11.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:0.10;filter:grayscale(40%) sepia(25%);display:block;"></div>
   <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <div class="split">
@@ -3672,6 +3858,12 @@ Not renovated into anonymity. Restored back into itself.</p>
 <!-- PRIVATE INQUIRY -->
 <!-- GH_INQUIRY_FORM_RESTORED -->
 <!-- GH_PUBLIC_CONTACT_ENDPOINT_NEEDED: form currently uses mailto fallback via rachel.hernandez@sothebysrealty.com — public listing contact confirmed in PROPERTY_VAULT.md. Replace action with Formspree or equivalent endpoint when available for server-side handling. -->
+
+<div class="act-break" aria-hidden="true">
+  <div class="act-break-diamond"></div>
+  <div class="act-break-diamond"></div>
+  <div class="act-break-diamond"></div>
+</div>
 <section class="inquiry" id="inquiry" style="padding: var(--sp-lg) var(--col-pad);"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777428893/gh_key/gh_gate_twilight.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.14;display:block;"></div>
   <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <div class="reveal">
