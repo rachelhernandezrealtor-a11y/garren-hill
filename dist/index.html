@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- build: 20260512185243 -->
+<!-- build: 20260512185614 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -2236,11 +2236,11 @@
   .letter-ghost {
     position: absolute;
     inset: 0;
-    z-index: 0;
+    z-index: 1;
     overflow: hidden;
     pointer-events: none;
     /* Belt-and-suspenders: container-level opacity cap */
-    opacity: 0.55;
+    opacity: 1;
   }
 
   /* Layer 1 — large background inscription, very faint */
@@ -2252,7 +2252,7 @@
     align-items: center;
     justify-content: center;
     padding: 0 clamp(2rem, 8vw, 10rem);
-    transform: rotate(-1.5deg) translateY(-4%);
+    transform: rotate(-2deg) translateY(-8%) translateX(-5%);
     line-height: 1.4;
     gap: 0.3em;
   }
@@ -2262,7 +2262,7 @@
     font-weight: 300;
     font-style: italic;
     font-size: clamp(2.2rem, 6vw, 5.5rem);
-    color: rgba(201,169,110,0.055);
+    color: rgba(201,169,110,0.10);
     letter-spacing: 0.02em;
     white-space: nowrap;
     line-height: 1.35;
@@ -3327,7 +3327,7 @@ blockquote.in {
     <span class="lg-line-5">It is the only place I want to be.</span>
   </div>
 </div>
-<div class="split" style="position:relative;z-index:1;align-items:center;gap:clamp(2rem,4vw,5rem);">
+<div class="split" style="position:relative;z-index:2;align-items:center;gap:clamp(2rem,4vw,5rem);">
  <!-- Portrait container -->
  <div class="img-reveal" style="flex:none;width:clamp(260px,32%,420px);display:flex;align-items:center;justify-content:center;padding:var(--sp-md) 0;min-height:320px;">
  <img loading="lazy" decoding="async"
