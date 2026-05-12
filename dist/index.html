@@ -1107,6 +1107,7 @@
 
   /* ── THEN / NOW KEN BURNS ── */
   .then-now-wrap .then-now-now {
+    opacity: 0.88;
     animation: kenBurnsNow 8s ease-in-out infinite alternate;
   }
   .then-now-wrap .then-now-then {
@@ -2233,11 +2234,11 @@
     content: '';
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    height: 55%;
+    height: 48%;
     background: linear-gradient(to bottom,
       transparent 0%,
-      rgba(10,10,10,0.30) 35%,
-      rgba(10,10,10,0.75) 65%,
+      rgba(10,10,10,0.15) 40%,
+      rgba(10,10,10,0.65) 72%,
       #0a0a0a 100%);
     z-index: 3;
     pointer-events: none;
@@ -2817,10 +2818,12 @@ section {
 
 /* Fullbleed sections — no padding, image takes full width */
 .editorial-fullbleed,
+#top,
 #then-now,
 #aerial-closer,
 #twilight {
   padding: 0;
+  overflow: hidden;
 }
 
 /* Dark narrative sections — tighter top, breathe more bottom */
@@ -3244,8 +3247,8 @@ blockquote.in {
 <section id="then-now" class="editorial-fullbleed then-now-section" aria-label="Then and now: Garran Hill across a century">
   <div class="then-now-wrap" style="position:relative;width:100%;height:clamp(60vh,75vh,88vh);overflow:hidden;">
     <!-- NOW — modern exterior, underneath -->
-    <img class="then-now-img then-now-now img-reveal"
-      loading="lazy" decoding="async"
+    <img class="then-now-img then-now-now"
+      loading="eager" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777243320/gh_exteriors/entrance.jpg"
       alt="Garran Hill today — the estate as it stands"
       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;">
@@ -3257,27 +3260,25 @@ blockquote.in {
       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:0;">
     <!-- GAS LAMP AMBER BLOOM — pulses with the sepia flicker -->
     <div class="gas-bloom" aria-hidden="true"></div>
-    <!-- Overlay caption -->
-    <div class="then-now-caption reveal" style="position:absolute;bottom:0;left:0;right:0;padding:clamp(2rem,5vw,4rem) var(--col-pad);background:linear-gradient(to top,rgba(8,8,8,0.82) 0%,transparent 100%);z-index:2;">
-      <span class="eyebrow" style="display:block;margin-bottom:0.6em;">Garran Hill &middot; Then &amp; Now</span>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.6rem);font-weight:300;color:var(--cream);max-width:580px;line-height:1.5;font-style:italic;">One century between the photographs. The gate remains.</p>
-    </div>
+    <!-- caption removed — KB Gate overlay carries the text -->
     <!-- THEN label — fades in with the sepia image -->
     <div class="then-label" style="position:absolute;top:clamp(1.5rem,3vw,2.5rem);left:var(--col-pad);z-index:3;opacity:0;transition:opacity 0.8s ease;">
       <span style="font-size:0.48rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(245,224,152,0.6);font-family:'Cormorant Garamond',serif;">Then</span>
     </div>
   
     <!-- KB Gate overlay text -->
-    <div class="reveal" style="position:absolute;bottom:0;left:0;right:0;z-index:4;padding:clamp(2.5rem,5vw,4rem) clamp(2rem,6vw,8rem);background:linear-gradient(to top,rgba(5,5,5,0.65) 0%,rgba(5,5,5,0.3) 45%,transparent 100%);text-align:center;">
+    <div class="reveal" style="position:absolute;bottom:0;left:0;right:0;z-index:4;padding:clamp(2.5rem,5vw,4rem) clamp(2rem,6vw,8rem);background:linear-gradient(to top,rgba(5,5,5,0.55) 0%,rgba(5,5,5,0.18) 50%,transparent 100%);text-align:center;">
       <span class="eyebrow" style="color:rgba(201,169,110,0.8);">The Estate &middot; Pinehurst, NC</span>
-      <h2 style="font-size:clamp(2.4rem,4.5vw,4.8rem);margin-top:0.8rem;color:#F5F0E8;font-weight:300;line-height:1.08;max-width:none;"><span class="headline-drop">S</span>ome houses hold history.<em> This one shaped it.</em></h2>
-      <p class="body-text" style="margin-top:1rem;max-width:600px;margin-left:auto;margin-right:auto;color:rgba(245,240,232,0.8);">The gates have opened onto the same circular drive since 1916. The house at the end of it has not moved.</p>
+      <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.4rem,4.5vw,4.8rem);margin-top:0.8rem;color:#F5F0E8;font-weight:300;line-height:1.08;max-width:none;"><span class="headline-drop">S</span>ome houses hold history.<em> This one shaped it.</em></h2>
+      <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1rem,1.4vw,1.35rem);font-weight:300;font-style:italic;margin-top:1rem;max-width:600px;margin-left:auto;margin-right:auto;color:rgba(245,240,232,0.78);line-height:1.7;">The gates have opened onto the same circular drive since 1916. The house at the end of it has not moved.</p>
     </div></div>
 </section>
 <div class="act-break-diamond"></div>
   <div class="act-break-diamond"></div>
 </div>
-<section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;margin-top:-6vh;">
+<section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;margin-top:-10vh;">
+ <!-- Top blend — fades from #0a0a0a at top into section -->
+ <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:18vh;background:linear-gradient(to bottom,#0a0a0a 0%,rgba(10,10,10,0.6) 40%,transparent 100%);z-index:2;pointer-events:none;"></div>
  <!-- WHP GHOST MANUSCRIPT — 4 layers of aged text atmosphere -->
  <div class="letter-ghost" aria-hidden="true">
 
@@ -3323,7 +3324,7 @@ blockquote.in {
  <h2>Appointed by Wilson.<em> He held the alliance from London.</em></h2>
  <div class="body-text reveal">
  <p class="">Born in Cary, North Carolina. Co-founder of Doubleday, Page &amp; Company. Editor of <em>The Atlantic Monthly.</em> Appointed by Woodrow Wilson as Ambassador to the Court of St. James in 1913 &mdash; and kept there through the years the world came apart.</p>
- <p>From London, he commissioned Garran Hill to be built on his family&rsquo;s Moore County acres. He named it himself. Page returned from London in December 1918. He died ten days later.</p>
+ <p>From London, he commissioned Garran Hill to be built on his family&rsquo;s Moore County acres. He named it himself. Page returned from London in December 1918. He did not return to Garran Hill.</p>
 <blockquote class="reveal" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1rem,1.5vw,1.3rem);font-weight:300;color:rgba(201,169,110,0.85);margin:1.5rem 0;">“Well, Frank, I did get here after all, didn't I?” — Aberdeen station, December 1918.</blockquote>
  <p style="font-style:italic;color:rgba(201,169,110,0.9);margin-top:1.2rem;">&#8220;Build the farm, therefore; and let me hear at every stage of that happy game.&#8221;</p>
  <p style="margin-top:0.5rem;font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(201,169,110,0.45);">Walter Hines Page &mdash; Letter, 1918</p>
