@@ -180,7 +180,7 @@
   /* removed: body-text p old */
   .body-text p:last-child { margin-bottom: 0; }
   h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.1; color: var(--cream); }
-  h2 {margin-bottom: clamp(1.4rem, 2.4vw, 2rem); font-size: var(--text-lg); margin-bottom: clamp(1.4rem, 2.4vw, 2.2rem); text-wrap: balance; }
+  /* h2-conflict removed */
   h2 em { display: block; font-style: italic; color: rgba(245,240,232,0.85); font-size: var(--text-md);margin-top: 0.3rem; }
   /* removed: .pull-quote old 2.8rem */
   .pull-attr { font-size: 0.58rem; letter-spacing: 0.38em; text-transform: uppercase; color: rgba(201,169,110,0.80); margin-top: 1.8rem; display: block; }
@@ -282,9 +282,10 @@
   .split {
     display: flex;
     align-items: stretch;
-    min-height: 72vh;
-    padding: clamp(4.5rem, 8vw, 8rem) var(--col-mid);
-    gap: clamp(2.5rem, 5vw, 5rem);
+    min-height: 60vh;
+    /* NO padding — section handles vertical spacing */
+    padding: 0;
+    gap: clamp(3rem, 5vw, 6rem);
   }
   .split.reverse { flex-direction: row-reverse; }
   .split
@@ -357,11 +358,7 @@
   }
 
   /* § 14. TEXT SECTIONS */
-  .text-section {
-    padding: var(--sp-xl) var(--col-pad);
-    max-width: var(--max-text); margin: 0 auto;
-    text-align: center;
-  }
+  .text-/* section-padding-conflict removed */
   .text-section.alt { text-align: left; max-width: none; margin: 0; }
 
   /* § 15. BREATH / INTERSTITIAL */
@@ -376,7 +373,7 @@
   .georgian-ornament-glyph { font-size: 0.55rem; color: rgba(201,169,110,0.75); letter-spacing: 0.3em; }
 
   /* § 16. GALLERY */
-  .gallery-section { padding: var(--sp-lg) var(--col-mid); }
+  .gallery-/* section-padding-conflict removed */
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -417,12 +414,7 @@
   .lb-next { right: 1.5rem; }
 
   /* § 18. PRIVATE TOUR */
-  .private-tour-section {
-    padding: clamp(4rem,8vw,8rem) var(--col-mid);
-    text-align: center;
-    border-top: 1px solid rgba(201,169,110,0.18);
-    border-bottom: 1px solid rgba(201,169,110,0.18);
-  }
+  .private-tour-/* section-padding-conflict removed */
   .private-tour-passage {
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: clamp(0.65rem,0.8vw,0.72rem);
@@ -432,11 +424,7 @@
     display: block;
     margin-bottom: var(--sp-lg);
   }
-  .private-tour-section .body-text {
-    max-width: 52ch;
-    margin: 0 auto var(--sp-lg);
-    text-align: center;
-  }
+  .private-tour-section /* bt-conflict removed */
   .tour-actions {
     display: flex;
     flex-direction: column;
@@ -540,7 +528,7 @@
   @media (max-width: 768px) {
     /* removed: .body-text old mobile override */
     /* removed: body-text p mobile 4.2vw */
-    h2 { text-wrap: unset; }
+    /* h2-conflict removed */
   }
   @media (max-width: 375px) {
     
@@ -592,24 +580,12 @@
   .full-bleed-caption--bottom {
     text-align: left;
   }
-  .full-bleed-caption .eyebrow {
-    display: block;
-    margin-bottom: 0.5em;
-  }
-  .full-bleed-caption h2 {
-    font-size: clamp(1.8rem, 3.5vw, 3.2rem);
-    margin-bottom: 0.6em;
-  }
+  .full-bleed-caption /* eyebrow-conflict removed */
+  .full-bleed-caption /* h2-conflict removed */
   .full-bleed-caption .body-text,
-  .full-bleed-caption p.body-text {
-    max-width: 55ch;
-    margin: 0;
-    font-size: var(--text-base);
-  }
+  .full-bleed-caption p/* bt-conflict removed */
   .full-bleed-caption--center .body-text,
-  .full-bleed-caption--center p.body-text {
-    margin: 0 auto;
-  }
+  .full-bleed-caption--center p/* bt-conflict removed */
 
   /* CAPTION BAND — three-column image row with captions */
   .caption-band {
@@ -669,9 +645,7 @@
       padding-right: 1.5rem;
       text-align: left;
     }
-    .full-bleed-caption h2 {
-      font-size: clamp(1.4rem, 6vw, 2rem);
-    }
+    .full-bleed-caption /* h2-conflict removed */
     .caption-row {
       grid-template-columns: 1fr;
       gap: 2.5rem;
@@ -689,9 +663,7 @@
   /* ── BUYER-LED EDITORIAL STRUCTURE v1 — room index + features ── */
 
   /* ROOM INDEX */
-  .room-index-section {
-    padding: clamp(4rem,7vw,7rem) clamp(1.5rem,5vw,5rem);
-  }
+  .room-index-/* section-padding-conflict removed */
   .room-index-inner { max-width: 1200px; margin: 0 auto; }
   .room-group { margin-bottom: clamp(3rem,5vw,5rem); }
   .room-group-label {
@@ -769,10 +741,7 @@
   }
 
   /* HOUSE FEATURES */
-  .house-features-section {
-    padding: clamp(4rem,7vw,7rem) clamp(1.5rem,5vw,5rem);
-    background: rgba(255,255,255,0.018);
-  }
+  .house-features-/* section-padding-conflict removed */
   .house-features-inner { max-width: 1100px; margin: 0 auto; }
   .features-grid {
     display: grid;
@@ -818,7 +787,7 @@
     .room-cards { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     .features-grid { grid-template-columns: 1fr; }
     .room-index-section,
-    .house-features-section { padding: 3rem 1.5rem; }
+    .house-features-/* section-padding-conflict removed */
   }
   @media (max-width: 420px) {
     .room-cards { grid-template-columns: 1fr; }
@@ -827,7 +796,7 @@
 
 
   /* ── BUYER-LED ROOM INDEX v1 ── */
-  .room-index-section { padding: clamp(3.5rem,6vw,6rem) clamp(1.5rem,5vw,5rem); }
+  .room-index-/* section-padding-conflict removed */
   .room-index-inner { max-width: 1200px; margin: 0 auto; }
   .room-index-head { text-align:center; font-size:clamp(1.3rem,2.2vw,2rem); margin-bottom:0.5em; }
   .room-group { margin-bottom: clamp(2.5rem,4vw,4rem); }
@@ -879,7 +848,7 @@
   }
   @media (max-width: 768px) {
     .room-cards { grid-template-columns: repeat(2,1fr); gap: 1rem; }
-    .room-index-section { padding: 3rem 1.5rem; }
+    .room-index-/* section-padding-conflict removed */
   }
   @media (max-width: 400px) { .room-cards { grid-template-columns: 1fr; } }
   /* ── END BUYER-LED ROOM INDEX v1 ── */
@@ -938,9 +907,9 @@
   .editorial-split {
     display: flex;
     align-items: stretch;
-    min-height: 70vh;
-    padding: clamp(4rem, 7vw, 7.5rem) var(--col-mid);
-    gap: clamp(2.5rem, 5vw, 5rem);
+    min-height: 60vh;
+    padding: 0;
+    gap: clamp(3rem, 5vw, 6rem);
   }
   .editorial-split.reverse { flex-direction: row-reverse; }
   .editorial-split .split-img {
@@ -1241,14 +1210,7 @@
   }
 
   /* h2 — unified */
-  h2 {
-    font-family: 'Cormorant Garamond', Georgia, serif ;
-    font-weight: 300;
-    font-size: var(--text-lg);
-    color: var(--cream);
-    margin-bottom: clamp(1.2rem, 2.2vw, 1.8rem);
-    letter-spacing: 0.04em;
-  }
+  /* h2-conflict removed */
 
   /* h3 */
   h3 {
@@ -1508,11 +1470,7 @@
   .full-bleed-caption {
     padding: clamp(2rem, 5vw, 4rem) clamp(3rem, 8vw, 10rem);
   }
-  .full-bleed-caption h2 {
-    font-size: clamp(2.4rem, 5vw, 5rem) ;
-    max-width: 20ch ;
-    line-height: 1.08 ;
-  }
+  .full-bleed-caption /* h2-conflict removed */
 
   /* ── EDITORIAL BRIDGE — replaces room card grid ── */
   .editorial-bridge {
@@ -1673,10 +1631,7 @@
   .split-text h2,
   .text-section h2,
   .breath h2,
-  .pull h2 {
-    margin-bottom: clamp(1.4rem, 2.5vw, 2.2rem);
-    line-height: 1.08;
-  }
+  .pull /* h2-conflict removed */
 
   /* Section rhythm — every section gets vertical air */
   section {
@@ -1914,28 +1869,16 @@
     }
     .split { gap: clamp(3rem, 5vw, 6rem); }
     .split-text { padding: clamp(3rem, 5vw, 5rem) 0; }
-    .body-text p, p.body-text {
-      max-width: 58ch;
-      font-size: clamp(1.05rem, 1.1vw, 1.18rem);
-      line-height: 1.82;
+    .body-text p, p/* bt-conflict removed */ht: 1.82;
     }
     /* removed: .pull-quote 1280px scoped */
     /* removed: .eyebrow old (1280px scoped) */
-    .act-break { margin: clamp(4rem, 7vw, 8rem) auto; }
-    section { padding-top: clamp(5rem, 8vw, 9rem); padding-bottom: clamp(5rem, 8vw, 9rem); }
+    /* act-break-conflict removed */
+    /* section-padding-media-conflict removed */
   }
 
   /* ── TYPOGRAPHY RHYTHM ────────────────────────────────────────── */
-  .eyebrow {
-    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
-    font-size: clamp(0.58rem, 0.75vw, 0.7rem);
-    font-weight: 500;
-    letter-spacing: 0.20em;
-    text-transform: uppercase;
-    color: rgba(201,169,110,0.7);
-    display: block;
-    margin-bottom: 0.6em;
-  }
+  /* eyebrow-conflict removed */
 
   /* ── BODY TEXT RHYTHM ─────────────────────────────────────────── */
   .body-text p, p.body-text {
@@ -1976,10 +1919,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.2rem;
-    margin: clamp(3rem, 6vw, 7rem) auto;
-    max-width: 320px;
-    opacity: 0.45;
+    gap: 1.4rem;
+    /* Act breaks breathe between sections — generous vertical space */
+    margin: clamp(4rem, 7vw, 8rem) auto;
+    padding: 0;
+    max-width: 360px;
+    opacity: 0.38;
+    /* Act breaks are NOT sections — no overflow:hidden */
+    overflow: visible;
   }
   .act-break::before,
   .act-break::after {
@@ -2054,15 +2001,7 @@
   ══════════════════════════════════════════════════════════════════ */
 
   /* ── SECTION HEADINGS ────────────────────────────────────────── */
-  section h2 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-weight: 300;
-    font-size: clamp(1.8rem, 3.5vw, 3.2rem);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    color: rgba(245,240,232,0.92);
-    margin: 0 0 clamp(0.8rem, 1.5vw, 1.2rem);
-  }
+  section /* h2-loose removed */
   section h2 em {
     font-style: italic;
     color: rgba(201,169,110,0.85);
@@ -2082,9 +2021,7 @@
   .eyebrow + h3 {
     margin-top: 0.4em;
   }
-  .micro-rule + .eyebrow {
-    margin-bottom: 0.5em;
-  }
+  .micro-rule + /* eyebrow-conflict removed */
   .micro-rule + h2,
   .micro-rule + h3 {
     margin-top: 0.3em;
@@ -2092,9 +2029,7 @@
 
   /* ── BODY TEXT PARAGRAPH SPACING ─────────────────────────────── */
   .body-text > p + p,
-  p.body-text + p.body-text {
-    margin-top: clamp(1rem, 1.8vw, 1.4rem);
-  }
+  p.body-text + p/* bt-conflict removed */
 
   /* ── SPLIT SECTION VERTICAL CENTERING ────────────────────────── */
   .split-text {
@@ -2115,10 +2050,7 @@
 
   /* ── STAIRCASE / ARRIVAL SECTION ─────────────────────────────── */
   #staircase .body-text p,
-  #staircase p.body-text {
-    font-size: clamp(1.05rem, 1.3vw, 1.22rem);
-    line-height: 1.9;
-  }
+  #staircase p/* bt-conflict removed */
 
   /* ── WHP SECTION PORTRAIT CAPTION ────────────────────────────── */
   #history .img-reveal + figcaption,
@@ -2131,43 +2063,28 @@
   }
 
   /* ── INQUIRY / CLOSING SECTION ───────────────────────────────── */
-  #inquiry h2 {
-    font-size: clamp(2rem, 4vw, 3.8rem);
-    letter-spacing: -0.02em;
-  }
-  #inquiry .eyebrow {
-    margin-bottom: 1em;
-  }
+  #inquiry /* h2-conflict removed */
+  #inquiry /* eyebrow-conflict removed */
 
   /* ── KITCHEN SECTION — heart-pine warmth ─────────────────────── */
   #kitchen .body-text p,
-  #kitchen p.body-text {
-    color: rgba(245,240,232,0.85);
-    line-height: 1.88;
-  }
+  #kitchen p/* bt-conflict removed */
 
   /* ── ROOM INDEX ───────────────────────────────────────────────── */
-  .room-index-section {
-    padding-top: clamp(4rem, 7vw, 8rem);
-    padding-bottom: clamp(4rem, 7vw, 8rem);
-  }
+  .room-index-/* section-padding-media-conflict removed */
 
   /* ── GROUNDS / ESTATE LIFE ────────────────────────────────────── */
   #hollycrest h2,
-  #terrace h2 {
-    font-size: clamp(1.6rem, 2.8vw, 2.8rem);
-  }
+  #terrace /* h2-conflict removed */
 
   /* ── PREVENT ORPHAN LAST WORDS IN HEADINGS ────────────────────── */
-  section h2, section h3, .pull-quote {
-    text-wrap: balance;
-  }
+  section h2, section h3, /* pq-conflict removed */
 
   /* ── MOBILE REFINEMENTS 375px ─────────────────────────────────── */
   @media (max-width: 375px) {
-    section h2 { font-size: clamp(1.5rem, 7vw, 2rem); }
-    .pull-quote { font-size: 1.15rem; padding: 0 0.5rem; }
-    .act-break { margin: 2rem auto; }
+    section /* h2-conflict removed */
+    /* pq-conflict removed */
+    /* act-break-conflict removed */
     p.body-text, .body-text p { font-size: 1rem; line-height: 1.78; }
   }
 
@@ -2311,11 +2228,7 @@
   ══════════════════════════════════════════════════════════════════ */
 
   /* ── THEN-NOW: deep fade into black — photograph dissolves into time ── */
-  .then-now-section {
-    position: relative;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
+  .then-now-/* section-padding-media-conflict removed */
   .then-now-section::after {
     content: '';
     position: absolute;
@@ -2891,9 +2804,62 @@ section:not(#top)::before {
 }
 
 /* Sections that are already position:relative — just need overflow:visible so the fades show */
+/* ═══════════════════════════════════════════════════════
+   CANONICAL SECTION SPACING — single source of truth
+   All sections get vertical breathing room.
+   Individual sections can override via their own selectors.
+   ═══════════════════════════════════════════════════════ */
 section {
   position: relative;
   overflow: hidden;
+  padding: clamp(5rem, 9vw, 10rem) clamp(2.5rem, 6vw, 7rem);
+}
+
+/* Fullbleed sections — no padding, image takes full width */
+.editorial-fullbleed,
+#then-now,
+#aerial-closer,
+#twilight {
+  padding: 0;
+}
+
+/* Dark narrative sections — tighter top, breathe more bottom */
+#history,
+#whp-quote,
+#restoration,
+#restoration-record,
+#old-house-secrets {
+  padding: clamp(6rem, 10vw, 12rem) clamp(2.5rem, 6vw, 7rem);
+}
+
+/* Split sections — less lateral padding, gap handles spacing */
+#architecture,
+#threshold,
+#staircase,
+#library,
+#salon,
+#drawing-room,
+#dining-room,
+#primary-suite,
+#jewel-box-bath,
+#powder-room,
+#hollycrest,
+#terrace,
+#pool,
+#wee-cottage,
+#side-porch {
+  padding: clamp(5rem, 8vw, 9rem) clamp(1.8rem, 4vw, 5rem);
+}
+
+/* Kitchen — full chapter, needs generous room */
+#kitchen {
+  padding: clamp(6rem, 10vw, 12rem) 0;
+}
+
+/* Inquiry + tour — centered, compact */
+#virtual-tour,
+#inquiry {
+  padding: clamp(5rem, 8vw, 9rem) clamp(2.5rem, 6vw, 7rem);
 }
 
 /* Pure dark sections — no fade needed, they ARE the darkness */
@@ -3043,13 +3009,7 @@ blockquote.in {
   }
 
   /* ── MICRO-RULE: GOLD HAIRLINE ABOVE EYEBROW ── */
-  .micro-rule {
-    display: block !important;
-    width: 2.4rem !important;
-    height: 1px !important;
-    background: rgba(201,169,110,0.5) !important;
-    margin-bottom: clamp(1rem, 1.8vw, 1.4rem) !important;
-  }
+  /* micro-rule-duplicate removed */
 
   /* ── EDITORIAL SPLIT: CANONICAL PADDING ── */
   .editorial-split {
@@ -3132,9 +3092,7 @@ blockquote.in {
   }
 
   /* ── ACT BREAK LABELS: TIGHT AND CONSISTENT ── */
-  .act-break {
-    padding: var(--sp-sm) var(--col-pad) !important;
-  }
+  /* act-break-conflict removed */
   .act-break-glyph {
     font-size: 0.5rem !important;
     letter-spacing: 0.52em !important;
@@ -3319,7 +3277,7 @@ blockquote.in {
 <div class="act-break-diamond"></div>
   <div class="act-break-diamond"></div>
 </div>
-<section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;margin-top:-8vh;padding-top:clamp(5rem,10vw,11rem);">
+<section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;margin-top:-6vh;">
  <!-- WHP GHOST MANUSCRIPT — 4 layers of aged text atmosphere -->
  <div class="letter-ghost" aria-hidden="true">
 
@@ -3375,7 +3333,7 @@ blockquote.in {
 
 </section>
   <!-- WHP PULL QUOTE — full dark moment -->
-  <section id="whp-quote" style="position:relative;background:#0a0a0a;padding:clamp(5rem,12vw,10rem) clamp(3rem,15vw,18rem);text-align:center;">
+  <section id="whp-quote" style="position:relative;background:#0a0a0a;text-align:center;">
   <div class="section-content" style="position:relative;z-index:1;width:100%;">
     <blockquote class="pull-quote reveal-slow" style="border:none;margin:0;padding:0;">
       <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,5.5rem);font-weight:300;font-style:italic;color:#F5F0E8;line-height:1.5;letter-spacing:0.02em;margin-bottom:clamp(1.5rem,3vw,2.5rem);">
