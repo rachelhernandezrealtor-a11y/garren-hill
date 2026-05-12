@@ -2701,6 +2701,142 @@ blockquote.in {
  Setting them to display:none just in case any HTML remains. */
  .editorial-bridge { display: none !important; }
 
+
+  /* ═══════════════════════════════════════════════════════
+     LAYOUT AUTHORITY — FINAL — 2026-05-12 LATE
+     Kills all conflicting split-text max-width and padding wars.
+     This is the last word. Nothing overrides this.
+  ═══════════════════════════════════════════════════════ */
+
+  /* ── SECTION WRAPPER: ALL SECTIONS NEED HORIZONTAL CONTAINMENT ── */
+  section {
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  /* ── THE SPLIT SYSTEM: FINAL AUTHORITY ── */
+  .split,
+  .editorial-split {
+    display: flex !important;
+    align-items: stretch !important;
+    min-height: 78vh !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: var(--sp-lg) var(--col-pad) !important;
+    gap: clamp(3.5rem, 6vw, 7rem) !important;
+  }
+  .split.reverse,
+  .editorial-split.reverse {
+    flex-direction: row-reverse !important;
+  }
+
+  /* ── IMAGE SIDE: 52%, absolutely positioned fill ── */
+  .split .split-img,
+  .editorial-split .split-img {
+    flex: 0 0 50% !important;
+    width: 50% !important;
+    position: relative !important;
+    overflow: hidden !important;
+    min-height: 60vh !important;
+    background: #0a0a0a;
+  }
+  .split .split-img img,
+  .editorial-split .split-img img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  /* ── TEXT SIDE: flex:1, NO max-width cap, generous internal spacing ── */
+  .split .split-text,
+  .editorial-split .split-text {
+    flex: 1 !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  /* ── BODY TEXT INSIDE SPLIT: constrain reading width, not column width ── */
+  .split .split-text .body-text,
+  .editorial-split .split-text .body-text,
+  .split .split-text p,
+  .editorial-split .split-text p {
+    max-width: 54ch !important;
+  }
+
+  /* ── FULL-WIDTH TEXT SECTIONS: need col-pad on both sides ── */
+  section#history > *,
+  section#restoration-record > *,
+  section#hollycrest > *,
+  section#old-house-secrets > *,
+  section#virtual-tour > *,
+  section#threshold > *,
+  section#architecture > * {
+    /* Content inside these sections gets its own padding via child containers */
+  }
+
+  /* ── MOBILE: stack vertically ── */
+  @media (max-width: 768px) {
+    .split,
+    .editorial-split {
+      flex-direction: column !important;
+      min-height: auto !important;
+      padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 6vw, 3rem) !important;
+      gap: 2.5rem !important;
+    }
+    .split.reverse,
+    .editorial-split.reverse {
+      flex-direction: column !important;
+    }
+    .split .split-img,
+    .editorial-split .split-img {
+      flex: none !important;
+      width: 100% !important;
+      min-height: 55vw !important;
+    }
+    .split .split-text,
+    .editorial-split .split-text {
+      width: 100% !important;
+      flex: none !important;
+      max-width: 100% !important;
+      padding: 0 !important;
+    }
+    .split .split-text .body-text,
+    .editorial-split .split-text .body-text,
+    .split .split-text p,
+    .editorial-split .split-text p {
+      max-width: 100% !important;
+    }
+  }
+
+
+  /* ── BODY TEXT ALIGNMENT — SPLIT = LEFT, STANDALONE = CENTER ── */
+  .body-text {
+    text-align: left !important;
+  }
+  /* Only center body-text when explicitly inside a centering context */
+  .whp-quote .body-text,
+  .pull-quote .body-text,
+  section#whp-quote .body-text,
+  .trees-century .body-text,
+  section#threshold .body-text,
+  .editorial-bridge .body-text,
+  .breath .body-text {
+    text-align: center !important;
+  }
+  /* Restoration "Estate at a Glance" stays centered — it's a spec card */
+  section#restoration .body-text {
+    text-align: center !important;
+  }
+
 </style>
 </head>
 <body>
