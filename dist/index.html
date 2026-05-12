@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- build: 20260512194021 -->
+<!-- build: 20260512194340 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -331,16 +331,19 @@
 
   /* CREST WRAP — centers the crest, lets it rise above */
   .stat-crest-wrap {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: clamp(70px, 6vw, 84px);
-    flex-shrink: 0;
-    margin: 0 clamp(0.8rem, 1.5vw, 1.8rem);
-    transform: translateY(-26px);
-    z-index: 10;
-    filter: drop-shadow(0 4px 20px rgba(0,0,0,0.75));
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translateX(-50%) translateY(30%);
+    width: clamp(70px, 6vw, 88px);
+    z-index: 20;
+    filter: drop-shadow(0 6px 24px rgba(0,0,0,0.85));
+    pointer-events: none;
+  }
+  .stat-crest-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
   .stat-crest-wrap img {
     width: 100%;
@@ -2444,6 +2447,15 @@
     opacity: 1 !important;
   }
 
+
+  .stat-crest-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    background: radial-gradient(ellipse, rgba(6,6,6,0.85) 55%, transparent 80%);
+    border-radius: 50%;
+    z-index: -1;
+  }
 </style>
 
   <!-- JSON-LD -->
@@ -3296,7 +3308,7 @@ blockquote.in {
         <div class="stat-div"></div>
         <div class="stat-item">
           <span class="stat-num">Est.&thinsp;1916</span>
-          <span class="stat-lbl">Built</span>
+          <span class="stat-lbl">Year&thinsp;Built</span>
         </div>
         <div class="stat-div"></div>
         <div class="stat-item">
