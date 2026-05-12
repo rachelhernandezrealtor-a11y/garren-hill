@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- build: 20260512195302 -->
+<!-- build: 20260512195652 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -271,15 +271,13 @@
 
   .stat-inner {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
+    height: 72px;
+    position: relative;
+    gap: 0;
     padding: 0 clamp(1rem, 3vw, 3rem);
-  
-    overflow: visible;
   }
 
   /* WINGS — flanking sets of stats */
@@ -334,25 +332,14 @@
 
   /* CREST WRAP — centers the crest, lets it rise above */
   .stat-crest-wrap {
-    position: relative;
-    width: clamp(72px, 6.5vw, 92px);
-    height: clamp(90px, 8.5vw, 115px);
-    flex-shrink: 0;
-    margin: 0 clamp(0.8rem, 1.5vw, 1.8rem);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 16px;
+    width: 56px;
     z-index: 20;
-    filter: drop-shadow(0 6px 24px rgba(0,0,0,0.85));
-    overflow: visible;
-  }
-  .stat-crest-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-  }
-  .stat-crest-wrap img {
-    width: 100%;
-    height: auto;
-    display: block;
+    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.9));
+    pointer-events: none;
   }
   .stat-crest-wrap img {
     width: 100%;
@@ -3307,7 +3294,7 @@ blockquote.in {
       </div>
 
       <!-- CREST: rises above the belt -->
-      <div class="stat-crest-wrap">
+      <div class="stat-spacer" style="width:80px;flex-shrink:0;"></div><div class="stat-crest-wrap">
         <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
              alt="Garran Hill Estate Crest — Pinehurst NC 1916"
              loading="eager">
@@ -3329,7 +3316,7 @@ blockquote.in {
           <span class="stat-num">$4,250,000</span>
           <span class="stat-lbl">Offered&thinsp;At</span>
         </div>
-      </div>
+      </div></div>
 
     </div><!-- /.stat-inner -->
 
@@ -3373,7 +3360,6 @@ blockquote.in {
 </section>
 <div class="act-break-diamond"></div>
   <div class="act-break-diamond"></div>
-</div>
 <section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;margin-top:-15vh;padding-top:0;">
  <!-- Top blend — fades from #0a0a0a at top into section -->
  <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:16vh;background:linear-gradient(to bottom,#0a0a0a 0%,transparent 100%);z-index:2;pointer-events:none;"></div>
