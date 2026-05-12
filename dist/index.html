@@ -2837,6 +2837,83 @@ blockquote.in {
     text-align: center !important;
   }
 
+
+  /* ═══════════════════════════════════════════════
+     STAT BAR AUTHORITY — FINAL 2026-05-12
+     Fix: stats cut off, overflow, mobile cramping
+  ═══════════════════════════════════════════════ */
+
+  /* ── STAT BAR: never clip the crest or content ── */
+  .stat-bar {
+    overflow: visible !important;
+    height: 88px !important;
+  }
+  .stat-inner {
+    overflow: visible !important;
+    padding: 0 clamp(1rem, 4vw, 5rem) !important;
+    gap: 0 !important;
+  }
+
+  /* ── WINGS: no flex-shrink, no wrapping ── */
+  .stat-wing {
+    flex: 1 !important;
+    flex-shrink: 0 !important;
+    flex-wrap: nowrap !important;
+    gap: clamp(1.2rem, 2vw, 3.5rem) !important;
+    align-items: center !important;
+    overflow: visible !important;
+    min-width: 0 !important;
+  }
+
+  /* ── STAT ITEMS: never shrink below readable size ── */
+  .stat-item {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  /* ── STAT NUMBERS: always visible ── */
+  .stat-num {
+    font-size: clamp(1rem, 1.7vw, 1.6rem) !important;
+    white-space: nowrap !important;
+  }
+
+  /* ── STAT LABELS: readable on all viewports ── */
+  .stat-lbl {
+    font-size: clamp(0.44rem, 0.55vw, 0.54rem) !important;
+    white-space: nowrap !important;
+    letter-spacing: 0.38em !important;
+  }
+
+  /* ── DIVIDERS: hide at medium sizes where space is tight ── */
+  @media (max-width: 900px) {
+    .stat-div { display: none !important; }
+    .stat-wing { gap: clamp(0.8rem, 2vw, 1.8rem) !important; }
+    .stat-num { font-size: clamp(0.9rem, 3vw, 1.2rem) !important; }
+    .stat-lbl { font-size: clamp(0.38rem, 1.2vw, 0.48rem) !important; letter-spacing: 0.25em !important; }
+    .stat-inner { padding: 0 clamp(0.5rem, 2vw, 1.5rem) !important; }
+  }
+
+  /* ── MOBILE: stack to 2-col grid, never single line ── */
+  @media (max-width: 600px) {
+    .stat-bar { height: auto !important; padding-bottom: 1rem !important; }
+    .stat-inner {
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      padding: 0.5rem 1rem 0 !important;
+      gap: 0.4rem 1.2rem !important;
+    }
+    .stat-wing {
+      flex: none !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      width: 100% !important;
+      gap: 0.4rem 1.2rem !important;
+    }
+    .stat-crest-wrap { order: -1; width: 100%; justify-content: center; margin-bottom: 0.5rem; }
+    .stat-num { font-size: clamp(1rem, 4vw, 1.3rem) !important; }
+    .stat-lbl { font-size: 0.46rem !important; letter-spacing: 0.3em !important; }
+  }
+
 </style>
 </head>
 <body>
