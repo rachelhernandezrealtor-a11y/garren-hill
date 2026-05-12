@@ -1467,11 +1467,10 @@
   ══════════════════════════════════════════════════ */
 
   /* Universal section base padding */
-  section:not(.hero):not(#gallery):not(#virtual-tour):not(#inquiry) {
+  /* Scoped section padding — NOT on full-bleed sections */
+  section:not(.hero):not(#gallery):not(#virtual-tour):not(#inquiry):not(.full-bleed-section):not([class*="grounds"]):not([class*="pool"]):not([class*="split"]):not([class*="editorial"]):not(.then-now-section):not(.whp-portrait):not(.sources-section) {
     padding-top: var(--sp-lg);
     padding-bottom: var(--sp-lg);
-    padding-left: var(--col-pad);
-    padding-right: var(--col-pad);
   }
 
   /* Split sections (image + text side by side) */
@@ -1797,6 +1796,83 @@
     letter-spacing: 0.06em !important;
     margin-top: 0.6rem !important;
   }
+
+  /* ══════════════════════════════════════════════
+     FULL-BLEED FIX — no constraints, edge to edge
+  ══════════════════════════════════════════════ */
+  .full-bleed-section,
+  .full-bleed-img,
+  section.full-bleed,
+  .split-section,
+  .split-reverse,
+  .editorial-section,
+  .grounds-section,
+  .pool-section,
+  .grounds-feature {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .full-bleed-img {
+    height: clamp(70vh, 88vh, 96vh) !important;
+    overflow: hidden !important;
+  }
+  .full-bleed-img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+  }
+  /* Caption over full-bleed */
+  .full-bleed-caption {
+    padding: clamp(2rem, 5vw, 4rem) clamp(3rem, 8vw, 10rem) !important;
+  }
+  .full-bleed-caption h2 {
+    font-size: clamp(2.4rem, 5vw, 5rem) !important;
+    max-width: 20ch !important;
+    line-height: 1.08 !important;
+  }
+
+  /* ── EDITORIAL BRIDGE — replaces room card grid ── */
+  .editorial-bridge {
+    padding: var(--sp-xl) clamp(3rem, 12vw, 14rem) !important;
+    text-align: center;
+    border-top: 1px solid rgba(201,169,110,0.12);
+    border-bottom: 1px solid rgba(201,169,110,0.12);
+  }
+  .editorial-bridge-inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .editorial-bridge h2 {
+    font-size: clamp(2rem, 4vw, 3.6rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem) !important;
+    max-width: none !important;
+    text-align: center !important;
+  }
+  .bridge-cta {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(0.48rem, 0.68vw, 0.6rem);
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.85);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,169,110,0.3);
+    padding-bottom: 0.2rem;
+    transition: color 0.3s ease, border-color 0.3s ease;
+    margin-top: clamp(1rem, 2vw, 1.5rem);
+  }
+  .bridge-cta:hover {
+    color: rgba(245,240,232,0.95);
+    border-color: rgba(201,169,110,0.7);
+  }
 </style>
 
   <!-- JSON-LD -->
@@ -2069,143 +2145,11 @@
   </div>
 </section>
 
-<section class="room-index-section" id="explore">
-  <div class="room-index-inner reveal">
-    <span class="eyebrow" style="display:block;text-align:center;">Explore the House</span>
-    <h2 class="room-index-head">A room-by-room passage through Garran Hill.</h2>
-    <div class="gold-line" style="margin:0 auto var(--sp-lg);max-width:180px;"></div>
-
-    <div class="room-group">
-      <h3 class="room-group-label">Main Level</h3>
-      <div class="room-cards">
-        <a class="room-card" href="#rooms">
-          <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243398/gh_interiors/200holycrest_1698.jpg" alt="Foyer"></div>
-          <p class="room-card-name">Foyer</p>
-          <p class="room-card-line">Herringbone brick, mahogany volute stair, original leaded glass.</p>
-        </a>
-        <a class="room-card" href="#salon">
-          <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243041/gh_interiors/200holycrest_1209.jpg" alt="Salon"></div>
-          <p class="room-card-name">Salon</p>
-          <p class="room-card-line">The house's great living room — two seating areas, terrace doors, and room to gather.</p>
-        </a>
-        <a class="room-card" href="#drawing-room">
-          <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243086/gh_interiors/200holycrest_1320.jpg" alt="Drawing Room"></div>
-          <p class="room-card-name">Drawing Room</p>
-          <p class="room-card-line">The Blue Room: tiled fireplace, intimate scale, and a spiral stair to the office above.</p>
-        </a>
-        <a class="room-card" href="#dining-room">
-          <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243067/gh_interiors/200holycrest_1296.jpg" alt="Dining Room"></div>
-          <p class="room-card-name">Dining Room</p>
-          <p class="room-card-line">Original frontispiece. 17 &times; 19 ft. A disappearing folding screen still works.</p>
-        </a>
-        <a class="room-card" href="#kitchen">
-          <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243319/gh_interiors/200holycrest_1626.jpg" alt="Kitchen"></div>
-          <p class="room-card-name">Kitchen</p>
-          <!-- GH_PHOTO_CONFIRMATION_NEEDED: Butler's Pantry — verify photo shows pantry/service before adding label -->
-          <p class="room-card-line">Custom cabinetry, two farm sinks, island, heart-pine floors, wall of windows.</p>
-        </a>
-        <a class="room-card" href="#library-room">
-          <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243111/gh_interiors/200holycrest_1350.jpg" alt="Library"></div>
-          <p class="room-card-name">Library</p>
-          <p class="room-card-line">Built-in shelving, books, and quiet proportion — drawn into the restoration with discipline.</p>
-        </a>
-        <a class="room-card" href="#powder-room">
-          <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243355/gh_interiors/200holycrest_1668.jpg" alt="Powder Room"></div>
-          <p class="room-card-name">Powder Room</p>
-          <p class="room-card-line">Fuchsia chinoiserie, Tennessee marble, gilded fixtures.</p>
-        </a>
-        <!-- GH_PHOTO_CONFIRMATION_NEEDED: sunroom — 1428 placed (room_sunroom, Pam Jensen, LIKELY) — Rachel to visually confirm -->
-        <div class="room-card room-card--text">
-          <div class="room-card-img"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243064/gh_interiors/200holycrest_1428.jpg" alt="Garran Hill sunroom — light-filled passage between interior and grounds"></div>
-          <p class="room-card-name">Sunroom / Sitting Room</p>
-          <p class="room-card-line">Light-filled passage connecting interior to grounds and garden flow.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="room-group">
-      <h3 class="room-group-label">Private Level</h3>
-      <div class="room-cards">
-        <a class="room-card" href="#private-rooms">
-          <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243064/gh_interiors/200holycrest_1278.jpg" alt="Primary Suite"></div>
-          <p class="room-card-name">Primary Suite</p>
-          <p class="room-card-line">Custom wall panels, fireplace, 24 &times; 11 ft balcony overlooking grounds.</p>
-        </a>
-        <!-- GH_PHOTO_CONFIRMATION_NEEDED: primary bath — 1371 placed (room_primary_bath, LIKELY) — Rachel to pick final: 1371/1365/1395/1374/1383 -->
-        <div class="room-card room-card--text">
-          <div class="room-card-img"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243153/gh_interiors/200holycrest_1395.jpg" alt="Garran Hill primary bath — walk-in shower, soaking tub, chandelier, and bedroom beyond"></div>
-          <p class="room-card-name">Primary Bath</p>
-          <p class="room-card-line">Mirror, marble, ornament. The house&#8217;s most theatrical private space.</p>
-        </div>
-        <!-- GH_PHOTO_CONFIRMATION_NEEDED: primary closet — 1422 placed (room_primary_closet, Pam Jensen, LIKELY) — Rachel to confirm -->
-        <div class="room-card room-card--text">
-          <div class="room-card-img"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243064/gh_interiors/200holycrest_1422.jpg" alt="Garran Hill primary closet — drawn during restoration, organized storage"></div>
-          <p class="room-card-name">Primary Closet &amp; Dressing</p>
-          <p class="room-card-line">Drawn during restoration. Storage and circulation documented in architectural plans.</p>
-        </div>
-        <a class="room-card" href="#staircase">
-          <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243375/gh_interiors/200holycrest_1695.jpg" alt="Staircase"></div>
-          <p class="room-card-name">Upper Hall &amp; Staircase</p>
-          <p class="room-card-line">Mahogany volute. Same curve since 1916.</p>
-        </a>
-        <!-- GH_PHOTO_CONFIRMATION_NEEDED: bedrooms 2–4 — room_bedroom_2, room_bedroom_3, room_bedroom_4 tags -->
-        <div class="room-card room-card--text">
-          <div class="room-card-img"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243064/gh_interiors/200holycrest_1512.jpg" alt="Garran Hill — bedroom, shaped during restoration for proportion and light"></div>
-          <p class="room-card-name">Bedrooms</p>
-          <p class="room-card-line">Four total. Each shaped during restoration for proportion and light.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="room-group">
-      <h3 class="room-group-label">Lower Level &amp; Storage</h3>
-      <div class="room-cards">
-        <!-- GH_PHOTO_CONFIRMATION_NEEDED: lower office — 1605 placed (room_lower_level_office, Pam Jensen, LIKELY) — Rachel to confirm -->
-        <div class="room-card room-card--text">
-          <div class="room-card-img"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243277/gh_interiors/200holycrest_1578.jpg" alt="Garran Hill lower-level office"><!-- GH_PHOTO_PLACED: 200holycrest_1578, room_lower_level_office, best Pam Jensen candidate --></div>
-          <p class="room-card-name">Lower-Level Office</p>
-          <p class="room-card-line">Built-in bookcase with concealed cabinetry. A room that rewards the close observer.</p>
-        </div>
-        <!-- GH_PHOTO_CONFIRMATION_NEEDED: laundry — 1494 placed (room_laundry, Pam Jensen, LIKELY) — Rachel to confirm -->
-        <div class="room-card room-card--text">
-          <div class="room-card-img"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777243064/gh_interiors/200holycrest_1494.jpg" alt="Garran Hill laundry — organized service flow"></div>
-          <p class="room-card-name">Laundry</p>
-          <p class="room-card-line">Full laundry. Organized service flow through the house.</p>
-        </div>
-        <!-- GH_PHOTO_CONFIRMATION_NEEDED: attic / cedar closet / basement — room_attic_storage tag -->
-        <div class="room-card room-card--text">
-          <p class="room-card-name">Attic, Cedar Closet &amp; Basement</p>
-          <p class="room-card-line">Cedar closet, attic, basement. A house that knows how to hold things.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="room-group">
-      <h3 class="room-group-label">The Grounds</h3>
-      <div class="room-cards">
-        <a class="room-card" href="#grounds">
-          <div class="room-card-img"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_800/v1777244483/gh_exteriors/holycrestextf_3334.jpg" alt="Garran Hill pool — 20×40 saltwater, brick wall, iron gates"></div>
-          <p class="room-card-name">Pool &amp; Terrace</p>
-          <p class="room-card-line">20 &times; 40 saltwater pool, brick wall, iron gates. Converted 2022.</p>
-        </a>
-        <div class="room-card room-card--text">
-          <!-- GH_PHOTO_CONFIRMATION_NEEDED: Wee Cottage — room_outbuildings tag -->
-          <div class="room-card-img"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_800/v1777244059/gh_exteriors/holycrestextf_3361.jpg" alt="Wee Cottage — estate outbuilding, children's playhouse"></div>
-          <p class="room-card-name">Wee Cottage</p>
-          <p class="room-card-line">Children&#8217;s playhouse. One of the estate&#8217;s gentlest surprises.</p>
-        </div>
-        <div class="room-card room-card--text">
-          <div class="room-card-img"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_800/v1777244059/gh_exteriors/holycrestextf_3345.jpg" alt="Garran Hill grounds — estate outbuildings and canopy"></div>
-          <p class="room-card-name">Gardens &amp; Grounds</p>
-          <p class="room-card-line">28-zone irrigation. 130-ft well. Mature canopy. Underground utilities.</p>
-        </div>
-        <div class="room-card room-card--text">
-          <p class="room-card-name">Tennis</p>
-          <p class="room-card-line">Two regulation courts. Ready for renewal.</p>
-        </div>
-      </div>
-    </div>
-
+<section class="editorial-bridge" id="explore">
+  <div class="editorial-bridge-inner reveal">
+    <span class="eyebrow">The Interior</span>
+    <h2>Six principal rooms.<br>Each one a different answer<br><em>to the same question of how to live well.</em></h2>
+    <a class="bridge-cta" href="#rooms">Enter the House &nbsp;&#8594;</a>
   </div>
 </section>
 
