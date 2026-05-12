@@ -2135,6 +2135,83 @@
       drop-shadow(0 0 25px rgba(245,224,152,0.45))
       drop-shadow(0 22px 55px rgba(0,0,0,0.95));
   }
+  /* GHOST UNDERLAY SYSTEM — Rocky 2026-05-12
+     Atmospheric photo underlays beneath heavy text sections.
+     Barely there. Felt more than seen. */
+
+  #history,
+  #restoration-record,
+  #sources,
+  #explore,
+  #whp-quote { position: relative; overflow: hidden; }
+
+  #history::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244132/gh_key/gh_whp.jpg');
+    background-size: 55%; background-position: right -5% center;
+    background-repeat: no-repeat;
+    opacity: 0.055; filter: grayscale(100%) sepia(40%);
+    pointer-events: none; z-index: 0;
+  }
+  #history > * { position: relative; z-index: 1; }
+
+  #restoration-record::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243323/gh_exteriors/front_exterior.jpg');
+    background-size: cover; background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.038; filter: grayscale(100%) sepia(20%);
+    pointer-events: none; z-index: 0;
+  }
+  #restoration-record > * { position: relative; z-index: 1; }
+
+  #sources::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244059/gh_key/gh_191.jpg');
+    background-size: cover; background-position: center top;
+    background-repeat: no-repeat;
+    opacity: 0.07; filter: grayscale(100%) sepia(70%);
+    pointer-events: none; z-index: 0;
+  }
+  #sources > * { position: relative; z-index: 1; }
+
+  #explore::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777270464/gh_key/gh_entry62.jpg');
+    background-size: 50%; background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.045; filter: grayscale(100%) sepia(30%);
+    pointer-events: none; z-index: 0;
+  }
+  #explore > * { position: relative; z-index: 1; }
+
+  #whp-quote::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244132/gh_key/gh_whp.jpg');
+    background-size: 45%; background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.065; filter: grayscale(100%) sepia(50%);
+    pointer-events: none; z-index: 0;
+  }
+  #whp-quote > * { position: relative; z-index: 1; }
+
+  #architecture { position: relative; overflow: hidden; }
+  #architecture::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777249929/gh_img/58a73b9721_rosewall.jpg');
+    background-size: cover; background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.04; filter: grayscale(30%) sepia(20%);
+    pointer-events: none; z-index: 0;
+  }
+  #architecture > * { position: relative; z-index: 1; }
+
 </style>
 
   <!-- JSON-LD -->
