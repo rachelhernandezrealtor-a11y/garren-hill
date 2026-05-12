@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- build: 20260512182413 -->
+<!-- build: 20260512182608 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -204,7 +204,7 @@
     width: 100%;
     height: 100vh;
     min-height: 640px;
-    overflow: visible;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     background: var(--dark);
@@ -2198,6 +2198,10 @@
 
   /* ── THEN-NOW: deep fade into black — photograph dissolves into time ── */
   .then-now-/* section-padding-media-conflict removed */
+  .kb-gate-section {
+    overflow: hidden;
+    position: relative;
+  }
   .kb-gate-section::after {
     content: '';
     position: absolute;
@@ -2340,6 +2344,10 @@
   /* ── THEN-NOW CAPTION — position below image, above blend ───── */
   /* ── THEN-NOW: bottom dissolve into darkness ── */
   .kb-gate-section {
+    position: relative;
+  }
+  .kb-gate-section {
+    overflow: hidden;
     position: relative;
   }
   .kb-gate-section::after {
