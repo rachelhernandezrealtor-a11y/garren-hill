@@ -1144,14 +1144,37 @@
     animation: kenBurnsNow 8s ease-in-out infinite alternate;
   }
   .then-now-wrap .then-now-then {
-    animation: kenBurnsThen 16s ease-in-out infinite;
+    animation: kenBurnsThen 22s ease-in-out infinite;
   }
   @keyframes kenBurnsNow {
     0%   { transform: scale(1.0);   }
     100% { transform: scale(1.05);  }
   }
   @keyframes kenBurnsThen {
-    0%   { opacity: 0; transform: scale(1.03); }
+    /* --- BLACK HOLD: cut immediately --- */
+    0%   { opacity: 0;    transform: scale(1.04); filter: brightness(0.0) sepia(0.9); }
+    /* --- FIRST FLICKER: gas lamp trying to catch --- */
+    8%   { opacity: 0.12; transform: scale(1.04); filter: brightness(0.4) sepia(1.0) saturate(0.6); }
+    10%  { opacity: 0.03; transform: scale(1.04); filter: brightness(0.1) sepia(1.0); }
+    13%  { opacity: 0.22; transform: scale(1.03); filter: brightness(0.6) sepia(0.9) saturate(0.7); }
+    15%  { opacity: 0.08; transform: scale(1.03); filter: brightness(0.2) sepia(1.0); }
+    /* --- SECOND CATCH: longer hold, starting to breathe --- */
+    20%  { opacity: 0.45; transform: scale(1.02); filter: brightness(0.75) sepia(0.85) saturate(0.8); }
+    23%  { opacity: 0.28; transform: scale(1.02); filter: brightness(0.5) sepia(0.95); }
+    /* --- FLAME SETTLING --- */
+    30%  { opacity: 0.72; transform: scale(1.01); filter: brightness(0.88) sepia(0.75) saturate(0.9); }
+    35%  { opacity: 0.65; transform: scale(1.01); filter: brightness(0.82) sepia(0.8); }
+    /* --- FULLY ALIVE: warm and breathing --- */
+    42%  { opacity: 0.92; transform: scale(1.0);  filter: brightness(0.95) sepia(0.65) saturate(1.0); }
+    /* --- GENTLE PULSE: like a flame in still air --- */
+    50%  { opacity: 0.88; transform: scale(1.005); filter: brightness(0.90) sepia(0.70); }
+    58%  { opacity: 0.93; transform: scale(1.0);   filter: brightness(0.96) sepia(0.62); }
+    /* --- FADE BACK: world returns to present --- */
+    72%  { opacity: 0.88; transform: scale(1.0);  filter: brightness(0.90) sepia(0.68); }
+    82%  { opacity: 0.35; transform: scale(1.01); filter: brightness(0.55) sepia(0.85); }
+    90%  { opacity: 0.08; transform: scale(1.02); filter: brightness(0.2) sepia(1.0); }
+    100% { opacity: 0;    transform: scale(1.04); filter: brightness(0.0) sepia(1.0); }
+  }
     20%  { opacity: 0; }
     35%  { opacity: 0.88; }
     65%  { opacity: 0.88; }
@@ -1979,7 +2002,68 @@
     z-index: 1;
     width: 100%;
   }
-</style>
+
+  /* ── GAS LAMP AMBER BLOOM ── */
+  .gas-bloom {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    background: radial-gradient(ellipse 60% 50% at 50% 45%,
+      rgba(255, 200, 80, 0.0) 0%,
+      rgba(220, 150, 40, 0.0) 60%,
+      transparent 100%);
+    animation: gasBloom 22s ease-in-out infinite;
+    mix-blend-mode: screen;
+  }
+  @keyframes gasBloom {
+    0%   { opacity: 0; background: radial-gradient(ellipse 60% 50% at 50% 45%, rgba(255,200,80,0.0) 0%, transparent 100%); }
+    8%   { opacity: 1; background: radial-gradient(ellipse 55% 45% at 48% 42%, rgba(255,185,60,0.25) 0%, rgba(200,120,20,0.08) 50%, transparent 100%); }
+    10%  { opacity: 0; }
+    13%  { opacity: 1; background: radial-gradient(ellipse 58% 48% at 50% 44%, rgba(255,195,70,0.35) 0%, rgba(210,130,25,0.12) 50%, transparent 100%); }
+    15%  { opacity: 0.1; }
+    20%  { opacity: 0.9; background: radial-gradient(ellipse 65% 55% at 50% 45%, rgba(255,210,90,0.22) 0%, rgba(200,140,30,0.08) 60%, transparent 100%); }
+    23%  { opacity: 0.4; }
+    30%  { opacity: 0.85; background: radial-gradient(ellipse 70% 60% at 50% 46%, rgba(255,215,95,0.18) 0%, rgba(200,140,30,0.06) 65%, transparent 100%); }
+    42%  { opacity: 0.7; background: radial-gradient(ellipse 72% 62% at 50% 46%, rgba(255,220,100,0.14) 0%, transparent 70%); }
+    50%  { opacity: 0.6; }
+    58%  { opacity: 0.72; }
+    72%  { opacity: 0.6; }
+    82%  { opacity: 0.2; }
+    90%  { opacity: 0.0; }
+    100% { opacity: 0; }
+  }
+
+  
+  /* ── SEPIA GRAIN CRACKLE ── */
+  .then-now-then {
+    position: relative;
+  }
+  .then-now-then::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.06'/%3E%3C/svg%3E");
+    opacity: 0;
+    pointer-events: none;
+    z-index: 4;
+    mix-blend-mode: overlay;
+    animation: grainPulse 22s ease-in-out infinite;
+  }
+  @keyframes grainPulse {
+    0%,7%   { opacity: 0; }
+    8%      { opacity: 0.9; }
+    10%     { opacity: 0.3; }
+    13%     { opacity: 1.0; }
+    15%     { opacity: 0.2; }
+    20%     { opacity: 0.7; }
+    30%     { opacity: 0.5; }
+    42%,80% { opacity: 0.3; }
+    90%     { opacity: 0.1; }
+    100%    { opacity: 0; }
+  }
+
+  </style>
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -2624,6 +2708,8 @@ blockquote.in {
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:60,e_sharpen:15,f_auto,q_auto,c_limit,w_1600/v1777411350/gh_key/gh_gate_sepia.jpg"
       alt="Garran Hill — the old gate, early period photograph"
       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:0;">
+    <!-- GAS LAMP AMBER BLOOM — pulses with the sepia flicker -->
+    <div class="gas-bloom" aria-hidden="true"></div>
     <!-- Overlay caption -->
     <div class="then-now-caption reveal" style="position:absolute;bottom:0;left:0;right:0;padding:clamp(2rem,5vw,4rem) var(--col-pad);background:linear-gradient(to top,rgba(8,8,8,0.82) 0%,transparent 100%);z-index:2;">
       <span class="eyebrow" style="display:block;margin-bottom:0.6em;">Garran Hill &middot; Then &amp; Now</span>
