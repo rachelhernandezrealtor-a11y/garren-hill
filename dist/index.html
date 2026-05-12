@@ -2304,6 +2304,39 @@
     line-height: 1;
     display: inline;
   }
+
+  /* ── HERO VIDEO — LOCKED done_czfe8o ──────────────────────────── */
+  .hero-video-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    opacity: 0.72;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(10,10,10,0.18) 0%,
+      rgba(10,10,10,0.08) 40%,
+      rgba(10,10,10,0.55) 100%
+    );
+    z-index: 1;
+  }
+  /* Everything above the video */
+  .hero-stage, .hero-spine, .hero-eyebrow, .stat-bar-wrap {
+    position: relative;
+    z-index: 2;
+  }
 </style>
 
   <!-- JSON-LD -->
@@ -3040,13 +3073,17 @@ blockquote.in {
 <!-- HERO VIDEO: current site uses done_czfe8o. Earlier rule named Last_for_real_q0fqvw. CONFLICT — Rachel-confirmation-needed. Not changed. -->
 <section class="hero" id="top">
 
-  <!-- AMBIENT FLOWER SLIDESHOW -->
-  <div class="hero-slides">
-    <div class="hero-slide active" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777244670/gh_photos/200_hollycrest_drive_219.jpg'); background-position:center 40%;"></div>
-    <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777244670/gh_photos/200_hollycrest_drive_215.jpg'); background-position:center 38%;"></div>
-    <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,f_auto,q_auto,c_limit,w_1920/v1777648663/gh_key/gh_hero_poster_azalea.jpg'); background-position:center 60%;"></div>
-    <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777244670/gh_photos/200_hollycrest_drive_210.jpg'); background-position:center 42%;"></div>
-    <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,f_auto,q_auto,c_limit,w_1920/v1777428893/gh_key/gh_gate_twilight.jpg'); background-position:center 50%;"></div>
+  <!-- LOCKED HERO VIDEO — done_czfe8o — NEVER SWAP -->
+  <div class="hero-video-wrap" aria-hidden="true">
+    <video
+      autoplay muted loop playsinline
+      poster="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,f_auto,q_auto,c_limit,w_1920/v1777648663/gh_key/gh_hero_poster_azalea.jpg"
+      class="hero-video"
+    >
+      <source src="https://res.cloudinary.com/dghn2xpif/video/upload/v1777503272/gh_key/done_czfe8o.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+  </div>
     <div class="hero-overlay"></div>
 
   <!-- VERTICAL ADDRESS EYEBROW — LEFT SPINE -->
