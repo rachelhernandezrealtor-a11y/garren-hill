@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- build: 20260512193658 -->
+<!-- build: 20260512194021 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -335,10 +335,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: clamp(100px, 9vw, 130px);
+    width: clamp(70px, 6vw, 84px);
     flex-shrink: 0;
     margin: 0 clamp(0.8rem, 1.5vw, 1.8rem);
-    transform: translateY(-38px);
+    transform: translateY(-26px);
     z-index: 10;
     filter: drop-shadow(0 4px 20px rgba(0,0,0,0.75));
   }
@@ -2428,6 +2428,22 @@
     object-position: center center;
     z-index: 0;
   }
+
+  /* STAT LABEL CANONICAL — FINAL OVERRIDE */
+  .stat-lbl, span.stat-lbl {
+    font-size: 9px !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    color: rgba(245,240,232,0.70) !important;
+    white-space: nowrap !important;
+    line-height: 1.2 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
 </style>
 
   <!-- JSON-LD -->
@@ -2727,7 +2743,7 @@
   display: block;
   position: relative;
   /* Anchor bottom to belt line — lower portion crosses through */
-  transform: translateY(-38px);
+  transform: translateY(-26px);
   /* Royal seal — warm gold, deep shadows, luminous glow */
   filter:
     sepia(0.12) hue-rotate(-4deg) saturate(1.05) brightness(1.12)
@@ -2795,7 +2811,7 @@ section h2,
   }
   .stat-crest-wrap img {
     height: clamp(200px, 18vw, 260px); width: auto; display: block;
-    transform: translateY(-38px);
+    transform: translateY(-26px);
     position: relative; z-index: 50;
     filter:
       sepia(0.15) hue-rotate(-8deg) saturate(0.88) brightness(1.05)
