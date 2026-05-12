@@ -2914,6 +2914,25 @@ blockquote.in {
     .stat-lbl { font-size: 0.46rem !important; letter-spacing: 0.3em !important; }
   }
 
+
+  /* ── HISTORY: book pages / letter scan underlay ── */
+  /* Layer 1: aged paper texture — 1916 photograph desaturated */
+  #history::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777270125/gh_key/gh_sapling1916.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.06;
+    filter: grayscale(100%) sepia(40%) brightness(0.7);
+    pointer-events: none;
+    z-index: 0;
+  }
+  /* Layer 2: WHP portrait ghost already in ::before via inline style block — keep it */
+  #history > * { position: relative; z-index: 1; }
+
 </style>
 </head>
 <body>
@@ -3098,7 +3117,7 @@ blockquote.in {
 
 </section>
  <!-- WHP PULL QUOTE — full dark moment -->
- <section id="whp-quote" style="position:relative;background:#0a0a0a;padding:clamp(5rem,12vw,10rem) clamp(3rem,15vw,18rem);text-align:center;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243079/gh_interiors/200holycrest_1308.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.12;display:block;"></div>
+ <section id="whp-quote" style="position:relative;background:#0a0a0a;padding:clamp(5rem,12vw,10rem) clamp(3rem,15vw,18rem);text-align:center;"><!-- ghost removed: dining room image not relevant to WHP quote -->
  <div class="section-content" style="position:relative;z-index:1;width:100%;">
  <blockquote class="pull-quote reveal-slow" style="border:none;margin:0;padding:0;">
  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,5.5rem);font-weight:300;font-style:italic;color:#F5F0E8;line-height:1.5;letter-spacing:0.02em;margin-bottom:clamp(1.5rem,3vw,2.5rem);">
