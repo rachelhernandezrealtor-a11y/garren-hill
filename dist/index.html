@@ -2317,6 +2317,15 @@
       font-size: clamp(1.4rem, 6vw, 2rem);
     }
   }
+
+  /* Haunt layer — ghost images breathe behind each section */
+  #whp-quote, #architecture, #restoration-record, #threshold, #dining-room, #library, #hollycrest, #inquiry, #sources {
+    position: relative;
+  }
+  #whp-quote > *:not([aria-hidden="true"]), #architecture > *:not([aria-hidden="true"]), #restoration-record > *:not([aria-hidden="true"]), #threshold > *:not([aria-hidden="true"]), #dining-room > *:not([aria-hidden="true"]), #library > *:not([aria-hidden="true"]), #hollycrest > *:not([aria-hidden="true"]), #inquiry > *:not([aria-hidden="true"]), #sources > *:not([aria-hidden="true"]) {
+    position: relative;
+    z-index: 1;
+  }
 </style>
 
   <!-- JSON-LD -->
@@ -2522,7 +2531,7 @@
   </div>
 </section>
   <!-- WHP PULL QUOTE — full dark moment -->
-  <section id="whp-quote" style="background:#0a0a0a;padding:clamp(5rem,12vw,10rem) clamp(3rem,15vw,18rem);text-align:center;">
+  <section id="whp-quote" style="position:relative;background:#0a0a0a;padding:clamp(5rem,12vw,10rem) clamp(3rem,15vw,18rem);text-align:center;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244132/gh_key/gh_whp.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:0.06;filter:grayscale(100%) sepia(30%);display:block;"></div>
     <blockquote class="reveal-slow" style="border:none;margin:0;padding:0;">
       <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:300;font-style:italic;color:#F5F0E8;line-height:1.5;letter-spacing:0.02em;margin-bottom:clamp(1.5rem,3vw,2.5rem);">
         &ldquo;The farm &mdash; the farm &mdash; the farm.&rdquo;
@@ -2551,7 +2560,7 @@
 
 
 
-<section class="full-bleed-section" id="architecture">
+<section class="full-bleed-section" id="architecture" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243317/gh_exteriors/200holycrestf-1440_28z.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:0.12;filter:grayscale(40%);display:block;"></div>
   <div class="full-bleed-img img-reveal">
     <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777243323/gh_exteriors/front_exterior.jpg"
       alt="Garran Hill — Neo-Georgian portico, full brick, Pinehurst NC">
@@ -2564,7 +2573,7 @@
   </div>
 </section>
 
-<section id="threshold">
+<section id="threshold" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777247257/gh_img/886246096.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:0.10;filter:grayscale(30%);display:block;"></div>
   <div class="split">
     <div class="split-img img-reveal">
       <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777263004/gh_key/gh_threshold.jpg"
@@ -2589,7 +2598,7 @@
 
 <div class="section-divider" style="width:100%;height:1px;background:linear-gradient(to right,transparent 0%,rgba(201,169,110,0.0) 5%,rgba(201,169,110,0.3) 25%,rgba(245,224,152,0.5) 50%,rgba(201,169,110,0.3) 75%,rgba(201,169,110,0.0) 95%,transparent 100%);margin:0;"></div>
 <div class="act-transition reveal"><span class="act-label">Restoration</span></div>
-<section id="restoration-record">
+<section id="restoration-record" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243079/gh_interiors/200holycrest_1308.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.08;filter:grayscale(60%) sepia(20%);display:block;"></div>
   <div class="split reverse">
     <div class="split-text">
       <span class="micro-rule reveal"></span>
@@ -2721,7 +2730,7 @@
 </section>
 
 <!-- DINING ROOM — intimate section -->
-<section class="editorial-split" id="dining-room">
+<section class="editorial-split" id="dining-room" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243079/gh_interiors/200holycrest_1308.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.18;display:block;"></div>
   <div class="split-img img-reveal">
     <img loading="lazy" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243079/gh_interiors/200holycrest_1308.jpg"
@@ -2783,7 +2792,7 @@
 
 
 <!-- LIBRARY -->
-<section id="library">
+<section id="library" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243305/gh_interiors/200holycrest_1614.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.07;filter:grayscale(50%);display:block;"></div>
   <div class="split reverse">
     <div class="split-text">
       <span class="micro-rule reveal"></span>
@@ -2928,7 +2937,7 @@
 <!-- ── ACT VII: HOLLYCREST / LEGEND ─────────────────────── -->
 
 <!-- GH_BLUE_FOX_IMAGE_CONFIRMATION_NEEDED -->
-<section id="hollycrest">
+<section id="hollycrest" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243572/gh_photos/200_hollycrest_drive_11.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:0.10;filter:grayscale(40%) sepia(25%);display:block;"></div>
   <div class="split">
     <div class="split-text">
       <span class="micro-rule reveal"></span>
@@ -3072,7 +3081,7 @@
   </div>
 </section>
 
-<section id="sources" class="text-section alt">
+<section id="sources" class="text-section alt" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243290/gh_exteriors/200holycrestf-1440.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:0.06;filter:grayscale(60%);display:block;"></div>
   <div class="body-text reveal" style="max-width:600px;margin:0 auto;">
     <span class="eyebrow" style="display:block;margin-bottom:var(--sp-sm);text-align:center;">The Archive</span>
     <div class="gold-line" style="margin-bottom:var(--sp-md);"></div>
@@ -3138,7 +3147,7 @@
 <!-- PRIVATE INQUIRY -->
 <!-- GH_INQUIRY_FORM_RESTORED -->
 <!-- GH_PUBLIC_CONTACT_ENDPOINT_NEEDED: form currently uses mailto fallback via rachel.hernandez@sothebysrealty.com — public listing contact confirmed in PROPERTY_VAULT.md. Replace action with Formspree or equivalent endpoint when available for server-side handling. -->
-<section class="inquiry" id="inquiry">
+<section class="inquiry" id="inquiry" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244132/gh_key/gh_whp.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:0.05;filter:grayscale(100%) sepia(20%);display:block;"></div>
   <div class="reveal">
     <span class="eyebrow" style="display:block;text-align:center;">Private Showing</span>
     <h2 style="font-size:clamp(1.4rem,2.5vw,2.2rem);margin-bottom:var(--sp-sm);">Begin the Private Conversation.</h2>
