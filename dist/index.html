@@ -2589,12 +2589,13 @@
   position: absolute;
   bottom: 0; left: 0; right: 0;
   z-index: 20;
-  height: 90px;
+  height: 80px;
   overflow: visible;
+  /* Pure obsidian ground — the crest floats above light */
   background: linear-gradient(180deg,
     rgba(4,4,4,0.0)  0%,
-    rgba(4,4,4,0.60) 55%,
-    rgba(4,4,4,0.88) 100%);
+    rgba(4,4,4,0.40) 40%,
+    rgba(4,4,4,0.78) 100%);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
@@ -2662,28 +2663,26 @@
 .stat-num {
   display: block;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1.1rem, 1.85vw, 1.65rem);
+  font-size: clamp(1.0rem, 1.6vw, 1.45rem);
   font-weight: 300;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   line-height: 1;
-  background: linear-gradient(180deg, #F5E098 0%, #C9A96E 45%, #8B6914 100%);
+  /* Champagne-platinum — not gold, lighter */
+  background: linear-gradient(180deg, #EFE0B8 0%, #D4B97A 50%, #B8955A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow:
-    0 1px 2px rgba(0,0,0,0.95),
-    0 -1px 0   rgba(220,210,185,0.06);
 }
 
 /* LABELS — more visible, engraved-plaque feel */
 .stat-lbl {
   display: block;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(0.42rem, 0.56vw, 0.52rem);
-  letter-spacing: 0.50em;
+  font-size: clamp(0.38rem, 0.50vw, 0.46rem);
+  letter-spacing: 0.60em;
   text-transform: uppercase;
-  color: rgba(245,240,232,0.50);
-  margin-top: 0.38rem;
+  color: rgba(245,240,232,0.38);
+  margin-top: 0.42rem;
   line-height: 1;
   font-weight: 300;
 }
@@ -2711,48 +2710,44 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 clamp(1.6rem, 3vw, 5rem);
+  padding: 0 clamp(2rem, 3.5vw, 5rem);
   z-index: 30;
-  /* Pull crest high: rises 200px above the belt into the hero */
-  margin-top: -200px;
+  margin-top: -180px;
   overflow: visible;
 }
 
 .stat-crest-wrap img {
-  /* Stamp scale — commanding next to the giant title */
-  height: clamp(260px, 26vw, 360px);
+  height: clamp(200px, 20vw, 280px);
   width: auto;
   display: block;
   position: relative;
-  /* Stamp into the next section: positive Y pushes bottom below the belt line */
-  /* At 360px height: the middle sits AT the belt line, bottom 180px stamps below */
-  transform: translateY(55px);
-  /* 3D pressed-seal look: deep shadows + gold glow */
+  transform: translateY(38px);
+  /* Aged platinum — cool, refined, not warm gold blob */
   filter:
-    drop-shadow(0 0 24px rgba(0,0,0,0.45))
-    drop-shadow(0 -6px 16px rgba(0,0,0,0.38))
-    drop-shadow(0 10px 24px rgba(0,0,0,0.38))
-    drop-shadow(0 0 50px rgba(201,169,110,0.38))
-    drop-shadow(0 0 22px rgba(245,224,152,0.26));
-  animation: crestGlow 5s ease-in-out infinite;
+    sepia(0.18) hue-rotate(-6deg) saturate(0.82) brightness(1.08)
+    drop-shadow(0 2px 18px rgba(0,0,0,0.70))
+    drop-shadow(0 8px 32px rgba(0,0,0,0.55))
+    drop-shadow(0 0 28px rgba(212,192,145,0.18))
+    drop-shadow(0 0 12px rgba(235,218,175,0.12));
+  animation: crestBreath 7s ease-in-out infinite;
 }
 
-@keyframes crestGlow {
+@keyframes crestBreath {
   0%,100% {
     filter:
-      drop-shadow(0 0 24px rgba(0,0,0,0.45))
-      drop-shadow(0 -6px 16px rgba(0,0,0,0.38))
-      drop-shadow(0 10px 24px rgba(0,0,0,0.38))
-      drop-shadow(0 0 40px rgba(201,169,110,0.32))
-      drop-shadow(0 0 18px rgba(245,224,152,0.22));
+      sepia(0.18) hue-rotate(-6deg) saturate(0.82) brightness(1.06)
+      drop-shadow(0 2px 18px rgba(0,0,0,0.70))
+      drop-shadow(0 8px 32px rgba(0,0,0,0.55))
+      drop-shadow(0 0 22px rgba(212,192,145,0.14))
+      drop-shadow(0 0 10px rgba(235,218,175,0.10));
   }
   50% {
     filter:
-      drop-shadow(0 0 24px rgba(0,0,0,0.45))
-      drop-shadow(0 -6px 16px rgba(0,0,0,0.38))
-      drop-shadow(0 10px 24px rgba(0,0,0,0.38))
-      drop-shadow(0 0 56px rgba(201,169,110,0.46))
-      drop-shadow(0 0 26px rgba(245,224,152,0.30));
+      sepia(0.18) hue-rotate(-6deg) saturate(0.82) brightness(1.10)
+      drop-shadow(0 2px 18px rgba(0,0,0,0.70))
+      drop-shadow(0 8px 32px rgba(0,0,0,0.55))
+      drop-shadow(0 0 32px rgba(212,192,145,0.22))
+      drop-shadow(0 0 16px rgba(235,218,175,0.16));
   }
 }
 
