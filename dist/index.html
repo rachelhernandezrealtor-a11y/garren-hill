@@ -1981,6 +1981,13 @@
     position: relative;
     z-index: 1;
   }
+
+  /* Ghost-safe content wrapper */
+  .section-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
 </style>
 
   <!-- JSON-LD -->
@@ -2518,10 +2525,7 @@
 
 <section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;">
   <!-- Letter scan underlay -->
-  <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1600/v1777244132/gh_key/gh_whp.jpg" alt="" role="presentation"
-      style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.07;filter:sepia(60%);">
-  </div>
+  
   <div class="split" style="position:relative;z-index:1;align-items:center;">
     <!-- Portrait container — flex centering, NO split-img class so CSS doesn't force absolute -->
     <div class="img-reveal" style="flex:1;display:flex;align-items:center;justify-content:center;padding:var(--sp-md) 0;min-height:320px;">
@@ -2547,6 +2551,7 @@
 </section>
   <!-- WHP PULL QUOTE — full dark moment -->
   <section id="whp-quote" style="position:relative;background:#0a0a0a;padding:clamp(5rem,12vw,10rem) clamp(3rem,15vw,18rem);text-align:center;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244132/gh_key/gh_whp.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:0.06;filter:grayscale(100%) sepia(30%);display:block;"></div>
+  <div class="section-content" style="position:relative;z-index:1;width:100%;">
     <blockquote class="reveal-slow" style="border:none;margin:0;padding:0;">
       <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:300;font-style:italic;color:#F5F0E8;line-height:1.5;letter-spacing:0.02em;margin-bottom:clamp(1.5rem,3vw,2.5rem);">
         &ldquo;The farm &mdash; the farm &mdash; the farm.&rdquo;
@@ -2555,7 +2560,8 @@
         Walter Hines Page &middot; From His Letters &middot; 1913&ndash;1918
       </cite>
     </blockquote>
-  </section>
+    </div>
+</section>
 
 
 
@@ -2576,6 +2582,7 @@
 
 
 <section class="full-bleed-section" id="architecture" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243317/gh_exteriors/200holycrestf-1440_28z.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:0.12;filter:grayscale(40%);display:block;"></div>
+  <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <div class="full-bleed-img img-reveal">
     <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777243323/gh_exteriors/front_exterior.jpg"
       alt="Garran Hill — Neo-Georgian portico, full brick, Pinehurst NC">
@@ -2586,9 +2593,11 @@
     <p class="body-text">Leonard Tufts sent his craftsmen. The brickwork, the arched fanlights, the entry floor — all of it built by hand, in Moore County, between 1915 and 1916. The 1999–2001 restoration honored every decision they made. What you see today is what Walter Hines Page commissioned. Nothing has been softened. Nothing has been updated for its own sake.</p>
     <p class="body-text" style="font-style:italic;opacity:0.6;font-size:var(--text-sm);margin-top:0.5em;">Boston plans. Pinehurst hands. Garran Hill in brick, 1916.</p>
   </div>
+  </div>
 </section>
 
 <section id="threshold" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777247257/gh_img/886246096.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:0.10;filter:grayscale(30%);display:block;"></div>
+  <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <div class="split">
     <div class="split-img img-reveal">
       <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777263004/gh_key/gh_threshold.jpg"
@@ -2604,6 +2613,7 @@
       <a href="https://my.matterport.com/show/?m=mfwyqT5Btwx" target="_blank" class="btn-gold" rel="noopener">Begin the 3D Tour</a>
     </div>
   </div>
+  </div>
 </section>
 
 <!-- ── ACT IV: RESTORATION ──────────────────────────────── -->
@@ -2614,6 +2624,7 @@
 <div class="section-divider" style="width:100%;height:1px;background:linear-gradient(to right,transparent 0%,rgba(201,169,110,0.0) 5%,rgba(201,169,110,0.3) 25%,rgba(245,224,152,0.5) 50%,rgba(201,169,110,0.3) 75%,rgba(201,169,110,0.0) 95%,transparent 100%);margin:0;"></div>
 <div class="act-transition reveal"><span class="act-label">Restoration</span></div>
 <section id="restoration-record" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243079/gh_interiors/200holycrest_1308.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.08;filter:grayscale(60%) sepia(20%);display:block;"></div>
+  <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <div class="split reverse">
     <div class="split-text">
       <span class="micro-rule reveal"></span>
@@ -2631,6 +2642,7 @@
         src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,f_auto,q_auto,c_limit,w_1600/v1777243323/gh_exteriors/front_exterior.jpg"
         alt="Garran Hill — Neo-Georgian brick facade, portico, 1916">
     </div>
+  </div>
   </div>
 </section>
 
@@ -2745,7 +2757,8 @@
 </section>
 
 <!-- DINING ROOM — intimate section -->
-<section class="editorial-split" id="dining-room" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243079/gh_interiors/200holycrest_1308.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.18;display:block;"></div>
+<section class="editorial-split" id="dining-room" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244132/gh_key/gh_whp.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:0.07;filter:grayscale(100%) sepia(25%);display:block;"></div>
+  <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <div class="split-img img-reveal">
     <img loading="lazy" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243079/gh_interiors/200holycrest_1308.jpg"
@@ -2758,6 +2771,7 @@
     <div class="body-text reveal">
       <p>The dining table anchors the room — long, dark, centered under the chandelier. The shell cabinets flanking the fireplace are original to the house. The wallpaper is a print that has been here since the restoration and reads like the room always knew what it wanted to be. The folding screen that divides the room from the hall folds and disappears. It has been doing that since 1916.</p>
     </div>
+  </div>
   </div>
 </section>
 
@@ -2808,6 +2822,7 @@
 
 <!-- LIBRARY -->
 <section id="library" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243305/gh_interiors/200holycrest_1614.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.07;filter:grayscale(50%);display:block;"></div>
+  <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <div class="split reverse">
     <div class="split-text">
       <span class="micro-rule reveal"></span>
@@ -2822,6 +2837,7 @@
       <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243291/gh_interiors/200holycrest_1599.jpg"
         alt="Library — three walls of floor-to-ceiling shelving, rolling ladder, Garran Hill" style="object-position: center top;">
     </div>
+  </div>
   </div>
 </section>
 
@@ -2953,6 +2969,7 @@
 
 <!-- GH_BLUE_FOX_IMAGE_CONFIRMATION_NEEDED -->
 <section id="hollycrest" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243572/gh_photos/200_hollycrest_drive_11.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:0.10;filter:grayscale(40%) sepia(25%);display:block;"></div>
+  <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <div class="split">
     <div class="split-text">
       <span class="micro-rule reveal"></span>
@@ -2968,6 +2985,7 @@
         alt="Blue Fox memorial — iron horse-head post, afternoon light through trees, Garran Hill grounds" style="object-position: center 40%;">
       <!-- GH_BLUE_FOX_CONFIRMED: Rachel confirmed 2026-05-10. Inscription: MY IRISH HUNTER / BLUE FOX / 1946–1965 -->
     </div>
+  </div>
   </div>
 </section>
 
@@ -3097,6 +3115,7 @@
 </section>
 
 <section id="sources" class="text-section alt" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243290/gh_exteriors/200holycrestf-1440.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:0.06;filter:grayscale(60%);display:block;"></div>
+  <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <div class="body-text reveal" style="max-width:600px;margin:0 auto;">
     <span class="eyebrow" style="display:block;margin-bottom:var(--sp-sm);text-align:center;">The Archive</span>
     <div class="gold-line" style="margin-bottom:var(--sp-md);"></div>
@@ -3112,6 +3131,7 @@
       <p><span style="color:var(--gold);">Architectural restoration drawings</span> <span style="color:rgba(245,240,232,0.6);">&mdash; 36-sheet plan set, available through Sotheby&#8217;s</span></p>
     </div>
     <p style="margin-top:var(--sp-sm);color:rgba(245,240,232,0.32);font-size:0.6rem;letter-spacing:0.1em;text-align:center;">Research brief available upon request through Sotheby&#8217;s International Realty.</p>
+  </div>
   </div>
 </section>
 
@@ -3163,6 +3183,7 @@
 <!-- GH_INQUIRY_FORM_RESTORED -->
 <!-- GH_PUBLIC_CONTACT_ENDPOINT_NEEDED: form currently uses mailto fallback via rachel.hernandez@sothebysrealty.com — public listing contact confirmed in PROPERTY_VAULT.md. Replace action with Formspree or equivalent endpoint when available for server-side handling. -->
 <section class="inquiry" id="inquiry" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244132/gh_key/gh_whp.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:0.05;filter:grayscale(100%) sepia(20%);display:block;"></div>
+  <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <div class="reveal">
     <span class="eyebrow" style="display:block;text-align:center;">Private Showing</span>
     <h2 style="font-size:clamp(1.4rem,2.5vw,2.2rem);margin-bottom:var(--sp-sm);">Begin the Private Conversation.</h2>
@@ -3210,6 +3231,7 @@
     For private showings and offering details, please inquire directly with
     <a href="mailto:rachel.hernandez@sothebysrealty.com?subject=Garran%20Hill%20Private%20Showing%20Request" style="color:rgba(201,169,110,0.75);text-decoration:none;">Rachel Hernandez</a>.
   </p>
+  </div>
 </section>
 
 <section class="closing">
