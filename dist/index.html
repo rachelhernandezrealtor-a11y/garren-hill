@@ -112,7 +112,7 @@
     padding: 0 var(--col-pad);
     background: rgba(5,5,5,0.68);
     backdrop-filter: blur(22px) saturate(1.6);
-    box-shadow: 0 1px 0 rgba(201,169,110,0.28), 0 16px 48px rgba(0,0,0,0.6);
+    box-shadow: 0 1px 0 rgba(201,169,110,0.18), 0 8px 24px rgba(0,0,0,0.28);
     transition: height 0.3s ease, background 0.3s ease;
   }
   nav::before {
@@ -1790,18 +1790,7 @@
   /* THE CREST — 3D Bronze Medallion Treatment */
   
 
-  /* crestBreathe removed — superseded by crestGlow */
-    50% {
-      filter:
-        drop-shadow(0 0 2px rgba(245,224,152,1))
-        drop-shadow(-4px -4px 8px rgba(245,224,152,0.7))
-        drop-shadow(4px 6px 14px rgba(0,0,0,0.98))
-        drop-shadow(2px 3px 7px rgba(0,0,0,0.95))
-        drop-shadow(0 0 40px rgba(201,169,110,0.6))
-        drop-shadow(0 0 20px rgba(245,224,152,0.35))
-        drop-shadow(0 20px 50px rgba(0,0,0,0.9));
-    }
-  }
+  /* crestBreathe — removed */
 
   
   /* GHOST UNDERLAY SYSTEM — Rocky 2026-05-12
@@ -2222,11 +2211,7 @@
   font-size: clamp(7rem, 21vw, 19rem);
   color: #F5F0E8;
   line-height: 0.86;
-  text-shadow:
-    0 1px 0   rgba(255,255,255,0.04),
-    0 2px 4px rgba(0,0,0,0.96),
-    0 4px 24px rgba(0,0,0,0.90),
-    0 0 90px  rgba(0,0,0,0.98);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.04), 0 2px 10px rgba(0,0,0,0.38);
   margin: 0 0 clamp(1rem, 2vw, 1.8rem);
   letter-spacing: -0.01em;
 }
@@ -2413,9 +2398,9 @@
   transform: translateY(55px);
   /* 3D pressed-seal look: deep shadows + gold glow */
   filter:
-    drop-shadow(0 0 60px rgba(0,0,0,1))
-    drop-shadow(0 -10px 28px rgba(0,0,0,1))
-    drop-shadow(0 16px 44px rgba(0,0,0,1))
+    drop-shadow(0 0 24px rgba(0,0,0,0.45))
+    drop-shadow(0 -6px 16px rgba(0,0,0,0.38))
+    drop-shadow(0 10px 24px rgba(0,0,0,0.38))
     drop-shadow(0 0 50px rgba(201,169,110,0.38))
     drop-shadow(0 0 22px rgba(245,224,152,0.26));
   animation: crestGlow 5s ease-in-out infinite;
@@ -2424,17 +2409,17 @@
 @keyframes crestGlow {
   0%,100% {
     filter:
-      drop-shadow(0 0 48px rgba(0,0,0,0.99))
-      drop-shadow(0 -8px 24px rgba(0,0,0,1))
-      drop-shadow(0 12px 32px rgba(0,0,0,1))
+      drop-shadow(0 0 24px rgba(0,0,0,0.45))
+      drop-shadow(0 -6px 16px rgba(0,0,0,0.38))
+      drop-shadow(0 10px 24px rgba(0,0,0,0.38))
       drop-shadow(0 0 40px rgba(201,169,110,0.32))
       drop-shadow(0 0 18px rgba(245,224,152,0.22));
   }
   50% {
     filter:
-      drop-shadow(0 0 60px rgba(0,0,0,0.99))
-      drop-shadow(0 -8px 28px rgba(0,0,0,1))
-      drop-shadow(0 14px 40px rgba(0,0,0,1))
+      drop-shadow(0 0 24px rgba(0,0,0,0.45))
+      drop-shadow(0 -6px 16px rgba(0,0,0,0.38))
+      drop-shadow(0 10px 24px rgba(0,0,0,0.38))
       drop-shadow(0 0 56px rgba(201,169,110,0.46))
       drop-shadow(0 0 26px rgba(245,224,152,0.30));
   }
@@ -2460,10 +2445,10 @@
     position: relative; z-index: 50;
     filter:
       sepia(0.15) hue-rotate(-8deg) saturate(0.88) brightness(1.05)
-      drop-shadow(0 2px 1px rgba(0,0,0,1))
-      drop-shadow(0 5px 10px rgba(0,0,0,0.98))
-      drop-shadow(0 14px 40px rgba(0,0,0,0.94))
-      drop-shadow(0 -3px 5px rgba(0,0,0,0.88));
+      drop-shadow(0 10px 24px rgba(0,0,0,0.38))
+      drop-shadow(0 5px 14px rgba(0,0,0,0.38))
+      drop-shadow(0 10px 28px rgba(0,0,0,0.32))
+      drop-shadow(0 -2px 6px rgba(0,0,0,0.28));
     animation: none !important;
     transition: none !important;
     image-rendering: -webkit-optimize-contrast;
@@ -2966,7 +2951,7 @@ blockquote.in {
  <span class="eyebrow">Walter Hines Page &middot; 1855&ndash;1918</span>
  <h2>Appointed by Wilson.<em> He held the alliance from London.</em></h2>
  <div class="body-text reveal">
- <p>Born in Cary, North Carolina. Co-founder of Doubleday, Page &amp; Company. Editor of <em>The Atlantic Monthly.</em> Appointed by Woodrow Wilson as Ambassador to the Court of St. James in 1913 &mdash; and kept there through the years the world came apart.</p>
+ <p class="drop-cap">Born in Cary, North Carolina. Co-founder of Doubleday, Page &amp; Company. Editor of <em>The Atlantic Monthly.</em> Appointed by Woodrow Wilson as Ambassador to the Court of St. James in 1913 &mdash; and kept there through the years the world came apart.</p>
  <p>From London, he commissioned Garran Hill to be built on his family&rsquo;s Moore County acres. He named it himself. Page returned from London in December 1918. He died ten days later.</p>
 <blockquote class="reveal" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1rem,1.5vw,1.3rem);font-weight:300;color:rgba(201,169,110,0.85);margin:1.5rem 0;">“Well, Frank, I did get here after all, didn't I?” — Aberdeen station, December 1918.</blockquote>
  <p style="font-style:italic;color:rgba(201,169,110,0.9);margin-top:1.2rem;">&#8220;Build the farm, therefore; and let me hear at every stage of that happy game.&#8221;</p>
@@ -3059,7 +3044,7 @@ blockquote.in {
       <span class="eyebrow">The Restoration &middot; 1999&ndash;2001</span>
       <h2>What was original<em> stayed original.</em></h2>
       <div class="body-text reveal">
-        <p>The restoration did not make Garran Hill new. It made it whole again.
+        <p class="drop-cap">The restoration did not make Garran Hill new. It made it whole again.
 
 Original elements remain where they matter most: carved fireplace mantels, oak flooring, leaded-glass sidelights, the arched fanlight at the entry, solid-wood interior doors, brass key plates, and the dining room frontispiece. New systems were woven behind old grace.
 
@@ -3152,7 +3137,7 @@ Not renovated into anonymity. Restored back into itself.</p>
     <img loading="lazy" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243086/gh_interiors/200holycrest_1320.jpg"
       alt="Salon — second angle, two seating areas, Georgian mantel, Garran Hill"
-      style="position:absolute;bottom:1.2rem;right:1.2rem;width:46%;aspect-ratio:3/2;object-fit:cover;border:3px solid rgba(201,169,110,0.5);box-shadow:0 8px 32px rgba(0,0,0,0.7);">
+      style="position:absolute;bottom:1.2rem;right:1.2rem;width:46%;aspect-ratio:3/2;object-fit:cover;border:3px solid rgba(201,169,110,0.5);box-shadow:0 4px 16px rgba(0,0,0,0.35);">
   </div>
   <div class="split-text">
     <span class="micro-rule reveal"></span>
@@ -3315,7 +3300,7 @@ Not renovated into anonymity. Restored back into itself.</p>
       <span class="eyebrow">The Primary Suite</span>
       <h2>A fireplace. Two windows.<em> The grounds on both sides.</em></h2>
       <div class="body-text reveal">
-        <p>The fireplace is centered, flanked by two upholstered armchairs. Soft natural light from the windows to the left. The palette is pastel — yellows, greens, a touch of blue — quiet colors for a room designed to be a place of actual rest. The primary suite occupies the corner of the second floor. Mornings here face the trees.</p>
+        <p>The fireplace is centered, flanked by two upholstered armchairs. Soft natural light from the windows to the left. The palette is pastel — yellows, greens, a touch of blue — quiet colors for a room designed to be a place of actual rest. The primary suite occupies the corner of the second floor and opens to a private balcony overlooking the rear grounds and tennis courts. Mornings here face the trees.</p>
         <p> </p>
         <!-- GH_PHOTO_CONFIRMATION_NEEDED: jewel box / primary bath — Rachel to confirm which of the 6 Pam Jensen bath candidates is preferred (1371/1365/1395/1374/1383/1368) -->
       </div>
@@ -3395,7 +3380,7 @@ Not renovated into anonymity. Restored back into itself.</p>
       <span class="eyebrow">The Powder Room</span>
       <h2>Fuchsia chinoiserie.<em> A room that does not apologize.</em></h2>
       <div class="body-text reveal">
-        <p>The fuchsia wallpaper is the whole point. Chinoiserie pattern, floor to ceiling, Tennessee marble beneath it. This is the most opinionated room in the house — designed to stop you, make you look, make you feel something. It works. It has always worked.</p>
+        <p>The fuchsia wallpaper is the whole point. Chinoiserie pattern, floor to ceiling, Tennessee marble beneath it. This is the most opinionated room in the house — designed to stop you, make you look, make you feel something. The brass key plate on the door still holds its original key. It works. It has always worked.</p>
       </div>
     </div>
   </div>
@@ -3438,7 +3423,7 @@ Not renovated into anonymity. Restored back into itself.</p>
       <span class="eyebrow">A Private History &middot; 1959&ndash;1984</span>
       <h2>Horses. Hounds. Peacocks.<em> Native hollies on every path.</em></h2>
       <div class="body-text reveal">
-        <p>Betty Dumaine kept this land for twenty-five years. Left to Duke University after her death. Advertised in Atlanta and New York. No buyer came. The house waited. She brought horses to the grounds of Garran Hill — thoroughbreds, hunters, a life organized around animals and land and the particular pleasure of a place that required real attention. She renamed the property Hollycrest — for the large native hollies at the front of the house. They are still there. One horse she buried here. Blue Fox. The stone is still standing in the shade of the trees she planted. The iron post beside the drive still carries the ring. Someone still puts flowers at the grave.</p>
+        <p class="drop-cap">Betty Dumaine kept this land for twenty-five years. Left to Duke University after her death. Advertised in Atlanta and New York. No buyer came. The house waited. She brought horses to the grounds of Garran Hill — thoroughbreds, hunters, a life organized around animals and land and the particular pleasure of a place that required real attention. She renamed the property Hollycrest — for the large native hollies at the front of the house. They are still there. One horse she buried here. Blue Fox. The stone is still standing in the shade of the trees she planted. The iron post beside the drive still carries the ring. Someone still puts flowers at the grave.</p>
         <p>Betty Dumaine&#8217;s Hollycrest years carried horses, hounds, peacocks, native hollies, and old Pinehurst lore to the estate. Her Irish hunter, Blue Fox, is buried on the grounds. Someone still puts flowers there. There was once a four-foot statue of a blue fox beside the grave. It disappeared after she died.</p>
       </div>
     </div>
@@ -3473,7 +3458,7 @@ Not renovated into anonymity. Restored back into itself.</p>
     <span class="eyebrow">The Terrace &middot; Open Air</span>
     <h2>The world outside these gates<em> does not exist here.</em></h2>
     <div class="body-text reveal">
-      <p>The terrace opens off the Salon through glass doors. Brick underfoot — the same material as the house, the same that engraves 1916 at the threshold. The lattice railing is white. The loungers face outward toward the treeline. On a clear afternoon the sky above the canopy is an uninterrupted blue. This is where the house ends and the land begins.</p>
+      <p class="drop-cap">The terrace opens off the Salon through glass doors. Brick underfoot — the same material as the house, the same that engraves 1916 at the threshold. The lattice railing is white. The loungers face outward toward the treeline. On a clear afternoon the sky above the canopy is an uninterrupted blue. This is where the house ends and the land begins.</p>
       <p style="font-style:italic;opacity:0.6;font-size:var(--text-xs);margin-top:var(--sp-xs);">Brick underfoot. French doors behind. Garden beyond.</p>
     </div>
   </div>
