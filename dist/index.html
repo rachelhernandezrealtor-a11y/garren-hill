@@ -2310,7 +2310,7 @@
      No hard edge. The century collapses.
   ══════════════════════════════════════════════════════════════════ */
 
-  /* ── THEN-NOW: fade bottom edge into black ───────────────────── */
+  /* ── THEN-NOW: deep fade into black — photograph dissolves into time ── */
   .then-now-section {
     position: relative;
     margin-bottom: 0;
@@ -2319,74 +2319,129 @@
   .then-now-section::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 40%;
-    background: linear-gradient(to bottom, transparent, #0a0a0a);
+    bottom: 0; left: 0; right: 0;
+    height: 55%;
+    background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(10,10,10,0.30) 35%,
+      rgba(10,10,10,0.75) 65%,
+      #0a0a0a 100%);
     z-index: 3;
     pointer-events: none;
   }
 
-  /* ── HISTORY: fade top edge from black ───────────────────────── */
+  /* ── HISTORY: rise from darkness — ghost text already waiting ── */
   #history::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: clamp(80px, 12vh, 140px);
-    background: linear-gradient(to bottom, #0a0a0a, transparent);
+    top: 0; left: 0; right: 0;
+    height: clamp(100px, 18vh, 200px);
+    background: linear-gradient(to bottom, #0a0a0a 0%, transparent 100%);
     z-index: 2;
     pointer-events: none;
   }
 
   /* ── LETTER GHOST UNDERLAY ────────────────────────────────────── */
+  /* ═══════════════════════════════════════════════
+   WHP GHOST MANUSCRIPT SYSTEM
+   Multiple text layers at different scales,
+   rotations and opacities. Aged book page feel.
+   ═══════════════════════════════════════════════ */
   .letter-ghost {
     position: absolute;
     inset: 0;
     z-index: 0;
     overflow: hidden;
     pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
-  .letter-ghost-text {
+
+  /* Layer 1 — large background inscription, very faint */
+  .lg-layer-1 {
+    position: absolute;
+    inset: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.4em;
-    text-align: center;
+    align-items: center;
+    justify-content: center;
     padding: 0 clamp(2rem, 8vw, 10rem);
-    transform: rotate(-2deg);
-    opacity: 1;
+    transform: rotate(-1.5deg) translateY(-4%);
+    line-height: 1.4;
+    gap: 0.3em;
   }
-  .lg-line {
+  .lg-layer-1 span {
     display: block;
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-weight: 300;
     font-style: italic;
-    color: rgba(201,169,110,0.055);
-    line-height: 1.3;
+    font-size: clamp(2.2rem, 4.5vw, 5.5rem);
+    color: rgba(201,169,110,0.042);
+    letter-spacing: 0.02em;
     white-space: nowrap;
-    letter-spacing: 0.03em;
+    line-height: 1.35;
   }
-  .lg-line-1 { font-size: clamp(1.6rem, 3.5vw, 4rem); }
-  .lg-line-2 { font-size: clamp(1.6rem, 3.5vw, 4rem); }
-  .lg-line-3 {
-    font-size: clamp(0.8rem, 1.4vw, 1.4rem);
+
+  /* Layer 2 — smaller secondary text, different angle */
+  .lg-layer-2 {
+    position: absolute;
+    top: 12%;
+    left: 5%;
+    right: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    transform: rotate(1.2deg);
+  }
+  .lg-layer-2 span {
+    display: block;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(0.9rem, 1.6vw, 1.8rem);
+    color: rgba(201,169,110,0.028);
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+  }
+
+  /* Layer 3 — attribution / date, bottom corner, very small */
+  .lg-layer-3 {
+    position: absolute;
+    bottom: 18%;
+    right: 8%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.3em;
+    transform: rotate(-0.8deg);
+  }
+  .lg-layer-3 span {
+    display: block;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(0.7rem, 1.1vw, 1.2rem);
+    color: rgba(201,169,110,0.032);
+    letter-spacing: 0.06em;
+    line-height: 1.6;
+  }
+
+  /* Layer 4 — large single word, extreme right, rotated 90° faint watermark */
+  .lg-layer-4 {
+    position: absolute;
+    right: -2%;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: center center;
+    pointer-events: none;
+  }
+  .lg-layer-4 span {
+    display: block;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 200;
+    font-style: italic;
+    font-size: clamp(4rem, 8vw, 9rem);
+    color: rgba(201,169,110,0.022);
     letter-spacing: 0.18em;
-    color: rgba(201,169,110,0.04);
-    margin-top: 0.6em;
-  }
-  .lg-line-4 {
-    font-size: clamp(1.2rem, 2.2vw, 2.6rem);
-    margin-top: 1.2em;
-    color: rgba(201,169,110,0.04);
-  }
-  .lg-line-5 {
-    font-size: clamp(1.2rem, 2.2vw, 2.6rem);
-    color: rgba(201,169,110,0.04);
+    white-space: nowrap;
   }
 
   /* ── CONTENT ABOVE GHOST ──────────────────────────────────────── */
@@ -3261,15 +3316,36 @@ blockquote.in {
   <div class="act-break-diamond"></div>
 </div>
 <section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;margin-top:-8vh;padding-top:clamp(5rem,10vw,11rem);">
- <!-- WHP LETTER GHOST UNDERLAY — typographic atmosphere -->
+ <!-- WHP GHOST MANUSCRIPT — 4 layers of aged text atmosphere -->
  <div class="letter-ghost" aria-hidden="true">
-   <div class="letter-ghost-text">
-     <span class="lg-line lg-line-1">Build the farm, therefore; and let me hear</span>
-     <span class="lg-line lg-line-2">at every stage of that happy game.</span>
-     <span class="lg-line lg-line-3">— W.H.P.</span>
-     <span class="lg-line lg-line-4">Well, Frank, I did get here</span>
-     <span class="lg-line lg-line-5">after all, didn&#8217;t I?</span>
+
+   <!-- Layer 1: Large hero inscription — the farm letter -->
+   <div class="lg-layer-1">
+     <span>Build the farm, therefore;</span>
+     <span>and let me hear at every stage</span>
+     <span>of that happy game.</span>
    </div>
+
+   <!-- Layer 2: Secondary passages — letter fragments, smaller -->
+   <div class="lg-layer-2">
+     <span>The land itself is the legacy. The house is only proof of it.</span>
+     <span>I have been thinking of the farm at Pinehurst since February.</span>
+     <span>Ralph will see to the construction. The craftsmen are Tufts&#8217;s men.</span>
+     <span>One thousand acres of Carolina pine land, taken whole.</span>
+   </div>
+
+   <!-- Layer 3: Attribution and date — bottom corner whisper -->
+   <div class="lg-layer-3">
+     <span>W.H.P. to Ralph Page, 1913</span>
+     <span>Life and Letters, Vol. I, p. 356</span>
+     <span>Garran Hill &#8212; Est. 1916</span>
+   </div>
+
+   <!-- Layer 4: Vertical watermark word -->
+   <div class="lg-layer-4">
+     <span>Hollycrest</span>
+   </div>
+
  </div>
 <div class="split" style="position:relative;z-index:1;align-items:center;">
  <!-- Portrait container -->
