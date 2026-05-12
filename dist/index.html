@@ -243,7 +243,7 @@
     display: flex; align-items: center; justify-content: center;
     padding: 0 clamp(2rem, 6vw, 8rem);
     padding-bottom: env(safe-area-inset-bottom, 0px);
-    height: 96px;
+    height: 72px;
     /* very subtle dark base so gold line has contrast */
     background: linear-gradient(180deg,
       rgba(4,4,4,0.0) 0%,
@@ -364,7 +364,7 @@
       rgba(245,224,152,0.7) 100%);
   }
   /* TOP GOLD LINE — disabled, crest now sits in bar */
-  .stat-crest-wrap::before-DISABLED {
+  .stat-crest-wrap::before-GONE {
     content: '';
     position: absolute;
     top: -38px;
@@ -390,28 +390,10 @@
     display: flex; align-items: center; justify-content: center;
     position: relative; z-index: 50;
   }
-  /* THE BUCKLE — reach out and grab it */
-  .stat-crest-wrap img {
-    height: clamp(72px, 7vw, 90px); width: auto; display: block;
-    transform: none;
-    position: relative; z-index: 50;
-    /* hard engraved shadow — no glow, no candy */
-    /* sepia+hue pulls the gold cooler — aged platinum not warm brass */
-    filter:
-      sepia(0.15) hue-rotate(-8deg) saturate(0.88) brightness(1.05)
-      drop-shadow(0 2px 1px rgba(0,0,0,1))
-      drop-shadow(0 5px 10px rgba(0,0,0,0.98))
-      drop-shadow(0 14px 40px rgba(0,0,0,0.94))
-      drop-shadow(0 -3px 5px rgba(0,0,0,0.88));
-    animation: none !important;
-    transition: none !important;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-    animation: none !important;
-  transition: none !important;
-}
+  /* THE CREST — sits inside the belt, framed by gold lines */
+  .stat-crest-wrap img { height: 52px !important; transform: none !important; }
   /* Hover — lifts toward you, shadow deepens as if physically rising */
-  .stat-crest-wrap img:hover { transform: translateY(-38px) !important; transition: none !important; }
+  .stat-crest-wrap img:hover { transform: none !important; }
   /* Float — barely moves. A pendant in still air. */
   
     50%       { transform: translateY(-64px); }
@@ -685,7 +667,7 @@
     .stat-bar { padding: 0 1rem; height: 72px; }
     .stat-numbers { gap: 0.6rem; }
     .stat-lbl { display: none; }
-    .stat-crest-wrap img { height: clamp(75px, 16vw, 105px); transform: translateY(-32px) !important; }
+    .stat-crest-wrap img { height: 52px !important; transform: none !important; }
     .stat-div { height: 1.5rem; }
     .kb-gate { min-height: 70vh; }
     .inquiry { padding: var(--sp-lg) 1.5rem; }
