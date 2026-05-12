@@ -2063,6 +2063,35 @@
     100%    { opacity: 0; }
   }
 
+  
+  /* ── TREES SECTION HEIGHT FIX ── */
+  .trees-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1rem, 2vw, 2rem);
+    width: 100%;
+    min-height: 60vh;
+  }
+  .trees-panel {
+    min-height: 55vh;
+    position: relative;
+  }
+  .trees-img-wrap {
+    width: 100%;
+    height: 100%;
+    min-height: 50vh;
+    position: relative;
+    overflow: hidden;
+  }
+  .trees-img-wrap img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
   </style>
 
   <!-- JSON-LD -->
@@ -2757,7 +2786,7 @@ blockquote.in {
   <!-- WHP PULL QUOTE — full dark moment -->
   <section id="whp-quote" style="position:relative;background:#0a0a0a;padding:clamp(5rem,12vw,10rem) clamp(3rem,15vw,18rem);text-align:center;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243079/gh_interiors/200holycrest_1308.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.12;display:block;"></div>
   <div class="section-content" style="position:relative;z-index:1;width:100%;">
-    <blockquote class="pull-quote" class="reveal-slow" style="border:none;margin:0;padding:0;">
+    <blockquote class="pull-quote reveal-slow" style="border:none;margin:0;padding:0;">
       <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:300;font-style:italic;color:#F5F0E8;line-height:1.5;letter-spacing:0.02em;margin-bottom:clamp(1.5rem,3vw,2.5rem);">
         &ldquo;The farm &mdash; the farm &mdash; the farm.&rdquo;
       </p>
@@ -2906,13 +2935,7 @@ blockquote.in {
   </div>
 </section>
 
-<section class="editorial-bridge" id="explore">
-  <div class="editorial-bridge-inner reveal">
-    <span class="eyebrow">The Interior</span>
-    <h2>Six principal rooms.<em> Each one a different answer.</em></h2>
-    <a class="bridge-cta" href="#rooms">Enter the House &nbsp;&#8594;</a>
-  </div>
-</section>
+
 
 <!-- ── ACT VI: SIGNATURE ROOMS ──────────────────────────── -->
 
@@ -3227,17 +3250,12 @@ blockquote.in {
     <!-- IMAGE SIDE -->
     <div class="split-img" style="flex:0 0 52%; position:relative; overflow:hidden;">
       <img
-        src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,c_limit,w_1920/gh_exteriors/holycrestextf_3346.jpg"
+        src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244472/gh_exteriors/holycrestextf_3345.jpg"
         alt="The side porch at Garran Hill"
         style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center center;"
         loading="lazy"
       />
-      <!-- PLACEHOLDER NOTICE — remove when real photo is in -->
-      <div style="position:absolute; bottom:1.2rem; left:1.2rem; z-index:5;
-        font-family:'Cormorant Garamond',serif; font-size:0.38rem; letter-spacing:0.4em;
-        text-transform:uppercase; color:rgba(201,169,110,0.45); pointer-events:none;">
-        Photo placeholder · Dave's shot replaces this
-      </div>
+      
     </div>
     <!-- COPY SIDE -->
     <div class="split-text reveal" style="flex:1; display:flex; flex-direction:column; justify-content:center;
@@ -3353,6 +3371,7 @@ blockquote.in {
 </section>
 
 <section id="restoration" class="text-section">
+  <div class="section-divider"></div>
   <div style="max-width:680px;margin:0 auto;">
     <div class="body-text reveal" style="text-align:center;">
       <span class="eyebrow" style="display:block;margin-bottom:var(--sp-sm);">Estate at a Glance</span>
@@ -3367,37 +3386,10 @@ blockquote.in {
   </div>
 </section>
 
-<section id="sources" class="text-section alt" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243290/gh_exteriors/200holycrestf-1440.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:0.06;filter:grayscale(60%);display:block;"></div>
-  <div class="section-content" style="position:relative;z-index:1;width:100%;">
-  <div class="body-text reveal" style="max-width:600px;margin:0 auto;">
-    <span class="eyebrow" style="display:block;margin-bottom:var(--sp-sm);text-align:center;">Sources &amp; Archive</span>
-    <div class="gold-line" style="margin-bottom:var(--sp-md);"></div>
-    <div style="display:grid;gap:0.85em;font-size:var(--text-xs);line-height:1.7;">
-      <p><a href="https://www.ncpedia.org/biography/page-walter-hines" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">NCpedia</a> <span style="color:rgba(245,240,232,0.6);">&mdash; Walter Hines Page biography</span></p>
-      <p><a href="https://www.dncr.nc.gov" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">NC Dept. of Natural &amp; Cultural Resources</a> <span style="color:rgba(245,240,232,0.6);">&mdash; Walter Hines Page historical record</span></p>
-      <p><span style="color:var(--gold);">PineStraw</span> <span style="color:rgba(245,240,232,0.6);">&mdash; &#8220;A Page Out of History&#8221;</span></p>
-      <p><span style="color:var(--gold);">PineStraw</span> <span style="color:rgba(245,240,232,0.6);">&mdash; &#8220;Story of a House: Minding Their Manors&#8221;</span></p>
-      <p><span style="color:var(--gold);">Burton J. Hendrick</span> <span style="color:rgba(245,240,232,0.6);">&mdash; <em>The Life and Letters of Walter Hines Page</em>, 1923</span></p>
-      <p><span style="color:var(--gold);">The Princess Mother&#8217;s Charities Fund of Thailand</span> <span style="color:rgba(245,240,232,0.6);">&mdash; Betty Dumaine biography<!-- GH_TPMCF_SOURCE_RACHEL_CONFIRM --></span></p>
-      <p><span style="color:var(--gold);">Village Heritage Foundation</span> <span style="color:rgba(245,240,232,0.6);">&mdash; Hollycrest plaque &amp; village landmark history</span></p>
-      <p><span style="color:var(--gold);">Moore County Register of Deeds</span> <span style="color:rgba(245,240,232,0.6);">&mdash; Ownership history, available to qualified buyers</span></p>
-      <p><span style="color:var(--gold);">Architectural restoration drawings</span> <span style="color:rgba(245,240,232,0.6);">&mdash; 36-sheet plan set, available through Sotheby&#8217;s</span></p>
-    </div>
-    <p style="margin-top:var(--sp-sm);color:rgba(245,240,232,0.32);font-size:0.6rem;letter-spacing:0.1em;text-align:center;">Research brief available upon request through Sotheby&#8217;s International Realty.</p>
-  </div>
-  </div>
-</section>
+
 
 <!-- GALLERY -->
-<section class="gallery-section" id="gallery">
-  <div class="reveal">
-    <span class="eyebrow" style="text-align:center;display:block;">The Photography</span>
-    <h2 style="text-align:center;font-size:clamp(1.4rem,2.5vw,2.4rem);margin-bottom:var(--sp-md);">Every room. Every angle.</h2>
-  </div>
-  <div class="gallery-grid" id="gallery-grid">
-    <!-- Gallery images loaded by JS below -->
-  </div>
-</section>
+
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
@@ -3410,6 +3402,8 @@ blockquote.in {
 <!-- MATTERPORT -->
 <!-- GH_MATTERPORT_PRESENTATION_UPGRADE -->
 <section class="private-tour-section" id="virtual-tour">
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244126/gh_photos/200_hollycrest_drive_199.jpg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;opacity:0.06;filter:sepia(30%);"></div>
+  <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <span class="micro-rule" style="display:block;width:40px;height:1px;background:rgba(201,169,110,0.4);margin:0 auto var(--sp-md);"></span>
   <span class="eyebrow" style="display:block;text-align:center;margin-bottom:var(--sp-sm);">Private Tour</span>
   <h2 style="text-align:center;margin-bottom:var(--sp-md);">Step inside Garran Hill<em> from wherever you are.</em></h2>
@@ -3430,7 +3424,7 @@ blockquote.in {
       Explore House Features
     </a>
   </div>
-</section>
+  </div></section>
 
 <!-- PRIVATE INQUIRY -->
 <!-- GH_INQUIRY_FORM_RESTORED -->
@@ -3662,6 +3656,7 @@ blockquote.in {
     <a href="mailto:rachel.hernandez@sothebysrealty.com?subject=Garran%20Hill%20Private%20Showing%20Request"
        style="color:rgba(201,169,110,0.65);text-decoration:none;letter-spacing:0.06em;">rachel.hernandez@sothebysrealty.com</a>
   </p>
-</footer>
+
+  <div style="text-align:center;padding:1.2rem var(--col-pad);"><p style="font-family:'Cormorant Garamond',serif;font-size:0.58rem;letter-spacing:0.22em;color:rgba(201,169,110,0.35);text-transform:uppercase;">NCpedia &middot; Walter Hines Page &middot; UNC Wilson Library &middot; NC Tax Credit Program &middot; Sotheby's International Realty</p></div></footer>
 </body>
 </html>
