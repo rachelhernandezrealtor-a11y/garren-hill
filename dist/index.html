@@ -3021,6 +3021,130 @@ blockquote.in {
   .stat-lbl  { white-space: nowrap !important; }
   .stat-bar  { overflow: visible !important; }
 
+
+
+/* ══════════════════════════════════════════════════════════════════
+   CINEMATIC HERO — Aman / Chanel tempo
+   6 frames · 7s each · 2s crossfade · pure black base
+   Twilight + flowers only. No spinning. No zoom. Just light.
+══════════════════════════════════════════════════════════════════ */
+
+.ch-reel {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+.ch-frame {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* The vignette — deep black edges, open centre */
+.ch-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center,
+      transparent 40%,
+      rgba(10,10,10,0.35) 70%,
+      rgba(10,10,10,0.82) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(10,10,10,0.22) 0%,
+      transparent 25%,
+      transparent 60%,
+      rgba(10,10,10,0.72) 100%
+    );
+}
+
+/* ── FADE KEYFRAMES — one frame per slot ───────────────────────── */
+/* 6 frames × 7s = 42s cycle
+   Each frame: fade in over 2s, hold 5s, fade out over 2s, gone 33s
+   Offset by -N×7s delay per frame
+   As percentage of 42s cycle:
+     0%   opacity 0
+     4.8% opacity 1     (2/42)
+     16.7% opacity 1    (7/42 — end of this frame's window)
+     21.4% opacity 0    (9/42 — fully out)
+     100% opacity 0
+*/
+@keyframes chFade {
+  0%       { opacity: 0; }
+  4.76%    { opacity: 0.88; }
+  14.28%   { opacity: 0.88; }
+  19.04%   { opacity: 0; }
+  100%     { opacity: 0; }
+}
+
+/* ── KEN BURNS — barely-there drift, each unique ───────────────── */
+/* Aman standard: 2-3% scale drift over the full cycle */
+
+@keyframes kenBurns1 {
+  0%   { transform: scale(1.00) translate(0%, 0%); }
+  50%  { transform: scale(1.025) translate(-0.5%, -0.3%); }
+  100% { transform: scale(1.00) translate(0%, 0%); }
+}
+@keyframes kenBurns2 {
+  0%   { transform: scale(1.02) translate(0.3%, 0%); }
+  50%  { transform: scale(1.00) translate(0%, 0.4%); }
+  100% { transform: scale(1.02) translate(0.3%, 0%); }
+}
+@keyframes kenBurns3 {
+  0%   { transform: scale(1.00) translate(0%, 0.2%); }
+  50%  { transform: scale(1.03) translate(-0.3%, 0%); }
+  100% { transform: scale(1.00) translate(0%, 0.2%); }
+}
+@keyframes kenBurns4 {
+  0%   { transform: scale(1.025) translate(0.2%, 0.1%); }
+  50%  { transform: scale(1.00) translate(-0.2%, -0.2%); }
+  100% { transform: scale(1.025) translate(0.2%, 0.1%); }
+}
+@keyframes kenBurns5 {
+  0%   { transform: scale(1.00) translate(-0.2%, 0%); }
+  50%  { transform: scale(1.02) translate(0.3%, 0.2%); }
+  100% { transform: scale(1.00) translate(-0.2%, 0%); }
+}
+@keyframes kenBurns6 {
+  0%   { transform: scale(1.02) translate(0%, 0.1%); }
+  50%  { transform: scale(1.00) translate(0.2%, -0.2%); }
+  100% { transform: scale(1.02) translate(0%, 0.1%); }
+}
+
+/* ── Everything above the reel ────────────────────────────────── */
+.hero-stage,
+.hero-spine,
+.hero-year,
+.stat-bar,
+.stat-bar-wrap {
+  position: relative;
+  z-index: 3;
+}
+
+/* ── PREFERS-REDUCED-MOTION ────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .ch-frame {
+    animation: none !important;
+    opacity: 0;
+  }
+  .ch-frame:first-child {
+    opacity: 0.88;
+  }
+}
+
+/* ── Remove old video rules (kept for reference, now unused) ─── */
+.hero-video-wrap,
+.hero-video { display: none; }
+
 </style>
 </head>
 <body>
@@ -3061,18 +3185,18 @@ blockquote.in {
 <!-- HERO VIDEO: current site uses done_czfe8o. Earlier rule named Last_for_real_q0fqvw. CONFLICT — Rachel-confirmation-needed. Not changed. -->
 <section class="hero" id="top">
 
-  <!-- LOCKED HERO VIDEO — done_czfe8o — NEVER SWAP -->
-  <div class="hero-video-wrap" aria-hidden="true">
-    <video
-      autoplay muted loop playsinline
-      poster="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,f_auto,q_auto,c_limit,w_1920/v1777648663/gh_key/gh_hero_poster_azalea.jpg"
-      class="hero-video"
-    >
-      <source src="https://res.cloudinary.com/dghn2xpif/video/upload/v1777503272/gh_key/done_czfe8o.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
+  <!-- CINEMATIC HERO — twilight + flowers — Aman/Chanel tempo -->
+  <div class="ch-reel" aria-hidden="true">
+    <div class="ch-frame" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,f_auto,q_auto,c_limit,w_1920/v1777428893/gh_key/gh_gate_twilight.jpg');background-position:center 45%;animation:kenBurns1 42s ease-in-out infinite, chFade 42s linear infinite;animation-delay:-0s,-0s;"></div>
+    <div class="ch-frame" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:65,e_sharpen:20,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777648663/gh_key/gh_hero_poster_azalea.jpg');background-position:center 55%;animation:kenBurns2 42s ease-in-out infinite, chFade 42s linear infinite;animation-delay:-7s,-7s;"></div>
+    <div class="ch-frame" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:30,e_saturation:10,f_auto,q_auto,c_limit,w_1920/v1777329734/gh_key/gh_facade_front.jpg');background-position:center 38%;animation:kenBurns3 42s ease-in-out infinite, chFade 42s linear infinite;animation-delay:-14s,-14s;"></div>
+    <div class="ch-frame" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:30,e_saturation:12,f_auto,q_auto,c_limit,w_1920/v1777244670/gh_photos/200_hollycrest_drive_220.jpg');background-position:center 42%;animation:kenBurns4 42s ease-in-out infinite, chFade 42s linear infinite;animation-delay:-21s,-21s;"></div>
+    <div class="ch-frame" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:65,e_sharpen:25,e_saturation:10,f_auto,q_auto,c_limit,w_1920/v1777244523/gh_exteriors/holycrestextf_3327.jpg');background-position:center 35%;animation:kenBurns5 42s ease-in-out infinite, chFade 42s linear infinite;animation-delay:-28s,-28s;"></div>
+    <div class="ch-frame" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:30,f_auto,q_auto,c_limit,w_1920/v1777244059/gh_key/gh_191.jpg');background-position:center 40%;animation:kenBurns6 42s ease-in-out infinite, chFade 42s linear infinite;animation-delay:-35s,-35s;"></div>
+    <div class="ch-vignette"></div>
   </div>
-    <div class="hero-overlay"></div>
+
+  
 
   <!-- VERTICAL ADDRESS EYEBROW — LEFT SPINE -->
   <div class="hero-spine">200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, North Carolina &nbsp;&middot;&nbsp; Est.&nbsp;1916</div>
