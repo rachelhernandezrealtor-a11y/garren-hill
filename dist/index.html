@@ -2216,8 +2216,8 @@
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: clamp(100px, 18vh, 200px);
-    background: linear-gradient(to bottom, #0a0a0a 0%, transparent 100%);
+    height: clamp(160px, 28vh, 320px);
+    background: linear-gradient(to bottom, #0a0a0a 0%, rgba(10,10,10,0.7) 40%, transparent 100%);
     z-index: 2;
     pointer-events: none;
   }
@@ -2280,7 +2280,7 @@
     font-weight: 300;
     font-style: italic;
     font-size: clamp(0.9rem, 1.6vw, 1.8rem);
-    color: rgba(201,169,110,0.028);
+    color: rgba(201,169,110,0.016);
     letter-spacing: 0.04em;
     line-height: 1.5;
   }
@@ -2302,7 +2302,7 @@
     font-weight: 300;
     font-style: italic;
     font-size: clamp(0.7rem, 1.1vw, 1.2rem);
-    color: rgba(201,169,110,0.032);
+    color: rgba(201,169,110,0.016);
     letter-spacing: 0.06em;
     line-height: 1.6;
   }
@@ -2334,6 +2334,19 @@
   }
 
   /* ── THEN-NOW CAPTION — position below image, above blend ───── */
+  /* ── THEN-NOW: bottom dissolve into darkness ── */
+  .then-now-section {
+    position: relative;
+  }
+  .then-now-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: clamp(120px, 22vh, 280px);
+    background: linear-gradient(to bottom, transparent 0%, rgba(10,10,10,0.55) 50%, #0a0a0a 100%);
+    z-index: 5;
+    pointer-events: none;
+  }
   .then-now-caption {
     position: absolute;
     bottom: clamp(3rem, 6vh, 6rem);
