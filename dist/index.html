@@ -2016,7 +2016,7 @@
 <style id="hero-system">
 /* ═══════════════════════════════════════════════════════
    GARRAN HILL — HERO + JEWELED BELT
-   Single authoritative block. Injected last. Wins all.
+   Belt buckle model: crest sits ON the bottom line, crossing through it
    ═══════════════════════════════════════════════════════ */
 
 /* ── HERO SHELL ── */
@@ -2024,7 +2024,7 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  min-height: 780px;
+  min-height: 800px;
   overflow: hidden;
   background: #0a0a0a;
 }
@@ -2036,49 +2036,46 @@
 .hero-slide {
   position: absolute; inset: 0;
   background-size: cover;
-  background-position: center 40%;
   opacity: 0;
-  transition: opacity 3.2s cubic-bezier(0.4,0,0.2,1);
+  transition: opacity 3.5s cubic-bezier(0.4,0,0.2,1);
   will-change: opacity;
 }
 .hero-slide.active { opacity: 1; }
 
-/* ── DEEP CINEMATIC VIGNETTE ── */
+/* ── DEEP VIGNETTE — dark at edges, reveals house in centre ── */
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background:
-    radial-gradient(ellipse at 50% 42%, transparent 22%, rgba(4,4,4,0.55) 65%, rgba(4,4,4,0.92) 100%),
+    radial-gradient(ellipse at 50% 38%, transparent 20%, rgba(4,4,4,0.45) 58%, rgba(4,4,4,0.90) 100%),
     linear-gradient(180deg,
-      rgba(4,4,4,0.68) 0%,
-      rgba(4,4,4,0.12) 15%,
-      rgba(4,4,4,0.02) 35%,
-      rgba(4,4,4,0.02) 52%,
-      rgba(4,4,4,0.32) 68%,
-      rgba(4,4,4,0.75) 85%,
-      rgba(4,4,4,0.96) 100%);
+      rgba(4,4,4,0.72) 0%,
+      rgba(4,4,4,0.10) 14%,
+      transparent       30%,
+      transparent       50%,
+      rgba(4,4,4,0.20) 64%,
+      rgba(4,4,4,0.72) 82%,
+      rgba(4,4,4,0.98) 100%);
 }
 
-/* ── VERTICAL ADDRESS SPINE — left edge ── */
+/* ── ADDRESS SPINE — vertical left edge ── */
 .hero-spine {
   position: absolute;
-  left: clamp(1.2rem, 2.5vw, 2.4rem);
+  left: clamp(1.2rem, 2.2vw, 2.2rem);
   top: 50%;
   transform: translateY(-50%) rotate(-90deg);
   transform-origin: center center;
   z-index: 4;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(0.36rem, 0.48vw, 0.46rem);
-  letter-spacing: 0.62em;
+  font-size: clamp(0.34rem, 0.44vw, 0.44rem);
+  letter-spacing: 0.65em;
   text-transform: uppercase;
-  color: rgba(201,169,110,0.48);
+  color: rgba(201,169,110,0.45);
   font-weight: 300;
   white-space: nowrap;
   user-select: none;
 }
 
 /* ── CENTRE STAGE ── */
-/* Title centred vertically in the viewport, slightly above true centre
-   to give the stat belt visual breathing room below */
 .hero-stage {
   position: absolute;
   inset: 0;
@@ -2088,26 +2085,22 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 clamp(2rem, 8vw, 10rem);
-  /* shift text block upward so it sits at ~40% of viewport
-     rather than true centre — stat belt at bottom reads as separate */
-  padding-top: 0;
-  padding-bottom: 12vh;
+  padding: 72px clamp(2rem, 8vw, 10rem) 140px;
 }
 
 /* ── EYEBROW ── */
 .hero-eyebrow {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(0.46rem, 0.62vw, 0.56rem);
-  letter-spacing: 0.68em;
+  font-size: clamp(0.44rem, 0.58vw, 0.54rem);
+  letter-spacing: 0.72em;
   text-transform: uppercase;
-  color: rgba(245,240,232,0.70);
+  color: rgba(245,240,232,0.68);
   font-weight: 300;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(1rem, 2.5vw, 2.5rem);
-  margin-bottom: clamp(1.2rem, 2.2vw, 2rem);
+  gap: clamp(1.2rem, 2.5vw, 2.8rem);
+  margin-bottom: clamp(1.4rem, 2.4vw, 2.2rem);
   white-space: nowrap;
 }
 .hero-rule {
@@ -2118,31 +2111,29 @@
   flex-shrink: 0;
 }
 
-/* ── TITLE — the moment ── */
+/* ── TITLE ── */
 .hero-title {
   font-family: 'Pinyon Script', cursive;
   font-weight: 400;
-  font-size: clamp(6.5rem, 20vw, 18rem);
+  font-size: clamp(7rem, 21vw, 19rem);
   color: #F5F0E8;
   line-height: 0.86;
-  /* engraved depth — light from above, shadow below */
   text-shadow:
     0 1px 0   rgba(255,255,255,0.04),
     0 2px 4px rgba(0,0,0,0.96),
-    0 4px 20px rgba(0,0,0,0.88),
-    0 0 80px  rgba(0,0,0,0.95),
-    0 0 140px rgba(0,0,0,0.6);
-  margin: 0 0 clamp(0.8rem, 1.8vw, 1.6rem);
+    0 4px 24px rgba(0,0,0,0.90),
+    0 0 90px  rgba(0,0,0,0.98);
+  margin: 0 0 clamp(1rem, 2vw, 1.8rem);
   letter-spacing: -0.01em;
 }
 
 /* ── SUBHEAD ── */
 .hero-sub {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(0.44rem, 0.60vw, 0.55rem);
-  letter-spacing: 0.54em;
+  font-size: clamp(0.46rem, 0.60vw, 0.56rem);
+  letter-spacing: 0.56em;
   text-transform: uppercase;
-  color: rgba(245,240,232,0.58);
+  color: rgba(245,240,232,0.55);
   font-weight: 300;
 }
 .hero-sub::before {
@@ -2150,73 +2141,80 @@
   display: block;
   width: clamp(2rem, 4vw, 4.5rem);
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(201,169,110,0.58), transparent);
+  background: linear-gradient(to right, transparent, rgba(201,169,110,0.55), transparent);
   margin: 0 auto 1rem;
 }
 
-/* ── YEAR WATERMARK — bottom right ── */
+/* ── 1916 WATERMARK ── */
 .hero-year {
   position: absolute;
   right: clamp(2rem, 5vw, 6rem);
   bottom: 14vh;
   z-index: 3;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(4.5rem, 9vw, 10rem);
+  font-size: clamp(5rem, 10vw, 11rem);
   font-weight: 200;
-  color: rgba(201,169,110,0.11);
-  letter-spacing: 0.12em;
+  color: rgba(201,169,110,0.10);
+  letter-spacing: 0.14em;
   line-height: 1;
   user-select: none;
   pointer-events: none;
 }
 
-/* ═══════════════════════════════════
-   JEWELED BELT — STAT BAR
-   ═══════════════════════════════════ */
+/* ══════════════════════════════════════════
+   THE JEWELED BELT — BELT BUCKLE MODEL
+   ══════════════════════════════════════════ */
 
 .stat-bar {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   z-index: 20;
-  height: 72px;
+  /* Height = belt body height. Crest overhangs above. */
+  height: 80px;
   overflow: visible;
   background: linear-gradient(180deg,
-    rgba(4,4,4,0.0) 0%,
-    rgba(4,4,4,0.45) 55%,
-    rgba(4,4,4,0.68) 100%);
+    rgba(4,4,4,0.0)  0%,
+    rgba(4,4,4,0.55) 60%,
+    rgba(4,4,4,0.80) 100%);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* top gold hairline */
-.stat-top-line {
+/* THE BELT LINE — the one line the buckle sits on */
+/* This is the bottom edge of the belt, like a leather strap */
+.stat-bar::before {
+  content: '';
   position: absolute;
   top: 0; left: 0; right: 0; height: 1px;
   background: linear-gradient(90deg,
     transparent 0%,
     rgba(190,162,105,0.0) 4%,
-    rgba(210,180,130,0.62) 18%,
-    rgba(238,208,152,0.94) 36%,
+    rgba(210,180,130,0.55) 16%,
+    rgba(238,208,152,0.90) 34%,
     rgba(252,228,168,1.0)  50%,
-    rgba(238,208,152,0.94) 64%,
-    rgba(210,180,130,0.62) 82%,
+    rgba(238,208,152,0.90) 66%,
+    rgba(210,180,130,0.55) 84%,
     rgba(190,162,105,0.0) 96%,
     transparent 100%);
   pointer-events: none;
+  z-index: 21;
 }
 
-/* bottom hairline */
+/* Bottom hairline — the lower strap edge */
 .stat-bottom-line {
   position: absolute;
   bottom: 3px; left: 0; right: 0; height: 1px;
   background: linear-gradient(90deg,
     transparent 0%,
-    rgba(180,150,95,0.38) 15%,
-    rgba(201,169,110,0.58) 40%,
-    rgba(201,169,110,0.58) 60%,
-    rgba(180,150,95,0.38) 85%,
+    rgba(180,150,95,0.35) 18%,
+    rgba(201,169,110,0.52) 42%,
+    rgba(201,169,110,0.52) 58%,
+    rgba(180,150,95,0.35) 82%,
     transparent 100%);
   pointer-events: none;
 }
+
+/* Remove the old top-line div since we use ::before now */
+.stat-top-line { display: none; }
 
 /* inner flex row */
 .stat-inner {
@@ -2233,7 +2231,7 @@
 .stat-wing {
   display: flex;
   align-items: center;
-  gap: clamp(1.4rem, 2.4vw, 3.4rem);
+  gap: clamp(1.8rem, 2.8vw, 4rem);
   flex: 1;
   justify-content: flex-end;
 }
@@ -2241,127 +2239,124 @@
 
 .stat-item { text-align: center; flex-shrink: 0; }
 
-/* ENGRAVED GOLD numbers — the treatment she liked */
+/* ENGRAVED GOLD NUMBERS — bigger, more trophy-like */
 .stat-num {
   display: block;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1rem, 1.65vw, 1.45rem);
+  font-size: clamp(1.1rem, 1.85vw, 1.65rem);
   font-weight: 300;
   letter-spacing: 0.08em;
   line-height: 1;
-  color: #c8ab78;
-  /* metallic gradient */
   background: linear-gradient(180deg, #F5E098 0%, #C9A96E 45%, #8B6914 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  /* engraved text-shadow — pressed into metal */
   text-shadow:
     0 1px 2px rgba(0,0,0,0.95),
     0 -1px 0   rgba(220,210,185,0.06);
 }
 
-/* labels */
+/* LABELS — more visible, engraved-plaque feel */
 .stat-lbl {
   display: block;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(0.38rem, 0.52vw, 0.48rem);
-  letter-spacing: 0.52em;
+  font-size: clamp(0.42rem, 0.56vw, 0.52rem);
+  letter-spacing: 0.50em;
   text-transform: uppercase;
-  color: rgba(245,240,232,0.42);
-  margin-top: 0.32rem;
+  color: rgba(245,240,232,0.50);
+  margin-top: 0.38rem;
   line-height: 1;
   font-weight: 300;
 }
 
 /* dividers */
 .stat-div {
-  width: 1px; height: 1.5rem; flex-shrink: 0;
+  width: 1px; height: 1.8rem; flex-shrink: 0;
   background: linear-gradient(to bottom,
     transparent,
-    rgba(201,169,110,0.22) 25%,
-    rgba(201,169,110,0.32) 50%,
-    rgba(201,169,110,0.22) 75%,
+    rgba(201,169,110,0.20) 25%,
+    rgba(201,169,110,0.35) 50%,
+    rgba(201,169,110,0.20) 75%,
     transparent);
 }
 
-/* ── CREST: rises above the belt ── */
+/* ══════════════════════════════════
+   THE BELT BUCKLE — CREST
+   Sits ON the top belt line.
+   Lower portion crosses through the line.
+   Like a real buckle on a leather strap.
+   ══════════════════════════════════ */
 .stat-crest-wrap {
   flex-shrink: 0;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 clamp(2rem, 3.5vw, 5rem);
+  padding: 0 clamp(2.2rem, 4vw, 6rem);
   z-index: 30;
-}
-
-/* top gold line — glued to crest top, always moves with it */
-.stat-crest-wrap::before {
-  content: '';
-  position: absolute;
-  top: -42px;
-  left: 50%; transform: translateX(-50%);
-  width: 100vw; height: 1px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(190,162,105,0.0) 4%,
-    rgba(210,180,130,0.62) 18%,
-    rgba(238,208,152,0.94) 36%,
-    rgba(252,228,168,1.0)  50%,
-    rgba(238,208,152,0.94) 64%,
-    rgba(210,180,130,0.62) 82%,
-    rgba(190,162,105,0.0) 96%,
-    transparent 100%);
-  pointer-events: none; z-index: 25;
+  /* Push crest wrap UP so crest rises above the belt line */
+  margin-top: -120px;
+  overflow: visible;
 }
 
 .stat-crest-wrap img {
-  height: clamp(180px, 17vw, 245px);
+  height: clamp(160px, 16vw, 220px);
   width: auto;
   display: block;
-  transform: translateY(-42px);
+  position: relative;
+  /* translateY(0) = crest bottom edge sits AT the belt line
+     positive Y pushes DOWN = crest crosses through the line = belt buckle effect */
+  transform: translateY(28px);
   filter:
-    drop-shadow(0 0 42px rgba(0,0,0,0.99))
-    drop-shadow(0 -6px 22px rgba(0,0,0,1))
-    drop-shadow(0 10px 30px rgba(0,0,0,1))
-    drop-shadow(0 0 36px rgba(201,169,110,0.30))
-    drop-shadow(0 0 16px rgba(245,224,152,0.20));
+    drop-shadow(0 0 48px rgba(0,0,0,0.99))
+    drop-shadow(0 -8px 24px rgba(0,0,0,1))
+    drop-shadow(0 12px 32px rgba(0,0,0,1))
+    drop-shadow(0 0 40px rgba(201,169,110,0.32))
+    drop-shadow(0 0 18px rgba(245,224,152,0.22));
   animation: crestGlow 5s ease-in-out infinite;
 }
 
 @keyframes crestGlow {
-  0%,100% { filter:
-    drop-shadow(0 0 42px rgba(0,0,0,0.99))
-    drop-shadow(0 -6px 22px rgba(0,0,0,1))
-    drop-shadow(0 10px 30px rgba(0,0,0,1))
-    drop-shadow(0 0 36px rgba(201,169,110,0.30))
-    drop-shadow(0 0 16px rgba(245,224,152,0.20)); }
-  50% { filter:
-    drop-shadow(0 0 55px rgba(0,0,0,0.99))
-    drop-shadow(0 -6px 24px rgba(0,0,0,1))
-    drop-shadow(0 12px 36px rgba(0,0,0,1))
-    drop-shadow(0 0 48px rgba(201,169,110,0.44))
-    drop-shadow(0 0 22px rgba(245,224,152,0.30)); }
+  0%,100% {
+    filter:
+      drop-shadow(0 0 48px rgba(0,0,0,0.99))
+      drop-shadow(0 -8px 24px rgba(0,0,0,1))
+      drop-shadow(0 12px 32px rgba(0,0,0,1))
+      drop-shadow(0 0 40px rgba(201,169,110,0.32))
+      drop-shadow(0 0 18px rgba(245,224,152,0.22));
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 60px rgba(0,0,0,0.99))
+      drop-shadow(0 -8px 28px rgba(0,0,0,1))
+      drop-shadow(0 14px 40px rgba(0,0,0,1))
+      drop-shadow(0 0 56px rgba(201,169,110,0.46))
+      drop-shadow(0 0 26px rgba(245,224,152,0.30));
+  }
 }
 
 /* ── MOBILE ── */
 @media (max-width: 768px) {
-  .hero { min-height: 640px; }
-  .hero-stage { padding-bottom: 20vh; }
-  .hero-title { font-size: clamp(5rem, 24vw, 9rem); }
+  .hero { min-height: 680px; }
+  .hero-stage { padding: 72px 1.5rem 130px; }
+  .hero-title { font-size: clamp(5rem, 26vw, 8.5rem); }
   .hero-spine, .hero-year { display: none; }
-  .stat-inner { padding: 0 0.8rem; }
-  .stat-wing { gap: clamp(0.6rem, 2vw, 1.2rem); }
+  .stat-inner { padding: 0 0.6rem; }
+  .stat-wing { gap: clamp(0.7rem, 2.5vw, 1.4rem); }
   .stat-lbl { font-size: 0.36rem; letter-spacing: 0.26em; }
-  .stat-num { font-size: clamp(0.78rem, 3.5vw, 1rem); }
-  .stat-crest-wrap img { height: clamp(100px, 18vw, 130px); transform: translateY(-30px); }
-  .stat-crest-wrap::before { top: -30px; }
-  .stat-crest-wrap { padding: 0 clamp(0.5rem, 1.8vw, 1.2rem); }
+  .stat-num { font-size: clamp(0.85rem, 3.8vw, 1.1rem); }
+  .stat-crest-wrap { 
+    padding: 0 clamp(0.6rem, 2vw, 1.4rem);
+    margin-top: -80px;
+  }
+  .stat-crest-wrap img {
+    height: clamp(90px, 18vw, 120px);
+    transform: translateY(18px);
+  }
 }
 @media (max-width: 480px) {
   .stat-div { display: none; }
-  .stat-wing { gap: 0.5rem; }
+  .stat-wing { gap: 0.6rem; }
 }
 </style>
 </head>
@@ -2405,7 +2400,17 @@
 
   <!-- AMBIENT FLOWER SLIDESHOW -->
   <div class="hero-slides">
-    <div class="hero-slide active" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777249929/gh_img/58a73d8a6_rosewall.jpg')"></div>
+    <!-- SLIDE 1: House dead-on at blue hour -->
+    <div class="hero-slide active" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777244670/gh_photos/200_hollycrest_drive_219.jpg'); background-position:center 40%;"></div>
+    <!-- SLIDE 2: House at dusk, warm lights on -->
+    <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777244670/gh_photos/200_hollycrest_drive_215.jpg'); background-position:center 38%;"></div>
+    <!-- SLIDE 3: Azalea / flower close-up -->
+    <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,f_auto,q_auto,c_limit,w_1920/v1777648663/gh_key/gh_hero_poster_azalea.jpg'); background-position:center 60%;"></div>
+    <!-- SLIDE 4: House front facade, evening -->
+    <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777244670/gh_photos/200_hollycrest_drive_210.jpg'); background-position:center 42%;"></div>
+    <!-- SLIDE 5: Gate at twilight — the threshold -->
+    <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,f_auto,q_auto,c_limit,w_1920/v1777428893/gh_key/gh_gate_twilight.jpg'); background-position:center 50%;"></div>
+    </div>
     <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777244072/gh_photos/200_hollycrest_drive_192.jpg')"></div>
     <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777244113/gh_photos/200_hollycrest_drive_191.jpg')"></div>
     <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777244150/gh_photos/200_hollycrest_drive_186.jpg')"></div>
