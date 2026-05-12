@@ -13,7 +13,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
 
   <style>
   /* ═══════════════════════════════════════════════════════
@@ -178,7 +178,7 @@
   /* § 8. TYPOGRAPHY */
   .eyebrow { font-size: var(--text-xs); font-weight: 300; letter-spacing: 0.48em; text-transform: uppercase; color: rgba(201,169,110,0.72); margin-bottom: clamp(1rem, 1.6vw, 1.4rem); display: block; }
   .gold-line { width: clamp(2rem, 5vw, 4rem); height: 1px; background: linear-gradient(90deg, rgba(201,169,110,0.8), transparent); margin-bottom: var(--sp-sm); }
-  .body-text { font-family: 'EB Garamond', 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.05rem, 1.2vw, 1.18rem); font-weight: 400; line-height: 1.72; color: rgba(245,240,232,0.88); max-width: 62ch; }
+  .body-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.05rem, 1.2vw, 1.18rem); font-weight: 400; line-height: 1.72; color: rgba(245,240,232,0.88); max-width: 62ch; }
   .body-text p { margin-bottom: clamp(1.2rem, 2vw, 1.6rem); font-size: clamp(1.05rem, 1.2vw, 1.18rem); font-weight: 400; line-height: 1.72; }
   .body-text p:last-child { margin-bottom: 0; }
   h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.1; color: var(--cream); }
@@ -188,7 +188,7 @@
   .pull-attr { font-size: 0.58rem; letter-spacing: 0.38em; text-transform: uppercase; color: rgba(201,169,110,0.80); margin-top: 1.8rem; display: block; }
   .drop-cap::first-letter { font-size: 3.2em; float: left; line-height: 0.8; margin: 0.08em 0.1em 0 0; color: var(--gold); font-weight: 300; }
   .micro-rule { display: block; width: 2.5rem; height: 1px; background: rgba(201,169,110,0.4); margin-bottom: var(--sp-xs); }
-  .img-caption { font-family: 'EB Garamond', 'Cormorant Garamond', serif; font-size: clamp(0.78rem, 0.9vw, 0.86rem); font-weight: 400; letter-spacing: 0.12em; color: rgba(201,169,110,0.72); margin-top: 0.9rem; padding-left: 0.8rem; border-left: 1px solid rgba(201,169,110,0.18); display: block; line-height: 1.6; }
+  .img-caption { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(0.78rem, 0.9vw, 0.86rem); font-weight: 400; letter-spacing: 0.12em; color: rgba(201,169,110,0.72); margin-top: 0.9rem; padding-left: 0.8rem; border-left: 1px solid rgba(201,169,110,0.18); display: block; line-height: 1.6; }
   .btn-gold {
     display: inline-block;
     font-size: 0.55rem; letter-spacing: 0.4em; text-transform: uppercase;
@@ -690,7 +690,7 @@
     border-bottom: 1px solid rgba(201,169,110,0.18);
   }
   .private-tour-passage {
-    font-family: 'EB Garamond', Georgia, serif;
+    font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: clamp(0.65rem,0.8vw,0.72rem);
     letter-spacing: 0.28em;
     color: rgba(201,169,110,0.55);
@@ -712,7 +712,7 @@
   }
   .tour-btn {
     display: inline-block;
-    font-family: 'EB Garamond', Georgia, serif;
+    font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: clamp(0.72rem,0.9vw,0.82rem);
     font-weight: 400;
     letter-spacing: 0.22em;
@@ -1459,6 +1459,121 @@
     30%  { opacity: 1; }
     70%  { opacity: 0; }
     100% { opacity: 0; }
+  }
+
+  /* ══════════════════════════════════════════════════
+     GLOSS PASS — 2026-05-11
+     Spacing unification + typographic rhythm
+  ══════════════════════════════════════════════════ */
+
+  /* Universal section base padding */
+  section:not(.hero):not(#gallery):not(#virtual-tour):not(#inquiry) {
+    padding-top: var(--sp-lg);
+    padding-bottom: var(--sp-lg);
+    padding-left: var(--col-pad);
+    padding-right: var(--col-pad);
+  }
+
+  /* Split sections (image + text side by side) */
+  .split-section, .split-reverse {
+    padding: var(--sp-lg) var(--col-mid) !important;
+    gap: clamp(3rem, 6vw, 7rem);
+  }
+
+  /* Pull quotes get breathing room */
+  .pull-quote-section, blockquote {
+    padding: var(--sp-xl) clamp(3rem, 15vw, 18rem) !important;
+  }
+
+  /* Section eyebrows — unified */
+  .section-tag, .eyebrow, .section-eyebrow {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: clamp(0.45rem, 0.65vw, 0.58rem);
+    letter-spacing: 0.55em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.7);
+    font-weight: 300;
+    margin-bottom: clamp(0.8rem, 1.4vw, 1.1rem);
+  }
+
+  /* Body copy — unified rhythm */
+  .body-copy, .section-body, p.body {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: var(--text-base);
+    line-height: 1.88;
+    color: rgba(245,240,232,0.78);
+    max-width: var(--max-text);
+    margin-bottom: clamp(1.2rem, 2vw, 1.6rem);
+  }
+
+  /* h2 — unified */
+  h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-weight: 300;
+    font-size: var(--text-lg);
+    color: var(--cream);
+    margin-bottom: clamp(1.2rem, 2.2vw, 1.8rem);
+    letter-spacing: 0.04em;
+  }
+
+  /* h3 */
+  h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-weight: 300;
+    font-size: var(--text-md);
+    color: var(--cream);
+    letter-spacing: 0.03em;
+  }
+
+  /* Act break labels — unified */
+  .act-break-glyph {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 0.52rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.5);
+  }
+
+  /* Room cards — unified */
+  .room-card, .room-item {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+  }
+
+  /* Stat bar labels — unified */
+  .stat-lbl {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    letter-spacing: 0.18em;
+    font-size: clamp(0.42rem, 0.6vw, 0.52rem);
+  }
+
+  /* Source/caption text */
+  .source-text, .caption, figcaption {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: var(--text-xs);
+    color: rgba(245,240,232,0.4);
+    letter-spacing: 0.08em;
+  }
+
+  /* Consistent gold lines between elements */
+  .gold-rule {
+    width: clamp(3rem, 8vw, 8rem);
+    height: 1px;
+    background: linear-gradient(to right, rgba(201,169,110,0.7), transparent);
+    margin: var(--sp-sm) 0;
+  }
+
+  /* Nav links — Cormorant */
+  nav a, .nav-link {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    letter-spacing: 0.18em;
+    font-size: clamp(0.5rem, 0.72vw, 0.62rem);
+    font-weight: 300;
+  }
+
+  /* Letter/document artifacts */
+  .letter-image, .artifact-image {
+    opacity: 0.88;
+    mix-blend-mode: luminosity;
   }
 </style>
 
@@ -2610,9 +2725,9 @@
 <!-- ═══ FOOTER ═══ -->
 <footer class="site-footer" style="background:#0a0a0a;border-top:1px solid rgba(201,169,110,0.15);padding:clamp(2.5rem,5vw,4rem) var(--col-mid);text-align:center;">
   <p class="eyebrow" style="display:block;margin-bottom:0.6rem;letter-spacing:0.22em;">Rachel Hernandez</p>
-  <p style="font-family:'EB Garamond',Georgia,serif;font-size:clamp(0.8rem,1vw,0.9rem);color:rgba(245,240,232,0.55);letter-spacing:0.08em;margin-bottom:0.35rem;">Pines Sotheby's International Realty</p>
-  <p style="font-family:'EB Garamond',Georgia,serif;font-size:clamp(0.75rem,0.9vw,0.82rem);color:rgba(245,240,232,0.4);letter-spacing:0.06em;margin-bottom:0.6rem;">Southern Pines, North Carolina</p>
-  <p style="font-family:'EB Garamond',Georgia,serif;font-size:clamp(0.75rem,0.9vw,0.82rem);margin:0;">
+  <p style="font-family: 'Cormorant Garamond', Georgia, serif;font-size:clamp(0.8rem,1vw,0.9rem);color:rgba(245,240,232,0.55);letter-spacing:0.08em;margin-bottom:0.35rem;">Pines Sotheby's International Realty</p>
+  <p style="font-family: 'Cormorant Garamond', Georgia, serif;font-size:clamp(0.75rem,0.9vw,0.82rem);color:rgba(245,240,232,0.4);letter-spacing:0.06em;margin-bottom:0.6rem;">Southern Pines, North Carolina</p>
+  <p style="font-family: 'Cormorant Garamond', Georgia, serif;font-size:clamp(0.75rem,0.9vw,0.82rem);margin:0;">
     <a href="mailto:rachel.hernandez@sothebysrealty.com?subject=Garran%20Hill%20Private%20Showing%20Request"
        style="color:rgba(201,169,110,0.65);text-decoration:none;letter-spacing:0.06em;">rachel.hernandez@sothebysrealty.com</a>
   </p>
