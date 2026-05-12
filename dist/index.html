@@ -200,15 +200,135 @@
 
   
   /* § 9. HERO */
-  section.hero { background: #0a0a0a;
-    position: relative; width: 100%; height: 100vh;
-    min-height: 640px; overflow: visible;
-  }
-  section.hero video {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center; z-index: 0;
-  }
+  section/* ═══════════════════════════════════════════════════════
+   HERO — FLOWER SLIDESHOW + ASYMMETRIC EDITORIAL LAYOUT
+   LOCKED 2026-05-11
+═══════════════════════════════════════════════════════ */
+.hero {
+  background: #0a0a0a;
+  position: relative; width: 100%; height: 100vh;
+  min-height: 640px; overflow: hidden;
+}
+
+/* ── FLOWER SLIDESHOW ── */
+.hero-slides {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-slide {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 2.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero-slide.active { opacity: 1; }
+.hero-slide.prev   { opacity: 0; }
+
+/* ── OVERLAY ── */
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(135deg,
+    rgba(5,5,5,0.72) 0%,
+    rgba(5,5,5,0.45) 35%,
+    rgba(5,5,5,0.25) 60%,
+    rgba(5,5,5,0.55) 80%,
+    rgba(5,5,5,0.78) 100%);
+}
+
+/* ── VERTICAL EYEBROW — LEFT EDGE ── */
+.hero-vertical-eyebrow {
+  position: absolute;
+  left: clamp(1.4rem, 3vw, 3rem);
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: center center;
+  z-index: 3;
+  font-size: 0.42rem;
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
+  color: rgba(201,169,110,0.6);
+  font-weight: 300;
+  white-space: nowrap;
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* ── HERO TEXT — PUSHED LEFT, ARCHITECTURAL ── */
+.hero-text {
+  position: absolute;
+  left: clamp(3rem, 8vw, 10rem);
+  top: 0; bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  padding-bottom: 14vh;
+  max-width: 85vw;
+}
+.hero-eyebrow {
+  font-size: clamp(0.48rem, 0.68vw, 0.58rem);
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.6);
+  margin-bottom: clamp(0.8rem, 1.5vw, 1.2rem);
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: clamp(1.5rem, 4vw, 4rem);
+  height: 1px;
+  background: linear-gradient(to right, rgba(201,169,110,0.78), transparent);
+  flex-shrink: 0;
+}
+.hero-title {
+  font-family: "Pinyon Script", cursive;
+  font-weight: 400;
+  font-size: clamp(5.5rem, 17vw, 15rem);
+  color: var(--cream);
+  line-height: 0.88;
+  text-shadow: 0 2px 60px rgba(0,0,0,0.9), 0 0 100px rgba(0,0,0,0.6);
+  margin-bottom: clamp(0.8rem, 1.8vw, 1.6rem);
+  letter-spacing: -0.01em;
+}
+.hero-sub {
+  font-size: clamp(0.46rem, 0.65vw, 0.58rem);
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.55);
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.hero-sub::before {
+  content: '';
+  display: block;
+  width: clamp(1.5rem, 3vw, 3rem);
+  height: 1px;
+  background: linear-gradient(to right, rgba(201,169,110,0.5), transparent);
+  flex-shrink: 0;
+}
+
+/* ── YEAR ANCHOR — BOTTOM RIGHT ── */
+.hero-year {
+  position: absolute;
+  right: clamp(2rem, 5vw, 6rem);
+  bottom: 18vh;
+  z-index: 3;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(4rem, 8vw, 9rem);
+  font-weight: 200;
+  color: rgba(201,169,110,0.18);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  user-select: none;
+}
+
+
   .hero-overlay {
     position: absolute; inset: 0; z-index: 1;
     background: linear-gradient(180deg,
@@ -1403,13 +1523,33 @@
 <!-- ═══ ACT 0 — HERO ═══ -->
 <!-- HERO VIDEO: current site uses done_czfe8o. Earlier rule named Last_for_real_q0fqvw. CONFLICT — Rachel-confirmation-needed. Not changed. -->
 <section class="hero" id="top">
-  
-  <div class="hero-overlay"></div>
-  <div class="hero-text">
-    <p class="hero-eyebrow">200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, North Carolina &nbsp;&middot;&nbsp; Est. 1916</p>
-    <h1 class="hero-title">Garran Hill</h1>
-    <p class="hero-sub">Neo-Georgian &nbsp;&middot;&nbsp; Built 1915–16 for Walter Hines Page</p>
+
+  <!-- FLOWER SLIDESHOW -->
+  <div class="hero-slides">
+  <div class="hero-slide active" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777249929/gh_img/58a73d8a6_rosewall.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777244072/gh_photos/200_hollycrest_drive_192.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777244113/gh_photos/200_hollycrest_drive_191.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777244150/gh_photos/200_hollycrest_drive_186.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777244803/gh_photos/200_hollycrest_drive_182.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777243900/gh_photos/200_hollycrest_drive_173.jpg')"></div>
   </div>
+
+  <div class="hero-overlay"></div>
+
+  <!-- VERTICAL EYEBROW — LEFT EDGE -->
+  <div class="hero-vertical-eyebrow">200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, North Carolina &nbsp;&middot;&nbsp; Est. 1916</div>
+
+  <!-- MAIN TEXT — PUSHED LEFT -->
+  <div class="hero-text">
+    <p class="hero-eyebrow">Pinehurst, North Carolina</p>
+    <h1 class="hero-title">Garran Hill</h1>
+    <p class="hero-sub">Neo-Georgian &nbsp;&middot;&nbsp; Built 1915&ndash;16 for Walter Hines Page</p>
+  </div>
+
+  <!-- YEAR ANCHOR — BOTTOM RIGHT -->
+  <div class="hero-year">1916</div>
+
+  <!-- JEWELED BELT -->
   <div class="stat-bar">
     <div class="stat-numbers">
       <!-- LEFT WING -->
@@ -1420,7 +1560,7 @@
         <div class="stat-div"></div>
         <div class="stat-item"><span class="stat-num">6,072</span><span class="stat-lbl">Sq Ft</span></div>
       </div>
-      <!-- CREST THRONE — focal point -->
+      <!-- CREST THRONE -->
       <div class="stat-crest-throne">
         <div class="stat-crest-wrap">
           <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" width="185" height="185">
@@ -1436,6 +1576,7 @@
       </div>
     </div>
   </div>
+
 </section>
 
 
@@ -2444,6 +2585,25 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }});
     }, { threshold: 0.15 });
     vps.forEach(el => obs.observe(el));
+  })();
+
+  /* ── FLOWER SLIDESHOW ── */
+  (function() {
+    var slides = document.querySelectorAll('.hero-slide');
+    if (!slides.length) return;
+    var current = 0;
+    var total = slides.length;
+    function nextSlide() {
+      slides[current].classList.remove('active');
+      slides[current].classList.add('prev');
+      current = (current + 1) % total;
+      slides[current].classList.add('active');
+      var prev = (current - 1 + total) % total;
+      setTimeout(function() {
+        slides[prev].classList.remove('prev');
+      }, 3000);
+    }
+    setInterval(nextSlide, 5500);
   })();
 </script>
 
