@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- build: 20260512193127 -->
+<!-- build: 20260512193658 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -310,13 +310,15 @@
   }
   .stat-lbl {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 9px;
+    font-size: 10px !important;
     font-weight: 300;
-    letter-spacing: 0.20em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(245,240,232,0.65);
+    color: rgba(245,240,232,0.70) !important;
     white-space: nowrap;
     line-height: 1;
+    display: block;
+    margin-top: 0.3rem;
   }
 
   /* DIVIDERS */
@@ -2685,17 +2687,7 @@
 }
 
 /* LABELS — more visible, engraved-plaque feel */
-.stat-lbl {
-  display: block;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(0.38rem, 0.50vw, 0.46rem);
-  letter-spacing: 0.60em;
-  text-transform: uppercase;
-  color: rgba(245,240,232,0.38);
-  margin-top: 0.42rem;
-  line-height: 1;
-  font-weight: 300;
-}
+/* stat-lbl: consolidated above */
 
 /* dividers */
 .stat-div {
@@ -2795,7 +2787,7 @@ section h2,
   .hero-spine, .hero-year { display: none; }
   .stat-inner { padding: 0 0.6rem; }
   .stat-wing { gap: clamp(0.7rem, 2.5vw, 1.4rem); }
-  .stat-lbl { font-size: 0.36rem; letter-spacing: 0.26em; }
+  /* stat-lbl: consolidated above */
   .stat-num { font-size: clamp(0.85rem, 3.8vw, 1.1rem); }
   .stat-crest-wrap { 
     padding: 0 clamp(0.6rem, 2vw, 1.4rem);
@@ -3180,7 +3172,7 @@ blockquote.in {
   /* ── STAT BAR: prevent $4,250,000 from clipping ── */
   .stat-item { white-space: nowrap !important; }
   .stat-num  { white-space: nowrap !important; }
-  .stat-lbl  { white-space: nowrap !important; }
+  /* stat-lbl: consolidated above */
   .stat-bar  { overflow: visible !important; }
 
 </style>
