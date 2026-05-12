@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- build: 20260512200943 -->
+<!-- build: 20260512201223 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -260,24 +260,7 @@
     border-bottom: 1px solid rgba(201,169,110,0.22);
     overflow: visible;
   }
-  /* ── CREST: sibling of stat-bar, resolves to hero section ── */
-  .stat-crest-wrap {
-    position: absolute;
-    bottom: 28px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 88px;
-    height: 88px;
-    z-index: 10;
-    pointer-events: none;
-    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.9));
-  }
-  .stat-crest-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-  }
+  
 
   .stat-top-line,
   .stat-bottom-line {
@@ -296,6 +279,24 @@
     position: relative;
     gap: 0;
     padding: 0 clamp(1rem, 3vw, 3rem);
+  }
+  /* ── CREST: child of stat-bar, straddles belt top hairline ── */
+  .stat-crest-wrap {
+    position: absolute;
+    left: 50%;
+    top: -44px;
+    transform: translateX(-50%);
+    width: 88px;
+    height: 88px;
+    z-index: 20;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 16px rgba(0,0,0,0.95));
+  }
+  .stat-crest-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
   }
 
   /* WINGS — flanking sets of stats */
@@ -3172,6 +3173,11 @@ blockquote.in {
 
   <!-- JEWELED BELT: one unified container, crest rises above, gold lines frame it -->
   <div class="stat-bar">
+    <!-- CREST: direct child of stat-bar, straddles top hairline -->
+    <div class="stat-crest-wrap">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
+           alt="Garran Hill Estate Crest" loading="eager" decoding="async">
+    </div>
 
     <!-- top gold hairline — spans full width -->
     <div class="stat-top-line"></div>
@@ -3220,13 +3226,6 @@ blockquote.in {
     <div class="stat-bottom-line"></div>
 
   </div><!-- /.stat-bar -->
-
-  <!-- CREST: sibling of stat-bar, resolves to hero (position:relative) -->
-  <!-- bottom:28px = 72px belt - 44px half-crest = center ON belt top hairline -->
-  <div class="stat-crest-wrap">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
-         alt="Garran Hill Estate Crest — Pinehurst" loading="eager" decoding="async">
-  </div>
 </section>
 
 
