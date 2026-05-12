@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- build: 20260512200203 -->
+<!-- build: 20260512200645 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -204,7 +204,7 @@
     width: 100%;
     height: 100vh;
     min-height: 640px;
-    overflow: visible;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -260,6 +260,24 @@
     border-bottom: 1px solid rgba(201,169,110,0.22);
     overflow: visible;
   }
+  /* ── CREST: sibling of stat-bar, resolves to hero section ── */
+  .stat-crest-wrap {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 88px;
+    height: 88px;
+    z-index: 10;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.9));
+  }
+  .stat-crest-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
 
   .stat-top-line,
   .stat-bottom-line {
@@ -278,23 +296,6 @@
     position: relative;
     gap: 0;
     padding: 0 clamp(1rem, 3vw, 3rem);
-  }
-  /* ── CREST: absolute child of stat-bar, sits ON belt ── */
-  .stat-crest-wrap {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 16px;
-    width: 88px;
-    height: 88px;
-    z-index: 20;
-    filter: drop-shadow(0 4px 18px rgba(0,0,0,0.95));
-    pointer-events: none;
-  }
-  .stat-crest-wrap img {
-    width: 100%;
-    height: auto;
-    display: block;
   }
 
   /* WINGS — flanking sets of stats */
@@ -2352,6 +2353,7 @@
   /* ── THEN-NOW: bottom dissolve into darkness ── */
   .kb-gate-section {
     position: relative;
+  overflow: hidden;
   }
   .kb-gate-section {
     overflow: hidden;
@@ -3219,6 +3221,12 @@ blockquote.in {
 
   </div><!-- /.stat-bar -->
 
+  <!-- CREST: sibling of stat-bar, resolves to hero (position:relative) -->
+  <!-- bottom:28px = 72px belt - 44px half-crest = center ON belt top hairline -->
+  <div class="stat-crest-wrap">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
+         alt="Garran Hill Estate Crest — Pinehurst" loading="eager" decoding="async">
+  </div>
 </section>
 
 
@@ -3262,7 +3270,7 @@ blockquote.in {
   <img 
     src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:40,e_brightness:30,e_contrast:20,f_auto,q_auto,c_limit,w_1920/v1777391998/gh_key/gh_whp_letter1.jpg"
     alt=""
-    style="position:absolute;inset:-5%;width:110%;height:110%;object-fit:cover;object-position:center top;transform:rotate(-2deg);opacity:0.18;mix-blend-mode:lighten;pointer-events:none;"
+    style="position:absolute;inset:-5%;width:110%;height:110%;object-fit:cover;object-position:center top;transform:rotate(-2deg);opacity:0.14;mix-blend-mode:screen;pointer-events:none;"
   >
 </div>
 <div class="split" style="position:relative;z-index:2;align-items:center;gap:clamp(2rem,4vw,5rem);">
