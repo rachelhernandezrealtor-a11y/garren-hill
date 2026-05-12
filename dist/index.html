@@ -1194,8 +1194,8 @@
 
   /* ── THEN / NOW KEN BURNS ── */
   .then-now-wrap .then-now-now {
-    opacity: 0.88;
-    animation: kenBurnsNow 8s ease-in-out infinite alternate;
+    opacity: 1;
+    animation: kenBurnsNow 24s ease-in-out infinite alternate;
   }
   .then-now-wrap .then-now-then {
     animation: kenBurnsThen 22s ease-in-out infinite;
@@ -2197,7 +2197,7 @@
 
   /* ── THEN-NOW: deep fade into black — photograph dissolves into time ── */
   .then-now-/* section-padding-media-conflict removed */
-  .then-now-section::after {
+  .kb-gate-section::after {
     content: '';
     position: absolute;
     bottom: 0; left: 0; right: 0;
@@ -2335,15 +2335,19 @@
 
   /* ── THEN-NOW CAPTION — position below image, above blend ───── */
   /* ── THEN-NOW: bottom dissolve into darkness ── */
-  .then-now-section {
+  .kb-gate-section {
     position: relative;
   }
-  .then-now-section::after {
+  .kb-gate-section::after {
     content: '';
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    height: clamp(120px, 22vh, 280px);
-    background: linear-gradient(to bottom, transparent 0%, rgba(10,10,10,0.55) 50%, #0a0a0a 100%);
+    height: clamp(180px, 32vh, 400px);
+    background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(10,10,10,0.3) 30%,
+      rgba(10,10,10,0.75) 65%,
+      #0a0a0a 100%);
     z-index: 5;
     pointer-events: none;
   }
@@ -3266,8 +3270,8 @@ blockquote.in {
 
 
 
-<section id="then-now" class="editorial-fullbleed then-now-section" aria-label="Then and now: Garran Hill across a century">
-  <div class="then-now-wrap" style="position:relative;width:100%;height:clamp(70vh,85vh,95vh);overflow:hidden;">
+<section id="kb-gate" class="editorial-fullbleed kb-gate-section" aria-label="Garran Hill — the estate since 1916">
+  <div class="then-now-wrap" style="position:relative;width:100%;height:100vh;overflow:hidden;">
     <!-- NOW — modern exterior, underneath -->
     <img class="then-now-img then-now-now"
       loading="eager" decoding="async"
@@ -3298,7 +3302,7 @@ blockquote.in {
 <div class="act-break-diamond"></div>
   <div class="act-break-diamond"></div>
 </div>
-<section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;margin-top:-18vh;">
+<section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;margin-top:-12vh;padding-top:12vh;">
  <!-- Top blend — fades from #0a0a0a at top into section -->
  <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:18vh;background:linear-gradient(to bottom,#0a0a0a 0%,rgba(10,10,10,0.6) 40%,transparent 100%);z-index:2;pointer-events:none;"></div>
  <!-- WHP GHOST MANUSCRIPT — 4 layers of aged text atmosphere -->
