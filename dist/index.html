@@ -2009,7 +2009,7 @@
 <style id="hero-system">
 /* ═══════════════════════════════════════════════════════
    GARRAN HILL — HERO + JEWELED BELT
-   Single authoritative block. No overrides elsewhere.
+   Single authoritative block. Injected last. Wins all.
    ═══════════════════════════════════════════════════════ */
 
 /* ── HERO SHELL ── */
@@ -2017,8 +2017,7 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  min-height: 680px;
-  max-height: 100vh;
+  min-height: 780px;
   overflow: hidden;
   background: #0a0a0a;
 }
@@ -2032,24 +2031,24 @@
   background-size: cover;
   background-position: center 40%;
   opacity: 0;
-  transition: opacity 3s cubic-bezier(0.4,0,0.2,1);
+  transition: opacity 3.2s cubic-bezier(0.4,0,0.2,1);
   will-change: opacity;
 }
 .hero-slide.active { opacity: 1; }
 
-/* ── DEEP VIGNETTE — darkness comes from ALL edges ── */
+/* ── DEEP CINEMATIC VIGNETTE ── */
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background:
-    radial-gradient(ellipse at 50% 45%, transparent 28%, rgba(4,4,4,0.65) 75%, rgba(4,4,4,0.92) 100%),
+    radial-gradient(ellipse at 50% 42%, transparent 22%, rgba(4,4,4,0.55) 65%, rgba(4,4,4,0.92) 100%),
     linear-gradient(180deg,
-      rgba(4,4,4,0.55) 0%,
-      rgba(4,4,4,0.08) 18%,
-      rgba(4,4,4,0.02) 38%,
-      rgba(4,4,4,0.04) 55%,
-      rgba(4,4,4,0.38) 72%,
-      rgba(4,4,4,0.78) 88%,
-      rgba(4,4,4,0.95) 100%);
+      rgba(4,4,4,0.68) 0%,
+      rgba(4,4,4,0.12) 15%,
+      rgba(4,4,4,0.02) 35%,
+      rgba(4,4,4,0.02) 52%,
+      rgba(4,4,4,0.32) 68%,
+      rgba(4,4,4,0.75) 85%,
+      rgba(4,4,4,0.96) 100%);
 }
 
 /* ── VERTICAL ADDRESS SPINE — left edge ── */
@@ -2061,16 +2060,18 @@
   transform-origin: center center;
   z-index: 4;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(0.38rem, 0.5vw, 0.48rem);
-  letter-spacing: 0.6em;
+  font-size: clamp(0.36rem, 0.48vw, 0.46rem);
+  letter-spacing: 0.62em;
   text-transform: uppercase;
-  color: rgba(201,169,110,0.5);
+  color: rgba(201,169,110,0.48);
   font-weight: 300;
   white-space: nowrap;
   user-select: none;
 }
 
-/* ── CENTRE STAGE: eyebrow + title + sub ── */
+/* ── CENTRE STAGE ── */
+/* Title centred vertically in the viewport, slightly above true centre
+   to give the stat belt visual breathing room below */
 .hero-stage {
   position: absolute;
   inset: 0;
@@ -2081,78 +2082,82 @@
   justify-content: center;
   text-align: center;
   padding: 0 clamp(2rem, 8vw, 10rem);
+  /* shift text block upward so it sits at ~40% of viewport
+     rather than true centre — stat belt at bottom reads as separate */
   padding-top: 0;
-  padding-bottom: 18vh;   /* lifts text above the stat belt */
+  padding-bottom: 12vh;
 }
 
 /* ── EYEBROW ── */
 .hero-eyebrow {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(0.48rem, 0.65vw, 0.58rem);
-  letter-spacing: 0.65em;
+  font-size: clamp(0.46rem, 0.62vw, 0.56rem);
+  letter-spacing: 0.68em;
   text-transform: uppercase;
-  color: rgba(245,240,232,0.72);
+  color: rgba(245,240,232,0.70);
   font-weight: 300;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: clamp(1rem, 2.5vw, 2.5rem);
-  margin-bottom: clamp(1rem, 2vw, 1.8rem);
+  margin-bottom: clamp(1.2rem, 2.2vw, 2rem);
   white-space: nowrap;
 }
 .hero-rule {
   display: block;
-  width: clamp(1.8rem, 5vw, 5rem);
+  width: clamp(2rem, 5vw, 5.5rem);
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(201,169,110,0.75), transparent);
+  background: linear-gradient(to right, transparent, rgba(201,169,110,0.72), transparent);
   flex-shrink: 0;
 }
 
-/* ── TITLE — Pinyon Script, the biggest it can be and still fit ── */
+/* ── TITLE — the moment ── */
 .hero-title {
   font-family: 'Pinyon Script', cursive;
   font-weight: 400;
-  font-size: clamp(6rem, 18vw, 16rem);
+  font-size: clamp(6.5rem, 20vw, 18rem);
   color: #F5F0E8;
-  line-height: 0.88;
+  line-height: 0.86;
+  /* engraved depth — light from above, shadow below */
   text-shadow:
-    0 0 80px rgba(0,0,0,0.95),
-    0 2px 40px rgba(0,0,0,0.85),
-    0 0 160px rgba(0,0,0,0.5);
-  margin: 0 0 clamp(0.6rem, 1.5vw, 1.4rem);
+    0 1px 0   rgba(255,255,255,0.04),
+    0 2px 4px rgba(0,0,0,0.96),
+    0 4px 20px rgba(0,0,0,0.88),
+    0 0 80px  rgba(0,0,0,0.95),
+    0 0 140px rgba(0,0,0,0.6);
+  margin: 0 0 clamp(0.8rem, 1.8vw, 1.6rem);
   letter-spacing: -0.01em;
 }
 
-/* ── SUB ── */
+/* ── SUBHEAD ── */
 .hero-sub {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(0.46rem, 0.62vw, 0.56rem);
-  letter-spacing: 0.52em;
+  font-size: clamp(0.44rem, 0.60vw, 0.55rem);
+  letter-spacing: 0.54em;
   text-transform: uppercase;
-  color: rgba(245,240,232,0.60);
+  color: rgba(245,240,232,0.58);
   font-weight: 300;
-  margin-top: 0;
 }
 .hero-sub::before {
   content: '';
   display: block;
-  width: clamp(1.5rem, 4vw, 4rem);
+  width: clamp(2rem, 4vw, 4.5rem);
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(201,169,110,0.6), transparent);
-  margin: 0 auto 0.9rem;
+  background: linear-gradient(to right, transparent, rgba(201,169,110,0.58), transparent);
+  margin: 0 auto 1rem;
 }
 
-/* ── YEAR WATERMARK ── */
+/* ── YEAR WATERMARK — bottom right ── */
 .hero-year {
   position: absolute;
   right: clamp(2rem, 5vw, 6rem);
-  bottom: 16vh;
+  bottom: 14vh;
   z-index: 3;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(4rem, 8vw, 9rem);
+  font-size: clamp(4.5rem, 9vw, 10rem);
   font-weight: 200;
-  color: rgba(201,169,110,0.14);
-  letter-spacing: 0.1em;
+  color: rgba(201,169,110,0.11);
+  letter-spacing: 0.12em;
   line-height: 1;
   user-select: none;
   pointer-events: none;
@@ -2160,36 +2165,34 @@
 
 /* ═══════════════════════════════════
    JEWELED BELT — STAT BAR
-   Unified container. Crest rises above.
    ═══════════════════════════════════ */
 
 .stat-bar {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   z-index: 20;
-  height: 68px;
+  height: 72px;
   overflow: visible;
   background: linear-gradient(180deg,
     rgba(4,4,4,0.0) 0%,
-    rgba(4,4,4,0.42) 60%,
-    rgba(4,4,4,0.62) 100%);
+    rgba(4,4,4,0.45) 55%,
+    rgba(4,4,4,0.68) 100%);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 /* top gold hairline */
 .stat-top-line {
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
+  top: 0; left: 0; right: 0; height: 1px;
   background: linear-gradient(90deg,
     transparent 0%,
-    rgba(190,162,105,0.0) 5%,
-    rgba(210,180,130,0.65) 20%,
-    rgba(238,208,152,0.95) 38%,
+    rgba(190,162,105,0.0) 4%,
+    rgba(210,180,130,0.62) 18%,
+    rgba(238,208,152,0.94) 36%,
     rgba(252,228,168,1.0)  50%,
-    rgba(238,208,152,0.95) 62%,
-    rgba(210,180,130,0.65) 80%,
-    rgba(190,162,105,0.0) 95%,
+    rgba(238,208,152,0.94) 64%,
+    rgba(210,180,130,0.62) 82%,
+    rgba(190,162,105,0.0) 96%,
     transparent 100%);
   pointer-events: none;
 }
@@ -2197,14 +2200,13 @@
 /* bottom hairline */
 .stat-bottom-line {
   position: absolute;
-  bottom: 3px; left: 0; right: 0;
-  height: 1px;
+  bottom: 3px; left: 0; right: 0; height: 1px;
   background: linear-gradient(90deg,
     transparent 0%,
-    rgba(180,150,95,0.4) 15%,
-    rgba(201,169,110,0.6) 40%,
-    rgba(201,169,110,0.6) 60%,
-    rgba(180,150,95,0.4) 85%,
+    rgba(180,150,95,0.38) 15%,
+    rgba(201,169,110,0.58) 40%,
+    rgba(201,169,110,0.58) 60%,
+    rgba(180,150,95,0.38) 85%,
     transparent 100%);
   pointer-events: none;
 }
@@ -2217,7 +2219,6 @@
   height: 100%;
   width: 100%;
   padding: 0 clamp(2rem, 5vw, 7rem);
-  gap: 0;
   overflow: visible;
 }
 
@@ -2225,53 +2226,55 @@
 .stat-wing {
   display: flex;
   align-items: center;
-  gap: clamp(1.2rem, 2.2vw, 3.2rem);
+  gap: clamp(1.4rem, 2.4vw, 3.4rem);
   flex: 1;
   justify-content: flex-end;
 }
-.stat-wing-right {
-  justify-content: flex-start;
-}
+.stat-wing-right { justify-content: flex-start; }
 
-/* stat item */
 .stat-item { text-align: center; flex-shrink: 0; }
 
-/* gold metallic numbers */
+/* ENGRAVED GOLD numbers — the treatment she liked */
 .stat-num {
   display: block;
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: clamp(1rem, 1.65vw, 1.45rem);
   font-weight: 300;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   line-height: 1;
+  color: #c8ab78;
+  /* metallic gradient */
   background: linear-gradient(180deg, #F5E098 0%, #C9A96E 45%, #8B6914 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  /* engraved text-shadow — pressed into metal */
+  text-shadow:
+    0 1px 2px rgba(0,0,0,0.95),
+    0 -1px 0   rgba(220,210,185,0.06);
 }
 
 /* labels */
 .stat-lbl {
   display: block;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(0.44rem, 0.58vw, 0.55rem);
-  letter-spacing: 0.4em;
+  font-size: clamp(0.38rem, 0.52vw, 0.48rem);
+  letter-spacing: 0.52em;
   text-transform: uppercase;
-  color: rgba(201,169,110,0.58);
-  margin-top: 0.28rem;
+  color: rgba(245,240,232,0.42);
+  margin-top: 0.32rem;
   line-height: 1;
+  font-weight: 300;
 }
 
-/* vertical dividers between stats */
+/* dividers */
 .stat-div {
-  width: 1px;
-  height: 1.5rem;
-  flex-shrink: 0;
+  width: 1px; height: 1.5rem; flex-shrink: 0;
   background: linear-gradient(to bottom,
     transparent,
-    rgba(201,169,110,0.25) 25%,
-    rgba(201,169,110,0.35) 50%,
-    rgba(201,169,110,0.25) 75%,
+    rgba(201,169,110,0.22) 25%,
+    rgba(201,169,110,0.32) 50%,
+    rgba(201,169,110,0.22) 75%,
     transparent);
 }
 
@@ -2286,73 +2289,69 @@
   z-index: 30;
 }
 
-/* top gold line — glued to crest, moves with it */
+/* top gold line — glued to crest top, always moves with it */
 .stat-crest-wrap::before {
   content: '';
   position: absolute;
   top: -42px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100vw;
-  height: 1px;
+  left: 50%; transform: translateX(-50%);
+  width: 100vw; height: 1px;
   background: linear-gradient(90deg,
     transparent 0%,
-    rgba(190,162,105,0.0) 5%,
-    rgba(210,180,130,0.65) 20%,
-    rgba(238,208,152,0.95) 38%,
+    rgba(190,162,105,0.0) 4%,
+    rgba(210,180,130,0.62) 18%,
+    rgba(238,208,152,0.94) 36%,
     rgba(252,228,168,1.0)  50%,
-    rgba(238,208,152,0.95) 62%,
-    rgba(210,180,130,0.65) 80%,
-    rgba(190,162,105,0.0) 95%,
+    rgba(238,208,152,0.94) 64%,
+    rgba(210,180,130,0.62) 82%,
+    rgba(190,162,105,0.0) 96%,
     transparent 100%);
-  pointer-events: none;
-  z-index: 25;
+  pointer-events: none; z-index: 25;
 }
 
 .stat-crest-wrap img {
-  height: clamp(180px, 17vw, 240px);
+  height: clamp(180px, 17vw, 245px);
   width: auto;
   display: block;
   transform: translateY(-42px);
   filter:
-    drop-shadow(0 0 40px rgba(0,0,0,0.98))
-    drop-shadow(0 -6px 20px rgba(0,0,0,1))
-    drop-shadow(0 8px 28px rgba(0,0,0,1))
-    drop-shadow(0 0 35px rgba(201,169,110,0.28))
-    drop-shadow(0 0 14px rgba(245,224,152,0.18));
-  animation: crestFloat 5s ease-in-out infinite;
+    drop-shadow(0 0 42px rgba(0,0,0,0.99))
+    drop-shadow(0 -6px 22px rgba(0,0,0,1))
+    drop-shadow(0 10px 30px rgba(0,0,0,1))
+    drop-shadow(0 0 36px rgba(201,169,110,0.30))
+    drop-shadow(0 0 16px rgba(245,224,152,0.20));
+  animation: crestGlow 5s ease-in-out infinite;
 }
 
-@keyframes crestFloat {
+@keyframes crestGlow {
   0%,100% { filter:
-    drop-shadow(0 0 40px rgba(0,0,0,0.98))
-    drop-shadow(0 -6px 20px rgba(0,0,0,1))
-    drop-shadow(0 8px 28px rgba(0,0,0,1))
-    drop-shadow(0 0 35px rgba(201,169,110,0.28))
-    drop-shadow(0 0 14px rgba(245,224,152,0.18)); }
-  50% { filter:
-    drop-shadow(0 0 50px rgba(0,0,0,0.99))
+    drop-shadow(0 0 42px rgba(0,0,0,0.99))
     drop-shadow(0 -6px 22px rgba(0,0,0,1))
-    drop-shadow(0 10px 32px rgba(0,0,0,1))
-    drop-shadow(0 0 45px rgba(201,169,110,0.42))
-    drop-shadow(0 0 20px rgba(245,224,152,0.28)); }
+    drop-shadow(0 10px 30px rgba(0,0,0,1))
+    drop-shadow(0 0 36px rgba(201,169,110,0.30))
+    drop-shadow(0 0 16px rgba(245,224,152,0.20)); }
+  50% { filter:
+    drop-shadow(0 0 55px rgba(0,0,0,0.99))
+    drop-shadow(0 -6px 24px rgba(0,0,0,1))
+    drop-shadow(0 12px 36px rgba(0,0,0,1))
+    drop-shadow(0 0 48px rgba(201,169,110,0.44))
+    drop-shadow(0 0 22px rgba(245,224,152,0.30)); }
 }
 
 /* ── MOBILE ── */
 @media (max-width: 768px) {
-  .hero-stage { padding-bottom: 22vh; }
-  .hero-title  { font-size: clamp(4.5rem, 22vw, 8rem); }
-  .hero-spine  { display: none; }
-  .hero-year   { display: none; }
-  .stat-inner  { padding: 0 0.8rem; gap: 0; }
-  .stat-wing   { gap: clamp(0.6rem, 2vw, 1.2rem); }
-  .stat-lbl    { font-size: 0.38rem; letter-spacing: 0.28em; }
-  .stat-num    { font-size: clamp(0.82rem, 3.5vw, 1.1rem); }
-  .stat-crest-wrap img { height: clamp(100px, 18vw, 140px); transform: translateY(-32px); }
-  .stat-crest-wrap::before { top: -32px; }
-  .stat-crest-wrap { padding: 0 clamp(0.6rem, 2vw, 1.4rem); }
+  .hero { min-height: 640px; }
+  .hero-stage { padding-bottom: 20vh; }
+  .hero-title { font-size: clamp(5rem, 24vw, 9rem); }
+  .hero-spine, .hero-year { display: none; }
+  .stat-inner { padding: 0 0.8rem; }
+  .stat-wing { gap: clamp(0.6rem, 2vw, 1.2rem); }
+  .stat-lbl { font-size: 0.36rem; letter-spacing: 0.26em; }
+  .stat-num { font-size: clamp(0.78rem, 3.5vw, 1rem); }
+  .stat-crest-wrap img { height: clamp(100px, 18vw, 130px); transform: translateY(-30px); }
+  .stat-crest-wrap::before { top: -30px; }
+  .stat-crest-wrap { padding: 0 clamp(0.5rem, 1.8vw, 1.2rem); }
 }
-
 @media (max-width: 480px) {
   .stat-div { display: none; }
   .stat-wing { gap: 0.5rem; }
