@@ -204,314 +204,62 @@
    HERO — FLOWER SLIDESHOW + ASYMMETRIC EDITORIAL LAYOUT
    LOCKED 2026-05-11
 ═══════════════════════════════════════════════════════ */
-.hero {
-  background: #0a0a0a;
-  position: relative; width: 100%; height: 100vh;
-  min-height: 640px; overflow: hidden;
-}
+
 
 /* ── FLOWER SLIDESHOW ── */
-.hero-slides {
-  position: absolute; inset: 0; z-index: 0;
-}
-.hero-slide {
-  position: absolute; inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 2.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.hero-slide.active { opacity: 1; }
-.hero-slide.prev   { opacity: 0; }
+
+
+
+
 
 /* ── OVERLAY ── */
-.hero-overlay {
-  position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(135deg,
-    rgba(5,5,5,0.72) 0%,
-    rgba(5,5,5,0.45) 35%,
-    rgba(5,5,5,0.25) 60%,
-    rgba(5,5,5,0.55) 80%,
-    rgba(5,5,5,0.78) 100%);
-}
+
 
 /* ── VERTICAL EYEBROW — LEFT EDGE ── */
-.hero-vertical-eyebrow {
-  position: absolute;
-  left: clamp(1.4rem, 3vw, 3rem);
-  top: 50%;
-  transform: translateY(-50%) rotate(-90deg);
-  transform-origin: center center;
-  z-index: 3;
-  font-size: 0.42rem;
-  letter-spacing: 0.55em;
-  text-transform: uppercase;
-  color: rgba(201,169,110,0.6);
-  font-weight: 300;
-  white-space: nowrap;
-  font-family: "Cormorant Garamond", serif;
-}
+
 
 /* ── HERO TEXT — PUSHED LEFT, ARCHITECTURAL ── */
-.hero-text {
-  position: absolute;
-  left: clamp(3rem, 8vw, 10rem);
-  top: 0; bottom: 0;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: left;
-  padding-bottom: 14vh;
-  max-width: 85vw;
-}
-.hero-eyebrow {
-  font-size: clamp(0.48rem, 0.68vw, 0.58rem);
-  letter-spacing: 0.6em;
-  text-transform: uppercase;
-  color: rgba(245,240,232,0.6);
-  margin-bottom: clamp(0.8rem, 1.5vw, 1.2rem);
-  font-weight: 300;
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-}
-.hero-eyebrow::before {
-  content: '';
-  display: block;
-  width: clamp(1.5rem, 4vw, 4rem);
-  height: 1px;
-  background: linear-gradient(to right, rgba(201,169,110,0.78), transparent);
-  flex-shrink: 0;
-}
-.hero-title {
-  font-family: "Pinyon Script", cursive;
-  font-weight: 400;
-  font-size: clamp(5.5rem, 17vw, 15rem);
-  color: var(--cream);
-  line-height: 0.88;
-  text-shadow: 0 2px 60px rgba(0,0,0,0.9), 0 0 100px rgba(0,0,0,0.6);
-  margin-bottom: clamp(0.8rem, 1.8vw, 1.6rem);
-  letter-spacing: -0.01em;
-}
-.hero-sub {
-  font-size: clamp(0.46rem, 0.65vw, 0.58rem);
-  letter-spacing: 0.5em;
-  text-transform: uppercase;
-  color: rgba(245,240,232,0.55);
-  font-weight: 300;
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-}
-.hero-sub::before {
-  content: '';
-  display: block;
-  width: clamp(1.5rem, 3vw, 3rem);
-  height: 1px;
-  background: linear-gradient(to right, rgba(201,169,110,0.5), transparent);
-  flex-shrink: 0;
-}
+
+
+
+
+
+
 
 /* ── YEAR ANCHOR — BOTTOM RIGHT ── */
-.hero-year {
-  position: absolute;
-  right: clamp(2rem, 5vw, 6rem);
-  bottom: 18vh;
-  z-index: 3;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(4rem, 8vw, 9rem);
-  font-weight: 200;
-  color: rgba(201,169,110,0.18);
-  letter-spacing: 0.08em;
-  line-height: 1;
-  user-select: none;
-}
 
 
-  .hero-overlay {
-    position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(180deg,
-      rgba(5,5,5,0.10) 0%,
-      rgba(5,5,5,0.04) 20%,
-      rgba(5,5,5,0.04) 45%,
-      rgba(5,5,5,0.22) 62%,
-      rgba(5,5,5,0.58) 78%,
-      rgba(5,5,5,0.72) 90%,
-      rgba(5,5,5,0.60) 97%,
-      rgba(5,5,5,0.42) 100%);
-  }
-  .hero-text {
-    position: absolute; inset: 0; z-index: 2;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: flex-start; text-align: center;
-    padding: 0 clamp(1.5rem, 6vw, 8rem); padding-top: 18vh; padding-bottom: 0;
-  }
-  .hero-eyebrow { font-size: clamp(0.5rem, 0.72vw, 0.62rem); letter-spacing: 0.62em; text-transform: uppercase; color: rgba(245,240,232,0.75); margin-bottom: 1.4rem; font-weight: 300; display: flex; align-items: center; justify-content: center; gap: 1.4rem; } .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: clamp(1.5rem, 4vw, 4rem); height: 1px; background: linear-gradient(to right, transparent, rgba(201,169,110,0.78)); flex-shrink: 0; } .hero-eyebrow::after { background: linear-gradient(to left, transparent, rgba(201,169,110,0.78)); }
-  .hero-title {
-    font-family: 'Pinyon Script', cursive; font-weight: 400;
-    font-size: clamp(5rem, 16vw, 14rem); color: var(--cream);
-    line-height: 0.9;
-    text-shadow: 0 2px 40px rgba(0,0,0,0.8), 0 0 80px rgba(0,0,0,0.5);
-    margin-bottom: 0.6rem;
-  }
-  .hero-sub { font-size: clamp(0.48rem, 0.7vw, 0.6rem); letter-spacing: 0.52em; text-transform: uppercase; color: rgba(245,240,232,0.68); font-weight: 300; margin-top: 0.2rem; } .hero-sub::before { content: ''; display: block; width: clamp(1.5rem, 3vw, 3rem); height: 1px; background: linear-gradient(to right, transparent, rgba(201,169,110,0.75), transparent); margin: 0.9rem auto 0.9rem; }
+
+  
+  
+    
+  
+   
 
   /* § 10. HERO BOTTOM — numbers and crest emerge from darkness, no visible band */
-  .stat-bar {
-    position: absolute; bottom: 0; left: 0; right: 0; z-index: 20;
-    display: flex; align-items: center; justify-content: center;
-    padding: 0 clamp(2rem, 6vw, 8rem);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-    height: 72px;
-    /* very subtle dark base so gold line has contrast */
-    background: linear-gradient(180deg,
-      rgba(4,4,4,0.0) 0%,
-      rgba(4,4,4,0.35) 60%,
-      rgba(4,4,4,0.55) 100%);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    overflow: visible;
-  }
+  
   /* TOP FRAME LINE — now an inline div, moves with crest */
-  .stat-bar-top-line {
-    position: absolute; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg,
-      transparent 0%,
-      transparent 8%,
-      rgba(190,162,105,0.55) 15%,
-      rgba(210,180,130,0.88) 32%,
-      rgba(232,200,148,1.0)  48%,
-      rgba(245,215,158,1.0)  50%,
-      rgba(232,200,148,1.0)  52%,
-      rgba(210,180,130,0.88) 68%,
-      rgba(190,162,105,0.55) 85%,
-      transparent 97%,
-      transparent 100%);
-    pointer-events: none;
-  }
-  .stat-bar::after {
-    content: '';
-    position: absolute; bottom: 42px; left: 0; right: 0; height: 2px; z-index: 20;
-    background: linear-gradient(90deg,
-      transparent 0%,
-      transparent 4%,
-      rgba(180,150,95,0.6)   12%,
-      rgba(215,185,130,0.92) 28%,
-      rgba(238,208,152,1.0)  44%,
-      rgba(252,228,168,1.0)  50%,
-      rgba(238,208,152,1.0)  56%,
-      rgba(215,185,130,0.92) 72%,
-      rgba(180,150,95,0.6)   88%,
-      transparent 96%,
-      transparent 100%);
-    box-shadow: 0 0 8px 1px rgba(245,215,140,0.35), 0 0 2px 0px rgba(252,228,168,0.6);
-  }
-  .stat-numbers {
-    display: flex; align-items: center; justify-content: center;
-    width: 100%; gap: 0;
-  }
+  
+  
+  
   /* WINGS — the stones flanking the buckle */
-  .stat-wing {
-    display: flex; align-items: center;
-    gap: clamp(1.4rem, 2.8vw, 3.8rem);
-    flex: 1; justify-content: flex-end;
-  }
-  .stat-wing.right { justify-content: flex-start; }
+  
+  
   /* STAT ITEMS — engraved settings */
-  .stat-item { text-align: center; flex-shrink: 0; }
-  .stat-num {
-    display: block;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(1.05rem, 1.8vw, 1.55rem);
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    line-height: 1;
-    background: linear-gradient(180deg, #F5E098 0%, #C9A96E 45%, #8B6914 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .stat-lbl {
-    display: block;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(0.5rem, 0.65vw, 0.62rem);
-    letter-spacing: 0.38em;
-    text-transform: uppercase;
-    color: rgba(201,169,110,0.6);
-    margin-top: 0.3rem;
-    line-height: 1;
-  }
+  
+  
+  
   /* DIVIDERS — fine gold settings between stones */
-  .stat-div {
-    width: 1px; height: 1.6rem; flex-shrink: 0;
-    background: linear-gradient(to bottom,
-      transparent,
-      rgba(201,169,110,0.22) 20%,
-      rgba(190,162,105,0.32) 50%,
-      rgba(201,169,110,0.22) 80%,
-      transparent);
-  }
+  
   /* BUCKLE — the throne of the crest */
-  .stat-crest-throne {
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    padding: 0 clamp(2rem, 4vw, 5.5rem);
-    position: relative;
-  }
+  
   /* Gold filigree lines extending from buckle into the band */
-  .stat-crest-throne::before,
-  .stat-crest-throne::after {
-    content: '';
-    position: absolute;
-    top: 50%; transform: translateY(-50%);
-    width: clamp(2.5rem, 4.5vw, 6rem); height: 1px;
-    background: linear-gradient(to right,
-      rgba(201,169,110,0.0),
-      rgba(201,169,110,0.5) 60%,
-      rgba(245,224,152,0.7) 100%);
-  }
-  .stat-crest-throne::before {
-    right: 100%;
-    background: linear-gradient(to left,
-      rgba(201,169,110,0.0),
-      rgba(201,169,110,0.5) 60%,
-      rgba(245,224,152,0.7) 100%);
-  }
-  .stat-crest-throne::after {
-    left: 100%;
-    background: linear-gradient(to right,
-      rgba(201,169,110,0.0),
-      rgba(201,169,110,0.5) 60%,
-      rgba(245,224,152,0.7) 100%);
-  }
+  
+  
+  
   /* TOP GOLD LINE — disabled, crest now sits in bar */
-  .stat-crest-wrap::before {
-    content: '';
-    position: absolute;
-    top: -38px;
-    left: 50%; transform: translateX(-50%);
-    width: 100vw;
-    height: 1px;
-    background: linear-gradient(90deg,
-      transparent 0%,
-      transparent 8%,
-      rgba(190,162,105,0.55) 15%,
-      rgba(210,180,130,0.88) 32%,
-      rgba(232,200,148,1.0)  48%,
-      rgba(245,215,158,1.0)  50%,
-      rgba(232,200,148,1.0)  52%,
-      rgba(210,180,130,0.88) 68%,
-      rgba(190,162,105,0.55) 85%,
-      transparent 97%,
-      transparent 100%);
-    pointer-events: none;
-    z-index: 25;
-  }
-  .stat-crest-wrap {
-    display: flex; align-items: center; justify-content: center;
-    position: relative; z-index: 50;
-  }
+  
+  
   /* THE CREST — sits inside the belt, framed by gold lines */
   
   /* Hover — lifts toward you, shadow deepens as if physically rising */
@@ -520,18 +268,7 @@
   
     50%       { transform: translateY(-64px); }
   }
-  .stat-price .stat-num {
-    display: block;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(1.05rem, 1.8vw, 1.55rem);
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    line-height: 1;
-    background: linear-gradient(180deg, #F5E098 0%, #C9A96E 45%, #8B6914 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+  
 
   /* § 11. SPLIT SECTIONS — THE CORE LAYOUT ENGINE */
   /*
@@ -552,7 +289,7 @@
     gap: clamp(2.5rem, 5vw, 5rem);
   }
   .split.reverse { flex-direction: row-reverse; }
-  .split.hero-room { min-height: 82vh; }
+  .split
 
   /* THE IMAGE CONTAINER — sealed, contained */
   .split-img {
@@ -789,25 +526,16 @@
     .split-text { max-width: 100%; }
     .split-text.mid { padding-top: 0; justify-content: flex-start; }
 
-    .hero-title { font-size: clamp(3.5rem, 18vw, 6rem); }
+    
     section.pull, section.pull.cinematic, section.pull.intimate { padding: clamp(3rem, 10vw, 5rem) 1.5rem; }
     .text-section, .text-section.alt { padding: var(--sp-lg) 1.5rem; }
     .breath { padding: var(--sp-xl) var(--col-pad); }
     .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
-    .stat-bar { padding: 0 1rem; height: 72px; }
-    .stat-numbers { gap: 0.6rem; }
-    .stat-lbl {
-    display: block;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(0.5rem, 0.65vw, 0.62rem);
-    letter-spacing: 0.38em;
-    text-transform: uppercase;
-    color: rgba(201,169,110,0.6);
-    margin-top: 0.3rem;
-    line-height: 1;
-  }
     
-    .stat-div { height: 1.5rem; }
+    
+    
+    
+    
     .kb-gate { min-height: 70vh; }
     .inquiry { padding: var(--sp-lg) 1.5rem; }
   }
@@ -817,19 +545,8 @@
     h2 { text-wrap: unset; }
   }
   @media (max-width: 375px) {
-    .hero-title { font-size: 3rem; }
-    .stat-num {
-    display: block;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(1.05rem, 1.8vw, 1.55rem);
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    line-height: 1;
-    background: linear-gradient(180deg, #F5E098 0%, #C9A96E 45%, #8B6914 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+    
+    
     .gallery-grid { grid-template-columns: 1fr; }
   }
   
@@ -1476,10 +1193,7 @@
 
   /* Universal section base padding */
   /* Scoped section padding — NOT on full-bleed sections */
-  section:not(.hero):not(#gallery):not(#virtual-tour):not(#inquiry):not(.full-bleed-section):not([class*="grounds"]):not([class*="pool"]):not([class*="split"]):not([class*="editorial"]):not(.then-now-section):not(.whp-portrait):not(.sources-section) {
-    padding-top: var(--sp-lg);
-    padding-bottom: var(--sp-lg);
-  }
+  section:not(
 
   /* Split sections (image + text side by side) */
   .split-section, .split-reverse {
@@ -1547,16 +1261,7 @@
   }
 
   /* Stat bar labels — unified */
-  .stat-lbl {
-    display: block;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(0.5rem, 0.65vw, 0.62rem);
-    letter-spacing: 0.38em;
-    text-transform: uppercase;
-    color: rgba(201,169,110,0.6);
-    margin-top: 0.3rem;
-    line-height: 1;
-  }
+  
 
   /* Source/caption text */
   .source-text, .caption, figcaption {
@@ -1781,28 +1486,8 @@
   }
 
   /* ── STAT BAR TYPOGRAPHY ── */
-  .stat-num {
-    display: block;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(1.05rem, 1.8vw, 1.55rem);
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    line-height: 1;
-    background: linear-gradient(180deg, #F5E098 0%, #C9A96E 45%, #8B6914 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .stat-lbl {
-    display: block;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(0.5rem, 0.65vw, 0.62rem);
-    letter-spacing: 0.38em;
-    text-transform: uppercase;
-    color: rgba(201,169,110,0.6);
-    margin-top: 0.3rem;
-    line-height: 1;
-  }
+  
+  
 
   /* ── CAPTIONS ── */
   figcaption, .caption, .photo-caption {
@@ -2079,27 +1764,7 @@
 
 
   /* THE CREST — 3D Bronze Medallion Treatment */
-  .stat-crest-wrap img {
-    height: clamp(200px, 18vw, 260px);
-    width: auto;
-    display: block;
-    transform: translateY(-38px);
-    transition: transform 0.4s cubic-bezier(.16,1,.3,1), filter 0.4s ease;
-    animation: crestBreathe 5s ease-in-out infinite;
-    filter:
-      /* Edge definition — lifts crest off dark background */
-      drop-shadow(0 0 1px rgba(245,224,152,0.9))
-      /* Upper-left light source — simulates raised relief */
-      drop-shadow(-3px -3px 6px rgba(245,224,152,0.55))
-      /* Lower-right shadow — gives depth, pushes it forward */
-      drop-shadow(4px 6px 12px rgba(0,0,0,0.95))
-      drop-shadow(2px 3px 6px rgba(0,0,0,0.9))
-      /* Ambient gold glow — bronze in warm light */
-      drop-shadow(0 0 28px rgba(201,169,110,0.45))
-      drop-shadow(0 0 14px rgba(201,169,110,0.3))
-      /* Deep ground shadow — anchors it, stops it floating cheap */
-      drop-shadow(0 18px 40px rgba(0,0,0,0.85));
-  }
+  
 
   @keyframes crestBreathe {
     0%, 100% {
@@ -2124,17 +1789,7 @@
     }
   }
 
-  .stat-crest-wrap img:hover {
-    transform: translateY(-44px) scale(1.04);
-    filter:
-      drop-shadow(0 0 2px rgba(245,224,152,1))
-      drop-shadow(-5px -5px 10px rgba(245,224,152,0.8))
-      drop-shadow(5px 8px 16px rgba(0,0,0,1))
-      drop-shadow(3px 4px 8px rgba(0,0,0,0.95))
-      drop-shadow(0 0 50px rgba(201,169,110,0.7))
-      drop-shadow(0 0 25px rgba(245,224,152,0.45))
-      drop-shadow(0 22px 55px rgba(0,0,0,0.95));
-  }
+  
   /* GHOST UNDERLAY SYSTEM — Rocky 2026-05-12
      Atmospheric photo underlays beneath heavy text sections.
      Barely there. Felt more than seen. */
@@ -2351,6 +2006,358 @@
     }
   }
   </script>
+<style id="hero-system">
+/* ═══════════════════════════════════════════════════════
+   GARRAN HILL — HERO + JEWELED BELT
+   Single authoritative block. No overrides elsewhere.
+   ═══════════════════════════════════════════════════════ */
+
+/* ── HERO SHELL ── */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 680px;
+  max-height: 100vh;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+/* ── AMBIENT SLIDESHOW ── */
+.hero-slides {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-slide {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center 40%;
+  opacity: 0;
+  transition: opacity 3s cubic-bezier(0.4,0,0.2,1);
+  will-change: opacity;
+}
+.hero-slide.active { opacity: 1; }
+
+/* ── DEEP VIGNETTE — darkness comes from ALL edges ── */
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 45%, transparent 28%, rgba(4,4,4,0.65) 75%, rgba(4,4,4,0.92) 100%),
+    linear-gradient(180deg,
+      rgba(4,4,4,0.55) 0%,
+      rgba(4,4,4,0.08) 18%,
+      rgba(4,4,4,0.02) 38%,
+      rgba(4,4,4,0.04) 55%,
+      rgba(4,4,4,0.38) 72%,
+      rgba(4,4,4,0.78) 88%,
+      rgba(4,4,4,0.95) 100%);
+}
+
+/* ── VERTICAL ADDRESS SPINE — left edge ── */
+.hero-spine {
+  position: absolute;
+  left: clamp(1.2rem, 2.5vw, 2.4rem);
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: center center;
+  z-index: 4;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.38rem, 0.5vw, 0.48rem);
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: rgba(201,169,110,0.5);
+  font-weight: 300;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* ── CENTRE STAGE: eyebrow + title + sub ── */
+.hero-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 clamp(2rem, 8vw, 10rem);
+  padding-top: 0;
+  padding-bottom: 18vh;   /* lifts text above the stat belt */
+}
+
+/* ── EYEBROW ── */
+.hero-eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.48rem, 0.65vw, 0.58rem);
+  letter-spacing: 0.65em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.72);
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+  margin-bottom: clamp(1rem, 2vw, 1.8rem);
+  white-space: nowrap;
+}
+.hero-rule {
+  display: block;
+  width: clamp(1.8rem, 5vw, 5rem);
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,169,110,0.75), transparent);
+  flex-shrink: 0;
+}
+
+/* ── TITLE — Pinyon Script, the biggest it can be and still fit ── */
+.hero-title {
+  font-family: 'Pinyon Script', cursive;
+  font-weight: 400;
+  font-size: clamp(6rem, 18vw, 16rem);
+  color: #F5F0E8;
+  line-height: 0.88;
+  text-shadow:
+    0 0 80px rgba(0,0,0,0.95),
+    0 2px 40px rgba(0,0,0,0.85),
+    0 0 160px rgba(0,0,0,0.5);
+  margin: 0 0 clamp(0.6rem, 1.5vw, 1.4rem);
+  letter-spacing: -0.01em;
+}
+
+/* ── SUB ── */
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.46rem, 0.62vw, 0.56rem);
+  letter-spacing: 0.52em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.60);
+  font-weight: 300;
+  margin-top: 0;
+}
+.hero-sub::before {
+  content: '';
+  display: block;
+  width: clamp(1.5rem, 4vw, 4rem);
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,169,110,0.6), transparent);
+  margin: 0 auto 0.9rem;
+}
+
+/* ── YEAR WATERMARK ── */
+.hero-year {
+  position: absolute;
+  right: clamp(2rem, 5vw, 6rem);
+  bottom: 16vh;
+  z-index: 3;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 8vw, 9rem);
+  font-weight: 200;
+  color: rgba(201,169,110,0.14);
+  letter-spacing: 0.1em;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════
+   JEWELED BELT — STAT BAR
+   Unified container. Crest rises above.
+   ═══════════════════════════════════ */
+
+.stat-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 20;
+  height: 68px;
+  overflow: visible;
+  background: linear-gradient(180deg,
+    rgba(4,4,4,0.0) 0%,
+    rgba(4,4,4,0.42) 60%,
+    rgba(4,4,4,0.62) 100%);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* top gold hairline */
+.stat-top-line {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(190,162,105,0.0) 5%,
+    rgba(210,180,130,0.65) 20%,
+    rgba(238,208,152,0.95) 38%,
+    rgba(252,228,168,1.0)  50%,
+    rgba(238,208,152,0.95) 62%,
+    rgba(210,180,130,0.65) 80%,
+    rgba(190,162,105,0.0) 95%,
+    transparent 100%);
+  pointer-events: none;
+}
+
+/* bottom hairline */
+.stat-bottom-line {
+  position: absolute;
+  bottom: 3px; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(180,150,95,0.4) 15%,
+    rgba(201,169,110,0.6) 40%,
+    rgba(201,169,110,0.6) 60%,
+    rgba(180,150,95,0.4) 85%,
+    transparent 100%);
+  pointer-events: none;
+}
+
+/* inner flex row */
+.stat-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 0 clamp(2rem, 5vw, 7rem);
+  gap: 0;
+  overflow: visible;
+}
+
+/* wings */
+.stat-wing {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.2rem, 2.2vw, 3.2rem);
+  flex: 1;
+  justify-content: flex-end;
+}
+.stat-wing-right {
+  justify-content: flex-start;
+}
+
+/* stat item */
+.stat-item { text-align: center; flex-shrink: 0; }
+
+/* gold metallic numbers */
+.stat-num {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1rem, 1.65vw, 1.45rem);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  background: linear-gradient(180deg, #F5E098 0%, #C9A96E 45%, #8B6914 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* labels */
+.stat-lbl {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(0.44rem, 0.58vw, 0.55rem);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(201,169,110,0.58);
+  margin-top: 0.28rem;
+  line-height: 1;
+}
+
+/* vertical dividers between stats */
+.stat-div {
+  width: 1px;
+  height: 1.5rem;
+  flex-shrink: 0;
+  background: linear-gradient(to bottom,
+    transparent,
+    rgba(201,169,110,0.25) 25%,
+    rgba(201,169,110,0.35) 50%,
+    rgba(201,169,110,0.25) 75%,
+    transparent);
+}
+
+/* ── CREST: rises above the belt ── */
+.stat-crest-wrap {
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 clamp(2rem, 3.5vw, 5rem);
+  z-index: 30;
+}
+
+/* top gold line — glued to crest, moves with it */
+.stat-crest-wrap::before {
+  content: '';
+  position: absolute;
+  top: -42px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(190,162,105,0.0) 5%,
+    rgba(210,180,130,0.65) 20%,
+    rgba(238,208,152,0.95) 38%,
+    rgba(252,228,168,1.0)  50%,
+    rgba(238,208,152,0.95) 62%,
+    rgba(210,180,130,0.65) 80%,
+    rgba(190,162,105,0.0) 95%,
+    transparent 100%);
+  pointer-events: none;
+  z-index: 25;
+}
+
+.stat-crest-wrap img {
+  height: clamp(180px, 17vw, 240px);
+  width: auto;
+  display: block;
+  transform: translateY(-42px);
+  filter:
+    drop-shadow(0 0 40px rgba(0,0,0,0.98))
+    drop-shadow(0 -6px 20px rgba(0,0,0,1))
+    drop-shadow(0 8px 28px rgba(0,0,0,1))
+    drop-shadow(0 0 35px rgba(201,169,110,0.28))
+    drop-shadow(0 0 14px rgba(245,224,152,0.18));
+  animation: crestFloat 5s ease-in-out infinite;
+}
+
+@keyframes crestFloat {
+  0%,100% { filter:
+    drop-shadow(0 0 40px rgba(0,0,0,0.98))
+    drop-shadow(0 -6px 20px rgba(0,0,0,1))
+    drop-shadow(0 8px 28px rgba(0,0,0,1))
+    drop-shadow(0 0 35px rgba(201,169,110,0.28))
+    drop-shadow(0 0 14px rgba(245,224,152,0.18)); }
+  50% { filter:
+    drop-shadow(0 0 50px rgba(0,0,0,0.99))
+    drop-shadow(0 -6px 22px rgba(0,0,0,1))
+    drop-shadow(0 10px 32px rgba(0,0,0,1))
+    drop-shadow(0 0 45px rgba(201,169,110,0.42))
+    drop-shadow(0 0 20px rgba(245,224,152,0.28)); }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .hero-stage { padding-bottom: 22vh; }
+  .hero-title  { font-size: clamp(4.5rem, 22vw, 8rem); }
+  .hero-spine  { display: none; }
+  .hero-year   { display: none; }
+  .stat-inner  { padding: 0 0.8rem; gap: 0; }
+  .stat-wing   { gap: clamp(0.6rem, 2vw, 1.2rem); }
+  .stat-lbl    { font-size: 0.38rem; letter-spacing: 0.28em; }
+  .stat-num    { font-size: clamp(0.82rem, 3.5vw, 1.1rem); }
+  .stat-crest-wrap img { height: clamp(100px, 18vw, 140px); transform: translateY(-32px); }
+  .stat-crest-wrap::before { top: -32px; }
+  .stat-crest-wrap { padding: 0 clamp(0.6rem, 2vw, 1.4rem); }
+}
+
+@media (max-width: 480px) {
+  .stat-div { display: none; }
+  .stat-wing { gap: 0.5rem; }
+}
+</style>
 </head>
 <body>
 <!-- GH_PIPELINE_TEST_CONFIRMED -->
@@ -2390,34 +2397,40 @@
 <!-- HERO VIDEO: current site uses done_czfe8o. Earlier rule named Last_for_real_q0fqvw. CONFLICT — Rachel-confirmation-needed. Not changed. -->
 <section class="hero" id="top">
 
-  <!-- FLOWER SLIDESHOW -->
+  <!-- AMBIENT FLOWER SLIDESHOW -->
   <div class="hero-slides">
-  <div class="hero-slide active" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777249929/gh_img/58a73d8a6_rosewall.jpg')"></div>
-  <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777244072/gh_photos/200_hollycrest_drive_192.jpg')"></div>
-  <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777244113/gh_photos/200_hollycrest_drive_191.jpg')"></div>
-  <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777244150/gh_photos/200_hollycrest_drive_186.jpg')"></div>
-  <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777244803/gh_photos/200_hollycrest_drive_182.jpg')"></div>
-  <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777243900/gh_photos/200_hollycrest_drive_173.jpg')"></div>
+    <div class="hero-slide active" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777249929/gh_img/58a73d8a6_rosewall.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777244072/gh_photos/200_hollycrest_drive_192.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777244113/gh_photos/200_hollycrest_drive_191.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777244150/gh_photos/200_hollycrest_drive_186.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777244803/gh_photos/200_hollycrest_drive_182.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:25,e_saturation:15,f_auto,q_auto,c_limit,w_1920/v1777243900/gh_photos/200_hollycrest_drive_173.jpg')"></div>
   </div>
 
+  <!-- DEEP VIGNETTE OVERLAY -->
   <div class="hero-overlay"></div>
 
-  <!-- VERTICAL EYEBROW — LEFT EDGE -->
-  <div class="hero-vertical-eyebrow">200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, North Carolina &nbsp;&middot;&nbsp; Est. 1916</div>
+  <!-- VERTICAL ADDRESS EYEBROW — LEFT SPINE -->
+  <div class="hero-spine">200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, North Carolina &nbsp;&middot;&nbsp; Est.&nbsp;1916</div>
 
-  <!-- MAIN TEXT — PUSHED LEFT -->
-  <div class="hero-text">
-    <p class="hero-eyebrow">Pinehurst, North Carolina</p>
+  <!-- CENTRE STAGE: EYEBROW + TITLE + SUB -->
+  <div class="hero-stage">
+    <p class="hero-eyebrow"><span class="hero-rule"></span>Pinehurst, North Carolina<span class="hero-rule"></span></p>
     <h1 class="hero-title">Garran Hill</h1>
     <p class="hero-sub">Neo-Georgian &nbsp;&middot;&nbsp; Built 1915&ndash;16 for Walter Hines Page</p>
   </div>
 
-  <!-- YEAR ANCHOR — BOTTOM RIGHT -->
+  <!-- YEAR WATERMARK — BOTTOM RIGHT -->
   <div class="hero-year">1916</div>
 
-  <!-- JEWELED BELT -->
+  <!-- JEWELED BELT: one unified container, crest rises above, gold lines frame it -->
   <div class="stat-bar">
-    <div class="stat-numbers">
+
+    <!-- top gold hairline — spans full width -->
+    <div class="stat-top-line"></div>
+
+    <div class="stat-inner">
+
       <!-- LEFT WING -->
       <div class="stat-wing">
         <div class="stat-item">
@@ -2436,17 +2449,15 @@
         </div>
       </div>
 
-      <!-- CREST THRONE -->
-      <div class="stat-crest-throne">
-        <div class="stat-crest-wrap">
-          <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
-               alt="Garran Hill Estate Crest — Pinehurst NC 1916"
-               width="220" height="220" loading="eager">
-        </div>
+      <!-- CREST: rises above the belt -->
+      <div class="stat-crest-wrap">
+        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
+             alt="Garran Hill Estate Crest — Pinehurst NC 1916"
+             width="240" height="240" loading="eager">
       </div>
 
       <!-- RIGHT WING -->
-      <div class="stat-wing right">
+      <div class="stat-wing stat-wing-right">
         <div class="stat-item">
           <span class="stat-num">4.15</span>
           <span class="stat-lbl">Acres</span>
@@ -2457,13 +2468,18 @@
           <span class="stat-lbl">Built</span>
         </div>
         <div class="stat-div"></div>
-        <div class="stat-item stat-price">
+        <div class="stat-item">
           <span class="stat-num">$4,250,000</span>
           <span class="stat-lbl">Offered&thinsp;At</span>
         </div>
       </div>
-    </div>
-  </div>
+
+    </div><!-- /.stat-inner -->
+
+    <!-- bottom hairline -->
+    <div class="stat-bottom-line"></div>
+
+  </div><!-- /.stat-bar -->
 
 </section>
 
