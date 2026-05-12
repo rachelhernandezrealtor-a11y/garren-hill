@@ -3079,9 +3079,7 @@ blockquote.in {
      21.4% opacity 0    (9/42 — fully out)
      100% opacity 0
 */
-@keyframes chFade {
-  0%       { opacity: 0; }
-  4.28%    { opacity: 0.90; }   /* fade in over 1.8s */
+   /* fade in over 1.8s */
   16.67%   { opacity: 0.90; }   /* hold at peak */
   20.95%   { opacity: 0; }      /* fade out over 1.8s */
   100%     { opacity: 0; }
@@ -3146,6 +3144,61 @@ blockquote.in {
 .hero-video-wrap,
 .hero-video { display: none; }
 
+
+/* ── PER-FRAME KEYFRAMES ──────────────────────────────────── */
+@keyframes frame1Fade {
+  0%       { opacity: 0.90; }
+  16.67%   { opacity: 0.90; }
+  20.95%   { opacity: 0; }
+  100%     { opacity: 0; }
+}
+@keyframes frame2Fade {
+  0%       { opacity: 0; }
+  16.43%  { opacity: 0; }
+  20.95%  { opacity: 0.90; }
+  33.33%   { opacity: 0.90; }
+  37.62%   { opacity: 0; }
+  100%     { opacity: 0; }
+}
+@keyframes frame3Fade {
+  0%       { opacity: 0; }
+  33.10%  { opacity: 0; }
+  37.62%  { opacity: 0.90; }
+  50.00%   { opacity: 0.90; }
+  54.29%   { opacity: 0; }
+  100%     { opacity: 0; }
+}
+@keyframes frame4Fade {
+  0%       { opacity: 0; }
+  49.76%  { opacity: 0; }
+  54.29%  { opacity: 0.90; }
+  66.67%   { opacity: 0.90; }
+  70.95%   { opacity: 0; }
+  100%     { opacity: 0; }
+}
+@keyframes frame5Fade {
+  0%       { opacity: 0; }
+  66.43%  { opacity: 0; }
+  70.95%  { opacity: 0.90; }
+  83.33%   { opacity: 0.90; }
+  87.62%   { opacity: 0; }
+  100%     { opacity: 0; }
+}
+@keyframes frame6Fade {
+  0%       { opacity: 0.90; }   /* already fading in from last cycle */
+  4.29%  { opacity: 0.90; }
+  100.00%   { opacity: 0.90; }
+  100.00%   { opacity: 0; }
+  100%     { opacity: 0; }
+}
+
+/* ── PER-FRAME ANIMATION BINDINGS ──────────────────────────── */
+  .ch-f1 { animation: frame1Fade 42s linear infinite, kenBurns1 42s ease-in-out infinite; }
+  .ch-f2 { animation: frame2Fade 42s linear infinite, kenBurns2 42s ease-in-out infinite; }
+  .ch-f3 { animation: frame3Fade 42s linear infinite, kenBurns3 42s ease-in-out infinite; }
+  .ch-f4 { animation: frame4Fade 42s linear infinite, kenBurns4 42s ease-in-out infinite; }
+  .ch-f5 { animation: frame5Fade 42s linear infinite, kenBurns5 42s ease-in-out infinite; }
+  .ch-f6 { animation: frame6Fade 42s linear infinite, kenBurns6 42s ease-in-out infinite; }
 </style>
 </head>
 <body>
@@ -3188,13 +3241,14 @@ blockquote.in {
 
   <!-- CINEMATIC HERO — twilight + flowers — Aman/Chanel tempo -->
   <div class="ch-reel" aria-hidden="true">
-    <div class="ch-frame" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:65,e_sharpen:20,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777648663/gh_key/gh_hero_poster_azalea.jpg');background-position:center 52%;animation:kenBurns1 42s ease-in-out infinite, chFade 42s linear infinite;animation-delay:-3.99s,-3.99s;"></div>
-    <div class="ch-frame" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:72,e_sharpen:30,e_saturation:14,f_auto,q_auto,c_limit,w_1920/v1777244670/gh_photos/200_hollycrest_drive_220.jpg');background-position:center 40%;animation:kenBurns2 42s ease-in-out infinite, chFade 42s linear infinite;animation-delay:-10.99s,-10.99s;"></div>
-    <div class="ch-frame" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:28,e_saturation:8,f_auto,q_auto,c_limit,w_1920/v1777329734/gh_key/gh_facade_front.jpg');background-position:center 36%;animation:kenBurns3 42s ease-in-out infinite, chFade 42s linear infinite;animation-delay:-17.99s,-17.99s;"></div>
-    <div class="ch-frame" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:22,e_saturation:5,f_auto,q_auto,c_limit,w_1920/v1777428893/gh_key/gh_gate_twilight.jpg');background-position:center 45%;animation:kenBurns4 42s ease-in-out infinite, chFade 42s linear infinite;animation-delay:-24.99s,-24.99s;"></div>
-    <div class="ch-frame" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:65,e_sharpen:25,e_saturation:10,f_auto,q_auto,c_limit,w_1920/v1777244523/gh_exteriors/holycrestextf_3327.jpg');background-position:center 34%;animation:kenBurns5 42s ease-in-out infinite, chFade 42s linear infinite;animation-delay:-31.99s,-31.99s;"></div>
-    <div class="ch-frame" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:68,e_sharpen:28,e_saturation:12,f_auto,q_auto,c_limit,w_1920/v1777244126/gh_photos/200_hollycrest_drive_199.jpg');background-position:center 50%;animation:kenBurns6 42s ease-in-out infinite, chFade 42s linear infinite;animation-delay:-38.99s,-38.99s;"></div>
+    <div class="ch-frame ch-f1" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:65,e_sharpen:20,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777648663/gh_key/gh_hero_poster_azalea.jpg');background-position:center 52%;"></div>
+    <div class="ch-frame ch-f2" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:72,e_sharpen:30,e_saturation:14,f_auto,q_auto,c_limit,w_1920/v1777244670/gh_photos/200_hollycrest_drive_220.jpg');background-position:center 40%;"></div>
+    <div class="ch-frame ch-f3" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:28,e_saturation:8,f_auto,q_auto,c_limit,w_1920/v1777329734/gh_key/gh_facade_front.jpg');background-position:center 36%;"></div>
+    <div class="ch-frame ch-f4" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:22,e_saturation:5,f_auto,q_auto,c_limit,w_1920/v1777428893/gh_key/gh_gate_twilight.jpg');background-position:center 45%;"></div>
+    <div class="ch-frame ch-f5" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:65,e_sharpen:25,e_saturation:10,f_auto,q_auto,c_limit,w_1920/v1777244523/gh_exteriors/holycrestextf_3327.jpg');background-position:center 34%;"></div>
+    <div class="ch-frame ch-f6" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:68,e_sharpen:28,e_saturation:12,f_auto,q_auto,c_limit,w_1920/v1777244126/gh_photos/200_hollycrest_drive_199.jpg');background-position:center 50%;"></div>
     <div class="ch-vignette"></div>
+  </div>
   </div>
   </div>
 
