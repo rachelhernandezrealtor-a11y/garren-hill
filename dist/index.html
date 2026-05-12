@@ -2208,36 +2208,36 @@
   /* Frame 4: twilight — 30s–40s */
   .hf4 { animation: hf4 40s linear infinite; background-position: center 38%; }
 
-  /* Each frame: 2s fade in, 6s hold, 2s fade out, 30s dark */
+  /* 4-frame reel — 10s per frame, 2s crossfade, 40s cycle */
+  /* Frame is visible for 8s, overlaps 2s with next */
   @keyframes hf1 {
-    0%    { opacity: 0.88; }
-    15%   { opacity: 0.88; }
+    0%    { opacity: 0.88; }   /* instant on — frame 1 visible on load */
+    20%   { opacity: 0.88; }
     25%   { opacity: 0; }
     100%  { opacity: 0; }
   }
   @keyframes hf2 {
     0%    { opacity: 0; }
-    22%   { opacity: 0; }
-    27%   { opacity: 0.88; }
-    40%   { opacity: 0.88; }
+    20%   { opacity: 0; }
+    25%   { opacity: 0.88; }
+    45%   { opacity: 0.88; }
     50%   { opacity: 0; }
     100%  { opacity: 0; }
   }
   @keyframes hf3 {
     0%    { opacity: 0; }
-    47%   { opacity: 0; }
-    52%   { opacity: 0.88; }
-    65%   { opacity: 0.88; }
+    45%   { opacity: 0; }
+    50%   { opacity: 0.88; }
+    70%   { opacity: 0.88; }
     75%   { opacity: 0; }
     100%  { opacity: 0; }
   }
   @keyframes hf4 {
     0%    { opacity: 0; }
-    72%   { opacity: 0; }
-    77%   { opacity: 0.88; }
-    90%   { opacity: 0.88; }
-    97%   { opacity: 0.88; }
-    100%  { opacity: 0.88; }
+    70%   { opacity: 0; }
+    75%   { opacity: 0.88; }
+    95%   { opacity: 0.88; }
+    100%  { opacity: 0.88; }  /* stays on so loop back to frame 1 is seamless */
   }
   .hero-overlay {
     position: absolute;
