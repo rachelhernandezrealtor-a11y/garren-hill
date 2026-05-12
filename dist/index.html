@@ -2427,13 +2427,13 @@
 .hero-stage {
   position: absolute;
   inset: 0;
-  z-index: 5;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 72px clamp(2rem, 6vw, 8rem) 130px;
+  padding: 72px clamp(2rem, 8vw, 10rem) 140px;
 }
 
 /* ── EYEBROW ── */
@@ -2463,10 +2463,10 @@
 .hero-title {
   font-family: 'Pinyon Script', cursive;
   font-weight: 400;
-  font-size: clamp(6rem, 18vw, 16rem);
-  color: rgba(245,240,232,0.97);
+  font-size: clamp(7rem, 21vw, 19rem);
+  color: #F5F0E8;
   line-height: 0.86;
-  text-shadow: 0 2px 40px rgba(0,0,0,0.90), 0 4px 80px rgba(0,0,0,0.70), 0 1px 0 rgba(255,255,255,0.03);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.04), 0 2px 10px rgba(0,0,0,0.38);
   margin: 0 0 clamp(1rem, 2vw, 1.8rem);
   letter-spacing: -0.01em;
 }
@@ -2513,12 +2513,12 @@
   position: absolute;
   bottom: 0; left: 0; right: 0;
   z-index: 20;
-  height: 96px;
+  height: 90px;
   overflow: visible;
   background: linear-gradient(180deg,
     rgba(4,4,4,0.0)  0%,
-    rgba(4,4,4,0.82) 45%,
-    rgba(4,4,4,0.96) 100%);
+    rgba(4,4,4,0.60) 55%,
+    rgba(4,4,4,0.88) 100%);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
@@ -2637,34 +2637,46 @@
   justify-content: center;
   padding: 0 clamp(1.6rem, 3vw, 5rem);
   z-index: 30;
-  /* Rise: crest crosses belt line at translateY(-38px) */
-  margin-top: -80px;
+  /* Pull crest high: rises 200px above the belt into the hero */
+  margin-top: -200px;
   overflow: visible;
 }
 
 .stat-crest-wrap img {
-  height: clamp(140px, 14vw, 180px);
+  /* Stamp scale — commanding next to the giant title */
+  height: clamp(260px, 26vw, 360px);
   width: auto;
   display: block;
   position: relative;
-  transform: translateY(-38px);
+  /* Stamp into the next section: positive Y pushes bottom below the belt line */
+  /* At 360px height: the middle sits AT the belt line, bottom 180px stamps below */
+  transform: translateY(55px);
+  /* 3D pressed-seal look: deep shadows + gold glow */
   filter:
-    drop-shadow(0 2px 8px rgba(0,0,0,0.72))
-    drop-shadow(0 0 18px rgba(0,0,0,0.55))
-    sepia(0.15) hue-rotate(-8deg);
-  animation: crestGlow 6s ease-in-out infinite;
+    drop-shadow(0 0 24px rgba(0,0,0,0.45))
+    drop-shadow(0 -6px 16px rgba(0,0,0,0.38))
+    drop-shadow(0 10px 24px rgba(0,0,0,0.38))
+    drop-shadow(0 0 50px rgba(201,169,110,0.38))
+    drop-shadow(0 0 22px rgba(245,224,152,0.26));
+  animation: crestGlow 5s ease-in-out infinite;
 }
 
 @keyframes crestGlow {
-  0%, 100% {
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.72))
-            drop-shadow(0 0 16px rgba(0,0,0,0.50))
-            sepia(0.15) hue-rotate(-8deg);
+  0%,100% {
+    filter:
+      drop-shadow(0 0 24px rgba(0,0,0,0.45))
+      drop-shadow(0 -6px 16px rgba(0,0,0,0.38))
+      drop-shadow(0 10px 24px rgba(0,0,0,0.38))
+      drop-shadow(0 0 40px rgba(201,169,110,0.32))
+      drop-shadow(0 0 18px rgba(245,224,152,0.22));
   }
   50% {
-    filter: drop-shadow(0 2px 10px rgba(0,0,0,0.80))
-            drop-shadow(0 0 22px rgba(0,0,0,0.58))
-            sepia(0.18) hue-rotate(-8deg) brightness(1.04);
+    filter:
+      drop-shadow(0 0 24px rgba(0,0,0,0.45))
+      drop-shadow(0 -6px 16px rgba(0,0,0,0.38))
+      drop-shadow(0 10px 24px rgba(0,0,0,0.38))
+      drop-shadow(0 0 56px rgba(201,169,110,0.46))
+      drop-shadow(0 0 26px rgba(245,224,152,0.30));
   }
 }
 
@@ -3009,184 +3021,6 @@ blockquote.in {
   .stat-lbl  { white-space: nowrap !important; }
   .stat-bar  { overflow: visible !important; }
 
-
-
-/* ══════════════════════════════════════════════════════════════════
-   CINEMATIC HERO — Aman / Chanel tempo
-   6 frames · 7s each · 2s crossfade · pure black base
-   Twilight + flowers only. No spinning. No zoom. Just light.
-══════════════════════════════════════════════════════════════════ */
-
-.ch-reel {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  background: #0a0a0a;
-}
-
-.ch-frame {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0;
-  will-change: transform, opacity;
-}
-
-/* The vignette — deep black edges, open centre */
-.ch-vignette {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse at 50% 42%,
-      transparent 42%,
-      rgba(10,10,10,0.20) 65%,
-      rgba(10,10,10,0.75) 100%
-    ),
-    linear-gradient(
-      to bottom,
-      rgba(10,10,10,0.42) 0%,
-      rgba(10,10,10,0.04) 12%,
-      transparent 26%,
-      transparent 58%,
-      rgba(10,10,10,0.85) 100%
-    );
-}
-
-/* ── FADE KEYFRAMES — one frame per slot ───────────────────────── */
-/* 6 frames × 7s = 42s cycle
-   Each frame: fade in over 2s, hold 5s, fade out over 2s, gone 33s
-   Offset by -N×7s delay per frame
-   As percentage of 42s cycle:
-     0%   opacity 0
-     4.8% opacity 1     (2/42)
-     16.7% opacity 1    (7/42 — end of this frame's window)
-     21.4% opacity 0    (9/42 — fully out)
-     100% opacity 0
-*/
-   /* fade in over 1.8s */
-  16.67%   { opacity: 0.90; }   /* hold at peak */
-  20.95%   { opacity: 0; }      /* fade out over 1.8s */
-  100%     { opacity: 0; }
-}
-
-/* ── KEN BURNS — barely-there drift, each unique ───────────────── */
-/* Aman standard: 2-3% scale drift over the full cycle */
-
-@keyframes kenBurns1 {
-  0%   { transform: scale(1.00) translate(0%, 0%); }
-  50%  { transform: scale(1.025) translate(-0.5%, -0.3%); }
-  100% { transform: scale(1.00) translate(0%, 0%); }
-}
-@keyframes kenBurns2 {
-  0%   { transform: scale(1.02) translate(0.3%, 0%); }
-  50%  { transform: scale(1.00) translate(0%, 0.4%); }
-  100% { transform: scale(1.02) translate(0.3%, 0%); }
-}
-@keyframes kenBurns3 {
-  0%   { transform: scale(1.00) translate(0%, 0.2%); }
-  50%  { transform: scale(1.03) translate(-0.3%, 0%); }
-  100% { transform: scale(1.00) translate(0%, 0.2%); }
-}
-@keyframes kenBurns4 {
-  0%   { transform: scale(1.025) translate(0.2%, 0.1%); }
-  50%  { transform: scale(1.00) translate(-0.2%, -0.2%); }
-  100% { transform: scale(1.025) translate(0.2%, 0.1%); }
-}
-@keyframes kenBurns5 {
-  0%   { transform: scale(1.00) translate(-0.2%, 0%); }
-  50%  { transform: scale(1.02) translate(0.3%, 0.2%); }
-  100% { transform: scale(1.00) translate(-0.2%, 0%); }
-}
-@keyframes kenBurns6 {
-  0%   { transform: scale(1.02) translate(0%, 0.1%); }
-  50%  { transform: scale(1.00) translate(0.2%, -0.2%); }
-  100% { transform: scale(1.02) translate(0%, 0.1%); }
-}
-
-/* ── Everything above the reel ────────────────────────────────── */
-.hero-stage,
-.hero-spine,
-.hero-year,
-.stat-bar,
-.stat-bar-wrap {
-  position: relative;
-  z-index: 3;
-}
-
-/* ── PREFERS-REDUCED-MOTION ────────────────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  .ch-frame {
-    animation: none !important;
-    opacity: 0;
-  }
-  .ch-frame:first-child {
-    opacity: 0.88;
-  }
-}
-
-/* ── Remove old video rules (kept for reference, now unused) ─── */
-.hero-video-wrap,
-.hero-video { display: none; }
-
-
-/* ── PER-FRAME KEYFRAMES ──────────────────────────────────── */
-@keyframes frame1Fade {
-  0%       { opacity: 0.90; }
-  16.67%   { opacity: 0.90; }
-  20.95%   { opacity: 0; }
-  100%     { opacity: 0; }
-}
-@keyframes frame2Fade {
-  0%       { opacity: 0; }
-  16.43%  { opacity: 0; }
-  20.95%  { opacity: 0.90; }
-  33.33%   { opacity: 0.90; }
-  37.62%   { opacity: 0; }
-  100%     { opacity: 0; }
-}
-@keyframes frame3Fade {
-  0%       { opacity: 0; }
-  33.10%  { opacity: 0; }
-  37.62%  { opacity: 0.90; }
-  50.00%   { opacity: 0.90; }
-  54.29%   { opacity: 0; }
-  100%     { opacity: 0; }
-}
-@keyframes frame4Fade {
-  0%       { opacity: 0; }
-  49.76%  { opacity: 0; }
-  54.29%  { opacity: 0.90; }
-  66.67%   { opacity: 0.90; }
-  70.95%   { opacity: 0; }
-  100%     { opacity: 0; }
-}
-@keyframes frame5Fade {
-  0%       { opacity: 0; }
-  66.43%  { opacity: 0; }
-  70.95%  { opacity: 0.90; }
-  83.33%   { opacity: 0.90; }
-  87.62%   { opacity: 0; }
-  100%     { opacity: 0; }
-}
-@keyframes frame6Fade {
-  0%       { opacity: 0.90; }   /* already fading in from last cycle */
-  4.29%  { opacity: 0.90; }
-  100.00%   { opacity: 0.90; }
-  100.00%   { opacity: 0; }
-  100%     { opacity: 0; }
-}
-
-/* ── PER-FRAME ANIMATION BINDINGS ──────────────────────────── */
-  .ch-f1 { animation: frame1Fade 42s linear infinite, kenBurns1 42s ease-in-out infinite; }
-  .ch-f2 { animation: frame2Fade 42s linear infinite, kenBurns2 42s ease-in-out infinite; }
-  .ch-f3 { animation: frame3Fade 42s linear infinite, kenBurns3 42s ease-in-out infinite; }
-  .ch-f4 { animation: frame4Fade 42s linear infinite, kenBurns4 42s ease-in-out infinite; }
-  .ch-f5 { animation: frame5Fade 42s linear infinite, kenBurns5 42s ease-in-out infinite; }
-  .ch-f6 { animation: frame6Fade 42s linear infinite, kenBurns6 42s ease-in-out infinite; }
 </style>
 </head>
 <body>
@@ -3227,20 +3061,18 @@ blockquote.in {
 <!-- HERO VIDEO: current site uses done_czfe8o. Earlier rule named Last_for_real_q0fqvw. CONFLICT — Rachel-confirmation-needed. Not changed. -->
 <section class="hero" id="top">
 
-  <!-- CINEMATIC HERO — twilight + flowers — Aman/Chanel tempo -->
-  <div class="ch-reel" aria-hidden="true">
-    <div class="ch-frame ch-f1" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:65,e_sharpen:20,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777648663/gh_key/gh_hero_poster_azalea.jpg');background-position:center 52%;"></div>
-    <div class="ch-frame ch-f2" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:72,e_sharpen:30,e_saturation:14,f_auto,q_auto,c_limit,w_1920/v1777244670/gh_photos/200_hollycrest_drive_220.jpg');background-position:center 40%;"></div>
-    <div class="ch-frame ch-f3" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:28,e_saturation:8,f_auto,q_auto,c_limit,w_1920/v1777329734/gh_key/gh_facade_front.jpg');background-position:center 36%;"></div>
-    <div class="ch-frame ch-f4" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:60,e_sharpen:22,e_saturation:5,f_auto,q_auto,c_limit,w_1920/v1777428893/gh_key/gh_gate_twilight.jpg');background-position:center 45%;"></div>
-    <div class="ch-frame ch-f5" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:65,e_sharpen:25,e_saturation:10,f_auto,q_auto,c_limit,w_1920/v1777244523/gh_exteriors/holycrestextf_3327.jpg');background-position:center 34%;"></div>
-    <div class="ch-frame ch-f6" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:68,e_sharpen:28,e_saturation:12,f_auto,q_auto,c_limit,w_1920/v1777244126/gh_photos/200_hollycrest_drive_199.jpg');background-position:center 50%;"></div>
-    <div class="ch-vignette"></div>
+  <!-- LOCKED HERO VIDEO — done_czfe8o — NEVER SWAP -->
+  <div class="hero-video-wrap" aria-hidden="true">
+    <video
+      autoplay muted loop playsinline
+      poster="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,f_auto,q_auto,c_limit,w_1920/v1777648663/gh_key/gh_hero_poster_azalea.jpg"
+      class="hero-video"
+    >
+      <source src="https://res.cloudinary.com/dghn2xpif/video/upload/v1777503272/gh_key/done_czfe8o.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
   </div>
-  </div>
-  </div>
-
-  
+    <div class="hero-overlay"></div>
 
   <!-- VERTICAL ADDRESS EYEBROW — LEFT SPINE -->
   <div class="hero-spine">200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, North Carolina &nbsp;&middot;&nbsp; Est.&nbsp;1916</div>
