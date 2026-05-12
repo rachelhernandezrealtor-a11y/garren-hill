@@ -165,10 +165,7 @@
     width: 100%; height: 1px;
     background: linear-gradient(to right, transparent 0%, rgba(201,169,110,0) 5%, rgba(201,169,110,0.28) 25%, rgba(245,224,152,0.5) 50%, rgba(201,169,110,0.28) 75%, rgba(201,169,110,0) 95%, transparent 100%);
   }
-  .act-break {
-    display: flex; align-items: center; justify-content: center;
-    padding: var(--sp-md) var(--col-pad); gap: 1.8rem;
-  }
+  /* removed: .act-break old padded */
   .act-break::before, .act-break::after {
     content: ''; flex: 1; height: 1px;
     background: linear-gradient(to right, transparent, rgba(201,169,110,0.35) 40%, rgba(245,224,152,0.55) 100%);
@@ -177,18 +174,18 @@
   .act-break-glyph { font-family: 'Cormorant Garamond', serif; font-size: 0.55rem; letter-spacing: 0.5em; text-transform: uppercase; color: rgba(201,169,110,0.82); white-space: nowrap; }
 
   /* § 8. TYPOGRAPHY */
-  .eyebrow { font-size: var(--text-xs); font-weight: 300; letter-spacing: 0.48em; text-transform: uppercase; color: rgba(201,169,110,0.72); margin-bottom: clamp(1rem, 1.6vw, 1.4rem); display: block; }
+  /* removed: .eyebrow old (var text-xs) */
   .gold-line { width: clamp(2rem, 5vw, 4rem); height: 1px; background: linear-gradient(90deg, rgba(201,169,110,0.8), transparent); margin-bottom: var(--sp-sm); }
-  .body-text {max-width: 660px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.05rem, 1.2vw, 1.18rem); font-weight: 400; line-height: 1.72; color: rgba(245,240,232,0.88); max-width: 62ch; }
-  .body-text p { margin-bottom: clamp(1.2rem, 2vw, 1.6rem); font-size: clamp(1.05rem, 1.2vw, 1.18rem); font-weight: 400; line-height: 1.88; }
+  /* removed: .body-text old base 660px */
+  /* removed: body-text p old */
   .body-text p:last-child { margin-bottom: 0; }
   h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.1; color: var(--cream); }
   h2 {margin-bottom: clamp(1.4rem, 2.4vw, 2rem); font-size: var(--text-lg); margin-bottom: clamp(1.4rem, 2.4vw, 2.2rem); text-wrap: balance; }
   h2 em { display: block; font-style: italic; color: rgba(245,240,232,0.85); font-size: var(--text-md);margin-top: 0.3rem; }
-  .pull-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.8rem); font-weight: 300; font-style: italic; line-height: 1.4; color: var(--cream); }
+  /* removed: .pull-quote old 2.8rem */
   .pull-attr { font-size: 0.58rem; letter-spacing: 0.38em; text-transform: uppercase; color: rgba(201,169,110,0.80); margin-top: 1.8rem; display: block; }
-  .drop-cap::first-letter { font-size: 3.2em; float: left; line-height: 0.8; margin: 0.08em 0.1em 0 0; color: var(--gold); font-weight: 300; }
-  .micro-rule { display: block; width: 2.5rem; height: 1px; background: rgba(201,169,110,0.4); margin-bottom: var(--sp-xs); }
+  /* removed: .drop-cap old 3.2em */
+  /* removed: .micro-rule old solid */
   .img-caption { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(0.78rem, 0.9vw, 0.86rem); font-weight: 400; letter-spacing: 0.12em; color: rgba(201,169,110,0.72); margin-top: 0.9rem; padding-left: 0.8rem; border-left: 1px solid rgba(201,169,110,0.18); display: block; line-height: 1.6; }
   .btn-gold {
     display: inline-block;
@@ -541,8 +538,8 @@
     .inquiry { padding: var(--sp-lg) 1.5rem; }
   }
   @media (max-width: 768px) {
-    .body-text { font-size: clamp(1.0rem, 4.2vw, 1.12rem); line-height: 1.7; }
-    .body-text p { font-size: clamp(1.0rem, 4.2vw, 1.12rem); }
+    /* removed: .body-text old mobile override */
+    /* removed: body-text p mobile 4.2vw */
     h2 { text-wrap: unset; }
   }
   @media (max-width: 375px) {
@@ -1231,15 +1228,7 @@
   }
 
   /* Section eyebrows — unified */
-  .section-tag, .eyebrow, .section-eyebrow {
-    font-family: 'Cormorant Garamond', Georgia, serif ;
-    font-size: clamp(0.45rem, 0.65vw, 0.58rem);
-    letter-spacing: 0.55em;
-    text-transform: uppercase;
-    color: rgba(201,169,110,0.7);
-    font-weight: 300;
-    margin-bottom: clamp(0.8rem, 1.4vw, 1.1rem);
-  }
+  /* removed: section-tag eyebrow Cormorant group */
 
   /* Body copy — unified rhythm */
   .body-copy, .section-body, p.body {
@@ -1326,21 +1315,7 @@
   /* ── EYEBROWS / SECTION TAGS ──
      Tiny. Tracked wide. Gold. The whisper before the statement. */
   .section-tag,
-  .eyebrow,
-  .section-eyebrow,
-  .act-break-glyph,
-  [class*="eyebrow"],
-  [class*="tag"] {
-    font-family: 'Cormorant Garamond', Georgia, serif ;
-    font-size: clamp(0.44rem, 0.62vw, 0.56rem) ;
-    font-weight: 400 ;
-    letter-spacing: 0.6em ;
-    text-transform: uppercase ;
-    color: rgba(201,169,110,0.72) ;
-    margin-bottom: clamp(0.7rem, 1.2vw, 1rem) ;
-    line-height: 1.6 ;
-    display: block;
-  }
+  /* removed: eyebrow group Cormorant override */
 
   /* ── PRIMARY SECTION HEADLINES (h2) ──
      Large. Light weight. Italic when it earns it. This is the voice. */
@@ -1393,23 +1368,7 @@
   /* ── PULL QUOTES ──
      The centrepiece. Large. Italic. Gold accent. Nothing near it. */
   blockquote,
-  .pull-quote,
-  .pull-quote-text {
-    font-family: 'Cormorant Garamond', Georgia, serif ;
-    font-style: italic !important;
-    font-weight: 300 ;
-    font-size: clamp(1.6rem, 3.2vw, 3.0rem) ;
-    color: rgba(245,240,232,0.9) ;
-    line-height: 1.4 ;
-    letter-spacing: 0.01em ;
-    text-align: center;
-    max-width: 28ch;
-    margin: 0 auto;
-    padding: var(--sp-xl) clamp(2rem, 12vw, 14rem);
-    border: none !important;
-    border-left: none !important;
-    position: relative;
-  }
+  /* removed: pull-quote group old */
   blockquote::before,
   .pull-quote::before {
     content: 'C';
@@ -1453,16 +1412,7 @@
 
   /* ── DROP CAPS — act openers ── */
   .act-opener p:first-of-type::first-letter,
-  .drop-cap::first-letter {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(3.5rem, 7vw, 6rem);
-    font-weight: 300;
-    color: rgba(201,169,110,0.9);
-    float: left;
-    line-height: 0.78;
-    margin-right: 0.12em;
-    margin-top: 0.08em;
-  }
+  /* removed: .drop-cap old 6rem */
 
   /* ── GOLD RULE LINE under eyebrows ── */
   .section-tag::after,
@@ -1717,10 +1667,7 @@
   }
 
   /* Eyebrow floats above with air */
-  .eyebrow {
-    display: block;
-    margin-bottom: clamp(0.8rem, 1.4vw, 1.1rem);
-  }
+  /* removed: .eyebrow old (display block only) */
 
   /* Headline breathes below */
   .split-text h2,
@@ -1750,15 +1697,7 @@
 
   /* Image captions — barely there */
   .img-caption,
-  figcaption {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(0.72rem, 0.85vw, 0.82rem);
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: rgba(201, 169, 110, 0.5);
-    margin-top: 0.9rem;
-    line-height: 1.4;
-  }
+  /* removed: figcaption old */
 
   /* Split sections — image and text perfectly gapped */
   .split {
@@ -2101,14 +2040,8 @@
       font-size: clamp(1.05rem, 1.1vw, 1.18rem);
       line-height: 1.82;
     }
-    .pull-quote {
-      font-size: clamp(1.4rem, 1.8vw, 2rem);
-      max-width: 720px;
-    }
-    .eyebrow {
-      font-size: clamp(0.62rem, 0.7vw, 0.72rem);
-      letter-spacing: 0.22em;
-    }
+    /* removed: .pull-quote 1280px scoped */
+    /* removed: .eyebrow old (1280px scoped) */
     .act-break { margin: clamp(4rem, 7vw, 8rem) auto; }
     section { padding-top: clamp(5rem, 8vw, 9rem); padding-bottom: clamp(5rem, 8vw, 9rem); }
   }
@@ -2241,6 +2174,131 @@
     line-height: 1.55;
     letter-spacing: 0.02em;
     color: rgba(245,240,232,0.75);
+  }
+
+
+
+  /* ══════════════════════════════════════════════════════════════════
+     FINAL POLISH — Rocky 2026-05-12
+     Section headings, rhythm, colour, specificity wins
+  ══════════════════════════════════════════════════════════════════ */
+
+  /* ── SECTION HEADINGS ────────────────────────────────────────── */
+  section h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: rgba(245,240,232,0.92);
+    margin: 0 0 clamp(0.8rem, 1.5vw, 1.2rem);
+  }
+  section h2 em {
+    font-style: italic;
+    color: rgba(201,169,110,0.85);
+  }
+  section h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    line-height: 1.25;
+    letter-spacing: 0;
+    color: rgba(245,240,232,0.85);
+    margin: 0 0 clamp(0.6rem, 1vw, 0.9rem);
+  }
+
+  /* ── EYEBROW → HEADING RHYTHM ─────────────────────────────────── */
+  .eyebrow + h2,
+  .eyebrow + h3 {
+    margin-top: 0.4em;
+  }
+  .micro-rule + .eyebrow {
+    margin-bottom: 0.5em;
+  }
+  .micro-rule + h2,
+  .micro-rule + h3 {
+    margin-top: 0.3em;
+  }
+
+  /* ── BODY TEXT PARAGRAPH SPACING ─────────────────────────────── */
+  .body-text > p + p,
+  p.body-text + p.body-text {
+    margin-top: clamp(1rem, 1.8vw, 1.4rem);
+  }
+
+  /* ── SPLIT SECTION VERTICAL CENTERING ────────────────────────── */
+  .split-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(0.8rem, 1.4vw, 1.2rem);
+  }
+
+  /* ── GOLD HAIRLINE SECTION SEPARATOR ─────────────────────────── */
+  .gold-rule {
+    display: block;
+    width: clamp(32px, 5vw, 56px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,169,110,0.6), transparent);
+    margin: clamp(1.2rem, 2vw, 1.8rem) 0;
+  }
+
+  /* ── STAIRCASE / ARRIVAL SECTION ─────────────────────────────── */
+  #staircase .body-text p,
+  #staircase p.body-text {
+    font-size: clamp(1.05rem, 1.3vw, 1.22rem);
+    line-height: 1.9;
+  }
+
+  /* ── WHP SECTION PORTRAIT CAPTION ────────────────────────────── */
+  #history .img-reveal + figcaption,
+  #history figcaption {
+    color: rgba(201,169,110,0.5);
+    font-size: clamp(0.68rem, 0.8vw, 0.76rem);
+    font-style: italic;
+    text-align: center;
+    margin-top: 0.4em;
+  }
+
+  /* ── INQUIRY / CLOSING SECTION ───────────────────────────────── */
+  #inquiry h2 {
+    font-size: clamp(2rem, 4vw, 3.8rem);
+    letter-spacing: -0.02em;
+  }
+  #inquiry .eyebrow {
+    margin-bottom: 1em;
+  }
+
+  /* ── KITCHEN SECTION — heart-pine warmth ─────────────────────── */
+  #kitchen .body-text p,
+  #kitchen p.body-text {
+    color: rgba(245,240,232,0.85);
+    line-height: 1.88;
+  }
+
+  /* ── ROOM INDEX ───────────────────────────────────────────────── */
+  .room-index-section {
+    padding-top: clamp(4rem, 7vw, 8rem);
+    padding-bottom: clamp(4rem, 7vw, 8rem);
+  }
+
+  /* ── GROUNDS / ESTATE LIFE ────────────────────────────────────── */
+  #hollycrest h2,
+  #terrace h2 {
+    font-size: clamp(1.6rem, 2.8vw, 2.8rem);
+  }
+
+  /* ── PREVENT ORPHAN LAST WORDS IN HEADINGS ────────────────────── */
+  section h2, section h3, .pull-quote {
+    text-wrap: balance;
+  }
+
+  /* ── MOBILE REFINEMENTS 375px ─────────────────────────────────── */
+  @media (max-width: 375px) {
+    section h2 { font-size: clamp(1.5rem, 7vw, 2rem); }
+    .pull-quote { font-size: 1.15rem; padding: 0 0.5rem; }
+    .act-break { margin: 2rem auto; }
+    p.body-text, .body-text p { font-size: 1rem; line-height: 1.78; }
   }
 
 </style>
