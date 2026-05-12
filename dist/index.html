@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- build: 20260512202801 -->
+<!-- build: 20260512202953 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -280,24 +280,6 @@
     position: relative;
     gap: 0;
     padding: 0 clamp(1rem, 3vw, 3rem);
-  }
-  /* ── CREST: child of stat-bar, straddles belt top hairline ── */
-  .stat-crest-wrap {
-    position: absolute;
-    left: 50%;
-    top: -75px;
-    transform: translateX(-50%);
-    width: 150px;
-    height: 150px;
-    z-index: 30;
-    pointer-events: none;
-    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.9));
-  }
-  .stat-crest-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
   }
 
   /* WINGS — flanking sets of stats */
@@ -3175,11 +3157,6 @@ blockquote.in {
 
   <!-- JEWELED BELT: one unified container, crest rises above, gold lines frame it -->
   <div class="stat-bar">
-    <!-- CREST: direct child of stat-bar, straddles top hairline -->
-    <div class="stat-crest-wrap">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778338868/gh_key/gh_crest_transparent_v1.png"
-           alt="Garran Hill Estate Crest" loading="eager" decoding="async">
-    </div>
 
     <!-- top gold hairline — spans full width -->
     <div class="stat-top-line"></div>
