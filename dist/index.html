@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- build: 20260512183252 -->
+<!-- build: 20260512183852 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -2240,7 +2240,7 @@
     overflow: hidden;
     pointer-events: none;
     /* Belt-and-suspenders: container-level opacity cap */
-    opacity: 0.22;
+    opacity: 0.30;
   }
 
   /* Layer 1 — large background inscription, very faint */
@@ -2261,8 +2261,8 @@
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-weight: 300;
     font-style: italic;
-    font-size: clamp(2.2rem, 4.5vw, 5.5rem);
-    color: rgba(201,169,110,0.028);
+    font-size: clamp(2.2rem, 6vw, 5.5rem);
+    color: rgba(201,169,110,0.018);
     letter-spacing: 0.02em;
     white-space: nowrap;
     line-height: 1.35;
@@ -3317,7 +3317,16 @@ blockquote.in {
 <section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;margin-top:-15vh;padding-top:0;">
  <!-- Top blend — fades from #0a0a0a at top into section -->
  <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:16vh;background:linear-gradient(to bottom,#0a0a0a 0%,transparent 100%);z-index:2;pointer-events:none;"></div>
- <!-- ghost text removed — atmosphere via CSS only -->
+ <!-- WHP GHOST MANUSCRIPT — atmosphere only, sensed not read -->
+<div class="letter-ghost" aria-hidden="true">
+  <div class="lg-layer-1">
+    <span class="lg-line-1">Build the farm&mdash;therefore&mdash;and let me hear</span>
+    <span class="lg-line-2">at every stage of that happy game.</span>
+    <span class="lg-line-3">&nbsp;</span>
+    <span class="lg-line-4">I think of Garran Hill every day.</span>
+    <span class="lg-line-5">It is the only place I want to be.</span>
+  </div>
+</div>
 <div class="split" style="position:relative;z-index:1;align-items:center;">
  <!-- Portrait container -->
  <div class="img-reveal" style="flex:1;display:flex;align-items:center;justify-content:center;padding:var(--sp-md) 0;min-height:320px;">
