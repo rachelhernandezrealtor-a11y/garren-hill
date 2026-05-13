@@ -3242,113 +3242,182 @@ blockquote.in {
 
 </section>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       ACT I — ARRIVAL
-       Beat 1: Hero (fix later — placeholder kept)
-       Beat 2: KB Gate dissolve (already in place — #kb-gate)
-       Beat 3: The Name — provenance title card
-       Beat 4: The Threshold — the door opens
-       Beat 5: The Brick — architecture beat
-       Beat 6: The Light — leaded glass / foyer detail
-       THEN: the house opens
-  ═══════════════════════════════════════════════════════════ -->
 
-  <!-- ── BEAT 3: PROVENANCE TITLE CARD ── -->
-  <section id="provenance" aria-label="Garran Hill provenance" style="background:#0a0a0a;padding:clamp(5rem,10vw,10rem) clamp(2rem,6vw,4rem);text-align:center;position:relative;overflow:hidden;">
-    <!-- ghost letter texture -->
-    <div aria-hidden="true" style="position:absolute;inset:0;opacity:0.04;background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777391998/gh_key/gh_whp_letter1.jpg');background-size:cover;background-position:center top;pointer-events:none;"></div>
-    <div style="position:relative;z-index:2;max-width:680px;margin:0 auto;">
-      <span style="display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.5rem,0.6vw,0.6rem);letter-spacing:0.38em;text-transform:uppercase;color:rgba(201,169,110,0.6);margin-bottom:2.4rem;">Pinehurst, North Carolina &nbsp;&middot;&nbsp; Est. 1916</span>
-      <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,2.4vw,2.6rem);font-weight:300;color:#F5F0E8;line-height:1.55;margin:0 0 1.6rem;letter-spacing:0.01em;">Built in 1916 by the craftsmen Leonard Tufts sent.<br>Named by Walter Hines Page.<br>Held, in turn, by four stewards over 110 years.</p>
-      <span style="display:block;width:40px;height:1px;background:rgba(201,169,110,0.4);margin:0 auto;"></span>
-      <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.95rem,1.2vw,1.1rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.5);line-height:1.8;margin:1.6rem 0 0;">It is offered now for the first time.</p>
+  <!-- ═══════════════════════════════════════════════════════════════
+       THE MAGAZINE OPENING — 6 BEATS BEFORE THE HOUSE
+       Beat 1: Provenance — the name, the year, the lineage
+       Beat 2: The Numbers — seven fireplaces, 4.15 acres, 110 years
+       Beat 3: The Brick — Flemish bond, Tufts' craftsmen, the portico
+       Beat 4: The Threshold — the door, the inscription, the brass key
+       Beat 5: The Light — leaded glass, oak floors, the original details
+       Beat 6: The Breath — one line before the house opens
+  ═══════════════════════════════════════════════════════════════ -->
+
+
+  <!-- ── BEAT 1: PROVENANCE — dark, almost silent ── -->
+  <section id="provenance" aria-label="Garran Hill provenance" style="background:#0a0a0a;padding:clamp(6rem,12vw,11rem) clamp(2rem,6vw,4rem);text-align:center;position:relative;overflow:hidden;">
+    <!-- ghost letter background -->
+    <div aria-hidden="true" style="position:absolute;inset:0;background:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/gh_key/gh_historygate_sepia.jpg') center/cover no-repeat;opacity:0.06;pointer-events:none;"></div>
+    <div style="position:relative;z-index:2;max-width:700px;margin:0 auto;">
+      <span style="display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.48rem,0.58vw,0.58rem);letter-spacing:0.42em;text-transform:uppercase;color:rgba(201,169,110,0.55);margin-bottom:2.8rem;">Pinehurst, North Carolina &nbsp;&middot;&nbsp; Est. 1916</span>
+      <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,3.2vw,3.6rem);font-weight:300;color:#F5F0E8;line-height:1.25;margin:0 0 2rem;letter-spacing:0.01em;">Neo-Georgian.<br>Walter Hines Page.<br>110 years of remarkable stewardship.</h2>
+      <div aria-hidden="true" style="width:48px;height:1px;background:rgba(201,169,110,0.35);margin:0 auto 2rem;"></div>
+      <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1rem,1.3vw,1.18rem);font-weight:300;color:rgba(245,240,232,0.58);line-height:1.9;margin:0;">Built in 1916 by the craftsmen Leonard Tufts sent.<br>Named by Walter Hines Page, Ambassador to the Court of St. James.<br>Held by four stewards. Restored once, in 1999.<br><em style="color:rgba(201,169,110,0.7);">Offered now for the first time.</em></p>
     </div>
   </section>
 
-  <!-- ── BEAT 4: THE THRESHOLD — door detail ── -->
-  <section id="threshold-beat" aria-label="The threshold" style="background:#0a0a0a;position:relative;overflow:hidden;">
-    <!-- Full bleed door photo -->
-    <div style="position:relative;width:100%;height:clamp(480px,70vh,780px);overflow:hidden;">
-      <img loading="lazy" decoding="async"
-        src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777244132/gh_interiors/1701"
-        alt="The front door of Garran Hill — brass hardware, leaded glass sidelights, a glimpse of the fireplace beyond"
-        style="width:100%;height:100%;object-fit:cover;object-position:center center;">
-      <!-- gradient overlay -->
-      <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.15) 0%,rgba(10,10,10,0.0) 35%,rgba(10,10,10,0.65) 85%,#0a0a0a 100%);"></div>
-      <!-- text anchored bottom -->
-      <div style="position:absolute;bottom:0;left:0;right:0;padding:clamp(2rem,4vw,4rem) clamp(2rem,6vw,6rem);z-index:2;">
-        <span style="display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.5rem,0.55vw,0.55rem);letter-spacing:0.36em;text-transform:uppercase;color:rgba(201,169,110,0.65);margin-bottom:0.9rem;">The Threshold &nbsp;&middot;&nbsp; 1916</span>
-        <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.2rem,1.8vw,2rem);font-weight:300;color:#F5F0E8;line-height:1.4;margin:0;max-width:560px;">The inscription is cut into the stone above the entry.<br><em>Garran Hill, 1916.</em></p>
-      </div>
-    </div>
-  </section>
 
-  <!-- ── BEAT 5: THE BRICK — architecture, full bleed exterior ── -->
-  <section id="brick-beat" aria-label="The architecture" style="background:#0a0a0a;position:relative;overflow:hidden;">
-    <div style="display:flex;flex-wrap:wrap;min-height:clamp(400px,60vh,700px);">
-      <!-- Large image left -->
-      <div style="flex:0 0 65%;min-width:280px;position:relative;overflow:hidden;">
-        <img loading="lazy" decoding="async"
-          src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777243320/gh_exteriors/entrance_2"
-          alt="Garran Hill — brick entrance columns with lanterns, iron gates, wooded drive, Pinehurst NC"
-          style="width:100%;height:100%;object-fit:cover;object-position:center 30%;min-height:400px;">
+  <!-- ── BEAT 2: THE NUMBERS — proof, not marketing ── -->
+  <section id="estate-proof" aria-label="Estate details" style="background:#0f0e0c;padding:clamp(5rem,9vw,9rem) clamp(2rem,6vw,5rem);position:relative;overflow:hidden;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <!-- eyebrow -->
+      <div style="text-align:center;margin-bottom:clamp(3rem,5vw,5rem);">
+        <span style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.48rem,0.58vw,0.58rem);letter-spacing:0.42em;text-transform:uppercase;color:rgba(201,169,110,0.55);">What was built &nbsp;&middot;&nbsp; What was kept</span>
       </div>
-      <!-- Text right — dark panel -->
-      <div style="flex:1;min-width:240px;background:#0a0a0a;display:flex;align-items:center;padding:clamp(3rem,6vw,6rem) clamp(2rem,5vw,5rem);">
+      <!-- two-column proof grid -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,4vw,4rem) clamp(3rem,6vw,7rem);align-items:start;">
+        <!-- left column -->
         <div>
-          <span style="display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.5rem,0.55vw,0.55rem);letter-spacing:0.36em;text-transform:uppercase;color:rgba(201,169,110,0.6);margin-bottom:1.2rem;">Built in Brick</span>
-          <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,2.8vw,3.2rem);font-weight:300;color:#F5F0E8;line-height:1.1;margin:0 0 1.4rem;">Full brick.<br>Flemish bond.<br>A century of proportion.</h2>
-          <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.95rem,1.2vw,1.12rem);font-weight:300;color:rgba(245,240,232,0.72);line-height:1.85;margin:0;">Neo-Georgian. Red handmade brick, laid by Tufts' craftsmen -- the same men who built the Holly Inn and the great houses of the village. The portico is white. The symmetry is deliberate. The authority is in the masonry.</p>
+          <div style="margin-bottom:clamp(2.5rem,4vw,3.5rem);padding-bottom:clamp(2.5rem,4vw,3.5rem);border-bottom:1px solid rgba(201,169,110,0.12);">
+            <span style="display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(3rem,5vw,5.5rem);font-weight:300;color:#C9A96E;line-height:1;margin-bottom:0.5rem;">7</span>
+            <span style="display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.48rem,0.58vw,0.58rem);letter-spacing:0.38em;text-transform:uppercase;color:rgba(245,240,232,0.45);margin-bottom:0.8rem;">Fireplaces</span>
+            <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.92rem,1.15vw,1.08rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.55);line-height:1.75;margin:0;">Each with its original carved mantel. The Georgian fireplace in the salon is the first thing the eye finds.</p>
+          </div>
+          <div style="margin-bottom:clamp(2.5rem,4vw,3.5rem);padding-bottom:clamp(2.5rem,4vw,3.5rem);border-bottom:1px solid rgba(201,169,110,0.12);">
+            <span style="display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(3rem,5vw,5.5rem);font-weight:300;color:#C9A96E;line-height:1;margin-bottom:0.5rem;">6,072</span>
+            <span style="display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.48rem,0.58vw,0.58rem);letter-spacing:0.38em;text-transform:uppercase;color:rgba(245,240,232,0.45);margin-bottom:0.8rem;">Square Feet</span>
+            <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.92rem,1.15vw,1.08rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.55);line-height:1.75;margin:0;">4 bedrooms. 4 full baths. 2 powder rooms. The salon alone runs nearly forty feet end to end.</p>
+          </div>
+          <div>
+            <span style="display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(3rem,5vw,5.5rem);font-weight:300;color:#C9A96E;line-height:1;margin-bottom:0.5rem;">4.15</span>
+            <span style="display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.48rem,0.58vw,0.58rem);letter-spacing:0.38em;text-transform:uppercase;color:rgba(245,240,232,0.45);margin-bottom:0.8rem;">Acres</span>
+            <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.92rem,1.15vw,1.08rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.55);line-height:1.75;margin:0;">The surviving house-core of a much larger Page-era farm. The estate sits inside its own circle. The world outside the gates does not exist here.</p>
+          </div>
+        </div>
+        <!-- right column -->
+        <div>
+          <div style="margin-bottom:clamp(2.5rem,4vw,3.5rem);padding-bottom:clamp(2.5rem,4vw,3.5rem);border-bottom:1px solid rgba(201,169,110,0.12);">
+            <span style="display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(3rem,5vw,5.5rem);font-weight:300;color:#C9A96E;line-height:1;margin-bottom:0.5rem;">1916</span>
+            <span style="display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.48rem,0.58vw,0.58rem);letter-spacing:0.38em;text-transform:uppercase;color:rgba(245,240,232,0.45);margin-bottom:0.8rem;">Year Built</span>
+            <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.92rem,1.15vw,1.08rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.55);line-height:1.75;margin:0;">The same year Walter Hines Page served as U.S. Ambassador to the Court of St. James. The house was built in his honor. He named it Garran Hill.</p>
+          </div>
+          <div style="margin-bottom:clamp(2.5rem,4vw,3.5rem);padding-bottom:clamp(2.5rem,4vw,3.5rem);border-bottom:1px solid rgba(201,169,110,0.12);">
+            <span style="display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(3rem,5vw,5.5rem);font-weight:300;color:#C9A96E;line-height:1;margin-bottom:0.5rem;">1999</span>
+            <span style="display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.48rem,0.58vw,0.58rem);letter-spacing:0.38em;text-transform:uppercase;color:rgba(245,240,232,0.45);margin-bottom:0.8rem;">The Restoration</span>
+            <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.92rem,1.15vw,1.08rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.55);line-height:1.75;margin:0;">The restoration did not make Garran Hill new. It made it whole again. Original wood doors saved. Oak floors restored. Brass hardware polished. The leaded glass untouched.</p>
+          </div>
+          <div>
+            <span style="display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(3rem,5vw,5.5rem);font-weight:300;color:#C9A96E;line-height:1;margin-bottom:0.5rem;">110</span>
+            <span style="display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.48rem,0.58vw,0.58rem);letter-spacing:0.38em;text-transform:uppercase;color:rgba(245,240,232,0.45);margin-bottom:0.8rem;">Years of Stewardship</span>
+            <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.92rem,1.15vw,1.08rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.55);line-height:1.75;margin:0;">Four families. Each one understood what they had. None of them changed the bones. That is the inheritance.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── BEAT 6: THE LIGHT — leaded glass / foyer glimpse ── -->
-  <section id="light-beat" aria-label="Light through leaded glass" style="background:#0a0a0a;padding:clamp(4rem,8vw,8rem) clamp(2rem,6vw,6rem);position:relative;overflow:hidden;">
-    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,3rem);align-items:center;">
-      <!-- Text left -->
-      <div style="order:1;">
-        <span style="display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.5rem,0.55vw,0.55rem);letter-spacing:0.36em;text-transform:uppercase;color:rgba(201,169,110,0.6);margin-bottom:1.2rem;">Original &nbsp;&middot;&nbsp; 1916</span>
-        <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.6rem,2.4vw,2.8rem);font-weight:300;color:#F5F0E8;line-height:1.15;margin:0 0 1.2rem;">The leaded glass<br>is original.</h2>
-        <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.95rem,1.2vw,1.12rem);font-weight:300;color:rgba(245,240,232,0.72);line-height:1.85;margin:0 0 1rem;">The sidelights. The fanlight above the door. The light they make at different hours of the day has not changed since 1916.</p>
-        <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.95rem,1.2vw,1.12rem);font-weight:300;font-style:italic;color:rgba(201,169,110,0.75);line-height:1.85;margin:0;">The oak floors. The seven mantels. The brass hardware -- possibly the original keys.</p>
-      </div>
-      <!-- Image right — portrait stagger -->
-      <div style="order:2;position:relative;overflow:hidden;" class="img-reveal">
-        <img loading="lazy" decoding="async"
-          src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_900/v1777244132/gh_interiors/1338"
-          alt="Garran Hill — original arched doorway with leaded glass, gold-framed portraits flanking the entrance hall"
-          style="width:100%;height:clamp(420px,55vh,640px);object-fit:cover;object-position:center 20%;display:block;">
+
+  <!-- ── BEAT 3: THE BRICK — full bleed exterior with copy ── -->
+  <section id="brick-beat" aria-label="The architecture of Garran Hill" style="background:#0a0a0a;position:relative;overflow:hidden;">
+    <!-- Full bleed image -->
+    <div style="position:relative;width:100%;height:clamp(560px,80vh,900px);overflow:hidden;">
+      <img loading="lazy" decoding="async"
+        src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/gh_exteriors/entrance_2"
+        alt="Garran Hill entrance — brick columns with lanterns, wrought iron gates, wooded Pinehurst drive, 1916"
+        style="width:100%;height:100%;object-fit:cover;object-position:center 40%;">
+      <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0) 30%,rgba(10,10,10,0.75) 80%,#0a0a0a 100%);"></div>
+      <!-- text bottom -->
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:clamp(3rem,5vw,5rem) clamp(2rem,7vw,8rem);z-index:2;max-width:900px;">
+        <span style="display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.48rem,0.56vw,0.56rem);letter-spacing:0.4em;text-transform:uppercase;color:rgba(201,169,110,0.6);margin-bottom:1rem;">Full Brick &nbsp;&middot;&nbsp; Flemish Bond &nbsp;&middot;&nbsp; Neo-Georgian</span>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.6rem,2.8vw,3.4rem);font-weight:300;color:#F5F0E8;line-height:1.2;margin:0 0 1.2rem;">The same hands that built<br>the Holly Inn built this.</h2>
+        <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.95rem,1.2vw,1.15rem);font-weight:300;color:rgba(245,240,232,0.7);line-height:1.85;margin:0;max-width:580px;">Leonard Tufts sent his craftsmen -- the same men who shaped the great buildings of Pinehurst village. Red handmade brick, laid in Flemish bond. The white portico. The symmetry that doesn't announce itself. The authority is in the masonry.</p>
       </div>
     </div>
   </section>
 
-  <!-- ── BREATH — dark divider before house opens ── -->
-  <div aria-hidden="true" style="background:#0a0a0a;padding:clamp(2rem,4vw,4rem) clamp(2rem,6vw,6rem);text-align:center;">
-    <span style="display:block;width:1px;height:clamp(40px,6vw,60px);background:linear-gradient(to bottom,transparent,rgba(201,169,110,0.4),transparent);margin:0 auto 1.6rem;"></span>
-    <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.1rem,1.6vw,1.5rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.45);letter-spacing:0.04em;">The house.</span>
-    <span style="display:block;width:1px;height:clamp(40px,6vw,60px);background:linear-gradient(to bottom,transparent,rgba(201,169,110,0.4),transparent);margin:1.6rem auto 0;"></span>
+
+  <!-- ── BEAT 4: THE THRESHOLD — the door opens ── -->
+  <section id="threshold-beat" aria-label="The threshold of Garran Hill" style="background:#0a0a0a;position:relative;overflow:hidden;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;min-height:clamp(500px,75vh,820px);">
+      <!-- image left — portrait -->
+      <div style="position:relative;overflow:hidden;">
+        <img loading="lazy" decoding="async"
+          src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_900/gh_interiors/1701"
+          alt="Garran Hill front door — brass hardware, original key, leaded glass sidelights, fireplace glimpse beyond"
+          style="width:100%;height:100%;object-fit:cover;object-position:center center;min-height:500px;">
+        <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,0) 60%,#0a0a0a 100%);"></div>
+      </div>
+      <!-- text right -->
+      <div style="background:#0a0a0a;display:flex;align-items:center;padding:clamp(3rem,6vw,7rem) clamp(2.5rem,5vw,6rem);">
+        <div>
+          <span style="display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.48rem,0.56vw,0.56rem);letter-spacing:0.4em;text-transform:uppercase;color:rgba(201,169,110,0.55);margin-bottom:1.4rem;">The Threshold &nbsp;&middot;&nbsp; 1916</span>
+          <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,2.8vw,3.2rem);font-weight:300;color:#F5F0E8;line-height:1.15;margin:0 0 1.4rem;">The door has been<br>open since 1916.</h2>
+          <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.95rem,1.2vw,1.12rem);font-weight:300;color:rgba(245,240,232,0.68);line-height:1.9;margin:0 0 1.2rem;">The inscription is cut into the stone above the entry: <em style="color:rgba(245,240,232,0.85);">Garran Hill, 1916.</em> It was placed there by the craftsmen Leonard Tufts sent. It has not moved.</p>
+          <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.95rem,1.2vw,1.12rem);font-weight:300;color:rgba(245,240,232,0.68);line-height:1.9;margin:0 0 1.6rem;">The leaded glass sidelights are original. The fanlight above is original. The brass hardware -- possibly the original keys -- opens the same locks.</p>
+          <span style="display:block;width:36px;height:1px;background:rgba(201,169,110,0.35);"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── BEAT 5: THE DETAILS — what was kept ── -->
+  <section id="original-details" aria-label="Original details preserved in Garran Hill" style="background:#0f0e0c;padding:clamp(5rem,9vw,9rem) clamp(2rem,6vw,5rem);position:relative;overflow:hidden;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(3rem,6vw,7rem);align-items:center;">
+        <!-- text left -->
+        <div>
+          <span style="display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.48rem,0.56vw,0.56rem);letter-spacing:0.4em;text-transform:uppercase;color:rgba(201,169,110,0.55);margin-bottom:1.4rem;">What the restoration kept</span>
+          <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,2.6vw,3rem);font-weight:300;color:#F5F0E8;line-height:1.2;margin:0 0 1.6rem;">The original is still here.<br>All of it.</h2>
+          <!-- detail list — editorial not bullet -->
+          <div style="border-top:1px solid rgba(201,169,110,0.15);">
+            <div style="padding:1.1rem 0;border-bottom:1px solid rgba(201,169,110,0.1);display:flex;gap:1.2rem;align-items:baseline;">
+              <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.1rem,1.6vw,1.5rem);color:#C9A96E;font-weight:300;flex-shrink:0;">—</span>
+              <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.92rem,1.1vw,1.05rem);font-weight:300;color:rgba(245,240,232,0.72);line-height:1.75;margin:0;"><strong style="color:rgba(245,240,232,0.9);font-weight:400;">Seven carved mantels.</strong> Each original to its fireplace. Each fireplace original to its room.</p>
+            </div>
+            <div style="padding:1.1rem 0;border-bottom:1px solid rgba(201,169,110,0.1);display:flex;gap:1.2rem;align-items:baseline;">
+              <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.1rem,1.6vw,1.5rem);color:#C9A96E;font-weight:300;flex-shrink:0;">—</span>
+              <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.92rem,1.1vw,1.05rem);font-weight:300;color:rgba(245,240,232,0.72);line-height:1.75;margin:0;"><strong style="color:rgba(245,240,232,0.9);font-weight:400;">Flemish bond brick.</strong> Handmade. Red. The pattern that requires a craftsman, not a machine.</p>
+            </div>
+            <div style="padding:1.1rem 0;border-bottom:1px solid rgba(201,169,110,0.1);display:flex;gap:1.2rem;align-items:baseline;">
+              <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.1rem,1.6vw,1.5rem);color:#C9A96E;font-weight:300;flex-shrink:0;">—</span>
+              <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.92rem,1.1vw,1.05rem);font-weight:300;color:rgba(245,240,232,0.72);line-height:1.75;margin:0;"><strong style="color:rgba(245,240,232,0.9);font-weight:400;">Leaded glass.</strong> Sidelights and fanlight above the entry. Original. The light they make at different hours has not changed since 1916.</p>
+            </div>
+            <div style="padding:1.1rem 0;border-bottom:1px solid rgba(201,169,110,0.1);display:flex;gap:1.2rem;align-items:baseline;">
+              <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.1rem,1.6vw,1.5rem);color:#C9A96E;font-weight:300;flex-shrink:0;">—</span>
+              <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.92rem,1.1vw,1.05rem);font-weight:300;color:rgba(245,240,232,0.72);line-height:1.75;margin:0;"><strong style="color:rgba(245,240,232,0.9);font-weight:400;">Oak floors.</strong> Restored, not replaced. The same boards that have held every person who ever lived here.</p>
+            </div>
+            <div style="padding:1.1rem 0;border-bottom:1px solid rgba(201,169,110,0.1);display:flex;gap:1.2rem;align-items:baseline;">
+              <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.1rem,1.6vw,1.5rem);color:#C9A96E;font-weight:300;flex-shrink:0;">—</span>
+              <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.92rem,1.1vw,1.05rem);font-weight:300;color:rgba(245,240,232,0.72);line-height:1.75;margin:0;"><strong style="color:rgba(245,240,232,0.9);font-weight:400;">Mahogany volute staircase.</strong> Rises to the right from the foyer in a single continuous arc. Black railing. The same curve since 1916.</p>
+            </div>
+            <div style="padding:1.1rem 0;display:flex;gap:1.2rem;align-items:baseline;">
+              <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.1rem,1.6vw,1.5rem);color:#C9A96E;font-weight:300;flex-shrink:0;">—</span>
+              <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.92rem,1.1vw,1.05rem);font-weight:300;color:rgba(245,240,232,0.72);line-height:1.75;margin:0;"><strong style="color:rgba(245,240,232,0.9);font-weight:400;">Brass hardware.</strong> Polished. Possibly the original keys.</p>
+            </div>
+          </div>
+        </div>
+        <!-- image right — staircase -->
+        <div style="position:relative;overflow:hidden;">
+          <img loading="lazy" decoding="async"
+            src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1200/gh_interiors/1338"
+            alt="Garran Hill — original arched entrance hall doorway with leaded glass, gold-framed portraits, 1916"
+            style="width:100%;height:clamp(500px,65vh,750px);object-fit:cover;object-position:center 15%;display:block;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── BEAT 6: BREATH — the reveal divider ── -->
+  <div aria-hidden="true" style="background:#0a0a0a;padding:clamp(3.5rem,6vw,6rem) 2rem;text-align:center;">
+    <div style="width:1px;height:clamp(50px,7vw,70px);background:linear-gradient(to bottom,transparent,rgba(201,169,110,0.45),transparent);margin:0 auto 2rem;"></div>
+    <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.2rem,1.8vw,1.7rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.38);letter-spacing:0.05em;margin:0;">The house.</p>
+    <div style="width:1px;height:clamp(50px,7vw,70px);background:linear-gradient(to bottom,transparent,rgba(201,169,110,0.45),transparent);margin:2rem auto 0;"></div>
   </div>
 
 
 
-
-<!-- ── THRESHOLD ──────────────────────────────────────────── -->
-
-
-
-
-
-<div class="act-break" aria-hidden="true">
-  <div class="act-break-diamond"></div>
-  <div class="act-break-diamond"></div>
-  <div class="act-break-diamond"></div>
-</div>
-
-
-
-<!-- SALON — full split -->
 <section class="editorial-split" id="salon">
   <!-- Two-photo salon gallery — 1203 (wide/tapestry) + 1209 (second angle) -->
   <div class="split-img img-reveal" style="position:relative;overflow:hidden;">
