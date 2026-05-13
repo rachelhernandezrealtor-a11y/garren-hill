@@ -3242,62 +3242,100 @@ blockquote.in {
 
 </section>
 
+  <!-- ═══════════════════════════════════════════════════════════
+       ACT I — ARRIVAL
+       Beat 1: Hero (fix later — placeholder kept)
+       Beat 2: KB Gate dissolve (already in place — #kb-gate)
+       Beat 3: The Name — provenance title card
+       Beat 4: The Threshold — the door opens
+       Beat 5: The Brick — architecture beat
+       Beat 6: The Light — leaded glass / foyer detail
+       THEN: the house opens
+  ═══════════════════════════════════════════════════════════ -->
 
+  <!-- ── BEAT 3: PROVENANCE TITLE CARD ── -->
+  <section id="provenance" aria-label="Garran Hill provenance" style="background:#0a0a0a;padding:clamp(5rem,10vw,10rem) clamp(2rem,6vw,4rem);text-align:center;position:relative;overflow:hidden;">
+    <!-- ghost letter texture -->
+    <div aria-hidden="true" style="position:absolute;inset:0;opacity:0.04;background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777391998/gh_key/gh_whp_letter1.jpg');background-size:cover;background-position:center top;pointer-events:none;"></div>
+    <div style="position:relative;z-index:2;max-width:680px;margin:0 auto;">
+      <span style="display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.5rem,0.6vw,0.6rem);letter-spacing:0.38em;text-transform:uppercase;color:rgba(201,169,110,0.6);margin-bottom:2.4rem;">Pinehurst, North Carolina &nbsp;&middot;&nbsp; Est. 1916</span>
+      <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,2.4vw,2.6rem);font-weight:300;color:#F5F0E8;line-height:1.55;margin:0 0 1.6rem;letter-spacing:0.01em;">Built in 1916 by the craftsmen Leonard Tufts sent.<br>Named by Walter Hines Page.<br>Held, in turn, by four stewards over 110 years.</p>
+      <span style="display:block;width:40px;height:1px;background:rgba(201,169,110,0.4);margin:0 auto;"></span>
+      <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.95rem,1.2vw,1.1rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.5);line-height:1.8;margin:1.6rem 0 0;">It is offered now for the first time.</p>
+    </div>
+  </section>
 
+  <!-- ── BEAT 4: THE THRESHOLD — door detail ── -->
+  <section id="threshold-beat" aria-label="The threshold" style="background:#0a0a0a;position:relative;overflow:hidden;">
+    <!-- Full bleed door photo -->
+    <div style="position:relative;width:100%;height:clamp(480px,70vh,780px);overflow:hidden;">
+      <img loading="lazy" decoding="async"
+        src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777244132/gh_interiors/1701"
+        alt="The front door of Garran Hill — brass hardware, leaded glass sidelights, a glimpse of the fireplace beyond"
+        style="width:100%;height:100%;object-fit:cover;object-position:center center;">
+      <!-- gradient overlay -->
+      <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.15) 0%,rgba(10,10,10,0.0) 35%,rgba(10,10,10,0.65) 85%,#0a0a0a 100%);"></div>
+      <!-- text anchored bottom -->
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:clamp(2rem,4vw,4rem) clamp(2rem,6vw,6rem);z-index:2;">
+        <span style="display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.5rem,0.55vw,0.55rem);letter-spacing:0.36em;text-transform:uppercase;color:rgba(201,169,110,0.65);margin-bottom:0.9rem;">The Threshold &nbsp;&middot;&nbsp; 1916</span>
+        <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.2rem,1.8vw,2rem);font-weight:300;color:#F5F0E8;line-height:1.4;margin:0;max-width:560px;">The inscription is cut into the stone above the entry.<br><em>Garran Hill, 1916.</em></p>
+      </div>
+    </div>
+  </section>
 
+  <!-- ── BEAT 5: THE BRICK — architecture, full bleed exterior ── -->
+  <section id="brick-beat" aria-label="The architecture" style="background:#0a0a0a;position:relative;overflow:hidden;">
+    <div style="display:flex;flex-wrap:wrap;min-height:clamp(400px,60vh,700px);">
+      <!-- Large image left -->
+      <div style="flex:0 0 65%;min-width:280px;position:relative;overflow:hidden;">
+        <img loading="lazy" decoding="async"
+          src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777243320/gh_exteriors/entrance_2"
+          alt="Garran Hill — brick entrance columns with lanterns, iron gates, wooded drive, Pinehurst NC"
+          style="width:100%;height:100%;object-fit:cover;object-position:center 30%;min-height:400px;">
+      </div>
+      <!-- Text right — dark panel -->
+      <div style="flex:1;min-width:240px;background:#0a0a0a;display:flex;align-items:center;padding:clamp(3rem,6vw,6rem) clamp(2rem,5vw,5rem);">
+        <div>
+          <span style="display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.5rem,0.55vw,0.55rem);letter-spacing:0.36em;text-transform:uppercase;color:rgba(201,169,110,0.6);margin-bottom:1.2rem;">Built in Brick</span>
+          <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,2.8vw,3.2rem);font-weight:300;color:#F5F0E8;line-height:1.1;margin:0 0 1.4rem;">Full brick.<br>Flemish bond.<br>A century of proportion.</h2>
+          <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.95rem,1.2vw,1.12rem);font-weight:300;color:rgba(245,240,232,0.72);line-height:1.85;margin:0;">Neo-Georgian. Red handmade brick, laid by Tufts' craftsmen -- the same men who built the Holly Inn and the great houses of the village. The portico is white. The symmetry is deliberate. The authority is in the masonry.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ── BEAT 6: THE LIGHT — leaded glass / foyer glimpse ── -->
+  <section id="light-beat" aria-label="Light through leaded glass" style="background:#0a0a0a;padding:clamp(4rem,8vw,8rem) clamp(2rem,6vw,6rem);position:relative;overflow:hidden;">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,3rem);align-items:center;">
+      <!-- Text left -->
+      <div style="order:1;">
+        <span style="display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(0.5rem,0.55vw,0.55rem);letter-spacing:0.36em;text-transform:uppercase;color:rgba(201,169,110,0.6);margin-bottom:1.2rem;">Original &nbsp;&middot;&nbsp; 1916</span>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.6rem,2.4vw,2.8rem);font-weight:300;color:#F5F0E8;line-height:1.15;margin:0 0 1.2rem;">The leaded glass<br>is original.</h2>
+        <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.95rem,1.2vw,1.12rem);font-weight:300;color:rgba(245,240,232,0.72);line-height:1.85;margin:0 0 1rem;">The sidelights. The fanlight above the door. The light they make at different hours of the day has not changed since 1916.</p>
+        <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.95rem,1.2vw,1.12rem);font-weight:300;font-style:italic;color:rgba(201,169,110,0.75);line-height:1.85;margin:0;">The oak floors. The seven mantels. The brass hardware -- possibly the original keys.</p>
+      </div>
+      <!-- Image right — portrait stagger -->
+      <div style="order:2;position:relative;overflow:hidden;" class="img-reveal">
+        <img loading="lazy" decoding="async"
+          src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_900/v1777244132/gh_interiors/1338"
+          alt="Garran Hill — original arched doorway with leaded glass, gold-framed portraits flanking the entrance hall"
+          style="width:100%;height:clamp(420px,55vh,640px);object-fit:cover;object-position:center 20%;display:block;">
+      </div>
+    </div>
+  </section>
 
-
-<!-- ── ACT III: ARCHITECTURE + PROOF ───────────────────── -->
-
-<!-- GH_BOSTON_PLANS_SOURCE_CONFIRMATION_NEEDED -->
-<!-- GH_HANDMADE_BRICK_SELLER_CONFIRMATION_NEEDED -->
-<!-- ── WHP LETTER UNDERLAY + QUOTE ─────────────────────────── -->
-
-
-
-
-
-
-
-
-<!-- ── ACT VI: SIGNATURE ROOMS ──────────────────────────── -->
-
-<!-- KITCHEN — major feature -->
-<!-- GH_KITCHEN_SHEET_12_SOURCE_CONFIRMATION_NEEDED -->
-<!-- ── PRINCIPAL ROOMS ─────────────────────────────────────── -->
-
-
-
-<section class="full-bleed-section" id="architecture" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243317/gh_exteriors/200holycrestf-1440_28z.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:0.12;filter:grayscale(40%);display:block;"></div>
-  <div class="section-content" style="position:relative;z-index:1;width:100%;">
-  <div class="full-bleed-img img-reveal">
-    <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777243323/gh_exteriors/front_exterior.jpg"
-      alt="Garran Hill — Neo-Georgian portico, full brick, Pinehurst NC">
+  <!-- ── BREATH — dark divider before house opens ── -->
+  <div aria-hidden="true" style="background:#0a0a0a;padding:clamp(2rem,4vw,4rem) clamp(2rem,6vw,6rem);text-align:center;">
+    <span style="display:block;width:1px;height:clamp(40px,6vw,60px);background:linear-gradient(to bottom,transparent,rgba(201,169,110,0.4),transparent);margin:0 auto 1.6rem;"></span>
+    <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.1rem,1.6vw,1.5rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.45);letter-spacing:0.04em;">The house.</span>
+    <span style="display:block;width:1px;height:clamp(40px,6vw,60px);background:linear-gradient(to bottom,transparent,rgba(201,169,110,0.4),transparent);margin:1.6rem auto 0;"></span>
   </div>
-  <div class="full-bleed-caption full-bleed-caption--bottom reveal">
-    <span class="eyebrow">Built in Brick</span>
-    <h2>Pinehurst hands.<em> A century of brick and proportion.</em></h2>
-    <p class="body-text">Garran Hill's authority begins in its masonry: full-brick Neo-Georgian construction, red handmade brick laid in Flemish bond, and a traditional water table grounding the facade. The brickwork, the arched fanlights, the entry floor — all built by hand in Moore County between 1915 and 1916. During restoration, matching the original brick alone took three months. That is the standard to which every decision was held.</p>
-    <p class="body-text" style="font-style:italic;opacity:0.6;font-size:var(--text-sm);margin-top:0.5em;">Boston plans. Pinehurst hands. Garran Hill in brick, 1916.</p>
-  </div>
-  </div>
-</section>
+
+
+
 
 <!-- ── THRESHOLD ──────────────────────────────────────────── -->
-<section class="full-bleed-section" id="threshold" style="min-height:100vh;">
-  <div class="full-bleed-img img-reveal">
-    <img loading="lazy" decoding="async"
-      src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777263004/gh_key/gh_threshold.jpg"
-      alt="Garran Hill threshold — 1916 inscription in stone, entry arch, Pinehurst NC"
-      style="object-position: center center;">
-  </div>
-  <div class="full-bleed-caption full-bleed-caption--center reveal">
-    <span class="eyebrow">The Threshold &middot; 1916</span>
-    <h2>The door has been open<em> since 1916.</em></h2>
-    <p class="body-text">The inscription is cut into the stone above the entry: <em>Garran Hill, 1916.</em> It was placed there by the craftsmen Leonard Tufts sent — the same men building Pinehurst. It has not been altered. It has not been restored. It simply remains.</p>
-  </div>
-</section>
+
 
 
 
