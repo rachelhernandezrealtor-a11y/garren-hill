@@ -3156,10 +3156,10 @@ blockquote.in {
 
 
 
-<section id="kb-gate" class="editorial-fullbleed kb-gate-section" aria-label="Garran Hill — the estate since 1916" style="min-height:100vh;position:relative;overflow:hidden;background:#0a0a0a;">
+<section id="kb-gate" class="editorial-fullbleed kb-gate-section" aria-label="Garran Hill — the estate since 1916" style="position:relative;overflow:hidden;background:#0a0a0a;">
 
-  <!-- ── LAYER 1: THEN/NOW dissolve — 1916 sheet fades to modern gate ── -->
-  <div class="then-now-wrap" style="position:absolute;inset:0;width:100%;height:100%;overflow:hidden;">
+  <!-- ── LAYER 1: THEN/NOW dissolve — pinned, fills the first viewport ── -->
+  <div class="then-now-wrap" style="position:sticky;top:0;width:100%;height:100vh;overflow:hidden;z-index:1;">
 
     <!-- NOW — modern gate, always underneath -->
     <img class="then-now-img then-now-now"
@@ -3168,33 +3168,33 @@ blockquote.in {
       alt="Garran Hill today — brick pillars, iron gates, the house framed through the drive, Pinehurst NC"
       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;animation:kenBurnsNow 30s ease-in-out infinite alternate;">
 
-    <!-- THEN — 1916 original photo sheet, fades over the modern gate -->
+    <!-- THEN — sepia gate photo, fades over the modern gate -->
     <img class="then-now-img then-now-then"
       loading="eager" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_contrast:10,e_sharpen:20,f_auto,q_auto,c_limit,w_1920/v1778713784/gh_key/gh_historygate_sepia.jpg"
-      alt="Garran Hill 1916 — the house as it was built, Garran Hill hand-lettered at bottom"
+      alt="Garran Hill 1916 — the gate as it was, sepia photograph"
       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:0;animation:kenBurnsThen 30s ease-in-out infinite alternate;">
 
-    <!-- Bottom gradient — bleeds into WHP darkness below -->
-    <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.08) 0%,rgba(10,10,10,0.35) 52%,rgba(10,10,10,0.88) 80%,#0a0a0a 100%);z-index:2;pointer-events:none;"></div>
-  </div>
+    <!-- Bottom gradient — atmosphere bleeds downward into WHP darkness -->
+    <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.05) 0%,rgba(10,10,10,0.3) 45%,rgba(10,10,10,0.82) 72%,#0a0a0a 100%);z-index:2;pointer-events:none;"></div>
 
-  <!-- ── LAYER 2: Text floats over the dissolve, anchored low ── -->
-  <div style="position:relative;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-height:100vh;text-align:center;padding:0 clamp(2rem,6vw,8rem) clamp(5rem,10vw,12rem);">
-    <span class="eyebrow reveal" style="color:rgba(201,169,110,0.75);margin-bottom:1.2rem;letter-spacing:0.28em;">Garran Hill &middot; Pinehurst, North Carolina</span>
-    <h2 class="reveal" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.4rem,4.5vw,4.8rem);color:#F5F0E8;font-weight:300;line-height:1.08;max-width:900px;margin:0 auto 1.4rem;text-shadow:0 2px 24px rgba(0,0,0,0.7),0 1px 6px rgba(0,0,0,0.5);"><span class="headline-drop">S</span>ome houses hold history.<em> This one shaped it.</em></h2>
-    <p class="reveal" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1rem,1.4vw,1.3rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.68);line-height:1.85;max-width:520px;margin:0 auto;text-shadow:0 1px 12px rgba(0,0,0,0.6);">In 1916, those were saplings.<br>Now they are a forest.</p>
-  </div>
+    <!-- ── KB Gate text — anchored low, inside the sticky frame ── -->
+    <div style="position:absolute;bottom:0;left:0;right:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 clamp(2rem,6vw,8rem) clamp(5rem,10vw,12rem);text-align:center;">
+      <span class="eyebrow reveal" style="color:rgba(201,169,110,0.75);margin-bottom:1.2rem;letter-spacing:0.28em;">Garran Hill &middot; Pinehurst, North Carolina</span>
+      <h2 class="reveal" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.4rem,4.5vw,4.8rem);color:#F5F0E8;font-weight:300;line-height:1.08;max-width:900px;margin:0 auto 1.4rem;text-shadow:0 2px 24px rgba(0,0,0,0.7),0 1px 6px rgba(0,0,0,0.5);"><span class="headline-drop">S</span>ome houses hold history.<em> This one shaped it.</em></h2>
+      <p class="reveal" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1rem,1.4vw,1.3rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.68);line-height:1.85;max-width:520px;margin:0 auto;text-shadow:0 1px 12px rgba(0,0,0,0.6);">In 1916, those were saplings.<br>Now they are a forest.</p>
+    </div>
+  </div><!-- /.then-now-wrap sticky -->
 
-  <!-- ── LAYER 3: WHP section flows directly below — letter as atmosphere ── -->
-  <div id="history" style="position:relative;z-index:4;background:transparent;padding:clamp(4rem,8vw,8rem) clamp(2rem,6vw,8rem) clamp(4rem,8vw,8rem);">
+  <!-- ── LAYER 2: WHP section — scrolls up over the dissolve, emerging from darkness ── -->
+  <div id="history" style="position:relative;z-index:5;background:linear-gradient(to bottom,transparent 0%,#0a0a0a 8%);padding:clamp(6rem,12vw,14rem) clamp(2rem,6vw,8rem) clamp(4rem,8vw,8rem);margin-top:-12vh;">
 
-    <!-- WHP letter ghost — floats behind the text, almost subliminal -->
+    <!-- WHP letter ghost — subliminal, almost invisible -->
     <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;">
       <img
         src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:40,e_brightness:25,e_contrast:15,f_auto,q_auto,c_limit,w_1920/v1777391998/gh_key/gh_whp_letter1.jpg"
         alt=""
-        style="position:absolute;inset:-10%;width:120%;height:120%;object-fit:cover;object-position:center top;transform:rotate(-2deg);opacity:0.07;mix-blend-mode:screen;pointer-events:none;">
+        style="position:absolute;inset:-10%;width:120%;height:120%;object-fit:cover;object-position:center top;transform:rotate(-2deg);opacity:0.06;mix-blend-mode:screen;pointer-events:none;">
     </div>
 
     <!-- WHP content -->
@@ -3226,11 +3226,11 @@ blockquote.in {
       </div>
     </div>
 
-    <!-- The farm quote — full dark beat, flows below -->
+    <!-- The farm quote — full dark beat, breathes below the portrait -->
     <div style="position:relative;z-index:2;text-align:center;padding:clamp(3rem,5vw,5rem) var(--col-pad) clamp(2rem,4vw,4rem);max-width:800px;margin:0 auto;">
       <blockquote style="border:none;margin:0;padding:0;">
         <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,2.4rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.88);line-height:1.6;letter-spacing:0.02em;margin:0 0 1rem;">
-          &ldquo;The farm &mdash; the farm &mdash; the farm.&rdquo;
+          &ldquo;The farm -- the farm -- the farm.&rdquo;
         </p>
         <cite style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.55rem,0.65vw,0.65rem);letter-spacing:0.3em;text-transform:uppercase;color:rgba(201,169,110,0.5);font-style:normal;">
           Walter Hines Page &middot; From His Letters &middot; 1913&ndash;1918
@@ -3241,6 +3241,7 @@ blockquote.in {
   </div><!-- /#history -->
 
 </section>
+
 
 
 
