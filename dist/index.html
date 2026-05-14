@@ -823,8 +823,8 @@ window.GH_IMG_FALLBACK = function(img){
     z-index:12;
     pointer-events:none;
     width:clamp(60px,7vw,96px);
-    opacity:0.22;
-    mix-blend-mode:luminosity;
+    opacity:0.35;
+    mix-blend-mode:screen;
   ">
     <svg viewBox="0 0 80 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
       <!-- Left key -->
@@ -846,41 +846,28 @@ window.GH_IMG_FALLBACK = function(img){
     </svg>
   </div>
 
-  <!-- ── CREST — sits on the stat bar edge, oversized focal piece ── -->
-  <div id="hero-crest" aria-hidden="true" style="
-    position:absolute;
-    bottom:0;
-    left:50%;
-    transform:translateX(-50%) translateY(40%);
-    z-index:20;
-    pointer-events:none;
-    width:clamp(110px,13vw,168px);
-    filter:
-      drop-shadow(0 2px 6px rgba(0,0,0,0.72))
-      drop-shadow(0 0 18px rgba(201,169,110,0.18));
-  ">
-    <img
-      src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
-      alt="Garran Hill crest"
-      style="
-        width:100%;
-        height:auto;
-        display:block;
-        filter:
-          brightness(1.08)
-          contrast(1.04)
-          saturate(1.12)
-          drop-shadow(0 1px 0 rgba(255,220,120,0.55))
-          drop-shadow(0 -1px 0 rgba(80,50,10,0.6));
-      "
-    >
-  </div>
-
 
 
   <!— STAT BAR —>
   <div id="stat-bar" style="position:absolute;bottom:0;left:0;right:0;z-index:15;background:rgba(10,10,10,0.85);backdrop-filter:blur(4px);border-top:1px solid rgba(201,169,110,0.22);overflow:visible;">
-    <div style="max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1rem clamp(1.5rem,4vw,3rem);">
+      <!-- ── CREST: straddling the hero/stat-bar seam ── -->
+  <div id="hero-crest" aria-hidden="true" style="
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translate(-50%,-54%);
+    z-index:25;
+    pointer-events:none;
+    width:clamp(110px,13vw,168px);
+    filter:drop-shadow(0 2px 8px rgba(0,0,0,0.8)) drop-shadow(0 0 22px rgba(201,169,110,0.22));
+  ">
+    <img
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
+      alt="Garran Hill crest"
+      style="width:100%;height:auto;display:block;filter:brightness(1.1) contrast(1.06) saturate(1.15) drop-shadow(0 1px 0 rgba(255,220,130,0.6)) drop-shadow(0 -1px 0 rgba(80,50,10,0.55));"
+    >
+  </div>
+<div style="position:relative;max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1rem clamp(1.5rem,4vw,3rem);">
       <div style="text-align:center;flex:1;">
         <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.85rem,1.3vw,1.1rem);font-weight:300;letter-spacing:0.1em;color:#F5F0E8;">4</div>
         <div style="font-family:'DM Sans',sans-serif;font-size:0.52rem;letter-spacing:0.22em;color:#C9A96E;text-transform:uppercase;margin-top:0.18rem;">Bedrooms</div>
@@ -896,9 +883,7 @@ window.GH_IMG_FALLBACK = function(img){
         <div style="font-family:'DM Sans',sans-serif;font-size:0.52rem;letter-spacing:0.22em;color:#C9A96E;text-transform:uppercase;margin-top:0.18rem;">Sq Ft</div>
       </div>
       <div style="width:1px;height:24px;background:rgba(201,169,110,0.22);flex-shrink:0;"></div>
-      <div style="flex:1;display:flex;justify-content:center;align-items:center;padding:0.35rem 0;position:relative;">
-        <!-- crest floats above -->
-      </div>
+      <div style="flex:1;"></div>
       <div style="width:1px;height:24px;background:rgba(201,169,110,0.22);flex-shrink:0;"></div>
       <div style="text-align:center;flex:1;">
         <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.85rem,1.3vw,1.1rem);font-weight:300;letter-spacing:0.1em;color:#F5F0E8;">4.15</div>
