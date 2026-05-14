@@ -476,25 +476,29 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .rc-img-wrap {
   position: relative;
   width: 100%;
-  height: 80vh;
+  height: 70vh;
+  max-height: 780px;
   overflow: hidden;
 }
 .rc-img-wrap img {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center 30%;
   display: block;
+  transition: transform 0.1s ease;
 }
 .rc-veil {
   position: absolute; inset: 0;
   background: linear-gradient(to bottom,
-    rgba(10,10,10,0) 40%,
-    rgba(10,10,10,0.75) 80%,
-    rgba(10,10,10,0.97) 100%);
+    rgba(10,10,10,0) 30%,
+    rgba(10,10,10,0) 50%,
+    rgba(10,10,10,0.6) 72%,
+    rgba(10,10,10,0.92) 90%,
+    rgba(10,10,10,0.98) 100%);
 }
 .rc-caption {
   position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 0 clamp(1.5rem, 5vw, 5rem) clamp(2.5rem, 5vw, 4rem);
+  padding: 0 clamp(2rem, 6vw, 7rem) clamp(3rem, 5vw, 5rem);
 }
 .rc-eyebrow {
   display: block;
@@ -507,11 +511,12 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 }
 .rc-line {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.6rem, 3.2vw, 3rem);
+  font-size: clamp(2rem, 3.8vw, 3.6rem);
   font-weight: 200;
   color: var(--cream);
-  line-height: 1.3;
+  line-height: 1.25;
   letter-spacing: 0.01em;
+  text-shadow: 0 2px 24px rgba(10,10,10,0.5);
 }
 .rc-line em { font-style: italic; }
 
@@ -878,7 +883,7 @@ window.GH_IMG_FALLBACK = function(img){
   <div class="room-chapter reveal">
     <div class="rc-img-wrap">
       <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1/gh_interiors/200holycrest_1281.jpg"
-           alt="Drawing room, Garran Hill — blue and white Delft tile fireplace, coffered ceiling, Georgian mantel">
+           alt="Drawing room, Garran Hill — blue and white Delft tile fireplace, coffered ceiling, Georgian mantel" style="object-position: center 20%;">
       <div class="rc-veil"></div>
       <div class="rc-caption">
         <span class="rc-eyebrow">The Drawing Room</span>
