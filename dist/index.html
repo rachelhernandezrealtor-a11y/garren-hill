@@ -1313,37 +1313,8 @@ The gate has been open since 1916.</div>
       margin-top: 0.6rem;
     }
     /* Blueprint ghost — faded architectural plan */
-    .arch-blueprint {
-      position: relative;
-      height: 320px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .arch-blueprint img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      opacity: 0.12;
-      filter: sepia(1) hue-rotate(180deg) brightness(1.8);
-      transition: opacity 1.2s ease;
-    }
-    .arch-blueprint:hover img { opacity: 0.28; }
-    .arch-blueprint-label {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      text-align: center;
-      font-family: var(--sans);
-      font-size: 0.62rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: rgba(201,169,110,0.35);
-      padding-bottom: 0.5rem;
-    }
     @media (max-width: 768px) {
       .arch-inner { grid-template-columns: 1fr; }
-      .arch-blueprint { height: 220px; }
     }
   </style>
   <div class="arch-inner reveal">
@@ -1361,12 +1332,6 @@ The gate has been open since 1916.</div>
       </div>
     </div>
     <div class="arch-right">
-      <!-- Blueprint ghost — architectural plan fades in on hover -->
-      <div class="arch-blueprint">
-        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_700/v1777408122/gh_key/gh_plan_oshe_p01"
-          alt="Original O'Shea architectural plans, Garran Hill 1916">
-        <span class="arch-blueprint-label">Original plans &middot; 1915</span>
-      </div>
     </div>
   </div>
 </section>
