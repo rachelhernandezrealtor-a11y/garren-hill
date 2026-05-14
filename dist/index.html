@@ -478,29 +478,6 @@ window.GH_IMG_FALLBACK = function(img){
   </div>
 </section>
 
-<!-- THEN & NOW -->
-<section id="then-now">
-  <div class="tn-wrap">
-    <div class="tn-panel tn-then">
-      <img
-        src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1200/gh_key/gh_historygate_sepia.jpg"
-        alt="Garran Hill gate, 1916 — the house framed through the original brick pillars"
-        loading="lazy"
-      >
-      <div class="tn-label">1916</div>
-    </div>
-    <div class="tn-divider"></div>
-    <div class="tn-panel tn-now">
-      <img
-        src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1200/gh_exteriors/entrance.jpg"
-        alt="Garran Hill gate, today — the same view, the same brick pillars, the same drive"
-        loading="lazy"
-      >
-      <div class="tn-label">2026</div>
-    </div>
-  </div>
-  <div class="tn-caption">The gate has not moved. The house has not moved. The trees are taller.</div>
-</section>
 
 
 <!-- KB GATE -->
@@ -953,18 +930,6 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 
-<script>
-// Then & Now reveal
-(function(){
-  var panels = document.querySelectorAll('.tn-panel');
-  if(!panels.length) return;
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-    });
-  }, {threshold: 0.15});
-  panels.forEach(function(p){ obs.observe(p); });
-})();
-</script>
+
 </body>
 </html>
