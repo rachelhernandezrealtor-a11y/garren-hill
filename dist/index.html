@@ -60,9 +60,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-facts span+span::before{content:'';width:24px;height:1px;background:rgba(201,169,110,0.38);display:inline-block}
 
 /* ── ACT DIVIDERS ── */
-.act{display:flex;align-items:center;justify-content:center;gap:2rem;padding:3.5rem 2rem;background:var(--dark)}
-.act-line{flex:1;max-width:140px;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.3),transparent)}
-.act-label{font-family:var(--sans);font-size:0.52rem;letter-spacing:0.42em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+
+
+
 
 /* ── KB GATE ── */
 #kb-gate{position:relative;height:100vh;overflow:hidden}
@@ -309,11 +309,11 @@ window.GH_IMG_FALLBACK = function(img){
     <span class="nav-year">1916</span>
   </div>
   <ul class="nav-links">
-    <li><a href="#whp">History</a></li>
+    <li><a href="#history">History</a></li>
     <li><a href="#architecture">Architecture</a></li>
     <li><a href="#rooms">Rooms</a></li>
     <li><a href="#grounds">Grounds</a></li>
-    <li><a href="#matterport">Tour</a></li>
+    <li><a href="#tour">Tour</a></li>
   </ul>
   <a href="#inquiry" class="nav-cta">Inquire</a>
 </nav>
@@ -332,32 +332,25 @@ window.GH_IMG_FALLBACK = function(img){
   </div>
 </section>
 
-<!-- ACT I — Provenance -->
-<div class="act">
-  <div class="act-line"></div>
-  <span class="act-label">— I — Provenance</span>
-  <div class="act-line"></div>
-</div>
-
 <!-- KB GATE -->
-<section id="kb-gate">
+<section id="gate">
   <div class="kb-layer" id="kb-then"></div>
   <div class="kb-layer" id="kb-now"></div>
   <div class="kb-overlay"></div>
   <div class="kb-text reveal">
     <span class="kb-eyebrow">The Gate · 1916</span>
     <div class="kb-headline">Some houses hold history.<br>This one shaped it.</div>
-    <div class="kb-caption">Iron. Brick. A drive that bends once before the house appears. In 1916, those were saplings. Now they are a forest. The approach has not changed.</div>
+    <div class="kb-caption">Iron. Brick. A drive that disappears before the house allows itself to be seen. In 1916, those were saplings. Now they are a forest.</div>
   </div>
 </section>
 
 <!-- WHP -->
-<section id="whp">
+<section id="history">
   <div class="whp-inner">
     <div class="whp-artifact reveal" aria-label="Walter Hines Page record artifact">
       <span class="whp-artifact-kicker">Record · Walter Hines Page</span>
       <div class="whp-artifact-title">A house<br>directed from London.</div>
-      <p>He named it from London. His son built it. He came home once, in December 1918, and died ten days later.</p>
+      <p>Named before it was lived. Built under Ralph Page's supervision. Preserved as the address Page imagined, but never claimed as daily life.</p>
       <span class="whp-artifact-mark">Garran Hill · 1916</span>
     </div>
     <div class="whp-content reveal">
@@ -365,9 +358,9 @@ window.GH_IMG_FALLBACK = function(img){
       <div class="whp-name">He named it Garran Hill.<br>The life he imagined happened elsewhere.</div>
       <div class="whp-body">
         <p>In February 1913, Page purchased a thousand-acre farm two miles southwest of Pinehurst, on land his father had logged a generation earlier. He gave it a name before the foundation could answer back: Garran Hill.</p>
-        <p>Six weeks after buying the land, President Wilson offered him the ambassadorship to the Court of St. James's. Page accepted and sailed for London in May. From three thousand miles away, he directed the making of the house in letters -- asking after the trees, the orchard, the shrubs, the shape of the farm -- while Ralph carried the work on the ground.</p>
+        <p>Weeks later, President Woodrow Wilson offered him the ambassadorship to the Court of St. James's. Page accepted and left for London. From three thousand miles away, he directed the making of the house while Ralph Page carried the work on the ground.</p>
         <p style="margin-top:1.4rem"><em>"Build the farm, therefore; and let me hear at every stage of that happy game."</em></p>
-        <p style="margin-top:1.4rem">He came home in December 1918, carried off the train at Aberdeen on the 11th. His last recorded words at that station: <em>"Well, Frank, I did get here after all, didn't I?"</em> He stayed at Currituck Cottage. Ten days later he was gone. Westminster Abbey placed a memorial tablet. It reads: <em>"The friend of Britain in her sorest need."</em></p>
+        <p style="margin-top:1.4rem">When Page finally reached Pinehurst in December 1918, the address was waiting and the life was not. He stayed at Currituck Cottage, not Garran Hill, and died there ten days later.</p>
       </div>
       <blockquote class="whp-quote">
         "Well, Frank, I did get here after all, didn't I?"
@@ -386,9 +379,9 @@ window.GH_IMG_FALLBACK = function(img){
       <h2 class="editorial-title">Boston drew the plan.<br>Pinehurst supplied the hand.</h2>
     </div>
     <div class="editorial-body">
-      <p>The plans came through a Boston architectural firm. The character came through Pinehurst hands — the same craftsmen Leonard Tufts was using to build the Holly Inn and the Carolina Hotel. They brought the same standards here. You can feel it in the proportion of every room and the weight of every door.</p>
-      <p>Their evidence is in the herringbone brick, the leaded glass sidelights, the arched fanlight, the carved mantels, the Delft tile, the brass key plates, and a mahogany volute that still turns with the authority of a signature. The same hand that cut the Holly Inn’s joinery cut this. The same eye that set the Carolina Hotel’s proportions set these.</p>
-      <p>This is not ornament proving pedigree. It is pedigree that never needed to prove anything — proportion first, material second, then a century of survivals that carry more authority than any renovation could replace.</p><p>The luxury is not polish. It is proof.</p>
+      <p>The house does not feel imported because it was never merely installed here. The plans came through a Boston architectural firm; the character came through Pinehurst hands.</p>
+      <p>Leonard Tufts provided the craftsmen — the same men building the village. They left their evidence in herringbone brick, leaded glass sidelights, arched fanlights, original oak, Delft tile, carved mantels, brass key plates, and a mahogany volute that still turns with the authority of a signature.</p>
+      <p>This is not ornament trying to prove pedigree. It is pedigree behaving: proportion first, material second, then the confidence to let small survivals carry the authority.</p><p>The luxury is not polish. It is proof.</p>
       <div class="editorial-note">Boston plans · Pinehurst hands · 1915–1916</div>
     </div>
   </div>
@@ -398,13 +391,6 @@ window.GH_IMG_FALLBACK = function(img){
   <blockquote>“The friend of Britain<br>in her sorest need.”</blockquote>
   <cite>Westminster Abbey tablet for Walter Hines Page</cite>
 </section>
-
-<!-- ACT II — The House -->
-<div class="act">
-  <div class="act-line"></div>
-  <span class="act-label">— II — The House</span>
-  <div class="act-line"></div>
-</div>
 
 <!-- THRESHOLD -->
 <section id="threshold">
@@ -427,43 +413,36 @@ window.GH_IMG_FALLBACK = function(img){
     </div>
     <div class="editorial-body">
       <p>After Betty Dumaine's death, Hollycrest stood vacant for roughly fourteen years — long enough for a lesser house to lose its nerve.</p>
-      <p>The current stewards purchased the house in 1998 and made a decision that is rarer than it sounds: to restore rather than reinvent. Every choice in the record reflects that discipline.</p>
-      <p>Fifteen architectural drawings document every decision. They survive. They transfer with the property. The matching brick alone took three months to source — not because it was required, but because it was right.</p>
+      <p>The current stewards purchased the house in 1998 and restored it with the rare discipline of people who understood the assignment: not reinvention, but custody.</p>
+      <p>The restoration record includes architectural drawings, repaired oak floors, revived details, a kitchen built in the language of the old house, and the crucial refusal to make the place newly clever.</p>
       <div class="record-grid">
         <div class="record-item"><span>Original</span><p>Oak floors, threshold, leaded glass, brass key plates, staircase volute, carved mantels, and the surviving architectural rhythm of 1916.</p></div>
-        <div class="record-item"><span>Restored</span><p>The floors were repaired, not replaced. The leaded glass was preserved, not reproduced. The soul of the house was not mistaken for a problem to solve.</p></div>
-        <div class="record-item"><span>Added Carefully</span><p>One honest exception: the kitchen. Built new, but built in the language of the house. Heart-pine, farm sinks, restraint.</p></div>
+        <div class="record-item"><span>Restored</span><p>Rooms returned to proportion, systems renewed, and details repaired without sanding the soul off the house.</p></div>
+        <div class="record-item"><span>Added Carefully</span><p>The kitchen: not original to 1916, but original to the restoration — practical and honest about its date.</p></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- STAIRCASE / ENTRY -->
-<section class="room-spread">
+<section id="staircase" class="room-spread">
   <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1338.jpg" data-public-id="gh_interiors/200holycrest_1338" data-width="1920" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="Staircase and entry hall, Garran Hill">
   <div class="room-overlay"></div>
   <div class="room-caption reveal">
     <span class="room-eyebrow">The Staircase</span>
     <div class="room-name">The house gives you the stair<br><em>before it gives you itself.</em></div>
-    <div class="room-line">The arched fanlight above the door has been dropping light onto this floor since 1916. The leaded glass sidelights flank it, original. The oak underfoot is original. The mahogany volute at the foot of the stair is original — the place where the house first puts itself into your hand.<br><em>The brass key plates on every door still have their original keys.</em></div>
+    <div class="room-line">Leaded glass sidelights. Arched fanlight above the door. Original oak floors. The mahogany volute turns at the foot of the stair like a signature the house never lost.<br><em>The brass key plates on every door still have their original keys.</em></div>
   </div>
 </section>
 
-<!-- ACT III — The Rooms -->
-<div id="rooms" class="act">
-  <div class="act-line"></div>
-  <span class="act-label">— III — The Rooms</span>
-  <div class="act-line"></div>
-</div>
-
 <!-- SALON -->
-<section class="room-spread">
+<section id="rooms" class="room-spread">
   <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1209.jpg" data-public-id="gh_interiors/200holycrest_1209" data-width="1920" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="The Salon, Garran Hill">
   <div class="room-overlay" style="background:linear-gradient(to right,rgba(11,11,11,0.65) 0%,transparent 55%)"></div>
   <div class="room-caption reveal">
     <span class="room-eyebrow">The Salon</span>
     <div class="room-name">Fire going,<br><em>no one home yet.</em></div>
-    <div class="room-line">Nearly forty feet of light and original oak. The Salon is named correctly -- not a living room, never a living room. It understands the difference between a reception and a winter evening. Seven windows. A carved mantel. The room does not ask you to choose between them.</div>
+    <div class="room-line">A long formal room with enough silence to feel occupied before anyone arrives. Original oak underfoot. Tall bare windows along both sides. Ceremony, yes — but never stiffness.</div>
   </div>
 </section>
 
@@ -474,7 +453,7 @@ window.GH_IMG_FALLBACK = function(img){
   <div class="room-caption right reveal">
     <span class="room-eyebrow">The Drawing Room</span>
     <div class="room-name">They made it bigger<br><em>so they could dance.</em></div>
-    <div class="room-line">Someone specified that the coffered ceiling be enlarged so there would be room to dance. Someone else built it exactly that way. The Georgian carved mantel is original. The blue-and-white Delft tile surround is original, hand-painted, one of seven fireplaces in the house.<br><em>The room does not feel added to. It feels inevitable.</em></div>
+    <div class="room-line">Original Georgian carved mantel. Blue-and-white Delft tile surround, hand-painted and original to the room. One of seven fireplaces in the house.<br><em>A room enlarged for movement, then preserved for the pause after it.</em></div>
   </div>
 </section>
 
@@ -485,7 +464,7 @@ window.GH_IMG_FALLBACK = function(img){
   <div class="room-caption reveal">
     <span class="room-eyebrow">The Dining Room</span>
     <div class="room-name">Formal by proportion.<br><em>Intimate by firelight.</em></div>
-    <div class="room-line">The curved north bay pulls the grounds in through nine-pane divided lights, floor to ceiling. Shell alcoves with scalloped tops flank the fireplace on both sides -- built-in, original, architectural. A chandelier hangs at the center of a room that was designed to make people stay seated longer than they planned to.<br><em>It has not stopped doing that.</em></div>
+    <div class="room-line">A curved north bay looks directly onto the grounds, floor to ceiling, nine-pane divided lights holding the garden like a painting. Arched shell alcoves flank the fireplace with scalloped tops and built-in cabinets below.<br><em>A room that teaches dinner to behave.</em></div>
   </div>
 </section>
 
@@ -496,7 +475,7 @@ window.GH_IMG_FALLBACK = function(img){
   <div class="room-caption reveal">
     <span class="room-eyebrow">The Kitchen</span>
     <div class="room-name">The kitchen is not original to 1916.<br><em>It is original to the restoration.</em></div>
-    <div class="room-line">Reclaimed heart-pine floors -- the one honest exception in a house of original oak. Two farm sinks. A butler's pantry with its own architectural detail sheet. Sub-Zero. Black-and-white toile. And a wall of windows over the main sink that looks directly onto the magnolias.<br><em>The kitchen is not original to 1916. It is original to the restoration. That is why it belongs.</em></div>
+    <div class="room-line">Reclaimed heart-pine floors — the honest exception in a house of original oak. Two farm sinks. Butler's pantry. Sub-Zero. Toile. A wall of divided-light windows facing the grounds.<br><em>It does not pretend to be 1916. That is why it belongs.</em></div>
   </div>
 </section>
 
@@ -507,7 +486,7 @@ window.GH_IMG_FALLBACK = function(img){
   <div class="room-caption right reveal">
     <span class="room-eyebrow">The Library</span>
     <div class="room-name">The room that makes silence<br><em>feel inherited.</em></div>
-    <div class="room-line">In a house named by a publisher and built for a man of letters, the library does not feel like an amenity. It feels like a rightful inheritance. Three walls of shelving, floor to ceiling. A rolling ladder. French doors to the rear grounds. The bookshelves had their own full architectural detail sheet in the 1999 restoration record.<br><em>Someone drew them on paper before the first shelf was built. That is not decoration. That is authorship.</em></div>
+    <div class="room-line">Built-in shelving on three walls, floor to ceiling. Rolling ladder. French doors to the rear grounds. Brass chandelier.<br>The room feels less decorated than accumulated — records, letters, decisions, and the kind of silence that makes a house feel inherited.</div>
   </div>
 </section>
 
@@ -518,7 +497,7 @@ window.GH_IMG_FALLBACK = function(img){
   <div class="room-caption reveal">
     <span class="room-eyebrow">Powder Room</span>
     <div class="room-name">The Jewel Box</div>
-    <div class="room-line">Fuchsia chinoiserie. Tennessee marble vanity.<br>The size of a secret. The confidence of a full room. Fuchsia chinoiserie wallpaper, Tennessee marble vanity, gilded fixtures, a skirted sink. A powder room that makes people stop walking and say something out loud.<br><em>Every house this old earns one room that does exactly what it wants. This is that room.</em></div>
+    <div class="room-line">Fuchsia chinoiserie. Tennessee marble vanity.<br>Small. Precious. Deliberate. Fuchsia chinoiserie and Tennessee marble doing what large rooms cannot: misbehaving perfectly.</div>
   </div>
 </section>
 
@@ -529,7 +508,7 @@ window.GH_IMG_FALLBACK = function(img){
   <div class="room-caption reveal">
     <span class="room-eyebrow">The Primary Suite</span>
     <div class="room-name">Upstairs, the house stops performing.<br><em>It becomes private.</em></div>
-    <div class="room-line">The primary suite had its own full architectural detail sheet -- every panel, every moulding, drawn and specified before a single nail was driven. Four-poster bed, carved fireplace, sitting room, dressing room, a marble bath. The windows pull the grounds up with you.<br><em>Privacy here is not absence. It is the house keeping its word.</em></div>
+    <div class="room-line">A private wing with sitting room, dressing room, and marble bath. Windows pull the grounds upstairs, where the house becomes quieter, more personal, and less interested in performance.<br><em>Privacy here is not absence. It is composure.</em></div>
   </div>
 </section>
 
@@ -540,16 +519,9 @@ window.GH_IMG_FALLBACK = function(img){
   <div class="room-caption right reveal">
     <span class="room-eyebrow">Primary Bath</span>
     <div class="room-name">Marble, restraint,<br><em>and no apology.</em></div>
-    <div class="room-line">The sunken tub sits beneath windows that look onto the grounds. Natural light on marble. The room holds the house's grammar — stone, proportion, restraint — and then adds enough warmth that you understand why this is where the day begins and ends.</div>
+    <div class="room-line">The private rooms do not abandon the house's grammar. They quiet it — stone, light, proportion, and enough modern comfort to serve the old structure rather than shout over it.</div>
   </div>
 </section>
-
-<!-- ACT IV — The Land -->
-<div class="act">
-  <div class="act-line"></div>
-  <span class="act-label">— IV — The Land</span>
-  <div class="act-line"></div>
-</div>
 
 <!-- GROUNDS -->
 <section id="grounds" class="room-spread">
@@ -558,7 +530,7 @@ window.GH_IMG_FALLBACK = function(img){
   <div class="room-caption center reveal">
     <span class="room-eyebrow">4.15 Acres · Pinehurst, North Carolina</span>
     <div class="room-name">In 1916, those were saplings.<br><em>Now they are a forest.</em></div>
-    <div class="room-line" style="max-width:38rem;margin:0.8rem auto 0">The original farm ran to a thousand acres. What remains is the part Page’s son kept as home — 4.15 acres of camellias, magnolias, dogwoods, American plane trees, and shade that has had a century to become itself. The plantings are not decorative. They are the record of every hand that tended this ground.<br><em>Not the whole thousand acres. The part that remembers.</em></div>
+    <div class="room-line" style="max-width:38rem;margin:0.8rem auto 0">The present 4.15 acres are the original house parcel of Page's larger farm. The grounds carry the long evidence of human intention: camellias, magnolias, dogwoods, American plane trees, and shade that has had a century to become itself.<br><em>Not the whole thousand acres. The part that remembers.</em></div>
   </div>
 </section>
 
@@ -573,30 +545,7 @@ window.GH_IMG_FALLBACK = function(img){
   </div>
 </section>
 
-<!-- ACT V — Stewardship -->
-<div class="act">
-  <div class="act-line"></div>
-  <span class="act-label">— V — Stewardship</span>
-  <div class="act-line"></div>
-</div>
-
 <!-- BETTY DUMAINE -->
-<section id="betty" class="editorial-section">
-  <div class="editorial-inner editorial-grid reveal">
-    <div>
-      <span class="editorial-kicker">Hollycrest · 1959–1984</span>
-      <h2 class="editorial-title">She renamed it Hollycrest.<br>Then gave it a second world.</h2>
-    </div>
-    <div class="editorial-body">
-      <p>Elizabeth “Betty” Dumaine purchased the house in 1959 and renamed it Hollycrest. The name held long enough to become the address. It is still there, in 200 Hollycrest Drive, even after the house returned to Garran Hill.</p>
-      <p>At nineteen, Betty attended the Edith Johnson School in Cambridge, Massachusetts. Her roommate was Khun Sangwan Chukramol. The friendship did not stay small — Sangwan became Srinagarindra, Princess Mother of Thailand, and the two women stayed close across the distance of continents and decades.</p>
-      <p>From Pinehurst, she stayed close to the Princess Mother's work in Northern Thailand -- fundraising, riding, maintaining a friendship that had started at nineteen and lasted a lifetime. She kept horses, hounds, and peacocks. She planted the camellias, the roses, the dogwoods. She gave these grounds their second great life.</p>
-      <p>Her version of stewardship had peacocks, horses, hounds, camellias, roses, ceremony, charity, and one small grave at the back of the grounds that still knows how to break your heart.</p>
-    </div>
-  </div>
-</section>
-
-<!-- BLUE FOX -->
 <section id="blue-fox">
   <div class="blue-fox-inner reveal">
     <figure class="blue-fox-photo">
@@ -606,12 +555,28 @@ window.GH_IMG_FALLBACK = function(img){
       <span class="blue-fox-eyebrow">Blue Fox · 1946–1969</span>
       <div class="blue-fox-headline">Someone still<br>puts flowers there.</div>
       <div class="blue-fox-body">
-        <p>At the back of the grounds, beneath a slate cover with a brass marker, Betty Dumaine buried Blue Fox -- her Irish hunter. The horse died in 1969. She was still living here. She put the marker herself.</p>
-        <p>She has been gone since 1984. The marker remains. Someone still puts flowers there.</p>
+        <p>At the back of the grounds, beneath a slate cover with a brass marker, Betty Dumaine buried Blue Fox — her Irish hunter, not a symbol until time made him one.</p>
+        <p>The marker remains. So, impossibly, do the flowers.</p>
       </div>
       <div class="blue-fox-divider"></div>
       <div class="blue-fox-sub-headline">Blue Fox — My Irish Hunter — 1946 to 1969.</div>
       <span class="blue-fox-marker">Hollycrest · Back of the property · Under a slate cover with a brass marker</span>
+    </div>
+  </div>
+</section>
+
+<!-- BLUE FOX -->
+<section id="betty" class="editorial-section">
+  <div class="editorial-inner editorial-grid reveal">
+    <div>
+      <span class="editorial-kicker">Hollycrest · 1959–1984</span>
+      <h2 class="editorial-title">She renamed it Hollycrest.<br>Then gave it a second world.</h2>
+    </div>
+    <div class="editorial-body">
+      <p>Elizabeth “Betty” Dumaine purchased the house in 1959 and gave it the name Hollycrest — a name still preserved, quietly and stubbornly, in 200 Hollycrest Drive.</p>
+      <p>At nineteen, Betty attended the Edith Johnson School in Cambridge, Massachusetts, where her roommate was Khun Sangwan Chukramol. The friendship did not stay small. Sangwan later married Prince Mahidol of Songkla and became Srinagarindra, Princess Mother of Thailand.</p>
+      <p>From Pinehurst, Betty supported the Princess Mother's charitable work in Northern Thailand. She raised funds, founded a riding club, kept horses and hounds, and gave the grounds their second great life.</p>
+      <p>Her version of stewardship was not quiet in the small sense. It had peacocks, gardens, horses, charity, ceremony, and one little grave at the back of the grounds that still knows how to break your heart.</p>
     </div>
   </div>
 </section>
@@ -622,26 +587,19 @@ window.GH_IMG_FALLBACK = function(img){
   <div class="room-overlay" style="background:linear-gradient(to bottom,rgba(11,11,11,0.1),rgba(11,11,11,0.65))"></div>
   <div class="room-caption center reveal">
     <span class="room-eyebrow">200 Hollycrest Drive · Pinehurst, North Carolina · $4,250,000</span>
-    <div class="room-name">Garran Hill is ready.<br><em>It is not simply for sale.</em></div>
+    <div class="room-name">Garran Hill is ready.<br><em>It is offered now for the first time.</em></div>
     <div class="room-line" style="max-width:34rem;margin:0.8rem auto 0">The question is whether you are.</div>
   </div>
 </section>
 
-<!-- ACT VI — The Record -->
-<div class="act">
-  <div class="act-line"></div>
-  <span class="act-label">— VI — The Record</span>
-  <div class="act-line"></div>
-</div>
-
 
 <!-- IN PRINT -->
-<section id="record" class="editorial-section">
+<section id="print" class="editorial-section">
   <div class="editorial-inner reveal">
     <span class="editorial-kicker">The Record</span>
     <h2 class="editorial-title">The record is not thin.</h2>
     <div class="editorial-body" style="max-width:760px">
-      <p>This is not atmosphere. The record holds: Page's letters at Houghton Library. PineStraw's account of the farm. The Village Heritage Foundation's Hollycrest record. TPMCF's biography of Betty Dumaine. NCpedia. The inscription at Westminster Abbey. The threshold brick. Fifteen sets of architectural drawings. The keys still in the plates.</p>
+      <p>Garran Hill is not being offered on atmosphere alone. The record holds: Page's letters, PineStraw's account of the farm, the Village Heritage Foundation's Hollycrest record, TPMCF's Betty Dumaine history, NCpedia's biography, and the inscription at Westminster Abbey.</p>
       <p>The rare thing is not that the house has a story. The rare thing is that the story still has an address, a threshold, a stair, a key in the plate, and a door that opens.</p>
     </div>
     <div class="record-grid">
@@ -685,7 +643,7 @@ window.GH_IMG_FALLBACK = function(img){
 </section>
 
 <!-- MATTERPORT -->
-<section id="matterport" style="position:relative;height:80vh;overflow:hidden">
+<section id="tour" style="position:relative;height:80vh;overflow:hidden">
   <img style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1179.jpg" data-public-id="gh_interiors/200holycrest_1179" data-width="1920" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="Garran Hill -- virtual tour">
   <div style="position:absolute;inset:0;background:rgba(11,11,11,0.52)"></div>
   <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;z-index:2">
@@ -699,7 +657,7 @@ window.GH_IMG_FALLBACK = function(img){
 <section id="inquiry">
   <div class="inquiry-inner">
     <span class="inquiry-eyebrow">Private Showing</span>
-    <div class="inquiry-headline reveal">Garran Hill is ready.<br>It is not simply for sale.<br>The question is whether you are.</div>
+    <div class="inquiry-headline reveal">Garran Hill is ready.<br>It is offered now for the first time.<br>The question is whether you are.</div>
     <a href="mailto:rachelhernandezrealtor@gmail.com?subject=Garran Hill -- Private Showing Request&body=I would like to arrange a private showing of Garran Hill, 200 Hollycrest Drive, Pinehurst." class="inquiry-btn reveal">Request a Private Showing &rarr;</a>
   </div>
 </section>
