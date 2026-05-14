@@ -7,7 +7,7 @@
 <meta name="description" content="Garran Hill, a 1916 Neo-Georgian estate in Pinehurst, North Carolina. Named by Walter Hines Page, held as Hollycrest by Betty Dumaine, and restored with rare restraint for its next steward. Offered at $4,250,000.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&family=Instrument+Sans:wght@300;400&family=Pinyon+Script&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SingleFamilyResidence","name":"Garran Hill","alternateName":"Hollycrest","description":"A 1916 Neo-Georgian estate in Pinehurst, North Carolina. Named by Walter Hines Page, later Hollycrest under Elizabeth “Betty” Dumaine, and restored for its next steward. 6,072 sq ft on 4.15 acres.","address":{"@type":"PostalAddress","streetAddress":"200 Hollycrest Drive","addressLocality":"Pinehurst","addressRegion":"NC","postalCode":"28374"},"floorSize":{"@type":"QuantitativeValue","value":6072,"unitCode":"FTK"},"numberOfBedrooms":4,"numberOfBathroomsTotal":6,"yearBuilt":1916,"offers":{"@type":"Offer","price":"4250000","priceCurrency":"USD"},"agent":{"@type":"RealEstateAgent","name":"Rachel Hernandez","worksFor":{"@type":"Organization","name":"Pines Sotheby's International Realty"}}}
 </script>
@@ -23,7 +23,7 @@
   --gg:rgba(201,169,110,0.12);
   --ink:rgba(10,10,10,0.92);
   --veil:rgba(10,10,10,0.72);
-  --sans:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  --sans:'Instrument Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 html{scroll-behavior:smooth}
 body{background:var(--dark);color:var(--cream);font-family:'Cormorant Garamond',serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -161,6 +161,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .citations-list a{color:rgba(201,169,110,0.4);text-decoration:none;letter-spacing:0.04em;transition:color 0.3s}
 .citations-list a:hover{color:var(--gold)}
 .cite-sep{display:inline-block;margin:0 0.8rem;color:var(--gd)}
+
+
+/* ── CLOSING ── */
+.closing-moment{background:var(--dark);padding:clamp(5rem,10vw,10rem) 2rem;text-align:center}
+.closing-line1{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,3.2rem);font-weight:200;color:var(--cream);line-height:1.4;letter-spacing:0.02em;margin-bottom:1.6rem;display:block}
+.closing-line2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,2.4rem);font-weight:200;color:var(--gold);font-style:italic;letter-spacing:0.04em;display:block}
+.closing-rule{width:48px;height:1px;background:rgba(201,169,110,0.45);margin:3rem auto}
 
 /* ── INQUIRY ── */
 #inquiry{background:var(--dark);padding:8rem 2rem}
@@ -903,6 +910,14 @@ window.GH_IMG_FALLBACK = function(img){
 </section>
 
 <!-- INQUIRY -->
+<!-- CLOSING -->
+<section class="closing-moment reveal">
+  <div class="closing-rule"></div>
+  <span class="closing-line1">Garran Hill is ready. It is offered now for the first time.</span>
+  <span class="closing-line2">The question is whether you are.</span>
+  <div class="closing-rule"></div>
+</section>
+
 <section id="inquiry">
   <div class="inquiry-inner">
     <div class="inquiry-breath reveal">
