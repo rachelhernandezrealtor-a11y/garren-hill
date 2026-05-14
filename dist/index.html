@@ -125,7 +125,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .blue-fox-sub-headline{font-size:clamp(1.4rem,2.5vw,2.2rem);font-weight:200;color:var(--cream);line-height:1.4;margin-bottom:1.5rem;font-style:italic}
 .blue-fox-marker{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.22em;color:var(--gd);margin-top:2rem;display:block}
 
-/* ── GALLERY ── */
+
 #gallery{background:var(--dark);padding:6rem 0}
 .gallery-inner{max-width:1400px;margin:0 auto;padding:0 2rem}
 .gallery-eyebrow{font-family:var(--sans);font-size:0.56rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);text-align:center;display:block;margin-bottom:3.5rem}
@@ -261,6 +261,257 @@ footer{background:var(--dark);padding:4rem 2rem 3rem;border-top:1px solid rgba(2
     .split, .split.reverse { flex-direction: column; min-height: auto; }
     .split .split-img { flex: none; width: 100%; min-height: 55vw; }
     .split .split-text { flex: none; width: 100%; }
+  }
+
+
+  /* ══════════════════════════════════════════════════════
+     GALLERY — Architectural Digest editorial style
+     Masonry-inspired asymmetric grid + full-screen lightbox
+  ══════════════════════════════════════════════════════ */
+
+  #gallery {
+    background: var(--dark);
+    padding: clamp(5rem, 9vw, 10rem) 0;
+  }
+  .gallery-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 clamp(1.2rem, 4vw, 4rem);
+  }
+  .gallery-header {
+    text-align: center;
+    margin-bottom: clamp(3rem, 5vw, 5rem);
+  }
+  .gallery-header .eyebrow {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .gallery-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 200;
+    font-size: clamp(2rem, 3.5vw, 3.4rem);
+    color: var(--cream);
+    letter-spacing: 0.03em;
+    margin: 0;
+  }
+  .gallery-header h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  /* ── MASONRY GRID ─────────────────────────────────────── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 28vw;
+    gap: 3px;
+  }
+
+  /* Row 1: wide left (8 col) + tall right (4 col, spans 2 rows) */
+  .gallery-grid .g1 { grid-column: 1 / 9; grid-row: 1; }
+  .gallery-grid .g2 { grid-column: 9 / 13; grid-row: 1 / 3; }
+
+  /* Row 2: three equal (2.67 col each, roughly) */
+  .gallery-grid .g3 { grid-column: 1 / 5; grid-row: 2; }
+  .gallery-grid .g4 { grid-column: 5 / 9; grid-row: 2; }
+
+  /* Row 3: narrow + wide */
+  .gallery-grid .g5 { grid-column: 1 / 5; grid-row: 3; }
+  .gallery-grid .g6 { grid-column: 5 / 9; grid-row: 3; }
+  .gallery-grid .g7 { grid-column: 9 / 13; grid-row: 3; }
+
+  /* Row 4: tall left (spans 2) + two right */
+  .gallery-grid .g8  { grid-column: 1 / 5; grid-row: 4 / 6; }
+  .gallery-grid .g9  { grid-column: 5 / 9; grid-row: 4; }
+  .gallery-grid .g10 { grid-column: 9 / 13; grid-row: 4; }
+
+  /* Row 5: two right continue */
+  .gallery-grid .g11 { grid-column: 5 / 9; grid-row: 5; }
+  .gallery-grid .g12 { grid-column: 9 / 13; grid-row: 5; }
+
+  /* ── GALLERY ITEM ─────────────────────────────────────── */
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: #111;
+  }
+  .gallery-item img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94),
+                opacity 0.4s ease;
+  }
+  .gallery-item:hover img {
+    transform: scale(1.04);
+    opacity: 0.88;
+  }
+  .gallery-item .g-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2.5rem 1.4rem 1rem;
+    background: linear-gradient(to top, rgba(10,10,10,0.82) 0%, transparent 100%);
+    font-family: var(--sans);
+    font-size: 0.5rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.7);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    pointer-events: none;
+  }
+  .gallery-item:hover .g-caption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── LIGHTBOX ─────────────────────────────────────────── */
+  #gh-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(8,8,8,0.97);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+  #gh-lightbox.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  #gh-lightbox .lb-img-wrap {
+    position: relative;
+    max-width: 90vw;
+    max-height: 88vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #gh-lightbox img {
+    max-width: 90vw;
+    max-height: 86vh;
+    object-fit: contain;
+    display: block;
+    box-shadow: 0 8px 60px rgba(0,0,0,0.7);
+    transition: opacity 0.25s ease;
+  }
+  #gh-lightbox .lb-caption {
+    position: absolute;
+    bottom: -2.2rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 0.5rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.7);
+  }
+  #gh-lightbox .lb-close {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.8rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #gh-lightbox .lb-close::before,
+  #gh-lightbox .lb-close::after {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 1px;
+    background: rgba(245,240,232,0.7);
+  }
+  #gh-lightbox .lb-close::before { transform: rotate(45deg); }
+  #gh-lightbox .lb-close::after  { transform: rotate(-45deg); }
+  #gh-lightbox .lb-close:hover::before,
+  #gh-lightbox .lb-close:hover::after {
+    background: var(--gold);
+  }
+  #gh-lightbox .lb-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 1rem;
+    color: rgba(245,240,232,0.5);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 200;
+    transition: color 0.2s;
+    line-height: 1;
+    user-select: none;
+  }
+  #gh-lightbox .lb-nav:hover { color: var(--gold); }
+  #gh-lightbox .lb-prev { left: 1.5rem; }
+  #gh-lightbox .lb-next { right: 1.5rem; }
+  #gh-lightbox .lb-counter {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--sans);
+    font-size: 0.48rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.35);
+  }
+
+  /* ── RESPONSIVE ───────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .gallery-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: 52vw;
+    }
+    .gallery-grid .g1,
+    .gallery-grid .g2,
+    .gallery-grid .g3,
+    .gallery-grid .g4,
+    .gallery-grid .g5,
+    .gallery-grid .g6,
+    .gallery-grid .g7,
+    .gallery-grid .g8,
+    .gallery-grid .g9,
+    .gallery-grid .g10,
+    .gallery-grid .g11,
+    .gallery-grid .g12 {
+      grid-column: auto;
+      grid-row: auto;
+    }
+    /* First photo gets full width on tablet */
+    .gallery-grid .g1 { grid-column: 1 / 3; }
+    .gallery-grid .g8 { grid-column: 1 / 3; }
+  }
+  @media (max-width: 540px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      grid-auto-rows: 78vw;
+    }
+    .gallery-grid .g1,
+    .gallery-grid .g2,
+    .gallery-grid .g8 {
+      grid-column: 1;
+    }
   }
 
 </style>
@@ -551,20 +802,127 @@ The gate has been open since 1916.</div>
 <!-- GALLERY -->
 <section id="gallery">
   <div class="gallery-inner">
-    <span class="gallery-eyebrow">The House · Gallery</span>
+    <div class="gallery-header reveal">
+      <span class="eyebrow">The House &middot; In Full</span>
+      <h2>Every room.<em> Every detail.</em></h2>
+    </div>
     <div class="gallery-grid">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_800/gh_exteriors/holycrestextf_3312" alt="Exterior, Garran Hill">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/gh_interiors/200holycrest_1179" alt="Foyer, Garran Hill">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/gh_interiors/200holycrest_1191" alt="Salon, Garran Hill">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/gh_interiors/200holycrest_1227" alt="Drawing Room, Garran Hill">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/gh_interiors/200holycrest_1296" alt="Dining Room, Garran Hill">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/gh_key/gh_kitchen_sink" alt="Kitchen, Garran Hill">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/gh_interiors/200holycrest_1344" alt="Library, Garran Hill">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/gh_interiors/200holycrest_1272" alt="Primary Suite, Garran Hill">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_800/gh_exteriors/holycrestextf_3327" alt="Pool, Garran Hill">
+      <div class="gallery-item g1" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1400/v1777244435/gh_exteriors/holycrestextf_3312" data-caption="Garran Hill · Exterior" role="button" tabindex="0" aria-label="View Garran Hill · Exterior">
+        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,f_auto,q_auto,c_limit,w_600/v1777244435/gh_exteriors/holycrestextf_3312" alt="Garran Hill exterior, Pinehurst NC">
+        <span class="g-caption">Garran Hill · Exterior</span>
+      </div>
+      <div class="gallery-item g2" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243208/gh_interiors/200holycrest_1512" data-caption="The Salon" role="button" tabindex="0" aria-label="View The Salon">
+        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243208/gh_interiors/200holycrest_1512" alt="Garran Hill Salon">
+        <span class="g-caption">The Salon</span>
+      </div>
+      <div class="gallery-item g3" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243046/gh_interiors/200holycrest_1209" data-caption="The Drawing Room" role="button" tabindex="0" aria-label="View The Drawing Room">
+        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243046/gh_interiors/200holycrest_1209" alt="Drawing Room with Delft tile fireplace">
+        <span class="g-caption">The Drawing Room</span>
+      </div>
+      <div class="gallery-item g4" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243067/gh_interiors/200holycrest_1296" data-caption="The Dining Room" role="button" tabindex="0" aria-label="View The Dining Room">
+        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243067/gh_interiors/200holycrest_1296" alt="Dining Room, Garran Hill">
+        <span class="g-caption">The Dining Room</span>
+      </div>
+      <div class="gallery-item g5" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243300/gh_interiors/200holycrest_1605" data-caption="The Library" role="button" tabindex="0" aria-label="View The Library">
+        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243300/gh_interiors/200holycrest_1605" alt="Library with floor-to-ceiling bookcases, Garran Hill">
+        <span class="g-caption">The Library</span>
+      </div>
+      <div class="gallery-item g6" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1400/v1777243323/gh_exteriors/front_exterior" data-caption="1916 Neo-Georgian Facade" role="button" tabindex="0" aria-label="View 1916 Neo-Georgian Facade">
+        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243323/gh_exteriors/front_exterior" alt="Garran Hill brick facade, 1916">
+        <span class="g-caption">1916 Neo-Georgian Facade</span>
+      </div>
+      <div class="gallery-item g7" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243091/gh_interiors/200holycrest_1326" data-caption="The Jewel Box" role="button" tabindex="0" aria-label="View The Jewel Box">
+        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243091/gh_interiors/200holycrest_1326" alt="Jewel Box powder room, chinoiserie wallpaper">
+        <span class="g-caption">The Jewel Box</span>
+      </div>
+      <div class="gallery-item g8" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243025/gh_interiors/200holycrest_1182" data-caption="The Entry Hall" role="button" tabindex="0" aria-label="View The Entry Hall">
+        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243025/gh_interiors/200holycrest_1182" alt="Foyer, Garran Hill 1916">
+        <span class="g-caption">The Entry Hall</span>
+      </div>
+      <div class="gallery-item g9" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243220/gh_interiors/200holycrest_1534" data-caption="The Primary Suite" role="button" tabindex="0" aria-label="View The Primary Suite">
+        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243220/gh_interiors/200holycrest_1534" alt="Primary Suite, Garran Hill">
+        <span class="g-caption">The Primary Suite</span>
+      </div>
+      <div class="gallery-item g10" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777244408/gh_interiors/200holycrest_1362" data-caption="The Primary Bath" role="button" tabindex="0" aria-label="View The Primary Bath">
+        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777244408/gh_interiors/200holycrest_1362" alt="Primary Bath, Garran Hill">
+        <span class="g-caption">The Primary Bath</span>
+      </div>
+      <div class="gallery-item g11" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243340/gh_interiors/200holycrest_1650" data-caption="The Kitchen" role="button" tabindex="0" aria-label="View The Kitchen">
+        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243340/gh_interiors/200holycrest_1650" alt="Kitchen, Garran Hill — heart-pine floors, restoration era">
+        <span class="g-caption">The Kitchen</span>
+      </div>
+      <div class="gallery-item g12" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1400/v1777244503/gh_exteriors/holycrestextf_3364" data-caption="4.15 Acres · Pinehurst" role="button" tabindex="0" aria-label="View 4.15 Acres · Pinehurst">
+        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,f_auto,q_auto,c_limit,w_600/v1777244503/gh_exteriors/holycrestextf_3364" alt="Grounds, Garran Hill">
+        <span class="g-caption">4.15 Acres · Pinehurst</span>
+      </div>
     </div>
   </div>
 </section>
+
+
+<!-- LIGHTBOX -->
+<div id="gh-lightbox" role="dialog" aria-modal="true" aria-label="Photo gallery">
+  <button class="lb-close" aria-label="Close"></button>
+  <button class="lb-nav lb-prev" aria-label="Previous">&#8592;</button>
+  <div class="lb-img-wrap">
+    <img id="lb-img" src="" alt="">
+    <span class="lb-caption" id="lb-caption"></span>
+  </div>
+  <button class="lb-nav lb-next" aria-label="Next">&#8594;</button>
+  <span class="lb-counter" id="lb-counter"></span>
+</div>
+
+<script>
+(function(){
+  var items = document.querySelectorAll('.gallery-item');
+  var lb = document.getElementById('gh-lightbox');
+  var lbImg = document.getElementById('lb-img');
+  var lbCap = document.getElementById('lb-caption');
+  var lbCount = document.getElementById('lb-counter');
+  var current = 0;
+  var total = items.length;
+
+  function open(idx){
+    current = idx;
+    var el = items[idx];
+    lbImg.style.opacity = '0';
+    lbImg.src = el.dataset.full;
+    lbCap.textContent = el.dataset.caption;
+    lbCount.textContent = (idx+1) + ' · ' + total;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lbImg.onload = function(){ lbImg.style.opacity = '1'; };
+  }
+  function close(){
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function prev(){open((current - 1 + total) % total);}
+  function next(){open((current + 1) % total);}
+
+  items.forEach(function(el, i){
+    el.addEventListener('click', function(){ open(i); });
+    el.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ open(i); }
+    });
+  });
+
+  document.querySelector('.lb-close').addEventListener('click', close);
+  document.querySelector('.lb-prev').addEventListener('click', prev);
+  document.querySelector('.lb-next').addEventListener('click', next);
+
+  lb.addEventListener('click', function(e){
+    if(e.target === lb){ close(); }
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape') close();
+    if(e.key === 'ArrowLeft') prev();
+    if(e.key === 'ArrowRight') next();
+  });
+})();
+</script>
 
 <!-- MATTERPORT -->
 <section id="matterport" style="position:relative;height:80vh;overflow:hidden">
