@@ -2365,5 +2365,75 @@ document.querySelectorAll('.stat').forEach((el, i) => {
 
 
 </script>
+
+<script>
+// ── INTERSECTION OBSERVER — reveals, img-reveals, micro-rules ──
+(function() {
+  var selectors = '.reveal, .reveal-slow, .img-reveal, .micro-rule, .act-label, .whp-grid, .arch-inner, .restoration-inner, .secrets-content, .betty-grid, .room-caption, .room-split-text';
+  var els = document.querySelectorAll(selectors);
+  if (!els.length) return;
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el) { obs.observe(el); });
+})();
+
+// ── SCROLL PROGRESS ──
+(function() {
+  var bar = document.getElementById('scroll-progress');
+  if (!bar) return;
+  window.addEventListener('scroll', function() {
+    var pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    bar.style.width = Math.min(pct, 100) + '%';
+  }, { passive: true });
+})();
+
+// ── NAV SCROLLED STATE ──
+(function() {
+  var nav = document.querySelector('nav');
+  if (!nav) return;
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+})();
+
+// ── CUSTOM CURSOR ──
+(function() {
+  var dot = document.getElementById('cursor');
+  if (!dot) return;
+  var mx = 0, my = 0, cx = 0, cy = 0;
+  document.addEventListener('mousemove', function(e) { mx = e.clientX; my = e.clientY; });
+  (function loop() {
+    cx += (mx - cx) * 0.18;
+    cy += (my - cy) * 0.18;
+    dot.style.transform = 'translate(' + cx + 'px,' + cy + 'px) translate(-50%,-50%)';
+    requestAnimationFrame(loop);
+  })();
+})();
+
+// ── GALLERY LIGHTBOX ──
+(function() {
+  var lb = document.getElementById('gh-lightbox');
+  var lbImg = document.getElementById('lb-img');
+  if (!lb || !lbImg) return;
+  document.querySelectorAll('.gallery-item img').forEach(function(img) {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', function() {
+      lbImg.src = img.src.replace(/c_limit,w_\d+/, 'c_limit,w_1800');
+      lb.style.opacity = '1';
+      lb.style.pointerEvents = 'auto';
+    });
+  });
+  lb.addEventListener('click', function() {
+    lb.style.opacity = '0';
+    lb.style.pointerEvents = 'none';
+  });
+})();
+</script>
 </body>
 </html>
