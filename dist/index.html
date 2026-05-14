@@ -514,6 +514,293 @@ footer{background:var(--dark);padding:4rem 2rem 3rem;border-top:1px solid rgba(2
     }
   }
 
+
+  /* ══════════════════════════════════════════════════════
+     RHYTHM STYLE LAYER
+     Rules: 9 (alternate weight), 11 (transition=design),
+     13 (scroll reveals), 21 (sacred space), 37 (wax seal)
+  ══════════════════════════════════════════════════════ */
+
+  /* ── REVEAL SYSTEM ────────────────────────────────── */
+  /* Base: everything starts invisible and rises in */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger siblings */
+  .reveal-group .reveal:nth-child(1) { transition-delay: 0ms; }
+  .reveal-group .reveal:nth-child(2) { transition-delay: 120ms; }
+  .reveal-group .reveal:nth-child(3) { transition-delay: 240ms; }
+  .reveal-group .reveal:nth-child(4) { transition-delay: 360ms; }
+  .reveal-group .reveal:nth-child(5) { transition-delay: 480ms; }
+
+  /* Slow reveal for sacred material */
+  .reveal-slow {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .reveal-slow.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Image reveal: fade + very slight scale */
+  .img-reveal {
+    opacity: 0;
+    transform: scale(0.985);
+    transition: opacity 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .img-reveal.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Horizontal slide for pull-quotes */
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-28px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(28px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+  /* Gold rule draw-in animation */
+  .micro-rule {
+    display: block;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 1.8rem;
+    transition: width 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+    opacity: 0.6;
+  }
+  .micro-rule.visible { width: 2.5rem; }
+
+  /* ── BREATH SECTIONS (Rule 11) ────────────────────── */
+  /* Breath = pure dark space between heavy sections    */
+  .breath {
+    background: var(--dark);
+    padding: clamp(3rem, 5vw, 5rem) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .breath-line {
+    width: 1px;
+    height: clamp(2rem, 3vw, 3rem);
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    opacity: 0;
+    transform: scaleY(0);
+    transition: opacity 1.2s ease 0.3s, transform 1.2s ease 0.3s;
+    transform-origin: top;
+  }
+  .breath-line.visible {
+    opacity: 0.5;
+    transform: scaleY(1);
+  }
+  .breath-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 200;
+    font-style: italic;
+    font-size: clamp(1rem, 1.6vw, 1.3rem);
+    color: rgba(245,240,232,0.35);
+    letter-spacing: 0.08em;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1.4s ease 0.6s;
+  }
+  .breath-text.visible { opacity: 1; }
+
+  /* ── SACRED QUOTE TREATMENT (Rule 21) ─────────────── */
+  /* WHP last words, Westminster, locked quotes         */
+  .sacred-quote {
+    position: relative;
+    padding: clamp(3rem, 5vw, 5rem) clamp(2rem, 6vw, 8rem);
+    text-align: center;
+  }
+  .sacred-quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: clamp(1.5rem, 2.5vw, 2.5rem);
+    background: linear-gradient(to bottom, transparent, var(--gold));
+    opacity: 0.4;
+  }
+  .sacred-quote::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: clamp(1.5rem, 2.5vw, 2.5rem);
+    background: linear-gradient(to top, transparent, var(--gold));
+    opacity: 0.4;
+  }
+  .sacred-quote blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 200;
+    font-style: italic;
+    font-size: clamp(1.4rem, 2.8vw, 2.4rem);
+    line-height: 1.6;
+    color: var(--cream);
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+  .sacred-quote cite {
+    display: block;
+    margin-top: 1.5rem;
+    font-family: var(--sans);
+    font-size: 0.5rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    font-style: normal;
+  }
+
+  /* ── PULL LINE ─────────────────────────────────────── */
+  /* Single italic line that stands alone between sections */
+  .pull-line {
+    text-align: center;
+    padding: clamp(2rem, 4vw, 4rem) clamp(1.5rem, 8vw, 12rem);
+  }
+  .pull-line p {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 200;
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.2vw, 2rem);
+    line-height: 1.5;
+    color: rgba(245,240,232,0.55);
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── STAT BAR RHYTHM ──────────────────────────────── */
+  /* Already exists but add stagger */
+  .stat { transition-delay: var(--d, 0ms); }
+
+  /* ── ROOM SPREAD RHYTHM ───────────────────────────── */
+  /* Rule 40: stagger, never symmetrical               */
+  .room-caption .room-eyebrow {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .room-caption.visible .room-eyebrow {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .room-caption .room-name {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.9s ease 0.15s, transform 0.9s ease 0.15s;
+  }
+  .room-caption.visible .room-name {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .room-caption .room-line {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.9s ease 0.3s, transform 0.9s ease 0.3s;
+  }
+  .room-caption.visible .room-line {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── WAX SEAL CLOSE (Rule 37) ─────────────────────── */
+  .wax-seal-close {
+    display: flex;
+    justify-content: center;
+    padding: clamp(3rem, 5vw, 5rem) 0 clamp(2rem, 3vw, 3rem);
+    background: var(--dark);
+  }
+  .wax-seal-close img {
+    width: clamp(60px, 8vw, 90px);
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 1.8s ease 0.4s, transform 1.8s ease 0.4s;
+  }
+  .wax-seal-close img.visible {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+
+  /* ── ACT BREAK REFINEMENT ─────────────────────────── */
+  .act {
+    padding: clamp(3rem, 5vw, 5rem) 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .act-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,169,110,0.35), transparent);
+  }
+  .act-label {
+    font-family: var(--sans);
+    font-size: 0.46rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.5);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+  .act-label.visible { opacity: 1; }
+
+  /* ── SECTION TRANSITIONS ──────────────────────────── */
+  /* Rule 9: alternate weight — heavy sections fade up, breath sections dissolve */
+  #whp, #betty-dumaine {
+    position: relative;
+  }
+  #whp::after, #betty-dumaine::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 6rem;
+    background: linear-gradient(to bottom, transparent, var(--dark));
+    pointer-events: none;
+  }
+
+  /* ── HERO STAT BAR STAGGER ────────────────────────── */
+  .stat:nth-child(1) { --d: 0ms; }
+  .stat:nth-child(2) { --d: 80ms; }
+  .stat:nth-child(3) { --d: 160ms; }
+  .stat:nth-child(4) { --d: 240ms; }
+  .stat:nth-child(5) { --d: 320ms; }
+
+  /* ── MOBILE RHYTHM ────────────────────────────────── */
+  @media (max-width: 768px) {
+    .breath { padding: clamp(2rem, 4vw, 3rem) 0; }
+    .sacred-quote { padding: 2.5rem 1.5rem; }
+    .pull-line { padding: 2rem 1.5rem; }
+    .reveal { transform: translateY(14px); }
+  }
+
 </style>
 </head>
 <body>
@@ -572,39 +859,39 @@ The gate has been open since 1916.</div>
   <div class="whp-inner">
     <img class="whp-portrait reveal" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777432283/gh_key/gh_whp_photo" alt="Walter Hines Page, U.S. Ambassador to the Court of St. James's">
     <div class="whp-content reveal">
-      <span class="whp-eyebrow">Walter Hines Page · 1855–1918</span>
+      <span class="whp-eyebrow">Walter Hines Page &middot; 1855&ndash;1918</span>
       <div class="whp-name">He named it Garran Hill.<br>He never spent a night here.</div>
       <div class="whp-body">
-        <p>Page bought the land in February 1913 and sailed for London weeks later as Ambassador to the Court of St. James's. He directed the build from three thousand miles away. His son Ralph supervised on the ground. Leonard Tufts sent the craftsmen — the same men who built Pinehurst.</p>
-        <p style="margin-top:1.4rem">"Build the farm, therefore; and let me hear at every stage of that happy game."</p>
-        <p style="margin-top:1.4rem">He returned to America in December 1918. His son carried him off the train at Aberdeen station. He died at Currituck Cottage in Pinehurst on December 21, 1918 -- ten days after he arrived.</p>
+        <p>Page bought the land in February 1913 and sailed for London weeks later as Ambassador to the Court of St. James's. He directed the build from three thousand miles away. His son Ralph supervised on the ground. Leonard Tufts sent the craftsmen &mdash; the same men who built Pinehurst.</p>
+        <p>"Build the farm, therefore; and let me hear at every stage of that happy game."</p>
+        <p>He returned to America in December 1918. His son carried him off the train at Aberdeen station. He died at Currituck Cottage in Pinehurst on December 21, 1918 &mdash; ten days after he arrived.</p>
+        <div class="sacred-quote reveal-slow">
+          <blockquote>&ldquo;Well, Frank, I did get here after all, didn&rsquo;t I?&rdquo;</blockquote>
+          <cite>Walter Hines Page &middot; Aberdeen Station &middot; December 11, 1918</cite>
+        </div>
       </div>
-      <blockquote class="whp-quote">
-        "Well, Frank, I did get here after all, didn't I?"
-        <cite class="whp-source">— Walter Hines Page, Aberdeen station, December 11, 1918</cite>
-      </blockquote>
     </div>
   </div>
 </section>
-
 <!-- ARCHITECTURE -->
 <section id="architecture" style="background:var(--dark);padding:clamp(5rem,9vw,10rem) 0">
   <div class="section-content">
     <div class="split">
       <div class="split-text">
         <span class="micro-rule reveal"></span>
-        <span class="room-eyebrow">Neo-Georgian &middot; 1915&ndash;1916</span>
-        <h2>The proportions<em> were not accidental.</em></h2>
+        <span class="room-eyebrow reveal">Neo-Georgian &middot; 1915&ndash;1916</span>
+        <h2 class="reveal">The proportions<em> were not accidental.</em></h2>
         <div class="body-text reveal">
           <p>Neo-Georgian. Six thousand and seventy-two square feet. Four bedrooms, four full baths, two powder rooms. Four and fifteen one-hundredths acres.</p>
-          <p>Foreman J.R. McQueen supervised the build under Leonard Tufts' craftsmen — the same men constructing Pinehurst in those years. The timber, the brick, the hardware: all specified from London by Walter Hines Page in correspondence with his son Ralph.</p>
-          <p>The drawings transferred. Fifteen pages — elevations, floor plans, foundation, framing, portico, kitchen, primary suite, library built-ins, trim profiles. Every decision documented. Every decision still visible.</p>
+          <p>Foreman J.R. McQueen supervised the build under Leonard Tufts' craftsmen &mdash; the same men constructing Pinehurst in those years. The timber, the brick, the hardware: all specified from London by Walter Hines Page in correspondence with his son Ralph.</p>
+          <p>The drawings transferred with the property. Fifteen pages &mdash; elevations, floor plans, foundation, framing, portico, kitchen, primary suite, library built-ins, trim profiles. Every decision documented. Every decision still visible.</p>
           <p>Seven fireplaces. Original leaded glass throughout. The herringbone brick at the portico threshold took three months to match when the restoration came. That is what the standard was.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 <!-- ACT II — The House -->
 <div class="act">
@@ -624,6 +911,13 @@ The gate has been open since 1916.</div>
   </div>
 </section>
 
+
+
+<div class="breath">
+  <div class="breath-line"></div>
+  <p class="breath-text">The house was built from memory. He never saw it finished.</p>
+  <div class="breath-line"></div>
+</div>
 
 <!-- ACT BREAK — Architecture to Restoration -->
 <div class="act">
@@ -660,12 +954,18 @@ The gate has been open since 1916.</div>
     </div>
   </div>
 </section>
+<div class="breath">
+  <div class="breath-line"></div>
+  <p class="breath-text">Every room is a decision that lasted.</p>
+  <div class="breath-line"></div>
+</div>
+
 
 <!-- FOYER -->
 <section class="room-spread">
   <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243025/gh_interiors/200holycrest_1182" alt="Foyer, Garran Hill">
   <div class="room-overlay"></div>
-  <div class="room-caption reveal">
+  <div class="room-caption">
     <span class="room-eyebrow">The Entry Hall</span>
     <div class="room-name">The house announces itself<br><em>the moment you cross the threshold.</em></div>
     <div class="room-line">Original leaded glass sidelights. Arched fanlight above the door. Original oak floors. Mahogany staircase volute — same since 1916.<br>The hall axis carries straight through to the library at the back — visible the moment the door opens.<br><em>The brass key plates on every door still have their original keys.</em></div>
@@ -683,7 +983,7 @@ The gate has been open since 1916.</div>
 <section class="room-spread">
   <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243165/gh_interiors/200holycrest_1425" alt="The Salon, Garran Hill">
   <div class="room-overlay" style="background:linear-gradient(to right,rgba(11,11,11,0.65) 0%,transparent 55%)"></div>
-  <div class="room-caption reveal">
+  <div class="room-caption">
     <span class="room-eyebrow">The Salon</span>
     <div class="room-name">They made it bigger<br><em>so they could dance.</em></div>
     <div class="room-line">Coffered ceiling. Georgian panel molding in a grid. Oak floors lifted, repaired, relaid exactly as they were.<br>Two full seating areas. Room enough to dance.</div>
@@ -705,7 +1005,7 @@ The gate has been open since 1916.</div>
 <section class="room-spread">
   <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243073/gh_interiors/200holycrest_1302" alt="The Dining Room, Garran Hill">
   <div class="room-overlay"></div>
-  <div class="room-caption reveal">
+  <div class="room-caption">
     <span class="room-eyebrow">The Dining Room</span>
     <div class="room-name">Formal by proportion.<br><em>Intimate by firelight.</em></div>
     <div class="room-line">Bay window on the north wall — curved, floor to ceiling, nine-pane divided lights, looking directly onto the grounds. Brass and porcelain chandelier.<br>Flanking the fireplace: arched shell alcoves, scalloped tops, built-in cabinet below — drawn on the restoration plans before a single piece of trim was cut.<br><em>Shell cabinets were already there. Still there now.</em></div>
@@ -716,7 +1016,7 @@ The gate has been open since 1916.</div>
 <section class="room-spread">
   <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243340/gh_interiors/200holycrest_1650" alt="The Kitchen, Garran Hill">
   <div class="room-overlay" style="background:linear-gradient(to right,rgba(11,11,11,0.6) 0%,transparent 55%)"></div>
-  <div class="room-caption reveal">
+  <div class="room-caption">
     <span class="room-eyebrow">The Kitchen</span>
     <div class="room-name">The shell cabinets are original.<br><em>The kitchen is not.</em></div>
     <div class="room-line">Built new in 2000. Reclaimed heart-pine floors — the only room in the house with heart-pine, chosen intentionally. Every other room retains its original 1916 solid oak.<br>Custom cabinetry — white uppers with glass fronts, dark painted lowers. A wall of divided-light windows facing the grounds. Every morning at 6:30, the deer come through.<br><em>The floors are reclaimed heart-pine. Chosen. Not incidental.</em><br>Two farm sinks. A wall of windows over the main sink.<br>Beyond them: the Grandiflora magnolias Betty Dumaine planted in 1959.</div>
@@ -738,7 +1038,7 @@ The gate has been open since 1916.</div>
 <section class="room-spread" style="height:70vh">
   <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243091/gh_interiors/200holycrest_1326" alt="Powder Room, Garran Hill">
   <div class="room-overlay"></div>
-  <div class="room-caption reveal">
+  <div class="room-caption">
     <span class="room-eyebrow">Powder Room</span>
     <div class="room-name">The Jewel Box</div>
     <div class="room-line">Fuchsia chinoiserie. Tennessee marble vanity.<br>Small. Deliberate. The only room like it in Pinehurst.</div>
@@ -749,7 +1049,7 @@ The gate has been open since 1916.</div>
 <section class="room-spread">
   <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243220/gh_interiors/200holycrest_1534" alt="Primary Suite, Garran Hill">
   <div class="room-overlay" style="background:linear-gradient(to right,rgba(11,11,11,0.6) 0%,transparent 55%)"></div>
-  <div class="room-caption reveal">
+  <div class="room-caption">
     <span class="room-eyebrow">The Primary Suite</span>
     <div class="room-name">The whole floor<br><em>belongs to it.</em></div>
     <div class="room-line">The primary suite occupies the entire east wing of the second floor. Sitting room. Dressing room. A primary bath finished in marble. Every window faces the grounds.<br>Nothing was approximated. The hardware is original. The bathroom floor is marble. The closet is behind a wall that looks like a wall.<br><em>It does not feel added. It feels inevitable.</em></div>
@@ -779,6 +1079,13 @@ The gate has been open since 1916.</div>
   <div class="act-line"></div>
   <span class="act-label">— VI — Stewardship</span>
   <div class="act-line"></div>
+</div>
+
+
+<div class="breath">
+  <div class="breath-line"></div>
+  <p class="breath-text">The land remembers everything.</p>
+  <div class="breath-line"></div>
 </div>
 
 <!-- BLUE FOX -->
@@ -820,6 +1127,13 @@ The gate has been open since 1916.</div>
   <div class="act-line"></div>
 </div>
 
+
+<div class="breath">
+  <div class="breath-line"></div>
+  <p class="breath-text">Every steward found something here worth keeping.</p>
+  <div class="breath-line"></div>
+</div>
+
 <!-- BETTY DUMAINE -->
 <section id="betty-dumaine" style="background:var(--dark);padding:clamp(5rem,9vw,10rem) 0">
   <div class="section-content">
@@ -854,6 +1168,13 @@ The gate has been open since 1916.</div>
     <p style="font-family:var(--sans);font-size:0.5rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-top:1.5rem">Westminster Abbey inscription &middot; Walter Hines Page &middot; 1918</p>
   </div>
 </section>
+
+
+<div class="breath">
+  <div class="breath-line"></div>
+  <p class="breath-text">A house held this carefully does not ask to be sold. It asks to be found.</p>
+  <div class="breath-line"></div>
+</div>
 
 <!-- GALLERY -->
 <section id="gallery">
@@ -1052,10 +1373,28 @@ The gate has been open since 1916.</div>
 </footer>
 
 <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold: 0.12});
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+// RHYTHM LAYER — unified reveal observer
+const _revealClasses = [
+  '.reveal', '.reveal-slow', '.img-reveal',
+  '.reveal-left', '.reveal-right',
+  '.micro-rule', '.breath-line', '.breath-text',
+  '.act-label', '.room-caption', '.wax-seal-close img'
+];
+const _observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      _observer.unobserve(e.target); // fire once only
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll(_revealClasses.join(',')).forEach(el => _observer.observe(el));
+
+// Stat bar stagger
+document.querySelectorAll('.stat').forEach((el, i) => {
+  el.style.setProperty('--d', (i * 80) + 'ms');
+  el.classList.add('reveal');
+});
 
 
 </script>
