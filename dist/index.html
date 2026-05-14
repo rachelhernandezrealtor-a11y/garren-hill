@@ -1043,117 +1043,621 @@ The gate has been open since 1916.</div>
 </section>
 
 <!-- WHP -->
+
+<!-- ═══ NARRATIVE: WHP ═══ -->
 <section id="whp">
-  <div class="whp-inner">
-    <img class="whp-portrait reveal" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/v1777432283/gh_key/gh_whp_photo" alt="Walter Hines Page, U.S. Ambassador to the Court of St. James's">
-    <div class="whp-content reveal">
+  <style>
+    #whp {
+      position: relative;
+      background: var(--dark);
+      overflow: hidden;
+      padding: clamp(6rem,10vw,12rem) 0;
+    }
+    /* Artifact watermark — letter page faded into darkness */
+    #whp::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1400/v1777391998/gh_key/gh_whp_letter1');
+      background-size: cover;
+      background-position: center top;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+    .whp-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(2rem,6vw,8rem);
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: clamp(4rem,7vw,9rem);
+      align-items: start;
+    }
+    .whp-portrait-col { position: relative; }
+    .whp-portrait-main {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(18%) contrast(1.05);
+    }
+    /* Second portrait — fades in on hover, offset */
+    .whp-portrait-ghost {
+      position: absolute;
+      bottom: -2.5rem;
+      right: -2rem;
+      width: 52%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(40%) sepia(15%);
+      opacity: 0;
+      transition: opacity 0.9s ease;
+      border: 1px solid rgba(201,169,110,0.18);
+    }
+    #whp:hover .whp-portrait-ghost { opacity: 0.72; }
+    .whp-content-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 0.5rem;
+    }
+    .whp-eyebrow {
+      font-family: var(--sans);
+      font-size: clamp(0.68rem,1vw,0.82rem);
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      display: block;
+    }
+    .whp-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 200;
+      font-size: clamp(2.8rem,5.5vw,5.2rem);
+      line-height: 1.0;
+      color: var(--cream);
+      margin-bottom: 2.5rem;
+    }
+    .whp-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1.05rem,1.6vw,1.28rem);
+      line-height: 1.9;
+      color: rgba(245,240,232,0.82);
+      max-width: 52ch;
+    }
+    .whp-body p { margin: 0 0 1.4rem; }
+    /* The letter artifact — pulled quote from the actual letter */
+    .whp-letter-pull {
+      margin: 3rem 0 0;
+      padding: 2rem 2.5rem;
+      border-left: 1px solid rgba(201,169,110,0.35);
+      position: relative;
+    }
+    .whp-letter-pull::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_600/v1777391998/gh_key/gh_whp_letter1');
+      background-size: cover;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+    .whp-letter-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.1rem,1.8vw,1.4rem);
+      line-height: 1.7;
+      color: var(--cream);
+      position: relative;
+      z-index: 1;
+    }
+    .whp-letter-attr {
+      display: block;
+      margin-top: 1rem;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(201,169,110,0.6);
+    }
+    /* Aberdeen last words — cracked into the page */
+    .whp-lastwords {
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(201,169,110,0.12);
+    }
+    .whp-lastwords-line {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 200;
+      font-size: clamp(1.3rem,2.2vw,1.8rem);
+      line-height: 1.55;
+      color: rgba(245,240,232,0.55);
+      letter-spacing: 0.01em;
+    }
+    /* The crack — a single word that glows */
+    .whp-lastwords-line .crack {
+      color: var(--cream);
+      opacity: 1;
+      position: relative;
+    }
+    .whp-lastwords-attr {
+      display: block;
+      margin-top: 1.2rem;
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(201,169,110,0.5);
+    }
+    @media (max-width: 768px) {
+      .whp-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .whp-portrait-ghost { display: none; }
+    }
+  </style>
+
+  <div class="whp-grid reveal">
+    <!-- Portrait column -->
+    <div class="whp-portrait-col">
+      <img class="whp-portrait-main" 
+        src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:50,f_auto,q_auto,c_limit,w_700/v1777432283/gh_key/gh_whp_photo"
+        alt="Walter Hines Page, U.S. Ambassador to the Court of St. James's">
+      <!-- The fancy portrait drifts in on hover -->
+      <img class="whp-portrait-ghost"
+        src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_500/v1777438143/gh_key/gh_whp_wikimedia"
+        alt="Walter Hines Page formal portrait">
+    </div>
+
+    <!-- Content column -->
+    <div class="whp-content-col">
       <span class="whp-eyebrow">Walter Hines Page &middot; 1855&ndash;1918</span>
-      <div class="whp-name">He named it Garran Hill.<br>He never spent a night here.</div>
+      <div class="whp-name">He named it<br>Garran Hill.</div>
       <div class="whp-body">
-        <p>Page bought the land in February 1913 and sailed for London weeks later as Ambassador to the Court of St. James's. He directed the build from three thousand miles away. His son Ralph supervised on the ground. Leonard Tufts sent the craftsmen &mdash; the same men who built Pinehurst.</p>
-        <p>"Build the farm, therefore; and let me hear at every stage of that happy game."</p>
-        <p>He returned to America in December 1918. His son carried him off the train at Aberdeen station. He died at Currituck Cottage in Pinehurst on December 21, 1918 &mdash; ten days after he arrived.</p>
-        <div class="sacred-quote reveal-slow">
-          <blockquote>&ldquo;Well, Frank, I did get here after all, didn&rsquo;t I?&rdquo;</blockquote>
-          <cite>Walter Hines Page &middot; Aberdeen Station &middot; December 11, 1918</cite>
-        </div>
+        <p>Ambassador to the Court of St. James's. Friend of Britain in her sorest need. He directed the construction of this house from London, 3,500 miles away, by letter.</p>
+        <p>His son Ralph supervised on the ground. Leonard Tufts sent the craftsmen -- the same men building Pinehurst.</p>
+        <p>He never spent a night here as its owner.</p>
+      </div>
+
+      <!-- Letter artifact — pulled from the actual book -->
+      <div class="whp-letter-pull">
+        <div class="whp-letter-text">&ldquo;Build the farm, therefore; and let me hear at every stage of that happy game.&rdquo;</div>
+        <span class="whp-letter-attr">WHP to Ralph Page &mdash; Life and Letters, Vol. I, p. 356</span>
+      </div>
+
+      <!-- Last words — cracked in quietly -->
+      <div class="whp-lastwords">
+        <div class="whp-lastwords-line">&ldquo;Well, <span class="crack">Frank</span>, I did get here after all, didn&rsquo;t I?&rdquo;</div>
+        <span class="whp-lastwords-attr">Aberdeen Station &middot; December 11, 1918</span>
       </div>
     </div>
   </div>
 </section>
-<!-- ARCHITECTURE -->
+
+<!-- ═══ NARRATIVE: ARCHITECTURE ═══ -->
 <section id="architecture" style="background:var(--dark);padding:clamp(6rem,10vw,12rem) 0">
-  <div class="section-content">
-    <div class="split">
-      <div class="split-text">
-        <span class="micro-rule reveal"></span>
-        <span class="room-eyebrow reveal">Neo-Georgian &middot; 1915&ndash;1916</span>
-        <h2 class="reveal">The proportions<em> were not accidental.</em></h2>
-        <div class="body-text reveal">
-          <p>Neo-Georgian. Six thousand and seventy-two square feet. Four bedrooms, four full baths, two powder rooms. Four and fifteen one-hundredths acres.</p>
-          <p>Foreman J.R. McQueen supervised the build under Leonard Tufts' craftsmen &mdash; the same men constructing Pinehurst in those years. The timber, the brick, the hardware: all specified from London by Walter Hines Page in correspondence with his son Ralph.</p>
-          <p>The drawings transferred with the property. Fifteen pages &mdash; elevations, floor plans, foundation, framing, portico, kitchen, primary suite, library built-ins, trim profiles. Every decision documented. Every decision still visible.</p>
-          <p>Seven fireplaces. Original leaded glass throughout. The herringbone brick at the portico threshold took three months to match when the restoration came. That is what the standard was.</p>
-        </div>
+  <style>
+    .arch-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 clamp(2rem,6vw,8rem);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem,6vw,7rem);
+      align-items: start;
+    }
+    .arch-left {}
+    .arch-right {}
+    .arch-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 2rem;
+    }
+    .arch-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 200;
+      font-size: clamp(2.2rem,4vw,3.8rem);
+      line-height: 1.05;
+      color: var(--cream);
+      margin-bottom: 2.5rem;
+    }
+    .arch-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1rem,1.5vw,1.18rem);
+      line-height: 1.9;
+      color: rgba(245,240,232,0.8);
+    }
+    .arch-body p { margin: 0 0 1.4rem; }
+    /* The stat — one number, raw */
+    .arch-stat {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(201,169,110,0.15);
+    }
+    .arch-stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 100;
+      font-size: clamp(4rem,9vw,8rem);
+      line-height: 0.9;
+      color: rgba(201,169,110,0.25);
+      letter-spacing: -0.02em;
+      display: block;
+    }
+    .arch-stat-label {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(201,169,110,0.55);
+      display: block;
+      margin-top: 0.6rem;
+    }
+    /* Blueprint ghost — faded architectural plan */
+    .arch-blueprint {
+      position: relative;
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .arch-blueprint img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0.12;
+      filter: sepia(1) hue-rotate(180deg) brightness(1.8);
+      transition: opacity 1.2s ease;
+    }
+    .arch-blueprint:hover img { opacity: 0.28; }
+    .arch-blueprint-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      text-align: center;
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(201,169,110,0.35);
+      padding-bottom: 0.5rem;
+    }
+    @media (max-width: 768px) {
+      .arch-inner { grid-template-columns: 1fr; }
+      .arch-blueprint { height: 220px; }
+    }
+  </style>
+  <div class="arch-inner reveal">
+    <div class="arch-left">
+      <span class="arch-eyebrow">Neo-Georgian &middot; 1915&ndash;1916</span>
+      <div class="arch-headline">The proportions<br>were not<br>accidental.</div>
+      <div class="arch-body">
+        <p>Six thousand and seventy-two square feet. Four point one-five acres. Seven fireplaces.</p>
+        <p>Neo-Georgian in form. The symmetry, the brick, the twelve-over-twelve sash windows -- all deliberate choices from a man who had spent years in English country houses as Ambassador.</p>
+        <p>He knew what he was asking for. The foreman, J.R. McQueen, knew how to build it.</p>
+      </div>
+      <div class="arch-stat">
+        <span class="arch-stat-number">1916</span>
+        <span class="arch-stat-label">Year of completion</span>
+      </div>
+    </div>
+    <div class="arch-right">
+      <!-- Blueprint ghost — architectural plan fades in on hover -->
+      <div class="arch-blueprint">
+        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_700/v1777408122/gh_key/gh_plan_oshe_p01"
+          alt="Original O'Shea architectural plans, Garran Hill 1916">
+        <span class="arch-blueprint-label">Original plans &middot; 1915</span>
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- ACT II — The House -->
-<div class="act">
-  <div class="act-line"></div>
-  <span class="act-label">— II — The House</span>
-  <div class="act-line"></div>
-</div>
-
-<!-- THRESHOLD -->
+<!-- ═══ NARRATIVE: THRESHOLD ═══ -->
 <section id="threshold">
-  <img class="threshold-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777263004/gh_key/gh_threshold" alt="Garran Hill threshold inscription — GARRAN HILL 1916, herringbone brick portico">
+  <style>
+    #threshold {
+      position: relative;
+      height: 100svh;
+      min-height: 600px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .threshold-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.45);
+      transition: transform 12s ease-out;
+    }
+    #threshold:hover .threshold-bg { transform: scale(1.03); }
+    .threshold-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.1) 40%, rgba(10,10,10,0.6) 100%);
+    }
+    .threshold-center {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 clamp(2rem,6vw,6rem);
+    }
+    /* The inscription — carved into the page */
+    .threshold-inscription {
+      font-family: var(--sans);
+      font-size: clamp(0.7rem,1.4vw,0.92rem);
+      letter-spacing: 0.52em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 3rem;
+      opacity: 0.8;
+    }
+    .threshold-line {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 200;
+      font-size: clamp(2.2rem,5.5vw,5.8rem);
+      line-height: 1.1;
+      color: var(--cream);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    /* The crack word — unexpected gold flare */
+    .threshold-line .crack-gold {
+      color: var(--gold);
+      font-style: italic;
+    }
+    .threshold-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1rem,1.8vw,1.4rem);
+      color: rgba(245,240,232,0.5);
+      margin-top: 2rem;
+      display: block;
+      letter-spacing: 0.02em;
+    }
+    /* Scroll whisper at bottom */
+    .threshold-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: rgba(201,169,110,0.35);
+      animation: threshold-pulse 3s ease-in-out infinite;
+    }
+    @keyframes threshold-pulse {
+      0%, 100% { opacity: 0.35; }
+      50% { opacity: 0.7; }
+    }
+  </style>
+  <img class="threshold-bg"
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,f_auto,q_auto,c_limit,w_1920/v1777329734/gh_key/gh_facade_front"
+    alt="Garran Hill, 200 Hollycrest Drive, Pinehurst NC">
   <div class="threshold-overlay"></div>
-  <div class="threshold-text reveal">
-    <div class="threshold-inscription">Garran Hill · 1916</div>
-    <div class="threshold-sub">The door has been open since 1916.</div>
-    <div class="threshold-sub" style="margin-top:1rem;letter-spacing:0.12em">The portico brick is original. The herringbone pattern was laid before a single interior wall was framed.</div>
+  <div class="threshold-center reveal">
+    <span class="threshold-inscription">Garran Hill &middot; 1916</span>
+    <span class="threshold-line">The door has been open</span>
+    <span class="threshold-line">since <span class="crack-gold">1916.</span></span>
+    <span class="threshold-sub">One hundred and nine years. The house is still here.</span>
+  </div>
+  <span class="threshold-scroll">Enter</span>
+</section>
+
+<!-- ═══ NARRATIVE: RESTORATION ═══ -->
+<section id="restoration-record" style="background:var(--dark);padding:clamp(6rem,10vw,12rem) 0">
+  <style>
+    .restoration-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(2rem,6vw,8rem);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem,6vw,7rem);
+      align-items: center;
+    }
+    .restoration-left {}
+    .restoration-right { position: relative; }
+    /* Stacked image pair — two moments, one restoration */
+    .restoration-img-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      display: block;
+    }
+    .restoration-img-ghost {
+      position: absolute;
+      top: -2rem;
+      right: -1.5rem;
+      width: 48%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      opacity: 0.55;
+      border: 1px solid rgba(201,169,110,0.15);
+      filter: grayscale(30%);
+      transition: opacity 0.8s ease;
+    }
+    .restoration-right:hover .restoration-img-ghost { opacity: 0.85; }
+    .restoration-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 2rem;
+    }
+    .restoration-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 200;
+      font-size: clamp(2rem,3.8vw,3.5rem);
+      line-height: 1.1;
+      color: var(--cream);
+      margin-bottom: 2.5rem;
+    }
+    .restoration-headline em { font-style: italic; color: rgba(245,240,232,0.7); }
+    .restoration-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1rem,1.5vw,1.18rem);
+      line-height: 1.9;
+      color: rgba(245,240,232,0.78);
+    }
+    .restoration-body p { margin: 0 0 1.4rem; }
+    /* The crack line — woven into prose */
+    .crack-line {
+      display: block;
+      margin: 2.5rem 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 200;
+      font-size: clamp(1.1rem,1.8vw,1.4rem);
+      color: rgba(201,169,110,0.65);
+      border-left: 1px solid rgba(201,169,110,0.2);
+      padding-left: 1.5rem;
+      line-height: 1.6;
+    }
+    @media (max-width: 768px) {
+      .restoration-inner { grid-template-columns: 1fr; }
+      .restoration-img-ghost { display: none; }
+    }
+  </style>
+  <div class="restoration-inner reveal">
+    <div class="restoration-left">
+      <span class="restoration-eyebrow">The Restoration &middot; 1999&ndash;2001</span>
+      <div class="restoration-headline">What was original<br><em>stayed original.</em></div>
+      <div class="restoration-body">
+        <p>The 1999 restoration took two years. Every original mantel stayed. The leaded glass stayed. The oak floors stayed.</p>
+        <p>The kitchen was rebuilt -- not renovated. Reclaimed heart-pine, laid new. The seven fireplaces were converted to propane, one kept original.</p>
+      </div>
+      <span class="crack-line">Not renovated into anonymity.<br>Restored back into itself.</span>
+      <div class="restoration-body">
+        <p>The brass key plates on every door still have their original keys.</p>
+      </div>
+    </div>
+    <div class="restoration-right">
+      <img class="restoration-img-main"
+        src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_800/v1777243079/gh_interiors/200holycrest_1308"
+        alt="Garran Hill interior, restoration era">
+      <img class="restoration-img-ghost"
+        src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_500/v1777329734/gh_key/gh_facade_front"
+        alt="Garran Hill exterior">
+    </div>
+  </div>
+</section>
+
+<!-- ═══ NARRATIVE: HOUSE SECRETS — the crack that opens the tour ═══ -->
+<section id="house-secrets">
+  <style>
+    #house-secrets {
+      position: relative;
+      height: 100svh;
+      min-height: 580px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+    .secrets-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.35);
+    }
+    .secrets-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.2) 60%, transparent 100%);
+    }
+    .secrets-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 clamp(2rem,6vw,8rem) clamp(4rem,8vw,7rem);
+      max-width: 700px;
+    }
+    /* The surprise — text appears to crack out of the image */
+    .secrets-crack {
+      font-family: var(--sans);
+      font-size: clamp(0.6rem,0.9vw,0.75rem);
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: rgba(201,169,110,0.45);
+      display: block;
+      margin-bottom: 2rem;
+    }
+    .secrets-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 100;
+      font-size: clamp(2.5rem,5.5vw,5.5rem);
+      line-height: 1.0;
+      color: var(--cream);
+      margin-bottom: 2rem;
+      letter-spacing: -0.01em;
+    }
+    /* Each word staggers in with delay */
+    .secrets-headline .w1 { opacity: 0; animation: crack-in 0.8s ease 0.1s forwards; }
+    .secrets-headline .w2 { opacity: 0; animation: crack-in 0.8s ease 0.35s forwards; }
+    .secrets-headline .w3 { opacity: 0; animation: crack-in 0.8s ease 0.6s forwards; }
+    .secrets-headline .w4 { opacity: 0; animation: crack-in 0.8s ease 0.85s forwards; color: var(--gold); font-style: italic; }
+    @keyframes crack-in {
+      0% { opacity: 0; transform: translateY(12px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .secrets-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1rem,1.6vw,1.28rem);
+      line-height: 1.75;
+      color: rgba(245,240,232,0.55);
+      max-width: 46ch;
+    }
+    /* The invitation line */
+    .secrets-invite {
+      display: block;
+      margin-top: 3rem;
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(201,169,110,0.5);
+    }
+    .secrets-invite::after {
+      content: ' ↓';
+      opacity: 0.5;
+    }
+  </style>
+  <img class="secrets-bg"
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,f_auto,q_auto,c_limit,w_1920/v1777329147/gh_key/gh_entry_hall"
+    alt="Garran Hill entry hall">
+  <div class="secrets-overlay"></div>
+  <div class="secrets-content">
+    <span class="secrets-crack">The House</span>
+    <div class="secrets-headline">
+      <span class="w1">The </span><span class="w2">house </span><span class="w3">still </span><span class="w4">holds.</span>
+    </div>
+    <p class="secrets-sub">Six rooms. Seven mantels. One hundred and nine years of knowing who came through the door.</p>
+    <span class="secrets-invite">The rooms</span>
   </div>
 </section>
 
 
-
-<!-- ACT BREAK — Architecture to Restoration -->
-<div class="act">
-  <div class="act-line"></div>
-  <span class="act-label">— III — The Restoration</span>
-  <div class="act-line"></div>
-</div>
-
-<!-- RESTORATION RECORD -->
-<section id="restoration-record">
-  <div class="restoration-bg" aria-hidden="true">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243079/gh_interiors/200holycrest_1308.jpg"
-      alt="Garran Hill interior, restoration era" role="presentation">
-  </div>
-  <div class="section-content">
-    <div class="split reverse">
-      <div class="split-text">
-        <span class="micro-rule reveal"></span>
-        <span class="room-eyebrow">The Restoration &middot; 1999&ndash;2001</span>
-        <h2>What was original<em> stayed original.</em></h2>
-        <div class="body-text reveal">
-          <p>The restoration did not make Garran Hill new. It made it whole again.</p>
-          <p>Original elements remain where they matter most: carved fireplace mantels, oak flooring throughout, leaded-glass sidelights, the arched fanlight at the entry, solid-wood interior doors, brass key plates. New systems were woven behind old grace.</p>
-          <p>Not renovated into anonymity. Restored back into itself.</p>
-          <p>Matching the old brick on the portico alone took three months. That is the standard to which every decision was held.</p>
-          <p>Fifteen pages of drawings -- elevations, floor plans, foundation, framing, portico, kitchen, primary suite, library built-ins, trim profiles. Every decision documented. The drawings transfer with the property.</p>
-        </div>
-      </div>
-      <div class="split-img img-reveal">
-        <img loading="lazy" decoding="async"
-          src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777243323/gh_exteriors/front_exterior.jpg"
-          alt="Garran Hill — Neo-Georgian brick facade, portico, 1916">
-      </div>
-    </div>
-  </div>
-</section>
-<!-- STAIRCASE -->
-<!-- THE HOUSE KEEPS SECRETS — no announcement, no eyebrow, no divider -->
-<section id="house-secrets" aria-label="The house keeps secrets" style="background:var(--dark)">
-  <div class="secret-split">
-    <div class="secret-img">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:50,e_brightness:5,e_shadow:-35,e_sharpen:30,e_saturation:10,f_auto,q_auto,c_limit,w_1400/v1777243025/gh_interiors/200holycrest_1512" alt="Garran Hill staircase — original mahogany volute, 1916" loading="lazy" decoding="async" class="img-reveal">
-    </div>
-    <div class="secret-copy reveal-slow">
-      <p class="secret-watermark">The house keeps secrets</p>
-      <div class="secret-headline">Garran Hill rewards<br><em>the close observer.</em></div>
-      <div class="secret-body">
-        <p>The curved banister. The original hardware. The way the light moves through the leaded glass at different hours.</p>
-        <p>This house was built by craftsmen who cared about things no one would ever notice &mdash; and then noticed them anyway. The secrets are still here. They reveal themselves slowly.</p>
-        <p class="secret-closer">The house still knows how to keep a secret.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <!-- FOYER -->
