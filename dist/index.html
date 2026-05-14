@@ -13,110 +13,168 @@
 </script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--dark:#0B0B0B;--gold:#C9A96E;--cream:#F5F0E8;--cd:rgba(245,240,232,0.75);--cg:rgba(245,240,232,0.45);--gd:rgba(201,169,110,0.5);--gg:rgba(201,169,110,0.18)}
+:root{
+  --dark:#0B0B0B;
+  --gold:#C9A96E;
+  --cream:#F5F0E8;
+  --cd:rgba(245,240,232,0.78);
+  --cg:rgba(245,240,232,0.45);
+  --gd:rgba(201,169,110,0.5);
+  --gg:rgba(201,169,110,0.12);
+  --sans:'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
 html{scroll-behavior:smooth}
 body{background:var(--dark);color:var(--cream);font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;background:linear-gradient(to bottom,rgba(11,11,11,0.88) 0%,transparent 100%)}
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3rem;background:linear-gradient(to bottom,rgba(11,11,11,0.92) 0%,transparent 100%);transition:padding 0.4s}
 .nav-logo{line-height:1}
-.nav-est{display:block;font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold)}
-.nav-name{display:block;font-size:1rem;font-weight:300;letter-spacing:0.28em;text-transform:uppercase;color:var(--cream)}
-.nav-year{display:block;font-size:0.58rem;letter-spacing:0.2em;color:var(--gd)}
-.nav-links{display:flex;gap:2.5rem;list-style:none}
-.nav-links a{font-size:0.68rem;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--cd);text-decoration:none;transition:color 0.3s}
+.nav-est{display:block;font-family:var(--sans);font-size:0.5rem;letter-spacing:0.38em;text-transform:uppercase;color:var(--gold)}
+.nav-name{display:block;font-size:0.95rem;font-weight:300;letter-spacing:0.32em;text-transform:uppercase;color:var(--cream)}
+.nav-year{display:block;font-family:var(--sans);font-size:0.5rem;letter-spacing:0.22em;color:var(--gd)}
+.nav-links{display:flex;gap:2.8rem;list-style:none}
+.nav-links a{font-family:var(--sans);font-size:0.6rem;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--cd);text-decoration:none;transition:color 0.3s}
 .nav-links a:hover{color:var(--gold)}
-.nav-cta{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gd);padding:0.5rem 1.2rem;text-decoration:none;transition:all 0.3s}
-.nav-cta:hover{background:var(--gg)}
-@media(max-width:768px){.nav-links{display:none}.nav-cta{display:none}}
+.nav-cta{font-family:var(--sans);font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gd);padding:0.55rem 1.4rem;text-decoration:none;transition:all 0.35s}
+.nav-cta:hover{background:var(--gg);border-color:var(--gold)}
+@media(max-width:768px){
+  nav{padding:1.2rem 1.5rem}
+  .nav-links{display:none}
+  .nav-cta{display:none}
+}
 
+/* ── HERO ── */
 #hero{position:relative;width:100%;height:100vh;overflow:hidden}
 #hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,11,11,0.1) 0%,rgba(11,11,11,0) 40%,rgba(11,11,11,0.7) 100%)}
-.hero-text{position:absolute;bottom:10vh;left:0;right:0;text-align:center;padding:0 2rem}
-.hero-loc{font-size:0.62rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center;gap:1rem}
-.hero-loc::before,.hero-loc::after{content:'';display:block;width:40px;height:1px;background:var(--gd)}
-.hero-title{font-family:'Pinyon Script',cursive;font-size:clamp(4rem,12vw,9rem);color:var(--cream);line-height:0.9;margin-bottom:1.5rem;text-shadow:0 2px 40px rgba(0,0,0,0.4)}
-.hero-line{font-size:clamp(0.68rem,1.4vw,0.82rem);letter-spacing:0.25em;text-transform:uppercase;color:var(--cd);font-weight:300}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,11,11,0.08) 0%,rgba(11,11,11,0) 35%,rgba(11,11,11,0.55) 75%,rgba(11,11,11,0.9) 100%)}
+.hero-text{position:absolute;bottom:9vh;left:0;right:0;text-align:center;padding:0 2rem}
+.hero-loc{font-family:var(--sans);font-size:0.56rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem;display:flex;align-items:center;justify-content:center;gap:1.2rem}
+.hero-loc::before,.hero-loc::after{content:'';display:block;width:48px;height:1px;background:var(--gd)}
+.hero-title{font-family:'Pinyon Script',cursive;font-size:clamp(4.5rem,13vw,10rem);color:var(--cream);line-height:0.88;margin-bottom:1.8rem;text-shadow:0 2px 60px rgba(0,0,0,0.5)}
+.hero-line{font-size:clamp(0.72rem,1.4vw,0.88rem);letter-spacing:0.28em;text-transform:uppercase;color:var(--cd);font-weight:300}
 
-.act{display:flex;align-items:center;justify-content:center;gap:1.5rem;padding:3rem 2rem;background:var(--dark)}
-.act-line{flex:1;max-width:120px;height:1px;background:var(--gd)}
-.act-label{font-size:0.58rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+/* ── ACT DIVIDERS ── */
+.act{display:flex;align-items:center;justify-content:center;gap:2rem;padding:3.5rem 2rem;background:var(--dark)}
+.act-line{flex:1;max-width:140px;height:1px;background:linear-gradient(to right,transparent,var(--gd),transparent)}
+.act-label{font-family:var(--sans);font-size:0.52rem;letter-spacing:0.42em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
 
+/* ── KB GATE ── */
 #kb-gate{position:relative;height:100vh;overflow:hidden}
 .kb-layer{position:absolute;inset:0;background-size:cover;background-position:center}
-#kb-then{background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/gh_key/gh_gate_sepia');animation:kb-zoom-t 20s ease-in-out infinite alternate}
-#kb-now{background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/gh_exteriors/entrance');animation:kb-dissolve 12s ease-in-out infinite alternate,kb-zoom-n 20s ease-in-out infinite alternate}
-@keyframes kb-zoom-t{from{transform:scale(1.0)}to{transform:scale(1.08)}}
-@keyframes kb-zoom-n{from{transform:scale(1.08)}to{transform:scale(1.0)}}
-@keyframes kb-dissolve{0%,35%{opacity:0}65%,100%{opacity:1}}
-.kb-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,11,11,0.2) 0%,rgba(11,11,11,0) 40%,rgba(11,11,11,0.75) 100%)}
+#kb-then{background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/gh_key/gh_gate_sepia');animation:kb-zoom-t 22s ease-in-out infinite alternate}
+#kb-now{background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/gh_exteriors/entrance');animation:kb-dissolve 14s ease-in-out infinite alternate,kb-zoom-n 22s ease-in-out infinite alternate}
+@keyframes kb-zoom-t{from{transform:scale(1.0)}to{transform:scale(1.07)}}
+@keyframes kb-zoom-n{from{transform:scale(1.07)}to{transform:scale(1.0)}}
+@keyframes kb-dissolve{0%,30%{opacity:0}60%,100%{opacity:1}}
+.kb-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,11,11,0.15) 0%,rgba(11,11,11,0) 35%,rgba(11,11,11,0.72) 100%)}
 .kb-text{position:absolute;bottom:10vh;left:0;right:0;text-align:center;padding:0 2rem;z-index:2}
-.kb-eyebrow{font-size:0.62rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:block}
-.kb-headline{font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:200;color:var(--cream);line-height:1.4;margin-bottom:0.5rem}
-.kb-caption{font-size:clamp(0.8rem,1.4vw,1rem);font-weight:300;letter-spacing:0.12em;color:var(--cd);font-style:italic}
+.kb-eyebrow{font-family:var(--sans);font-size:0.56rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem;display:block}
+.kb-headline{font-size:clamp(2rem,4.5vw,3.8rem);font-weight:200;color:var(--cream);line-height:1.3;margin-bottom:0.8rem}
+.kb-headline span.drop{font-size:clamp(3rem,6vw,5.5rem);font-weight:200;color:var(--gold);float:left;line-height:0.85;margin-right:0.12em;margin-top:0.06em}
+.kb-caption{font-size:clamp(0.82rem,1.4vw,1rem);font-weight:300;letter-spacing:0.14em;color:var(--cd);font-style:italic}
 
-#whp{position:relative;padding:8rem 0;background:var(--dark)}
-.whp-inner{max-width:1100px;margin:0 auto;padding:0 3rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.whp-portrait{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top}
-.whp-eyebrow{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:block}
-.whp-name{font-size:clamp(2.2rem,4vw,3.5rem);font-weight:200;color:var(--cream);line-height:1.1;margin-bottom:1.5rem}
-.whp-body{font-size:clamp(0.95rem,1.5vw,1.08rem);font-weight:300;line-height:1.9;color:var(--cd)}
-.whp-body p{margin-bottom:1.2rem}
-.whp-quote{font-style:italic;font-size:clamp(1rem,1.8vw,1.35rem);font-weight:200;color:var(--cream);line-height:1.6;border-left:2px solid var(--gold);padding-left:1.5rem;margin:2rem 0}
-.whp-source{font-size:0.68rem;letter-spacing:0.15em;color:var(--gd);font-style:normal;display:block;margin-top:0.5rem}
-@media(max-width:768px){.whp-inner{grid-template-columns:1fr;gap:3rem}}
+/* ── WHP ── */
+#whp{position:relative;padding:9rem 0;background:var(--dark);overflow:hidden}
+#whp::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_800/gh_key/gh_gate_sepia');background-size:cover;background-position:center;opacity:0.04;pointer-events:none}
+.whp-inner{position:relative;max-width:1140px;margin:0 auto;padding:0 4rem;display:grid;grid-template-columns:5fr 7fr;gap:6rem;align-items:center}
+.whp-portrait{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;filter:sepia(15%) contrast(1.05)}
+.whp-eyebrow{font-family:var(--sans);font-size:0.56rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem;display:block}
+.whp-name{font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:200;color:var(--cream);line-height:1.25;margin-bottom:2rem}
+.whp-body{font-size:clamp(0.95rem,1.5vw,1.1rem);font-weight:300;line-height:2;color:var(--cd)}
+.whp-body p{margin-bottom:1.4rem}
+.whp-quote{font-style:italic;font-size:clamp(1.05rem,1.8vw,1.4rem);font-weight:200;color:var(--cream);line-height:1.65;border-left:1px solid var(--gold);padding-left:2rem;margin:2.5rem 0 1rem}
+.whp-source{font-family:var(--sans);font-size:0.58rem;letter-spacing:0.18em;color:var(--gd);font-style:normal;display:block;margin-top:0.8rem}
+@media(max-width:768px){
+  .whp-inner{grid-template-columns:1fr;gap:3rem;padding:0 2rem}
+  #whp{padding:6rem 0}
+}
 
-#threshold{position:relative;height:80vh;overflow:hidden}
+/* ── THRESHOLD ── */
+#threshold{position:relative;height:75vh;overflow:hidden}
 .threshold-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
-.threshold-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,11,11,0.3),rgba(11,11,11,0.6))}
+.threshold-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,11,11,0.25),rgba(11,11,11,0.65))}
 .threshold-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;z-index:2}
-.threshold-inscription{font-size:clamp(1.8rem,4vw,3.2rem);letter-spacing:0.35em;text-transform:uppercase;color:var(--cream);font-weight:200;margin-bottom:1rem}
-.threshold-sub{font-size:clamp(0.85rem,1.5vw,1rem);letter-spacing:0.15em;color:var(--cd);font-style:italic}
+.threshold-inscription{font-size:clamp(1.6rem,4.5vw,3.8rem);letter-spacing:0.42em;text-transform:uppercase;color:var(--cream);font-weight:200;margin-bottom:1.2rem}
+.threshold-sub{font-size:clamp(0.82rem,1.4vw,1rem);letter-spacing:0.18em;color:var(--cd);font-style:italic}
 
+/* ── ROOM SPREADS ── */
 .room-spread{position:relative;height:100vh;overflow:hidden}
+@media(max-width:768px){.room-spread{height:90vw;min-height:480px}}
 .room-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-.room-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,11,11,0.6) 0%,transparent 60%)}
-.room-caption{position:absolute;bottom:8vh;left:4vw;max-width:44%;z-index:2}
+.room-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,11,11,0.62) 0%,transparent 58%)}
+.room-caption{position:absolute;bottom:8vh;left:4vw;max-width:42%;z-index:2}
 .room-caption.right{left:auto;right:4vw;text-align:right}
 .room-caption.center{left:0;right:0;text-align:center;max-width:100%;padding:0 2rem}
-.room-eyebrow{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:0.8rem}
-.room-name{font-size:clamp(1.8rem,3.5vw,3rem);font-weight:200;color:var(--cream);line-height:1.1;margin-bottom:0.8rem}
-.room-line{font-size:clamp(0.88rem,1.4vw,1.05rem);font-weight:300;color:var(--cd);line-height:1.8;font-style:italic}
+@media(max-width:768px){
+  .room-caption{bottom:6vw;left:5vw;max-width:85%;padding-bottom:1rem}
+  .room-caption.right{left:5vw;right:auto;text-align:left}
+}
+.room-eyebrow{font-family:var(--sans);font-size:0.56rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1rem}
+.room-name{font-size:clamp(1.7rem,3.2vw,3rem);font-weight:200;color:var(--cream);line-height:1.15;margin-bottom:1rem}
+.room-line{font-size:clamp(0.88rem,1.35vw,1.05rem);font-weight:300;color:var(--cd);line-height:1.85;font-style:italic}
 
-#blue-fox{position:relative;padding:7rem 0;background:var(--dark)}
-.blue-fox-inner{max-width:700px;margin:0 auto;padding:0 3rem;text-align:center}
-.blue-fox-eyebrow{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:2rem}
-.blue-fox-headline{font-size:clamp(1.6rem,3vw,2.5rem);font-weight:200;color:var(--cream);line-height:1.4;margin-bottom:2rem}
-.blue-fox-body{font-size:1rem;font-weight:300;line-height:1.9;color:var(--cd)}
-.blue-fox-marker{font-size:0.78rem;letter-spacing:0.15em;color:var(--gd);font-style:italic;margin-top:1.5rem;display:block}
+/* ── BETTY / BLUE FOX ── */
+#blue-fox{position:relative;padding:8rem 0;background:var(--dark);overflow:hidden}
+#blue-fox::before{content:'';position:absolute;inset:0;background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_600/gh_exteriors/holycrestextf_3364');background-size:cover;background-position:center;opacity:0.05;pointer-events:none}
+.blue-fox-inner{position:relative;max-width:680px;margin:0 auto;padding:0 3rem;text-align:center}
+.blue-fox-eyebrow{font-family:var(--sans);font-size:0.56rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:2.5rem}
+.blue-fox-headline{font-size:clamp(1.8rem,3.5vw,3rem);font-weight:200;color:var(--cream);line-height:1.3;margin-bottom:2.5rem}
+.blue-fox-body{font-size:clamp(0.92rem,1.4vw,1.05rem);font-weight:300;line-height:2;color:var(--cd);text-align:left}
+.blue-fox-body p{margin-bottom:1.5rem}
+.blue-fox-divider{width:1px;height:4rem;background:linear-gradient(to bottom,transparent,var(--gd),transparent);margin:3rem auto}
+.blue-fox-sub-headline{font-size:clamp(1.4rem,2.5vw,2.2rem);font-weight:200;color:var(--cream);line-height:1.4;margin-bottom:1.5rem;font-style:italic}
+.blue-fox-marker{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.22em;color:var(--gd);margin-top:2rem;display:block}
 
-#gallery{background:var(--dark);padding:5rem 0}
+/* ── GALLERY ── */
+#gallery{background:var(--dark);padding:6rem 0}
 .gallery-inner{max-width:1400px;margin:0 auto;padding:0 2rem}
-.gallery-eyebrow{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);text-align:center;display:block;margin-bottom:3rem}
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
-.gallery-grid img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;transition:opacity 0.3s}
-.gallery-grid img:hover{opacity:0.85}
-@media(max-width:768px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+.gallery-eyebrow{font-family:var(--sans);font-size:0.56rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);text-align:center;display:block;margin-bottom:3.5rem}
+.gallery-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:3px}
+.gallery-grid img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;transition:opacity 0.4s}
+.gallery-grid img:hover{opacity:0.82}
+.gallery-grid img:first-child{grid-row:1/3;aspect-ratio:unset;height:100%}
+@media(max-width:900px){.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:unset}.gallery-grid img:first-child{grid-row:unset;aspect-ratio:3/2;height:auto}}
+@media(max-width:540px){.gallery-grid{grid-template-columns:1fr}}
 
-#matterport{background:var(--dark);padding:5rem 2rem;text-align:center}
-.matterport-eyebrow{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.5rem}
-.matterport-headline{font-size:clamp(1.6rem,3vw,2.5rem);font-weight:200;color:var(--cream);margin-bottom:2rem}
-.matterport-frame{width:100%;max-width:900px;margin:0 auto;aspect-ratio:16/9;border:none;display:block}
+/* ── MATTERPORT ── */
+#matterport{position:relative;height:80vh;overflow:hidden}
 
-#inquiry{background:var(--dark);padding:8rem 2rem}
-.inquiry-inner{max-width:600px;margin:0 auto;text-align:center}
-.inquiry-eyebrow{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.5rem}
-.inquiry-headline{font-size:clamp(1.8rem,3.5vw,3rem);font-weight:200;color:var(--cream);line-height:1.3;margin-bottom:3rem}
-.inquiry-btn{display:inline-block;font-family:'Cormorant Garamond',serif;font-size:0.78rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gd);padding:1rem 2.5rem;text-decoration:none;transition:all 0.3s;margin-top:2rem}
+/* ── CITATIONS ── */
+#citations{background:var(--dark);padding:5rem 0 4rem;border-top:1px solid rgba(201,169,110,0.12)}
+.citations-inner{max-width:700px;margin:0 auto;padding:0 3rem}
+.citations-eyebrow{font-family:var(--sans);font-size:0.56rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:2.5rem}
+.citations-list{font-size:0.88rem;font-weight:300;color:var(--cd);line-height:2.2}
+.citations-list .cite-item{margin-bottom:1.4rem}
+.citations-list .cite-label{color:var(--cream);display:block;margin-bottom:0.3rem}
+.citations-list a{color:var(--gold);text-decoration:none;letter-spacing:0.04em;transition:opacity 0.3s}
+.citations-list a:hover{opacity:0.7}
+.cite-sep{display:inline-block;margin:0 0.8rem;color:var(--gd)}
+
+/* ── INQUIRY ── */
+#inquiry{background:var(--dark);padding:10rem 2rem}
+.inquiry-inner{max-width:560px;margin:0 auto;text-align:center}
+.inquiry-eyebrow{font-family:var(--sans);font-size:0.56rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:2rem}
+.inquiry-headline{font-size:clamp(1.8rem,3.5vw,3rem);font-weight:200;color:var(--cream);line-height:1.35;margin-bottom:3rem}
+.inquiry-btn{display:inline-block;font-family:var(--sans);font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gd);padding:1.1rem 3rem;text-decoration:none;transition:all 0.35s}
 .inquiry-btn:hover{background:var(--gg);border-color:var(--gold)}
 
-footer{background:var(--dark);border-top:1px solid rgba(201,169,110,0.15);padding:3rem 2rem;text-align:center}
-.footer-name{font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--cd);margin-bottom:0.5rem}
-.footer-brokerage{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gd)}
-.footer-legal{font-size:0.58rem;letter-spacing:0.1em;color:rgba(201,169,110,0.3);margin-top:1.5rem;line-height:1.8}
+/* ── FOOTER ── */
+footer{background:var(--dark);padding:4rem 2rem 3rem;border-top:1px solid rgba(201,169,110,0.12);text-align:center}
+.footer-name{font-size:0.78rem;font-weight:300;letter-spacing:0.28em;text-transform:uppercase;color:var(--cream);margin-bottom:0.5rem}
+.footer-brokerage{font-family:var(--sans);font-size:0.56rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gd);margin-bottom:1.5rem}
+.footer-line{width:40px;height:1px;background:var(--gd);margin:1.5rem auto}
+.footer-legal{font-family:var(--sans);font-size:0.56rem;letter-spacing:0.1em;color:var(--cg);line-height:2}
 
-.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.9s ease,transform 0.9s ease}
-.reveal.visible{opacity:1;transform:none}
+/* ── REVEAL ANIMATION ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--dark)}
+::-webkit-scrollbar-thumb{background:var(--gd)}
+
 </style>
 </head>
 <body>
@@ -336,8 +394,9 @@ footer{background:var(--dark);border-top:1px solid rgba(201,169,110,0.15);paddin
       <p>Betty Dumaine -- Thanpuying, decorated friend of the Princess Mother of Thailand -- held birthday parties for her horses, to which the children of Pinehurst were invited. She fought to save the trees in the median of Midland Road. When she died in 1980, she left the house to Duke University.</p>
       <p>Garran Hill has that effect on people.</p>
     </div>
-    <div class="blue-fox-headline" style="font-size:clamp(1.2rem,2.2vw,1.8rem);margin-top:3rem;">Someone still<br>puts flowers there.</div>
-    <div class="blue-fox-body" style="margin-top:1.5rem;">At the back of the property, under a slate cover with a brass marker: MY IRISH HUNTER BLUE FOX 1946–1965. She buried him here. Beside the grave stood a four-foot statue of a blue fox -- lost after her death, but the flowers are not.</div>
+    <div class="blue-fox-divider"></div>
+    <div class="blue-fox-sub-headline">Someone still<br>puts flowers there.</div>
+    <div class="blue-fox-body" style="text-align:center">At the back of the property, under a slate cover with a brass marker: MY IRISH HUNTER BLUE FOX 1946–1965. She buried him here. Beside the grave stood a four-foot statue of a blue fox -- lost after her death, but the flowers are not.</div>
     <span class="blue-fox-marker">Hollycrest, 1959</span>
   </div>
 </section>
@@ -400,50 +459,43 @@ footer{background:var(--dark);border-top:1px solid rgba(201,169,110,0.15);paddin
 
 
 <!-- CITATIONS -->
-<section id="citations" style="background:var(--dark);padding:5rem 0 4rem;border-top:1px solid rgba(201,169,110,0.15)">
-  <div style="max-width:700px;margin:0 auto;padding:0 3rem">
-    <span style="font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:2.5rem">Sources &amp; Record</span>
-    <div style="font-family:'Cormorant Garamond',serif;font-size:0.82rem;font-weight:300;color:var(--cd);line-height:2.2">
-
-      <div style="margin-bottom:1.2rem">
-        <span style="color:var(--cream)">Walter Hines Page -- biography, career, death at Pinehurst</span><br>
-        <a href="https://ncpedia.org/biography/page-walter-hines" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;letter-spacing:0.04em">NCpedia &rarr;</a>
-        &nbsp;&nbsp;
-        <a href="https://www.britannica.com/biography/Walter-Hines-Page" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;letter-spacing:0.04em">Britannica &rarr;</a>
+<section id="citations">
+  <div class="citations-inner">
+    <span class="citations-eyebrow">Sources &amp; Record</span>
+    <div class="citations-list">
+      <div class="cite-item">
+        <span class="cite-label">Walter Hines Page -- biography, career, death at Pinehurst</span>
+        <a href="https://ncpedia.org/biography/page-walter-hines" target="_blank" rel="noopener">NCpedia &rarr;</a>
+        <span class="cite-sep">·</span>
+        <a href="https://www.britannica.com/biography/Walter-Hines-Page" target="_blank" rel="noopener">Britannica &rarr;</a>
       </div>
-
-      <div style="margin-bottom:1.2rem">
-        <span style="color:var(--cream)">Garran Hill 1916 -- Leonard Tufts craftsmen, Westminster inscription, last words at Aberdeen</span><br>
-        <a href="https://pinestrawmag.com/a-page-out-of-history/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;letter-spacing:0.04em">PineStraw Magazine, 2021 &rarr;</a>
+      <div class="cite-item">
+        <span class="cite-label">Garran Hill 1916 -- Leonard Tufts craftsmen, Westminster inscription, last words at Aberdeen</span>
+        <a href="https://pinestrawmag.com/a-page-out-of-history/" target="_blank" rel="noopener">PineStraw Magazine, 2021 &rarr;</a>
       </div>
-
-      <div style="margin-bottom:1.2rem">
-        <span style="color:var(--cream)">Hollycrest plaque -- Village Heritage Foundation, 1959 stewardship</span><br>
-        <a href="https://villageheritagefoundation.org/four-village-landmarks-honored/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;letter-spacing:0.04em">Village Heritage Foundation &rarr;</a>
+      <div class="cite-item">
+        <span class="cite-label">Hollycrest plaque -- Village Heritage Foundation, 1959 stewardship</span>
+        <a href="https://villageheritagefoundation.org/four-village-landmarks-honored/" target="_blank" rel="noopener">Village Heritage Foundation &rarr;</a>
       </div>
-
-      <div style="margin-bottom:1.2rem">
-        <span style="color:var(--cream)">Betty Dumaine Thanpuying -- biography, Princess Mother of Thailand connection</span><br>
-        <a href="https://tpmcf.org/history/bettydumaine/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;letter-spacing:0.04em">TPMCF &rarr;</a>
+      <div class="cite-item">
+        <span class="cite-label">Betty Dumaine Thanpuying -- biography, Princess Mother of Thailand connection</span>
+        <a href="https://tpmcf.org/history/bettydumaine/" target="_blank" rel="noopener">TPMCF &rarr;</a>
       </div>
-
-      <div style="margin-bottom:1.2rem">
-        <span style="color:var(--cream)">Walter Hines Page -- NC roots, Frank Page lumber, Moore County</span><br>
-        <a href="https://www.dncr.nc.gov/blog/2016/12/21/walter-hines-page-cary-editor-and-ambassador-great-britain" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;letter-spacing:0.04em">NC DNCR &rarr;</a>
+      <div class="cite-item">
+        <span class="cite-label">Walter Hines Page -- NC roots, Frank Page, Moore County</span>
+        <a href="https://www.dncr.nc.gov/blog/2016/12/21/walter-hines-page-cary-editor-and-ambassador-great-britain" target="_blank" rel="noopener">NC DNCR &rarr;</a>
       </div>
-
-      <div style="margin-bottom:1.2rem">
-        <span style="color:var(--cream)">Philip de László portrait of Walter Hines Page -- NC Museum of History, accession H.1924.7.1</span><br>
-        <a href="https://en.wikipedia.org/wiki/Walter_Hines_Page" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;letter-spacing:0.04em">Wikipedia &rarr;</a>
+      <div class="cite-item">
+        <span class="cite-label">Philip de László portrait of Walter Hines Page</span>
+        <a href="https://en.wikipedia.org/wiki/Walter_Hines_Page" target="_blank" rel="noopener">Wikipedia &rarr;</a>
       </div>
-
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-name">Rachel Hernandez</div>
+  <div class="footer-line"></div><div class="footer-name">Rachel Hernandez</div>
   <div class="footer-brokerage">Pines Sotheby's International Realty</div>
   <div class="footer-legal">
     200 Hollycrest Drive, Pinehurst, North Carolina 28374 &nbsp;·&nbsp; $4,250,000<br>
