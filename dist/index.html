@@ -586,6 +586,59 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   margin: 0 auto 3rem;
 }
 
+
+/* ── LIGHT SECTIONS — editorial exhale ── */
+.section-light {
+  background: var(--cream);
+  color: #1a1a1a;
+}
+.section-light h2,
+.section-light h3,
+.section-light .editorial-headline,
+.section-light .whp-headline,
+.section-light .restoration-headline,
+.section-light .section-headline {
+  color: #0a0a0a;
+}
+.section-light p,
+.section-light .editorial-body,
+.section-light .whp-body,
+.section-light .restoration-body,
+.section-light .body-text {
+  color: rgba(10,10,10,0.78);
+}
+.section-light .gold-rule,
+.section-light hr {
+  background: rgba(201,169,110,0.45);
+}
+.section-light .eyebrow,
+.section-light .section-eyebrow,
+.section-light .stat-label {
+  color: var(--gold);
+}
+/* Gold accent lines on light bg */
+.section-light blockquote,
+.section-light .pull-quote {
+  border-left: 2px solid var(--gold);
+  color: rgba(10,10,10,0.65);
+}
+
+
+/* ── SECTION BREATHING ROOM ── */
+.section-light {
+  padding-top: clamp(5rem, 10vw, 10rem);
+  padding-bottom: clamp(5rem, 10vw, 10rem);
+}
+.section-light .editorial-inner,
+.section-light .section-inner,
+.section-light .whp-inner,
+.section-light .restoration-inner,
+.section-light .betty-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 3rem);
+}
+
 </style>
 <script>
 window.GH_IMG_FALLBACK = function(img){
@@ -747,7 +800,7 @@ window.GH_IMG_FALLBACK = function(img){
 </section>
 
 <!-- WHP -->
-<section id="history">
+<section id="history" class="section-light">
   <div class="whp-inner">
     <div class="whp-left-col">
       <img class="whp-portrait reveal" 
@@ -846,18 +899,26 @@ window.GH_IMG_FALLBACK = function(img){
 </div>
 
 <!-- STAIRCASE / ENTRY -->
-<section id="staircase" class="room-spread">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243305/gh_interiors/200holycrest_1614.jpg" data-public-id="gh_interiors/200holycrest_1614" data-width="1920" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="Staircase and entry hall, Garran Hill">
-  <div class="room-overlay"></div>
-  <div class="room-caption reveal">
-    <span class="room-eyebrow">The Introduction</span>
-    <div class="room-name">The house gives you the stair<br><em>before it gives you itself.</em></div>
-    <div class="room-line">Leaded glass sidelights. Arched fanlight above the door. Original oak floors. The mahogany volute turns at the foot of the stair like a signature the house never lost.<br><em>The brass key plates on every door still have their original keys.</em></div>
+<section id="staircase">
+  <div class="room-chapter reveal">
+    <div class="rc-img-wrap">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243305/gh_interiors/200holycrest_1614.jpg"
+           alt="Mahogany staircase, Garran Hill — entry hall, 1916"
+           style="object-position: center 15%;">
+      <div class="rc-veil"></div>
+      <div class="rc-caption">
+        <span class="rc-eyebrow">The Staircase</span>
+        <div class="rc-line">The mahogany volute.<br><em>Still turning with the authority of a signature.</em></div>
+      </div>
+    </div>
+    <div class="rc-body">
+      <p class="rc-body-text">The staircase is the first thing you see. It rises from the entry hall in mahogany — the volute at the base hand-carved by Leonard Tufts's men in 1916. Original oak floors beneath it. The brass key plates on every door off this hall still have their original keys.</p>
+    </div>
   </div>
 </section>
 
 <!-- RESTORATION RECORD -->
-<section id="restoration" class="editorial-section">
+<section id="restoration" class="editorial-section section-light">
   <div class="editorial-inner editorial-grid reveal">
     <div>
       <span class="editorial-kicker">Restoration Record · 1998–2001</span>
@@ -1125,7 +1186,7 @@ window.GH_IMG_FALLBACK = function(img){
   <div class="narrative-bridge-rule"></div>
   <p class="narrative-bridge-line">For twenty-five years,<br><em>one woman held all of this.</em></p>
 </div>
-<section id="betty" class="editorial-section" style="background:#0a0a0a;">
+<section id="betty" class="editorial-section section-light">
   <div class="editorial-inner editorial-grid reveal">
     <div>
       <span class="editorial-kicker">Hollycrest · 1959–1984</span>
