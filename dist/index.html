@@ -107,13 +107,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .inquiry-inner{max-width:600px;margin:0 auto;text-align:center}
 .inquiry-eyebrow{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.5rem}
 .inquiry-headline{font-size:clamp(1.8rem,3.5vw,3rem);font-weight:200;color:var(--cream);line-height:1.3;margin-bottom:3rem}
-.inquiry-form{display:flex;flex-direction:column;gap:1.2rem}
-.inquiry-form input,.inquiry-form textarea{background:transparent;border:none;border-bottom:1px solid rgba(201,169,110,0.3);color:var(--cream);font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:300;padding:0.8rem 0;outline:none;width:100%;transition:border-color 0.3s}
-.inquiry-form input::placeholder,.inquiry-form textarea::placeholder{color:var(--gd);letter-spacing:0.1em}
-.inquiry-form input:focus,.inquiry-form textarea:focus{border-bottom-color:var(--gold)}
-.inquiry-form textarea{min-height:100px;resize:vertical}
-.inquiry-submit{margin-top:1rem;padding:1rem 2.5rem;background:transparent;border:1px solid var(--gd);color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:0.78rem;letter-spacing:0.3em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;align-self:center}
-.inquiry-submit:hover{background:var(--gg);border-color:var(--gold)}
+.inquiry-btn{display:inline-block;font-family:'Cormorant Garamond',serif;font-size:0.78rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gd);padding:1rem 2.5rem;text-decoration:none;transition:all 0.3s;margin-top:2rem}
+.inquiry-btn:hover{background:var(--gg);border-color:var(--gold)}
 
 footer{background:var(--dark);border-top:1px solid rgba(201,169,110,0.15);padding:3rem 2rem;text-align:center}
 .footer-name{font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--cd);margin-bottom:0.5rem}
@@ -179,11 +174,11 @@ footer{background:var(--dark);border-top:1px solid rgba(201,169,110,0.15);paddin
     <img class="whp-portrait reveal" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/gh_key/gh_whp_photo" alt="Walter Hines Page, U.S. Ambassador to the Court of St. James's">
     <div class="whp-content reveal">
       <span class="whp-eyebrow">Walter Hines Page · 1855–1918</span>
-      <div class="whp-name">He named it<br>Garran Hill.<br>He never spent<br>a night here.</div>
+      <div class="whp-name">He named it<br>Garran Hill.<br>He died twelve days<br>after coming home.</div>
       <div class="whp-body">
         <p>In February 1913, Walter Hines Page purchased a thousand-acre farm two miles southwest of Pinehurst -- land his father had logged a generation earlier. He named it Garran Hill before the foundation was poured.</p>
-        <p>Weeks later, President Woodrow Wilson offered him the ambassadorship to the Court of St. James's. He accepted and left for London. He directed construction of this house from three thousand miles away.</p>
-        <p>He returned once -- carried off the train at Aberdeen station by his son Frank on December 11, 1918.</p>
+        <p>President Wilson offered him the ambassadorship to the Court of St. James's weeks later. He accepted and left for London. He directed construction of this house from three thousand miles away, for five years, without ever returning.</p>
+        <p>He came home in December 1918, carried off the train at Aberdeen by his son Frank. He died in Pinehurst on December 21st -- twelve days after the train. Whether he ever crossed this threshold, history doesn't say. The house kept the name.</p>
       </div>
       <blockquote class="whp-quote">
         "Well, Frank, I did get here after all, didn't I?"
@@ -377,24 +372,22 @@ footer{background:var(--dark);border-top:1px solid rgba(201,169,110,0.15);paddin
 </section>
 
 <!-- MATTERPORT -->
-<section id="matterport">
-  <span class="matterport-eyebrow">Virtual Tour</span>
-  <div class="matterport-headline reveal">Walk the house.</div>
-  <iframe class="matterport-frame" src="https://my.matterport.com/show/?m=mfwyqT5Btwx" allowfullscreen allow="xr-spatial-tracking"></iframe>
+<section id="matterport" style="position:relative;height:80vh;overflow:hidden">
+  <img style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1203" alt="Garran Hill -- virtual tour">
+  <div style="position:absolute;inset:0;background:rgba(11,11,11,0.52)"></div>
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;z-index:2">
+    <span style="font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:2rem">Virtual Tour</span>
+    <div class="reveal" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:200;color:var(--cream);line-height:1.2;margin-bottom:3rem">Walk the house.</div>
+    <a href="https://my.matterport.com/show/?m=mfwyqT5Btwx" target="_blank" rel="noopener" style="font-family:'Cormorant Garamond',serif;font-size:0.78rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gd);padding:1rem 2.5rem;text-decoration:none;transition:all 0.3s" onmouseover="this.style.background='rgba(201,169,110,0.18)'" onmouseout="this.style.background='transparent'">Enter the House &rarr;</a>
+  </div>
 </section>
 
 <!-- INQUIRY -->
 <section id="inquiry">
   <div class="inquiry-inner">
-    <span class="inquiry-eyebrow">Private Inquiry</span>
-    <div class="inquiry-headline reveal">Neo-Georgian. Walter Hines Page.<br>110 years of remarkable stewardship.</div>
-    <form class="inquiry-form" onsubmit="handleInquiry(event)">
-      <input type="text" name="name" placeholder="Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="tel" name="phone" placeholder="Phone">
-      <textarea name="message" placeholder="Message"></textarea>
-      <button type="submit" class="inquiry-submit">Send Inquiry</button>
-    </form>
+    <span class="inquiry-eyebrow">Private Showing</span>
+    <div class="inquiry-headline reveal">Garran Hill is ready.<br>It is offered now for the first time.</div>
+    <a href="mailto:rachelhernandezrealtor@gmail.com?subject=Garran Hill -- Private Showing Request&body=I would like to arrange a private showing of Garran Hill, 200 Hollycrest Drive, Pinehurst." class="inquiry-btn reveal">Request a Private Showing &rarr;</a>
   </div>
 </section>
 
@@ -415,24 +408,7 @@ const observer = new IntersectionObserver((entries) => {
 }, {threshold: 0.12});
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-async function handleInquiry(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('.inquiry-submit');
-  btn.textContent = 'Sending...';
-  btn.disabled = true;
-  const data = Object.fromEntries(new FormData(e.target));
-  try {
-    await fetch('https://app.base44.com/api/apps/69e248a2469cc39540781cce/entities/Inquiry', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({name:data.name,email:data.email,phone:data.phone||'',message:data.message||'',property:'Garran Hill',source:'Website'})
-    });
-    btn.textContent = 'Inquiry Received';
-    e.target.reset();
-  } catch(err) {
-    btn.textContent = 'Send Inquiry';
-    btn.disabled = false;
-  }
-}
+
 </script>
 </body>
 </html>
