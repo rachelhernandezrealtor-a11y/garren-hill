@@ -219,9 +219,7 @@ footer{background:var(--dark);padding:4rem 2rem 3rem;border-top:1px solid rgba(2
   <div class="kb-text reveal">
     <span class="kb-eyebrow">The Gate · 1916</span>
     <div class="kb-headline">Built in 1916.<br>Named by Walter Hines Page.</div>
-    <div class="kb-caption">The iron, the brick columns, the long drive curving beyond them —
-these are the proportions Leonard Tufts' craftsmen passed through in 1915.
-The gate has been open since 1916.</div>
+    <div class="kb-caption">The gate has been open since 1916.</div>
   </div>
 </section>
 
@@ -231,13 +229,11 @@ The gate has been open since 1916.</div>
     <img class="whp-portrait reveal" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_800/gh_key/gh_whp_photo" alt="Walter Hines Page, U.S. Ambassador to the Court of St. James's">
     <div class="whp-content reveal">
       <span class="whp-eyebrow">Walter Hines Page · 1855–1918</span>
-      <div class="whp-name">He named it Garran Hill.<br>He directed its making from London.<br>He never arrived.</div>
+      <div class="whp-name">He named it Garran Hill.<br>He never spent a night here.</div>
       <div class="whp-body">
         <p>Page bought the land in February 1913 and sailed for London weeks later as Ambassador to the Court of St. James's. He directed the build from three thousand miles away. His son Ralph supervised on the ground. Leonard Tufts sent the craftsmen — the same men who built Pinehurst.</p>
         <p style="margin-top:1.4rem">"Build the farm, therefore; and let me hear at every stage of that happy game."</p>
-        <p style="margin-top:1.4rem">He returned to America in December 1918. He was carried off the train at Aberdeen station. He stayed at Currituck Cottage in Pinehurst — not Garran Hill — and died ten days later. He named it. He directed every detail from London. When he finally came home in December 1918, he stayed at Currituck Cottage — not Garran Hill — and died ten days later.
-        <p style="margin-top:1.6rem;font-style:italic;color:var(--gold)">"Well, Frank, I did get here after all, didn't I?"</p>
-        <p style="margin-top:0.4rem;font-size:0.85rem;letter-spacing:0.08em;opacity:0.5">Aberdeen station · December 11, 1918</p></p>
+        <p style="margin-top:1.4rem">He returned to America in December 1918. He was carried off the train at Aberdeen station. He stayed at Currituck Cottage in Pinehurst — not Garran Hill — and died ten days later. He named it. He never spent a night here.</p>
       </div>
       <blockquote class="whp-quote">
         "Well, Frank, I did get here after all, didn't I?"
@@ -270,8 +266,8 @@ The gate has been open since 1916.</div>
   <div class="room-overlay"></div>
   <div class="room-caption reveal">
     <span class="room-eyebrow">The Foyer</span>
-    <div class="room-name">The house announces itself<br>the moment you cross the threshold.</div>
-    <div class="room-line">Original oak floors. Leaded glass sidelights.<br>The mahogany volute — original 1916.<br>The hardware was specified in 1916. It has not been replaced.</div>
+    <div class="room-name">The Foyer</div>
+    <div class="room-line">Original oak floors. Leaded glass sidelights.<br>The mahogany volute -- original 1916.</div>
   </div>
 </section>
 
@@ -289,7 +285,7 @@ The gate has been open since 1916.</div>
   <div class="room-caption reveal">
     <span class="room-eyebrow">Principal Reception</span>
     <div class="room-name">The Salon</div>
-    <div class="room-line">Nearly forty feet. Tall bare windows parading down both sides.<br>Two full seating areas. Room enough for everything.</div>
+    <div class="room-line">Nearly forty feet. Tall bare windows parading down both sides.<br>They made it bigger so they could dance.</div>
   </div>
 </section>
 
@@ -299,8 +295,8 @@ The gate has been open since 1916.</div>
   <div class="room-overlay" style="background:linear-gradient(to left,rgba(11,11,11,0.65) 0%,transparent 55%)"></div>
   <div class="room-caption right reveal">
     <span class="room-eyebrow">Drawing Room</span>
-    <div class="room-name">Seven mantels survive in this house.<br>This one has the Delft tile.</div>
-    <div class="room-line">Georgian carved mantel. Coffered ceiling — enlarged for dancing.<br>Original Delft tile surround — blue and white.</div>
+    <div class="room-name">The Drawing Room.<br>They made it nearly forty feet<br>so there would be room to dance.<br>Seven mantels survive in this house.<br>This one has the Delft tile.</div>
+    <div class="room-line">Georgian carved mantel. Coffered ceiling.<br>Original Delft tile surround — blue and white.</div>
     <div class="room-pull" style="font-style:italic;margin-top:1.4rem;color:var(--gold);font-size:clamp(1rem,1.5vw,1.15rem);letter-spacing:0.02em">Fire going, no one home yet.</div>
   </div>
 </section>
@@ -322,9 +318,8 @@ The gate has been open since 1916.</div>
   <div class="room-overlay" style="background:linear-gradient(to right,rgba(11,11,11,0.6) 0%,transparent 55%)"></div>
   <div class="room-caption reveal">
     <span class="room-eyebrow">Kitchen</span>
-    <div class="room-name">The kitchen is not original to 1916.<br>It is original to the restoration.</div>
-    <div class="room-line">Reclaimed heart-pine floors — the only room in the house with heart-pine, chosen intentionally.
-Every other room retains its original 1916 solid oak.<br>Two farm sinks. A wall of windows over the main sink.<br>Beyond them: the Grandiflora magnolias Betty Dumaine planted in 1959.</div>
+    <div class="room-name">The Kitchen</div>
+    <div class="room-line">The kitchen is not original to 1916. It is original to the restoration.<br>Two farm sinks. A wall of windows over the main sink.<br>Beyond them: the Grandiflora magnolias Betty Dumaine planted in 1959.</div>
   </div>
 </section>
 
@@ -375,7 +370,7 @@ Every other room retains its original 1916 solid oak.<br>Two farm sinks. A wall 
   <div class="room-caption center reveal">
     <span class="room-eyebrow">4.15 Acres · Pinehurst, North Carolina</span>
     <div class="room-name">In 1916, those were saplings.<br>Now they are a forest.</div>
-    <div class="room-line" style="max-width:38rem;margin:0.8rem auto 0">The Tufts craftsmen planted the pines. Betty Dumaine planted the rose garden, the camellias, the magnolias, the dogwoods.<br>The gardens have been cultivated continuously for sixty years.</div>
+    <div class="room-line" style="max-width:38rem;margin:0.8rem auto 0">In 1916, those were saplings. Now they are a forest.<br>The Tufts craftsmen planted the pines. Betty Dumaine planted the sycamores and the magnolias, in 1959.</div>
   </div>
 </section>
 
