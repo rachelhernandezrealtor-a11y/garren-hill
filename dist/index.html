@@ -338,6 +338,11 @@ img{background:linear-gradient(135deg,rgba(201,169,110,0.08),rgba(245,240,232,0.
     text-transform: uppercase;
   }
 
+
+  /* WHP LEFT COLUMN */
+  .whp-left-col { display:flex; flex-direction:column; gap:2rem; }
+  .whp-portrait { width:100%; aspect-ratio:3/4; object-fit:cover; object-position:top center; filter:sepia(20%) contrast(1.05) grayscale(30%); }
+
 </style>
 <script>
 window.GH_IMG_FALLBACK = function(img){
@@ -423,11 +428,16 @@ window.GH_IMG_FALLBACK = function(img){
 <!-- WHP -->
 <section id="history">
   <div class="whp-inner">
-    <div class="whp-artifact reveal" aria-label="Walter Hines Page record artifact" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_600/gh_key/gh_whp_wikimedia.jpg');background-size:cover;background-position:center top;background-repeat:no-repeat;">
-      <span class="whp-artifact-kicker">Record · Walter Hines Page</span>
-      <div class="whp-artifact-title">A house<br>directed from London.</div>
-      <p>Named before it was lived. Built under Ralph Page's supervision. Preserved as the address Page imagined, but never claimed as daily life.</p>
-      <span class="whp-artifact-mark">Garran Hill · 1916</span>
+    <div class="whp-left-col">
+      <img class="whp-portrait reveal" 
+        src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_600/gh_key/gh_whp_wikimedia.jpg"
+        alt="Walter Hines Page, portrait by Philip de László, 1918"
+        loading="lazy">
+      <div class="whp-artifact reveal" aria-label="Walter Hines Page record artifact">
+        <span class="whp-artifact-kicker">Record · Walter Hines Page</span>
+        <div class="whp-artifact-title">A house<br>directed from London.</div>
+        <span class="whp-artifact-mark">Garran Hill · 1916</span>
+      </div>
     </div>
     <div class="whp-content reveal">
       <span class="whp-eyebrow">Walter Hines Page · 1855–1918</span>
