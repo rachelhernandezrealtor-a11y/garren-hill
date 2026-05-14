@@ -1657,144 +1657,274 @@ The gate has been open since 1916.</div>
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════════════
+     THE ROOMS — immersive editorial sequence
+     Entry Hall → Staircase → Salon → Drawing Room → 
+     Dining → Kitchen → Library → Primary → Powder
+     ═══════════════════════════════════════════════════════ -->
 
+<style>
+/* ── ROOM SPREAD — full viewport, image fills, text hovers bottom-left ── */
+.room-spread {
+  position: relative;
+  height: 100svh;
+  min-height: 580px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+.room-spread img.room-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 14s ease-out;
+}
+.room-spread:hover img.room-bg { transform: scale(1.04); }
+.room-spread .room-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.2) 45%, transparent 100%);
+}
+.room-spread .room-caption {
+  position: relative;
+  z-index: 2;
+  padding: 0 clamp(2.5rem,6vw,8rem) clamp(3rem,6vw,6rem);
+  max-width: 680px;
+}
 
+/* ── ROOM SPLIT — left image, right text OR reversed ── */
+.room-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 90vh;
+  overflow: hidden;
+  background: var(--dark);
+}
+.room-split.img-right { direction: rtl; }
+.room-split.img-right > * { direction: ltr; }
+.room-split-img {
+  position: relative;
+  overflow: hidden;
+}
+.room-split-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 10s ease-out;
+}
+.room-split:hover .room-split-img img { transform: scale(1.04); }
+.room-split-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(3rem,6vw,7rem) clamp(2.5rem,5vw,6rem);
+}
 
-<!-- FOYER -->
+/* ── SHARED ROOM TYPOGRAPHY ── */
+.room-eyebrow {
+  font-family: var(--sans);
+  font-size: clamp(0.6rem,0.82vw,0.72rem);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: rgba(201,169,110,0.55);
+  display: block;
+  margin-bottom: 1.5rem;
+}
+.room-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 200;
+  font-size: clamp(2rem,4vw,3.8rem);
+  line-height: 1.05;
+  color: var(--cream);
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+.room-headline em { font-style: italic; color: rgba(245,240,232,0.72); }
+.room-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(1rem,1.4vw,1.18rem);
+  line-height: 1.9;
+  color: rgba(245,240,232,0.78);
+  max-width: 48ch;
+}
+.room-body p { margin: 0 0 1.3rem; }
+/* The crack — one true thing, pulled from prose */
+.room-crack {
+  display: block;
+  margin: 2rem 0 0;
+  padding-left: 1.4rem;
+  border-left: 1px solid rgba(201,169,110,0.22);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 200;
+  font-size: clamp(1rem,1.5vw,1.22rem);
+  line-height: 1.65;
+  color: rgba(201,169,110,0.7);
+}
+
+/* ── Spread caption typography ── */
+.room-spread .room-eyebrow { margin-bottom: 1rem; }
+.room-spread .room-headline {
+  font-size: clamp(2.5rem,5.5vw,5rem);
+  margin-bottom: 1rem;
+}
+.room-spread .room-body { max-width: 52ch; }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .room-split { grid-template-columns: 1fr; direction: ltr; }
+  .room-split.img-right { direction: ltr; }
+  .room-split-img { height: 60vw; min-height: 280px; position: relative; }
+  .room-split-img img { position: absolute; }
+  .room-split-text { padding: 2.5rem 1.8rem 3rem; }
+  .room-split-text .room-body { max-width: 100%; }
+}
+</style>
+
+<!-- ── 1. ENTRY HALL — full bleed, staircase fills screen ── -->
 <section class="room-spread">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243025/gh_interiors/200holycrest_1182" alt="Foyer, Garran Hill">
-  <div class="room-overlay"></div>
-  <div class="room-caption">
+  <img class="room-bg img-reveal"
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777329147/gh_key/gh_entry_hall"
+    alt="Garran Hill entry hall and staircase, 1916 original">
+  <div class="room-veil"></div>
+  <div class="room-caption reveal">
     <span class="room-eyebrow">The Entry Hall</span>
-    <div class="room-name">The house announces itself<br><em>the moment you cross the threshold.</em></div>
-    <div class="room-line">Original leaded glass sidelights. Arched fanlight above the door. Original oak floors. Mahogany staircase volute — same since 1916.<br>The hall axis carries straight through to the library at the back — visible the moment the door opens.<br><em>The brass key plates on every door still have their original keys.</em></div>
+    <div class="room-headline">The staircase has turned<br>the same curve <em>since 1916.</em></div>
+    <p class="room-body">Mahogany volute. Original oak floors. The hall runs straight through to the rear of the house -- visible from the moment the door opens. No wall has moved. You feel the proportions before you understand them.</p>
   </div>
 </section>
 
-<!-- ACT III — The Rooms -->
-<div class="act">
-  <div class="act-line"></div>
-  <span class="act-label">— IV — The Rooms</span>
-  <div class="act-line"></div>
-</div>
-
-<!-- SALON -->
-<section class="room-spread">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243165/gh_interiors/200holycrest_1425" alt="The Salon, Garran Hill">
-  <div class="room-overlay" style="background:linear-gradient(to right,rgba(11,11,11,0.65) 0%,transparent 55%)"></div>
-  <div class="room-caption">
+<!-- ── 2. SALON — split, image left ── -->
+<section class="room-split">
+  <div class="room-split-img">
+    <img class="img-reveal"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1200/v1777568360/gh_key/gh_living_room"
+      alt="The Salon, Garran Hill">
+  </div>
+  <div class="room-split-text reveal">
     <span class="room-eyebrow">The Salon</span>
-    <div class="room-name">They made it bigger<br><em>so they could dance.</em></div>
-    <div class="room-line">Coffered ceiling. Georgian panel molding in a grid. Oak floors lifted, repaired, relaid exactly as they were.<br>Two full seating areas. Room enough to dance.</div>
+    <div class="room-headline">Two seating areas.<br><em>Room enough to dance.</em></div>
+    <div class="room-body">
+      <p>Georgian panel molding in a full grid. Original oak floors lifted, repaired, relaid exactly as they were. Two seating areas anchored by a carved mantel.</p>
+      <p>The proportions came from the 1916 drawings. The room was built once and has not been rethought since.</p>
+    </div>
+    <span class="room-crack">The room the house was built around.</span>
   </div>
 </section>
 
-<!-- DRAWING ROOM -->
+<!-- ── 3. DRAWING ROOM — split, image right, fire already going ── -->
+<section class="room-split img-right">
+  <div class="room-split-img">
+    <img class="img-reveal"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1200/v1777330007/gh_key/gh_drawing_room_fire"
+      alt="The Drawing Room fireplace, Delft tile surround, Garran Hill">
+  </div>
+  <div class="room-split-text reveal">
+    <span class="room-eyebrow">The Drawing Room</span>
+    <div class="room-headline">Fire going,<br><em>no one home yet.</em></div>
+    <div class="room-body">
+      <p>The Delft tile surround -- blue and white, hand-painted, original -- is not a detail. It is the room. The coffered ceiling was enlarged for dancing. Everything else was chosen to answer it.</p>
+      <p>That is not decorating. That is a century of conviction.</p>
+    </div>
+    <span class="room-crack">The dining room holds the same silence.</span>
+  </div>
+</section>
+
+<!-- ── 4. DINING ROOM — split, image left ── -->
 <section class="room-split">
   <div class="room-split-img">
-    <img class="img-reveal" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243025/gh_interiors/200holycrest_1209" alt="The Drawing Room, Garran Hill — original Delft tile fireplace, Georgian mantel, 1916" loading="lazy" decoding="async">
+    <img class="img-reveal"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1200/v1777568363/gh_key/gh_dining_room"
+      alt="Dining room, shell cabinets, Garran Hill">
   </div>
-  <div class="room-split-copy reveal-slow">
-    <span class="split-eyebrow">The Drawing Room</span>
-    <div class="split-headline">Fire going,</div>
-    <div class="split-sub">no one home yet.</div>
-    <div class="split-body">Original Georgian carved mantel. Delft tile surround — blue and white, original to the room. Lion andirons. One of seven fireplaces — the only one with its original tile intact.<br><em>The room is ready before you are. It has always been ready.</em></div>
-  </div>
-</section>
-
-<!-- DINING ROOM -->
-<section class="room-spread">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243073/gh_interiors/200holycrest_1302" alt="The Dining Room, Garran Hill">
-  <div class="room-overlay"></div>
-  <div class="room-caption">
+  <div class="room-split-text reveal">
     <span class="room-eyebrow">The Dining Room</span>
-    <div class="room-name">Formal by proportion.<br><em>Intimate by firelight.</em></div>
-    <div class="room-line">Bay window on the north wall — curved, floor to ceiling, nine-pane divided lights, looking directly onto the grounds. Brass and porcelain chandelier.<br>Flanking the fireplace: arched shell alcoves, scalloped tops, built-in cabinet below — drawn on the restoration plans before a single piece of trim was cut.<br><em>Shell cabinets were already there. Still there now.</em></div>
+    <div class="room-headline">The shell cabinets<br><em>were already there.</em></div>
+    <div class="room-body">
+      <p>The frontispiece above the fireplace is original -- carved in 1916, still in place. The arched niche, the wainscoting, the brass chandelier. The room seats twelve without crowding.</p>
+      <p>It holds the silence after dinner without trying.</p>
+    </div>
+    <span class="room-crack">The shell cabinets are original. The kitchen is not. Both are right.</span>
   </div>
 </section>
 
-<!-- KITCHEN -->
-<section class="room-split img-right">
-  <div class="room-split-img">
-    <img class="img-reveal" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243091/gh_interiors/200holycrest_1650" alt="The Kitchen, Garran Hill — restoration-era with reclaimed heart-pine and original shell cabinets" loading="lazy" decoding="async">
-  </div>
-  <div class="room-split-copy reveal-slow">
-    <span class="split-eyebrow">The Kitchen</span>
-    <div class="split-headline">The shell cabinets
-are original.</div>
-    <div class="split-sub">The kitchen is not. That is the point.</div>
-    <div class="split-body">Built new in 2000. Reclaimed heart-pine floors — the only room in the house with heart-pine, chosen intentionally. Every surface was selected to honor what it replaced without pretending to be 1916.<br><em>The kitchen is not original to 1916. It is original to the restoration.</em></div>
-  </div>
-</section>
-
-<!-- LIBRARY -->
-<section class="room-split img-right">
-  <div class="room-split-img">
-    <img class="img-reveal" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243091/gh_interiors/200holycrest_1350" alt="The Library, Garran Hill — floor-to-ceiling built-ins, rolling ladder, 1916" loading="lazy" decoding="async">
-  </div>
-  <div class="room-split-copy reveal-slow">
-    <span class="split-eyebrow">The Library</span>
-    <div class="split-headline">The room where every
-decision flowed through.</div>
-    <div class="split-sub">Dead center. Built-in on three walls.</div>
-    <div class="split-body">Floor-to-ceiling shelving on three walls. Rolling ladder. French doors to the rear garden. This room sits at the axis of the first floor — every other room defers to it.<br><em>Walter Hines Page wrote the letters from London that built this house. This is where they were meant to be answered.</em></div>
-  </div>
-</section>
-
-<!-- POWDER ROOM -->
-<section class="room-split">
-  <div class="room-split-img">
-    <img class="img-reveal" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243091/gh_interiors/200holycrest_1326" alt="The Jewel Box powder room, Garran Hill — fuchsia chinoiserie and Tennessee marble" loading="lazy" decoding="async">
-  </div>
-  <div class="room-split-copy reveal-slow">
-    <span class="split-eyebrow">The Powder Room</span>
-    <div class="split-headline">Fuchsia chinoiserie.</div>
-    <div class="split-sub">A room that does not apologize.</div>
-    <div class="split-body">The fuchsia wallpaper is the whole point. Chinoiserie pattern, floor to ceiling. Tennessee marble beneath it. This is the most opinionated room in the house &mdash; designed to stop you, make you look, make you feel something. The brass key plate on the door still holds its original key.<br><em>It works. It has always worked.</em></div>
-  </div>
-</section>
-
-<!-- PRIMARY SUITE -->
-<section class="room-split">
-  <div class="room-split-img">
-    <img class="img-reveal" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243091/gh_interiors/200holycrest_1534" alt="The Primary Suite, Garran Hill — east wing, second floor, Tennessee marble bath" loading="lazy" decoding="async">
-  </div>
-  <div class="room-split-copy reveal-slow">
-    <span class="split-eyebrow">The Primary Suite</span>
-    <div class="split-headline">The whole floor
-belongs to it.</div>
-    <div class="split-sub">East wing. Second floor. Four rooms within a room.</div>
-    <div class="split-body">Sitting room. Dressing room. Primary bath finished in Tennessee marble. The suite occupies the entire east wing of the second floor. Two exposures — east light at dawn, south light through the afternoon.<br><em>The scale is quiet. The scale is absolute.</em></div>
-  </div>
-</section>
-
-<!-- ACT IV — The Land -->
-<div class="act">
-  <div class="act-line"></div>
-  <span class="act-label">— V — The Land</span>
-  <div class="act-line"></div>
-</div>
-
-<!-- GROUNDS -->
+<!-- ── 5. KITCHEN — full bleed, editorial chapter ── -->
 <section class="room-spread">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244503/gh_exteriors/holycrestextf_3364" alt="Grounds, Garran Hill">
-  <div class="room-overlay" style="background:linear-gradient(to bottom,rgba(11,11,11,0.1),rgba(11,11,11,0.6))"></div>
-  <div class="room-caption center reveal">
-    <span class="room-eyebrow">4.15 Acres · Pinehurst, North Carolina</span>
-    <div class="room-name">In 1916, those were saplings.<br><em>Now they are a forest.</em></div>
-    <div class="room-line" style="max-width:38rem;margin:0.8rem auto 0">The Tufts craftsmen planted the pines. Betty Dumaine planted the rose garden, the camellias, the magnolias, the dogwoods.<br>The gardens have been cultivated continuously since 1959.</div>
+  <img class="room-bg img-reveal"
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777568365/gh_key/gh_kitchen_overall"
+    alt="Garran Hill kitchen, reclaimed heart-pine, restoration era">
+  <div class="room-veil"></div>
+  <div class="room-caption reveal">
+    <span class="room-eyebrow">The Kitchen</span>
+    <div class="room-headline">The only room<br>rebuilt from scratch.<br><em>Done correctly.</em></div>
+    <div class="room-body">
+      <p>Reclaimed heart-pine floors -- the only room in the house not original oak. Built in the restoration, 1999–2001, from fresh drawings. White cabinetry. Dark granite. Center island. Two farm sinks. Butler's pantry. Sub-Zero. Wolf 60". Wall of windows over the rear grounds.</p>
+    </div>
+    <span class="room-crack">The kitchen is not original to 1916. It is original to the restoration.</span>
   </div>
 </section>
 
-<!-- ACT V — Stewardship -->
-<div class="act">
-  <div class="act-line"></div>
-  <span class="act-label">— VI — Stewardship</span>
-  <div class="act-line"></div>
-</div>
+<!-- ── 6. LIBRARY — split, image right ── -->
+<section class="room-split img-right">
+  <div class="room-split-img">
+    <img class="img-reveal"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1200/v1777407424/gh_key/gh_library_hero"
+      alt="Garran Hill library, three-wall shelving, rolling ladder">
+  </div>
+  <div class="room-split-text reveal">
+    <span class="room-eyebrow">The Library</span>
+    <div class="room-headline">The room the man who<br>founded Doubleday<br><em>would have claimed.</em></div>
+    <div class="room-body">
+      <p>Three walls of shelving, floor to ceiling. Rolling ladder. French doors to the rear grounds. The restoration architect drew this room to the same standard as the 1916 house it joined.</p>
+      <p>When you stand in it, you cannot find the seam.</p>
+    </div>
+    <span class="room-crack">Dead center of the first floor. Positioned that way in the drawings.</span>
+  </div>
+</section>
+
+<!-- ── 7. PRIMARY SUITE — split, image left ── -->
+<section class="room-split">
+  <div class="room-split-img">
+    <img class="img-reveal"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1200/v1777568372/gh_key/gh_primary_suite"
+      alt="Garran Hill primary suite, fireplace, original oak floors">
+  </div>
+  <div class="room-split-text reveal">
+    <span class="room-eyebrow">The Primary Suite</span>
+    <div class="room-headline">A commission,<br><em>not a renovation.</em></div>
+    <div class="room-body">
+      <p>Every panel, every cabinet, the fireplace surround -- drawn from scratch in 2000 to match a house built 84 years earlier. You cannot tell the difference. That was the point.</p>
+      <p>The dogwood blooms every April. The window has not moved.</p>
+    </div>
+    <span class="room-crack">The brass key plates on every door still have their original keys.</span>
+  </div>
+</section>
+
+<!-- ── 8. JEWEL BOX / POWDER ROOM — split, image right, the surprise ── -->
+<section class="room-split img-right">
+  <div class="room-split-img">
+    <img class="img-reveal"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1200/v1777243058/gh_interiors/200holycrest_1326"
+      alt="Garran Hill powder room, fuchsia chinoiserie, Tennessee marble">
+  </div>
+  <div class="room-split-text reveal">
+    <span class="room-eyebrow">The Jewel Box</span>
+    <div class="room-headline">Fuchsia.<br>Chinoiserie.<br><em>Tennessee marble.</em></div>
+    <div class="room-body">
+      <p>The powder room that stops people. Fuchsia chinoiserie wallpaper, floor to ceiling. Original mirror. Tennessee marble vanity.</p>
+      <p>Nobody expected it. That was also the point.</p>
+    </div>
+    <span class="room-crack">The house saves its most unexpected room for last.</span>
+  </div>
+</section>
 
 
-<!-- GROUNDS -->
+
 <section id="grounds" style="background:var(--dark)">
   <div class="room-spread" style="position:relative;min-height:85vh;display:flex;align-items:flex-end">
     <img class="room-img img-reveal" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244435/gh_exteriors/holycrestextf_3364" alt="Garran Hill grounds, 4.15 acres, Pinehurst NC" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center">
@@ -1808,25 +1938,7 @@ belongs to it.</div>
 </section>
 
 <!-- BLUE FOX -->
-<section id="blue-fox">
-  <div class="blue-fox-inner reveal">
-    <span class="blue-fox-eyebrow">The Second Steward · 1959–1984</span>
-    <div class="blue-fox-headline">Betty Dumaine<br>1959 &ndash; 1984.</div>
-    <div class="blue-fox-body">
-      <p>She bought the house for the horses and hounds she kept. She renamed it Hollycrest -- for the large native holly trees at the front of the home -- and made it her life.
-      <p>In 1919, at nineteen, she had gone to the Edith Johnson School in Cambridge, Massachusetts. Her roommate was a young Thai woman named Khun Sangwan Chukramol. They bonded immediately. Sangwan later married Prince Mahidol of Songkla and became Srinagarindra -- the Princess Mother of Thailand, mother of two kings.</p>
-      <p>Betty ran her charities from this house. She raised funds to build schools in Northern Thailand. She founded a riding club in Pinehurst. She held birthday parties for her horses, to which the children of the village were invited. She fought to preserve the trees on Midland Road.</p>
-      <p>She planted the sycamores. She planted the Grandiflora magnolias. She installed the camellia garden beside the front entry circle. The grounds you are looking at are, in large part, hers.</p>
-      <p>Betty Dumaine -- Thanpuying, decorated friend of the Princess Mother of Thailand -- held birthday parties for her horses, to which the children of Pinehurst were invited. She fought to save the trees in the median of Midland Road. When she died in 1984, she left the house, and her remaining U.S. charity funds, to her foundation. The Princess Mother's Charities Fund of Thailand still operates today.</p>
-      <p>Garran Hill has that effect on people.</p>
-    </div>
-    <div class="blue-fox-divider"></div>
-    <div class="blue-fox-sub-headline">Blue Fox — My Irish Hunter — 1946 to 1969.</div>
-    <div class="blue-fox-body" style="text-align:center;font-style:italic;font-size:clamp(1rem,1.6vw,1.2rem)">Betty Dumaine put the first flowers here.<br>Someone still does.</div>
-    <em style="display:block;font-size:clamp(1rem,1.6vw,1.2rem);color:var(--gold);font-weight:200;margin-bottom:2rem">Someone still puts flowers there.</em>
-    <span class="blue-fox-marker">Hollycrest · Back of the property · Under a slate cover with a brass marker</span>
-  </div>
-</section>
+
 
 <!-- TWILIGHT -->
 <section class="room-spread">
@@ -1848,23 +1960,160 @@ belongs to it.</div>
 
 
 <!-- BETTY DUMAINE -->
+
+<!-- ═══ BETTY DUMAINE — the second steward ═══ -->
 <section id="betty-dumaine" style="background:var(--dark);padding:clamp(6rem,10vw,12rem) 0">
-  <div class="section-content">
-    <div class="split">
-      <div class="split-text">
-        <span class="micro-rule reveal"></span>
-        <span class="room-eyebrow">The Second Steward &middot; 1959&ndash;1984</span>
-        <h2>She renamed it.<em> 1959 &ndash; 1984.</em></h2>
-        <div class="body-text reveal">
-          <p>Betty Dumaine arrived in 1959. She bought the house for the horses and hounds she kept. She renamed it Hollycrest — for the large native holly trees at the front corners of the house.</p>
-          <p>At the Edith Johnson School in Cambridge she had roomed with Khun Sangwan Chukramol, who would become the Princess Mother of Thailand — mother of King Bhumibol Adulyadej. Betty Dumaine was appointed Thanpuying — the highest honor Thailand could bestow upon a woman not born Thai.</p>
-          <p>Blue Fox was her Irish Hunter. He lived from 1946 to 1969. He is buried at the back of the property under a slate cover with a brass marker.</p>
-          <p>She died in 1984. She left funds to the Thai-PM Cultural Foundation. Someone still puts flowers there.</p>
+<style>
+  .betty-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 clamp(2rem,6vw,8rem);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem,6vw,7rem);
+    align-items: start;
+  }
+  .betty-left {}
+  .betty-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 2rem;
+  }
+  .betty-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 200;
+    font-size: clamp(2.2rem,4vw,3.8rem);
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 2.5rem;
+  }
+  .betty-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(1rem,1.4vw,1.18rem);
+    line-height: 1.9;
+    color: rgba(245,240,232,0.78);
+  }
+  .betty-body p { margin: 0 0 1.4rem; }
+  .betty-crack {
+    display: block;
+    margin: 2.5rem 0;
+    padding-left: 1.5rem;
+    border-left: 1px solid rgba(201,169,110,0.22);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 200;
+    font-size: clamp(1.05rem,1.6vw,1.3rem);
+    line-height: 1.65;
+    color: rgba(201,169,110,0.68);
+  }
+  /* Right col: the 1931 newspaper clipping as artifact */
+  .betty-right { position: relative; }
+  .betty-article-wrap {
+    position: relative;
+    background: rgba(245,240,232,0.04);
+    border: 1px solid rgba(201,169,110,0.12);
+    padding: 0;
+    overflow: hidden;
+  }
+  .betty-article-img {
+    width: 100%;
+    display: block;
+    opacity: 0.75;
+    filter: sepia(0.4) contrast(1.1);
+    transition: opacity 0.8s ease, filter 0.8s ease;
+  }
+  .betty-article-wrap:hover .betty-article-img {
+    opacity: 0.92;
+    filter: sepia(0.15) contrast(1.05);
+  }
+  .betty-article-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 1rem 1.2rem;
+    background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 100%);
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.5);
+  }
+  /* Blue Fox crack below article */
+  .blue-fox-marker {
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .blue-fox-marker-img {
+    width: 80px;
+    flex-shrink: 0;
+    opacity: 0.65;
+    filter: grayscale(30%);
+    border: 1px solid rgba(201,169,110,0.12);
+  }
+  .blue-fox-marker-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(0.9rem,1.3vw,1.05rem);
+    line-height: 1.75;
+    color: rgba(245,240,232,0.6);
+    padding-top: 0.3rem;
+  }
+  .blue-fox-marker-text strong {
+    display: block;
+    font-weight: 400;
+    color: rgba(245,240,232,0.85);
+    font-size: 1em;
+    margin-bottom: 0.3rem;
+  }
+  @media (max-width: 768px) {
+    .betty-grid { grid-template-columns: 1fr; }
+    .betty-right { margin-top: 1rem; }
+  }
+</style>
+
+  <div class="betty-grid reveal">
+    <div class="betty-left">
+      <span class="betty-eyebrow">The Second Steward &middot; 1959&ndash;1984</span>
+      <div class="betty-headline">She arrived in 1959.<br>She renamed it.<br>She stayed.</div>
+      <div class="betty-body">
+        <p>Betty Dumaine bought the house in 1959 and renamed it Hollycrest. She brought horses, hounds, and peacocks. She planted the rose garden, the camellias, the magnolias, the dogwoods.</p>
+        <p>In 1919, at a finishing school in Cambridge, she had met a young Thai woman named Khun Sangwan Chukramol. They became roommates. Khun Sangwan later married Prince Mahidol of Songkla and became the Princess Mother of Thailand -- mother of two kings.</p>
+        <p>Betty ran her Thai charity operations from this house. She founded a horse-riding club, raised funds to build schools in Northern Thailand, set up operations in Pinehurst. The Thai royal family knew this address.</p>
+        <p>She died in 1984 at age 84. She left funds to the TPMCF, which still operates at tpmcf.org.</p>
+      </div>
+      <span class="betty-crack">Betty Dumaine put the first flowers here. Someone still does.</span>
+    </div>
+
+    <div class="betty-right">
+      <!-- The newspaper clipping — actual historical document -->
+      <div class="betty-article-wrap">
+        <img class="betty-article-img"
+          src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_700/v1777272689/gh_key/gh_1931brochure"
+          alt="1931 newspaper clipping, Hollycrest, Pinehurst NC">
+        <div class="betty-article-label">As printed &middot; 1931</div>
+      </div>
+
+      <!-- Blue Fox marker — stone proof -->
+      <div class="blue-fox-marker">
+        <img class="blue-fox-marker-img"
+          src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_200/v1777273864/gh_key/gh_stone_marker"
+          alt="Blue Fox stone marker, Garran Hill">
+        <div class="blue-fox-marker-text">
+          <strong>Blue Fox &middot; Irish Hunter &middot; 1946&ndash;1969</strong>
+          Buried at the rear of the property. Slate cover. Brass marker. Still there.
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
 
 <!-- IN PRINT -->
 <section id="in-print" style="background:#0d0d0d;padding:clamp(6rem,10vw,12rem) 0">
