@@ -23,6 +23,17 @@
   --gg:rgba(201,169,110,0.12);
   --sans:'Helvetica Neue',Helvetica,Arial,sans-serif;
 }
+
+  /* Fallback: ensure reveals animate in even on fast scrolls / if IO misses */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { animation: none; }
+  }
+  /* Hero is always visible */
+  #hero, #hero * { opacity: 1 !important; }
+  #hero video { opacity: 1 !important; }
+  /* Room background images always visible */
+  .room-bg { opacity: 1 !important; transform: none !important; transition: transform 14s ease-out !important; }
+
 html{scroll-behavior:smooth}
 body{background:var(--dark);color:var(--cream);font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
@@ -1788,7 +1799,7 @@ The gate has been open since 1916.</div>
 
 <!-- ── 1. ENTRY HALL — full bleed, staircase fills screen ── -->
 <section class="room-spread">
-  <img class="room-bg img-reveal"
+  <img class="room-bg"
     src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777329147/gh_key/gh_entry_hall"
     alt="Garran Hill entry hall and staircase, 1916 original">
   <div class="room-veil"></div>
@@ -1855,7 +1866,7 @@ The gate has been open since 1916.</div>
 
 <!-- ── 5. KITCHEN — full bleed, editorial chapter ── -->
 <section class="room-spread">
-  <img class="room-bg img-reveal"
+  <img class="room-bg"
     src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777568365/gh_key/gh_kitchen_overall"
     alt="Garran Hill kitchen, reclaimed heart-pine, restoration era">
   <div class="room-veil"></div>
