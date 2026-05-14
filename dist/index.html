@@ -834,6 +834,101 @@ footer{background:var(--dark);padding:4rem 2rem 3rem;border-top:1px solid rgba(2
     .gallery-group-items { grid-template-columns: 1fr 1fr; gap: 0.4rem; padding: 0 0.8rem; }
   }
 
+
+  /* ── SPLIT ROOM LAYOUT ── Rachel approved May 14 2026 */
+  .room-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    background: var(--dark);
+  }
+  .room-split .room-split-img {
+    position: relative;
+    overflow: hidden;
+  }
+  .room-split .room-split-img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 1.8s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .room-split .room-split-img img.img-reveal {
+    transform: scale(1.04);
+  }
+  .room-split .room-split-img img.revealed {
+    transform: scale(1);
+  }
+  .room-split .room-split-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(3rem, 6vw, 7rem) clamp(2.5rem, 5vw, 6rem);
+  }
+  .room-split .split-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.46rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.65);
+    display: block;
+    margin-bottom: 1.4rem;
+  }
+  .room-split .split-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 200;
+    font-size: clamp(2.2rem, 3.8vw, 4rem);
+    line-height: 1.1;
+    color: var(--cream);
+    margin: 0 0 0.3rem;
+  }
+  .room-split .split-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.4rem, 2.2vw, 2rem);
+    color: rgba(245,240,232,0.75);
+    margin: 0 0 2.2rem;
+    line-height: 1.25;
+  }
+  .room-split .split-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+    line-height: 1.95;
+    color: rgba(245,240,232,0.62);
+    max-width: 36rem;
+  }
+  .room-split .split-body em {
+    color: rgba(245,240,232,0.85);
+    font-style: italic;
+  }
+  /* Mobile: stack split rooms */
+  @media (max-width: 767px) {
+    .room-split {
+      grid-template-columns: 1fr;
+    }
+    .room-split .room-split-img {
+      height: 70vw;
+      min-height: 280px;
+    }
+    .room-split .room-split-copy {
+      padding: 2.5rem 1.5rem;
+    }
+  }
+  /* Alternating image side — every other split has image on right */
+  .room-split.img-right {
+    grid-template-columns: 1fr 1fr;
+  }
+  .room-split.img-right .room-split-copy {
+    order: -1;
+  }
+  @media (max-width: 767px) {
+    .room-split.img-right .room-split-copy { order: 1; }
+  }
+
 </style>
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website">
@@ -1050,13 +1145,15 @@ The gate has been open since 1916.</div>
 </section>
 
 <!-- DRAWING ROOM -->
-<section class="room-spread">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243046/gh_interiors/200holycrest_1209" alt="The Drawing Room, Garran Hill">
-  <div class="room-overlay" style="background:linear-gradient(to left,rgba(11,11,11,0.65) 0%,transparent 55%)"></div>
-  <div class="room-caption right reveal">
-    <span class="room-eyebrow">The Drawing Room</span>
-    <div class="room-name">Fire going,<br><em>no one home yet.</em></div>
-    <div class="room-line">Original Georgian carved mantel. Delft tile surround — blue and white, original to the room. Lion andirons.<br>One of seven fireplaces in the house. Persian rug over wide-plank oak. A spiral staircase visible through the far doorway.<br><em>Seven fireplaces. This is the one that matters.</em></div>
+<section class="room-split">
+  <div class="room-split-img">
+    <img class="img-reveal" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243025/gh_interiors/200holycrest_1209" alt="The Drawing Room, Garran Hill — original Delft tile fireplace, Georgian mantel, 1916" loading="lazy" decoding="async">
+  </div>
+  <div class="room-split-copy reveal-slow">
+    <span class="split-eyebrow">The Drawing Room</span>
+    <div class="split-headline">Fire going,</div>
+    <div class="split-sub">no one home yet.</div>
+    <div class="split-body">Original Georgian carved mantel. Delft tile surround — blue and white, original to the room. Lion andirons. One of seven fireplaces — the only one with its original tile intact.<br><em>The room is ready before you are. It has always been ready.</em></div>
   </div>
 </section>
 
@@ -1072,46 +1169,57 @@ The gate has been open since 1916.</div>
 </section>
 
 <!-- KITCHEN -->
-<section class="room-spread">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243340/gh_interiors/200holycrest_1650" alt="The Kitchen, Garran Hill">
-  <div class="room-overlay" style="background:linear-gradient(to right,rgba(11,11,11,0.6) 0%,transparent 55%)"></div>
-  <div class="room-caption">
-    <span class="room-eyebrow">The Kitchen</span>
-    <div class="room-name">The shell cabinets are original.<br><em>The kitchen is not.</em></div>
-    <div class="room-line">Built new in 2000. Reclaimed heart-pine floors — the only room in the house with heart-pine, chosen intentionally. Every other room retains its original 1916 solid oak.<br>Custom cabinetry — white uppers with glass fronts, dark painted lowers. A wall of divided-light windows facing the grounds. Every morning at 6:30, the deer come through.<br><em>The floors are reclaimed heart-pine. Chosen. Not incidental.</em><br>Two farm sinks. A wall of windows over the main sink.<br>Beyond them: the Grandiflora magnolias Betty Dumaine planted in 1959.</div>
+<section class="room-split img-right">
+  <div class="room-split-img">
+    <img class="img-reveal" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243091/gh_interiors/200holycrest_1650" alt="The Kitchen, Garran Hill — restoration-era with reclaimed heart-pine and original shell cabinets" loading="lazy" decoding="async">
+  </div>
+  <div class="room-split-copy reveal-slow">
+    <span class="split-eyebrow">The Kitchen</span>
+    <div class="split-headline">The shell cabinets
+are original.</div>
+    <div class="split-sub">The kitchen is not. That is the point.</div>
+    <div class="split-body">Built new in 2000. Reclaimed heart-pine floors — the only room in the house with heart-pine, chosen intentionally. Every surface was selected to honor what it replaced without pretending to be 1916.<br><em>The kitchen is not original to 1916. It is original to the restoration.</em></div>
   </div>
 </section>
 
 <!-- LIBRARY -->
-<section class="room-spread">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243111/gh_interiors/200holycrest_1350" alt="The Library, Garran Hill">
-  <div class="room-overlay" style="background:linear-gradient(to left,rgba(11,11,11,0.65) 0%,transparent 55%)"></div>
-  <div class="room-caption right reveal">
-    <span class="room-eyebrow">The Library</span>
-    <div class="room-name">The room where every decision<br><em>flowed through.</em></div>
-    <div class="room-line">Dead center of the first floor. Built-in shelving on three walls, floor to ceiling. Rolling ladder. French doors to the rear grounds. Brass chandelier.<br>The 1999 restoration architect worked from this room — every plan, every decision, documented in fifteen architectural drawings that transfer with the property.<br><em>This room holds stories.</em></div>
+<section class="room-split img-right">
+  <div class="room-split-img">
+    <img class="img-reveal" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243091/gh_interiors/200holycrest_1350" alt="The Library, Garran Hill — floor-to-ceiling built-ins, rolling ladder, 1916" loading="lazy" decoding="async">
+  </div>
+  <div class="room-split-copy reveal-slow">
+    <span class="split-eyebrow">The Library</span>
+    <div class="split-headline">The room where every
+decision flowed through.</div>
+    <div class="split-sub">Dead center. Built-in on three walls.</div>
+    <div class="split-body">Floor-to-ceiling shelving on three walls. Rolling ladder. French doors to the rear garden. This room sits at the axis of the first floor — every other room defers to it.<br><em>Walter Hines Page wrote the letters from London that built this house. This is where they were meant to be answered.</em></div>
   </div>
 </section>
 
 <!-- POWDER ROOM -->
-<section class="room-spread" style="height:70vh">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243091/gh_interiors/200holycrest_1326" alt="Powder Room, Garran Hill">
-  <div class="room-overlay"></div>
-  <div class="room-caption">
-    <span class="room-eyebrow">Powder Room</span>
-    <div class="room-name">The Jewel Box</div>
-    <div class="room-line">Fuchsia chinoiserie. Tennessee marble vanity.<br>Small. Deliberate. The only room like it in Pinehurst.</div>
+<section class="room-split">
+  <div class="room-split-img">
+    <img class="img-reveal" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243091/gh_interiors/200holycrest_1326" alt="The Jewel Box powder room, Garran Hill — fuchsia chinoiserie and Tennessee marble" loading="lazy" decoding="async">
+  </div>
+  <div class="room-split-copy reveal-slow">
+    <span class="split-eyebrow">The Powder Room</span>
+    <div class="split-headline">Fuchsia chinoiserie.</div>
+    <div class="split-sub">A room that does not apologize.</div>
+    <div class="split-body">The fuchsia wallpaper is the whole point. Chinoiserie pattern, floor to ceiling. Tennessee marble beneath it. This is the most opinionated room in the house &mdash; designed to stop you, make you look, make you feel something. The brass key plate on the door still holds its original key.<br><em>It works. It has always worked.</em></div>
   </div>
 </section>
 
 <!-- PRIMARY SUITE -->
-<section class="room-spread">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243220/gh_interiors/200holycrest_1534" alt="Primary Suite, Garran Hill">
-  <div class="room-overlay" style="background:linear-gradient(to right,rgba(11,11,11,0.6) 0%,transparent 55%)"></div>
-  <div class="room-caption">
-    <span class="room-eyebrow">The Primary Suite</span>
-    <div class="room-name">The whole floor<br><em>belongs to it.</em></div>
-    <div class="room-line">The primary suite occupies the entire east wing of the second floor. Sitting room. Dressing room. A primary bath finished in marble. Every window faces the grounds.<br>Nothing was approximated. The hardware is original. The bathroom floor is marble. The closet is behind a wall that looks like a wall.<br><em>It does not feel added. It feels inevitable.</em></div>
+<section class="room-split">
+  <div class="room-split-img">
+    <img class="img-reveal" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243091/gh_interiors/200holycrest_1534" alt="The Primary Suite, Garran Hill — east wing, second floor, Tennessee marble bath" loading="lazy" decoding="async">
+  </div>
+  <div class="room-split-copy reveal-slow">
+    <span class="split-eyebrow">The Primary Suite</span>
+    <div class="split-headline">The whole floor
+belongs to it.</div>
+    <div class="split-sub">East wing. Second floor. Four rooms within a room.</div>
+    <div class="split-body">Sitting room. Dressing room. Primary bath finished in Tennessee marble. The suite occupies the entire east wing of the second floor. Two exposures — east light at dawn, south light through the afternoon.<br><em>The scale is quiet. The scale is absolute.</em></div>
   </div>
 </section>
 
