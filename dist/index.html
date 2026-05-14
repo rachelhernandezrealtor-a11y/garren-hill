@@ -303,6 +303,41 @@ img{background:linear-gradient(135deg,rgba(201,169,110,0.08),rgba(245,240,232,0.
     line-height: 1.6;
   }
 
+
+  /* INQUIRY BREATH */
+  .inquiry-breath {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+  }
+  .inquiry-address {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+    font-weight: 200;
+    letter-spacing: 0.18em;
+    color: var(--cream);
+    opacity: 0.6;
+    text-transform: uppercase;
+  }
+  .inquiry-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 200;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+  }
+  .inquiry-stats {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    font-weight: 200;
+    letter-spacing: 0.2em;
+    color: var(--cream);
+    opacity: 0.45;
+    text-transform: uppercase;
+  }
+
 </style>
 <script>
 window.GH_IMG_FALLBACK = function(img){
@@ -375,8 +410,8 @@ window.GH_IMG_FALLBACK = function(img){
 
 <!-- KB GATE -->
 <section id="gate">
-  <div class="kb-layer" id="kb-then"></div>
-  <div class="kb-layer" id="kb-now"></div>
+  <div class="kb-layer" id="kb-then" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/gh_exteriors/entrance.jpg');background-size:cover;background-position:center"></div>
+  <div class="kb-layer" id="kb-now" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/gh_exteriors/holycrestextf_3312.jpg');background-size:cover;background-position:center"></div>
   <div class="kb-overlay"></div>
   <div class="kb-text reveal">
     <span class="kb-eyebrow">The Gate · 1916</span>
@@ -388,7 +423,7 @@ window.GH_IMG_FALLBACK = function(img){
 <!-- WHP -->
 <section id="history">
   <div class="whp-inner">
-    <div class="whp-artifact reveal" aria-label="Walter Hines Page record artifact">
+    <div class="whp-artifact reveal" aria-label="Walter Hines Page record artifact" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_600/gh_key/gh_whp_wikimedia.jpg');background-size:cover;background-position:center top;background-repeat:no-repeat;">
       <span class="whp-artifact-kicker">Record · Walter Hines Page</span>
       <div class="whp-artifact-title">A house<br>directed from London.</div>
       <p>Named before it was lived. Built under Ralph Page's supervision. Preserved as the address Page imagined, but never claimed as daily life.</p>
@@ -608,7 +643,7 @@ window.GH_IMG_FALLBACK = function(img){
 </section>
 
 <!-- BLUE FOX -->
-<section id="betty" class="editorial-section">
+<section id="betty" class="editorial-section" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_800/gh_key/gh_1931brochure.jpg');background-repeat:repeat;background-size:400px auto;background-position:center;background-blend-mode:luminosity;">
   <div class="editorial-inner editorial-grid reveal">
     <div>
       <span class="editorial-kicker">Hollycrest · 1959–1984</span>
@@ -704,8 +739,11 @@ window.GH_IMG_FALLBACK = function(img){
 <!-- INQUIRY -->
 <section id="inquiry">
   <div class="inquiry-inner">
-    <span class="inquiry-eyebrow">Private Showing</span>
-    
+    <div class="inquiry-breath reveal">
+      <span class="inquiry-address">200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, North Carolina</span>
+      <span class="inquiry-price">$4,250,000</span>
+      <span class="inquiry-stats">4 beds &nbsp;·&nbsp; 6 baths &nbsp;·&nbsp; 6,072 sq ft &nbsp;·&nbsp; 4.15 acres</span>
+    </div>
     <a href="mailto:rachelhernandezrealtor@gmail.com?subject=Garran Hill -- Private Showing Request&body=I would like to arrange a private showing of Garran Hill, 200 Hollycrest Drive, Pinehurst." class="inquiry-btn reveal">Request a Private Showing &rarr;</a>
   </div>
 </section>
