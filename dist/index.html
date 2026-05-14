@@ -260,7 +260,15 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 /* ── PASS 2: photo safety + couture restraint ── */
 .photo-note{font-family:var(—sans);font-size:0.5rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(201,169,110,0.5);text-align:center;margin-top:1.25rem}
 .editorial-title,.whp-name,.blue-fox-headline,.inquiry-headline{text-wrap:balance}
-.room-spread::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 22% 12%,rgba(245,240,232,0.05),transparent 22%),linear-gradient(to bottom,transparent 0%,rgba(10,10,10,0.08) 45%,rgba(10,10,10,0.42) 100%);pointer-events:none;z-index:1}
+.room-spread::after{content:'';position:absolute;inset:0;background:
+  linear-gradient(to bottom,
+    rgba(10,10,10,0.55) 0%,
+    transparent 18%,
+    transparent 72%,
+    rgba(10,10,10,0.72) 100%);
+  pointer-events:none;z-index:1}
+/* Caption sits above fade */
+.room-spread .room-caption{z-index:3;position:relative}
 .room-spread .room-caption{z-index:3}
 @media(max-width:768px){.hero-facts{gap:0.65rem;font-size:0.48rem;letter-spacing:0.16em}.hero-facts span+span::before{display:none}.artifact-card{max-width:420px;margin:0 auto}.room-name{font-size:clamp(2rem,10vw,3.4rem)}}
 
@@ -588,55 +596,82 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 
 
 /* ── LIGHT SECTIONS — editorial exhale ── */
-.section-light {
-  background: var(—cream);
-  color: #1a1a1a;
+/* ── IMMERSIVE DISSOLVE SYSTEM ──
+   The page breathes. Sections dissolve into each other.
+   No hard edges. No background switches. One continuous surface. */
+
+/* Every section dissolves out at its bottom edge */
+section:not(#hero):not(.room-spread)::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 180px;
+  background: linear-gradient(to bottom, transparent, #0a0a0a);
+  pointer-events: none;
+  z-index: 2;
 }
-.section-light h2,
-.section-light h3,
-.section-light .editorial-headline,
-.section-light .whp-headline,
-.section-light .restoration-headline,
-.section-light .section-headline {
-  color: #0a0a0a;
-}
-.section-light p,
-.section-light .editorial-body,
-.section-light .whp-body,
-.section-light .restoration-body,
-.section-light .body-text {
-  color: rgba(10,10,10,0.78);
-}
-.section-light .gold-rule,
-.section-light hr {
-  background: rgba(201,169,110,0.45);
-}
-.section-light .eyebrow,
-.section-light .section-eyebrow,
-.section-light .stat-label {
-  color: var(—gold);
-}
-/* Gold accent lines on light bg */
-.section-light blockquote,
-.section-light .pull-quote {
-  border-left: 2px solid var(—gold);
-  color: rgba(10,10,10,0.65);
+/* And dissolves in at its top edge */
+section:not(#hero):not(.room-spread):not(#gate)::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to top, transparent, #0a0a0a);
+  pointer-events: none;
+  z-index: 2;
 }
 
-
-/* ── SECTION BREATHING ROOM ── */
-.section-light {
-  padding-top: clamp(5rem, 10vw, 10rem);
-  padding-bottom: clamp(5rem, 10vw, 10rem);
+/* Full-bleed images get subtle parallax depth on scroll */
+.section-bg {
+  will-change: transform;
+  transform: scale(1.06);
+  transition: transform 0.1s linear;
 }
-.section-light .editorial-inner,
-.section-light .section-inner,
-.section-light .whp-inner,
-.section-light .restoration-inner,
-.section-light .betty-inner {
-  max-width: 820px;
+
+/* Reveal animation — drift up, not snap */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.22,0.61,0.36,1),
+              transform 0.9s cubic-bezier(0.22,0.61,0.36,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children in reveals */
+.reveal-group > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.8s cubic-bezier(0.22,0.61,0.36,1),
+              transform 0.8s cubic-bezier(0.22,0.61,0.36,1);
+}
+.reveal-group.visible > *:nth-child(1) { transition-delay: 0s; opacity:1; transform:translateY(0); }
+.reveal-group.visible > *:nth-child(2) { transition-delay: 0.12s; opacity:1; transform:translateY(0); }
+.reveal-group.visible > *:nth-child(3) { transition-delay: 0.24s; opacity:1; transform:translateY(0); }
+.reveal-group.visible > *:nth-child(4) { transition-delay: 0.36s; opacity:1; transform:translateY(0); }
+
+/* Section spacing — generous, cinematic */
+section:not(#hero):not(.room-spread):not(#gate) {
+  padding-top: clamp(7rem, 12vw, 14rem);
+  padding-bottom: clamp(7rem, 12vw, 14rem);
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+/* WHP two-column inner */
+.whp-inner,
+.editorial-inner,
+.restoration-inner,
+.betty-inner,
+.section-inner {
+  max-width: 860px;
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 5vw, 3rem);
+  position: relative;
+  z-index: 3;
 }
 
 </style>
@@ -800,7 +835,7 @@ window.GH_IMG_FALLBACK = function(img){
 </section>
 
 <!— WHP —>
-<section id="history" class="section-light">
+<section id="history">
   <div class="whp-inner">
     <div class="whp-left-col">
       <img class="whp-portrait reveal" 
@@ -814,15 +849,15 @@ window.GH_IMG_FALLBACK = function(img){
       </div>
     </div>
     <div class="whp-content reveal">
-      <span class="whp-eyebrow">Walter Hines Page · 1855–1918</span>
-      <div class="whp-name">He named it Garran Hill.<br>The life he imagined happened elsewhere.</div>
+      <span class="whp-eyebrow" style="color:var(--gold,#C9A96E);">Walter Hines Page · 1855–1918</span>
+      <div class="whp-name" style="color:var(--cream,#F5F0E8);">He named it Garran Hill.<br>The life he imagined happened elsewhere.</div>
       <div class="whp-body">
         <p>In February 1913, Page purchased a thousand-acre farm two miles southwest of Pinehurst, on land his father had logged a generation earlier. He gave it a name before the foundation could answer back: Garran Hill.</p>
         <p class="locked-pull">"Build the farm, therefore; and let me hear at every stage of that happy game."</p>
         <p>Weeks later, President Woodrow Wilson offered him the ambassadorship to the Court of St. James's. Page accepted and left for London. From three thousand miles away, he directed the making of the house while Ralph Page carried the work on the ground.</p>
         <p style="margin-top:1.4rem">When Page finally reached Pinehurst in December 1918, the address was waiting and the life was not. He stayed at Currituck Cottage, not Garran Hill, and died there ten days later.</p>
       </div>
-      <blockquote class="whp-quote">
+      <blockquote class="whp-quote" style="border-left:2px solid rgba(201,169,110,0.5);padding-left:1.6rem;color:rgba(245,240,232,0.75);font-style:italic;">
         "Well, Frank, I did get here after all, didn't I?"
         <cite class="whp-source">— Walter Hines Page, Aberdeen station, December 11, 1918</cite>
       </blockquote>
@@ -891,7 +926,7 @@ window.GH_IMG_FALLBACK = function(img){
     <div class="threshold-sub" style="margin-top:1rem;letter-spacing:0.12em">Inlaid in the threshold brick. Not branding. Not nostalgia. Evidence — laid into the house before anyone knew what the house would outlive.</div>
   </div>
 </section>
-<section id="restoration" class="editorial-section section-light" style="position:relative;overflow:hidden;">
+<section id="restoration" class="editorial-section" style="position:relative;overflow:hidden;">
 <div class="section-bg" style="position:absolute;inset:0;background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/gh_exteriors/holycrestextf_3312.jpg');background-size:cover;background-position:center;z-index:0;opacity:0.28;"></div>
   <div class="editorial-inner editorial-grid reveal">
     <div>
@@ -1074,7 +1109,7 @@ window.GH_IMG_FALLBACK = function(img){
     </div>
   </div>
 </section>
-<section id="betty" class="editorial-section section-light">
+<section id="betty" class="editorial-section">
 <div class="section-bg" style="position:absolute;inset:0;background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/gh_exteriors/holycrestextf_3352.jpg');background-size:cover;background-position:center;z-index:0;opacity:0.22;"></div>
   <div class="editorial-inner editorial-grid reveal">
     <div>
@@ -1365,14 +1400,64 @@ window.GH_IMG_FALLBACK = function(img){
 
 
 <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold: 0.12});
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+// ── IMMERSIVE SCROLL ENGINE ──
+// Reveals drift up gently. Parallax breathes. Page dissolves, never snaps.
 
-// Cloudinary safety ladder. This does not upload, transform, overwrite, or change Cloudinary assets.
-// It only tries alternate delivery URL shapes when a browser reports an image error.
-(function(){
+(function() {
+  // ── 1. REVEAL OBSERVER — generous threshold, soft entrance ──
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-group').forEach(el => revealObs.observe(el));
+
+  // ── 2. PARALLAX on section-bg elements ──
+  // Subtle — 15px of travel on full scroll through section. 
+  // This creates depth without distraction.
+  const bgs = document.querySelectorAll('.section-bg');
+  
+  function onScroll() {
+    bgs.forEach(bg => {
+      const section = bg.closest('section');
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // progress: 0 when section top hits viewport bottom, 1 when section bottom hits viewport top
+      const progress = 1 - (rect.bottom / (vh + rect.height));
+      const clampedProgress = Math.max(0, Math.min(1, progress));
+      // Translate from +8px to -8px as you scroll through
+      const translateY = (clampedProgress - 0.5) * -16;
+      bg.style.transform = `scale(1.06) translateY(${translateY}px)`;
+    });
+  }
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => { onScroll(); ticking = false; });
+      ticking = true;
+    }
+  }, { passive: true });
+  onScroll(); // run once on load
+
+  // ── 3. HERO SLIDESHOW ──
+  const slides = document.querySelectorAll('.hs-slide');
+  if (slides.length > 0) {
+    let current = 0;
+    slides[0].style.opacity = '1';
+    setInterval(() => {
+      slides[current].style.opacity = '0';
+      current = (current + 1) % slides.length;
+      slides[current].style.opacity = '1';
+    }, 5500);
+  }
+
+  // ── 4. CLOUDINARY SAFETY LADDER ──
   const CLOUD = 'https://res.cloudinary.com/dghn2xpif/image/upload/';
   const EXT_RE = /\.(jpg|jpeg|png|webp|gif|avif)$/i;
   function uniq(list){ return Array.from(new Set(list.filter(Boolean))); }
@@ -1404,15 +1489,11 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     img.addEventListener('error', function(){
       if(!fallbacks) fallbacks = fallbackUrls(img.currentSrc || img.src);
       const next = fallbacks.shift();
-      if(next){
-        img.dataset.fallbackTried = 'true';
-        img.src = next;
-      } else {
-        img.classList.add('asset-missing');
-        img.alt = img.alt ? img.alt + ' — image unavailable' : 'Image unavailable';
-      }
+      if(next){ img.dataset.fallbackTried = 'true'; img.src = next; }
+      else { img.classList.add('asset-missing'); }
     });
   });
+
 })();
 </script>
 
