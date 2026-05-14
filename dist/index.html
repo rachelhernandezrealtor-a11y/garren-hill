@@ -262,6 +262,47 @@ img{background:linear-gradient(135deg,rgba(201,169,110,0.08),rgba(245,240,232,0.
 /* ── SCROLLBAR ── */
 
 
+
+  #secret {
+    padding: clamp(4rem,8vw,10rem) 0;
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .secret-inner {
+    position: relative;
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+  .secret-watermark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 4vw, 3.2rem);
+    font-weight: 200;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.2;
+    pointer-events: none;
+    user-select: none;
+  }
+
+
+  .locked-pull {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 200;
+    font-style: italic;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    margin: 1.4rem 0;
+    line-height: 1.6;
+  }
+
 </style>
 <script>
 window.GH_IMG_FALLBACK = function(img){
@@ -358,6 +399,7 @@ window.GH_IMG_FALLBACK = function(img){
       <div class="whp-name">He named it Garran Hill.<br>The life he imagined happened elsewhere.</div>
       <div class="whp-body">
         <p>In February 1913, Page purchased a thousand-acre farm two miles southwest of Pinehurst, on land his father had logged a generation earlier. He gave it a name before the foundation could answer back: Garran Hill.</p>
+        <p class="locked-pull">"The farm -- the farm -- the farm."</p>
         <p>Weeks later, President Woodrow Wilson offered him the ambassadorship to the Court of St. James's. Page accepted and left for London. From three thousand miles away, he directed the making of the house while Ralph Page carried the work on the ground.</p>
         <p style="margin-top:1.4rem"><em>"Build the farm, therefore; and let me hear at every stage of that happy game."</em></p>
         <p style="margin-top:1.4rem">When Page finally reached Pinehurst in December 1918, the address was waiting and the life was not. He stayed at Currituck Cottage, not Garran Hill, and died there ten days later.</p>
@@ -593,6 +635,13 @@ window.GH_IMG_FALLBACK = function(img){
 
 
 <!-- IN PRINT -->
+
+<section id="secret" aria-hidden="true">
+  <div class="secret-inner">
+    <div class="secret-watermark">THE HOUSE KEEPS SECRETS</div>
+  </div>
+</section>
+
 <section id="print" class="editorial-section">
   <div class="editorial-inner reveal">
     <span class="editorial-kicker">The Record</span>
