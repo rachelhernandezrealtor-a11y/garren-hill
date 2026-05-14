@@ -163,6 +163,40 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .cite-sep{display:inline-block;margin:0 0.8rem;color:var(--gd)}
 
 
+
+/* ── CRAFTSMAN SECTION ── */
+#craftsmen{background:var(--dark);padding:0}
+.craft-opening{position:relative;width:100%;height:85vh;overflow:hidden}
+.craft-opening-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.craft-opening-veil{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.1) 0%,rgba(10,10,10,0) 40%,rgba(10,10,10,0.7) 80%,rgba(10,10,10,0.95) 100%)}
+.craft-opening-text{position:absolute;bottom:0;left:0;right:0;padding:0 2rem 5rem;text-align:center}
+.craft-opening-eyebrow{font-family:'Instrument Sans','Helvetica Neue',sans-serif;font-size:0.55rem;letter-spacing:0.42em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.6rem}
+.craft-opening-line{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.8vw,3.4rem);font-weight:200;color:var(--cream);line-height:1.35;letter-spacing:0.01em}
+.craft-opening-line em{font-style:italic;color:var(--cream)}
+
+.craft-body{max-width:860px;margin:0 auto;padding:clamp(5rem,8vw,9rem) 2rem}
+.craft-body-eyebrow{font-family:'Instrument Sans','Helvetica Neue',sans-serif;font-size:0.55rem;letter-spacing:0.42em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:2.4rem}
+.craft-body-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.8rem);font-weight:200;color:var(--cream);line-height:1.3;margin-bottom:2.8rem;letter-spacing:0.01em}
+.craft-body-headline em{font-style:italic}
+.craft-body-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,1.5vw,1.15rem);font-weight:300;line-height:2;color:rgba(245,240,232,0.82);margin-bottom:1.8rem}
+.craft-detail-note{font-family:'Instrument Sans','Helvetica Neue',sans-serif;font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(201,169,110,0.6);margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(201,169,110,0.18)}
+
+.craft-portico{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;max-width:1280px;margin:0 auto}
+.craft-portico-img{width:100%;height:600px;object-fit:cover;object-position:center}
+.craft-portico-text{padding:clamp(3rem,6vw,6rem) clamp(2rem,5vw,5rem);display:flex;flex-direction:column;justify-content:center;background:rgba(14,12,10,1)}
+.craft-portico-eyebrow{font-family:'Instrument Sans','Helvetica Neue',sans-serif;font-size:0.54rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.8rem}
+.craft-portico-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,2.4rem);font-weight:200;color:var(--cream);line-height:1.35;margin-bottom:2rem}
+.craft-portico-headline em{font-style:italic}
+.craft-portico-body{font-family:'Cormorant Garamond',serif;font-size:clamp(0.95rem,1.4vw,1.08rem);font-weight:300;line-height:1.95;color:rgba(245,240,232,0.78)}
+.craft-portico-rule{width:36px;height:1px;background:rgba(201,169,110,0.45);margin:2.4rem 0}
+
+@media(max-width:768px){
+  .craft-opening{height:70vh}
+  .craft-portico{grid-template-columns:1fr}
+  .craft-portico-img{height:320px}
+  .craft-portico-text{padding:3rem 1.8rem}
+}
+
 /* ── CLOSING ── */
 .closing-moment{background:var(--dark);padding:clamp(5rem,10vw,10rem) 2rem;text-align:center}
 .closing-line1{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,3.2rem);font-weight:200;color:var(--cream);line-height:1.4;letter-spacing:0.02em;margin-bottom:1.6rem;display:block}
@@ -623,19 +657,43 @@ window.GH_IMG_FALLBACK = function(img){
 
 
 <!-- ARCHITECTURE -->
-<section id="architecture" class="editorial-section">
-  <div class="editorial-inner editorial-grid reveal">
-    <div>
-      <span class="editorial-kicker">Architecture · Neo-Georgian</span>
-      <h2 class="editorial-title">Boston drew the plan.<br>Pinehurst supplied the hand.</h2>
-    </div>
-    <div class="editorial-body">
-      <p>The house does not feel imported because it was never merely installed here. The plans came through a Boston architectural firm; the character came through Pinehurst hands.</p>
-      <p>Leonard Tufts provided the craftsmen -- the same men building the village. They left their evidence in herringbone brick, leaded glass sidelights, arched fanlights, original oak, Delft tile, carved mantels, brass key plates, and a mahogany volute that still turns with the authority of a signature.</p>
-      <p>This is not ornament trying to prove pedigree. It is pedigree behaving: proportion first, material second, then the confidence to let small survivals carry the authority.</p><p>The luxury is not polish. It is proof.</p>
-      <div class="editorial-note">Boston plans · Pinehurst hands · 1915–1916</div>
+<section id="craftsmen">
+
+  <!-- FULL-BLEED FACADE OPENER -->
+  <div class="craft-opening reveal">
+    <img class="craft-opening-img"
+      src="https://media.base44.com/images/public/69e248a2469cc39540781cce/9030e57f4_1380BFFE-8D5D-4631-B652-4322572E383E_1_105_c.jpg"
+      alt="Garran Hill front facade — Flemish bond brick, white portico, circular drive, Pinehurst NC">
+    <div class="craft-opening-veil"></div>
+    <div class="craft-opening-text">
+      <span class="craft-opening-eyebrow">The Craftsmen · 1915–1916</span>
+      <div class="craft-opening-line">Flemish bond brick. White portico.<br><em>A circular lawn held before the entrance like a pause.</em></div>
     </div>
   </div>
+
+  <!-- TEXT BODY -->
+  <div class="craft-body reveal">
+    <span class="craft-body-eyebrow">Leonard Tufts · Boston Plans · Pinehurst Hands</span>
+    <h2 class="craft-body-headline">The plans came from Boston.<br><em>The character came from here.</em></h2>
+    <p class="craft-body-text">Leonard Tufts provided the craftsmen — the same men building Pinehurst. What they laid into this house was not decoration. It was evidence. Flemish bond brickwork: alternating headers and stretchers, the signature pattern of Georgian masonry, requiring a precision most builders no longer attempt. A water table at the base of the first floor, exactly as it was set in 1916.</p>
+    <p class="craft-body-text">Leaded glass sidelights. Arched fanlights. Herringbone brick at the threshold. Original oak floors throughout. A mahogany volute on the staircase that still turns with the authority of a signature.</p>
+    <div class="craft-detail-note">Flemish bond · water table · leaded glass · herringbone brick · mahogany volute · original oak · 1915–1916</div>
+  </div>
+
+  <!-- IMAGE + TEXT PAIR — PORTICO CLOSE-UP -->
+  <div class="craft-portico">
+    <img class="craft-portico-img"
+      src="https://media.base44.com/images/public/69e248a2469cc39540781cce/1cf7f3fc5_53B8155B-B804-4757-9B19-BF224F341BD0_1_105_c.jpg"
+      alt="Garran Hill entry portico — Doric columns, fanlight, Flemish bond brick, Pinehurst NC 1916">
+    <div class="craft-portico-text reveal">
+      <span class="craft-portico-eyebrow">The Entry</span>
+      <h3 class="craft-portico-headline">Doric columns.<br><em>A fanlight that has held its glass since 1916.</em></h3>
+      <div class="craft-portico-rule"></div>
+      <p class="craft-portico-body">The portico is not ornament. It is proportion. Four Doric columns, a pediment, and a semicircular fanlight with its original radial tracery. The brick steps continue the Flemish bond of the facade without interruption — floor, riser, landing, wall, all the same hand.</p>
+      <p class="craft-portico-body" style="margin-top:1.4rem">This is what Leonard Tufts's men left. Not a house trying to look like 1916. A house that has simply never stopped being 1916.</p>
+    </div>
+  </div>
+
 </section>
 
 <section class="quote-panel reveal" aria-label="Westminster Abbey inscription">
