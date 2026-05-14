@@ -101,10 +101,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
   .whp-artifact-title{font-size:clamp(1.8rem,5vw,2.6rem)}
 }
 /* ── THRESHOLD ── */
-#threshold{position:relative;height:75vh;overflow:hidden}
-.threshold-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
-.threshold-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,11,11,0.25),rgba(11,11,11,0.65))}
-.threshold-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;z-index:2}
+#threshold{position:relative;background:var(--dark);padding:clamp(8rem,14vw,16rem) 2rem;text-align:center;overflow:hidden}
+
+
+.threshold-text{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 2rem;z-index:2}
 .threshold-inscription{font-size:clamp(1.6rem,4.5vw,3.8rem);letter-spacing:0.42em;text-transform:uppercase;color:var(--cream);font-weight:200;margin-bottom:1.2rem}
 .threshold-sub{font-size:clamp(0.82rem,1.4vw,1rem);letter-spacing:0.18em;color:var(--cd);font-style:italic}
 
@@ -218,7 +218,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 
 /* ── PASS 2: photo safety + couture restraint ── */
 .photo-note{font-family:var(--sans);font-size:0.5rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(201,169,110,0.5);text-align:center;margin-top:1.25rem}
-#threshold .threshold-img{filter:contrast(1.04) saturate(0.88) brightness(0.88)}
 .editorial-title,.whp-name,.blue-fox-headline,.inquiry-headline{text-wrap:balance}
 .room-spread::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 22% 12%,rgba(245,240,232,0.05),transparent 22%),linear-gradient(to bottom,transparent 0%,rgba(10,10,10,0.08) 45%,rgba(10,10,10,0.42) 100%);pointer-events:none;z-index:1}
 .room-spread .room-caption{z-index:3}
@@ -468,8 +467,6 @@ window.GH_IMG_FALLBACK = function(img){
 
 <!-- THRESHOLD -->
 <section id="threshold">
-  <img class="threshold-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1600/gh_key/gh_threshold.jpg" data-public-id="gh_key/gh_threshold" data-width="1600" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="Threshold inscription: GARRAN HILL 1916">
-  <div class="threshold-overlay"></div>
   <div class="threshold-text reveal">
     <div class="threshold-inscription">Garran Hill · 1916</div>
     <div class="threshold-sub">The door has been open since 1916.</div>
@@ -698,7 +695,7 @@ window.GH_IMG_FALLBACK = function(img){
     <!-- PHOTO MAP PASS 3: public IDs selected from the 534-asset Cloudinary manifest. Rachel approval still rules final cut. -->
     <div class="gallery-grid">
       <figure class="wide"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1000/gh_exteriors/entrance.jpg" data-public-id="gh_exteriors/entrance" data-width="1000" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="Gate and arrival at Garran Hill"><figcaption>Arrival</figcaption></figure>
-      <figure><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_900/gh_key/gh_threshold.jpg" data-public-id="gh_key/gh_threshold" data-width="900" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="Garran Hill 1916 threshold inscription"><figcaption>Threshold</figcaption></figure>
+      <figure><figcaption>Threshold</figcaption></figure>
       <figure class="tall"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1000/gh_interiors/200holycrest_1179.jpg" data-public-id="gh_interiors/200holycrest_1179" data-width="1000" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="Foyer and entry hall"><figcaption>Foyer</figcaption></figure>
       <figure class="tall"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1000/gh_interiors/200holycrest_1614.jpg" data-public-id="gh_interiors/200holycrest_1614" data-width="1000" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="Staircase at Garran Hill"><figcaption>Staircase</figcaption></figure>
       <figure class="wide"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1000/gh_interiors/200holycrest_1209.jpg" data-public-id="gh_interiors/200holycrest_1209" data-width="1000" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="Salon at Garran Hill"><figcaption>Salon</figcaption></figure>
