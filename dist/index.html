@@ -801,7 +801,53 @@ footer{background:var(--dark);padding:4rem 2rem 3rem;border-top:1px solid rgba(2
     .reveal { transform: translateY(14px); }
   }
 
+
+  /* Gallery groups — Rule 26 */
+  .gallery-group { margin-bottom: clamp(2.5rem, 4vw, 4rem); }
+  .gallery-group-label {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 0 clamp(1rem, 3vw, 3rem);
+  }
+  .gallery-group-name {
+    font-family: var(--sans);
+    font-size: 0.48rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.6);
+    white-space: nowrap;
+  }
+  .gallery-group-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(201,169,110,0.3), transparent);
+  }
+  .gallery-group-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: clamp(0.5rem, 1vw, 1rem);
+    padding: 0 clamp(1rem, 3vw, 3rem);
+  }
+  @media (max-width: 540px) {
+    .gallery-group-items { grid-template-columns: 1fr 1fr; gap: 0.4rem; padding: 0 0.8rem; }
+  }
+
 </style>
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Garran Hill &mdash; 200 Hollycrest Drive, Pinehurst, NC &middot; $4,250,000">
+  <meta property="og:description" content="Neo-Georgian estate, 1916. 6,072 sq ft. Named by Ambassador Walter Hines Page. Stewardship 1959&ndash;1984 by Betty Dumaine, Thanpuying.">
+  <meta property="og:url" content="https://garranhillforsalepinehurst.com">
+  <meta property="og:image" content="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1200/v1777243025/gh_exteriors/front_exterior">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Garran Hill">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Garran Hill &mdash; 200 Hollycrest Drive, Pinehurst, NC">
+  <meta name="twitter:image" content="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1200/v1777243025/gh_exteriors/front_exterior">
+  <link rel="canonical" href="https://garranhillforsalepinehurst.com">
 </head>
 <body>
 
@@ -823,7 +869,7 @@ footer{background:var(--dark);padding:4rem 2rem 3rem;border-top:1px solid rgba(2
 <!-- HERO -->
 <section id="hero">
   <video id="hero-video" autoplay muted loop playsinline poster="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/gh_key/gh_hero_poster_first">
-    <source src="https://res.cloudinary.com/dghn2xpif/video/upload/f_auto,q_auto/gh_key/Last_for_real_q0fqvw.mp4" type="video/mp4">
+    <source src="https://res.cloudinary.com/dghn2xpif/video/upload/f_auto,q_auto/v1778344633/done_czfe8o.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-text">
@@ -954,6 +1000,19 @@ The gate has been open since 1916.</div>
     </div>
   </div>
 </section>
+<!-- STAIRCASE -->
+<section id="staircase" style="background:var(--dark)">
+  <div class="room-spread" style="position:relative;min-height:90vh;display:flex;align-items:flex-end">
+    <img class="room-img img-reveal" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243025/gh_interiors/200holycrest_1512" alt="Garran Hill mahogany staircase, 1916" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top">
+    <div class="room-overlay" style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 60%)"></div>
+    <div class="room-caption" style="position:relative;z-index:2;padding:clamp(2.5rem,5vw,5rem) clamp(1.5rem,4vw,4rem);max-width:600px">
+      <span class="room-eyebrow" style="display:block;font-family:var(--sans);font-size:0.48rem;letter-spacing:0.38em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem">The Staircase</span>
+      <div class="room-name" style="font-family:'Cormorant Garamond',serif;font-weight:200;font-size:clamp(2rem,4vw,3.6rem);line-height:1.15;color:var(--cream);margin-bottom:1.5rem">The volute<br><em>has not moved.</em></div>
+      <div class="room-line" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(0.9rem,1.3vw,1.1rem);line-height:1.9;color:rgba(245,240,232,0.7);max-width:38rem">Mahogany. Original 1916. The turning post and volute at the base of the stair are exactly where J.R. McQueen's men placed them. The axis of the hall reads straight through to the rear of the house from the moment the door opens.</div>
+    </div>
+  </div>
+</section>
+
 <div class="breath">
   <div class="breath-line"></div>
   <p class="breath-text">Every room is a decision that lasted.</p>
@@ -1082,6 +1141,19 @@ The gate has been open since 1916.</div>
 </div>
 
 
+<!-- GROUNDS -->
+<section id="grounds" style="background:var(--dark)">
+  <div class="room-spread" style="position:relative;min-height:85vh;display:flex;align-items:flex-end">
+    <img class="room-img img-reveal" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244435/gh_exteriors/holycrestextf_3364" alt="Garran Hill grounds, 4.15 acres, Pinehurst NC" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center">
+    <div class="room-overlay" style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 55%)"></div>
+    <div class="room-caption" style="position:relative;z-index:2;padding:clamp(2.5rem,5vw,5rem) clamp(1.5rem,4vw,4rem);max-width:620px">
+      <span class="room-eyebrow" style="display:block;font-family:var(--sans);font-size:0.48rem;letter-spacing:0.38em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem">4.15 Acres &middot; Pinehurst</span>
+      <div class="room-name" style="font-family:'Cormorant Garamond',serif;font-weight:200;font-size:clamp(2rem,4vw,3.6rem);line-height:1.15;color:var(--cream);margin-bottom:1.5rem">In 1916, those were saplings.<br><em>Now they are a forest.</em></div>
+      <div class="room-line" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(0.9rem,1.3vw,1.1rem);line-height:1.9;color:rgba(245,240,232,0.7);max-width:40rem">Leonard Tufts provided the craftsmen -- the same men building Pinehurst. The saltwater pool sits southwest of the house: 20 by 40 feet. The holly trees at the front corners were here when Betty Dumaine renamed it Hollycrest.</div>
+    </div>
+  </div>
+</section>
+
 <div class="breath">
   <div class="breath-line"></div>
   <p class="breath-text">The land remembers everything.</p>
@@ -1184,53 +1256,72 @@ The gate has been open since 1916.</div>
       <h2>Every room.<em> Every detail.</em></h2>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-item g1" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1400/v1777244435/gh_exteriors/holycrestextf_3312" data-caption="Garran Hill · Exterior" role="button" tabindex="0" aria-label="View Garran Hill · Exterior">
+      <!-- Group: Exterior -->
+      <div class="gallery-group" data-group="exterior">
+        <div class="gallery-group-label reveal">
+          <span class="gallery-group-name">Exterior</span>
+          <span class="gallery-group-line"></span>
+        </div>
+        <div class="gallery-group-items">
+          <div class="gallery-item g1" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1400/v1777244435/gh_exteriors/holycrestextf_3312" data-caption="Garran Hill · Exterior" role="button" tabindex="0" aria-label="View Garran Hill · Exterior">
         <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,f_auto,q_auto,c_limit,w_600/v1777244435/gh_exteriors/holycrestextf_3312" alt="Garran Hill exterior, Pinehurst NC">
         <span class="g-caption">Garran Hill · Exterior</span>
       </div>
-      <div class="gallery-item g2" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243208/gh_interiors/200holycrest_1512" data-caption="The Salon" role="button" tabindex="0" aria-label="View The Salon">
-        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243208/gh_interiors/200holycrest_1512" alt="Garran Hill Salon">
-        <span class="g-caption">The Salon</span>
-      </div>
-      <div class="gallery-item g3" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243046/gh_interiors/200holycrest_1209" data-caption="The Drawing Room" role="button" tabindex="0" aria-label="View The Drawing Room">
-        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243046/gh_interiors/200holycrest_1209" alt="Drawing Room with Delft tile fireplace">
-        <span class="g-caption">The Drawing Room</span>
-      </div>
-      <div class="gallery-item g4" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243067/gh_interiors/200holycrest_1296" data-caption="The Dining Room" role="button" tabindex="0" aria-label="View The Dining Room">
-        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243067/gh_interiors/200holycrest_1296" alt="Dining Room, Garran Hill">
-        <span class="g-caption">The Dining Room</span>
-      </div>
-      <div class="gallery-item g5" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243300/gh_interiors/200holycrest_1605" data-caption="The Library" role="button" tabindex="0" aria-label="View The Library">
-        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243300/gh_interiors/200holycrest_1605" alt="Library with floor-to-ceiling bookcases, Garran Hill">
-        <span class="g-caption">The Library</span>
-      </div>
-      <div class="gallery-item g6" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1400/v1777243323/gh_exteriors/front_exterior" data-caption="1916 Neo-Georgian Facade" role="button" tabindex="0" aria-label="View 1916 Neo-Georgian Facade">
+          <div class="gallery-item g6" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1400/v1777243323/gh_exteriors/front_exterior" data-caption="1916 Neo-Georgian Facade" role="button" tabindex="0" aria-label="View 1916 Neo-Georgian Facade">
         <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243323/gh_exteriors/front_exterior" alt="Garran Hill brick facade, 1916">
         <span class="g-caption">1916 Neo-Georgian Facade</span>
       </div>
-      <div class="gallery-item g7" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243091/gh_interiors/200holycrest_1326" data-caption="The Jewel Box" role="button" tabindex="0" aria-label="View The Jewel Box">
+          <div class="gallery-item g12" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1400/v1777244503/gh_exteriors/holycrestextf_3364" data-caption="4.15 Acres · Pinehurst" role="button" tabindex="0" aria-label="View 4.15 Acres · Pinehurst">
+        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,f_auto,q_auto,c_limit,w_600/v1777244503/gh_exteriors/holycrestextf_3364" alt="Grounds, Garran Hill">
+        <span class="g-caption">4.15 Acres · Pinehurst</span>
+      </div>
+        </div>
+      </div>
+
+      <!-- Group: Interior -->
+      <div class="gallery-group" data-group="interior">
+        <div class="gallery-group-label reveal">
+          <span class="gallery-group-name">The Rooms</span>
+          <span class="gallery-group-line"></span>
+        </div>
+        <div class="gallery-group-items">
+          <div class="gallery-item g2" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243208/gh_interiors/200holycrest_1512" data-caption="The Salon" role="button" tabindex="0" aria-label="View The Salon">
+        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243208/gh_interiors/200holycrest_1512" alt="Garran Hill Salon">
+        <span class="g-caption">The Salon</span>
+      </div>
+          <div class="gallery-item g3" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243046/gh_interiors/200holycrest_1209" data-caption="The Drawing Room" role="button" tabindex="0" aria-label="View The Drawing Room">
+        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243046/gh_interiors/200holycrest_1209" alt="Drawing Room with Delft tile fireplace">
+        <span class="g-caption">The Drawing Room</span>
+      </div>
+          <div class="gallery-item g4" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243067/gh_interiors/200holycrest_1296" data-caption="The Dining Room" role="button" tabindex="0" aria-label="View The Dining Room">
+        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243067/gh_interiors/200holycrest_1296" alt="Dining Room, Garran Hill">
+        <span class="g-caption">The Dining Room</span>
+      </div>
+          <div class="gallery-item g5" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243300/gh_interiors/200holycrest_1605" data-caption="The Library" role="button" tabindex="0" aria-label="View The Library">
+        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243300/gh_interiors/200holycrest_1605" alt="Library with floor-to-ceiling bookcases, Garran Hill">
+        <span class="g-caption">The Library</span>
+      </div>
+          <div class="gallery-item g7" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243091/gh_interiors/200holycrest_1326" data-caption="The Jewel Box" role="button" tabindex="0" aria-label="View The Jewel Box">
         <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243091/gh_interiors/200holycrest_1326" alt="Jewel Box powder room, chinoiserie wallpaper">
         <span class="g-caption">The Jewel Box</span>
       </div>
-      <div class="gallery-item g8" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243025/gh_interiors/200holycrest_1182" data-caption="The Entry Hall" role="button" tabindex="0" aria-label="View The Entry Hall">
+          <div class="gallery-item g8" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243025/gh_interiors/200holycrest_1182" data-caption="The Entry Hall" role="button" tabindex="0" aria-label="View The Entry Hall">
         <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243025/gh_interiors/200holycrest_1182" alt="Foyer, Garran Hill 1916">
         <span class="g-caption">The Entry Hall</span>
       </div>
-      <div class="gallery-item g9" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243220/gh_interiors/200holycrest_1534" data-caption="The Primary Suite" role="button" tabindex="0" aria-label="View The Primary Suite">
+          <div class="gallery-item g9" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243220/gh_interiors/200holycrest_1534" data-caption="The Primary Suite" role="button" tabindex="0" aria-label="View The Primary Suite">
         <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243220/gh_interiors/200holycrest_1534" alt="Primary Suite, Garran Hill">
         <span class="g-caption">The Primary Suite</span>
       </div>
-      <div class="gallery-item g10" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777244408/gh_interiors/200holycrest_1362" data-caption="The Primary Bath" role="button" tabindex="0" aria-label="View The Primary Bath">
+          <div class="gallery-item g10" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777244408/gh_interiors/200holycrest_1362" data-caption="The Primary Bath" role="button" tabindex="0" aria-label="View The Primary Bath">
         <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777244408/gh_interiors/200holycrest_1362" alt="Primary Bath, Garran Hill">
         <span class="g-caption">The Primary Bath</span>
       </div>
-      <div class="gallery-item g11" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243340/gh_interiors/200holycrest_1650" data-caption="The Kitchen" role="button" tabindex="0" aria-label="View The Kitchen">
+          <div class="gallery-item g11" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1400/v1777243340/gh_interiors/200holycrest_1650" data-caption="The Kitchen" role="button" tabindex="0" aria-label="View The Kitchen">
         <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,f_auto,q_auto,c_limit,w_600/v1777243340/gh_interiors/200holycrest_1650" alt="Kitchen, Garran Hill — heart-pine floors, restoration era">
         <span class="g-caption">The Kitchen</span>
       </div>
-      <div class="gallery-item g12" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1400/v1777244503/gh_exteriors/holycrestextf_3364" data-caption="4.15 Acres · Pinehurst" role="button" tabindex="0" aria-label="View 4.15 Acres · Pinehurst">
-        <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,f_auto,q_auto,c_limit,w_600/v1777244503/gh_exteriors/holycrestextf_3364" alt="Grounds, Garran Hill">
-        <span class="g-caption">4.15 Acres · Pinehurst</span>
+        </div>
       </div>
     </div>
   </div>
