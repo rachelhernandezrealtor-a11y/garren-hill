@@ -74,7 +74,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .kb-caption{font-size:clamp(0.82rem,1.4vw,1rem);font-weight:300;letter-spacing:0.14em;color:var(--cd);font-style:italic}
 
 /* ── WHP ── */
-#whp{position:relative;padding:9rem 0;background:var(--dark);overflow:hidden}
+#whp{position:relative;padding:clamp(6rem,10vw,12rem) 0;background:var(--dark);overflow:hidden}
 #whp::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_800/gh_key/gh_gate_sepia');background-size:cover;background-position:center;opacity:0.025;pointer-events:none}
 .whp-inner{position:relative;max-width:1140px;margin:0 auto;padding:0 4rem;display:grid;grid-template-columns:5fr 7fr;gap:6rem;align-items:center}
 .whp-portrait{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;filter:sepia(15%) contrast(1.05)}
@@ -86,7 +86,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .whp-source{font-family:var(--sans);font-size:0.58rem;letter-spacing:0.18em;color:var(--gd);font-style:normal;display:block;margin-top:0.8rem}
 @media(max-width:768px){
   .whp-inner{grid-template-columns:1fr;gap:3rem;padding:0 2rem}
-  #whp{padding:6rem 0}
+  #whp{padding:clamp(6rem,10vw,12rem) 0}
 }
 
 /* ── THRESHOLD ── */
@@ -114,9 +114,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .room-line{font-size:clamp(0.82rem,1.2vw,0.98rem);font-weight:300;color:var(--cd);line-height:2;font-style:italic}
 
 /* ── BETTY / BLUE FOX ── */
-#blue-fox{position:relative;padding:8rem 0;background:var(--dark);overflow:hidden}
+#blue-fox{position:relative;padding:clamp(6rem,10vw,12rem) 0;background:var(--dark);overflow:hidden}
 #blue-fox::before{content:'';position:absolute;inset:0;background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_600/gh_exteriors/holycrestextf_3364');background-size:cover;background-position:center;opacity:0.025;pointer-events:none}
-.blue-fox-inner{position:relative;max-width:680px;margin:0 auto;padding:0 3rem;text-align:center}
+.blue-fox-inner{position:relative;max-width:860px;margin:0 auto;padding:0 3rem;text-align:center}
 .blue-fox-eyebrow{font-family:var(--sans);font-size:0.56rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:2.5rem}
 .blue-fox-headline{font-size:clamp(2.2rem,5vw,4.5rem);font-weight:200;color:var(--cream);line-height:1.15;margin-bottom:2.5rem}
 .blue-fox-body{font-size:clamp(0.92rem,1.4vw,1.05rem);font-weight:300;line-height:2;color:var(--cd);text-align:left}
@@ -126,7 +126,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .blue-fox-marker{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.22em;color:var(--gd);margin-top:2rem;display:block}
 
 
-#gallery{background:var(--dark);padding:6rem 0}
+#gallery{background:var(--dark);padding:clamp(6rem,10vw,12rem) 0}
 .gallery-inner{max-width:1400px;margin:0 auto;padding:0 2rem}
 .gallery-eyebrow{font-family:var(--sans);font-size:0.56rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);text-align:center;display:block;margin-bottom:3.5rem}
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
@@ -139,8 +139,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 #matterport{position:relative;height:80vh;overflow:hidden}
 
 /* ── CITATIONS ── */
-#citations{background:var(--dark);padding:3.5rem 0 3rem}
-.citations-inner{max-width:700px;margin:0 auto;padding:0 3rem;text-align:center}
+#citations{background:var(--dark);padding:clamp(4rem,6vw,7rem) 0}
+.citations-inner{max-width:860px;margin:0 auto;padding:0 3rem;text-align:center}
 .citations-eyebrow{font-family:var(--sans);font-size:0.5rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(245,240,232,0.25);display:block;margin-bottom:1.8rem}
 .citations-list{font-size:0.72rem;font-weight:300;color:rgba(245,240,232,0.3);line-height:2}
 .citations-list .cite-item{margin-bottom:1rem}
@@ -150,7 +150,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .cite-sep{display:inline-block;margin:0 0.8rem;color:var(--gd)}
 
 /* ── INQUIRY ── */
-#inquiry{background:var(--dark);padding:8rem 2rem}
+#inquiry{background:var(--dark);padding:clamp(6rem,10vw,12rem) clamp(2rem,8vw,10rem)}
 .inquiry-inner{max-width:560px;margin:0 auto;text-align:center}
 .inquiry-eyebrow{font-family:var(--sans);font-size:0.56rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:2rem}
 .inquiry-headline{font-size:clamp(1.8rem,3.5vw,3rem);font-weight:200;color:var(--cream);line-height:1.35;margin-bottom:3rem}
@@ -271,7 +271,7 @@ footer{background:var(--dark);padding:4rem 2rem 3rem;border-top:1px solid rgba(2
 
   #gallery {
     background: var(--dark);
-    padding: clamp(5rem, 9vw, 10rem) 0;
+    padding:clamp(6rem,10vw,12rem) 0;
   }
   .gallery-inner {
     max-width: 1440px;
@@ -594,39 +594,11 @@ footer{background:var(--dark);padding:4rem 2rem 3rem;border-top:1px solid rgba(2
 
   /* ── BREATH SECTIONS (Rule 11) ────────────────────── */
   /* Breath = pure dark space between heavy sections    */
-  .breath {
-    background: var(--dark);
-    padding: clamp(3rem, 5vw, 5rem) 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.2rem;
-  }
-  .breath-line {
-    width: 1px;
-    height: clamp(2rem, 3vw, 3rem);
-    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-    opacity: 0;
-    transform: scaleY(0);
-    transition: opacity 1.2s ease 0.3s, transform 1.2s ease 0.3s;
-    transform-origin: top;
-  }
-  .breath-line.visible {
-    opacity: 0.5;
-    transform: scaleY(1);
-  }
-  .breath-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 200;
-    font-style: italic;
-    font-size: clamp(1rem, 1.6vw, 1.3rem);
-    color: rgba(245,240,232,0.35);
-    letter-spacing: 0.08em;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 1.4s ease 0.6s;
-  }
-  .breath-text.visible { opacity: 1; }
+  
+  
+  
+  
+  
 
   /* ── SACRED QUOTE TREATMENT (Rule 21) ─────────────── */
   /* WHP last words, Westminster, locked quotes         */
@@ -795,7 +767,7 @@ footer{background:var(--dark);padding:4rem 2rem 3rem;border-top:1px solid rgba(2
 
   /* ── MOBILE RHYTHM ────────────────────────────────── */
   @media (max-width: 768px) {
-    .breath { padding: clamp(2rem, 4vw, 3rem) 0; }
+    
     .sacred-quote { padding: 2.5rem 1.5rem; }
     .pull-line { padding: 2rem 1.5rem; }
     .reveal { transform: translateY(14px); }
@@ -1090,7 +1062,7 @@ The gate has been open since 1916.</div>
   </div>
 </section>
 <!-- ARCHITECTURE -->
-<section id="architecture" style="background:var(--dark);padding:clamp(5rem,9vw,10rem) 0">
+<section id="architecture" style="background:var(--dark);padding:clamp(6rem,10vw,12rem) 0">
   <div class="section-content">
     <div class="split">
       <div class="split-text">
@@ -1128,12 +1100,6 @@ The gate has been open since 1916.</div>
 </section>
 
 
-
-<div class="breath">
-  <div class="breath-line"></div>
-  <p class="breath-text">The house was built from memory. He never saw it finished.</p>
-  <div class="breath-line"></div>
-</div>
 
 <!-- ACT BREAK — Architecture to Restoration -->
 <div class="act">
@@ -1188,13 +1154,6 @@ The gate has been open since 1916.</div>
     </div>
   </div>
 </section>
-
-
-<div class="breath">
-  <div class="breath-line"></div>
-  <p class="breath-text">Every room is a decision that lasted.</p>
-  <div class="breath-line"></div>
-</div>
 
 
 <!-- FOYER -->
@@ -1344,12 +1303,6 @@ belongs to it.</div>
   </div>
 </section>
 
-<div class="breath">
-  <div class="breath-line"></div>
-  <p class="breath-text">The land remembers everything.</p>
-  <div class="breath-line"></div>
-</div>
-
 <!-- BLUE FOX -->
 <section id="blue-fox">
   <div class="blue-fox-inner reveal">
@@ -1390,14 +1343,8 @@ belongs to it.</div>
 </div>
 
 
-<div class="breath">
-  <div class="breath-line"></div>
-  <p class="breath-text">Every steward found something here worth keeping.</p>
-  <div class="breath-line"></div>
-</div>
-
 <!-- BETTY DUMAINE -->
-<section id="betty-dumaine" style="background:var(--dark);padding:clamp(5rem,9vw,10rem) 0">
+<section id="betty-dumaine" style="background:var(--dark);padding:clamp(6rem,10vw,12rem) 0">
   <div class="section-content">
     <div class="split">
       <div class="split-text">
@@ -1416,7 +1363,7 @@ belongs to it.</div>
 </section>
 
 <!-- IN PRINT -->
-<section id="in-print" style="background:#0d0d0d;padding:clamp(4rem,7vw,8rem) 0">
+<section id="in-print" style="background:#0d0d0d;padding:clamp(6rem,10vw,12rem) 0">
   <div class="section-content" style="max-width:860px;margin:0 auto;padding:0 clamp(1.2rem,4vw,4rem);text-align:center">
     <span class="micro-rule reveal" style="margin:0 auto 2rem"></span>
     <span class="room-eyebrow" style="display:block;text-align:center;margin-bottom:2.5rem">As Recorded</span>
@@ -1431,12 +1378,6 @@ belongs to it.</div>
   </div>
 </section>
 
-
-<div class="breath">
-  <div class="breath-line"></div>
-  <p class="breath-text">A house held this carefully does not ask to be sold. It asks to be found.</p>
-  <div class="breath-line"></div>
-</div>
 
 <!-- GALLERY -->
 <section id="gallery">
@@ -1658,15 +1599,7 @@ belongs to it.</div>
 const _revealClasses = [
   '.reveal', '.reveal-slow', '.img-reveal',
   '.reveal-left', '.reveal-right',
-  '.micro-rule', '.breath-line', '.breath-text',
-  '.act-label', '.room-caption', '.wax-seal-close img'
-];
-const _observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      _observer.unobserve(e.target); // fire once only
-    }
+  '.micro-rule', '
   });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll(_revealClasses.join(',')).forEach(el => _observer.observe(el));
