@@ -674,6 +674,23 @@ section:not(#hero):not(.room-spread):not(#gate) {
   z-index: 3;
 }
 
+
+/* == ROOM CHAPTERS == */
+.room-chapter-full{position:relative;width:100%;height:100vh;min-height:560px;overflow:hidden;display:flex;align-items:flex-end;padding-bottom:clamp(3rem,6vw,6rem)}
+.chapter-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;transform:scale(1.04);transition:transform 12s cubic-bezier(0.25,0.46,0.45,0.94)}
+.room-chapter-full.visible .chapter-img{transform:scale(1.0)}
+.chapter-veil{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.4) 0%,transparent 28%,transparent 52%,rgba(10,10,10,0.82) 100%);z-index:1}
+.chapter-caption{position:relative;z-index:3;padding:0 clamp(2rem,6vw,7rem);max-width:700px}
+.chapter-eyebrow{display:block;font-family:var(--sans,'Instrument Sans',sans-serif);font-size:0.56rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold,#C9A96E);margin-bottom:1rem;opacity:0.85}
+.chapter-line{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,4rem);font-weight:200;color:var(--cream,#F5F0E8);line-height:1.15}
+.chapter-line em{font-style:italic;color:rgba(245,240,232,0.72)}
+.narrative-bridge{background:#0a0a0a;padding:clamp(3.5rem,7vw,7rem) clamp(2rem,10vw,14rem)}
+.narrative-bridge p{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,1.7vw,1.22rem);font-weight:300;color:rgba(245,240,232,0.68);line-height:1.95;margin:0;max-width:620px}
+.narrative-bridge p em{font-style:italic;color:rgba(245,240,232,0.88)}
+.reveal-section{opacity:0;transition:opacity 1.2s cubic-bezier(0.22,0.61,0.36,1)}
+.reveal-section.visible{opacity:1}
+@media(max-width:768px){.room-chapter-full{height:88vw;min-height:460px}.chapter-caption{padding:0 1.5rem}.chapter-line{font-size:clamp(1.7rem,6vw,2.6rem)}.narrative-bridge{padding:3rem 1.5rem}}
+
 </style>
 <script>
 window.GH_IMG_FALLBACK = function(img){
@@ -962,126 +979,100 @@ window.GH_IMG_FALLBACK = function(img){
     </div>
   </div>
 </section>
-<section id="rooms">
+<!-- THE ROOMS · Seven chapters of the house -->
 
-<!— ① DRAWING ROOM —>
-<div class="room-chapter reveal">
-  <div class="rc-img-wrap">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/gh_interiors/200holycrest_1227.jpg"
-         alt="Drawing Room, Garran Hill — Georgian carved mantel, blue and white Delft tile fireplace, coffered ceiling"
-         style="object-position: center 30%;">
-    <div class="rc-veil"></div>
-    <div class="rc-caption">
-      <span class="rc-eyebrow">The Drawing Room</span>
-      <div class="rc-line">Fire going.<br><em>No one home yet.</em></div>
-    </div>
+<!-- CHAPTER I: DRAWING ROOM -->
+<section class="room-chapter-full reveal-section" id="drawing-room" aria-label="The Drawing Room">
+  <img class="chapter-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1317.jpg" alt="Drawing Room, Garran Hill — Georgian carved mantel, blue and white Delft tile fireplace, coffered ceiling" loading="lazy">
+  <div class="chapter-veil"></div>
+  <div class="chapter-caption">
+    <span class="chapter-eyebrow">The Drawing Room</span>
+    <div class="chapter-line">Fire going.<br><em>No one home yet.</em></div>
   </div>
-  <div class="rc-body">
-    <p class="rc-body-text">The fireplace is original. The mantel is carved white wood — Georgian in proportion, with the kind of detail that takes a craftsman a week and a buyer a moment to notice.</p>
-    <p class="rc-body-text">The blue and white Delft tile surround is hand-painted and original to 1916. The coffered ceiling was enlarged during construction. They made it bigger so they could dance.</p>
-  </div>
-</div>
-<!— ② SALON —>
-<div class="room-chapter reveal">
-  <div class="rc-img-wrap">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/gh_interiors/200holycrest_1209.jpg"
-         alt="The Salon, Garran Hill — formal gathering room, original oak floors, central fireplace"
-         style="object-position: center;">
-    <div class="rc-veil"></div>
-    <div class="rc-caption">
-      <span class="rc-eyebrow">The Salon</span>
-      <div class="rc-line">Someone still puts flowers there.</div>
-    </div>
-  </div>
-  <div class="rc-body">
-    <p class="rc-body-text">The formal gathering room. Original oak floors. A fireplace that has been burning since the first winter after the house was built.</p>
-    <p class="rc-body-text">The room where Betty Dumaine held the world she built here.</p>
-  </div>
-</div>
-<!— ③ DINING ROOM —>
-<div class="room-chapter reveal">
-  <div class="rc-img-wrap">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/gh_interiors/200holycrest_1296.jpg"
-         alt="Dining Room, Garran Hill — original chandelier, fireplace, shell cabinets"
-         style="object-position: center 25%;">
-    <div class="rc-veil"></div>
-    <div class="rc-caption">
-      <span class="rc-eyebrow">The Dining Room</span>
-      <div class="rc-line">Chandelier hangs.<br><em>Light flickers.</em></div>
-    </div>
-  </div>
-  <div class="rc-body">
-    <p class="rc-body-text">The table seats twelve. The fireplace is the third of seven in the house. The chandelier is original to the restoration and throws the kind of light that makes every dinner feel like the last good one before a long journey.</p>
-    <p class="rc-body-text">The 1916 frontispiece is still there. So are the shell cabinets.</p>
-  </div>
-</div>
-<!— ④ LIBRARY —>
-<div class="room-chapter reveal">
-  <div class="rc-img-wrap">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/gh_interiors/200holycrest_1350.jpg"
-         alt="Library, Garran Hill — spiral staircase, three-wall shelving, fireplace, French doors"
-         style="object-position: center 20%;">
-    <div class="rc-veil"></div>
-    <div class="rc-caption">
-      <span class="rc-eyebrow">The Library</span>
-      <div class="rc-line">The books stayed.</div>
-    </div>
-  </div>
-  <div class="rc-body">
-    <p class="rc-body-text">A spiral stair to a second floor of books. The library has its own staircase — a spiral in wood that rises to the upper shelves. It also has its own fireplace. Natural light from two sides.</p>
-    <p class="rc-body-text">This room was not an afterthought. It was the point.</p>
-  </div>
-</div>
-<!— ⑤ KITCHEN —>
-<div class="room-chapter reveal">
-  <div class="rc-img-wrap">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/gh_interiors/200holycrest_1638.jpg"
-         alt="Kitchen, Garran Hill — central island, reclaimed heart-pine floors, original to the restoration"
-         style="object-position: center 35%;">
-    <div class="rc-veil"></div>
-    <div class="rc-caption">
-      <span class="rc-eyebrow">The Kitchen</span>
-      <div class="rc-line">Not original to 1916.<br><em>Original to the restoration.</em></div>
-    </div>
-  </div>
-  <div class="rc-body">
-    <p class="rc-body-text">The kitchen is not original to 1916. It is original to the restoration — designed and built during the 1999–2001 work that brought this house back from fourteen years of vacancy.</p>
-    <p class="rc-body-text">The central island. The black and white wallpaper. The proportions that feel historic without pretending to be. It was built to last as long as the house.</p>
-  </div>
-</div>
-<!— ⑥ PRIMARY SUITE —>
-<div class="room-chapter reveal">
-  <div class="rc-img-wrap">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/gh_interiors/200holycrest_1534.jpg"
-         alt="Primary Suite, Garran Hill — four-poster bed, original fireplace, afternoon light"
-         style="object-position: center 25%;">
-    <div class="rc-veil"></div>
-    <div class="rc-caption">
-      <span class="rc-eyebrow">The Primary Suite</span>
-      <div class="rc-line">Drapes drawn.<br><em>Window latch, closed.</em></div>
-    </div>
-  </div>
-  <div class="rc-body">
-    <p class="rc-body-text">Four-poster bed. Afternoon light at the edges of the drapes. A room that has the particular stillness of a place that has been slept in for a long time by people who were glad to be there.</p>
-  </div>
-</div>
-<!— ⑦ JEWEL BOX —>
-<div class="room-chapter reveal">
-  <div class="rc-img-wrap">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/gh_interiors/200holycrest_1326.jpg"
-         alt="The Jewel Box, Garran Hill — fuchsia chinoiserie wallpaper, Tennessee marble, brass taps"
-         style="object-position: center;">
-    <div class="rc-veil"></div>
-    <div class="rc-caption">
-      <span class="rc-eyebrow">The Jewel Box</span>
-      <div class="rc-line">Fuchsia chinoiserie.<br><em>Water taps wait.</em></div>
-    </div>
-  </div>
-  <div class="rc-body">
-    <p class="rc-body-text">The name is not ours — it is what the room earns. Fuchsia chinoiserie wallpaper. A tasseled sink skirt. Brass taps. The kind of bathroom that makes guests stop talking mid-sentence when they walk in.</p>
-  </div>
-</div>
 </section>
+<div class="narrative-bridge reveal">
+  <p>The mantel is carved white wood. Georgian in proportion. The blue and white Delft tile surround is hand-painted, original to 1916. The coffered ceiling was enlarged during construction. <em>They made it bigger so they could dance.</em></p>
+</div>
+
+<!-- CHAPTER II: THE SALON -->
+<section class="room-chapter-full reveal-section" aria-label="The Salon">
+  <img class="chapter-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1209.jpg" alt="The Salon, Garran Hill — formal gathering room, central fireplace, original oak floors" loading="lazy">
+  <div class="chapter-veil"></div>
+  <div class="chapter-caption">
+    <span class="chapter-eyebrow">The Salon</span>
+    <div class="chapter-line">Someone still<br><em>puts flowers there.</em></div>
+  </div>
+</section>
+<div class="narrative-bridge reveal">
+  <p>The formal gathering room. Original oak floors. A fireplace that has been burning since the first winter after the house was built. <em>The room where Betty Dumaine held the world she had built here.</em></p>
+</div>
+
+<!-- CHAPTER III: THE DINING ROOM -->
+<section class="room-chapter-full reveal-section" aria-label="The Dining Room">
+  <img class="chapter-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1296.jpg" alt="Dining Room, Garran Hill — original chandelier, curved bay window, shell alcoves, fireplace" loading="lazy">
+  <div class="chapter-veil"></div>
+  <div class="chapter-caption">
+    <span class="chapter-eyebrow">The Dining Room</span>
+    <div class="chapter-line">Formal by proportion.<br><em>Intimate by firelight.</em></div>
+  </div>
+</section>
+<div class="narrative-bridge reveal">
+  <p>A curved north bay looks directly onto the grounds. Arched shell alcoves flank the fireplace with scalloped tops and built-in cabinets below. The table seats twelve. <em>The third of seven fireplaces in the house.</em></p>
+</div>
+
+<!-- CHAPTER IV: THE LIBRARY -->
+<section class="room-chapter-full reveal-section" aria-label="The Library">
+  <img class="chapter-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1350.jpg" alt="Library, Garran Hill — spiral staircase, three-wall shelving, fireplace, natural light" loading="lazy">
+  <div class="chapter-veil"></div>
+  <div class="chapter-caption">
+    <span class="chapter-eyebrow">The Library</span>
+    <div class="chapter-line">The books stayed.</div>
+  </div>
+</section>
+<div class="narrative-bridge reveal">
+  <p>A spiral stair rises to a second floor of shelves. Its own fireplace. Natural light from two sides. This room was not an afterthought. <em>It was the point.</em></p>
+</div>
+
+<!-- CHAPTER V: THE KITCHEN -->
+<section class="room-chapter-full reveal-section" aria-label="The Kitchen">
+  <img class="chapter-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1638.jpg" alt="Kitchen, Garran Hill — central island, reclaimed heart-pine floors, two farm sinks" loading="lazy">
+  <div class="chapter-veil"></div>
+  <div class="chapter-caption">
+    <span class="chapter-eyebrow">The Kitchen</span>
+    <div class="chapter-line">Not original to 1916.<br><em>Original to the restoration.</em></div>
+  </div>
+</section>
+<div class="narrative-bridge reveal">
+  <p>Reclaimed heart-pine floors. Two farm sinks. A butler's pantry. A wall of divided-light windows facing the grounds. It does not pretend to be 1916. <em>That is why it belongs.</em></p>
+</div>
+
+<!-- CHAPTER VI: PRIMARY SUITE -->
+<section class="room-chapter-full reveal-section" aria-label="The Primary Suite">
+  <img class="chapter-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1534.jpg" alt="Primary Suite, Garran Hill — four-poster bed, original fireplace, afternoon light" loading="lazy">
+  <div class="chapter-veil"></div>
+  <div class="chapter-caption">
+    <span class="chapter-eyebrow">The Primary Suite</span>
+    <div class="chapter-line">Drapes drawn.<br><em>Window latch, closed.</em></div>
+  </div>
+</section>
+<div class="narrative-bridge reveal">
+  <p>Four-poster bed. Afternoon light at the edges of the drapes. A room that has the particular stillness of a place that has been slept in for a long time by people who were glad to be there.</p>
+</div>
+
+<!-- CHAPTER VII: THE JEWEL BOX -->
+<section class="room-chapter-full reveal-section" id="jewel-box" aria-label="The Jewel Box">
+  <img class="chapter-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1326.jpg" alt="The Jewel Box, Garran Hill — fuchsia chinoiserie wallpaper, brass taps, Tennessee marble" loading="lazy">
+  <div class="chapter-veil"></div>
+  <div class="chapter-caption">
+    <span class="chapter-eyebrow">The Jewel Box</span>
+    <div class="chapter-line">Fuchsia chinoiserie.<br><em>Water taps wait.</em></div>
+  </div>
+</section>
+<div class="narrative-bridge reveal">
+  <p>The name is not ours &#8212; it is what the room earns. Brass taps. A tasseled sink skirt. The kind of bathroom that stops a conversation mid-sentence when the guest walks in.</p>
+</div>
+
+
 <section id="grounds" class="room-spread">
   <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920/v1777244430/gh_exteriors/200holycrest_1437.jpg" data-public-id="gh_interiors/200holycrest_1437" data-width="1920" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="Grounds, Garran Hill">
   <div class="room-overlay" style="background:linear-gradient(to bottom,rgba(11,11,11,0.1),rgba(11,11,11,0.6))"></div>
@@ -1178,136 +1169,6 @@ window.GH_IMG_FALLBACK = function(img){
     <a href="https://my.matterport.com/show/?m=mfwyqT5Btwx" target="_blank" rel="noopener" style="font-family:'Cormorant Garamond',serif;font-size:0.78rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gd);padding:1rem 2.5rem;text-decoration:none;transition:all 0.3s" onmouseover="this.style.background='rgba(201,169,110,0.18)'" onmouseout="this.style.background='transparent'">Begin Private Tour &rarr;</a>
   </div>
 </section>
-
-
-
-<div class="narrative-bridge reveal" aria-hidden="true">
-  <div class="narrative-bridge-rule"></div>
-  <p class="narrative-bridge-line">The door has been open since 1916.<br><em>Here is what is behind it.</em></p>
-</div>
-
-<!— STAIRCASE / ENTRY —>
-
-<!— RESTORATION RECORD —>
-
-<!— SALON —>
-
-<!— DRAWING ROOM —>
-<section class="room-spread">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/gh_interiors/200holycrest_1227.jpg" data-public-id="gh_interiors/200holycrest_1281" data-width="1920" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="Drawing Room, Garran Hill — Delft tile fireplace">
-  <div class="room-overlay" style="background:linear-gradient(to left,rgba(11,11,11,0.65) 0%,transparent 55%)"></div>
-  <div class="room-caption right reveal">
-    <span class="room-eyebrow">The Drawing Room</span>
-    <div class="room-name">They made it bigger<br><em>so they could dance.</em></div>
-    <div class="room-line">Original Georgian carved mantel. Blue-and-white Delft tile surround, hand-painted and original to the room. One of seven fireplaces in the house.<br><em>A room enlarged for movement, then preserved for the pause after it.</em></div>
-  </div>
-</section>
-
-<!— DINING ROOM —>
-<section class="room-spread">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1296.jpg" data-public-id="gh_interiors/200holycrest_1296" data-width="1920" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="The Dining Room, Garran Hill">
-  <div class="room-overlay"></div>
-  <div class="room-caption reveal">
-    <span class="room-eyebrow">The Dining Room</span>
-    <div class="room-name">Formal by proportion.<br><em>Intimate by firelight.</em></div>
-    <div class="room-line">A curved north bay looks directly onto the grounds, floor to ceiling, nine-pane divided lights holding the garden like a painting. Arched shell alcoves flank the fireplace with scalloped tops and built-in cabinets below.<br><em>A room that teaches dinner to behave.</em></div>
-  </div>
-</section>
-
-<!— KITCHEN —>
-<section class="room-spread">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1638.jpg" data-public-id="gh_interiors/200holycrest_1638" data-width="1920" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="The Kitchen, Garran Hill">
-  <div class="room-overlay" style="background:linear-gradient(to right,rgba(11,11,11,0.6) 0%,transparent 55%)"></div>
-  <div class="room-caption reveal">
-    <span class="room-eyebrow">The Kitchen</span>
-    <div class="room-name">The kitchen is not original to 1916.<br><em>It is original to the restoration.</em></div>
-    <div class="room-line">Reclaimed heart-pine floors — the honest exception in a house of original oak. Two farm sinks. Butler's pantry. Sub-Zero. Toile. A wall of divided-light windows facing the grounds.<br><em>It does not pretend to be 1916. That is why it belongs.</em></div>
-  </div>
-</section>
-
-<!— LIBRARY —>
-<section class="room-spread">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1350.jpg" data-public-id="gh_interiors/200holycrest_1350" data-width="1920" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="The Library, Garran Hill">
-  <div class="room-overlay" style="background:linear-gradient(to left,rgba(11,11,11,0.65) 0%,transparent 55%)"></div>
-  <div class="room-caption right reveal">
-    <span class="room-eyebrow">The Library</span>
-    <div class="room-name">The room that makes silence<br><em>feel inherited.</em></div>
-    <div class="room-line">Built-in shelving on three walls, floor to ceiling. Rolling ladder. French doors to the rear grounds. Brass chandelier.<br>The room feels less decorated than accumulated — records, letters, decisions, and the kind of silence that makes a house feel inherited.</div>
-  </div>
-</section>
-
-<!— POWDER ROOM —>
-<section class="room-spread" style="height:70vh">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1326.jpg" data-public-id="gh_interiors/200holycrest_1326" data-width="1920" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="Powder Room, Garran Hill">
-  <div class="room-overlay"></div>
-  <div class="room-caption reveal">
-    <span class="room-eyebrow">Powder Room</span>
-    <div class="room-name">The Jewel Box</div>
-    <div class="room-line">Fuchsia chinoiserie. Tennessee marble vanity.<br>Small. Precious. Deliberate. Fuchsia chinoiserie and Tennessee marble doing what large rooms cannot: misbehaving perfectly.</div>
-  </div>
-</section>
-
-<!— PRIMARY SUITE —>
-<section class="room-spread">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1534.jpg" data-public-id="gh_interiors/200holycrest_1534" data-width="1920" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="Primary Suite, Garran Hill">
-  <div class="room-overlay" style="background:linear-gradient(to right,rgba(11,11,11,0.6) 0%,transparent 55%)"></div>
-  <div class="room-caption reveal">
-    <span class="room-eyebrow">The Primary Suite</span>
-    <div class="room-name">Upstairs, the house stops performing.<br><em>It becomes private.</em></div>
-    <div class="room-line">A private wing with sitting room, dressing room, and marble bath. Windows pull the grounds upstairs, where the house becomes quieter, more personal, and less interested in performance.<br><em>Privacy here is not absence. It is composure.</em></div>
-  </div>
-</section>
-
-<!— PRIMARY BATH —>
-<section class="room-spread" style="height:78vh">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1365.jpg" data-public-id="gh_interiors/200holycrest_1365" data-width="1920" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="Primary bath, Garran Hill">
-  <div class="room-overlay" style="background:linear-gradient(to left,rgba(11,11,11,0.58) 0%,transparent 55%)"></div>
-  <div class="room-caption right reveal">
-    <span class="room-eyebrow">Primary Bath</span>
-    <div class="room-name">Marble, restraint,<br><em>and no apology.</em></div>
-    <div class="room-line">The private rooms do not abandon the house's grammar. They quiet it — stone, light, proportion, and enough modern comfort to serve the old structure rather than shout over it.</div>
-  </div>
-</section>
-
-<!— GROUNDS —>
-
-<!— POOL —>
-<section class="room-spread" style="height:82vh">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/gh_exteriors/holycrestextf_3327.jpg" data-public-id="gh_exteriors/holycrestextf_3327" data-width="1920" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="Pool and grounds, Garran Hill">
-  <div class="room-overlay" style="background:linear-gradient(to right,rgba(11,11,11,0.54) 0%,transparent 58%)"></div>
-  <div class="room-caption reveal">
-    <span class="room-eyebrow">Pool · Grounds</span>
-    <div class="room-name">Even the pool knows<br><em>how to stay quiet.</em></div>
-    <div class="room-line">A 20-by-40 concrete pool, converted to saltwater in 2022, set into the grounds rather than paraded across them.</div>
-  </div>
-</section>
-
-<!— BETTY DUMAINE —>
-
-<div class="narrative-bridge reveal" aria-hidden="true">
-  <div class="narrative-bridge-rule"></div>
-  <p class="narrative-bridge-line">She kept one grave<br><em>at the back of the grounds.</em></p>
-</div>
-
-<!— BLUE FOX —>
-
-<div class="narrative-bridge reveal" aria-hidden="true">
-  <div class="narrative-bridge-rule"></div>
-  <p class="narrative-bridge-line">For twenty-five years,<br><em>one woman held all of this.</em></p>
-</div>
-
-<!— TWILIGHT —>
-<section class="room-spread">
-  <img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777244093/gh_photos/200_hollycrest_drive_222.jpg" data-public-id="gh_photos/200_hollycrest_drive_222" data-width="1920" onerror="window.GH_IMG_FALLBACK && window.GH_IMG_FALLBACK(this)" alt="Garran Hill at twilight">
-  <div class="room-overlay" style="background:linear-gradient(to bottom,rgba(11,11,11,0.1),rgba(11,11,11,0.65))"></div>
-  <div class="room-caption center reveal">
-    <span class="room-eyebrow">200 Hollycrest Drive · Pinehurst, North Carolina · $4,250,000</span>
-    
-  </div>
-</section>
-
-
-<!— IN PRINT —>
 
 <section id="secret" aria-hidden="true">
   <div class="secret-inner">
@@ -1414,7 +1275,7 @@ window.GH_IMG_FALLBACK = function(img){
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.reveal, .reveal-group').forEach(el => revealObs.observe(el));
+  document.querySelectorAll('.reveal, .reveal-group, .reveal-section').forEach(el => revealObs.observe(el));
 
   // ── 2. PARALLAX on section-bg elements ──
   // Subtle — 15px of travel on full scroll through section. 
