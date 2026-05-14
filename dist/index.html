@@ -689,13 +689,21 @@ section:not(#hero):not(.room-spread):not(#gate) {
 .narrative-bridge p em{font-style:italic;color:rgba(245,240,232,0.88)}
 .reveal-section{opacity:0;transition:opacity 1.2s cubic-bezier(0.22,0.61,0.36,1)}
 .reveal-section.visible{opacity:1}
-@media(max-width:768px){.room-chapter-full{height:88vw;min-height:460px}.chapter-caption{padding:0 1.5rem}.chapter-line{font-size:clamp(1.7rem,6vw,2.6rem)}.narrative-bridge{padding:3rem 1.5rem}}
+@media(max-width:768px){.room-chapter-full{height:88vw;min-height:460px}.chapter-caption{padding:0 1.5rem}.chapter-line{font-size:clamp(1.7rem,6vw,2.6rem)}.narrative-bridge{padding:3rem 1.5rem}#hero-crest{width:clamp(100px,20vw,140px)!important}}
 
 
 /* ── CREST + KEYS HERO TREATMENT ── */
 #hero-crest img {
   will-change: filter;
   transition: filter 0.6s ease;
+}
+#hero-crest::after {
+  content:"";
+  position:absolute;
+  inset:-12px;
+  border-radius:50%;
+  background:radial-gradient(ellipse at 30% 30%, rgba(255,220,100,0.06) 0%, transparent 70%);
+  pointer-events:none;
 }
 /* Metallic gold text — used in stat bar labels */
 .gold-metallic {
@@ -855,19 +863,19 @@ window.GH_IMG_FALLBACK = function(img){
     position:absolute;
     top:0;
     left:50%;
-    transform:translate(-50%,-54%);
+    transform:translate(-50%,-58%);
     z-index:25;
     pointer-events:none;
-    width:clamp(110px,13vw,168px);
-    filter:drop-shadow(0 2px 8px rgba(0,0,0,0.8)) drop-shadow(0 0 22px rgba(201,169,110,0.22));
+    width:clamp(140px,16vw,200px);
+    filter:drop-shadow(0 4px 16px rgba(0,0,0,0.9)) drop-shadow(0 0 32px rgba(201,169,110,0.28)) drop-shadow(0 0 64px rgba(201,169,110,0.1));
   ">
     <img
       src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png"
       alt="Garran Hill crest"
-      style="width:100%;height:auto;display:block;filter:brightness(1.1) contrast(1.06) saturate(1.15) drop-shadow(0 1px 0 rgba(255,220,130,0.6)) drop-shadow(0 -1px 0 rgba(80,50,10,0.55));"
+      style="width:100%;height:auto;display:block;filter:brightness(1.15) contrast(1.1) saturate(1.2) drop-shadow(0 1px 1px rgba(255,235,140,0.7)) drop-shadow(0 -1px 1px rgba(60,35,5,0.65)) drop-shadow(0 2px 4px rgba(0,0,0,0.5));"
     >
   </div>
-<div style="position:relative;max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1rem clamp(1.5rem,4vw,3rem);">
+<div style="position:relative;max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1.2rem clamp(1.5rem,4vw,3rem);">
       <div style="text-align:center;flex:1;">
         <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.85rem,1.3vw,1.1rem);font-weight:300;letter-spacing:0.1em;color:#F5F0E8;">4</div>
         <div style="font-family:'DM Sans',sans-serif;font-size:0.52rem;letter-spacing:0.22em;color:#C9A96E;text-transform:uppercase;margin-top:0.18rem;">Bedrooms</div>
