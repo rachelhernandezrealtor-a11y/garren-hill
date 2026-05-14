@@ -929,6 +929,81 @@ footer{background:var(--dark);padding:4rem 2rem 3rem;border-top:1px solid rgba(2
     .room-split.img-right .room-split-copy { order: 1; }
   }
 
+
+  /* ── THE HOUSE KEEPS SECRETS — secret split ── */
+  .secret-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+  }
+  .secret-img {
+    position: relative;
+    overflow: hidden;
+  }
+  .secret-img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: brightness(0.78);
+    transition: transform 2.4s cubic-bezier(0.25,0.46,0.45,0.94), filter 2.2s ease;
+  }
+  .secret-img img.revealed {
+    transform: scale(1.018);
+    filter: brightness(0.86);
+  }
+  .secret-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: clamp(5rem, 10vw, 9rem) clamp(2.5rem, 5vw, 5.5rem) clamp(3rem, 5vw, 5rem);
+  }
+  .secret-watermark {
+    font-family: var(--sans);
+    font-size: 0.42rem;
+    letter-spacing: 0.52em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.2);
+    margin: 0 0 3rem;
+    user-select: none;
+  }
+  .secret-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 200;
+    font-size: clamp(2rem, 3.2vw, 3.6rem);
+    line-height: 1.12;
+    color: var(--cream);
+    margin: 0 0 2.5rem;
+  }
+  .secret-headline em {
+    font-style: italic;
+    color: rgba(245,240,232,0.78);
+    display: block;
+  }
+  .secret-body p {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(0.92rem, 1.15vw, 1.06rem);
+    line-height: 2;
+    color: rgba(245,240,232,0.52);
+    margin: 0 0 1.4rem;
+    max-width: 34rem;
+  }
+  .secret-body .secret-closer {
+    color: rgba(245,240,232,0.3);
+    font-style: italic;
+    font-size: clamp(0.84rem, 1.0vw, 0.96rem);
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 767px) {
+    .secret-split { grid-template-columns: 1fr; }
+    .secret-img { height: 65vw; min-height: 260px; position: relative; }
+    .secret-copy { padding: 2.5rem 1.5rem 3rem; }
+    .secret-watermark { margin-bottom: 1.8rem; }
+  }
+
 </style>
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website">
@@ -1096,17 +1171,24 @@ The gate has been open since 1916.</div>
   </div>
 </section>
 <!-- STAIRCASE -->
-<section id="staircase" style="background:var(--dark)">
-  <div class="room-spread" style="position:relative;min-height:90vh;display:flex;align-items:flex-end">
-    <img class="room-img img-reveal" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1920/v1777243025/gh_interiors/200holycrest_1512" alt="Garran Hill mahogany staircase, 1916" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top">
-    <div class="room-overlay" style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 60%)"></div>
-    <div class="room-caption" style="position:relative;z-index:2;padding:clamp(2.5rem,5vw,5rem) clamp(1.5rem,4vw,4rem);max-width:600px">
-      <span class="room-eyebrow" style="display:block;font-family:var(--sans);font-size:0.48rem;letter-spacing:0.38em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem">The Staircase</span>
-      <div class="room-name" style="font-family:'Cormorant Garamond',serif;font-weight:200;font-size:clamp(2rem,4vw,3.6rem);line-height:1.15;color:var(--cream);margin-bottom:1.5rem">The volute<br><em>has not moved.</em></div>
-      <div class="room-line" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(0.9rem,1.3vw,1.1rem);line-height:1.9;color:rgba(245,240,232,0.7);max-width:38rem">Mahogany. Original 1916. The turning post and volute at the base of the stair are exactly where J.R. McQueen's men placed them. The axis of the hall reads straight through to the rear of the house from the moment the door opens.</div>
+<!-- THE HOUSE KEEPS SECRETS — no announcement, no eyebrow, no divider -->
+<section id="house-secrets" aria-label="The house keeps secrets" style="background:var(--dark)">
+  <div class="secret-split">
+    <div class="secret-img">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:50,e_brightness:5,e_shadow:-35,e_sharpen:30,e_saturation:10,f_auto,q_auto,c_limit,w_1400/v1777243025/gh_interiors/200holycrest_1512" alt="Garran Hill staircase — original mahogany volute, 1916" loading="lazy" decoding="async" class="img-reveal">
+    </div>
+    <div class="secret-copy reveal-slow">
+      <p class="secret-watermark">The house keeps secrets</p>
+      <div class="secret-headline">Garran Hill rewards<br><em>the close observer.</em></div>
+      <div class="secret-body">
+        <p>The curved banister. The original hardware. The way the light moves through the leaded glass at different hours.</p>
+        <p>This house was built by craftsmen who cared about things no one would ever notice &mdash; and then noticed them anyway. The secrets are still here. They reveal themselves slowly.</p>
+        <p class="secret-closer">The house still knows how to keep a secret.</p>
+      </div>
     </div>
   </div>
 </section>
+
 
 <div class="breath">
   <div class="breath-line"></div>
