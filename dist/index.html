@@ -3143,16 +3143,65 @@ blockquote.in {
   <!-- YEAR WATERMARK — BOTTOM RIGHT -->
   <div class="hero-year">1916</div>
 
-  <!-- JEWELED BELT: one unified container, crest rises above, gold lines frame it -->
+  <!-- JEWELED BELT -->
+<div id="stat-bar" style="position:absolute;bottom:0;left:0;right:0;z-index:15;background:rgba(10,10,10,0.85);backdrop-filter:blur(4px);border-top:1px solid rgba(201,169,110,0.22);overflow:visible;">
+<!-- ── CREST: straddling the hero/stat-bar seam ── -->
+<div aria-hidden="true" id="hero-crest" style="
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translate(-50%,-58%);
+    z-index:25;
+    pointer-events:none;
+    width:clamp(140px,16vw,200px);
+    filter:drop-shadow(0 4px 24px rgba(0,0,0,0.95));
+  ">
+<img alt="Garran Hill crest" src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v4.png" style="width:100%;height:auto;display:block;mix-blend-mode:lighten;"/>
 </div>
-
-    </div><!-- /.stat-inner -->
-
-    <!-- bottom hairline -->
-    <div class="stat-bottom-line"></div>
-
-  </div><!-- /.stat-bar -->
+<div style="position:relative;max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1.2rem clamp(1.5rem,4vw,3rem);">
+<div style="text-align:center;flex:1;">
+<div style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.85rem,1.3vw,1.1rem);font-weight:300;letter-spacing:0.1em;color:#F5F0E8;">4</div>
+<div style="font-family:'DM Sans',sans-serif;font-size:0.52rem;letter-spacing:0.22em;color:#C9A96E;text-transform:uppercase;margin-top:0.18rem;">Bedrooms</div>
+</div>
+<div style="width:1px;height:24px;background:rgba(201,169,110,0.22);flex-shrink:0;"></div>
+<div style="text-align:center;flex:1;">
+<div style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.85rem,1.3vw,1.1rem);font-weight:300;letter-spacing:0.1em;color:#F5F0E8;">6</div>
+<div style="font-family:'DM Sans',sans-serif;font-size:0.52rem;letter-spacing:0.22em;color:#C9A96E;text-transform:uppercase;margin-top:0.18rem;">Bathrooms</div>
+</div>
+<div style="width:1px;height:24px;background:rgba(201,169,110,0.22);flex-shrink:0;"></div>
+<div style="text-align:center;flex:1;">
+<div style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.85rem,1.3vw,1.1rem);font-weight:300;letter-spacing:0.1em;color:#F5F0E8;">6,072</div>
+<div style="font-family:'DM Sans',sans-serif;font-size:0.52rem;letter-spacing:0.22em;color:#C9A96E;text-transform:uppercase;margin-top:0.18rem;">Sq Ft</div>
+</div>
+<div style="width:1px;height:24px;background:rgba(201,169,110,0.22);flex-shrink:0;"></div>
+<div style="flex:1;"></div>
+<div style="width:1px;height:24px;background:rgba(201,169,110,0.22);flex-shrink:0;"></div>
+<div style="text-align:center;flex:1;">
+<div style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.85rem,1.3vw,1.1rem);font-weight:300;letter-spacing:0.1em;color:#F5F0E8;">4.15</div>
+<div style="font-family:'DM Sans',sans-serif;font-size:0.52rem;letter-spacing:0.22em;color:#C9A96E;text-transform:uppercase;margin-top:0.18rem;">Acres</div>
+</div>
+<div style="width:1px;height:24px;background:rgba(201,169,110,0.22);flex-shrink:0;"></div>
+<div style="text-align:center;flex:1;">
+<div style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.85rem,1.3vw,1.1rem);font-weight:300;letter-spacing:0.1em;color:#F5F0E8;">Est. 1916</div>
+<div style="font-family:'DM Sans',sans-serif;font-size:0.52rem;letter-spacing:0.22em;color:#C9A96E;text-transform:uppercase;margin-top:0.18rem;">Built</div>
+</div>
+<div style="width:1px;height:24px;background:rgba(201,169,110,0.22);flex-shrink:0;"></div>
+<div style="text-align:center;flex:1;">
+<div style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.85rem,1.3vw,1.1rem);font-weight:300;letter-spacing:0.1em;color:#F5F0E8;">$4,250,000</div>
+<div style="font-family:'DM Sans',sans-serif;font-size:0.52rem;letter-spacing:0.22em;color:#C9A96E;text-transform:uppercase;margin-top:0.18rem;">Offered At</div>
+</div>
+</div>
+</div>
 </section>
+<script>
+(function() {
+  var slides = document.querySelectorAll('.hs-slide');
+  if (!slides.length) return;
+  var cur = 0;
+  setInterval(function() {
+    slides[cur].style.opacity = '0';
+    cur = (cur + 1) % slides.length;
+    slides[cur].style.opacity = '1';
 
 
 
