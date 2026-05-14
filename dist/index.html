@@ -553,6 +553,34 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   .rc-salon-strip img:first-child { height: 280px; }
 }
 
+
+/* ── NARRATIVE BRIDGES ── */
+.narrative-bridge {
+  background: var(--dark);
+  padding: clamp(5rem, 10vw, 10rem) clamp(2rem, 8vw, 8rem);
+  text-align: center;
+}
+.narrative-bridge-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem, 2.8vw, 2.4rem);
+  font-weight: 200;
+  color: rgba(245,240,232,0.72);
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.narrative-bridge-line em {
+  font-style: italic;
+  color: var(--cream);
+}
+.narrative-bridge-rule {
+  width: 1px;
+  height: clamp(3rem, 6vw, 6rem);
+  background: rgba(201,169,110,0.3);
+  margin: 0 auto 3rem;
+}
+
 </style>
 <script>
 window.GH_IMG_FALLBACK = function(img){
@@ -786,6 +814,11 @@ window.GH_IMG_FALLBACK = function(img){
 
 </section>
 
+<div class="narrative-bridge reveal" aria-hidden="true">
+  <div class="narrative-bridge-rule"></div>
+  <p class="narrative-bridge-line">Before anyone knew what the house would outlive.</p>
+</div>
+
 <section class="quote-panel reveal" aria-label="Westminster Abbey inscription">
   <blockquote>“The friend of Britain<br>in her sorest need.”</blockquote>
   <cite>Westminster Abbey tablet for Walter Hines Page</cite>
@@ -801,6 +834,11 @@ window.GH_IMG_FALLBACK = function(img){
 </section>
 
 
+
+<div class="narrative-bridge reveal" aria-hidden="true">
+  <div class="narrative-bridge-rule"></div>
+  <p class="narrative-bridge-line">The door has been open since 1916.<br><em>Here is what is behind it.</em></p>
+</div>
 
 <!-- STAIRCASE / ENTRY -->
 <section id="staircase" class="room-spread">
@@ -1052,6 +1090,11 @@ window.GH_IMG_FALLBACK = function(img){
 </section>
 
 <!-- BETTY DUMAINE -->
+
+<div class="narrative-bridge reveal" aria-hidden="true">
+  <div class="narrative-bridge-rule"></div>
+  <p class="narrative-bridge-line">She kept one grave<br><em>at the back of the grounds.</em></p>
+</div>
 <section id="blue-fox">
   <div class="blue-fox-inner reveal">
     <figure class="blue-fox-photo">
@@ -1072,6 +1115,11 @@ window.GH_IMG_FALLBACK = function(img){
 </section>
 
 <!-- BLUE FOX -->
+
+<div class="narrative-bridge reveal" aria-hidden="true">
+  <div class="narrative-bridge-rule"></div>
+  <p class="narrative-bridge-line">For twenty-five years,<br><em>one woman held all of this.</em></p>
+</div>
 <section id="betty" class="editorial-section" style="background:#0a0a0a;">
   <div class="editorial-inner editorial-grid reveal">
     <div>
@@ -1174,6 +1222,11 @@ window.GH_IMG_FALLBACK = function(img){
   <div class="closing-rule"></div>
 </section>
 
+
+<div class="narrative-bridge reveal" aria-hidden="true">
+  <div class="narrative-bridge-rule"></div>
+  <p class="narrative-bridge-line"><em>Someone still puts flowers there.</em></p>
+</div>
 <section id="inquiry">
   <div class="inquiry-inner">
     <div class="inquiry-breath reveal">
