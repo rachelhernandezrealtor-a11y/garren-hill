@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://res.cloudinary.com/dghn2xpif/image/upload/f_jpg,q_80,w_1200,h_630,c_fill,g_auto/v1777244059/gh_key/gh_191.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Garran Hill estate — circular drive and front facade, Pinehurst NC">
+<meta property="og:image:alt" content="Garran Hill estate -- circular drive and front facade, Pinehurst NC">
 <meta property="og:locale" content="en_US">
 
 <!-- ── TWITTER CARD ── -->
@@ -93,7 +93,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&display=swap" rel="stylesheet" />
 <style>
-  /* ── TYPOGRAPHY RESET — May 15 2026 ── */
+  /* ── TYPOGRAPHY RESET -- May 15 2026 ── */
   /* Two fonts only. Cormorant Garamond everywhere. Pinyon Script: estate name only. */
   * { box-sizing: border-box; }
   body, h1, h2, h3, h4, h5, h6, p, span, div, a, blockquote, figcaption, li, td, th {
@@ -114,7 +114,7 @@
   }
   /* ── END TYPOGRAPHY RESET ── */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Pinyon+Script&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Pinyon+Script&display=swap');
 
 /* ── TOKENS ── */
 :root {
@@ -125,9 +125,9 @@
   --sp-unit: clamp(0.9rem, 1.8vw, 1.4rem);
   --sp-xs:   calc(var(--sp-unit) * 1);
   --sp-sm:   calc(var(--sp-unit) * 2);
-  --sp-md:   calc(var(--sp-unit) * 4.5);
-  --sp-lg:   calc(var(--sp-unit) * 7);
-  --sp-xl:   calc(var(--sp-unit) * 11);
+  --sp-md:   calc(var(--sp-unit) * 3);
+  --sp-lg:   calc(var(--sp-unit) * 4);
+  --sp-xl:   calc(var(--sp-unit) * 6);
   --col-pad: clamp(2.5rem, 8vw, 9rem);
   --col-mid: clamp(1.8rem, 5vw, 5.5rem);
   --max-text: 660px;
@@ -198,7 +198,7 @@ section.hero{position:relative;width:100%;height:100vh;min-height:640px;overflow
 .hero-title{font-family:'Pinyon Script',cursive;font-size:clamp(5rem,16vw,14rem);font-weight:300;color:var(--cream);line-height:1.05;text-shadow:0 2px 40px rgba(0,0,0,.8),0 0 80px rgba(0,0,0,.5);margin-bottom:1.6rem}
 .hero-sub{font-size:clamp(.60rem,.78vw,.70rem);font-weight:300;letter-spacing:.30em;text-transform:uppercase;color:rgba(245,240,232,.48)}
 
-/* ══ STAT BAR — THE ONE TRUE VERSION ══
+/* ══ STAT BAR -- THE ONE TRUE VERSION ══
    Simple flex row. align-items:flex-end.
    Crest is a flex child, taller, rises naturally.
    No position tricks. No absolute children. */
@@ -217,7 +217,7 @@ section.hero{position:relative;width:100%;height:100vh;min-height:640px;overflow
 
 .stat-price .stat-num{font-size:clamp(1.1rem,1.6vw,1.85rem);color:rgba(245,240,232,.88)}
 
-/* CREST — focal point, asset law */
+/* CREST -- focal point, asset law */
 .stat-crest-wrap{display:flex;align-items:flex-end;justify-content:center;flex-shrink:0;flex-grow:0;padding:0 clamp(1.0rem,2.2vw,2.8rem)}
 .stat-crest-wrap img{display:block;height:clamp(120px,13vw,180px);width:auto;transform:translateY(-55px);filter:drop-shadow(0 0 32px rgba(0,0,0,1)) drop-shadow(0 -8px 20px rgba(0,0,0,.98)) drop-shadow(0 8px 24px rgba(0,0,0,.98)) drop-shadow(0 0 22px rgba(201,169,110,.30)) drop-shadow(0 0 10px rgba(245,224,152,.18));animation:crestGlow 4.5s ease-in-out infinite;transition:transform .4s ease}
 .stat-crest-wrap img:hover{transform:translateY(-20px) scale(1.04);animation:none;filter:drop-shadow(0 0 32px rgba(0,0,0,1)) drop-shadow(0 -8px 20px rgba(0,0,0,.98)) drop-shadow(0 0 44px rgba(201,169,110,.48)) drop-shadow(0 0 22px rgba(245,224,152,.32))}
@@ -255,14 +255,14 @@ h2 em{font-style:italic;font-weight:300}
 .drop-cap::first-letter{font-size:3.2em;font-weight:300;float:left;line-height:1.0;margin:.1em .08em 0 0;color:var(--cream)}
 
 /* Sections */
-section.text-full{padding:var(--sp-xl) var(--col-pad);max-width:1400px;margin:0 auto}
-section.split{display:flex;align-items:stretch;min-height:70vh;padding:var(--sp-lg) var(--col-mid);gap:clamp(4rem,7vw,7rem)}
+section.text-full{padding:var(--sp-md) var(--col-pad);max-width:1400px;margin:0 auto}
+section.split{display:flex;align-items:stretch;min-height:55vh;padding:var(--sp-sm) var(--col-mid);gap:clamp(2.5rem,4vw,5rem)}
 section.split.reverse{flex-direction:row-reverse}
 .split-img{flex:1;min-height:480px;background-size:cover;background-position:center;background-repeat:no-repeat}
 .split-text{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:560px}
 .split-text h2{font-size:clamp(1.8rem,3.5vw,3.2rem)}
 
-section.pull{padding:var(--sp-xl) clamp(3rem,15vw,18rem);text-align:center;position:relative}
+section.pull{padding:var(--sp-md) clamp(2rem,8vw,10rem);text-align:center;position:relative}
 section.pull.cinematic::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,169,110,.04) 0%,transparent 70%);pointer-events:none}
 section.pull.intimate::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,rgba(201,169,110,.55) 0%,rgba(201,169,110,0) 100%);pointer-events:none}
 .pull-quote{font-weight:300;font-style:italic;line-height:1.4;color:var(--cream)}
@@ -270,14 +270,14 @@ section.pull.cinematic .pull-quote{font-size:clamp(1.6rem,3.5vw,3.2rem)}
 section.pull.intimate  .pull-quote{font-size:clamp(1.25rem,2.3vw,2.0rem)}
 .pull-attr{font-size:clamp(.58rem,.73vw,.66rem);font-weight:300;letter-spacing:.30em;text-transform:uppercase;color:rgba(201,169,110,.45);margin-top:clamp(1.2rem,2vw,2rem)}
 
-section.breath{padding:var(--sp-xl) var(--col-pad);text-align:center;display:flex;flex-direction:column;align-items:center}
+section.breath{padding:var(--sp-sm) var(--col-pad);text-align:center;display:flex;flex-direction:column;align-items:center}
 
 section.kb-gate{position:relative;min-height:85vh;display:flex;align-items:center;overflow:hidden}
 .kb-img{position:absolute;inset:0;background-size:cover;background-position:center}
 .kb-img::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,5,5,.78) 0%,rgba(5,5,5,.45) 50%,rgba(5,5,5,.15) 100%)}
-.kb-text{position:relative;z-index:2;padding:var(--sp-lg) var(--col-pad);max-width:640px}
+.kb-text{position:relative;z-index:2;padding:var(--sp-md) var(--col-pad);max-width:640px}
 
-section.hero-room{position:relative;min-height:80vh;display:flex;align-items:flex-end}
+section.hero-room{position:relative;min-height:72vh;display:flex;align-items:flex-end}
 .hero-room-bg{position:absolute;inset:0;background-size:cover;background-position:center}
 .hero-room-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.05) 0%,rgba(5,5,5,.65) 70%,rgba(5,5,5,.92) 100%)}
 .hero-room-text{position:relative;z-index:2;padding:var(--sp-lg) var(--col-pad)}
@@ -299,7 +299,7 @@ section#gallery{padding:var(--sp-lg) var(--col-mid)}
 .lb-prev{left:1rem}.lb-next{right:1rem}
 
 /* Closing */
-section.closing{padding:var(--sp-xl) var(--col-pad);text-align:center}
+section.closing{padding:var(--sp-md) var(--col-pad);text-align:center}
 .closing-script{font-family:'Pinyon Script',cursive;font-size:clamp(3rem,8vw,7rem);color:var(--cream);line-height:1.0;margin-bottom:clamp(1.5rem,3vw,3rem)}
 .closing-hairline{width:100%;height:1px;margin:2rem auto;max-width:400px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,.38) 30%,rgba(245,224,152,.62) 50%,rgba(201,169,110,.38) 70%,transparent 100%)}
 .closing-statement{font-size:clamp(1.1rem,1.8vw,1.55rem);font-weight:300;font-style:italic;color:rgba(245,240,232,.72);max-width:560px;margin:0 auto clamp(1.5rem,3vw,3rem);line-height:1.85}
@@ -345,14 +345,14 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
   section.split{flex-direction:column!important;padding:var(--sp-md) 1.5rem;gap:2rem;min-height:auto}
   .split-img{min-height:260px;flex:none;width:100%}
   .split-text{max-width:100%}
-  section.pull{padding:var(--sp-lg) 1.8rem}
+  section.pull{padding:var(--sp-sm) 1.8rem}
   section.pull.cinematic .pull-quote{font-size:clamp(1.3rem,5.5vw,1.8rem)}
   section.pull.intimate  .pull-quote{font-size:clamp(1.1rem,4vw,1.5rem)}
   section.kb-gate{min-height:70vh}
   .kb-text{padding:var(--sp-md) 1.5rem}
-  section.text-full{padding:var(--sp-lg) 1.5rem}
-  section.breath{padding:var(--sp-lg) 1.5rem}
-  section.closing{padding:var(--sp-lg) 1.5rem}
+  section.text-full{padding:var(--sp-sm) 1.5rem}
+  section.breath{padding:var(--sp-xs) 1.5rem}
+  section.closing{padding:var(--sp-sm) 1.5rem}
   section#inquiry{padding:var(--sp-md) 1.5rem}
   h2{font-size:clamp(1.6rem,6vw,2.4rem)}
   .body-copy{font-size:1.05rem}
@@ -368,6 +368,33 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
   section.split{padding:var(--sp-md) var(--col-mid)}
   section.text-full{padding:var(--sp-lg) clamp(2rem,6vw,6rem)}
 }
+
+/* ── TEXT SECTION (WHP / National Register / source blocks) ── */
+.text-section{padding:clamp(3rem,5vw,5rem) var(--col-pad);max-width:1100px;margin:0 auto}
+.text-section.alt{padding:clamp(2rem,3.5vw,4rem) var(--col-pad);text-align:center;max-width:680px;margin:0 auto}
+.text-section.reveal{padding:clamp(2rem,3vw,3.5rem) var(--col-pad);max-width:900px;margin:0 auto}
+
+/* ── TIGHTEN hero-room split ── */
+.split.hero-room{min-height:65vh!important;padding:var(--sp-sm) var(--col-mid)!important;gap:clamp(2rem,4vw,4rem)!important}
+
+/* ── INQUIRY tight ── */
+section#inquiry{padding:var(--sp-md) var(--col-pad)!important}
+
+/* ── SPLIT-IMG: never create a void when image loads slow ── */
+.split-img{min-height:320px!important;background:#0a0a0a}
+
+/* ── PULL sections: ensure they never balloon ── */
+section.pull{padding:clamp(3rem,4vw,5rem) clamp(2rem,8vw,10rem)!important}
+section.pull.cinematic{padding:clamp(3.5rem,5vw,6rem) clamp(2rem,10vw,12rem)!important}
+section.pull.intimate{padding:clamp(2.5rem,3.5vw,4.5rem) clamp(2rem,8vw,10rem)!important}
+
+/* ── BREATH sections: just a small ornament, should be tiny ── */
+section.breath{padding:clamp(1.5rem,2.5vw,3rem) var(--col-pad)!important}
+
+/* ── SECTION DIVIDERS: no extra space ── */
+.section-divider{margin:0!important}
+.act-break{padding:clamp(1rem,1.5vw,1.5rem) var(--col-pad)!important}
+
 </style>
 </head>
 <body>
@@ -442,7 +469,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
 <div class="hero-breath"></div>
 
 
-<!-- KB GATE — SPLIT: TEXT LEFT, IMAGE RIGHT -->
+<!-- KB GATE -- SPLIT: TEXT LEFT, IMAGE RIGHT -->
 <section id="estate">
   <div class="split">
     <div class="split-text reveal">
@@ -462,7 +489,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
   </div>
 </section>
 
-<!-- OPENING STATEMENT — FULL TEXT CENTER -->
+<!-- OPENING STATEMENT -- FULL TEXT CENTER -->
 <section id="opening">
   <div class="split">
     <div class="split-text mid">
@@ -482,7 +509,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
   </div>
 </section>
 
-<!-- WHP — SPLIT: IMAGE LEFT, TEXT RIGHT -->
+<!-- WHP -- SPLIT: IMAGE LEFT, TEXT RIGHT -->
 <section id="history">
   <div class="split reverse">
     <div class="split-img img-reveal">
@@ -504,17 +531,15 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
 
 <!-- FARM PULL QUOTE -->
 <section class="pull cinematic">
-  <p class="pull-quote reveal-slow">"The farm — the farm — the farm."</p>
+  <p class="pull-quote reveal-slow">"The farm -- the farm -- the farm."</p>
   <p class="pull-attr">Walter Hines Page &nbsp;&middot;&nbsp; The Life and Letters of Walter H. Page, Vol. I, P. 354 &nbsp;&middot;&nbsp; 1923</p>
 </section>
 
-<!-- WHP CONTINUED — TEXT SECTION -->
+<!-- WHP CONTINUED -- TEXT SECTION -->
 <section class="text-section alt">
-  <div class="body-text" style="margin:0 auto;text-align:center;max-width:580px;">
-    <p>He came home in December 1918. Carried from the train at Aberdeen — miles from his land. He died ten days later.</p>
-    <p style="font-style:italic;color:rgba(245,240,232,0.65);margin-top:var(--sp-sm);">"Well, Frank, I did get here after all, didn't I?"</p>
-    <p>He co-founded Doubleday, Page &amp; Co. He edited The Atlantic Monthly. He nominated Woodrow Wilson for the presidency.</p>
-    <p>He never spent a night here.</p>
+  <div class="body-text" style="margin:0 auto;text-align:center;max-width:540px;">
+    <p style="font-style:italic;color:rgba(245,240,232,0.78);font-size:clamp(1.1rem,1.6vw,1.4rem);line-height:1.7;">"Well, Frank, I did get here after all, didn't I?"</p>
+    <p style="font-size:.60rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(201,169,110,0.55);margin-top:1rem;">Aberdeen Station &middot; December 11, 1918</p>
   </div>
 </section>
 
@@ -523,7 +548,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
   <div class="georgian-ornament reveal"><span class="georgian-ornament-glyph">◆</span></div>
 </section>
 
-<!-- THRESHOLD — SPLIT -->
+<!-- THRESHOLD -- SPLIT -->
 <div class="section-divider"></div>
 <div class="act-break reveal"><span class="act-break-glyph">The House</span></div>
 <section id="rooms">
@@ -536,7 +561,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
       <div class="body-text">
         <p>Original leaded glass. Original hardware. Herringbone brick underfoot.</p>
         <p>The staircase has turned the same curve since 1916.</p>
-        <p>GARRAN HILL &middot; 1916 — inlaid in the threshold brick. Specified before ground was broken.</p>
+        <p>GARRAN HILL &middot; 1916 -- inlaid in the threshold brick. Specified before ground was broken.</p>
       </div>
       <div style="margin-top:2.2rem;">
         <a href="https://my.matterport.com/show/?m=mfwyqT5Btwx" target="_blank" class="btn-gold">Begin the 3D Tour</a>
@@ -548,7 +573,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
   </div>
 </section>
 
-<!-- LIBRARY — SPLIT REVERSE -->
+<!-- LIBRARY -- SPLIT REVERSE -->
 <section>
   <div class="split reverse">
     <div class="split-img img-reveal">
@@ -568,7 +593,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
   </div>
 </section>
 
-<!-- DRAWING ROOM — SPLIT -->
+<!-- DRAWING ROOM -- SPLIT -->
 <section>
   <div class="split hero-room">
     <div class="split-text mid">
@@ -577,7 +602,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
       <h2>Fire going.<em>No one home yet.</em></h2>
       <div class="gold-line"></div>
       <div class="body-text">
-        <p>Georgian carved mantel. Delft tile surround — hand-painted, original.</p>
+        <p>Georgian carved mantel. Delft tile surround -- hand-painted, original.</p>
         <p>The arch. The doorways. The fanlights.</p>
         <p>Specified in 1916. Still there.</p>
       </div>
@@ -588,7 +613,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
   </div>
 </section>
 
-<!-- KITCHEN — SPLIT REVERSE -->
+<!-- KITCHEN -- SPLIT REVERSE -->
 <section>
   <div class="split reverse">
     <div class="split-img img-reveal">
@@ -600,7 +625,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
       <h2>The kitchen was not updated.<em>It was designed.</em></h2>
       <div class="gold-line"></div>
       <div class="body-text">
-        <p>Reclaimed heart-pine floors — the only room that departs from the original oak.</p>
+        <p>Reclaimed heart-pine floors -- the only room that departs from the original oak.</p>
         <p>White cabinetry. Dark granite. Island. Four windows.</p>
         <p>Every morning at 6:30, the deer come through.</p>
       </div>
@@ -613,7 +638,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
   <div class="georgian-ornament reveal"><span class="georgian-ornament-glyph">◆</span></div>
 </section>
 
-<!-- DINING — SPLIT -->
+<!-- DINING -- SPLIT -->
 <section>
   <div class="split">
     <div class="split-text reveal">
@@ -632,7 +657,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
   </div>
 </section>
 
-<!-- PRIMARY SUITE — SPLIT REVERSE -->
+<!-- PRIMARY SUITE -- SPLIT REVERSE -->
 <section>
   <div class="split reverse">
     <div class="split-img img-reveal">
@@ -645,13 +670,13 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
       <div class="gold-line"></div>
       <div class="body-text">
         <p>Fifteen architectural drawings document the decisions Thomas O'Shea made in this room alone. They survive. They transfer with the property.</p>
-        <p>The primary balcony — 24 by 11 feet — faces the grounds.</p>
+        <p>The primary balcony -- 24 by 11 feet -- faces the grounds.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- GROUNDS — SPLIT -->
+<!-- GROUNDS -- SPLIT -->
 <div class="section-divider"></div>
 <div class="act-break reveal"><span class="act-break-glyph">The Grounds</span></div>
 <section id="grounds">
@@ -665,7 +690,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
         <p>In 1916, those were saplings. Now they are a forest.</p>
         <p>Twenty-eight irrigation zones. 130-foot well. Underground utilities throughout.</p>
         <p>A 20-by-40 salt water pool, surrounded by a brick wall with iron gates. Restored 2022.</p>
-        <p>The Wee Cottage — complete, self-contained — moved to the grounds by sky crane.</p>
+        <p>The Wee Cottage -- complete, self-contained -- moved to the grounds by sky crane.</p>
       </div>
     </div>
     <div class="split-img img-reveal">
@@ -680,7 +705,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
   <p class="pull-attr">Blue Fox &nbsp;&middot;&nbsp; Betty Dumaine's Irish Hunter &nbsp;&middot;&nbsp; Buried on the Grounds</p>
 </section>
 
-<!-- BETTY DUMAINE — SPLIT REVERSE -->
+<!-- BETTY DUMAINE -- SPLIT REVERSE -->
 <section>
   <div class="split reverse">
     <div class="split-img img-reveal">
@@ -692,7 +717,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
       <h2>Some places remember<em>who loved them.</em></h2>
       <div class="gold-line"></div>
       <div class="body-text">
-        <p>Elizabeth Dumaine purchased the property in 1959. She was a foxhunter. She added stables, kennels, and an enclosure for peacocks — known to be guard birds.</p>
+        <p>Elizabeth Dumaine purchased the property in 1959. She was a foxhunter. She added stables, kennels, and an enclosure for peacocks -- known to be guard birds.</p>
         <p>Her favorite horse is buried on the grounds.</p>
         <p>Blue Fox. Someone still puts flowers there.</p>
       </div>
@@ -705,7 +730,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
   <div class="georgian-ornament reveal"><span class="georgian-ornament-glyph">◆</span></div>
 </section>
 
-<!-- RESTORATION — SPLIT -->
+<!-- RESTORATION -- SPLIT -->
 <div class="section-divider"></div>
 <div class="act-break reveal"><span class="act-break-glyph">The Restoration</span></div>
 <section id="restoration">
@@ -717,7 +742,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
       <div class="gold-line"></div>
       <div class="body-text">
         <p>In 1999, Thomas O'Shea drew the house from scratch. Every room measured. Every cornice profiled. Every proportion committed to paper before a single board was replaced.</p>
-        <p>All seven carved mantels saved. Original oak flooring lifted, repaired, relaid. Period-accurate portico brick — three months to source. Custom Marvin windows made to the 1916 profile.</p>
+        <p>All seven carved mantels saved. Original oak flooring lifted, repaired, relaid. Period-accurate portico brick -- three months to source. Custom Marvin windows made to the 1916 profile.</p>
         <p>It does not feel added. It feels inevitable.</p>
       </div>
     </div>
@@ -733,7 +758,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
       <span class="eyebrow">National Register &nbsp;&middot;&nbsp; Criterion B</span>
   <h2 style="max-width:620px;margin:0 auto 1.8rem;">Every claim is sourced.<em>Every fact is verified.</em></h2>
   <div class="body-text" style="margin:0 auto;text-align:center;max-width:540px;">
-    <p>The Pines Preservation Guild visited April 2024. The property qualifies under Criterion B — significant association with a figure of national importance.</p>
+    <p>The Pines Preservation Guild visited April 2024. The property qualifies under Criterion B -- significant association with a figure of national importance.</p>
     <p>A preservation easement is available. North Carolina tax credit: 25% of fair market value, up to $500,000.</p>
   </div>
 </section>
@@ -782,7 +807,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
       <span class="eyebrow">Sotheby's International Realty</span>
   <h2 style="max-width:520px;margin:0 auto;font-weight:300;">The house is available for<em> private viewing.</em></h2>
   <form class="inquiry-form" action="https://formsubmit.co/rachelhernandezrealtor@gmail.com" method="POST">
-    <input type="hidden" name="_subject" value="Garran Hill — Private Showing Request">
+    <input type="hidden" name="_subject" value="Garran Hill -- Private Showing Request">
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_next" value="https://garren-hill.pages.dev/?thankyou=1">
     <input type="text" name="name" placeholder="Your name" required>
@@ -896,7 +921,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     }, { passive: true });
   }
 
-  // ── 4. SCROLL REVEAL — IntersectionObserver ──
+  // ── 4. SCROLL REVEAL -- IntersectionObserver ──
   const revealEls = document.querySelectorAll('.reveal, .reveal-slow, .img-reveal');
   if (revealEls.length) {
     const obs = new IntersectionObserver(entries => {
@@ -910,7 +935,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     revealEls.forEach(el => obs.observe(el));
   }
 
-  // ── 5. PARALLAX — subtle depth on split images ──
+  // ── 5. PARALLAX -- subtle depth on split images ──
   const splitImgs = document.querySelectorAll('.split-img img');
   if (splitImgs.length && window.matchMedia('(min-width: 768px)').matches) {
     let ticking = false;
@@ -932,8 +957,8 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     }, { passive: true });
   }
 
-  // ── 6. STAT NUMBERS — facts, not performances. ──
-  // ── 7. AMBIENT BODY GRADIENT — shifts as user reads deeper ──
+  // ── 6. STAT NUMBERS -- facts, not performances. ──
+  // ── 7. AMBIENT BODY GRADIENT -- shifts as user reads deeper ──
   let lastSection = '';
   const bodyEl = document.body;
   const ambientObs = new IntersectionObserver(entries => {
