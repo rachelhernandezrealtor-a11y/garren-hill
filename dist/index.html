@@ -2429,19 +2429,24 @@
 
 
   /* ── KB GATE THEN & NOW ── */
+  /* Sepia: slow Ken Burns drift, always present, loops */
   @keyframes gate-pull-then {
     0%   { transform: scale(1.0) translate(0%, 0%); }
-    100% { transform: scale(1.08) translate(-1.5%, -1%); }
+    100% { transform: scale(1.06) translate(-1.2%, -0.8%); }
   }
+  /* Modern: slow Ken Burns drift in opposite direction */
   @keyframes gate-pull-now {
-    0%   { transform: scale(1.08) translate(1.5%, 1%); }
+    0%   { transform: scale(1.06) translate(1.2%, 0.8%); }
     100% { transform: scale(1.0) translate(0%, 0%); }
   }
+  /* Modern overlay: fades in, holds, fades out — full 32s cycle */
   @keyframes gate-now-fade {
-    0%   { opacity: 0; }
-    30%  { opacity: 0; }
-    70%  { opacity: 1; }
-    100% { opacity: 1; }
+    0%   { opacity: 0; }   /* start: sepia fully visible */
+    15%  { opacity: 0; }   /* hold sepia */
+    35%  { opacity: 1; }   /* modern dissolves in */
+    65%  { opacity: 1; }   /* hold modern */
+    85%  { opacity: 0; }   /* modern dissolves out */
+    100% { opacity: 0; }   /* back to sepia */
   }
 
 </style>
@@ -3224,20 +3229,20 @@ blockquote.in {
 <div aria-hidden="true" style="width:100%;display:flex;align-items:center;justify-content:center;padding:0;background:#0a0a0a;"><div style="width:clamp(40px,8vw,80px);height:1px;background:linear-gradient(to right,transparent,#C9A96E,transparent);"></div></div>
 <section id="kb-gate" class="editorial-fullbleed kb-gate-section" aria-label="Garran Hill — the estate since 1916" style="position:relative;min-height:100vh;overflow:hidden;">
 
-  <!-- THEN: sepia gate — historical -->
+  <!-- THEN: sepia gate — 1916 — always visible underneath -->
   <div style="position:absolute;inset:0;overflow:hidden;z-index:0;">
     <img loading="eager" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:60,e_sharpen:15,f_auto,q_auto,c_limit,w_1920/v1777411350/gh_key/gh_gate_sepia.jpg"
-      alt="Garran Hill gate — then"
-      style="position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;object-position:center 35%;animation:gate-pull-then 16s ease-in-out infinite alternate;">
+      alt="Garran Hill gate — 1916"
+      style="position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;object-position:center 35%;animation:gate-pull-then 32s ease-in-out infinite alternate;">
   </div>
 
-  <!-- NOW: modern driveway — present -->
-  <div style="position:absolute;inset:0;overflow:hidden;z-index:1;animation:gate-now-fade 16s ease-in-out infinite alternate;">
+  <!-- NOW: modern driveway — present — crossfades over sepia -->
+  <div style="position:absolute;inset:0;overflow:hidden;z-index:1;animation:gate-now-fade 32s ease-in-out infinite;">
     <img loading="eager" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777390104/gh_key/gh_gate_arrival.jpg"
-      alt="Garran Hill gate — now"
-      style="position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;object-position:center 35%;animation:gate-pull-now 16s ease-in-out infinite alternate;">
+      alt="Garran Hill gate — today"
+      style="position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;object-position:center 35%;animation:gate-pull-now 32s ease-in-out infinite alternate;">
   </div>
 
   <!-- VIGNETTE -->
