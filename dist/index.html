@@ -3259,41 +3259,68 @@ blockquote.in {
 </section>
 <div class="act-break-diamond"></div>
   <div class="act-break-diamond"></div>
-<section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;padding-top:0;margin-top:0;">
- <!-- Top blend — fades from #0a0a0a at top into section -->
- <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:16vh;background:linear-gradient(to bottom,#0a0a0a 0%,transparent 100%);z-index:2;pointer-events:none;"></div>
- <!-- WHP GHOST MANUSCRIPT — actual letter scan, atmosphere only -->
-<div class="letter-ghost" aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;z-index:1;">
-  <img 
-    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:40,e_brightness:25,e_contrast:15,f_auto,q_auto,c_limit,w_1920/v1777391998/gh_key/gh_whp_letter1.jpg"
-    alt=""
-    style="position:absolute;inset:-10%;width:120%;height:120%;object-fit:cover;object-position:center top;transform:rotate(-3deg);opacity:0.10;pointer-events:none;"
-  >
-</div>
-<div class="split" style="position:relative;z-index:2;align-items:center;gap:clamp(2rem,4vw,5rem);">
- <!-- Portrait container -->
- <div class="img-reveal" style="flex:none;width:clamp(260px,32%,420px);display:flex;align-items:center;justify-content:center;padding:var(--sp-md) 0;min-height:320px;">
- <img loading="lazy" decoding="async"
- src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_700/v1777244132/gh_key/gh_whp.jpg"
- alt="Walter Hines Page — formal portrait, academic robes, Ambassador to the Court of St. James 1913–1918"
- style="display:block;width:100%;max-width:420px;height:auto;object-position:center 15%;">
- </div>
- <div class="split-text reveal" style="flex:1;min-width:0;padding-left:clamp(1.5rem,3vw,4rem);">
- <span class="micro-rule reveal"></span>
- <span class="eyebrow">Walter Hines Page &middot; 1855&ndash;1918</span>
- <h2 style="font-size:clamp(2.6rem,5vw,5rem);line-height:1.15;font-weight:300">Appointed by Wilson.<em style="display:block;font-size:0.82em;margin-top:0.25em;"> He held the alliance from London.</em></h2>
- <div class="body-text reveal">
- <p class="">Born in Cary, North Carolina. Co-founder of Doubleday, Page &amp; Company. Editor of <em>The Atlantic Monthly.</em> Appointed by Woodrow Wilson as Ambassador to the Court of St. James in 1913 &mdash; and kept there through the years the world came apart.</p>
- <p>From London, he commissioned Garran Hill to be built on his family&rsquo;s Moore County acres. He named it himself. Page returned from London in December 1918. He did not return to Garran Hill.</p>
-    <p class="body-text" style="font-style:italic;color:rgba(201,169,110,0.7);margin-top:var(--sp-md);">&ldquo;Build the farm, therefore; and let me hear at every stage of that happy game.&rdquo;</p>
-    <p class="body-text" style="font-size:var(--text-sm);color:rgba(245,240,232,0.45);letter-spacing:0.15em;text-transform:uppercase;">Walter Hines Page &middot; Letter from London &middot; 1915</p>
-    <p class="body-text" style="font-style:italic;color:rgba(201,169,110,0.75);font-size:var(--text-md);line-height:1.75;margin-top:var(--sp-lg);letter-spacing:0.02em;">&ldquo;The friend of Britain in her sorest need.&rdquo;</p>
-    <p class="body-text" style="font-size:var(--text-sm);color:rgba(245,240,232,0.5);letter-spacing:0.15em;text-transform:uppercase;">Westminster Abbey &middot; Inscribed 1921</p>
-<blockquote class="reveal" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1rem,1.5vw,1.3rem);font-weight:300;color:rgba(201,169,110,0.85);margin:1.5rem 0;">“Well, Frank, I did get here after all, didn't I?” — Aberdeen station, December 1918.</blockquote>
- </div>
- </div>
- </div>
+<section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;padding:clamp(6rem,12vw,12rem) 0;">
+  <!-- Ghost manuscript background -->
+  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none;">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:40,e_brightness:25,e_contrast:15,f_auto,q_auto,c_limit,w_1920/v1777391998/gh_key/gh_whp_letter1.jpg"
+      alt="" style="position:absolute;inset:-5%;width:110%;height:110%;object-fit:cover;object-position:center top;transform:rotate(-2deg);opacity:0.08;pointer-events:none;">
+  </div>
 
+  <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 clamp(2rem,6vw,7rem);">
+
+    <!-- Eyebrow -->
+    <div style="text-align:center;margin-bottom:clamp(3rem,6vw,6rem);">
+      <span class="micro-rule" style="display:block;width:40px;height:1px;background:linear-gradient(to right,transparent,#C9A96E,transparent);margin:0 auto 1.5rem;"></span>
+      <span class="eyebrow">Walter Hines Page &middot; 1855&ndash;1918</span>
+    </div>
+
+    <!-- Portrait + copy split -->
+    <div style="display:grid;grid-template-columns:clamp(220px,28%,380px) 1fr;gap:clamp(3rem,6vw,8rem);align-items:start;">
+
+      <!-- Portrait -->
+      <div class="img-reveal">
+        <img loading="lazy" decoding="async"
+          src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_700/v1777244132/gh_key/gh_whp.jpg"
+          alt="Walter Hines Page — Ambassador to the Court of St. James 1913–1918"
+          style="display:block;width:100%;height:auto;object-fit:cover;">
+      </div>
+
+      <!-- Copy -->
+      <div class="reveal">
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5vw,5rem);font-weight:300;line-height:1.1;color:#F5F0E8;margin-bottom:2rem;">
+          Appointed by Wilson.<em style="display:block;font-size:0.82em;margin-top:0.2em;">He held the alliance from London.</em>
+        </h2>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,1.3vw,1.18rem);font-weight:300;color:rgba(245,240,232,0.78);line-height:1.85;margin-bottom:1.5rem;">
+          Born in Cary, North Carolina. Co-founder of Doubleday, Page &amp; Company. Editor of <em>The Atlantic Monthly.</em> Appointed by Woodrow Wilson as Ambassador to the Court of St. James in 1913 &mdash; and kept there through the years the world came apart.
+        </p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,1.3vw,1.18rem);font-weight:300;color:rgba(245,240,232,0.78);line-height:1.85;margin-bottom:3rem;">
+          From London, he commissioned Garran Hill to be built on his family&rsquo;s Moore County acres. He named it himself. Page returned from London in December 1918. He did not return to Garran Hill.
+        </p>
+
+        <!-- Farm quote -->
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,1.6vw,1.4rem);font-weight:300;color:rgba(201,169,110,0.85);line-height:1.7;margin-bottom:0.6rem;">
+          &ldquo;Build the farm, therefore; and let me hear at every stage of that happy game.&rdquo;
+        </p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.6rem,0.85vw,0.72rem);font-weight:300;color:rgba(245,240,232,0.4);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:3rem;">
+          Walter Hines Page &middot; Letter from London &middot; 1915
+        </p>
+
+        <!-- Westminster -->
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.3rem,2vw,1.9rem);font-weight:300;color:rgba(201,169,110,0.9);line-height:1.5;margin-bottom:0.6rem;">
+          &ldquo;The friend of Britain in her sorest need.&rdquo;
+        </p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.6rem,0.85vw,0.72rem);font-weight:300;color:rgba(245,240,232,0.4);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:3rem;">
+          Westminster Abbey &middot; Inscribed 1921
+        </p>
+
+        <!-- Last words -->
+        <blockquote style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1rem,1.4vw,1.25rem);font-weight:300;color:rgba(201,169,110,0.8);line-height:1.75;border-left:1px solid rgba(201,169,110,0.3);padding-left:1.5rem;margin:0;">
+          &ldquo;Well, Frank, I did get here after all, didn&rsquo;t I?&rdquo;
+          <span style="display:block;font-style:normal;font-size:0.8em;color:rgba(245,240,232,0.4);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.5rem;">Aberdeen station &middot; December 1918</span>
+        </blockquote>
+      </div>
+    </div>
+  </div>
 </section>
   <!-- WHP PULL QUOTE — full dark moment -->
   <div id="whp-quote" style="background:#0a0a0a;text-align:center;padding:clamp(1rem,2vw,1.5rem) var(--col-pad);">
@@ -3366,7 +3393,7 @@ blockquote.in {
       </div>
     </div>
     <div class="split-img img-reveal">
-      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1200/gh_people/gh_betty_dumaine_1970s.jpg"
+      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1200/v1778815837/gh_people/gh_betty_dumaine_1970s.jpg"
         alt="Betty Dumaine with Toddy Hunter, 1970s -- steward of Garran Hill 1959 to 1984" style="object-position: center 30%;">
     </div>
   </div>
