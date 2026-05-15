@@ -3113,6 +3113,46 @@ blockquote.in {
   /* stat-lbl: consolidated above */
   
 
+
+/* ═══ HERO CSS SLIDESHOW ═══ */
+.hero-reel { position:absolute; inset:0; z-index:0; overflow:hidden; }
+.hero-slide { position:absolute; inset:0; opacity:0; background-size:cover; background-position:center center; will-change:opacity,transform; }
+@keyframes hero_slide_0 {
+  0.0% { opacity: 0; transform: scale(1.0); }
+  4.0% { opacity: 1; transform: scale(1.0); }
+  13.33% { opacity: 1; transform: scale(1.08); }
+  17.33% { opacity: 0; transform: scale(1.08); }
+  100%  { opacity: 0; transform: scale(1.08); }
+}
+@keyframes hero_slide_1 {
+  13.33% { opacity: 0; transform: scale(1.08) translateX(-1%); }
+  17.33% { opacity: 1; transform: scale(1.08) translateX(-1%); }
+  29.33% { opacity: 1; transform: scale(1.0) translateX(1%); }
+  33.33% { opacity: 0; transform: scale(1.0) translateX(1%); }
+  100%  { opacity: 0; transform: scale(1.0) translateX(1%); }
+}
+@keyframes hero_slide_2 {
+  29.33% { opacity: 0; transform: scale(1.0) translateX(1%); }
+  33.33% { opacity: 1; transform: scale(1.0) translateX(1%); }
+  45.33% { opacity: 1; transform: scale(1.08) translateX(-1%); }
+  49.33% { opacity: 0; transform: scale(1.08) translateX(-1%); }
+  100%  { opacity: 0; transform: scale(1.08) translateX(-1%); }
+}
+@keyframes hero_slide_3 {
+  45.33% { opacity: 0; transform: scale(1.0) translateY(1%); }
+  49.33% { opacity: 1; transform: scale(1.0) translateY(1%); }
+  61.33% { opacity: 1; transform: scale(1.08) translateY(-1%); }
+  65.33% { opacity: 0; transform: scale(1.08) translateY(-1%); }
+  100%  { opacity: 0; transform: scale(1.08) translateY(-1%); }
+}
+@keyframes hero_slide_4 {
+  61.33% { opacity: 0; transform: scale(1.08); }
+  65.33% { opacity: 1; transform: scale(1.08); }
+  80.0% { opacity: 1; transform: scale(1.0); }
+  84.0% { opacity: 0; transform: scale(1.0); }
+  100%  { opacity: 0; transform: scale(1.0); }
+}
+
 </style>
 </head>
 <body>
@@ -3155,14 +3195,16 @@ blockquote.in {
 <!-- HERO VIDEO: current site uses done_czfe8o. Earlier rule named Last_for_real_q0fqvw. CONFLICT  --  Rachel-confirmation-needed. Not changed. -->
 <section class="hero" id="top">
 
-  <video
-      id="hero-video"
-      autoplay muted loop playsinline
-      preload="auto"
-      style="position:absolute;inset:0;width:108%;height:108%;margin:-4%;object-fit:cover;object-position:center;z-index:0;animation:hero-drift 40s ease-in-out infinite alternate;"
-      aria-hidden="true">
-  <source src="https://res.cloudinary.com/dghn2xpif/video/upload/v1778818453/gh_hero_2026/hero_slideshow_v8.mp4" type="video/mp4">
-</video>
+<div class="hero-reel" aria-hidden="true">
+  <div class="hero-slide" id="hero-slide-0" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777243572/gh_photos/200_hollycrest_drive_11.jpg'); background-position:center center; animation:hero_slide_0 37.5s linear infinite;"></div>
+  <div class="hero-slide" id="hero-slide-1" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244670/gh_photos/200_hollycrest_drive_219.jpg'); background-position:center center; animation:hero_slide_1 37.5s linear infinite;"></div>
+  <div class="hero-slide" id="hero-slide-2" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244092/gh_photos/200_hollycrest_drive_221.jpg'); background-position:center center; animation:hero_slide_2 37.5s linear infinite;"></div>
+  <div class="hero-slide" id="hero-slide-3" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244093/gh_photos/200_hollycrest_drive_222.jpg'); background-position:center center; animation:hero_slide_3 37.5s linear infinite;"></div>
+  <div class="hero-slide" id="hero-slide-4" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777243899/gh_photos/200_hollycrest_drive_172.jpg'); background-position:center 40%; animation:hero_slide_4 37.5s linear infinite;"></div>
+</div>
+
+
+  
   <div class="hero-overlay"></div>
 
   <!-- VERTICAL ADDRESS EYEBROW  --  LEFT SPINE -->
