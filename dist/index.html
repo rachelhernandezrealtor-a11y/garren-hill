@@ -2435,11 +2435,11 @@
   }
   /* Modern overlay: fades in, holds, fades out — full 32s cycle */
   @keyframes gate-now-fade {
-    0%   { opacity: 0; }   /* start: sepia fully visible */
-    25%  { opacity: 0; }   /* hold sepia longer */
-    42%  { opacity: 1; }   /* modern dissolves in */
-    65%  { opacity: 1; }   /* hold modern */
-    88%  { opacity: 0; }   /* modern dissolves out */
+    0%   { opacity: 0; }   /* sepia fully visible — BEFORE */
+    55%  { opacity: 0; }   /* hold sepia as dominant image */
+    68%  { opacity: 1; }   /* modern dissolves in — NOW */
+    80%  { opacity: 1; }   /* hold modern briefly */
+    93%  { opacity: 0; }   /* modern dissolves back out */
     100% { opacity: 0; }   /* back to sepia */
   }
 
