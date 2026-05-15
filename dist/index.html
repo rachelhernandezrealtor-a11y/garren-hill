@@ -584,7 +584,7 @@
     }
     .nav-mobile a { font-size: 1rem; letter-spacing: 0.3em; text-transform: uppercase; }
 
-    .split { flex-direction: column !important; padding: clamp(4.5rem, 8vw, 8rem) var(--col-mid); gap: 2rem; min-height: auto; }
+    .split { flex-direction: column !important; padding: clamp(2rem, 4vw, 4rem) var(--col-mid); gap: 2rem; min-height: auto; }
     .split-img { min-height: 280px; flex: none; width: 100%; }
     .split-text { max-width: 100%; }
     .split-text.mid { padding-top: 0; justify-content: flex-start; }
@@ -1253,7 +1253,7 @@
 
   /* Split sections (image + text side by side) */
   .split-section, .split-reverse {
-    padding: var(--sp-lg) var(--col-mid);
+    padding: clamp(2rem, 4vw, 4rem) var(--col-mid);
     gap: clamp(3rem, 6vw, 7rem);
   }
 
@@ -1586,7 +1586,7 @@
     min-height: 80vh !important;
     width: 100% !important;
     max-width: 100% ;
-    padding: clamp(4.5rem, 8vw, 8rem) var(--col-mid);
+    padding: clamp(2rem, 4vw, 4rem) var(--col-mid);
     gap: 0 !important;
     overflow: hidden !important;
   }
@@ -1632,7 +1632,7 @@
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
-    padding: clamp(3rem, 6vw, 7rem) clamp(2.5rem, 5vw, 6rem);
+    padding: clamp(1.5rem, 3vw, 3.5rem) clamp(2rem, 4vw, 5rem);
     max-width: none ;
     background: #0a0a0a ;
   }
@@ -3007,7 +3007,7 @@ blockquote.in {
     display: flex !important;
     align-items: stretch !important;
     min-height: 80vh !important;
-    padding: var(--sp-lg) var(--col-mid) !important;
+    padding: clamp(2rem, 4vw, 4rem) var(--col-mid) !important;
     gap: clamp(3rem, 5.5vw, 6rem) !important;
   }
   .editorial-split.reverse {
@@ -3050,7 +3050,7 @@ blockquote.in {
     display: flex !important;
     align-items: stretch !important;
     min-height: 78vh !important;
-    padding: var(--sp-lg) var(--col-mid) !important;
+    padding: clamp(2rem, 4vw, 4rem) var(--col-mid) !important;
     gap: clamp(3rem, 5.5vw, 6rem) !important;
   }
   .split .split-text {
