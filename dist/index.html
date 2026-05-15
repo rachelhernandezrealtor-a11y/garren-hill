@@ -3120,14 +3120,14 @@ blockquote.in {
 <!-- HERO VIDEO: current site uses done_czfe8o. Earlier rule named Last_for_real_q0fqvw. CONFLICT — Rachel-confirmation-needed. Not changed. -->
 <section class="hero" id="top">
 
-  <div id="hero-slideshow" style="position:absolute;inset:0;z-index:0;">
-  <div class="hs-slide" style="position:absolute;inset:0;background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1778802079/gh_hero_2026/hero_slide_1.jpg');background-size:cover;background-position:center;opacity:1;transition:opacity 1.8s ease;" aria-label="Garran Hill — twilight facade"></div>
-  <div class="hs-slide" style="position:absolute;inset:0;background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1778802081/gh_hero_2026/hero_slide_4.jpg');background-size:cover;background-position:center;opacity:0;transition:opacity 1.8s ease;" aria-label="Garran Hill — estate at dusk"></div>
-  <div class="hs-slide" style="position:absolute;inset:0;background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1778802083/gh_hero_2026/hero_slide_6.jpg');background-size:cover;background-position:center;opacity:0;transition:opacity 1.8s ease;" aria-label="Garran Hill — portico at twilight"></div>
-  <div class="hs-slide" style="position:absolute;inset:0;background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1778802080/gh_hero_2026/hero_slide_2.jpg');background-size:cover;background-position:center;opacity:0;transition:opacity 1.8s ease;" aria-label="Garran Hill — pink azaleas"></div>
-  <div class="hs-slide" style="position:absolute;inset:0;background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1778802082/gh_hero_2026/hero_slide_5.jpg');background-size:cover;background-position:center;opacity:0;transition:opacity 1.8s ease;" aria-label="Garran Hill — white azaleas"></div>
-  <div class="hs-slide" style="position:absolute;inset:0;background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1778802081/gh_hero_2026/hero_slide_3.jpg');background-size:cover;background-position:center;opacity:0;transition:opacity 1.8s ease;" aria-label="Garran Hill — Blue Fox hitching post"></div>
-</div>
+  <video
+      id="hero-video"
+      autoplay muted loop playsinline
+      preload="auto"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;"
+      aria-hidden="true">
+  <source src="https://res.cloudinary.com/dghn2xpif/video/upload/f_auto,q_auto/v1778344633/done_czfe8o.mp4" type="video/mp4">
+</video>
   <div class="hero-overlay"></div>
 
   <!-- VERTICAL ADDRESS EYEBROW — LEFT SPINE -->
@@ -4132,17 +4132,6 @@ class="closing-text reveal-slow">Garran Hill is ready.<br>Now offered for its ne
   </p>
 
   <div style="text-align:center;padding:1.2rem var(--col-pad);"><p style="font-family:'Cormorant Garamond',serif;font-size:0.58rem;letter-spacing:0.22em;color:rgba(201,169,110,0.35);text-transform:uppercase;">NCpedia &middot; Walter Hines Page &middot; UNC Wilson Library &middot; Sotheby's International Realty</p></div></footer>
-<script>
-(function(){
-  var slides = document.querySelectorAll('#hero-slideshow .hs-slide');
-  if(!slides.length) return;
-  var cur = 0;
-  setInterval(function(){
-    slides[cur].style.opacity = '0';
-    cur = (cur + 1) % slides.length;
-    slides[cur].style.opacity = '1';
-  }, 5000);
-})();
-</script>
+
 </body>
 </html>
