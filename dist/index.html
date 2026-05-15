@@ -362,20 +362,25 @@
   */
   .split {
     display: flex;
-    align-items: stretch;
+    align-items: flex-start;
     min-height: 90vh;
     /* NO padding  --  section handles vertical spacing */
     padding: 0;
-    gap: clamp(0rem, 5vw, 6rem);
+    gap: clamp(0rem, 5vw, 5rem);
   }
   .split.reverse { flex-direction: row-reverse; }
+  /* Asymmetric flex ratios -- image slightly dominant on normal, text breathes on reverse */
+  .split > .split-img { flex: 1.15; }
+  .split > .split-text { flex: 0.85; }
+  .split.reverse > .split-img { flex: 0.9; }
+  .split.reverse > .split-text { flex: 1.1; }
   .split
 
   /* THE IMAGE CONTAINER  --  sealed, contained */
   .split-img {
     position: relative;
     flex: 1;
-    min-height: 520px;
+    min-height: clamp(520px, 75vh, 820px);
     overflow: hidden;
     background: #111;
   }
