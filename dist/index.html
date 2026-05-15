@@ -3473,17 +3473,21 @@ blockquote.in {
 </section>
 
 <!-- ── THRESHOLD ──────────────────────────────────────────── -->
-<section class="full-bleed-section" id="threshold" style="min-height:100vh;">
-  <div class="full-bleed-img img-reveal">
+<section id="threshold" style="position:relative;width:100%;min-height:100vh;overflow:hidden;background:#0a0a0a;">
+  <!-- Full-bleed threshold photo: entry hall french doors, stone inscription above -->
+  <div style="position:absolute;inset:0;z-index:0;">
     <img loading="lazy" decoding="async"
-      src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777263004/gh_key/gh_threshold.jpg"
-      alt="Garran Hill threshold  --  1916 inscription in stone, entry arch, Pinehurst NC"
-      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position: center center;">
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_2400/v1777243305/gh_interiors/200holycrest_1698.jpg"
+      alt="Garran Hill threshold -- entry hall, french doors, stone inscription 1916"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;">
+    <!-- Bottom gradient for text legibility -->
+    <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(5,5,5,0.85) 0%, rgba(5,5,5,0.45) 40%, rgba(5,5,5,0.0) 100%);"></div>
   </div>
-  <div class="full-bleed-caption full-bleed-caption--center reveal">
-    <span class="eyebrow">The Threshold &middot; 1916</span>
-    <h2>The door has been open<em> since 1916.</em></h2>
-    <p class="body-text">The inscription is cut into the stone above the entry: <em>Garran Hill, 1916.</em> It was placed there by the craftsmen Leonard Tufts sent  --  the same men building Pinehurst. It has not been altered. It has not been restored. It simply remains.</p>
+  <!-- Text: lower third -->
+  <div class="reveal" style="position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(3rem,6vw,6rem) clamp(2rem,6vw,8rem);text-align:center;">
+    <span class="eyebrow" style="color:rgba(201,169,110,0.85);display:block;margin-bottom:0.8rem;">The Threshold &middot; 1916</span>
+    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.2rem,4.5vw,5rem);font-weight:300;color:#F5F0E8;line-height:1.08;margin-bottom:1.2rem;">The door has been open<em> since 1916.</em></h2>
+    <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.95rem,1.3vw,1.25rem);font-weight:300;font-style:italic;max-width:600px;margin:0 auto;color:rgba(245,240,232,0.75);line-height:1.75;">The inscription is cut into the stone above the entry: <em>Garran Hill, 1916.</em> It was placed there by the craftsmen Leonard Tufts sent -- the same men building Pinehurst. It has not been altered. It has not been restored. It simply remains.</p>
   </div>
 </section>
 <div style="background:#0a0a0a;text-align:center;padding:clamp(3.5rem,7vw,7rem) clamp(2rem,6vw,7rem);">
