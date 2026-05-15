@@ -2431,6 +2431,23 @@
     100% { transform: scale(1.08) translate(-1.5%, -1%); }
   }
 
+
+  /* ── KB GATE THEN & NOW ── */
+  @keyframes gate-pull-then {
+    0%   { transform: scale(1.0) translate(0%, 0%); }
+    100% { transform: scale(1.08) translate(-1.5%, -1%); }
+  }
+  @keyframes gate-pull-now {
+    0%   { transform: scale(1.08) translate(1.5%, 1%); }
+    100% { transform: scale(1.0) translate(0%, 0%); }
+  }
+  @keyframes gate-now-fade {
+    0%   { opacity: 0; }
+    30%  { opacity: 0; }
+    70%  { opacity: 1; }
+    100% { opacity: 1; }
+  }
+
 </style>
 
   <!-- JSON-LD -->
@@ -3203,33 +3220,38 @@ blockquote.in {
 </section>
 <section id="kb-gate" class="editorial-fullbleed kb-gate-section" aria-label="Garran Hill — the estate since 1916" style="position:relative;min-height:100vh;overflow:hidden;">
 
-  <!-- GATE PHOTO — Ken Burns pull-through effect -->
-  <div style="position:absolute;inset:0;overflow:hidden;">
-    <img
-      loading="eager" decoding="async"
-      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:55,e_sharpen:15,f_auto,q_auto,c_limit,w_1920/v1778804755/gh_hero_2026/kb_gate_sepia.jpg"
-      alt="Garran Hill — the gate, 1916"
-      style="position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;object-position:center 35%;animation:gate-pull 12s ease-in-out infinite alternate;">
+  <!-- THEN: sepia gate — historical -->
+  <div style="position:absolute;inset:0;overflow:hidden;z-index:0;">
+    <img loading="eager" decoding="async"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:60,e_sharpen:15,f_auto,q_auto,c_limit,w_1920/v1778804755/gh_hero_2026/kb_gate_sepia.jpg"
+      alt="Garran Hill gate — then"
+      style="position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;object-position:center 35%;animation:gate-pull-then 16s ease-in-out infinite alternate;">
   </div>
 
-  <!-- WHP GHOST LETTER — bleeds up from beneath, pre-echoes the history section -->
-  <div aria-hidden="true" style="position:absolute;inset:0;z-index:1;pointer-events:none;">
-    <img
-      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:60,e_brightness:30,f_auto,q_auto,c_limit,w_1600/v1777391998/gh_key/gh_whp_letter1.jpg"
-      alt=""
-      style="position:absolute;bottom:-5%;right:-5%;width:65%;height:80%;object-fit:cover;object-position:center top;transform:rotate(2deg);opacity:0.07;filter:grayscale(20%);">
+  <!-- NOW: modern driveway — present -->
+  <div style="position:absolute;inset:0;overflow:hidden;z-index:1;animation:gate-now-fade 16s ease-in-out infinite alternate;">
+    <img loading="eager" decoding="async"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244133/gh_photos/200_hollycrest_drive_185.jpg"
+      alt="Garran Hill gate — now"
+      style="position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;object-position:center 35%;animation:gate-pull-now 16s ease-in-out infinite alternate;">
   </div>
 
-  <!-- VIGNETTE — dark edges, draws eye through the gate -->
-  <div aria-hidden="true" style="position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 35%,rgba(5,5,5,0.65) 100%);"></div>
+  <!-- WHP GHOST LETTER — pre-echo of history section -->
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:2;pointer-events:none;">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:60,e_brightness:30,f_auto,q_auto,c_limit,w_1600/v1777391998/gh_key/gh_whp_letter1.jpg"
+      alt="" style="position:absolute;bottom:-5%;right:-5%;width:65%;height:80%;object-fit:cover;object-position:center top;transform:rotate(2deg);opacity:0.07;pointer-events:none;">
+  </div>
 
-  <!-- BOTTOM BLEED — seamless into WHP section below -->
-  <div aria-hidden="true" style="position:absolute;bottom:0;left:0;right:0;height:35%;z-index:3;pointer-events:none;background:linear-gradient(to bottom,transparent 0%,rgba(10,10,10,0.7) 60%,#0a0a0a 100%);"></div>
+  <!-- VIGNETTE -->
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:3;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 35%,rgba(5,5,5,0.65) 100%);"></div>
 
-  <!-- OVERLAY TEXT -->
-  <div class="reveal" style="position:relative;z-index:4;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(2.5rem,5vw,5rem) clamp(2rem,6vw,8rem) clamp(3rem,6vw,6rem);text-align:center;">
+  <!-- BOTTOM BLEED into WHP -->
+  <div aria-hidden="true" style="position:absolute;bottom:0;left:0;right:0;height:35%;z-index:4;pointer-events:none;background:linear-gradient(to bottom,transparent 0%,rgba(10,10,10,0.7) 60%,#0a0a0a 100%);"></div>
+
+  <!-- TEXT -->
+  <div class="reveal" style="position:relative;z-index:5;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(2.5rem,5vw,5rem) clamp(2rem,6vw,8rem) clamp(3rem,6vw,6rem);text-align:center;">
     <span class="eyebrow" style="color:rgba(201,169,110,0.8);">The Estate &middot; Pinehurst, NC</span>
-    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.4rem,4.5vw,4.8rem);margin-top:0.8rem;color:#F5F0E8;font-weight:300;line-height:1.08;max-width:none;"><span class="headline-drop">S</span>ome houses hold history.<em> This one shaped it.</em></h2>
+    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.4rem,4.5vw,4.8rem);margin-top:0.8rem;color:#F5F0E8;font-weight:300;line-height:1.08;"><span class="headline-drop">S</span>ome houses hold history.<em> This one shaped it.</em></h2>
     <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1rem,1.4vw,1.35rem);font-weight:300;font-style:italic;margin-top:1rem;max-width:600px;margin-left:auto;margin-right:auto;color:rgba(245,240,232,0.78);line-height:1.7;">The door has been open since 1916.</p>
   </div>
 
