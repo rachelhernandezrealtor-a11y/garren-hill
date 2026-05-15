@@ -3114,80 +3114,85 @@ blockquote.in {
   
 
 
-/* ═══ HERO CSS SLIDESHOW ═══ */
 
 
 
-  4.0% { opacity: 1; transform: scale(1.0); }
-  13.33% { opacity: 1; transform: scale(1.08); }
-  17.33% { opacity: 0; transform: scale(1.08); }
-  100%  { opacity: 0; transform: scale(1.08); }
-}
-
-  17.33% { opacity: 1; transform: scale(1.08) translateX(-1%); }
-  29.33% { opacity: 1; transform: scale(1.0) translateX(1%); }
-  33.33% { opacity: 0; transform: scale(1.0) translateX(1%); }
-  100%  { opacity: 0; transform: scale(1.0) translateX(1%); }
-}
-
-  33.33% { opacity: 1; transform: scale(1.0) translateX(1%); }
-  45.33% { opacity: 1; transform: scale(1.08) translateX(-1%); }
-  49.33% { opacity: 0; transform: scale(1.08) translateX(-1%); }
-  100%  { opacity: 0; transform: scale(1.08) translateX(-1%); }
-}
-
-  49.33% { opacity: 1; transform: scale(1.0) translateY(1%); }
-  61.33% { opacity: 1; transform: scale(1.08) translateY(-1%); }
-  65.33% { opacity: 0; transform: scale(1.08) translateY(-1%); }
-  100%  { opacity: 0; transform: scale(1.08) translateY(-1%); }
-}
-
-  65.33% { opacity: 1; transform: scale(1.08); }
-  80.0% { opacity: 1; transform: scale(1.0); }
-  84.0% { opacity: 0; transform: scale(1.0); }
-  100%  { opacity: 0; transform: scale(1.0); }
-}
 
 
-/* ═══ HERO CSS SLIDESHOW v2 -- seamless crossfade ═══ */
-.hero-reel { position:absolute; inset:0; z-index:0; overflow:hidden; background:#0a0a0a; }
-.hero-slide { position:absolute; inset:0; opacity:0; background-size:cover; will-change:opacity,transform; }
-@keyframes hs0 {
-  0.0%  { opacity: 0; transform: scale(1.0); }
   3.125%  { opacity: 1; transform: scale(1.0); }
   12.5%  { opacity: 1; transform: scale(1.08); }
   18.75%  { opacity: 0; transform: scale(1.08); }
   100%    { opacity: 0; transform: scale(1.08); }
 }
-@keyframes hs1 {
-  12.5%  { opacity: 0; transform: scale(1.07) translateX(-1%); }
+
   18.75%  { opacity: 1; transform: scale(1.07) translateX(-1%); }
   31.25%  { opacity: 1; transform: scale(1.0) translateX(1%); }
   37.5%  { opacity: 0; transform: scale(1.0) translateX(1%); }
   100%    { opacity: 0; transform: scale(1.0) translateX(1%); }
 }
-@keyframes hs2 {
-  31.25%  { opacity: 0; transform: scale(1.0) translateX(1%); }
+
   37.5%  { opacity: 1; transform: scale(1.0) translateX(1%); }
   50.0%  { opacity: 1; transform: scale(1.07) translateX(-1%); }
   56.25%  { opacity: 0; transform: scale(1.07) translateX(-1%); }
   100%    { opacity: 0; transform: scale(1.07) translateX(-1%); }
 }
-@keyframes hs3 {
-  50.0%  { opacity: 0; transform: scale(1.0) translateY(1%); }
+
   56.25%  { opacity: 1; transform: scale(1.0) translateY(1%); }
   68.75%  { opacity: 1; transform: scale(1.07) translateY(-1%); }
   75.0%  { opacity: 0; transform: scale(1.07) translateY(-1%); }
   100%    { opacity: 0; transform: scale(1.07) translateY(-1%); }
 }
-@keyframes hs4 {
-  0%      { opacity: 0.5; transform: scale(1.0); }
+
   3.125%   { opacity: 0; transform: scale(1.0); }
   68.75%  { opacity: 0; transform: scale(1.07); }
   75.0%  { opacity: 1; transform: scale(1.07); }
   90.625%  { opacity: 1; transform: scale(1.0); }
   96.875%  { opacity: 0; transform: scale(1.0); }
   100%    { opacity: 0; transform: scale(1.0); }
+}
+
+/* ═══ HERO SLIDESHOW v3 — fade-on-top, no black ═══ */
+.hero-reel {
+  position:absolute; inset:0; z-index:0; overflow:hidden; background:#0a0a0a;
+}
+.hero-slide {
+  position:absolute; inset:0;
+  background-size:cover;
+  will-change:opacity,transform;
+}
+@keyframes hs0 {
+  0%     { opacity:1; transform:scale(1.0); }
+  15.385%  { opacity:1; transform:scale(1.06); }
+  15.415%  { opacity:0; transform:scale(1.06); }
+  100%   { opacity:0; transform:scale(1.06); }
+}
+@keyframes hs1 {
+  0%     { opacity:0; transform:scale(1.06) translateX(-0.5%); }
+  15.385%   { opacity:0; transform:scale(1.06) translateX(-0.5%); }
+  23.077%  { opacity:1; transform:scale(1.06) translateX(-0.5%); }
+  33.846%  { opacity:1; transform:scale(1.0) translateX(0.5%); }
+  100%   { opacity:1; transform:scale(1.0) translateX(0.5%); }
+}
+@keyframes hs2 {
+  0%     { opacity:0; transform:scale(1.0) translateX(0.5%); }
+  33.846%   { opacity:0; transform:scale(1.0) translateX(0.5%); }
+  41.538%  { opacity:1; transform:scale(1.0) translateX(0.5%); }
+  52.308%  { opacity:1; transform:scale(1.06) translateX(-0.5%); }
+  100%   { opacity:1; transform:scale(1.06) translateX(-0.5%); }
+}
+@keyframes hs3 {
+  0%     { opacity:0; transform:scale(1.0) translateY(0.5%); }
+  52.308%   { opacity:0; transform:scale(1.0) translateY(0.5%); }
+  60.0%  { opacity:1; transform:scale(1.0) translateY(0.5%); }
+  70.769%  { opacity:1; transform:scale(1.06) translateY(-0.5%); }
+  100%   { opacity:1; transform:scale(1.06) translateY(-0.5%); }
+}
+@keyframes hs4 {
+  0%     { opacity:0; transform:scale(1.06); }
+  70.769%   { opacity:0; transform:scale(1.06); }
+  78.462%  { opacity:1; transform:scale(1.06); }
+  100.0%  { opacity:1; transform:scale(1.0); }
+  100%   { opacity:1; transform:scale(1.0); }
 }
 </style>
 </head>
@@ -3232,7 +3237,14 @@ blockquote.in {
 <section class="hero" id="top">
 
 <div class="hero-reel" aria-hidden="true">
-  <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777243572/gh_photos/200_hollycrest_drive_11.jpg'); background-position:center center; animation:hs0 32.0s ease-in-out infinite;"></div>
+  <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777243572/gh_photos/200_hollycrest_drive_11.jpg'); background-position:center center; z-index:1; opacity:0; animation:hs0 32.5s ease-in-out infinite;"></div>
+  <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244670/gh_photos/200_hollycrest_drive_219.jpg'); background-position:center center; z-index:2; opacity:0; animation:hs1 32.5s ease-in-out infinite;"></div>
+  <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244092/gh_photos/200_hollycrest_drive_221.jpg'); background-position:center center; z-index:3; opacity:0; animation:hs2 32.5s ease-in-out infinite;"></div>
+  <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244093/gh_photos/200_hollycrest_drive_222.jpg'); background-position:center 45%; z-index:4; opacity:0; animation:hs3 32.5s ease-in-out infinite;"></div>
+  <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777243899/gh_photos/200_hollycrest_drive_172.jpg'); background-position:center 40%; z-index:5; opacity:0; animation:hs4 32.5s ease-in-out infinite;"></div>
+</div>
+
+
   <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244670/gh_photos/200_hollycrest_drive_219.jpg'); background-position:center center; animation:hs1 32.0s ease-in-out infinite;"></div>
   <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244092/gh_photos/200_hollycrest_drive_221.jpg'); background-position:center center; animation:hs2 32.0s ease-in-out infinite;"></div>
   <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244093/gh_photos/200_hollycrest_drive_222.jpg'); background-position:center 45%; animation:hs3 32.0s ease-in-out infinite;"></div>
