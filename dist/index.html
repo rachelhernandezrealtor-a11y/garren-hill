@@ -3151,44 +3151,33 @@ blockquote.in {
   100%    { opacity: 0; transform: scale(1.0); }
 }
 
-/* ═══ HERO SLIDESHOW v3 — fade-on-top, no black ═══ */
-.hero-reel {
-  position:absolute; inset:0; z-index:0; overflow:hidden; background:#0a0a0a;
-}
-.hero-slide {
-  position:absolute; inset:0;
-  background-size:cover;
-  will-change:opacity,transform;
-}
-@keyframes hs0 {
-  0%     { opacity:1; transform:scale(1.0); }
+
+
+
+
   15.385%  { opacity:1; transform:scale(1.06); }
   15.415%  { opacity:0; transform:scale(1.06); }
   100%   { opacity:0; transform:scale(1.06); }
 }
-@keyframes hs1 {
-  0%     { opacity:0; transform:scale(1.06) translateX(-0.5%); }
+
   15.385%   { opacity:0; transform:scale(1.06) translateX(-0.5%); }
   23.077%  { opacity:1; transform:scale(1.06) translateX(-0.5%); }
   33.846%  { opacity:1; transform:scale(1.0) translateX(0.5%); }
   100%   { opacity:1; transform:scale(1.0) translateX(0.5%); }
 }
-@keyframes hs2 {
-  0%     { opacity:0; transform:scale(1.0) translateX(0.5%); }
+
   33.846%   { opacity:0; transform:scale(1.0) translateX(0.5%); }
   41.538%  { opacity:1; transform:scale(1.0) translateX(0.5%); }
   52.308%  { opacity:1; transform:scale(1.06) translateX(-0.5%); }
   100%   { opacity:1; transform:scale(1.06) translateX(-0.5%); }
 }
-@keyframes hs3 {
-  0%     { opacity:0; transform:scale(1.0) translateY(0.5%); }
+
   52.308%   { opacity:0; transform:scale(1.0) translateY(0.5%); }
   60.0%  { opacity:1; transform:scale(1.0) translateY(0.5%); }
   70.769%  { opacity:1; transform:scale(1.06) translateY(-0.5%); }
   100%   { opacity:1; transform:scale(1.06) translateY(-0.5%); }
 }
-@keyframes hs4 {
-  0%     { opacity:0; transform:scale(1.06); }
+
   70.769%   { opacity:0; transform:scale(1.06); }
   78.462%  { opacity:1; transform:scale(1.06); }
   100.0%  { opacity:1; transform:scale(1.0); }
@@ -3235,9 +3224,19 @@ blockquote.in {
 <!-- ═══ ACT 0  --  HERO ═══ -->
 <!-- HERO VIDEO: current site uses done_czfe8o. Earlier rule named Last_for_real_q0fqvw. CONFLICT  --  Rachel-confirmation-needed. Not changed. -->
 <section class="hero" id="top">
+<video
+  id="hero-video"
+  autoplay
+  muted
+  loop
+  playsinline
+  preload="auto"
+  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;"
+>
+  <source src="https://res.cloudinary.com/dghn2xpif/video/upload/e_loop,q_auto,f_auto/v1778822635/gh_key/gh_hero_slideshow_v1.mp4" type="video/mp4">
+</video>
 
-<div class="hero-reel" aria-hidden="true">
-  <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777243572/gh_photos/200_hollycrest_drive_11.jpg'); background-position:center center; z-index:1; opacity:0; animation:hs0 32.5s ease-in-out infinite;"></div>
+
   <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244670/gh_photos/200_hollycrest_drive_219.jpg'); background-position:center center; z-index:2; opacity:0; animation:hs1 32.5s ease-in-out infinite;"></div>
   <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244092/gh_photos/200_hollycrest_drive_221.jpg'); background-position:center center; z-index:3; opacity:0; animation:hs2 32.5s ease-in-out infinite;"></div>
   <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244093/gh_photos/200_hollycrest_drive_222.jpg'); background-position:center 45%; z-index:4; opacity:0; animation:hs3 32.5s ease-in-out infinite;"></div>
