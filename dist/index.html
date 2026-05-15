@@ -363,7 +363,7 @@
   .split {
     display: flex;
     align-items: stretch;
-    min-height: 60vh;
+    min-height: 90vh;
     /* NO padding — section handles vertical spacing */
     padding: 0;
     gap: clamp(3rem, 5vw, 6rem);
@@ -984,7 +984,7 @@
   .editorial-split {
     display: flex;
     align-items: stretch;
-    min-height: 60vh;
+    min-height: 90vh;
     padding: 0;
     gap: clamp(3rem, 5vw, 6rem);
   }
@@ -2449,6 +2449,8 @@
     100% { opacity: 0; }   /* back to sepia */
   }
 
+
+  .section-content { width:100%; }
 </style>
 
   <!-- JSON-LD -->
@@ -3594,7 +3596,7 @@ blockquote.in {
 
       <p style="font-family:'Cormorant Garamond',serif;
         font-size:clamp(1rem,1.2vw,1.12rem);font-weight:300;
-        color:rgba(245,240,232,0.72);line-height:1.9;margin:0;">
+        color:rgba(245,240,232,0.72);line-height:1.9;margin:0;overflow-wrap:break-word;word-break:normal;hyphens:none;">
         The Salon is the first room of consequence after the foyer. Nearly forty feet from end to end. High ceilings, the Georgian mantelpiece centered on the outside wall, glass doors on both ends. The red is deliberate. It has been there a long time.
       </p>
 
@@ -3644,7 +3646,7 @@ blockquote.in {
 <!-- LIBRARY  --  reverse -->
 
 
-<section id="kitchen" style="background:#0a0a0a;padding:clamp(5rem,10vw,10rem) 0 0;">
+<section id="kitchen" style="background:#0a0a0a;padding:0;">
 
   <!-- Kitchen narrative intro -->
   <div style="max-width:1280px;margin:0 auto;padding:0 clamp(2rem,6vw,7rem) clamp(3rem,5vw,5rem);">
@@ -3735,7 +3737,7 @@ blockquote.in {
 
 
 <!-- LIBRARY -->
-<section id="library" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1350.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.07;filter:grayscale(50%);display:block;"></div>
+<section id="library" style="position:relative;padding:0;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/gh_interiors/200holycrest_1350.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.07;filter:grayscale(50%);display:block;"></div>
   <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <div class="split reverse">
     <div class="split-text reveal">
@@ -3756,7 +3758,7 @@ blockquote.in {
 </section>
 
 <!-- PRIMARY SUITE -->
-<section id="primary-suite">
+<section id="primary-suite" style="padding:0;">
   <div class="split">
     <div class="split-img img-reveal">
       <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1600/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/v1777243305/gh_interiors/200holycrest_1534.jpg"
