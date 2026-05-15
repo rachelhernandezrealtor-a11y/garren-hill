@@ -38,15 +38,15 @@
     --text-lg:   clamp(2.6rem,  5vw,    5rem);    /* section titles */
     --text-xl:   clamp(3.4rem,  6.5vw,  6.5rem);    /* large display */
     --text-hero: clamp(6rem,    19vw,   17rem);      /* hero name — owns the screen */
-    /* SPACING — everything breathes from this base */
-    --sp-unit: clamp(1rem, 2vw, 1.6rem);
+    /* SPACING — tightened May 2026 */
+    --sp-unit: clamp(0.8rem, 1.5vw, 1.2rem);
     --sp-xs:   calc(var(--sp-unit) * 1);
     --sp-sm:   calc(var(--sp-unit) * 2);
-    --sp-md:   calc(var(--sp-unit) * 4.5);
-    --sp-lg:   calc(var(--sp-unit) * 10);
-    --sp-xl:   calc(var(--sp-unit) * 16);
-    --col-pad: clamp(2.5rem, 8vw, 9rem);
-    --col-mid: clamp(1.8rem, 5vw, 5.5rem);
+    --sp-md:   calc(var(--sp-unit) * 3.5);
+    --sp-lg:   calc(var(--sp-unit) * 6);
+    --sp-xl:   calc(var(--sp-unit) * 9);
+    --col-pad: clamp(2rem, 6vw, 7rem);
+    --col-mid: clamp(1.5rem, 4vw, 4.5rem);
     --max-text: 62ch;
     --max-lead: 560px;
   }
@@ -392,14 +392,14 @@
 
   /* THE TEXT COLUMN */
   /* Breathing room so text never hugs image */
-  .split-text { padding: clamp(2rem, 4vw, 4rem) 0; }
+  .split-text { padding: clamp(1rem, 2.5vw, 2.5rem) 0; }
   .split-text {
     flex: 1;
     display: flex; flex-direction: column;
     justify-content: center;
     max-width: 540px;
   }
-  .split-text.mid { justify-content: flex-start; padding-top: var(--sp-lg); }
+  .split-text.mid { justify-content: flex-start; padding-top: clamp(1.5rem, 3vw, 3rem); }
 
   /* § 12. KB GATE — full-bleed cinematic with text overlay */
   .kb-gate {
@@ -428,22 +428,22 @@
 
   /* § 13. PULL QUOTE SECTIONS */
   section.pull {
-    padding: var(--sp-xl) clamp(4rem, 18vw, 22rem);
+    padding: clamp(2.5rem,5vw,5rem) clamp(2rem,6vw,8rem);
     text-align: center;
   }
   section.pull.cinematic {
-    padding: var(--sp-xl) var(--col-mid);
+    padding: clamp(2.5rem,5vw,5rem) var(--col-mid);
   }
   section.pull.intimate {
-    padding: var(--sp-xl) clamp(3rem, 12vw, 14rem);
+    padding: clamp(2.5rem,5vw,5rem) clamp(2rem,6vw,8rem);
   }
 
   /* § 14. TEXT SECTIONS */
   .text-section.alt { text-align: left; max-width: none; margin: 0; }
 
   /* § 15. BREATH / INTERSTITIAL */
-  .breath { padding: var(--sp-xl) var(--col-pad); text-align: center; }
-  .breath.short { padding: var(--sp-lg) var(--col-pad); }
+  .breath { padding: clamp(2.5rem,5vw,5rem) var(--col-pad); text-align: center; }
+  .breath.short { padding: clamp(1.8rem,3.5vw,3.5rem) var(--col-pad); }
   .georgian-ornament { display: flex; align-items: center; justify-content: center; gap: 2rem; }
   .georgian-ornament::before, .georgian-ornament::after {
     content: ''; flex: 1; max-width: 180px; height: 1px;
@@ -545,7 +545,7 @@
     .tour-actions { padding: 0 1.5rem; }
   }
     /* § 19. INQUIRY */
-  .inquiry { padding: var(--sp-lg) var(--col-pad); max-width: 700px; margin: 0 auto; text-align: center; }
+  .inquiry { padding: clamp(2.5rem,5vw,5rem) var(--col-pad); max-width: 700px; margin: 0 auto; text-align: center; }
   .inquiry-form { text-align: left; margin-top: var(--sp-md); }
   .inquiry-field {
     width: 100%; background: transparent;
@@ -567,7 +567,7 @@
   .btn-inquire:hover { background: var(--gold); color: var(--dark); }
 
   /* § 20. CLOSING */
-  .closing { padding: var(--sp-xl) var(--col-pad); text-align: center; border-top: 1px solid rgba(201,169,110,0.1); }
+  .closing { padding: clamp(3rem,6vw,6rem) var(--col-pad); text-align: center; border-top: 1px solid rgba(201,169,110,0.1); }
   .closing-text { font-size: clamp(1.4rem, 2.8vw, 2.4rem); font-style: italic; color: var(--cream); max-width: 700px; margin: 0 auto; line-height: 1.5; }
   .sothebys-lockup { margin-top: var(--sp-lg); font-size: 0.55rem; letter-spacing: 0.45em; text-transform: uppercase; color: rgba(201,169,110,0.78); }
 
@@ -592,7 +592,7 @@
     
     section.pull, section.pull.cinematic, section.pull.intimate { padding: clamp(3rem, 10vw, 5rem) 1.5rem; }
     .text-section, .text-section.alt { padding: var(--sp-lg) 1.5rem; }
-    .breath { padding: var(--sp-xl) var(--col-pad); }
+    .breath { padding: clamp(2.5rem,5vw,5rem) var(--col-pad); }
     .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
     
     
@@ -651,8 +651,8 @@
   }
   .full-bleed-caption--center {
     text-align: center;
-    padding-left: clamp(2rem, 12vw, 18rem);
-    padding-right: clamp(2rem, 12vw, 18rem);
+    padding-left: clamp(1.5rem, 7vw, 10rem);
+    padding-right: clamp(1.5rem, 7vw, 10rem);
   }
   .full-bleed-caption--bottom {
     text-align: left;
@@ -1164,7 +1164,7 @@
   @media (max-width: 768px) {
     .vertical-pair {
       flex-direction: column;
-      padding: var(--sp-lg) var(--col-pad);
+      padding: clamp(2.5rem,5vw,5rem) var(--col-pad);
     }
     .vertical-pair-card .vp-img {
       aspect-ratio: 3 / 2;
@@ -1259,7 +1259,7 @@
 
   /* Pull quotes get breathing room */
   .pull-quote-section, blockquote {
-    padding: var(--sp-xl) clamp(3rem, 15vw, 18rem);
+    padding: clamp(2.5rem,5vw,5rem) clamp(2.5rem,10vw,12rem);
   }
 
   /* Section eyebrows — unified */
@@ -1534,13 +1534,13 @@
   }
   /* Caption over full-bleed */
   .full-bleed-caption {
-    padding: clamp(2rem, 5vw, 4rem) clamp(3rem, 8vw, 10rem);
+    padding: clamp(1.5rem, 3.5vw, 3rem) clamp(2rem, 5vw, 6rem);
   }
   .full-bleed-caption /* h2-conflict removed */
 
   /* ── EDITORIAL BRIDGE — replaces room card grid ── */
   .editorial-bridge {
-    padding: var(--sp-xl) clamp(3rem, 12vw, 14rem);
+    padding: clamp(2.5rem,5vw,5rem) clamp(2rem,8vw,10rem);
     text-align: center;
     border-top: 1px solid rgba(201,169,110,0.12);
     border-bottom: 1px solid rgba(201,169,110,0.12);
@@ -1928,7 +1928,7 @@
       --col-mid: clamp(6rem, 14vw, 16rem);
     }
     .split { gap: clamp(3rem, 5vw, 6rem); }
-    .split-text { padding: clamp(3rem, 5vw, 5rem) 0; }
+    .split-text { padding: clamp(1.5rem, 3vw, 3rem) 0; }
     .body-text p, p.body-text { line-height: 1.82; }
   }
 
@@ -2233,7 +2233,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0 clamp(2rem, 8vw, 10rem);
+    padding: 0 clamp(1.5rem, 5vw, 7rem);
     transform: rotate(-2deg) translateY(-8%) translateX(-5%);
     line-height: 1.4;
     gap: 0.3em;
@@ -2795,7 +2795,7 @@ section:not(#top)::before {
 section {
   position: relative;
   overflow: hidden;
-  padding: clamp(5rem, 9vw, 10rem) clamp(2.5rem, 6vw, 7rem);
+  padding: clamp(2.5rem, 5vw, 5rem) clamp(2.5rem, 6vw, 7rem);
 }
 
 /* Fullbleed sections — no padding, image takes full width */
@@ -2821,7 +2821,7 @@ section {
 #whp-quote,
 #restoration,
 #restoration-record {
-  padding: clamp(6rem, 10vw, 12rem) clamp(2.5rem, 6vw, 7rem);
+  padding: clamp(3rem, 5vw, 5.5rem) clamp(2.5rem, 6vw, 7rem);
 }
 
 /* Split sections — less lateral padding, gap handles spacing */
@@ -2845,7 +2845,7 @@ section {
 
 /* Kitchen — full chapter, needs generous room */
 #kitchen {
-  padding: clamp(6rem, 10vw, 12rem) 0;
+  padding: clamp(3rem, 5vw, 5.5rem) 0;
 }
 
 /* Inquiry + tour — centered, compact */
@@ -3359,7 +3359,7 @@ blockquote.in {
 
 </section>
 <div class="act-break-diamond"></div>
-<section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;padding:clamp(6rem,12vw,12rem) 0;">
+<section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;padding:clamp(3.5rem,6vw,6rem) 0;">
   <!-- Ghost manuscript background -->
   <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none;">
     <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:40,e_brightness:25,e_contrast:15,f_auto,q_auto,c_limit,w_1920/v1777391998/gh_key/gh_whp_letter1.jpg"
@@ -3444,7 +3444,7 @@ blockquote.in {
 
 
 
-<section id="architecture" style="background:#0a0a0a;padding:clamp(4rem,8vw,8rem) var(--col-mid);">
+<section id="architecture" style="background:#0a0a0a;padding:clamp(2.5rem,5vw,5rem) var(--col-mid);">
   <div class="split" style="align-items:center;gap:clamp(2rem,5vw,6rem);">
     <div class="split-img img-reveal" style="flex:1.2;">
       <img loading="lazy" decoding="async"
@@ -3575,7 +3575,7 @@ blockquote.in {
   <!-- TEXT: left-anchored, vertically centered -->
   <div style="position:relative;z-index:2;
     min-height:100vh;display:flex;align-items:center;
-    padding:clamp(5rem,10vw,10rem) clamp(2rem,6vw,7rem);">
+    padding:clamp(2.5rem,5vw,5rem) clamp(2rem,6vw,7rem);">
     <div style="max-width:480px;">
 
       <span style="display:block;font-family:'Cormorant Garamond',serif;
@@ -3942,7 +3942,7 @@ blockquote.in {
     src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_limit,w_1920/v1777244126/gh_photos/200_hollycrest_drive_199.jpg"
     alt="Garran Hill from above  --  circular drive, brick columns, red brick mansion, 4.15 acres, Moore County NC"
     style="object-position: center 35%; width:100%;height:100%;object-fit:cover;position:absolute;inset:0;filter:brightness(0.80);">
-  <div class="reveal" style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70vh;padding:clamp(5rem,10vw,11rem) var(--col-pad);text-align:center;">
+  <div class="reveal" style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70vh;padding:clamp(2.5rem,5vw,5.5rem) var(--col-pad);text-align:center;">
     <span class="micro-rule" style="margin:0 auto var(--sp-sm);"></span>
     <span class="eyebrow" style="display:block;margin-bottom:var(--sp-xs)">4.15 Acres &middot; Moore County</span>
     <h2 style="max-width:760px;">From above,<em> the estate explains itself.</em></h2>
@@ -4042,7 +4042,7 @@ Not renovated into anonymity. Restored back into itself.</p>
 <div class="act-break" aria-hidden="true">
   <div class="act-break-diamond"></div>
 </div>
-<section class="inquiry" id="inquiry" style="padding: var(--sp-lg) var(--col-pad);"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777428893/gh_key/gh_gate_twilight.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.14;display:block;"></div>
+<section class="inquiry" id="inquiry" style="padding: clamp(2.5rem,5vw,5rem) var(--col-pad);"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777428893/gh_key/gh_gate_twilight.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.14;display:block;"></div>
   <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <div class="reveal">
     <span class="eyebrow" style="display:block;text-align:center">Private Showing</span>
