@@ -2445,6 +2445,11 @@
     100% { opacity: 0; }
 
 
+
+@keyframes heroFadeIn {
+  0%   { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
 </style>
 </head>
 <body>
@@ -2496,8 +2501,8 @@
   <!-- VIGNETTE -->
   <div class="hero-overlay" style="position:absolute;inset:0;z-index:1;pointer-events:none;
     background:
-      linear-gradient(to bottom, rgba(10,10,10,0.45) 0%, transparent 32%, transparent 52%, rgba(10,10,10,0.75) 100%),
-      radial-gradient(ellipse at center, transparent 38%, rgba(10,10,10,0.4) 100%);"></div>
+      linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, transparent 28%, transparent 48%, rgba(10,10,10,0.88) 100%),
+      radial-gradient(ellipse at center, transparent 30%, rgba(10,10,10,0.55) 100%);"></div>
 
   <!-- LEFT SPINE -->
   <div style="position:absolute;left:2.5rem;top:50%;transform:translateY(-50%) rotate(-90deg);
@@ -2516,7 +2521,8 @@
   <!-- TITLE BLOCK: lower third, above stat bar -->
   <div style="position:absolute;bottom:0;left:0;right:0;z-index:5;
     padding:0 clamp(2rem,6vw,8rem) 11rem;
-    display:flex;flex-direction:column;align-items:center;text-align:center;">
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    animation:heroFadeIn 2.8s ease 0.8s forwards;opacity:0;">
 
     <p style="margin:0 0 1rem 0;display:flex;align-items:center;gap:1rem;
       font-family:'Cormorant Garamond',serif;font-size:clamp(0.6rem,0.85vw,0.78rem);
