@@ -2994,15 +2994,14 @@ blockquote.in {
 
   /* ── EYEBROW: CONSISTENT ACROSS ALL CONTEXTS ── */
   .eyebrow, span.eyebrow {
-    font-family: 'Cormorant Garamond', serif !important;
-    font-size: clamp(0.52rem, 0.65vw, 0.6rem) !important;
-    letter-spacing: 0.45em !important;
-    text-transform: uppercase !important;
-    color: rgba(201,169,110,0.75) !important;
-    display: block !important;
-    margin-bottom: clamp(0.7rem, 1.2vw, 1rem) !important;
-    font-weight: 400 !important;
-    font-style: normal !important;
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(0.6rem, 0.75vw, 0.68rem);
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.7);
+    margin-bottom: 0.9rem;
   }
 
   /* ── MICRO-RULE: GOLD HAIRLINE ABOVE EYEBROW ── */
@@ -3379,6 +3378,11 @@ blockquote.in {
     <p class="body-text">The inscription is cut into the stone above the entry: <em>Garran Hill, 1916.</em> It was placed there by the craftsmen Leonard Tufts sent — the same men building Pinehurst. It has not been altered. It has not been restored. It simply remains.</p>
   </div>
 </section>
+<div style="background:#0a0a0a;text-align:center;padding:clamp(3.5rem,7vw,7rem) clamp(2rem,6vw,7rem);">
+  <div style="width:40px;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.5),transparent);margin:0 auto 2rem;"></div>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.8vw,1.6rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.5);max-width:50ch;margin:0 auto;line-height:1.7;">Garran Hill passed through many hands. Each one left something behind.</p>
+</div>
+
 <div aria-hidden="true" style="width:100%;display:flex;align-items:center;justify-content:center;padding:0;background:#0a0a0a;"><div style="width:clamp(40px,8vw,80px);height:1px;background:linear-gradient(to right,transparent,#C9A96E,transparent);"></div></div>
 <section id="hollycrest" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244086/gh_photos/200_hollycrest_drive_11.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:0.10;filter:grayscale(40%) sepia(25%);display:block;"></div>
   <div class="section-content" style="position:relative;z-index:1;width:100%;">
@@ -3430,6 +3434,11 @@ blockquote.in {
     </div>
   </div>
 </section>
+<div style="background:#0a0a0a;text-align:center;padding:clamp(3.5rem,7vw,7rem) clamp(2rem,6vw,7rem);">
+  <div style="width:40px;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.5),transparent);margin:0 auto 2rem;"></div>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.8vw,1.6rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.5);max-width:50ch;margin:0 auto;line-height:1.7;">Seven principal rooms. Each one specific. Each one earned.</p>
+</div>
+
 
 <!-- ── PRIVATE ROOMS ───────────────────────────────────────── -->
 <section id="rooms" style="position:relative;width:100%;height:100vh;overflow:hidden;display:block;">
@@ -3445,7 +3454,13 @@ blockquote.in {
 </section>
 
 <!-- SALON — full split -->
-<section class="editorial-split" id="salon">
+<section class="editorial-split" id="salon" style="background:#0a0a0a;">
+  <!-- Salon narrative text -->
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(5rem,10vw,10rem) clamp(2rem,6vw,7rem) clamp(2rem,4vw,4rem);">
+    <span style="display:block;font-family:'Cormorant Garamond',serif;font-size:clamp(0.6rem,0.75vw,0.68rem);font-weight:300;letter-spacing:0.3em;text-transform:uppercase;color:rgba(201,169,110,0.65);margin-bottom:1.2rem;">The Salon</span>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5vw,5rem);font-weight:300;line-height:1.1;color:#F5F0E8;margin-bottom:2rem;">Red walls. A Georgian fireplace.<em style="display:block;font-size:0.82em;margin-top:0.15em;"> Glass doors to the terrace.</em></h2>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,1.3vw,1.18rem);font-weight:300;color:rgba(245,240,232,0.72);line-height:1.85;max-width:58ch;">The Salon is the first room of consequence after the foyer. High ceilings, the Georgian mantelpiece centered on the outside wall, glass doors on both ends. The red is deliberate. It has been there a long time.</p>
+  </div>
   <!-- Two-photo salon gallery — 1203 (wide/tapestry) + 1209 (second angle) -->
   <div class="split-img img-reveal" style="position:relative;overflow:hidden;">
     <img loading="lazy" decoding="async"
@@ -3499,6 +3514,7 @@ blockquote.in {
     <h2>The table has been set<em> in this room since 1916.</em></h2>
     <div class="body-text reveal">
       <p>The dining table anchors the room — long, dark, centered under the chandelier. The shell cabinets flanking the fireplace are original to the house. The wallpaper is a print that has been here since the restoration and reads like the room always knew what it wanted to be. The folding screen that divides the room from the hall folds and disappears. It has been doing that since 1916.</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,1.3vw,1.18rem);font-weight:300;color:rgba(245,240,232,0.72);line-height:1.85;margin-top:1.5rem;">The windows look east. The light at breakfast is particular. This is the room where the house remembers it is a house.</p>
     </div>
   </div>
   </div>
@@ -3507,7 +3523,14 @@ blockquote.in {
 <!-- LIBRARY — reverse -->
 
 
-<section id="kitchen" style="background:#0a0a0a;padding:clamp(6rem,12vw,14rem) 0;">
+<section id="kitchen" style="background:#0a0a0a;padding:clamp(5rem,10vw,10rem) 0 0;">
+
+  <!-- Kitchen narrative intro -->
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(2rem,6vw,7rem) clamp(3rem,5vw,5rem);">
+    <span style="display:block;font-family:'Cormorant Garamond',serif;font-size:clamp(0.6rem,0.75vw,0.68rem);font-weight:300;letter-spacing:0.3em;text-transform:uppercase;color:rgba(201,169,110,0.65);margin-bottom:1.2rem;">Kitchen &amp; Butler's Pantry &middot; The Restoration</span>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5vw,5rem);font-weight:300;line-height:1.1;color:#F5F0E8;margin-bottom:2rem;">White cabinetry. Dark granite.<em style="display:block;font-size:0.82em;margin-top:0.15em;"> Heart-pine floors. Four windows.</em></h2>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,1.3vw,1.18rem);font-weight:300;color:rgba(245,240,232,0.72);line-height:1.85;max-width:58ch;">The kitchen is not original to 1916. It is original to the restoration. Leonard Tufts provided the craftsmen -- the same men building Pinehurst. The standard set then holds now: every material chosen for how it wears, not how it photographs.</p>
+  </div>
 
   <!-- Beat 1: Full-bleed wide shot -->
   <div style="width:100%;height:70vh;min-height:520px;position:relative;overflow:hidden;">
@@ -3581,6 +3604,11 @@ blockquote.in {
   </div>
 
 </section>
+<div style="background:#0a0a0a;text-align:center;padding:clamp(3.5rem,7vw,7rem) clamp(2rem,6vw,7rem);">
+  <div style="width:40px;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.5),transparent);margin:0 auto 2rem;"></div>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.8vw,1.6rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.5);max-width:50ch;margin:0 auto;line-height:1.7;">The house has rooms that do not perform for photographs. The library is one of them.</p>
+</div>
+
 
 <!-- SOCIAL ROOMS — caption band -->
 
@@ -3751,7 +3779,7 @@ blockquote.in {
     <!-- COPY SIDE -->
     <div class="split-text reveal" style="flex:1; display:flex; flex-direction:column; justify-content:center;
       padding:var(--sp-lg) var(--col-mid);">
-      <p class="eyebrow reveal" style="color:rgba(201,169,110,0.72);margin-bottom:clamp(0.8rem,1.4vw,1.1rem)">The Side Porch</p>
+      <span class="eyebrow reveal" style="display:block style="color:rgba(201,169,110,0.72);margin-bottom:clamp(0.8rem,1.4vw,1.1rem)"">The Side Porch</span>
       <h2 style="font-family:'Cormorant Garamond',serif; font-weight:300;
         font-size:clamp(2.6rem,5vw,5rem); color:#F5F0E8; line-height:1.08;
         margin-bottom:clamp(1.2rem,2.2vw,1.8rem); letter-spacing:-0.01em;">
@@ -3808,6 +3836,11 @@ blockquote.in {
     </div>
   </div>
 </section>
+<div style="background:#0a0a0a;text-align:center;padding:clamp(3.5rem,7vw,7rem) clamp(2rem,6vw,7rem);">
+  <div style="width:40px;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.5),transparent);margin:0 auto 2rem;"></div>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.8vw,1.6rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.5);max-width:50ch;margin:0 auto;line-height:1.7;">4.15 acres. The house is only the beginning.</p>
+</div>
+
 
 
 
@@ -3852,6 +3885,11 @@ blockquote.in {
     <p class="body-text" style="font-style:italic;opacity:0.7;">The estate at dusk is the estate at its most honest.</p>
   </div>
 </section>
+<div style="background:#0a0a0a;text-align:center;padding:clamp(3.5rem,7vw,7rem) clamp(2rem,6vw,7rem);">
+  <div style="width:40px;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.5),transparent);margin:0 auto 2rem;"></div>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.8vw,1.6rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.5);max-width:50ch;margin:0 auto;line-height:1.7;">The house stood vacant for fourteen years. Then two people decided it was worth saving.</p>
+</div>
+
 <div aria-hidden="true" style="width:100%;display:flex;align-items:center;justify-content:center;padding:0;background:#0a0a0a;"><div style="width:clamp(40px,8vw,80px);height:1px;background:linear-gradient(to right,transparent,#C9A96E,transparent);"></div></div>
 <section id="restoration-record" style="position:relative;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777243317/gh_exteriors/200holycrestf-1440_28z.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.08;filter:grayscale(60%) sepia(20%);display:block;"></div>
   <div class="section-content" style="position:relative;z-index:1;width:100%;">
@@ -4142,7 +4180,7 @@ For private showings and offering details, please inquire directly with
 <!-- ═══ FOOTER ═══ -->
 <footer class="site-footer" style="background:#0a0a0a;border-top:1px solid rgba(201,169,110,0.15);padding:clamp(2.5rem,5vw,4rem) var(--col-mid);text-align:center;">
   <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.8rem,1vw,0.9rem);color:rgba(245,240,232,0.55);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.5rem;">Pines Sotheby&#8217;s International Realty</p>
-  <p class="eyebrow" style="display:block;margin-bottom:0;">Rachel Hernandez</p>
+  <span class="eyebrow" style="display:block style="display:block;margin-bottom:0;"">Rachel Hernandez</span>
   <div style="text-align:center;padding:1.8rem var(--col-pad) 0;"><p style="font-family:'Cormorant Garamond',serif;font-size:0.58rem;letter-spacing:0.22em;color:rgba(201,169,110,0.3);text-transform:uppercase;">NCpedia &middot; Walter Hines Page &middot; UNC Wilson Library &middot; Sotheby&#8217;s International Realty</p></div>
 </footer>
 
