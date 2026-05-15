@@ -3226,7 +3226,7 @@ blockquote.in {
 <section class="hero" id="top">
 
   <!-- BACKGROUND VIDEO -->
-  <video autoplay muted loop playsinline preload="auto"
+  <video autoplay muted loop playsinline preload="auto" poster="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777244092/gh_photos/200_hollycrest_drive_221.jpg"
     style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
     <source src="https://res.cloudinary.com/dghn2xpif/video/upload/e_loop,q_auto,f_auto/v1778823173/gh_key/gh_hero_slideshow_v2.mp4" type="video/mp4">
   </video>
@@ -3253,7 +3253,7 @@ blockquote.in {
 
   <!-- TITLE BLOCK: lower third, above stat bar -->
   <div style="position:absolute;bottom:0;left:0;right:0;z-index:5;
-    padding:0 clamp(2rem,6vw,8rem) 6rem;
+    padding:0 clamp(2rem,6vw,8rem) 5rem;
     display:flex;flex-direction:column;align-items:center;text-align:center;">
 
     <p style="margin:0 0 1rem 0;display:flex;align-items:center;gap:1rem;
@@ -3282,7 +3282,7 @@ blockquote.in {
       transform:translateX(-50%) translateY(50%);z-index:20;pointer-events:none;">
       <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_340/v1777244132/gh_key/gh_crest_black_gold_v3.png"
         alt="Garran Hill crest"
-        style="height:clamp(90px,10vw,150px);width:auto;display:block;
+        style="height:clamp(110px,12vw,170px);width:auto;display:block;
           filter:drop-shadow(0 4px 28px rgba(0,0,0,0.9));">
     </div>
 
@@ -3560,32 +3560,47 @@ blockquote.in {
 </section>
 
 <!-- SALON  --  full split -->
-<section class="editorial-split" id="salon" style="background:#0a0a0a;">
-  <!-- Salon narrative text -->
-  <div style="max-width:1280px;margin:0 auto;padding:clamp(5rem,10vw,10rem) clamp(2rem,6vw,7rem) clamp(2rem,4vw,4rem);">
-    <span style="display:block;font-family:'Cormorant Garamond',serif;font-size:clamp(0.6rem,0.75vw,0.68rem);font-weight:300;letter-spacing:0.3em;text-transform:uppercase;color:rgba(201,169,110,0.65);margin-bottom:1.2rem;">The Salon</span>
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5vw,5rem);font-weight:300;line-height:1.1;color:#F5F0E8;margin-bottom:2rem;">Red walls. A Georgian fireplace.<em style="display:block;font-size:0.82em;margin-top:0.15em;"> Glass doors to the terrace.</em></h2>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,1.3vw,1.18rem);font-weight:300;color:rgba(245,240,232,0.72);line-height:1.85;max-width:58ch;">The Salon is the first room of consequence after the foyer. High ceilings, the Georgian mantelpiece centered on the outside wall, glass doors on both ends. The red is deliberate. It has been there a long time.</p>
-  </div>
-  <!-- Two-photo salon gallery  --  1203 (wide/tapestry) + 1209 (second angle) -->
-  <div class="split-img img-reveal" style="position:relative;overflow:hidden;">
+<section id="salon" style="position:relative;width:100%;min-height:100vh;overflow:hidden;background:#0a0a0a;">
+
+  <!-- FULL-BLEED PHOTO: 1209 -- widest salon shot, shows full room scale -->
+  <div style="position:absolute;inset:0;overflow:hidden;">
     <img loading="lazy" decoding="async"
-      src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1600/v1777243086/gh_interiors/200holycrest_1209.jpg"
-      alt="Garran Hill Salon  --  red walls, white Georgian fireplace, grand scale, glass doors to terrace"
-      style="object-position: center 35%; width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;">
-    <img loading="lazy" decoding="async"
-      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_1600/gh_interiors/200holycrest_1203.jpg"
-      alt="Garran Hill Salon  --  second angle, fireplace with ornate decorations"
-      style="position:absolute;bottom:1.2rem;right:1.2rem;width:46%;aspect-ratio:3/2;object-fit:cover;border:3px solid rgba(201,169,110,0.5);box-shadow:0 4px 16px rgba(0,0,0,0.35);">
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_shadow:-25,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_limit,w_2400/v1777243086/gh_interiors/200holycrest_1209.jpg"
+      alt="Garran Hill Salon -- red walls, Georgian fireplace, glass doors to terrace, forty feet end to end"
+      style="width:100%;height:100%;object-fit:cover;object-position:center 40%;">
   </div>
-  <div class="split-text reveal">
-    <span class="micro-rule reveal"></span>
-    <span class="eyebrow">The Salon</span>
-    <h2>The house's<em> great living room.</em></h2>
-    <div class="body-text reveal">
-      <p>Nearly forty feet from end to end. The red walls pull everything inward and warm. The eye goes to the white Georgian fireplace first  --  carved mantel, art arranged above it with intention. Then to the far end, where glass doors open to the brick terrace. Two seating areas. Arched fanlights. The Salon is the room where everyone eventually lands.</p>
+
+  <!-- GRADIENT: dark left column for text legibility, clears right side for the room -->
+  <div style="position:absolute;inset:0;
+    background:linear-gradient(to right, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.55) 42%, transparent 70%);
+    pointer-events:none;z-index:1;"></div>
+
+  <!-- TEXT: left-anchored, vertically centered -->
+  <div style="position:relative;z-index:2;
+    min-height:100vh;display:flex;align-items:center;
+    padding:clamp(5rem,10vw,10rem) clamp(2rem,6vw,7rem);">
+    <div style="max-width:480px;">
+
+      <span style="display:block;font-family:'Cormorant Garamond',serif;
+        font-size:clamp(0.6rem,0.75vw,0.68rem);font-weight:300;letter-spacing:0.3em;
+        text-transform:uppercase;color:rgba(201,169,110,0.65);margin-bottom:1.4rem;">The Salon</span>
+
+      <h2 style="font-family:'Cormorant Garamond',serif;
+        font-size:clamp(2.4rem,4vw,4.2rem);font-weight:300;line-height:1.15;
+        color:#F5F0E8;margin:0 0 1.8rem 0;">
+        Red walls.<br>A Georgian fireplace.<em style="display:block;margin-top:0.2em;font-size:0.88em;">
+        Glass doors to the terrace.</em>
+      </h2>
+
+      <p style="font-family:'Cormorant Garamond',serif;
+        font-size:clamp(1rem,1.2vw,1.12rem);font-weight:300;
+        color:rgba(245,240,232,0.72);line-height:1.9;margin:0;">
+        The Salon is the first room of consequence after the foyer. Nearly forty feet from end to end. High ceilings, the Georgian mantelpiece centered on the outside wall, glass doors on both ends. The red is deliberate. It has been there a long time.
+      </p>
+
     </div>
   </div>
+
 </section>
 
 <!-- DRAWING ROOM  --  reverse split -->
