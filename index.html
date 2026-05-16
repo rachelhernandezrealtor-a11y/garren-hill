@@ -222,16 +222,16 @@ section.hero{position:relative;width:100%;height:100vh;min-height:640px;overflow
 /* CREST -- absolute, no background, no bubble, pure medallion */
 .stat-crest-wrap{
   position:absolute;
+  bottom:2.8rem;
   left:50%;
-  bottom:0;
-  transform:translateX(-50%) translateY(52%);
-  z-index:30;
+  transform:translateX(-50%);
+  z-index:20;
   background:none !important;
   border:none !important;
-  outline:none !important;
   box-shadow:none !important;
   padding:0;
   margin:0;
+  pointer-events:auto;
 }
 .stat-crest-wrap img{
   display:block;
@@ -240,11 +240,12 @@ section.hero{position:relative;width:100%;height:100vh;min-height:640px;overflow
   background:none !important;
   border:none !important;
   box-shadow:none !important;
-  mix-blend-mode:screen;
   filter:
-    drop-shadow(0 20px 50px rgba(0,0,0,0.85))
-    drop-shadow(0 8px 18px rgba(0,0,0,0.75))
-    drop-shadow(0 0 30px rgba(201,169,110,0.45));
+    drop-shadow(0 20px 55px rgba(0,0,0,0.96))
+    drop-shadow(0 8px 20px rgba(0,0,0,0.88))
+    drop-shadow(0 3px 8px rgba(0,0,0,0.80))
+    drop-shadow(0 0 35px rgba(201,169,110,0.38));
+  transition:filter .4s ease, transform .4s ease;
 }
 .stat-crest-wrap img:hover{
   filter:
@@ -484,10 +485,7 @@ section.breath{padding:clamp(1.5rem,2.5vw,3rem) var(--col-pad)!important}
 
   <!-- STAT BAR -->
   <div class="stat-bar">
-    <!-- CREST: absolute, no parent background, pure medallion floating above belt -->
-    <div class="stat-crest-wrap">
-      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" width="175" height="175">
-    </div>
+
     <div class="stat-numbers">
       <div class="stat-item"><span class="stat-num">4</span><span class="stat-lbl">Bedrooms</span></div>
       <div class="stat-div"></div>
@@ -500,6 +498,12 @@ section.breath{padding:clamp(1.5rem,2.5vw,3rem) var(--col-pad)!important}
       <div class="stat-item stat-price"><span class="stat-num">$4,250,000</span><span class="stat-lbl">Offered At</span></div>
     </div>
   </div>
+
+  <!-- CREST: direct child of hero section -- sits above all gradients, pure medallion -->
+  <div class="stat-crest-wrap">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778359641/gh_key/gh_crest_black_gold_v3.png" alt="Garran Hill Crest" width="175" height="175">
+  </div>
+
 </section>
 <div class="hero-breath"></div>
 
