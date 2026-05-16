@@ -2543,240 +2543,91 @@
 
 
   <!-- STAT BAR + CREST -->
-  <div id="stat-bar" style="position:absolute;bottom:0;left:0;right:0;z-index:15;overflow:visible;isolation:isolate;">
+  <!-- 
+    ARCHITECTURE:
+    - Two gold rules = the belt
+    - Dark band between rules = belt body  
+    - Crest = fixed to viewport, sits ON the belt, both rules behind it
+    - Stats recentered now crest is out of flex row
+  -->
+  <div id="stat-bar" style="position:absolute;bottom:0;left:0;right:0;z-index:15;overflow:visible;">
 
-  <!-- TOP GOLD RULE -->
-  <div style="width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.9) 15%,#C9A96E 50%,rgba(201,169,110,0.9) 85%,transparent);"></div>
+    <!-- TOP GOLD RULE -->
+    <div style="width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.9) 15%,#C9A96E 50%,rgba(201,169,110,0.9) 85%,transparent);"></div>
 
-  <!-- STATS + CREST ROW -->
-  <div style="position:relative;width:100%;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:1.3rem clamp(1rem,3vw,2.5rem);
-    background:rgba(4,4,4,0.78);backdrop-filter:blur(8px);">
+    <!-- STATS ROW — all 5 stats, crest is NOT in this row, it floats above independently -->
+    <div style="position:relative;width:100%;
+      display:flex;align-items:center;justify-content:center;
+      padding:1.1rem clamp(1rem,3vw,2.5rem);
+      background:rgba(4,4,4,0.82);backdrop-filter:blur(10px);">
 
+      <!-- left spacer so stats spread but center gap stays for crest -->
     <div style="text-align:center;flex:1;">
       <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.2vw,3.8rem);font-weight:300;line-height:1;letter-spacing:0.04em;background:linear-gradient(170deg,#FFFFFF 0%,#FDF6D8 8%,#F0D060 22%,#C9A96E 42%,#8B6914 70%,#4A2E08 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 2px 3px rgba(0,0,0,0.7));">4</div>
       <div style="font-family:'Instrument Sans',sans-serif;font-size:0.58rem;font-weight:300;letter-spacing:0.35em;text-transform:uppercase;color:rgba(201,169,110,0.65);margin-top:0.4rem;">Bedrooms</div>
     </div>
-    <div style="width:1px;height:26px;background:rgba(201,169,110,0.25);flex-shrink:0;"></div>
-
+      <div style="width:1px;height:28px;background:rgba(201,169,110,0.25);flex-shrink:0;"></div>
     <div style="text-align:center;flex:1;">
       <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.2vw,3.8rem);font-weight:300;line-height:1;letter-spacing:0.04em;background:linear-gradient(170deg,#FFFFFF 0%,#FDF6D8 8%,#F0D060 22%,#C9A96E 42%,#8B6914 70%,#4A2E08 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 2px 3px rgba(0,0,0,0.7));">6</div>
       <div style="font-family:'Instrument Sans',sans-serif;font-size:0.58rem;font-weight:300;letter-spacing:0.35em;text-transform:uppercase;color:rgba(201,169,110,0.65);margin-top:0.4rem;">Bathrooms</div>
     </div>
-    <div style="width:1px;height:26px;background:rgba(201,169,110,0.25);flex-shrink:0;"></div>
-
+      <div style="width:1px;height:28px;background:rgba(201,169,110,0.25);flex-shrink:0;"></div>
     <div style="text-align:center;flex:1;">
       <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.2vw,3.8rem);font-weight:300;line-height:1;letter-spacing:0.04em;background:linear-gradient(170deg,#FFFFFF 0%,#FDF6D8 8%,#F0D060 22%,#C9A96E 42%,#8B6914 70%,#4A2E08 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 2px 3px rgba(0,0,0,0.7));">6,072</div>
       <div style="font-family:'Instrument Sans',sans-serif;font-size:0.58rem;font-weight:300;letter-spacing:0.35em;text-transform:uppercase;color:rgba(201,169,110,0.65);margin-top:0.4rem;">Square Feet</div>
     </div>
-    <div style="width:1px;height:26px;background:rgba(201,169,110,0.25);flex-shrink:0;"></div>
-
-    <!-- CREST SPACER -- crest is positioned independently above -->
-    <div style="flex:1;"></div>
-
-    <div style="width:1px;height:26px;background:rgba(201,169,110,0.25);flex-shrink:0;"></div>
-
+      <div style="width:1px;height:28px;background:rgba(201,169,110,0.25);flex-shrink:0;"></div>
+      <!-- CREST GAP — empty space where crest floats above -->
+      <div style="flex:1.2;"></div>
+      <div style="width:1px;height:28px;background:rgba(201,169,110,0.25);flex-shrink:0;"></div>
     <div style="text-align:center;flex:1;">
       <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.2vw,3.8rem);font-weight:300;line-height:1;letter-spacing:0.04em;background:linear-gradient(170deg,#FFFFFF 0%,#FDF6D8 8%,#F0D060 22%,#C9A96E 42%,#8B6914 70%,#4A2E08 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 2px 3px rgba(0,0,0,0.7));">4.15</div>
       <div style="font-family:'Instrument Sans',sans-serif;font-size:0.58rem;font-weight:300;letter-spacing:0.35em;text-transform:uppercase;color:rgba(201,169,110,0.65);margin-top:0.4rem;">Acres</div>
     </div>
-    <div style="width:1px;height:26px;background:rgba(201,169,110,0.25);flex-shrink:0;"></div>
-
+      <div style="width:1px;height:28px;background:rgba(201,169,110,0.25);flex-shrink:0;"></div>
     <div style="text-align:center;flex:1;">
       <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.2vw,3.8rem);font-weight:300;line-height:1;letter-spacing:0.04em;background:linear-gradient(170deg,#FFFFFF 0%,#FDF6D8 8%,#F0D060 22%,#C9A96E 42%,#8B6914 70%,#4A2E08 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 2px 3px rgba(0,0,0,0.7));">$4,250,000</div>
       <div style="font-family:'Instrument Sans',sans-serif;font-size:0.58rem;font-weight:300;letter-spacing:0.35em;text-transform:uppercase;color:rgba(201,169,110,0.65);margin-top:0.4rem;">Offered At</div>
     </div>
 
-  </div><!-- end stats row -->
-
-  <!-- BOTTOM GOLD RULE -->
-  <div style="width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.9) 15%,#C9A96E 50%,rgba(201,169,110,0.9) 85%,transparent);"></div>
-
-</section>
-
-<section id="kb-gate" class="editorial-fullbleed kb-gate-section" aria-label="Garran Hill  --  the estate since 1916" style="position:relative;z-index:0;min-height:100vh;overflow:hidden;isolation:isolate;">
-
-  <!-- BEFORE: sepia gate  --  always visible, always underneath -->
-  <div style="position:absolute;inset:0;overflow:hidden;z-index:0;">
-    <img loading="eager" decoding="async"
-      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_grayscale,e_sepia:80,e_sharpen:15,f_auto,q_auto,c_limit,w_1920/v1777411350/gh_key/gh_gate_sepia.jpg"
-      alt="Garran Hill gate  --  the estate as it stands"
-      style="position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;object-position:center 35%;animation:gate-pull-then 40s ease-in-out infinite alternate;">
-  </div>
-
-  <!-- NOW: modern full-color gate  --  fades in slowly, holds briefly, fades back -->
-  <div style="position:absolute;inset:0;overflow:hidden;z-index:1;opacity:0;animation:gate-now-fade 40s ease-in-out infinite;animation-delay:0s;">
-    <img loading="eager" decoding="async"
-      src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777390104/gh_key/gh_gate_arrival.jpg"
-      alt="Garran Hill gate  --  today"
-      style="position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;object-position:center 35%;animation:gate-pull-now 40s ease-in-out infinite alternate;">
-  </div>
-
-  <!-- VIGNETTE -->
-  <div aria-hidden="true" style="position:absolute;inset:0;z-index:3;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 35%,rgba(5,5,5,0.65) 100%);"></div>
-
-  <!-- BOTTOM BLEED into WHP -->
-  <div aria-hidden="true" style="position:absolute;bottom:0;left:0;right:0;height:35%;z-index:4;pointer-events:none;background:linear-gradient(to bottom,transparent 0%,rgba(10,10,10,0.7) 60%,#0a0a0a 100%);"></div>
-
-  <!-- TEXT -->
-  <div class="reveal" style="position:relative;z-index:5;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(2.5rem,5vw,5rem) clamp(2rem,6vw,8rem) clamp(3rem,6vw,6rem);text-align:center;">
-    <span class="eyebrow" style="color:rgba(201,169,110,0.8)">The Estate &middot; Pinehurst, NC</span>
-    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.6rem,5vw,5rem);margin-top:0.8rem;color:#F5F0E8;font-weight:300;line-height:1.08;"><span class="headline-drop">S</span>ome houses hold history.<em> This one shaped it.</em></h2>
-    <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1rem,1.4vw,1.35rem);font-weight:300;font-style:italic;margin-top:1rem;max-width:600px;margin-left:auto;margin-right:auto;color:rgba(245,240,232,0.78);line-height:1.7;">The door has been open since 1916.</p>
-  </div>
-
-</section>
-<div class="act-break-diamond"></div>
-<section id="history" style="position:relative;overflow:hidden;background:#0a0a0a;padding:clamp(2.5rem,4vw,4rem) 0;min-height:90vh;">
-  <!-- Ghost manuscript background -->
-  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none;">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:40,e_brightness:25,e_contrast:15,f_auto,q_auto,c_limit,w_1920/v1777391998/gh_key/gh_whp_letter1.jpg"
-      alt="" style="position:absolute;inset:-5%;width:110%;height:110%;object-fit:cover;object-position:center top;transform:rotate(-2deg);opacity:0.08;pointer-events:none;">
-  </div>
-
-  <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 clamp(2rem,6vw,7rem);">
-
-    <!-- Eyebrow -->
-    <div style="text-align:center;margin-bottom:clamp(3rem,6vw,6rem);">
-      <span class="micro-rule" style="display:block;width:40px;height:1px;background:linear-gradient(to right,transparent,#C9A96E,transparent);margin:0 auto 1.5rem;"></span>
-      <span class="eyebrow">Walter Hines Page &middot; 1855&ndash;1918</span>
     </div>
 
-    <!-- Portrait + copy split -->
-    <div style="display:grid;grid-template-columns:clamp(220px,28%,380px) 1fr;gap:clamp(3rem,6vw,8rem);align-items:start;">
+    <!-- BOTTOM GOLD RULE -->
+    <div style="width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.9) 15%,#C9A96E 50%,rgba(201,169,110,0.9) 85%,transparent);"></div>
 
-      <!-- Portrait -->
-      <div class="img-reveal">
-        <img loading="lazy" decoding="async"
-          src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_fill,ar_3:4,g_face,w_700/v1777244132/gh_key/gh_whp.jpg"
-          alt="Walter Hines Page  --  Ambassador to the Court of St. James 1913--1918"
-          style="display:block;width:100%;height:auto;object-fit:cover;">
-      </div>
+  </div><!-- end stat-bar -->
 
-      <!-- Copy -->
-      <div class="reveal">
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5vw,5rem);font-weight:300;line-height:1.1;color:#F5F0E8;margin-bottom:2rem;">
-          Appointed by Wilson.<em style="display:block;font-size:0.82em;margin-top:0.2em;">He held the alliance from London.</em>
-        </h2>
-        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,1.3vw,1.18rem);font-weight:300;color:rgba(245,240,232,0.78);line-height:1.85;margin-bottom:1.5rem;">
-          Born in Cary, North Carolina. Co-founder of Doubleday, Page &amp; Company. Editor of <em>The Atlantic Monthly.</em> Appointed by Woodrow Wilson as Ambassador to the Court of St. James in 1913 &mdash; and kept there through the years the world came apart.
-        </p>
-        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,1.3vw,1.18rem);font-weight:300;color:rgba(245,240,232,0.78);line-height:1.85;margin-bottom:3rem;">
-          From London, he commissioned Garran Hill to be built on his family&rsquo;s Moore County acres. He named it himself. Page returned from London in December 1918. He did not return to Garran Hill.
-        </p>
+  <!-- CREST MEDALLION — position:fixed, z-index:9999, nothing clips it -->
+  <!-- Sits ON the belt: both gold rules are behind it, bottom barely below viewport bottom -->
+  <script>
+  (function(){
+    // Inject crest into body once DOM ready so it's always above everything
+    function mountCrest(){
+      if(document.getElementById('gh-crest-medallion')) return;
+      var el = document.createElement('div');
+      el.id = 'gh-crest-medallion';
+      el.setAttribute('aria-hidden','true');
+      el.style.cssText = 'position:fixed;bottom:-18px;left:50%;transform:translateX(-50%);z-index:9999;pointer-events:none;transition:opacity 0.5s ease;';
+      el.innerHTML = '<img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778826398/gh_key/gh_crest_gloss_v2.png" alt="" style="width:clamp(190px,22vw,290px);display:block;filter:drop-shadow(0 24px 70px rgba(0,0,0,0.99)) drop-shadow(0 10px 24px rgba(0,0,0,0.92)) drop-shadow(0 4px 12px rgba(201,169,110,0.5)) drop-shadow(0 0 60px rgba(201,169,110,0.22));">';
+      document.body.appendChild(el);
+      // Fade out once user scrolls past hero
+      var hero = document.getElementById('top');
+      function check(){
+        if(!hero) return;
+        var b = hero.getBoundingClientRect().bottom;
+        el.style.opacity = b < 80 ? '0' : '1';
+      }
+      window.addEventListener('scroll', check, {passive:true});
+      check();
+    }
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', mountCrest);
+    } else {
+      mountCrest();
+    }
+  })();
+  </script>
 
-        <!-- Farm quote -->
-        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,1.6vw,1.4rem);font-weight:300;color:rgba(201,169,110,0.85);line-height:1.7;margin-bottom:0.6rem;">
-          &ldquo;Build the farm, therefore; and let me hear at every stage of that happy game.&rdquo;
-        </p>
-        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.6rem,0.85vw,0.72rem);font-weight:300;color:rgba(245,240,232,0.4);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:3rem;">
-          Walter Hines Page &middot; Letter from London &middot; 1915
-        </p>
-
-        <!-- Westminster -->
-        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.3rem,2vw,1.9rem);font-weight:300;color:rgba(201,169,110,0.9);line-height:1.5;margin-bottom:0.6rem;">
-          &ldquo;The friend of Britain in her sorest need.&rdquo;
-        </p>
-        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.6rem,0.85vw,0.72rem);font-weight:300;color:rgba(245,240,232,0.4);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:3rem;">
-          Westminster Abbey &middot; Inscribed 1921
-        </p>
-
-        <!-- Last words -->
-        <blockquote style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1rem,1.4vw,1.25rem);font-weight:300;color:rgba(201,169,110,0.8);line-height:1.75;border-left:1px solid rgba(201,169,110,0.3);padding-left:1.5rem;margin:0;">
-          &ldquo;Well, Frank, I did get here after all, didn&rsquo;t I?&rdquo;
-          <span style="display:block;font-style:normal;font-size:0.8em;color:rgba(245,240,232,0.4);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.5rem;">Aberdeen station &middot; December 1918</span>
-        </blockquote>
-      </div>
-    </div>
-  </div>
-</section>
-  <!-- WHP PULL QUOTE  --  full dark moment -->
-  <div id="whp-quote" style="background:#0a0a0a;text-align:center;padding:clamp(1rem,2vw,1.5rem) var(--col-pad);">
-    <blockquote style="border:none;margin:0 auto;padding:0;max-width:700px;">
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,2.2rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.88);line-height:1.6;letter-spacing:0.02em;margin:0 0 1rem;">
-        &ldquo;The farm &mdash; the farm &mdash; the farm.&rdquo;
-      </p>
-      <cite style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.55rem,0.65vw,0.65rem);letter-spacing:0.3em;text-transform:uppercase;color:rgba(201,169,110,0.55);font-style:normal;">
-        Walter Hines Page &middot; From His Letters &middot; 1913&ndash;1918
-      </cite>
-    </blockquote>
-  </div>
-
-
-
-<!-- ── ACT VI: SIGNATURE ROOMS ──────────────────────────── -->
-
-<!-- KITCHEN  --  major feature -->
-<!-- GH_KITCHEN_SHEET_12_SOURCE_CONFIRMATION_NEEDED -->
-<!-- ── PRINCIPAL ROOMS ─────────────────────────────────────── -->
-
-
-
-<section id="architecture" style="position:relative;width:100%;min-height:90vh;overflow:hidden;">
-  <!-- Full-bleed front exterior -->
-  <img loading="lazy" decoding="async"
-    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_fill,ar_16:9,g_center,w_1920/v1777243323/gh_exteriors/front_exterior.jpg"
-    alt="Garran Hill  --  Neo-Georgian portico, full brick, Pinehurst NC"
-    style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;">
-  <!-- Dark gradient: left for text readability -->
-  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to right, rgba(10,10,10,0.80) 35%, rgba(10,10,10,0.30) 65%, transparent 100%);z-index:1;"></div>
-  <!-- Text overlay: left-aligned -->
-  <div class="reveal" style="position:relative;z-index:2;display:flex;align-items:center;justify-content:flex-start;min-height:90vh;padding:clamp(3rem,6vw,8rem) clamp(3rem,6vw,8rem);">
-    <div style="max-width:520px;text-align:left;">
-      <span class="micro-rule" style="display:block;margin-bottom:var(--sp-sm);"></span>
-      <span class="eyebrow" style="display:block;margin-bottom:var(--sp-xs);">Built in Brick</span>
-      <h2 style="margin-bottom:var(--sp-sm);">Pinehurst hands.<em> A century of brick and proportion.</em></h2>
-      <div class="body-text reveal">
-        <p>Garran Hill's authority begins in its masonry: full-brick Neo-Georgian construction, red handmade brick laid in Flemish bond, and a traditional water table grounding the facade. The brickwork, the arched fanlights, the entry floor -- all built by hand in Moore County between 1915 and 1916.</p>
-        <p style="font-style:italic;opacity:0.6;font-size:var(--text-xs);margin-top:var(--sp-xs);">Boston plans. Pinehurst hands. Garran Hill in brick, 1916.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── THRESHOLD ──────────────────────────────────────────── -->
-<section id="threshold" style="position:relative;width:100%;min-height:100vh;overflow:hidden;background:#0a0a0a;">
-  <!-- Full-bleed threshold photo: entry hall french doors, stone inscription above -->
-  <div style="position:absolute;inset:0;z-index:0;">
-    <img loading="lazy" decoding="async"
-      src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:55,e_sharpen:35,f_auto,q_auto,c_fill,ar_16:9,g_center,w_2400/v1777393131/gh_key/gh_threshold_stone_wide.jpg"
-      alt="GARRAN HILL 1916 -- stone threshold inscription carved in brick entry"
-      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%;">
-    <!-- Bottom gradient for text legibility -->
-    <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(5,5,5,0.85) 0%, rgba(5,5,5,0.45) 40%, rgba(5,5,5,0.0) 100%);"></div>
-  </div>
-  <!-- Text: lower third -->
-  <div class="reveal" style="position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(3rem,6vw,6rem) clamp(2rem,6vw,8rem);text-align:center;">
-    <span class="eyebrow" style="color:rgba(201,169,110,0.85);display:block;margin-bottom:0.8rem;">The Threshold &middot; 1916</span>
-    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.2rem,4.5vw,5rem);font-weight:300;color:#F5F0E8;line-height:1.08;margin-bottom:1.2rem;">The door has been open<em> since 1916.</em></h2>
-    <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.95rem,1.3vw,1.25rem);font-weight:300;font-style:italic;max-width:600px;margin:0 auto;color:rgba(245,240,232,0.75);line-height:1.75;">GARRAN HILL &middot; 1916 -- inlaid in the threshold stone before ground was ever broken. Leonard Tufts sent the craftsmen -- the same men building Pinehurst. It has not been altered. It has not been restored. It simply remains.</p>
-  </div>
-</section>
-<div style="background:#0a0a0a;text-align:center;padding:1.5rem clamp(2rem,6vw,7rem);">
-  <div style="width:40px;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.5),transparent);margin:0 auto;"></div>
-  </div>
-
-<div aria-hidden="true" style="width:100%;display:flex;align-items:center;justify-content:center;padding:0.4rem 0;background:#0a0a0a;"><div style="width:clamp(40px,8vw,80px);height:1px;background:linear-gradient(to right,transparent,#C9A96E,transparent);"></div></div>
-<section id="hollycrest" style="position:relative;min-height:90vh;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_fill,ar_16:9,g_center,w_1920/v1777244086/gh_photos/200_hollycrest_drive_11.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%;opacity:0.10;filter:grayscale(40%) sepia(25%);display:block;"></div>
-  <div class="section-content" style="position:relative;z-index:1;width:100%;">
-  <div class="split" style="padding:clamp(3rem,6vw,8rem) clamp(2rem,5vw,6rem);">
-    <div class="split-text reveal">
-      <span class="micro-rule reveal"></span>
-      <span class="eyebrow">A Private History &middot; 1959&ndash;1984</span>
-      <h2>Horses. Hounds. Peacocks.<em> Native hollies on every path.</em></h2>
-      <div class="body-text reveal">
-        <p class="">Betty Dumaine kept this land for twenty-five years. Left to Duke University after her death. Advertised in Atlanta and New York. No buyer came. The house waited. She brought horses to the grounds of Garran Hill  --  thoroughbreds, hunters, a life organized around animals and land and the particular pleasure of a place that required real attention. She renamed the property Hollycrest  --  for the large native hollies at the front of the house. They are still there. One horse she buried here. Blue Fox. The stone is still standing in the shade of the trees she planted. The iron post beside the drive still carries the ring. Someone still puts flowers at the grave.</p>
-        </div>
-    </div>
-    <div class="split-img img-reveal" style="position:relative;max-width:460px;width:42%;overflow:hidden;flex-shrink:0;background:#0a0a0a;">
-      <img loading="lazy" decoding="async"
-        src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_960/v1778815837/gh_people/gh_betty_dumaine_1970s.jpg"
-        alt="Betty Dumaine with Toddy Hunter, 1970s -- steward of Garran Hill 1959 to 1984"
-        style="width:100%;height:auto;display:block;object-fit:contain;">
-    </div>
-  </div>
-  </div>
 </section>
 <div aria-hidden="true" style="width:100%;display:flex;align-items:center;justify-content:center;padding:0.4rem 0;background:#0a0a0a;"><div style="width:clamp(40px,8vw,80px);height:1px;background:linear-gradient(to right,transparent,#C9A96E,transparent);"></div></div>
 <section class="pull intimate">
@@ -3607,30 +3458,5 @@ For private showings and offering details, please inquire directly with
   setTimeout(setSpeed, 1000);
 })();
 </script>
-
-  <!-- CREST MEDALLION -- fixed to viewport, nothing can clip it -->
-  <div id="crest-medallion" style="position:fixed;bottom:0;left:50%;transform:translate(-50%, 42%);z-index:9999;pointer-events:none;transition:opacity 0.4s ease;">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778826398/gh_key/gh_crest_gloss_v2.png"
-         alt="Garran Hill Estate Crest"
-         style="width:clamp(190px,22vw,290px);display:block;filter:drop-shadow(0 24px 70px rgba(0,0,0,0.99)) drop-shadow(0 10px 24px rgba(0,0,0,0.92)) drop-shadow(0 4px 10px rgba(201,169,110,0.5)) drop-shadow(0 0 60px rgba(201,169,110,0.22));">
-  </div>
-  <script>
-    (function(){
-      var crest = document.getElementById('crest-medallion');
-      var hero = document.getElementById('top');
-      function updateCrest(){
-        if(!hero || !crest) return;
-        var heroBottom = hero.getBoundingClientRect().bottom;
-        // Hide crest once hero has scrolled fully out of view
-        if(heroBottom < 60){
-          crest.style.opacity = '0';
-        } else {
-          crest.style.opacity = '1';
-        }
-      }
-      window.addEventListener('scroll', updateCrest, {passive:true});
-      updateCrest();
-    })();
-  </script>
 </body>
 </html>
