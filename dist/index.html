@@ -2540,12 +2540,7 @@
 
   </div>
 
-  <!-- CREST -- truly independent, floats above stat bar seam -->
-  <div style="position:absolute;bottom:0;left:50%;transform:translate(-50%, 52%);z-index:50;pointer-events:none;">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778826398/gh_key/gh_crest_gloss_v2.png"
-         alt="Garran Hill Estate Crest"
-         style="width:clamp(180px,22vw,280px);display:block;filter:drop-shadow(0 24px 70px rgba(0,0,0,0.99)) drop-shadow(0 10px 24px rgba(0,0,0,0.92)) drop-shadow(0 4px 10px rgba(201,169,110,0.45)) drop-shadow(0 0 60px rgba(201,169,110,0.18));">
-  </div>
+
 
   <!-- STAT BAR + CREST -->
   <div id="stat-bar" style="position:absolute;bottom:0;left:0;right:0;z-index:15;overflow:visible;isolation:isolate;">
@@ -3612,5 +3607,30 @@ For private showings and offering details, please inquire directly with
   setTimeout(setSpeed, 1000);
 })();
 </script>
+
+  <!-- CREST MEDALLION -- fixed to viewport, nothing can clip it -->
+  <div id="crest-medallion" style="position:fixed;bottom:0;left:50%;transform:translate(-50%, 42%);z-index:9999;pointer-events:none;transition:opacity 0.4s ease;">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778826398/gh_key/gh_crest_gloss_v2.png"
+         alt="Garran Hill Estate Crest"
+         style="width:clamp(190px,22vw,290px);display:block;filter:drop-shadow(0 24px 70px rgba(0,0,0,0.99)) drop-shadow(0 10px 24px rgba(0,0,0,0.92)) drop-shadow(0 4px 10px rgba(201,169,110,0.5)) drop-shadow(0 0 60px rgba(201,169,110,0.22));">
+  </div>
+  <script>
+    (function(){
+      var crest = document.getElementById('crest-medallion');
+      var hero = document.getElementById('top');
+      function updateCrest(){
+        if(!hero || !crest) return;
+        var heroBottom = hero.getBoundingClientRect().bottom;
+        // Hide crest once hero has scrolled fully out of view
+        if(heroBottom < 60){
+          crest.style.opacity = '0';
+        } else {
+          crest.style.opacity = '1';
+        }
+      }
+      window.addEventListener('scroll', updateCrest, {passive:true});
+      updateCrest();
+    })();
+  </script>
 </body>
 </html>
