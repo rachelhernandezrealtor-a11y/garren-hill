@@ -2617,8 +2617,13 @@
         if(!sb || !img) return;
         var sbHeight = sb.offsetHeight;
         var crestH = img.offsetHeight;
-        // bottom = sbHeight + half crest height so center sits on top rule
-        el.style.bottom = (sbHeight + crestH * 0.18) + 'px';
+        // Belt buckle law:
+        // Crest sits ON the belt. Only ~10px of its bottom edge peeks below viewport.
+        // bottom = sbHeight - crestH + 10
+        // = positions crest so bottom edge is 10px below viewport bottom (barely)
+        // = crest body sits up INTO the hero, centered on the belt seam
+        var peekBelowPx = 10;
+        el.style.bottom = (sbHeight - crestH + peekBelowPx) + 'px';
       }
       positionCrest();
       window.addEventListener('resize', positionCrest, {passive:true});
