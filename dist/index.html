@@ -192,35 +192,39 @@ nav.scrolled{height:56px;background:rgba(4,4,4,.94)}
 section.hero{position:relative;width:100%;height:100vh;min-height:640px;overflow:hidden;background:var(--dark)}
 .hero-video-wrap{position:absolute;inset:0;z-index:0}
 .hero-video-wrap video{width:100%;height:100%;object-fit:cover;object-position:center}
-.hero-video-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.42) 0%,rgba(5,5,5,.22) 30%,rgba(5,5,5,.10) 55%,rgba(5,5,5,.68) 78%,rgba(5,5,5,.94) 100%)}
+.hero-video-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.18) 0%,rgba(5,5,5,.08) 35%,rgba(5,5,5,.52) 75%,rgba(5,5,5,.92) 100%)}
 .hero-text{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 clamp(1.5rem,6vw,8rem);padding-bottom:14vh}
-.hero-eyebrow{font-size:clamp(.50rem,.60vw,.56rem);font-weight:300;letter-spacing:.46em;text-transform:uppercase;color:rgba(201,169,110,.52);margin-bottom:1.2rem}
-.hero-title{font-family:'Pinyon Script',cursive;font-size:clamp(6rem,18vw,16rem);font-weight:300;color:var(--cream);line-height:.95;text-shadow:0 4px 60px rgba(0,0,0,.85),0 0 100px rgba(0,0,0,.55);margin-bottom:1.8rem}
-.hero-sub{font-size:clamp(.48rem,.58vw,.54rem);font-weight:300;letter-spacing:.44em;text-transform:uppercase;color:rgba(201,169,110,.38)}
+.hero-eyebrow{font-size:clamp(.60rem,.78vw,.70rem);font-weight:300;letter-spacing:.30em;text-transform:uppercase;color:rgba(245,240,232,.56);margin-bottom:1.2rem}
+.hero-title{font-family:'Pinyon Script',cursive;font-size:clamp(5rem,16vw,14rem);font-weight:300;color:var(--cream);line-height:1.05;text-shadow:0 2px 40px rgba(0,0,0,.8),0 0 80px rgba(0,0,0,.5);margin-bottom:1.6rem}
+.hero-sub{font-size:clamp(.60rem,.78vw,.70rem);font-weight:300;letter-spacing:.30em;text-transform:uppercase;color:rgba(245,240,232,.48)}
 
-
-.stat-bar{position:absolute;bottom:0;left:0;right:0;z-index:10;padding:0 clamp(1.5rem,5vw,5rem) 2.2rem;background:linear-gradient(180deg,rgba(5,5,5,0) 0%,rgba(5,5,5,.65) 45%,rgba(5,5,5,.92) 100%);overflow:visible}
+/* ══ STAT BAR -- THE ONE TRUE VERSION ══
+   Simple flex row. align-items:flex-end.
+   Crest is a flex child, taller, rises naturally.
+   No position tricks. No absolute children. */
+.stat-bar{position:absolute;bottom:0;left:0;right:0;z-index:10;padding:0 clamp(1.5rem,5vw,5rem) 1.6rem;background:linear-gradient(180deg,rgba(5,5,5,0) 0%,rgba(5,5,5,.65) 45%,rgba(5,5,5,.92) 100%);overflow:visible}
 .stat-bar::before{content:'';position:absolute;top:0;left:6%;right:6%;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,.06) 5%,rgba(201,169,110,.28) 30%,rgba(245,224,152,.48) 50%,rgba(201,169,110,.28) 70%,rgba(201,169,110,.06) 95%,transparent 100%)}
 
 .stat-numbers{display:flex;flex-direction:row;align-items:flex-end;justify-content:center;flex-wrap:nowrap;width:100%;gap:0}
 
 .stat-item{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 clamp(.9rem,2vw,2.4rem);flex-shrink:0;flex-grow:0}
 
-.stat-num{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.6rem,2.4vw,2.8rem);font-weight:200;letter-spacing:.08em;color:rgba(245,240,232,.94);line-height:1.0;white-space:nowrap}
+.stat-num{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.2rem,1.8vw,2.0rem);font-weight:300;letter-spacing:.06em;color:rgba(245,240,232,.90);line-height:1.1;white-space:nowrap}
 
-.stat-lbl{display:block;font-size:clamp(.44rem,.52vw,.50rem);font-weight:300;letter-spacing:.45em;text-transform:uppercase;color:rgba(245,240,232,.22);margin-top:.45rem;white-space:nowrap}
+.stat-lbl{display:block;font-size:clamp(.54rem,.66vw,.60rem);font-weight:300;letter-spacing:.30em;text-transform:uppercase;color:rgba(245,240,232,.35);margin-top:.28rem;white-space:nowrap}
 
-.stat-div{width:1px;height:34px;flex-shrink:0;align-self:center;background:linear-gradient(180deg,transparent 0%,rgba(201,169,110,.22) 25%,rgba(245,224,152,.42) 50%,rgba(201,169,110,.22) 75%,transparent 100%)}
-.stat-spacer{width:clamp(160px,15vw,230px);flex-shrink:0}
+.stat-div{width:1px;height:26px;flex-shrink:0;align-self:center;background:linear-gradient(180deg,transparent 0%,rgba(201,169,110,.22) 25%,rgba(245,224,152,.42) 50%,rgba(201,169,110,.22) 75%,transparent 100%)}
 
-.stat-price .stat-num{font-size:clamp(1.1rem,1.6vw,1.85rem);color:rgba(245,240,232,.96)}
+.stat-price .stat-num{font-size:clamp(1.1rem,1.6vw,1.85rem);color:rgba(245,240,232,.88)}
 
 /* CREST -- focal point, asset law */
-/* CREST -- absolute, no background, no bubble, pure medallion */
+.stat-crest-wrap{display:flex;align-items:flex-end;justify-content:center;flex-shrink:0;flex-grow:0;padding:0 clamp(1.0rem,2.2vw,2.8rem)}
+.stat-crest-wrap img{display:block;height:clamp(120px,13vw,180px);width:auto;transform:translateY(-55px);filter:drop-shadow(0 0 32px rgba(0,0,0,1)) drop-shadow(0 -8px 20px rgba(0,0,0,.98)) drop-shadow(0 8px 24px rgba(0,0,0,.98)) drop-shadow(0 0 22px rgba(201,169,110,.30)) drop-shadow(0 0 10px rgba(245,224,152,.18));animation:crestGlow 4.5s ease-in-out infinite;transition:transform .4s ease}
+.stat-crest-wrap img:hover{transform:translateY(-20px) scale(1.04);animation:none;filter:drop-shadow(0 0 32px rgba(0,0,0,1)) drop-shadow(0 -8px 20px rgba(0,0,0,.98)) drop-shadow(0 0 44px rgba(201,169,110,.48)) drop-shadow(0 0 22px rgba(245,224,152,.32))}
+@keyframes crestGlow{0%,100%{filter:drop-shadow(0 0 32px rgba(0,0,0,1)) drop-shadow(0 -8px 20px rgba(0,0,0,.98)) drop-shadow(0 0 20px rgba(201,169,110,.26)) drop-shadow(0 0 9px rgba(245,224,152,.15))}50%{filter:drop-shadow(0 0 32px rgba(0,0,0,1)) drop-shadow(0 -8px 20px rgba(0,0,0,.98)) drop-shadow(0 0 38px rgba(201,169,110,.42)) drop-shadow(0 0 18px rgba(245,224,152,.28))}}
 
-
-
-
+/* Hero breath */
+.hero-breath{width:100%;height:clamp(3rem,5vh,5rem);background:var(--dark);display:flex;align-items:center;justify-content:center}
 .hero-breath::after{content:'';display:block;width:1px;height:60%;background:linear-gradient(180deg,rgba(201,169,110,.38) 0%,transparent 100%)}
 
 /* ══ SECTION SYSTEM ══ */
@@ -337,7 +341,7 @@ footer{padding:clamp(2rem,4vw,4rem) var(--col-pad);border-top:1px solid rgba(201
   .stat-price{min-width:100%;justify-content:center;padding-top:.3rem}
   .stat-num{font-size:1.05rem}
   .stat-lbl{font-size:.56rem;letter-spacing:.18em}
-  
+  .stat-crest-wrap{display:none}
   section.split{flex-direction:column!important;padding:var(--sp-md) 1.5rem;gap:2rem;min-height:auto}
   .split-img{min-height:260px;flex:none;width:100%}
   .split-text{max-width:100%}
@@ -445,21 +449,22 @@ section.breath{padding:clamp(1.5rem,2.5vw,3rem) var(--col-pad)!important}
 
   <!-- STAT BAR -->
   <div class="stat-bar">
-
     <div class="stat-numbers">
       <div class="stat-item"><span class="stat-num">4</span><span class="stat-lbl">Bedrooms</span></div>
       <div class="stat-div"></div>
       <div class="stat-item"><span class="stat-num">6</span><span class="stat-lbl">Bathrooms</span></div>
       <div class="stat-div"></div>
-      <div class="stat-item"><span class="stat-num">6,072</span><span class="stat-lbl">Square Feet</span></div>
-      <div class="stat-spacer"></div>
+      <div class="stat-crest-wrap">
+        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778826398/gh_key/gh_crest_gloss_v2.png" alt="Garran Hill Crest">
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat-item"><span class="stat-num">6,072</span><span class="stat-lbl">Living Area</span></div>
+      <div class="stat-div"></div>
       <div class="stat-item"><span class="stat-num">4.15</span><span class="stat-lbl">Acres</span></div>
       <div class="stat-div"></div>
-      <div class="stat-item stat-price"><span class="stat-num">$4,250,000</span><span class="stat-lbl">Offered At</span></div>
+      <div class="stat-item stat-price"><span class="stat-num">$4,250,000</span></div>
     </div>
   </div>
-
-  <!-- CREST: direct child of hero section -- sits above all gradients, pure medallion -->
 </section>
 <div class="hero-breath"></div>
 
