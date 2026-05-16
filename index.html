@@ -194,27 +194,27 @@ section.hero{position:relative;width:100%;height:100vh;min-height:640px;overflow
 .hero-video-wrap video{width:100%;height:100%;object-fit:cover;object-position:center}
 .hero-video-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.18) 0%,rgba(5,5,5,.08) 35%,rgba(5,5,5,.52) 75%,rgba(5,5,5,.92) 100%)}
 .hero-text{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 clamp(1.5rem,6vw,8rem);padding-bottom:14vh}
-.hero-eyebrow{font-size:clamp(.60rem,.78vw,.70rem);font-weight:300;letter-spacing:.30em;text-transform:uppercase;color:rgba(245,240,232,.56);margin-bottom:1.2rem}
-.hero-title{font-family:'Pinyon Script',cursive;font-size:clamp(5rem,16vw,14rem);font-weight:300;color:var(--cream);line-height:1.05;text-shadow:0 2px 40px rgba(0,0,0,.8),0 0 80px rgba(0,0,0,.5);margin-bottom:1.6rem}
-.hero-sub{font-size:clamp(.60rem,.78vw,.70rem);font-weight:300;letter-spacing:.30em;text-transform:uppercase;color:rgba(245,240,232,.48)}
+.hero-eyebrow{font-size:clamp(.60rem,.78vw,.70rem);font-weight:300;letter-spacing:.42em;text-transform:uppercase;color:rgba(245,240,232,.56);margin-bottom:1.2rem}
+.hero-title{font-family:'Pinyon Script',cursive;font-size:clamp(6rem,18vw,16rem);font-weight:300;color:var(--cream);line-height:.95;text-shadow:0 4px 60px rgba(0,0,0,.85),0 0 100px rgba(0,0,0,.55);margin-bottom:1.8rem}
+.hero-sub{font-size:clamp(.60rem,.78vw,.70rem);font-weight:300;letter-spacing:.40em;text-transform:uppercase;color:rgba(201,169,110,.55)}
 
 /* ══ STAT BAR -- THE ONE TRUE VERSION ══
    Simple flex row. align-items:flex-end.
    Crest is a flex child, taller, rises naturally.
    No position tricks. No absolute children. */
-.stat-bar{position:absolute;bottom:0;left:0;right:0;z-index:10;padding:0 clamp(1.5rem,5vw,5rem) 1.6rem;background:linear-gradient(180deg,rgba(5,5,5,0) 0%,rgba(5,5,5,.65) 45%,rgba(5,5,5,.92) 100%);overflow:visible}
+.stat-bar{position:absolute;bottom:0;left:0;right:0;z-index:10;padding:0 clamp(1.5rem,5vw,5rem) 2.2rem;background:linear-gradient(180deg,rgba(5,5,5,0) 0%,rgba(5,5,5,.65) 45%,rgba(5,5,5,.92) 100%);overflow:visible}
 .stat-bar::before{content:'';position:absolute;top:0;left:6%;right:6%;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,.06) 5%,rgba(201,169,110,.28) 30%,rgba(245,224,152,.48) 50%,rgba(201,169,110,.28) 70%,rgba(201,169,110,.06) 95%,transparent 100%)}
 
 .stat-numbers{display:flex;flex-direction:row;align-items:flex-end;justify-content:center;flex-wrap:nowrap;width:100%;gap:0}
 
 .stat-item{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 clamp(.9rem,2vw,2.4rem);flex-shrink:0;flex-grow:0}
 
-.stat-num{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.2rem,1.8vw,2.0rem);font-weight:300;letter-spacing:.06em;color:rgba(245,240,232,.90);line-height:1.1;white-space:nowrap}
+.stat-num{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.6rem,2.4vw,2.8rem);font-weight:300;letter-spacing:.04em;color:rgba(245,240,232,.94);line-height:1.0;white-space:nowrap}
 
-.stat-lbl{display:block;font-size:clamp(.54rem,.66vw,.60rem);font-weight:300;letter-spacing:.30em;text-transform:uppercase;color:rgba(245,240,232,.35);margin-top:.28rem;white-space:nowrap}
+.stat-lbl{display:block;font-size:clamp(.50rem,.60vw,.56rem);font-weight:300;letter-spacing:.38em;text-transform:uppercase;color:rgba(245,240,232,.38);margin-top:.35rem;white-space:nowrap}
 
-.stat-div{width:1px;height:26px;flex-shrink:0;align-self:center;background:linear-gradient(180deg,transparent 0%,rgba(201,169,110,.22) 25%,rgba(245,224,152,.42) 50%,rgba(201,169,110,.22) 75%,transparent 100%)}
-.stat-spacer{width:clamp(140px,13vw,200px);flex-shrink:0}
+.stat-div{width:1px;height:34px;flex-shrink:0;align-self:center;background:linear-gradient(180deg,transparent 0%,rgba(201,169,110,.22) 25%,rgba(245,224,152,.42) 50%,rgba(201,169,110,.22) 75%,transparent 100%)}
+.stat-spacer{width:clamp(160px,15vw,230px);flex-shrink:0}
 
 .stat-price .stat-num{font-size:clamp(1.1rem,1.6vw,1.85rem);color:rgba(245,240,232,.88)}
 
@@ -224,7 +224,7 @@ section.hero{position:relative;width:100%;height:100vh;min-height:640px;overflow
   position:absolute;
   left:50%;
   bottom:0;
-  transform:translateX(-50%) translateY(38%);
+  transform:translateX(-50%) translateY(48%);
   z-index:20;
   background:none;
   border:none;
@@ -233,7 +233,7 @@ section.hero{position:relative;width:100%;height:100vh;min-height:640px;overflow
 }
 .stat-crest-wrap img{
   display:block;
-  width:clamp(130px,11vw,175px);
+  width:clamp(150px,13vw,210px);
   height:auto;
   background:none;
   filter:
