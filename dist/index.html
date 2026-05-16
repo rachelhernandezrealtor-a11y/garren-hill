@@ -251,7 +251,9 @@
     left: 0;
     right: 0;
     z-index: 5;
-    background: #000000;
+    background: rgba(5,5,5,0.22);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     height: 72px;
     display: flex;
     align-items: center;
@@ -2607,7 +2609,7 @@
 
   </div><!-- end stat-bar -->
 </section>
-<div aria-hidden="true" style="width:100%;display:flex;align-items:center;justify-content:space-around;padding:0.4rem 0;background:#0a0a0a;"><div style="width:clamp(40px,8vw,80px);height:1px;background:linear-gradient(to right,transparent,#C9A96E,transparent);"></div></div>
+<div aria-hidden="true" style="width:100%;display:flex;align-items:center;justify-content:space-around;padding:0.4rem 0;background:transparent;"><div style="width:clamp(40px,8vw,80px);height:1px;background:linear-gradient(to right,transparent,#C9A96E,transparent);"></div></div>
 <section class="pull intimate">
   <p class="pull-quote reveal-slow" style="color:var(--gold);font-size:clamp(1.8rem,4vw,3.6rem);">Someone still puts flowers there.</p>
 </section>
