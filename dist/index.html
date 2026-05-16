@@ -1909,19 +1909,19 @@
   /* Sepia: slow Ken Burns drift, always present, loops */
   @keyframes gate-pull-then {
     0%   { transform: scale(1.0) translate(0%, 0%); }
-    100% { transform: scale(1.06) translate(-1.2%, -0.8%); }
+    100% { transform: scale(1.12) translate(-2.5%, -1.8%); }
   }
   /* Modern: slow Ken Burns drift in opposite direction */
   @keyframes gate-pull-now {
-    0%   { transform: scale(1.06) translate(1.2%, 0.8%); }
+    0%   { transform: scale(1.12) translate(2.5%, 1.8%); }
     100% { transform: scale(1.0) translate(0%, 0%); }
   }
   /* Modern overlay: fades in, holds, fades out  --  full 32s cycle */
   @keyframes gate-now-fade {
     0%   { opacity: 0; }
-    65%  { opacity: 0; }
-    78%  { opacity: 1; }
-    88%  { opacity: 1; }
+    45%  { opacity: 0; }
+    58%  { opacity: 1; }
+    80%  { opacity: 1; }
     100% { opacity: 0; }
 
 
@@ -2086,15 +2086,15 @@
     <img loading="eager" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_grayscale,e_sepia:80,e_sharpen:15,f_auto,q_auto,c_limit,w_1920/v1777411350/gh_key/gh_gate_sepia.jpg"
       alt="Garran Hill gate  --  the estate as it stands"
-      style="position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;object-position:center 35%;animation:gate-pull-then 40s ease-in-out infinite alternate;">
+      style="position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;object-position:center 35%;animation:gate-pull-then 20s ease-in-out infinite alternate;">
   </div>
 
   <!-- NOW: modern full-color gate  --  fades in slowly, holds briefly, fades back -->
-  <div style="position:absolute;inset:0;overflow:hidden;z-index:1;opacity:0;animation:gate-now-fade 40s ease-in-out infinite;animation-delay:0s;">
+  <div style="position:absolute;inset:0;overflow:hidden;z-index:1;opacity:0;animation:gate-now-fade 20s ease-in-out infinite;animation-delay:0s;">
     <img loading="eager" decoding="async"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_1920/v1777390104/gh_key/gh_gate_arrival.jpg"
       alt="Garran Hill gate  --  today"
-      style="position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;object-position:center 35%;animation:gate-pull-now 40s ease-in-out infinite alternate;">
+      style="position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;object-position:center 35%;animation:gate-pull-now 20s ease-in-out infinite alternate;">
   </div>
 
   <!-- VIGNETTE -->
@@ -2106,8 +2106,6 @@
   <!-- TEXT -->
   <div class="reveal" style="position:relative;z-index:5;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(2.5rem,5vw,5rem) clamp(2rem,6vw,8rem) clamp(3rem,6vw,6rem);text-align:center;">
     <span class="eyebrow" style="color:rgba(201,169,110,0.8)">The Estate &middot; Pinehurst, NC</span>
-    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.6rem,5vw,5rem);margin-top:0.8rem;color:#F5F0E8;font-weight:300;line-height:1.08;"><span class="headline-drop">S</span>ome houses hold history.<em> This one shaped it.</em></h2>
-    <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1rem,1.4vw,1.35rem);font-weight:300;font-style:italic;margin-top:1rem;max-width:600px;margin-left:auto;margin-right:auto;color:rgba(245,240,232,0.78);line-height:1.7;">The door has been open since 1916.</p>
   </div>
 
 </section>
