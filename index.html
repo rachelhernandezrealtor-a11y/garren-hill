@@ -214,14 +214,49 @@ section.hero{position:relative;width:100%;height:100vh;min-height:640px;overflow
 .stat-lbl{display:block;font-size:clamp(.54rem,.66vw,.60rem);font-weight:300;letter-spacing:.30em;text-transform:uppercase;color:rgba(245,240,232,.35);margin-top:.28rem;white-space:nowrap}
 
 .stat-div{width:1px;height:26px;flex-shrink:0;align-self:center;background:linear-gradient(180deg,transparent 0%,rgba(201,169,110,.22) 25%,rgba(245,224,152,.42) 50%,rgba(201,169,110,.22) 75%,transparent 100%)}
+.stat-spacer{width:clamp(140px,13vw,200px);flex-shrink:0}
 
 .stat-price .stat-num{font-size:clamp(1.1rem,1.6vw,1.85rem);color:rgba(245,240,232,.88)}
 
 /* CREST -- focal point, asset law */
-.stat-crest-wrap{display:flex;align-items:flex-end;justify-content:center;flex-shrink:0;flex-grow:0;padding:0 clamp(1.0rem,2.2vw,2.8rem)}
-.stat-crest-wrap img{display:block;height:clamp(120px,13vw,180px);width:auto;transform:translateY(-55px);filter:drop-shadow(0 0 32px rgba(0,0,0,1)) drop-shadow(0 -8px 20px rgba(0,0,0,.98)) drop-shadow(0 8px 24px rgba(0,0,0,.98)) drop-shadow(0 0 22px rgba(201,169,110,.30)) drop-shadow(0 0 10px rgba(245,224,152,.18));animation:crestGlow 4.5s ease-in-out infinite;transition:transform .4s ease}
-.stat-crest-wrap img:hover{transform:translateY(-20px) scale(1.04);animation:none;filter:drop-shadow(0 0 32px rgba(0,0,0,1)) drop-shadow(0 -8px 20px rgba(0,0,0,.98)) drop-shadow(0 0 44px rgba(201,169,110,.48)) drop-shadow(0 0 22px rgba(245,224,152,.32))}
-@keyframes crestGlow{0%,100%{filter:drop-shadow(0 0 32px rgba(0,0,0,1)) drop-shadow(0 -8px 20px rgba(0,0,0,.98)) drop-shadow(0 0 20px rgba(201,169,110,.26)) drop-shadow(0 0 9px rgba(245,224,152,.15))}50%{filter:drop-shadow(0 0 32px rgba(0,0,0,1)) drop-shadow(0 -8px 20px rgba(0,0,0,.98)) drop-shadow(0 0 38px rgba(201,169,110,.42)) drop-shadow(0 0 18px rgba(245,224,152,.28))}}
+/* CREST -- absolute, no background, no bubble, pure medallion */
+.stat-crest-wrap{
+  position:absolute;
+  left:50%;
+  bottom:0;
+  transform:translateX(-50%) translateY(38%);
+  z-index:20;
+  background:none;
+  border:none;
+  padding:0;
+  pointer-events:auto;
+}
+.stat-crest-wrap img{
+  display:block;
+  width:clamp(130px,11vw,175px);
+  height:auto;
+  background:none;
+  filter:
+    drop-shadow(0 18px 48px rgba(0,0,0,0.98))
+    drop-shadow(0 6px 16px rgba(0,0,0,0.92))
+    drop-shadow(0 2px 6px rgba(0,0,0,0.85))
+    drop-shadow(0 0 28px rgba(201,169,110,0.28));
+  animation:crestGlow 5s ease-in-out infinite;
+  transition:filter .4s ease, transform .4s ease;
+}
+.stat-crest-wrap img:hover{
+  filter:
+    drop-shadow(0 18px 48px rgba(0,0,0,0.98))
+    drop-shadow(0 6px 16px rgba(0,0,0,0.92))
+    drop-shadow(0 0 52px rgba(201,169,110,0.52))
+    drop-shadow(0 0 22px rgba(245,224,152,0.35));
+  transform:translateY(-6px) scale(1.03);
+  animation:none;
+}
+@keyframes crestGlow{
+  0%,100%{filter:drop-shadow(0 18px 48px rgba(0,0,0,0.98)) drop-shadow(0 6px 16px rgba(0,0,0,0.92)) drop-shadow(0 0 22px rgba(201,169,110,0.22)) drop-shadow(0 0 9px rgba(245,224,152,0.14))}
+  50%{filter:drop-shadow(0 18px 48px rgba(0,0,0,0.98)) drop-shadow(0 6px 16px rgba(0,0,0,0.92)) drop-shadow(0 0 42px rgba(201,169,110,0.45)) drop-shadow(0 0 20px rgba(245,224,152,0.30))}
+}
 
 /* Hero breath */
 .hero-breath{width:100%;height:clamp(3rem,5vh,5rem);background:var(--dark);display:flex;align-items:center;justify-content:center}
@@ -449,20 +484,20 @@ section.breath{padding:clamp(1.5rem,2.5vw,3rem) var(--col-pad)!important}
 
   <!-- STAT BAR -->
   <div class="stat-bar">
+    <!-- CREST: absolute, no parent background, pure medallion floating above belt -->
+    <div class="stat-crest-wrap">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778826398/gh_key/gh_crest_gloss_v2.png" alt="Garran Hill Crest" width="175" height="175">
+    </div>
     <div class="stat-numbers">
       <div class="stat-item"><span class="stat-num">4</span><span class="stat-lbl">Bedrooms</span></div>
       <div class="stat-div"></div>
       <div class="stat-item"><span class="stat-num">6</span><span class="stat-lbl">Bathrooms</span></div>
       <div class="stat-div"></div>
-      <div class="stat-crest-wrap">
-        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778826398/gh_key/gh_crest_gloss_v2.png" alt="Garran Hill Crest">
-      </div>
-      <div class="stat-div"></div>
-      <div class="stat-item"><span class="stat-num">6,072</span><span class="stat-lbl">Living Area</span></div>
-      <div class="stat-div"></div>
+      <div class="stat-item"><span class="stat-num">6,072</span><span class="stat-lbl">Square Feet</span></div>
+      <div class="stat-spacer"></div>
       <div class="stat-item"><span class="stat-num">4.15</span><span class="stat-lbl">Acres</span></div>
       <div class="stat-div"></div>
-      <div class="stat-item stat-price"><span class="stat-num">$4,250,000</span></div>
+      <div class="stat-item stat-price"><span class="stat-num">$4,250,000</span><span class="stat-lbl">Offered At</span></div>
     </div>
   </div>
 </section>
