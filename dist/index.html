@@ -1878,9 +1878,7 @@
 
   /* § T2 — SECTION HEADLINE */
   .split-text h2,
-  .copy-col h2,
-  .editorial-split .split-text h2,
-  section h2 {
+  .copy-col h2 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
     font-size: clamp(2rem, 3.5vw, 3.2rem);
@@ -1890,7 +1888,17 @@
     margin: 0 0 clamp(1.4rem, 2.5vw, 2rem) 0;
     max-width: 20ch;
   }
-
+  /* Full-bleed / standalone section h2 -- no max-width constraint */
+  section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    margin: 0 0 clamp(1.4rem, 2.5vw, 2rem) 0;
+    max-width: none;
+  }
   /* § T2b — H2 italic continuation line */
   .split-text h2 em,
   .copy-col h2 em,
