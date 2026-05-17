@@ -509,7 +509,8 @@ h2 em {
   transform: translateY(18px);
   transition: opacity 0.9s ease, transform 0.9s ease;
 }
-.reveal.visible {
+.reveal.visible,
+.reveal.in {
   opacity: 1;
   transform: translateY(0);
 }
@@ -518,7 +519,8 @@ h2 em {
   opacity: 0;
   transition: opacity 1.1s ease;
 }
-.img-reveal.visible { opacity: 1; }
+.img-reveal.visible,
+.img-reveal.in { opacity: 1; }
 
 /* ── 8. FULL-BLEED SECTIONS ──────────────────────────────────────── */
 .full-bleed-section {
@@ -946,6 +948,16 @@ footer .footer-privacy {
 @keyframes heroFadeIn {
   0%   { opacity: 0; transform: translateY(12px); }
   100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SAFETY NET: ensure reveals don't stay hidden if JS is slow ── */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal:not(.in):not(.visible) {
+    animation: revealFallback 0.01s 1.5s forwards;
+  }
+}
+@keyframes revealFallback {
+  to { opacity: 1; transform: translateY(0); }
 }
 </style>
 </head>
