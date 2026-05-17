@@ -2,7 +2,8 @@
 <!-- build: 20260512211200 -->
 <html lang="en">
 <head>
- <meta charset="UTF-8">
+ <link rel="preload" as="image" href="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1778826398/gh_key/gh_crest_gloss_v2.png">
+  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Garran Hill | 200 Hollycrest Drive, Pinehurst, NC</title>
  <meta name="description" content="Garran Hill  --  200 Hollycrest Drive, Pinehurst, NC. Neo-Georgian estate built in 1915--16 for Walter Hines Page. 6,072 SF. 4.15 acres. $4,250,000. Offered by Pines Sotheby's International Realty, Southern Pines, NC.">
@@ -23,7 +24,7 @@
   overflow: hidden;
   background: #0a0a0a;
  }
- .editorial-split.reverse {
+ .editorial-split.reverse, .split.reverse {
   flex-direction: row-reverse;
  }
  .editorial-split .split-img,
@@ -35,7 +36,9 @@
   overflow: hidden;
  }
  .editorial-split .split-img img,
- .editorial-split .img-col img {
+ .editorial-split .img-col img,
+ .split .split-img img,
+ .split .img-col img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -55,20 +58,24 @@
   background: #0a0a0a;
  }
  @media (max-width: 768px) {
-  .editorial-split {
+  .editorial-split, .split {
    flex-direction: column;
   }
-  .editorial-split.reverse {
+  .editorial-split.reverse, .split.reverse {
    flex-direction: column;
   }
   .editorial-split .split-img,
-  .editorial-split .img-col {
+  .editorial-split .img-col,
+  .split .split-img,
+  .split .img-col {
    flex: none;
    width: 100%;
    min-height: 55vw;
   }
   .editorial-split .split-text,
-  .editorial-split .copy-col {
+  .editorial-split .copy-col,
+  .split .split-text,
+  .split .copy-col {
    flex: none;
    width: 100%;
    padding: clamp(2rem,6vw,4rem) clamp(1.5rem,5vw,3rem);
@@ -1182,7 +1189,7 @@ section.editorial-room + section.full-bleed-section {
       style="position:absolute;bottom:0;left:50%;transform:translate(-50%,-8px);z-index:40;
         width:clamp(120px,13vw,165px);height:auto;
         filter:drop-shadow(0 12px 40px rgba(0,0,0,0.95)) drop-shadow(0 4px 12px rgba(0,0,0,0.8)) drop-shadow(0 2px 4px rgba(201,169,110,0.3));
-        pointer-events:none;">
+        pointer-events:none;" loading="lazy" decoding="async">
 
  </div><!-- end stat-bar -->
 </section>
@@ -1374,7 +1381,7 @@ section.editorial-room + section.full-bleed-section {
 <div class="section-divider" style="width:100%;height:1px;background:linear-gradient(to right,transparent 0%,rgba(201,169,110,0.0) 5%,rgba(201,169,110,0.3) 25%,rgba(245,224,152,0.5) 50%,rgba(201,169,110,0.3) 75%,rgba(201,169,110,0.0) 95%,transparent 100%);margin:0;"></div>
 <div class="act-transition reveal"><span class="act-label">The Grounds</span></div>
 <div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
-<section id="staircase" class="editorial-room flip" style="position:relative;overflow:hidden;min-height:80vh;">
+<section id="staircase" class="editorial-split editorial-room reverse" style="min-height:80vh;">
  <div class="split reverse">
   <div class="split-text reveal">
    <span class="micro-rule"></span>
@@ -1465,7 +1472,7 @@ section.editorial-room + section.full-bleed-section {
 <div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
 <!-- DINING ROOM  --  intimate section -->
 </section>
-<section  id="dining-room" class="editorial-room" style="position:relative;min-height:80vh;overflow:hidden;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_fill,ar_3:2,g_center,w_1920/v1777243079/gh_interiors/200holycrest_1308.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.11;display:block;"></div>
+<section id="dining-room" class="editorial-split editorial-room" style="min-height:80vh;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_fill,ar_3:2,g_center,w_1920/v1777243079/gh_interiors/200holycrest_1308.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.11;display:block;"></div>
  
  <div class="split"><div class="split-img">
   <img loading="eager" decoding="sync"
@@ -1586,7 +1593,7 @@ section.editorial-room + section.full-bleed-section {
 <div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
 <!-- PRIMARY SUITE -->
 </section>
-<section id="primary-suite" class="editorial-room" style="position:relative;overflow:hidden;padding:0;min-height:90vh;">
+<section id="primary-suite" class="editorial-split editorial-room" style="min-height:90vh;">
  <div class="split">
   <div class="split-img">
    <img loading="eager" decoding="sync" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_fill,ar_4:3,g_auto,w_1400/v1/gh_interiors/200holycrest_1534.jpg"
@@ -1608,7 +1615,7 @@ section.editorial-room + section.full-bleed-section {
 <!-- STAIRCASE + POWDER -->
 <section class="breath short"></section>
 <div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
-<section id="jewel-box-bath" class="editorial-room flip" style="position:relative;overflow:hidden;min-height:80vh;">
+<section id="jewel-box-bath" class="editorial-split editorial-room reverse" style="min-height:80vh;">
  <div class="split-text reveal">
   <span class="micro-rule"></span>
   <span class="eyebrow">The Primary Bath &middot; The Jewel Box</span>
@@ -1624,7 +1631,7 @@ section.editorial-room + section.full-bleed-section {
       alt="Garran Hill  --  the Jewel Box bath, primary bathroom" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position: center 30%;">
  </div>
 </section>
-<section  id="private-rooms" class="editorial-room" style="position:relative;overflow:hidden;min-height:70vh;">
+<section id="private-rooms" class="editorial-split editorial-room" style="min-height:70vh;">
  <div class="split-img">
   <img loading="eager" decoding="sync"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_fill,ar_4:3,g_center,w_1920/v1777243208/gh_interiors/200holycrest_1512.jpg"
