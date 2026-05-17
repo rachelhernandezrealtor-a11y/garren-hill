@@ -1966,6 +1966,26 @@
     position: relative;
     z-index: 10;
   }
+
+  /* ── SECTION SEPARATORS -- subtle gold rule between every section ── */
+  section + section::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: rgba(201,169,110,0.12);
+  }
+
+  /* Act breaks -- major narrative transitions get more space */
+  .act-break {
+    width: 100%;
+    padding: clamp(1.5rem, 3vw, 3rem) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: #0a0a0a;
+  }
 </style>
 </head>
 <body>
@@ -2247,6 +2267,8 @@
   </div>
 </section>
 
+<div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
+
 <!-- ── THRESHOLD ──────────────────────────────────────────── -->
 <section id="threshold" style="position:relative;width:100%;min-height:100vh;overflow:hidden;background:#000000;">
   <!-- Full-bleed threshold photo: entry hall french doors, stone inscription above -->
@@ -2270,6 +2292,7 @@
   </div>
 
 <div aria-hidden="true" style="width:100%;display:flex;align-items:center;justify-content:center;padding:0.4rem 0;background:#000000;"><div style="width:clamp(40px,8vw,80px);height:1px;background:linear-gradient(to right,transparent,#C9A96E,transparent);"></div></div>
+<div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
 <section id="hollycrest" style="position:relative;overflow:hidden;min-height:90vh;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_fill,ar_16:9,g_center,w_1920/v1777244086/gh_photos/200_hollycrest_drive_11.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%;opacity:0.10;filter:grayscale(40%) sepia(25%);display:block;"></div>
   <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <div class="split" style="padding:clamp(3rem,6vw,8rem) clamp(2rem,5vw,6rem);">
@@ -2299,7 +2322,7 @@
 
 <div class="section-divider" style="width:100%;height:1px;background:linear-gradient(to right,transparent 0%,rgba(201,169,110,0.0) 5%,rgba(201,169,110,0.3) 25%,rgba(245,224,152,0.5) 50%,rgba(201,169,110,0.3) 75%,rgba(201,169,110,0.0) 95%,transparent 100%);margin:0;"></div>
 <div class="act-transition reveal"><span class="act-label">The Grounds</span></div>
-
+<div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
 <section id="staircase" style="position:relative;overflow:hidden;min-height:80vh;">
   <div class="split reverse">
     <div class="split-text reveal">
@@ -2326,6 +2349,7 @@
 
 
 <!-- SALON  --  full split -->
+<div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
 <section id="salon" style="position:relative;width:100%;min-height:100vh;overflow:hidden;background:#000000;">
 
   <!-- FULL-BLEED PHOTO: 1209 -- widest salon shot, shows full room scale -->
@@ -2367,8 +2391,8 @@
     </div>
   </div>
 
-</section>
 
+<div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
 <!-- DRAWING ROOM  --  reverse split -->
 <section class="editorial-split reverse" id="drawing-room" style="position:relative;overflow:hidden;min-height:80vh;">
   <div class="split-img img-reveal">
@@ -2385,8 +2409,8 @@
       <p class="caption-label">"Blue-and-white tile, firelight, and a spiral stair &mdash; the Drawing Room keeps its own rhythm."</p>
     </div>
   </div>
-</section>
 
+<div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
 <!-- DINING ROOM  --  intimate section -->
 <section class="editorial-split" id="dining-room" style="position:relative;min-height:80vh;overflow:hidden;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_fill,ar_3:2,g_center,w_1920/v1777243079/gh_interiors/200holycrest_1308.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.11;display:block;"></div>
   <div class="section-content" style="position:relative;z-index:1;width:100%;">
@@ -2408,8 +2432,7 @@
 </section>
 
 <!-- LIBRARY  --  reverse -->
-
-
+<div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
 <section id="kitchen" style="position:relative;overflow:hidden;background:#000000;padding:0;min-height:90vh;">
 
   <!-- Beat 1: Full-bleed wide shot -->
@@ -2487,6 +2510,7 @@
 
 
 <!-- LIBRARY -->
+<div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
 <section id="library" style="position:relative;overflow:hidden;padding:0;min-height:90vh;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_fill,w_1920,h_1280,g_center/v1777243111/gh_interiors/200holycrest_1350.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.07;filter:grayscale(50%);display:block;"></div>
   <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <div class="split reverse">
@@ -2505,8 +2529,8 @@
     </div>
   </div>
   </div>
-</section>
 
+<div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
 <!-- PRIMARY SUITE -->
 <section id="primary-suite" style="position:relative;overflow:hidden;padding:0;min-height:90vh;">
   <div class="split">
@@ -2530,6 +2554,7 @@
 <!-- STAIRCASE + POWDER -->
 <section class="breath short"></section>
 <div aria-hidden="true" style="width:100%;display:flex;align-items:center;justify-content:space-around;padding:0.4rem 0;background:#000000;"><div style="width:clamp(40px,8vw,80px);height:1px;background:linear-gradient(to right,transparent,#C9A96E,transparent);"></div></div>
+<div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
 <section class="editorial-split" id="jewel-box-bath" style="position:relative;overflow:hidden;min-height:80vh;">
   <div class="split-text reveal">
     <span class="micro-rule reveal"></span>
@@ -2564,8 +2589,8 @@
       <!-- GH_PHOTO_CONFIRMATION_NEEDED: primary closet  --  room_primary_closet tag -->
     </div>
   </div>
-</section>
 
+<div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
 <!-- JEWEL BOX BATH -->
 <section id="powder-room" style="position:relative;overflow:hidden;min-height:60vh;">
   <div class="split">
@@ -2614,6 +2639,9 @@
     </div>
   </div>
 </section>
+
+<div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
+
 <!-- SIDE PORCH  --  placeholder image, swap when Dave's shots arrive -->
 <section id="side-porch" style="position:relative; background:#000000; overflow:hidden;min-height:90vh;">
   <div class="editorial-split" style="display:flex; align-items:stretch; min-height:80vh;">
