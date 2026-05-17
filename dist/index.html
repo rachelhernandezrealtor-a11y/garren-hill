@@ -1056,6 +1056,212 @@ section.editorial-room + section.full-bleed-section {
   <link rel="preload" as="image" href="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/gh_key/gh_crest_gloss_v2.png">
   <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
   <link rel="dns-prefetch" href="https://res.cloudinary.com">
+
+<style id="vogue-polish">
+/* ═══════════════ VOGUE POLISH PASS ═══════════════ */
+
+/* Section breathing — more air between everything */
+.editorial-split {
+  display: flex !important;
+  flex-direction: row;
+  min-height: 80vh;
+}
+.editorial-split.reverse,
+.editorial-split[style*="row-reverse"] {
+  flex-direction: row-reverse !important;
+}
+
+/* Split columns — proper flex sizing */
+.editorial-split .split-img,
+.editorial-split .split-text {
+  flex: 1 1 50%;
+  min-width: 0;
+}
+
+/* Image column — always fills its container */
+.editorial-split .split-img {
+  position: relative !important;
+  min-height: 60vh;
+  overflow: hidden;
+}
+.editorial-split .split-img img {
+  position: absolute !important;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 1 !important;
+}
+
+/* Text column — centered content, generous padding */
+.editorial-split .split-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(4rem, 7vw, 8rem) clamp(2.5rem, 5vw, 6rem);
+  background: #0d0d0d;
+}
+
+/* Eyebrow — Vogue weight */
+.eyebrow {
+  font-family: 'Instrument Sans', 'DM Sans', sans-serif !important;
+  font-size: clamp(0.65rem, 0.85vw, 0.78rem) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.38em !important;
+  text-transform: uppercase;
+  color: rgba(201,169,110,0.88) !important;
+  display: block;
+  margin-bottom: 1.4rem !important;
+}
+
+/* Section H2 — more presence */
+.split-text h2,
+.copy-col h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: clamp(2.1rem, 3.4vw, 3.4rem) !important;
+  font-weight: 300 !important;
+  line-height: 1.18 !important;
+  letter-spacing: 0.01em;
+  color: #F5F0E8;
+  margin: 0 0 1.8rem 0 !important;
+}
+
+/* Body copy — more air */
+.body-text p {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: clamp(1rem, 1.25vw, 1.2rem) !important;
+  font-weight: 300 !important;
+  line-height: 2.0 !important;
+  letter-spacing: 0.03em;
+  color: rgba(245,240,232,0.82);
+  margin-bottom: 1.4em;
+}
+
+/* Micro-rule gold line */
+.micro-rule {
+  display: block;
+  width: 2rem;
+  height: 1px;
+  background: rgba(201,169,110,0.55) !important;
+  margin-bottom: 1.2rem;
+}
+
+/* Act-break — more breathing room */
+.act-break,
+.act-breath {
+  padding: clamp(5rem, 9vw, 9rem) 0 !important;
+}
+
+/* Mobile — stack vertically */
+@media (max-width: 768px) {
+  .editorial-split {
+    flex-direction: column !important;
+  }
+  .editorial-split .split-img {
+    min-height: 55vw;
+    flex: none;
+  }
+  .editorial-split .split-text {
+    flex: none;
+    padding: 3rem 1.75rem;
+  }
+}
+</style>
+
+
+<style id="vogue-beauty">
+/* ═══════════════ BEAUTY PASS ═══════════════ */
+
+/* Cinematic sections — richer text */
+.cinematic p, .cinematic h2, .cinematic h3 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* All text globally */
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* WHP History h2 — larger, more gravitas */
+#history h2 {
+  font-size: clamp(2.4rem, 4vw, 4.2rem) !important;
+  line-height: 1.12 !important;
+  font-weight: 200 !important;
+  letter-spacing: 0.01em;
+}
+
+/* Architecture section — generous vertical padding */
+#architecture {
+  padding: clamp(5rem, 9vw, 10rem) clamp(2rem, 8vw, 10rem) !important;
+}
+
+/* Threshold section — centered, maximum silence */
+#threshold {
+  padding: clamp(6rem, 10vw, 12rem) clamp(2rem, 8vw, 10rem) !important;
+}
+#threshold h2 {
+  font-size: clamp(2.4rem, 4.5vw, 5rem) !important;
+  font-weight: 200 !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0.02em;
+}
+
+/* KB Gate headline — more weight and air */
+#kb-gate h2 {
+  font-size: clamp(2.8rem, 5vw, 5.5rem) !important;
+  letter-spacing: 0.015em !important;
+}
+
+/* Stat bar — gold labels larger */
+.stat-label {
+  font-size: clamp(0.6rem, 0.8vw, 0.72rem) !important;
+  letter-spacing: 0.35em !important;
+}
+.stat-value {
+  font-size: clamp(1.4rem, 2.2vw, 2rem) !important;
+}
+
+/* Footer — refined */
+footer {
+  padding: clamp(3rem, 5vw, 5rem) clamp(2rem, 6vw, 8rem) !important;
+}
+
+/* Inquiry section */
+#inquiry {
+  padding: clamp(5rem, 8vw, 9rem) clamp(2rem, 6vw, 8rem) !important;
+}
+
+/* Pool / grounds sections */
+#pool {
+  min-height: 70vh;
+}
+
+/* Subtle gold gradient on section transitions */
+.act-break-diamond {
+  width: 6px !important;
+  height: 6px !important;
+  background: rgba(201,169,110,0.6) !important;
+}
+
+/* Image captions — italic gold */
+figcaption, .img-caption {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.82rem;
+  color: rgba(201,169,110,0.6);
+  letter-spacing: 0.05em;
+  margin-top: 0.75rem;
+}
+
+/* Blue Fox section — maximum editorial presence */
+#blue-fox h2, #blue-fox .horse-name {
+  font-size: clamp(2.2rem, 4vw, 4rem) !important;
+}
+</style>
+
 </head>
 <body>
 
@@ -1217,7 +1423,7 @@ section.editorial-room + section.full-bleed-section {
 
  <!-- TEXT -->
  <div style="position:relative;z-index:5;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(2.5rem,5vw,5rem) clamp(2rem,6vw,8rem) clamp(3rem,6vw,6rem);text-align:center;">
-  <span class="eyebrow" style="display:block;margin-bottom:1.2rem;color:rgba(201,169,110,0.75);letter-spacing:0.28em;">Garran Hill &middot; Pinehurst, North Carolina</span>
+  <span class="eyebrow" style="display:block;margin-bottom:1.2rem;color:rgba(201,169,110,0.75);letter-spacing:0.38em;font-weight:400;color:rgba(201,169,110,0.88);">Garran Hill &middot; Pinehurst, North Carolina</span>
   <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.4rem,4.5vw,4.8rem);color:#F5F0E8;font-weight:300;line-height:1.15;max-width:900px;margin:0 auto 1.4rem;text-shadow:0 2px 24px rgba(0,0,0,0.7),0 1px 6px rgba(0,0,0,0.5);">Some houses are built for arrival.<em style="display:block;margin-top:0.15em;">Garran Hill was built for return.</em></h2>
   <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1rem,1.4vw,1.3rem);font-weight:300;font-style:italic;color:rgba(201,169,110,0.75);line-height:1.85;max-width:520px;margin:0 auto;letter-spacing:0.06em;text-shadow:0 1px 12px rgba(0,0,0,0.6);">The gate has been open since 1916.</p>
  </div>
@@ -1369,7 +1575,7 @@ section.editorial-room + section.full-bleed-section {
    <img loading="lazy" decoding="async"
         src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_960/gh_people/gh_betty_dumaine_1970s.jpg"
         alt="Betty Dumaine with Toddy Hunter, 1970s -- steward of Garran Hill 1959 to 1984"
-        style="width:100%;height:auto;display:block;object-fit:contain;">
+        style="opacity:1 !important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;width:100%;height:auto;display:block;object-fit:contain;">
   </div>
  </div>
  </section>
@@ -1390,7 +1596,7 @@ section.editorial-room + section.full-bleed-section {
   </div>
   <div class="split-img" style="position:relative;min-height:60vh;">
    <img loading="eager" decoding="sync" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_fill,ar_4:3,g_center,w_1600/gh_interiors/200holycrest_1182.jpg"
-        alt="Garran Hill mahogany volute staircase  --  original 1916, black railing, continuous curve from foyer" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position: center top;">
+        alt="Garran Hill mahogany volute staircase  --  original 1916, black railing, continuous curve from foyer" style="opacity:1 !important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position: center top;">
   </div>
 </section>
 <div style="background:#000000;text-align:center;padding:clamp(1.2rem,2vw,2rem) clamp(2rem,6vw,7rem);">
@@ -1454,15 +1660,13 @@ section.editorial-room + section.full-bleed-section {
 <div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
 <!-- DRAWING ROOM  --  reverse split -->
 </section>
-<section class="editorial-split" id="drawing-room" style="position:relative;overflow:hidden;min-height:80vh;">
+<section class="editorial-split" id="drawing-room" class="editorial-split" style="position:relative;overflow:hidden;min-height:80vh;">
  <div class="split-img" style="position:relative;min-height:60vh;">
   <img loading="eager" decoding="sync"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_fill,ar_4:3,g_auto,w_1600/gh_interiors/200holycrest_1317.jpg"
-      alt="Garran Hill Drawing Room  --  Delft-tiled fireplace, blue walls, active flame, intimate scale" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position: center 40%;">
+      alt="Garran Hill Drawing Room  --  Delft-tiled fireplace, blue walls, active flame, intimate scale" style="opacity:1 !important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position: center 40%;">
  </div>
  <div class="split-text">
-    <span class="micro-rule"></span>
-    <span class="eyebrow">The Salon &middot; Principal Rooms</span>
   <span class="micro-rule"></span>
   <span class="eyebrow">The Drawing Room &middot; 1916</span>
   <h2>Delft tile. Georgian mantel.<em> A room enlarged for dancing.</em></h2>
@@ -1479,7 +1683,7 @@ section.editorial-room + section.full-bleed-section {
  <div class="split-img" style="position:relative;min-height:60vh;">
   <img loading="eager" decoding="sync"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_fill,ar_4:3,g_center,w_1600/gh_interiors/200holycrest_1296.jpg"
-      alt="Garran Hill dining room  --  mahogany table, original chandelier, shell cabinets, 1916" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position: center 30%;">
+      alt="Garran Hill dining room  --  mahogany table, original chandelier, shell cabinets, 1916" style="opacity:1 !important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position: center 30%;">
  </div>
  <div class="split-text">
   <span class="micro-rule"></span>
@@ -1585,7 +1789,7 @@ section.editorial-room + section.full-bleed-section {
   </div>
   <div class="split-img" style="position:relative;min-height:60vh;">
    <img loading="eager" decoding="sync" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_fill,ar_4:3,g_center,w_1600/gh_photos/200_hollycrest_drive_58.jpg"
-        alt="Library  --  three walls of floor-to-ceiling shelving, rolling ladder, Garran Hill" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position: center top;">
+        alt="Library  --  three walls of floor-to-ceiling shelving, rolling ladder, Garran Hill" style="opacity:1 !important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position: center top;">
   </div>
 
 </section>
@@ -1594,7 +1798,7 @@ section.editorial-room + section.full-bleed-section {
 <section id="primary-suite" class="editorial-split" style="min-height:90vh;overflow:hidden;position:relative;">
  <div class="split-img" style="position:relative;min-height:60vh;">
    <img loading="eager" decoding="sync" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_fill,ar_4:3,g_auto,w_1600/gh_interiors/200holycrest_1534.jpg"
-        alt="Garran Hill Rose Suite -- four-poster bed, floral armchairs, pastel palette, second floor" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position: center 35%;">
+        alt="Garran Hill Rose Suite -- four-poster bed, floral armchairs, pastel palette, second floor" style="opacity:1 !important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position: center 35%;">
   </div>
   <div class="split-text">
    <span class="micro-rule"></span>
@@ -1621,17 +1825,17 @@ section.editorial-room + section.full-bleed-section {
    
   </div>
  </div>
- <div class="split-img">
+ <div class="split-img" style="position:relative;min-height:60vh;">
   <img loading="eager" decoding="sync"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_fill,ar_4:3,g_auto,w_1600/v1/gh_interiors/200holycrest_1395.jpg"
-      alt="Garran Hill  --  the Jewel Box bath, primary bathroom" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position: center 30%;">
+      alt="Garran Hill  --  the Jewel Box bath, primary bathroom" style="opacity:1 !important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position: center 30%;">
  </div>
 </section>
 <section id="private-rooms" class="editorial-split editorial-room" style="min-height:70vh;">
- <div class="split-img">
+ <div class="split-img" style="position:relative;min-height:60vh;">
   <img loading="eager" decoding="sync"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_fill,ar_4:3,g_center,w_1920/gh_interiors/200holycrest_1512.jpg"
-      alt="Garran Hill  --  private level, master suite companion view" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position: center 30%;">
+      alt="Garran Hill  --  private level, master suite companion view" style="opacity:1 !important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position: center 30%;">
  </div>
  <div class="split-text">
   <span class="micro-rule"></span>
@@ -1718,11 +1922,11 @@ section.editorial-room + section.full-bleed-section {
 <!-- WEE COTTAGE  --  editorial pair -->
 <section id="wee-cottage" class="split reverse" style="position:relative;overflow:hidden;min-height:80vh;">
  <div class="split">
- <div class="split-img">
+ <div class="split-img" style="position:relative;min-height:60vh;">
   <img loading="eager" decoding="sync"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_fill,ar_16:9,g_center,w_1920/gh_photos/200_hollycrest_drive_193.jpg"
       alt="Garran Hill Wee Cottage  --  children's playhouse within the rear grounds"
-      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;">
+      style="opacity:1 !important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;">
  </div>
  <div class="split-text">
   <span class="micro-rule"></span>
