@@ -334,59 +334,12 @@
   /* § 11. SPLIT SECTIONS  --  THE CORE LAYOUT ENGINE */
   /*
      STRUCTURE:
-       section > div.split > div.split-img + div.split-text
-       OR
-       section > div.split.reverse > div.split-text + div.split-img
-
-     .split-img contains ONE <img>  --  absolutely positioned inside
-     .split-text contains headline, eyebrow, copy
-     NEVER put an img directly in .split  --  always inside .split-img
-  */
-  .split {
-    display: flex;
-    align-items: flex-start;
-    min-height: 90vh;
-    /* NO padding  --  section handles vertical spacing */
-    padding: 0;
-    gap: clamp(0rem, 5vw, 5rem);
-  }
-  .split.reverse { flex-direction: row-reverse; }
+       section > div
   /* Asymmetric flex ratios -- image slightly dominant on normal, text breathes on reverse */
-  .split > .split-img { flex: 1.15; }
-  .split > .split-text { flex: 0.85; }
-  .split.reverse > .split-img { flex: 0.9; }
-  .split.reverse > .split-text { flex: 1.1; }
-  .split
-
-  /* THE IMAGE CONTAINER  --  sealed, contained */
-  .split-img {
-    position: relative;
-    flex: 1;
-    min-height: clamp(520px, 75vh, 820px);
-    overflow: hidden;
-    background: #111;
-  }
   /* THE ONLY IMG RULE  --  scoped, absolute, covers parent */
-  .split-img img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-  }
 
   /* THE TEXT COLUMN */
   /* Breathing room so text never hugs image */
-  .split-text { padding: clamp(1rem, 2.5vw, 2.5rem) 0; }
-  .split-text {
-    flex: 1;
-    display: flex; flex-direction: column;
-    justify-content: center;
-    max-width: 540px;
-  }
-  .split-text.mid { justify-content: flex-start; padding-top: clamp(1.5rem, 3vw, 3rem); }
 
   /* § 12. KB GATE  --  full-bleed cinematic with text overlay */
   .kb-gate {
@@ -532,11 +485,6 @@
     }
     .nav-mobile a { font-size: 1rem; letter-spacing: 0.3em; text-transform: uppercase; }
 
-    .split { flex-direction: column !important; padding: clamp(2rem, 4vw, 4rem) var(--col-mid); gap: 2rem; min-height: auto; }
-    .split-img { min-height: 280px; flex: none; width: 100%; }
-    .split-text { max-width: 100%; }
-    .split-text.mid { padding-top: 0; justify-content: flex-start; }
-
     
     section.pull, section.pull.cinematic, section.pull.intimate { padding: clamp(3rem, 10vw, 5rem) 1.5rem; }
     .text-section, .text-section.alt { padding: var(--sp-lg) 1.5rem; }
@@ -610,9 +558,7 @@
   }
 
   /* POWDER ROOM as pull intimate split */
-  section.pull.intimate .split {
-    min-height: 70vh;
-  }
+  section.pull.intimate
 
   /* MOBILE  --  full bleed sections */
   @media (max-width: 768px) {
@@ -732,34 +678,6 @@
   }
 
   /* B. editorial-split / editorial-split.reverse  --  alternating splits */
-  .editorial-split {
-    display: flex;
-    align-items: stretch;
-    min-height: 90vh;
-    padding: 0;
-    gap: clamp(3rem, 5vw, 6rem);
-  }
-  .editorial-split.reverse { flex-direction: row-reverse; }
-  .editorial-split .split-img {
-    position: relative;
-    flex: 1;
-    min-height: 480px;
-    overflow: hidden;
-  }
-  .editorial-split .split-img img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .editorial-split .split-text {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--sp-sm);
-  }
 
   /* C. vertical-pair  --  two portrait images side by side */
   .vertical-pair-card {
@@ -849,14 +767,6 @@
     .vertical-pair-card .vp-img {
       aspect-ratio: 3 / 2;
     }
-    .editorial-split,
-    .editorial-split.reverse {
-      flex-direction: column;
-      min-height: unset;
-    }
-    .editorial-split .split-img {
-      min-height: 50vw;
-    }
   }
 
   /* ── THEN / NOW KEN BURNS ── */
@@ -917,10 +827,6 @@
   section:not(
 
   /* Split sections (image + text side by side) */
-  .split-section, .split-reverse {
-    padding: clamp(2rem, 4vw, 4rem) var(--col-mid);
-    gap: clamp(3rem, 6vw, 7rem);
-  }
 
   /* Pull quotes get breathing room */
   .pull-quote-section, blockquote {
@@ -1066,16 +972,6 @@
   .section-body,
   .section-text,
   .copy-block p,
-  .split-text p {
-    font-family: 'Cormorant Garamond', Georgia, serif ;
-    font-weight: 300 ;
-    font-size: clamp(1.0rem, 1.3vw, 1.15rem) ;
-    line-height: 1.88 ;
-    color: rgba(245,240,232,0.72) ;
-    max-width: 58ch ;
-    margin-bottom: clamp(1rem, 1.8vw, 1.5rem) ;
-    letter-spacing: 0.01em ;
-  }
 
   /* ── DROP CAPS  --  act openers ── */
   .act-opener p:first-of-type::first-letter,
@@ -1140,15 +1036,6 @@
   .full-bleed-section,
   .full-bleed-img,
   section.full-bleed,
-  .split-section,
-  .split-reverse,
-  .editorial-section,
-  .grounds-section,
-  .pool-section,
-  .full-bleed-img {
-    height: clamp(70vh, 88vh, 96vh) !important;
-    overflow: hidden !important;
-  }
   .full-bleed-img img {
     width: 100% !important;
     height: 100% !important;
@@ -1169,124 +1056,31 @@
   ══════════════════════════════════════════════════════ */
 
   /* Base split layout */
-  .editorial-split,
-  .split {
-    display: flex !important;
-    align-items: stretch !important;
-    min-height: 80vh !important;
-    width: 100% !important;
-    max-width: 100% ;
-    padding: clamp(2rem, 4vw, 4rem) var(--col-mid);
-    gap: 0 !important;
-    overflow: hidden !important;
-  }
-  .editorial-split.reverse,
-  .split.reverse {
-    flex-direction: row-reverse !important;
-  }
 
   /* Image panel  --  takes exactly half, fills full height */
-  .editorial-split .split-img,
-  .split .split-img {
-    flex: 0 0 52% !important;
-    width: 52% !important;
-    min-height: 80vh !important;
-    position: relative !important;
-    overflow: hidden !important;
-    background: #0a0a0a ;
-  }
 
   /* The primary image fills the panel completely */
-  .editorial-split .split-img > img:first-child,
-  .split .split-img > img:first-child {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center top !important;
-    display: block !important;
-  }
 
   /* Kill all floating overlay second images  --  gone */
-  .editorial-split .split-img > img:not(:first-child),
-  .split .split-img > img:not(:first-child) {
-    display: none !important;
-  }
 
   /* Text panel */
-  .editorial-split .split-text,
-  .split .split-text {
-    flex: 0 0 48% !important;
-    width: 48% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    padding: clamp(1.5rem, 3vw, 3.5rem) clamp(2rem, 4vw, 5rem);
-    max-width: none ;
-    background: #0a0a0a ;
-  }
 
   /* Mobile: stack */
   @media (max-width: 768px) {
-    .editorial-split,
-    .split {
-      flex-direction: column ;
-      min-height: auto !important;
-    }
-    .editorial-split .split-img,
-    .split .split-img {
-      flex: none !important;
-      width: 100% !important;
-      min-height: 55vw !important;
-    }
-    .editorial-split .split-text,
-    .split .split-text {
-      flex: none !important;
-      width: 100% !important;
-      padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 5vw, 3rem);
-    }
-    .editorial-split.reverse,
-    .split.reverse {
-      flex-direction: column !important;
-    }
   }
 
   /* ── KITCHEN special: 4 images  --  show only first as hero, rest hidden ── */
-  .split#kitchen .split-img > img:not(:first-child) {
-    display: none !important;
-  }
   /* ── GLASS FLOAT SYSTEM  --  Rocky 2026-05-12 ─────────────────
      Words float over glass. Everything breathes. Nothing crowds.
   ──────────────────────────────────────────────────────────── */
   
   /* Unified body copy */
   .body-text p,
-  .split-text p,
-  .body-copy {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-weight: 300;
-    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
-    line-height: 1.88;
-    letter-spacing: 0.015em;
-    color: rgba(245, 240, 232, 0.85);
-    max-width: 660px;
-    margin-bottom: clamp(1.2rem, 2vw, 1.6rem);
-  }
 
   /* Eyebrow floats above with air */
   /* removed: .eyebrow old (display block only) */
 
   /* Headline breathes below */
-  .split-text h2,
-  .text-section h2,
-  .breath h2,
-  .pull /* h2-conflict removed */
-
-  /* Section rhythm  --  every section gets vertical air */
-  section {
-    position: relative;
-  }
 
   /* Pull quotes: maximum isolation */
   .pull blockquote p,
@@ -1305,10 +1099,6 @@
   /* removed: figcaption old */
 
   /* Split sections  --  image and text perfectly gapped */
-  .split {
-    gap: clamp(3.5rem, 6vw, 6rem);
-    align-items: center;
-  }
 
   /* Text sections: centered copy column floats */
   .text-section,
@@ -1480,8 +1270,6 @@
       --col-pad: clamp(5rem, 10vw, 12rem);
       --col-mid: clamp(6rem, 14vw, 16rem);
     }
-    .split { gap: clamp(3rem, 5vw, 6rem); }
-    .split-text { padding: clamp(1.5rem, 3vw, 3rem) 0; }
     .body-text p, p.body-text { line-height: 1.82; }
   }
 
@@ -1626,12 +1414,6 @@
   p.body-text + p/* bt-conflict removed */
 
   /* ── SPLIT SECTION VERTICAL CENTERING ────────────────────────── */
-  .split-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: clamp(0.8rem, 1.4vw, 1.2rem);
-  }
 
   /* ── GOLD HAIRLINE SECTION SEPARATOR ─────────────────────────── */
   .gold-rule {
@@ -1835,10 +1617,7 @@
   }
 
   /* ── CONTENT ABOVE GHOST ──────────────────────────────────────── */
-  #history .split {
-    position: relative;
-    z-index: 1;
-  }
+  #history
 
   /* ── THEN-NOW CAPTION  --  position below image, above blend ───── */
   /* ── THEN-NOW: bottom dissolve into darkness ── */
@@ -1985,6 +1764,85 @@
     justify-content: center;
     gap: 1rem;
     background: #0a0a0a;
+  }
+
+
+  /* ════════════════════════════════════════
+     EDITORIAL SPLIT -- single clean source
+     NO !important. NO conflicts.
+  ════════════════════════════════════════ */
+  .editorial-split, .split {
+    display: flex;
+    align-items: stretch;
+    min-height: 80vh;
+    width: 100%;
+    padding: 0;
+    gap: 0;
+    overflow: hidden;
+    background: #0a0a0a;
+  }
+  .editorial-split.reverse, .split.reverse {
+    flex-direction: row-reverse;
+  }
+  .editorial-split .split-img,
+  .editorial-split .img-col,
+  .split .split-img,
+  .split .img-col {
+    position: relative;
+    flex: 0 0 52%;
+    width: 52%;
+    min-height: 80vh;
+    overflow: hidden;
+  }
+  .editorial-split .split-img img,
+  .editorial-split .img-col img,
+  .split .split-img img,
+  .split .img-col img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .editorial-split .split-text,
+  .editorial-split .copy-col,
+  .split .split-text,
+  .split .copy-col {
+    flex: 0 0 48%;
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(3rem, 5vw, 6rem) clamp(2.5rem, 4vw, 5rem);
+  }
+  @media (max-width: 768px) {
+    .editorial-split,
+    .split {
+      flex-direction: column;
+      min-height: auto;
+    }
+    .editorial-split.reverse,
+    .split.reverse {
+      flex-direction: column;
+    }
+    .editorial-split .split-img,
+    .editorial-split .img-col,
+    .split .split-img,
+    .split .img-col {
+      flex: none;
+      width: 100%;
+      min-height: 55vw;
+    }
+    .editorial-split .split-text,
+    .editorial-split .copy-col,
+    .split .split-text,
+    .split .copy-col {
+      flex: none;
+      width: 100%;
+      padding: clamp(2rem,6vw,4rem) clamp(1.5rem,5vw,3rem);
+    }
   }
 </style>
 </head>
