@@ -53,7 +53,7 @@
   width: 48%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   padding: clamp(2rem, 4vw, 4rem) clamp(2.5rem, 4vw, 5rem);
   background: #0a0a0a;
  }
@@ -1387,6 +1387,16 @@ section.editorial-room + section.full-bleed-section {
 
 <!-- SALON  --  full split -->
 <div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
+
+<!-- FULL BLEED BREATH — exterior before rooms -->
+<section style="position:relative;width:100%;height:70vh;overflow:hidden;background:#0a0a0a;">
+  <img loading="lazy"
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:outdoor:70,e_sharpen:35,e_saturation:22,f_auto,q_auto,c_fill,w_1920,ar_16:9/v1/gh_exteriors/holycrestextf_3352.jpg"
+    alt="Garran Hill — rear grounds"
+    style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.85;display:block;">
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,#0a0a0a 100%);pointer-events:none;"></div>
+</section>
+
 <section id="salon" class="cinematic" style="position:relative;width:100%;min-height:100vh;overflow:hidden;background:#000000;">
 
  <!-- FULL-BLEED PHOTO: 1209 -- widest salon shot, shows full room scale -->
@@ -1430,7 +1440,7 @@ section.editorial-room + section.full-bleed-section {
 <div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
 <!-- DRAWING ROOM  --  reverse split -->
 </section>
-<section class="editorial-split reverse" id="drawing-room" style="position:relative;overflow:hidden;min-height:80vh;">
+<section class="editorial-split" id="drawing-room" style="position:relative;overflow:hidden;min-height:80vh;">
  <div class="split-img">
   <img loading="eager" decoding="sync"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_fill,ar_4:3,g_auto,w_1600/v1/gh_interiors/200holycrest_1317.jpg"
