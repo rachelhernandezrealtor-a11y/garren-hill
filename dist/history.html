@@ -289,7 +289,59 @@
       color: rgba(201,169,110,0.5);
       text-decoration: none;
     }
-  </style>
+  
+/* TIMELINE */
+.timeline-section {
+  padding: clamp(5rem, 10vw, 8rem) clamp(2rem, 8vw, 6rem);
+  background: #0a0a0a;
+}
+.timeline-inner { max-width: 680px; margin: 0 auto; }
+.timeline-eyebrow {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(0.68rem, 0.82vw, 0.78rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #C9A96E;
+  margin-bottom: 1.2rem;
+}
+.timeline-rule {
+  width: 40px; height: 1px;
+  background: rgba(201,169,110,0.35);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 2rem;
+  padding: 1.4rem 0;
+  border-top: 1px solid rgba(201,169,110,0.12);
+  align-items: baseline;
+}
+.timeline-item:last-child { border-bottom: 1px solid rgba(201,169,110,0.12); }
+.timeline-year {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(0.78rem, 0.92vw, 0.88rem);
+  letter-spacing: 0.12em;
+  color: #C9A96E;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.timeline-event {
+  font-family: 'EB Garamond', 'Cormorant Garamond', serif;
+  font-size: clamp(1.0rem, 1.1vw, 1.08rem);
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(245,240,232,0.78);
+}
+@media (max-width: 600px) {
+  .timeline-item { grid-template-columns: 1fr; gap: 0.35rem; }
+  .timeline-year { font-size: 0.7rem; }
+}
+
+</style>
 </head>
 <body>
 
@@ -312,7 +364,7 @@
 <!-- ── WALTER HINES PAGE ── -->
 <section class="history-section">
   <div class="ghost-bg">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:40,e_brightness:25,e_contrast:15,f_auto,q_auto,c_limit,w_1920/v1777391998/gh_key/gh_whp_letter1.jpg" alt="">
+    <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:40,e_brightness:25,e_contrast:15,f_auto,q_auto,c_limit,w_1920/v1777391998/gh_key/gh_whp_letter1.jpg" alt="">
   </div>
 
   <div class="section-inner">
@@ -395,7 +447,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <img class="wax-seal"
+  <img loading="lazy" class="wax-seal"
     src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778826398/gh_key/gh_crest_gloss_v2.png"
     alt="Garran Hill">
   <p class="footer-text">

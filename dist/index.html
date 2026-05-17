@@ -75,6 +75,26 @@
   }
  }
 
+
+/* STAT PROVENANCE LINE */
+.stat-provenance {
+  width: 100%;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(0.6rem, 0.72vw, 0.7rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(201,169,110,0.45);
+  margin-top: 1.2rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(201,169,110,0.1);
+  grid-column: 1 / -1;
+}
+@media (max-width: 768px) {
+  .stat-provenance { font-size: 0.55rem; letter-spacing: 0.14em; margin-top: 0.8rem; }
+}
+
 </style>
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@300;400&family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=Great+Vibes&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
@@ -1012,6 +1032,11 @@ section.editorial-room + section.full-bleed-section {
   ]
 }
 </script>
+  <!-- PERFORMANCE: Preload critical above-fold assets -->
+  <link rel="preload" as="video" href="https://res.cloudinary.com/dghn2xpif/video/upload/q_auto,f_auto/v1778917313/gh_hero_2026/garran_hill_cinematic_final.mp4" type="video/mp4">
+  <link rel="preload" as="image" href="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1778826398/gh_key/gh_crest_gloss_v2.png">
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+  <link rel="dns-prefetch" href="https://res.cloudinary.com">
 </head>
 <body>
 <!-- GH_PIPELINE_TEST_CONFIRMED -->
@@ -1034,6 +1059,7 @@ section.editorial-room + section.full-bleed-section {
   <li><a href="#terrace">The Grounds</a></li>
   <li><a href="#restoration-record">Provenance</a></li>
   <li><a href="#aerial-closer">Gallery</a></li>
+  <li><a href="/sources">Sources</a></li>
  </ul>
  
  <label class="hamburger" for="nav-toggle"></label>
@@ -1045,6 +1071,7 @@ section.editorial-room + section.full-bleed-section {
   <a href="#terrace" onclick="document.getElementById('nav-toggle').checked=false">The Grounds</a>
   <a href="#restoration-record" onclick="document.getElementById('nav-toggle').checked=false">Provenance</a>
   <a href="#aerial-closer" onclick="document.getElementById('nav-toggle').checked=false">Gallery</a>
+  <a href="/sources" onclick="document.getElementById('nav-toggle').checked=false">Sources</a>
   
  </div>
 </nav>
@@ -1102,10 +1129,12 @@ section.editorial-room + section.full-bleed-section {
     - Crest = fixed to viewport, sits ON the belt, both rules behind it
     - Stats recentered now crest is out of flex row
   -->
- <div id="stat-bar" style="position:absolute;bottom:0;left:0;right:0;z-index:15;overflow:visible;isolation:isolate;background:transparent;">
+ <div id="stat-bar" style="flex-wrap:wrap;" style="position:absolute;bottom:0;left:0;right:0;z-index:15;overflow:visible;isolation:isolate;background:transparent;">
 
   <!-- TOP GOLD RULE -->
-  <div style="width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.9) 15%,#C9A96E 50%,rgba(201,169,110,0.9) 85%,transparent);"></div>
+  <div style="width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.9) 15%,#C9A96E 50%,rgba(201,169,110,0.9) 85%,transparent);">
+  <p class="stat-provenance">Primary sources on file &nbsp;&middot;&nbsp; Architectural drawings transfer with the property</p>
+</div>
 
   <!-- STATS ROW -- all 5 stats, crest is NOT in this row, it floats above independently -->
   <div style="position:relative;width:100%;
@@ -1149,7 +1178,7 @@ section.editorial-room + section.full-bleed-section {
 
   <!-- CREST: belt buckle -- absolute, centered, sits ON the stat bar rising above it -->
   <img
-      src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1778826398/gh_key/gh_crest_gloss_v2.png"
+      src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1778826398/gh_key/gh_crest_gloss_v2.png" fetchpriority="high"
       alt="Garran Hill estate crest"
       style="position:absolute;bottom:0;left:50%;transform:translate(-50%,-8px);z-index:40;
         width:clamp(120px,13vw,165px);height:auto;
@@ -1170,9 +1199,9 @@ section.editorial-room + section.full-bleed-section {
 
  <!-- REMOTION-RENDERED cinematic KB gate video: sepia Ken Burns → color crossfade loop -->
  <video
-    autoplay muted loop playsinline
+    autoplay muted loop playsinline preload="auto"
     style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:1;"
-    src="https://res.cloudinary.com/dghn2xpif/video/upload/q_auto/v1778913988/gh_key/kb_gate_cinematic_v1.mp4">
+    src="https://res.cloudinary.com/dghn2xpif/video/upload/q_auto,f_auto/v1778917313/gh_hero_2026/garran_hill_cinematic_final.mp4">
  </video>
 
  <!-- BOTTOM BLEED into WHP -->
@@ -1188,7 +1217,7 @@ section.editorial-room + section.full-bleed-section {
 <section id="history" class="cinematic" style="position:relative;overflow:hidden;background:#000000;padding:clamp(2.5rem,4vw,4rem) 0;min-height:90vh;">
  <!-- Ghost manuscript background -->
  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none;">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:40,e_brightness:25,e_contrast:15,f_auto,q_auto,c_limit,w_1920/v1777391998/gh_key/gh_whp_letter1.jpg"
+  <img loading="eager" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:40,e_brightness:25,e_contrast:15,f_auto,q_auto,c_limit,w_1920/v1777391998/gh_key/gh_whp_letter1.jpg"
       alt="" style="position:absolute;inset:-5%;width:110%;height:110%;object-fit:cover;object-position:center top;transform:rotate(-2deg);opacity:0.08;pointer-events:none;">
  </div>
 
@@ -1317,7 +1346,7 @@ section.editorial-room + section.full-bleed-section {
  </div>
 
 <div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
-<section id="hollycrest" class="editorial-room" style="position:relative;overflow:hidden;min-height:90vh;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_fill,ar_16:9,g_center,w_1920/v1777244086/gh_photos/200_hollycrest_drive_11.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%;opacity:0.10;filter:grayscale(40%) sepia(25%);display:block;"></div>
+<section id="hollycrest" class="editorial-room" style="position:relative;overflow:hidden;min-height:90vh;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_fill,ar_16:9,g_center,w_1920/v1777244086/gh_photos/200_hollycrest_drive_11.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%;opacity:0.10;filter:grayscale(40%) sepia(25%);display:block;"></div>
  
  <div class="split" >
   <div class="split-text reveal">
@@ -1436,7 +1465,7 @@ section.editorial-room + section.full-bleed-section {
 <div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
 <!-- DINING ROOM  --  intimate section -->
 </section>
-<section  id="dining-room" class="editorial-room" style="position:relative;min-height:80vh;overflow:hidden;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_fill,ar_3:2,g_center,w_1920/v1777243079/gh_interiors/200holycrest_1308.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.11;display:block;"></div>
+<section  id="dining-room" class="editorial-room" style="position:relative;min-height:80vh;overflow:hidden;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_fill,ar_3:2,g_center,w_1920/v1777243079/gh_interiors/200holycrest_1308.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.11;display:block;"></div>
  
  <div class="split"><div class="split-img">
   <img loading="eager" decoding="sync"
@@ -1836,7 +1865,7 @@ section.editorial-room + section.full-bleed-section {
  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.0rem,1.15vw,1.12rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.5);max-width:50ch;margin:0 auto;line-height:1.7;">The house stood vacant for fourteen years. Then two people decided it was worth saving.</p>
 </div>
 
-<section id="restoration-record" class="editorial-room flip" style="position:relative;overflow:hidden;min-height:70vh;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_fill,ar_16:9,g_center,w_1920/v1777243317/gh_exteriors/200holycrestf-1440_28z.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.08;filter:grayscale(60%) sepia(20%);display:block;"></div>
+<section id="restoration-record" class="editorial-room flip" style="position:relative;overflow:hidden;min-height:70vh;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_fill,ar_16:9,g_center,w_1920/v1777243317/gh_exteriors/200holycrestf-1440_28z.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.08;filter:grayscale(60%) sepia(20%);display:block;"></div>
  
  <div class="split reverse">
   <div class="split-text reveal">
