@@ -1130,6 +1130,33 @@ section.editorial-room + section.full-bleed-section {
   section.cinematic { min-height: 80vh; }
   section.editorial-room { min-height: auto; flex-direction: column; }
   section.editorial-room.flip { flex-direction: column; }
+  
+  /* editorial-split mobile stack — image on top, text below */
+  section.editorial-split,
+  .editorial-split {
+    flex-direction: column !important;
+    min-height: auto;
+  }
+  section.editorial-split.flip,
+  .editorial-split.flip {
+    flex-direction: column !important;
+  }
+  
+  /* split-img: fixed ratio height on mobile, full width */
+  .split-img {
+    flex: none !important;
+    width: 100% !important;
+    height: 72vw !important;
+    min-height: 220px !important;
+    max-height: 75vw !important;
+  }
+  
+  /* split-text: full width on mobile */
+  .split-text,
+  .copy-col {
+    flex: none !important;
+    width: 100% !important;
+  }
   section.editorial-prose { min-height: auto; }
   
   section.editorial-room .split-text,
