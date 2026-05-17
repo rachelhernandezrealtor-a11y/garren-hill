@@ -1930,6 +1930,42 @@
   0%   { opacity: 0; transform: translateY(12px); }
   100% { opacity: 1; transform: translateY(0); }
 }
+
+  /* ── GLOBAL SPACING RHYTHM ── */
+  h2 { margin-top: 0; margin-bottom: var(--sp-sm); }
+  h3 { margin-top: 0; margin-bottom: var(--sp-xs); }
+  p  { margin-top: 0; margin-bottom: var(--sp-sm); }
+  p:last-child { margin-bottom: 0; }
+
+  .eyebrow { margin-bottom: var(--sp-xs) !important; display: block; }
+  .micro-rule { margin-bottom: var(--sp-xs) !important; }
+
+  /* Section act-break breathing -- full-bleed sections get top separator */
+  section + section {
+    border-top: none;
+  }
+
+  /* Text overlay containers -- consistent vertical padding */
+  .reveal {
+    padding-top: clamp(3rem, 6vw, 6rem);
+    padding-bottom: clamp(3rem, 6vw, 6rem);
+  }
+
+  /* Editorial split text column -- breathe */
+  .editorial-col, .text-col, .copy-col {
+    padding: clamp(3rem, 5vw, 5rem) clamp(2rem, 4vw, 5rem);
+  }
+
+  /* Body text line height */
+  .body-text {
+    line-height: 1.85;
+  }
+
+  /* Stat bar -- don't crash into hero */
+  #stat-bar {
+    position: relative;
+    z-index: 10;
+  }
 </style>
 </head>
 <body>
@@ -2099,7 +2135,7 @@
 
   <!-- TEXT -->
   <div class="reveal" style="position:relative;z-index:5;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(2.5rem,5vw,5rem) clamp(2rem,6vw,8rem) clamp(3rem,6vw,6rem);text-align:center;">
-    <span class="eyebrow" style="color:rgba(201,169,110,0.8)">The Estate &middot; Pinehurst, NC</span>
+    <span class="eyebrow" style="display:block;margin-bottom:var(--sp-xs);color:rgba(201,169,110,0.8)">The Estate &middot; Pinehurst, NC</span>
   </div>
 
 </section>
@@ -2812,7 +2848,7 @@ Not renovated into anonymity. Restored back into itself.</p>
 <section class="inquiry" id="inquiry" style="position:relative;padding: clamp(3rem,6vw,5rem) var(--col-pad);min-height:70vh;overflow:hidden;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_fill,ar_16:9,g_center,w_1920/v1777428893/gh_key/gh_gate_twilight.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.14;display:block;"></div>
   <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <div class="reveal">
-    <span class="eyebrow" style="display:block;text-align:center">Private Showing</span>
+    <span class="eyebrow" style="display:block;margin-bottom:var(--sp-xs);display:block;text-align:center">Private Showing</span>
     <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.2vw,2rem);font-weight:300;font-style:italic;color:var(--cream);max-width:600px;margin:0 auto var(--sp-md);line-height:1.6;text-align:center;">Garran Hill is ready. It is offered now for the first time.<br>The question is whether you are.</p>
     <h2 style="font-size:clamp(2.6rem,5vw,5rem);margin-bottom:var(--sp-sm);font-weight:300;line-height:1.1">Begin the Private Conversation.</h2>
     
