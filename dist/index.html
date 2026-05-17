@@ -317,173 +317,6 @@ nav {
 }
 
 
-/* ══════════════════════════════════════════════════════════════════
-   GLOBAL MOBILE — THE ONE BLOCK
-   Source of truth for everything below 769px.
-   Rocky, May 2026. No patches on top of this.
-   ══════════════════════════════════════════════════════════════════ */
-
-/* ── HAMBURGER ICON (spans) ──────────────────────────────────────── */
-.hamburger span {
-  display: block;
-  width: 22px;
-  height: 1.5px;
-  background: rgba(245,240,232,0.85);
-  border-radius: 1px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6px;
-  cursor: pointer;
-  width: 36px;
-  height: 36px;
-  padding: 4px;
-  z-index: 200;
-}
-/* Toggle: X state */
-.nav-toggle:checked ~ * .hamburger span:nth-child(1),
-.nav-toggle:checked + label span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
-.nav-toggle:checked ~ * .hamburger span:nth-child(2),
-.nav-toggle:checked + label span:nth-child(2) { opacity: 0; }
-.nav-toggle:checked ~ * .hamburger span:nth-child(3),
-.nav-toggle:checked + label span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
-
-/* ── MOBILE BREAKPOINT ───────────────────────────────────────────── */
-@media (max-width: 768px) {
-
-  /* NAV */
-  .hamburger  { display: flex !important; }
-  .nav-links  { display: none !important; }
-  .nav-est, .nav-year { display: none; }
-  nav {
-    padding: 1rem 1.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .nav-mobile {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(10,10,10,0.98);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2.5rem;
-    z-index: 150;
-  }
-  .nav-mobile a {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 300;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(245,240,232,0.88);
-  }
-  .nav-toggle:checked ~ .nav-mobile { display: flex; }
-
-  /* ALL SPLIT SECTIONS: stack image top, text below */
-  .editorial-split,
-  .editorial-room,
-  section.editorial-split,
-  section.editorial-room {
-    flex-direction: column !important;
-    min-height: auto !important;
-  }
-
-  /* Image column: full width, fixed aspect on mobile */
-  .split-img,
-  .img-col {
-    width: 100% !important;
-    flex: none !important;
-    height: 72vw !important;
-    min-height: 220px !important;
-    max-height: 400px !important;
-    order: -1 !important;
-  }
-
-  /* Text column: full width */
-  .split-text,
-  .copy-col {
-    width: 100% !important;
-    flex: none !important;
-    padding: 2.5rem 1.4rem 3rem !important;
-    justify-content: flex-start !important;
-  }
-
-  /* CINEMATIC: shorter on phone */
-  section.cinematic { min-height: 65vh !important; }
-
-  /* FULL-BLEED sections: reasonable height */
-  section.editorial-prose { min-height: auto !important; padding: 4rem 1.4rem !important; }
-  .editorial-prose .prose-inner { grid-template-columns: 1fr !important; padding: 3rem 1.4rem !important; }
-
-  /* STAT BAR: 2-col grid, crest centred below */
-  #stat-bar { position: relative !important; bottom: auto !important; left: auto !important; right: auto !important; }
-  .stat-grid { grid-template-columns: repeat(2,1fr) !important; gap: 1.4rem 0.8rem !important; }
-
-  /* TYPOGRAPHY */
-  .hero-title,
-  .hero h1 { font-size: clamp(3.5rem, 18vw, 6rem) !important; }
-  .section-headline,
-  h2.section-headline { font-size: clamp(1.5rem, 7vw, 2.2rem) !important; }
-  .body-text p,
-  p.body-p { font-size: clamp(0.95rem, 4vw, 1.1rem) !important; line-height: 1.8 !important; }
-
-  /* PREVENT HORIZONTAL OVERFLOW */
-  * { max-width: 100vw; }
-  section, div { overflow-x: hidden; }
-
-  /* ACT BREAKS: shorter on mobile */
-  .act-break, .act-breath { padding: clamp(3rem,7vw,5rem) 0 !important; }
-
-  /* CREST: stay centred, don't crush stat-bar */
-  .crest-belt,
-  #crest-img { left: 50% !important; transform: translateX(-50%) !important; }
-
-  /* FULL BLEED PHOTOS: consistent height */
-  section.full-bleed-section,
-  .full-bleed-wrap { min-height: 50vw !important; max-height: 70vw !important; }
-
-  /* INQUIRY / FORM */
-  .inquiry-form, form { padding: 2rem 1.2rem !important; }
-  input, textarea, select { font-size: 1rem !important; } /* iOS zoom prevention */
-}
-
-/* ── DESKTOP: restore side-by-side ──────────────────────────────── */
-@media (min-width: 769px) {
-  .hamburger  { display: none !important; }
-  .nav-mobile { display: none !important; }
-  .nav-links  { display: flex !important; }
-
-  .editorial-split,
-  .editorial-room {
-    flex-direction: row;
-    align-items: stretch;
-    min-height: 80vh;
-  }
-  .editorial-split.flip,
-  .editorial-room.flip,
-  .editorial-split.reverse,
-  .editorial-room.reverse { flex-direction: row-reverse; }
-
-  .split-img, .img-col {
-    flex: 0 0 52% !important;
-    width: 52% !important;
-    height: auto !important;
-    min-height: 70vh !important;
-    max-height: none !important;
-    order: unset !important;
-  }
-  .split-text, .copy-col {
-    flex: 0 0 48% !important;
-    width: 48% !important;
-    padding: clamp(4rem,6vw,7rem) clamp(3rem,5vw,6rem) !important;
-  }
-}
 </style>
 <style>
 .caption-label {
@@ -2383,6 +2216,182 @@ section.editorial-room + section.full-bleed-section {
  setTimeout(setSpeed, 1000);
 })();
 </script>
+
+<style id="gh-mobile-final">
+/* ═══════════════════════════════════════════════════════════
+   GLOBAL MOBILE — LAST WORD
+   Injected after all other styles. !important where needed.
+   Rocky, May 2026
+   ═══════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════════════
+   GLOBAL MOBILE — THE ONE BLOCK
+   Source of truth for everything below 769px.
+   Rocky, May 2026. No patches on top of this.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── HAMBURGER ICON (spans) ──────────────────────────────────────── */
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: rgba(245,240,232,0.85);
+  border-radius: 1px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  padding: 4px;
+  z-index: 200;
+}
+/* Toggle: X state */
+.nav-toggle:checked ~ * .hamburger span:nth-child(1),
+.nav-toggle:checked + label span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.nav-toggle:checked ~ * .hamburger span:nth-child(2),
+.nav-toggle:checked + label span:nth-child(2) { opacity: 0; }
+.nav-toggle:checked ~ * .hamburger span:nth-child(3),
+.nav-toggle:checked + label span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+/* ── MOBILE BREAKPOINT ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* NAV */
+  .hamburger  { display: flex !important; }
+  .nav-links  { display: none !important; }
+  .nav-est, .nav-year { display: none; }
+  nav {
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-mobile {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10,10,10,0.98);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    z-index: 150;
+  }
+  .nav-mobile a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.88);
+  }
+  .nav-toggle:checked ~ .nav-mobile { display: flex; }
+
+  /* ALL SPLIT SECTIONS: stack image top, text below */
+  .editorial-split,
+  .editorial-room,
+  section.editorial-split,
+  section.editorial-room {
+    flex-direction: column !important;
+    min-height: auto !important;
+  }
+
+  /* Image column: full width, fixed aspect on mobile */
+  .split-img,
+  .img-col {
+    width: 100% !important;
+    flex: none !important;
+    height: 72vw !important;
+    min-height: 220px !important;
+    max-height: 400px !important;
+    order: -1 !important;
+  }
+
+  /* Text column: full width */
+  .split-text,
+  .copy-col {
+    width: 100% !important;
+    flex: none !important;
+    padding: 2.5rem 1.4rem 3rem !important;
+    justify-content: flex-start !important;
+  }
+
+  /* CINEMATIC: shorter on phone */
+  section.cinematic { min-height: 65vh !important; }
+
+  /* FULL-BLEED sections: reasonable height */
+  section.editorial-prose { min-height: auto !important; padding: 4rem 1.4rem !important; }
+  .editorial-prose .prose-inner { grid-template-columns: 1fr !important; padding: 3rem 1.4rem !important; }
+
+  /* STAT BAR: 2-col grid, crest centred below */
+  #stat-bar { position: relative !important; bottom: auto !important; left: auto !important; right: auto !important; }
+  .stat-grid { grid-template-columns: repeat(2,1fr) !important; gap: 1.4rem 0.8rem !important; }
+
+  /* TYPOGRAPHY */
+  .hero-title,
+  .hero h1 { font-size: clamp(3.5rem, 18vw, 6rem) !important; }
+  .section-headline,
+  h2.section-headline { font-size: clamp(1.5rem, 7vw, 2.2rem) !important; }
+  .body-text p,
+  p.body-p { font-size: clamp(0.95rem, 4vw, 1.1rem) !important; line-height: 1.8 !important; }
+
+  /* PREVENT HORIZONTAL OVERFLOW */
+  * { max-width: 100vw; }
+  section, div { overflow-x: hidden; }
+
+  /* ACT BREAKS: shorter on mobile */
+  .act-break, .act-breath { padding: clamp(3rem,7vw,5rem) 0 !important; }
+
+  /* CREST: stay centred, don't crush stat-bar */
+  .crest-belt,
+  #crest-img { left: 50% !important; transform: translateX(-50%) !important; }
+
+  /* FULL BLEED PHOTOS: consistent height */
+  section.full-bleed-section,
+  .full-bleed-wrap { min-height: 50vw !important; max-height: 70vw !important; }
+
+  /* INQUIRY / FORM */
+  .inquiry-form, form { padding: 2rem 1.2rem !important; }
+  input, textarea, select { font-size: 1rem !important; } /* iOS zoom prevention */
+}
+
+/* ── DESKTOP: restore side-by-side ──────────────────────────────── */
+@media (min-width: 769px) {
+  .hamburger  { display: none !important; }
+  .nav-mobile { display: none !important; }
+  .nav-links  { display: flex !important; }
+
+  .editorial-split,
+  .editorial-room {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 80vh;
+  }
+  .editorial-split.flip,
+  .editorial-room.flip,
+  .editorial-split.reverse,
+  .editorial-room.reverse { flex-direction: row-reverse; }
+
+  .split-img, .img-col {
+    flex: 0 0 52% !important;
+    width: 52% !important;
+    height: auto !important;
+    min-height: 70vh !important;
+    max-height: none !important;
+    order: unset !important;
+  }
+  .split-text, .copy-col {
+    flex: 0 0 48% !important;
+    width: 48% !important;
+    padding: clamp(4rem,6vw,7rem) clamp(3rem,5vw,6rem) !important;
+  }
+}
+
+</style>
 </body>
 </html>
 
