@@ -455,13 +455,6 @@ nav {
  text-align: center;
 }
 
-.inquiry-form {
- width: 100%;
- display: flex;
- flex-direction: column;
- gap: 0;
- margin-top: clamp(2rem, 4vw, 3.5rem);
-}
 
 .tour-actions {
  display: flex;
@@ -710,18 +703,7 @@ p.body-p--closing {
 }
 
 /* The question -- closing kicker */
-p.inquiry-kicker {
- font-family: 'Cormorant Garamond', serif;
- font-size: clamp(1.3rem, 2vw, 1.7rem);
- font-weight: 300;
- font-style: italic;
- color: rgba(245,240,232,0.52);
- text-align: center;
- line-height: 1.5;
- letter-spacing: 0.02em;
- max-width: 500px;
- margin: clamp(1.5rem, 3vw, 2.5rem) auto 0;
-}
+p
 
 /* h3 room sub-label */
 h3.room-label {
@@ -1873,62 +1855,6 @@ Not renovated into anonymity. Restored back into itself.</p>
 <div class="act-break" aria-hidden="true">
  <div class="act-break-diamond"></div>
 </div>
-<section class="inquiry" id="inquiry" style="position:relative;padding: clamp(3rem,6vw,5rem) var(--col-pad);min-height:70vh;overflow:hidden;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_fill,ar_16:9,g_center,w_1920/v1777428893/gh_key/gh_gate_twilight.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.14;display:block;"></div>
- <div class="section-content" style="position:relative;z-index:1;width:100%;">
- <div class="reveal">
-  <span class="eyebrow"style="display:block;margin-bottom:var(--sp-xs);display:block;text-align:center">Private Showing &middot; By Appointment</span>
-  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.5vw,1.3rem);font-weight:300;font-style:italic;color:var(--cream);max-width:600px;margin:0 auto var(--sp-md);line-height:1.6;text-align:center;">Garran Hill is ready. It is offered now for the first time.</p><p style="font-family:\'Cormorant Garamond\',serif;font-size:clamp(1.3rem,2vw,1.7rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.5);max-width:500px;margin:clamp(1.5rem,3vw,2.5rem) auto 0;line-height:1.5;text-align:center;letter-spacing:0.02em;">The question is whether you are.</p>
-  <h2 style="margin-bottom:var(--sp-sm);font-weight:300;line-height:1.1">Begin the Private Conversation.</h2>
-  
- </div>
- <form
-    id="inquiry-form"
-    class="inquiry-form"
-    action="#inquiry"
-    method="POST"
-  >
-  <input
-      type="text"
-      name="name"
-      placeholder="Name"
-      class="inquiry-field"
-      required
-      autocomplete="name"
-    >
-  <input
-      type="email"
-      name="email"
-      placeholder="Email"
-      class="inquiry-field"
-      required
-      autocomplete="email"
-    >
-  <input
-      type="tel"
-      name="phone"
-      placeholder="Phone (optional)"
-      class="inquiry-field"
-      autocomplete="tel"
-    >
-  <textarea
-      name="message"
-      placeholder="Private showing request or message"
-      class="inquiry-field"
-    ></textarea>
-  <div style="text-align:center;margin-top:var(--sp-sm);">
-   <button type="submit" class="btn-inquire">Request Private Showing</button>
-  </div>
- </form>
- <p class="body-text"style="text-align:center;margin-top:var(--sp-sm);font-size:var(--text-xs);color:rgba(245,240,232,0.55);">
-  To acquire Garran Hill is to enter a lineage: Page's vision, Dumaine's legend, and a restoration that returned the house to itself.
-
-Garran Hill is not simply for sale. It is being entrusted forward.
-
-For private showings and offering details, please inquire directly with
-  Rachel Hernandez, Pines Sotheby's International Realty.
- </p>
- </div>
-</section>
 <div aria-hidden="true" style="width:100%;display:flex;align-items:center;justify-content:space-around;padding:0.4rem 0;background:#000000;"><div style="width:clamp(40px,8vw,80px);height:1px;background:linear-gradient(to right,transparent,#C9A96E,transparent);"></div></div>
 <section class="closing">
  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto/v1777397863/gh_key/gh_wax_seal_v3.png" alt="Garran Hill wax seal" style="height:clamp(60px,8vw,90px);width:auto;opacity:0.7;display:block;margin:1.5rem auto 0;">
