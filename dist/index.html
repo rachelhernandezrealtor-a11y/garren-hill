@@ -58,27 +58,40 @@
   background: #0a0a0a;
  }
  @media (max-width: 768px) {
+  /* Stack all split sections vertically on mobile */
   .editorial-split, .split {
-   flex-direction: column;
+   flex-direction: column !important;
   }
-  .editorial-split.reverse, .split.reverse {
-   flex-direction: column;
+  .editorial-split.reverse, .split.reverse,
+  .editorial-split.flip, .split.flip {
+   flex-direction: column !important;
   }
+  /* Image column: full width, sensible height */
   .editorial-split .split-img,
   .editorial-split .img-col,
   .split .split-img,
   .split .img-col {
-   flex: none;
-   width: 100%;
-   min-height: 55vw;
+   flex: none !important;
+   width: 100% !important;
+   min-height: 60vw !important;
+   max-height: 70vw;
   }
+  /* Copy column: full width, comfortable padding */
   .editorial-split .split-text,
   .editorial-split .copy-col,
   .split .split-text,
   .split .copy-col {
-   flex: none;
-   width: 100%;
-   padding: clamp(2rem,6vw,4rem) clamp(1.5rem,5vw,3rem);
+   flex: none !important;
+   width: 100% !important;
+   padding: clamp(2rem,7vw,3.5rem) clamp(1.25rem,5vw,2.5rem) !important;
+  }
+  /* Reduce aggressive min-heights on mobile */
+  .editorial-split, .editorial-room {
+   min-height: auto !important;
+  }
+  /* Cinematic sections: shorter on mobile */
+  section.cinematic {
+   min-height: 70vh !important;
   }
  }
 
@@ -1004,6 +1017,40 @@ section.editorial-room + section.full-bleed-section {
 .body-text p:last-child { margin-bottom: 0; }
 .body-text p + p { color: rgba(245,240,232,0.72); }
 .body-text p em { font-style: italic; color: rgba(245,240,232,0.88); }
+
+/* ── STAT BAR: mobile collapse ── */
+@media (max-width: 600px) {
+  .stat-bar {
+    padding: clamp(1.5rem,5vw,2.5rem) clamp(1rem,4vw,1.5rem) !important;
+  }
+  .stat-bar .stat-grid,
+  .stat-bar > div[style*="grid"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.2rem !important;
+  }
+  .stat-bar .stat-item .stat-number {
+    font-size: clamp(1.6rem,6vw,2.2rem) !important;
+  }
+}
+
+
+/* ── NAV: mobile ── */
+@media (max-width: 768px) {
+  nav { padding: 0.9rem 1.25rem !important; }
+  nav .nav-links { display: none !important; }
+}
+
+
+/* ── TYPOGRAPHY: mobile scale ── */
+@media (max-width: 480px) {
+  .section-eyebrow { font-size: 0.6rem !important; letter-spacing: 0.22em !important; }
+  .section-headline { font-size: clamp(1.6rem,7vw,2.4rem) !important; }
+  .body-text p { font-size: clamp(0.95rem,3.8vw,1.1rem) !important; line-height: 1.85 !important; }
+  .cinematic-text h2, .section-inner h2 {
+    font-size: clamp(1.8rem,8vw,2.8rem) !important;
+  }
+}
+
 </style>
 <script type="application/ld+json">
 {
@@ -1743,7 +1790,7 @@ section, .editorial-split, .cinematic, .editorial-prose {
 <div class="act-break" aria-hidden="true"><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span><span style="width:5px;height:5px;background:rgba(201,169,110,0.45);transform:rotate(45deg);display:block;flex-shrink:0;"></span><span style="display:block;width:clamp(2rem,5vw,4rem);height:1px;background:rgba(201,169,110,0.25);"></span></div>
 <!-- DRAWING ROOM  --  reverse split -->
 </section>
-<section class="editorial-split" id="drawing-room" class="editorial-split" style="position:relative;overflow:hidden;min-height:80vh;">
+<section class="editorial-split" id="drawing-room" style="position:relative;overflow:hidden;min-height:80vh;">
  <div class="split-img" style="position:relative;min-height:60vh;">
   <img loading="eager" decoding="sync"
       src="https://res.cloudinary.com/dghn2xpif/image/upload/e_improve:indoor:65,e_brightness:12,e_sharpen:45,e_saturation:18,f_auto,q_auto,c_fill,ar_4:3,g_auto,w_1600/gh_interiors/200holycrest_1317.jpg"
