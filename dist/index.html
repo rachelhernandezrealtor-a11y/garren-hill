@@ -1787,7 +1787,8 @@
   .editorial-split .split-img,
   .editorial-split .img-col,
   .split .split-img,
-  .split .img-col {
+  .split .img-col,
+  .split .split-img {
     position: relative;
     flex: 0 0 52%;
     width: 52%;
@@ -1797,19 +1798,21 @@
   .editorial-split .split-img img,
   .editorial-split .img-col img,
   .split .split-img img,
-  .split .img-col img {
+  .split .img-col img,
+  .split .split-img img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center;
     display: block;
   }
   .editorial-split .split-text,
   .editorial-split .copy-col,
   .split .split-text,
-  .split .copy-col {
+  .split .copy-col,
+  .split .split-text {
     flex: 0 0 48%;
     width: 48%;
     display: flex;
@@ -1830,7 +1833,8 @@
     .editorial-split .split-img,
     .editorial-split .img-col,
     .split .split-img,
-    .split .img-col {
+    .split .img-col,
+    .split .split-img {
       flex: none;
       width: 100%;
       min-height: 55vw;
@@ -1838,7 +1842,8 @@
     .editorial-split .split-text,
     .editorial-split .copy-col,
     .split .split-text,
-    .split .copy-col {
+    .split .copy-col,
+    .split .split-text {
       flex: none;
       width: 100%;
       padding: clamp(2rem,6vw,4rem) clamp(1.5rem,5vw,3rem);
