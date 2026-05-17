@@ -14,31 +14,56 @@
  <meta property="og:url" content="https://garranhillforsalepinehurst.com">
 
  <link rel="preconnect" href="https://fonts.googleapis.com">
- <style>@import url("https://use.typekit.net/wih8wgk.css");
- /* ===== EDITORIAL-SPLIT: section IS the flex row ===== */
- .editorial-split {
+ <style>
+@import url("https://use.typekit.net/wih8wgk.css");
+</style>
+<style id="gh-bones">
+/* ═══════════════════════════════════════════════════════
+   GARRAN HILL — RESPONSIVE BONES
+   Single source of truth. Mobile-first.
+   Rocky, May 2026
+   ═══════════════════════════════════════════════════════ */
+
+/* ── BASE: all sections contain themselves ── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { max-width: 100vw; overflow-x: hidden; }
+section { max-width: 100vw; overflow-x: hidden; }
+
+/* ══════════════════════════════════════════════════════
+   EDITORIAL-SPLIT — THE CORE BONE
+   Mobile: image on top, text below, full width
+   Desktop (769px+): image left/right, text right/left
+   ══════════════════════════════════════════════════════ */
+
+/* MOBILE FIRST: stacked column */
+.editorial-split {
   display: flex;
-  align-items: stretch;
-  min-height: 80vh;
+  flex-direction: column;
   width: 100%;
   overflow: hidden;
-  background: #0a0a0a;
- }
- .editorial-split.reverse, .split.reverse {
-  flex-direction: row-reverse;
- }
- .editorial-split .split-img,
- .editorial-split .img-col {
   position: relative;
-  flex: 0 0 52%;
-  width: 52%;
-  min-height: 80vh;
+  background: #0a0a0a;
+}
+
+/* Flip/reverse: on mobile, image ALWAYS on top */
+.editorial-split.flip .split-img,
+.editorial-split.reverse .split-img { order: -1; }
+
+/* IMAGE COLUMN — mobile */
+.editorial-split .split-img,
+.editorial-split .img-col {
+  position: relative;
+  width: 100%;
+  flex: none;
+  height: 70vw;        /* ~273px on 390px iPhone */
+  min-height: 220px;
+  max-height: 380px;
   overflow: hidden;
- }
- .editorial-split .split-img img,
- .editorial-split .img-col img,
- .split .split-img img,
- .split .img-col img {
+}
+
+/* IMAGE fills its container */
+.editorial-split .split-img img,
+.editorial-split .img-col img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -46,75 +71,185 @@
   object-fit: cover;
   object-position: center;
   display: block;
- }
- .editorial-split .split-text,
- .editorial-split .copy-col {
-  flex: 0 0 48%;
-  width: 48%;
+  opacity: 1;
+}
+
+/* TEXT COLUMN — mobile */
+.editorial-split .split-text,
+.editorial-split .copy-col {
+  width: 100%;
+  flex: none;
   display: flex;
   flex-direction: column;
-  justify-content: center-start;
-  padding: clamp(4rem,6vw,7rem) clamp(2.5rem,5vw,5.5rem);
+  justify-content: flex-start;
+  padding: 2.4rem 1.5rem 3rem;
   background: #0a0a0a;
- }
- @media (max-width: 768px) {
-  /* Stack all split sections vertically on mobile */
-  .editorial-split, .split {
-   flex-direction: column !important;
+}
+
+/* ── DESKTOP: side by side ── */
+@media (min-width: 769px) {
+  .editorial-split {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 80vh;
   }
-  .editorial-split.reverse, .split.reverse,
-  .editorial-split.flip, .split.flip {
-   flex-direction: column !important;
-  }
-  /* Image column: full width, sensible height */
+  .editorial-split.flip { flex-direction: row-reverse; }
+  .editorial-split.reverse { flex-direction: row-reverse; }
+
+  /* Reset mobile order overrides */
+  .editorial-split.flip .split-img,
+  .editorial-split.reverse .split-img,
   .editorial-split .split-img,
-  .editorial-split .img-col,
-  .split .split-img,
-  .split .img-col {
-   flex: none !important;
-   width: 100% !important;
-   min-height: 60vw !important;
-   max-height: 70vw;
+  .editorial-split .img-col { order: unset; }
+
+  .editorial-split .split-img,
+  .editorial-split .img-col {
+    flex: 0 0 52%;
+    width: 52%;
+    height: auto;
+    min-height: 60vh;
+    max-height: none;
   }
-  /* Copy column: full width, comfortable padding */
+
   .editorial-split .split-text,
-  .editorial-split .copy-col,
-  .split .split-text,
-  .split .copy-col {
-   flex: none !important;
-   width: 100% !important;
-   padding: clamp(2rem,7vw,3.5rem) clamp(1.25rem,5vw,2.5rem) !important;
+  .editorial-split .copy-col {
+    flex: 0 0 48%;
+    width: 48%;
+    justify-content: center;
+    padding: clamp(4rem, 6vw, 7rem) clamp(2.5rem, 5vw, 5.5rem);
   }
-  /* Reduce aggressive min-heights on mobile */
-  .editorial-split, .editorial-room {
-   min-height: auto !important;
-  }
-  /* Cinematic sections: shorter on mobile */
-  section.cinematic {
-   min-height: 70vh !important;
-  }
- }
+}
 
-
-/* STAT PROVENANCE LINE */
-.stat-provenance {
+/* ══════════════════════════════════════════════════════
+   EDITORIAL-ROOM (entry hall, etc.) — same bone
+   ══════════════════════════════════════════════════════ */
+section.editorial-room {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  text-align: center;
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(0.6rem, 0.72vw, 0.7rem);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(201,169,110,0.45);
-  margin-top: 1.2rem;
-  padding-top: 0.9rem;
-  border-top: 1px solid rgba(201,169,110,0.1);
-  grid-column: 1 / -1;
+  overflow: hidden;
+  position: relative;
+  background: #0a0a0a;
 }
-@media (max-width: 768px) {
-  .stat-provenance { font-size: 0.55rem; letter-spacing: 0.14em; margin-top: 0.8rem; }
+section.editorial-room .split-img,
+section.editorial-room .img-col {
+  position: relative;
+  width: 100%;
+  flex: none;
+  height: 70vw;
+  min-height: 220px;
+  max-height: 380px;
+  overflow: hidden;
+}
+section.editorial-room .split-img img,
+section.editorial-room .img-col img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 1;
+}
+section.editorial-room .split-text,
+section.editorial-room .copy-col {
+  width: 100%;
+  flex: none;
+  padding: 2.4rem 1.5rem 3rem;
+  background: #0a0a0a;
+}
+@media (min-width: 769px) {
+  section.editorial-room {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 85vh;
+  }
+  section.editorial-room.flip { flex-direction: row-reverse; }
+  section.editorial-room .split-img,
+  section.editorial-room .img-col {
+    flex: 0 0 52%;
+    width: 52%;
+    height: auto;
+    min-height: 60vh;
+    max-height: none;
+  }
+  section.editorial-room .split-text,
+  section.editorial-room .copy-col {
+    flex: 0 0 48%;
+    width: 48%;
+    justify-content: center;
+    padding: clamp(4rem, 7vw, 9rem) clamp(3rem, 5vw, 7rem);
+  }
 }
 
+/* ══════════════════════════════════════════════════════
+   CINEMATIC SECTIONS
+   ══════════════════════════════════════════════════════ */
+section.cinematic {
+  position: relative;
+  width: 100%;
+  min-height: 70vh;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+@media (min-width: 769px) {
+  section.cinematic { min-height: 90vh; }
+}
+
+/* ══════════════════════════════════════════════════════
+   STAT BAR — MOBILE GRID
+   ══════════════════════════════════════════════════════ */
+.stat-bar {
+  width: 100%;
+  background: rgba(10,10,10,0.97);
+  padding: 2rem 1.25rem;
+}
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 1rem;
+  text-align: center;
+}
+@media (min-width: 769px) {
+  .stat-bar { padding: clamp(2.5rem,4vw,3.5rem) clamp(2rem,6vw,8rem); }
+  .stat-grid { grid-template-columns: repeat(5, 1fr); gap: 0; }
+}
+
+/* ══════════════════════════════════════════════════════
+   TYPOGRAPHY — MOBILE SCALE
+   ══════════════════════════════════════════════════════ */
+.section-eyebrow {
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+}
+.section-headline {
+  font-size: clamp(1.6rem, 6vw, 2.2rem);
+  line-height: 1.2;
+}
+.body-text p {
+  font-size: clamp(0.95rem, 3.8vw, 1.1rem);
+  line-height: 1.85;
+}
+@media (min-width: 769px) {
+  .section-eyebrow { font-size: clamp(0.6rem, 0.75vw, 0.7rem); }
+  .section-headline { font-size: clamp(2rem, 2.5vw, 3.2rem); }
+  .body-text p { font-size: clamp(1.05rem, 1.4vw, 1.2rem); line-height: 2.0; }
+}
+
+/* ══════════════════════════════════════════════════════
+   NAV — MOBILE
+   ══════════════════════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1rem 1.5rem;
+}
+.nav-links { display: none; }
+@media (min-width: 769px) {
+  nav { padding: 1.5rem clamp(2rem,4vw,5rem); }
+  .nav-links { display: flex; }
+}
 </style>
 <style>
 .caption-label {
@@ -1018,38 +1153,13 @@ section.editorial-room + section.full-bleed-section {
 .body-text p + p { color: rgba(245,240,232,0.72); }
 .body-text p em { font-style: italic; color: rgba(245,240,232,0.88); }
 
-/* ── STAT BAR: mobile collapse ── */
-@media (max-width: 600px) {
-  .stat-bar {
-    padding: clamp(1.5rem,5vw,2.5rem) clamp(1rem,4vw,1.5rem) !important;
-  }
-  .stat-bar .stat-grid,
-  .stat-bar > div[style*="grid"] {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1.2rem !important;
-  }
-  .stat-bar .stat-item .stat-number {
-    font-size: clamp(1.6rem,6vw,2.2rem) !important;
-  }
-}
 
 
-/* ── NAV: mobile ── */
-@media (max-width: 768px) {
-  nav { padding: 0.9rem 1.25rem !important; }
-  nav .nav-links { display: none !important; }
-}
 
 
-/* ── TYPOGRAPHY: mobile scale ── */
-@media (max-width: 480px) {
-  .section-eyebrow { font-size: 0.6rem !important; letter-spacing: 0.22em !important; }
-  .section-headline { font-size: clamp(1.6rem,7vw,2.4rem) !important; }
-  .body-text p { font-size: clamp(0.95rem,3.8vw,1.1rem) !important; line-height: 1.85 !important; }
-  .cinematic-text h2, .section-inner h2 {
-    font-size: clamp(1.8rem,8vw,2.8rem) !important;
-  }
-}
+
+
+
 
 </style>
 <script type="application/ld+json">
@@ -1111,289 +1221,7 @@ section.editorial-room + section.full-bleed-section {
 
 
 
-<style id="vogue-master">
-/* ═══════════════════════════════════════════════════════
-   GARRAN HILL — MASTER RESPONSIVE STYLESHEET
-   Mobile-first. 390px → 768px → 1280px.
-   This is the single source of truth for layout.
-   ═══════════════════════════════════════════════════════ */
 
-/* ── RESET ── */
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: #0a0a0a;
-  color: #F5F0E8;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-img { max-width: 100%; display: block; }
-
-/* ── EDITORIAL SPLIT — MOBILE (stacked, image on top) ── */
-.editorial-split {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
-/* Image: full width, fixed-ratio height on mobile */
-.editorial-split .split-img {
-  position: relative;
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  flex: none !important;
-  height: 70vw !important;      /* ~273px on 390px phone — generous */
-  min-height: 0 !important;
-  overflow: hidden;
-}
-
-/* All images fill their container */
-.editorial-split .split-img img {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  opacity: 1 !important;
-  display: block !important;
-}
-
-/* Text: full width, comfortable padding on mobile */
-.editorial-split .split-text {
-  width: 100% !important;
-  min-width: 0 !important;
-  flex: none !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-start !important;
-  padding: 2.2rem 1.4rem 2.8rem !important;
-  background: #0d0d0d;
-}
-
-/* Flip: on mobile, image STILL on top (order override) */
-.editorial-split.flip .split-img  { order: 0 !important; }
-.editorial-split.flip .split-text { order: 1 !important; }
-
-/* ── TABLET / DESKTOP (769px+): side by side ── */
-@media (min-width: 769px) {
-  .editorial-split {
-    flex-direction: row !important;
-    min-height: 80vh;
-  }
-  .editorial-split.flip {
-    flex-direction: row-reverse !important;
-  }
-
-  .editorial-split .split-img {
-    flex: 1 1 50% !important;
-    width: auto !important;
-    height: auto !important;
-    min-height: 60vh !important;
-    max-width: 50% !important;
-  }
-
-  .editorial-split .split-text {
-    flex: 1 1 50% !important;
-    width: auto !important;
-    justify-content: center !important;
-    padding: clamp(4rem,7vw,8rem) clamp(2.5rem,5vw,6rem) !important;
-  }
-
-  .editorial-split.flip .split-img  { order: unset !important; }
-  .editorial-split.flip .split-text { order: unset !important; }
-}
-
-/* ── TYPOGRAPHY — scales cleanly mobile → desktop ── */
-
-.eyebrow {
-  font-family: 'Instrument Sans', 'DM Sans', sans-serif;
-  font-size: clamp(0.58rem, 2.5vw, 0.74rem);
-  font-weight: 400;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: rgba(201,169,110,0.88);
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.split-text h2 {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1.7rem, 5.5vw, 3.2rem);
-  font-weight: 300;
-  line-height: 1.15;
-  letter-spacing: 0.01em;
-  color: #F5F0E8;
-  margin: 0 0 1.2rem;
-}
-.split-text h2 em {
-  font-style: italic;
-  font-weight: 200;
-  color: rgba(245,240,232,0.82);
-}
-
-.body-text p {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(0.93rem, 3.2vw, 1.12rem);
-  font-weight: 300;
-  line-height: 1.9;
-  letter-spacing: 0.02em;
-  color: rgba(245,240,232,0.78);
-  margin-bottom: 1.2em;
-}
-
-.caption-label {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-style: italic;
-  font-size: clamp(0.78rem, 2.8vw, 0.88rem);
-  font-weight: 300;
-  color: rgba(201,169,110,0.52);
-  letter-spacing: 0.04em;
-  line-height: 1.7;
-  margin-top: 1.2rem;
-  display: block;
-  padding-top: 0.85rem;
-  border-top: 1px solid rgba(201,169,110,0.12);
-}
-
-.micro-rule {
-  display: block;
-  width: 2rem;
-  height: 1px;
-  background: rgba(201,169,110,0.48);
-  margin-bottom: 1rem;
-}
-
-/* ── CINEMATIC FULL-BLEED TEXT (Salon, KB Gate, WHP) ── */
-/* These sections have their own text overlay — just ensure it breathes */
-.cinematic .body-text p,
-.cinematic p {
-  font-size: clamp(0.93rem, 3.2vw, 1.12rem);
-  line-height: 1.9;
-}
-
-/* ── SECTION BREATHING ── */
-.act-break,
-.act-breath {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: clamp(2.5rem, 6vw, 8rem) 0;
-  background: #0a0a0a;
-}
-.act-break-diamond {
-  width: 5px;
-  height: 5px;
-  background: rgba(201,169,110,0.48);
-  transform: rotate(45deg);
-  flex-shrink: 0;
-}
-.section-divider {
-  height: 1px;
-  background: linear-gradient(to right,
-    transparent 0%,
-    rgba(201,169,110,0.3) 25%,
-    rgba(245,224,152,0.5) 50%,
-    rgba(201,169,110,0.3) 75%,
-    transparent 100%);
-  margin: 0;
-}
-
-/* ── NAV ── */
-#main-nav {
-  padding: 0 1.25rem;
-}
-
-/* ── STAT BAR — wrap on mobile ── */
-.stat-bar,
-[class*="stat-bar"],
-div[style*="stat"] {
-  flex-wrap: wrap;
-}
-
-/* ── ARCHITECTURE + THRESHOLD — padding ── */
-#architecture {
-  padding: clamp(3rem,8vw,10rem) clamp(1.5rem,6vw,10rem) !important;
-}
-#threshold {
-  padding: clamp(3.5rem,9vw,12rem) clamp(1.5rem,7vw,10rem) !important;
-}
-#threshold h2 {
-  font-size: clamp(1.8rem, 6.5vw, 4.8rem) !important;
-  font-weight: 200 !important;
-  line-height: 1.08 !important;
-}
-
-/* ── HEADLINE SCALES ── */
-#kb-gate h2 {
-  font-size: clamp(1.75rem, 7vw, 5.2rem) !important;
-  line-height: 1.08 !important;
-}
-#history h2 {
-  font-size: clamp(1.75rem, 6.5vw, 4.2rem) !important;
-  line-height: 1.1 !important;
-}
-
-/* ── FOOTER ── */
-.site-footer {
-  padding: clamp(3rem,7vw,10rem) clamp(1.5rem,5vw,8rem) !important;
-}
-@media (max-width: 600px) {
-  .site-footer a[href*="mailto"],
-  .site-footer a[href*="showing"],
-  .site-footer a[href*="footer"] {
-    display: block !important;
-    width: 100% !important;
-    text-align: center !important;
-    padding: 1.1rem 1rem !important;
-  }
-}
-
-/* ── ANIMATIONS — never block content ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.reveal.in { opacity: 1; transform: none; }
-.reveal-slow {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 1.05s ease, transform 1s ease;
-}
-.reveal-slow.in { opacity: 1; transform: none; }
-
-/* Text inside split columns — always visible, no reveal delay */
-.split-text .reveal,
-.split-text .reveal-slow {
-  opacity: 1 !important;
-  transform: none !important;
-  transition: none !important;
-}
-
-/* ── BLOCKQUOTES ── */
-blockquote, .pull-quote {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-style: italic;
-  font-weight: 200;
-  font-size: clamp(1.15rem, 4vw, 2rem);
-  line-height: 1.5;
-  color: rgba(245,240,232,0.7);
-  border-left: 1px solid rgba(201,169,110,0.28);
-  padding-left: 1.4rem;
-  margin: 1.8rem 0;
-}
-
-/* ── PREVENT HORIZONTAL SCROLL ── */
-section, .editorial-split, .cinematic, .editorial-prose {
-  max-width: 100vw;
-}
-</style>
 </head>
 <body>
 
