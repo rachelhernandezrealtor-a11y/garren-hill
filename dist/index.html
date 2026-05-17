@@ -965,6 +965,53 @@ section.editorial-room + section.full-bleed-section {
 .body-text p + p { color: rgba(245,240,232,0.72); }
 .body-text p em { font-style: italic; color: rgba(245,240,232,0.88); }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SingleFamilyResidence",
+      "name": "Garran Hill",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "200 Hollycrest Drive",
+        "addressLocality": "Pinehurst",
+        "addressRegion": "NC",
+        "postalCode": "28374",
+        "addressCountry": "US"
+      },
+      "description": "Neo-Georgian estate built 1915–1916. 6,072 square feet. 4.15 acres. Seven fireplaces. Concrete saltwater pool. Restored 1999–2001.",
+      "numberOfRooms": 4,
+      "numberOfBathroomsTotal": 6,
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 6072,
+        "unitCode": "FTK"
+      },
+      "yearBuilt": 1916,
+      "url": "https://garren-hill.pages.dev/",
+      "offers": {
+        "@type": "Offer",
+        "price": 4250000,
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "RealEstateAgent",
+      "name": "Rachel Hernandez",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Pines Sotheby's International Realty"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Pinehurst, North Carolina"
+      },
+      "url": "https://garren-hill.pages.dev/"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <!-- GH_PIPELINE_TEST_CONFIRMED -->
@@ -1936,10 +1983,19 @@ Not renovated into anonymity. Restored back into itself.</p>
     (phone ? 'Phone: ' + phone + '\n' : '') +
     (message ? '\nMessage:\n' + message : '')
    );
-   const mailtoUrl = 'mailto:rachel.hernandez@sothebysrealty.com?subject=' + subject + '&body=' + body;
-   btn.textContent = 'Opening...';
-   window.location.href = mailtoUrl;
-   setTimeout(function() { btn.textContent = 'Request Private Showing'; }, 2000);
+   fetch('https://formspree.io/f/FORMSPREE_ID_NEEDED', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ name: name, email: email, phone: phone, message: message })
+   })
+   .then(function(r) { return r.json(); })
+   .then(function() {
+    form.innerHTML = '<p style=\'text-align:center;color:#C9A96E;font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:1.1rem;padding:40px 0;letter-spacing:0.04em;\'>Your inquiry has been received.<br>Rachel will be in touch shortly.</p>';
+   })
+   .catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Request Private Showing';
+   });
   });
  }
 
@@ -1966,7 +2022,7 @@ Not renovated into anonymity. Restored back into itself.</p>
  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,0.0) 5%,rgba(201,169,110,0.3) 25%,rgba(245,224,152,0.5) 50%,rgba(201,169,110,0.3) 75%,rgba(201,169,110,0.0) 95%,transparent 100%);"></div>
 
  <!-- CTA -->
- <a href="mailto:rachelhernandezrealtor@gmail.com?subject=Private%20Showing%20Request%20%E2%80%94%20Garran%20Hill"
+ <a href="#inquiry" 
     style="display:inline-block;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(0.7rem,0.9vw,0.82rem);letter-spacing:0.3em;text-transform:uppercase;color:#C9A96E;border:1px solid rgba(201,169,110,0.35);padding:1.1rem 3rem;text-decoration:none;transition:border-color 0.3s,color 0.3s;margin-bottom:clamp(4rem,6vw,6rem);"
     onmouseover="this.style.borderColor='rgba(201,169,110,0.8)';this.style.color='#F5E098';"
     onmouseout="this.style.borderColor='rgba(201,169,110,0.35)';this.style.color='#C9A96E';">
