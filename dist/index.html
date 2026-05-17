@@ -959,6 +959,27 @@ footer .footer-privacy {
 @keyframes revealFallback {
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* closing question -- set apart */
+.closing-question {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  color: rgba(245,240,232,0.55);
+  letter-spacing: 0.02em;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem) !important;
+  margin-bottom: 0 !important;
+}
+
+/* nav darkens on scroll */
+nav.scrolled {
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(201,169,110,0.08);
+  transition: background 0.4s ease;
+}
 </style>
 </head>
 <body>
@@ -1161,11 +1182,11 @@ footer .footer-privacy {
 
       <!-- Copy -->
       <div class="reveal">
-        <h2 style="font-weight:300;line-height:1.1;color:#F5F0E8;margin-bottom:2rem">
+        <h2>
           Appointed by Wilson.<em style="display:block;font-size:0.82em;margin-top:0.2em;">He held the alliance from London.</em>
         </h2>
         <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.0rem,1.15vw,1.12rem);font-weight:300;color:rgba(245,240,232,0.78);line-height:1.85;margin-bottom:1.5rem;">
-          Born in Cary, North Carolina. Co-founder of Doubleday, Page &amp; Company. Editor of <em>The Atlantic Monthly.</em> Appointed by Woodrow Wilson as Ambassador to the Court of St. James in 1913 &mdash; and kept there through the years the world came apart.
+          Born in Cary, North Carolina. Co-founder of Doubleday, Page &amp; Company. Editor of <em>The Atlantic Monthly.</em> Appointed by Woodrow Wilson as Ambassador to the Court of St. James in 1913  --  and kept there through the years the world came apart.
         </p>
         <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.0rem,1.15vw,1.12rem);font-weight:300;color:rgba(245,240,232,0.78);line-height:1.85;margin-bottom:3rem;">
           From London, he commissioned Garran Hill to be built on his family&rsquo;s Moore County acres. He named it himself. Page returned from London in December 1918. He did not return to Garran Hill.
@@ -1200,7 +1221,7 @@ footer .footer-privacy {
   <div id="whp-quote" style="background:#000000;text-align:center;padding:clamp(1rem,2vw,1.5rem) var(--col-pad);">
     <blockquote style="border:none;margin:0 auto;padding:0;max-width:700px;">
       <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,1.8vw,1.6rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.88);line-height:1.6;letter-spacing:0.02em;margin:0 0 1rem;">
-        &ldquo;The farm &mdash; the farm &mdash; the farm.&rdquo;
+        &ldquo;The farm  --  the farm  --  the farm.&rdquo;
       </p>
       <cite style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.55rem,0.65vw,0.65rem);letter-spacing:0.3em;text-transform:uppercase;color:rgba(201,169,110,0.55);font-style:normal;">
         Walter Hines Page &middot; From His Letters &middot; 1913&ndash;1918
@@ -1256,7 +1277,7 @@ footer .footer-privacy {
   <!-- Text: lower third -->
   <div class="reveal" style="position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(3rem,6vw,6rem) clamp(2rem,6vw,8rem);text-align:center;">
     <span class="eyebrow"style="color:rgba(201,169,110,0.85);display:block;margin-bottom:0.8rem;">The Threshold &middot; 1916</span>
-    <h2 style="font-weight:300;color:#F5F0E8;line-height:1.08;margin-bottom:1.2rem">The door has been open<em> since 1916.</em></h2>
+    <h2>The door has been open<em> since 1916.</em></h2>
     <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.0rem,1.15vw,1.12rem);font-weight:300;font-style:italic;max-width:600px;margin:0 auto;color:rgba(245,240,232,0.75);line-height:1.75;">GARRAN HILL &middot; 1916 -- inlaid in the threshold stone before ground was ever broken. Leonard Tufts sent the craftsmen -- the same men building Pinehurst. It has not been altered. It has not been restored. It simply remains.</p>
   </div>
 </section>
@@ -1347,9 +1368,8 @@ footer .footer-privacy {
         font-size:clamp(0.6rem,0.75vw,0.68rem);font-weight:300;letter-spacing:0.3em;
         text-transform:uppercase;color:rgba(201,169,110,0.65);margin-bottom:1.4rem;">The Salon</span>
 
-      <h2 style="font-weight:300;line-height:1.15;
-        color:#F5F0E8;margin:0 0 1.8rem 0">
-        Red walls.<br>A Georgian fireplace.<em style="display:block;margin-top:0.2em;font-size:0.88em;">
+      <h2>
+        Red walls. A Georgian fireplace.<em style="display:block;margin-top:0.2em;font-size:0.88em;">
         Glass doors to the terrace.</em>
       </h2>
 
@@ -1373,12 +1393,14 @@ footer .footer-privacy {
       alt="Garran Hill Drawing Room  --  Delft-tiled fireplace, blue walls, active flame, intimate scale" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position: center 40%;">
   </div>
   <div class="split-text reveal">
+        <span class="micro-rule"></span>
+        <span class="eyebrow">The Salon &middot; Principal Rooms</span>
     <span class="micro-rule"></span>
     <span class="eyebrow">The Drawing Room</span>
     <h2>Delft tile. Georgian mantel.<em> A room enlarged for dancing.</em></h2>
     <div class="body-text">
       <p>The fire is lit in the frame and the whole room shifts register  --  from formal to private. Blue walls, white woodwork, Delft-tiled fireplace surround. The Drawing Room is smaller than the Salon by design: it was always meant to be the room you retreat to. The bookshelves flank it. The flame holds the center.</p>
-      <p class="caption-label">"Blue-and-white tile, firelight, and a spiral stair &mdash; the Drawing Room keeps its own rhythm."</p>
+      <p class="caption-label">"Blue-and-white tile, firelight, and a spiral stair  --  the Drawing Room keeps its own rhythm."</p>
     </div>
   </div>
 
@@ -1418,7 +1440,7 @@ footer .footer-privacy {
     <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(11,11,11,0.85) 100%);"></div>
     <div style="position:absolute;bottom:0;left:0;right:0;padding:3rem 5vw 2.5rem;">
       <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(0.65rem,1vw,0.75rem);letter-spacing:0.25em;text-transform:uppercase;color:#C9A96E;margin:0 0 0.75rem;">Kitchen &amp; Butler&#8217;s Pantry &middot; The Restoration</p>
-      <h2 style="font-weight:300;color:#F5F0E8;margin:0;line-height:1.15">White cabinetry. Dark granite. Island.<br>Four windows. Room to cook.</h2>
+      <h2>White cabinetry. Dark granite. Island.<br>Four windows. Room to cook.</h2>
 <p class="reveal" style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.0rem,1.15vw,1.12rem);font-weight:300;color:rgba(245,240,232,0.82);margin-top:1rem;">The kitchen was not updated. It was designed.</p>
     </div>
   </div>
@@ -1435,7 +1457,7 @@ footer .footer-privacy {
     <div style="display:flex;flex-direction:column;justify-content:center;padding:4rem 5vw;background:#0B0B0B;">
       
       <h3 style="font-weight:300;color:#F5F0E8;margin:0 0 1.5rem;line-height:1.2">The kitchen is not original to 1916.<br>It is original to the restoration.</h3>
-      <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.0rem,1.15vw,1.12rem);color:rgba(245,240,232,0.75);line-height:1.8;margin:0;">The original kitchen was in the basement. When the stewards rebuilt Garran Hill from 1999 to 2001, they designed the kitchen from scratch &mdash; not as an update, but as an act of architectural discipline. Heart-pine floors, not the oak of the original rooms. A distinction that tells you exactly what this space is and when it arrived.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.0rem,1.15vw,1.12rem);color:rgba(245,240,232,0.75);line-height:1.8;margin:0;">The original kitchen was in the basement. When the stewards rebuilt Garran Hill from 1999 to 2001, they designed the kitchen from scratch  --  not as an update, but as an act of architectural discipline. Heart-pine floors, not the oak of the original rooms. A distinction that tells you exactly what this space is and when it arrived.</p>
     </div>
   </div>
 
@@ -1443,7 +1465,7 @@ footer .footer-privacy {
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:clamp(380px,55vh,660px);">
     <div style="display:flex;flex-direction:column;justify-content:center;padding:4rem 5vw;background:#111;">
       
-      <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.0rem,1.15vw,1.12rem);color:rgba(245,240,232,0.75);line-height:1.8;margin:0 0 1.2rem;">The island doubles as a dinette. Matte black granite counters. Two farm sinks &mdash; one anchoring the kitchen, one in the open butler&#8217;s pantry. A wall of windows over the main sink faces grass, magnolias, American plane trees, and the pool beyond.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.0rem,1.15vw,1.12rem);color:rgba(245,240,232,0.75);line-height:1.8;margin:0 0 1.2rem;">The island doubles as a dinette. Matte black granite counters. Two farm sinks  --  one anchoring the kitchen, one in the open butler&#8217;s pantry. A wall of windows over the main sink faces grass, magnolias, American plane trees, and the pool beyond.</p>
       <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.0rem,1.15vw,1.12rem);color:rgba(245,240,232,0.75);line-height:1.8;margin:0;">Sub-Zero refrigerator. Custom cabinetry. A black-and-white toile wallpaper that carries the history of the house without announcing it. The grounds are visible through every window.</p>
     </div>
     <div style="position:relative;overflow:hidden;">
@@ -1467,7 +1489,7 @@ footer .footer-privacy {
     <div style="display:flex;flex-direction:column;justify-content:center;padding:4rem 5vw;background:#0B0B0B;">
       
       <h3 style="font-weight:300;color:#F5F0E8;margin:0 0 1.5rem;line-height:1.2">The restoration was not guessed into place. It was drawn, measured, and built.</h3>
-      <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.0rem,1.15vw,1.12rem);color:rgba(245,240,232,0.75);line-height:1.8;margin:0;">Sheet 12 of the restoration drawings documents the kitchen cabinetry in elevation &mdash; cooking wall, cornice, pantry, desk, and TV cabinet, all drawn before they were built. The architectural plans, all 15 sheets, transfer with the property.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.0rem,1.15vw,1.12rem);color:rgba(245,240,232,0.75);line-height:1.8;margin:0;">Sheet 12 of the restoration drawings documents the kitchen cabinetry in elevation  --  cooking wall, cornice, pantry, desk, and TV cabinet, all drawn before they were built. The architectural plans, all 15 sheets, transfer with the property.</p>
     </div>
   </div>
 
@@ -1487,6 +1509,8 @@ footer .footer-privacy {
 <section id="library" style="position:relative;overflow:hidden;padding:0;min-height:90vh;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_fill,w_1920,h_1280,g_center/v1777243111/gh_interiors/200holycrest_1350.jpg" alt="" role="presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.07;filter:grayscale(50%);display:block;"></div>
   <div class="split reverse" style="position:relative;z-index:1;">
     <div class="split-text reveal">
+        <span class="micro-rule"></span>
+        <span class="eyebrow">The Kitchen &middot; The Restoration</span>
       <span class="micro-rule"></span>
       <span class="eyebrow">The Library &middot; 1916</span>
       <h2>The books have been here<em> longer than anyone alive.</em></h2>
@@ -1555,7 +1579,7 @@ footer .footer-privacy {
     <span class="eyebrow">Private Rooms</span>
     <h2>The Second Floor.</h2>
     <div class="body-text">
-      <p>The primary suite has a fireplace and custom wall paneling. Four bedrooms total &mdash; each shaped during restoration for proportion and light.</p>
+      <p>The primary suite has a fireplace and custom wall paneling. Four bedrooms total  --  each shaped during restoration for proportion and light.</p>
       <p>Primary bath, primary closet, and upper hall all documented in the restoration drawings. The private floor was treated with the same architectural discipline as the social rooms below.</p>
       <!-- GH_PHOTO_CONFIRMATION_NEEDED: primary bath  --  room_primary_bath tag -->
       <!-- GH_PHOTO_CONFIRMATION_NEEDED: primary closet  --  room_primary_closet tag -->
@@ -1632,9 +1656,7 @@ footer .footer-privacy {
     <div class="split-text reveal" style="flex:1; display:flex; flex-direction:column; justify-content:center;
       padding:var(--sp-lg) var(--col-mid);">
       <span class="eyebrow"style="display:block style="color:rgba(201,169,110,0.72);margin-bottom:clamp(0.8rem,1.4vw,1.1rem)"">The Side Porch</span>
-      <h2 style="font-weight:300;
-        color:#F5F0E8; line-height:1.08;
-        margin-bottom:clamp(1.2rem,2.2vw,1.8rem); letter-spacing:-0.01em">
+      <h2>
         Where the house meets the garden.
       </h2>
       <p class="body-copy" style="font-family:'Cormorant Garamond',serif; font-weight:300;
@@ -1752,7 +1774,7 @@ footer .footer-privacy {
     <span class="micro-rule"style="margin:0 auto var(--sp-sm);"></span>
     <span class="eyebrow"style="display:block;margin-bottom:var(--sp-xs)">4.15 Acres &middot; Moore County</span>
     <h2 style="max-width:760px">From above,<em> the estate explains itself.</em></h2>
-    <p class="body-text"style="max-width:580px;margin:var(--sp-sm) auto 0;opacity:0.9;">Garran Hill sits within its own 4.15-acre circle &mdash; the surviving house core of a much larger Page-era farm.</p>
+    <p class="body-text"style="max-width:580px;margin:var(--sp-sm) auto 0;opacity:0.9;">Garran Hill sits within its own 4.15-acre circle -- the surviving house core of a much larger Page-era farm.</p>
     <p class="body-text"style="max-width:580px;margin:var(--sp-xs) auto 0;opacity:0.9;">Inside the gates: circular drive, lawn, brick terrace, pool, gardens, and shade.</p>
     <div style="display:flex;gap:clamp(1.5rem,4vw,3.5rem);margin-top:var(--sp-md);flex-wrap:wrap;justify-content:center;">
       <span style="font-size:var(--text-xs);letter-spacing:0.15em;color:var(--gold);">4.15 ACRES</span>
@@ -1825,7 +1847,7 @@ Not renovated into anonymity. Restored back into itself.</p>
   <span class="eyebrow"style="display:block;text-align:center;margin-bottom:var(--sp-sm)">Private Tour</span>
   <h2 style="text-align:center;margin-bottom:var(--sp-md)">Step inside Garran Hill<em> from wherever you are.</em></h2>
   <div class="body-text"style="max-width:52ch;margin:0 auto var(--sp-lg);text-align:center;">
-    <p>For buyers beginning at a distance, the virtual tour opens a quiet first passage through the house &mdash; from threshold to principal rooms, private spaces, and grounds.</p>
+    <p>For buyers beginning at a distance, the virtual tour opens a quiet first passage through the house  --  from threshold to principal rooms, private spaces, and grounds.</p>
   </div>
   <span class="private-tour-passage">Virtual Passage &middot; Estate Details</span>
   <div class="tour-actions">
@@ -1851,7 +1873,7 @@ Not renovated into anonymity. Restored back into itself.</p>
   <div class="section-content" style="position:relative;z-index:1;width:100%;">
   <div class="reveal">
     <span class="eyebrow"style="display:block;margin-bottom:var(--sp-xs);display:block;text-align:center">Private Showing</span>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.5vw,1.3rem);font-weight:300;font-style:italic;color:var(--cream);max-width:600px;margin:0 auto var(--sp-md);line-height:1.6;text-align:center;">Garran Hill is ready. It is offered now for the first time.<br>The question is whether you are.</p>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.5vw,1.3rem);font-weight:300;font-style:italic;color:var(--cream);max-width:600px;margin:0 auto var(--sp-md);line-height:1.6;text-align:center;">Garran Hill is ready. It is offered now for the first time.</p><p style="font-family:\'Cormorant Garamond\',serif;font-size:clamp(1.3rem,2vw,1.7rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.5);max-width:500px;margin:clamp(1.5rem,3vw,2.5rem) auto 0;line-height:1.5;text-align:center;letter-spacing:0.02em;">The question is whether you are.</p>
     <h2 style="margin-bottom:var(--sp-sm);font-weight:300;line-height:1.1">Begin the Private Conversation.</h2>
     
   </div>
