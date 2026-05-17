@@ -1855,6 +1855,133 @@
       padding: clamp(2rem,6vw,4rem) clamp(1.5rem,5vw,3rem);
     }
   }
+
+
+  /* ══════════════════════════════════════════════════════════════
+     EDITORIAL TYPOGRAPHY — AUTHORITATIVE FINAL PASS
+     All conflicts resolved here. This block wins.
+     Rocky, May 2026
+  ══════════════════════════════════════════════════════════════ */
+
+  /* § T1 — EYEBROW (section label above headline) */
+  .eyebrow {
+    display: block;
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 300;
+    font-size: clamp(0.6rem, 0.75vw, 0.72rem);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.85);
+    margin: 0 0 clamp(0.9rem, 1.5vw, 1.2rem) 0;
+    line-height: 1;
+  }
+
+  /* § T2 — SECTION HEADLINE */
+  .split-text h2,
+  .copy-col h2,
+  .editorial-split .split-text h2,
+  section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    margin: 0 0 clamp(1.4rem, 2.5vw, 2rem) 0;
+    max-width: 20ch;
+  }
+
+  /* § T2b — H2 italic continuation line */
+  .split-text h2 em,
+  .copy-col h2 em,
+  section h2 em {
+    display: block;
+    font-style: italic;
+    font-size: 0.88em;
+    color: rgba(245,240,232,0.78);
+    margin-top: 0.35rem;
+    line-height: 1.15;
+  }
+
+  /* § T3 — BODY COPY (the editorial paragraphs) */
+  .body-text p,
+  .split-text .body-text p,
+  .copy-col .body-text p {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-style: normal !important;
+    font-weight: 300 !important;
+    font-size: clamp(1.0rem, 1.15vw, 1.12rem) !important;
+    line-height: 1.88 !important;
+    letter-spacing: 0.01em !important;
+    color: rgba(245,240,232,0.82) !important;
+    max-width: 58ch;
+    margin: 0 0 clamp(1.1rem, 1.8vw, 1.5rem) 0 !important;
+  }
+  .body-text p:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* § T3b — secondary/atmospheric paragraph inside body-text */
+  .body-text p + p {
+    color: rgba(245,240,232,0.65) !important;
+  }
+
+  /* § T4 — MICRO RULE (the small gold line above eyebrow) */
+  .micro-rule {
+    display: block;
+    width: clamp(20px, 3vw, 32px);
+    height: 1px;
+    background: linear-gradient(90deg, rgba(201,169,110,0.6), transparent);
+    margin: 0 0 clamp(1rem, 1.8vw, 1.4rem) 0;
+    flex-shrink: 0;
+  }
+
+  /* § T5 — SPLIT TEXT container inner vertical rhythm */
+  .split-text,
+  .copy-col {
+    gap: 0;  /* spacing handled by individual element margins */
+  }
+
+  /* § T6 — Full-bleed section text (hero-style overlaid text) */
+  .full-bleed-section h2,
+  section[style*="position:relative"] > div > h2,
+  section[style*="position:relative"] > .content-col > h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    margin: 0 0 clamp(1.6rem, 2.5vw, 2.2rem) 0;
+  }
+
+  /* § T7 — SECTION CAPTION / subhead label */
+  .section-eyebrow,
+  p[style*="letter-spacing:0.25em"],
+  p[style*="letter-spacing: 0.25em"] {
+    font-family: 'Instrument Sans', sans-serif !important;
+    font-size: clamp(0.58rem, 0.72vw, 0.68rem) !important;
+    letter-spacing: 0.28em !important;
+    text-transform: uppercase;
+    color: var(--gold) !important;
+    line-height: 1 !important;
+    margin-bottom: clamp(0.7rem, 1.2vw, 1rem) !important;
+  }
+
+  /* § T8 — MOBILE overrides */
+  @media (max-width: 768px) {
+    .split-text h2, .copy-col h2, section h2 {
+      font-size: clamp(1.8rem, 6vw, 2.6rem);
+      max-width: 100%;
+    }
+    .body-text p, .split-text .body-text p, .copy-col .body-text p {
+      font-size: clamp(0.98rem, 3.5vw, 1.08rem) !important;
+    }
+    .eyebrow {
+      font-size: 0.6rem;
+    }
+  }
+
 </style>
 </head>
 <body>
