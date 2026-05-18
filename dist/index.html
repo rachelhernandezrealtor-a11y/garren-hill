@@ -1197,11 +1197,11 @@ section.cinematic +
     
   </div>
 
-  <div style="position:absolute;bottom:clamp(3rem,6vw,6rem);left:clamp(2.5rem,6vw,8rem);z-index:10;max-width:56ch;">
-    <span style="display:block;font-family:'Instrument Sans',sans-serif;font-size:0.65rem;letter-spacing:0.45em;text-transform:uppercase;color:rgba(201,169,110,0.75);margin-bottom:1.2rem;">1916 &rarr; Today</span>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.4vw,2.2rem);font-weight:200;font-style:italic;color:#F5F0E8;line-height:1.35;margin:0 0 1.4rem;">Some houses are built for arrival.<br>Garran Hill was built for return.</p>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.95rem,1.2vw,1.1rem);font-weight:300;color:rgba(245,240,232,0.72);line-height:1.8;margin:0 0 1.6rem;max-width:52ch;">The brick gateposts and circular drive establish the scale of the estate with old-world confidence. Arrival here feels less like parking and more like being received.</p>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.8rem,1vw,0.95rem);font-weight:300;font-style:italic;color:rgba(201,169,110,0.6);line-height:1.7;margin:0;">Built for Walter Hines Page, Garran Hill remains one of Pinehurst&rsquo;s rare private estates of history, land, and return.</p>
+  <div class="kb-copy" style="position:absolute;bottom:clamp(2rem,5vw,5rem);left:clamp(1.5rem,5vw,7rem);right:clamp(1.5rem,5vw,7rem);z-index:10;max-width:52ch;">
+    <span style="display:block;font-family:'Instrument Sans',sans-serif;font-size:clamp(0.55rem,1.8vw,0.65rem);letter-spacing:0.45em;text-transform:uppercase;color:rgba(201,169,110,0.75);margin-bottom:1rem;">1916 &rarr; Today</span>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.35rem,3.5vw,2.2rem);font-weight:200;font-style:italic;color:#F5F0E8;line-height:1.35;margin:0 0 1rem;">Some houses are built for arrival.<br>Garran Hill was built for return.</p>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.9rem,2vw,1.1rem);font-weight:300;color:rgba(245,240,232,0.72);line-height:1.75;margin:0 0 1rem;">The brick gateposts and circular drive establish the scale of the estate with old-world confidence. Arrival here feels less like parking and more like being received.</p>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.8rem,1.6vw,0.95rem);font-weight:300;font-style:italic;color:rgba(201,169,110,0.6);line-height:1.7;margin:0;">Built for Walter Hines Page, Garran Hill remains one of Pinehurst&rsquo;s rare private estates of history, land, and return.</p>
   </div>
 
 </section>
@@ -2085,6 +2085,15 @@ section.cinematic +
   .act-break,.act-breath { padding:3rem 0 !important; }
   .stat-grid { grid-template-columns:repeat(2,1fr) !important;gap:1.2rem !important; }
   input,textarea,select { font-size:16px !important; }
+}
+
+@media (max-width: 640px) {
+  .kb-copy {
+    bottom: 2rem !important;
+    left: 1.25rem !important;
+    right: 1.25rem !important;
+    max-width: 100% !important;
+  }
 }
 </style>
 </body>
