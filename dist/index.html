@@ -588,11 +588,11 @@ nav {
 }
 
 @keyframes kenBurnsThen {
-  0%   { opacity: 1;   transform: scale(1.0);   filter: sepia(1.0) brightness(0.80) saturate(0.6) contrast(1.05); }
-  50%  { opacity: 1;   transform: scale(1.04);  filter: sepia(0.95) brightness(0.82) saturate(0.6) contrast(1.05); }
-  75%  { opacity: 0.85; transform: scale(1.06); filter: sepia(0.90) brightness(0.80) saturate(0.65) contrast(1.0); }
-  90%  { opacity: 0.3;  transform: scale(1.07); filter: sepia(0.85) brightness(0.75) saturate(0.7); }
-  100% { opacity: 0;    transform: scale(1.08); filter: sepia(0.80) brightness(0.70) saturate(0.7); }
+  0%   { opacity: 1;    filter: sepia(1.0) brightness(0.80) saturate(0.6) contrast(1.05); transform: scale(1.0); }
+  50%  { opacity: 1;    filter: sepia(0.95) brightness(0.82) saturate(0.6) contrast(1.05); transform: scale(1.04); }
+  75%  { opacity: 0.85; filter: sepia(0.90) brightness(0.80) saturate(0.65) contrast(1.0); transform: scale(1.05); }
+  90%  { opacity: 0.3;  filter: sepia(0.85) brightness(0.75) saturate(0.7); transform: scale(1.06); }
+  100% { opacity: 0;    filter: sepia(0.80) brightness(0.70) saturate(0.7); transform: scale(1.07); }
 }
 
 @keyframes revealSecret {
@@ -1180,19 +1180,19 @@ section.cinematic +
  </div><!-- end stat-bar -->
 </section>
 
-<section id="kb-gate" class="kb-gate-section" style="position:relative;width:100%;height:100vh;background:#0a0a0a;overflow:hidden;">
+<section id="kb-gate" class="kb-gate-section" style="position:relative;width:100%;height:100vh;min-height:100vh;background:#0a0a0a;overflow:hidden;">
 
-  <div id="kb-then" style="position:absolute;inset:0;z-index:1;animation:kenBurnsThen 22s ease-in-out forwards;will-change:transform,opacity,filter;">
+  <div id="kb-then" style="position:absolute;inset:0;z-index:1;will-change:transform,opacity,filter;overflow:hidden;">
     <img src="https://res.cloudinary.com/dghn2xpif/image/upload/gh_photos/gh_historygate_sepia.jpg"
       alt="Garran Hill exterior — Pinehurst NC 1916"
-      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;"
+      style="position:absolute;inset:-5%;width:110%;height:110%;object-fit:cover;object-position:center center;animation:kenBurnsThen 22s ease-in-out forwards;"
       loading="eager" decoding="sync">
   </div>
 
-  <div id="kb-now" style="position:absolute;inset:0;z-index:2;animation:kenBurnsNow 22s ease-in-out forwards;animation-delay:12s;opacity:0;will-change:transform,opacity;">
+  <div id="kb-now" style="position:absolute;inset:0;z-index:2;opacity:0;will-change:opacity;animation:kenBurnsNow 22s ease-in-out forwards;animation-delay:12s;overflow:hidden;">
     <img src="https://res.cloudinary.com/dghn2xpif/image/upload/gh_photos/gh_gate_color.jpg"
       alt="Garran Hill — Neo-Georgian estate, Pinehurst NC"
-      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;"
+      style="position:absolute;inset:-5%;width:110%;height:110%;object-fit:cover;object-position:center center;"
       loading="eager" decoding="sync">
     <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.15) 0%,rgba(10,10,10,0.0) 40%,rgba(10,10,10,0.65) 100%);z-index:1;"></div>
   </div>
