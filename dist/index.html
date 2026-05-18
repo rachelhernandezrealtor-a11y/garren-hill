@@ -588,29 +588,8 @@ nav {
  }
 
 @keyframes kenBurnsThen {
-  /* --- IMMEDIATE: show image right away --- */
-  0%  { opacity: 0.8;  transform: scale(1.04); filter: brightness(0.85) sepia(0.3); }
-  /* --- FIRST FLICKER: gas lamp trying to catch --- */
-  8%  { opacity: 0.9; transform: scale(1.04); filter: brightness(0.9) sepia(0.2) saturate(0.8); }
-  10% { opacity: 0.85; transform: scale(1.04); filter: brightness(0.1) sepia(1.0); }
-  13% { opacity: 0.22; transform: scale(1.03); filter: brightness(0.6) sepia(0.9) saturate(0.7); }
-  15% { opacity: 0.08; transform: scale(1.03); filter: brightness(0.2) sepia(1.0); }
-  /* --- SECOND CATCH: longer hold, starting to breathe --- */
-  20% { opacity: 0.45; transform: scale(1.02); filter: brightness(0.75) sepia(0.85) saturate(0.8); }
-  23% { opacity: 0.28; transform: scale(1.02); filter: brightness(0.5) sepia(0.95); }
-  /* --- FLAME SETTLING --- */
-  30% { opacity: 0.72; transform: scale(1.01); filter: brightness(0.88) sepia(0.75) saturate(0.9); }
-  35% { opacity: 0.65; transform: scale(1.01); filter: brightness(0.82) sepia(0.8); }
-  /* --- FULLY ALIVE: warm and breathing --- */
-  42% { opacity: 0.92; transform: scale(1.0); filter: brightness(0.95) sepia(0.65) saturate(1.0); }
-  /* --- GENTLE PULSE: like a flame in still air --- */
-  50% { opacity: 0.88; transform: scale(1.005); filter: brightness(0.90) sepia(0.70); }
-  58% { opacity: 0.93; transform: scale(1.0);  filter: brightness(0.96) sepia(0.62); }
-  /* --- FADE BACK: world returns to present --- */
-  72% { opacity: 0.88; transform: scale(1.0); filter: brightness(0.90) sepia(0.68); }
-  82% { opacity: 0.35; transform: scale(1.01); filter: brightness(0.55) sepia(0.85); }
-  90% { opacity: 0.08; transform: scale(1.02); filter: brightness(0.2) sepia(1.0); }
-  100% { opacity: 0;  transform: scale(1.04); filter: brightness(0.0) sepia(1.0); }
+  0%   { opacity: 1; transform: scale(1.0); filter: brightness(0.85) sepia(0.15); }
+  100% { opacity: 1; transform: scale(1.08) translateX(-2%); filter: brightness(0.9) sepia(0.1); }
  }
 
 @keyframes revealSecret {
