@@ -353,6 +353,9 @@ nav {
  text-align: center;
  padding: 0 clamp(2rem, 8vw, 8rem);
  margin-top: -4vh;
+ /* Optical correction for G flourish — shifts the whole title block right */
+ padding-left: calc(clamp(2rem, 8vw, 8rem) + 4vw);
+ padding-right: calc(clamp(2rem, 8vw, 8rem) - 4vw);
 }
 
 .hero-title .property-name {
@@ -364,8 +367,8 @@ nav {
  text-shadow: 0 2px 40px rgba(0,0,0,0.5);
  letter-spacing: -0.01em;
  /* Optical correction: neutralise left-leaning G flourish */
- transform: translateX(4.5vw);
- display: inline-block;
+ position: relative;
+ left: 4vw;
 }
 
 .hero-title .property-address {
