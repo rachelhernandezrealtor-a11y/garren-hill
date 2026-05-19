@@ -51,7 +51,8 @@
       position: relative; z-index: 2;
       text-align: center;
       padding: 0 clamp(1.5rem,6vw,6rem);
-      padding-bottom: clamp(8rem,14vw,13rem); /* push up from stat bar */
+      padding-bottom: clamp(6rem,11vw,10rem); /* push up from stat bar */
+      padding-left: clamp(2rem,5vw,5rem); /* compensate for Pinyon Script left lean */
     }
     .address-eyebrow {
       display: block;
@@ -68,6 +69,8 @@
       line-height: 0.88;
       color: var(--cream);
       text-shadow: 0 2px 60px rgba(0,0,0,0.3);
+      display: block;
+      margin-left: clamp(1rem,3vw,4rem); /* optical center for script font */
     }
     .subtitle {
       display: block;
@@ -141,8 +144,8 @@
     .crest-medallion {
       position: absolute;
       top: 0; left: 50%;
-      transform: translate(-50%, -52%);
-      width: clamp(88px,10.5vw,142px);
+      transform: translate(-50%, -55%);
+      width: clamp(130px,14vw,190px);
       height: auto;
       z-index: 20;
       pointer-events: none;
@@ -162,8 +165,8 @@
       .stat-item { flex: 0 0 30%; }
       .crest-gap { display: none; }
       .crest-medallion {
-        width: clamp(62px,16vw,88px);
-        transform: translate(-50%, -48%);
+        width: clamp(90px,20vw,120px);
+        transform: translate(-50%, -50%);
       }
     }
     @media (max-width: 480px) {
