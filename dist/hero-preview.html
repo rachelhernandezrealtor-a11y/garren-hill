@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Garran Hill</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Instrument+Sans:wght@300;400&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Instrument+Sans:wght@300;400&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
   <style>
     :root {
       --gold: #C9A96E;
-      --gold-dim: rgba(201,169,110,0.35);
+      --gold-bright: #E8C97A;
+      --gold-dim: rgba(201,169,110,0.3);
       --dark: #0A0A0A;
-      --cream: rgba(245,240,232,0.92);
+      --cream: rgba(245,240,232,0.93);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { height: 100%; background: var(--dark); color: var(--cream); overflow-x: hidden; }
@@ -19,20 +20,21 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: clamp(1rem,2vw,1.6rem) clamp(1.5rem,4vw,4rem);
+      padding: clamp(1rem,1.8vw,1.4rem) clamp(1.5rem,4vw,4rem);
     }
     .nav-est {
       font-family: 'Instrument Sans', sans-serif;
-      font-weight: 300; font-size: 0.62rem;
+      font-weight: 300; font-size: 0.6rem;
       letter-spacing: 0.22em; text-transform: uppercase;
-      color: rgba(245,240,232,0.4);
+      color: rgba(245,240,232,0.35);
     }
-    .nav-links { display: flex; gap: clamp(1.5rem,3vw,2.5rem); list-style: none; }
+    .nav-links { display: flex; gap: clamp(1.5rem,2.5vw,2.5rem); list-style: none; }
     .nav-links a {
       font-family: 'Instrument Sans', sans-serif;
-      font-weight: 300; font-size: 0.62rem;
+      font-weight: 300; font-size: 0.6rem;
       letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(245,240,232,0.5); text-decoration: none;
+      color: rgba(245,240,232,0.45); text-decoration: none;
+      transition: color 0.3s;
     }
     .nav-links a:hover { color: var(--gold); }
 
@@ -46,132 +48,179 @@
       overflow: hidden;
     }
 
-    /* TITLE BLOCK */
+    /* TITLE BLOCK — optically centered */
     .title-block {
       position: relative; z-index: 2;
       text-align: center;
-      padding: 0 clamp(1.5rem,6vw,6rem);
-      padding-bottom: clamp(6rem,11vw,10rem); /* push up from stat bar */
-      padding-left: clamp(2rem,5vw,5rem); /* compensate for Pinyon Script left lean */
+      /* Pull block down from absolute center so crest has room */
+      margin-top: -2vh;
+      /* Bottom padding creates space above stat bar */
+      padding-bottom: clamp(7rem,10vh,11rem);
+      /* Left offset compensates for Mrs Saint Delafield's rightward visual lean */
+      padding-left: clamp(1rem,2.5vw,3rem);
     }
     .address-eyebrow {
       display: block;
       font-family: 'Instrument Sans', sans-serif;
-      font-weight: 300; font-size: clamp(0.55rem,0.75vw,0.68rem);
-      letter-spacing: 0.32em; text-transform: uppercase;
-      color: rgba(245,240,232,0.38);
-      margin-bottom: clamp(1.2rem,2.5vw,2rem);
+      font-weight: 300; font-size: clamp(0.52rem,0.65vw,0.65rem);
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(245,240,232,0.35);
+      margin-bottom: clamp(1.5rem,3vh,2.5rem);
     }
+    /* The title — sized to fill 80% of viewport width optically */
     .property-name {
       display: block;
       font-family: 'Mrs Saint Delafield', cursive;
-      font-size: clamp(6rem,17vw,15rem);
-      line-height: 0.88;
+      font-size: clamp(5.5rem,14.5vw,13.5rem);
+      line-height: 0.9;
       color: var(--cream);
-      text-shadow: 0 2px 60px rgba(0,0,0,0.3);
-      display: block;
-      margin-left: clamp(1rem,3vw,4rem); /* optical center for script font */
+      /* Subtle text glow to lift off black */
+      text-shadow:
+        0 0 120px rgba(201,169,110,0.08),
+        0 2px 40px rgba(0,0,0,0.4);
     }
     .subtitle {
       display: block;
       font-family: 'Cormorant Garamond', serif;
       font-weight: 300; font-style: italic;
-      font-size: clamp(0.75rem,1.05vw,0.95rem);
-      letter-spacing: 0.14em;
-      color: rgba(245,240,232,0.38);
-      margin-top: clamp(1rem,2vw,1.8rem);
+      font-size: clamp(0.7rem,0.95vw,0.9rem);
+      letter-spacing: 0.13em;
+      color: rgba(245,240,232,0.35);
+      margin-top: clamp(1.2rem,2.5vh,2rem);
     }
 
     /* 1916 WATERMARK */
     .watermark-1916 {
       position: absolute;
-      bottom: clamp(4rem,10vw,9rem); right: clamp(-1rem,0vw,0rem);
+      bottom: clamp(3.5rem,9vw,8rem);
+      right: clamp(-2rem,-1vw,0rem);
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(9rem,20vw,24rem);
-      color: rgba(201,169,110,0.06);
+      font-size: clamp(10rem,21vw,26rem);
+      color: rgba(201,169,110,0.055);
       line-height: 1;
       pointer-events: none; user-select: none;
       z-index: 1;
+      letter-spacing: -0.02em;
     }
 
-    /* STAT BAR */
+    /* ── STAT BAR ── */
     .stat-bar {
       position: absolute;
       bottom: 0; left: 0; right: 0;
       z-index: 10;
-      background: rgba(4,4,4,0.9);
-      backdrop-filter: blur(14px);
+      background: rgba(6,6,6,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       overflow: visible;
     }
+    /* Top gold rule */
     .stat-rule {
       width: 100%; height: 1px;
-      background: linear-gradient(to right, transparent, rgba(201,169,110,0.85) 15%, #C9A96E 50%, rgba(201,169,110,0.85) 85%, transparent);
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(201,169,110,0.4) 8%,
+        #C9A96E 30%,
+        #E0BB82 50%,
+        #C9A96E 70%,
+        rgba(201,169,110,0.4) 92%,
+        transparent 100%
+      );
     }
     .stat-row {
       position: relative;
       display: flex; align-items: center; justify-content: space-around;
-      padding: clamp(0.9rem,1.8vw,1.3rem) clamp(1rem,4vw,3rem);
+      padding: clamp(0.85rem,1.5vh,1.2rem) clamp(1rem,4vw,3rem);
     }
     .stat-item {
       display: flex; flex-direction: column;
-      align-items: center; gap: 0.35rem;
+      align-items: center; gap: 0.3rem;
       text-align: center; flex: 1;
     }
     .stat-num {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 300;
-      font-size: clamp(1.6rem,2.6vw,2.8rem);
-      line-height: 1; letter-spacing: 0.02em;
-      background: linear-gradient(170deg,#FFFFFF 0%,#FDF6D8 8%,#F0D060 22%,#C9A96E 42%,#8B6914 70%,#4A2E08 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      font-size: clamp(1.5rem,2.3vw,2.6rem);
+      line-height: 1; letter-spacing: 0.01em;
+      /* Gold gradient — cream at top, warm gold mid, not too dark */
+      background: linear-gradient(
+        175deg,
+        #FEFCF5 0%,
+        #F5E8C0 15%,
+        #E8C97A 30%,
+        #C9A96E 55%,
+        #A07840 80%,
+        #7A5A28 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     .stat-label {
       font-family: 'Instrument Sans', sans-serif;
-      font-weight: 300; font-size: 0.58rem;
-      letter-spacing: 0.35em; text-transform: uppercase;
-      color: rgba(201,169,110,0.5);
+      font-weight: 300; font-size: 0.55rem;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(201,169,110,0.45);
     }
     .stat-divider {
-      width: 1px; height: 26px;
-      background: rgba(201,169,110,0.2);
+      width: 1px; height: 24px;
+      background: linear-gradient(to bottom, transparent, rgba(201,169,110,0.25), transparent);
       flex-shrink: 0;
     }
-    /* Crest gap — empty spacer in flex row */
-    .crest-gap { flex: 1.6; }
+    /* Gap in flex row where crest hovers above */
+    .crest-gap { flex: 1.8; min-width: 180px; }
 
-    /* CREST — absolutely positioned, rises above top gold rule */
+    /* ── CREST MEDALLION ── */
     .crest-medallion {
       position: absolute;
-      top: 0; left: 50%;
-      transform: translate(-50%, -55%);
-      width: clamp(130px,14vw,190px);
+      /* Centered horizontally */
+      left: 50%; 
+      /* Bottom of crest sits just above the gold rule — rises into hero */
+      top: 0;
+      transform: translate(-50%, -58%);
+      width: clamp(150px, 16vw, 210px);
       height: auto;
       z-index: 20;
       pointer-events: none;
       filter:
-        drop-shadow(0 10px 36px rgba(0,0,0,0.95))
-        drop-shadow(0 3px 10px rgba(0,0,0,0.8))
-        drop-shadow(0 0 18px rgba(201,169,110,0.18));
+        drop-shadow(0 12px 40px rgba(0,0,0,0.98))
+        drop-shadow(0 4px 12px rgba(0,0,0,0.85))
+        drop-shadow(0 0 24px rgba(201,169,110,0.22));
     }
 
-    /* MOBILE */
+    /* Bottom rule */
+    .stat-rule-bottom {
+      width: 100%; height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(201,169,110,0.15) 20%,
+        rgba(201,169,110,0.3) 50%,
+        rgba(201,169,110,0.15) 80%,
+        transparent 100%
+      );
+    }
+
+    /* ── MOBILE ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .property-name { font-size: clamp(5rem,21vw,8rem); }
-      .title-block { padding-bottom: clamp(10rem,30vw,14rem); }
+      .property-name { font-size: clamp(4.5rem,19vw,7.5rem); }
+      .title-block {
+        padding-bottom: clamp(9rem,25vw,13rem);
+        padding-left: clamp(0.5rem,1.5vw,1.5rem);
+      }
       .stat-divider { display: none; }
-      .stat-row { flex-wrap: wrap; gap: 0.6rem 0; justify-content: center; }
+      .stat-row { flex-wrap: wrap; gap: 0.5rem 0; padding: 0.7rem 1rem 0.9rem; }
       .stat-item { flex: 0 0 30%; }
       .crest-gap { display: none; }
       .crest-medallion {
-        width: clamp(90px,20vw,120px);
-        transform: translate(-50%, -50%);
+        width: clamp(100px, 22vw, 130px);
+        transform: translate(-50%, -52%);
       }
     }
     @media (max-width: 480px) {
-      .stat-item { flex: 0 0 45%; }
-      .stat-num { font-size: clamp(1.3rem,6vw,1.8rem); }
+      .stat-item { flex: 0 0 44%; }
+      .stat-num { font-size: clamp(1.2rem,5.5vw,1.7rem); }
     }
   </style>
 </head>
@@ -225,7 +274,7 @@
           <span class="stat-label">Offered At</span>
         </div>
       </div>
-      <div class="stat-rule"></div>
+      <div class="stat-rule-bottom"></div>
 
       <img
         src="https://res.cloudinary.com/dghn2xpif/image/upload/gh_key/gh_crest_gloss_v2.png"
