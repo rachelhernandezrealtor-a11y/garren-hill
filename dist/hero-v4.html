@@ -397,9 +397,9 @@
     .crest {
       position: absolute;
       left: 50%;
-      /* Bottom edge hovers at viewport base — rises commanding */
-      bottom: calc(100% + 5px);
-      transform: translate(-50%, -4%);
+      /* Anchor: top of the stat-bar (rule-double). Rise 60% of own height into hero. */
+      top: 0;
+      transform: translate(-50%, -60%);
       width: var(--crest-w);
       height: auto;
       z-index: 30;
@@ -422,7 +422,7 @@
     /* Hover zone on stat bar triggers crest lift */
     .stat-bar:hover .crest {
       pointer-events: auto;
-      transform: translate(-50%, -4%) scale(1.05) translateY(-8px);
+      transform: translate(-50%, -60%) scale(1.05) translateY(-8px);
       filter:
         drop-shadow(0 -4px 18px rgba(201,169,110,0.30))
         drop-shadow(0 16px 52px rgba(0,0,0,0.98))
