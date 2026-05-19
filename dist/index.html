@@ -17,6 +17,28 @@
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <style>
 @import url("https://use.typekit.net/wih8wgk.css");
+
+@keyframes goldShift {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+@keyframes crestIdle {
+  0%, 100% { transform: translate(-50%, -4%) scale(1);    filter: drop-shadow(0 8px 32px rgba(201,169,110,0.35)) drop-shadow(0 2px 8px rgba(0,0,0,0.9)); }
+  50%       { transform: translate(-50%, -5%) scale(1.01); filter: drop-shadow(0 12px 40px rgba(201,169,110,0.45)) drop-shadow(0 4px 12px rgba(0,0,0,0.9)); }
+}
+/* Filmic grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
 </style>
 <style id="gh-bones">
 /* ═══════════════════════════════════════════════════════
@@ -1080,113 +1102,504 @@ section.cinematic +
 
 <!-- ═══ ACT 0  --  HERO ═══ -->
 <!-- HERO VIDEO: hero is intentionally black (Rachel hold). garran_hill_cinematic_final.mp4 is the locked cinematic -- do not restore done_czfe8o ever. -->
-<section class="hero" id="top" style="isolation:isolate;position:relative;z-index:10;background:#000000;height:100vh;overflow:visible">
+<!-- ═══════════════════════════════════════════════════════════════
+     GARRAN HILL — HERO THEATER v5
+     Principal Frontend Architect / Elite Editorial Designer
+     Refs: Vogue 1987 · Chanel · Aman · AD 1987
+     Zero dependencies · Pure fluid CSS · Production ready
+═══════════════════════════════════════════════════════════════ -->
 
- <!-- BACKGROUND VIDEO: intentionally black -- Rachel hold -->
- 
+<!-- FILMIC GLOSS — SVG fractal noise over the whole body -->
+<!-- STYLES IN HEAD -->
+<!--
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
 
- <!-- VIGNETTE -->
- <div class="hero-overlay" style="position:absolute;inset:0;z-index:1;pointer-events:none;
+/* ── GOLD FOIL SHIMMER KEYFRAMES ─────────────────────────────── */
+@keyframes goldShift {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* ── CREST HOVER LIFT ─────────────────────────────────────────── */
+@keyframes crestIdle {
+  0%, 100% { transform: translate(-50%, -4%) scale(1);    filter: drop-shadow(0 8px 32px rgba(201,169,110,0.35)) drop-shadow(0 2px 8px rgba(0,0,0,0.9)); }
+  50%       { transform: translate(-50%, -5%) scale(1.01); filter: drop-shadow(0 12px 40px rgba(201,169,110,0.45)) drop-shadow(0 4px 12px rgba(0,0,0,0.9)); }
+}
+-->
+
+<section id="gh-hero" style="
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  background: #0A0A0A;
+  isolation: isolate;
+">
+
+  <!-- 1 · CINEMATIC VIDEO LOOP ─────────────────────────────────── -->
+  <video
+    autoplay muted loop playsinline
+    style="
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      opacity: 0.72;
+    "
+  >
+    <!-- Video source: Rachel to supply when ready -->
+    <!-- <source src="https://res.cloudinary.com/dghn2xpif/video/upload/gh_key/Last_for_real_q0fqvw.mp4" type="video/mp4"> -->
+  </video>
+
+  <!-- 2 · VIGNETTE SMOKE GRADIENT ──────────────────────────────── -->
+  <div style="
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
     background:
-      linear-gradient(to bottom, rgba(10,10,10,0.45) 0%, transparent 22%, transparent 45%, rgba(10,10,10,0.55) 100%),
-      radial-gradient(ellipse at center, transparent 30%, rgba(10,10,10,0.55) 100%);"></div>
+      linear-gradient(to bottom,
+        rgba(10,10,10,0.60)  0%,
+        rgba(10,10,10,0.15) 20%,
+        rgba(10,10,10,0.05) 42%,
+        rgba(10,10,10,0.40) 68%,
+        rgba(10,10,10,0.92) 100%
+      ),
+      radial-gradient(ellipse 120% 100% at 50% 50%,
+        transparent           25%,
+        rgba(10,10,10,0.25)   55%,
+        rgba(10,10,10,0.70)  100%
+      );
+  "></div>
 
- <!-- LEFT SPINE -->
+  <!-- 3 · YEAR WATERMARK ───────────────────────────────────────── -->
+  <div style="
+    position: absolute;
+    bottom: 5rem;
+    right: clamp(1.5rem, 4vw, 5rem);
+    z-index: 3;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(5rem, 9vw, 11rem);
+    font-weight: 200;
+    color: rgba(201,169,110,0.07);
+    letter-spacing: 0.14em;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+  ">1916</div>
 
+  <!-- 4 · TITLE THEATER ────────────────────────────────────────── -->
+  <div style="
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 0 clamp(2rem, 8vw, 10rem) clamp(7rem, 13vh, 11rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  ">
 
- <!-- YEAR WATERMARK -->
- <div style="position:absolute;bottom:6rem;right:clamp(1.5rem,4vw,4rem);z-index:3;
-    font-family:'Cormorant Garamond',serif;font-size:clamp(5rem,9vw,10rem);
-    font-weight:200;color:rgba(201,169,110,0.09);letter-spacing:0.14em;
-    line-height:1;pointer-events:none;user-select:none;white-space:nowrap;">1916</div>
+    <!-- Address Eyebrow -->
+    <p style="
+      margin: 0 0 clamp(1rem, 1.8vh, 1.6rem) 0;
+      font-family: 'Inter', 'Instrument Sans', sans-serif;
+      font-weight: 300;
+      font-size: clamp(0.55rem, 0.78vw, 0.72rem);
+      letter-spacing: 0.40em;
+      text-transform: uppercase;
+      color: rgba(245,241,232,0.62);
+      display: flex;
+      align-items: center;
+      gap: clamp(0.8rem, 2vw, 1.6rem);
+    ">
+      <span style="display:inline-block;width:clamp(28px,4vw,52px);height:1px;background:rgba(201,169,110,0.55);flex-shrink:0;"></span>
+      200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, North Carolina
+      <span style="display:inline-block;width:clamp(28px,4vw,52px);height:1px;background:rgba(201,169,110,0.55);flex-shrink:0;"></span>
+    </p>
 
- <!-- TITLE BLOCK: lower third, above stat bar -->
- <div style="position:absolute;bottom:0;left:0;right:0;z-index:20;
-    padding:0 clamp(2rem,6vw,8rem) 16rem;
-    display:flex;flex-direction:column;align-items:center;text-align:center;
-    opacity:1;">
+    <!-- Master Hero Title -->
+    <h1 style="
+      margin: 0;
+      font-family: 'Mrs Saint Delafield', cursive;
+      font-size: clamp(5.5rem, 15vw, 17rem);
+      font-weight: 400;
+      line-height: 0.88;
+      letter-spacing: 0.01em;
+      color: #F5F0E8;
+      text-shadow:
+        0 4px 60px rgba(0,0,0,0.85),
+        0 2px 20px rgba(0,0,0,0.65),
+        0 0  80px rgba(10,10,10,0.4);
+      /* OPTICAL CORRECTION — neutralise left-leaning G calligraphic flourish */
+      transform: translateX(2.5vw);
+      display: inline-block;
+    ">Garran Hill</h1>
 
-  <p style="margin:0 0 1.2rem 0;display:flex;align-items:center;gap:1.2rem;
-      font-family:'Cormorant Garamond',serif;font-size:clamp(0.85rem,1.1vw,1rem);
-      font-weight:400;letter-spacing:0.28em;color:rgba(245,240,232,0.92);text-transform:uppercase;">
-   <span style="display:inline-block;width:clamp(32px,5vw,60px);height:1px;background:rgba(201,169,110,0.7);"></span>
-   200 Hollycrest Drive &nbsp;&middot;&nbsp; Pinehurst, North Carolina
-   <span style="display:inline-block;width:clamp(32px,5vw,60px);height:1px;background:rgba(201,169,110,0.7);"></span>
-  </p>
+    <!-- Subtitle -->
+    <p style="
+      margin: clamp(1rem, 2vh, 1.8rem) 0 0 0;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(0.68rem, 1.1vw, 0.95rem);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(201,169,110,0.90);
+      text-shadow: 0 1px 12px rgba(0,0,0,0.8);
+    ">Neo-Georgian &nbsp;&middot;&nbsp; A Century of Provenance</p>
 
-  <h1 class="hero-title" style="margin:0 0 1.1rem 0;font-family:'sloop-script-three','sloop-script-two','Mrs Saint Delafield',cursive;font-size:clamp(6rem,14vw,18rem);font-weight:400;letter-spacing:0.02em;text-transform:none;color:#F5F0E8;text-shadow:0 4px 60px rgba(0,0,0,0.9),0 2px 20px rgba(0,0,0,0.7);">Garran Hill</h1>
-  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.75rem,1.4vw,1.1rem);font-weight:400;letter-spacing:0.45em;text-transform:uppercase;color:rgba(201,169,110,0.92);text-shadow:0 1px 8px rgba(0,0,0,0.8),0 0 24px rgba(0,0,0,0.6);margin:1.2rem 0 0 0;">Neo-Georgian &nbsp;&middot;&nbsp; 110 Years of Provenance</p>
-
-  
-
- </div>
-
- <!-- STAT BAR + CREST -->
- <!-- 
-    ARCHITECTURE:
-    - Two gold rules = the belt
-    - Dark band between rules = belt body  
-    - Crest = fixed to viewport, sits ON the belt, both rules behind it
-    - Stats recentered now crest is out of flex row
-  -->
- <div id="stat-bar" style="position:absolute;bottom:0;left:0;right:0;z-index:15;overflow:visible;isolation:isolate;background:transparent;flex-wrap:wrap;">
-
-  <!-- TOP GOLD RULE -->
-  <div style="width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.9) 15%,#C9A96E 50%,rgba(201,169,110,0.9) 85%,transparent);">
-  <p class="stat-provenance">Primary sources on file &nbsp;&middot;&nbsp; Architectural drawings transfer with the property</p>
-</div>
-
-  <!-- STATS ROW -- all 5 stats, crest is NOT in this row, it floats above independently -->
-  <div style="position:relative;width:100%;
-      display:flex;align-items:center;justify-content:space-around;flex-wrap:wrap;gap:0.5rem 0;
-      padding:clamp(0.8rem,2vw,1.1rem) clamp(0.5rem,3vw,2.5rem);
-      background:rgba(4,4,4,0.82);backdrop-filter:blur(10px);">
-
-   <!-- left spacer so stats spread but center gap stays for crest -->
-  <div style="text-align:center;flex:1;">
-   <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.2vw,3.8rem);font-weight:300;line-height:1;letter-spacing:0.04em;background:linear-gradient(170deg,#FFFFFF 0%,#FDF6D8 8%,#F0D060 22%,#C9A96E 42%,#8B6914 70%,#4A2E08 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 2px 3px rgba(0,0,0,0.7));">4</div>
-   <div style="font-family:'Instrument Sans',sans-serif;font-size:0.62rem;font-weight:300;letter-spacing:0.35em;text-transform:uppercase;color:rgba(201,169,110,0.65);margin-top:0.4rem;">Bedrooms</div>
   </div>
-   <div style="width:1px;height:28px;background:rgba(201,169,110,0.25);flex-shrink:0;"></div>
-  <div style="text-align:center;flex:1;">
-   <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.2vw,3.8rem);font-weight:300;line-height:1;letter-spacing:0.04em;background:linear-gradient(170deg,#FFFFFF 0%,#FDF6D8 8%,#F0D060 22%,#C9A96E 42%,#8B6914 70%,#4A2E08 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 2px 3px rgba(0,0,0,0.7));">6</div>
-   <div style="font-family:'Instrument Sans',sans-serif;font-size:0.62rem;font-weight:300;letter-spacing:0.35em;text-transform:uppercase;color:rgba(201,169,110,0.65);margin-top:0.4rem;">Bathrooms</div>
-  </div>
-   <div style="width:1px;height:28px;background:rgba(201,169,110,0.25);flex-shrink:0;"></div>
-  <div style="text-align:center;flex:1;">
-   <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.2vw,3.8rem);font-weight:300;line-height:1;letter-spacing:0.04em;background:linear-gradient(170deg,#FFFFFF 0%,#FDF6D8 8%,#F0D060 22%,#C9A96E 42%,#8B6914 70%,#4A2E08 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 2px 3px rgba(0,0,0,0.7));">6,072</div>
-   <div style="font-family:'Instrument Sans',sans-serif;font-size:0.62rem;font-weight:300;letter-spacing:0.35em;text-transform:uppercase;color:rgba(201,169,110,0.65);margin-top:0.4rem;">Square Feet</div>
-  </div>
-   <div style="width:1px;height:28px;background:rgba(201,169,110,0.25);flex-shrink:0;"></div>
-   <!-- CREST GAP -- empty space where crest floats above -->
-   <div style="flex:1.2;"></div>
-   <div style="width:1px;height:28px;background:rgba(201,169,110,0.25);flex-shrink:0;"></div>
-  <div style="text-align:center;flex:1;">
-   <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.2vw,3.8rem);font-weight:300;line-height:1;letter-spacing:0.04em;background:linear-gradient(170deg,#FFFFFF 0%,#FDF6D8 8%,#F0D060 22%,#C9A96E 42%,#8B6914 70%,#4A2E08 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 2px 3px rgba(0,0,0,0.7));">4.15</div>
-   <div style="font-family:'Instrument Sans',sans-serif;font-size:0.62rem;font-weight:300;letter-spacing:0.35em;text-transform:uppercase;color:rgba(201,169,110,0.65);margin-top:0.4rem;">Acres</div>
-  </div>
-   <div style="width:1px;height:28px;background:rgba(201,169,110,0.25);flex-shrink:0;"></div>
-  <div style="text-align:center;flex:1;">
-   <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.2vw,3.8rem);font-weight:300;line-height:1;letter-spacing:0.04em;background:linear-gradient(170deg,#FFFFFF 0%,#FDF6D8 8%,#F0D060 22%,#C9A96E 42%,#8B6914 70%,#4A2E08 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 2px 3px rgba(0,0,0,0.7));">$4,250,000</div>
-   <div style="font-family:'Instrument Sans',sans-serif;font-size:0.62rem;font-weight:300;letter-spacing:0.35em;text-transform:uppercase;color:rgba(201,169,110,0.65);margin-top:0.4rem;">Offered At</div>
-  </div>
 
-  </div>
+  <!-- ═══════════════════════════════════════════════════════════════
+       5 · HORIZON STAT BAR
+       Architecture: Left Wing (42%) | Center Stage (crest) | Right Wing (42%)
+       Legal: flex-wrap: nowrap — PERMANENT, barred from collapsing
+  ═══════════════════════════════════════════════════════════════ -->
+  <div id="stat-bar" style="
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    overflow: visible;
+    isolation: isolate;
+  ">
 
-  <!-- BOTTOM GOLD RULE -->
-  <div style="width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.9) 15%,#C9A96E 50%,rgba(201,169,110,0.9) 85%,transparent);"></div>
+    <!-- Top Gold Rule -->
+    <div style="
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right,
+        transparent 0%,
+        rgba(201,169,110,0.5) 8%,
+        rgba(201,169,110,0.95) 50%,
+        rgba(201,169,110,0.5) 92%,
+        transparent 100%
+      );
+    "></div>
 
-  <!-- CREST: belt buckle -- absolute, centered, sits ON the stat bar rising above it -->
+    <!-- Stats Band -->
+    <div style="
+      position: relative;
+      width: 100%;
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      background: rgba(10,10,10,0.78);
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: clamp(0.9rem, 2.2vh, 1.6rem) 0;
+      gap: 0;
+    ">
+
+      <!-- LEFT WING — 42% — 3 stats -->
+      <div style="
+        width: 42%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-around;
+        flex-shrink: 0;
+      ">
+
+        <!-- Stat: Bedrooms -->
+        <div style="text-align:center;flex:1;padding:0 0.5rem;">
+          <div style="
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(1.6rem, 2.8vw, 2.8rem);
+            line-height: 1;
+            background: linear-gradient(90deg,
+              #8B6914 0%, #C9A96E 25%, #F0D898 45%,
+              #C9A96E 55%, #8B6914 70%, #C9A96E 85%, #F0D898 100%
+            );
+            background-size: 400% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldShift 6s linear infinite;
+          ">4</div>
+          <div style="
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.52rem, 0.68vw, 0.72rem);
+            font-weight: 400;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(201,169,110,0.55);
+            margin-top: 0.35rem;
+          ">Bedrooms</div>
+        </div>
+
+        <!-- Divider -->
+        <div style="width:1px;height:2.2rem;background:rgba(201,169,110,0.2);flex-shrink:0;"></div>
+
+        <!-- Stat: Bathrooms -->
+        <div style="text-align:center;flex:1;padding:0 0.5rem;">
+          <div style="
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(1.6rem, 2.8vw, 2.8rem);
+            line-height: 1;
+            background: linear-gradient(90deg,
+              #8B6914 0%, #C9A96E 25%, #F0D898 45%,
+              #C9A96E 55%, #8B6914 70%, #C9A96E 85%, #F0D898 100%
+            );
+            background-size: 400% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldShift 6s linear infinite 0.8s;
+          ">6</div>
+          <div style="
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.52rem, 0.68vw, 0.72rem);
+            font-weight: 400;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(201,169,110,0.55);
+            margin-top: 0.35rem;
+          ">Bathrooms</div>
+        </div>
+
+        <!-- Divider -->
+        <div style="width:1px;height:2.2rem;background:rgba(201,169,110,0.2);flex-shrink:0;"></div>
+
+        <!-- Stat: Square Feet -->
+        <div style="text-align:center;flex:1;padding:0 0.5rem;">
+          <div style="
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(1.6rem, 2.8vw, 2.8rem);
+            line-height: 1;
+            background: linear-gradient(90deg,
+              #8B6914 0%, #C9A96E 25%, #F0D898 45%,
+              #C9A96E 55%, #8B6914 70%, #C9A96E 85%, #F0D898 100%
+            );
+            background-size: 400% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldShift 6s linear infinite 1.6s;
+          ">6,072</div>
+          <div style="
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.52rem, 0.68vw, 0.72rem);
+            font-weight: 400;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(201,169,110,0.55);
+            margin-top: 0.35rem;
+          ">Square Feet</div>
+        </div>
+
+      </div><!-- /LEFT WING -->
+
+      <!-- CENTER STAGE — crest placeholder spacer (actual crest is absolute) -->
+      <div style="
+        flex: 0 0 auto;
+        width: 16%;
+        min-width: clamp(70px, 12vw, 120px);
+      "></div>
+
+      <!-- RIGHT WING — 42% — 2 stats -->
+      <div style="
+        width: 42%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-around;
+        flex-shrink: 0;
+      ">
+
+        <!-- Stat: Acres -->
+        <div style="text-align:center;flex:1;padding:0 0.5rem;">
+          <div style="
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(1.6rem, 2.8vw, 2.8rem);
+            line-height: 1;
+            background: linear-gradient(90deg,
+              #8B6914 0%, #C9A96E 25%, #F0D898 45%,
+              #C9A96E 55%, #8B6914 70%, #C9A96E 85%, #F0D898 100%
+            );
+            background-size: 400% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldShift 6s linear infinite 2.4s;
+          ">4.15</div>
+          <div style="
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.52rem, 0.68vw, 0.72rem);
+            font-weight: 400;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(201,169,110,0.55);
+            margin-top: 0.35rem;
+          ">Acres</div>
+        </div>
+
+        <!-- Divider -->
+        <div style="width:1px;height:2.2rem;background:rgba(201,169,110,0.2);flex-shrink:0;"></div>
+
+        <!-- Stat: Fireplaces -->
+        <div style="text-align:center;flex:1;padding:0 0.5rem;">
+          <div style="
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(1.6rem, 2.8vw, 2.8rem);
+            line-height: 1;
+            background: linear-gradient(90deg,
+              #8B6914 0%, #C9A96E 25%, #F0D898 45%,
+              #C9A96E 55%, #8B6914 70%, #C9A96E 85%, #F0D898 100%
+            );
+            background-size: 400% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldShift 6s linear infinite 3.2s;
+          ">7</div>
+          <div style="
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.52rem, 0.68vw, 0.72rem);
+            font-weight: 400;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(201,169,110,0.55);
+            margin-top: 0.35rem;
+          ">Fireplaces</div>
+        </div>
+
+        <!-- Divider -->
+        <div style="width:1px;height:2.2rem;background:rgba(201,169,110,0.2);flex-shrink:0;"></div>
+
+        <!-- Stat: Offered At -->
+        <div style="text-align:center;flex:1;padding:0 0.5rem;">
+          <div style="
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(1.4rem, 2.2vw, 2.4rem);
+            line-height: 1;
+            background: linear-gradient(90deg,
+              #8B6914 0%, #C9A96E 25%, #F0D898 45%,
+              #C9A96E 55%, #8B6914 70%, #C9A96E 85%, #F0D898 100%
+            );
+            background-size: 400% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldShift 6s linear infinite 4s;
+          ">$4,250,000</div>
+          <div style="
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.52rem, 0.68vw, 0.72rem);
+            font-weight: 400;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(201,169,110,0.55);
+            margin-top: 0.35rem;
+          ">Offered At</div>
+        </div>
+
+      </div><!-- /RIGHT WING -->
+
+    </div><!-- /Stats Band -->
+
+    <!-- Bottom Gold Rule -->
+    <div style="
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right,
+        transparent 0%,
+        rgba(201,169,110,0.4) 8%,
+        rgba(201,169,110,0.75) 50%,
+        rgba(201,169,110,0.4) 92%,
+        transparent 100%
+      );
+    "></div>
+
+    <!-- Provenance line -->
+    <div style="
+      width:100%;
+      text-align:center;
+      padding: 0.4rem 0 0.25rem;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.44rem, 0.58vw, 0.58rem);
+      font-weight: 300;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(201,169,110,0.32);
+    ">
+      Pines Sotheby's International Realty &nbsp;&middot;&nbsp; Rachel Hernandez
+    </div>
+
+  </div><!-- /stat-bar -->
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       6 · MEDALLION CREST — ABSOLUTE ANCHOR
+       Sits ON the top gold rule. Bottom edge hovers at viewport base.
+       clip-path ellipse wipes the rectangular background box.
+       Hover: smooth geometric lift with deep gold drop-shadow.
+  ═══════════════════════════════════════════════════════════════ -->
   <img
-      src="https://res.cloudinary.com/dghn2xpif/image/upload/gh_key/gh_crest_gloss_v2.png" fetchpriority="high"
-      alt="Garran Hill estate crest"
-      style="position:absolute;top:0;left:50%;transform:translate(-50%,-52%);z-index:40;
-        width:clamp(90px,11vw,140px);height:auto;
-        filter:drop-shadow(0 8px 32px rgba(0,0,0,0.95)) drop-shadow(0 2px 8px rgba(0,0,0,0.8)) drop-shadow(0 0 16px rgba(201,169,110,0.25));
-        pointer-events:none;" loading="lazy" decoding="async">
+    id="gh-crest"
+    src="https://res.cloudinary.com/dghn2xpif/image/upload/gh_key/gh_crest_gloss_v2.png"
+    alt="Garran Hill Heritage Seal — Pinehurst, 1916"
+    style="
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      z-index: 30;
+      width: clamp(72px, 11vw, 118px);
+      height: auto;
+      transform: translate(-50%, -4%);
+      transform-origin: center bottom;
+      clip-path: ellipse(44% 48% at 50% 50%);
+      filter:
+        drop-shadow(0 8px 32px rgba(201,169,110,0.35))
+        drop-shadow(0 2px 8px rgba(0,0,0,0.90));
+      transition:
+        transform 0.55s cubic-bezier(0.22, 0.68, 0, 1.2),
+        filter    0.55s ease;
+      animation: crestIdle 5s ease-in-out infinite;
+      cursor: default;
+      will-change: transform;
+    "
+    onmouseover="
+      this.style.animation='none';
+      this.style.transform='translate(-50%, -4%) scale(1.05) translateY(-8px)';
+      this.style.filter='drop-shadow(0 16px 48px rgba(201,169,110,0.55)) drop-shadow(0 4px 16px rgba(0,0,0,0.95))';
+    "
+    onmouseout="
+      this.style.transform='translate(-50%, -4%)';
+      this.style.filter='drop-shadow(0 8px 32px rgba(201,169,110,0.35)) drop-shadow(0 2px 8px rgba(0,0,0,0.90))';
+      setTimeout(()=>{ this.style.animation='crestIdle 5s ease-in-out infinite'; }, 600);
+    "
+  >
 
- </div><!-- end stat-bar -->
 </section>
+<!-- END GARRAN HILL HERO THEATER v5 -->
+
 
 <section id="kb-gate" class="kb-gate-section" style="position:relative;width:100%;height:100vh;min-height:100vh;background:#0a0a0a;overflow:hidden;">
 
