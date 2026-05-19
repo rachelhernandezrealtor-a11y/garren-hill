@@ -1131,8 +1131,8 @@ section.cinematic +
 
   <!-- STATS ROW -- all 5 stats, crest is NOT in this row, it floats above independently -->
   <div style="position:relative;width:100%;
-      display:flex;align-items:center;justify-content:space-around;
-      padding:1.1rem clamp(1rem,3vw,2.5rem);
+      display:flex;align-items:center;justify-content:space-around;flex-wrap:wrap;gap:0.5rem 0;
+      padding:clamp(0.8rem,2vw,1.1rem) clamp(0.5rem,3vw,2.5rem);
       background:rgba(4,4,4,0.82);backdrop-filter:blur(10px);">
 
    <!-- left spacer so stats spread but center gap stays for crest -->
@@ -1173,9 +1173,9 @@ section.cinematic +
   <img
       src="https://res.cloudinary.com/dghn2xpif/image/upload/gh_key/gh_crest_gloss_v2.png" fetchpriority="high"
       alt="Garran Hill estate crest"
-      style="position:absolute;bottom:0;left:50%;transform:translate(-50%,-8px);z-index:40;
-        width:clamp(120px,13vw,165px);height:auto;
-        filter:drop-shadow(0 12px 40px rgba(0,0,0,0.95)) drop-shadow(0 4px 12px rgba(0,0,0,0.8)) drop-shadow(0 2px 4px rgba(201,169,110,0.3));
+      style="position:absolute;top:0;left:50%;transform:translate(-50%,-52%);z-index:40;
+        width:clamp(90px,11vw,140px);height:auto;
+        filter:drop-shadow(0 8px 32px rgba(0,0,0,0.95)) drop-shadow(0 2px 8px rgba(0,0,0,0.8)) drop-shadow(0 0 16px rgba(201,169,110,0.25));
         pointer-events:none;" loading="lazy" decoding="async">
 
  </div><!-- end stat-bar -->
@@ -2073,6 +2073,28 @@ section.cinematic +
     left: 1.25rem !important;
     right: 1.25rem !important;
     max-width: 100% !important;
+  }
+}
+
+/* ── STAT BAR MOBILE FIX ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  #stat-bar { position:relative !important; bottom:auto !important; }
+  #stat-bar .stat-divider { display:none; }
+  #stat-bar img[alt="Garran Hill estate crest"] {
+    position:relative !important;
+    top:auto !important;
+    left:auto !important;
+    transform:none !important;
+    display:block;
+    margin: -2rem auto 0.5rem;
+    width:clamp(70px,20vw,100px) !important;
+  }
+  .hero { min-height:100svh; padding-bottom:0; }
+  .stat-provenance { display:none; }
+}
+@media (max-width: 480px) {
+  #stat-bar img[alt="Garran Hill estate crest"] {
+    width:clamp(60px,18vw,80px) !important;
   }
 }
 </style>
