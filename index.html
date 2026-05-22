@@ -1407,6 +1407,253 @@ section:first-of-type [style*="z-index: 30"],
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-22T03:41:16.753Z:0bc75302-aa27-4fdb-9f10-fe4b19d3b6a2 */
 </style>
+<style id="coco-hero-top-rail-separation-20260522">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-05-22T04:01:18.768Z
+  Rationale: Rachel asked for live development-page changes now. Screenshot shows the opening hero top rail is visually colliding: nav labels and stat numerals occupy the same band, creating clutter and cheapening the first read. This preview-safe CSS patch separates nav and stats, removes haze/glow, preserves all locked copy/assets/stat values, and keeps production bloc
+*/
+/* Coco hero top rail separation — May 22, 2026
+   Purpose: fix the opening-screen collision Rachel is seeing: nav text and stat numerals fighting in the same top band.
+   Scope: development canvas only. No copy, asset, price, stat value, or locked media changes. */
+
+html, body {
+  background: #0a0a0a !important;
+}
+
+/* Keep the opening view cinematic, but stop the hero content from being crowded by the fixed rails. */
+#top,
+.hero,
+.hero-section,
+section:first-of-type {
+  min-height: 100svh;
+}
+
+/* The top navigation must read like an engraved rail, not a second stat bar. */
+nav,
+.site-nav,
+.top-nav,
+.navbar,
+header nav,
+header [role="navigation"],
+[role="navigation"] {
+  min-height: 58px !important;
+  padding: 0 clamp(22px, 4vw, 58px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(22px, 4.2vw, 72px) !important;
+  background: rgba(10, 10, 10, 0.92) !important;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.34) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  z-index: 300 !important;
+}
+
+nav a,
+.site-nav a,
+.top-nav a,
+.navbar a,
+header nav a,
+[role="navigation"] a {
+  color: rgba(245, 240, 232, 0.82) !important;
+  font-family: 'Instrument Sans', Arial, sans-serif !important;
+  font-size: clamp(9px, 0.72vw, 11px) !important;
+  letter-spacing: 0.26em !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+nav a:first-child,
+.site-nav a:first-child,
+.top-nav a:first-child,
+.navbar a:first-child,
+header nav a:first-child,
+[role="navigation"] a:first-child {
+  margin-right: auto !important;
+  color: rgba(201, 169, 110, 0.78) !important;
+}
+
+/* Stat rail: move it below the nav, reduce its shouting, and remove glass haze/glow. */
+.stat-bar,
+.stats-bar,
+.hero-stats,
+.stats,
+[data-section="stats"],
+[aria-label*="stat" i],
+[aria-label*="property" i] {
+  position: fixed !important;
+  top: 58px !important;
+  left: 0 !important;
+  right: 0 !important;
+  min-height: 70px !important;
+  padding: 12px clamp(18px, 3vw, 44px) 10px !important;
+  display: grid !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  align-items: center !important;
+  gap: clamp(10px, 2vw, 28px) !important;
+  background: rgba(10, 10, 10, 0.86) !important;
+  border-top: 0 !important;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.28) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  z-index: 240 !important;
+}
+
+.stat-bar *,
+.stats-bar *,
+.hero-stats *,
+.stats *,
+[data-section="stats"] *,
+[aria-label*="stat" i] *,
+[aria-label*="property" i] * {
+  text-shadow: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+.stat-bar > *,
+.stats-bar > *,
+.hero-stats > *,
+.stats > *,
+[data-section="stats"] > *,
+[aria-label*="stat" i] > *,
+[aria-label*="property" i] > * {
+  min-width: 0 !important;
+  text-align: center !important;
+  border-left: 1px solid rgba(201, 169, 110, 0.24) !important;
+}
+
+.stat-bar > *:first-child,
+.stats-bar > *:first-child,
+.hero-stats > *:first-child,
+.stats > *:first-child,
+[data-section="stats"] > *:first-child,
+[aria-label*="stat" i] > *:first-child,
+[aria-label*="property" i] > *:first-child {
+  border-left: 0 !important;
+}
+
+.stat-bar strong,
+.stat-bar .number,
+.stats-bar strong,
+.stats-bar .number,
+.hero-stats strong,
+.hero-stats .number,
+.stats strong,
+.stats .number,
+[data-section="stats"] strong,
+[data-section="stats"] .number {
+  display: block !important;
+  color: #C9A96E !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 300 !important;
+  font-size: clamp(21px, 2.35vw, 35px) !important;
+  letter-spacing: 0.035em !important;
+  line-height: 0.95 !important;
+}
+
+.stat-bar span,
+.stat-bar small,
+.stat-bar .label,
+.stats-bar span,
+.stats-bar small,
+.stats-bar .label,
+.hero-stats span,
+.hero-stats small,
+.hero-stats .label,
+.stats span,
+.stats small,
+.stats .label,
+[data-section="stats"] span,
+[data-section="stats"] small,
+[data-section="stats"] .label {
+  display: block !important;
+  margin-top: 7px !important;
+  color: rgba(201, 169, 110, 0.68) !important;
+  font-family: 'Instrument Sans', Arial, sans-serif !important;
+  font-size: clamp(7px, 0.66vw, 9px) !important;
+  letter-spacing: 0.32em !important;
+  line-height: 1.1 !important;
+  text-transform: uppercase !important;
+}
+
+/* Give the estate name a little more optical silence now that the rails are behaving. */
+.hero-title,
+h1 {
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+/* The crest/wax mark remains, but without the cheap glow. */
+.hero img,
+.stat-bar img,
+.stats-bar img,
+.hero-stats img,
+.stats img {
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* Mobile: rails stack cleanly instead of crushing the first read. */
+@media (max-width: 900px) {
+  nav,
+  .site-nav,
+  .top-nav,
+  .navbar,
+  header nav,
+  [role="navigation"] {
+    min-height: 54px !important;
+    overflow-x: auto !important;
+    justify-content: flex-start !important;
+    gap: 24px !important;
+    padding: 0 18px !important;
+    scrollbar-width: none !important;
+  }
+
+  nav::-webkit-scrollbar,
+  .site-nav::-webkit-scrollbar,
+  .top-nav::-webkit-scrollbar,
+  .navbar::-webkit-scrollbar,
+  [role="navigation"]::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .stat-bar,
+  .stats-bar,
+  .hero-stats,
+  .stats,
+  [data-section="stats"],
+  [aria-label*="stat" i],
+  [aria-label*="property" i] {
+    top: 54px !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    min-height: 100px !important;
+    padding: 12px 14px !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .stat-bar,
+  .stats-bar,
+  .hero-stats,
+  .stats,
+  [data-section="stats"],
+  [aria-label*="stat" i],
+  [aria-label*="property" i] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    min-height: 140px !important;
+  }
+}
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-22T04:01:18.768Z:45c08ca0-6fab-4491-b3bc-a995bd0154a6 */
+</style>
 </head>
 <body>
 
