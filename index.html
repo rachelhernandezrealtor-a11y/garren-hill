@@ -1281,6 +1281,132 @@
   }
 
 </style>
+<style id="coco-see-it-now-hero-tighten-20260522">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-05-22T03:41:16.753Z
+  Rationale: Rachel said no draft; she wants the development canvas visible now. This applies a reversible hero-first-screen polish only: tighter title position, reduced dead black, calmer stat rail haze, no copy/asset/stat changes, production untouched.
+*/
+/* Coco SEE IT NOW pass — reversible development canvas only.
+   Goal: make the first screen read immediately, not like a draft/proposal.
+   Preserves locked copy, locked video, locked stat values, crest, and production gate. */
+
+:root {
+  --coco-black: #0a0a0a;
+  --coco-gold: #C9A96E;
+  --coco-cream: #F5F0E8;
+}
+
+/* Reduce the dead-black delay before the estate name appears and give the hero stronger editorial presence. */
+section:first-of-type,
+.hero,
+#top {
+  min-height: 100svh !important;
+}
+
+/* If the hero content is absolutely positioned, lift it into a more deliberate first-screen read. */
+section:first-of-type [style*="z-index: 10"],
+#top [style*="z-index: 10"],
+.hero [style*="z-index: 10"] {
+  top: clamp(210px, 35vh, 315px) !important;
+  bottom: auto !important;
+}
+
+/* Sharpen the title moment: no glow, no haze, just expensive contrast. */
+h1,
+section:first-of-type h1,
+#top h1,
+.hero h1 {
+  color: var(--coco-cream) !important;
+  text-shadow: 0 2px 22px rgba(0,0,0,.72) !important;
+  letter-spacing: -0.035em !important;
+  line-height: .82 !important;
+  margin-top: clamp(.45rem, 1.2vh, .9rem) !important;
+  margin-bottom: clamp(.65rem, 1.5vh, 1.1rem) !important;
+}
+
+/* Keep microtype engraved, not dusty. */
+section:first-of-type p,
+#top p,
+.hero p {
+  text-rendering: geometricPrecision;
+}
+
+section:first-of-type [style*="letter-spacing"],
+#top [style*="letter-spacing"],
+.hero [style*="letter-spacing"] {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Make the stat rail feel intentional, not like a temporary overlay. */
+section:first-of-type [style*="backdrop-filter"],
+#top [style*="backdrop-filter"],
+.hero [style*="backdrop-filter"] {
+  backdrop-filter: blur(10px) saturate(1.05) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(1.05) !important;
+  background: rgba(10,10,10,.86) !important;
+  border-top: 1px solid rgba(201,169,110,.55) !important;
+  border-bottom: 1px solid rgba(201,169,110,.42) !important;
+}
+
+/* Remove any remaining cheap shimmer/glow from numbers while keeping gold hierarchy. */
+section:first-of-type [style*="backdrop-filter"] *,
+#top [style*="backdrop-filter"] *,
+.hero [style*="backdrop-filter"] * {
+  text-shadow: none !important;
+  filter: none;
+}
+
+/* Preserve crest as focal artifact, but stop it from throwing a generated-looking bloom. */
+section:first-of-type img,
+#top img,
+.hero img {
+  max-width: 100%;
+}
+
+section:first-of-type [style*="z-index: 30"],
+#top [style*="z-index: 30"],
+.hero [style*="z-index: 30"] {
+  filter: drop-shadow(0 7px 22px rgba(0,0,0,.82)) !important;
+}
+
+/* Phone: bring the title higher and keep the stat rail readable without overlap. */
+@media (max-width: 760px) {
+  section:first-of-type [style*="z-index: 10"],
+  #top [style*="z-index: 10"],
+  .hero [style*="z-index: 10"] {
+    top: clamp(170px, 31vh, 240px) !important;
+    padding-left: 1.15rem !important;
+    padding-right: 1.15rem !important;
+  }
+
+  h1,
+  section:first-of-type h1,
+  #top h1,
+  .hero h1 {
+    font-size: clamp(4.8rem, 24vw, 8rem) !important;
+    line-height: .84 !important;
+  }
+
+  section:first-of-type [style*="backdrop-filter"],
+  #top [style*="backdrop-filter"],
+  .hero [style*="backdrop-filter"] {
+    backdrop-filter: blur(8px) saturate(1) !important;
+    -webkit-backdrop-filter: blur(8px) saturate(1) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-22T03:41:16.753Z:0bc75302-aa27-4fdb-9f10-fe4b19d3b6a2 */
+</style>
 </head>
 <body>
 
