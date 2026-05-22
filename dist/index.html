@@ -2518,6 +2518,38 @@ section.cinematic +
   }
 }
 </style>
+<style id="zz-rachel-studio-coco-active-patch">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-05-22T03:26:22.881Z
+  Rationale: Coco Studio development CSS patch from the live co-edit bridge.
+*/
+/*
+  Rachel Studio Coco preview patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-05-22T03:26:22.739Z
+  Proof: coco-proof-mpgcyakz-1i0dfmu
+  Summary: Coco prepared a safe fallback build draft for the development sightline.
+  Request: Change the visible hero title on the development site and deploy it through the GitHub-backed harden_to_pages lane. Confirm the commit hash and Pages deploy UR
+*/
+#gh-hero h1,
+      section#gh-hero h1,
+      #gh-hero h1[style*="Mrs Saint Delafield"],
+      section#gh-hero h1[style*="Mrs Saint Delafield"],
+      #top h1,
+      .hero h1,
+      .hero-title,
+      .hero-title .property-name,
+      h1[style*="Mrs Saint Delafield"] {
+        font-family:"Cormorant Garamond", Georgia, "Times New Roman", serif !important;
+        font-weight:300 !important;
+        letter-spacing:0 !important;
+        text-shadow:0 2px 28px rgba(0,0,0,.74), 0 1px 2px rgba(0,0,0,.55) !important;
+      }
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-22T03:26:22.881Z:f88d74fd-3bcb-41dd-bc8b-781987e66075 */
+</style>
 </body>
 </html>
 
