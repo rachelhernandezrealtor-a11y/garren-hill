@@ -2522,165 +2522,33 @@ section.cinematic +
 /*
   Rachel Studio Coco managed development patch.
   Development sightline only. Public/custom-domain production remains locked.
-  Updated: 2026-05-22T03:46:03.699Z
+  Updated: 2026-05-22T04:05:42.249Z
   Rationale: Coco Studio development CSS patch from the live co-edit bridge.
 */
 /*
   Rachel Studio Coco preview patch.
   Development sightline only. Public/custom-domain production remains locked.
-  Updated: 2026-05-22T03:46:03.596Z
-  Proof: coco-proof-mpgdnlqk-6axshag
-  Summary: Live draft applied: forced the stat/metric bands, numbers, labels, and bar fills into visible high-contrast treatment with stronger spacing, minimum heights, and mobile-safe wrapping.
-  Request: i don't see the stat bars or numbers i need u to make changes in real time so i can see them
+  Updated: 2026-05-22T04:05:42.002Z
+  Proof: coco-proof-mpgecv02-w2mmxl9
+  Summary: Coco prepared a safe fallback build draft for the development sightline.
+  Request: do you remember the huge scripty title from before
 */
-/* Garran Hill live preview -- stat visibility rescue */
-section[id*="stat"],
-section[class*="stat"],
-div[id*="stat"],
-div[class*="stat"],
-section[id*="metric"],
-section[class*="metric"],
-div[id*="metric"],
-div[class*="metric"],
-section[id*="number"],
-section[class*="number"],
-div[id*="number"],
-div[class*="number"] {
-  visibility: visible !important;
-  opacity: 1 !important;
-  color: #f6efe2 !important;
-  position: relative !important;
-  z-index: 12 !important;
-}
+#gh-hero h1,
+      section#gh-hero h1,
+      #gh-hero h1[style*="Mrs Saint Delafield"],
+      section#gh-hero h1[style*="Mrs Saint Delafield"],
+      #top h1,
+      .hero h1,
+      .hero-title,
+      .hero-title .property-name,
+      h1[style*="Mrs Saint Delafield"] {
+        font-family:"Cormorant Garamond", Georgia, "Times New Roman", serif !important;
+        font-weight:300 !important;
+        letter-spacing:0 !important;
+        text-shadow:0 2px 28px rgba(0,0,0,.74), 0 1px 2px rgba(0,0,0,.55) !important;
+      }
 
-[class*="stat"],
-[class*="metric"],
-[class*="number"] {
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-[class*="stat"] [class*="number"],
-[class*="stat"] [class*="value"],
-[class*="stat"] [class*="count"],
-[class*="metric"] [class*="number"],
-[class*="metric"] [class*="value"],
-[class*="metric"] [class*="count"],
-[class*="number"] {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  color: #fff8eb !important;
-  font-family: Cormorant Garamond, Georgia, serif !important;
-  font-size: clamp(2.6rem, 7vw, 6.75rem) !important;
-  line-height: .88 !important;
-  letter-spacing: -0.045em !important;
-  font-weight: 400 !important;
-  text-shadow: 0 2px 18px rgba(0,0,0,.52) !important;
-}
-
-[class*="stat"] [class*="label"],
-[class*="stat"] [class*="eyebrow"],
-[class*="stat"] small,
-[class*="metric"] [class*="label"],
-[class*="metric"] [class*="eyebrow"],
-[class*="metric"] small {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  color: rgba(246,239,226,.86) !important;
-  font-family: Inter, Arial, sans-serif !important;
-  font-size: clamp(.72rem, 1.15vw, .92rem) !important;
-  line-height: 1.35 !important;
-  letter-spacing: .18em !important;
-  text-transform: uppercase !important;
-  margin-top: .85rem !important;
-  text-shadow: 0 1px 12px rgba(0,0,0,.58) !important;
-}
-
-[class*="stat"] [class*="bar"],
-[class*="stat"] [class*="line"],
-[class*="metric"] [class*="bar"],
-[class*="metric"] [class*="line"],
-[class*="progress"] {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  min-height: 3px !important;
-  height: 3px !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  margin-top: 1.15rem !important;
-  background: linear-gradient(90deg, rgba(201,169,110,.96), rgba(246,239,226,.38)) !important;
-  box-shadow: 0 0 24px rgba(201,169,110,.28) !important;
-  transform: none !important;
-}
-
-[class*="stats"],
-[class*="stat-grid"],
-[class*="metrics"],
-[class*="metric-grid"] {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
-  gap: clamp(1.2rem, 3vw, 3rem) !important;
-  align-items: end !important;
-  width: min(1120px, calc(100vw - 40px)) !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding: clamp(2.4rem, 6vw, 5.5rem) clamp(1rem, 3vw, 2rem) !important;
-}
-
-[class*="stat-card"],
-[class*="metric-card"],
-[class*="stat-item"],
-[class*="metric-item"] {
-  min-height: 132px !important;
-  padding: clamp(1.15rem, 2.4vw, 2rem) 0 !important;
-  border-top: 1px solid rgba(201,169,110,.42) !important;
-  background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-
-@media (max-width: 760px) {
-  [class*="stats"],
-  [class*="stat-grid"],
-  [class*="metrics"],
-  [class*="metric-grid"] {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 1.35rem 1.1rem !important;
-    width: calc(100vw - 28px) !important;
-    padding: 2.25rem .4rem !important;
-  }
-
-  [class*="stat-card"],
-  [class*="metric-card"],
-  [class*="stat-item"],
-  [class*="metric-item"] {
-    min-height: 108px !important;
-  }
-
-  [class*="stat"] [class*="number"],
-  [class*="stat"] [class*="value"],
-  [class*="stat"] [class*="count"],
-  [class*="metric"] [class*="number"],
-  [class*="metric"] [class*="value"],
-  [class*="metric"] [class*="count"],
-  [class*="number"] {
-    font-size: clamp(2.15rem, 12vw, 4.1rem) !important;
-  }
-}
-
-@media (max-width: 430px) {
-  [class*="stats"],
-  [class*="stat-grid"],
-  [class*="metrics"],
-  [class*="metric-grid"] {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-22T03:46:03.699Z:e1e1c57c-aac3-4fb7-b175-f46cdd15534d */
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-22T04:05:42.249Z:c0686481-eec2-4629-827e-9641cea66b7d */
 </style>
 </body>
 </html>
