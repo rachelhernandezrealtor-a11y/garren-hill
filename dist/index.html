@@ -2522,74 +2522,43 @@ section.cinematic +
 /*
   Rachel Studio Coco managed development patch.
   Development sightline only. Public/custom-domain production remains locked.
-  Updated: 2026-05-23T01:14:26.292Z
-  Rationale: Coco Studio development CSS patch from the live co-edit bridge.
+  Updated: 2026-05-23T01:52:59.838Z
+  Rationale: Rachel asked Coco to rebuild and prove the builder can move. Apply a visible development-only rebuild proof mark on the Garran Hill hero while preserving the gold dev frame.
 */
-/*
-  Rachel Studio Coco preview patch.
-  Development sightline only. Public/custom-domain production remains locked.
-  Updated: 2026-05-23T01:14:26.108Z
-  Proof: coco-proof-mphnogqk-vcn5fo7
-  Summary: The hero title has been pushed into a much larger script treatment for the live draft preview, using the house-approved Pinyon Script direction instead of the current script face.
-  Request: change the title on the garran hill page right now to a different font a huge script font so i can see it right now on same screen as you
-*/
-@font-face {
-  font-family: 'Pinyon Script';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('https://fonts.gstatic.com/s/pinyonscript/v24/6xKpdSJbL9-e9LuoeQiDRQR8aOI.ttf') format('truetype');
+#gh-hero, section#gh-hero {
+  position: relative !important;
+  isolation: isolate !important;
+}
+#gh-hero::after, section#gh-hero::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 70 !important;
+  pointer-events: none !important;
+  border: 5px solid #C9A96E !important;
+  box-sizing: border-box !important;
+}
+#gh-hero::before, section#gh-hero::before {
+  content: "COCO REBUILD LIVE" !important;
+  position: absolute !important;
+  left: clamp(18px, 3.6vw, 54px) !important;
+  bottom: clamp(18px, 3vw, 42px) !important;
+  z-index: 80 !important;
+  display: block !important;
+  color: #C9A96E !important;
+  background: rgba(10, 10, 10, .68) !important;
+  border-top: 1px solid rgba(201, 169, 110, .72) !important;
+  padding: .5rem 0 0 !important;
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif !important;
+  font-size: clamp(.62rem, .82vw, .84rem) !important;
+  font-weight: 500 !important;
+  letter-spacing: .3em !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  pointer-events: none !important;
 }
 
-#gh-hero h1, section#gh-hero h1{
-  font-family:'Pinyon Script','Mrs Saint Delafield','Cormorant Garamond',cursive!important;
-  font-size:clamp(7.25rem,16vw,14.5rem)!important;
-  line-height:.72!important;
-  font-weight:400!important;
-  letter-spacing:-.055em!important;
-  text-transform:none!important;
-  max-width:96vw!important;
-  margin-left:auto!important;
-  margin-right:auto!important;
-  white-space:nowrap!important;
-  text-shadow:0 2px 10px rgba(0,0,0,.58),0 22px 54px rgba(0,0,0,.5)!important;
-  transform:translateY(-.04em)!important;
-}
-#gh-hero h1 + *, section#gh-hero h1 + *{
-  margin-top:clamp(1.05rem,2.4vw,2.25rem)!important;
-}
-@media (max-width:700px){
-  #gh-hero h1, section#gh-hero h1{
-    font-size:clamp(5.25rem,23vw,8.5rem)!important;
-    letter-spacing:-.06em!important;
-    max-width:98vw!important;
-  }
-}
-@media (max-width:430px){
-  #gh-hero h1, section#gh-hero h1{
-    font-size:clamp(4.45rem,22vw,6.25rem)!important;
-    letter-spacing:-.055em!important;
-  }
-}
-
-
-      
-      #gh-hero h1,
-      section#gh-hero h1,
-      #gh-hero h1[style*="Mrs Saint Delafield"],
-      section#gh-hero h1[style*="Mrs Saint Delafield"],
-      #top h1,
-      .hero h1,
-      .hero-title,
-      .hero-title .property-name,
-      h1[style*="Mrs Saint Delafield"] {
-        font-family:"Cormorant Garamond", Georgia, "Times New Roman", serif !important;
-        font-weight:300 !important;
-        letter-spacing:0 !important;
-        text-shadow:0 2px 28px rgba(0,0,0,.74), 0 1px 2px rgba(0,0,0,.55) !important;
-      }
-
-/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T01:14:26.292Z:9c93e767-dd13-4150-84a8-c1e087dfecea */
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T01:52:59.838Z:88a696dd-5e2f-4e7a-b549-fb373c389390 */
 </style>
 <style id="zz-rachel-studio-codex-live-proof">
 /*
