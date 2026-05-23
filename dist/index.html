@@ -1711,6 +1711,48 @@ img#gh-crest {
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T21:08:48.480Z:fff0fa5c-87bd-4aa4-acb9-9b3c7c541c91 */
 </style>
+<style id="coco-hero-seal-threshold-move">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-05-23T21:11:19.657Z
+  Rationale: Rachel challenged whether Coco can move the hero seal. The existing locked seal asset remains unchanged; this only repositions/scales it as a reversible development-site composition move so it reads as first-impression focal material instead of a small nav ornament.
+*/
+/* Coco — Hero seal threshold move, 2026-05-23
+   Moves the existing Garran Hill heritage seal out of the nav-ish top air and into the hero's first focal field.
+   Reversible: remove this managed block to return to previous placement. */
+#gh-hero #gh-crest,
+img#gh-crest{
+  top: clamp(106px, 15vh, 148px) !important;
+  bottom: auto !important;
+  left: 50% !important;
+  width: clamp(108px, 10.5vw, 150px) !important;
+  height: auto !important;
+  transform: translate(-50%, 0) !important;
+  transform-origin: center center !important;
+  z-index: 42 !important;
+  opacity: 0.98 !important;
+  filter: drop-shadow(0 0 1px rgba(245,240,232,0.28)) drop-shadow(0 22px 44px rgba(0,0,0,0.88)) !important;
+}
+
+@media (max-width: 900px){
+  #gh-hero #gh-crest,
+  img#gh-crest{
+    top: clamp(92px, 13vh, 120px) !important;
+    width: clamp(88px, 18vw, 116px) !important;
+  }
+}
+
+@media (max-width: 520px){
+  #gh-hero #gh-crest,
+  img#gh-crest{
+    top: 92px !important;
+    width: 86px !important;
+  }
+}
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T21:11:19.657Z:8e9bb02c-782e-4063-a6e7-0d734e66fc43 */
+</style>
 </head>
 <body>
 
