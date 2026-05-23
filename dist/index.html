@@ -1715,15 +1715,16 @@ img#gh-crest {
 /*
   Rachel Studio Coco managed development patch.
   Development sightline only. Public/custom-domain production remains locked.
-  Updated: 2026-05-23T21:11:19.657Z
-  Rationale: Rachel challenged whether Coco can move the hero seal. The existing locked seal asset remains unchanged; this only repositions/scales it as a reversible development-site composition move so it reads as first-impression focal material instead of a small nav ornament.
+  Updated: 2026-05-23T21:12:39.089Z
+  Rationale: Visual proof showed the first style patch did not override the inline crest placement. This updates the same managed CSS block with a selector that beats the inline placement and keeps the asset intact.
 */
 /* Coco — Hero seal threshold move, 2026-05-23
-   Moves the existing Garran Hill heritage seal out of the nav-ish top air and into the hero's first focal field.
-   Reversible: remove this managed block to return to previous placement. */
-#gh-hero #gh-crest,
-img#gh-crest{
-  top: clamp(106px, 15vh, 148px) !important;
+   The hero crest has inline styles, so this uses higher-specificity attribute selectors.
+   Locked asset stays intact; this only moves/scales the existing seal on the development canvas. */
+section#gh-hero > img#gh-crest[style],
+section#gh-hero img#gh-crest[style],
+body section#gh-hero > img#gh-crest{
+  top: clamp(118px, 15vh, 150px) !important;
   bottom: auto !important;
   left: 50% !important;
   width: clamp(108px, 10.5vw, 150px) !important;
@@ -1736,22 +1737,24 @@ img#gh-crest{
 }
 
 @media (max-width: 900px){
-  #gh-hero #gh-crest,
-  img#gh-crest{
+  section#gh-hero > img#gh-crest[style],
+  section#gh-hero img#gh-crest[style],
+  body section#gh-hero > img#gh-crest{
     top: clamp(92px, 13vh, 120px) !important;
     width: clamp(88px, 18vw, 116px) !important;
   }
 }
 
 @media (max-width: 520px){
-  #gh-hero #gh-crest,
-  img#gh-crest{
+  section#gh-hero > img#gh-crest[style],
+  section#gh-hero img#gh-crest[style],
+  body section#gh-hero > img#gh-crest{
     top: 92px !important;
     width: 86px !important;
   }
 }
 
-/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T21:11:19.657Z:8e9bb02c-782e-4063-a6e7-0d734e66fc43 */
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T21:12:39.089Z:710ce858-f843-44d6-8bf9-282ef7dfce8f */
 </style>
 </head>
 <body>
