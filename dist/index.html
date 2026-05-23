@@ -2888,99 +2888,22 @@ section.cinematic +
 /*
   Rachel Studio Coco managed development patch.
   Development sightline only. Public/custom-domain production remains locked.
-  Updated: 2026-05-23T02:18:49.794Z
-  Rationale: Rachel corrected the creative direction: the existing crest asset is ugly/missing the key idea. Build a reversible front-door jewel/key visual concept on the development hero so Coco acts like a luxury creative builder, not a passive asset preserver.
+  Updated: 2026-05-23T02:38:46.502Z
+  Rationale: Coco Studio development CSS patch from the live co-edit bridge.
 */
 /*
-  Rachel Studio Coco managed development patch.
-  Concept: Front Door Jewel.
-  Rachel said the existing crest asset is ugly and the keys are missing. This reversible dev move creates a luxury key/jewel focal point without replacing locked source assets.
+  Rachel Studio Coco preview patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-05-23T02:38:46.405Z
+  Proof: coco-proof-mphqoxad-dzgz1hp
+  Summary: Coco prepared a fallback development draft for the visible canvas.
+  Request: yes this is the hero for the GH website so we want the crest to be fabulous which i see you got that part ishhh but we need property info keys on there bedrooms bathrooms price yada
 */
-#gh-hero, section#gh-hero {
-  position: relative !important;
-  isolation: isolate !important;
-  background:
-    radial-gradient(circle at 50% 42%, rgba(201,169,110,.105), transparent 18rem),
-    linear-gradient(90deg, rgba(201,169,110,.16), transparent 18%, transparent 82%, rgba(201,169,110,.16)),
-    #0a0a0a !important;
-}
-html body #gh-hero::after,
-html body section#gh-hero::after {
-  content: "" !important;
-  position: absolute !important;
-  inset: clamp(8px, 1vw, 18px) !important;
-  z-index: 68 !important;
-  pointer-events: none !important;
-  border: 1px solid rgba(201,169,110,.72) !important;
-  background:
-    linear-gradient(90deg, transparent calc(50% - .5px), rgba(201,169,110,.30) 50%, transparent calc(50% + .5px)),
-    linear-gradient(180deg, transparent 0 22%, rgba(201,169,110,.16) 22.15%, transparent 22.35% 77.5%, rgba(201,169,110,.14) 77.7%, transparent 78%) !important;
-  box-sizing: border-box !important;
-}
-#gh-hero::before,
-section#gh-hero::before {
-  content: "" !important;
-  position: absolute !important;
-  left: 50% !important;
-  top: clamp(125px, 31vh, 245px) !important;
-  width: clamp(230px, 27vw, 430px) !important;
-  height: clamp(294px, 35vw, 550px) !important;
-  transform: translate(-50%, -48%) !important;
-  z-index: 9 !important;
-  pointer-events: none !important;
-  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%22-180%20-230%20360%20460%22%3E%0A%20%20%3Crect%20x%3D%22-180%22%20y%3D%22-230%22%20width%3D%22360%22%20height%3D%22460%22%20fill%3D%22none%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M0%20-204%20C86%20-188%20138%20-115%20138%20-16%20C138%2096%2076%20171%200%20206%20C-76%20171%20-138%2096%20-138%20-16%20C-138%20-115%20-86%20-188%200%20-204Z%22%20fill%3D%22%230a0806%22%20stroke%3D%22%23c9a96e%22%20stroke-width%3D%225%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M0%20-184%20C70%20-168%20112%20-102%20112%20-18%20C112%2076%2062%20137%200%20169%20C-62%20137%20-112%2076%20-112%20-18%20C-112%20-102%20-70%20-168%200%20-184Z%22%20fill%3D%22%2311100d%22%20stroke%3D%22%238b6f35%22%20stroke-width%3D%222%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M0%20-178%20L53%20-110%20L95%20-14%20L55%2094%20L0%20166%20L-55%2094%20L-95%20-14%20L-53%20-110Z%22%20fill%3D%22none%22%20stroke%3D%22%23f0d898%22%20stroke-opacity%3D%22.42%22%20stroke-width%3D%221.4%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M0%20-178%20L0%20166%20M-95%20-14%20L95%20-14%20M-53%20-110%20L55%2094%20M53%20-110%20L-55%2094%22%20stroke%3D%22%23c9a96e%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%0A%20%20%3Cg%20transform%3D%22rotate%28-18%29%22%20stroke%3D%22%23d8bd78%22%20stroke-width%3D%228%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20fill%3D%22none%22%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22-73%22%20cy%3D%22-3%22%20r%3D%2222%22%20stroke-width%3D%226%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M-50%20-3%20L88%20-3%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M49%20-3%20L49%2022%20M68%20-3%20L68%2015%20M84%20-3%20L84%2027%22%20stroke-width%3D%225%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%20%20%3Cg%20transform%3D%22rotate%2818%29%22%20stroke%3D%22%23a88443%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20fill%3D%22none%22%20opacity%3D%22.82%22%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22-70%22%20cy%3D%225%22%20r%3D%2217%22%20stroke-width%3D%224%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M-52%205%20L78%205%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M40%205%20L40%2022%20M58%205%20L58%2017%20M75%205%20L75%2026%22%20stroke-width%3D%223.4%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%20%20%3Cpath%20d%3D%22M0%20-48%20C17%20-48%2030%20-35%2030%20-18%20C30%20-7%2024%203%2015%209%20L24%2064%20L-24%2064%20L-15%209%20C-24%203%20-30%20-7%20-30%20-18%20C-30%20-35%20-17%20-48%200%20-48Z%22%20fill%3D%22%23070604%22%20stroke%3D%22%23f5f0e8%22%20stroke-opacity%3D%22.82%22%20stroke-width%3D%222%22%2F%3E%0A%20%20%3Cellipse%20cx%3D%220%22%20cy%3D%22-94%22%20rx%3D%2245%22%20ry%3D%2216%22%20fill%3D%22none%22%20stroke%3D%22%23f0d898%22%20stroke-opacity%3D%22.44%22%20stroke-width%3D%222%22%2F%3E%0A%20%20%3Ctext%20x%3D%220%22%20y%3D%22-86%22%20text-anchor%3D%22middle%22%20fill%3D%22%23f5f0e8%22%20font-family%3D%22Cormorant%20Garamond%2C%20Georgia%2C%20serif%22%20font-size%3D%2235%22%20font-weight%3D%22300%22%20letter-spacing%3D%225%22%3EGH%3C%2Ftext%3E%0A%20%20%3Ctext%20x%3D%220%22%20y%3D%22116%22%20text-anchor%3D%22middle%22%20fill%3D%22%23c9a96e%22%20font-family%3D%22Cormorant%20Garamond%2C%20Georgia%2C%20serif%22%20font-size%3D%2223%22%20font-weight%3D%22300%22%20letter-spacing%3D%228%22%3E1916%3C%2Ftext%3E%0A%3C%2Fsvg%3E") !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  background-size: contain !important;
-  opacity: .92 !important;
-}
-#gh-crest {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  width: 0 !important;
-}
-#gh-hero > div:nth-of-type(3) {
-  z-index: 16 !important;
-  padding-bottom: clamp(8.5rem, 16vh, 13.2rem) !important;
-}
-#gh-hero > div:nth-of-type(3) h1 {
-  position: relative !important;
-  z-index: 18 !important;
-  transform: translateX(-3.5vw) translateY(clamp(18px, 4vh, 44px)) !important;
-  font-size: clamp(5rem, 11.8vw, 13rem) !important;
-  color: rgba(245,240,232,.96) !important;
-}
-#gh-hero > div:nth-of-type(3) p:first-child {
-  position: relative !important;
-  z-index: 20 !important;
-}
-#gh-hero > div:nth-of-type(3) p:last-child {
-  position: relative !important;
-  z-index: 20 !important;
-  margin-top: clamp(1.4rem, 5vh, 4rem) !important;
-}
-#stat-bar {
-  z-index: 24 !important;
-}
-@media (max-width: 720px) {
-  #gh-hero::before,
-  section#gh-hero::before {
-    top: 30vh !important;
-    width: clamp(172px, 54vw, 260px) !important;
-    height: clamp(222px, 70vw, 330px) !important;
-    opacity: .84 !important;
-  }
-  #gh-hero > div:nth-of-type(3) {
-    padding-bottom: clamp(9rem, 18vh, 12rem) !important;
-  }
-  #gh-hero > div:nth-of-type(3) h1 {
-    transform: translateX(-1.5vw) translateY(28px) !important;
-    font-size: clamp(4.8rem, 21vw, 8.5rem) !important;
-  }
-}
-/* Coco concept proof: front-door-jewel:garran-hill:2026-05-23 */
+.hero-content { max-width:720px !important; }
+      .stat-bar { padding-top:clamp(24px,2.6vw,36px) !important; padding-bottom:clamp(24px,2.6vw,36px) !important; }
+      section { scroll-margin-top:80px !important; }
 
-/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T02:18:49.794Z:7f9654a4-3053-4323-ab7f-2fbc9d7e09ed */
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T02:38:46.502Z:3193aae5-ae30-4373-a9b1-e7a30fba6cf0 */
 </style>
 <style id="zz-rachel-studio-codex-live-proof">
 /*
