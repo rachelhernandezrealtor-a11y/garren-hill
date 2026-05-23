@@ -716,6 +716,97 @@ section.hero *:not(script):not(style),
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T01:57:45.759Z:0ddc8347-67ce-427d-94ce-352b86ba968b */
 </style>
+<style id="coco-hero-diagnosis-fix-20260523">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-05-23T21:30:22.828Z
+  Rationale: Rachel asked Coco to diagnose the visible hero problem and fix the development canvas through Cloudflare. This reversible style patch restores video presence, makes the crest a true focal object, reduces black-card haze/glass, and improves hero hierarchy without changing copy or locked media.
+*/
+/* Coco hero diagnosis fix — 2026-05-23
+   Goal: restore Garran Hill hero first-frame strength without touching copy or locked media.
+   The previous first screen had become a black velvet card: video too dim, crest too small/floating, title too low, stat bar too busy/glassy.
+*/
+#gh-hero {
+  background: #0a0a0a !important;
+}
+#gh-hero > video {
+  opacity: 0.82 !important;
+  filter: contrast(1.12) saturate(0.9) brightness(0.68) !important;
+  object-position: 50% 44% !important;
+}
+#gh-hero > div:first-of-type {
+  background:
+    radial-gradient(30rem 24rem at 50% 23%, rgba(201, 169, 110, 0.10), rgba(10, 10, 10, 0.14) 38%, rgba(10, 10, 10, 0.55) 76%),
+    linear-gradient(to bottom, rgba(10,10,10,0.68) 0%, rgba(10,10,10,0.18) 25%, rgba(10,10,10,0.24) 56%, rgba(10,10,10,0.88) 100%) !important;
+}
+#gh-crest {
+  top: clamp(6.8rem, 15vh, 9.8rem) !important;
+  bottom: auto !important;
+  width: clamp(132px, 13vw, 188px) !important;
+  height: auto !important;
+  transform: translateX(-50%) !important;
+  clip-path: none !important;
+  opacity: 0.96 !important;
+  filter: drop-shadow(0 0 1px rgba(245,240,232,0.22)) drop-shadow(0 18px 38px rgba(0,0,0,0.88)) !important;
+  animation: none !important;
+}
+#gh-hero > div:nth-of-type(3) {
+  bottom: clamp(8.4rem, 17vh, 12.5rem) !important;
+  padding: 0 clamp(2rem, 8vw, 10rem) 0 !important;
+}
+#gh-hero > div:nth-of-type(3) > p:first-of-type {
+  margin-bottom: clamp(0.7rem, 1.2vh, 1.1rem) !important;
+  color: rgba(245,240,232,0.76) !important;
+}
+#gh-hero > div:nth-of-type(3) > h1 {
+  font-family: 'Pinyon Script', 'Mrs Saint Delafield', cursive !important;
+  font-size: clamp(6.2rem, 12.4vw, 13.2rem) !important;
+  line-height: 0.82 !important;
+  text-shadow: 0 2px 28px rgba(0,0,0,0.86) !important;
+}
+#gh-hero > div:nth-of-type(3) > p:nth-of-type(2) {
+  margin-top: clamp(0.9rem, 1.6vh, 1.35rem) !important;
+  color: rgba(201,169,110,0.82) !important;
+}
+#stat-bar {
+  bottom: clamp(1.4rem, 3vh, 2.1rem) !important;
+}
+#stat-bar > div:nth-of-type(2) {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: linear-gradient(to bottom, rgba(10,10,10,0.56), rgba(10,10,10,0.82)) !important;
+  padding-top: clamp(0.7rem, 1.7vh, 1.15rem) !important;
+  padding-bottom: clamp(0.7rem, 1.7vh, 1.15rem) !important;
+}
+#main-nav {
+  background: linear-gradient(to bottom, rgba(10,10,10,0.78), rgba(10,10,10,0.04)) !important;
+}
+@media (max-width: 900px) {
+  #gh-crest {
+    top: clamp(5.6rem, 13vh, 7.4rem) !important;
+    width: clamp(104px, 24vw, 142px) !important;
+  }
+  #gh-hero > div:nth-of-type(3) {
+    bottom: clamp(10.5rem, 22vh, 13.5rem) !important;
+    padding-left: 1.4rem !important;
+    padding-right: 1.4rem !important;
+  }
+  #gh-hero > div:nth-of-type(3) > h1 {
+    font-size: clamp(5.1rem, 23vw, 8.4rem) !important;
+  }
+  #stat-bar {
+    left: 1rem !important;
+    right: 1rem !important;
+    bottom: 1rem !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #gh-crest { animation: none !important; transition: none !important; }
+}
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T21:30:22.828Z:15f327ab-7fb8-41eb-b1cd-ce750085bc19 */
+</style>
 </head>
 <body>
 <div id="scroll-progress"></div>
