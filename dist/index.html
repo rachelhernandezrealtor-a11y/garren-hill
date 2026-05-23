@@ -1329,6 +1329,100 @@ section#gh-hero h1 {
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T01:13:18.161Z:49efb30f-e13d-414f-91e4-adf27dea71bb */
 </style>
+<style id="coco-wild-threshold-cut">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-05-23T02:07:12.269Z
+  Rationale: Rachel asked for one safe Wild Build move. This is a reversible hero CSS polish that protects locked video/assets/copy while making the first screen more readable, less smoky, and more editorial.
+*/
+/* Coco Wild Build — The Threshold Cut
+   Purpose: make the first screen feel like an engraved title card with living estate footage behind it.
+   No copy changes. No asset swaps. */
+
+#gh-hero {
+  background: #0a0a0a !important;
+}
+
+#gh-hero video {
+  opacity: 0.86 !important;
+  filter: contrast(1.08) saturate(0.86) brightness(0.78) !important;
+  object-position: 50% 46% !important;
+}
+
+/* Replace the heavy black middle cloud with a cleaner architectural vignette. */
+#gh-hero > div:nth-of-type(1) {
+  background:
+    linear-gradient(to bottom,
+      rgba(10,10,10,0.70) 0%,
+      rgba(10,10,10,0.28) 19%,
+      rgba(10,10,10,0.08) 42%,
+      rgba(10,10,10,0.26) 66%,
+      rgba(10,10,10,0.94) 100%),
+    radial-gradient(ellipse 95% 70% at 50% 60%,
+      rgba(10,10,10,0.04) 0%,
+      rgba(10,10,10,0.10) 42%,
+      rgba(10,10,10,0.62) 100%) !important;
+}
+
+/* Let the name sit engraved, not glowing. */
+#gh-hero h1 {
+  text-shadow: none !important;
+  color: #F5F0E8 !important;
+  letter-spacing: 0.012em !important;
+  transform: translateX(-4.6vw) !important;
+}
+
+#gh-hero > div:nth-of-type(3) {
+  transform: translateY(-3.5vh) !important;
+}
+
+#gh-hero > div:nth-of-type(3) p {
+  text-shadow: none !important;
+}
+
+/* Make the nav feel engraved, not faint. */
+#main-nav {
+  background: linear-gradient(to bottom, rgba(10,10,10,0.72), rgba(10,10,10,0.08)) !important;
+}
+
+#main-nav a,
+#main-nav span {
+  color: rgba(245,240,232,0.74) !important;
+  text-shadow: none !important;
+}
+
+#main-nav a:hover {
+  color: #C9A96E !important;
+}
+
+@media (max-width: 760px) {
+  #gh-hero video {
+    opacity: 0.82 !important;
+    object-position: 50% 50% !important;
+  }
+
+  #gh-hero > div:nth-of-type(3) {
+    transform: translateY(-2vh) !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  #gh-hero h1 {
+    transform: translateX(-2.2vw) !important;
+    font-size: clamp(5rem, 24vw, 8.5rem) !important;
+    line-height: 0.9 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #gh-hero video {
+    filter: contrast(1.04) saturate(0.84) brightness(0.78) !important;
+  }
+}
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T02:07:12.269Z:37c3c624-af59-4f6f-bd05-17654da06a4f */
+</style>
 </head>
 <body>
 
