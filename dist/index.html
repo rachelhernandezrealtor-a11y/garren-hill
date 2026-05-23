@@ -2522,18 +2522,59 @@ section.cinematic +
 /*
   Rachel Studio Coco managed development patch.
   Development sightline only. Public/custom-domain production remains locked.
-  Updated: 2026-05-22T04:05:42.249Z
+  Updated: 2026-05-23T01:14:26.292Z
   Rationale: Coco Studio development CSS patch from the live co-edit bridge.
 */
 /*
   Rachel Studio Coco preview patch.
   Development sightline only. Public/custom-domain production remains locked.
-  Updated: 2026-05-22T04:05:42.002Z
-  Proof: coco-proof-mpgecv02-w2mmxl9
-  Summary: Coco prepared a safe fallback build draft for the development sightline.
-  Request: do you remember the huge scripty title from before
+  Updated: 2026-05-23T01:14:26.108Z
+  Proof: coco-proof-mphnogqk-vcn5fo7
+  Summary: The hero title has been pushed into a much larger script treatment for the live draft preview, using the house-approved Pinyon Script direction instead of the current script face.
+  Request: change the title on the garran hill page right now to a different font a huge script font so i can see it right now on same screen as you
 */
-#gh-hero h1,
+@font-face {
+  font-family: 'Pinyon Script';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/pinyonscript/v24/6xKpdSJbL9-e9LuoeQiDRQR8aOI.ttf') format('truetype');
+}
+
+#gh-hero h1, section#gh-hero h1{
+  font-family:'Pinyon Script','Mrs Saint Delafield','Cormorant Garamond',cursive!important;
+  font-size:clamp(7.25rem,16vw,14.5rem)!important;
+  line-height:.72!important;
+  font-weight:400!important;
+  letter-spacing:-.055em!important;
+  text-transform:none!important;
+  max-width:96vw!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  white-space:nowrap!important;
+  text-shadow:0 2px 10px rgba(0,0,0,.58),0 22px 54px rgba(0,0,0,.5)!important;
+  transform:translateY(-.04em)!important;
+}
+#gh-hero h1 + *, section#gh-hero h1 + *{
+  margin-top:clamp(1.05rem,2.4vw,2.25rem)!important;
+}
+@media (max-width:700px){
+  #gh-hero h1, section#gh-hero h1{
+    font-size:clamp(5.25rem,23vw,8.5rem)!important;
+    letter-spacing:-.06em!important;
+    max-width:98vw!important;
+  }
+}
+@media (max-width:430px){
+  #gh-hero h1, section#gh-hero h1{
+    font-size:clamp(4.45rem,22vw,6.25rem)!important;
+    letter-spacing:-.055em!important;
+  }
+}
+
+
+      
+      #gh-hero h1,
       section#gh-hero h1,
       #gh-hero h1[style*="Mrs Saint Delafield"],
       section#gh-hero h1[style*="Mrs Saint Delafield"],
@@ -2548,7 +2589,7 @@ section.cinematic +
         text-shadow:0 2px 28px rgba(0,0,0,.74), 0 1px 2px rgba(0,0,0,.55) !important;
       }
 
-/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-22T04:05:42.249Z:c0686481-eec2-4629-827e-9641cea66b7d */
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T01:14:26.292Z:9c93e767-dd13-4150-84a8-c1e087dfecea */
 </style>
 </body>
 </html>
