@@ -1272,6 +1272,163 @@ section.cinematic +
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T02:29:56.145Z:20dfbb53-0fe7-42e1-a868-3375d6494361 */
 </style>
+<style id="coco-gh-hero-property-keys-v1">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-05-23T02:37:10.658Z
+  Rationale: Rachel wants the hero crest to remain fabulous while the beds, baths, square footage, acreage, fireplaces, and price read as clear property keys on the first screen. This CSS uses the existing approved values and refines the presentation only.
+*/
+/* Coco GH Hero Property Keys v1 — turns existing facts into estate keys without changing values */
+#gh-hero #stat-bar {
+  position: absolute !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: clamp(16px, 2.6vh, 28px) !important;
+  width: min(1180px, calc(100% - clamp(24px, 6vw, 96px))) !important;
+  transform: translateX(-50%) !important;
+  z-index: 28 !important;
+  overflow: visible !important;
+}
+
+#gh-hero #stat-bar > div:first-child {
+  opacity: 0.92 !important;
+  height: 1px !important;
+  background: linear-gradient(to right, transparent 0%, rgba(201,169,110,0.22) 7%, rgba(201,169,110,0.78) 50%, rgba(201,169,110,0.22) 93%, transparent 100%) !important;
+}
+
+#gh-hero #stat-bar > div:nth-of-type(2) {
+  min-height: clamp(72px, 9vh, 96px) !important;
+  padding: clamp(0.72rem, 1.7vh, 1.05rem) clamp(0.7rem, 2.6vw, 2.2rem) !important;
+  background: linear-gradient(180deg, rgba(10,10,10,0.66), rgba(10,10,10,0.88)) !important;
+  backdrop-filter: blur(10px) saturate(1.04) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(1.04) !important;
+  border-bottom: 1px solid rgba(201,169,110,0.34) !important;
+  box-shadow: none !important;
+}
+
+#gh-hero #stat-bar > div:nth-of-type(2) > div:first-child,
+#gh-hero #stat-bar > div:nth-of-type(2) > div:last-child {
+  width: 43.5% !important;
+  justify-content: space-evenly !important;
+  gap: clamp(0.25rem, 1vw, 0.85rem) !important;
+}
+
+#gh-hero #stat-bar > div:nth-of-type(2) > div:nth-child(2) {
+  flex: 0 0 clamp(74px, 9vw, 118px) !important;
+}
+
+#gh-hero #stat-bar [style*="width:1px"],
+#gh-hero #stat-bar [style*="width: 1px"] {
+  height: clamp(1.55rem, 3vh, 2.2rem) !important;
+  background: rgba(201,169,110,0.22) !important;
+}
+
+#gh-hero #stat-bar > div:nth-of-type(2) > div > div:not([style*="width:1px"]):not([style*="width: 1px"]) {
+  min-width: 0 !important;
+  padding-left: clamp(0.18rem, 0.7vw, 0.5rem) !important;
+  padding-right: clamp(0.18rem, 0.7vw, 0.5rem) !important;
+}
+
+#gh-hero #stat-bar > div:nth-of-type(2) > div > div > div:first-child {
+  font-size: clamp(1.15rem, 2.15vw, 2.15rem) !important;
+  line-height: 0.95 !important;
+  letter-spacing: 0.035em !important;
+  color: #C9A96E !important;
+  -webkit-text-fill-color: #C9A96E !important;
+  background: none !important;
+  animation: none !important;
+  text-shadow: none !important;
+}
+
+#gh-hero #stat-bar > div:nth-of-type(2) > div > div > div:nth-child(2) {
+  margin-top: 0.48rem !important;
+  font-size: clamp(0.48rem, 0.58vw, 0.62rem) !important;
+  letter-spacing: 0.31em !important;
+  color: rgba(245,240,232,0.62) !important;
+  white-space: nowrap !important;
+}
+
+#gh-hero #stat-bar > div:nth-of-type(3) {
+  padding-top: 0.42rem !important;
+  font-family: 'Inter', 'Instrument Sans', sans-serif !important;
+  font-size: clamp(0.45rem, 0.55vw, 0.58rem) !important;
+  letter-spacing: 0.34em !important;
+  color: rgba(201,169,110,0.44) !important;
+}
+
+#gh-hero img#gh-crest {
+  width: clamp(190px, 22vw, 300px) !important;
+  top: clamp(54px, 7vh, 76px) !important;
+  bottom: auto !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 19 !important;
+  clip-path: none !important;
+  filter: drop-shadow(0 0 1px rgba(245,240,232,0.24)) drop-shadow(0 28px 54px rgba(0,0,0,0.88)) !important;
+  animation: none !important;
+}
+
+#gh-hero > div:nth-of-type(3) {
+  padding-bottom: clamp(8.5rem, 17vh, 13rem) !important;
+  transform: translateY(clamp(-26px, -3.4vh, -18px)) !important;
+}
+
+@media (max-width: 760px) {
+  #gh-hero { min-height: 720px !important; }
+  #gh-hero img#gh-crest {
+    width: clamp(150px, 48vw, 218px) !important;
+    top: 72px !important;
+  }
+  #gh-hero > div:nth-of-type(3) {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    padding-bottom: 18.5rem !important;
+    transform: translateY(-8px) !important;
+  }
+  #gh-hero #stat-bar {
+    width: calc(100% - 24px) !important;
+    bottom: 12px !important;
+  }
+  #gh-hero #stat-bar > div:nth-of-type(2) {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.85rem 0.45rem !important;
+    padding: 0.95rem 0.75rem 0.85rem !important;
+  }
+  #gh-hero #stat-bar > div:nth-of-type(2) > div:first-child,
+  #gh-hero #stat-bar > div:nth-of-type(2) > div:last-child {
+    display: contents !important;
+    width: auto !important;
+  }
+  #gh-hero #stat-bar > div:nth-of-type(2) > div:nth-child(2),
+  #gh-hero #stat-bar [style*="width:1px"],
+  #gh-hero #stat-bar [style*="width: 1px"] {
+    display: none !important;
+  }
+  #gh-hero #stat-bar > div:nth-of-type(2) > div > div:not([style*="width:1px"]):not([style*="width: 1px"]) {
+    padding: 0 !important;
+  }
+  #gh-hero #stat-bar > div:nth-of-type(2) > div > div > div:first-child {
+    font-size: clamp(1.28rem, 7vw, 1.95rem) !important;
+  }
+  #gh-hero #stat-bar > div:nth-of-type(2) > div > div > div:nth-child(2) {
+    font-size: 0.48rem !important;
+    letter-spacing: 0.24em !important;
+  }
+  #gh-hero #stat-bar > div:nth-of-type(3) {
+    font-size: 0.45rem !important;
+    letter-spacing: 0.22em !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #gh-hero #stat-bar *,
+  #gh-hero img#gh-crest { animation: none !important; transition: none !important; }
+}
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T02:37:10.658Z:51bad91b-224b-4dd2-a1d7-06d380d78ead */
+</style>
 </head>
 <body>
 
