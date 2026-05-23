@@ -1660,6 +1660,57 @@ img#gh-crest {
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T02:46:42.735Z:b2169c23-d702-4438-8c3b-ea3ca58f9178 */
 </style>
+<style id="coco-stat-bar-center-crest">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-05-23T21:08:48.480Z
+  Rationale: Rachel explicitly wants the crest centered in the lower stat bar. This preserves the locked crest asset and stat values, and only changes reversible preview positioning/spacing.
+*/
+/* Coco: center the Garran Hill crest inside the lower hero stat bar. Rachel requested the crest as the stat-bar centerpoint, not floating under the nav. */
+#gh-hero #gh-crest,
+img#gh-crest {
+  position: absolute !important;
+  left: 50% !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: clamp(2.05rem, 5.2vh, 3rem) !important;
+  width: clamp(92px, 9.6vw, 132px) !important;
+  height: auto !important;
+  transform: translate(-50%, 50%) !important;
+  transform-origin: center center !important;
+  z-index: 44 !important;
+  clip-path: ellipse(44% 48% at 50% 50%) !important;
+  filter: drop-shadow(0 0 1px rgba(245,240,232,0.28)) drop-shadow(0 18px 38px rgba(0,0,0,0.88)) !important;
+}
+
+#stat-bar > div:nth-of-type(2) > div:nth-of-type(2) {
+  width: clamp(108px, 15vw, 160px) !important;
+  min-width: clamp(108px, 15vw, 160px) !important;
+  align-self: stretch !important;
+}
+
+#stat-bar > div:nth-of-type(2) {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+@media (max-width: 760px) {
+  #gh-hero #gh-crest,
+  img#gh-crest {
+    bottom: clamp(4.8rem, 13vh, 6.5rem) !important;
+    width: clamp(76px, 22vw, 104px) !important;
+    transform: translate(-50%, 50%) !important;
+  }
+
+  #stat-bar > div:nth-of-type(2) > div:nth-of-type(2) {
+    width: clamp(74px, 20vw, 104px) !important;
+    min-width: clamp(74px, 20vw, 104px) !important;
+  }
+}
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T21:08:48.480Z:fff0fa5c-87bd-4aa4-acb9-9b3c7c541c91 */
+</style>
 </head>
 <body>
 
