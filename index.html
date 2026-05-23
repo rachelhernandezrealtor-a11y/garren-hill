@@ -666,6 +666,56 @@ section.hero *:not(script):not(style),
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T01:55:49.249Z:cb072d41-d972-4783-841a-e090ab5bdc00 */
 </style>
+<style id="coco-hero-proof-rebuild-2026-05-23-v2">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-05-23T01:57:45.759Z
+  Rationale: The first hero proof patch was too polite against the actual hero selectors. This v2 applies the visible move directly: lift the estate name into the composition, reduce the glow, and make the stat rail feel engraved instead of hazy.
+*/
+/* Coco hero proof rebuild v2 — The Engraved Lift */
+#gh-hero > div:nth-of-type(3){
+  bottom: auto !important;
+  top: clamp(18.5rem, 43vh, 25rem) !important;
+  padding: 0 clamp(2rem, 8vw, 10rem) 0 !important;
+  transform: translateY(-50%) !important;
+}
+
+#gh-hero > div:nth-of-type(3) h1{
+  text-shadow: 0 2px 28px rgba(0,0,0,0.72) !important;
+}
+
+#gh-hero > div:nth-of-type(3) > div:first-child,
+#gh-hero > div:nth-of-type(3) > div:last-child{
+  opacity: .86 !important;
+}
+
+#gh-hero > div:nth-of-type(2){
+  opacity: .55 !important;
+  bottom: clamp(6rem, 11vh, 8rem) !important;
+}
+
+#stat-bar > div,
+#stat-bar [style*="backdrop-filter"]{
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+#stat-bar{
+  background: linear-gradient(180deg, rgba(10,10,10,.56), rgba(10,10,10,.94)) !important;
+}
+
+@media (max-width: 760px){
+  #gh-hero > div:nth-of-type(3){
+    top: 45vh !important;
+  }
+  #gh-hero > div:nth-of-type(3) h1{
+    text-shadow: 0 2px 20px rgba(0,0,0,0.72) !important;
+  }
+}
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T01:57:45.759Z:0ddc8347-67ce-427d-94ce-352b86ba968b */
+</style>
 </head>
 <body>
 <div id="scroll-progress"></div>
