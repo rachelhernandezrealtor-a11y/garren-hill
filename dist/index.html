@@ -1496,6 +1496,48 @@ img#gh-crest {
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T02:41:31.240Z:b38f7e3b-70c2-4046-ab43-b6306ba17314 */
 </style>
+<style id="coco-hero-crest-position-fix">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-05-23T02:43:24.270Z
+  Rationale: Rachel pointed out the crest is visually stranded too high in the hero. This moves the existing locked crest/seal focal material into the actual first-impression threshold without changing copy or replacing assets.
+*/
+/* Coco hero correction — crest belongs in the threshold, not lost in the rafters. */
+#gh-hero #gh-crest,
+#gh-crest {
+  top: clamp(150px, 21vh, 218px) !important;
+  bottom: auto !important;
+  left: 50% !important;
+  width: clamp(128px, 13.5vw, 178px) !important;
+  height: auto !important;
+  transform: translate(-50%, 0) !important;
+  transform-origin: center center !important;
+  z-index: 32 !important;
+  clip-path: ellipse(46% 49% at 50% 50%) !important;
+  filter: drop-shadow(0 0 1px rgba(245,240,232,0.28)) drop-shadow(0 28px 54px rgba(0,0,0,0.88)) !important;
+  animation: none !important;
+}
+
+#gh-hero > div:nth-of-type(3) {
+  top: 49% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+@media (max-width: 760px) {
+  #gh-hero #gh-crest,
+  #gh-crest {
+    top: clamp(118px, 18vh, 150px) !important;
+    width: clamp(96px, 26vw, 128px) !important;
+  }
+
+  #gh-hero > div:nth-of-type(3) {
+    top: 52% !important;
+  }
+}
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T02:43:24.270Z:8df7e672-0d67-4a4f-b327-d03b4e874e7a */
+</style>
 </head>
 <body>
 
