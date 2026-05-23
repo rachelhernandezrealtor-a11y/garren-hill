@@ -1806,6 +1806,42 @@ body section#gh-hero > img#gh-crest{
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T21:18:28.529Z:b9cd87b7-9dc6-4ef8-b35b-630b338bdb9c */
 </style>
+<style id="coco-hero-crest-position-v1">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-05-23T21:21:26.054Z
+  Rationale: Rachel can see the crest did not move. The rendered element is an inline-styled img#gh-crest, so this patch targets the actual rendered ID with important overrides and moves it visibly lower/larger in the hero as reversible preview CSS.
+*/
+/* Coco hero crest position pass — make the heritage seal a visible threshold object, not a tiny top ornament. */
+#gh-hero #gh-crest,
+img#gh-crest {
+  position: absolute !important;
+  left: 50% !important;
+  top: clamp(168px, 25vh, 238px) !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: clamp(132px, 12vw, 168px) !important;
+  height: auto !important;
+  transform: translateX(-50%) !important;
+  transform-origin: center center !important;
+  z-index: 42 !important;
+  opacity: 0.98 !important;
+  clip-path: ellipse(46% 49% at 50% 50%) !important;
+  filter: drop-shadow(0 0 1px rgba(245,240,232,0.30)) drop-shadow(0 22px 44px rgba(0,0,0,0.88)) !important;
+  animation: none !important;
+}
+
+@media (max-width: 700px) {
+  #gh-hero #gh-crest,
+  img#gh-crest {
+    top: clamp(118px, 20vh, 162px) !important;
+    width: clamp(96px, 28vw, 124px) !important;
+  }
+}
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T21:21:26.054Z:f2c394b5-3ecd-4092-a90f-524809f4445b */
+</style>
 </head>
 <body>
 
