@@ -1756,6 +1756,56 @@ body section#gh-hero > img#gh-crest{
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T21:12:39.089Z:710ce858-f843-44d6-8bf9-282ef7dfce8f */
 </style>
+<style id="coco-statbar-crest-between-sqft-acres-v1">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-05-23T21:18:28.529Z
+  Rationale: Rachel asked for the crest to be bigger and seated between the square-feet and acres stats on the lower stat bar. This is a reversible CSS-only preview change that preserves copy and locked asset identity.
+*/
+/* Coco stat-bar crest placement — Rachel request 2026-05-23
+   Bigger crest, seated in the lower stat bar gap between square feet and acres.
+   Source facts/copy untouched; locked crest asset is repositioned only. */
+#gh-hero #gh-crest,
+#gh-crest {
+  position: absolute !important;
+  left: 50% !important;
+  top: auto !important;
+  bottom: clamp(38px, 5.4vh, 54px) !important;
+  width: clamp(132px, 13.4vw, 178px) !important;
+  height: auto !important;
+  transform: translateX(-50%) !important;
+  transform-origin: center center !important;
+  z-index: 46 !important;
+  opacity: 0.98 !important;
+  clip-path: ellipse(44% 48% at 50% 50%) !important;
+  filter: drop-shadow(0 0 1px rgba(245,240,232,0.30)) drop-shadow(0 20px 42px rgba(0,0,0,0.88)) !important;
+  animation: none !important;
+  pointer-events: none !important;
+}
+
+@media (max-width: 900px) {
+  #gh-hero #gh-crest,
+  #gh-crest {
+    width: clamp(96px, 22vw, 132px) !important;
+    bottom: clamp(48px, 8vh, 78px) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  #gh-hero #gh-crest,
+  #gh-crest {
+    width: clamp(82px, 28vw, 112px) !important;
+    bottom: clamp(96px, 16vh, 128px) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #gh-crest { animation: none !important; transition: none !important; }
+}
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T21:18:28.529Z:b9cd87b7-9dc6-4ef8-b35b-630b338bdb9c */
+</style>
 </head>
 <body>
 
