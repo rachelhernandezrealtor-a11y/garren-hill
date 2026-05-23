@@ -602,6 +602,70 @@ section[id="top"] [class*="stat"],
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-22T03:44:41.893Z:08a9ff5c-f5bf-4793-ad6b-5132b02be9dd */
 </style>
+<style id="coco-hero-proof-rebuild-2026-05-23">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-05-23T01:55:49.249Z
+  Rationale: Rachel asked for one tasteful visible hero-proof move. I lifted the title composition and quieted the stat rail haze without touching locked copy or locked hero media.
+*/
+/* Coco hero proof rebuild — one visible, reversible composition move */
+:root{
+  --coco-hero-proof-lift: clamp(2.4rem, 7vh, 5.8rem);
+}
+
+.hero,
+section.hero,
+#hero,
+#top{
+  background:#0a0a0a;
+}
+
+/* Pull the first-screen title out of the basement and give the hero a stricter editorial axis. */
+.hero [class*="hero-content"],
+.hero [class*="heroCopy"],
+.hero [class*="hero-copy"],
+.hero [class*="title"],
+section.hero [class*="hero-content"],
+section.hero [class*="heroCopy"],
+section.hero [class*="hero-copy"],
+section.hero [class*="title"],
+#hero [class*="hero-content"],
+#hero [class*="heroCopy"],
+#hero [class*="hero-copy"],
+#hero [class*="title"],
+#top [class*="hero-content"],
+#top [class*="heroCopy"],
+#top [class*="hero-copy"],
+#top [class*="title"]{
+  transform: translateY(calc(-1 * var(--coco-hero-proof-lift))) !important;
+}
+
+/* The stat rail should feel engraved, not like a glass dashboard. */
+.hero [class*="stat"],
+section.hero [class*="stat"],
+#hero [class*="stat"],
+#top [class*="stat"]{
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: linear-gradient(180deg, rgba(10,10,10,.68), rgba(10,10,10,.94)) !important;
+  border-top: 1px solid rgba(201,169,110,.42) !important;
+}
+
+/* Kill the dev-proof whisper if it is still riding under the first stat. */
+.hero *:not(script):not(style),
+section.hero *:not(script):not(style),
+#hero *:not(script):not(style),
+#top *:not(script):not(style){
+  text-shadow: none;
+}
+
+@media (max-width: 760px){
+  :root{ --coco-hero-proof-lift: clamp(1.2rem, 4vh, 2.4rem); }
+}
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T01:55:49.249Z:cb072d41-d972-4783-841a-e090ab5bdc00 */
+</style>
 </head>
 <body>
 <div id="scroll-progress"></div>
