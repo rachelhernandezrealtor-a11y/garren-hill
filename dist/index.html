@@ -1538,6 +1538,128 @@ img#gh-crest {
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T02:43:24.270Z:8df7e672-0d67-4a4f-b327-d03b4e874e7a */
 </style>
+<style id="coco-hero-composition-repair-20260522">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-05-23T02:46:42.735Z
+  Rationale: Rachel flagged the hero as visually wrong. The screenshot and DOM show the hero title group translated off-canvas and the crest reading like a floating badge. This reversible CSS repair recenters the title, lowers the content into a proper editorial title-card stack, quiets the crest into a threshold object, and leaves copy/stat values/assets untouched.
+*/
+/* Coco hero composition repair — fixes off-canvas title + random-badge crest read without changing copy or locked assets */
+#gh-hero {
+  min-height: 665px !important;
+}
+
+#gh-hero > video {
+  opacity: 0.66 !important;
+  filter: contrast(1.04) saturate(0.82) brightness(0.52) !important;
+  object-position: 50% 46% !important;
+}
+
+#gh-hero > div:nth-of-type(1) {
+  background:
+    radial-gradient(34rem 28rem at 50% 28%, rgba(201,169,110,0.12), rgba(10,10,10,0.18) 38%, rgba(10,10,10,0.78) 78%),
+    linear-gradient(to bottom, rgba(10,10,10,0.72) 0%, rgba(10,10,10,0.26) 26%, rgba(10,10,10,0.34) 56%, rgba(10,10,10,0.94) 100%) !important;
+}
+
+#gh-hero > div:nth-of-type(3) {
+  left: 50% !important;
+  right: auto !important;
+  bottom: clamp(8.9rem, 17vh, 11.8rem) !important;
+  width: min(92vw, 920px) !important;
+  height: auto !important;
+  padding: 0 clamp(1.25rem, 4vw, 3.5rem) !important;
+  transform: translateX(-50%) !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  text-align: center !important;
+  gap: clamp(0.55rem, 1.4vh, 0.9rem) !important;
+}
+
+#gh-hero > div:nth-of-type(3) p:first-of-type {
+  max-width: 100% !important;
+  justify-content: center !important;
+  gap: clamp(0.75rem, 2vw, 1.6rem) !important;
+  font-size: clamp(0.72rem, 1.22vw, 0.94rem) !important;
+  line-height: 1.35 !important;
+  letter-spacing: clamp(0.24em, 0.72vw, 0.42em) !important;
+  color: rgba(245,240,232,0.82) !important;
+  transform: none !important;
+}
+
+#gh-hero h1 {
+  transform: none !important;
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  font-size: clamp(6.1rem, 14.4vw, 13.5rem) !important;
+  line-height: 0.8 !important;
+  text-align: center !important;
+  text-shadow: 0 18px 64px rgba(0,0,0,0.88), 0 2px 18px rgba(0,0,0,0.72) !important;
+}
+
+#gh-hero > div:nth-of-type(3) p:last-of-type {
+  width: 100% !important;
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  font-size: clamp(0.74rem, 1.25vw, 0.92rem) !important;
+  line-height: 1.45 !important;
+  letter-spacing: clamp(0.26em, 0.8vw, 0.44em) !important;
+  color: rgba(245,240,232,0.72) !important;
+  transform: none !important;
+}
+
+#gh-crest {
+  top: clamp(6.1rem, 14vh, 8.7rem) !important;
+  bottom: auto !important;
+  left: 50% !important;
+  width: clamp(86px, 11.6vw, 124px) !important;
+  transform: translateX(-50%) !important;
+  z-index: 18 !important;
+  opacity: 0.9 !important;
+  filter: drop-shadow(0 1px 0 rgba(245,240,232,0.18)) drop-shadow(0 22px 44px rgba(0,0,0,0.88)) !important;
+  animation: none !important;
+}
+
+#stat-bar {
+  left: 50% !important;
+  right: auto !important;
+  width: min(94vw, 1180px) !important;
+  transform: translateX(-50%) !important;
+}
+
+#stat-bar > div:nth-of-type(2) {
+  background: linear-gradient(to bottom, rgba(10,10,10,0.76), rgba(10,10,10,0.9)) !important;
+  backdrop-filter: blur(7px) saturate(1.02) !important;
+  -webkit-backdrop-filter: blur(7px) saturate(1.02) !important;
+}
+
+@media (max-width: 860px) {
+  #gh-hero > div:nth-of-type(3) {
+    bottom: clamp(9.6rem, 18vh, 12rem) !important;
+    width: min(96vw, 760px) !important;
+  }
+  #gh-hero h1 {
+    font-size: clamp(5.4rem, 18vw, 8.2rem) !important;
+  }
+  #gh-crest {
+    top: clamp(5.4rem, 12vh, 7.6rem) !important;
+    width: clamp(82px, 15vw, 116px) !important;
+  }
+}
+
+@media (max-width: 520px) {
+  #gh-hero > div:nth-of-type(3) p:first-of-type,
+  #gh-hero > div:nth-of-type(3) p:last-of-type {
+    letter-spacing: 0.2em !important;
+  }
+  #gh-hero h1 {
+    font-size: clamp(4.5rem, 22vw, 6.8rem) !important;
+  }
+}
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T02:46:42.735Z:b2169c23-d702-4438-8c3b-ea3ca58f9178 */
+</style>
 </head>
 <body>
 
