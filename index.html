@@ -1654,6 +1654,56 @@ h1 {
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-22T04:01:18.768Z:45c08ca0-6fab-4491-b3bc-a995bd0154a6 */
 </style>
+<style id="coco-hero-veil-lift">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-05-23T02:02:39.609Z
+  Rationale: The first screen was reading too black in the screenshot; this reversible CSS lift preserves locked hero video, copy, and stat values while improving visual legibility and cinematic presence.
+*/
+/* Coco visible move — lift the hero veil without touching locked video/copy/stat values */
+#gh-hero > video {
+  opacity: 0.86 !important;
+  filter: contrast(1.06) brightness(1.08) saturate(0.96) !important;
+}
+
+#gh-hero > div:nth-of-type(1) {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(10,10,10,0.46) 0%,
+      rgba(10,10,10,0.10) 20%,
+      rgba(10,10,10,0.02) 42%,
+      rgba(10,10,10,0.32) 68%,
+      rgba(10,10,10,0.86) 100%
+    ),
+    radial-gradient(
+      ellipse 115% 92% at 50% 52%,
+      transparent 20%,
+      rgba(10,10,10,0.16) 56%,
+      rgba(10,10,10,0.58) 100%
+    ) !important;
+}
+
+#gh-hero > div:nth-of-type(3) {
+  transform: translateY(-1.2vh);
+}
+
+@media (max-width: 760px) {
+  #gh-hero > video {
+    opacity: 0.9 !important;
+    filter: contrast(1.04) brightness(1.08) saturate(0.96) !important;
+  }
+
+  #gh-hero > div:nth-of-type(1) {
+    background:
+      linear-gradient(to bottom, rgba(10,10,10,0.52) 0%, rgba(10,10,10,0.12) 32%, rgba(10,10,10,0.34) 68%, rgba(10,10,10,0.9) 100%),
+      radial-gradient(ellipse 120% 100% at 50% 52%, transparent 18%, rgba(10,10,10,0.2) 58%, rgba(10,10,10,0.64) 100%) !important;
+  }
+}
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T02:02:39.609Z:99f57ca2-13f0-49b6-a0fb-c0671f32ae77 */
+</style>
 </head>
 <body>
 
