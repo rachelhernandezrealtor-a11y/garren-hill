@@ -1857,8 +1857,8 @@ img#gh-crest {
 /*
   Rachel Studio Coco managed development patch.
   Development sightline only. Public/custom-domain production remains locked.
-  Updated: 2026-05-29T15:11:36.293Z
-  Rationale: Fix the visual fallout from changing the Garran Hill hero title to the full estate name. The title must read Garran Hill cleanly in the Studio right viewport, without cropping or colliding with the stat band. Preserve locked assets, locked copy, and all stat values.
+  Updated: 2026-05-29T15:12:59.332Z
+  Rationale: Second pass on the Garran Hill hero title fit: desktop was clean, but the 700px Studio/mobile viewport still overlapped the stat bar. This breakpoint-only patch moves the title group up and slightly reduces the script at narrow widths. Locked assets, copy, and stat values remain untouched.
 */
 /* Codex/Rachel Studio emergency hero fit: full Garran Hill title must read cleanly in the Studio right viewport without colliding with the stat band. Locked copy/assets/stat values untouched. */
 @media (max-width: 1120px) {
@@ -1888,22 +1888,26 @@ img#gh-crest {
 
 @media (max-width: 760px) {
   #gh-hero > div:nth-of-type(3) {
-    bottom: clamp(10.8rem, 24vh, 12.4rem) !important;
+    bottom: clamp(16.4rem, 38vh, 18rem) !important;
     width: min(94vw, 620px) !important;
   }
 
   #gh-hero h1 {
-    font-size: clamp(4rem, 16vw, 5.9rem) !important;
+    font-size: clamp(3.8rem, 14.8vw, 5.55rem) !important;
   }
 }
 
 @media (max-width: 520px) {
+  #gh-hero > div:nth-of-type(3) {
+    bottom: clamp(15.5rem, 36vh, 17rem) !important;
+  }
+
   #gh-hero h1 {
-    font-size: clamp(3.45rem, 17vw, 5rem) !important;
+    font-size: clamp(3.15rem, 15.2vw, 4.55rem) !important;
   }
 }
 
-/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-29T15:11:36.293Z:ab21eb84-5bde-4898-9515-f1bfd20e2f8d */
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-29T15:12:59.332Z:3966b54c-4812-4467-84e1-a7908b87e10c */
 </style>
 </head>
 <body>
