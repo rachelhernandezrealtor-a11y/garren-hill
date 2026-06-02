@@ -3421,6 +3421,98 @@ html { --rachel-studio-connectivity-proof: "hermes-memory-builder-live-2026-06-0
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-06-02T17:07:54.666Z:92c50994-aa24-45e2-a17e-1be63daa6612 */
 </style>
+<style id="zz-coco-gh-crest-statbar-bottom">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-06-02T17:51:06.871Z
+  Rationale: Coco deterministic builder fallback for a broad private/dev visible fix: coco move the crest to bottom of stat bar on hero
+*/
+/* Coco active-property fallback: coco move the crest to bottom of stat bar on hero
+             Move the existing locked Garran Hill crest lower into the bottom edge of the stat bar.
+             No asset, stat value, locked copy, or production publish changed. */
+          #gh-hero,
+          section#gh-hero,
+          .hero {
+            position:relative !important;
+            overflow:hidden !important;
+            isolation:isolate !important;
+          }
+
+          #stat-bar,
+          #gh-hero #stat-bar {
+            position:absolute !important;
+            z-index:44 !important;
+            overflow:visible !important;
+          }
+
+          #stat-bar > div:nth-of-type(2),
+          #gh-hero #stat-bar > div:nth-of-type(2) {
+            position:relative !important;
+            overflow:visible !important;
+            padding-bottom:clamp(1.15rem, 2.55vh, 2rem) !important;
+          }
+
+          #stat-bar > div:nth-of-type(2)::after,
+          #gh-hero #stat-bar > div:nth-of-type(2)::after {
+            content:"" !important;
+            position:absolute !important;
+            left:50% !important;
+            bottom:clamp(0.32rem, .9vh, .7rem) !important;
+            width:clamp(72px, 7.4vw, 106px) !important;
+            height:1px !important;
+            transform:translateX(-50%) !important;
+            background:linear-gradient(to right, transparent, rgba(201,169,110,.58), transparent) !important;
+            opacity:.72 !important;
+            pointer-events:none !important;
+          }
+
+          #gh-hero #gh-crest,
+          #gh-hero img#gh-crest,
+          img#gh-crest {
+            position:absolute !important;
+            left:50% !important;
+            top:calc(100% - clamp(43px, 5.65vh, 58px)) !important;
+            bottom:auto !important;
+            width:clamp(76px, 7.6vw, 104px) !important;
+            max-width:104px !important;
+            height:auto !important;
+            transform:translate(-50%, -50%) !important;
+            transform-origin:center center !important;
+            z-index:56 !important;
+            clip-path:ellipse(44% 48% at 50% 50%) !important;
+            filter:drop-shadow(0 0 1px rgba(245,240,232,.26)) drop-shadow(0 14px 28px rgba(0,0,0,.88)) !important;
+            animation:none !important;
+            pointer-events:none !important;
+          }
+
+          #stat-bar > div:nth-of-type(2) > div:nth-of-type(1),
+          #stat-bar > div:nth-of-type(2) > div:nth-of-type(3),
+          #gh-hero #stat-bar > div:nth-of-type(2) > div:nth-of-type(1),
+          #gh-hero #stat-bar > div:nth-of-type(2) > div:nth-of-type(3) {
+            flex:0 1 calc(50% - clamp(52px, 6.2vw, 82px)) !important;
+          }
+
+          @media (max-width: 820px) {
+            #gh-hero #gh-crest,
+            #gh-hero img#gh-crest,
+            img#gh-crest {
+              top:calc(100% - 58px) !important;
+              width:clamp(64px, 15.5vw, 88px) !important;
+            }
+          }
+
+          @media (max-width: 560px) {
+            #gh-hero #gh-crest,
+            #gh-hero img#gh-crest,
+            img#gh-crest {
+              top:calc(100% - 72px) !important;
+              width:64px !important;
+            }
+          }
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-06-02T17:51:06.871Z:16fe1300-54b1-473c-884e-cef3784c2308 */
+</style>
 </body>
 </html>
 
