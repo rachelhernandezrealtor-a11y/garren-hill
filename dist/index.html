@@ -3368,22 +3368,124 @@ img#gh-crest {
 /*
   Rachel Studio Coco managed development patch.
   Development sightline only. Public/custom-domain production remains locked.
-  Updated: 2026-05-23T02:38:46.502Z
-  Rationale: Coco Studio development CSS patch from the live co-edit bridge.
+  Updated: 2026-06-03T01:27:33.920Z
+  Rationale: Coco deterministic builder fallback for a broad private/dev visible fix: start with hero the crest should be at the center of stat bar
 */
-/*
-  Rachel Studio Coco preview patch.
-  Development sightline only. Public/custom-domain production remains locked.
-  Updated: 2026-05-23T02:38:46.405Z
-  Proof: coco-proof-mphqoxad-dzgz1hp
-  Summary: Coco prepared a fallback development draft for the visible canvas.
-  Request: yes this is the hero for the GH website so we want the crest to be fabulous which i see you got that part ishhh but we need property info keys on there bedrooms bathrooms price yada
-*/
-.hero-content { max-width:720px !important; }
-      .stat-bar { padding-top:clamp(24px,2.6vw,36px) !important; padding-bottom:clamp(24px,2.6vw,36px) !important; }
-      section { scroll-margin-top:80px !important; }
+/* Coco active-property fallback: start with hero the crest should be at the center of stat bar */
+        #gh-hero,
+        section#gh-hero,
+        .hero {
+          position:relative !important;
+          isolation:isolate !important;
+          overflow:hidden !important;
+        }
 
-/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-05-23T02:38:46.502Z:3193aae5-ae30-4373-a9b1-e7a30fba6cf0 */
+        #gh-hero::after,
+        section#gh-hero::after {
+          content:none !important;
+          display:none !important;
+          border:0 !important;
+          pointer-events:none !important;
+        }
+
+        #gh-hero > div:nth-of-type(3),
+        section#gh-hero > div:nth-of-type(3),
+        #gh-hero > div:has(h1),
+        section#gh-hero > div:has(h1),
+        .hero-content {
+          left:clamp(1.35rem, 6vw, 5.25rem) !important;
+          right:clamp(1.35rem, 6vw, 5.25rem) !important;
+          width:auto !important;
+          max-width:none !important;
+          text-align:center !important;
+          transform:none !important;
+        }
+
+        #gh-hero h1,
+        section#gh-hero h1,
+        #top h1,
+        .hero h1,
+        .hero-title .property-name {
+          display:block !important;
+          width:100% !important;
+          max-width:min(100%, 1120px) !important;
+          margin-left:auto !important;
+          margin-right:auto !important;
+          font-size:clamp(5.8rem, 10.6vw, 11.5rem) !important;
+          line-height:.78 !important;
+          letter-spacing:0 !important;
+          text-align:center !important;
+          white-space:nowrap !important;
+          transform:none !important;
+        }
+
+        #stat-bar,
+        .stat-bar {
+          position:relative !important;
+          z-index:4 !important;
+          margin-top:clamp(1.4rem, 3vw, 2.8rem) !important;
+        }
+
+        @media (max-width: 900px) {
+          #gh-hero > div:nth-of-type(3),
+          section#gh-hero > div:nth-of-type(3),
+          #gh-hero > div:has(h1),
+          section#gh-hero > div:has(h1),
+          .hero-content {
+            left:clamp(1.25rem, 5vw, 3rem) !important;
+            right:clamp(1.25rem, 5vw, 3rem) !important;
+          }
+
+          #gh-hero h1,
+          section#gh-hero h1,
+          #top h1,
+          .hero h1,
+          .hero-title .property-name {
+            font-size:clamp(4.9rem, 12vw, 7.4rem) !important;
+          }
+        }
+
+        @media (max-width: 760px) {
+          #gh-hero > div:nth-of-type(3),
+          section#gh-hero > div:nth-of-type(3),
+          #gh-hero > div:has(h1),
+          section#gh-hero > div:has(h1),
+          .hero-content {
+            bottom:clamp(16.4rem, 38vh, 18rem) !important;
+            left:clamp(1rem, 4.8vw, 1.8rem) !important;
+            right:clamp(1rem, 4.8vw, 1.8rem) !important;
+          }
+
+          #gh-hero h1,
+          section#gh-hero h1,
+          #top h1,
+          .hero h1,
+          .hero-title .property-name {
+            font-size:clamp(3.8rem, 14.8vw, 5.55rem) !important;
+            line-height:.82 !important;
+            white-space:normal !important;
+          }
+        }
+
+        @media (max-width: 520px) {
+          #gh-hero > div:nth-of-type(3),
+          section#gh-hero > div:nth-of-type(3),
+          #gh-hero > div:has(h1),
+          section#gh-hero > div:has(h1),
+          .hero-content {
+            bottom:clamp(15.8rem, 36vh, 17.4rem) !important;
+          }
+
+          #gh-hero h1,
+          section#gh-hero h1,
+          #top h1,
+          .hero h1,
+          .hero-title .property-name {
+            font-size:clamp(3.35rem, 18vw, 4.8rem) !important;
+          }
+        }
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-06-03T01:27:33.920Z:cfce9da3-6777-487d-a267-e7c3768411a5 */
 </style>
 <style id="zz-rachel-studio-codex-live-proof">
 /*
