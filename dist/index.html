@@ -3634,6 +3634,60 @@ html {
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-06-02T19:16:50.153Z:f74102e5-88ce-40ef-8f7d-9dcb4cb159e2 */
 </style>
+<style id="zz-coco-route-sync-fix-20260605">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-06-05T22:13:25.099Z
+  Rationale: Rachel and Coco appear to be seeing different pages because old hashed proof deployments and a stale visible gold proof border are still in the shared development source. This final CSS patch removes the stale proof artifact and marks the shared Pages URL as the one working canvas, without changing copy, stats, assets, or production.
+*/
+/* Coco route-sync fix — remove stale visible proof artifacts and make the shared dev canvas the only page Rachel/Coco judge. */
+html {
+  --coco-active-garran-canvas: "https://garren-hill.pages.dev/";
+  --coco-route-sync-fix: "2026-06-05";
+}
+
+/* The gold rectangle was an old builder proof marker, not Garran Hill design. Kill it at the final cascade so Rachel and Coco are judging the same actual page. */
+body #gh-hero::after,
+body section#gh-hero::after,
+html body #gh-hero::after,
+html body section#gh-hero::after {
+  content: none !important;
+  display: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  background: none !important;
+  pointer-events: none !important;
+}
+
+/* Keep the hero title and stat bar readable in the Studio preview viewport without changing copy, stats, or assets. */
+body #gh-hero,
+body section#gh-hero {
+  min-height: 680px !important;
+}
+
+body #gh-hero > div:nth-of-type(3),
+body section#gh-hero > div:nth-of-type(3) {
+  bottom: clamp(8.8rem, 16.4vh, 12.2rem) !important;
+}
+
+body #gh-hero h1,
+body section#gh-hero h1 {
+  transform: none !important;
+  text-align: center !important;
+}
+
+@media (max-width: 760px) {
+  body #gh-hero,
+  body section#gh-hero { min-height: 720px !important; }
+  body #gh-hero > div:nth-of-type(3),
+  body section#gh-hero > div:nth-of-type(3) {
+    bottom: clamp(16rem, 36vh, 18rem) !important;
+  }
+}
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-06-05T22:13:25.099Z:5df2c9a1-c17c-47bf-93ad-b98c63f0c0f3 */
+</style>
 </body>
 </html>
 
