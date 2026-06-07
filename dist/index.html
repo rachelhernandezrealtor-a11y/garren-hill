@@ -1959,6 +1959,73 @@ body #main-nav .nav-wordmark::after {
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-06-06T23:04:18.835Z:41a5fd48-6d00-4710-b277-acad2dcd7d0a */
 </style>
+<style id="coco-crest-statbar-ceremonial-pass">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-06-07T21:20:50.869Z
+  Rationale: Make the actual Garran Hill house crest read as a primary ceremonial artifact in the hero/stat-bar area: larger, centered, glowing, and integrated with a gold rule while preserving the existing locked crest asset and hero video. Reversible dev-site CSS only.
+*/
+/* Coco crest/stat-bar ceremonial pass — Rachel requested the house crest big and fabulous. */
+#gh-hero #gh-crest {
+  width: clamp(154px, 15vw, 236px) !important;
+  max-width: 236px !important;
+  opacity: 1 !important;
+  z-index: 64 !important;
+  left: 50% !important;
+  top: auto !important;
+  bottom: clamp(118px, 15vh, 178px) !important;
+  transform: translate(-50%, 18%) !important;
+  clip-path: ellipse(47% 49% at 50% 50%) !important;
+  border-radius: 999px !important;
+  background: radial-gradient(circle at 50% 46%, rgba(14,12,8,.92) 0%, rgba(10,8,5,.78) 54%, rgba(10,8,5,0) 72%) !important;
+  padding: clamp(10px, 1.1vw, 18px) !important;
+  filter:
+    drop-shadow(0 0 1px rgba(255,245,218,.46))
+    drop-shadow(0 0 18px rgba(213,182,124,.35))
+    drop-shadow(0 26px 56px rgba(0,0,0,.92)) !important;
+  animation: crestIdle 6s ease-in-out infinite !important;
+}
+#gh-hero::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  bottom: clamp(130px, 16vh, 198px) !important;
+  width: min(78vw, 1120px) !important;
+  height: 1px !important;
+  transform: translateX(-50%) !important;
+  z-index: 40 !important;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,.18) 16%, rgba(201,169,110,.62) 42%, transparent 49%, transparent 51%, rgba(201,169,110,.62) 58%, rgba(201,169,110,.18) 84%, transparent 100%) !important;
+  pointer-events: none !important;
+}
+#gh-hero [style*="Bedrooms"],
+#gh-hero [style*="Fireplaces"],
+#gh-hero [style*="Square Feet"],
+#gh-hero [style*="Offered At"] {
+  position: relative !important;
+  z-index: 55 !important;
+}
+#gh-hero > div:has(#gh-crest),
+#gh-hero div:has(> #gh-crest) {
+  overflow: visible !important;
+}
+#gh-hero video {
+  filter: contrast(1.08) saturate(.84) brightness(.58) !important;
+}
+@media (max-width: 760px) {
+  #gh-hero #gh-crest {
+    width: clamp(126px, 34vw, 168px) !important;
+    bottom: clamp(150px, 18vh, 210px) !important;
+    transform: translate(-50%, 12%) !important;
+  }
+  #gh-hero::after {
+    bottom: clamp(160px, 19vh, 220px) !important;
+    width: 88vw !important;
+  }
+}
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-06-07T21:20:50.869Z:3cedcba4-72b5-4e96-a1dc-8095d036833e */
+</style>
 </head>
 <body>
 
