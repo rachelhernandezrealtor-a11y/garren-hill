@@ -2026,6 +2026,116 @@ body #main-nav .nav-wordmark::after {
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-06-07T21:20:50.869Z:3cedcba4-72b5-4e96-a1dc-8095d036833e */
 </style>
+<style id="coco-visible-collaborator-fix-2026-06-07">
+/*
+  Rachel Studio Coco managed development patch.
+  Development sightline only. Public/custom-domain production remains locked.
+  Updated: 2026-06-07T22:10:11.402Z
+  Rationale: Make one undeniable visible development-canvas change using the actual live selectors, because Rachel is right that prior tool chatter without a visible change is not collaborator behavior.
+*/
+/* Coco visible collaborator fix — 2026-06-07
+   Rachel was right: the page had old patches aimed at selectors that do not exist here.
+   This patch targets the actual live markup: .hero, .hero-video, .hero-text, .stat-bar.
+   Reversible development canvas only. No copy, price, facts, forms, or production domain changed. */
+.hero{
+  min-height:100svh !important;
+  background:#070707 !important;
+  isolation:isolate !important;
+}
+.hero-video{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center 42% !important;
+  opacity:.74 !important;
+  filter:contrast(1.14) saturate(.88) brightness(.72) !important;
+  z-index:0 !important;
+}
+.hero-overlay{
+  position:absolute !important;
+  inset:0 !important;
+  z-index:1 !important;
+  pointer-events:none !important;
+  background:
+    radial-gradient(circle at 50% 34%, rgba(201,169,110,.10), rgba(7,7,7,.10) 28%, rgba(7,7,7,.62) 76%),
+    linear-gradient(180deg, rgba(7,7,7,.72) 0%, rgba(7,7,7,.16) 34%, rgba(7,7,7,.30) 62%, rgba(7,7,7,.94) 100%) !important;
+}
+.hero-text{
+  z-index:4 !important;
+  justify-content:center !important;
+  padding-bottom:clamp(9rem,18vh,13rem) !important;
+  transform:translateY(clamp(-1.6rem,-4vh,-3.4rem)) !important;
+}
+.hero-title{
+  font-size:clamp(6.8rem,15.2vw,15.8rem) !important;
+  line-height:.78 !important;
+  letter-spacing:-.035em !important;
+  text-shadow:0 3px 34px rgba(0,0,0,.88) !important;
+}
+.hero-eyebrow{
+  color:rgba(245,240,232,.78) !important;
+  letter-spacing:.34em !important;
+}
+.hero-sub{
+  color:rgba(201,169,110,.78) !important;
+  letter-spacing:.38em !important;
+}
+.stat-bar{
+  z-index:5 !important;
+  bottom:clamp(1.1rem,2.8vh,2.2rem) !important;
+  left:clamp(1rem,3vw,3rem) !important;
+  right:clamp(1rem,3vw,3rem) !important;
+  padding:clamp(1rem,2vh,1.35rem) clamp(1rem,3vw,2.4rem) !important;
+  background:linear-gradient(180deg, rgba(9,9,9,.52), rgba(9,9,9,.88)) !important;
+  border-top:1px solid rgba(201,169,110,.58) !important;
+  border-bottom:1px solid rgba(201,169,110,.24) !important;
+  box-shadow:0 24px 80px rgba(0,0,0,.55) !important;
+}
+.stat-numbers{align-items:center !important;}
+.stat-num{
+  color:rgba(245,240,232,.96) !important;
+  font-weight:300 !important;
+  font-size:clamp(1.45rem,2.15vw,2.45rem) !important;
+  text-shadow:none !important;
+}
+.stat-lbl{
+  color:rgba(201,169,110,.64) !important;
+  letter-spacing:.34em !important;
+}
+.stat-spacer{
+  position:relative !important;
+  width:clamp(120px,12vw,190px) !important;
+}
+.stat-spacer::before{
+  content:'GH' !important;
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  transform:translate(-50%,-52%) !important;
+  width:clamp(76px,7vw,104px) !important;
+  height:clamp(76px,7vw,104px) !important;
+  border:1px solid rgba(201,169,110,.46) !important;
+  border-radius:999px !important;
+  display:grid !important;
+  place-items:center !important;
+  color:rgba(201,169,110,.88) !important;
+  font-family:'Cormorant Garamond', Georgia, serif !important;
+  font-size:clamp(1.25rem,1.7vw,1.9rem) !important;
+  letter-spacing:.10em !important;
+  background:radial-gradient(circle, rgba(10,10,10,.94), rgba(10,10,10,.48)) !important;
+  box-shadow:0 12px 36px rgba(0,0,0,.72), inset 0 0 0 1px rgba(245,224,152,.10) !important;
+}
+@media(max-width:768px){
+  .hero-text{padding-bottom:13rem !important; transform:translateY(-1rem) !important;}
+  .hero-title{font-size:clamp(5.4rem,24vw,8rem) !important;}
+  .stat-bar{left:.75rem !important; right:.75rem !important; bottom:.75rem !important;}
+  .stat-spacer{display:none !important;}
+}
+
+/* Coco GitHub-backed proof: coco-proof:garran-hill:2026-06-07T22:10:11.402Z:c0f7cfab-ef6a-48b0-9bb8-41cf9d9eac5a */
+</style>
 </head>
 <body>
 
