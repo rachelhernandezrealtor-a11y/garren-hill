@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- gh-history-canonical-v2 · night-shift 2026-06-12 · built by Coco from CITATIONS.md -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The History — Garran Hill · 1916</title>
-  <meta name="description" content="The provenance of Garran Hill — Walter Hines Page and Betty Dumaine. A house built from London. A stewardship that lasted twenty-five years.">
+  <title>The History of Garran Hill · 1916 · Walter Hines Page · Pinehurst, North Carolina</title>
+  <meta name="description" content="The documented history of Garran Hill, the 1916 Neo-Georgian estate in Pinehurst, North Carolina. Built for Walter Hines Page, U.S. Ambassador to the Court of St. James's. Home of Betty Dumaine, friend of the Princess Mother of Thailand. Every claim cited.">
+  <link rel="canonical" href="https://garren-hill.pages.dev/history">
+  <meta property="og:title" content="The History of Garran Hill · Pinehurst, North Carolina">
+  <meta property="og:description" content="A documented provenance: Walter Hines Page, the Pinehurst Company, Betty Dumaine, the Princess Mother of Thailand, and a restoration that took three years. Every claim cited.">
+  <meta property="og:type" content="article">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
@@ -24,437 +29,463 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
-
-    /* NAV */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       background: rgba(10,10,10,0.92);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid rgba(201,169,110,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 0.8rem var(--col-pad);
     }
     .nav-logo {
       font-family: 'Mrs Saint Delafield', cursive;
       font-size: clamp(1.6rem, 3vw, 2.2rem);
-      color: var(--gold);
-      text-decoration: none;
-      line-height: 1;
+      color: var(--gold); text-decoration: none; line-height: 1;
     }
     .nav-logo span {
-      display: block;
-      font-family: 'Cormorant Garamond', serif;
+      display: block; font-family: 'Cormorant Garamond', serif;
       font-size: clamp(0.45rem, 0.6vw, 0.55rem);
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: rgba(201,169,110,0.55);
-      margin-top: 0.2rem;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(201,169,110,0.55); margin-top: 0.2rem;
     }
     .nav-back {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(0.55rem, 0.7vw, 0.65rem);
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: rgba(201,169,110,0.7);
-      text-decoration: none;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(201,169,110,0.7); text-decoration: none;
       border: 1px solid rgba(201,169,110,0.3);
       padding: 0.5rem 1.2rem;
       transition: color 0.3s, border-color 0.3s;
     }
     .nav-back:hover { color: var(--gold); border-color: var(--gold); }
 
-    /* PAGE HEADER */
     .page-header {
-      padding: clamp(7rem,12vw,10rem) var(--col-pad) clamp(3rem,6vw,5rem);
+      padding: clamp(8rem,13vw,11rem) var(--col-pad) clamp(3rem,6vw,5rem);
       text-align: center;
       border-bottom: 1px solid rgba(201,169,110,0.12);
+      max-width: 1100px; margin: 0 auto;
     }
     .page-eyebrow {
       font-size: clamp(0.55rem, 0.7vw, 0.65rem);
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
+      letter-spacing: 0.35em; text-transform: uppercase;
       color: rgba(201,169,110,0.6);
-      display: block;
-      margin-bottom: 1.5rem;
+      display: block; margin-bottom: 1.5rem;
     }
     .page-title {
       font-family: 'Mrs Saint Delafield', cursive;
-      font-size: clamp(4rem, 10vw, 9rem);
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 1rem;
+      font-size: clamp(3.4rem, 9vw, 8rem);
+      color: var(--gold); line-height: 1.05; margin-bottom: 1.2rem;
     }
     .page-sub {
-      font-size: clamp(0.9rem, 1.2vw, 1.05rem);
-      font-weight: 300;
-      color: rgba(245,240,232,0.5);
-      letter-spacing: 0.08em;
+      font-size: clamp(0.95rem, 1.25vw, 1.1rem);
+      font-weight: 300; color: rgba(245,240,232,0.55);
+      letter-spacing: 0.08em; font-style: italic;
+      max-width: 640px; margin: 0 auto;
     }
-
-    /* DIVIDER */
     .rule {
-      width: 40px; height: 1px;
+      width: 48px; height: 1px;
       background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 2rem auto 0;
+    }
+
+    section.act {
+      max-width: 760px;
       margin: 0 auto;
+      padding: clamp(3.5rem, 7vw, 6rem) var(--col-pad) 0;
     }
-
-    /* SECTIONS */
-    .history-section {
-      position: relative;
-      overflow: hidden;
-      background: var(--dark);
-      padding: clamp(4rem, 8vw, 8rem) 0;
-    }
-    .history-section + .history-section {
-      border-top: 1px solid rgba(201,169,110,0.1);
-    }
-
-    /* Ghost letter bg -- WHP section */
-    .ghost-bg {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .ghost-bg img {
-      position: absolute;
-      inset: -5%;
-      width: 110%; height: 110%;
-      object-fit: cover;
-      object-position: center top;
-      transform: rotate(-2deg);
-      opacity: 0.07;
-    }
-
-    .section-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 var(--col-pad);
-    }
-
-    /* SPLIT LAYOUT */
-    .split-grid {
-      display: grid;
-      grid-template-columns: clamp(220px,28%,380px) 1fr;
-      gap: clamp(3rem, 6vw, 8rem);
-      align-items: start;
-    }
-    @media (max-width: 768px) {
-      .split-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    }
-
-    /* PORTRAIT */
-    .portrait img {
-      display: block;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-
-    /* COPY */
-    .eyebrow-label {
+    section.act:last-of-type { padding-bottom: clamp(4rem, 8vw, 7rem); }
+    .act-eyebrow {
       display: block;
       font-size: clamp(0.55rem, 0.7vw, 0.65rem);
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: rgba(201,169,110,0.6);
-      margin-bottom: 1.5rem;
+      letter-spacing: 0.35em; text-transform: uppercase;
+      color: rgba(201,169,110,0.65);
+      margin-bottom: 1.1rem;
     }
-    h2.section-head {
-      font-size: clamp(2.4rem, 4.5vw, 4.5rem);
+    h2 {
       font-weight: 300;
-      line-height: 1.1;
+      font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+      line-height: 1.2;
       color: var(--cream);
-      margin-bottom: 2rem;
+      margin-bottom: 1.6rem;
+      letter-spacing: 0.01em;
     }
-    h2.section-head em {
-      display: block;
-      font-size: 0.82em;
-      margin-top: 0.2em;
-    }
-    .body-p {
-      font-size: clamp(1rem, 1.3vw, 1.18rem);
+    p {
+      font-size: clamp(1.02rem, 1.3vw, 1.16rem);
       font-weight: 300;
-      color: rgba(245,240,232,0.78);
       line-height: 1.85;
-      margin-bottom: 1.5rem;
+      color: rgba(245,240,232,0.82);
+      margin-bottom: 1.4rem;
     }
-    .body-p:last-child { margin-bottom: 0; }
+    p.lede { font-size: clamp(1.12rem, 1.5vw, 1.3rem); color: rgba(245,240,232,0.92); }
+    sup { line-height: 0; }
+    sup a {
+      color: rgba(201,169,110,0.75);
+      text-decoration: none;
+      font-size: 0.72em;
+      padding: 0 0.1em;
+    }
+    sup a:hover { color: var(--gold); }
 
-    /* QUOTES */
-    .pull-italic {
-      font-style: italic;
-      font-size: clamp(1.1rem, 1.6vw, 1.4rem);
-      font-weight: 300;
-      color: rgba(201,169,110,0.85);
-      line-height: 1.7;
-      margin-bottom: 0.6rem;
+    blockquote {
+      margin: 2.4rem 0;
+      padding-left: 1.6rem;
+      border-left: 1px solid rgba(201,169,110,0.4);
     }
-    .pull-cite {
-      font-size: clamp(0.6rem, 0.85vw, 0.72rem);
-      font-weight: 300;
-      color: rgba(245,240,232,0.4);
-      letter-spacing: 0.2em;
+    blockquote p {
+      font-style: italic;
+      font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+      color: var(--cream);
+      line-height: 1.6;
+      margin-bottom: 0.7rem;
+    }
+    blockquote cite {
+      display: block;
+      font-style: normal;
+      font-size: clamp(0.6rem, 0.75vw, 0.7rem);
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(201,169,110,0.6);
+    }
+
+    figure { margin: 2.6rem 0; }
+    figure img {
+      width: 100%; height: auto; display: block;
+      filter: sepia(0.18) contrast(1.02);
+      border: 1px solid rgba(201,169,110,0.18);
+    }
+    figure.portrait { max-width: 420px; margin-left: auto; margin-right: auto; }
+    figcaption {
+      margin-top: 0.9rem;
+      font-size: clamp(0.78rem, 0.95vw, 0.86rem);
+      font-style: italic;
+      color: rgba(245,240,232,0.5);
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .marker {
+      text-align: center;
+      margin: 2.8rem auto;
+      padding: 2.2rem 1.5rem;
+      border: 1px solid rgba(201,169,110,0.25);
+      max-width: 420px;
+    }
+    .marker p {
+      font-size: clamp(1rem, 1.3vw, 1.15rem);
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      margin-bottom: 3rem;
-    }
-    .pull-large {
-      font-style: italic;
-      font-size: clamp(1.3rem, 2vw, 1.9rem);
-      font-weight: 300;
-      color: rgba(201,169,110,0.9);
-      line-height: 1.5;
-      margin-bottom: 0.6rem;
-    }
-    blockquote.final-words {
-      font-style: italic;
-      font-size: clamp(1rem, 1.4vw, 1.25rem);
-      font-weight: 300;
-      color: rgba(201,169,110,0.8);
-      line-height: 1.75;
-      border-left: 1px solid rgba(201,169,110,0.3);
-      padding-left: 1.5rem;
+      color: var(--gold);
+      line-height: 2.1;
       margin: 0;
     }
-    blockquote.final-words span {
-      display: block;
-      font-style: normal;
-      font-size: 0.8em;
-      color: rgba(245,240,232,0.4);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-top: 0.5rem;
-    }
-
-    /* WHP PULL QUOTE BAND */
-    .quote-band {
-      background: var(--dark);
-      text-align: center;
-      padding: clamp(3rem,5vw,5rem) var(--col-pad);
-      border-top: 1px solid rgba(201,169,110,0.1);
-      border-bottom: 1px solid rgba(201,169,110,0.1);
-    }
-    .quote-band p {
-      font-size: clamp(1.4rem, 2.5vw, 2.4rem);
-      font-weight: 300;
+    .marker-note {
+      font-size: clamp(0.75rem, 0.9vw, 0.82rem) !important;
+      letter-spacing: 0.05em !important;
+      text-transform: none !important;
+      color: rgba(245,240,232,0.45) !important;
       font-style: italic;
-      color: rgba(245,240,232,0.88);
-      line-height: 1.6;
-      letter-spacing: 0.02em;
-      margin-bottom: 1rem;
-    }
-    .quote-band cite {
-      font-size: clamp(0.55rem, 0.65vw, 0.65rem);
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: rgba(201,169,110,0.55);
-      font-style: normal;
+      margin-top: 1rem !important;
     }
 
-    /* BETTY PHOTO */
-    .betty-photo img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: contain;
-    }
-
-    /* FOOTER */
-    footer {
+    .whisper {
       text-align: center;
-      padding: clamp(3rem,5vw,5rem) var(--col-pad);
+      font-style: italic;
+      font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+      color: rgba(245,240,232,0.65);
+      max-width: 560px;
+      margin: clamp(3rem,6vw,5rem) auto 0;
+      padding: 0 var(--col-pad);
+      line-height: 1.7;
+    }
+    .act-divider {
+      width: 40px; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,169,110,0.5), transparent);
+      margin: clamp(3rem,6vw,5rem) auto 0;
+    }
+
+    .timeline {
+      margin: 2rem 0;
+      border-top: 1px solid rgba(201,169,110,0.15);
+    }
+    .timeline-row {
+      display: flex;
+      gap: 1.6rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(201,169,110,0.15);
+    }
+    .timeline-row .years {
+      flex: 0 0 7.2rem;
+      font-size: clamp(0.8rem, 1vw, 0.9rem);
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      padding-top: 0.15rem;
+    }
+    .timeline-row .who {
+      font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+      font-weight: 300;
+      color: rgba(245,240,232,0.85);
+      line-height: 1.6;
+    }
+
+    /* SOURCES */
+    #sources {
+      max-width: 860px;
+      margin: clamp(4rem,8vw,6rem) auto 0;
+      padding: clamp(3rem,6vw,5rem) var(--col-pad);
+      border-top: 1px solid rgba(201,169,110,0.2);
+    }
+    #sources h2 { text-align: center; margin-bottom: 0.8rem; }
+    #sources .sources-intro {
+      text-align: center;
+      font-style: italic;
+      color: rgba(245,240,232,0.55);
+      margin-bottom: 2.6rem;
+    }
+    ol.source-list { list-style: none; counter-reset: src; }
+    ol.source-list li {
+      counter-increment: src;
+      position: relative;
+      padding: 0.85rem 0 0.85rem 2.6rem;
+      border-bottom: 1px solid rgba(201,169,110,0.1);
+      font-size: clamp(0.88rem, 1.05vw, 0.98rem);
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(245,240,232,0.75);
+    }
+    ol.source-list li::before {
+      content: counter(src);
+      position: absolute; left: 0; top: 0.95rem;
+      font-size: 0.85em;
+      color: var(--gold);
+    }
+    ol.source-list a { color: rgba(201,169,110,0.85); text-decoration: none; border-bottom: 1px solid rgba(201,169,110,0.25); }
+    ol.source-list a:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* CLOSE */
+    .close {
+      text-align: center;
+      padding: clamp(4rem,8vw,7rem) var(--col-pad);
       border-top: 1px solid rgba(201,169,110,0.12);
     }
-    .wax-seal {
-      height: clamp(50px,7vw,80px);
-      width: auto;
-      opacity: 0.65;
-      display: block;
-      margin: 0 auto 1.5rem;
+    .close .close-line {
+      font-style: italic;
+      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+      color: var(--cream);
+      margin-bottom: 2.4rem;
     }
-    .footer-text {
-      font-size: clamp(0.55rem, 0.65vw, 0.6rem);
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: rgba(201,169,110,0.4);
+    .cta {
+      display: inline-block;
+      font-size: clamp(0.62rem, 0.8vw, 0.72rem);
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+      border: 1px solid rgba(201,169,110,0.4);
+      padding: 1.1rem 2.6rem;
+      transition: color 0.3s, border-color 0.3s, background 0.3s;
     }
-    .footer-text a {
-      color: rgba(201,169,110,0.5);
-      text-decoration: none;
+    .cta:hover { color: #F5E098; border-color: var(--gold); background: rgba(201,169,110,0.05); }
+    .close .footer-line {
+      margin-top: 3rem;
+      font-size: clamp(0.6rem, 0.75vw, 0.7rem);
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(245,240,232,0.35);
+      line-height: 2.2;
     }
-  
-/* TIMELINE */
-.timeline-section {
-  padding: clamp(5rem, 10vw, 8rem) clamp(2rem, 8vw, 6rem);
-  background: #0a0a0a;
-}
-.timeline-inner { max-width: 680px; margin: 0 auto; }
-.timeline-eyebrow {
-  display: block;
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(0.68rem, 0.82vw, 0.78rem);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #C9A96E;
-  margin-bottom: 1.2rem;
-}
-.timeline-rule {
-  width: 40px; height: 1px;
-  background: rgba(201,169,110,0.35);
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
-}
-.timeline-item {
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 2rem;
-  padding: 1.4rem 0;
-  border-top: 1px solid rgba(201,169,110,0.12);
-  align-items: baseline;
-}
-.timeline-item:last-child { border-bottom: 1px solid rgba(201,169,110,0.12); }
-.timeline-year {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(0.78rem, 0.92vw, 0.88rem);
-  letter-spacing: 0.12em;
-  color: #C9A96E;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.timeline-event {
-  font-family: 'EB Garamond', 'Cormorant Garamond', serif;
-  font-size: clamp(1.0rem, 1.1vw, 1.08rem);
-  font-weight: 400;
-  line-height: 1.65;
-  color: rgba(245,240,232,0.78);
-}
-@media (max-width: 600px) {
-  .timeline-item { grid-template-columns: 1fr; gap: 0.35rem; }
-  .timeline-year { font-size: 0.7rem; }
-}
+    .close .footer-line a { color: rgba(201,169,110,0.6); text-decoration: none; }
+    .close .footer-line a:hover { color: var(--gold); }
 
-</style>
+    @media (max-width: 600px) {
+      .timeline-row { flex-direction: column; gap: 0.2rem; }
+      .timeline-row .years { flex: none; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The History of Garran Hill, Pinehurst, North Carolina",
+    "about": ["Walter Hines Page", "Garran Hill", "Hollycrest", "Pinehurst, North Carolina", "Betty Dumaine", "Srinagarindra, Princess Mother of Thailand"],
+    "datePublished": "2026-06-12",
+    "author": { "@type": "Organization", "name": "Rachel Studio for Pines Sotheby's International Realty" },
+    "mainEntityOfPage": "https://garren-hill.pages.dev/history"
+  }
+  </script>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="/" class="nav-logo">
-    Garran Hill
-    <span>1916</span>
-  </a>
-  <a href="/" class="nav-back">← The Estate</a>
+  <a class="nav-logo" href="/">Garran Hill<span>1916</span></a>
+  <a class="nav-back" href="/">&larr; The Estate</a>
 </nav>
 
-<!-- PAGE HEADER -->
-<div class="page-header">
-  <span class="page-eyebrow">Garran Hill &middot; 200 Hollycrest Drive &middot; Pinehurst, NC</span>
+<header class="page-header">
+  <span class="page-eyebrow">Garran Hill · 200 Hollycrest Drive · Pinehurst, North Carolina</span>
   <h1 class="page-title">The History</h1>
-  <p class="page-sub">Walter Hines Page &middot; 1916 &nbsp;&nbsp;|&nbsp;&nbsp; Betty Dumaine &middot; 1959</p>
-</div>
+  <p class="page-sub">A documented provenance. Every claim on this page carries a citation, and the sources are listed in full at the end.</p>
+  <div class="rule"></div>
+</header>
 
-<!-- ── WALTER HINES PAGE ── -->
-<section class="history-section">
-  <div class="ghost-bg">
-    <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:40,e_brightness:25,e_contrast:15,f_auto,q_auto,c_limit,w_1920/v1777391998/gh_key/gh_whp_letter1.jpg" alt="">
-  </div>
-
-  <div class="section-inner">
-    <div style="text-align:center;margin-bottom:clamp(3rem,6vw,6rem);">
-      <div class="rule" style="margin-bottom:1.5rem;"></div>
-      <span class="eyebrow-label">Walter Hines Page &middot; 1855&ndash;1918</span>
-    </div>
-
-    <div class="split-grid">
-      <div class="portrait">
-        <img loading="lazy" decoding="async"
-          src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_fill,ar_3:4,g_face,w_700/v1777244132/gh_key/gh_whp.jpg"
-          alt="Walter Hines Page -- Ambassador to the Court of St. James 1913--1918">
-      </div>
-
-      <div>
-        <h2 class="section-head">
-          Appointed by Wilson.<em>He held the alliance from London.</em>
-        </h2>
-        <p class="body-p">
-          Born in Cary, North Carolina. Co-founder of Doubleday, Page &amp; Company. Editor of <em>The Atlantic Monthly.</em> Appointed by Woodrow Wilson as Ambassador to the Court of St. James in 1913 &mdash; and kept there through the years the world came apart.
-        </p>
-        <p class="body-p">
-          From London, he commissioned Garran Hill to be built on his family&rsquo;s Moore County acres. He named it himself. Page returned from London in December 1918. He did not return to Garran Hill.
-        </p>
-
-        <p class="pull-italic">&ldquo;Build the farm, therefore; and let me hear at every stage of that happy game.&rdquo;</p>
-        <p class="pull-cite">Walter Hines Page &middot; Letter from London &middot; 1915</p>
-
-        <p class="pull-large">&ldquo;The friend of Britain in her sorest need.&rdquo;</p>
-        <p class="pull-cite">Westminster Abbey &middot; Inscribed 1921</p>
-
-        <blockquote class="final-words">
-          &ldquo;Well, Frank, I did get here after all, didn&rsquo;t I?&rdquo;
-          <span>Aberdeen station &middot; December 1918</span>
-        </blockquote>
-      </div>
-    </div>
-  </div>
+<!-- ACT I · THE LAND -->
+<section class="act" id="the-land">
+  <span class="act-eyebrow">I · The Land</span>
+  <h2>Pine barrens, a railroad, and two families</h2>
+  <p class="lede">Before there was a house, there was timber. Allison Francis "Frank" Page, a lumberman and the founder of Aberdeen, North Carolina, logged the longleaf pine barrens of Moore County in the late nineteenth century.<sup><a href="#src-5">5</a></sup> In 1895, James Walker Tufts purchased a stretch of that cut-over land and began building the resort village of Pinehurst on it.<sup><a href="#src-5">5</a></sup></p>
+  <p>Frank Page's first son was Walter Hines Page. The land his father had logged, two miles southwest of the new village, is the land Walter would one day buy back for himself.<sup><a href="#src-5">5</a></sup></p>
 </section>
 
-<!-- WHP PULL QUOTE BAND -->
-<div class="quote-band">
-  <p>&ldquo;The farm &mdash; the farm &mdash; the farm.&rdquo;</p>
-  <cite>Walter Hines Page &middot; From His Letters &middot; 1913&ndash;1918</cite>
-</div>
+<div class="act-divider"></div>
 
-<!-- ── BETTY DUMAINE ── -->
-<section class="history-section">
-  <div class="section-inner">
-    <div style="text-align:center;margin-bottom:clamp(3rem,6vw,6rem);">
-      <div class="rule" style="margin-bottom:1.5rem;"></div>
-      <span class="eyebrow-label">A Private History &middot; 1959&ndash;1984</span>
-    </div>
+<!-- ACT II · WALTER HINES PAGE -->
+<section class="act" id="walter-hines-page">
+  <span class="act-eyebrow">II · The Man</span>
+  <h2>Walter Hines Page and Garran Hill</h2>
 
-    <div class="split-grid">
-      <div>
-        <h2 class="section-head">
-          Horses. Hounds. Peacocks.<em>Native hollies on every path.</em>
-        </h2>
-        <p class="body-p">
-          Betty Dumaine kept this land for twenty-five years. Left to Duke University after her death. Advertised in Atlanta and New York. No buyer came. The house waited.
-        </p>
-        <p class="body-p">
-          She brought horses to the grounds of Garran Hill -- thoroughbreds, hunters, a life organized around animals and land and the particular pleasure of a place that required real attention. She renamed the property Hollycrest -- for the large native hollies at the front of the house. They are still there.
-        </p>
-        <p class="body-p">
-          One horse she buried here. Blue Fox. The stone is still standing in the shade of the trees she planted. The iron post beside the drive still carries the ring. Someone still puts flowers at the grave.
-        </p>
-      </div>
+  <figure class="portrait">
+    <img src="/history/assets/walter-hines-page-1910s-loc-bain.jpg" alt="Walter Hines Page, photographic portrait, Bain News Service, circa 1910s. Library of Congress." width="757" height="1024" loading="lazy">
+    <figcaption>Walter Hines Page. Bain News Service, circa 1910s.<br>Library of Congress, Prints &amp; Photographs Division. No known restrictions on publication.<sup><a href="#src-11">11</a></sup></figcaption>
+  </figure>
 
-      <div class="betty-photo">
-        <img loading="lazy" decoding="async"
-          src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,c_limit,w_960/v1778815837/gh_people/gh_betty_dumaine_1970s.jpg"
-          alt="Betty Dumaine with Toddy Hunter, 1970s -- steward of Garran Hill 1959 to 1984">
-      </div>
-    </div>
-  </div>
+  <p class="lede">Walter Hines Page was born on August 15, 1855, in the Wake County settlement that became Cary, North Carolina.<sup><a href="#src-5">5</a></sup> He studied at Trinity College, at Randolph-Macon, and at Johns Hopkins, where in 1876 he was one of the twenty-one founding students of America's first graduate school.<sup><a href="#src-5">5</a></sup></p>
+  <p>His career ran through the center of American letters. He founded the State Chronicle in Raleigh in 1883, edited The Forum and then The Atlantic Monthly, and in 1899 co-founded the publishing house Doubleday, Page &amp; Company with Frank N. Doubleday, where he published Theodore Dreiser, Booker T. Washington, Rudyard Kipling, and Upton Sinclair.<sup><a href="#src-5">5</a></sup> In 1900 he founded the magazine The World's Work and edited it until 1913.<sup><a href="#src-5">5</a></sup></p>
+  <p>In February 1913, Page bought land in Moore County. The Pinehurst Outlook announced it at the time: "Dr. Walter Page, editor of 'World's Work,' has purchased a thousand acre farm . . . upon which he will build a winter home."<sup><a href="#src-1">1</a></sup> He named the place Garran Hill and planned a peach orchard. What survives today, at 4.15 acres, is the original house parcel of that thousand-acre farm.</p>
+  <p>Six weeks later, Woodrow Wilson appointed him United States Ambassador to the Court of St. James's. He sailed for London on the Baltic on May 15, 1913, and held the post through the years the world came apart.<sup><a href="#src-5">5</a></sup></p>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <img loading="lazy" class="wax-seal"
-    src="https://res.cloudinary.com/dghn2xpif/image/upload/v1778826398/gh_key/gh_crest_gloss_v2.png"
-    alt="Garran Hill">
-  <p class="footer-text">
-    Garran Hill &middot; 200 Hollycrest Drive &middot; Pinehurst, NC 28374<br>
-    <a href="/">Return to the estate</a> &nbsp;&middot;&nbsp; Pines Sotheby&rsquo;s International Realty &middot; Rachel Hernandez
+<div class="act-divider"></div>
+
+<!-- ACT III · BUILT FROM LONDON -->
+<section class="act" id="built-from-london">
+  <span class="act-eyebrow">III · The House</span>
+  <h2>Built from London: the Pinehurst Company, J. R. McQueen, and a Boston plan</h2>
+  <p class="lede">Page directed the creation of Garran Hill from three thousand miles away. His son Ralph W. Page supervised construction on the ground, working from plans drawn by a Boston architectural firm.<sup><a href="#src-6">6</a></sup></p>
+  <p>The builders are a matter of newspaper record. In November 1916 the Pinehurst Outlook reported the Page house under construction by "Mr. Tufts' men under the supervision of Mr. J. R. McQueen."<sup><a href="#src-2">2</a></sup> The National Historic Landmark nomination for Pinehurst corroborates it, describing the Pinehurst Company's crew of carpenters and masons under McQueen erecting the house for Walter Hines Page.<sup><a href="#src-8">8</a></sup> By 1916, "Mr. Tufts" meant Leonard Tufts, son of the founder. The same organization that built the village built this house.</p>
+  <p>The house was finished in 1916: Neo-Georgian, in rare brick laid in Flemish bond above a water table, with the name set at the threshold. GARRAN HILL · 1916.</p>
+  <p>From the embassy, Page wrote home about it constantly. Not about diplomacy. About the farm.</p>
+  <blockquote>
+    <p>"Build the farm, therefore; and let me hear at every stage of that happy game."</p>
+    <cite>Walter Hines Page to Ralph W. Page, March 1918 · The Life and Letters of Walter H. Page, Vol. II<sup><a href="#src-4">4</a></sup></cite>
+  </blockquote>
+  <p>His letters from 1918 lay out a complete country estate in words: asparagus and sweet corn, figs and pecans, scuppernongs and strawberries, and above all the peach orchard.<sup><a href="#src-4">4</a></sup> "The farm &mdash; the farm &mdash; the farm," he wrote. It appears in letter after letter.<sup><a href="#src-4">4</a></sup> By April 1919 the orchard was real: the Outlook reported the Garran Hill rail siding preparing to ship fifteen thousand crates of Elberta and Georgia Belle peaches, with fifty thousand trees in bloom.<sup><a href="#src-3">3</a></sup></p>
+</section>
+
+<div class="act-divider"></div>
+
+<!-- ACT IV · THE RETURN -->
+<section class="act" id="the-return">
+  <span class="act-eyebrow">IV · The Return</span>
+  <h2>December 1918</h2>
+
+  <figure>
+    <img src="/history/assets/walter-page-plymouth-1917-loc-bain.jpg" alt="Ambassador Walter Page at Plymouth, England, 1917. Bain News Service. Library of Congress." width="1024" height="739" loading="lazy">
+    <figcaption>Ambassador Page at Plymouth, England, 1917. Bain News Service.<br>Library of Congress, Prints &amp; Photographs Division. No known restrictions on publication.<sup><a href="#src-11">11</a></sup></figcaption>
+  </figure>
+
+  <p class="lede">The war broke his health. Page resigned the embassy in August 1918 and left London that October, gravely ill.<sup><a href="#src-5">5</a></sup> In December he came home to North Carolina by private railroad car. He was carried from the train at Aberdeen station, the town his father founded, and greeted his brother Frank with the last words anyone recorded of him:</p>
+  <blockquote>
+    <p>"Well, Frank, I did get here after all, didn't I?"</p>
+    <cite>Aberdeen station · December 1918<sup><a href="#src-5">5</a></sup></cite>
+  </blockquote>
+  <p>He did not stay at Garran Hill. Ralph had made the farm his residence, and Walter and his wife Alice took Currituck Cottage in Pinehurst.<sup><a href="#src-5">5</a></sup> He died there on December 21, 1918, and was buried at Old Bethesda Cemetery in Aberdeen.<sup><a href="#src-5">5</a></sup> He never spent a night in the house he had named.</p>
+  <p>In 1921, Great Britain placed a memorial to him in Westminster Abbey, one of very few Americans so honored. The inscription reads:</p>
+  <blockquote>
+    <p>"The friend of Britain in her sorest need."</p>
+    <cite>Westminster Abbey · Inscribed 1921<sup><a href="#src-12">12</a></sup></cite>
+  </blockquote>
+  <p>His papers rest at Houghton Library, Harvard University, and in the collections of the Library of Congress.<sup><a href="#src-14">14</a></sup> His portrait was painted by Philip de László.<sup><a href="#src-13">13</a></sup></p>
+</section>
+
+<div class="act-divider"></div>
+
+<!-- ACT V · THE PAGE YEARS -->
+<section class="act" id="the-page-years">
+  <span class="act-eyebrow">V · The Page Years</span>
+  <h2>Ralph Page and the farm, 1918 to 1940</h2>
+  <p class="lede">Ralph W. Page, who had built the house and laid out its gardens, kept Garran Hill after his father's death. The Village Heritage Foundation records the Page family's ownership running to 1940.<sup><a href="#src-7">7</a></sup> The peach operation itself was merged with a neighboring orchard and sold in January 1920.<sup><a href="#src-3">3</a></sup></p>
+  <p>The record between 1940 and 1959 is thin, and this page does not guess. The deed chain for those years sits in the Moore County Register of Deeds, and the research continues.</p>
+</section>
+
+<div class="act-divider"></div>
+
+<!-- ACT VI · DUMAINE -->
+<section class="act" id="betty-dumaine">
+  <span class="act-eyebrow">VI · The Hollycrest Years</span>
+  <h2>Elizabeth "Betty" Dumaine, 1959 to 1984</h2>
+  <p class="lede">In 1959 the estate was purchased by Elizabeth "Betty" Dumaine of Concord, Massachusetts, daughter of the industrialist Frederic C. Dumaine Sr.<sup><a href="#src-10">10</a></sup> She renamed the property Hollycrest, for the large native hollies at the front of the house. They are still there.<sup><a href="#src-6">6</a></sup></p>
+  <p>She was a horsewoman and a foxhunter. She built stables east of the house, kept kennels for her hounds, and kept peacocks on the grounds.<sup><a href="#src-7">7</a></sup> She planted what still shapes the landscape: the camellia garden at the entry circle, the magnolias and dogwoods, and three American plane trees set out in 1959.<sup><a href="#src-6">6</a></sup></p>
+  <p>Her closest friendship had begun forty years earlier. In 1919, at the Edith Johnson School in Cambridge, Massachusetts, her roommate was a young Thai student named Sangwan Chukramol.<sup><a href="#src-10">10</a></sup> Sangwan married Prince Mahidol of Songkla and became Srinagarindra, the Princess Mother of Thailand, mother of two kings: Ananda Mahidol, Rama VIII, and Bhumibol Adulyadej, Rama IX.<sup><a href="#src-9">9</a></sup></p>
+  <p>The friendship held for life. The Princess Mother visited Betty at the Dumaine family home in Concord, and in 1964 invited her to travel through Northern Thailand visiting border patrol police communities.<sup><a href="#src-10">10</a></sup> Betty ran the American fundraising arm of the Princess Mother's charities from Pinehurst, raising money to build schools in Northern Thailand.<sup><a href="#src-9">9</a></sup> In 1972 she co-authored a biography, The Princess Mother, and in 1980 she established The Princess Mother's Charities Fund of Thailand, a foundation still operating today.<sup><a href="#src-10">10</a></sup> For her service, the Thai royal family bestowed on her the title Thanpuying. The closest English equivalent is Lady.<sup><a href="#src-9">9</a></sup></p>
+  <p>She held Hollycrest for twenty-five years, until her death in 1984 at the age of eighty-four.<sup><a href="#src-10">10</a></sup></p>
+</section>
+
+<div class="act-divider"></div>
+
+<!-- ACT VII · BLUE FOX -->
+<section class="act" id="blue-fox">
+  <span class="act-eyebrow">VII · Blue Fox</span>
+  <h2>Blue Fox at Hollycrest</h2>
+  <p class="lede">Betty Dumaine's favorite horse was an Irish Hunter named Blue Fox. When he died she buried him at the back of the property, in a grave ten feet by sixteen, covered with slate and marked in brass.<sup><a href="#src-6">6</a></sup> A four-foot statue of a blue fox stood beside the grave for years; the statue was lost after her death, but the grave remains.<sup><a href="#src-6">6</a></sup></p>
+  <div class="marker">
+    <p>My Irish Hunter<br>Blue Fox<br>1946&ndash;1965</p>
+    <p class="marker-note">The brass marker at the grave, as it reads today. Printed accounts give his death as 1969;<sup><a href="#src-6">6</a></sup> the marker is reproduced here exactly.</p>
+  </div>
+  <p>Someone still puts flowers there.</p>
+</section>
+
+<div class="act-divider"></div>
+
+<!-- ACT VIII · QUIET YEARS -->
+<section class="act" id="quiet-years">
+  <span class="act-eyebrow">VIII · The Quiet Years</span>
+  <h2>1984 to 1998</h2>
+  <p class="lede">Betty Dumaine left the property to Duke University. The university advertised it in Atlanta and New York and found no buyer.<sup><a href="#src-6">6</a></sup> A subdivision of the surrounding acreage was attempted in 1985; the tennis courts and the in-ground pool date from that era.<sup><a href="#src-6">6</a></sup> In 1990 the real estate developer Robert Kramer purchased the property, but died before any development began.<sup><a href="#src-6">6</a></sup></p>
+  <p>The house sat largely vacant for some fourteen years. It waited.</p>
+</section>
+
+<div class="act-divider"></div>
+
+<!-- ACT IX · THE RESTORATION -->
+<section class="act" id="the-restoration">
+  <span class="act-eyebrow">IX · The Restoration</span>
+  <h2>1999 to 2001: taken down to the studs, brought back to 1916</h2>
+  <p class="lede">In 1998 the current stewards purchased the house and its surviving acres.<sup><a href="#src-6">6</a></sup> They engaged Thomas O'Shea, an architect from Durham, to re-create architectural drawings of the house as it stood and to design its renewal.<sup><a href="#src-6">6</a></sup> In 1999 the general contractor Dennis Dunagan began a three-year project, and the house was lived in again by late 2001.<sup><a href="#src-6">6</a></sup></p>
+  <p>The work was comprehensive. The interior was opened to the studs. All plumbing and all electrical systems were replaced. Every window was rebuilt to the original 1916 proportions by Marvin. Matching the rare Flemish-bond brickwork took three months of sourcing on its own.<sup><a href="#src-15">15</a></sup></p>
+  <p>What was original stayed original: the dining room frontispiece, the leaded glass sidelights and the fanlight over the door, all seven fireplace mantels, the oak floors, the solid-wood doors with their brass key plates, and the keys themselves.<sup><a href="#src-6">6</a></sup> The kitchen is the one deliberate exception. It is not original to 1916. It is original to the restoration.</p>
+  <p>Fifteen architectural drawing sheets from the restoration, dated January 2000, document every decision. They transfer with the property.</p>
+  <p>In 2020 the Village Heritage Foundation honored the house with a historic plaque, describing its stewards as historians with a great appreciation for detail.<sup><a href="#src-7">7</a></sup> The municipal record keeps the later name: the surrounding neighborhood is called Hollycrest, after the house. The house itself has answered to Garran Hill since the day the name was set in its threshold.</p>
+</section>
+
+<p class="whisper">The house was here before you arrived. It will be here after.</p>
+
+<!-- SOURCES -->
+<section id="sources">
+  <h2>Sources &amp; Citations</h2>
+  <p class="sources-intro">This history is built only from the record. Primary sources first, then academic and local scholarship.</p>
+  <ol class="source-list">
+    <li id="src-1">The Pinehurst Outlook, February 1913. Purchase announcement: "Dr. Walter Page, editor of 'World's Work,' has purchased a thousand acre farm . . . upon which he will build a winter home." Quoted in Bill Case, PineStraw Magazine, 2019 (source 5). Historical issues digitized at <a href="https://newspapers.digitalnc.org/lccn/sn91068725/" rel="noopener">DigitalNC</a>.</li>
+    <li id="src-2">The Pinehurst Outlook, November 25, 1916. The Page house built by "Mr. Tufts' men under the supervision of Mr. J. R. McQueen." Original scan: <a href="https://newspapers.digitalnc.org/lccn/sn91068725/1916-11-25/ed-1/seq-3.pdf" rel="noopener">DigitalNC, November 25, 1916, p. 3</a>.</li>
+    <li id="src-3">The Pinehurst Outlook, April 5, 1919 (Garran Hill Siding and the peach shipment, <a href="https://newspapers.digitalnc.org/lccn/sn91068725/1919-04-05/ed-1/seq-8.pdf" rel="noopener">original scan</a>) and January 28, 1920 (sale of the combined orchards), DigitalNC.</li>
+    <li id="src-4">Burton J. Hendrick, <em>The Life and Letters of Walter H. Page</em>, 3 vols., Doubleday, Page &amp; Company, 1922&ndash;1925. Public domain; full text at <a href="https://www.gutenberg.org/ebooks/17018" rel="noopener">Project Gutenberg</a>. The 1918 letters to Ralph W. Page appear in Vol. II.</li>
+    <li id="src-5">Bill Case, <a href="https://pinestrawmag.com/a-page-out-of-history/" rel="noopener">"A Page Out of History: The Greatness of Walter Hines Page,"</a> PineStraw Magazine, September 2019.</li>
+    <li id="src-6">Deborah Salomon, <a href="https://pinestrawmag.com/story-of-a-house-4/" rel="noopener">"Story of a House: Minding Their Manors,"</a> PineStraw Magazine, October 2019. Used here for the house history, the Dumaine era, Blue Fox, and the restoration; where its dates conflict with the official foundation record (source 10), the foundation record is followed.</li>
+    <li id="src-7">Village Heritage Foundation, Pinehurst, <a href="https://villageheritagefoundation.org/four-village-landmarks-honored/" rel="noopener">"Four Village Landmarks Honored,"</a> 2020, and the <a href="https://villageheritagefoundation.org/projects/pinehurst-historic-plaque-program/" rel="noopener">Pinehurst Historic Plaque Program</a>.</li>
+    <li id="src-8">National Historic Landmark nomination for Pinehurst, North Carolina, National Park Service. Records the Pinehurst Company crew of carpenters and masons under J. R. McQueen erecting the house for Walter Hines Page.</li>
+    <li id="src-9">"Mae Fah Luang: Thailand's Princess Mother and the Border Patrol Police during the Cold War," <a href="https://www.cambridge.org/core/journals/journal-of-southeast-asian-studies/article/mae-fah-luang-thailands-princess-mother-and-the-border-patrol-police-during-the-cold-war/C36065FCC828E2792A9F47AA932EDC90" rel="noopener">Journal of Southeast Asian Studies, Cambridge University Press</a>.</li>
+    <li id="src-10">The Princess Mother's Charities Fund of Thailand, official biography of Betty Dumaine: <a href="https://tpmcf.org/history/bettydumaine/" rel="noopener">tpmcf.org/history/bettydumaine</a>.</li>
+    <li id="src-11">Library of Congress, Prints &amp; Photographs Division, George Grantham Bain Collection. <a href="https://www.loc.gov/item/2014697865/" rel="noopener">"Walter Page"</a> and <a href="https://www.loc.gov/item/2014705408/" rel="noopener">"Walter Page at Plymouth," 1917</a>. No known restrictions on publication.</li>
+    <li id="src-12">Westminster Abbey, London. Memorial to Walter Hines Page, installed 1921, inscribed "The friend of Britain in her sorest need."</li>
+    <li id="src-13">Philip de László, portraits of Walter Hines Page: the 1917 London portrait, catalogue raisonné no. 6498 (<a href="https://www.delaszlocatalogueraisonne.com" rel="noopener">de László Catalogue Raisonné</a>), and the portrait held by the North Carolina Museum of History, accession H.1924.7.1.</li>
+    <li id="src-14">Walter Hines Page Papers, Houghton Library, Harvard University (MS Am 1090.2&ndash;1090.13): diaries, correspondence, speeches, and scrapbooks, 1885&ndash;1918. Finding aid at <a href="https://hollisarchives.lib.harvard.edu" rel="noopener">HOLLIS for Archival Discovery</a>. Related correspondence in the collections of the <a href="https://findingaids.loc.gov/agents/people/39603" rel="noopener">Library of Congress</a>. Biographical entries: <a href="https://www.ncpedia.org/biography/page-walter-hines" rel="noopener">NCpedia</a> and <a href="https://www.dncr.nc.gov/blog/2016/12/21/walter-hines-page-cary-editor-and-ambassador-great-britain" rel="noopener">NC Department of Natural and Cultural Resources</a>.</li>
+    <li id="src-15">Hive MLS listing no. 100576320, Pines Sotheby's International Realty, 2026. Listing record for restoration scope, brick curation, and present-day facts of record.</li>
+  </ol>
+</section>
+
+<!-- CLOSE -->
+<div class="close">
+  <p class="close-line">The house has held its name for one hundred and ten years.<br>It is offered now for the first time.</p>
+  <a class="cta" href="mailto:rachelhernandezrealtor@gmail.com?subject=Private%20Showing%20Request%20%E2%80%94%20Garran%20Hill">Request Private Showing</a>
+  <p class="footer-line">
+    Garran Hill · 200 Hollycrest Drive · Pinehurst, NC 28374<br>
+    <a href="/">Return to the estate</a> &nbsp;·&nbsp; Pines Sotheby's International Realty · Rachel Hernandez
   </p>
-</footer>
+</div>
 
 </body>
 </html>
