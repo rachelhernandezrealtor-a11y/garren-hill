@@ -95,6 +95,14 @@ section{position:relative;}
 .breath{min-height:90svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:3rem 2rem;}
 .breath p{font-size:var(--text-md);font-style:italic;color:rgba(245,240,232,0.55);max-width:30ch;line-height:1.7;}
 
+/* ===== 7: the passage (connection fade) ===== */
+.passage-stage{position:relative;max-width:900px;margin:0 auto;padding:0 clamp(1.5rem,5vw,4rem);}
+.passage-frame{position:relative;aspect-ratio:3/2;overflow:hidden;}
+.passage-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 2.2s var(--ease);}
+.passage-frame .through{opacity:0;}
+.passage-frame.beyond .through{opacity:1;}
+.passage-cap{margin-top:1rem;font-size:var(--text-sm);font-style:italic;color:rgba(245,240,232,0.55);text-align:center;transition:opacity 0.8s var(--ease);}
+
 /* ===== verdict footer ===== */
 .verdict{min-height:70svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 2rem;}
 .verdict h2{font-size:var(--text-lg);font-weight:300;margin-bottom:1rem;}
@@ -211,6 +219,19 @@ section{position:relative;}
   <p>The house was here before you arrived. It will be here after.</p>
 </section>
 
+<!-- ═══ MOVE 7 ═══ -->
+<section class="movecard">
+  <span class="num">Move Seven · Rachel's</span>
+  <h2>The passage. <em>The doors are named, so the doors open. Through, and back.</em></h2>
+</section>
+<section class="passage-stage" id="passage">
+  <div class="passage-frame" id="pframe">
+    <img class="room" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/022-drawing-room-french-doors.jpg" alt="Drawing room, French doors">
+    <img class="through" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/023-outdoor-terrace.jpg" alt="The brick terrace beyond the doors" loading="lazy">
+  </div>
+  <p class="passage-cap" id="pcap">French doors to the terrace.</p>
+</section>
+
 <section class="verdict">
   <span class="eyebrow">The Verdict</span>
   <h2>Which of these belongs to Garran Hill?</h2>
@@ -243,6 +264,23 @@ addEventListener('scroll', () => {
   const step = Math.floor(p * lines.length);
   lines.forEach((l,i) => l.classList.toggle('in', i === step));
 }, {passive:true});
+
+// the passage: room -> through the doors -> back, on a quiet cycle while in view
+const pframe = document.getElementById('pframe'), pcap = document.getElementById('pcap');
+let ptimer = null;
+const pio = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting && !ptimer) {
+    let beyond = false;
+    const cycle = () => {
+      beyond = !beyond;
+      pframe.classList.toggle('beyond', beyond);
+      pcap.textContent = beyond ? 'The terrace. Brick underfoot, garden beyond.' : 'French doors to the terrace.';
+    };
+    ptimer = setInterval(cycle, 3600);
+    setTimeout(cycle, 1400);
+  } else if (!e.isIntersecting && ptimer) { clearInterval(ptimer); ptimer = null; }
+}), {threshold:0.5});
+pio.observe(pframe);
 
 // viewing room
 const vroom = document.getElementById('vroom'), vimg = document.getElementById('vimg'), vcap = document.getElementById('vcap');
