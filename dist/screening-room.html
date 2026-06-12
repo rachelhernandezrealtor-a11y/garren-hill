@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Garran Hill · The Screening Room</title>
+<link rel="preconnect" href="https://res.cloudinary.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dark:#0a0a0a; --gold:#C9A96E; --cream:#F5F0E8;
+  --text-xs: clamp(0.65rem, 0.8vw, 0.75rem);
+  --text-sm: clamp(0.85rem, 1.1vw, 1.0rem);
+  --text-base: clamp(1.05rem, 1.2vw, 1.18rem);
+  --text-md: clamp(1.3rem, 2vw, 1.7rem);
+  --text-lg: clamp(1.9rem, 3.2vw, 3.0rem);
+  --text-xl: clamp(2.8rem, 5.5vw, 5.2rem);
+  --ease: cubic-bezier(0.16,1,0.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--dark);color:var(--cream);font-family:'Cormorant Garamond',serif;font-weight:300;overflow-x:hidden;}
+img{display:block;}
+.eyebrow{font-family:'Instrument Sans',sans-serif;font-size:var(--text-xs);letter-spacing:0.3em;text-transform:uppercase;color:rgba(201,169,110,0.75);}
+.note{font-size:var(--text-sm);color:rgba(245,240,232,0.45);font-style:italic;max-width:52ch;margin:1.2rem auto 0;line-height:1.6;}
+section{position:relative;}
+
+/* ===== intro ===== */
+.intro{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;}
+.intro h1{font-size:var(--text-xl);font-weight:300;margin:1.4rem 0 0.6rem;}
+.intro p{font-size:var(--text-base);color:rgba(245,240,232,0.7);max-width:46ch;line-height:1.7;}
+.rule{width:60px;height:1px;background:rgba(201,169,110,0.5);margin:2rem auto;}
+.scrollcue{position:absolute;bottom:6vh;left:50%;transform:translateX(-50%);font-family:'Instrument Sans',sans-serif;font-size:var(--text-xs);letter-spacing:0.3em;color:rgba(245,240,232,0.4);text-transform:uppercase;animation:cue 2.6s var(--ease) infinite;}
+@keyframes cue{0%,100%{opacity:0.35;transform:translateX(-50%) translateY(0)}50%{opacity:0.85;transform:translateX(-50%) translateY(8px)}}
+
+/* ===== move label cards ===== */
+.movecard{min-height:60svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem 2rem;}
+.movecard .num{font-size:var(--text-xs);font-family:'Instrument Sans',sans-serif;letter-spacing:0.3em;color:rgba(201,169,110,0.5);margin-bottom:1.2rem;}
+.movecard h2{font-size:var(--text-lg);font-weight:300;max-width:18ch;}
+.movecard h2 em{font-style:italic;}
+
+/* ===== 1: diptych reveal ===== */
+.diptych{display:flex;gap:clamp(1rem,3vw,3rem);padding:8vh clamp(1.5rem,6vw,6rem);align-items:flex-start;justify-content:center;}
+.diptych figure{flex:1;max-width:560px;}
+.diptych figure:nth-child(2){margin-top:clamp(3rem,9vh,8rem);}
+.diptych img{width:100%;height:auto;}
+.diptych figcaption{font-size:var(--text-sm);color:rgba(245,240,232,0.55);font-style:italic;margin-top:0.9rem;letter-spacing:0.05em;}
+.fadeup{opacity:0;transform:translateY(46px);transition:opacity 1.4s var(--ease),transform 1.4s var(--ease);}
+.fadeup.in{opacity:1;transform:none;}
+.fadeup.d2{transition-delay:0.35s;}
+
+/* ===== 2: scroll crossfade (sepia -> color) ===== */
+.xfade-wrap{height:260svh;}
+.xfade-sticky{position:sticky;top:0;height:100svh;overflow:hidden;}
+.xfade-sticky img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.xfade-sticky .after{opacity:0;}
+.xfade-cap{position:absolute;bottom:8vh;left:0;right:0;text-align:center;z-index:5;}
+.xfade-cap .line{font-size:var(--text-md);font-style:italic;color:var(--cream);text-shadow:0 2px 18px rgba(0,0,0,0.8);}
+@supports (animation-timeline: view()) {
+  .xfade-wrap .after{animation:xf linear both;animation-timeline:view();animation-range: entry 60% exit 40%;}
+  @keyframes xf{from{opacity:0}to{opacity:1}}
+}
+
+/* ===== 3: film strip ===== */
+.strip-outer{padding:6vh 0;}
+.strip{display:flex;gap:clamp(1rem,2.5vw,2rem);overflow-x:auto;scroll-snap-type:x mandatory;padding:2rem clamp(1.5rem,8vw,8rem);scrollbar-width:none;}
+.strip::-webkit-scrollbar{display:none;}
+.strip figure{flex:0 0 min(72vw,760px);scroll-snap-align:center;}
+.strip img{width:100%;aspect-ratio:3/2;object-fit:cover;}
+.strip figcaption{font-size:var(--text-sm);font-style:italic;color:rgba(245,240,232,0.55);margin-top:0.8rem;}
+.strip-hint{text-align:center;font-family:'Instrument Sans',sans-serif;font-size:var(--text-xs);letter-spacing:0.3em;text-transform:uppercase;color:rgba(201,169,110,0.5);margin-top:1.5rem;}
+
+/* ===== 4: viewing room (lightbox) ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(0.8rem,2vw,1.6rem);padding:6vh clamp(1.5rem,6vw,6rem);}
+.grid img{width:100%;aspect-ratio:4/3;object-fit:cover;cursor:pointer;transition:opacity 0.6s var(--ease);}
+.grid img:hover{opacity:0.82;}
+#vroom{position:fixed;inset:0;background:rgba(5,5,5,0.96);z-index:100;display:none;align-items:center;justify-content:center;flex-direction:column;padding:4vh 4vw;}
+#vroom.open{display:flex;}
+#vroom img{max-width:92vw;max-height:78vh;object-fit:contain;}
+#vroom .vcap{margin-top:1.4rem;font-size:var(--text-sm);font-style:italic;color:rgba(245,240,232,0.65);text-align:center;}
+#vroom .vclose{position:absolute;top:3vh;right:4vw;font-family:'Instrument Sans',sans-serif;font-size:var(--text-xs);letter-spacing:0.3em;color:rgba(245,240,232,0.6);cursor:pointer;text-transform:uppercase;background:none;border:none;}
+#vroom .varrow{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(201,169,110,0.4);color:var(--gold);width:52px;height:52px;cursor:pointer;font-size:1.1rem;font-family:'Cormorant Garamond',serif;}
+#vroom .vprev{left:3vw;} #vroom .vnext{right:3vw;}
+
+/* ===== 5: held image story ===== */
+.held-wrap{height:300svh;}
+.held-sticky{position:sticky;top:0;height:100svh;overflow:hidden;}
+.held-sticky img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:sepia(0.25) contrast(1.04) brightness(0.62);}
+.held-lines{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.held-line{position:absolute;max-width:34ch;text-align:center;font-size:var(--text-md);font-style:italic;line-height:1.6;color:var(--cream);text-shadow:0 2px 24px rgba(0,0,0,0.9);opacity:0;transform:translateY(30px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease);}
+.held-line.in{opacity:1;transform:none;}
+.held-line small{display:block;font-style:normal;font-family:'Instrument Sans',sans-serif;font-size:var(--text-xs);letter-spacing:0.25em;color:rgba(201,169,110,0.8);margin-top:1.2rem;text-transform:uppercase;}
+
+/* ===== 6: the breath ===== */
+.breath{min-height:90svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:3rem 2rem;}
+.breath p{font-size:var(--text-md);font-style:italic;color:rgba(245,240,232,0.55);max-width:30ch;line-height:1.7;}
+
+/* ===== verdict footer ===== */
+.verdict{min-height:70svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 2rem;}
+.verdict h2{font-size:var(--text-lg);font-weight:300;margin-bottom:1rem;}
+.verdict p{font-size:var(--text-base);color:rgba(245,240,232,0.65);max-width:44ch;line-height:1.7;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important;transition:none !important;}
+  .fadeup,.held-line{opacity:1;transform:none;}
+  .xfade-sticky .after{opacity:1;}
+}
+@media (max-width:760px){
+  .diptych{flex-direction:column;align-items:center;}
+  .diptych figure:nth-child(2){margin-top:0;}
+}
+</style>
+</head>
+<body>
+
+<section class="intro">
+  <span class="eyebrow">Rachel Studio · Private</span>
+  <h1>The Screening Room</h1>
+  <div class="rule"></div>
+  <p>Six moves for the new Garran Hill. Real photographs, real scroll. Feel each one. Keep what deserves the house.</p>
+  <span class="scrollcue">Scroll</span>
+</section>
+
+<!-- ═══ MOVE 1 ═══ -->
+<section class="movecard">
+  <span class="num">Move One</span>
+  <h2>The diptych reveal. <em>Two frames, offset, arriving like a turned page.</em></h2>
+</section>
+<section class="diptych">
+  <figure class="fadeup">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/019-drawing-room.jpg" alt="Drawing room, fireplace" loading="lazy">
+    <figcaption>The drawing room. Forty feet, two seating areas.</figcaption>
+  </figure>
+  <figure class="fadeup d2">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/022-drawing-room-french-doors.jpg" alt="Drawing room French doors" loading="lazy">
+    <figcaption>French doors to the terrace.</figcaption>
+  </figure>
+</section>
+
+<!-- ═══ MOVE 2 ═══ -->
+<section class="movecard">
+  <span class="num">Move Two</span>
+  <h2>The dissolve. <em>1916 becomes now, at the pace of your own hand.</em></h2>
+</section>
+<div class="xfade-wrap">
+  <div class="xfade-sticky">
+    <img class="before" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/002-historic-garran-hill.jpg" alt="Garran Hill gate, historic sepia">
+    <img class="after" id="xfAfter" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/gh_photos/gh_gate_color.jpg" alt="Garran Hill gate, today">
+    <div class="xfade-cap"><span class="line">In 1916, those were saplings. Now they are a forest.</span></div>
+  </div>
+</div>
+
+<!-- ═══ MOVE 3 ═══ -->
+<section class="movecard">
+  <span class="num">Move Three</span>
+  <h2>The film strip. <em>A room told in frames. The page pauses, the kitchen unfolds.</em></h2>
+</section>
+<section class="strip-outer">
+  <div class="strip">
+    <figure><img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/031-kitchen.jpg" alt="Kitchen wide" loading="lazy"><figcaption>The island is black against white cabinetry.</figcaption></figure>
+    <figure><img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/038-wall-of-windows-kitchen.jpg" alt="Wall of windows" loading="lazy"><figcaption>A wall of windows pulling the garden inside.</figcaption></figure>
+    <figure><img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/037-farm-sink.jpg" alt="Farm sink" loading="lazy"><figcaption>Two farm sinks. One cooking wall.</figcaption></figure>
+    <figure><img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/043-breakfast-room.jpg" alt="Breakfast room" loading="lazy"><figcaption>The breakfast room takes the morning.</figcaption></figure>
+  </div>
+  <p class="strip-hint">Drag · Swipe · Arrow</p>
+</section>
+
+<!-- ═══ MOVE 4 ═══ -->
+<section class="movecard">
+  <span class="num">Move Four</span>
+  <h2>The viewing room. <em>Tap a photograph. The page falls away.</em></h2>
+</section>
+<section class="grid" id="vgrid">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/058-library.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/058-library.jpg" data-cap="The library. Three walls, floor to ceiling." alt="Library" loading="lazy">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/067-delft-sitting-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/067-delft-sitting-room.jpg" data-cap="Blue-and-white tile, firelight, and a spiral stair." alt="Delft sitting room" loading="lazy">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/013-entry-hall.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/013-entry-hall.jpg" data-cap="The entry hall. The house announces itself." alt="Entry hall" loading="lazy">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/024-dining-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/024-dining-room.jpg" data-cap="The dining room. The original frontispiece." alt="Dining room" loading="lazy">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/051-powder-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/051-powder-room.jpg" data-cap="The powder room. The jewel box." alt="Powder room" loading="lazy">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/009-portico.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/009-portico.jpg" data-cap="The portico. Period brick, three months in the finding." alt="Portico" loading="lazy">
+</section>
+<div id="vroom" role="dialog" aria-modal="true">
+  <button class="vclose">Close</button>
+  <button class="varrow vprev" aria-label="Previous">&#8592;</button>
+  <img id="vimg" src="" alt="">
+  <p class="vcap" id="vcap"></p>
+  <button class="varrow vnext" aria-label="Next">&#8594;</button>
+</div>
+
+<!-- ═══ MOVE 5 ═══ -->
+<section class="movecard">
+  <span class="num">Move Five</span>
+  <h2>The held frame. <em>One photograph stays. The years pass across it.</em></h2>
+</section>
+<div class="held-wrap" id="held">
+  <div class="held-sticky">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/people/walter-hines-page.jpg" alt="Walter Hines Page">
+    <div class="held-lines">
+      <p class="held-line" data-step="0">He bought the land in February 1913. Six weeks later, Wilson sent him to London.<small>Walter Hines Page · 1855–1918</small></p>
+      <p class="held-line" data-step="1">The house rose in 1916 while he served at the Court of St James's. He wrote home about the farm, letter after letter.</p>
+      <p class="held-line" data-step="2">He named it Garran Hill. He never spent a night here.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MOVE 6 ═══ -->
+<section class="movecard">
+  <span class="num">Move Six</span>
+  <h2>The breath. <em>Between chapters, the page goes quiet.</em></h2>
+</section>
+<section class="breath">
+  <p>The house was here before you arrived. It will be here after.</p>
+</section>
+
+<section class="verdict">
+  <span class="eyebrow">The Verdict</span>
+  <h2>Which of these belongs to Garran Hill?</h2>
+  <p>Tell Coco which moves stay, which go, and which need to be turned up or down. The kit is built from your answers.</p>
+</section>
+
+<script>
+// fade-up reveals
+const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); }), {threshold:0.25});
+document.querySelectorAll('.fadeup').forEach(el => io.observe(el));
+
+// crossfade fallback when scroll-driven animations unsupported
+if (!CSS.supports('animation-timeline: view()')) {
+  const wrap = document.querySelector('.xfade-wrap'), after = document.getElementById('xfAfter');
+  addEventListener('scroll', () => {
+    const r = wrap.getBoundingClientRect();
+    const total = r.height - innerHeight;
+    const p = Math.min(1, Math.max(0, -r.top / total));
+    after.style.opacity = p;
+  }, {passive:true});
+}
+
+// held-frame lines
+const heldWrap = document.getElementById('held');
+const lines = [...document.querySelectorAll('.held-line')];
+addEventListener('scroll', () => {
+  const r = heldWrap.getBoundingClientRect();
+  const total = r.height - innerHeight;
+  const p = Math.min(0.999, Math.max(0, -r.top / total));
+  const step = Math.floor(p * lines.length);
+  lines.forEach((l,i) => l.classList.toggle('in', i === step));
+}, {passive:true});
+
+// viewing room
+const vroom = document.getElementById('vroom'), vimg = document.getElementById('vimg'), vcap = document.getElementById('vcap');
+const shots = [...document.querySelectorAll('#vgrid img')];
+let cur = 0;
+function show(i){ cur = (i + shots.length) % shots.length; vimg.src = shots[cur].dataset.full; vcap.textContent = shots[cur].dataset.cap; }
+shots.forEach((s,i) => s.addEventListener('click', () => { show(i); vroom.classList.add('open'); document.body.style.overflow='hidden'; }));
+function close(){ vroom.classList.remove('open'); document.body.style.overflow=''; }
+vroom.querySelector('.vclose').addEventListener('click', close);
+vroom.querySelector('.vprev').addEventListener('click', () => show(cur-1));
+vroom.querySelector('.vnext').addEventListener('click', () => show(cur+1));
+addEventListener('keydown', e => { if(!vroom.classList.contains('open')) return;
+  if(e.key==='Escape') close(); if(e.key==='ArrowLeft') show(cur-1); if(e.key==='ArrowRight') show(cur+1); });
+vroom.addEventListener('click', e => { if(e.target===vroom) close(); });
+</script>
+</body>
+</html>
