@@ -1,0 +1,973 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Garran Hill. 200 Hollycrest Drive, Pinehurst, North Carolina. $4,250,000.</title>
+  <meta name="description" content="Garran Hill. A 1916 estate in Pinehurst, North Carolina. Built for coming back. Four point one five acres, the last of the original parcel. Offered now." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta property="og:title" content="Garran Hill" />
+  <meta property="og:description" content="A 1916 estate in Pinehurst, North Carolina. Built for coming back. The last of the original parcel." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&family=Mrs+Saint+Delafield&display=swap" />
+  <link rel="canonical" href="https://garren-hill.pages.dev/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SingleFamilyResidence",
+    "name": "Garran Hill",
+    "description": "A 1916 Neo-Georgian estate in Pinehurst, North Carolina. Restored 1999 to 2001. The last of the original parcel.",
+    "url": "https://garren-hill.pages.dev/",
+    "image": "https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/001-front-exterior.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "200 Hollycrest Drive",
+      "addressLocality": "Pinehurst",
+      "addressRegion": "NC",
+      "postalCode": "28374",
+      "addressCountry": "US"
+    },
+    "geo": {"@type":"GeoCoordinates","latitude":35.1954,"longitude":-79.4695},
+    "numberOfBedrooms": 4,
+    "numberOfBathroomsTotal": 6,
+    "floorSize": {"@type":"QuantitativeValue","value":6320,"unitCode":"FTK"},
+    "lotSize": {"@type":"QuantitativeValue","value":4.15,"unitCode":"ACR"},
+    "yearBuilt": 1916,
+    "architecturalStyle": "Georgian Revival",
+    "offers": {
+      "@type": "Offer",
+      "price": "4250000",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+<style>
+
+:root{
+  --ink:#0a0a0a;
+  --ink-2:#111111;
+  --ink-3:#161616;
+  --gold:#C9A96E;
+  --gold-soft:#b8965a;
+  --cream:#F5F0E8;
+  --cream-2:#e8e0d0;
+  --rule:rgba(201,169,110,.25);
+  --rule-soft:rgba(245,240,232,.10);
+  --text-xs:clamp(0.65rem,0.8vw,0.75rem);
+  --text-sm:clamp(0.85rem,1.1vw,1.0rem);
+  --text-base:clamp(1.05rem,1.2vw,1.18rem);
+  --text-md:clamp(1.3rem,2vw,1.7rem);
+  --text-lg:clamp(1.9rem,3.2vw,3.0rem);
+  --text-xl:clamp(2.8rem,5.5vw,5.2rem);
+  --text-hero:clamp(6rem,19vw,17rem);
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --pad-x:clamp(1.5rem,4vw,4rem);
+  --narrow:62ch;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--ink);color:var(--cream);-webkit-font-smoothing:antialiased;}
+html{scroll-behavior:smooth;}
+body{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:var(--text-base);line-height:1.72;overflow-x:hidden;}
+img{max-width:100%;height:auto;display:block;}
+a{color:inherit;text-decoration:none;}
+figure{margin:0;}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0;}
+
+.serif{font-family:'Cormorant Garamond',Georgia,serif;}
+.sans{font-family:'Instrument Sans',system-ui,sans-serif;}
+.script{font-family:'Mrs Saint Delafield',cursive;}
+
+.eyebrow{font-family:'Instrument Sans',system-ui,sans-serif;font-size:var(--text-xs);letter-spacing:.3em;text-transform:uppercase;font-weight:400;margin:0;}
+.eyebrow-gold{color:var(--gold);}
+
+.act-inner,.room-text,.ending-prose-inner,.invitation-inner,.breath-inner{width:min(100%, var(--narrow));margin:0 auto;padding:0 var(--pad-x);}
+.narrow{width:min(100%, 56ch);margin:0 auto;padding:0 var(--pad-x);}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;width:100%;overflow:hidden;background:var(--ink);}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-img{width:100%;height:100%;object-fit:cover;filter:brightness(.72) saturate(.95);}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.10) 35%, rgba(10,10,10,.20) 65%, rgba(10,10,10,.85) 100%);z-index:1;}
+
+.topnav{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;padding:1.5rem var(--pad-x);font-family:'Instrument Sans',system-ui,sans-serif;font-size:var(--text-xs);letter-spacing:.25em;text-transform:uppercase;}
+.topnav .brandmark{display:flex;flex-direction:column;align-items:flex-start;line-height:1;}
+.brandmark-script{font-family:'Mrs Saint Delafield',cursive;font-size:1.6rem;letter-spacing:0;text-transform:none;color:var(--cream);}
+.brandmark-est{font-size:.6rem;letter-spacing:.4em;color:var(--gold);margin-top:.25rem;}
+.topnav-links{display:flex;gap:clamp(1.2rem,2.5vw,2.5rem);list-style:none;margin:0;padding:0;}
+.topnav-links a{position:relative;color:var(--cream);transition:color .4s var(--ease);}
+.topnav-links a:hover{color:var(--gold);}
+
+.hero-center{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;padding:8svh var(--pad-x) 0;}
+.hero-address{color:var(--gold);margin:0 0 clamp(1.5rem,3vw,2.5rem);font-size:var(--text-xs);}
+.hero-script{font-family:'Mrs Saint Delafield',cursive;font-weight:400;line-height:.95;margin:0;font-size:var(--text-hero);color:var(--cream);letter-spacing:-.01em;}
+.hero-tagline{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-style:italic;font-size:clamp(1.1rem,1.6vw,1.4rem);color:var(--cream);opacity:.85;margin:clamp(1rem,2vw,1.8rem) 0 0;letter-spacing:.04em;}
+
+.hero-stats{position:relative;z-index:2;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:clamp(.8rem,1.8vw,1.6rem);padding:clamp(2rem,5vw,4rem) var(--pad-x) clamp(1rem,2vw,1.5rem);font-family:'Instrument Sans',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:var(--text-xs);color:var(--cream-2);}
+.stat{display:flex;align-items:baseline;gap:.4rem;}
+.stat-k{color:var(--gold);font-size:clamp(.95rem,1.2vw,1.1rem);letter-spacing:.22em;}
+.stat-v{color:var(--cream-2);opacity:.7;font-size:var(--text-xs);}
+.stat-price .stat-k{font-size:clamp(1rem,1.4vw,1.25rem);}
+.stat-sep{width:1px;height:1.2em;background:var(--rule-soft);}
+.crest-wrap{flex:0 0 100%;display:flex;justify-content:center;margin-top:clamp(1rem,2vw,1.5rem);}
+.crest{width:clamp(48px,6vw,96px);height:auto;opacity:.92;filter:drop-shadow(0 0 16px rgba(201,169,110,.18));}
+
+.hero-scroll{position:absolute;z-index:3;left:50%;bottom:1.5rem;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.6rem;color:var(--gold);font-family:'Instrument Sans',system-ui,sans-serif;font-size:var(--text-xs);letter-spacing:.4em;opacity:.7;}
+.scroll-line{width:1px;height:34px;background:linear-gradient(180deg, transparent, var(--gold));}
+.scroll-text{writing-mode:vertical-rl;}
+
+/* ACTS */
+.act{padding:clamp(6rem,14vh,12rem) 0 clamp(4rem,10vh,8rem);}
+.act-inner{padding-top:0;padding-bottom:0;}
+.act .act-h2,.act-h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:var(--text-xl);line-height:1.1;margin:.4em 0 .5em;letter-spacing:-.01em;color:var(--cream);}
+
+/* ACT I coming back */
+.act-coming-back{background:var(--ink);min-height:90svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:clamp(6rem,12vh,10rem) var(--pad-x);}
+.act-theme{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:var(--text-lg);line-height:1.4;color:var(--cream);letter-spacing:.01em;margin:0;max-width:24ch;}
+.act-theme br{line-height:2;}
+
+/* DISSOLVE */
+.dissolve{position:relative;height:260svh;background:var(--ink);}
+.dissolve-sticky{position:sticky;top:0;height:100svh;width:100%;overflow:hidden;}
+.dissolve-stack{position:absolute;inset:0;}
+.dissolve-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:opacity;}
+.dissolve-img-a{opacity:1;}
+.dissolve-img-b{opacity:0;}
+.dissolve-veil{position:absolute;inset:0;background:linear-gradient(180deg, transparent 60%, rgba(10,10,10,.6) 100%);}
+.dissolve-caption{position:absolute;left:0;right:0;bottom:clamp(2rem,6vh,5rem);display:flex;justify-content:center;padding:0 var(--pad-x);text-align:center;}
+.caption-placard{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:var(--text-sm);letter-spacing:.12em;color:var(--cream-2);margin:0;max-width:48ch;}
+
+/* ACT I prose */
+.act-page{padding:clamp(6rem,14vh,12rem) 0;}
+.act-lead{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:var(--text-lg);line-height:1.25;margin:1.2rem 0;letter-spacing:-.005em;color:var(--cream);}
+.act-prose{font-size:var(--text-base);margin:1rem 0;color:var(--cream-2);max-width:54ch;}
+.act-hinge{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:var(--text-md);color:var(--gold);margin:2.5rem 0 1.5rem;max-width:48ch;line-height:1.4;}
+.act-link-wrap{margin-top:2rem;}
+.quiet-link{display:inline-block;color:var(--gold);font-family:'Instrument Sans',system-ui,sans-serif;font-size:var(--text-xs);letter-spacing:.25em;text-transform:uppercase;padding-bottom:.3rem;border-bottom:1px solid var(--rule);transition:border-color .4s var(--ease), color .4s var(--ease);}
+.quiet-link:hover{border-color:var(--gold);}
+.quiet-link-sep{color:var(--cream-2);opacity:.4;}
+
+/* ROOMS (ACT II) */
+.room{padding:clamp(4rem,10vh,8rem) 0;display:flex;flex-direction:column;align-items:stretch;gap:clamp(2rem,5vw,4rem);}
+.room+.room{padding-top:clamp(2rem,5vh,4rem);}
+.room-img,.room-hero-img,.passage-img,.strip-img,.gallery-img,.up-img,.diptych-img,.grounds-img,.grounds-wide-img,.grounds-vertical-img,.plans-img{width:100%;height:auto;display:block;background:var(--ink-2);}
+
+.room-hero-img{width:100%;max-width:min(100%, 1400px);margin:0 auto;aspect-ratio:16/9;object-fit:cover;}
+.room-img{width:100%;max-width:min(100%, 1200px);margin:0 auto;aspect-ratio:16/10;object-fit:cover;}
+
+.room-text{padding-top:0;}
+.room-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:var(--text-lg);line-height:1.18;margin:.4em 0 .4em;letter-spacing:-.005em;color:var(--cream);}
+.room-prose{font-size:var(--text-base);color:var(--cream-2);margin:.4em 0;max-width:54ch;}
+.room-caption{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:var(--text-sm);letter-spacing:.12em;color:var(--gold-soft);margin:1.2rem 0 0;max-width:48ch;}
+.room-tight{padding:clamp(3rem,7vh,6rem) 0;}
+
+/* DIPTYCH */
+.diptych{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.6rem,1.2vw,1.2rem);width:100%;max-width:min(100%, 1100px);margin:0 auto;padding:0 var(--pad-x);align-items:end;}
+.diptych-cell{position:relative;margin:0;}
+.diptych-img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;background:var(--ink-2);}
+.diptych-cell-late{transform:translateY(clamp(1rem,3vw,3rem));}
+@media (max-width:540px){
+  .diptych{grid-template-columns:1fr 1fr;gap:.5rem;}
+  .diptych-cell-late{transform:translateY(1rem);}
+}
+
+/* PASSAGE */
+.passage{padding:clamp(3rem,8vh,6rem) 0;display:flex;flex-direction:column;align-items:stretch;gap:clamp(1.5rem,4vw,2.5rem);}
+.passage-tight{padding:clamp(2rem,5vh,4rem) 0;}
+.passage-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:var(--text-lg);line-height:1.18;margin:.4em 0;letter-spacing:-.005em;color:var(--cream);text-align:center;}
+.passage-prose{font-size:var(--text-base);color:var(--cream-2);margin:0 auto;max-width:54ch;text-align:center;}
+.passage-stage{position:relative;width:100%;max-width:min(100%, 1400px);margin:1rem auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(.4rem,.8vw,1rem);padding:0 var(--pad-x);min-height:42svh;}
+.passage-frame{margin:0;position:relative;overflow:hidden;}
+.passage-img{width:100%;height:100%;object-fit:cover;background:var(--ink-2);transition:opacity 1.4s var(--ease), transform 1.4s var(--ease);}
+.passage-img-a{opacity:1;}
+.passage-img-b{opacity:0;}
+.passage-stage.is-shown .passage-img-b{opacity:1;}
+.passage-caption{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:var(--text-sm);letter-spacing:.12em;color:var(--gold-soft);text-align:center;margin:.4rem 0 0;}
+
+/* GALLERY ROW */
+.gallery-row{display:grid;grid-template-columns:repeat(3, 1fr);gap:clamp(.4rem,.8vw,1rem);width:100%;max-width:min(100%, 1200px);margin:0 auto;padding:0 var(--pad-x);}
+.gallery-row-2{grid-template-columns:repeat(2, 1fr);}
+.gallery-cell{margin:0;}
+.gallery-img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;background:var(--ink-2);}
+@media (max-width:680px){
+  .gallery-row{grid-template-columns:1fr 1fr;gap:.5rem;}
+}
+
+/* STRIP */
+.strip{display:grid;grid-template-columns:repeat(3, 1fr);gap:clamp(.4rem,.8vw,1rem);width:100%;max-width:min(100%, 1300px);margin:0 auto;padding:0 var(--pad-x);}
+.strip-cell{margin:0;}
+.strip-img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;background:var(--ink-2);}
+@media (max-width:680px){
+  .strip{grid-template-columns:1fr 1fr;gap:.5rem;}
+}
+
+/* BREATH */
+.breath{background:var(--ink);min-height:90svh;display:flex;align-items:center;justify-content:center;padding:clamp(6rem,12vh,10rem) var(--pad-x);text-align:center;}
+.breath-line{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:var(--text-md);color:var(--cream-2);margin:0;max-width:36ch;line-height:1.5;}
+
+/* UPSTAIRS */
+.upstairs-row{display:grid;grid-template-columns:repeat(3, 1fr);gap:clamp(1.5rem,3vw,3rem);width:100%;max-width:min(100%, 1300px);margin:0 auto;padding:0 var(--pad-x) clamp(4rem,8vh,6rem);}
+.up-card{margin:0;display:flex;flex-direction:column;gap:.8rem;}
+.up-card .eyebrow{margin-bottom:.2rem;}
+.up-img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;background:var(--ink-2);}
+.up-img-wide{aspect-ratio:16/9;}
+.up-card-wide{grid-column:1 / -1;}
+.up-prose{font-size:var(--text-sm);color:var(--cream-2);margin:0;max-width:42ch;}
+@media (max-width:780px){
+  .upstairs-row{grid-template-columns:1fr 1fr;gap:1.5rem;}
+  .up-card-wide{grid-column:1 / -1;}
+}
+@media (max-width:480px){
+  .upstairs-row{grid-template-columns:1fr;}
+}
+
+/* MATTERPORT */
+.matterport{padding:clamp(5rem,10vh,9rem) 0;background:var(--ink);}
+.matterport-frame{width:100%;max-width:min(100%, 1100px);margin:0 auto;padding:0 var(--pad-x);}
+.matterport-stage{position:relative;width:100%;aspect-ratio:16/9;background:#000;border:1px solid var(--rule-soft);overflow:hidden;}
+.matterport-load{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.9rem;color:var(--cream);transition:background .5s var(--ease);}
+.matterport-load:hover{background:rgba(201,169,110,.06);}
+.matterport-load:focus-visible{outline:1px solid var(--gold);outline-offset:-4px;}
+.mp-eyebrow{font-family:'Instrument Sans',system-ui,sans-serif;font-size:var(--text-xs);letter-spacing:.4em;color:var(--gold);text-transform:uppercase;}
+.mp-line{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:var(--text-md);color:var(--cream);max-width:32ch;line-height:1.4;}
+.mp-cta{font-family:'Instrument Sans',system-ui,sans-serif;font-size:var(--text-xs);letter-spacing:.25em;color:var(--gold-soft);text-transform:uppercase;margin-top:.6rem;}
+.matterport-embed{position:absolute;inset:0;}
+.matterport-embed iframe{width:100%;height:100%;border:0;display:block;}
+
+/* GROUNDS */
+.grounds-aerial,.grounds-tennis{padding:clamp(3rem,6vh,5rem) 0;display:flex;flex-direction:column;align-items:stretch;gap:1.2rem;}
+.grounds-wide-img{width:100%;max-width:min(100%, 1500px);margin:0 auto;aspect-ratio:16/9;object-fit:cover;}
+.grounds-wide-img+.caption-placard,.grounds-aerial .caption-placard{text-align:center;}
+.grounds-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.6rem,1.2vw,1.4rem);width:100%;max-width:min(100%, 1300px);margin:0 auto;padding:clamp(2rem,4vh,3rem) var(--pad-x);}
+.grounds-cell{margin:0;display:flex;flex-direction:column;gap:.8rem;}
+.grounds-img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;}
+.grounds-cell .caption-placard{padding:0 .3rem;}
+.grounds-tennis{background:linear-gradient(180deg, transparent, rgba(0,0,0,.4));}
+.grounds-tennis-text{text-align:center;max-width:54ch;margin:0 auto;padding:0 var(--pad-x);}
+.grounds-h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:var(--text-lg);line-height:1.2;margin:.4em 0;letter-spacing:-.005em;color:var(--cream);}
+.grounds-prose{font-size:var(--text-base);color:var(--cream-2);margin:.4em auto 0;max-width:50ch;}
+.grounds-vertical{display:flex;justify-content:center;padding:clamp(3rem,6vh,5rem) var(--pad-x);}
+.grounds-vertical-img{width:100%;max-width:min(100%, 600px);aspect-ratio:3/4;object-fit:cover;}
+
+/* PLANS */
+.plans{padding:clamp(5rem,10vh,9rem) 0;}
+.plans-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.8rem,1.6vw,1.6rem);width:100%;max-width:min(100%, 1300px);margin:1.5rem auto;padding:0 var(--pad-x);}
+.plans-cell{margin:0;display:flex;flex-direction:column;gap:.6rem;}
+.plans-img{width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;background:var(--cream);cursor:zoom-in;}
+.plans-cell .caption-placard{text-align:center;}
+
+/* ENDING */
+.ending{background:var(--ink);min-height:80svh;display:flex;align-items:center;justify-content:center;padding:clamp(6rem,12vh,10rem) var(--pad-x);text-align:center;}
+.ending-inner{padding:0;}
+.ending-line{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:var(--text-xl);line-height:1.15;margin:.4em 0;letter-spacing:-.005em;color:var(--cream);}
+.ending-prose{background:var(--ink);padding:clamp(2rem,4vh,4rem) 0 clamp(6rem,12vh,10rem);}
+.ending-prose-inner{display:flex;flex-direction:column;gap:clamp(2rem,5vh,4rem);text-align:center;}
+.ending-drop{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:var(--text-md);line-height:1.5;color:var(--cream);margin:0;max-width:42ch;letter-spacing:.005em;}
+.ending-drop-last{color:var(--gold);font-style:italic;}
+
+/* INVITATION */
+.invitation{background:var(--ink);padding:clamp(6rem,12vh,10rem) var(--pad-x);text-align:center;}
+.invitation-inner{padding:0;}
+.invitation-line{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:var(--text-lg);line-height:1.2;margin:1.2rem 0;color:var(--gold);letter-spacing:.01em;}
+.invitation-hairline{width:clamp(80px, 12vw, 180px);height:1px;background:var(--gold);margin:1.6rem auto 1.2rem;opacity:.5;}
+.invitation-whisper{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:var(--text-sm);color:var(--cream-2);margin:0 0 2.2rem;letter-spacing:.1em;}
+.invitation-contact{margin:0;display:flex;flex-direction:column;align-items:center;gap:.3rem;}
+.contact-name{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:var(--text-base);color:var(--cream);letter-spacing:.02em;}
+.contact-meta{font-family:'Instrument Sans',system-ui,sans-serif;font-size:var(--text-xs);letter-spacing:.3em;color:var(--cream-2);text-transform:uppercase;}
+
+/* FOOTER */
+.footer{padding:clamp(3rem,6vh,5rem) var(--pad-x) clamp(2rem,4vh,3rem);text-align:center;background:var(--ink);border-top:1px solid var(--rule-soft);}
+.footer-line{font-family:'Instrument Sans',system-ui,sans-serif;font-size:var(--text-xs);letter-spacing:.35em;color:var(--cream-2);margin:0 0 .6rem;text-transform:uppercase;}
+.footer-fine{color:var(--cream-2);opacity:.55;letter-spacing:.18em;}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:#000;z-index:1000;display:none;align-items:center;justify-content:center;padding:0;}
+.lightbox.is-open{display:flex;}
+.lb-stage{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;padding:5svh 6svw;}
+.lb-stage img{max-width:100%;max-height:80vh;object-fit:contain;background:#000;}
+.lb-caption{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:var(--text-sm);color:var(--cream-2);text-align:center;max-width:60ch;letter-spacing:.08em;margin:0;}
+.lb-close,.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);font-size:1.8rem;color:var(--cream-2);width:48px;height:48px;display:flex;align-items:center;justify-content:center;transition:color .3s var(--ease);z-index:2;}
+.lb-close{top:1.5rem;right:1.5rem;transform:none;font-size:2rem;width:44px;height:44px;}
+.lb-prev{left:1rem;}
+.lb-next{right:1rem;}
+.lb-close:hover,.lb-prev:hover,.lb-next:hover{color:var(--gold);}
+
+/* REVEAL ANIMATIONS (initial states; resolved by IO) */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1.2s var(--ease), transform 1.2s var(--ease);}
+.reveal.in{opacity:1;transform:none;}
+.dipt-fade{opacity:0;transform:translateY(36px);transition:opacity 1.4s var(--ease), transform 1.4s var(--ease);}
+.dipt-fade.in-l{opacity:1;transform:none;}
+.dipt-fade.in-r{opacity:1;transform:none;}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  .reveal,.dipt-fade{opacity:1 !important;transform:none !important;transition:none !important;}
+  .dissolve-img-b{opacity:1;}
+  .passage-img-b{opacity:1;}
+  .matterport-load{transition:none;}
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;}
+}
+
+/* Mobile refinements */
+@media (max-width:680px){
+  .topnav{flex-direction:column;align-items:flex-start;gap:.8rem;padding:1.2rem var(--pad-x);}
+  .topnav-links{flex-wrap:wrap;gap:1rem 1.5rem;}
+  .hero-center{padding-top:6svh;}
+  .hero-stats{gap:.8rem 1rem;}
+  .stat-sep{display:none;}
+  .room-hero-img{aspect-ratio:4/3;}
+  .room-img{aspect-ratio:4/3;}
+  .dissolve{height:200svh;}
+  .diptych{padding:0 1rem;}
+  .upstairs-row{padding-left:1rem;padding-right:1rem;}
+  .ground-row{padding-left:1rem;padding-right:1rem;}
+  .lb-prev{left:.5rem;}
+  .lb-next{right:.5rem;}
+}
+
+</style>
+</head>
+<body>
+
+  <header class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true">
+<img class="hero-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/001-front-exterior.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/001-front-exterior.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/001-front-exterior.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/001-front-exterior.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/001-front-exterior.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/001-front-exterior.jpg 1920w" sizes="100vw" alt="Front facade of Garran Hill, a 1916 Neo-Georgian estate in Pinehurst, North Carolina" loading="eager" decoding="sync" fetchpriority="high" style="object-position:center 40%;" />
+    </div>
+    <div class="hero-veil" aria-hidden="true"></div>
+    <nav class="topnav" aria-label="Primary">
+      <a class="brandmark" href="#top">
+        <span class="brandmark-script">Garran Hill</span>
+        <span class="brandmark-est">EST. 1916</span>
+      </a>
+      <ul class="topnav-links">
+        <li><a href="#the-estate">The Estate</a></li>
+        <li><a href="/history">The History</a></li>
+        <li><a href="#the-grounds">The Grounds</a></li>
+        <li><a href="#inquiry">Private Inquiry</a></li>
+      </ul>
+    </nav>
+    <div class="hero-center">
+      <p class="eyebrow eyebrow-gold hero-address">200 HOLLYCREST DRIVE &middot; PINEHURST, NORTH CAROLINA</p>
+      <h1 class="hero-script">Garran Hill</h1>
+      <p class="hero-tagline">A house built for coming back.</p>
+    </div>
+    <div class="hero-stats" role="list" aria-label="Property facts">
+      <div class="stat" role="listitem"><span class="stat-k">1916</span><span class="stat-v">EST</span></div>
+      <div class="stat-sep" aria-hidden="true"></div>
+      <div class="stat" role="listitem"><span class="stat-k">4</span><span class="stat-v">BED</span></div>
+      <div class="stat-sep" aria-hidden="true"></div>
+      <div class="stat" role="listitem"><span class="stat-k">6</span><span class="stat-v">BATH</span></div>
+      <div class="stat-sep" aria-hidden="true"></div>
+      <div class="stat" role="listitem"><span class="stat-k">6,320</span><span class="stat-v">SQ FT</span></div>
+      <div class="stat-sep" aria-hidden="true"></div>
+      <div class="stat" role="listitem"><span class="stat-k">4.15</span><span class="stat-v">ACRES</span></div>
+      <div class="stat-sep" aria-hidden="true"></div>
+      <div class="stat stat-price" role="listitem"><span class="stat-k">$4,250,000</span></div>
+      <div class="crest-wrap" aria-hidden="true">
+<img class="crest" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/gh_key/gh_crest_gloss_v2.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/gh_key/gh_crest_gloss_v2.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/gh_key/gh_crest_gloss_v2.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/gh_key/gh_crest_gloss_v2.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/gh_key/gh_crest_gloss_v2.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/gh_key/gh_crest_gloss_v2.jpg 1920w" sizes="(max-width: 768px) 60px, 96px" alt="Crest of Garran Hill" loading="eager" decoding="sync" fetchpriority="high" style="object-position:center;" />
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span class="scroll-line"></span>
+      <span class="scroll-text">SCROLL</span>
+    </div>
+  </header>
+
+
+  <section class="act act-coming-back" id="coming-back">
+    <div class="act-inner">
+      <p class="act-theme">The house was not built for spectacle.<br/>It was built for coming back.</p>
+    </div>
+  </section>
+
+  <section class="dissolve" id="dissolve" aria-label="A 1916 gate, then a present-day view">
+    <div class="dissolve-sticky">
+      <div class="dissolve-stack" aria-hidden="true">
+<img class="dissolve-img dissolve-img-a" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/002-historic-garran-hill.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/002-historic-garran-hill.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/002-historic-garran-hill.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/002-historic-garran-hill.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/002-historic-garran-hill.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/002-historic-garran-hill.jpg 1920w" sizes="100vw" alt="A sepia photograph of the original 1916 entry gate, taken when the surrounding trees were still saplings" loading="eager" decoding="async" style="object-position:center 50%;" />
+<img class="dissolve-img dissolve-img-b" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/gh_photos/gh_gate_color.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/gh_photos/gh_gate_color.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/gh_photos/gh_gate_color.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/gh_photos/gh_gate_color.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/gh_photos/gh_gate_color.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/gh_photos/gh_gate_color.jpg 1920w" sizes="100vw" alt="The same entry gate, present day, framed by a mature forest" loading="eager" decoding="async" style="object-position:center 50%;" />
+        <div class="dissolve-veil" aria-hidden="true"></div>
+      </div>
+      <div class="dissolve-caption" aria-hidden="true">
+        <p class="caption-placard">In 1916, those were saplings. Now they are a forest.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="act act-page">
+    <div class="act-inner narrow">
+      <p class="eyebrow eyebrow-gold">1915 TO 1916</p>
+      <p class="act-lead">Built for Walter Hines Page, ambassador to the Court of St James&rsquo;s.</p>
+      <p class="act-prose">Planned from London, letter by letter, while the war kept him there.</p>
+      <p class="act-hinge">The same craftsmen who built Pinehurst built this house.</p>
+      <p class="act-link-wrap">
+        <a class="quiet-link" href="/history">The full history, documented &nbsp;&rarr;</a>
+      </p>
+    </div>
+  </section>
+
+
+  <section class="act" id="the-estate">
+    <div class="act-inner narrow">
+      <p class="eyebrow eyebrow-gold">ACT II</p>
+      <h2 class="act-h2">The house, in living order.</h2>
+      <p class="act-prose">A walk from the front door to the back garden, in the order the rooms were built to be used.</p>
+    </div>
+  </section>
+
+  <section class="room">
+    <div class="diptych">
+      <figure class="diptych-cell">
+<img class="diptych-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/013-entry-hall.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/013-entry-hall.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/013-entry-hall.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/013-entry-hall.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/013-entry-hall.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/013-entry-hall.jpg 1920w" sizes="(max-width: 768px) 50vw, 28vw" alt="A vertical view of the entry hall: Flemish bond brick, a tall front door, and the first turn of the stair." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      </figure>
+      <figure class="diptych-cell diptych-cell-late">
+<img class="diptych-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/010-front-entry.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/010-front-entry.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/010-front-entry.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/010-front-entry.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/010-front-entry.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/010-front-entry.jpg 1920w" sizes="(max-width: 768px) 50vw, 28vw" alt="A vertical view of the front entry portico, a lantern lit, the door set into the brick face." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      </figure>
+    </div>
+    <div class="room-text">
+      <p class="eyebrow eyebrow-gold">THE ENTRY</p>
+      <h2 class="room-title">A door that has been open since 1916.</h2>
+      <p class="room-prose">Step through. The brick was laid by the same hands that laid the rest of Pinehurst. The light at the end of the hall is the same one Page wrote home about.</p>
+      <p class="room-caption">Flemish bond brick. A water table.</p>
+    </div>
+  </section>
+
+  <section class="room room-hero">
+<img class="room-hero-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/019-drawing-room.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/019-drawing-room.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/019-drawing-room.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/019-drawing-room.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/019-drawing-room.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/019-drawing-room.jpg 1920w" sizes="(max-width: 768px) 100vw, 90vw" alt="The living room at Garran Hill, anchored by the original fireplace mantel." loading="lazy" decoding="async" style="object-position:center 50%;" />
+    <div class="room-text narrow">
+      <p class="eyebrow eyebrow-gold">THE LIVING ROOM</p>
+      <p class="room-prose">A long, quiet room. The mantel has always been lit in winter.</p>
+      <p class="room-prose">So is the brass hardware on every door. The proportions belong to 1916 and have not been argued with since.</p>
+      <p class="room-caption">Original oak flooring. Brass key plates still in the locks.</p>
+    </div>
+  </section>
+
+  <section class="passage">
+    <p class="eyebrow eyebrow-gold">THE LIVING ROOM</p>
+    <h2 class="passage-title">The heart of the first floor.</h2>
+    <p class="passage-prose">A room built for conversation after dinner. The French doors are not decoration. They are the way out.</p>
+    <div class="passage-stage" data-pair="022,023">
+      <figure class="passage-frame">
+<img class="passage-img passage-img-a" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/022-drawing-room-french-doors.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/022-drawing-room-french-doors.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/022-drawing-room-french-doors.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/022-drawing-room-french-doors.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/022-drawing-room-french-doors.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/022-drawing-room-french-doors.jpg 1920w" sizes="(max-width: 768px) 100vw, 80vw" alt="The living room at Garran Hill, looking toward the French doors that open to the terrace." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      </figure>
+      <figure class="passage-frame">
+<img class="passage-img passage-img-b" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/023-outdoor-terrace.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/023-outdoor-terrace.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/023-outdoor-terrace.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/023-outdoor-terrace.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/023-outdoor-terrace.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/023-outdoor-terrace.jpg 1920w" sizes="(max-width: 768px) 100vw, 80vw" alt="The brick terrace just outside, the room after the room." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      </figure>
+    </div>
+    <p class="passage-caption">The room. And then, the air.</p>
+  </section>
+
+  <section class="room">
+<img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/067-delft-sitting-room.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/067-delft-sitting-room.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/067-delft-sitting-room.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/067-delft-sitting-room.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/067-delft-sitting-room.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/067-delft-sitting-room.jpg 1920w" sizes="(max-width: 768px) 100vw, 80vw" alt="The Delft sitting room, with original built-in shelving and a Delft pottery display above the mantel." loading="lazy" decoding="async" style="object-position:center 50%;" />
+    <div class="room-text narrow">
+      <p class="eyebrow eyebrow-gold">THE SITTING ROOM</p>
+      <h2 class="room-title">A small room, painted in blue and white, with a stair that turns back on itself.</h2>
+      <p class="room-prose">The winder stair is the kind of detail a builder only puts in when the owner is not looking. It has been here a century.</p>
+    </div>
+  </section>
+  <section class="passage passage-tight">
+    <div class="passage-stage" data-pair="067,109">
+      <figure class="passage-frame">
+<img class="passage-img passage-img-a" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/067-delft-sitting-room.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/067-delft-sitting-room.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/067-delft-sitting-room.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/067-delft-sitting-room.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/067-delft-sitting-room.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/067-delft-sitting-room.jpg 1920w" sizes="(max-width: 768px) 100vw, 60vw" alt="The Delft sitting room, view toward the winder staircase." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      </figure>
+      <figure class="passage-frame">
+<img class="passage-img passage-img-b" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/109-den-spiral-staircase.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/109-den-spiral-staircase.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/109-den-spiral-staircase.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/109-den-spiral-staircase.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/109-den-spiral-staircase.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/109-den-spiral-staircase.jpg 1920w" sizes="(max-width: 768px) 100vw, 60vw" alt="The winder staircase that climbs from the sitting room to the den, a tight spiral in original wood." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      </figure>
+    </div>
+    <p class="passage-caption">From the tiles to the spiral. The stair does not apologize for itself.</p>
+  </section>
+
+  <section class="room">
+<img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/024-dining-room.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/024-dining-room.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/024-dining-room.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/024-dining-room.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/024-dining-room.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/024-dining-room.jpg 1920w" sizes="(max-width: 768px) 100vw, 80vw" alt="The dining room at Garran Hill, with original frontispiece, leaded glass sidelights, and an over-door fanlight." loading="lazy" decoding="async" style="object-position:center 50%;" />
+    <div class="room-text narrow">
+      <p class="eyebrow eyebrow-gold">THE DINING ROOM</p>
+      <h2 class="room-title">The room Page intended for long, slow nights.</h2>
+      <p class="room-prose">The frontispiece and the leaded glass sidelights survived the 1999 restoration without being touched. The mantel did too.</p>
+      <p class="room-caption">Original frontispiece, leaded glass sidelights, an over-door fanlight. Seven mantels in the house. This is the second.</p>
+    </div>
+  </section>
+
+  <section class="room">
+<img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/058-library.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/058-library.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/058-library.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/058-library.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/058-library.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/058-library.jpg 1920w" sizes="(max-width: 768px) 100vw, 80vw" alt="The library at Garran Hill, with floor to ceiling bookshelves and a deep window seat." loading="lazy" decoding="async" style="object-position:center 50%;" />
+    <div class="room-text narrow">
+      <p class="eyebrow eyebrow-gold">THE LIBRARY</p>
+      <h2 class="room-title">Page was an editor. The room remembers it.</h2>
+      <p class="room-prose">Floor to ceiling shelves in three walls. A writing desk by the window. A mantel that has been the third of seven.</p>
+    </div>
+    <div class="gallery-row">
+      <figure class="gallery-cell">
+<img class="gallery-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/059-library.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/059-library.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/059-library.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/059-library.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/059-library.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/059-library.jpg 1920w" sizes="(max-width: 768px) 100vw, 30vw" alt="A close view of the library bookshelves, full of leather spines." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      </figure>
+      <figure class="gallery-cell">
+<img class="gallery-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/060-library.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/060-library.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/060-library.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/060-library.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/060-library.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/060-library.jpg 1920w" sizes="(max-width: 768px) 100vw, 30vw" alt="The library, alternate angle, showing the window seat and writing desk." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      </figure>
+      <figure class="gallery-cell">
+<img class="gallery-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/061-library.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/061-library.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/061-library.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/061-library.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/061-library.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/061-library.jpg 1920w" sizes="(max-width: 768px) 100vw, 30vw" alt="The library chandelier, lit, against the bookshelves." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="room">
+<img class="room-hero-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/031-kitchen.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/031-kitchen.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/031-kitchen.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/031-kitchen.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/031-kitchen.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/031-kitchen.jpg 1920w" sizes="(max-width: 768px) 100vw, 90vw" alt="The kitchen at Garran Hill, restored in 1999 to 2001, with a working island and a wall of windows over the garden." loading="lazy" decoding="async" style="object-position:center 50%;" />
+    <div class="room-text narrow">
+      <p class="eyebrow eyebrow-gold">THE KITCHEN</p>
+      <h2 class="room-title">The one room that is not 1916. And the one that earned the most care.</h2>
+      <p class="room-prose">The kitchen is original to the 1999 to 2001 restoration. The pre-restoration kitchen lived in the basement. This one looks out over the boxwood garden, which is the only thing on the property that the cooks can see from the stove.</p>
+      <p class="room-caption">Reclaimed heart pine floors. The only room in the house that does not have the original oak.</p>
+    </div>
+    <div class="strip">
+      <figure class="strip-cell">
+<img class="strip-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/038-wall-of-windows-kitchen.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/038-wall-of-windows-kitchen.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/038-wall-of-windows-kitchen.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/038-wall-of-windows-kitchen.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/038-wall-of-windows-kitchen.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/038-wall-of-windows-kitchen.jpg 1920w" sizes="(max-width: 768px) 100vw, 33vw" alt="A wall of kitchen windows looking out to the boxwood garden." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      </figure>
+      <figure class="strip-cell">
+<img class="strip-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/037-farm-sink.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/037-farm-sink.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/037-farm-sink.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/037-farm-sink.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/037-farm-sink.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/037-farm-sink.jpg 1920w" sizes="(max-width: 768px) 100vw, 33vw" alt="The farmhouse sink in the Garran Hill kitchen, deep and apron front." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      </figure>
+      <figure class="strip-cell">
+<img class="strip-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/043-breakfast-room.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/043-breakfast-room.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/043-breakfast-room.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/043-breakfast-room.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/043-breakfast-room.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/043-breakfast-room.jpg 1920w" sizes="(max-width: 768px) 100vw, 33vw" alt="The breakfast room off the kitchen, with morning light and a long table." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      </figure>
+    </div>
+    <div class="passage-stage" data-pair="038,115">
+      <figure class="passage-frame">
+<img class="passage-img passage-img-a" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/038-wall-of-windows-kitchen.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/038-wall-of-windows-kitchen.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/038-wall-of-windows-kitchen.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/038-wall-of-windows-kitchen.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/038-wall-of-windows-kitchen.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/038-wall-of-windows-kitchen.jpg 1920w" sizes="(max-width: 768px) 100vw, 70vw" alt="The kitchen windows, looking out." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      </figure>
+      <figure class="passage-frame">
+<img class="passage-img passage-img-b" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/115-boxwood-herb-garden.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/115-boxwood-herb-garden.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/115-boxwood-herb-garden.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/115-boxwood-herb-garden.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/115-boxwood-herb-garden.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/115-boxwood-herb-garden.jpg 1920w" sizes="(max-width: 768px) 100vw, 70vw" alt="The boxwood herb garden, the view the kitchen holds." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      </figure>
+    </div>
+    <p class="passage-caption">From the cook&rsquo;s eye, the garden. The kitchen ends where the boxwood begins.</p>
+  </section>
+
+  <section class="room room-tight">
+<img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/036-butlers-pantry.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/036-butlers-pantry.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/036-butlers-pantry.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/036-butlers-pantry.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/036-butlers-pantry.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/036-butlers-pantry.jpg 1920w" sizes="(max-width: 768px) 100vw, 70vw" alt="The butler&rsquo;s pantry, a narrow service room with original shelving and a long counter." loading="lazy" decoding="async" style="object-position:center 50%;" />
+    <div class="room-text narrow">
+      <p class="eyebrow eyebrow-gold">THE BUTLER&rsquo;S PANTRY</p>
+      <h2 class="room-title">A working room, kept exactly as it was.</h2>
+      <p class="room-prose">The passage between the kitchen and the dining room. The silver lives here. So does the quiet before dinner.</p>
+    </div>
+  </section>
+
+  <section class="room">
+    <div class="diptych">
+      <figure class="diptych-cell">
+<img class="diptych-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/051-powder-room.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/051-powder-room.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/051-powder-room.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/051-powder-room.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/051-powder-room.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/051-powder-room.jpg 1920w" sizes="(max-width: 768px) 50vw, 26vw" alt="A vertical view of the powder room, papered in toile, anchored by a pedestal sink." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      </figure>
+      <figure class="diptych-cell diptych-cell-late">
+<img class="diptych-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/065-powder-room.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/065-powder-room.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/065-powder-room.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/065-powder-room.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/065-powder-room.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/065-powder-room.jpg 1920w" sizes="(max-width: 768px) 50vw, 26vw" alt="A vertical view of the second powder room, deep botanical wallpaper and a skirted vanity." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      </figure>
+    </div>
+    <div class="room-text">
+      <p class="eyebrow eyebrow-gold">THE POWDER ROOM</p>
+      <h2 class="room-title">The jewel box.</h2>
+      <p class="room-prose">Two small rooms, papered in pattern. Both are original to the restoration. Neither is large enough to sit down in. That is the point.</p>
+      <p class="room-caption">A pedestal sink. A skirted vanity. Toile and botanical wallpaper. The smallest rooms get the most care.</p>
+    </div>
+  </section>
+
+  <section class="room">
+<img class="room-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/073-primary.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/073-primary.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/073-primary.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/073-primary.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/073-primary.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/073-primary.jpg 1920w" sizes="(max-width: 768px) 100vw, 80vw" alt="The primary suite at Garran Hill, a wide room with original windows and a calm palette." loading="lazy" decoding="async" style="object-position:center 50%;" />
+    <div class="room-text narrow">
+      <p class="eyebrow eyebrow-gold">THE PRIMARY SUITE</p>
+      <h2 class="room-title">The fourth mantel. The quietest corner of the second floor.</h2>
+      <p class="room-prose">A wide room with the proportions of a 1916 bedroom. The bath sits behind a curving bay. The dressing rooms run on either side.</p>
+    </div>
+    <div class="gallery-row gallery-row-2">
+      <figure class="gallery-cell">
+<img class="gallery-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/076-primary-bathroom.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/076-primary-bathroom.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/076-primary-bathroom.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/076-primary-bathroom.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/076-primary-bathroom.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/076-primary-bathroom.jpg 1920w" sizes="(max-width: 768px) 100vw, 45vw" alt="The primary bath, marble vanity and a chandelier over a deep tub." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      </figure>
+      <figure class="gallery-cell">
+<img class="gallery-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/079-jacuzzi-tub.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/079-jacuzzi-tub.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/079-jacuzzi-tub.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/079-jacuzzi-tub.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/079-jacuzzi-tub.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/079-jacuzzi-tub.jpg 1920w" sizes="(max-width: 768px) 100vw, 45vw" alt="The primary bath, alternate view, a long marble tub under a chandelier." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      </figure>
+    </div>
+  </section>
+
+
+  <section class="breath">
+    <div class="breath-inner">
+      <p class="breath-line">The house does not reveal itself all at once.</p>
+    </div>
+  </section>
+
+
+  <section class="act" id="upstairs">
+    <div class="act-inner narrow">
+      <p class="eyebrow eyebrow-gold">ACT IV</p>
+      <h2 class="act-h2">Upstairs, briefly.</h2>
+      <p class="act-prose">Three suites and a den. The second floor is where the family lived when the family still lived here.</p>
+    </div>
+  </section>
+
+  <section class="upstairs-row">
+    <article class="up-card">
+      <p class="eyebrow eyebrow-gold">THE ROSE SUITE</p>
+<img class="up-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/090-rose-suite.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/090-rose-suite.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/090-rose-suite.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/090-rose-suite.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/090-rose-suite.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/090-rose-suite.jpg 1920w" sizes="(max-width: 768px) 100vw, 33vw" alt="The Rose suite, soft pinks, an original mantel, a quiet bedroom." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      <p class="up-prose">A bedroom painted in the color of its name.</p>
+    </article>
+    <article class="up-card">
+      <p class="eyebrow eyebrow-gold">THE YELLOW SUITE</p>
+<img class="up-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/095-yellow-bedroom-suite.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/095-yellow-bedroom-suite.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/095-yellow-bedroom-suite.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/095-yellow-bedroom-suite.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/095-yellow-bedroom-suite.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/095-yellow-bedroom-suite.jpg 1920w" sizes="(max-width: 768px) 100vw, 33vw" alt="The Yellow suite, twin beds and a fireplace, lit warm." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      <p class="up-prose">Two beds and a Wedgwood shelf. The balcony is right there.</p>
+    </article>
+    <article class="up-card">
+      <p class="eyebrow eyebrow-gold">THE RED BEDROOM</p>
+<img class="up-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/102-red-bedroom-nursery.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/102-red-bedroom-nursery.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/102-red-bedroom-nursery.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/102-red-bedroom-nursery.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/102-red-bedroom-nursery.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/102-red-bedroom-nursery.jpg 1920w" sizes="(max-width: 768px) 100vw, 33vw" alt="The Red bedroom, used for years as a nursery, with toys still in the corner." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      <p class="up-prose">The nursery. The brass bed. The rocking horse is not for sale.</p>
+    </article>
+    <article class="up-card up-card-wide">
+      <p class="eyebrow eyebrow-gold">THE DEN</p>
+<img class="up-img up-img-wide" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/110-den.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/110-den.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/110-den.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/110-den.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/110-den.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/110-den.jpg 1920w" sizes="(max-width: 768px) 100vw, 80vw" alt="The den, a wide room off the winder stair, lined in bookshelves." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      <p class="up-prose">Up the winder. A room that closes the second floor in on itself.</p>
+    </article>
+  </section>
+
+
+  <section class="matterport" id="walkthrough">
+    <div class="matterport-frame">
+      <div class="matterport-stage" id="matterport-stage">
+        <button type="button" class="matterport-load" id="matterport-load"
+                aria-label="Load the private walk-through">
+          <span class="mp-eyebrow">A PRIVATE WALK&middot;THROUGH</span>
+          <span class="mp-line">Walk every room, in your own time.</span>
+          <span class="mp-cta">Click to load the tour &nbsp;&rarr;</span>
+        </button>
+        <div class="matterport-embed" id="matterport-embed" hidden>
+          <iframe
+            title="Matterport walk-through of Garran Hill"
+            src="about:blank"
+            data-src="https://my.matterport.com/show/?m=mfwyqT5Btwx&brand=0&help=1&nt=1"
+            allow="fullscreen; xr-spatial-tracking; gyroscope; accelerometer"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="act" id="the-grounds">
+    <div class="act-inner narrow">
+      <p class="eyebrow eyebrow-gold">ACT VI</p>
+      <h2 class="act-h2">The grounds.</h2>
+      <p class="act-prose">Four acres of the original thousand. Pine, boxwood, brick, a pool in a walled garden, and two courts waiting for new paint.</p>
+    </div>
+  </section>
+
+  <section class="grounds-aerial">
+<img class="grounds-wide-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/134-aerial.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/134-aerial.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/134-aerial.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/134-aerial.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/134-aerial.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/134-aerial.jpg 1920w" sizes="(max-width: 768px) 100vw, 95vw" alt="An aerial view of the Garran Hill property, the house at the center of four acres of grounds." loading="lazy" decoding="async" style="object-position:center 50%;" />
+    <p class="caption-placard">Four point one five acres. The original house parcel, intact.</p>
+  </section>
+
+  <section class="grounds-row">
+    <figure class="grounds-cell">
+<img class="grounds-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/112-brick-terrace.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/112-brick-terrace.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/112-brick-terrace.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/112-brick-terrace.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/112-brick-terrace.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/112-brick-terrace.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="The brick terrace just off the dining and living rooms." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      <figcaption class="caption-placard">A brick terrace. Not stone. Brick.</figcaption>
+    </figure>
+    <figure class="grounds-cell">
+<img class="grounds-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/124-pool.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/124-pool.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/124-pool.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/124-pool.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/124-pool.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/124-pool.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="The saltwater pool, set into a walled garden." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      <figcaption class="caption-placard">A saltwater pool in a brick&middot;walled garden. Converted in 2022.</figcaption>
+    </figure>
+  </section>
+
+  <section class="grounds-tennis">
+<img class="grounds-wide-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/120-tennis-courts.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/120-tennis-courts.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/120-tennis-courts.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/120-tennis-courts.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/120-tennis-courts.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/120-tennis-courts.jpg 1920w" sizes="(max-width: 768px) 100vw, 95vw" alt="Two tennis courts on the Garran Hill grounds, fenced, side by side." loading="lazy" decoding="async" style="object-position:center 50%;" />
+    <div class="grounds-tennis-text">
+      <p class="eyebrow eyebrow-gold">TWO COURTS</p>
+      <h2 class="grounds-h2">Two lighted courts. They ask for new surfaces and nothing more.</h2>
+      <p class="grounds-prose">Regulation, fenced, lit. Built for play. The only honesty is the surface. The new owner picks the date and the paint.</p>
+    </div>
+  </section>
+
+  <section class="grounds-row">
+    <figure class="grounds-cell">
+<img class="grounds-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/121-the-wee-cottage.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/121-the-wee-cottage.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/121-the-wee-cottage.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/121-the-wee-cottage.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/121-the-wee-cottage.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/121-the-wee-cottage.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="The Wee Cottage, the children&rsquo;s playhouse tucked into the back of the grounds." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      <figcaption class="caption-placard">The Wee Cottage. A playhouse, not a guest house. A small door. A small window.</figcaption>
+    </figure>
+    <figure class="grounds-cell">
+<img class="grounds-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/129-blue-fox.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/129-blue-fox.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/129-blue-fox.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/129-blue-fox.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/129-blue-fox.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/129-blue-fox.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="The grave of Blue Fox, Betty Dumaine&rsquo;s Irish Hunter, at the back of the property." loading="lazy" decoding="async" style="object-position:center 50%;" />
+      <figcaption class="caption-placard">Someone still puts flowers there.</figcaption>
+    </figure>
+  </section>
+
+  <section class="grounds-vertical">
+<img class="grounds-vertical-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/128-grounds.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/photos/128-grounds.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/photos/128-grounds.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/128-grounds.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/photos/128-grounds.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/128-grounds.jpg 1920w" sizes="(max-width: 768px) 100vw, 60vw" alt="A vertical, quiet view of the Garran Hill grounds at the edge of the forest." loading="lazy" decoding="async" style="object-position:center 50%;" />
+  </section>
+
+
+  <section class="plans" id="plans">
+    <div class="act-inner narrow">
+      <p class="eyebrow eyebrow-gold">ACT VII</p>
+      <h2 class="act-h2">The plans.</h2>
+      <p class="act-prose">Drawn for the 1999 to 2001 restoration by Thomas O&rsquo;Shea, architect. Fifteen sheets transfer with the property.</p>
+    </div>
+    <div class="plans-row">
+      <figure class="plans-cell">
+<img class="plans-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/floorplans/137-main-floor.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/floorplans/137-main-floor.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/floorplans/137-main-floor.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/floorplans/137-main-floor.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/floorplans/137-main-floor.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/floorplans/137-main-floor.jpg 1920w" sizes="(max-width: 768px) 100vw, 45vw" alt="The main floor plan of Garran Hill, drawn as a working architectural sheet." loading="lazy" decoding="async" style="object-position:center top;" data-lightbox="plans-main" />
+        <figcaption class="caption-placard">Main floor.</figcaption>
+      </figure>
+      <figure class="plans-cell">
+<img class="plans-img" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/floorplans/138-second-floor.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/garran-hill/floorplans/138-second-floor.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/garran-hill/floorplans/138-second-floor.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/floorplans/138-second-floor.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/garran-hill/floorplans/138-second-floor.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/floorplans/138-second-floor.jpg 1920w" sizes="(max-width: 768px) 100vw, 45vw" alt="The second floor plan of Garran Hill, drawn as a working architectural sheet." loading="lazy" decoding="async" style="object-position:center top;" data-lightbox="plans-second" />
+        <figcaption class="caption-placard">Second floor.</figcaption>
+      </figure>
+    </div>
+    <p class="act-link-wrap">
+      <a class="quiet-link" href="/history">The full archive &nbsp;&rarr;</a>
+      <span class="quiet-link-sep" aria-hidden="true">&nbsp;&nbsp;&middot;&nbsp;&nbsp;</span>
+      <a class="quiet-link" href="/sources">Sources &nbsp;&rarr;</a>
+    </p>
+  </section>
+
+
+  <section class="ending" id="ending">
+    <div class="ending-inner">
+      <p class="eyebrow eyebrow-gold">ACT VIII</p>
+      <h2 class="ending-line">The last of the original parcel.</h2>
+    </div>
+  </section>
+
+  <section class="ending-prose">
+    <div class="ending-prose-inner">
+      <p class="ending-drop">The land was sold in pieces. The house was not.</p>
+      <p class="ending-drop">A subdivision rose around it and carries the name still. The house kept the rest: the brick, the forest, the four acres that were always its own.</p>
+      <p class="ending-drop ending-drop-last">Offered now.</p>
+    </div>
+  </section>
+
+
+  <section class="invitation" id="inquiry">
+    <div class="invitation-inner">
+      <p class="eyebrow eyebrow-gold">ACT IX</p>
+      <h2 class="invitation-line">Request Private Showing</h2>
+      <p class="invitation-hairline" aria-hidden="true"></p>
+      <p class="invitation-whisper">All inquiries held in strict confidence.</p>
+      <p class="invitation-contact">
+        <span class="contact-name">Rachel Hernandez</span>
+        <span class="contact-meta">Pines Sotheby&rsquo;s International Realty &middot; Southern Pines, North Carolina</span>
+      </p>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <p class="footer-line">200 HOLLYCREST DRIVE &nbsp;&middot;&nbsp; PINEHURST, NORTH CAROLINA &nbsp;&middot;&nbsp; $4,250,000</p>
+    <p class="footer-line footer-fine">Garran Hill. Built 1915 to 1916. Restored 1999 to 2001. The last of the original parcel.</p>
+  </footer>
+
+
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Photo viewer">
+    <button type="button" class="lb-close" id="lb-close" aria-label="Close viewer">&times;</button>
+    <button type="button" class="lb-prev" id="lb-prev" aria-label="Previous photo">&larr;</button>
+    <button type="button" class="lb-next" id="lb-next" aria-label="Next photo">&rarr;</button>
+    <figure class="lb-stage">
+      <img id="lb-img" alt="" />
+      <figcaption class="lb-caption" id="lb-caption"></figcaption>
+    </figure>
+  </div>
+
+<script>
+
+(function(){
+  'use strict';
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // -------- DISSOLVE: rAF scroll-driven crossfade --------
+  var dissolve = document.getElementById('dissolve');
+  var imgB = dissolve && dissolve.querySelector('.dissolve-img-b');
+  function updateDissolve(){
+    if(!dissolve || !imgB) return;
+    var rect = dissolve.getBoundingClientRect();
+    var total = dissolve.offsetHeight - window.innerHeight;
+    if(total <= 0){ imgB.style.opacity = 1; return; }
+    var scrolled = Math.max(0, Math.min(total, -rect.top));
+    var p = scrolled / total; // 0..1
+    var eased = prefersReduced ? 1 : p; // 0 = sepia, 1 = present
+    imgB.style.opacity = eased.toFixed(3);
+  }
+  var rafPending = false;
+  function onScroll(){
+    if(rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(function(){
+      rafPending = false;
+      updateDissolve();
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  updateDissolve();
+
+  // -------- REVEAL ON SCROLL (general) --------
+  if('IntersectionObserver' in window && !prefersReduced){
+    var reveals = document.querySelectorAll('.reveal, .dipt-fade');
+    reveals.forEach(function(el){
+      el.classList.add('reveal-init');
+    });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          if(en.target.classList.contains('dipt-fade')){
+            en.target.classList.add(en.target.dataset.side === 'right' ? 'in-r' : 'in-l');
+          } else {
+            en.target.classList.add('in');
+          }
+          io.unobserve(en.target);
+        }
+      });
+    }, {threshold: 0.15, rootMargin:'0px 0px -8% 0px'});
+    reveals.forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal, .dipt-fade').forEach(function(el){
+      el.classList.add('in');
+    });
+  }
+
+  // -------- PASSAGE crossfade via IO cycle --------
+  if('IntersectionObserver' in window && !prefersReduced){
+    var stages = document.querySelectorAll('.passage-stage');
+    stages.forEach(function(stage){
+      var io2 = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){
+            stage.classList.add('is-shown');
+            setTimeout(function(){ stage.classList.remove('is-shown'); }, 3600);
+          }
+        });
+      }, {threshold: 0.45});
+      io2.observe(stage);
+      // also cycle when stage is on screen for a while
+      var cycleTimer = null;
+      var stageObs = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){
+            if(cycleTimer) clearInterval(cycleTimer);
+            cycleTimer = setInterval(function(){
+              stage.classList.add('is-shown');
+              setTimeout(function(){ stage.classList.remove('is-shown'); }, 2200);
+            }, 5400);
+          } else {
+            if(cycleTimer){ clearInterval(cycleTimer); cycleTimer = null; }
+          }
+        });
+      }, {threshold: 0.2});
+      stageObs.observe(stage);
+    });
+  } else {
+    document.querySelectorAll('.passage-img-b').forEach(function(i){ i.style.opacity = 1; });
+  }
+
+  // -------- MATTERPORT click-to-load --------
+  var mpLoad = document.getElementById('matterport-load');
+  var mpEmbed = document.getElementById('matterport-embed');
+  if(mpLoad && mpEmbed){
+    mpLoad.addEventListener('click', function(){
+      var iframe = mpEmbed.querySelector('iframe');
+      if(iframe && iframe.dataset.src){
+        iframe.src = iframe.dataset.src;
+      }
+      mpEmbed.hidden = false;
+      mpLoad.style.display = 'none';
+    });
+  }
+
+  // -------- LIGHTBOX (viewing room) --------
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lb-img');
+  var lbCap = document.getElementById('lb-caption');
+  var lbClose = document.getElementById('lb-close');
+  var lbPrev = document.getElementById('lb-prev');
+  var lbNext = document.getElementById('lb-next');
+  var galleryImages = []; // {srcs, srcset, sizes, alt, caption}
+  var currentIndex = -1;
+
+  function buildLightboxCandidates(){
+    // Pull all images that are not inside lightbox/matterport/topnav and have a public_id pattern
+    var all = document.querySelectorAll('img');
+    all.forEach(function(img){
+      if(img.closest('.lightbox, .matterport, .topnav, .crest-wrap, .hero-bg, .dissolve-stack')) return;
+      var srcset = img.getAttribute('srcset') || '';
+      var sizes = img.getAttribute('sizes') || '100vw';
+      var alt = img.getAttribute('alt') || '';
+      var src = img.getAttribute('src') || '';
+      if(!src) return;
+      // find a caption sibling
+      var cap = '';
+      var fig = img.closest('figure');
+      if(fig){
+        var capEl = fig.querySelector('.caption-placard, figcaption');
+        if(capEl) cap = capEl.textContent.trim();
+      }
+      galleryImages.push({src:src, srcset:srcset, sizes:sizes, alt:alt, caption:cap});
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', function(e){
+        e.preventDefault();
+        openAt(galleryImages.length - 1);
+      });
+    });
+  }
+  function openAt(idx){
+    if(idx < 0 || idx >= galleryImages.length) return;
+    currentIndex = idx;
+    var it = galleryImages[idx];
+    lbImg.src = it.src;
+    lbImg.srcset = it.srcset;
+    lbImg.sizes = it.sizes;
+    lbImg.alt = it.alt;
+    lbCap.textContent = it.caption || it.alt || '';
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb(){
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+  function navLb(dir){
+    if(currentIndex < 0) return;
+    var next = (currentIndex + dir + galleryImages.length) % galleryImages.length;
+    openAt(next);
+  }
+  if(lbClose) lbClose.addEventListener('click', closeLb);
+  if(lbPrev) lbPrev.addEventListener('click', function(){ navLb(-1); });
+  if(lbNext) lbNext.addEventListener('click', function(){ navLb(1); });
+  if(lightbox){
+    lightbox.addEventListener('click', function(e){
+      if(e.target === lightbox) closeLb();
+    });
+  }
+  document.addEventListener('keydown', function(e){
+    if(!lightbox.classList.contains('is-open')) return;
+    if(e.key === 'Escape') closeLb();
+    if(e.key === 'ArrowLeft') navLb(-1);
+    if(e.key === 'ArrowRight') navLb(1);
+  });
+  buildLightboxCandidates();
+
+  // -------- Smooth scroll for anchor links (with reduced-motion respect) --------
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href').slice(1);
+      if(!id) return;
+      var target = document.getElementById(id);
+      if(!target) return;
+      e.preventDefault();
+      target.scrollIntoView({behavior: prefersReduced ? 'auto' : 'smooth', block:'start'});
+    });
+  });
+
+  
+  // Attach reveal classes to .act, .room, .gallery-row, .strip, .diptych, .upstairs-row, .grounds-row, .plans-row, .matterport, .breath, .ending-prose, .invitation
+  document.querySelectorAll('.act, .room, .gallery-row, .strip, .diptych, .upstairs-row, .grounds-row, .plans-row, .matterport, .breath, .ending-prose, .invitation').forEach(function(el){
+    el.classList.add('reveal');
+  });
+  document.querySelectorAll('.diptych-cell').forEach(function(el, i){
+    el.classList.add('dipt-fade');
+    el.dataset.side = (i % 2 === 0) ? 'left' : 'right';
+  });
+
+})();
+
+</script>
+</body>
+</html>
