@@ -48,7 +48,7 @@ curl -X POST "https://api.cloudflare.com/client/v4/zones/ba9f1f552f0ee309df0b992
 ## Hard Rules (Quick Reference)
 
 - **Never name:** Ann McAllister / Dr. Russell McAllister / David Prest
-- **Never market:** tennis courts (deteriorated)
+- **Tennis courts: SELLING POINT** (Rachel, 2026-06-12). Two private courts within the estate grounds, marketed proudly. The only required honesty: they need resurfacing. The old "never market" rule is dead.
 - **Never use:** nested, boasts, charming, stunning, elegant, luxurious, or any banned word from VOICE_AND_STYLE.md
 - **Never swap:** hero video `Last_for_real_q0fqvw` or wax seal `gh_wax_seal_v3`
 - **One site. One deployment.** Do not create alternate branches or staging environments without approval.
