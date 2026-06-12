@@ -88,11 +88,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .act-inner,.room-text,.ending-prose-inner,.invitation-inner,.breath-inner{width:min(100%, var(--narrow));margin:0 auto;padding:0 var(--pad-x);}
 .narrow{width:min(100%, 56ch);margin:0 auto;padding:0 var(--pad-x);}
 
+
+.stats-band{background:var(--ink);padding:clamp(2.5rem,5vh,4rem) 0 clamp(2rem,4vh,3rem);border-bottom:1px solid rgba(201,169,110,.14);}
+.stats-quiet{padding:0 var(--pad-x) !important;text-shadow:none !important;}
 /* HERO */
 .hero{position:relative;min-height:100svh;width:100%;overflow:hidden;background:var(--ink);}
 .hero-bg{position:absolute;inset:0;z-index:0;}
 .hero-img{width:100%;height:100%;object-fit:cover;filter:brightness(.72) saturate(.95);}
-.hero-veil{position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.10) 35%, rgba(10,10,10,.20) 65%, rgba(10,10,10,.85) 100%);z-index:1;}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.10) 35%, rgba(10,10,10,.25) 65%, rgba(10,10,10,.92) 100%);z-index:1;}
 
 .topnav{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;padding:1.5rem var(--pad-x);font-family:'Instrument Sans',system-ui,sans-serif;font-size:var(--text-xs);letter-spacing:.25em;text-transform:uppercase;}
 .topnav .brandmark{display:flex;flex-direction:column;align-items:flex-start;line-height:1;}
@@ -353,9 +356,23 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
     <div class="hero-center">
       <p class="eyebrow eyebrow-gold hero-address">200 HOLLYCREST DRIVE &middot; PINEHURST, NORTH CAROLINA</p>
       <h1 class="hero-script">Garran Hill</h1>
-      <p class="hero-tagline">A house built for coming back.</p>
+      </div>
+    
+    <div class="hero-scroll" aria-hidden="true">
+      <span class="scroll-line"></span>
+      <span class="scroll-text">SCROLL</span>
     </div>
-    <div class="hero-stats" role="list" aria-label="Property facts">
+  </header>
+
+
+  <section class="act act-coming-back" id="coming-back">
+    <div class="act-inner">
+      <p class="act-theme">The house was not built for spectacle.<br/>It was built for coming back.</p>
+    </div>
+  
+</section>
+<section class="stats-band" aria-label="Property facts">
+<div class="hero-stats stats-quiet" role="list" aria-label="Property facts">
       <div class="stat" role="listitem"><span class="stat-k">1916</span><span class="stat-v">EST</span></div>
       <div class="stat-sep" aria-hidden="true"></div>
       <div class="stat" role="listitem"><span class="stat-k">4</span><span class="stat-v">BED</span></div>
@@ -372,18 +389,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 <img class="crest" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/gh_key/gh_crest_gloss_v2.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_480,q_auto,f_auto/v1/gh_key/gh_crest_gloss_v2.jpg 480w, https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto,f_auto/v1/gh_key/gh_crest_gloss_v2.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/gh_key/gh_crest_gloss_v2.jpg 1080w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto,f_auto/v1/gh_key/gh_crest_gloss_v2.jpg 1440w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/gh_key/gh_crest_gloss_v2.jpg 1920w" sizes="(max-width: 768px) 60px, 96px" alt="Crest of Garran Hill" loading="eager" decoding="sync" fetchpriority="high" style="object-position:center;" />
       </div>
     </div>
-    <div class="hero-scroll" aria-hidden="true">
-      <span class="scroll-line"></span>
-      <span class="scroll-text">SCROLL</span>
-    </div>
-  </header>
-
-
-  <section class="act act-coming-back" id="coming-back">
-    <div class="act-inner">
-      <p class="act-theme">The house was not built for spectacle.<br/>It was built for coming back.</p>
-    </div>
-  </section>
+</section>
 
   <section class="dissolve" id="dissolve" aria-label="A 1916 gate, then a present-day view">
     <div class="dissolve-sticky">
