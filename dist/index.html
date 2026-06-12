@@ -16,6 +16,30 @@
 
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <style>
+/* RACHEL STUDIO LOCKED TYPE SCALE - Global Standard v1 SIII (enforced 2026-06-12) */
+:root{
+  --text-xs:   clamp(0.65rem, 0.8vw,  0.75rem);
+  --text-sm:   clamp(0.85rem, 1.1vw,  1.0rem);
+  --text-base: clamp(1.05rem, 1.2vw,  1.18rem);
+  --text-md:   clamp(1.3rem,  2vw,    1.7rem);
+  --text-lg:   clamp(1.9rem,  3.2vw,  3.0rem);
+  --text-xl:   clamp(2.8rem,  5.5vw,  5.2rem);
+  --text-hero: clamp(6rem,    19vw,   17rem);
+}
+
+/* Body + caption enforcement - Global Standard v1 SIII */
+.body-text p, section p {
+  font-size: var(--text-base);
+  line-height: 1.72;
+  max-width: 62ch;
+}
+figcaption, .caption {
+  font-size: var(--text-sm);
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+}
+h2 { text-wrap: balance; }
+
 @import url("https://use.typekit.net/wih8wgk.css");
 
 @keyframes goldShift {
@@ -116,21 +140,21 @@ section.cinematic {
    TYPOGRAPHY — MOBILE SCALE
    ══════════════════════════════════════════════════════ */
 .section-eyebrow {
-  font-size: 0.6rem;
+  font-size: var(--text-xs);
   letter-spacing: 0.25em;
 }
 .section-headline {
-  font-size: clamp(1.6rem, 6vw, 2.2rem);
+  font-size: var(--text-lg);
   line-height: 1.2;
 }
 .body-text p {
-  font-size: clamp(0.95rem, 3.8vw, 1.1rem);
+  font-size: var(--text-base);
   line-height: 1.85;
 }
 @media (min-width: 769px) {
-  .section-eyebrow { font-size: clamp(0.6rem, 0.75vw, 0.7rem); }
-  .section-headline { font-size: clamp(2rem, 2.5vw, 3.2rem); }
-  .body-text p { font-size: clamp(1.05rem, 1.4vw, 1.2rem); line-height: 2.0; }}
+  .section-eyebrow { font-size: var(--text-xs); }
+  .section-headline { font-size: var(--text-lg); }
+  .body-text p { font-size: var(--text-md); line-height: 2.0; }}
 
 /* ══════════════════════════════════════════════════════
    NAV — MOBILE
@@ -190,7 +214,7 @@ nav {
 .nav-mobile a {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
-  font-size: clamp(1.4rem, 5vw, 1.8rem);
+  font-size: var(--text-lg);
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: rgba(245,240,232,0.85);
@@ -214,7 +238,7 @@ nav {
 <style>
 .caption-label {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(0.85rem, 1vw, 1rem);
+  font-size: var(--text-sm);
   font-style: italic;
   font-weight: 300;
   color: rgba(201,169,110,0.65);
@@ -271,7 +295,7 @@ body {
  color: var(--cream);
  font-family: 'Cormorant Garamond', Georgia, serif;
  font-weight: 300;
- font-size: 16px;
+ font-size: var(--text-base);
  line-height: 1.7;
  -webkit-font-smoothing: antialiased;
  overflow-x: hidden;
@@ -313,7 +337,7 @@ nav {
 .nav-links a {
  font-family: 'Instrument Sans', sans-serif;
  font-weight: 300;
- font-size: clamp(0.6rem, 0.8vw, 0.7rem);
+ font-size: var(--text-xs);
  letter-spacing: 0.2em;
  text-transform: uppercase;
  color: rgba(245,240,232,0.75);
@@ -325,7 +349,7 @@ nav {
 .nav-est, .nav-name, .nav-year {
  font-family: 'Instrument Sans', sans-serif;
  font-weight: 300;
- font-size: clamp(0.58rem, 0.75vw, 0.68rem);
+ font-size: var(--text-xs);
  letter-spacing: 0.18em;
  text-transform: uppercase;
  color: rgba(245,240,232,0.5);
@@ -398,7 +422,7 @@ nav {
  display: block;
  font-family: 'Instrument Sans', sans-serif;
  font-weight: 300;
- font-size: clamp(0.6rem, 0.85vw, 0.75rem);
+ font-size: var(--text-xs);
  letter-spacing: 0.3em;
  text-transform: uppercase;
  color: rgba(245,240,232,0.6);
@@ -410,7 +434,7 @@ nav {
  font-family: 'Cormorant Garamond', serif;
  font-weight: 300;
  font-style: italic;
- font-size: clamp(0.85rem, 1.2vw, 1.1rem);
+ font-size: var(--text-base);
  letter-spacing: 0.08em;
  color: rgba(245,240,232,0.5);
  margin-top: clamp(0.6rem, 1vw, 0.9rem);
@@ -458,7 +482,7 @@ nav {
 .stat-item .stat-num {
  font-family: 'Cormorant Garamond', serif;
  font-weight: 300;
- font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+ font-size: var(--text-lg);
  color: var(--cream);
  line-height: 1;
  letter-spacing: -0.01em;
@@ -467,7 +491,7 @@ nav {
 .stat-item .stat-label {
  font-family: 'Instrument Sans', sans-serif;
  font-weight: 300;
- font-size: clamp(0.55rem, 0.7vw, 0.62rem);
+ font-size: var(--text-xs);
  letter-spacing: 0.22em;
  text-transform: uppercase;
  color: rgba(245,240,232,0.4);
@@ -563,7 +587,7 @@ nav {
  display: inline-block;
  font-family: 'Instrument Sans', sans-serif;
  font-weight: 400;
- font-size: clamp(0.6rem, 0.8vw, 0.7rem);
+ font-size: var(--text-xs);
  letter-spacing: 0.25em;
  text-transform: uppercase;
  color: var(--cream);
@@ -711,7 +735,7 @@ nav {
  font-family: 'Cormorant Garamond', serif;
  font-weight: 300;
  font-style: italic;
- font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+ font-size: var(--text-md);
  color: rgba(245,240,232,0.55);
  letter-spacing: 0.02em;
  margin-top: clamp(1.5rem, 3vw, 2.5rem) !important;
@@ -732,7 +756,7 @@ nav.scrolled {
 /* Standard body paragraph -- most common pattern */
 p.body-p {
  font-family: 'Cormorant Garamond', serif;
- font-size: clamp(1.0rem, 1.15vw, 1.12rem);
+ font-size: var(--text-base);
  font-weight: 300;
  color: rgba(245,240,232,0.82);
  line-height: 1.85;
@@ -743,7 +767,7 @@ p.body-p {
 /* Italic atmospheric paragraph */
 p.body-p--italic {
  font-family: 'Cormorant Garamond', serif;
- font-size: clamp(1.0rem, 1.15vw, 1.12rem);
+ font-size: var(--text-base);
  font-weight: 300;
  font-style: italic;
  color: rgba(245,240,232,0.75);
@@ -755,7 +779,7 @@ p.body-p--italic {
 p.body-p--center {
  text-align: center;
  font-family: 'Cormorant Garamond', serif;
- font-size: clamp(1.0rem, 1.15vw, 1.12rem);
+ font-size: var(--text-base);
  font-weight: 300;
  color: rgba(245,240,232,0.82);
  line-height: 1.85;
@@ -766,7 +790,7 @@ p.body-p--center {
 /* Italic closing paragraph -- inquiry section */
 p.body-p--closing {
  font-family: 'Cormorant Garamond', serif;
- font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+ font-size: var(--text-md);
  font-weight: 300;
  font-style: italic;
  color: rgba(245,240,232,0.72);
@@ -783,7 +807,7 @@ p
 h3.room-label {
  font-family: 'Cormorant Garamond', serif;
  font-weight: 300;
- font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+ font-size: var(--text-md);
  color: var(--cream);
  letter-spacing: 0.01em;
  line-height: 1.2;
@@ -793,7 +817,7 @@ h3.room-label {
 /* Micro utility label -- below stat bar, above nav */
 p.micro-label {
  font-family: 'Cormorant Garamond', serif;
- font-size: clamp(0.55rem, 0.8vw, 0.7rem);
+ font-size: var(--text-xs);
  letter-spacing: 0.28em;
  text-transform: uppercase;
  color: rgba(245,240,232,0.3);
@@ -923,7 +947,7 @@ section.grounds-section {
   display: block;
   font-family: 'Instrument Sans', sans-serif;
   font-weight: 300;
-  font-size: clamp(0.55rem,0.75vw,0.65rem);
+  font-size: var(--text-xs);
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: rgba(245,240,232,0.22);
@@ -977,7 +1001,7 @@ section.cinematic +
 .body-text p {
  font-family: 'Cormorant Garamond', serif;
  font-weight: 300;
- font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+ font-size: var(--text-md);
  line-height: 2.0;
  letter-spacing: 0.01em;
  color: rgba(245,240,232,0.82);
@@ -2097,7 +2121,7 @@ body #main-nav .nav-wordmark::after {
 .stat-num{
   color:rgba(245,240,232,.96) !important;
   font-weight:300 !important;
-  font-size:clamp(1.45rem,2.15vw,2.45rem) !important;
+  font-size:var(--text-lg) !important;
   text-shadow:none !important;
 }
 .stat-lbl{
@@ -2122,7 +2146,7 @@ body #main-nav .nav-wordmark::after {
   place-items:center !important;
   color:rgba(201,169,110,.88) !important;
   font-family:'Cormorant Garamond', Georgia, serif !important;
-  font-size:clamp(1.25rem,1.7vw,1.9rem) !important;
+  font-size:var(--text-md) !important;
   letter-spacing:.10em !important;
   background:radial-gradient(circle, rgba(10,10,10,.94), rgba(10,10,10,.48)) !important;
   box-shadow:0 12px 36px rgba(0,0,0,.72), inset 0 0 0 1px rgba(245,224,152,.10) !important;
@@ -2154,7 +2178,7 @@ body #main-nav .nav-wordmark::after {
   text-shadow: 0 2px 18px rgba(0,0,0,.95), 0 1px 2px rgba(0,0,0,.9) !important;
 }
 #kb-gate .kb-copy > span {
-  font-size: clamp(.9rem, 1.25vw, 1.15rem) !important;
+  font-size: var(--text-base) !important;
   line-height: 1.25 !important;
   letter-spacing: .34em !important;
   color: rgba(226,190,118,.96) !important;
@@ -2167,13 +2191,13 @@ body #main-nav .nav-wordmark::after {
   margin-bottom: 1.25rem !important;
 }
 #kb-gate .kb-copy > p:nth-of-type(2) {
-  font-size: clamp(1.2rem, 1.65vw, 1.75rem) !important;
+  font-size: var(--text-md) !important;
   line-height: 1.45 !important;
   color: rgba(255,250,240,.93) !important;
   max-width: 34ch !important;
 }
 #kb-gate .kb-copy > p:nth-of-type(3) {
-  font-size: clamp(1rem, 1.25vw, 1.25rem) !important;
+  font-size: var(--text-base) !important;
   line-height: 1.45 !important;
   color: rgba(226,190,118,.88) !important;
   max-width: 42ch !important;
@@ -2197,10 +2221,10 @@ body #main-nav .nav-wordmark::after {
     padding: 1.1rem 1.1rem 1.25rem !important;
     background: linear-gradient(0deg, rgba(5,5,5,.82), rgba(5,5,5,.52)) !important;
   }
-  #kb-gate .kb-copy > span { font-size: .74rem !important; letter-spacing: .24em !important; }
-  #kb-gate .kb-copy > p:nth-of-type(1) { font-size: clamp(2.25rem, 11vw, 3.7rem) !important; }
-  #kb-gate .kb-copy > p:nth-of-type(2) { font-size: 1.12rem !important; }
-  #kb-gate .kb-copy > p:nth-of-type(3) { font-size: 1rem !important; }
+  #kb-gate .kb-copy > span { font-size: var(--text-xs) !important; letter-spacing: .24em !important; }
+  #kb-gate .kb-copy > p:nth-of-type(1) { font-size: var(--text-xl) !important; }
+  #kb-gate .kb-copy > p:nth-of-type(2) { font-size: var(--text-base) !important; }
+  #kb-gate .kb-copy > p:nth-of-type(3) { font-size: var(--text-base) !important; }
 }
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-06-07T22:10:34.662Z:3769b920-a1ef-4b12-b279-dd6afc62c653 */
@@ -2481,7 +2505,7 @@ body #main-nav .nav-wordmark::after {
             animation: goldShift 6s linear infinite;
           ">4</div>
           <div style="
-            font-family: 'Inter', sans-serif;
+            font-family: 'Instrument Sans', sans-serif;
             font-size: clamp(0.52rem, 0.68vw, 0.72rem);
             font-weight: 400;
             letter-spacing: 0.28em;
@@ -2512,7 +2536,7 @@ body #main-nav .nav-wordmark::after {
             animation: goldShift 6s linear infinite 0.8s;
           ">6</div>
           <div style="
-            font-family: 'Inter', sans-serif;
+            font-family: 'Instrument Sans', sans-serif;
             font-size: clamp(0.52rem, 0.68vw, 0.72rem);
             font-weight: 400;
             letter-spacing: 0.28em;
@@ -2543,7 +2567,7 @@ body #main-nav .nav-wordmark::after {
             animation: goldShift 6s linear infinite 1.6s;
           ">6,320</div>
           <div style="
-            font-family: 'Inter', sans-serif;
+            font-family: 'Instrument Sans', sans-serif;
             font-size: clamp(0.52rem, 0.68vw, 0.72rem);
             font-weight: 400;
             letter-spacing: 0.28em;
@@ -2591,7 +2615,7 @@ body #main-nav .nav-wordmark::after {
             animation: goldShift 6s linear infinite 2.4s;
           ">4.15</div>
           <div style="
-            font-family: 'Inter', sans-serif;
+            font-family: 'Instrument Sans', sans-serif;
             font-size: clamp(0.52rem, 0.68vw, 0.72rem);
             font-weight: 400;
             letter-spacing: 0.28em;
@@ -2622,7 +2646,7 @@ body #main-nav .nav-wordmark::after {
             animation: goldShift 6s linear infinite 3.2s;
           ">7</div>
           <div style="
-            font-family: 'Inter', sans-serif;
+            font-family: 'Instrument Sans', sans-serif;
             font-size: clamp(0.52rem, 0.68vw, 0.72rem);
             font-weight: 400;
             letter-spacing: 0.28em;
@@ -2653,7 +2677,7 @@ body #main-nav .nav-wordmark::after {
             animation: goldShift 6s linear infinite 4s;
           ">$4,250,000</div>
           <div style="
-            font-family: 'Inter', sans-serif;
+            font-family: 'Instrument Sans', sans-serif;
             font-size: clamp(0.52rem, 0.68vw, 0.72rem);
             font-weight: 400;
             letter-spacing: 0.28em;
@@ -2685,7 +2709,7 @@ body #main-nav .nav-wordmark::after {
       width:100%;
       text-align:center;
       padding: 0.4rem 0 0.25rem;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Instrument Sans', sans-serif;
       font-size: clamp(0.44rem, 0.58vw, 0.58rem);
       font-weight: 300;
       letter-spacing: 0.32em;
@@ -2761,17 +2785,17 @@ body #main-nav .nav-wordmark::after {
   </div>
 
   <div class="kb-copy" style="position:absolute;bottom:clamp(2rem,5vw,5rem);left:clamp(1.5rem,5vw,7rem);right:clamp(1.5rem,5vw,7rem);z-index:10;max-width:52ch;">
-    <span style="display:block;font-family:'Instrument Sans',sans-serif;font-size:clamp(0.55rem,1.8vw,0.65rem);letter-spacing:0.45em;text-transform:uppercase;color:rgba(201,169,110,0.75);margin-bottom:1rem;">1916 &rarr; Today</span>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.35rem,3.5vw,2.2rem);font-weight:200;font-style:italic;color:#F5F0E8;line-height:1.35;margin:0 0 1rem;">Some houses are built for arrival.<br>Garran Hill was built for return.</p>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.9rem,2vw,1.1rem);font-weight:300;color:rgba(245,240,232,0.72);line-height:1.75;margin:0 0 1rem;">The brick gateposts and circular drive establish the scale of the estate with old-world confidence. Arrival here feels less like parking and more like being received.</p>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.8rem,1.6vw,0.95rem);font-weight:300;font-style:italic;color:rgba(201,169,110,0.6);line-height:1.7;margin:0;">Built for Walter Hines Page, Garran Hill remains one of Pinehurst&rsquo;s rare private estates of history, land, and return.</p>
+    <span style="display:block;font-family:'Instrument Sans', sans-serif;font-size:var(--text-xs);letter-spacing:0.45em;text-transform:uppercase;color:rgba(201,169,110,0.75);margin-bottom:1rem;">1916 &rarr; Today</span>
+    <p style="font-family:'Cormorant Garamond', serif;font-size:var(--text-lg);font-weight:200;font-style:italic;color:#F5F0E8;line-height:1.35;margin:0 0 1rem;">Some houses are built for arrival.<br>Garran Hill was built for return.</p>
+    <p style="font-family:'Cormorant Garamond', serif;font-size:var(--text-base);font-weight:300;color:rgba(245,240,232,0.72);line-height:1.75;margin:0 0 1rem;">The brick gateposts and circular drive establish the scale of the estate with old-world confidence. Arrival here feels less like parking and more like being received.</p>
+    <p style="font-family:'Cormorant Garamond', serif;font-size:var(--text-base);font-weight:300;font-style:italic;color:rgba(201,169,110,0.6);line-height:1.7;margin:0;">Built for Walter Hines Page, Garran Hill remains one of Pinehurst&rsquo;s rare private estates of history, land, and return.</p>
   </div>
 
 </section>
 <section id="whp-history" style="background:#0a0a0a;position:relative;min-height:clamp(520px,65vw,820px);overflow:hidden;">
   <!-- Ghost manuscript underlay -->
   <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;pointer-events:none;">
-    <p style="font-family:'Cormorant Garamond',serif;font-weight:100;font-size:clamp(48px,9vw,140px);line-height:1.1;color:rgba(201,169,110,0.055);text-align:center;letter-spacing:0.02em;padding:0 5vw;white-space:nowrap;">THE LIFE AND LETTERS<br>OF WALTER H. PAGE</p>
+    <p style="font-family:'Cormorant Garamond', serif;font-weight:100;font-size:clamp(48px,9vw,140px);line-height:1.1;color:rgba(201,169,110,0.055);text-align:center;letter-spacing:0.02em;padding:0 5vw;white-space:nowrap;">THE LIFE AND LETTERS<br>OF WALTER H. PAGE</p>
   </div>
   <!-- Content -->
   <div style="position:relative;z-index:2;display:flex;flex-wrap:wrap;align-items:center;min-height:clamp(520px,65vw,820px);padding:clamp(56px,8vw,120px) clamp(24px,6vw,100px);gap:clamp(32px,5vw,80px);">
@@ -2781,13 +2805,13 @@ body #main-nav .nav-wordmark::after {
     </div>
     <!-- Copy -->
     <div style="flex:1 1 280px;max-width:580px;">
-      <p style="font-family:'Instrument Sans',sans-serif;font-size:clamp(10px,1vw,12px);letter-spacing:0.25em;color:#C9A96E;text-transform:uppercase;margin:0 0 20px;">Walter Hines Page &middot; 1855&ndash;1918</p>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(26px,3.2vw,48px);line-height:1.22;color:#F5F0E8;margin:0 0 24px;">The friend of Britain<br><em>in her sorest need.</em></h2>
-      <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(15px,1.5vw,20px);line-height:1.75;color:rgba(245,240,232,0.82);margin:0 0 20px;">Journalist. Publisher. U.S. Ambassador to Great Britain under President Woodrow Wilson. Walter Hines Page spent his years in London writing home about the farm he was building in Moore County, North Carolina.</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(15px,1.5vw,20px);line-height:1.75;color:rgba(245,240,232,0.82);margin:0 0 28px;">He named it from London. His son Ralph supervised the construction. Page died December 21, 1918 &mdash; before he ever spent a night in the house he built.</p>
+      <p style="font-family:'Instrument Sans', sans-serif;font-size:var(--text-xs);letter-spacing:0.25em;color:#C9A96E;text-transform:uppercase;margin:0 0 20px;">Walter Hines Page &middot; 1855&ndash;1918</p>
+      <h2 style="font-family:'Cormorant Garamond', serif;font-weight:300;font-size:var(--text-xl);line-height:1.22;color:#F5F0E8;margin:0 0 24px;">The friend of Britain<br><em>in her sorest need.</em></h2>
+      <p style="font-family:'Cormorant Garamond', serif;font-weight:300;font-size:var(--text-md);line-height:1.75;color:rgba(245,240,232,0.82);margin:0 0 20px;">Journalist. Publisher. U.S. Ambassador to Great Britain under President Woodrow Wilson. Walter Hines Page spent his years in London writing home about the farm he was building in Moore County, North Carolina.</p>
+      <p style="font-family:'Cormorant Garamond', serif;font-weight:300;font-size:var(--text-md);line-height:1.75;color:rgba(245,240,232,0.82);margin:0 0 28px;">He named it from London. His son Ralph supervised the construction. Page died December 21, 1918 &mdash; before he ever spent a night in the house he built.</p>
       <blockquote style="border-left:1px solid rgba(201,169,110,0.5);padding-left:20px;margin:0;">
-        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(16px,1.6vw,22px);line-height:1.7;color:#F5F0E8;margin:0 0 10px;">&ldquo;Well, Frank, I did get here after all, didn&rsquo;t I?&rdquo;</p>
-        <cite style="font-family:'Instrument Sans',sans-serif;font-size:clamp(9px,0.85vw,11px);letter-spacing:0.2em;color:#C9A96E;text-transform:uppercase;font-style:normal;">Walter Hines Page &middot; Last words &middot; Aberdeen, NC &middot; December 11, 1918</cite>
+        <p style="font-family:'Cormorant Garamond', serif;font-style:italic;font-weight:300;font-size:var(--text-md);line-height:1.7;color:#F5F0E8;margin:0 0 10px;">&ldquo;Well, Frank, I did get here after all, didn&rsquo;t I?&rdquo;</p>
+        <cite style="font-family:'Instrument Sans', sans-serif;font-size:var(--text-xs);letter-spacing:0.2em;color:#C9A96E;text-transform:uppercase;font-style:normal;">Walter Hines Page &middot; Last words &middot; Aberdeen, NC &middot; December 11, 1918</cite>
       </blockquote>
     </div>
   </div>
@@ -2801,14 +2825,14 @@ body #main-nav .nav-wordmark::after {
     <img src="https://res.cloudinary.com/dghn2xpif/image/upload/gh_exteriors/gh_holly_door.jpg" alt="Garran Hill entrance" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.28;"/>
     <div style="position:relative;z-index:2;display:flex;align-items:center;min-height:clamp(520px,70vw,820px);padding:clamp(48px,8vw,120px) clamp(24px,6vw,160px);">
       <div style="max-width:680px;">
-        <p style="font-family:'Instrument Sans',sans-serif;font-size:clamp(10px,1vw,12px);letter-spacing:0.25em;color:#C9A96E;text-transform:uppercase;margin:0 0 24px;">Walter Hines Page &middot; The Dream of Return</p>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(32px,4.5vw,64px);line-height:1.15;color:#F5F0E8;margin:0 0 32px;">Before Garran Hill was brick,<br><em>it was a letter home.</em></h2>
-        <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(16px,1.6vw,22px);line-height:1.75;color:rgba(245,240,232,0.82);margin:0 0 28px;">Page imagined it from London. Ralph supervised it on the ground in Moore County. The farm, the orchard, the garden &mdash; a life he hoped would gather itself back in North Carolina.</p>
+        <p style="font-family:'Instrument Sans', sans-serif;font-size:var(--text-xs);letter-spacing:0.25em;color:#C9A96E;text-transform:uppercase;margin:0 0 24px;">Walter Hines Page &middot; The Dream of Return</p>
+        <h2 style="font-family:'Cormorant Garamond', serif;font-weight:300;font-size:var(--text-xl);line-height:1.15;color:#F5F0E8;margin:0 0 32px;">Before Garran Hill was brick,<br><em>it was a letter home.</em></h2>
+        <p style="font-family:'Cormorant Garamond', serif;font-weight:300;font-size:var(--text-md);line-height:1.75;color:rgba(245,240,232,0.82);margin:0 0 28px;">Page imagined it from London. Ralph supervised it on the ground in Moore County. The farm, the orchard, the garden &mdash; a life he hoped would gather itself back in North Carolina.</p>
         <blockquote style="border-left:1px solid #C9A96E;padding-left:24px;margin:0 0 28px;">
-          <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(17px,1.8vw,24px);line-height:1.7;color:#F5F0E8;margin:0 0 10px;">&ldquo;Build the farm, therefore; and let me hear at every stage of that happy game.&rdquo;</p>
-          <cite style="font-family:'Instrument Sans',sans-serif;font-size:clamp(9px,0.85vw,11px);letter-spacing:0.2em;color:#C9A96E;text-transform:uppercase;font-style:normal;">Walter Hines Page &middot; Letter to Ralph W. Page &middot; 1918</cite>
+          <p style="font-family:'Cormorant Garamond', serif;font-style:italic;font-weight:300;font-size:var(--text-md);line-height:1.7;color:#F5F0E8;margin:0 0 10px;">&ldquo;Build the farm, therefore; and let me hear at every stage of that happy game.&rdquo;</p>
+          <cite style="font-family:'Instrument Sans', sans-serif;font-size:var(--text-xs);letter-spacing:0.2em;color:#C9A96E;text-transform:uppercase;font-style:normal;">Walter Hines Page &middot; Letter to Ralph W. Page &middot; 1918</cite>
         </blockquote>
-        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(15px,1.5vw,20px);line-height:1.65;color:rgba(245,240,232,0.65);margin:0;">The house was not built for spectacle. It was built for coming back.</p>
+        <p style="font-family:'Cormorant Garamond', serif;font-style:italic;font-weight:300;font-size:var(--text-md);line-height:1.65;color:rgba(245,240,232,0.65);margin:0;">The house was not built for spectacle. It was built for coming back.</p>
       </div>
     </div>
   </div>
@@ -2823,10 +2847,10 @@ body #main-nav .nav-wordmark::after {
   <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,0.72) 0%,rgba(10,10,10,0.35) 60%,rgba(10,10,10,0.1) 100%);"></div>
   <div style="position:relative;z-index:2;display:flex;align-items:center;min-height:clamp(480px,55vw,680px);padding:clamp(48px,8vw,120px) clamp(24px,6vw,160px);">
     <div style="max-width:580px;">
-      <p style="font-family:'Instrument Sans',sans-serif;font-size:clamp(10px,1vw,12px);letter-spacing:0.25em;color:#C9A96E;text-transform:uppercase;margin:0 0 20px;">Pinehurst Hands &middot; Brick &amp; Proof</p>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,3.8vw,54px);line-height:1.2;color:#F5F0E8;margin:0 0 28px;">What Page imagined from afar,<br>Pinehurst hands made permanent.</h2>
-      <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(15px,1.5vw,20px);line-height:1.75;color:rgba(245,240,232,0.82);margin:0 0 28px;">Built from architect&rsquo;s plans under Ralph Page&rsquo;s supervision, Garran Hill took shape within Leonard Tufts&rsquo; Pinehurst building world. The result is not ornament for ornament&rsquo;s sake. It is discipline in brick: proportion, symmetry, threshold, window, wall.</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(14px,1.4vw,18px);color:rgba(245,240,232,0.55);margin:0;">The dream did not stay on paper. It became brick.</p>
+      <p style="font-family:'Instrument Sans', sans-serif;font-size:var(--text-xs);letter-spacing:0.25em;color:#C9A96E;text-transform:uppercase;margin:0 0 20px;">Pinehurst Hands &middot; Brick &amp; Proof</p>
+      <h2 style="font-family:'Cormorant Garamond', serif;font-weight:300;font-size:var(--text-xl);line-height:1.2;color:#F5F0E8;margin:0 0 28px;">What Page imagined from afar,<br>Pinehurst hands made permanent.</h2>
+      <p style="font-family:'Cormorant Garamond', serif;font-weight:300;font-size:var(--text-md);line-height:1.75;color:rgba(245,240,232,0.82);margin:0 0 28px;">Built from architect&rsquo;s plans under Ralph Page&rsquo;s supervision, Garran Hill took shape within Leonard Tufts&rsquo; Pinehurst building world. The result is not ornament for ornament&rsquo;s sake. It is discipline in brick: proportion, symmetry, threshold, window, wall.</p>
+      <p style="font-family:'Cormorant Garamond', serif;font-style:italic;font-weight:300;font-size:var(--text-base);color:rgba(245,240,232,0.55);margin:0;">The dream did not stay on paper. It became brick.</p>
     </div>
   </div>
 </section>
@@ -2838,9 +2862,9 @@ body #main-nav .nav-wordmark::after {
   <img src="https://res.cloudinary.com/dghn2xpif/image/upload/gh_exteriors/gh_facade_wide.jpg" alt="Garran Hill front facade" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;"/>
   <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.1) 0%,rgba(10,10,10,0.58) 100%);"></div>
   <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-height:clamp(580px,75vw,920px);padding:0 clamp(24px,6vw,120px) clamp(56px,6vw,100px);text-align:center;">
-    <p style="font-family:'Instrument Sans',sans-serif;font-size:clamp(9px,0.9vw,11px);letter-spacing:0.3em;color:#C9A96E;text-transform:uppercase;margin:0 0 18px;">The Front Elevation</p>
-    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(30px,4.2vw,62px);line-height:1.18;color:#F5F0E8;margin:0 0 20px;">A Georgian sentence in brick.</h2>
-    <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(14px,1.4vw,19px);line-height:1.7;color:rgba(245,240,232,0.72);max-width:580px;margin:0;">Brick massing, balanced windows, a centered entry, white trim. Wings that hold the long Georgian line. The house announces itself by restraint.</p>
+    <p style="font-family:'Instrument Sans', sans-serif;font-size:var(--text-xs);letter-spacing:0.3em;color:#C9A96E;text-transform:uppercase;margin:0 0 18px;">The Front Elevation</p>
+    <h2 style="font-family:'Cormorant Garamond', serif;font-weight:300;font-size:var(--text-xl);line-height:1.18;color:#F5F0E8;margin:0 0 20px;">A Georgian sentence in brick.</h2>
+    <p style="font-family:'Cormorant Garamond', serif;font-weight:300;font-size:var(--text-md);line-height:1.7;color:rgba(245,240,232,0.72);max-width:580px;margin:0;">Brick massing, balanced windows, a centered entry, white trim. Wings that hold the long Georgian line. The house announces itself by restraint.</p>
   </div>
 </section>
 
@@ -2848,10 +2872,10 @@ body #main-nav .nav-wordmark::after {
 <section id="threshold" style="background:#0a0a0a;display:flex;flex-wrap:wrap;min-height:clamp(480px,60vw,760px);">
   <div class="gh-split-copy" style="flex:1 1 340px;display:flex;align-items:center;padding:clamp(48px,7vw,100px) clamp(24px,5vw,80px);background:#0a0a0a;">
     <div style="max-width:480px;">
-      <p style="font-family:'Instrument Sans',sans-serif;font-size:clamp(10px,1vw,12px);letter-spacing:0.25em;color:#C9A96E;text-transform:uppercase;margin:0 0 20px;">Garran Hill &middot; 1916</p>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(26px,3.5vw,50px);line-height:1.22;color:#F5F0E8;margin:0 0 28px;">The house gives you its name<br><em>before it gives you a room.</em></h2>
-      <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(15px,1.5vw,20px);line-height:1.75;color:rgba(245,240,232,0.82);margin:0 0 24px;">Brick underfoot. The name at the door. Fanlight above. Leaded glass at either side. A stair waiting just beyond the entry.</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(13px,1.3vw,17px);color:rgba(245,240,232,0.5);letter-spacing:0.08em;margin:0;">GARRAN HILL &middot; 1916</p>
+      <p style="font-family:'Instrument Sans', sans-serif;font-size:var(--text-xs);letter-spacing:0.25em;color:#C9A96E;text-transform:uppercase;margin:0 0 20px;">Garran Hill &middot; 1916</p>
+      <h2 style="font-family:'Cormorant Garamond', serif;font-weight:300;font-size:var(--text-xl);line-height:1.22;color:#F5F0E8;margin:0 0 28px;">The house gives you its name<br><em>before it gives you a room.</em></h2>
+      <p style="font-family:'Cormorant Garamond', serif;font-weight:300;font-size:var(--text-md);line-height:1.75;color:rgba(245,240,232,0.82);margin:0 0 24px;">Brick underfoot. The name at the door. Fanlight above. Leaded glass at either side. A stair waiting just beyond the entry.</p>
+      <p style="font-family:'Cormorant Garamond', serif;font-style:italic;font-weight:300;font-size:var(--text-base);color:rgba(245,240,232,0.5);letter-spacing:0.08em;margin:0;">GARRAN HILL &middot; 1916</p>
     </div>
   </div>
   <div class="gh-split-img" style="flex:1 1 340px;position:relative;min-height:clamp(360px,45vw,680px);overflow:hidden;">
@@ -2884,7 +2908,7 @@ body #main-nav .nav-wordmark::after {
 </section>
 <div style="background:#000000;text-align:center;padding:clamp(2.5rem,4vw,4rem) clamp(2rem,6vw,7rem);">
  <div style="width:40px;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.5),transparent);margin:0 auto 2rem;"></div>
- <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.0rem,1.15vw,1.12rem);font-weight:300;font-style:italic;color:rgba(245,240,232,0.5);max-width:50ch;margin:0 auto;line-height:1.7;">Seven principal rooms. Each one specific. Each one earned.</p>
+ <p style="font-family:'Cormorant Garamond', serif;font-size:var(--text-base);font-weight:300;font-style:italic;color:rgba(245,240,232,0.5);max-width:50ch;margin:0 auto;line-height:1.7;">Seven principal rooms. Each one specific. Each one earned.</p>
 </div>
 
 
@@ -2898,8 +2922,8 @@ body #main-nav .nav-wordmark::after {
 <!-- BREATH INTRO -->
 <div style="background:#0a0a0a;text-align:center;padding:clamp(3rem,6vw,8rem) clamp(2rem,6vw,7rem);">
   <div style="width:1px;height:clamp(3rem,6vw,6rem);background:linear-gradient(to bottom,transparent,rgba(201,169,110,0.4),transparent);margin:0 auto 2.5rem;"></div>
-  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.6rem,0.9vw,0.7rem);letter-spacing:0.4em;text-transform:uppercase;color:rgba(201,169,110,0.5);margin:0 0 1.5rem;">The Rooms</p>
-  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2.2vw,2rem);font-weight:200;font-style:italic;color:rgba(245,240,232,0.6);max-width:42ch;margin:0 auto;line-height:1.6;">Seven principal rooms. Each one specific.<br>Each one earned.</p>
+  <p style="font-family:'Cormorant Garamond', serif;font-size:var(--text-xs);letter-spacing:0.4em;text-transform:uppercase;color:rgba(201,169,110,0.5);margin:0 0 1.5rem;">The Rooms</p>
+  <p style="font-family:'Cormorant Garamond', serif;font-size:var(--text-lg);font-weight:200;font-style:italic;color:rgba(245,240,232,0.6);max-width:42ch;margin:0 auto;line-height:1.6;">Seven principal rooms. Each one specific.<br>Each one earned.</p>
 </div>
 
 <!-- ── 1. DRAWING ROOM ── full bleed left photo, text right -->
@@ -3018,7 +3042,7 @@ body #main-nav .nav-wordmark::after {
       <div style="max-width:500px;">
         <span class="micro-rule"></span>
         <span class="eyebrow">The Kitchen</span>
-        <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3vw,3rem);font-weight:300;color:#F5F0E8;line-height:1.2;margin:0 0 1.5rem;">White cabinetry. Dark granite.<em style="display:block;margin-top:0.15em;">Island. Four windows. Room to cook.</em></h2>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:var(--text-xl);font-weight:300;color:#F5F0E8;line-height:1.2;margin:0 0 1.5rem;">White cabinetry. Dark granite.<em style="display:block;margin-top:0.15em;">Island. Four windows. Room to cook.</em></h2>
         <div class="body-text">
           <p>The island is black against white cabinetry. Heart-pine floors run beneath it, original to the restoration. Four windows face the grounds and let the morning light in.</p>
           <p>Two farm sinks. The kitchen is serious about cooking. The grounds are visible through every window.</p>
@@ -3131,7 +3155,7 @@ body #main-nav .nav-wordmark::after {
 <!-- CLOSING BREATH -->
 <div style="background:#0a0a0a;text-align:center;padding:clamp(4rem,8vw,10rem) clamp(2rem,6vw,7rem);">
   <div style="width:1px;height:clamp(3rem,5vw,5rem);background:linear-gradient(to bottom,transparent,rgba(201,169,110,0.3),transparent);margin:0 auto 2.5rem;"></div>
-  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.8vw,1.6rem);font-weight:200;font-style:italic;color:rgba(245,240,232,0.45);max-width:38ch;margin:0 auto;line-height:1.7;">The house does not reveal itself all at once.</p>
+  <p style="font-family:'Cormorant Garamond', serif;font-size:var(--text-lg);font-weight:200;font-style:italic;color:rgba(245,240,232,0.45);max-width:38ch;margin:0 auto;line-height:1.7;">The house does not reveal itself all at once.</p>
 </div>
 
 <section id="pool" class="full-bleed-section" style="position:relative;min-height:clamp(480px,60vw,720px);overflow:hidden;background:#0a0a0a;">
@@ -3206,7 +3230,7 @@ body #main-nav .nav-wordmark::after {
 </section>
 <div style="background:#000000;text-align:center;padding:clamp(5rem,9vw,10rem) clamp(2rem,6vw,7rem);">
  <div style="width:60px;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.6),transparent);margin:0 auto 3rem;"></div>
- <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2vw,2rem);font-weight:200;font-style:italic;color:rgba(245,240,232,0.55);max-width:40ch;margin:0 auto;line-height:1.6;letter-spacing:0.02em;">4.15 acres. The house is only the beginning.</p>
+ <p style="font-family:'Cormorant Garamond', serif;font-size:var(--text-lg);font-weight:200;font-style:italic;color:rgba(245,240,232,0.55);max-width:40ch;margin:0 auto;line-height:1.6;letter-spacing:0.02em;">4.15 acres. The house is only the beginning.</p>
  <div style="width:60px;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.6),transparent);margin:3rem auto 0;"></div>
 </div>
 
@@ -3336,7 +3360,7 @@ body #main-nav .nav-wordmark::after {
    })
    .then(function(r) { return r.json(); })
    .then(function() {
-    form.innerHTML = '<p style=\'text-align:center;color:#C9A96E;font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:1.1rem;padding:40px 0;letter-spacing:0.04em;\'>Your inquiry has been received.<br>Rachel will be in touch shortly.</p>';
+    form.innerHTML = '<p style=\'text-align:center;color:#C9A96E;font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:var(--text-base);padding:40px 0;letter-spacing:0.04em;\'>Your inquiry has been received.<br>Rachel will be in touch shortly.</p>';
    })
    .catch(function() {
     btn.disabled = false;
@@ -3381,24 +3405,24 @@ body #main-nav .nav-wordmark::after {
 
  <!-- CTA -->
  <div style="margin-bottom:clamp(4rem,6vw,6rem);">
-  <span style="display:block;font-family:'Instrument Sans','DM Sans',sans-serif;font-size:clamp(0.58rem,0.75vw,0.68rem);font-weight:400;letter-spacing:0.38em;text-transform:uppercase;color:rgba(201,169,110,0.55);margin-bottom:2.5rem;">Offered by Appointment</span>
+  <span style="display:block;font-family:'Instrument Sans','DM Sans',sans-serif;font-size:var(--text-xs);font-weight:400;letter-spacing:0.38em;text-transform:uppercase;color:rgba(201,169,110,0.55);margin-bottom:2.5rem;">Offered by Appointment</span>
   <a href="mailto:rachelhernandezrealtor@gmail.com?subject=Private%20Showing%20Request%20%E2%80%94%20Garran%20Hill" 
-     style="display:inline-block;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(0.72rem,0.95vw,0.88rem);letter-spacing:0.32em;text-transform:uppercase;color:#C9A96E;border:1px solid rgba(201,169,110,0.4);padding:1.3rem 4rem;text-decoration:none;transition:border-color 0.3s,color 0.3s,background 0.3s;"
+     style="display:inline-block;font-family:'Cormorant Garamond', serif;font-weight:300;font-size:var(--text-sm);letter-spacing:0.32em;text-transform:uppercase;color:#C9A96E;border:1px solid rgba(201,169,110,0.4);padding:1.3rem 4rem;text-decoration:none;transition:border-color 0.3s,color 0.3s,background 0.3s;"
      onmouseover="this.style.borderColor='rgba(201,169,110,0.9)';this.style.color='#F5E098';this.style.background='rgba(201,169,110,0.05)';"
      onmouseout="this.style.borderColor='rgba(201,169,110,0.4)';this.style.color='#C9A96E';this.style.background='transparent';">
    Request Private Showing
   </a>
-  <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(0.82rem,0.95vw,0.9rem);font-weight:300;color:rgba(245,240,232,0.3);letter-spacing:0.06em;margin-top:1.8rem;">All inquiries held in strict confidence.</p>
+  <p style="font-family:'Cormorant Garamond', serif;font-style:italic;font-size:var(--text-sm);font-weight:300;color:rgba(245,240,232,0.3);letter-spacing:0.06em;margin-top:1.8rem;">All inquiries held in strict confidence.</p>
  </div>
 
  <!-- Short gold rule -->
  <div style="width:40px;height:1px;background:linear-gradient(90deg,transparent,#C9A96E,transparent);margin:0 auto clamp(2.5rem,4vw,4rem);"></div>
 
  <!-- Rachel Hernandez -->
- <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(0.65rem,0.82vw,0.75rem);letter-spacing:0.38em;text-transform:uppercase;color:rgba(245,240,232,0.45);margin:0 0 0.6rem 0;">Rachel Hernandez</p>
+ <p style="font-family:'Cormorant Garamond', serif;font-weight:300;font-size:var(--text-xs);letter-spacing:0.38em;text-transform:uppercase;color:rgba(245,240,232,0.45);margin:0 0 0.6rem 0;">Rachel Hernandez</p>
 
  <!-- Pines Sotheby's -->
- <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(0.58rem,0.72vw,0.65rem);letter-spacing:0.38em;text-transform:uppercase;color:rgba(201,169,110,0.45);margin:0;">Pines Sotheby&#8217;s International Realty</p>
+ <p style="font-family:'Cormorant Garamond', serif;font-weight:300;font-size:var(--text-xs);letter-spacing:0.38em;text-transform:uppercase;color:rgba(201,169,110,0.45);margin:0;">Pines Sotheby&#8217;s International Realty</p>
 
 </footer>
 
@@ -3483,7 +3507,7 @@ body #main-nav .nav-wordmark::after {
   }
   .nav-mobile a {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
+    font-size: var(--text-lg);
     font-weight: 300;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -3519,10 +3543,10 @@ body #main-nav .nav-wordmark::after {
 
   /* Typography */
   h1, .hero-title { font-size: clamp(3rem,16vw,5.5rem) !important; line-height: 1.05 !important; }
-  h2 { font-size: clamp(1.6rem,7vw,2.4rem) !important; }
-  h3 { font-size: clamp(1.1rem,5vw,1.5rem) !important; }
-  p, .body-text p { font-size: clamp(0.95rem,4vw,1.1rem) !important; line-height: 1.8 !important; }
-  .eyebrow { font-size: clamp(0.65rem,2.5vw,0.8rem) !important; }
+  h2 { font-size: var(--text-xl) !important; }
+  h3 { font-size: var(--text-md) !important; }
+  p, .body-text p { font-size: var(--text-base) !important; line-height: 1.8 !important; }
+  .eyebrow { font-size: var(--text-sm) !important; }
 
   /* No horizontal overflow */
   body { overflow-x: hidden !important; }
@@ -3535,7 +3559,7 @@ body #main-nav .nav-wordmark::after {
   section.full-bleed-section { min-height: 50vw !important; }
 
   /* Forms */
-  input, textarea, select { font-size: 16px !important; }
+  input, textarea, select { font-size: var(--text-base) !important; }
   .inquiry-form, form { padding: 2rem 1.2rem !important; }
 
   /* Crest */
@@ -3619,14 +3643,14 @@ body #main-nav .nav-wordmark::after {
   .hamburger { display:flex !important; }
   .nav-links  { display:none !important; }
   nav { padding:0.9rem 1.25rem !important; }
-  h2 { font-size:clamp(1.6rem,7vw,2.4rem) !important;line-height:1.2 !important; }
-  p,.body-text p { font-size:clamp(0.95rem,4vw,1.1rem) !important;line-height:1.8 !important; }
-  .eyebrow { font-size:clamp(0.6rem,2.5vw,0.75rem) !important; }
+  h2 { font-size:var(--text-xl) !important;line-height:1.2 !important; }
+  p,.body-text p { font-size:var(--text-base) !important;line-height:1.8 !important; }
+  .eyebrow { font-size:var(--text-xs) !important; }
   body { overflow-x:hidden !important; }
   section.cinematic { min-height:60vh !important; }
   .act-break,.act-breath { padding:3rem 0 !important; }
   .stat-grid { grid-template-columns:repeat(2,1fr) !important;gap:1.2rem !important; }
-  input,textarea,select { font-size:16px !important; }
+  input,textarea,select { font-size:var(--text-base) !important; }
 }
 
 @media (max-width: 640px) {
