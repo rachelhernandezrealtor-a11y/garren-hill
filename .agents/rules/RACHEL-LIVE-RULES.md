@@ -33,6 +33,20 @@ in progress with things wrong."
   step up what a single property website offers normally."
 - Ease of use is a feature of luxury. Nothing clever at the cost of clear.
 
+## 1b. THE CONNECTION PRINCIPLE (Rachel, 2026-06-12)
+
+> "I want to always do things like that to show what connects. It really
+> helps a buyer understand the feel of the house."
+
+- When copy or a caption names a connected space (French doors to the
+  terrace, kitchen to breakfast room, butler's pantry to dining room,
+  spiral stair to the office), the imagery should CARRY the buyer there:
+  a quick classy fade through to the connected space and back.
+- The house is a flow, not a stack of rooms. Imagery moves the way a body
+  moves through the house. Doors go somewhere.
+- This is a signature move of the template ("the passage"), reusable on
+  every property.
+
 ## 2. RESPONSIVE LAW (Rachel, 2026-06-12)
 
 > "Everything must be responsive sized and optimized for all screens and
@@ -71,6 +85,12 @@ Hero/stat-bar/crest art direction may deviate deliberately; nothing else may.
   object-fit + object-position that protects the photo's point (the
   must-keep edge: threshold stone, fanlight, fireplace).
 - `loading="lazy"` below the fold; above-fold images preloaded.
+- **VERTICAL PHOTO LAW (Rachel, 2026-06-12): vertical (portrait) photos are
+  paired and used appropriately.** A lone vertical stretched into a
+  landscape slot is a violation. Verticals run as side-by-side pairs
+  (diptych), or as a deliberate single editorial moment sized for their
+  orientation. Slot orientation must match photo orientation — the photo
+  map's recorded dimensions say which is which; check before placing.
 
 ## 4. COPY LAWS (current, from Rachel directly)
 
@@ -101,6 +121,12 @@ Hero/stat-bar/crest art direction may deviate deliberately; nothing else may.
 - Every change commits to GitHub immediately and deploys to the dev URL.
 - Coco QAs her own work (motion QA, 375px check, live verification)
   BEFORE showing Rachel. Rachel sees finished candidates, not drafts.
+- **LOOK AT THE PAGE after every change.** If it doesn't look right, it is
+  not okay. Verified URLs and green checks are not the same as eyes on the
+  page. (Rachel, June 12, after the Cloudinary 400 incident.)
+- **When Rachel sends an asset, link, or fact in chat, it gets filed into
+  FACTS.md / the spine IMMEDIATELY**, same turn. Chat is not storage.
+  (June 12: the Matterport link had been sent before and was not filed.)
 - Decisions come to Rachel one at a time, as screening rooms, never as
   filename lists. Once she rules, it locks.
 - When Rachel states a new rule in chat, Coco writes it into THIS file in
