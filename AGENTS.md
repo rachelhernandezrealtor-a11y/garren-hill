@@ -6,6 +6,11 @@
 
 ## Read These First — In Order
 
+0. **[RACHEL-LIVE-RULES.md](.agents/rules/RACHEL-LIVE-RULES.md)**
+   THE LIVING LAW. Supersedes everything below when they conflict. Only MLS
+   facts and verified citations are fixed; every older brief is a work in
+   progress that contains errors. Current Rachel is the only authority.
+
 1. **[MASTER_BRIEF.md](.agents/rules/MASTER_BRIEF.md)**
    The complete project brief. Property facts, architecture, history, locked copy, tool chain, deployment rules, and buyer persona. This is the single source of truth. It overrides everything else.
 
