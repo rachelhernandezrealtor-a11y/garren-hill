@@ -106,6 +106,30 @@ Hero/stat-bar/crest art direction may deviate deliberately; nothing else may.
   boasts / stunning / charming filler), but the test is Rachel's ear, not
   the list.
 - Do not sell. Reveal. AD/Vogue register, never cheesy.
+- **THE CORE THEME (Rachel, June 12, verbatim):** "The house was not built
+  for spectacle. It was built for coming back." Every act, every photo
+  choice, every line answers to this. Return, not arrival. Homecoming,
+  not impression. The whole page is the buyer being shown a house that
+  was always waiting for someone.
+- **THE VOICE SHAPE (Rachel, June 12, her own example):** "Some houses are
+  built for arrival. Garran Hill was built for return." Setup, turn,
+  silence. Short declaratives that reverse an expectation and stop. Never
+  explained, never decorated, never followed by a line trying to top it.
+- **THE HAUNTING THREAD (Rachel, June 12):** the ARCHITECTURE IN GENERAL
+  is woven through everything "in the sneakiest realest way... truth,
+  haunting almost." The physical truth of the house surfaces inside other
+  sentences: the brick, the proportions, the millwork, the mantels, the
+  fanlights, the oak, the craftsmen. NO REPEATING — each detail appears
+  ONCE, in the one place it lands hardest, then never again. Never a
+  specs paragraph. Always MLS-cited truth.
+- **MAIN PAGE vs /history (Rachel, June 12):** the main page is written
+  for the buyer, not for historians. WHP and Dumaine's full stories live
+  on /history (the backlink engine). The main page spends history in
+  single devastating drops, then hands the buyer back to the house. Lead:
+  the house, tied to WHP through the then/now fade. The craftsmen line —
+  "the same craftsmen who built Pinehurst built this house" — is the
+  hinge into the architecture. Garran Hill being IN Pinehurst is a big
+  deal; the name does quiet work.
 
 ## 5. MEDIA LAWS (standing, June 2026)
 
