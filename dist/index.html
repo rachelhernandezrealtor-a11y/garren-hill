@@ -20,7 +20,7 @@
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{margin:0;background:var(--ink);color:var(--cream);font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;}
+body{margin:0;background:var(--ink);color:var(--cream);font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;overflow-x:hidden;}
 img{display:block;}
 a{color:var(--gold);text-decoration:none;}
 ::selection{background:var(--gold);color:var(--ink);}
@@ -61,6 +61,16 @@ nav .links a:hover{color:var(--gold);}
 nav .links a.cta{color:var(--gold);border:1px solid rgba(201,169,110,0.75);padding:0.55em 1.3em;letter-spacing:0.24em;transition:background .25s,color .25s;}
 nav .links a.cta:hover{background:var(--gold);color:var(--ink);}
 @media(max-width:760px){nav .links a{margin-left:0.8rem;}nav .links a.hide-m{display:none;}}
+@media(max-width:480px){
+  nav{padding:0.9rem 1rem;}
+  nav .brand{letter-spacing:0.2em;font-size:0.62rem;}
+  nav .links a{margin-left:0.55rem;letter-spacing:0.12em;font-size:0.6rem;}
+  nav .links a.cta{padding:0.45em 0.8em;letter-spacing:0.14em;}
+  .hero h1{font-size:clamp(2.6rem,15vw,3.6rem);letter-spacing:0.02em;}
+  .hero .place{letter-spacing:0.26em;font-size:0.62rem;}
+  .hero .addr,.hero .price{letter-spacing:0.22em;font-size:0.62rem;}
+  .hero .title{bottom:clamp(4.5rem,14vh,8rem);}
+}
 
 /* HERO */
 .hero{position:relative;height:100svh;overflow:hidden;}
