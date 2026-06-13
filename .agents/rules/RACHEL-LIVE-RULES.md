@@ -159,3 +159,21 @@ Hero/stat-bar/crest art direction may deviate deliberately; nothing else may.
 ---
 
 *One file. Current Rachel only. Everything else is history.*
+
+## GALLERY LAW — THE WALK (Rachel, 2026-06-13, template spine)
+Galleries are scrolling narratives, never grids. The pattern, reusable for
+every property:
+1. Order photos by the WALKING PATH (Matterport/floor plan order, the way
+   the house actually unfolds), grouped into movements: Arrival, Main Rooms,
+   Quiet Rooms, Private Wing, Upstairs, Grounds.
+2. Staggered editorial rows: asymmetric 7/5 grids, tall portraits against
+   wide landscapes, lifted offsets, full-bleed 21:9 cinematic breaks.
+3. Carousels for room sequences: slow crossfade (~4.2s) + Ken Burns drift
+   (9s scale 1.0 to 1.07), gold counter, room-name caption. Classy, never
+   slideshow-y.
+4. NARRATIVE INTERLUDES between movements: one or two italic editorial
+   lines (setup/turn voice, gold italic on the turn), weaving the story
+   through the photos. The scroll IS the story.
+5. Room names matter: use the house's real names with one architectural
+   truth where it earns it (Flemish Bond, Delft Tile, Heart Pine).
+6. Every frame clicks to lightbox. Lazy-load below the fold.
