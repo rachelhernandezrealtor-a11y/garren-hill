@@ -148,16 +148,24 @@ section h2{font-size:var(--lg);margin-top:0.7rem;line-height:1.2;}
 .ewide figcaption{text-align:center;}
 @media(max-width:700px){.erow,.erow.rev{grid-template-columns:1fr;}.erow .lift{margin-top:0;}.ewide img{aspect-ratio:16/10;}}
 
-/* CAROUSEL — slow crossfade */
+/* CAROUSEL — slow crossfade + Ken Burns drift */
 .caro{position:relative;aspect-ratio:16/9;overflow:hidden;cursor:pointer;background:var(--ink2);}
-.caro img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.8s ease;}
-.caro img.on{opacity:1;}
+.caro img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.8s ease;transform:scale(1);}
+.caro img.on{opacity:1;animation:kb 9s ease-out forwards;}
+@keyframes kb{from{transform:scale(1);}to{transform:scale(1.07);}}
+@media (prefers-reduced-motion: reduce){.caro img.on{animation:none;}}
 .caro .cveil{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,rgba(10,10,10,0.7));pointer-events:none;}
 .caro .cbar{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:flex-end;padding:1.1rem clamp(1rem,3vw,2rem);pointer-events:none;}
 .caro .ccap{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.26em;text-transform:uppercase;color:var(--cream);}
 .caro .cnum{font-family:'Cormorant Garamond',serif;font-size:var(--sm);color:var(--gold);letter-spacing:0.2em;}
 .caro-label{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;text-align:center;}
 @media(max-width:700px){.caro{aspect-ratio:4/3;}}
+
+/* NARRATIVE INTERLUDES — the story woven through the walk */
+.between{max-width:640px;margin:0 auto;text-align:center;padding:clamp(1rem,3vh,2rem) var(--pad);}
+.between p{font-size:clamp(1.25rem,1.9vw,1.6rem);line-height:1.6;color:var(--cream);font-style:italic;margin:0 auto;}
+.between p i{color:var(--gold);font-style:italic;}
+.between .src{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.3em;text-transform:uppercase;color:var(--whisper);margin-top:1.1rem;font-style:normal;}
 
 /* lightbox */
 #lb{position:fixed;inset:0;z-index:100;background:rgba(5,5,5,0.97);display:none;align-items:center;justify-content:center;flex-direction:column;padding:2rem;}
@@ -355,20 +363,25 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
 
     <!-- Arrival -->
     <figure class="ewide rv"><img loading="lazy" data-i="0" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/001-front-exterior.jpg" alt="Front exterior"><figcaption>The Approach</figcaption></figure>
+    <div class="between rv"><p>The drive curves so the house arrives slowly. That was the idea in 1916, and nobody has improved on it.</p></div>
     <div class="erow rv">
-      <figure><img loading="lazy" data-i="1" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1280,q_auto,f_auto/v1/garran-hill/photos/006-front-main.jpg" alt="Front of the house"><figcaption>The Facade</figcaption></figure>
+      <figure><img loading="lazy" data-i="1" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1280,q_auto,f_auto/v1/garran-hill/photos/006-front-main.jpg" alt="Front of the house"><figcaption>The Facade &middot; Flemish Bond</figcaption></figure>
       <figure class="tall lift"><img loading="lazy" data-i="2" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/009-portico.jpg" alt="The portico"><figcaption>The Portico</figcaption></figure>
     </div>
+
+    <div class="between rv"><p>Inside the door, the hall runs straight through to the garden. The house shows you its whole depth <i>before you have taken three steps</i>.</p></div>
 
     <!-- Main rooms: carousel walk (entry through french doors, the Matterport path) -->
     <div class="rv">
       <div class="caro-label">The Main Rooms &middot; In Walking Order</div>
-      <div class="caro" data-caro='[["013-entry-hall","The Entry Hall"],["015-drawing-room","Into the Living Room"],["019-drawing-room","The Living Room Mantel"],["022-drawing-room-french-doors","Through the French Doors"],["023-outdoor-terrace","Onto the Terrace"]]'></div>
+      <div class="caro" data-caro='[["013-entry-hall","The Entry Hall"],["015-drawing-room","The Living Room"],["019-drawing-room","The Living Room Mantel"],["022-drawing-room-french-doors","Through the French Doors"],["023-outdoor-terrace","Onto the Terrace"]]'></div>
     </div>
+
+    <div class="between rv"><p>Seven mantels were carved for this house. They made the rooms bigger <i>so they could dance</i>.</p></div>
 
     <div class="erow rev rv">
       <figure class="tall lift"><img loading="lazy" data-i="8" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/024-dining-room.jpg" alt="Dining room"><figcaption>The Dining Room</figcaption></figure>
-      <figure><img loading="lazy" data-i="9" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1280,q_auto,f_auto/v1/garran-hill/photos/031-kitchen.jpg" alt="Kitchen"><figcaption>The Kitchen</figcaption></figure>
+      <figure><img loading="lazy" data-i="9" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1280,q_auto,f_auto/v1/garran-hill/photos/031-kitchen.jpg" alt="Kitchen"><figcaption>The Kitchen &middot; Reclaimed Heart Pine</figcaption></figure>
     </div>
     <div class="erow rv">
       <figure><img loading="lazy" data-i="11" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1280,q_auto,f_auto/v1/garran-hill/photos/038-wall-of-windows-kitchen.jpg" alt="Kitchen wall of windows"><figcaption>The Wall of Windows</figcaption></figure>
@@ -376,11 +389,15 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
     </div>
     <figure class="ewide rv"><img loading="lazy" data-i="12" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/043-breakfast-room.jpg" alt="Breakfast room"><figcaption>The Breakfast Room</figcaption></figure>
 
+    <div class="between rv"><p>Some rooms are for the party. These are for the morning after, coffee, a book, <i>no one home yet</i>.</p></div>
+
     <!-- Quiet rooms: carousel (library hall to sitting room, as the floor plan walks) -->
     <div class="rv">
       <div class="caro-label">The Quiet Rooms</div>
-      <div class="caro" data-caro='[["058-library","The Library"],["067-delft-sitting-room","The Sitting Room"],["065-powder-room","The Powder Room"],["110-den","The Den"]]'></div>
+      <div class="caro" data-caro='[["058-library","The Library &middot; Floor to Ceiling"],["067-delft-sitting-room","The Sitting Room &middot; Delft Tile"],["065-powder-room","The Powder Room"],["110-den","The Den"]]'></div>
     </div>
+
+    <div class="between rv"><p>The primary wing sits on the first floor, its own quiet country. The stairs are for guests.</p></div>
 
     <!-- Private wing -->
     <div class="erow rv">
@@ -392,16 +409,19 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
       <div class="caro" data-caro='[["090-rose-suite","The Rose Suite"],["095-yellow-bedroom-suite","The Yellow Suite"],["102-red-bedroom-nursery","The Red Bedroom"]]'></div>
     </div>
 
+    <div class="between rv"><p>The pool and the courts exist because the land was nearly divided once. The family built reasons to stay instead.</p></div>
+
     <!-- Grounds -->
-    <figure class="ewide rv"><img loading="lazy" data-i="24" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/124-pool.jpg" alt="Saltwater pool"><figcaption>The Pool Garden</figcaption></figure>
+    <figure class="ewide rv"><img loading="lazy" data-i="24" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/124-pool.jpg" alt="Saltwater pool"><figcaption>The Pool Garden &middot; Within the Brick Wall</figcaption></figure>
     <div class="erow rev rv">
       <figure class="tall lift"><img loading="lazy" data-i="23" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/115-boxwood-herb-garden.jpg" alt="Boxwood herb garden"><figcaption>The Herb Garden</figcaption></figure>
       <figure><img loading="lazy" data-i="22" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1280,q_auto,f_auto/v1/garran-hill/photos/112-brick-terrace.jpg" alt="Brick terrace"><figcaption>The Brick Terrace</figcaption></figure>
     </div>
     <div class="erow rv">
-      <figure><img loading="lazy" data-i="26" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1280,q_auto,f_auto/v1/garran-hill/photos/120-tennis-courts.jpg" alt="Tennis courts"><figcaption>The Courts</figcaption></figure>
-      <figure class="lift"><img loading="lazy" data-i="27" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1280,q_auto,f_auto/v1/garran-hill/photos/121-the-wee-cottage.jpg" alt="The Wee Cottage"><figcaption>The Wee Cottage</figcaption></figure>
+      <figure><img loading="lazy" data-i="26" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1280,q_auto,f_auto/v1/garran-hill/photos/120-tennis-courts.jpg" alt="Tennis courts"><figcaption>The Courts &middot; Two, Lighted</figcaption></figure>
+      <figure class="lift"><img loading="lazy" data-i="27" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1280,q_auto,f_auto/v1/garran-hill/photos/121-the-wee-cottage.jpg" alt="The Wee Cottage"><figcaption>The Wee Cottage &middot; The Playhouse</figcaption></figure>
     </div>
+    <div class="between rv"><p>A horse named Blue Fox is buried by the garden wall. Houses that are loved keep their dead close.</p><div class="src">My Irish Hunter &middot; 1946&ndash;1965</div></div>
     <div class="erow rev rv">
       <figure class="tall lift"><img loading="lazy" data-i="28" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/129-blue-fox.jpg" alt="Blue Fox marker"><figcaption>Blue Fox</figcaption></figure>
       <figure><img loading="lazy" data-i="25" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1280,q_auto,f_auto/v1/garran-hill/photos/126-pool-brick-wall.jpg" alt="Pool garden brick wall"><figcaption>The Garden Wall</figcaption></figure>
