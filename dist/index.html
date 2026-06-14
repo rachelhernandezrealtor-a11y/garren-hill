@@ -81,6 +81,8 @@ nav .links a.cta:hover{background:var(--gold);color:var(--ink);}
 .hero .title{position:absolute;left:0;right:0;bottom:clamp(6rem,18vh,12rem);text-align:center;padding:0 var(--pad);}
 .hero .place{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.42em;text-transform:uppercase;color:var(--whisper);margin-bottom:1.1rem;}
 .hero h1{font-size:var(--xl);letter-spacing:0.04em;line-height:1.02;text-shadow:0 1px 30px rgba(0,0,0,0.45);}
+.hero .anchor{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2.5rem);line-height:1.25;color:var(--cream);margin-top:1.4rem;text-shadow:0 1px 24px rgba(0,0,0,0.6);font-weight:400;}
+.hero .anchor em{color:var(--gold);font-style:italic;}
 .hero .addr{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.34em;text-transform:uppercase;color:var(--cream-dim);margin-top:1.5rem;}
 .hero .price{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.34em;text-transform:uppercase;color:var(--cream-dim);margin-top:0.7rem;}
 .hero .down{position:absolute;left:50%;transform:translateX(-50%);bottom:clamp(1.2rem,3.5vh,2.2rem);color:var(--gold);font-size:1.4rem;animation:drift 2.8s ease-in-out infinite;text-shadow:0 0 12px rgba(0,0,0,0.6);}
@@ -116,6 +118,18 @@ section h2{font-size:var(--lg);margin-top:0.7rem;line-height:1.2;}
 .reveal .cap{position:absolute;left:0;right:0;bottom:clamp(2rem,7vh,4.5rem);text-align:center;padding:0 var(--pad);}
 .reveal .cap .room{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);}
 .reveal .cap .whisper{font-size:var(--md);font-style:italic;color:var(--cream);margin-top:0.8rem;text-shadow:0 1px 20px rgba(0,0,0,0.5);}
+
+/* EPIC — full-bleed text-over-photo display moment (the signature move) */
+.epic{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.epic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:epicDrift 14s ease-out forwards;}
+@keyframes epicDrift{from{transform:scale(1.08);}to{transform:scale(1);}}
+@media (prefers-reduced-motion: reduce){.epic img{animation:none;}}
+.epic .eveil{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(10,10,10,0.45),rgba(10,10,10,0.78));}
+.epic .etext{position:relative;text-align:center;padding:0 var(--pad);max-width:1000px;}
+.epic .ebrow{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.5em;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem;}
+.epic .edisplay{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(2.6rem,7vw,6.5rem);line-height:1.04;color:var(--cream);text-shadow:0 2px 40px rgba(0,0,0,0.6);}
+.epic .edisplay em{color:var(--gold);font-style:italic;}
+.epic .esub{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.8vw,1.5rem);font-style:italic;color:var(--cream-dim);margin-top:1.8rem;line-height:1.5;}
 
 /* DETAIL PAIR (detail) */
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:1150px;margin:0 auto;}
@@ -241,6 +255,7 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   <div class="title">
     <div class="place">Pinehurst, North Carolina</div>
     <h1>Garran Hill</h1>
+    <div class="anchor">Some houses hold history.<em> This one shaped it.</em></div>
     <div class="addr">200 Hollycrest Drive</div>
     <div class="price">$4,250,000</div>
   </div>
@@ -283,6 +298,17 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/013-entry-hall.jpg" alt="Entry hall"><figcaption>The Entry Hall</figcaption></figure>
 </div>
 <div class="breath"></div>
+
+<!-- EPIC: WALTER HINES PAGE -->
+<div class="epic rv">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/001-front-exterior.jpg" alt="Garran Hill, built 1916 for Walter Hines Page, United States Ambassador to the Court of St James's">
+  <div class="eveil"></div>
+  <div class="etext">
+    <div class="ebrow">Walter Hines Page &middot; 1855 to 1918</div>
+    <div class="edisplay">He named it Garran Hill.<br><em>He never spent a night here.</em></div>
+    <div class="esub">Ambassador to the Court of St James's, appointed by Wilson, who held the alliance from London through the years the world came apart. From there he bought a hundred acres of Moore County sand and pine and sent his son to build it. The only American diplomat of the first World War with a tablet at Westminster Abbey.</div>
+  </div>
+</div>
 
 <!-- ACT III -->
 <div class="act rv"><span class="line"></span><span class="n">III &middot; The Rooms</span><span class="line r"></span></div>
