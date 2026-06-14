@@ -133,15 +133,24 @@ section h2{font-size:var(--lg);margin-top:0.7rem;line-height:1.2;}
 /* BREATH */
 .breath{height:clamp(2.5rem,8vh,6rem);}
 
-/* GALLERY — the archive grid */
-.ghead{text-align:center;max-width:640px;margin:0 auto clamp(2rem,5vh,3.5rem);}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px;max-width:1280px;margin:0 auto;}
-.grid img{width:100%;aspect-ratio:3/2;object-fit:cover;cursor:pointer;background:var(--ink2);transition:opacity .5s,transform 1.2s cubic-bezier(.16,1,.3,1);}
-.grid figure{margin:0;position:relative;overflow:hidden;}
-.grid figure:hover img{transform:scale(1.04);}
-.grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:0.7rem 0.9rem;font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.22em;text-transform:uppercase;color:var(--cream);background:linear-gradient(to top,rgba(10,10,10,0.8),transparent);opacity:0;transition:opacity .4s;}
+/* GALLERY — the archive wall */
+.ghead{text-align:center;max-width:640px;margin:0 auto clamp(1.5rem,4vh,2.5rem);}
+.gfilter{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0.5rem;max-width:1280px;margin:0 auto clamp(1.5rem,4vh,2.5rem);}
+.gfilter .chip{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.22em;text-transform:uppercase;color:var(--cream-dim);background:none;border:1px solid rgba(201,169,110,0.25);padding:0.55rem 1.1rem;cursor:pointer;transition:color .35s,border-color .35s,background .35s;}
+.gfilter .chip:hover{color:var(--cream);border-color:rgba(201,169,110,0.55);}
+.gfilter .chip.on{color:var(--ink);background:var(--gold);border-color:var(--gold);}
+.gfilter .gcount{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:var(--sm);color:var(--gold);letter-spacing:0.12em;margin-left:0.4rem;}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-flow:dense;gap:8px;max-width:1280px;margin:0 auto;}
+.grid figure{margin:0;position:relative;overflow:hidden;background:var(--ink2);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1);}
+.grid figure.wide{grid-column:span 2;grid-row:span 2;}
+.grid figure.hide{opacity:0;transform:scale(.96);pointer-events:none;display:none;}
+.grid img{width:100%;height:100%;aspect-ratio:3/2;object-fit:cover;cursor:pointer;display:block;transition:transform 1.2s cubic-bezier(.16,1,.3,1);}
+.grid figure.wide img{aspect-ratio:3/2.06;}
+.grid figure:hover img{transform:scale(1.06);}
+.grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:0.7rem 0.9rem;font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.22em;text-transform:uppercase;color:var(--cream);background:linear-gradient(to top,rgba(10,10,10,0.85),transparent);opacity:0;transition:opacity .4s;}
 .grid figure:hover figcaption{opacity:1;}
-@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr);gap:5px;}.grid img{aspect-ratio:1/1;}.grid figcaption{opacity:1;font-size:0.55rem;letter-spacing:0.14em;}}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr);}.grid figure.wide{grid-column:span 2;grid-row:span 1;}}
+@media(max-width:600px){.grid{gap:5px;}.grid img{aspect-ratio:1/1;}.grid figure.wide img{aspect-ratio:2/1;}.grid figcaption{opacity:1;font-size:0.55rem;letter-spacing:0.14em;}}
 
 /* CAROUSEL — slow crossfade + Ken Burns drift */
 .caro{position:relative;aspect-ratio:16/9;overflow:hidden;cursor:pointer;background:var(--ink2);}
@@ -357,7 +366,16 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
 <!-- GALLERY: THE ARCHIVE -->
 <div class="act rv"><span class="line"></span><span class="n">VII &middot; The Full Gallery</span><span class="line r"></span></div>
 <section id="gallery" style="padding-top:0;">
-  <div class="ghead rv"><span class="eyebrow">Every Room</span><h2>The complete archive.</h2><p style="margin:1rem auto 0;">Thirty photographs of the house and grounds. Click any frame to enter.</p></div>
+  <div class="ghead rv"><span class="eyebrow">Every Room</span><h2>The complete archive.</h2><p style="margin:1rem auto 0;">Thirty photographs of the house and grounds. Move through them by hand, or by room.</p></div>
+  <div class="gfilter rv" id="gfilter">
+    <button class="chip on" data-f="all">All</button>
+    <button class="chip" data-f="exterior">Exterior</button>
+    <button class="chip" data-f="main">Main Rooms</button>
+    <button class="chip" data-f="quiet">Quiet Rooms</button>
+    <button class="chip" data-f="private">Private Wing</button>
+    <button class="chip" data-f="grounds">Grounds</button>
+    <span class="gcount" id="gcount"></span>
+  </div>
   <div class="grid" id="ggrid"></div>
 </section>
 
@@ -404,41 +422,66 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
 
 <script>
 var photos=[
-["001-front-exterior","Front exterior"],["006-front-main","Front of the house"],["009-portico","The portico"],
-["013-entry-hall","Entry hall"],["015-drawing-room","Living room"],["019-drawing-room","Living room fireplace"],
-["022-drawing-room-french-doors","French doors to the terrace"],["023-outdoor-terrace","The brick terrace"],
-["024-dining-room","Dining room"],["031-kitchen","Kitchen"],["037-farm-sink","Butler's pantry farm sink"],
-["038-wall-of-windows-kitchen","Kitchen wall of windows"],["043-breakfast-room","Breakfast room"],
-["058-library","Library"],["067-delft-sitting-room","Sitting room, Delft fireplace"],["065-powder-room","Powder room"],
-["073-primary","Primary suite"],["076-primary-bathroom","Primary bath"],["090-rose-suite","Rose suite"],
-["095-yellow-bedroom-suite","Yellow suite"],["102-red-bedroom-nursery","Red bedroom"],["110-den","Den"],
-["112-brick-terrace","Brick terrace"],["115-boxwood-herb-garden","Boxwood herb garden"],["124-pool","Saltwater pool"],
-["126-pool-brick-wall","Pool garden brick wall"],["120-tennis-courts","Tennis courts"],["121-the-wee-cottage","The Wee Cottage"],
-["129-blue-fox","Blue Fox marker"],["134-aerial","Aerial view"]
+["001-front-exterior","Front exterior","exterior"],["006-front-main","Front of the house","exterior"],["009-portico","The portico","exterior"],
+["013-entry-hall","Entry hall","main"],["015-drawing-room","Living room","main"],["019-drawing-room","Living room fireplace","main"],
+["022-drawing-room-french-doors","French doors to the terrace","main"],["023-outdoor-terrace","The brick terrace","grounds"],
+["024-dining-room","Dining room","main"],["031-kitchen","Kitchen","main"],["037-farm-sink","Butler's pantry farm sink","main"],
+["038-wall-of-windows-kitchen","Kitchen wall of windows","main"],["043-breakfast-room","Breakfast room","main"],
+["058-library","Library","quiet"],["067-delft-sitting-room","Sitting room, Delft fireplace","quiet"],["065-powder-room","Powder room","quiet"],
+["073-primary","Primary suite","private"],["076-primary-bathroom","Primary bath","private"],["090-rose-suite","Rose suite","private"],
+["095-yellow-bedroom-suite","Yellow suite","private"],["102-red-bedroom-nursery","Red bedroom","private"],["110-den","Den","quiet"],
+["112-brick-terrace","Brick terrace","grounds"],["115-boxwood-herb-garden","Boxwood herb garden","grounds"],["124-pool","Saltwater pool","grounds"],
+["126-pool-brick-wall","Pool garden brick wall","grounds"],["120-tennis-courts","Tennis courts","grounds"],["121-the-wee-cottage","The Wee Cottage","grounds"],
+["129-blue-fox","Blue Fox marker","grounds"],["134-aerial","Aerial view","grounds"]
 ];
 var base="https://res.cloudinary.com/dghn2xpif/image/upload/";
-/* build the archive grid */
+/* build the archive wall — editorial staggered layout, featured tiles breathe wider */
 var grid=document.getElementById('ggrid');
+var feature={0:1,9:1,16:1,24:1}; /* facade, kitchen, primary, pool get the wide cinematic tiles */
+var figs=[];
 photos.forEach(function(p,i){
   var fig=document.createElement('figure');
+  fig.dataset.cat=p[2];fig.dataset.i=i;
+  if(feature[i])fig.className='wide';
   var img=document.createElement('img');
-  img.src=base+"w_768,q_auto,f_auto/v1/garran-hill/photos/"+p[0]+".jpg";
-  img.alt=p[1];img.loading="lazy";img.dataset.i=i;
+  img.src=base+(feature[i]?"w_1080":"w_768")+",q_auto,f_auto/v1/garran-hill/photos/"+p[0]+".jpg";
+  img.alt=p[1];img.loading="lazy";
   img.addEventListener('click',function(){openLb(i);});
   var cap=document.createElement('figcaption');cap.textContent=p[1];
   fig.appendChild(img);fig.appendChild(cap);grid.appendChild(fig);
+  figs.push(fig);
 });
+/* filter by room, animate the wall, keep a live count */
+var curFilter='all',gcount=document.getElementById('gcount');
+function applyFilter(f){
+  curFilter=f;var n=0;
+  figs.forEach(function(fig){
+    var show=(f==='all'||fig.dataset.cat===f);
+    fig.classList.toggle('hide',!show);
+    if(show)n++;
+  });
+  gcount.textContent=n+(n===1?' photograph':' photographs');
+}
+document.getElementById('gfilter').addEventListener('click',function(e){
+  var b=e.target.closest('.chip');if(!b)return;
+  this.querySelectorAll('.chip').forEach(function(c){c.classList.remove('on');});
+  b.classList.add('on');applyFilter(b.dataset.f);
+});
+applyFilter('all');
 var lb=document.getElementById('lb'),lbImg=lb.querySelector('img'),cap=lb.querySelector('.cap'),cur=0;
+/* lightbox steps through only the photos visible under the active filter */
+function visList(){return photos.map(function(p,i){return i;}).filter(function(i){return curFilter==='all'||photos[i][2]===curFilter;});}
 function openLb(i){cur=i;show();lb.classList.add('open');}
+function step(d){var v=visList(),pos=v.indexOf(cur);if(pos<0){cur=v[0];}else{cur=v[(pos+d+v.length)%v.length];}show();}
 function show(){var p=photos[cur];lbImg.src=base+"w_1920,q_auto,f_auto/v1/garran-hill/photos/"+p[0]+".jpg";lbImg.alt=p[1];cap.textContent=p[1];}
 lb.querySelector('.x').onclick=function(){lb.classList.remove('open');};
-lb.querySelector('.pv').onclick=function(){cur=(cur-1+photos.length)%photos.length;show();};
-lb.querySelector('.nx').onclick=function(){cur=(cur+1)%photos.length;show();};
+lb.querySelector('.pv').onclick=function(){step(-1);};
+lb.querySelector('.nx').onclick=function(){step(1);};
 document.addEventListener('keydown',function(e){
   if(!lb.classList.contains('open'))return;
   if(e.key==='Escape')lb.classList.remove('open');
-  if(e.key==='ArrowLeft'){cur=(cur-1+photos.length)%photos.length;show();}
-  if(e.key==='ArrowRight'){cur=(cur+1)%photos.length;show();}
+  if(e.key==='ArrowLeft')step(-1);
+  if(e.key==='ArrowRight')step(1);
 });
 lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('open');});
 document.getElementById('tourbox').addEventListener('click',function(){
