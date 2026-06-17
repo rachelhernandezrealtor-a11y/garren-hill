@@ -123,6 +123,13 @@ section h2{font-size:var(--lg);margin-top:0.7rem;line-height:1.2;}
 .desc p{margin-left:auto;margin-right:auto;}
 .desc p+p{margin-top:1.2em;}
 
+/* BUILT BY — editorial provenance moment (text, not over photo) */
+.builtby{max-width:840px;margin:0 auto;text-align:center;padding:clamp(3rem,8vh,5.5rem) var(--pad);}
+.builtby .eyebrow{display:block;margin-bottom:1.4rem;}
+.builtby h2{font-size:var(--lg);line-height:1.2;}
+.builtby h2 em{color:var(--gold);font-style:italic;}
+.builtby p{max-width:660px;margin:1.6rem auto 0;font-size:var(--base);line-height:1.72;color:var(--cream-dim);}
+
 /* CINEMATIC REVEAL (loud) */
 .reveal{position:relative;height:clamp(70vh,88vh,92vh);overflow:hidden;margin:clamp(2rem,5vh,3.5rem) 0;}
 .reveal img{width:100%;height:100%;object-fit:cover;}
@@ -131,17 +138,45 @@ section h2{font-size:var(--lg);margin-top:0.7rem;line-height:1.2;}
 .reveal .cap .room{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);}
 .reveal .cap .whisper{font-size:var(--md);font-style:italic;color:var(--cream);margin-top:0.8rem;text-shadow:0 1px 20px rgba(0,0,0,0.5);}
 
-/* EPIC — full-bleed text-over-photo display moment (the signature move) */
-.epic{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-.epic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:epicDrift 14s ease-out forwards;}
-@keyframes epicDrift{from{transform:scale(1.08);}to{transform:scale(1);}}
-@media (prefers-reduced-motion: reduce){.epic img{animation:none;}}
-.epic .eveil{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(10,10,10,0.45),rgba(10,10,10,0.78));}
-.epic .etext{position:relative;text-align:center;padding:0 var(--pad);max-width:1000px;}
-.epic .ebrow{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.5em;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem;}
-.epic .edisplay{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(2.6rem,7vw,6.5rem);line-height:1.04;color:var(--cream);text-shadow:0 2px 40px rgba(0,0,0,0.6);}
-.epic .edisplay em{color:var(--gold);font-style:italic;}
-.epic .esub{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.8vw,1.5rem);font-style:italic;color:var(--cream-dim);margin-top:1.8rem;line-height:1.5;}
+/* SPREAD — editorial magazine layout: text BESIDE the photo, never on it */
+.spread{display:grid;grid-template-columns:1.15fr 0.85fr;gap:clamp(1.5rem,4vw,4rem);align-items:center;max-width:1280px;margin:clamp(3rem,8vh,6rem) auto;padding:0 var(--pad);}
+.spread.flip{grid-template-columns:0.85fr 1.15fr;}
+.spread.flip .sfig{order:2;}
+.spread.flip .stext{order:1;}
+.spread .sfig{margin:0;overflow:hidden;}
+.spread .sfig img{width:100%;height:auto;display:block;transition:transform 1.4s cubic-bezier(.16,1,.3,1);}
+.spread .sfig:hover img{transform:scale(1.03);}
+.spread .sfig figcaption{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.24em;text-transform:uppercase;color:var(--whisper);margin-top:0.9rem;}
+.spread .stext{max-width:30rem;}
+.spread .sbrow{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.45em;text-transform:uppercase;color:var(--gold);margin-bottom:1.3rem;}
+.spread .sdisplay{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(2rem,3.6vw,3.4rem);line-height:1.1;color:var(--cream);}
+.spread .sdisplay em{color:var(--gold);font-style:italic;}
+.spread .sbody{font-size:var(--base);line-height:1.72;color:var(--cream-dim);margin-top:1.4rem;}
+.spread .sbody em{color:var(--gold);font-style:italic;}
+/* ghost layer: archival page texture behind a spread's text column */
+.spread.ghost{position:relative;}
+.spread.ghost .stext{position:relative;}
+.spread.ghost .stext::before{content:"";position:absolute;inset:-2rem -1.5rem;background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/w_900,q_auto,f_auto,e_sepia:40/v1/gh_key/gh_whp_letter1.jpg');background-size:cover;background-position:center;opacity:0.10;filter:grayscale(0.3);pointer-events:none;z-index:0;}
+.spread.ghost .stext>*{position:relative;z-index:1;}
+@media(max-width:760px){.spread,.spread.flip{grid-template-columns:1fr;gap:1.4rem;}.spread.flip .sfig{order:1;}.spread.flip .stext{order:2;}.spread .stext{max-width:100%;}}
+
+/* THEN / NOW — Ken Burns crossfade, the same gate 110 years apart */
+.thennow{position:relative;height:clamp(60vh,80vh,88vh);overflow:hidden;background:var(--ink);}
+.thennow .frame{position:absolute;inset:0;}
+.thennow .frame img{width:100%;height:100%;object-fit:cover;}
+.thennow .tn-then img{filter:sepia(0.55) contrast(0.95);}
+.thennow .tn-then{animation:tnThen 16s ease-in-out infinite;}
+.thennow .tn-now{animation:tnNow 16s ease-in-out infinite;}
+.thennow .frame img{animation:tnKB 16s ease-in-out infinite;}
+@keyframes tnThen{0%,42%{opacity:1;}50%,92%{opacity:0;}100%{opacity:1;}}
+@keyframes tnNow{0%,42%{opacity:0;}50%,92%{opacity:1;}100%{opacity:0;}}
+@keyframes tnKB{0%{transform:scale(1.0);}50%{transform:scale(1.06);}100%{transform:scale(1.0);}}
+.thennow .tn-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,0.8),transparent 45%);pointer-events:none;}
+.thennow .tn-label{position:absolute;left:0;right:0;bottom:clamp(2rem,6vh,4rem);text-align:center;padding:0 var(--pad);}
+.thennow .tn-eyebrow{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.45em;text-transform:uppercase;color:var(--gold);}
+.thennow .tn-line{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.6rem);color:var(--cream);margin-top:0.8rem;text-shadow:0 1px 24px rgba(0,0,0,0.6);}
+.thennow .tn-line em{color:var(--gold);font-style:italic;}
+@media (prefers-reduced-motion: reduce){.thennow .tn-then,.thennow .tn-now,.thennow .frame img{animation:none;}.thennow .tn-now{opacity:1;}}
 
 /* DETAIL PAIR (detail) */
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:1150px;margin:0 auto;}
@@ -278,6 +313,17 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   <div class="down" aria-hidden="true">&darr;</div>
 </div>
 
+<!-- THEN / NOW — the same gate, 110 years apart -->
+<div class="thennow rv">
+  <div class="frame tn-then"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/gh_photos/gh_historygate_sepia.jpg" alt="Garran Hill gate in 1916, the year the estate was built"></div>
+  <div class="frame tn-now"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/gh_key/gh_gate_twilight.jpg" alt="Garran Hill gate today, at twilight, Pinehurst North Carolina"></div>
+  <div class="tn-veil"></div>
+  <div class="tn-label">
+    <div class="tn-eyebrow">1916 &middot; 2026</div>
+    <div class="tn-line">The same gate. <em>Open since the year it was laid.</em></div>
+  </div>
+</div>
+
 <!-- STAT PLATE -->
 <div class="stats rv">
   <div class="stat"><b>1916</b><span>Built</span></div>
@@ -307,13 +353,20 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   <div class="cap"><div class="room">The Approach</div><div class="whisper">The drive curves so the house arrives slowly. That was the idea in 1916.</div></div>
 </div>
 <div class="quiet rv">
-  <p>Past the portico, the door opens to a two-story entry where a Colonial Revival staircase climbs and the oak handrail runs unbroken from volute to landing. The same craftsmen who built Pinehurst built this house, and they meant for you to see its whole depth <em>before you have taken three steps.</em></p>
+  <p>Past the portico, the door opens to a two-story entry where a Colonial Revival staircase climbs and the oak handrail runs unbroken from volute to landing. Built by Leonard Tufts' own craftsmen, the same men who were building Pinehurst two miles away, by hands that meant for you to see the whole depth of the house <em>before you have taken three steps.</em></p>
 </div>
 <div class="pair rv" style="padding:0 var(--pad);">
-  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/009-portico.jpg" alt="The portico"><figcaption>The Portico</figcaption></figure>
+  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/009-portico.jpg" alt="The portico of Garran Hill, four columns and full entablature, Pinehurst NC"><figcaption>The Portico</figcaption></figure>
   <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/013-entry-hall.jpg" alt="Entry hall"><figcaption>The Entry Hall</figcaption></figure>
 </div>
 <div class="breath"></div>
+
+<!-- TUFTS CRAFTSMEN / PINEHURST — editorial text, not over photo -->
+<section class="builtby rv">
+  <span class="eyebrow">Full Brick &middot; Flemish Bond &middot; Neo-Georgian</span>
+  <h2>Built by Leonard Tufts' own craftsmen.<br><em>The same men who built Pinehurst.</em></h2>
+  <p>Four columns. Full entablature. Drawn to exact Georgian proportion and built that way. The leaded glass sidelights and the fanlight at the front entry are original to 1916, not reproductions. Three months were spent sourcing period accurate brick for the portico. The proportions are correct because the drawings survived.</p>
+</section>
 
 <!-- EPIC: WALTER HINES PAGE -->
 <div class="epic rv">
