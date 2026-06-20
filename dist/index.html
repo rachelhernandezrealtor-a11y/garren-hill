@@ -84,6 +84,21 @@ nav .links a.cta:hover{background:var(--gold);color:var(--ink);}
   .hero .title{bottom:clamp(4.5rem,14vh,8rem);}
 }
 
+/* ===== ARCHIVAL HISTORY — real portraits + his handwriting as a ghost layer ===== */
+.archival{position:relative;padding:clamp(3.5rem,10vh,7rem) var(--pad);overflow:hidden;}
+.archival .ghost{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0.07;filter:grayscale(1) sepia(0.4) contrast(1.05);pointer-events:none;mix-blend-mode:screen;}
+.archival .inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:0.8fr 1.2fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;}
+.archival.flip .inner{grid-template-columns:1.2fr 0.8fr;}
+.archival .pfig{margin:0;}
+.archival .pfig img{width:100%;height:auto;display:block;filter:sepia(0.18) contrast(1.02);box-shadow:0 18px 60px rgba(0,0,0,0.55);}
+.archival.flip .pfig{order:2;}
+.archival .pfig figcaption{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.26em;text-transform:uppercase;color:var(--whisper);margin-top:0.9rem;text-align:center;}
+.archival .ptext .k{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.42em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;}
+.archival .ptext .l{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.7rem,3.4vw,3rem);line-height:1.16;color:var(--cream);}
+.archival .ptext .l em{color:var(--gold);font-style:italic;}
+.archival .ptext p{font-size:var(--base);line-height:1.7;color:var(--cream-dim);margin-top:1.3rem;}
+@media(max-width:760px){.archival .inner,.archival.flip .inner{grid-template-columns:1fr;gap:1.6rem;}.archival.flip .pfig{order:1;}}
+
 /* ===== CINEMATIC ARRIVAL — scroll-scrubbed push through the gate to the door ===== */
 .arrival{position:relative;height:600vh;}
 .arrival .stage{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--ink);}
@@ -381,13 +396,20 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   <p>Six weeks later, Wilson made him Ambassador to the Court of St James's.<br>He sailed for London. The farm stayed behind.</p>
 </div>
 
-<!-- BEAT 2 — the longing, from London -->
-<div class="between rv">
-  <p><i>The farm. The farm. The farm.</i></p>
-  <div class="src">Walter Hines Page, from London, 1917</div>
-</div>
-<div class="quiet rv">
-  <p>He wrote home about it constantly. The peaches, the gardens, the pecans.<br>He had his son Ralph build it. <em>Build the farm, and let me hear at every stage of that happy game.</em></p>
+<!-- BEAT 2 — the longing, in his own hand (real portrait + handwriting ghost) -->
+<div class="archival rv">
+  <div class="ghost" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/w_1400,q_auto,f_auto/v1/gh_key/gh_whp_letter1.jpg');"></div>
+  <div class="inner">
+    <figure class="pfig">
+      <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_760,q_auto,f_auto/v1/gh_key/gh_whp_portrait.jpg" alt="Walter Hines Page, United States Ambassador to the Court of St James's">
+      <figcaption>Walter Hines Page, in London</figcaption>
+    </figure>
+    <div class="ptext">
+      <div class="k">From London, 1917</div>
+      <div class="l">The farm. The farm. <em>The farm.</em></div>
+      <p>He wrote home about it constantly. The peaches, the gardens, the pecans. He had his son Ralph build it.<br><em>Build the farm, and let me hear at every stage of that happy game.</em></p>
+    </div>
+  </div>
 </div>
 
 <!-- BEAT 3 — built by the same hands as Pinehurst -->
@@ -412,17 +434,19 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   <p>He died that December. Ralph made the farm his home.<br>The house Page built for his return outlived the longing that built it.</p>
 </div>
 
-<!-- BEAT 5 — Betty Dumaine, the stewardship -->
-<div class="reveal rv">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/129-blue-fox.jpg" alt="Hollycrest under Betty Dumaine, 1959 to 1984, Garran Hill Pinehurst">
-  <div class="rveil"></div>
-  <div class="cap">
-    <div class="room">Hollycrest &middot; 1959&ndash;1984</div>
-    <div class="whisper">Betty Dumaine kept it twenty-five years. <em>She named it for the hollies at the front.</em></div>
+<!-- BEAT 5 — Betty Dumaine, her real photograph -->
+<div class="archival flip rv">
+  <div class="inner">
+    <figure class="pfig">
+      <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_760,q_auto,f_auto/v1/gh_people/gh_betty_dumaine_1970s.jpg" alt="Betty Dumaine at Hollycrest, 1970s">
+      <figcaption>Betty Dumaine &middot; Hollycrest</figcaption>
+    </figure>
+    <div class="ptext">
+      <div class="k">Hollycrest &middot; 1959&ndash;1984</div>
+      <div class="l">She kept it twenty-five years. <em>She named it for the hollies at the front.</em></div>
+      <p>Horses, hounds, and peacocks. A camellia garden. Three American plane trees, still standing. From here she ran the United States arm of the Princess Mother of Thailand's charities.<br>At the back, under slate, a brass marker: <em>My Irish Hunter, Blue Fox.</em></p>
+    </div>
   </div>
-</div>
-<div class="quiet rv">
-  <p>Horses, hounds, and peacocks. A camellia garden. Three American plane trees, still standing.<br>At the back, under slate, a brass marker: <em>My Irish Hunter, Blue Fox.</em></p>
 </div>
 
 <!-- BEAT 6 — the restoration, to the studs -->
