@@ -118,7 +118,23 @@ nav .links a.cta:hover{background:var(--gold);color:var(--ink);}
 @keyframes cueDrift{0%,100%{opacity:0.4;transform:translateX(-50%) translateY(0);}50%{opacity:0.9;transform:translateX(-50%) translateY(5px);}}
 @media (prefers-reduced-motion: reduce){.arrival{height:auto;}.arrival .stage{position:relative;}.arrival .layer{position:relative;opacity:1;height:60svh;}.arrival .beat,.arrival .namecard{position:relative;opacity:1;}}
 
-/* HERO (legacy, kept for fallback) */
+/* ===== VIDEO HERO — own section, black placeholder for the looping estate film ===== */
+.vhero{position:relative;height:100svh;min-height:600px;overflow:hidden;background:#060606;display:flex;align-items:center;justify-content:center;}
+.vhero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.vhero-black{background:radial-gradient(120% 90% at 50% 38%,#141210 0%,#0b0a09 55%,#060606 100%);}
+.vhero-veil{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(6,6,6,0.2),transparent 40%,transparent 62%,rgba(6,6,6,0.55));}
+.vhero-inner{position:relative;z-index:2;text-align:center;padding:0 var(--pad);}
+.vhero-place{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.5em;text-transform:uppercase;color:var(--whisper);margin-bottom:1.4rem;animation:lineRise 1.4s cubic-bezier(.16,1,.3,1) .2s both;}
+.vhero-name{font-size:clamp(4.5rem,15vw,13rem);line-height:0.94;letter-spacing:0.02em;font-weight:300;background:linear-gradient(100deg,var(--cream),#fff7e6 30%,var(--gold) 52%,var(--cream));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:nameSheen 3.2s cubic-bezier(.16,1,.3,1) .35s both;}
+.vhero-sub{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.34em;text-transform:uppercase;color:var(--cream-dim);margin-top:1.6rem;animation:lineRise 1.4s cubic-bezier(.16,1,.3,1) 1.4s both;}
+.vhero-stats{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(1.4rem,4vw,3.2rem);margin-top:clamp(2.4rem,5vh,3.6rem);padding-top:clamp(1.8rem,4vh,2.6rem);border-top:1px solid rgba(201,169,110,0.22);animation:lineRise 1.4s cubic-bezier(.16,1,.3,1) 1.8s both;}
+.vhero-stats span{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.2em;text-transform:uppercase;color:var(--cream-dim);display:flex;flex-direction:column;gap:0.4rem;}
+.vhero-stats b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.6rem,2.6vw,2.4rem);color:var(--gold);letter-spacing:0.02em;}
+.vhero-cue{position:absolute;left:50%;transform:translateX(-50%);bottom:clamp(1.4rem,3.5vh,2.4rem);color:var(--gold);font-size:1.3rem;z-index:2;animation:drift 2.8s ease-in-out infinite;}
+@media (prefers-reduced-motion: reduce){.vhero-place,.vhero-name,.vhero-sub,.vhero-stats{animation:none;}.vhero-name{-webkit-text-fill-color:var(--cream);background:none;}}
+@media(max-width:600px){.vhero-stats{gap:1.1rem 1.8rem;}.vhero-sub{font-size:0.62rem;}}
+
+/* HERO (legacy, fallback) */
 .hero{position:relative;height:100svh;overflow:hidden;}
 .hero img{width:100%;height:100%;object-fit:cover;object-position:center 42%;transform:scale(1.06);animation:heroSettle 3.5s cubic-bezier(.16,1,.3,1) forwards;}
 @keyframes heroSettle{to{transform:scale(1);}}
@@ -340,36 +356,26 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   </span>
 </nav>
 
-<!-- ===== CINEMATIC ARRIVAL — you don't land on a photo, you arrive ===== -->
-<div class="arrival" id="arrival">
-  <div class="stage">
-    <!-- layer 0: the gate -->
-    <div class="layer" data-layer="0"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/140-gated-entrance.jpg" alt="The gated entrance to Garran Hill, Pinehurst" fetchpriority="high"><div class="lveil"></div></div>
-    <!-- layer 1: the drive / facade from afar -->
-    <div class="layer" data-layer="1"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/001-front-exterior.jpg" alt="Garran Hill, the facade beyond the drive"><div class="lveil"></div></div>
-    <!-- layer 2: the facade, closer -->
-    <div class="layer" data-layer="2"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/006-front-main.jpg" alt="Garran Hill Neo-Georgian brick facade"><div class="lveil"></div></div>
-    <!-- layer 3: the portico -->
-    <div class="layer" data-layer="3"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/009-portico.jpg" alt="The portico of Garran Hill, four columns and full entablature"><div class="lveil"></div></div>
-    <!-- layer 4: the entry hall, the threshold crossed -->
-    <div class="layer" data-layer="4"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/013-entry-hall.jpg" alt="Garran Hill two-story entry hall with Colonial Revival staircase"><div class="lveil"></div></div>
-
-    <!-- beat lines, revealed on the scroll -->
-    <div class="beat" data-beat="0"><div class="k">Pinehurst, North Carolina</div><div class="l">A gate, <em>open since the year it was laid.</em></div></div>
-    <div class="beat" data-beat="1"><div class="l">The drive curves <em>so the house arrives slowly.</em></div></div>
-    <div class="beat" data-beat="2"><div class="l">Rare handmade brick, <em>Flemish bond, 1916.</em></div></div>
-    <div class="beat" data-beat="3"><div class="l">Four columns. Full entablature. <em>Drawn to Georgian proportion.</em></div></div>
-    <div class="beat" data-beat="4"><div class="l">Past the door, the whole depth of the house, <em>before you take three steps.</em></div></div>
-
-    <!-- the name, arrived -->
-    <div class="namecard" data-name>
-      <div class="place">Pinehurst, North Carolina</div>
-      <h1>Garran Hill</h1>
-      <div class="addr">200 Hollycrest Drive &middot; $4,250,000</div>
+<!-- ===== HERO — own section. Black placeholder for the looping estate video. ===== -->
+<!-- Listing-first: name + price + stats land in the first screen. Video drops in behind this later. -->
+<div class="vhero" id="hero">
+  <!-- VIDEO GOES HERE LATER: <video class="vhero-media" autoplay muted loop playsinline poster="..."><source src="..."></video> -->
+  <div class="vhero-media vhero-black" aria-hidden="true"></div>
+  <div class="vhero-veil"></div>
+  <div class="vhero-inner">
+    <div class="vhero-place">Pinehurst, North Carolina</div>
+    <h1 class="vhero-name">Garran Hill</h1>
+    <div class="vhero-sub">200 Hollycrest Drive &middot; $4,250,000</div>
+    <div class="vhero-stats">
+      <span><b>1916</b>Built</span>
+      <span><b>4</b>Bedrooms</span>
+      <span><b>6</b>Baths</span>
+      <span><b>6,320</b>Sq Ft</span>
+      <span><b>4.15</b>Acres</span>
+      <span><b>7</b>Fireplaces</span>
     </div>
-
-    <div class="scrollcue" aria-hidden="true">Scroll to arrive</div>
   </div>
+  <div class="vhero-cue" aria-hidden="true">&darr;</div>
 </div>
 
 <!-- ============================================================ -->
@@ -377,6 +383,17 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
 <!-- Opens the site. He built it for himself. He longed to return.-->
 <!-- Every line traces to CITATIONS.md. Punchy. Photos carry it.  -->
 <!-- ============================================================ -->
+
+<!-- BEFORE / AFTER — the same gate, 110 years apart. The strongest image. -->
+<div class="thennow rv">
+  <div class="frame tn-then"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/gh_photos/gh_historygate_sepia.jpg" alt="Garran Hill gate in 1916, the year the estate was built"></div>
+  <div class="frame tn-now"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/gh_key/gh_gate_twilight.jpg" alt="Garran Hill gate today, at twilight, Pinehurst North Carolina"></div>
+  <div class="tn-veil"></div>
+  <div class="tn-label">
+    <div class="tn-eyebrow">1916 &middot; 2026</div>
+    <div class="tn-line">Walter Hines Page built it to come home to. <em>The same gate has stood open for 110 years.</em></div>
+  </div>
+</div>
 
 <!-- breath into the story -->
 <div class="between rv" style="padding-top:clamp(3.5rem,10vh,7rem);">
@@ -473,27 +490,6 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
 <!-- bridge: the past meets the present at the gate -->
 <div class="between rv">
   <p>A century of stewards. One house. <i>Open since the year it was laid.</i></p>
-</div>
-
-<!-- THEN / NOW — the same gate, 110 years apart -->
-<div class="thennow rv">
-  <div class="frame tn-then"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/gh_photos/gh_historygate_sepia.jpg" alt="Garran Hill gate in 1916, the year the estate was built"></div>
-  <div class="frame tn-now"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/gh_key/gh_gate_twilight.jpg" alt="Garran Hill gate today, at twilight, Pinehurst North Carolina"></div>
-  <div class="tn-veil"></div>
-  <div class="tn-label">
-    <div class="tn-eyebrow">1916 &middot; 2026</div>
-    <div class="tn-line">The same gate. <em>Open since the year it was laid.</em></div>
-  </div>
-</div>
-
-<!-- STAT PLATE -->
-<div class="stats rv">
-  <div class="stat"><b>1916</b><span>Built</span></div>
-  <div class="stat"><b>4</b><span>Bedrooms</span></div>
-  <div class="stat"><b>6</b><span>Bathrooms</span></div>
-  <div class="stat"><b>6,320</b><span>Square Feet</span></div>
-  <div class="stat"><b>4.15</b><span>Acres</span></div>
-  <div class="stat"><b>7</b><span>Fireplaces</span></div>
 </div>
 
 <!-- ACT I — now we meet the house itself (history told above) -->
