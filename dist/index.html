@@ -84,7 +84,26 @@ nav .links a.cta:hover{background:var(--gold);color:var(--ink);}
   .hero .title{bottom:clamp(4.5rem,14vh,8rem);}
 }
 
-/* HERO */
+/* ===== CINEMATIC ARRIVAL — scroll-scrubbed push through the gate to the door ===== */
+.arrival{position:relative;height:600vh;}
+.arrival .stage{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--ink);}
+.arrival .layer{position:absolute;inset:0;opacity:0;will-change:opacity,transform;}
+.arrival .layer img{width:100%;height:100%;object-fit:cover;}
+.arrival .layer .lveil{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.30),transparent 38%,transparent 58%,rgba(10,10,10,0.78));}
+.arrival .beat{position:absolute;left:0;right:0;bottom:clamp(7rem,20vh,13rem);text-align:center;padding:0 var(--pad);opacity:0;will-change:opacity,transform;}
+.arrival .beat .k{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.45em;text-transform:uppercase;color:var(--gold);margin-bottom:0.9rem;}
+.arrival .beat .l{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.7rem,4vw,3.2rem);line-height:1.18;color:var(--cream);text-shadow:0 1px 30px rgba(0,0,0,0.6);}
+.arrival .beat .l em{color:var(--gold);font-style:italic;}
+/* the name, arrived */
+.arrival .namecard{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0;will-change:opacity;padding:0 var(--pad);}
+.arrival .namecard .place{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.5em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:1.4rem;}
+.arrival .namecard h1{font-size:var(--xl);letter-spacing:0.05em;line-height:1;background:linear-gradient(100deg,var(--cream),#fff7e6 30%,var(--gold) 50%,var(--cream));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.arrival .namecard .addr{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.36em;text-transform:uppercase;color:var(--cream-dim);margin-top:1.6rem;}
+.arrival .scrollcue{position:absolute;left:50%;transform:translateX(-50%);bottom:clamp(1.4rem,4vh,2.4rem);color:var(--gold);font-size:var(--xs);letter-spacing:0.4em;text-transform:uppercase;font-family:'Instrument Sans',sans-serif;opacity:0.7;animation:cueDrift 2.8s ease-in-out infinite;}
+@keyframes cueDrift{0%,100%{opacity:0.4;transform:translateX(-50%) translateY(0);}50%{opacity:0.9;transform:translateX(-50%) translateY(5px);}}
+@media (prefers-reduced-motion: reduce){.arrival{height:auto;}.arrival .stage{position:relative;}.arrival .layer{position:relative;opacity:1;height:60svh;}.arrival .beat,.arrival .namecard{position:relative;opacity:1;}}
+
+/* HERO (legacy, kept for fallback) */
 .hero{position:relative;height:100svh;overflow:hidden;}
 .hero img{width:100%;height:100%;object-fit:cover;object-position:center 42%;transform:scale(1.06);animation:heroSettle 3.5s cubic-bezier(.16,1,.3,1) forwards;}
 @keyframes heroSettle{to{transform:scale(1);}}
@@ -306,18 +325,36 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   </span>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/hero/twilight-v1.jpg" alt="Garran Hill, 1916 Neo-Georgian estate, Pinehurst, North Carolina" fetchpriority="high">
-  <div class="veil"></div>
-  <div class="title">
-    <div class="place reveal-line" style="--d:.2s">Pinehurst, North Carolina</div>
-    <h1 class="hero-name">Garran Hill</h1>
-    <div class="anchor reveal-line" style="--d:1.5s">Built for a man who longed to come home.<em> The door has been open since 1916.</em></div>
-    <div class="addr reveal-line" style="--d:2.0s">200 Hollycrest Drive</div>
-    <div class="price reveal-line" style="--d:2.2s">$4,250,000</div>
+<!-- ===== CINEMATIC ARRIVAL — you don't land on a photo, you arrive ===== -->
+<div class="arrival" id="arrival">
+  <div class="stage">
+    <!-- layer 0: the gate -->
+    <div class="layer" data-layer="0"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/140-gated-entrance.jpg" alt="The gated entrance to Garran Hill, Pinehurst" fetchpriority="high"><div class="lveil"></div></div>
+    <!-- layer 1: the drive / facade from afar -->
+    <div class="layer" data-layer="1"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/001-front-exterior.jpg" alt="Garran Hill, the facade beyond the drive"><div class="lveil"></div></div>
+    <!-- layer 2: the facade, closer -->
+    <div class="layer" data-layer="2"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/006-front-main.jpg" alt="Garran Hill Neo-Georgian brick facade"><div class="lveil"></div></div>
+    <!-- layer 3: the portico -->
+    <div class="layer" data-layer="3"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/009-portico.jpg" alt="The portico of Garran Hill, four columns and full entablature"><div class="lveil"></div></div>
+    <!-- layer 4: the entry hall, the threshold crossed -->
+    <div class="layer" data-layer="4"><img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/013-entry-hall.jpg" alt="Garran Hill two-story entry hall with Colonial Revival staircase"><div class="lveil"></div></div>
+
+    <!-- beat lines, revealed on the scroll -->
+    <div class="beat" data-beat="0"><div class="k">Pinehurst, North Carolina</div><div class="l">A gate, <em>open since the year it was laid.</em></div></div>
+    <div class="beat" data-beat="1"><div class="l">The drive curves <em>so the house arrives slowly.</em></div></div>
+    <div class="beat" data-beat="2"><div class="l">Rare handmade brick, <em>Flemish bond, 1916.</em></div></div>
+    <div class="beat" data-beat="3"><div class="l">Four columns. Full entablature. <em>Drawn to Georgian proportion.</em></div></div>
+    <div class="beat" data-beat="4"><div class="l">Past the door, the whole depth of the house, <em>before you take three steps.</em></div></div>
+
+    <!-- the name, arrived -->
+    <div class="namecard" data-name>
+      <div class="place">Pinehurst, North Carolina</div>
+      <h1>Garran Hill</h1>
+      <div class="addr">200 Hollycrest Drive &middot; $4,250,000</div>
+    </div>
+
+    <div class="scrollcue" aria-hidden="true">Scroll to arrive</div>
   </div>
-  <div class="down" aria-hidden="true">&darr;</div>
 </div>
 
 <!-- ============================================================ -->
@@ -328,7 +365,7 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
 
 <!-- breath into the story -->
 <div class="between rv" style="padding-top:clamp(3.5rem,10vh,7rem);">
-  <p>Before Garran Hill was an estate, it was <i>a man's idea of coming home.</i></p>
+  <p>Before Garran Hill was an estate, it was the homecoming <i>Walter Hines Page never stopped longing for.</i></p>
 </div>
 
 <!-- BEAT 1 — Page buys the farm, then is sent away -->
@@ -337,7 +374,7 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   <div class="rveil"></div>
   <div class="cap">
     <div class="room">Walter Hines Page &middot; 1855&ndash;1918</div>
-    <div class="whisper">In 1913 he bought a thousand acres of Moore County pine. <em>He named it Garran Hill.</em></div>
+    <div class="whisper">Publisher. Doubleday founder. Ambassador to the Court of St James's. <em>In 1913 he bought a thousand acres of Moore County pine and named it Garran Hill.</em></div>
   </div>
 </div>
 <div class="quiet rv">
@@ -463,7 +500,7 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   <div class="etext">
     <div class="ebrow">Walter Hines Page &middot; 1855 to 1918</div>
     <div class="edisplay">He named it Garran Hill.<br><em>His son built it and lived in it.</em></div>
-    <div class="esub">Ambassador to the Court of St James's, appointed by Wilson, who held the alliance from London through the years the world came apart. From there he bought a hundred acres of Moore County sand and pine and sent his son Ralph to build it and make it his home. Page resigned the embassy and sailed home gravely ill in the autumn of 1918, and died that December in Pinehurst. He is the only American diplomat of the first World War honored with a tablet at Westminster Abbey.</div>
+    <div class="esub">Ambassador to the Court of St James's, appointed by Wilson, who held the alliance from London through the years the world came apart. From there he bought a thousand acres of Moore County sand and pine and sent his son Ralph to build it and make it his home. Page resigned the embassy and sailed home gravely ill in the autumn of 1918, and died that December in Pinehurst. He is the only American diplomat of the first World War honored with a tablet at Westminster Abbey.</div>
   </div>
 </div>
 
@@ -767,6 +804,51 @@ var navEl=document.querySelector('nav');
 function navState(){if(window.scrollY>window.innerHeight*0.75){navEl.classList.add('solid');}else{navEl.classList.remove('solid');}}
 document.addEventListener('scroll',navState,{passive:true});
 navState();
+
+/* ===== CINEMATIC ARRIVAL — scroll scrubs the push through the gate to the door ===== */
+(function(){
+  var arrival=document.getElementById('arrival');
+  if(!arrival)return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var layers=[].slice.call(arrival.querySelectorAll('.layer'));
+  var beats=[].slice.call(arrival.querySelectorAll('.beat'));
+  var namecard=arrival.querySelector('[data-name]');
+  var cue=arrival.querySelector('.scrollcue');
+  var N=layers.length;
+  function clamp(v,a,b){return v<a?a:v>b?b:v;}
+  function tick(){
+    var rect=arrival.getBoundingClientRect();
+    var total=arrival.offsetHeight-window.innerHeight;
+    var p=clamp(-rect.top/total,0,1);
+    var seg=p*N;
+    layers.forEach(function(L,i){
+      var local=seg-i,op,scale,img=L.querySelector('img');
+      if(local<=-0.6){op=0;scale=1.18;}
+      else if(local<0){var t=(local+0.6)/0.6;op=t;scale=1.18-0.10*t;}
+      else if(local<=1){op=1;scale=1.08-0.08*local;}
+      else if(local<1.6){var u=(local-1)/0.6;op=1-u;scale=1.0-0.05*u;}
+      else{op=0;scale=0.95;}
+      L.style.opacity=op.toFixed(3);
+      if(img)img.style.transform='scale('+scale.toFixed(3)+')';
+    });
+    beats.forEach(function(B,i){
+      var local=seg-i,op;
+      if(local>0.15&&local<0.9)op=1;
+      else if(local>=0&&local<=1)op=Math.max(0,1-Math.abs(local-0.5)/0.5);
+      else op=0;
+      B.style.opacity=op.toFixed(3);
+      B.style.transform='translateY('+(14*(1-op)).toFixed(1)+'px)';
+    });
+    var nlocal=seg-(N-0.4);
+    namecard.style.opacity=clamp(nlocal/0.6,0,1).toFixed(3);
+    if(cue)cue.style.opacity=(p>0.04?0:0.7).toFixed(2);
+  }
+  var ticking=false;
+  function onScroll(){if(!ticking){requestAnimationFrame(function(){tick();ticking=false;});ticking=true;}}
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll,{passive:true});
+  tick();
+})();
 </script>
 </body>
 </html>
