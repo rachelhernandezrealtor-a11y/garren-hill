@@ -86,11 +86,11 @@ nav .links a.cta:hover{background:var(--gold);color:var(--ink);}
 
 /* ===== ARCHIVAL HISTORY — real portraits + his handwriting as a ghost layer ===== */
 .archival{position:relative;padding:clamp(3.5rem,10vh,7rem) var(--pad);overflow:hidden;}
-.archival .ghost{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0.07;filter:grayscale(1) sepia(0.4) contrast(1.05);pointer-events:none;mix-blend-mode:screen;}
+.archival .ghost{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0.08;filter:none;pointer-events:none;}
 .archival .inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:0.8fr 1.2fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;}
 .archival.flip .inner{grid-template-columns:1.2fr 0.8fr;}
 .archival .pfig{margin:0;}
-.archival .pfig img{width:100%;height:auto;display:block;filter:sepia(0.18) contrast(1.02);box-shadow:0 18px 60px rgba(0,0,0,0.55);}
+.archival .pfig img{width:100%;height:auto;display:block;box-shadow:0 14px 44px rgba(0,0,0,0.35);}
 .archival.flip .pfig{order:2;}
 .archival .pfig figcaption{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.26em;text-transform:uppercase;color:var(--whisper);margin-top:0.9rem;text-align:center;}
 .archival .ptext .k{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.42em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;}
@@ -434,17 +434,16 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   <p>He died that December. Ralph made the farm his home.<br>The house Page built for his return outlived the longing that built it.</p>
 </div>
 
-<!-- BEAT 5 — Betty Dumaine, her real photo, over the holly that named the house -->
+<!-- BEAT 5 — Betty Dumaine, the real holly at the door that named the house -->
 <div class="archival flip rv">
-  <div class="ghost" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/w_1400,q_auto,f_auto/v1/garran-hill/photos/008-exterior.jpg');opacity:0.12;filter:none;mix-blend-mode:normal;"></div>
   <div class="inner">
     <figure class="pfig">
-      <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_760,q_auto,f_auto/v1/gh_people/gh_betty_dumaine_1970s.jpg" alt="Betty Dumaine at Hollycrest, 1970s">
-      <figcaption>Betty Dumaine &middot; Hollycrest</figcaption>
+      <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_900,q_auto,f_auto/v1/gh_exteriors/gh_holly_door.jpg" alt="Holly heavy with red berries at the white front door of Garran Hill, the holly that named Hollycrest">
+      <figcaption>The holly at the front door</figcaption>
     </figure>
     <div class="ptext">
       <div class="k">Hollycrest &middot; 1959&ndash;1984</div>
-      <div class="l">She kept it twenty-five years. <em>She named it for the holly at the front door.</em></div>
+      <div class="l">Betty Dumaine kept it twenty-five years. <em>She named it for the holly at the door.</em></div>
       <p>Horses, hounds, and peacocks. A camellia garden. Three American plane trees, still standing. From here she ran the United States arm of the Princess Mother of Thailand's charities.<br>At the back, under slate, a brass marker: <em>My Irish Hunter, Blue Fox.</em></p>
     </div>
   </div>
