@@ -11,6 +11,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
+/* Lenis required base CSS (without this, wheel scroll silently dies) */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+.lenis.lenis-smooth iframe{pointer-events:none}
 :root{
   --ink:#0c0a09; --ink2:#13110f; --cream:#f4efe6; --cream-dim:#b8b0a2; --whisper:#8a8276;
   --gold:#c9a96a; --gold-soft:rgba(201,169,106,.5);
@@ -287,15 +293,21 @@ footer{text-align:center;padding:2.5rem var(--pad);font-size:var(--xs);letter-sp
 <footer>200 Hollycrest Drive &middot; Pinehurst, North Carolina &middot; $4,250,000</footer>
 
 <script type="module">
-import Lenis from 'https://cdn.jsdelivr.net/npm/lenis@1.1.18/+esm';
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 let lenis;
-if(!reduce){
-  lenis = new Lenis({duration:1.15, easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)), lerp:.1, smoothWheel:true, touchMultiplier:1.4});
-  const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf);
-  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
-    const id=a.getAttribute('href');if(id.length>1){e.preventDefault();lenis.scrollTo(id,{offset:0,duration:1.6});}
-  }));
+async function initScroll(){
+  if(reduce) return;
+  try{
+    const {default:Lenis} = await import('https://cdn.jsdelivr.net/npm/lenis@1.1.18/+esm');
+    lenis = new Lenis({duration:1.15, easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)), lerp:.1, smoothWheel:true, touchMultiplier:1.4});
+    const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf);
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+      const id=a.getAttribute('href');if(id.length>1){e.preventDefault();lenis.scrollTo(id,{offset:0,duration:1.6});}
+    }));
+  }catch(err){
+    // Lenis failed to load — ensure native scroll is fully intact, no hijack.
+    document.documentElement.classList.remove('lenis','lenis-smooth');
+  }
 }
 
 // reveals
@@ -354,9 +366,11 @@ function hTick(){
 }
 
 function frame(scroll){onNav(scroll);if(!reduce){tlTick();hTick();}}
-if(lenis){lenis.on('scroll',({scroll})=>frame(scroll));frame(0);}
-else{addEventListener('scroll',()=>frame(scrollY),{passive:true});frame(0);}
+// Native scroll always drives the animations (works with or without Lenis).
+addEventListener('scroll',()=>frame(scrollY),{passive:true});
 addEventListener('resize',()=>frame(scrollY||0));
+frame(0);
+initScroll(); // enhance with Lenis smooth scroll if it loads; native scroll already works
 
 // cursor
 if(matchMedia('(hover:hover)').matches && !reduce){
