@@ -213,21 +213,21 @@ section h2{font-size:var(--lg);margin-top:0.7rem;line-height:1.2;}
 /* ghost layer: archival page texture behind a spread's text column */
 .spread.ghost{position:relative;}
 .spread.ghost .stext{position:relative;}
-.spread.ghost .stext::before{content:"";position:absolute;inset:-2rem -1.5rem;background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/w_900,q_auto,f_auto,e_sepia:40/v1/gh_key/gh_whp_letter1.jpg');background-size:cover;background-position:center;opacity:0.10;filter:grayscale(0.3);pointer-events:none;z-index:0;}
+.spread.ghost .stext::before{content:"";position:absolute;inset:-2rem -1.5rem;background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/w_1200,q_auto:good,f_auto,e_sepia:40/v1/gh_key/gh_whp_letter1.jpg');background-size:cover;background-position:center;opacity:0.10;filter:grayscale(0.3);pointer-events:none;z-index:0;}
 .spread.ghost .stext>*{position:relative;z-index:1;}
 @media(max-width:760px){.spread,.spread.flip{grid-template-columns:1fr;gap:1.4rem;}.spread.flip .sfig{order:1;}.spread.flip .stext{order:2;}.spread .stext{max-width:100%;}}
 
-/* THEN / NOW — Ken Burns crossfade, the same gate 110 years apart */
-.thennow{position:relative;height:clamp(60vh,80vh,88vh);overflow:hidden;background:var(--ink);}
+/* THEN / NOW — the same gate, 110 years apart (cinematic: slow crossfade + Ken Burns) */
+.thennow{position:relative;height:clamp(70vh,90vh,100svh);overflow:hidden;background:var(--ink);}
 .thennow .frame{position:absolute;inset:0;}
 .thennow .frame img{width:100%;height:100%;object-fit:cover;}
-.thennow .tn-then img{filter:sepia(0.55) contrast(0.95);}
-.thennow .tn-then{animation:tnThen 16s ease-in-out infinite;}
-.thennow .tn-now{animation:tnNow 16s ease-in-out infinite;}
-.thennow .frame img{animation:tnKB 16s ease-in-out infinite;}
-@keyframes tnThen{0%,42%{opacity:1;}50%,92%{opacity:0;}100%{opacity:1;}}
-@keyframes tnNow{0%,42%{opacity:0;}50%,92%{opacity:1;}100%{opacity:0;}}
-@keyframes tnKB{0%{transform:scale(1.0);}50%{transform:scale(1.06);}100%{transform:scale(1.0);}}
+.thennow .tn-then img{filter:sepia(0.42) contrast(1.02) brightness(0.96);}
+.thennow .tn-then{animation:tnThen 18s ease-in-out infinite;}
+.thennow .tn-now{animation:tnNow 18s ease-in-out infinite;}
+.thennow .frame img{animation:tnKB 18s ease-in-out infinite;}
+@keyframes tnThen{0%,40%{opacity:1;}50%,90%{opacity:0;}100%{opacity:1;}}
+@keyframes tnNow{0%,40%{opacity:0;}50%,90%{opacity:1;}100%{opacity:0;}}
+@keyframes tnKB{0%{transform:scale(1.0) translate3d(0,0,0);}50%{transform:scale(1.08) translate3d(-1.5%,-1%,0);}100%{transform:scale(1.0) translate3d(0,0,0);}}
 .thennow .tn-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,0.8),transparent 45%);pointer-events:none;}
 .thennow .tn-label{position:absolute;left:0;right:0;bottom:clamp(2rem,6vh,4rem);text-align:center;padding:0 var(--pad);}
 .thennow .tn-eyebrow{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:0.45em;text-transform:uppercase;color:var(--gold);}
@@ -386,8 +386,8 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
 
 <!-- BEFORE / AFTER — the same gate, 110 years apart. The strongest image. -->
 <div class="thennow rv">
-  <div class="frame tn-then"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/gh_photos/gh_historygate_sepia.jpg" alt="Garran Hill gate in 1916, the year the estate was built"></div>
-  <div class="frame tn-now"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/gh_key/gh_gate_twilight.jpg" alt="Garran Hill gate today, at twilight, Pinehurst North Carolina"></div>
+  <div class="frame tn-then"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_2400,q_auto:best,f_auto/v1/gh_photos/gh_historygate_sepia.jpg" alt="Garran Hill gate in 1916, the year the estate was built"></div>
+  <div class="frame tn-now"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_2400,q_auto:best,f_auto/v1/gh_key/gh_gate_twilight.jpg" alt="Garran Hill gate today, at twilight, Pinehurst North Carolina"></div>
   <div class="tn-veil"></div>
   <div class="tn-label">
     <div class="tn-eyebrow">1916 &middot; 2026</div>
@@ -402,7 +402,7 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
 
 <!-- BEAT 1 — Page buys the farm, then is sent away -->
 <div class="reveal rv">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/001-front-exterior.jpg" alt="Garran Hill, the 1,000-acre farm Walter Hines Page bought in 1913">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_2400,q_auto:best,f_auto/v1/garran-hill/photos/001-front-exterior.jpg" alt="Garran Hill, the 1,000-acre farm Walter Hines Page bought in 1913">
   <div class="rveil"></div>
   <div class="cap">
     <div class="room">Walter Hines Page &middot; 1855&ndash;1918</div>
@@ -418,7 +418,7 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   <div class="ghost" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/w_1400,q_auto,f_auto/v1/gh_key/gh_whp_letter1.jpg');"></div>
   <div class="inner">
     <figure class="pfig">
-      <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_760,q_auto,f_auto/v1/gh_key/gh_whp_portrait.jpg" alt="Walter Hines Page, United States Ambassador to the Court of St James's">
+      <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_900,q_auto:good,f_auto/v1/gh_key/gh_whp_portrait.jpg" alt="Walter Hines Page, United States Ambassador to the Court of St James's">
       <figcaption>Walter Hines Page, in London</figcaption>
     </figure>
     <div class="ptext">
@@ -431,7 +431,7 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
 
 <!-- BEAT 3 — built by the same hands as Pinehurst -->
 <div class="reveal rv">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/006-front-main.jpg" alt="Garran Hill, Neo-Georgian, rare handmade red brick in Flemish bond, built 1915 to 1916">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_2400,q_auto:best,f_auto/v1/garran-hill/photos/006-front-main.jpg" alt="Garran Hill, Neo-Georgian, rare handmade red brick in Flemish bond, built 1915 to 1916">
   <div class="rveil"></div>
   <div class="cap">
     <div class="room">Built 1915&ndash;1916</div>
@@ -448,14 +448,15 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   <div class="src">His last recorded words, Aberdeen station, December 1918</div>
 </div>
 <div class="quiet rv">
-  <p>He died that December. Ralph made the farm his home.<br>The house Page built for his return outlived the longing that built it.</p>
+  <p>He resigned the embassy and sailed home, gravely ill. He reached Pinehurst, and died that December. Ralph made the farm his home.<br>The house Page built for his return outlived the longing that built it.</p>
+  <p style="margin-top:1.1em;">He remains the only American diplomat of the First World War honored with a tablet at <em>Westminster Abbey.</em></p>
 </div>
 
 <!-- BEAT 5 — Betty Dumaine, the real holly at the door that named the house -->
 <div class="archival flip rv">
   <div class="inner">
     <figure class="pfig">
-      <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_900,q_auto,f_auto/v1/gh_exteriors/gh_holly_door.jpg" alt="Holly with red berries at the front entrance of Garran Hill, Pinehurst, the estate Betty Dumaine renamed Hollycrest">
+      <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1200,q_auto:good,f_auto/v1/gh_exteriors/gh_holly_door.jpg" alt="Holly with red berries at the front entrance of Garran Hill, Pinehurst, the estate Betty Dumaine renamed Hollycrest">
       <figcaption>Holly at the entrance</figcaption>
     </figure>
     <div class="ptext">
@@ -471,7 +472,7 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   <p>She loved one horse above the rest. An Irish hunter named Blue Fox.<br>When he died, she buried him at the back of the grounds, under slate, and marked it in brass.</p>
 </div>
 <div class="reveal rv">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/129-blue-fox.jpg" alt="The slate-covered grave of Blue Fox, Betty Dumaine's Irish hunter, marked in brass at the back of Garran Hill">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_2400,q_auto:best,f_auto/v1/garran-hill/photos/129-blue-fox.jpg" alt="The slate-covered grave of Blue Fox, Betty Dumaine's Irish hunter, marked in brass at the back of Garran Hill">
   <div class="rveil"></div>
   <div class="cap">
     <div class="room">My Irish Hunter &middot; Blue Fox</div>
@@ -492,8 +493,8 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   <p>A century of stewards. One house. <i>Open since the year it was laid.</i></p>
 </div>
 
-<!-- ACT I — now we meet the house itself (history told above) -->
-<div class="act rv"><span class="line"></span><span class="n">The House</span><span class="line r"></span></div>
+<!-- TRANSITION: from history into the house -->
+<div class="act rv"><span class="line"></span><span class="n">The House Today</span><span class="line r"></span></div>
 <section id="about" style="padding-top:0;">
   <div class="desc rv">
     <span class="eyebrow">Garran Hill Today</span>
@@ -503,44 +504,27 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   </div>
 </section>
 
-<!-- ACT II -->
-<div class="act rv"><span class="line"></span><span class="n">II &middot; The Threshold</span><span class="line r"></span></div>
+<!-- ACT II — THE HOUSE BEGINS: the threshold -->
+<div class="act rv"><span class="line"></span><span class="n">I &middot; The Threshold</span><span class="line r"></span></div>
 <div class="reveal rv">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/006-front-main.jpg" alt="Garran Hill Neo-Georgian brick facade, white portico, Pinehurst North Carolina">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_2400,q_auto:best,f_auto/v1/garran-hill/photos/006-front-main.jpg" alt="Garran Hill Neo-Georgian brick facade, white portico, Pinehurst North Carolina">
   <div class="rveil"></div>
-  <div class="cap"><div class="room">The Approach</div><div class="whisper">The drive curves so the house arrives slowly. That was the idea in 1916.</div></div>
+  <div class="cap"><div class="room">The Portico</div><div class="whisper">Four columns. Full entablature. <em>The fanlight above is original to 1916.</em></div></div>
 </div>
 <div class="quiet rv">
-  <p>Past the portico, the door opens to a two-story entry where a Colonial Revival staircase climbs and the oak handrail runs unbroken from volute to landing. Built by Leonard Tufts' own craftsmen, the same men who were building Pinehurst two miles away, by hands that meant for you to see the whole depth of the house <em>before you have taken three steps.</em></p>
+  <p>Through the door, a two-story entry. The oak handrail runs unbroken from volute to landing.<br>You see the whole depth of the house <em>before you take three steps.</em></p>
+  <p style="margin-top:1.1em;">The sidelights and fanlight are original to 1916, not reproductions. Three months went to sourcing brick that matched the Flemish bond. The proportions are correct <em>because the drawings survived.</em></p>
 </div>
 <div class="pair rv" style="padding:0 var(--pad);">
-  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/009-portico.jpg" alt="The portico of Garran Hill, four columns and full entablature, Pinehurst NC"><figcaption>The Portico</figcaption></figure>
-  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/013-entry-hall.jpg" alt="Garran Hill two-story entry hall with Colonial Revival mahogany staircase, 1916"><figcaption>The Entry Hall</figcaption></figure>
+  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto:good,f_auto/v1/garran-hill/photos/009-portico.jpg" alt="The portico of Garran Hill, four columns and full entablature, Pinehurst NC"><figcaption>The Portico</figcaption></figure>
+  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto:good,f_auto/v1/garran-hill/photos/013-entry-hall.jpg" alt="Garran Hill two-story entry hall with Colonial Revival mahogany staircase, 1916"><figcaption>The Entry Hall</figcaption></figure>
 </div>
 <div class="breath"></div>
 
-<!-- TUFTS CRAFTSMEN / PINEHURST — editorial text, not over photo -->
-<section class="builtby rv">
-  <span class="eyebrow">Full Brick &middot; Flemish Bond &middot; Neo-Georgian</span>
-  <h2>Built by Leonard Tufts' own craftsmen.<br><em>The same men who built Pinehurst.</em></h2>
-  <p>Four columns. Full entablature. Drawn to exact Georgian proportion and built that way. The leaded glass sidelights and the fanlight at the front entry are original to 1916, not reproductions. Three months were spent sourcing period accurate brick for the portico. The proportions are correct because the drawings survived.</p>
-</section>
-
-<!-- EPIC: WALTER HINES PAGE -->
-<div class="epic rv">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/001-front-exterior.jpg" alt="Garran Hill, built 1916 for Walter Hines Page, United States Ambassador to the Court of St James's">
-  <div class="eveil"></div>
-  <div class="etext">
-    <div class="ebrow">Walter Hines Page &middot; 1855 to 1918</div>
-    <div class="edisplay">He named it Garran Hill.<br><em>His son built it and lived in it.</em></div>
-    <div class="esub">Ambassador to the Court of St James's, appointed by Wilson, who held the alliance from London through the years the world came apart. From there he bought a thousand acres of Moore County sand and pine and sent his son Ralph to build it and make it his home. Page resigned the embassy and sailed home gravely ill in the autumn of 1918, and died that December in Pinehurst. He is the only American diplomat of the first World War honored with a tablet at Westminster Abbey.</div>
-  </div>
-</div>
-
 <!-- ACT III -->
-<div class="act rv"><span class="line"></span><span class="n">III &middot; The Rooms</span><span class="line r"></span></div>
+<div class="act rv"><span class="line"></span><span class="n">II &middot; The Rooms</span><span class="line r"></span></div>
 <div class="reveal rv">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/019-drawing-room.jpg" alt="Drawing room fireplace, Garran Hill">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_2400,q_auto:best,f_auto/v1/garran-hill/photos/019-drawing-room.jpg" alt="Drawing room fireplace, Garran Hill">
   <div class="rveil"></div>
   <div class="cap"><div class="room">The Drawing Room</div><div class="whisper">Nearly forty feet. <em>Two sitting areas, neither crowded.</em></div></div>
 </div>
@@ -548,12 +532,12 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   <p>Federal mantel over dark marble. Ceiling worked in panels and coffers.<br>Bookcases arched into the wall. French doors open the whole south side <em>to the brick terrace.</em></p>
 </div>
 <div class="pair rv" style="padding:0 var(--pad);">
-  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/022-drawing-room-french-doors.jpg" alt="French doors from the Garran Hill drawing room to the rear brick terrace"><figcaption>To the Terrace</figcaption></figure>
-  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/024-dining-room.jpg" alt="Garran Hill dining room with 1916 frontispiece and arched shell cabinets, Pinehurst NC"><figcaption>The Dining Room</figcaption></figure>
+  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto:good,f_auto/v1/garran-hill/photos/022-drawing-room-french-doors.jpg" alt="French doors from the Garran Hill drawing room to the rear brick terrace"><figcaption>To the Terrace</figcaption></figure>
+  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto:good,f_auto/v1/garran-hill/photos/024-dining-room.jpg" alt="Garran Hill dining room with 1916 frontispiece and arched shell cabinets, Pinehurst NC"><figcaption>The Dining Room</figcaption></figure>
 </div>
 <div class="breath"></div>
 <div class="reveal rv">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/031-kitchen.jpg" alt="Kitchen of reclaimed heart pine and black granite">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_2400,q_auto:best,f_auto/v1/garran-hill/photos/031-kitchen.jpg" alt="Kitchen of reclaimed heart pine and black granite">
   <div class="rveil"></div>
   <div class="cap"><div class="room">The Kitchen</div><div class="whisper">Reclaimed heart pine. <em>The one floor that isn't the original oak.</em></div></div>
 </div>
@@ -561,12 +545,12 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   <p>White Shaker cabinetry. Glass fronts. Black granite. A professional range under its hood.<br>A butler's pantry with a farm sink. A breakfast room in chinoiserie toile, <em>its door open to the grounds.</em></p>
 </div>
 <div class="pair rv" style="padding:0 var(--pad);">
-  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/038-wall-of-windows-kitchen.jpg" alt="Garran Hill kitchen wall of windows over the main sink, reclaimed heart pine floors"><figcaption>The Wall of Windows</figcaption></figure>
-  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/037-farm-sink.jpg" alt="Garran Hill butler's pantry farm sink with butcher block counter"><figcaption>The Butler's Pantry</figcaption></figure>
+  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto:good,f_auto/v1/garran-hill/photos/038-wall-of-windows-kitchen.jpg" alt="Garran Hill kitchen wall of windows over the main sink, reclaimed heart pine floors"><figcaption>The Wall of Windows</figcaption></figure>
+  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto:good,f_auto/v1/garran-hill/photos/037-farm-sink.jpg" alt="Garran Hill butler's pantry farm sink with butcher block counter"><figcaption>The Butler's Pantry</figcaption></figure>
 </div>
 <div class="breath"></div>
 <div class="reveal rv">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/058-library.jpg" alt="Library with floor to ceiling shelving">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_2400,q_auto:best,f_auto/v1/garran-hill/photos/058-library.jpg" alt="Library with floor to ceiling shelving">
   <div class="rveil"></div>
   <div class="cap"><div class="room">The Library</div><div class="whisper">Floor to ceiling shelving. An afternoon's worth of light.</div></div>
 </div>
@@ -574,15 +558,15 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   <p>The library takes three walls floor to ceiling, the kind of room you stop calling a feature and start calling a reason. Down the hall the sitting room keeps a Delft tile fireplace and a spiral stair that climbs to the second floor office, <em>two stories told quietly in one room.</em></p>
 </div>
 <div class="pair rv" style="padding:0 var(--pad);">
-  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/067-delft-sitting-room.jpg" alt="Sitting room with Delft tile fireplace"><figcaption>The Sitting Room</figcaption></figure>
-  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/043-breakfast-room.jpg" alt="Garran Hill breakfast room in chinoiserie toile, opening to the grounds"><figcaption>The Breakfast Room</figcaption></figure>
+  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto:good,f_auto/v1/garran-hill/photos/067-delft-sitting-room.jpg" alt="Sitting room with Delft tile fireplace"><figcaption>The Sitting Room</figcaption></figure>
+  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto:good,f_auto/v1/garran-hill/photos/043-breakfast-room.jpg" alt="Garran Hill breakfast room in chinoiserie toile, opening to the grounds"><figcaption>The Breakfast Room</figcaption></figure>
 </div>
 <div class="breath"></div>
 
 <!-- ACT IV -->
-<div class="act rv"><span class="line"></span><span class="n">IV &middot; The Private Wing</span><span class="line r"></span></div>
+<div class="act rv"><span class="line"></span><span class="n">III &middot; The Private Wing</span><span class="line r"></span></div>
 <div class="reveal rv">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/073-primary.jpg" alt="Primary suite, first floor wing">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_2400,q_auto:best,f_auto/v1/garran-hill/photos/073-primary.jpg" alt="Primary suite, first floor wing">
   <div class="rveil"></div>
   <div class="cap"><div class="room">The Primary Suite</div><div class="whisper">A first floor wing of its own. The stairs are for guests.</div></div>
 </div>
@@ -590,15 +574,15 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   <p>It takes the full depth of the house. A fireplace, paneled wainscoting, oak floors that were here first. Two dressing rooms, because two people lived here and neither had to wait. The bath looks straight into the garden, and the French doors mean the morning can be private <em>before it is anything else.</em></p>
 </div>
 <div class="pair rv" style="padding:0 var(--pad);">
-  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/076-primary-bathroom.jpg" alt="Garran Hill primary bath with garden views and jetted tub, Pinehurst NC"><figcaption>The Primary Bath</figcaption></figure>
-  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/090-rose-suite.jpg" alt="Garran Hill Rose suite bedroom, second floor with fireplace"><figcaption>The Rose Suite</figcaption></figure>
+  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto:good,f_auto/v1/garran-hill/photos/076-primary-bathroom.jpg" alt="Garran Hill primary bath with garden views and jetted tub, Pinehurst NC"><figcaption>The Primary Bath</figcaption></figure>
+  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto:good,f_auto/v1/garran-hill/photos/090-rose-suite.jpg" alt="Garran Hill Rose suite bedroom, second floor with fireplace"><figcaption>The Rose Suite</figcaption></figure>
 </div>
 <div class="breath"></div>
 
 <!-- ACT V -->
-<div class="act rv"><span class="line"></span><span class="n">V &middot; The Grounds</span><span class="line r"></span></div>
+<div class="act rv"><span class="line"></span><span class="n">IV &middot; The Grounds</span><span class="line r"></span></div>
 <div class="reveal rv">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/124-pool.jpg" alt="Saltwater pool within the brick walled garden">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_2400,q_auto:best,f_auto/v1/garran-hill/photos/124-pool.jpg" alt="Saltwater pool within the brick walled garden">
   <div class="rveil"></div>
   <div class="cap"><div class="room">The Pool Garden</div><div class="whisper">Saltwater inside a brick walled garden. The wall came first.</div></div>
 </div>
@@ -606,24 +590,13 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
   <p>The pool and the courts exist because the land was nearly divided once. The family built reasons to stay instead. A saltwater pool, twenty by forty, inside a brick walled garden the wall built first. Two lighted tennis courts under the longleaf pines, ready for new surfaces. A boxwood herb garden. And the Wee Cottage, <em>a playhouse with its own address in family memory.</em></p>
 </div>
 <div class="pair rv" style="padding:0 var(--pad);">
-  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/120-tennis-courts.jpg" alt="Garran Hill two lighted regulation tennis courts within the estate grounds"><figcaption>The Courts &middot; Two, Lighted</figcaption></figure>
-  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/photos/121-the-wee-cottage.jpg" alt="The Wee Cottage playhouse"><figcaption>The Wee Cottage</figcaption></figure>
+  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto:good,f_auto/v1/garran-hill/photos/120-tennis-courts.jpg" alt="Garran Hill two lighted regulation tennis courts within the estate grounds"><figcaption>The Courts &middot; Two, Lighted</figcaption></figure>
+  <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto:good,f_auto/v1/garran-hill/photos/121-the-wee-cottage.jpg" alt="The Wee Cottage playhouse"><figcaption>The Wee Cottage</figcaption></figure>
 </div>
 <div class="breath"></div>
 
-<!-- EPIC: BETTY DUMAINE & BLUE FOX -->
-<div class="epic rv">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/129-blue-fox.jpg" alt="The slate-covered grave of Blue Fox, Betty Dumaine's Irish hunter, in the rear grounds of Garran Hill, Pinehurst NC">
-  <div class="eveil"></div>
-  <div class="etext">
-    <div class="ebrow">Hollycrest &middot; 1959 to 1984</div>
-    <div class="edisplay">She named it Hollycrest.<br><em>Someone still puts flowers here.</em></div>
-    <div class="esub">Betty Dumaine bought the estate in 1959 and named it for the native hollies at the front. She brought horses, hounds, and peacocks, planted the camellia garden and three American plane trees, and ran the United States fundraising arm of the Princess Mother of Thailand's charities from Pinehurst, an oldest friendship begun at school in 1919. At the back of the grounds, under slate, a brass marker reads MY IRISH HUNTER, BLUE FOX. She kept the house twenty five years.</div>
-  </div>
-</div>
-
 <!-- ACT VI -->
-<div class="act rv"><span class="line"></span><span class="n">VI &middot; The Record</span><span class="line r"></span></div>
+<div class="act rv"><span class="line"></span><span class="n">V &middot; The Record</span><span class="line r"></span></div>
 <section id="history" style="padding-top:0;">
   <div class="hist rv">
     <span class="eyebrow">Provenance</span>
@@ -634,7 +607,7 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
 </section>
 
 <!-- GALLERY: THE ARCHIVE -->
-<div class="act rv"><span class="line"></span><span class="n">VII &middot; The Full Gallery</span><span class="line r"></span></div>
+<div class="act rv"><span class="line"></span><span class="n">VI &middot; The Full Gallery</span><span class="line r"></span></div>
 <section id="gallery" style="padding-top:0;">
   <div class="ghead rv"><span class="eyebrow">Every Room</span><h2>The complete archive.</h2><p style="margin:1rem auto 0;">The whole house and grounds, in full. Move through by hand, or by room.</p></div>
   <div class="gfilter rv" id="gfilter">
@@ -653,9 +626,9 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
 <section id="plans" style="padding-top:0;">
   <div class="head rv" style="text-align:center;"><span class="eyebrow">Floor Plans</span><h2>The plans.</h2></div>
   <div class="plans rv">
-    <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/floorplans/137-main-floor.jpg" alt="Main floor plan"><figcaption>Main Floor</figcaption></figure>
-    <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/floorplans/138-second-floor.jpg" alt="Second floor plan"><figcaption>Second Floor</figcaption></figure>
-    <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1080,q_auto,f_auto/v1/garran-hill/floorplans/139-basement.jpg" alt="Basement plan"><figcaption>Basement</figcaption></figure>
+    <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto:good,f_auto/v1/garran-hill/floorplans/137-main-floor.jpg" alt="Main floor plan"><figcaption>Main Floor</figcaption></figure>
+    <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto:good,f_auto/v1/garran-hill/floorplans/138-second-floor.jpg" alt="Second floor plan"><figcaption>Second Floor</figcaption></figure>
+    <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1440,q_auto:good,f_auto/v1/garran-hill/floorplans/139-basement.jpg" alt="Basement plan"><figcaption>Basement</figcaption></figure>
   </div>
 </section>
 
@@ -670,7 +643,7 @@ footer{padding:2rem var(--pad);text-align:center;font-family:'Instrument Sans',s
 
 <!-- ELEGY CLOSE -->
 <div class="elegy rv">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto,f_auto/v1/garran-hill/photos/134-aerial.jpg" alt="Aerial view of Garran Hill, 4.15-acre Pinehurst estate with mature longleaf pines">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_2400,q_auto:best,f_auto/v1/garran-hill/photos/134-aerial.jpg" alt="Aerial view of Garran Hill, 4.15-acre Pinehurst estate with mature longleaf pines">
   <div class="eveil"></div>
   <div class="etext">
     <span class="eyebrow" style="margin-bottom:1.4rem;">The Last Parcel</span>
@@ -793,7 +766,7 @@ var lb=document.getElementById('lb'),lbImg=lb.querySelector('img'),cap=lb.queryS
 function visList(){return photos.map(function(p,i){return i;}).filter(function(i){return curFilter==='all'||photos[i][2]===curFilter;});}
 function openLb(i){cur=i;show();lb.classList.add('open');}
 function step(d){var v=visList(),pos=v.indexOf(cur);if(pos<0){cur=v[0];}else{cur=v[(pos+d+v.length)%v.length];}show();}
-function show(){var p=photos[cur];lbImg.src=base+"w_1920,q_auto,f_auto/v1/garran-hill/photos/"+p[0]+".jpg";lbImg.alt=p[1];cap.textContent=p[1];}
+function show(){var p=photos[cur];lbImg.src=base+"w_2400,q_auto:best,f_auto/v1/garran-hill/photos/"+p[0]+".jpg";lbImg.alt=p[1];cap.textContent=p[1];}
 lb.querySelector('.x').onclick=function(){lb.classList.remove('open');};
 lb.querySelector('.pv').onclick=function(){step(-1);};
 lb.querySelector('.nx').onclick=function(){step(1);};
