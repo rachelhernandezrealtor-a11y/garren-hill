@@ -49,9 +49,12 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .hero h1{position:relative;font-family:'Pinyon Script',cursive;font-weight:400;font-size:clamp(3.6rem,10vw,8.5rem);line-height:.95;color:var(--cream);text-shadow:0 4px 60px rgba(0,0,0,.6);margin:.1rem 0}
 .hero-anchor{position:relative;font-size:var(--md);font-style:italic;color:var(--cream);margin-top:1rem;max-width:30ch}
 .hero-sub{position:relative;font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dim);margin-top:1.4rem}
-.hero-stats{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(1rem,3vw,2.6rem);margin-top:clamp(2rem,5vh,3.2rem);padding-top:1.8rem;border-top:1px solid var(--gold-soft);max-width:min(94vw,860px)}
-.hero-stats span{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim)}
+.hero-stats{position:relative;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:clamp(.9rem,2.4vw,2rem);margin-top:clamp(2rem,5vh,3.2rem);padding-top:1.8rem;border-top:1px solid var(--gold-soft);max-width:min(94vw,900px)}
+.hero-stats span{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim);text-align:center}
 .hero-stats b{display:block;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.3rem,2.2vw,1.9rem);color:var(--gold);margin-bottom:.2rem}
+.hero-stats i{width:1px;height:34px;background:var(--gold-soft);opacity:.6}
+.hero-crest{width:clamp(54px,6vw,80px);height:auto;margin:0 clamp(.4rem,1.5vw,1.2rem);filter:drop-shadow(0 2px 12px rgba(0,0,0,.5))}
+@media(max-width:680px){.hero-stats i{display:none}.hero-crest{order:-1;width:64px;margin-bottom:.6rem}}
 .cue{position:absolute;bottom:clamp(2.4rem,7vh,4.5rem);left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:.4em;text-transform:uppercase;color:var(--cream);opacity:.7}
 .cue::after{content:"";width:1px;height:36px;background:linear-gradient(var(--gold),transparent);animation:cue 2.4s var(--eq) infinite}
 @keyframes cue{0%,100%{transform:scaleY(.3);transform-origin:top;opacity:.3}50%{transform:scaleY(1);opacity:.9}}
@@ -190,8 +193,9 @@ footer{text-align:center;padding:3rem var(--pad);border-top:1px solid rgba(201,1
   <div class="hero-anchor">Some houses hold history. This one shaped it.</div>
   <div class="hero-sub">Neo-Georgian &middot; Built for Walter Hines Page &middot; Offered now for its next steward</div>
   <div class="hero-stats">
-    <span><b>4</b>Bedrooms</span><span><b>6</b>Bathrooms</span><span><b>6,320</b>Sq Ft</span>
-    <span><b>4.15</b>Acres</span><span><b>7</b>Fireplaces</span><span><b>$4,250,000</b>Offered</span>
+    <span><b>4</b>Bedrooms</span><i></i><span><b>6</b>Bathrooms</span><i></i><span><b>6,320</b>Sq Ft</span>
+    <img class="hero-crest" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_220/v1/gh_key/gh_crest_gloss_v2.png" alt="Garran Hill crest, Pinehurst Hollycrest 1916">
+    <span><b>4.15</b>Acres</span><i></i><span><b>7</b>Fireplaces</span><i></i><span><b>$4.25M</b>Offered</span>
   </div>
   <div class="cue" aria-hidden="true">Scroll</div>
 </header>
