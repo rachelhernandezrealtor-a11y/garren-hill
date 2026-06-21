@@ -68,7 +68,7 @@ nav .cta:hover::after{width:100%}
 /* scrim: protect the type, keep the photo luminous up top */
 .hero-scrim{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,7,6,.42) 0%,rgba(8,7,6,.12) 22%,rgba(8,7,6,.20) 48%,rgba(8,7,6,.78) 78%,rgba(8,7,6,.96) 100%)}
 .hero-place{font-size:var(--xs);letter-spacing:.5em;text-transform:uppercase;color:var(--cream-dim);position:relative;margin-bottom:.4rem}
-.hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:var(--xxl);line-height:.9;letter-spacing:.015em;position:relative;margin:0;color:var(--cream);text-shadow:0 2px 50px rgba(0,0,0,.55)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:var(--xxl);line-height:.9;letter-spacing:.015em;position:relative;margin:0;color:var(--cream);text-shadow:0 2px 60px rgba(0,0,0,.7),0 1px 14px rgba(0,0,0,.5)}
 /* price = its own moment, on its own gold line under the name */
 .hero-price{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.5rem,3.4vw,2.6rem);color:var(--gold);position:relative;margin-top:.7rem;letter-spacing:.02em}
 .hero-addr{font-size:var(--xs);letter-spacing:.34em;text-transform:uppercase;color:var(--cream-dim);position:relative;margin-top:.7rem}
@@ -175,10 +175,13 @@ footer{text-align:center;padding:2.5rem var(--pad);font-size:var(--xs);letter-sp
 .g-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(.7rem,1.4vw,1.3rem);grid-auto-flow:dense}
 .g-item{position:relative;overflow:hidden;grid-column:span 6;aspect-ratio:3/2;cursor:pointer;background:var(--ink2)}
 .g-item.vert{grid-column:span 4;aspect-ratio:2/3;grid-row:span 2}
-/* editorial rhythm: first photo is the wide hero of the room; then alternating emphasis */
-.g-item:first-child{grid-column:span 8;aspect-ratio:16/8}
-.g-item:nth-child(4n+3):not(.vert){grid-column:span 5}
-.g-item:nth-child(4n):not(.vert){grid-column:span 7}
+/* editorial rhythm: strong, intentional asymmetry so no room reads as a plain grid */
+.g-item:first-child{grid-column:span 7;aspect-ratio:16/9}
+.g-item:nth-child(5n+2):not(.vert){grid-column:span 5}
+.g-item:nth-child(5n+3):not(.vert){grid-column:span 7}
+.g-item:nth-child(5n+4):not(.vert){grid-column:span 4;aspect-ratio:4/5}
+.g-item:nth-child(5n+5):not(.vert){grid-column:span 8;aspect-ratio:16/9}
+.g-item:nth-child(5n+6):not(.vert){grid-column:span 6}
 .g-item img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--eq);will-change:transform}
 .g-item:hover img{transform:scale(1.05)}
 /* room-name caption fades in on hover */
