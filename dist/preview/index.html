@@ -29,6 +29,14 @@
   --cream:#F5F0E8; --cream-dim:rgba(245,240,232,.74); --whisper:rgba(245,240,232,.42);
   --pad:clamp(1.4rem,5vw,5rem); --eq:cubic-bezier(.16,1,.3,1);
   --xs:clamp(.65rem,.8vw,.74rem); --sm:clamp(.85rem,1.1vw,1rem);
+  /* TYPE SPINE — locked roles. Every section uses these, never a raw family.
+     display = the estate voice (prose, headlines) · label = eyebrows/nav/stats
+     chapter = section marks/Est.1916 · script = the one signature hand · body = reading prose */
+  --font-display:'Cormorant Garamond',Georgia,serif;
+  --font-body:'Cormorant Garamond',Georgia,serif;
+  --font-label:'Instrument Sans',system-ui,sans-serif;
+  --font-chapter:'Cinzel',Georgia,serif;
+  --font-script:'Mr De Haviland','Cormorant Garamond',cursive;
   /* hero tunables */
   --belt-gap:6.5rem; --belt-low:2.6rem; --num-size:1.7rem;
   --crest-w:210px; --crest-drop:0rem; --wm-size:clamp(2.4rem,9vw,7.4rem);
@@ -835,5 +843,31 @@ if(window.matchMedia('(pointer:fine)').matches){
   });
 }else{var cd=document.getElementById('cdot');if(cd)cd.style.display='none';}
 </script>
+
+<!-- MOTION ENGINE — GSAP + ScrollTrigger, loaded once. The spine's effect layer.
+     Honors prefers-reduced-motion (no scroll-scrubbed motion when the user asks for stillness). -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  if(!window.gsap){return;}
+  var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  gsap.registerPlugin(ScrollTrigger);
+  window.GH = window.GH || {};
+  // named signature effects — the reusable motion library (the spine)
+  GH.reveal = function(sel, opts){
+    opts = opts || {};
+    gsap.utils.toArray(sel).forEach(function(el){
+      if(reduce){gsap.set(el,{opacity:1,y:0,filter:'none'});return;}
+      gsap.from(el,{opacity:0,y:opts.y||40,filter:'blur('+(opts.blur||6)+'px)',
+        duration:opts.dur||1.3,ease:'power3.out',
+        scrollTrigger:{trigger:el,start:opts.start||'top 82%'}});
+    });
+  };
+  GH.ready = true;
+  document.documentElement.classList.add('gsap-on');
+})();
+</script>
+
 
 </body></html>
