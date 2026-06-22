@@ -154,16 +154,20 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .sources .more{display:block;margin-top:1.6rem;font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:.28em;text-transform:uppercase;color:var(--gold);text-decoration:none;opacity:.85}
 .sources .more:hover{opacity:1}
 
-/* ROOM — alternating image + caption, editorial rhythm */
-.room{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(1.5rem,4vw,4rem);align-items:center;
-  max-width:1240px;margin:0 auto;padding:clamp(2rem,5vh,4rem) var(--pad);background:var(--ink)}
-.room.right{grid-template-columns:1fr 1.35fr}
-.room.right .cap{order:-1}
-.room img{width:100%;height:auto;display:block;filter:saturate(.94)}
-.room .cap .rm{display:block;font-family:'Cinzel',serif;font-size:calc(var(--xs)*.96);letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
-.room .cap p{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.1rem,1.5vw,1.32rem);line-height:1.72;color:var(--cream-dim);margin:0;text-align:left}
-.room .cap .flow{display:block;margin-top:.9rem;font-family:'Cinzel',serif;font-size:calc(var(--xs)*.86);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.8}
-@media(max-width:760px){.room,.room.right{grid-template-columns:1fr;gap:1.2rem}.room.right .cap{order:0}.room .cap p{text-align:center}.room .cap .rm{text-align:center}}
+/* ROOM — full-bleed crossfade carousel, detail overlaid bottom (matches dev standard, no 300 pages) */
+.rooms-wrap{background:var(--ink)}
+.rm-scene{position:relative;width:100%;height:clamp(440px,82vh,860px);overflow:hidden;background:#111}
+.rm-scene .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;background-size:cover;background-position:center}
+.rm-scene .slide.on{opacity:1}
+.rm-scene::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(8,8,7,.28) 0%,transparent 22%,transparent 50%,rgba(8,8,7,.72) 100%)}
+.rm-cap{position:absolute;left:0;right:0;bottom:clamp(2.2rem,6vh,4.5rem);z-index:3;text-align:center;padding:0 var(--pad)}
+.rm-cap .rm{display:block;font-family:'Cinzel',serif;font-size:clamp(.78rem,1.1vw,.95rem);letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;text-shadow:0 2px 14px rgba(0,0,0,.8)}
+.rm-cap .det{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(1.3rem,2.4vw,2rem);line-height:1.4;color:var(--cream);margin:0 auto;max-width:760px;text-shadow:0 2px 18px rgba(0,0,0,.75)}
+.rm-cap .flow{display:block;margin-top:1rem;font-family:'Cinzel',serif;font-size:clamp(.62rem,.8vw,.72rem);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.9;text-shadow:0 1px 10px rgba(0,0,0,.9)}
+.rm-dots{position:absolute;bottom:1.2rem;left:0;right:0;z-index:3;display:flex;justify-content:center;gap:.5rem}
+.rm-dots i{width:6px;height:6px;border-radius:50%;background:rgba(245,240,232,.35);transition:background .4s}
+.rm-dots i.on{background:var(--gold)}
 
 /* FULL-BLEED grounds moment */
 .fullbleed{position:relative;width:100%;background:var(--ink)}
@@ -394,39 +398,41 @@ nav .links a.cta{color:var(--gold);opacity:1}
   <p>The house unfolds the way a house should. Drawing room to terrace. Kitchen to breakfast room. The sitting room's spiral stair to the den above. Doors that go somewhere.</p>
 </div>
 
-<div class="room">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/garran-hill/photos/019-drawing-room.jpg" alt="The drawing room, nearly forty feet, Federal carved mantel and coffered ceiling">
-  <div class="cap"><span class="rm">The Drawing Room</span><p>Nearly forty feet of light and length. A Federal carved mantel, a coffered ceiling, French doors to the terrace.</p><span class="flow">The French doors open to the brick terrace &rarr;</span></div>
-</div>
+<div class="rooms-wrap">
+  <div class="rm-scene" data-imgs="019-drawing-room,017-drawing-room,020-drawing-room,022-drawing-room-french-doors">
+    <div class="rm-cap"><span class="rm">The Drawing Room</span><p class="det">Nearly forty feet of light and length. A Federal carved mantel, a coffered ceiling.</p><span class="flow">The French doors open to the brick terrace &rarr;</span></div>
+    <div class="rm-dots"></div>
+  </div>
 
-<div class="room right">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/garran-hill/photos/058-library.jpg" alt="The library, floor to ceiling shelving">
-  <div class="cap"><span class="rm">The Library</span><p>Floor to ceiling shelving. In a house built for a man of letters, a rightful inheritance.</p></div>
-</div>
+  <div class="rm-scene" data-imgs="058-library,060-library,061-library">
+    <div class="rm-cap"><span class="rm">The Library</span><p class="det">Floor to ceiling shelving. In a house built for a man of letters, a rightful inheritance.</p></div>
+    <div class="rm-dots"></div>
+  </div>
 
-<div class="room">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/garran-hill/photos/067-delft-sitting-room.jpg" alt="The sitting room, Delft tile fireplace and spiral staircase">
-  <div class="cap"><span class="rm">The Sitting Room</span><p>A Delft tile fireplace. A spiral staircase rising to the study above.</p><span class="flow">The spiral stair climbs to the den &rarr;</span></div>
-</div>
+  <div class="rm-scene" data-imgs="067-delft-sitting-room,069-sitting-room,109-den-spiral-staircase">
+    <div class="rm-cap"><span class="rm">The Sitting Room</span><p class="det">A Delft tile fireplace. A spiral staircase rising to the study above.</p><span class="flow">The spiral stair climbs to the den &rarr;</span></div>
+    <div class="rm-dots"></div>
+  </div>
 
-<div class="room right">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/garran-hill/photos/025-dining-room.jpg" alt="The dining room, original 1916 frontispiece and arched shell cabinets">
-  <div class="cap"><span class="rm">The Dining Room</span><p>The original 1916 frontispiece. Arched shell cabinets, a fireplace, period moldings.</p></div>
-</div>
+  <div class="rm-scene" data-imgs="025-dining-room,024-dining-room,028-dining-room">
+    <div class="rm-cap"><span class="rm">The Dining Room</span><p class="det">The original 1916 frontispiece. Arched shell cabinets, a fireplace, period moldings.</p></div>
+    <div class="rm-dots"></div>
+  </div>
 
-<div class="room">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/garran-hill/photos/031-kitchen.jpg" alt="The kitchen, reclaimed heart pine floors and custom cabinetry">
-  <div class="cap"><span class="rm">The Kitchen</span><p>Reclaimed heart pine underfoot. Custom cabinetry, black granite, a professional range, a butler's pantry with a farm sink.</p><span class="flow">Through to the breakfast room and the grounds &rarr;</span></div>
-</div>
+  <div class="rm-scene" data-imgs="031-kitchen,034-kitchen,037-farm-sink,044-breakfast-room">
+    <div class="rm-cap"><span class="rm">The Kitchen</span><p class="det">Reclaimed heart pine underfoot. Custom cabinetry, black granite, a butler's pantry with a farm sink.</p><span class="flow">Through to the breakfast room and the grounds &rarr;</span></div>
+    <div class="rm-dots"></div>
+  </div>
 
-<div class="room right">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/garran-hill/photos/073-primary.jpg" alt="The first floor primary suite, full depth of the home">
-  <div class="cap"><span class="rm">The Primary Suite</span><p>A private wing across the full depth of the home. A fireplace in the panels, restored oak, two dressing rooms.</p><span class="flow">French doors open to the grounds &rarr;</span></div>
-</div>
+  <div class="rm-scene" data-imgs="073-primary,075-primary-bathroom,082-primary-shower,085-primary-dressing-room">
+    <div class="rm-cap"><span class="rm">The Primary Suite</span><p class="det">A private wing across the full depth of the home. A fireplace in the panels, restored oak, two dressing rooms.</p><span class="flow">French doors open to the grounds &rarr;</span></div>
+    <div class="rm-dots"></div>
+  </div>
 
-<div class="room">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/garran-hill/photos/090-rose-suite.jpg" alt="The second floor bedrooms, each with a fireplace">
-  <div class="cap"><span class="rm">The Upstairs Bedrooms</span><p>Three more bedrooms above, each with its own fireplace and full bath. The Rose, the Yellow, the Red. Two open to a balcony over the courts.</p><span class="flow">Four bedrooms in all &rarr;</span></div>
+  <div class="rm-scene" data-imgs="090-rose-suite,095-yellow-bedroom-suite,102-red-bedroom-nursery">
+    <div class="rm-cap"><span class="rm">The Upstairs Bedrooms</span><p class="det">Three more bedrooms above, each with its own fireplace and bath. The Rose, the Yellow, the Red.</p><span class="flow">Four bedrooms in all &rarr;</span></div>
+    <div class="rm-dots"></div>
+  </div>
 </div>
 
 <!-- CHAPTER: THE GROUNDS -->
@@ -441,19 +447,21 @@ nav .links a.cta{color:var(--gold);opacity:1}
   <div class="fb-cap"><p>4.15 acres, Moore County. Garran Hill sits within its own circle, the surviving house core of a much larger Page era farm. Inside the gates: the circular drive, the lawn, the brick walled pool, the tennis courts under the longleaf pines.</p></div>
 </section>
 
-<div class="room">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/garran-hill/photos/124-pool.jpg" alt="The saltwater pool within a brick walled garden">
-  <div class="cap"><span class="rm">The Walled Pool</span><p>A saltwater pool set within a brick walled garden, the enclosure dating to the original build. The pool sits within it the way a courtyard sits within a house. Contained, sheltered, belonging.</p></div>
-</div>
+<div class="rooms-wrap">
+  <div class="rm-scene" data-imgs="124-pool,126-pool-brick-wall,127-pool">
+    <div class="rm-cap"><span class="rm">The Walled Pool</span><p class="det">A saltwater pool set within a brick walled garden. The wall came first.</p></div>
+    <div class="rm-dots"></div>
+  </div>
 
-<div class="room right">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/garran-hill/photos/121-the-wee-cottage.jpg" alt="The Wee Cottage in the rear grounds">
-  <div class="cap"><span class="rm">The Grounds</span><p>Mature longleaf pines, Grandiflora magnolias, dogwoods, a camellia garden, three American plane trees planted in 1959. And The Wee Cottage in the rear yard, the long green breath of Pinehurst all around.</p></div>
-</div>
+  <div class="rm-scene" data-imgs="120-tennis-courts,118-grounds,123-grounds">
+    <div class="rm-cap"><span class="rm">The Courts</span><p class="det">Two regulation tennis courts, lit for evening play, under the longleaf pines. The courts await resurfacing, the bones are right.</p></div>
+    <div class="rm-dots"></div>
+  </div>
 
-<div class="room">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/garran-hill/photos/120-tennis-courts.jpg" alt="Two regulation tennis courts under the longleaf pines">
-  <div class="cap"><span class="rm">The Courts</span><p>Two regulation tennis courts, lit for evening play, set under the longleaf pines. Private sport inside your own gates. The courts await resurfacing, the bones are right.</p></div>
+  <div class="rm-scene" data-imgs="121-the-wee-cottage,115-boxwood-herb-garden,112-brick-terrace">
+    <div class="rm-cap"><span class="rm">The Grounds</span><p class="det">Mature longleaf pines, Grandiflora magnolias, a camellia garden. And The Wee Cottage in the rear yard.</p></div>
+    <div class="rm-dots"></div>
+  </div>
 </div>
 
 <!-- THE WALKTHROUGH — Matterport, the star experience -->
@@ -494,6 +502,30 @@ nav .links a.cta{color:var(--gold);opacity:1}
 <div id="lb"><button class="x" aria-label="Close">&times;</button><button class="pv" aria-label="Previous">&larr;</button><img alt=""><div class="cap"></div><button class="nx" aria-label="Next">&rarr;</button></div>
 
 <script>
+/* ROOM CAROUSELS — each scene crossfades its own photos */
+(function(){
+  var B="https://res.cloudinary.com/dghn2xpif/image/upload/w_1800,q_auto,f_auto/v1/garran-hill/photos/";
+  document.querySelectorAll('.rm-scene').forEach(function(scene){
+    var ids=(scene.dataset.imgs||"").split(",").filter(Boolean);
+    var dots=scene.querySelector('.rm-dots');
+    var slides=[];
+    ids.forEach(function(id,i){
+      var s=document.createElement('div');
+      s.className='slide'+(i===0?' on':'');
+      s.style.backgroundImage="url('"+B+id.trim()+".jpg')";
+      scene.insertBefore(s,scene.firstChild);
+      slides.push(s);
+      if(dots){var d=document.createElement('i');if(i===0)d.className='on';dots.appendChild(d);}
+    });
+    if(slides.length<2)return;
+    var cur=0,di=dots?dots.querySelectorAll('i'):[];
+    setInterval(function(){
+      slides[cur].classList.remove('on'); if(di[cur])di[cur].classList.remove('on');
+      cur=(cur+1)%slides.length;
+      slides[cur].classList.add('on'); if(di[cur])di[cur].classList.add('on');
+    },4200);
+  });
+})();
 var photos=[
 ["001-front-exterior","Front Exterior","exterior"],["003-front-aerial","Front Aerial","grounds"],["004-side-view","Side View","exterior"],["006-front-main","Front","exterior"],["009-portico","The Portico","exterior"],["010-front-entry","Front Entry","exterior"],["011-entry-hall","Entry Hall","main"],["013-entry-hall","Entry Hall","main"],["015-drawing-room","Drawing Room","main"],["017-drawing-room","Drawing Room","main"],["019-drawing-room","Drawing Room","main"],["020-drawing-room","Drawing Room","main"],["022-drawing-room-french-doors","French doors to the terrace","main"],["024-dining-room","Dining Room","main"],["025-dining-room","Dining Room","main"],["028-dining-room","Dining Room","main"],["031-kitchen","Kitchen","main"],["034-kitchen","Kitchen","main"],["036-butlers-pantry","Butler's Pantry","main"],["037-farm-sink","Farm sink","main"],["042-kitchen-to-breakfast-room","Kitchen to Breakfast Room","main"],["044-breakfast-room","Breakfast Room","main"],["047-heart-pine-stairs-to-second-level","Heart pine stairs","main"],["051-powder-room","Powder Room","quiet"],["057-hallway","Hallway","quiet"],["058-library","Library","quiet"],["060-library","Library","quiet"],["063-side-entry","Side Entry","quiet"],["067-delft-sitting-room","Sitting Room, Delft fireplace","quiet"],["069-sitting-room","Sitting Room","quiet"],["073-primary","Primary Suite","private"],["075-primary-bathroom","Primary Bath","private"],["079-jacuzzi-tub","Primary Bath","private"],["082-primary-shower","Primary Shower","private"],["085-primary-dressing-room","Dressing Room","private"],["090-rose-suite","Rose Suite","private"],["092-rose-suite-full-bathroom","Rose Suite Bath","private"],["095-yellow-bedroom-suite","Yellow Suite","private"],["098-yellow-bedroom-suite-full-bathroom","Yellow Suite Bath","private"],["102-red-bedroom-nursery","Red Bedroom","private"],["106-red-bedroom-nursery-full-bathroom","Red Bedroom Bath","private"],["109-den-spiral-staircase","Den, spiral staircase","quiet"],["110-den","The Den","quiet"],["112-brick-terrace","Brick Terrace","grounds"],["115-boxwood-herb-garden","Boxwood herb garden","grounds"],["120-tennis-courts","Tennis Courts","grounds"],["121-the-wee-cottage","The Wee Cottage","grounds"],["124-pool","Pool","grounds"],["126-pool-brick-wall","Pool garden wall","grounds"],["134-aerial","Aerial","grounds"],["136-4-15-acre-lot","The 4.15 acre lot","grounds"],["140-gated-entrance","Gated Entrance","exterior"]
 ];
