@@ -1,0 +1,57 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spine Demo — Garran Hill</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=EB+Garamond:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Cinzel:wght@400;500&family=Instrument+Sans:wght@400;500&family=Mr+De+Haviland&display=swap" rel="stylesheet">
+<link href="spine/spine.css" rel="stylesheet">
+<style>
+  /* PROPERTY OVERRIDE — Garran Hill fills the spine's signature slot.
+     System C default (Marcellus display), Mr De Haviland for the handwriting moment. */
+  :root{
+    --font-display:'Marcellus',Georgia,serif;
+    --font-signature:'Mr De Haviland',cursive;
+  }
+  .hero{height:90vh;display:flex;align-items:flex-end;position:relative;overflow:hidden}
+  .hero .ph{position:absolute;inset:0;z-index:0}
+  .hero .ph img{width:100%;height:100%;object-fit:cover}
+  .hero .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.85),transparent 55%);z-index:1}
+  .hero .lay{position:relative;z-index:2;padding:var(--pad);padding-bottom:clamp(2rem,6vh,4rem)}
+  .hero .name{font-family:var(--font-display);font-size:var(--t-hero);line-height:1;letter-spacing:.01em}
+  .letterbeat{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1.6rem}
+  .farm{font-size:clamp(2.6rem,7vw,5.6rem);color:var(--gold);line-height:1.3}
+</style></head>
+<body class="s-grain">
+
+<!-- HERO using the spine primitive (parallax + ken burns photo) -->
+<section class="s-hero">
+  <img class="s-hero-img" data-kenburns src="https://res.cloudinary.com/dghn2xpif/image/upload/c_fill,w_1800,h_1200,q_auto:good,f_auto/v1781200928/garran-hill/photos/001-front-exterior.jpg" alt="">
+  <div class="s-hero-lay">
+    <div class="s-eyebrow" data-reveal data-delay="0.1">200 Hollycrest Drive · Pinehurst, North Carolina</div>
+    <div class="s-hero-name" data-reveal data-delay="0.25">Garran Hill</div>
+    <div class="s-lead" data-reveal data-delay="0.5">Some houses are built for arrival. Garran Hill was built for return.</div>
+  </div>
+</section>
+
+<!-- CHAPTER opener (reveal) -->
+<div class="s-chapter">
+  <div class="num" data-reveal>The Page Provenance</div>
+  <div class="ttl" data-reveal data-delay="0.15">Before Garran Hill was an estate, it was an intention.</div>
+  <div class="s-seam" data-reveal data-delay="0.3"></div>
+</div>
+
+<!-- BODY (reveal) -->
+<section class="s-section s-center">
+  <p class="s-body s-measure" data-reveal>In 1913 Walter Hines Page bought a thousand acres of Moore County pine and named it Garran Hill. From London, where he served as ambassador, he wrote home about it constantly.</p>
+</section>
+
+<!-- THE WRITE-ON MOMENT — the farm writes itself, his hand -->
+<section class="letterbeat">
+  <div class="s-eyebrow" data-reveal>From his letters, 1918</div>
+  <div class="farm s-writeon" data-writeon>The farm. The farm. The farm.</div>
+  <p class="s-body s-measure" data-reveal data-delay="0.3" style="text-align:center">He sent his son Ralph to build it, and asked only to hear of it at every turn.</p>
+</section>
+
+<div style="height:30vh"></div>
+<script src="spine/spine.js"></script>
+</body></html>
