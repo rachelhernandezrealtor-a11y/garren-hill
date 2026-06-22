@@ -148,7 +148,16 @@ nav .links a.cta{color:var(--gold);opacity:1}
    letter section below, where "the farm" rises out of it (one purposeful moment,
    no section-wide wash bleeding behind the portrait, bio, and nav). */
 .provenance{position:relative;background:var(--ink);overflow:hidden}
-.provenance::before{content:none}
+/* ONE continuous letter ground threading the whole Page movement into a single scene.
+   Faint (a whisper of paper, not a wash), inverted so ink reads as light over black,
+   masked soft top and bottom so it melds with the hero above and the rooms below. */
+.provenance::before{content:"";position:absolute;top:0;left:-8%;width:116%;height:100%;z-index:0;pointer-events:none;
+  transform:rotate(-4deg);transform-origin:center;
+  background:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/gh_key/gh_whp_letter1.jpg') top center/cover repeat-y;
+  opacity:.08;filter:invert(1) brightness(1) sepia(.5) hue-rotate(-10deg) contrast(.88) blur(.5px);
+  mix-blend-mode:screen;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 10%,#000 88%,transparent 100%);
+  mask-image:linear-gradient(180deg,transparent 0%,#000 10%,#000 88%,transparent 100%)}
 .provenance > *{position:relative;z-index:1}
 /* inner blocks transparent so the one letter ground shows through and melds them into one scene */
 .provenance .chapter-mark,.provenance .prose,.provenance .thennow,.provenance .thennow-line,.provenance .sources{background:transparent}
@@ -187,6 +196,10 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .gatefade .gf-then{animation:gfThen 18s ease-in-out infinite}
 .gatefade .gf-now{animation:gfNow 18s ease-in-out infinite}
 .gatefade .gf-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,7,.8),transparent 45%);pointer-events:none}
+/* soft seams top + bottom so the gate dissolves into the dark instead of hard-cutting */
+.gatefade::before,.gatefade::after{content:"";position:absolute;left:0;right:0;height:14vh;z-index:1;pointer-events:none}
+.gatefade::before{top:0;background:linear-gradient(to bottom,var(--ink),transparent)}
+.gatefade::after{bottom:0;background:linear-gradient(to top,var(--ink),transparent)}
 .gatefade .gf-label{position:absolute;left:0;right:0;bottom:clamp(2rem,6vh,4rem);text-align:center;padding:0 var(--pad);z-index:2}
 .gatefade .gf-eyebrow{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:.45em;text-transform:uppercase;color:var(--gold)}
 /* two years crossfading in the SAME spot, each riding its own image's timing */
@@ -206,7 +219,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .gatefade.lit .gf-wordmark{opacity:1;filter:blur(0);letter-spacing:0;transform:none}
 @media (prefers-reduced-motion:reduce){.gatefade .gf-wordmark{opacity:1;filter:none;letter-spacing:0;transform:none;transition:none}}
 /* THE LETTER — Page's own hand behind, and "the farm" rising up out of the script */
-.letter{position:relative;overflow:hidden;background:var(--ink);text-align:center;
+.letter{position:relative;overflow:hidden;background:transparent;text-align:center;
   padding:clamp(5rem,16vh,11rem) var(--pad)}
 .letter .hand{position:absolute;inset:0;z-index:0;pointer-events:none;
   background:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/gh_key/gh_whp_letter1.jpg') center/cover no-repeat;
@@ -237,6 +250,10 @@ nav .links a.cta{color:var(--gold);opacity:1}
   opacity:.30;filter:grayscale(1) contrast(1.02) brightness(1.02)}
 .built .archival-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:radial-gradient(ellipse 75% 75% at 50% 50%,transparent 0%,rgba(8,8,7,.45) 68%,rgba(8,8,7,.8) 100%)}
+/* soft seams so the archival photo melds into the dark above and below */
+.built::before,.built::after{content:"";position:absolute;left:0;right:0;height:12vh;z-index:1;pointer-events:none}
+.built::before{top:0;background:linear-gradient(to bottom,var(--ink),transparent)}
+.built::after{bottom:0;background:linear-gradient(to top,var(--ink),transparent)}
 .built > *{position:relative;z-index:2}
 .built .yr{font-family:'Cinzel',serif;font-size:var(--xs);letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem}
 .built p{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.3rem,2.2vw,1.9rem);line-height:1.6;color:var(--cream);max-width:30ch;margin:0 auto;text-shadow:0 1px 18px rgba(0,0,0,.6)}
