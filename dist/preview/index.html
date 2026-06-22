@@ -92,11 +92,17 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .stat{position:relative;z-index:3;text-align:center;flex:1 1 0;min-width:0}
 /* THE KEYS — refined warm gilt matching the crest. ONE gold tone, subtle highlight (not rainbow). */
 .stat b{display:block;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.6rem,2.6vw,2.5rem);margin-bottom:.6rem;line-height:1;font-feature-settings:'onum' 1,'pnum' 1;white-space:nowrap;
-  background:linear-gradient(180deg,#a89668 0%,#c8b88a 30%,#e6dcc0 50%,#c8b88a 70%,#9c8a5e 100%);
+  background:linear-gradient(180deg,#cdb478 0%,#ecd9a6 32%,#f6e9c2 50%,#dcc187 68%,#b0925a 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
-  filter:drop-shadow(0 1px 4px rgba(0,0,0,.4));letter-spacing:.01em}
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.9)) drop-shadow(0 0 6px rgba(0,0,0,.5));letter-spacing:.01em}
 /* ===== BODY — editorial chapters, the page breathing like a film ===== */
-.stat span{font-family:'Instrument Sans',sans-serif;font-size:calc(var(--xs) * .86);letter-spacing:.36em;text-transform:uppercase;color:rgba(201,169,110,.82);font-weight:400}
+.stat span{font-family:'Instrument Sans',sans-serif;font-size:calc(var(--xs) * .86);letter-spacing:.36em;text-transform:uppercase;color:rgba(232,210,158,.92);font-weight:400;text-shadow:0 1px 3px rgba(0,0,0,.85)}
+/* THE PRICE — the one number that sells the house. Larger, brighter, its own weight. */
+.stat.price{flex:1.25 1 0}
+.stat.price b{font-size:clamp(1.9rem,3.1vw,3rem);
+  background:linear-gradient(180deg,#e9d49a 0%,#f2e3b8 40%,#e4c987 60%,#caa75f 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.stat.price span{color:rgba(244,233,198,.96);letter-spacing:.42em}
 .chapter-mark{text-align:center;padding:clamp(4rem,11vh,7rem) var(--pad) clamp(1rem,3vh,2rem);background:var(--ink)}
 .chapter-mark .num{font-family:'Cinzel',serif;font-size:var(--xs);letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
 .chapter-mark .ttl{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(2rem,4.5vw,3.4rem);color:var(--cream);line-height:1.05}
@@ -104,20 +110,40 @@ nav .links a.cta{color:var(--gold);opacity:1}
 
 .prose{position:relative;background:var(--ink);color:var(--cream);max-width:680px;margin:0 auto;
   padding:clamp(1rem,3vh,2rem) var(--pad) clamp(4rem,9vh,6rem);text-align:center}
-/* his own letters, ghosted behind his story — the words he wrote about the farm, literally underneath */
-.prose::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1100/v1/gh_key/gh_whp_letter1.jpg') center/cover no-repeat;
-  opacity:.09;filter:sepia(.55) grayscale(.15) contrast(.92);
-  -webkit-mask-image:radial-gradient(ellipse at 50% 45%,#000 0%,transparent 80%);
-  mask-image:radial-gradient(ellipse at 50% 45%,#000 0%,transparent 80%)}
 .prose > *{position:relative;z-index:1}
 .prose p{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.15rem,1.7vw,1.4rem);line-height:1.78;color:var(--cream-dim);margin:0 0 1.5rem;text-wrap:pretty}
 .prose .turn{color:var(--cream);font-style:italic;font-size:clamp(1.3rem,2vw,1.7rem);line-height:1.5;margin:2.2rem 0}
 .prose .cite-line{font-family:'Cinzel',serif;font-size:calc(var(--xs)*.92);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.78;margin-top:.4rem}
 
+/* THE PAGE PROVENANCE — one continuous letter ground beneath the whole movement.
+   A page from The Life and Letters of Walter H. Page, inverted so the printed ink reads as
+   luminous strokes over the black page (preserve-the-image: light texture, never a block).
+   It FILLS the section and the inner blocks go transparent so the layers meld top to bottom. */
+.provenance{position:relative;background:var(--ink);overflow:hidden}
+.provenance::before{content:"";position:absolute;
+  /* oversized + rotated so the page sits on a slight angle like a letter laid across the section,
+     with no bare corners pulled into frame */
+  top:-12%;left:-12%;width:124%;height:124%;z-index:0;pointer-events:none;
+  transform:rotate(-6deg);transform-origin:center;
+  background:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/gh_key/gh_whp_letter1.jpg') top center/cover repeat-y;
+  opacity:.30;filter:invert(1) brightness(.92) sepia(.55) hue-rotate(-8deg) saturate(1.05) contrast(.9) blur(.6px);
+  mix-blend-mode:screen;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 12%,#000 82%,transparent 99%);
+  mask-image:linear-gradient(180deg,transparent 0%,#000 12%,#000 82%,transparent 99%)}
+.provenance > *{position:relative;z-index:1}
+/* inner blocks transparent so the one letter ground shows through and melds them into one scene */
+.provenance .chapter-mark,.provenance .prose,.provenance .thennow,.provenance .thennow-line,.provenance .sources{background:transparent}
+/* protect running body copy: a soft radial dim behind the text blocks only, so the letter stays
+   atmosphere and never fights the words (preserve-the-image: dim is soft + local, never a band) */
+.provenance .split .body,.provenance .prose,.provenance .sources{position:relative}
+.provenance .split .body::before,.provenance .prose::before,.provenance .sources::before{
+  content:"";position:absolute;inset:-1.5rem -2rem;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(8,8,7,.62) 0%,rgba(8,8,7,.38) 55%,transparent 80%)}
+
 /* split: archival portrait beside prose */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center;
-  max-width:1180px;margin:0 auto;padding:clamp(2rem,5vh,4rem) var(--pad);background:var(--ink)}
+.split{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center;
+  max-width:1180px;margin:0 auto;padding:clamp(2rem,5vh,4rem) var(--pad);background:transparent}
+.split > *{position:relative;z-index:1}
 .split .fig img{width:100%;height:auto;display:block;filter:saturate(.92)}
 .split .fig figcaption{font-family:'Cinzel',serif;font-size:calc(var(--xs)*.9);letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);margin-top:.9rem;text-align:left}
 .split .body{text-align:left}
@@ -285,7 +311,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
   background:linear-gradient(90deg,transparent,rgba(201,169,110,.5) 60%,rgba(201,169,110,.7))}
 .crest-mast .mast-rule:last-child{transform:scaleX(-1)}
 .facts-crest{display:block;width:clamp(150px,16vw,208px);flex:0 0 auto;
-  filter:drop-shadow(0 6px 24px rgba(0,0,0,.55)) drop-shadow(0 0 22px rgba(184,152,99,.28))}
+  filter:drop-shadow(0 6px 24px rgba(0,0,0,.55)) drop-shadow(0 0 30px rgba(212,178,112,.5)) drop-shadow(0 0 10px rgba(255,240,200,.35)) brightness(1.08) contrast(1.05)}
 .facts-row{display:flex;justify-content:center;align-items:center;flex-wrap:nowrap;
   gap:0;max-width:1120px;margin:0 auto}
 /* fine gold hairline between each key (Vogue editorial dividers) — short, faint, faded ends */
@@ -348,33 +374,46 @@ nav .links a.cta{color:var(--gold);opacity:1}
     <div class="stat"><b>6,320</b><span>Sq Ft</span></div>
     <div class="stat"><b>4.15</b><span>Acres</span></div>
     <div class="stat"><b>7</b><span>Fireplaces</span></div>
-    <div class="stat"><b>$4,250,000</b><span>Offered</span></div>
+    <div class="stat price"><b>$4,250,000</b><span>Offered</span></div>
   </div>
 </section>
 
 <!-- CHAPTER: THE PAGE PROVENANCE -->
+<section class="provenance">
 <div class="chapter-mark">
   <div class="num">The Page Provenance</div>
   <div class="ttl">Before Garran Hill was an estate,<br>it was an intention.</div>
   <div class="seam"></div>
 </div>
 
-<!-- WHP editorial spread: the man himself, portrait as art -->
+<!-- WHP editorial spread: the man himself, portrait as art, his letters ghosted behind -->
 <div class="split">
   <figure class="fig">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/c_crop,x_120,w_617,h_981/c_fill,w_900/f_auto,q_auto/v1/gh_history/whp_portrait.jpg" alt="Walter Hines Page, United States Ambassador to Great Britain, 1913 to 1918">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/c_crop,x_120,w_617,h_981/c_fill,w_900/f_auto,q_auto/v1/gh_history/whp_portrait.jpg" alt="Walter Hines Page, United States Ambassador to the Court of St James's, 1913 to 1918">
     <figcaption>Walter Hines Page &middot; 1855&ndash;1918</figcaption>
   </figure>
   <div class="body">
-    <p>A son of North Carolina who became one of the most consequential men of letters of his age. Editor of The Atlantic Monthly. Co-founder of Doubleday, Page and Company. Appointed by Woodrow Wilson as Ambassador to the Court of St. James in 1913, and kept there through the years the world came apart.</p>
+    <p>A son of North Carolina who became one of the consequential men of letters of his age. Editor of The Atlantic Monthly. Co-founder of Doubleday, Page and Company. Appointed by Woodrow Wilson as Ambassador to the Court of St James's in 1913, and kept there through the years the world came apart.</p>
     <span class="turn">From London, his imagination kept returning to the Sandhills.</span>
-    <p>In 1913 he bought a hundred acres of Moore County sand and pine. A gentleman's farm. A peach orchard. A house worthy of return. He sent his son Ralph to supervise the build, and by 1916 the Georgian manor stood finished. They christened it Garran Hill.</p>
+    <p>In 1913 he bought a thousand acres of Moore County pine and named it Garran Hill. A gentleman's farm. A peach orchard. A house worthy of return. Six weeks later Wilson sent him to London. He sailed, and the farm stayed behind.</p>
   </div>
 </div>
 
+<!-- THE LETTER — the longing, in his own hand -->
 <div class="prose">
-  <p class="turn">His son built it, and made the farm his home.</p>
-  <p>Page resigned the embassy in 1918 and sailed for home gravely ill. He reached Pinehurst that December. Ralph had already made the farm his own. The house Page drew from London now had a family inside it, and the longing that built it had become a life.</p>
+  <p class="turn">The farm. The farm. The farm.</p>
+  <p>He wrote home about it constantly. The peaches, the gardens, the pecans. He sent his son Ralph to build it, and asked only to hear of it at every turn.</p>
+  <p class="turn">Build the farm, and let me hear at every stage of that happy game.</p>
+  <p class="cite-line">Walter Hines Page &middot; from his letters &middot; 1915</p>
+</div>
+
+<!-- THE RETURN — same hands as Pinehurst, then home gravely ill -->
+<div class="prose">
+  <p>The house rose in 1915 and 1916, built by the Pinehurst Company under J. R. McQueen, the same men then building Pinehurst. Rare handmade brick, laid in Flemish bond above a water table, drawn to Georgian proportion.</p>
+  <p>Page resigned the embassy and sailed home, gravely ill, in the autumn of 1918.</p>
+  <p class="turn">Well, Frank. I did get here after all, didn't I?</p>
+  <p class="cite-line">His last recorded words &middot; Aberdeen station &middot; December 1918</p>
+  <p>He reached Pinehurst that December. Ralph made the farm his home, and the house Page drew from London outlived the longing that built it. He remains the only American diplomat of the First World War honored with a tablet at Westminster Abbey.</p>
 </div>
 
 <!-- THEN AND NOW — same house, same gate, a century apart -->
@@ -399,6 +438,41 @@ nav .links a.cta{color:var(--gold);opacity:1}
     <a href="https://www.ncpedia.org/biography/page-walter-hines" target="_blank" rel="noopener">NCpedia</a>
   </div>
   <a class="more" href="#history">See the full history and provenance</a>
+</div>
+</section>
+
+<!-- CHAPTER: THE HOLLYCREST YEARS -->
+<div class="chapter-mark">
+  <div class="num">The Hollycrest Years</div>
+  <div class="ttl">If Page gave the estate its origin,<br>Betty Dumaine gave it its legend.</div>
+  <div class="seam"></div>
+</div>
+
+<section class="fullbleed">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_2000/v1/gh_exteriors/gh_holly_door.jpg" alt="Holly with red berries at the front entrance of Garran Hill, the estate Betty Dumaine renamed Hollycrest">
+  <div class="fb-cap"><p>Betty Dumaine came in 1959, and stayed twenty-five years. The hollies at the front gave the house the name it kept. She brought horses, hounds, and peacocks, planted the camellia garden and three American plane trees that still stand, and ran the United States arm of the Princess Mother of Thailand's charities from here.</p></div>
+</section>
+
+<div class="prose">
+  <p>She loved one horse above the rest. An Irish hunter named Blue Fox.</p>
+  <p class="turn">When he died, she buried him at the back of the grounds, under slate, and marked it in brass.</p>
+</div>
+
+<section class="fullbleed">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_2000/v1/garran-hill/photos/129-blue-fox.jpg" alt="The slate grave of Blue Fox, Betty Dumaine's Irish hunter, marked in brass at the back of Garran Hill">
+  <div class="fb-cap"><p>She would leave flowers at his grave. Someone still does.</p></div>
+</section>
+
+<!-- CHAPTER: THE RESTORATION -->
+<div class="chapter-mark">
+  <div class="num">The Restoration</div>
+  <div class="ttl">By 1998 the house had stood empty.<br>It was taken down to the studs, and brought back.</div>
+  <div class="seam"></div>
+</div>
+
+<div class="prose">
+  <p>Architect Thomas O'Shea drew it as it was, then drew it whole again. Three years. New everything.</p>
+  <p class="turn">The 1916 fabric kept: seven mantels, the oak, the fanlight, the brass key plates that still turn.</p>
 </div>
 
 <!-- CHAPTER: A HOUSE OF DETAIL -->
