@@ -169,6 +169,20 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .rm-dots i{width:6px;height:6px;border-radius:50%;background:rgba(245,240,232,.35);transition:background .4s}
 .rm-dots i.on{background:var(--gold)}
 
+/* SPLIT room — photo one side, detail column the other (breaks the full-bleed monotony) */
+.rm-split{display:grid;grid-template-columns:1.4fr 1fr;align-items:stretch;background:var(--ink);min-height:clamp(380px,56vh,620px)}
+.rm-split.flip{grid-template-columns:1fr 1.4fr}
+.rm-split.flip .rm-split-media{order:2}
+.rm-split.flip .rm-split-text{order:1}
+.rm-split-media{position:relative;overflow:hidden;background:#111}
+.rm-split-media .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;background-size:cover;background-position:center}
+.rm-split-media .slide.on{opacity:1}
+.rm-split-text{display:flex;flex-direction:column;justify-content:center;padding:clamp(2rem,5vw,4.5rem)}
+.rm-split-text .rm{font-family:'Cinzel',serif;font-size:clamp(.78rem,1vw,.92rem);letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.rm-split-text .det{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.3rem,1.9vw,1.7rem);line-height:1.5;color:var(--cream);margin:0}
+.rm-split-text .flow{margin-top:1.4rem;font-family:'Cinzel',serif;font-size:clamp(.62rem,.8vw,.72rem);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.85}
+@media(max-width:760px){.rm-split,.rm-split.flip{grid-template-columns:1fr}.rm-split-media{min-height:300px;order:1!important}.rm-split-text{order:2!important;text-align:center;padding:2.4rem var(--pad)}}
+
 /* FULL-BLEED grounds moment */
 .fullbleed{position:relative;width:100%;background:var(--ink)}
 .fullbleed img{width:100%;height:clamp(360px,72vh,720px);object-fit:cover;display:block}
@@ -404,9 +418,9 @@ nav .links a.cta{color:var(--gold);opacity:1}
     <div class="rm-dots"></div>
   </div>
 
-  <div class="rm-scene" data-imgs="058-library,060-library,061-library">
-    <div class="rm-cap"><span class="rm">The Library</span><p class="det">Floor to ceiling shelving. In a house built for a man of letters, a rightful inheritance.</p></div>
-    <div class="rm-dots"></div>
+  <div class="rm-split flip" data-imgs="058-library,060-library,061-library">
+    <div class="rm-split-media"></div>
+    <div class="rm-split-text"><span class="rm">The Library</span><p class="det">Floor to ceiling shelving. In a house built for a man of letters, a rightful inheritance.</p></div>
   </div>
 
   <div class="rm-scene" data-imgs="067-delft-sitting-room,069-sitting-room,109-den-spiral-staircase">
@@ -414,9 +428,9 @@ nav .links a.cta{color:var(--gold);opacity:1}
     <div class="rm-dots"></div>
   </div>
 
-  <div class="rm-scene" data-imgs="025-dining-room,024-dining-room,028-dining-room">
-    <div class="rm-cap"><span class="rm">The Dining Room</span><p class="det">The original 1916 frontispiece. Arched shell cabinets, a fireplace, period moldings.</p></div>
-    <div class="rm-dots"></div>
+  <div class="rm-split" data-imgs="025-dining-room,024-dining-room,028-dining-room">
+    <div class="rm-split-media"></div>
+    <div class="rm-split-text"><span class="rm">The Dining Room</span><p class="det">The original 1916 frontispiece. Arched shell cabinets, a fireplace, period moldings.</p></div>
   </div>
 
   <div class="rm-scene" data-imgs="031-kitchen,034-kitchen,037-farm-sink,044-breakfast-room">
@@ -429,9 +443,9 @@ nav .links a.cta{color:var(--gold);opacity:1}
     <div class="rm-dots"></div>
   </div>
 
-  <div class="rm-scene" data-imgs="090-rose-suite,095-yellow-bedroom-suite,102-red-bedroom-nursery">
-    <div class="rm-cap"><span class="rm">The Upstairs Bedrooms</span><p class="det">Three more bedrooms above, each with its own fireplace and bath. The Rose, the Yellow, the Red.</p><span class="flow">Four bedrooms in all &rarr;</span></div>
-    <div class="rm-dots"></div>
+  <div class="rm-split flip" data-imgs="090-rose-suite,095-yellow-bedroom-suite,102-red-bedroom-nursery">
+    <div class="rm-split-media"></div>
+    <div class="rm-split-text"><span class="rm">The Upstairs Bedrooms</span><p class="det">Three more bedrooms above, each with its own fireplace and bath. The Rose, the Yellow, the Red.</p><span class="flow">Four bedrooms in all &rarr;</span></div>
   </div>
 </div>
 
@@ -502,18 +516,19 @@ nav .links a.cta{color:var(--gold);opacity:1}
 <div id="lb"><button class="x" aria-label="Close">&times;</button><button class="pv" aria-label="Previous">&larr;</button><img alt=""><div class="cap"></div><button class="nx" aria-label="Next">&rarr;</button></div>
 
 <script>
-/* ROOM CAROUSELS — each scene crossfades its own photos */
+/* ROOM CAROUSELS — full-bleed scenes AND split scenes crossfade their own photos */
 (function(){
   var B="https://res.cloudinary.com/dghn2xpif/image/upload/w_1800,q_auto,f_auto/v1/garran-hill/photos/";
-  document.querySelectorAll('.rm-scene').forEach(function(scene){
+  document.querySelectorAll('.rm-scene,.rm-split').forEach(function(scene){
     var ids=(scene.dataset.imgs||"").split(",").filter(Boolean);
     var dots=scene.querySelector('.rm-dots');
+    var media=scene.querySelector('.rm-split-media')||scene;
     var slides=[];
     ids.forEach(function(id,i){
       var s=document.createElement('div');
       s.className='slide'+(i===0?' on':'');
       s.style.backgroundImage="url('"+B+id.trim()+".jpg')";
-      scene.insertBefore(s,scene.firstChild);
+      media.insertBefore(s,media.firstChild);
       slides.push(s);
       if(dots){var d=document.createElement('i');if(i===0)d.className='on';dots.appendChild(d);}
     });
