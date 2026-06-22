@@ -1,0 +1,127 @@
+/* ============================================================================
+   RACHEL STUDIO — THE SPINE  ·  v1  ·  design system for single-property sites
+   ----------------------------------------------------------------------------
+   ONE locked system every property inherits. Kills font sprawl + illegibility
+   by definition: sections compose from tokens, they never invent their own.
+
+   PERSONALIZATION SEAM (Rachel's law — each house its own face):
+   the spine defines ROLES; each property sets which real font fills each role.
+   Per property, override in a small :root block AFTER this file:
+       :root{ --font-signature:'Edwardian','Mr De Haviland',cursive; }
+   ========================================================================== */
+
+:root{
+  /* —— PALETTE —— */
+  --ink:#0a0a0a;            /* near-black ground */
+  --ink-2:#111110;
+  --cream:#F5F0E8;          /* primary light text */
+  --cream-dim:rgba(245,240,232,.74);
+  --whisper:rgba(245,240,232,.42);
+  --gold:#b89863;           /* the single accent */
+  --gold-soft:rgba(184,152,99,.5);
+  --gold-hi:#ccb28a;
+  --gold-grad:linear-gradient(180deg,#cdb478 0%,#ecd9a6 32%,#f6e9c2 50%,#dcc187 68%,#b0925a 100%);
+
+  /* —— TYPE ROLES —— ONE coherent system (luxury codex §2 type-coherence law):
+     ALL display (hero name, chapter titles, beat headlines, room titles, italic
+     anchors) leads on ONE high-contrast Didone that shares thick/thin DNA with
+     the Cormorant body. Didone-display + Cormorant-body + tracked-sans labels
+     = textbook Vogue/Harper's luxury system. No orphan script clashing. */
+  --font-display:'Playfair Display',Georgia,serif;     /* THE display voice — headlines, titles */
+  --font-body:'Cormorant Garamond',Georgia,serif;      /* prose, leads, long-form reading */
+  --font-label:'Instrument Sans',system-ui,sans-serif; /* eyebrows, nav, stats, UI metadata */
+  --font-accent:'Cinzel',Georgia,serif;                /* est. marks, chapter numerals, ceremonial */
+  --font-signature:'Playfair Display',serif;           /* DEFAULT — each property overrides w/ its own period face */
+
+  /* —— TYPE SCALE —— locked, with LEGIBLE FLOORS. Rachel's law: nothing too small.
+     Smallest token (labels) never drops below ~12.5px; body never below ~17px. */
+  --t-xs:clamp(.78rem,.85vw,.86rem);     /* labels, eyebrows — FLOOR 12.5px */
+  --t-sm:clamp(.95rem,1.1vw,1.05rem);    /* captions, small body — FLOOR 15px */
+  --t-base:clamp(1.12rem,1.25vw,1.25rem);/* body — FLOOR 18px */
+  --t-md:clamp(1.45rem,2.1vw,1.85rem);   /* subheads, lead lines */
+  --t-lg:clamp(2.1rem,3.6vw,3.4rem);     /* section titles */
+  --t-xl:clamp(2.9rem,5.5vw,5.2rem);     /* large display */
+  --t-hero:clamp(3.6rem,9vw,8rem);       /* hero name */
+
+  /* —— SPACING —— */
+  --pad:clamp(1.4rem,5vw,5rem);        /* section side padding */
+  --gap:clamp(1rem,2.5vw,2.4rem);
+  --section-y:clamp(4rem,11vh,8rem);   /* vertical rhythm between movements */
+
+  /* —— MOTION (one vocabulary of curves + durations) —— */
+  --ease:cubic-bezier(.16,1,.3,1);     /* the house ease — calm, expensive */
+  --ease-soft:cubic-bezier(.33,1,.68,1);
+  --dur-fast:.45s; --dur:.9s; --dur-slow:1.6s;
+
+  /* —— RULES / HAIRLINES —— */
+  --rule:1px solid rgba(184,152,99,.18);
+}
+
+/* ---- reset (light touch) ---- */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
+  font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:var(--gold);text-decoration:none}
+::selection{background:var(--gold);color:var(--ink)}
+
+/* ---- TYPE PRIMITIVES (compose, never reinvent) ---- */
+.s-eyebrow{font-family:var(--font-label);font-size:var(--t-xs);letter-spacing:.34em;
+  text-transform:uppercase;color:var(--gold)}
+.s-accent{font-family:var(--font-accent);letter-spacing:.14em;text-transform:uppercase}
+.s-display{font-family:var(--font-display);font-weight:400;line-height:1.1}
+.s-body{font-family:var(--font-body);font-weight:300;font-size:var(--t-base);
+  line-height:1.78;color:var(--cream-dim);max-width:62ch}
+.s-lead{font-family:var(--font-body);font-style:italic;font-size:var(--t-md);
+  line-height:1.5;color:var(--cream)}
+.s-turn{color:var(--gold);font-style:italic}      /* the gold "turn" accent on a line */
+.s-signature{font-family:var(--font-signature);font-weight:400}
+
+/* gold metallic fill for numerals/keys (the stat-key look), used via .s-gold */
+.s-gold{background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.85))}
+
+/* ---- LAYOUT PRIMITIVES ---- */
+.s-section{padding:var(--section-y) var(--pad);position:relative}
+.s-wrap{max-width:1180px;margin:0 auto}
+.s-center{text-align:center}
+.s-measure{max-width:46ch;margin-inline:auto}     /* readable centered column */
+.s-seam{width:64px;height:1px;margin:1.4rem auto 0;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+
+/* chapter marker — reusable section opener */
+.s-chapter{text-align:center;padding:var(--section-y) var(--pad) clamp(1rem,3vh,2rem)}
+.s-chapter .num{font-family:var(--font-accent);font-size:var(--t-xs);letter-spacing:.4em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem}
+.s-chapter .ttl{font-family:var(--font-display);font-weight:300;
+  font-size:var(--t-lg);color:var(--cream);line-height:1.08}
+
+/* ---- MOTION HOOKS (paired with spine.js; degrade gracefully if JS off) ---- */
+html.s-anim [data-reveal]{opacity:0;transform:translateY(30px)}
+html.s-anim [data-reveal="left"]{transform:translateX(-40px)}
+html.s-anim [data-reveal="right"]{transform:translateX(40px)}
+html.s-anim [data-reveal="scale"]{transform:scale(.96)}
+@media (prefers-reduced-motion:reduce){
+  html.s-anim [data-reveal]{opacity:1!important;transform:none!important}
+}
+
+/* ---- FILM GRAIN (cinematic texture, optional via body.s-grain) ---- */
+body.s-grain::after{content:"";position:fixed;inset:-50%;width:200%;height:200%;
+  pointer-events:none;z-index:9998;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:s-grain 8s steps(10) infinite}
+@keyframes s-grain{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-10%)}
+  30%{transform:translate(3%,-15%)}50%{transform:translate(12%,9%)}
+  70%{transform:translate(9%,4%)}90%{transform:translate(-1%,7%)}}
+@media (prefers-reduced-motion:reduce){body.s-grain::after{animation:none}}
+
+/* ---- GOLD CURSOR (desktop, optional via body.s-cursor) ---- */
+@media (pointer:fine){
+  body.s-cursor{cursor:none}
+  .s-cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;
+    background:var(--gold);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
+    transition:width .25s,height .25s,opacity .25s;mix-blend-mode:difference}
+  .s-cursor-dot.grow{width:42px;height:42px;opacity:.55}
+}
