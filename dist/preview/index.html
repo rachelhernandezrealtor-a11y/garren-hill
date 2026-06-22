@@ -1,7 +1,23 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Garran Hill — Hero Preview</title>
+<title>Garran Hill | 200 Hollycrest Drive, Pinehurst, NC</title>
+<meta name="description" content="A 1916 Neo-Georgian estate in Pinehurst, NC, built for Walter Hines Page and preserved through more than a century of stewardship. 4 bedrooms, 6,320 square feet, 4.15 acres, offered at $4,250,000.">
+<link rel="canonical" href="https://rachelhernandez.studio/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rachelhernandez.studio/">
+<meta property="og:title" content="Garran Hill, Pinehurst, North Carolina">
+<meta property="og:description" content="Neo-Georgian. Built for Walter Hines Page. More than a century of stewardship. Offered at $4,250,000.">
+<meta property="og:image" content="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1200/v1/garran-hill/photos/001-front-exterior.jpg">
+<meta property="og:site_name" content="Garran Hill">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Garran Hill, Pinehurst, North Carolina">
+<meta name="twitter:description" content="Neo-Georgian. Built for Walter Hines Page. More than a century of stewardship. Offered at $4,250,000.">
+<meta name="twitter:image" content="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1200/v1/garran-hill/photos/001-front-exterior.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://rachelhernandez.studio/#website","url":"https://rachelhernandez.studio/","name":"Garran Hill","publisher":{"@id":"https://rachelhernandez.studio/#agent"}},{"@type":"WebPage","@id":"https://rachelhernandez.studio/#webpage","url":"https://rachelhernandez.studio/","name":"Garran Hill | 200 Hollycrest Drive, Pinehurst, NC","isPartOf":{"@id":"https://rachelhernandez.studio/#website"},"primaryImageOfPage":{"@id":"https://rachelhernandez.studio/#heroimage"}},{"@type":"ImageObject","@id":"https://rachelhernandez.studio/#heroimage","url":"https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1920/v1/garran-hill/photos/001-front-exterior.jpg","caption":"Garran Hill, 1916 Neo-Georgian estate, Pinehurst, North Carolina"},{"@type":"SingleFamilyResidence","name":"Garran Hill","description":"A 1916 Neo-Georgian estate in Pinehurst, NC, built for Walter Hines Page and restored 1999 to 2001.","address":{"@type":"PostalAddress","streetAddress":"200 Hollycrest Drive","addressLocality":"Pinehurst","addressRegion":"NC","postalCode":"28374","addressCountry":"US"},"numberOfBedrooms":4,"numberOfBathroomsTotal":6,"floorSize":{"@type":"QuantitativeValue","value":6320,"unitCode":"FTK"},"yearBuilt":1916,"lotSize":{"@type":"QuantitativeValue","value":4.15,"unitText":"acres"},"image":{"@id":"https://rachelhernandez.studio/#heroimage"}},{"@type":"Offer","price":"4250000","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://rachelhernandez.studio/"},{"@type":"RealEstateAgent","@id":"https://rachelhernandez.studio/#agent","name":"Rachel Hernandez","worksFor":{"@type":"Organization","name":"Pines Sotheby's International Realty"},"areaServed":"Pinehurst, North Carolina"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Garran Hill","item":"https://rachelhernandez.studio/"},{"@type":"ListItem","position":2,"name":"History","item":"https://rachelhernandez.studio/history"},{"@type":"ListItem","position":3,"name":"Sources","item":"https://rachelhernandez.studio/sources"}]}]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Instrument+Sans:wght@400;500&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
@@ -20,6 +36,19 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--ink);color:var(--cream);font-family:'Cormorant Garamond',serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
+
+/* FILM GRAIN — subtle cinematic texture (ported from live dev site) */
+body::after{content:'';position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:9998;opacity:0.04;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+animation:grain 8s steps(10) infinite;}
+@keyframes grain{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-10%)}30%{transform:translate(3%,-15%)}50%{transform:translate(12%,9%)}70%{transform:translate(9%,4%)}90%{transform:translate(-1%,7%)}}
+@media (prefers-reduced-motion: reduce){body::after{animation:none}}
+
+/* GOLD CURSOR (desktop only) — ported from live dev site */
+@media (pointer:fine){
+  .cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s,opacity .25s;mix-blend-mode:difference}
+  .cursor-dot.grow{width:42px;height:42px;opacity:0.55}
+}
 
 /* gold metal text — the belt gold */
 .goldmetal{
@@ -115,21 +144,11 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .prose .turn{color:var(--cream);font-style:italic;font-size:clamp(1.3rem,2vw,1.7rem);line-height:1.5;margin:2.2rem 0}
 .prose .cite-line{font-family:'Cinzel',serif;font-size:calc(var(--xs)*.92);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.78;margin-top:.4rem}
 
-/* THE PAGE PROVENANCE — one continuous letter ground beneath the whole movement.
-   A page from The Life and Letters of Walter H. Page, inverted so the printed ink reads as
-   luminous strokes over the black page (preserve-the-image: light texture, never a block).
-   It FILLS the section and the inner blocks go transparent so the layers meld top to bottom. */
+/* THE PAGE PROVENANCE — clean black ground. The handwriting lives ONLY in the
+   letter section below, where "the farm" rises out of it (one purposeful moment,
+   no section-wide wash bleeding behind the portrait, bio, and nav). */
 .provenance{position:relative;background:var(--ink);overflow:hidden}
-.provenance::before{content:"";position:absolute;
-  /* oversized + rotated so the page sits on a slight angle like a letter laid across the section,
-     with no bare corners pulled into frame */
-  top:-12%;left:-12%;width:124%;height:124%;z-index:0;pointer-events:none;
-  transform:rotate(-6deg);transform-origin:center;
-  background:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/gh_key/gh_whp_letter1.jpg') top center/cover repeat-y;
-  opacity:.30;filter:invert(1) brightness(.92) sepia(.55) hue-rotate(-8deg) saturate(1.05) contrast(.9) blur(.6px);
-  mix-blend-mode:screen;
-  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 12%,#000 82%,transparent 99%);
-  mask-image:linear-gradient(180deg,transparent 0%,#000 12%,#000 82%,transparent 99%)}
+.provenance::before{content:none}
 .provenance > *{position:relative;z-index:1}
 /* inner blocks transparent so the one letter ground shows through and melds them into one scene */
 .provenance .chapter-mark,.provenance .prose,.provenance .thennow,.provenance .thennow-line,.provenance .sources{background:transparent}
@@ -148,6 +167,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .split .fig figcaption{font-family:'Cinzel',serif;font-size:calc(var(--xs)*.9);letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);margin-top:.9rem;text-align:left}
 .split .body{text-align:left}
 .split .body p{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.1rem,1.5vw,1.3rem);line-height:1.74;color:var(--cream-dim);margin:0 0 1.3rem}
+.provenance .split .body p{color:#ece7df}
 .split .body .turn{color:var(--cream);font-style:italic;font-size:clamp(1.25rem,1.8vw,1.55rem);line-height:1.5;display:block;margin:1.6rem 0}
 @media(max-width:760px){.split{grid-template-columns:1fr;gap:1.6rem}.split .fig figcaption,.split .body{text-align:center}}
 
@@ -158,6 +178,73 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .close .cta{display:inline-block;font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:.34em;text-transform:uppercase;color:var(--cream);
   text-decoration:none;border:1px solid var(--gold-soft);padding:1.1rem 2.6rem;transition:all .4s}
 .close .cta:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+
+/* GATE FADE — sepia 1916 gate dissolves into the gate today (ported from dev site, same words) */
+.gatefade{position:relative;height:clamp(70vh,90vh,100svh);overflow:hidden;background:var(--ink)}
+.gatefade .frame{position:absolute;inset:0}
+.gatefade .frame img{width:100%;height:100%;object-fit:cover;animation:gfKB 18s ease-in-out infinite}
+.gatefade .gf-then img{filter:sepia(.42) contrast(1.02) brightness(.96)}
+.gatefade .gf-then{animation:gfThen 18s ease-in-out infinite}
+.gatefade .gf-now{animation:gfNow 18s ease-in-out infinite}
+.gatefade .gf-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,7,.8),transparent 45%);pointer-events:none}
+.gatefade .gf-label{position:absolute;left:0;right:0;bottom:clamp(2rem,6vh,4rem);text-align:center;padding:0 var(--pad);z-index:2}
+.gatefade .gf-eyebrow{font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:.45em;text-transform:uppercase;color:var(--gold)}
+/* two years crossfading in the SAME spot, each riding its own image's timing */
+.gatefade .gf-years{position:relative;display:inline-block;height:1.4em;min-width:5em;margin-bottom:.4rem}
+.gatefade .gf-yr{position:absolute;left:50%;top:0;transform:translateX(-50%);white-space:nowrap;
+  font-family:'Instrument Sans',sans-serif;font-size:var(--xs);letter-spacing:.45em;text-transform:uppercase;color:var(--gold)}
+.gatefade .gf-yr-then{animation:gfThen 18s ease-in-out infinite}
+.gatefade .gf-yr-now{animation:gfNow 18s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.gatefade .gf-yr-then{display:none}.gatefade .gf-yr-now{position:static;transform:none;animation:none}}
+.gatefade .gf-line{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.6rem,3vw,2.6rem);color:var(--cream);margin-top:.8rem;line-height:1.3;text-shadow:0 1px 24px rgba(0,0,0,.6)}
+.gatefade .gf-line em{color:var(--gold);font-style:italic}
+/* THE SIGNATURE — Garran Hill in Edwardian script, drawn in as the gate is reached */
+.gatefade .gf-wordmark{font-family:'Edwardian',cursive;font-weight:400;font-size:clamp(4rem,13vw,11rem);line-height:.82;color:var(--cream);
+  margin:.1rem 0 .2rem;text-shadow:0 2px 34px rgba(0,0,0,.6);
+  opacity:0;filter:blur(12px);letter-spacing:.1em;transform:translateY(14px);
+  transition:opacity 2.6s cubic-bezier(.16,1,.3,1),filter 2.6s cubic-bezier(.16,1,.3,1),letter-spacing 2.6s cubic-bezier(.16,1,.3,1),transform 2.6s cubic-bezier(.16,1,.3,1)}
+.gatefade.lit .gf-wordmark{opacity:1;filter:blur(0);letter-spacing:0;transform:none}
+@media (prefers-reduced-motion:reduce){.gatefade .gf-wordmark{opacity:1;filter:none;letter-spacing:0;transform:none;transition:none}}
+/* THE LETTER — Page's own hand behind, and "the farm" rising up out of the script */
+.letter{position:relative;overflow:hidden;background:var(--ink);text-align:center;
+  padding:clamp(5rem,16vh,11rem) var(--pad)}
+.letter .hand{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/gh_key/gh_whp_letter1.jpg') center/cover no-repeat;
+  opacity:.22;filter:invert(1) brightness(1.05) sepia(.4) hue-rotate(-12deg) contrast(.92);
+  mix-blend-mode:screen}
+.letter .hand-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 70% 70% at 50% 50%,transparent 0%,rgba(8,8,7,.55) 70%,rgba(8,8,7,.85) 100%)}
+.letter > *{position:relative;z-index:2}
+.letter .rise{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
+  font-size:clamp(2rem,5.5vw,4.4rem);line-height:1.15;color:var(--cream);margin:0 auto;max-width:18ch;
+  text-shadow:0 2px 30px rgba(0,0,0,.55)}
+.letter .rise .farm{display:inline-block;color:var(--gold);
+  opacity:0;transform:translateY(38px);filter:blur(8px);
+  transition:opacity 1.4s cubic-bezier(.16,1,.3,1),transform 1.4s cubic-bezier(.16,1,.3,1),filter 1.4s cubic-bezier(.16,1,.3,1)}
+.letter.lit .rise .farm{opacity:1;transform:none;filter:blur(0)}
+.letter.lit .rise .farm.f2{transition-delay:.5s}
+.letter.lit .rise .farm.f3{transition-delay:1s}
+.letter .lede{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.2rem,1.8vw,1.45rem);
+  line-height:1.78;color:var(--cream);max-width:46ch;margin:2.4rem auto 0;text-shadow:0 1px 14px rgba(0,0,0,.7)}
+.letter .turn2{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--cream);
+  font-size:clamp(1.3rem,2vw,1.7rem);line-height:1.5;margin:2.2rem auto 0;max-width:32ch}
+.letter .cite-line{font-family:'Cinzel',serif;font-size:calc(var(--xs)*.92);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.78;margin-top:1.2rem}
+.letter .cite-src{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:var(--sm);color:var(--cream-dim);opacity:.7;margin-top:.35rem}
+/* THE BUILDING — the 1916 archival image behind the words about the house rising (airy, preserve-the-image) */
+.built{position:relative;overflow:hidden;background:var(--ink);text-align:center;padding:clamp(5rem,15vh,10rem) var(--pad)}
+.built .archival-bg{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1800/v1/gh_key/gh_1916sheet.jpg') center/cover no-repeat;
+  opacity:.30;filter:grayscale(1) contrast(1.02) brightness(1.02)}
+.built .archival-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 75% 75% at 50% 50%,transparent 0%,rgba(8,8,7,.45) 68%,rgba(8,8,7,.8) 100%)}
+.built > *{position:relative;z-index:2}
+.built .yr{font-family:'Cinzel',serif;font-size:var(--xs);letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem}
+.built p{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.3rem,2.2vw,1.9rem);line-height:1.6;color:var(--cream);max-width:30ch;margin:0 auto;text-shadow:0 1px 18px rgba(0,0,0,.6)}
+.built p em{color:var(--gold);font-style:italic}
+@keyframes gfThen{0%,40%{opacity:1}50%,90%{opacity:0}100%{opacity:1}}
+@keyframes gfNow{0%,40%{opacity:0}50%,90%{opacity:1}100%{opacity:0}}
+@keyframes gfKB{0%{transform:scale(1) translate3d(0,0,0)}50%{transform:scale(1.08) translate3d(-1.5%,-1%,0)}100%{transform:scale(1) translate3d(0,0,0)}}
+@media (prefers-reduced-motion:reduce){.gatefade .gf-then,.gatefade .gf-now,.gatefade .frame img{animation:none}.gatefade .gf-now{opacity:1}}
 
 /* THEN AND NOW — same house, same gate, a century apart */
 .thennow{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,3vw,2.4rem);align-items:end;
@@ -339,6 +426,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 
 </style></head>
 <body>
+<div class="cursor-dot" id="cdot" aria-hidden="true"></div>
 <nav>
   <div class="brand"><span class="est-mark">Est.</span> <span class="brand-script">Garran Hill</span> <span class="est-mark">1916</span></div>
   <div class="links"><a href="#">The Estate</a><a href="#">The History</a><a href="#">The Grounds</a></div>
@@ -378,8 +466,25 @@ nav .links a.cta{color:var(--gold);opacity:1}
   </div>
 </section>
 
-<!-- CHAPTER: THE PAGE PROVENANCE -->
+<!-- CHAPTER: THE PAGE PROVENANCE — one cinematic frame, the name signs itself onto the gate -->
 <section class="provenance">
+
+<!-- GATE FADE — sepia 1916 dissolves into twilight today; the Edwardian name draws in over it -->
+<div class="gatefade">
+  <div class="frame gf-then"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1024,q_auto:best,f_auto/v1/gh_photos/gh_historygate_sepia.jpg" alt="Garran Hill gate in 1916, the year the estate was built"></div>
+  <div class="frame gf-now"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1400,q_auto:best,f_auto/v1/gh_key/gh_gate_twilight.jpg" alt="Garran Hill gate today, at twilight, Pinehurst North Carolina"></div>
+  <div class="gf-veil"></div>
+  <div class="gf-label">
+    <div class="gf-years">
+      <span class="gf-yr gf-yr-then">1916</span>
+      <span class="gf-yr gf-yr-now">2026</span>
+    </div>
+    <div class="gf-wordmark">Garran Hill</div>
+    <div class="gf-line">Some houses are built for arrival. <em>Garran Hill was built for return.</em></div>
+  </div>
+</div>
+
+<!-- CHAPTER: THE PAGE PROVENANCE — title lands after the gate, leading into Walter -->
 <div class="chapter-mark">
   <div class="num">The Page Provenance</div>
   <div class="ttl">Before Garran Hill was an estate,<br>it was an intention.</div>
@@ -393,23 +498,34 @@ nav .links a.cta{color:var(--gold);opacity:1}
     <figcaption>Walter Hines Page &middot; 1855&ndash;1918</figcaption>
   </figure>
   <div class="body">
-    <p>A son of North Carolina who became one of the consequential men of letters of his age. Editor of The Atlantic Monthly. Co-founder of Doubleday, Page and Company. Appointed by Woodrow Wilson as Ambassador to the Court of St James's in 1913, and kept there through the years the world came apart.</p>
+    <p>Conceived for Walter Hines Page, North Carolina son, man of letters, publisher, reformer, and ambassador, this Pinehurst estate carries the grace of an earlier century into the present day.</p>
+    <p>Editor of The Atlantic Monthly. Co-founder of Doubleday, Page and Company. Appointed by Woodrow Wilson as Ambassador to the Court of St James's in 1913, and kept there through the years the world came apart.</p>
     <span class="turn">From London, his imagination kept returning to the Sandhills.</span>
     <p>In 1913 he bought a thousand acres of Moore County pine and named it Garran Hill. A gentleman's farm. A peach orchard. A house worthy of return. Six weeks later Wilson sent him to London. He sailed, and the farm stayed behind.</p>
   </div>
 </div>
 
-<!-- THE LETTER — the longing, in his own hand -->
-<div class="prose">
-  <p class="turn">The farm. The farm. The farm.</p>
-  <p>He wrote home about it constantly. The peaches, the gardens, the pecans. He sent his son Ralph to build it, and asked only to hear of it at every turn.</p>
-  <p class="turn">Build the farm, and let me hear at every stage of that happy game.</p>
-  <p class="cite-line">Walter Hines Page &middot; from his letters &middot; 1915</p>
-</div>
+<!-- THE LETTER — his own hand behind, "the farm" rising out of the script -->
+<section class="letter">
+  <div class="hand"></div>
+  <div class="hand-veil"></div>
+  <p class="rise"><span class="farm f1">The farm.</span> <span class="farm f2">The farm.</span> <span class="farm f3">The farm.</span></p>
+  <p class="lede">He wrote home about it constantly. The peaches, the gardens, the pecans. He sent his son Ralph to build it, and asked only to hear of it at every turn.</p>
+  <span class="turn2">Build the farm, therefore, and let me hear at every stage of that happy game.</span>
+  <p class="cite-line">Walter Hines Page, to his son Ralph &middot; March 1918</p>
+  <p class="cite-src">The Life and Letters of Walter H. Page &middot; Doubleday, Page &amp; Co. &middot; 1923</p>
+</section>
 
-<!-- THE RETURN — same hands as Pinehurst, then home gravely ill -->
+<!-- THE BUILDING — the 1916 archival image behind the house rising -->
+<section class="built">
+  <div class="archival-bg"></div>
+  <div class="archival-veil"></div>
+  <div class="yr">1915 &ndash; 1916</div>
+  <p>The house rose, built by the Pinehurst Company under J. R. McQueen, the same men then building Pinehurst. Rare handmade brick, laid in Flemish bond above a water table, <em>drawn to Georgian proportion.</em></p>
+</section>
+
+<!-- THE RETURN — home gravely ill -->
 <div class="prose">
-  <p>The house rose in 1915 and 1916, built by the Pinehurst Company under J. R. McQueen, the same men then building Pinehurst. Rare handmade brick, laid in Flemish bond above a water table, drawn to Georgian proportion.</p>
   <p>Page resigned the embassy and sailed home, gravely ill, in the autumn of 1918.</p>
   <p class="turn">Well, Frank. I did get here after all, didn't I?</p>
   <p class="cite-line">His last recorded words &middot; Aberdeen station &middot; December 1918</p>
@@ -647,6 +763,42 @@ lb.querySelector('.nx').onclick=function(){step(1);};
 document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1);});
 lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('open');});
 document.getElementById('tourbox').addEventListener('click',function(){this.innerHTML='<iframe src="https://my.matterport.com/show/?m=mfwyqT5Btwx&brand=0&help=1&nt=1" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="fullscreen; vr" allowfullscreen title="Garran Hill 3D tour"></iframe>';},{once:true});
+
+/* THE SIGNATURE — draw the Edwardian name in when the gate enters view */
+(function(){
+  var gate=document.querySelector('.gatefade');
+  if(!gate)return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){gate.classList.add('lit');return;}
+  if('IntersectionObserver' in window){
+    var go=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){setTimeout(function(){gate.classList.add('lit');},400);go.unobserve(e.target);}});
+    },{threshold:0.35});
+    go.observe(gate);
+  }else{gate.classList.add('lit');}
+})();
+
+/* THE LETTER — "the farm" rises out of his handwriting when the section enters view */
+(function(){
+  var letter=document.querySelector('.letter');
+  if(!letter)return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){letter.classList.add('lit');return;}
+  if('IntersectionObserver' in window){
+    var lo=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){letter.classList.add('lit');lo.unobserve(e.target);}});
+    },{threshold:0.4});
+    lo.observe(letter);
+  }else{letter.classList.add('lit');}
+})();
+
+/* GOLD CURSOR (desktop only) — ported from live dev site */
+if(window.matchMedia('(pointer:fine)').matches){
+  var d=document.getElementById('cdot');
+  document.addEventListener('mousemove',function(e){d.style.left=e.clientX+'px';d.style.top=e.clientY+'px';});
+  document.querySelectorAll('a,button,.grid img,.tour-wrap,.rm-scene,.rm-split').forEach(function(el){
+    el.addEventListener('mouseenter',function(){d.classList.add('grow');});
+    el.addEventListener('mouseleave',function(){d.classList.remove('grow');});
+  });
+}else{var cd=document.getElementById('cdot');if(cd)cd.style.display='none';}
 </script>
 
 </body></html>
