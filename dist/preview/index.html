@@ -150,6 +150,22 @@ nav .links a.cta{color:var(--gold);opacity:1}
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
 .stat.price span{color:rgba(244,233,198,.96);letter-spacing:.42em}
 .chapter-mark{text-align:center;padding:clamp(4rem,11vh,7rem) var(--pad) clamp(1rem,3vh,2rem);background:var(--ink)}
+/* BETTY — the grave as a smaller atmospheric backdrop ABOVE the closing line,
+   flowers kept visible at top, text resting in the calm lower band. Not the big somber full-bleed. */
+.grave{position:relative;background:var(--ink);padding:0 var(--pad) clamp(4rem,9vh,6rem);text-align:center}
+.grave .gv-img{position:relative;max-width:760px;margin:0 auto;height:clamp(300px,46vh,460px);
+  border-radius:2px;overflow:hidden}
+.grave .gv-img img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;
+  filter:saturate(.92) brightness(.94)}
+/* soft vignette + a calm darkened lower band for the text, flowers (top-center) stay lit */
+.grave .gv-img::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(8,8,7,.12) 0%,transparent 26%,transparent 48%,rgba(8,8,7,.86) 100%)}
+.grave .gv-cap{position:absolute;left:0;right:0;bottom:clamp(1.4rem,4vh,2.4rem);padding:0 var(--pad);z-index:2}
+.grave .gv-cap .room{font-family:var(--font-accent);font-size:var(--t-xs);letter-spacing:.32em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.grave .gv-cap .whisper{font-family:var(--font-display);font-style:italic;
+  font-size:clamp(1.15rem,1.8vw,1.5rem);line-height:1.45;color:var(--cream);text-shadow:0 2px 18px rgba(0,0,0,.7)}
+.grave .gv-cap .whisper em{color:var(--gold);font-style:italic}
 .chapter-mark .num{font-family:var(--font-chapter);font-size:var(--xs);letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
 .chapter-mark .ttl{font-family:var(--font-display);font-weight:400;font-size:clamp(2rem,4.5vw,3.4rem);color:var(--cream);line-height:1.05}
 .chapter-mark .seam{width:64px;height:1px;margin:1.6rem auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
@@ -610,17 +626,22 @@ nav .links a.cta{color:var(--gold);opacity:1}
 
 <section class="fullbleed">
   <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_2000/v1/gh_exteriors/gh_holly_door.jpg" alt="Holly with red berries at the front entrance of Garran Hill, the estate Betty Dumaine renamed Hollycrest">
-  <div class="fb-cap"><p>Betty Dumaine came in 1959, and stayed twenty-five years. The hollies at the front gave the house the name it kept. She brought horses, hounds, and peacocks, planted the camellia garden and three American plane trees that still stand, and ran the United States arm of the Princess Mother of Thailand's charities from here.</p></div>
+  <div class="fb-cap"><p>Betty Dumaine came in 1959, and stayed twenty-five years. The hollies at the front gave the house the name it kept. She brought horses, hounds, and peacocks, and ran the United States arm of the Princess Mother of Thailand's charities from here.</p></div>
 </section>
 
 <div class="prose">
   <p>She loved one horse above the rest. An Irish hunter named Blue Fox.</p>
-  <p class="turn">When he died, she buried him at the back of the grounds, under slate, and marked it in brass.</p>
+  <p class="turn">When he died, she buried him at the back of the grounds, under slate.</p>
 </div>
 
-<section class="fullbleed">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_2000/v1/garran-hill/photos/129-blue-fox.jpg" alt="The slate grave of Blue Fox, Betty Dumaine's Irish hunter, marked in brass at the back of Garran Hill">
-  <div class="fb-cap"><p>She would leave flowers at his grave. Someone still does.</p></div>
+<section class="grave">
+  <div class="gv-img">
+    <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1400/v1/garran-hill/photos/129-blue-fox.jpg" alt="The slate grave of Blue Fox, Betty Dumaine's Irish hunter, with fresh flowers left at its head">
+    <div class="gv-cap">
+      <div class="room">My Irish Hunter &middot; Blue Fox</div>
+      <div class="whisper">She would leave flowers at his grave.<br><em>Someone still does.</em></div>
+    </div>
+  </div>
 </section>
 
 <!-- CHAPTER: THE RESTORATION -->
