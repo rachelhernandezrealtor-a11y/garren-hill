@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" class="s-anim">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Spine — Type System + Write-On Proof</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Instrument+Sans:wght@400;500&family=Cinzel:wght@400;500;600&family=Mr+De+Haviland&display=swap" rel="stylesheet">
+<link href="./spine/spine.css" rel="stylesheet">
+<style>
+  :root{ --font-signature:'Mr De Haviland', cursive; }
+  .demo-label{font-family:var(--font-label);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-soft);margin:0 0 1.2rem}
+  .specimen{border-bottom:1px solid rgba(184,152,99,.12);padding:3rem 0}
+</style>
+</head>
+<body class="s-grain">
+
+<section class="s-fullbleed">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_2400/v1/garran-hill/photos/001-front-exterior.jpg" alt="Garran Hill front exterior">
+  <div class="s-veil"></div>
+  <div class="s-content">
+    <p class="s-eyebrow" data-reveal>200 Hollycrest Drive · Pinehurst</p>
+    <h1 class="s-signature s-gold" data-write="2.6"
+        style="font-size:clamp(4rem,12vw,11rem);line-height:1.5;padding:.18em 0 .12em;margin:.2rem 0;overflow:visible">Garran&nbsp;Hill</h1>
+    <p class="s-lead" data-reveal style="margin-top:1rem">Some houses are built for arrival. Garran Hill was built for return.</p>
+  </div>
+</section>
+
+<section class="s-section s-wrap">
+  <p class="demo-label">The Spine · Type System v2</p>
+
+  <div class="specimen">
+    <p class="demo-label">Display · Playfair (Didone)</p>
+    <h2 class="s-display" style="font-size:var(--t-xl)">The house was not built for spectacle.</h2>
+  </div>
+
+  <div class="specimen">
+    <p class="demo-label">Section title · s-title</p>
+    <h3 class="s-title">The Page Provenance</h3>
+  </div>
+
+  <div class="specimen">
+    <p class="demo-label">Lead · Cormorant italic</p>
+    <p class="s-lead">Before Garran Hill was an estate, it was an intention.</p>
+  </div>
+
+  <div class="specimen">
+    <p class="demo-label">Body · Cormorant — floor 1.12rem, never too small</p>
+    <p class="s-body s-dropcap">The house rose in 1915 and 1916, built by the Pinehurst Company under J. R. McQueen, the same men then building Pinehurst itself. Rare handmade brick, laid in Flemish bond above a water table, drawn to Georgian proportion. Those who know the village will know what that lineage means.</p>
+  </div>
+
+  <div class="specimen">
+    <p class="demo-label">Eyebrow / label · Instrument Sans tracked</p>
+    <p class="s-eyebrow">Neo-Georgian Estate · Est. 1916 · 110 Years of Provenance</p>
+  </div>
+
+  <div class="specimen">
+    <p class="demo-label">Liquid gold · s-gold</p>
+    <p class="s-display s-gold" style="font-size:var(--t-lg)">$4,250,000</p>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="./spine/spine.js"></script>
+</body>
+</html>
