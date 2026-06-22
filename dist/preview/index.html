@@ -36,7 +36,7 @@
   --font-body:'Cormorant Garamond',Georgia,serif;
   --font-label:'Instrument Sans',system-ui,sans-serif;
   --font-chapter:'Cinzel',Georgia,serif;
-  --font-script:'Mr De Haviland','Cormorant Garamond',cursive;
+  --font-script:'Edwardian','Mr De Haviland',cursive;
   /* hero tunables */
   --belt-gap:6.5rem; --belt-low:2.6rem; --num-size:1.7rem;
   --crest-w:210px; --crest-drop:0rem; --wm-size:clamp(2.4rem,9vw,7.4rem);
@@ -247,11 +247,11 @@ nav .links a.cta{color:var(--gold);opacity:1}
   background:radial-gradient(ellipse 86% 78% at 50% 44%,transparent 0%,transparent 50%,rgba(8,8,7,.62) 100%)}
 .letter > *{position:relative;z-index:2}
 .letter .rise{font-family:var(--font-script);font-weight:400;
-  font-size:clamp(2.8rem,8vw,6.4rem);line-height:1.18;color:var(--gold);margin:0 auto;max-width:14ch;
-  text-shadow:0 2px 30px rgba(0,0,0,.5)}
+  font-size:clamp(2.8rem,8vw,6.4rem);line-height:1.5;color:var(--gold);margin:0 auto;max-width:14ch;
+  padding-top:.2em;text-shadow:0 2px 30px rgba(0,0,0,.5)}
 /* each phrase WRITES itself on via the spine engine (GH.writeOn) — static styling only here;
    padding keeps the script T/f swashes from being clipped at the box edge */
-.letter .rise .farm{display:inline-block;color:var(--gold);padding:0 .1em}
+.letter .rise .farm{display:inline-block;color:var(--gold);padding:0 .18em;overflow:visible}
 /* the third lands largest and holds, ink catching light */
 .letter .rise .farm.f3{font-size:1.14em}
 .letter .rise .farm.f3{text-shadow:0 0 38px rgba(201,169,110,.55),0 2px 30px rgba(0,0,0,.5)}
@@ -858,8 +858,8 @@ if(window.matchMedia('(pointer:fine)').matches){
   GH.writeOn = function(sel, o){ o=o||{};
     gsap.utils.toArray(sel).forEach(function(el,i){
       if(reduce){gsap.set(el,{clipPath:'none',opacity:1});return;}
-      gsap.set(el,{clipPath:'inset(-0.3em 100% -0.3em -0.3em)',opacity:1});
-      gsap.to(el,{clipPath:'inset(-0.3em -0.3em -0.3em -0.3em)',
+      gsap.set(el,{clipPath:'inset(-0.5em 100% -0.6em -0.5em)',opacity:1});
+      gsap.to(el,{clipPath:'inset(-0.5em -0.5em -0.6em -0.5em)',
         duration:o.dur||1.7,ease:'power2.inOut',delay:(o.stagger||0.9)*i,
         scrollTrigger:{trigger:o.trigger||el,start:o.start||'top 72%'}});
     });
