@@ -29,7 +29,7 @@
   --ink:#0a0a0a; --gold:#b89863; --gold-soft:rgba(184,152,99,.5); --gold-hi:#ccb28a;
   --cream:#F5F0E8; --cream-dim:rgba(245,240,232,.88); --whisper:rgba(245,240,232,.42);
   --pad:clamp(1.4rem,5vw,5rem); --eq:cubic-bezier(.16,1,.3,1);
-  --xs:clamp(.78rem,.85vw,.86rem); --sm:clamp(.95rem,1.1vw,1.05rem);
+  --xs:clamp(.8rem,.85vw,.88rem); --sm:clamp(.95rem,1.1vw,1.05rem); --xxs:clamp(.74rem,.8vw,.8rem);
   /* TYPE SPINE — locked roles (Rachel-Studio spine v1). Coherent Didone display +
      Cormorant body + tracked sans labels = Vogue/Harper's luxury system.
      display = ALL big display moments (titles, wordmark, anchors) — ONE Didone
@@ -143,7 +143,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
   filter:drop-shadow(0 1px 2px rgba(0,0,0,.9)) drop-shadow(0 0 6px rgba(0,0,0,.5));letter-spacing:.01em}
 /* ===== BODY — editorial chapters, the page breathing like a film ===== */
-.stat span{font-family:var(--font-label);font-size:calc(var(--xs) * .86);letter-spacing:.36em;text-transform:uppercase;color:rgba(232,210,158,.92);font-weight:400;text-shadow:0 1px 3px rgba(0,0,0,.85)}
+.stat span{font-family:var(--font-label);font-size:var(--xxs);letter-spacing:.36em;text-transform:uppercase;color:rgba(232,210,158,.92);font-weight:400;text-shadow:0 1px 3px rgba(0,0,0,.85)}
 /* THE PRICE — the one number that sells the house. Larger, brighter, its own weight. */
 .stat.price{flex:1.25 1 0}
 .stat.price b{font-size:clamp(1.9rem,3.1vw,3rem);
@@ -176,7 +176,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .prose > *{position:relative;z-index:1}
 .prose p{font-family:var(--font-body);font-weight:300;font-size:clamp(1.15rem,1.7vw,1.4rem);line-height:1.78;color:var(--cream-dim);margin:0 0 1.5rem;text-wrap:pretty}
 .prose .turn{color:var(--cream);font-style:italic;font-size:clamp(1.3rem,2vw,1.7rem);line-height:1.5;margin:2.2rem 0}
-.prose .cite-line{font-family:var(--font-chapter);font-size:calc(var(--xs)*.92);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.78;margin-top:.4rem}
+.prose .cite-line{font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.78;margin-top:.4rem}
 
 /* THE PAGE PROVENANCE — clean black ground. The handwriting lives ONLY in the
    letter section below, where "the farm" rises out of it (one purposeful moment,
@@ -209,7 +209,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
   max-width:1180px;margin:0 auto;padding:clamp(2rem,5vh,4rem) var(--pad);background:transparent}
 .split > *{position:relative;z-index:1}
 .split .fig img{width:100%;height:auto;display:block;filter:saturate(.92)}
-.split .fig figcaption{font-family:var(--font-chapter);font-size:calc(var(--xs)*.9);letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);margin-top:.9rem;text-align:left}
+.split .fig figcaption{font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);margin-top:.9rem;text-align:left}
 .split .body{text-align:left}
 .split .body p{font-family:var(--font-body);font-weight:300;font-size:clamp(1.1rem,1.5vw,1.3rem);line-height:1.74;color:var(--cream-dim);margin:0 0 1.3rem}
 .provenance .split .body p{color:#ece7df}
@@ -285,7 +285,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
   line-height:1.78;color:var(--cream);max-width:46ch;margin:2.4rem auto 0;text-shadow:0 1px 14px rgba(0,0,0,.7)}
 .letter .turn2{display:block;font-family:var(--font-display);font-style:italic;color:var(--cream);
   font-size:clamp(1.3rem,2vw,1.7rem);line-height:1.5;margin:2.2rem auto 0;max-width:32ch}
-.letter .cite-line{font-family:var(--font-chapter);font-size:calc(var(--xs)*.92);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.78;margin-top:1.2rem}
+.letter .cite-line{font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.78;margin-top:1.2rem}
 .letter .cite-src{font-family:var(--font-display);font-style:italic;font-size:var(--sm);color:var(--cream-dim);opacity:.7;margin-top:.35rem}
 /* THE BUILDING — the 1916 archival image behind the words about the house rising (airy, preserve-the-image) */
 .built{position:relative;overflow:hidden;background:var(--ink);text-align:center;padding:clamp(5rem,15vh,10rem) var(--pad)}
@@ -313,7 +313,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .thennow .tn{margin:0}
 .thennow .tn img{width:100%;height:clamp(220px,38vh,440px);object-fit:cover;display:block}
 .thennow .tn:first-child img{filter:none}
-.thennow .tn figcaption{font-family:var(--font-chapter);font-size:calc(var(--xs)*.9);letter-spacing:.24em;text-transform:uppercase;color:var(--cream-dim);margin-top:.9rem;text-align:center}
+.thennow .tn figcaption{font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.24em;text-transform:uppercase;color:var(--cream-dim);margin-top:.9rem;text-align:center}
 .thennow-line{background:var(--ink);text-align:center;padding:clamp(1.4rem,3vh,2.2rem) var(--pad) clamp(4rem,9vh,6rem)}
 .thennow-line p{font-family:var(--font-display);font-weight:300;font-style:italic;
   font-size:clamp(1.3rem,2.2vw,1.8rem);color:var(--cream);margin:0;line-height:1.4}
@@ -321,7 +321,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 
 /* SOURCES — gallery-placard attribution + backlink engine (cite without footnote clutter) */
 .sources{background:var(--ink);text-align:center;padding:clamp(1rem,2.5vh,1.6rem) var(--pad) clamp(4rem,9vh,6rem);max-width:860px;margin:0 auto}
-.sources .lead{font-family:var(--font-chapter);font-size:calc(var(--xs)*.92);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);opacity:.72;margin-bottom:1.1rem}
+.sources .lead{font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);opacity:.72;margin-bottom:1.1rem}
 .sources .srcs{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.4rem}
 .sources .srcs a{font-family:var(--font-display);font-size:clamp(.95rem,1.3vw,1.12rem);color:var(--cream-dim);text-decoration:none;border-bottom:1px solid var(--gold-soft);padding-bottom:.15em;transition:color .3s}
 .sources .srcs a:hover{color:var(--cream)}
@@ -338,7 +338,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .rm-cap{position:absolute;left:0;right:0;bottom:clamp(2.2rem,6vh,4.5rem);z-index:3;text-align:center;padding:0 var(--pad)}
 .rm-cap .rm{display:block;font-family:var(--font-chapter);font-size:clamp(.78rem,1.1vw,.95rem);letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;text-shadow:0 2px 14px rgba(0,0,0,.8)}
 .rm-cap .det{font-family:var(--font-display);font-style:italic;font-weight:300;font-size:clamp(1.3rem,2.4vw,2rem);line-height:1.4;color:var(--cream);margin:0 auto;max-width:760px;text-shadow:0 2px 18px rgba(0,0,0,.75)}
-.rm-cap .flow{display:block;margin-top:1rem;font-family:var(--font-chapter);font-size:clamp(.62rem,.8vw,.72rem);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.9;text-shadow:0 1px 10px rgba(0,0,0,.9)}
+.rm-cap .flow{display:block;margin-top:1rem;font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.9;text-shadow:0 1px 10px rgba(0,0,0,.9)}
 .rm-dots{position:absolute;bottom:1.2rem;left:0;right:0;z-index:3;display:flex;justify-content:center;gap:.5rem}
 .rm-dots i{width:6px;height:6px;border-radius:50%;background:rgba(245,240,232,.35);transition:background .4s}
 .rm-dots i.on{background:var(--gold)}
@@ -354,7 +354,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .rm-split-text{display:flex;flex-direction:column;justify-content:center;padding:clamp(2rem,5vw,4.5rem)}
 .rm-split-text .rm{font-family:var(--font-chapter);font-size:clamp(.78rem,1vw,.92rem);letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
 .rm-split-text .det{font-family:var(--font-display);font-weight:300;font-size:clamp(1.3rem,1.9vw,1.7rem);line-height:1.5;color:var(--cream);margin:0}
-.rm-split-text .flow{margin-top:1.4rem;font-family:var(--font-chapter);font-size:clamp(.62rem,.8vw,.72rem);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.85}
+.rm-split-text .flow{margin-top:1.4rem;font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.85}
 @media(max-width:760px){.rm-split,.rm-split.flip{grid-template-columns:1fr}.rm-split-media{min-height:300px;order:1!important}.rm-split-text{order:2!important;text-align:center;padding:2.4rem var(--pad)}}
 
 /* FULL-BLEED grounds moment */
@@ -391,7 +391,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:.7rem .9rem;font-family:var(--font-label);font-size:var(--xs);letter-spacing:.2em;text-transform:uppercase;color:var(--cream);background:linear-gradient(to top,rgba(10,10,10,.85),transparent);opacity:0;transition:opacity .4s}
 .grid figure:hover figcaption{opacity:1}
 @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.grid figure.wide{grid-column:span 2;grid-row:span 1}}
-@media(max-width:600px){.grid{gap:5px}.grid img{aspect-ratio:1/1}.grid figure.wide img{aspect-ratio:2/1}.grid figcaption{opacity:1;font-size:.55rem}}
+@media(max-width:600px){.grid{gap:5px}.grid img{aspect-ratio:1/1}.grid figure.wide img{aspect-ratio:2/1}.grid figcaption{opacity:1;font-size:var(--xxs)}}
 
 /* PLANS — quiet utility */
 .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;max-width:1100px;margin:0 auto clamp(3rem,7vh,5rem);padding:0 var(--pad)}
