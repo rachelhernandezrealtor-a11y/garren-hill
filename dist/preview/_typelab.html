@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Garran Hill — Type Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Cinzel:wght@400;500&family=Instrument+Sans:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,400&family=Jost:wght@300;400;500&family=Marcellus&family=EB+Garamond:ital@0;1&family=Outfit:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a0a0a;--cream:#F5F0E8;--cream-dim:rgba(245,240,232,.8);--gold:#b89863;
+  /* modular scale, ratio 1.333 (perfect fourth), base 1.15rem — LEGIBLE FLOOR built in */
+  --t-xs:.78rem;   /* labels never smaller than this */
+  --t-sm:1rem;
+  --t-base:1.18rem;
+  --t-md:clamp(1.4rem,2.2vw,1.95rem);
+  --t-lg:clamp(2.2rem,4vw,3.6rem);
+  --t-xl:clamp(3rem,6vw,5.6rem);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#060606;color:var(--cream);font-family:'Instrument Sans',sans-serif}
+.note{max-width:760px;margin:0 auto;padding:48px 24px 8px;text-align:center}
+.note h1{font-family:'Playfair Display',serif;font-weight:500;font-size:2rem;letter-spacing:-.01em}
+.note p{color:var(--cream-dim);font-size:1rem;line-height:1.7;margin-top:14px}
+.sys-label{max-width:1100px;margin:60px auto 0;padding:0 24px;display:flex;align-items:center;gap:18px}
+.sys-label .n{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.sys-label .d{color:rgba(245,240,232,.55);font-size:.92rem}
+.sys-label .line{flex:1;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+
+/* the stage — a real photo with type laid in its negative space */
+.stage{max-width:1100px;margin:18px auto;position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:2px}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stage .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.82) 0%,rgba(6,6,6,.25) 42%,transparent 65%)}
+.stage .lay{position:absolute;left:0;right:0;bottom:0;padding:clamp(1.6rem,4vw,3.2rem);z-index:2}
+.eyebrow{font-size:var(--t-xs);letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;font-family:'Instrument Sans',sans-serif}
+.addr{font-size:var(--t-xs);letter-spacing:.24em;text-transform:uppercase;color:rgba(245,240,232,.82);margin-bottom:.6rem;font-family:'Instrument Sans',sans-serif}
+.lede{margin-top:1rem;max-width:34ch;font-size:var(--t-md);line-height:1.42}
+
+/* a prose card under each, to test body legibility at the locked sizes */
+.prose{max-width:760px;margin:0 auto;padding:26px 24px 8px}
+.prose .k{font-size:var(--t-xs);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.prose .ttl{font-size:var(--t-lg);line-height:1.1;margin-bottom:1.1rem}
+.prose p{font-size:var(--t-base);line-height:1.8;color:var(--cream-dim);max-width:62ch}
+.prose .turn{font-style:italic;color:var(--gold)}
+
+/* ============ SYSTEM A — Playfair Didone + Cormorant body (textbook luxury) ============ */
+.A .name{font-family:'Playfair Display',serif;font-weight:500;font-size:var(--t-xl);line-height:1.04;letter-spacing:-.01em}
+.A .lede{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;color:var(--cream)}
+.A .ttl{font-family:'Playfair Display',serif;font-weight:500}
+.A p{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.28rem}
+
+/* ============ SYSTEM B — Fraunces (warm modern serif) + Jost sans ============ */
+.B .name{font-family:'Fraunces',serif;font-weight:400;font-size:var(--t-xl);line-height:1.02;letter-spacing:-.015em}
+.B .eyebrow,.B .addr,.B .k{font-family:'Jost',sans-serif}
+.B .lede{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--cream)}
+.B .ttl{font-family:'Fraunces',serif;font-weight:400}
+.B p{font-family:'Jost',sans-serif;font-weight:300;font-size:1.12rem;line-height:1.85}
+
+/* ============ SYSTEM C — Marcellus (Roman inscriptional) + EB Garamond ============ */
+.C .name{font-family:'Marcellus',serif;font-weight:400;font-size:var(--t-xl);line-height:1.06;letter-spacing:.01em}
+.C .eyebrow,.C .addr,.C .k{font-family:'Outfit',sans-serif}
+.C .lede{font-family:'EB Garamond',serif;font-style:italic;color:var(--cream)}
+.C .ttl{font-family:'Marcellus',serif}
+.C p{font-family:'EB Garamond',serif;font-size:1.22rem}
+</style></head>
+<body>
+
+<div class="note">
+  <h1>Garran Hill · Type Lab</h1>
+  <p>Three complete type systems, each laid over the real photography at locked, legible sizes. Nothing here is smaller than the readable floor. Pick the one whose voice feels most like the house, or tell me to mix two. We lock it as the spine, then every section inherits it.</p>
+</div>
+
+<!-- SYSTEM A -->
+<div class="sys-label"><span class="n">System A</span><span class="line"></span><span class="d">Playfair Display + Cormorant — textbook editorial luxury (Vogue / Harper's)</span></div>
+<div class="stage A">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/c_fill,w_1400,h_788,q_auto:good,f_auto/v1781200928/garran-hill/photos/001-front-exterior.jpg" alt="">
+  <div class="scrim"></div>
+  <div class="lay">
+    <div class="addr">200 Hollycrest Drive · Pinehurst, North Carolina</div>
+    <div class="name">Garran Hill</div>
+    <div class="lede">Some houses are built for arrival. Garran Hill was built for return.</div>
+  </div>
+</div>
+<div class="prose A">
+  <div class="k">The Page Provenance</div>
+  <div class="ttl">Before Garran Hill was an estate, it was an intention.</div>
+  <p>In 1913 Walter Hines Page bought a thousand acres of Moore County pine and named it Garran Hill. From London, where he served as ambassador, he wrote home about it constantly. <span class="turn">The farm, the farm, the farm.</span> He sent his son Ralph to build it, and asked only to hear of it at every turn.</p>
+</div>
+
+<!-- SYSTEM B -->
+<div class="sys-label"><span class="n">System B</span><span class="line"></span><span class="d">Fraunces + Jost — warm modern serif, a softer contemporary luxury</span></div>
+<div class="stage B">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/c_fill,w_1400,h_788,q_auto:good,f_auto/v1781200940/garran-hill/photos/009-portico.jpg" alt="">
+  <div class="scrim"></div>
+  <div class="lay">
+    <div class="addr">200 Hollycrest Drive · Pinehurst, North Carolina</div>
+    <div class="name">Garran Hill</div>
+    <div class="lede">Some houses are built for arrival. Garran Hill was built for return.</div>
+  </div>
+</div>
+<div class="prose B">
+  <div class="k">The Page Provenance</div>
+  <div class="ttl">Before Garran Hill was an estate, it was an intention.</div>
+  <p>In 1913 Walter Hines Page bought a thousand acres of Moore County pine and named it Garran Hill. From London, where he served as ambassador, he wrote home about it constantly. <span class="turn">The farm, the farm, the farm.</span> He sent his son Ralph to build it, and asked only to hear of it at every turn.</p>
+</div>
+
+<!-- SYSTEM C -->
+<div class="sys-label"><span class="n">System C</span><span class="line"></span><span class="d">Marcellus + EB Garamond — Roman inscriptional, carved-in-stone heritage</span></div>
+<div class="stage C">
+  <img src="https://res.cloudinary.com/dghn2xpif/image/upload/c_fill,w_1400,h_788,q_auto:good,f_auto/v1781200932/garran-hill/photos/004-side-view.jpg" alt="">
+  <div class="scrim"></div>
+  <div class="lay">
+    <div class="addr">200 Hollycrest Drive · Pinehurst, North Carolina</div>
+    <div class="name">Garran Hill</div>
+    <div class="lede">Some houses are built for arrival. Garran Hill was built for return.</div>
+  </div>
+</div>
+<div class="prose C">
+  <div class="k">The Page Provenance</div>
+  <div class="ttl">Before Garran Hill was an estate, it was an intention.</div>
+  <p>In 1913 Walter Hines Page bought a thousand acres of Moore County pine and named it Garran Hill. From London, where he served as ambassador, he wrote home about it constantly. <span class="turn">The farm, the farm, the farm.</span> He sent his son Ralph to build it, and asked only to hear of it at every turn.</p>
+</div>
+
+<div style="height:80px"></div>
+</body></html>
