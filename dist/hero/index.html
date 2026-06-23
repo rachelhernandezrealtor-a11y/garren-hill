@@ -76,18 +76,22 @@ body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
 
 /* ===== THE STAT BAND — crest is the crowned jewel parting it ===== */
 .belt{position:absolute;left:0;right:0;bottom:0;z-index:4;display:flex;flex-direction:column;justify-content:flex-end;
-  padding:9vh clamp(1.4rem,5vw,5rem) clamp(2rem,4vh,3.2rem);
+  padding:9vh clamp(1.4rem,5vw,5rem) clamp(2.4rem,4.5vh,3.6rem);
   background:linear-gradient(to bottom,transparent 0%,rgba(8,8,7,.0) 22%,rgba(8,8,7,.5) 52%,rgba(8,8,7,.86) 78%,rgba(8,8,7,.97) 100%)}
 .belt-rule{position:relative;z-index:2;height:1px;width:min(560px,72%);margin:0 auto;transform-origin:center;
   background:linear-gradient(90deg,transparent,var(--gold-soft) 22%,var(--gold) 50%,var(--gold-soft) 78%,transparent)}
 /* ONE tight centered constellation: [2 stats] CREST(+2 under) [2 stats], air on the OUTSIDE */
 
-.belt-seat{position:absolute;left:50%;bottom:clamp(1.4rem,3vh,2.4rem);transform:translateX(-50%);
-  width:min(880px,90%);height:clamp(150px,22vh,210px);z-index:0;pointer-events:none;
-  border-radius:50% / 46%;
-  background:radial-gradient(ellipse 64% 92% at 50% 42%,#070706 0%,#070706 40%,rgba(7,7,6,.9) 58%,rgba(7,7,6,.55) 76%,rgba(7,7,6,.2) 90%,transparent 100%);
-  box-shadow:inset 0 0 60px 10px rgba(0,0,0,.7), 0 0 0 1px rgba(184,152,99,.07);
-  filter:blur(.4px)}
+.belt-seat{position:absolute;left:0;right:0;bottom:0;z-index:0;pointer-events:none;
+  height:clamp(210px,32vh,320px);
+  /* grounded lower-third shelf: bleeds edge-to-edge to the frame, darkest at the base */
+  background:
+    linear-gradient(to bottom,transparent 0%,rgba(7,7,6,.35) 22%,rgba(7,7,6,.72) 52%,rgba(7,7,6,.93) 78%,#070706 100%),
+    radial-gradient(ellipse 56% 130% at 50% 96%,rgba(7,7,6,.6) 0%,transparent 70%)}
+/* a faint gold horizon hairline where the shelf meets the film — the seam, intentional */
+.belt-seat::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:min(760px,86%);height:1px;
+  background:linear-gradient(90deg,transparent,rgba(184,152,99,.28) 30%,rgba(184,152,99,.42) 50%,rgba(184,152,99,.28) 70%,transparent)}
 .belt-row{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;
   gap:clamp(2rem,4.5vw,4.2rem);margin-top:clamp(1.4rem,3vh,2.2rem);max-width:1180px;margin-inline:auto}
 .belt-side{position:relative;z-index:4;display:flex;align-items:center;justify-content:center;gap:clamp(1.4rem,2.8vw,2.6rem);flex:1 1 0;max-width:340px}
