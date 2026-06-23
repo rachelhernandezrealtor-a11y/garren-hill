@@ -1,0 +1,156 @@
+/* ============================================================================
+   RACHEL STUDIO -- THE SPINE  -  v2  -  design system for single-property sites
+   ----------------------------------------------------------------------------
+   ONE locked system every property inherits. Kills font sprawl + illegibility
+   by definition: sections compose from tokens, they never invent their own.
+
+   Governed by MANIFESTO.md (Vogue with an edge) + luxury-property-taste-codex.
+   v2 changes (Rachel, 2026-06-22):
+     - Display layer unified on ONE Didone (Playfair Display) + Cormorant body
+       + tracked sans labels. Codex: this jumped a build 6.5 -> 8.5. Kills the
+       "fonts don't match" / five-fonts-fighting failure.
+     - LEGIBLE FLOORS on every type token. Rachel: "some of the font is way too
+       small." Minimums in rem so nothing collapses on mobile.
+     - Liquid-gold (manifesto #3): multi-stop + specular band, clip to text.
+
+   PERSONALIZATION SEAM (each house its own face): the spine defines ROLES; each
+   property fills --font-signature with its own period font, e.g.:
+       :root{ --font-signature:'Mr De Haviland', cursive; }   (Garran Hill)
+   ========================================================================== */
+
+:root{
+  /* ---- PALETTE ---- */
+  --ink:#0a0a0a;            /* near-black ground (warm, not pure black) */
+  --ink-2:#141312;
+  --cream:#F5F0E8;          /* primary light text */
+  --cream-dim:rgba(245,240,232,.78);   /* body on dark -- floor for legibility */
+  --whisper:rgba(245,240,232,.5);
+  --gold:#b89863;           /* the single accent */
+  --gold-soft:rgba(184,152,99,.5);
+  --gold-hi:#ecd9a6;
+  /* liquid gold leaf -- multi-stop with a near-white specular band mid-glyph */
+  --gold-grad:linear-gradient(176deg,#a8854f 0%,#cdb478 26%,#f6e9c2 50%,#cbb077 70%,#9c7e49 100%);
+
+  /* ---- TYPE ROLES ---- */
+  --font-display:'Playfair Display',Georgia,serif;     /* Didone -- names, titles, headlines */
+  --font-body:'Cormorant Garamond',Georgia,serif;      /* prose, leads -- shares thick/thin DNA */
+  --font-label:'Instrument Sans',system-ui,sans-serif; /* eyebrows, nav, stats, UI */
+  --font-accent:'Cinzel',Georgia,serif;                /* est. marks, chapter numerals */
+  --font-signature:'Playfair Display',serif;           /* DEFAULT -- property overrides */
+
+  /* ---- TYPE SCALE (clamp: floor / fluid / ceiling -- floors keep it LEGIBLE) ---- */
+  --t-xs:clamp(.72rem,.8vw,.8rem);      /* labels/eyebrows -- floor .72rem (was too small) */
+  --t-sm:clamp(.95rem,1.1vw,1.05rem);   /* captions, small body -- floor .95rem */
+  --t-base:clamp(1.12rem,1.25vw,1.3rem);/* body -- floor 1.12rem, never below */
+  --t-md:clamp(1.5rem,2.2vw,2rem);      /* subheads, lead lines */
+  --t-lg:clamp(2.1rem,3.8vw,3.6rem);    /* section titles */
+  --t-xl:clamp(3rem,6vw,5.6rem);        /* large display */
+  --t-hero:clamp(3.6rem,9vw,8.5rem);    /* hero name */
+  --lh-tight:1.08;  --lh-snug:1.22;  --lh-body:1.78;
+
+  /* ---- SPACING ---- */
+  --pad:clamp(1.5rem,5vw,5.5rem);
+  --gap:clamp(1rem,2.5vw,2.4rem);
+  --section-y:clamp(4.5rem,12vh,9rem);
+
+  /* ---- MOTION ---- */
+  --ease:cubic-bezier(.16,1,.3,1);
+  --ease-soft:cubic-bezier(.33,1,.68,1);
+  --dur-fast:.13s; --dur:.9s; --dur-slow:1.6s;   /* hover ~130ms per codex */
+
+  --rule:1px solid rgba(184,152,99,.18);
+}
+
+/* ---- reset ---- */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
+  font-weight:400;font-size:var(--t-base);line-height:var(--lh-body);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:var(--gold);text-decoration:none;transition:color var(--dur-fast) var(--ease)}
+::selection{background:var(--gold);color:var(--ink)}
+
+/* ---- TYPE PRIMITIVES (compose, never reinvent) ---- */
+.s-eyebrow{font-family:var(--font-label);font-size:var(--t-xs);font-weight:500;
+  letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.s-accent{font-family:var(--font-accent);letter-spacing:.14em;text-transform:uppercase}
+.s-display{font-family:var(--font-display);font-weight:500;line-height:var(--lh-tight);
+  letter-spacing:-.01em}                       /* Didone display -- tracking tightens at size */
+.s-title{font-family:var(--font-display);font-weight:500;font-size:var(--t-lg);
+  line-height:var(--lh-snug);letter-spacing:-.01em;color:var(--cream)}
+.s-body{font-family:var(--font-body);font-weight:400;font-size:var(--t-base);
+  line-height:var(--lh-body);color:var(--cream-dim);max-width:62ch}
+.s-lead{font-family:var(--font-body);font-style:italic;font-weight:400;font-size:var(--t-md);
+  line-height:1.5;color:var(--cream)}
+.s-turn{color:var(--gold);font-style:italic}
+.s-signature{font-family:var(--font-signature);font-weight:400;line-height:1.45;
+  padding-block:.16em;overflow:visible}   /* tall script caps need room -- never clip ascenders */
+
+/* liquid gold leaf -- clip the metallic gradient to the glyphs (manifesto #3) */
+.s-gold{background-image:var(--gold-grad);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.55))}
+
+/* bespoke drop-cap for "writing to the photo" prose openings (manifesto #2,#3) */
+.s-dropcap::first-letter{font-family:var(--font-display);font-weight:600;
+  float:left;font-size:3.4em;line-height:.78;padding:.05em .12em 0 0;
+  background-image:var(--gold-grad);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent}
+
+/* ---- LAYOUT PRIMITIVES ---- */
+.s-section{padding:var(--section-y) var(--pad);position:relative}
+.s-wrap{max-width:1180px;margin:0 auto}
+.s-center{text-align:center}
+.s-measure{max-width:46ch;margin-inline:auto}
+.s-seam{width:64px;height:1px;margin:1.4rem auto 0;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+
+/* full-bleed cinematic photo section -- the DEFAULT primitive (manifesto #2) */
+.s-fullbleed{position:relative;min-height:92vh;display:grid;place-items:center;
+  overflow:hidden;background:var(--ink)}
+.s-fullbleed > img,.s-fullbleed > video{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;z-index:0}
+.s-fullbleed .s-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 80% 70% at 50% 60%,transparent 0%,rgba(8,8,7,.55) 100%)}
+.s-fullbleed .s-content{position:relative;z-index:2;text-align:center;padding:var(--pad)}
+/* soft seams so full-bleed sections meld into the dark, never hard-cut */
+.s-fullbleed::before,.s-fullbleed::after{content:"";position:absolute;left:0;right:0;
+  height:14vh;z-index:1;pointer-events:none}
+.s-fullbleed::before{top:0;background:linear-gradient(to bottom,var(--ink),transparent)}
+.s-fullbleed::after{bottom:0;background:linear-gradient(to top,var(--ink),transparent)}
+
+/* chapter marker */
+.s-chapter{text-align:center;padding:var(--section-y) var(--pad) clamp(1rem,3vh,2rem)}
+.s-chapter .num{font-family:var(--font-accent);font-size:var(--t-xs);letter-spacing:.4em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem}
+.s-chapter .ttl{font-family:var(--font-display);font-weight:500;
+  font-size:var(--t-lg);color:var(--cream);line-height:var(--lh-snug);letter-spacing:-.01em}
+
+/* ---- MOTION HOOKS (paired with spine.js; degrade gracefully if JS off) ---- */
+html.s-anim [data-reveal]{opacity:0;transform:translateY(30px)}
+html.s-anim [data-reveal="left"]{transform:translateX(-40px)}
+html.s-anim [data-reveal="right"]{transform:translateX(40px)}
+html.s-anim [data-reveal="scale"]{transform:scale(.96)}
+@media (prefers-reduced-motion:reduce){
+  html.s-anim [data-reveal]{opacity:1!important;transform:none!important}
+}
+
+/* ---- FILM GRAIN (optional via body.s-grain) ---- */
+body.s-grain::after{content:"";position:fixed;inset:-50%;width:200%;height:200%;
+  pointer-events:none;z-index:9998;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:s-grain 8s steps(10) infinite}
+@keyframes s-grain{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-10%)}
+  30%{transform:translate(3%,-15%)}50%{transform:translate(12%,9%)}
+  70%{transform:translate(9%,4%)}90%{transform:translate(-1%,7%)}}
+@media (prefers-reduced-motion:reduce){body.s-grain::after{animation:none}}
+
+/* ---- GOLD CURSOR (desktop, optional via body.s-cursor) ---- */
+@media (pointer:fine){
+  body.s-cursor{cursor:none}
+  .s-cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;
+    background:var(--gold);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
+    transition:width .25s,height .25s,opacity .25s;mix-blend-mode:difference}
+  .s-cursor-dot.grow{width:42px;height:42px;opacity:.55}
+}

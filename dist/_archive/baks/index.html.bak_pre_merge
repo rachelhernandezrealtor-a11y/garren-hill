@@ -46,7 +46,7 @@ section img,.fullbleed img,.reveal img{max-width:100%}
   --font-script:'Edwardian','Mr De Haviland',cursive;
   /* hero tunables */
   --belt-gap:6.5rem; --belt-low:2.6rem; --num-size:1.7rem;
-  --crest-w:210px; --crest-drop:0rem; --wm-size:clamp(5.4rem,16vw,13rem);
+  --crest-w:210px; --crest-drop:0rem; --wm-size:clamp(2.4rem,9vw,7.4rem);
 }
 /* SPINE v1 — keep long-form reading prose on the body face (Cormorant) for legibility;
    only big display moments ride the Didone (--font-display=Playfair). */
@@ -112,7 +112,9 @@ nav .links a.cta{color:var(--gold);opacity:1}
 /* the eyebrow + wordmark sit in the upper-mid, leaving the very top open for the future video */
 .hero-inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(5rem,11vh,7rem) var(--pad) clamp(4rem,9vh,6rem)}
 /* soft focal scrim behind the title block so it reads over bright footage, without darkening the whole video */
-
+.hero-inner::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:-1;pointer-events:none;
+  width:min(96vw,1100px);height:min(72vh,620px);
+  background:radial-gradient(ellipse at center,rgba(8,8,7,.62) 0%,rgba(8,8,7,.38) 42%,transparent 74%)}
 .hero-eyebrow{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.42em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:2.8rem;text-shadow:0 1px 12px rgba(0,0,0,.85)}
 .wordmark{font-family:var(--font-script);font-weight:400;font-size:var(--wm-size);line-height:.9;color:var(--cream);
   text-shadow:none;margin:.2rem 0}
@@ -492,55 +494,6 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .wm-draw.animate .wm-ink{animation:none}
 @keyframes wmfill{to{fill-opacity:1}}
 
-
-/* ===== FLOOR PLANS (created — was missing in preview) ===== */
-.plans-wrap{max-width:1280px;margin:0 auto;padding:0 var(--pad)}
-.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
-.plans-grid figure{margin:0}
-.plans-grid img{width:100%;background:#fff;border:1px solid rgba(201,169,110,.2);display:block;transition:transform 1s cubic-bezier(.16,1,.3,1)}
-.plans-grid figure:hover img{transform:scale(1.02)}
-.plans-grid figcaption{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.24em;text-transform:uppercase;color:var(--cream-dim,rgba(245,240,232,.7));margin-top:.9rem;text-align:center}
-/* ===== INQUIRY (created — was missing in preview) ===== */
-.inquiry{max-width:640px;margin:0 auto;padding:clamp(3rem,8vh,6rem) var(--pad);text-align:center}
-.inquiry .eyebrow{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:block}
-.inquiry h2{font-family:var(--font-display);font-weight:500;font-size:clamp(1.8rem,3.4vw,2.9rem);line-height:1.2;color:var(--cream);margin:0 0 .5em}
-.inquiry h2 em{font-style:italic;color:var(--gold)}
-.inquiry .sub{font-family:var(--font-body);font-style:italic;font-size:var(--sm);color:var(--cream-dim,rgba(245,240,232,.72));margin-bottom:2.4rem}
-.inquiry form{display:flex;flex-direction:column;gap:1rem;max-width:440px;margin:0 auto;text-align:left}
-.inquiry input,.inquiry textarea{background:rgba(255,255,255,.03);border:1px solid rgba(201,169,110,.28);color:var(--cream);font-family:var(--font-body);font-size:1.05rem;padding:.9rem 1.1rem;border-radius:2px;transition:border-color .3s}
-.inquiry input:focus,.inquiry textarea:focus{outline:none;border-color:var(--gold)}
-.inquiry textarea{min-height:120px;resize:vertical}
-.inquiry button{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.26em;text-transform:uppercase;color:var(--ink);background:var(--gold);border:none;padding:1.1rem;cursor:pointer;border-radius:2px;transition:background .3s,transform .3s;margin-top:.4rem}
-.inquiry button:hover{background:#d9bd82;transform:translateY(-1px)}
-.inquiry .conf{font-family:var(--font-body);font-style:italic;font-size:.95rem;color:var(--cream-dim,rgba(245,240,232,.6));margin-top:1.4rem}
-.inquiry .agent{margin-top:2.4rem;font-family:var(--font-body);color:var(--cream)}
-.inquiry .agent small{display:block;font-family:var(--font-label);font-size:var(--xs);letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim,rgba(245,240,232,.6));margin-top:.5rem}
-/* ===== FOOTER + CITATIONS (created — was missing in preview) ===== */
-.gh-footer{border-top:1px solid rgba(201,169,110,.14);padding:clamp(2.4rem,6vh,4rem) var(--pad) 1.4rem;text-align:center}
-.gh-footer .addr{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.26em;text-transform:uppercase;color:rgba(245,240,232,.5);margin-bottom:1.6rem}
-.gh-footer .srcline{font-family:var(--font-body);font-style:italic;font-size:.95rem;color:rgba(245,240,232,.55);max-width:680px;margin:0 auto 1.2rem;line-height:1.7}
-.gh-footer .srcline a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,169,110,.3)}
-.gh-footer .copy{font-family:var(--font-label);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,240,232,.34);margin-top:1.6rem}
-
-
-/* ===== HERO CRAFT — gold engraved frame draws on, focal scrim, scroll cue (campaign-tier) ===== */
-.hero-frame{position:absolute;inset:0;z-index:3;pointer-events:none}
-.hero-frame svg{position:absolute;inset:0;width:100%;height:100%}
-.hero-frame rect{fill:none;stroke:url(#ghfg);stroke-width:1.3}
-.hero-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(ellipse 64% 50% at 50% 40%,rgba(8,8,7,.5) 0%,rgba(8,8,7,.16) 46%,transparent 66%),
-   linear-gradient(180deg,rgba(8,8,7,.4) 0%,transparent 20%,transparent 60%,rgba(8,8,7,.78) 100%)}
-.hero-cue{position:absolute;left:50%;bottom:clamp(1.6rem,4vh,2.6rem);transform:translateX(-50%);z-index:4;
-  width:1px;height:38px;background:linear-gradient(to bottom,var(--gold),transparent);
-  animation:ghcue 2.6s cubic-bezier(.16,1,.3,1) infinite}
-@keyframes ghcue{0%,100%{transform:translateX(-50%) scaleY(.5);opacity:.4;transform-origin:top}50%{transform:translateX(-50%) scaleY(1);opacity:1;transform-origin:top}}
-@media (prefers-reduced-motion:reduce){.hero-frame rect{stroke-dashoffset:0!important}.hero-cue{animation:none}}
-
-
-.hero-inner{position:relative}
-.wordmark{text-shadow:0 2px 40px rgba(8,8,7,.7),0 1px 8px rgba(8,8,7,.6)}
-.hero-eyebrow,.hero-desc{text-shadow:0 1px 18px rgba(8,8,7,.9),0 1px 4px rgba(8,8,7,.8)}
-
 </style><link rel="stylesheet" href="mag-rooms.css">
 </head>
 <body class="s-grain">
@@ -555,15 +508,6 @@ nav .links a.cta{color:var(--gold);opacity:1}
     poster="https://res.cloudinary.com/dghn2xpif/image/upload/q_auto,f_auto/v1782250203/gh_hero_pro/garran_hill_hero_poster_v2.jpg">
     <source src="https://res.cloudinary.com/dghn2xpif/video/upload/q_auto:best,f_auto/v1782250200/gh_hero_pro/garran_hill_hero_loop_v2.mp4" type="video/mp4">
   </video>
-  <div class="hero-scrim"></div>
-  <div class="hero-frame">
-    <svg preserveAspectRatio="none" viewBox="0 0 1000 1000">
-      <defs><linearGradient id="ghfg" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#9c7e49"/><stop offset=".5" stop-color="#f6e9c2"/><stop offset="1" stop-color="#9c7e49"/>
-      </linearGradient></defs>
-      <rect x="20" y="20" width="960" height="960" rx="2"/>
-    </svg>
-  </div>
   <div class="hero-inner">
     <div class="hero-eyebrow">200 Hollycrest Drive &middot; Pinehurst, North Carolina</div>
     <div class="wordmark"><svg class="wm-draw" viewBox="0 -672 8233.4 2414" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-label="Garran Hill">
@@ -571,7 +515,6 @@ nav .links a.cta{color:var(--gold);opacity:1}
 </svg></div>
     <div class="hero-desc">Neo-Georgian Estate &middot; <span class="est-mark">Est. 1916</span> &middot; 110 Years of Provenance</div>
   </div>
-  <div class="hero-cue"></div>
 </header>
 
 <section class="facts">
@@ -818,20 +761,6 @@ nav .links a.cta{color:var(--gold);opacity:1}
 </section>
 
 <!-- EVERY ROOM — the full archive, filterable -->
-
-<div class="chapter-mark">
-  <div class="num">The Plans</div>
-  <div class="ttl">Every room,<br>drawn to scale.</div>
-  <div class="seam"></div>
-</div>
-<div class="plans-wrap" data-gh="reveal">
-  <div class="plans-grid">
-    <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1600,q_auto:good,f_auto/v1/garran-hill/floorplans/137-main-floor.jpg" alt="Garran Hill main floor plan"><figcaption>Main Floor</figcaption></figure>
-    <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1600,q_auto:good,f_auto/v1/garran-hill/floorplans/138-second-floor.jpg" alt="Garran Hill second floor plan"><figcaption>Second Floor</figcaption></figure>
-    <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1600,q_auto:good,f_auto/v1/garran-hill/floorplans/139-basement.jpg" alt="Garran Hill basement plan"><figcaption>Basement</figcaption></figure>
-  </div>
-</div>
-
 <div class="chapter-mark">
   <div class="num">Every Room</div>
   <div class="ttl">The complete archive.</div>
@@ -854,45 +783,6 @@ nav .links a.cta{color:var(--gold);opacity:1}
   <p class="last">200 Hollycrest is the last piece of the original Garran Hill still standing on its own ground.</p>
   <a class="cta" href="#inquiry">Request Private Showing</a>
 </div>
-
-
-<section class="inquiry" id="inquiry">
-  <span class="eyebrow">Available by Private Appointment</span>
-  <h2>Garran Hill is offered now,<br><em>for the first time in a generation.</em></h2>
-  <div class="sub">The question is whether you are ready.</div>
-  <form onsubmit="event.preventDefault();this.querySelector('.conf').textContent='Thank you. Your inquiry has been received in confidence.';">
-    <input type="text" name="name" placeholder="Name" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="tel" name="phone" placeholder="Phone">
-    <textarea name="message" placeholder="Message"></textarea>
-    <button type="submit">Request Private Showing</button>
-    <div class="conf"></div>
-  </form>
-  <div class="agent">Rachel Hernandez<small>Pines Sotheby's International Realty &middot; Southern Pines, North Carolina</small></div>
-</section>
-<footer class="gh-footer">
-  <div class="addr">Garran Hill &middot; 200 Hollycrest Drive &middot; Pinehurst, NC 28374</div>
-  <div class="srcline">History documented and cited: the <a href="/history">full provenance and sources</a> &mdash; Walter Hines Page, the Pinehurst Outlook, the National Park Service, PineStraw, and Westminster Abbey.</div>
-  <div class="copy">&copy; 2026 Pines Sotheby's International Realty &middot; Garran Hill is not simply for sale. It is being entrusted forward.</div>
-</footer>
-
-<script>
-/* hero gold frame draw-on */
-(function(){
-  var r=document.querySelector('.hero-frame rect');
-  if(!r)return;
-  var L=2*(960+960);
-  r.style.strokeDasharray=L;
-  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  if(reduce){r.style.strokeDashoffset=0;return;}
-  r.style.strokeDashoffset=L;
-  requestAnimationFrame(function(){
-    r.style.transition='stroke-dashoffset 2.6s cubic-bezier(.16,1,.3,1) .3s';
-    r.style.strokeDashoffset=0;
-  });
-})();
-</script>
-
 
 <div id="lb"><button class="x" aria-label="Close">&times;</button><button class="pv" aria-label="Previous">&larr;</button><img alt=""><div class="cap"></div><button class="nx" aria-label="Next">&rarr;</button></div>
 
@@ -923,52 +813,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
   });
 })();
 var photos=[
-["001-front-exterior","Front Exterior","exterior"],["002-historic-garran-hill","Garran Hill, then","exterior"],["003-front-aerial","Front Aerial","grounds"],
-["004-side-view","Side View","exterior"],["005-cast-iron-original","Original cast iron","exterior"],["006-front-main","Front Main","exterior"],
-["007-front-exterior","Front Exterior","exterior"],["008-exterior","Exterior","exterior"],["009-portico","Portico","exterior"],
-["010-front-entry","Front Entry","exterior"],["011-entry-hall","Entry Hall","main"],["012-entry-hall","Entry Hall","main"],
-["013-entry-hall","Entry Hall","main"],["014-entry-hall","Entry Hall","main"],["015-drawing-room","Drawing room","main"],
-["016-drawing-room","Drawing room","main"],["017-drawing-room","Drawing room","main"],["018-drawing-room","Drawing room","main"],
-["019-drawing-room","Drawing room","main"],["020-drawing-room","Drawing room","main"],["021-drawing-room","Drawing room","main"],
-["022-drawing-room-french-doors","French doors to the terrace","main"],["023-outdoor-terrace","The brick terrace","grounds"],["024-dining-room","Dining Room","main"],
-["025-dining-room","Dining Room","main"],["026-dining-room","Dining Room","main"],["027-dining-room","Dining Room","main"],
-["028-dining-room","Dining Room","main"],["029-terrace","Terrace","grounds"],["030-dining-room","Dining Room","main"],
-["031-kitchen","Kitchen","main"],["032-kitchen","Kitchen","main"],["033-kitchen","Kitchen","main"],
-["034-kitchen","Kitchen","main"],["035-kitchen","Kitchen","main"],["036-butlers-pantry","Butler's pantry","main"],
-["037-farm-sink","Butler's pantry farm sink","main"],["038-wall-of-windows-kitchen","Kitchen wall of windows","main"],["039-kitchen","Kitchen","main"],
-["040-kitchen","Kitchen","main"],["041-built-in-pantry","Built-in Pantry","main"],["042-kitchen-to-breakfast-room","Kitchen to Breakfast Room","main"],
-["043-breakfast-room","Breakfast Room","main"],["044-breakfast-room","Breakfast Room","main"],["045-breakfast-room","Breakfast Room","main"],
-["046-kitchen","Kitchen","main"],["047-heart-pine-stairs-to-second-level","Heart pine stairs","main"],["048-built-in-desk-and-built-in-hutch","Built-in desk and hutch","main"],
-["049-stairs-to-basement","To the basement","quiet"],["050-door-to-side-porch","To the side porch","grounds"],["051-powder-room","Powder room","quiet"],
-["052-side-porch","Side Porch","grounds"],["053-side-porch-with-sink","Side Porch with sink","grounds"],["054-side-porch-sink","Side Porch Sink","grounds"],
-["055-laundry","Laundry","quiet"],["056-laundry","Laundry","quiet"],["057-hallway","Hallway","quiet"],
-["058-library","Library","quiet"],["059-library","Library","quiet"],["060-library","Library","quiet"],
-["061-library","Library","quiet"],["062-library","Library","quiet"],["063-side-entry","Side Entry","quiet"],
-["064-arched-door","Arched Door","quiet"],["065-powder-room","Powder Room","quiet"],["066-door-to-sitting-room","To the sitting room","quiet"],
-["067-delft-sitting-room","Sitting room, Delft fireplace","quiet"],["068-sitting-room","Sitting Room","quiet"],["069-sitting-room","Sitting Room","quiet"],
-["070-primary-suite","Primary Suite","private"],["071-primary-suite","Primary Suite","private"],["072-primary","Primary","private"],
-["073-primary","Primary","private"],["074-primary","Primary","private"],["075-primary-bathroom","Primary Bathroom","private"],
-["076-primary-bathroom","Primary Bathroom","private"],["077-primary-bathroom","Primary Bathroom","private"],["078-primary-bathroom","Primary Bathroom","private"],
-["079-jacuzzi-tub","Jacuzzi Tub","private"],["080-primary-bathroom","Primary Bathroom","private"],["081-stairs-off-primary-suite","Stairs off the primary","private"],
-["082-primary-shower","Primary Shower","private"],["083-dressing-room","Dressing Room","private"],["084-dressing-room","Dressing Room","private"],
-["085-primary-dressing-room","Primary Dressing Room","private"],["086-second-dressing-room-and-closet","Second dressing room","private"],["087-second-dressing-room-walk-in-closet","Dressing room closet","private"],
-["088-upper-hallway","Upper Hallway","private"],["089-upper-hallway","Upper Hallway","private"],["090-rose-suite","Rose suite","private"],
-["091-rose-suite","Rose suite","private"],["092-rose-suite-full-bathroom","Rose suite bath","private"],["093-rose-suite-full-bathroom","Rose suite bath","private"],
-["094-upper-hallway","Upper Hallway","private"],["095-yellow-bedroom-suite","Yellow suite","private"],["096-yellow-bedroom-suite","Yellow suite","private"],
-["097-yellow-bedroom-suite","Yellow suite","private"],["098-yellow-bedroom-suite-full-bathroom","Yellow suite bath","private"],["099-yellow-bedroom-suite-full-bathroom","Yellow suite bath","private"],
-["100-balcony-access-from-yellow-suite","Balcony access","grounds"],["101-hallway","Hallway","quiet"],["102-red-bedroom-nursery","Red bedroom","private"],
-["103-red-bedroom-nursery","Red bedroom","private"],["104-red-bedroom-nursery","Red bedroom","private"],["105-red-bedroom-nursery","Red bedroom","private"],
-["106-red-bedroom-nursery-full-bathroom","Red bedroom bath","private"],["107-balcony","Balcony","grounds"],["108-balcony","Balcony","grounds"],
-["109-den-spiral-staircase","Den spiral staircase","quiet"],["110-den","Den","quiet"],["111-den","Den","quiet"],
-["112-brick-terrace","Brick Terrace","grounds"],["113-exterior","Exterior","exterior"],["114-exterior","Exterior","exterior"],
-["115-boxwood-herb-garden","Boxwood herb garden","grounds"],["116-exterior","Exterior","exterior"],["117-exterior","Exterior","exterior"],
-["118-grounds","Grounds","grounds"],["119-grounds","Grounds","grounds"],["120-tennis-courts","Tennis Courts","grounds"],
-["121-the-wee-cottage","The Wee Cottage","grounds"],["122-playhouse","Playhouse","grounds"],["123-grounds","Grounds","grounds"],
-["124-pool","Pool","grounds"],["125-pool","Pool","grounds"],["126-pool-brick-wall","Pool garden wall","grounds"],
-["127-pool","Pool","grounds"],["128-grounds","Grounds","grounds"],["129-blue-fox","Blue Fox marker","grounds"],
-["130-grounds","Grounds","grounds"],["131-grounds","Grounds","grounds"],["132-garage","Garage","grounds"],
-["133-garage","Garage","grounds"],["134-aerial","Aerial","grounds"],["135-aerial","Aerial","grounds"],
-["136-4-15-acre-lot","The 4.15 acre lot","grounds"],["140-gated-entrance","Gated Entrance","exterior"]
+["001-front-exterior","Front Exterior","exterior"],["003-front-aerial","Front Aerial","grounds"],["004-side-view","Side View","exterior"],["006-front-main","Front","exterior"],["009-portico","The Portico","exterior"],["010-front-entry","Front Entry","exterior"],["011-entry-hall","Entry Hall","main"],["013-entry-hall","Entry Hall","main"],["015-drawing-room","Drawing Room","main"],["017-drawing-room","Drawing Room","main"],["019-drawing-room","Drawing Room","main"],["020-drawing-room","Drawing Room","main"],["022-drawing-room-french-doors","French doors to the terrace","main"],["024-dining-room","Dining Room","main"],["025-dining-room","Dining Room","main"],["028-dining-room","Dining Room","main"],["031-kitchen","Kitchen","main"],["034-kitchen","Kitchen","main"],["036-butlers-pantry","Butler's Pantry","main"],["037-farm-sink","Farm sink","main"],["042-kitchen-to-breakfast-room","Kitchen to Breakfast Room","main"],["044-breakfast-room","Breakfast Room","main"],["047-heart-pine-stairs-to-second-level","Heart pine stairs","main"],["051-powder-room","Powder Room","quiet"],["057-hallway","Hallway","quiet"],["058-library","Library","quiet"],["060-library","Library","quiet"],["063-side-entry","Side Entry","quiet"],["067-delft-sitting-room","Sitting Room, Delft fireplace","quiet"],["069-sitting-room","Sitting Room","quiet"],["073-primary","Primary Suite","private"],["075-primary-bathroom","Primary Bath","private"],["079-jacuzzi-tub","Primary Bath","private"],["082-primary-shower","Primary Shower","private"],["085-primary-dressing-room","Dressing Room","private"],["090-rose-suite","Rose Suite","private"],["092-rose-suite-full-bathroom","Rose Suite Bath","private"],["095-yellow-bedroom-suite","Yellow Suite","private"],["098-yellow-bedroom-suite-full-bathroom","Yellow Suite Bath","private"],["102-red-bedroom-nursery","Red Bedroom","private"],["106-red-bedroom-nursery-full-bathroom","Red Bedroom Bath","private"],["109-den-spiral-staircase","Den, spiral staircase","quiet"],["110-den","The Den","quiet"],["112-brick-terrace","Brick Terrace","grounds"],["115-boxwood-herb-garden","Boxwood herb garden","grounds"],["120-tennis-courts","Tennis Courts","grounds"],["121-the-wee-cottage","The Wee Cottage","grounds"],["124-pool","Pool","grounds"],["126-pool-brick-wall","Pool garden wall","grounds"],["134-aerial","Aerial","grounds"],["136-4-15-acre-lot","The 4.15 acre lot","grounds"],["140-gated-entrance","Gated Entrance","exterior"]
 ];
 var base="https://res.cloudinary.com/dghn2xpif/image/upload/";
 var grid=document.getElementById('ggrid');
