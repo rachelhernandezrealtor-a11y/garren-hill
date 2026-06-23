@@ -585,3 +585,16 @@ Rachel and Coco are ALWAYS looking at the same thing in the preview. We stay on 
 - BANNED FEELING: "premium template," "nice," "clean," "basic." If a designer would not stop scrolling and say "how did they DO that," it is not done.
 - STILL TRUE: built from REAL artifacts only (no fabricated imagery/hands — NO-AI-IMAGERY law holds). The wow comes from making the REAL thing do something impossible-feeling, not from faking.
 - Coco LEADS the wild idea, builds the bold version by default, verifies with own eyes, brings Rachel something to gasp at — never a safe draft to debug.
+
+## MLS-ORDER IS THE PHOTO AUTHORITY (Rachel, June 23 2026 — reaffirmed for the rebuild)
+For ROOM photo choices and their sequence, Rachel's MLS-ordered set (the Cloudinary
+`mls-order`-tagged photos, garran-hill/photos/NNN) is the AUTHORITY — they are already
+curated and "more or less the right order, some of the better choices for the rooms."
+Coco does NOT re-decide room photos from scratch across the 1,021-image library.
+The full library + Dropbox masters are used for only two things:
+  1. CLARITY UPGRADE: if an MLS pick is a soft/small copy, swap in the higher-res
+     MASTER of the SAME shot (same photo, sharper — never a taste change).
+  2. SHOTS THE MLS SET LACKS: the cinematic-only hero frames (dusk aerial, gate,
+     facade, "GARRAN HILL 1916" stone, flower dissolve) + any detail the rooms need.
+Rachel's eye drives the picks; Coco guarantees full clarity. (Build from her curation,
+not a reinvention — ties to "the answer is already in her files.")
