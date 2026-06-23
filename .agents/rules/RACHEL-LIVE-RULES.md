@@ -598,3 +598,29 @@ The full library + Dropbox masters are used for only two things:
      facade, "GARRAN HILL 1916" stone, flower dissolve) + any detail the rooms need.
 Rachel's eye drives the picks; Coco guarantees full clarity. (Build from her curation,
 not a reinvention — ties to "the answer is already in her files.")
+
+
+## THE EYES-LOOP LAW (Rachel, June 23 2026 — hard law, supersedes any deploy-then-peek habit)
+Coco builds with a FAST LOCAL EYES-LOOP and her OWN stack — never blind, never the slow lane.
+- USE COCO'S OWN BROWSER STACK, not bolt-on MCP render. browser_navigate + browser_console
+  (scroll/inspect computed state) + browser_vision (actually SEE the pixels). The MCP
+  render tool is RETIRED for build verification: it only grabs the top viewport, fires
+  mid-animation, cannot scroll to a section, and floods the app with ~500KB base64 blobs
+  that cause the EPIPE crashes. Rachel: "use your own stack or better ones."
+- FAST LOCAL SERVER, not deploy-and-wait. Serve dist/ locally on 127.0.0.1:8799 so every
+  edit is INSTANT. Do NOT burn the 1-2 min Cloudflare queue on every change — that slow
+  churn is what made Coco build blind and guess. Deploy only when a section is DONE.
+- VERIFY THE RENDERED STATE, not the code or an asset-in-isolation. The June 23 failure:
+  Coco checked the sepia image by loading its URL alone and confirmed the markup existed,
+  but never scrolled into the live Gate section — so she missed that the dissolve fired in
+  122px (instantly skipped past 1916) and the section read wrong. Scroll TO the section,
+  read computed opacity/scroll-range via browser_console, and browser_vision the actual
+  frame BEFORE saying anything is done. Enforces "Coco must not pretend she saw something
+  she did not see."
+- WAIT FOR FULL LOAD before inspecting (htmlLen 39 / 0 children = caught mid-load; re-check
+  after a real load) so a timing artifact is never mistaken for a broken build.
+- DON'T REINVENT WHAT RACHEL ALREADY PERFECTED. The old build's lines are often better than
+  a fresh draft (gate: "Walter Hines Page built it to come home to. The same gate has stood
+  open for 110 years." lives in dist/index.html). Pull her proven copy/treatment from the
+  existing build FIRST, rebuild to THAT, then raise it — never overwrite her good work with
+  a weaker improvisation.
