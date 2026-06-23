@@ -75,13 +75,20 @@ body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
   text-shadow:0 1px 18px rgba(0,0,0,.6)}
 
 /* ===== THE STAT BAND — crest is the crowned jewel parting it ===== */
-.belt{position:absolute;left:0;right:0;bottom:0;z-index:4;
+.belt{position:absolute;left:0;right:0;bottom:0;z-index:4;display:flex;flex-direction:column;justify-content:flex-end;
   padding:9vh clamp(1.4rem,5vw,5rem) clamp(2rem,4vh,3.2rem);
   background:linear-gradient(to bottom,transparent 0%,rgba(8,8,7,.0) 22%,rgba(8,8,7,.5) 52%,rgba(8,8,7,.86) 78%,rgba(8,8,7,.97) 100%)}
-.belt-rule{height:1px;width:min(560px,72%);margin:0 auto;transform-origin:center;
+.belt-rule{position:relative;z-index:2;height:1px;width:min(560px,72%);margin:0 auto;transform-origin:center;
   background:linear-gradient(90deg,transparent,var(--gold-soft) 22%,var(--gold) 50%,var(--gold-soft) 78%,transparent)}
 /* ONE tight centered constellation: [2 stats] CREST(+2 under) [2 stats], air on the OUTSIDE */
-.belt-row{display:flex;align-items:center;justify-content:center;
+
+.belt-seat{position:absolute;left:50%;bottom:clamp(1.4rem,3vh,2.4rem);transform:translateX(-50%);
+  width:min(880px,90%);height:clamp(150px,22vh,210px);z-index:0;pointer-events:none;
+  border-radius:50% / 46%;
+  background:radial-gradient(ellipse 64% 92% at 50% 42%,#070706 0%,#070706 40%,rgba(7,7,6,.9) 58%,rgba(7,7,6,.55) 76%,rgba(7,7,6,.2) 90%,transparent 100%);
+  box-shadow:inset 0 0 60px 10px rgba(0,0,0,.7), 0 0 0 1px rgba(184,152,99,.07);
+  filter:blur(.4px)}
+.belt-row{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;
   gap:clamp(2rem,4.5vw,4.2rem);margin-top:clamp(1.4rem,3vh,2.2rem);max-width:1180px;margin-inline:auto}
 .belt-side{position:relative;z-index:4;display:flex;align-items:center;justify-content:center;gap:clamp(1.4rem,2.8vw,2.6rem);flex:1 1 0;max-width:340px}
 .stat{text-align:center;white-space:nowrap}
@@ -94,10 +101,10 @@ body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
 /* VELVET POOL — real layer, above the photo, below the crest. Seats the jewel on near-black. */
 .crest-wrap .velvet{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   width:260%;height:240%;border-radius:50%;z-index:0;pointer-events:none;
-  background:radial-gradient(circle at center,#060605 0%,rgba(6,6,5,.97) 26%,rgba(6,6,5,.84) 44%,rgba(6,6,5,.5) 60%,rgba(6,6,5,.18) 74%,transparent 86%)}
+  background:radial-gradient(circle at center,rgba(6,6,5,.8) 0%,rgba(6,6,5,.5) 40%,rgba(6,6,5,.2) 62%,transparent 80%)}
 .crest-wrap .velvet-core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   width:150%;height:132%;border-radius:50%;z-index:0;pointer-events:none;
-  background:radial-gradient(circle at center,#050504 0%,#050504 52%,rgba(5,5,4,.92) 66%,rgba(5,5,4,.55) 80%,transparent 92%)}
+  background:radial-gradient(circle at center,rgba(5,5,4,.75) 0%,rgba(5,5,4,.55) 55%,rgba(5,5,4,.25) 78%,transparent 92%)}
 /* luminous gold-white halo just behind the metal */
 .crest-wrap .halo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   width:108%;height:112%;border-radius:50%;z-index:1;pointer-events:none;
@@ -160,6 +167,7 @@ body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
 
   <div class="belt">
     <div class="belt-rule"></div>
+    <div class="belt-seat"></div>
     <div class="belt-row">
       <div class="belt-side"><div class="stat"><div class="stat-v">6,320</div><div class="stat-l">SQUARE FEET</div></div><div class="tick"></div><div class="stat"><div class="stat-v">4.15</div><div class="stat-l">ACRES</div></div></div>
       <div class="crest-wrap">
