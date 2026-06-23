@@ -48,7 +48,7 @@ body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
 .nav{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;
   align-items:center;padding:clamp(1.4rem,3vw,2.4rem) clamp(1.6rem,4vw,3.4rem)}
 .nav .est{font-family:var(--font-accent);font-size:clamp(.66rem,.8vw,.78rem);letter-spacing:.34em;
-  text-transform:uppercase;color:var(--cream-dim)}
+  text-transform:uppercase;color:var(--cream-dim);text-shadow:0 1px 14px rgba(0,0,0,.7)}
 .nav .est b{font-family:var(--font-signature);font-weight:400;font-size:1.7em;color:var(--gold-hi);
   letter-spacing:0;text-transform:none;vertical-align:-.05em;padding:0 .1em}
 .nav .menu{width:42px;height:42px;border:1px solid var(--gold-soft);border-radius:50%;
@@ -68,7 +68,7 @@ body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
   text-shadow:0 2px 30px rgba(0,0,0,.55),0 0 1px rgba(0,0,0,.4);
   }
 .subline{font-family:var(--font-label);font-size:clamp(.6rem,.82vw,.76rem);font-weight:500;
-  letter-spacing:.34em;text-transform:uppercase;color:var(--cream-dim)}
+  letter-spacing:.34em;text-transform:uppercase;color:var(--cream-dim);text-shadow:0 1px 14px rgba(0,0,0,.7)}
 .subline .dot{color:var(--gold-soft);margin:0 .55em}
 .tagline{font-family:var(--font-body);font-style:italic;font-weight:400;
   font-size:clamp(1.15rem,1.9vw,1.7rem);color:var(--cream);margin-top:1.5rem;
@@ -77,7 +77,7 @@ body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
 /* ===== THE STAT BAND — crest is the crowned jewel parting it ===== */
 .belt{position:absolute;left:0;right:0;bottom:0;z-index:4;
   padding:9vh clamp(1.4rem,5vw,5rem) clamp(2rem,4vh,3.2rem);
-  background:linear-gradient(to bottom,transparent 0%,rgba(8,8,7,.0) 26%,rgba(8,8,7,.6) 60%,rgba(8,8,7,.94) 100%)}
+  background:linear-gradient(to bottom,transparent 0%,rgba(8,8,7,.0) 22%,rgba(8,8,7,.5) 52%,rgba(8,8,7,.86) 78%,rgba(8,8,7,.97) 100%)}
 .belt-rule{height:1px;width:min(560px,72%);margin:0 auto;transform-origin:center;
   background:linear-gradient(90deg,transparent,var(--gold-soft) 22%,var(--gold) 50%,var(--gold-soft) 78%,transparent)}
 /* ONE tight centered constellation: [2 stats] CREST(+2 under) [2 stats], air on the OUTSIDE */
@@ -90,14 +90,19 @@ body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
 .stat-l{font-family:var(--font-label);font-size:clamp(.56rem,.72vw,.7rem);font-weight:500;
   letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-top:.6em}
 /* crest jewel — larger, lifted off the dark with a soft pedestal glow */
-.crest-wrap{position:relative;display:flex;flex-direction:column;align-items:center;flex-shrink:0;padding:0 clamp(.6rem,1.4vw,1.4rem)}
-.crest-wrap::before{content:"";position:absolute;top:-10%;left:50%;transform:translateX(-50%);
-  width:128%;height:128%;border-radius:50%;z-index:-1;
-  background:radial-gradient(ellipse at center,rgba(184,152,99,.20) 0%,rgba(184,152,99,.08) 38%,transparent 70%)}
-.crest-wrap img{width:clamp(160px,16vw,238px);height:auto;margin-top:-3rem;
-  filter:drop-shadow(0 10px 30px rgba(0,0,0,.7)) drop-shadow(0 0 22px rgba(236,217,166,.28)) contrast(1.06) brightness(1.05)}
-.crest-under{display:flex;align-items:center;gap:clamp(1.3rem,3vw,2.4rem);margin-top:.45rem}
-.crest-under .stat-v{font-size:clamp(1.1rem,1.5vw,1.5rem)}
+.crest-wrap{position:relative;display:flex;flex-direction:column;align-items:center;flex-shrink:0;padding:0 clamp(.8rem,1.8vw,1.8rem)}
+/* jewel on velvet — a focused dark pool puts the crest on near-black, off the busy canopy */
+.crest-wrap::after{content:"";position:absolute;top:46%;left:50%;transform:translate(-50%,-50%);
+  width:230%;height:200%;border-radius:50%;z-index:-2;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(8,8,7,.9) 0%,rgba(8,8,7,.7) 34%,rgba(8,8,7,.32) 56%,transparent 74%)}
+/* luminous gold-white halo (not brown) */
+.crest-wrap::before{content:"";position:absolute;top:30%;left:50%;transform:translateX(-50%);
+  width:120%;height:120%;border-radius:50%;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(246,233,194,.22) 0%,rgba(236,217,166,.10) 40%,transparent 68%)}
+.crest-wrap img{width:clamp(176px,17vw,256px);height:auto;margin-top:-3.2rem;
+  filter:drop-shadow(0 12px 34px rgba(0,0,0,.78)) drop-shadow(0 0 18px rgba(246,233,194,.34)) contrast(1.1) brightness(1.08) saturate(1.05)}
+.crest-under{display:flex;align-items:center;gap:clamp(1.4rem,3vw,2.6rem);margin-top:-.1rem}
+.crest-under .stat-v{font-size:clamp(1.15rem,1.6vw,1.55rem)}
 .tick{width:1px;align-self:center;height:34px;
   background:linear-gradient(to bottom,transparent,var(--gold-soft),transparent);flex-shrink:0}
 
