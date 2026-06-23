@@ -378,3 +378,210 @@ For 9:16 Instagram Reel/Story frames (1080x1920, native res, JPEG q94+):
 - Use ROYALTY-FREE public-domain recordings from Musopen.org (safe for a
   business IG account; IG restricts licensed commercial tracks on business accts).
 - Water Music HWV 348-350; 12 Concerti Grossi Op.6 HWV 319-330.
+
+## THE SPINE LAW (Rachel, 2026-06-20, governs every section)
+LOOKS like a magazine. READS like the web. LESS IS MORE.
+- Magazine LOOK: big sequenced photography, editorial layout, calm luxury, photos carry the story.
+- Web READ: short, punchy lines. NO novel paragraphs. A buyer scans on a phone, does not read prose blocks.
+- Per room/section: a photo + one or two short lines. One real feature, placed well. Then move on.
+- Kill multi-sentence body paragraphs on the main scroll. Depth goes behind clicks / on /history.
+- It must still FUNCTION as a full listing: stats, gallery, floor plans, 3D tour, location, inquiry — all present, easy to find, under the narrative.
+- Attention economy: catch the eye, land one thing, flow to the next. Seduce in a glance.
+
+## SELL TRUTH LAW (Rachel, 2026-06-20, the heart of the voice)
+The emotion comes FROM the architectural truth, never laid on top of it.
+- Source the detail from the BLUEPRINTS (O'Shea's 15 drawings) + MLS + features sheet. Real, specific, cited-able.
+- The feeling is already IN the true detail (Flemish bond, coffered ceiling, unbroken oak handrail volute-to-landing, original 1916 fanlight). Name it precisely; the truth carries the emotion.
+- NEVER invent sentiment ("heard the most laughter" = banned reach). If a line isn't anchored to a real architectural fact, cut it.
+- Punchy magazine format + architectural truth = the Garran Hill voice. Short lines, each one a REAL detail, placed well.
+
+## NARRATIVE STRUCTURE LAW (Rachel, 2026-06-20 — SUPERSEDES the nine-act structure)
+The nine acts are NOT the rule. The page opens with HISTORY as one scrolling CINEMATIC NARRATIVE, then introduces the house.
+OPENING MOVEMENT (woven, cinematic scroll — not a stacked bio, not separate sections):
+  1. Walter Hines Page had this house BUILT FOR HIMSELF (Ambassador to the Court of St James's, commissioned from London).
+  2. The LONGING TO RETURN — the emotional spine of the whole site ("built for return").
+  3. The BETTY DUMAINE years (Hollycrest, the stewardship that followed).
+  4. The RESTORATION (Thomas O'Shea, 1999–2001, brought back to the studs).
+  5. The HOUSE'S OWN FEATURES — woven THROUGH the narrative, never a feature list.
+WHY IT LEADS: the history is the comp-killer (no other listing has it) AND the backlink engine (historians/societies link to it). Uniqueness = he built it for himself and longed to return.
+THEN: introduce the house — the room walk + full listing a buyer expects.
+This reconciles with "lead with history, not biography/tragedy": lead with history, but woven cinematically as longing+return, never a dry stacked bio. All history lines trace to CITATIONS.md.
+
+## THE THREAD LAW (Rachel, 2026-06-20)
+Whispers and breath lines between sections are the THREAD that carries the story through the whole scroll — not decoration.
+- Each section/"page" gets a whisper or breath line about the HISTORY or the ARCHITECTURE.
+- Placed so the whole scroll FLOWS and tells one continuous story by itself, even as the buyer walks room to room.
+- The history surfaces in single quiet drops all the way down (longing, the brick, the restoration, the stewardship) — never dumped, never repeated. Each truth lands ONCE, in the spot it hits hardest.
+- Source whispers from CITATIONS.md (history) + features-sheet/MLS (architecture). Real, cited, never invented.
+- Result: opening cinematic history -> house introduced -> room walk, with the thread weaving history+architecture through every step. One story, beginning to end.
+
+## REVOLUTIONARY-ALWAYS LAW (Rachel, 2026-06-20, standing directive)
+"Push the limits of what people have seen. Revolutionary is the goal, always."
+- The bar is never the luxury-real-estate genre. The bar is: has anyone seen this before? If yes, go further.
+- Every signature moment must do something no listing site does: image proving word, motion that means something, real artifacts as evidence, the buyer discovering the proof themselves.
+- Never settle at "premium" or "tasteful." Tasteful is the floor. Revolutionary is the target.
+- Coco proposes the bolder move by default and builds the safe version of the wild idea, never the safe idea. When unsure, push further, then verify with own eyes.
+- THINKING + PLANNING TOO (Rachel, 2026-06-20): revolutionary applies BEFORE the build — in how Coco conceives, structures, and plans. Don't plan a conventional site well; conceive one no one would think to make. A safe plan cannot produce revolutionary work. Start every plan from "what has no one done?" not "what is the genre norm?"
+
+## MAIN-PAGE vs /HISTORY DIVISION (Rachel, 2026-06-20, reaffirmed)
+The main page and /history are TWO jobs. Never collapse them.
+- MAIN PAGE: history is PUNCHY, cinematic, emotional, woven into the narrative — the feel (longing, return), the named forces (Walter Hines Page, Betty Dumaine), the real artifacts (his handwriting, her photo, the holly). Enough to seduce AND to carry the backlink-worthy hooks (Page, Pinehurst, Dumaine, Princess Mother) inside the story. It must NEVER sprawl into the full account.
+- /HISTORY PAGE: the DEPTH. The full cited article, primary sources, the deep dive. This is the SEO/backlink engine historians and societies link to. Citations ARE the product here.
+- The hand-off: every main-page history beat ends able to point to "Read the full history." If a main-page beat is getting long or scholarly, it belongs on /history. Move it, don't delete the link bait — keep the hook on the main page, the proof on /history.
+- "The homepage seduces. The History tab proves. The Archive earns backlinks."
+
+## PRESERVE-THE-IMAGE — SITE-WIDE (Rachel, 2026-06-20, hard rule, extends the social rule)
+Applies to the WHOLE site, not just social graphics. NEVER darken a photo with a black scrim, band, or heavy tint to make text legible. The image is the product; keep it luminous.
+- Archival portraits/photos: NO sepia/grayscale dulling filter. Show the real colors (the holly's red berries must glow).
+- Text sits BESIDE/around the photo (editorial layout), not on a darkened version of it. Where text must go over an image, protect the letters (soft halo, tiny low-alpha gradient only at the very edge), never a block over the picture.
+- Ghost/handwriting layers stay faint and airy (~0.06-0.10), no heavy filter — a luminous texture, not a darkening.
+
+## EVOKE, DON'T PERFORM (Rachel, 2026-06-20)
+Feeling comes from the true, human, specific detail told plainly — NOT from a clever sentence structure.
+- The setup/turn/silence move is a tool, not a tic. When the turn calls attention to its own mechanism ("she did not X, she Y'd"), it performs instead of moves. Cut it.
+- Put the emotion in the real thing: a woman who came in 1959 and stayed twenty-five years; a horse loved enough to mark in brass. State it; trust the reader to feel it.
+- Never tell the reader how to feel. Never reach. If a line sounds writerly/structured, rewrite it plainer until only the true detail remains.
+- Test: would this move someone if read aloud flat, with no performance? If only the structure carries it, it fails.
+
+## SINGLE-PROPERTY WEBSITE FIRST (Rachel, 2026-06-20, TOP priority, governs everything)
+This is a LISTING first, a magazine second. A buyer must instantly know: this is a house for sale — name, price, stats, location, how to see it. The editorial story makes it unforgettable, but NEVER buries the listing job.
+- HERO does the listing job immediately: house NAME + PRICE + STATS (beds/baths/SF/acres) visible on the first screen. A buyer gets the facts in seconds.
+- HERO is its OWN section: a looping estate video (a few images), Rachel makes it later — leave it BLACK as placeholder for now, with the name + stats on it.
+- THEN the story: before/after 110-year fade (Walter built it) -> Walter + his letters -> craftsmen -> Betty/Blue Fox -> the house/rooms.
+- The buyer essentials stay easy to reach at all times: stats, full gallery, floor plans, 3D tour, location, inquiry. Story serves the sale; never the reverse.
+- Order of the open: HERO(black, name+stats) -> BEFORE/AFTER FADE -> WALTER+LETTERS -> CRAFTSMEN -> rest.
+
+## "WHAT EXISTS, BUT ON CRACK" — THE DEFINING BRIEF (Rachel, 2026-06-20)
+Do NOT reinvent what a luxury listing IS. Keep the PROVEN structure every buyer expects; make the EXECUTION bad-ass with technology. The structure is normal and usable; the craft is on crack.
+- PROVEN STRUCTURE (the bones, always present, always easy): hero -> the home (intro) -> EVERY ROOM shown + labeled, all bedrooms/baths findable -> floor plans -> full gallery -> location -> inquiry. A buyer must NEVER hunt for "what am I buying." Answer beds/baths/rooms cold.
+- ON CRACK (the execution on top): buttery smooth scroll, cinematic reveals, a GORGEOUS high-tech gallery (immersive lightbox, filter-by-room, never a dead grid, NEVER sideways-scroll — nobody scrolls sideways), Ken Burns / before-after done beautifully, kinetic type, history woven as a stunning CHAPTER inside the listing (not the whole site).
+- THE GALLERY IS THE FLEX (Gallery Law): the most high-tech part; every bedroom obvious; comp-killer galleries are the point.
+- MEASURE AGAINST REAL LUXURY SITES BEFORE SHOWING RACHEL. Coco must hold the build against actual top luxury listings and catch the gaps (missing rooms, bad crops, basic effects) HERSELF. Rachel must never be the one to notice a cut-off head or a missing bedroom. Studying luxury sites is a STANDING instruction, not optional — Rachel has said this many times.
+- FAILURE MODE TO AVOID (June 20): built cinematic history as the whole site, buried the listing, used sideways gallery, basic crossfades called "cinematic," cut-off Betty photo. Root cause: measured against own last version, not against luxury standard. Never again.
+
+## MATTERPORT IS THE WALKTHROUGH, FLOOR PLANS ARE DEMOTED (Rachel, 2026-06-20)
+- The MATTERPORT 3D tour is the STAR "experience the home" tool — it walks the buyer through room to room. Treat it as a bad-ass centerpiece feature, front and center, beautifully presented (big, inviting, cinematic entry). NOT a small "3D Tour" link buried in the nav.
+- FLOOR PLANS are ugly and nobody studies them. Keep them ONLY as a quiet, secondary utility section (for the buyers/agents who want them) — never a showpiece, never paraded as a feature. Demote, don't delete.
+- So the "walk the house" job = Matterport + the high-tech gallery (every room/bedroom shown + labeled), NOT a floor-plan viewer.
+
+## I READ THE WHOLE CONSTITUTION (Coco, 2026-06-20) — what I now hold
+Read fully: VISION.md, REBUILD-SPEC.md, BUILD-CODEX.md (998 lines), photos.md, RACHEL-VOICE-SOURCE. The build standard is NOT my invention — it is Codex's BUILD-CODEX + Rachel's briefs. Key things I had been missing:
+- BUILD-CODEX §9 IS the gap analysis: the simple page is the skeleton; the codex is "the body, the clothes, the voice." Build the full editorial monument around the skeleton, ONE ACT PER SITTING, Rachel locks each act. Do NOT rebuild whole.
+- GALLERY = NOT a flat grid (§9 names "flat grid with no narrative" as a defect). Rachel's repeated instruction: STAGGER the photos, photos that LEAD TO OTHER PHOTOS — editorial staggered layout, featured tiles breathe wider, images crossfade/passage into connected spaces (THE PASSAGE, THE DISSOLVE, THE DIPTYCH from REBUILD-SPEC §SIGNATURE MOVES). The eye is led photo-to-photo, room to connected room — never a dead grid.
+- SIGNATURE MOVES (REBUILD-SPEC, the approved screening room — use THESE not new ones): 1) THE DISSOLVE (sepia gate -> color, sticky scroll crossfade), 2) THE PASSAGE (copy names a connected space -> image crossfades through and back, 2-3x max: drawing rm French doors->terrace; kitchen windows->boxwood garden; sitting rm->den spiral stair), 3) THE DIPTYCH (paired verticals fade up offset), 4) THE VIEWING ROOM (click gallery photo -> full-black lightbox, placard caption, keyboard arrows), 5) THE BREATH (near-empty black screens, one whisper line), 6) Matterport (dark quarantined block, prose line, click-to-load).
+- ACT STRUCTURE + loud/quiet/detail/breath pacing; one pull-quote per act; act ends on a breath before gold hairline. GIANT vs TINY type. Pinyon Script for estate name ONLY. Gold cursor dot 7px (no ring). Film grain. Scroll reveals 1.2s cubic-bezier(.16,1,.3,1).
+- VERTICALS get PAIRED as diptychs, never stretched: 010,011,013,014,049,051,057,063,064,065,066,078,109,128.
+- Hero video master = done_czfe8o (Cloudinary). Matterport m=mfwyqT5Btwx.
+- The 4 bedrooms (buyer #1 q): Primary suite (1st floor), Rose, Yellow, Red/nursery — all must be findable.
+- LAW: measure the build against BUILD-CODEX §9 checklist BEFORE showing Rachel. The codex already told me what "bad-ass" is; I just had not been building to it.
+
+## THE SIGNATURE JEWEL LAW (Rachel, June 21 2026 — a defining creative directive)
+Rachel, in her words: "creating a jewel from the crest on the house — these are the things I
+want to do normally. A special something extra that each house has. We create as we go."
+
+THE PRACTICE (constant across every property):
+Every house has ONE real artifact that is its soul-object — a thing physically true to the
+house that most agents would merely photograph. Coco's job is to find it and ELEVATE it into
+a jewel: a crafted, dimensional, bad-ass signature object (a 3D cast-metal/wax-seal medallion,
+an embossed monogram, a luminous keystone, etc.) that the buyer FEELS before they read a word.
+This is the "special something extra" — the move that makes a single-property site unforgettable
+and bespoke, not a premium template.
+
+RULES:
+- The jewel is always built FROM something real about the house (the crest, a keystone, a
+  threshold stone, a tree, a single line of cited provenance). Never invented decoration.
+- AI tools are used to ELEVATE the real artifact (image-to-image from the real photo), never to
+  invent a fake one. Keep the truth; add the craft. (Text/names must stay exactly true — AI
+  garbles text, so the real wording is law and gets verified by Coco's own eyes.)
+- Each house reveals its OWN jewel — Coco discovers it per property, "as we go," not from a
+  fixed list. Garran Hill's jewel = THE CREST (its own claim to its name, the 1916 plaque).
+- This is the positive definition of luxury Rachel has been teaching: not "avoid cheap" but
+  "create the one crafted thing that touches the buyer." Coco leads this, brings it unasked.
+
+## THE GOLD BELT LAW (Rachel, June 21 2026 — hero stat bar treatment)
+The hero stat bar is "THE BELT": a single horizontal band across the lower hero, with the
+SIGNATURE JEWEL (crest) centered in it as the BUCKLE. The belt is the strap, the jewel is the buckle.
+GOLD MUST LOOK REAL: the numbers, the labels, the dividers, and the crest are all rendered to read
+as real, dimensional, polished metallic GOLD — like the AI jewel gold, not flat CSS yellow.
+Technique: metallic gradient gold (highlight->mid->shadow), subtle bevel/emboss, fine depth shadow,
+so the type looks 3D and physically gold but stays ELEGANT, never gaudy. "We are pushing the limits
+to make our graphics look real 3D but elegant." Applies to the belt first; the standard for all
+hero/graphic gold going forward.
+
+## HERO COMPOSITION — CREST ANCHOR + VIDEO STAGE (Rachel, June 21 2026)
+The crest/buckle sits LOW: its BOTTOM edge just barely touches the bottom of the viewport
+(anchored to the bottom, not floating mid-row). It is sized substantial, the visual anchor of the frame.
+The SPACE ABOVE the belt is left intentionally OPEN — reserved for the looping HERO VIDEO
+(the Kling bad-ass loop, not yet built). Do not fill the upper hero with clutter; it is the video stage.
+So hero stack = [video stage, open] -> [the gold belt] -> [crest buckle anchored to bottom edge].
+
+## RESPONSIVE LAW (Rachel, standing rule, re-stated June 21 2026)
+EVERYTHING we build must be responsive. Every element, every section, every graphic — desktop,
+tablet, AND mobile. 375px check is mandatory before anything is called done. The belt, the crest
+buckle, the wordmark, the gold lines: all must reflow and scale cleanly on phone. No element may
+break, overflow, or crop badly on mobile. Verify desktop + mobile with own eyes every build.
+
+## TEXT-OVERLAY LAW (Rachel, June 21 2026, reconfirmed)
+Video text is NEVER baked into Kling/AI video. Kling ONLY moves the real footage underneath.
+ALL text (Edwardian wordmark, eyebrow, the gold belt, captions) is an HTML/CSS layer choreographed
+ON TOP of the video timeline. WHY: AI garbles text (warps letters, drops glyphs); baked text is
+locked forever (typo = full re-render). HTML/CSS text is razor-sharp, editable in seconds, and can
+animate (self-writing wordmark) timed to the footage. Architecture = [Kling moves real photos] +
+[HTML/CSS text choreographed on top]. This is also Rachel's standing creative-tooling law.
+
+## HERO EDIT LAWS (Rachel, June 21 2026)
+- Kling makes LONG clips: generate then TRIM to the strongest ~5s; never assume whole clip is the shot.
+- DIRECTION ALTERNATES across cuts and fades must MAKE SENSE: push OFF the last frame (a goodbye,
+  pulling away) hands off into PUSHING IN to the next shot. Rhythm = out->in->out->in. Never push-in twice.
+- LOOP seam: shot 08 pulls BACK off the facade (goodbye); shot 01 pushes IN (arrival); 08's last frame
+  must match 01's first frame. The direction hand-off IS the invisible seam.
+- 40s looping hero introduces the buyer to the FEEL of the house; gate photos are NOT in the hero
+  (saved for the Ken Burns before/after right after the hero).
+
+## TYPE IDENTITY LAW (Rachel, June 21 2026)
+Two name-marks always carry their own signature font, everywhere they appear:
+1. "Garran Hill" = ALWAYS the Edwardian Script (owner-blessed) — hero wordmark AND nav brand AND anywhere the name is written.
+2. "Est. 1916" (and the year mark) = ALWAYS an OLD antique letterpress face (IM Fell English SC) — looks like an engraved deed/establishment stamp, visibly contrasts the clean sans. Applied via .est-mark class.
+Never render these two marks in plain body caps. They are the property's typographic jewels.
+
+## CTA PLACEMENT LAW (Rachel, June 21 2026)
+"Request Private Showing" CTA appears ONCE, at the very BOTTOM of the website (the closing section), never in the nav, never in the hero. Delicate gold-bordered box (.inquiry: thin --gold-soft border, --gold-hi text, subtle). Nav holds only The Estate / The History / The Grounds. Matches Garran Hill canon: site ends on the last-remaining elegy, THEN Request Private Showing, nothing after.
+
+## MOBILE HERO RESPONSIVE NOTES (June 21 2026)
+The hero is layered absolutes (content centered + belt bottom-anchored), which COLLIDE on tall narrow phones. Fixes that worked (in hero_preview.html @media max-width:760px):
+- wordmark .wm-draw width 58vw (Edwardian swashes extend past the box but stay in-viewport; vision often misreads this as "clipping" — verify with getBoundingClientRect, not just eyes).
+- .hero-inner: justify flex-start, padding 6vh top, height auto (pull content to top so it clears the tall wrapped belt).
+- mobile belt: smaller crest (120px), own gradient bg (linear transparent->rgba(8,8,7,.55)) so subtitle stays legible even when it sits ~14px over the belt top.
+- Result 8.5/10. Remaining nice-to-have: crest ~15% smaller on mobile, tighten gap above crest.
+
+## HERO + STATS BUILD — 3 GLOBAL RULES (Rachel approved June 21 2026, apply to every property hero/stats build)
+
+### RULE 1 — ONE TYPE VOICE (no font crowd)
+A hero/stats build uses AT MOST: one signature SCRIPT (the property name, e.g. Edwardian for Garran Hill) + one editorial SERIF carrying everything structural (e.g. Cormorant Garamond) + one whisper SANS for micro-labels/nav (e.g. Instrument Sans) + one optional antique DATE jewel (e.g. IM Fell for "Est. YEAR"). NEVER a fifth competing face. Font crowding is the #1 tell of "template, not bespoke."
+
+### RULE 2 — SCENE RHYTHM (the scroll breathes like a film)
+The page is SCENES, not stacked sections. The hero film must flow seamlessly into the facts as one continuous dark composition (gradient seam, never a hard line). Alternate immersive full-bleed ↔ intimate centered text ↔ breathing room down the whole page. Every section must earn its scroll by leaving ONE concrete desirable feature in the buyer's mind (sell-the-house law, made structural). Whitespace = the pause between film scenes.
+
+### RULE 3 — THE SACRED CLOSE (elegy → silence → one CTA)
+Every property site ends on its single emotional truth (the "why this place matters" line — for Garran Hill, the last-remaining elegy), then a beat of silence, then ONE "Request Private Showing." Never before, never repeated. The CTA never appears in the nav or hero — only once, at the very bottom, after the emotional landing.
+
+### CREST + KEYS (locked this session)
+Crest = the ONE bright gold jewel, integrated as a MASTHEAD (sits on a fine gold rule flanked left/right, never floating). Stat "keys" = soft desaturated CHAMPAGNE/antique gilt (subordinate to the crest, not loud yellow-gold, not flat cream), separated by faint Vogue hairline dividers. Gold across the build is ONE warm antique family sampled from the crest.
+
+## THE SAME PAGE LAW (Rachel, 2026-06-22)
+Rachel and Coco are ALWAYS looking at the same thing in the preview. We stay on the same page, literally.
+- When Coco reviews, judges, or captures anything visual, Rachel must be seeing the exact same view at that moment. Coco never delivers a verdict on a frame Rachel cannot see.
+- Coco never says "looks good" / "this works" / "verified" about a view that is not in front of Rachel. If Coco looked at something Rachel did not, Coco shows it (Cloudinary URL opened in her Chrome + the raw link in chat, or the same workroom preview scrolled to the same spot) BEFORE giving any opinion.
+- The workroom right pane is the shared eye: what Coco edits and what Rachel watches are the SAME file, the SAME URL, updating together in real time. No private scratch copy Coco judges off-screen.
+- Extends EYES-LAW + SHOWING-RACHEL: looking is mandatory, and the looking must be SHARED. If Coco truly cannot put the view in front of Rachel, Coco says so plainly and does not present it as seen-and-approved.
+
+
+## THE BLOW-YOUR-MIND LAW (Rachel, June 23 2026 — HARD LAW, supersedes "tasteful restraint" as the ceiling)
+"I want over the top designs that no one has ever seen. That is a hard law. We are not basic. We are blow your mind."
+- The bar is NOT luxury-genre-tasteful. The bar is: has anyone EVER seen this? If yes, push further until no.
+- Every signature moment must do something no real-estate site (and ideally no website) has done: real artifacts becoming interface, motion that MEANS something, the buyer discovering proof themselves.
+- "Restraint/calm" from the taste codex still governs CRAFT and legibility (no clutter, no clash) — but it is the FLOOR of execution, never the ceiling of ambition. Calm execution of a wild idea, not a safe idea executed calmly.
+- NORMAL TOOLS WON'T DO (Rachel, repeated): GSAP/ScrollTrigger, SVG path-draw, WebGL/canvas, Cloudinary cinemagraph crops, real masters. Hand-rolled CSS fades = basic = banned as the primary effect.
+- BANNED FEELING: "premium template," "nice," "clean," "basic." If a designer would not stop scrolling and say "how did they DO that," it is not done.
+- STILL TRUE: built from REAL artifacts only (no fabricated imagery/hands — NO-AI-IMAGERY law holds). The wow comes from making the REAL thing do something impossible-feeling, not from faking.
+- Coco LEADS the wild idea, builds the bold version by default, verifies with own eyes, brings Rachel something to gasp at — never a safe draft to debug.
