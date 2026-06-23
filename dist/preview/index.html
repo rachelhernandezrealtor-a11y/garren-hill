@@ -112,9 +112,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 /* the eyebrow + wordmark sit in the upper-mid, leaving the very top open for the future video */
 .hero-inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(5rem,11vh,7rem) var(--pad) clamp(4rem,9vh,6rem)}
 /* soft focal scrim behind the title block so it reads over bright footage, without darkening the whole video */
-.hero-inner::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:-1;pointer-events:none;
-  width:min(96vw,1100px);height:min(72vh,620px);
-  background:radial-gradient(ellipse at center,rgba(8,8,7,.62) 0%,rgba(8,8,7,.38) 42%,transparent 74%)}
+
 .hero-eyebrow{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.42em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:2.8rem;text-shadow:0 1px 12px rgba(0,0,0,.85)}
 .wordmark{font-family:var(--font-script);font-weight:400;font-size:var(--wm-size);line-height:.9;color:var(--cream);
   text-shadow:none;margin:.2rem 0}
@@ -539,10 +537,9 @@ nav .links a.cta{color:var(--gold);opacity:1}
 @media (prefers-reduced-motion:reduce){.hero-frame rect{stroke-dashoffset:0!important}.hero-cue{animation:none}}
 
 
-.hero-inner::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:min(1100px,92%);height:min(60%,520px);z-index:-1;pointer-events:none;
-  background:radial-gradient(ellipse 60% 56% at 50% 46%,rgba(8,8,7,.62) 0%,rgba(8,8,7,.34) 48%,transparent 78%)}
 .hero-inner{position:relative}
+.wordmark{text-shadow:0 2px 40px rgba(8,8,7,.7),0 1px 8px rgba(8,8,7,.6)}
+.hero-eyebrow,.hero-desc{text-shadow:0 1px 18px rgba(8,8,7,.9),0 1px 4px rgba(8,8,7,.8)}
 
 </style><link rel="stylesheet" href="mag-rooms.css">
 </head>
