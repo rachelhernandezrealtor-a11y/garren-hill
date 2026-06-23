@@ -331,6 +331,10 @@ nav .links a.cta{color:var(--gold);opacity:1}
 /* ROOM — full-bleed crossfade carousel, detail overlaid bottom (matches dev standard, no 300 pages) */
 .rooms-wrap{background:var(--ink)}
 .rm-scene{position:relative;width:100%;height:clamp(440px,82vh,860px);overflow:hidden;background:#111}
+/* editorial scale rhythm — heroes go tall/full, connective rooms compress */
+.rm-scene.hero{height:clamp(560px,100vh,1100px)}
+.rm-scene.compact{height:clamp(340px,54vh,560px)}
+.rm-scene.hero .rm-cap{transform:scale(1.06);transform-origin:left bottom}
 .rm-scene .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;background-size:cover;background-position:center}
 .rm-scene .slide.on{opacity:1}
 .rm-scene::after{content:"";position:absolute;inset:0;pointer-events:none;
@@ -675,7 +679,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
     <div class="rm-dots"></div>
   </div>
 
-  <div class="rm-scene" data-imgs="019-drawing-room,017-drawing-room,020-drawing-room,022-drawing-room-french-doors">
+  <div class="rm-scene hero" data-imgs="019-drawing-room,017-drawing-room,020-drawing-room,022-drawing-room-french-doors">
     <div class="rm-cap"><span class="rm">The Drawing Room</span><p class="det">Forty feet, and the afternoon crosses all of it. A Federal mantel, a ceiling worked in panels and coffers, bookcases arched into the wall. Two rooms could sit here and never crowd one another.</p><span class="flow">French doors give onto the brick terrace &rarr;</span></div>
     <div class="rm-dots"></div>
   </div>
@@ -685,7 +689,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
     <div class="rm-split-text"><span class="rm">The Library</span><p class="det">Shelving to the ceiling on three walls. A house built for a man of letters keeps its promise in this one room.</p></div>
   </div>
 
-  <div class="rm-scene" data-imgs="067-delft-sitting-room,069-sitting-room,109-den-spiral-staircase">
+  <div class="rm-scene compact" data-imgs="067-delft-sitting-room,069-sitting-room,109-den-spiral-staircase">
     <div class="rm-cap"><span class="rm">The Sitting Room</span><p class="det">Delft tile set around the fire, blue on white. In the corner a spiral stair winds up to the study, the way this house likes to send you somewhere.</p><span class="flow">The stair climbs to the den above &rarr;</span></div>
     <div class="rm-dots"></div>
   </div>
@@ -695,7 +699,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
     <div class="rm-split-text"><span class="rm">The Dining Room</span><p class="det">The 1916 frontispiece is still here, and the arched shell cabinets that flank it. The east windows take the morning low and direct.</p></div>
   </div>
 
-  <div class="rm-scene" data-imgs="031-kitchen,034-kitchen,037-farm-sink,044-breakfast-room">
+  <div class="rm-scene hero" data-imgs="031-kitchen,034-kitchen,037-farm-sink,044-breakfast-room">
     <div class="rm-cap"><span class="rm">The Kitchen</span><p class="det">Heart pine underfoot, the one floor that is not the original oak. Black granite, a range under its hood, a butler's pantry with a farm sink. A working room that never forgot the old house around it.</p><span class="flow">Through to the breakfast room and the grounds &rarr;</span></div>
     <div class="rm-dots"></div>
   </div>
