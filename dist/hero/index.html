@@ -141,6 +141,9 @@ body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
 .gate-stage{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;place-items:center}
 .gate-stage .layer{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .gate-stage .today{opacity:0}
+.gate-stage .sepia{filter:contrast(.94) brightness(1.02)}
+.gate-stage .aged{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:1;transition:opacity .3s;
+  background:radial-gradient(ellipse 78% 72% at 50% 48%,transparent 40%,rgba(40,26,12,.45) 100%)}
 .gate-stage .veil{position:absolute;inset:0;z-index:2;pointer-events:none;
   background:radial-gradient(ellipse 70% 60% at 50% 46%,transparent 0%,rgba(8,8,7,.5) 100%),
    linear-gradient(to bottom,rgba(8,8,7,.5) 0%,transparent 26%,transparent 60%,rgba(8,8,7,.86) 100%)}
@@ -199,7 +202,8 @@ body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
 </section>
 <section class="gate" data-gate>
   <div class="gate-stage">
-    <img class="layer sepia" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_sepia:90,e_contrast:-8,c_scale,w_1800,q_auto:good,f_auto/v1777243320/gh_exteriors/entrance.jpg" alt="The gates of Garran Hill" data-gate-sepia>
+    <img class="layer sepia" src="https://res.cloudinary.com/dghn2xpif/image/upload/e_grayscale/e_sepia:80/c_scale,w_1800,q_auto:good,f_jpg/v1777243320/gh_exteriors/entrance.jpg" alt="The gates of Garran Hill" data-gate-sepia>
+    <div class="aged" data-gate-aged></div>
     <img class="layer today" src="https://res.cloudinary.com/dghn2xpif/image/upload/c_scale,w_1800,q_auto:good,f_auto/v1777243320/gh_exteriors/entrance.jpg" alt="The gates of Garran Hill today" data-gate-today>
     <div class="veil"></div>
     <div class="gate-copy">
@@ -250,7 +254,9 @@ body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
     var today=gate.querySelector('[data-gate-today]');
     var yearEl=gate.querySelector('[data-gate-year]');
     var tl=gsap.timeline({scrollTrigger:{trigger:gate,start:'top top',end:'bottom bottom',scrub:0.6}});
-    tl.to(today,{opacity:1,duration:1,ease:'none'});
+    var aged=gate.querySelector('[data-gate-aged]');
+    tl.to(today,{opacity:1,duration:1,ease:'none'},0);
+    if(aged) tl.to(aged,{opacity:0,duration:1,ease:'none'},0);
     ScrollTrigger.create({trigger:gate,start:'top top',end:'bottom bottom',scrub:0.6,
       onUpdate:function(self){ if(yearEl){var y=Math.round(1916+(2026-1916)*self.progress); yearEl.textContent=y;} }});
   })();
