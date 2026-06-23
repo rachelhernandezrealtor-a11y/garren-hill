@@ -58,7 +58,7 @@ body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
   box-shadow:0 5px 0 var(--gold-hi),0 -5px 0 var(--gold-hi)}
 
 /* centered stack */
-.stack{position:absolute;z-index:4;left:0;right:0;top:clamp(20%,26vh,30%);
+.stack{position:absolute;z-index:4;left:0;right:0;top:clamp(17%,22vh,25%);
   display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 1.5rem}
 .eyebrow{font-family:var(--font-label);font-size:clamp(.62rem,.85vw,.8rem);font-weight:500;
   letter-spacing:.42em;text-transform:uppercase;color:var(--gold)}
@@ -76,28 +76,31 @@ body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
 
 /* ===== THE STAT BAND — crest is the crowned jewel parting it ===== */
 .belt{position:absolute;left:0;right:0;bottom:0;z-index:4;
-  padding:0 clamp(1.4rem,5vw,5rem) clamp(1.6rem,3.4vh,2.6rem)}
-.belt-rule{height:1px;width:100%;transform-origin:center;
+  padding:7vh clamp(1.4rem,5vw,5rem) clamp(1.7rem,3.6vh,2.8rem);
+  /* the film exhales into the band — gradient seam kills the dead middle */
+  background:linear-gradient(to bottom,transparent 0%,rgba(8,8,7,.0) 30%,rgba(8,8,7,.55) 64%,rgba(8,8,7,.92) 100%)}
+.belt-rule{height:1px;width:min(680px,82%);margin:0 auto;transform-origin:center;
   background:linear-gradient(90deg,transparent,var(--gold-soft) 18%,var(--gold) 50%,var(--gold-soft) 82%,transparent)}
-.belt-row{display:flex;align-items:flex-end;justify-content:center;gap:clamp(1rem,4vw,3.4rem);
-  margin-top:clamp(1rem,2.2vh,1.7rem)}
-.belt-side{display:flex;gap:clamp(1rem,4vw,3.4rem);flex:1;justify-content:space-evenly}
+/* the row: 2 stats | CREST JEWEL (with 2 under) | 2 stats — symmetric orbit */
+.belt-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  gap:clamp(1.2rem,3.5vw,3rem);margin-top:clamp(1.2rem,2.6vh,2rem);max-width:1180px;margin-inline:auto}
+.belt-side{display:flex;align-items:center;justify-content:space-evenly;gap:clamp(1rem,3vw,2.6rem)}
 .stat{text-align:center;white-space:nowrap}
-.stat-v{font-family:var(--font-display);font-weight:500;font-size:clamp(1.3rem,2.1vw,2rem);
-  color:var(--cream);line-height:1;letter-spacing:.01em}
-.stat-l{font-family:var(--font-label);font-size:clamp(.54rem,.7vw,.68rem);font-weight:500;
+.stat-v{font-family:var(--font-display);font-weight:500;font-size:clamp(1.35rem,2.1vw,2.05rem);
+  color:var(--cream);line-height:1;letter-spacing:.01em;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.stat-l{font-family:var(--font-label);font-size:clamp(.55rem,.7vw,.68rem);font-weight:500;
   letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-top:.6em}
-/* crest jewel */
-.crest-wrap{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
-.crest-wrap img{width:clamp(96px,11vw,158px);height:auto;
-  filter:drop-shadow(0 6px 22px rgba(0,0,0,.6)) drop-shadow(0 0 14px rgba(184,152,99,.16))}
-.crest-under{display:flex;gap:clamp(1.1rem,3vw,2.4rem);margin-top:.7rem}
-.crest-under .stat-v{font-size:clamp(1rem,1.5vw,1.4rem)}
-.tick{width:1px;align-self:center;height:30px;
+/* crest jewel — the centerpiece the stats orbit; sits ON the row, larger, brightest */
+.crest-wrap{display:flex;flex-direction:column;align-items:center;flex-shrink:0;padding:0 .4rem}
+.crest-wrap img{width:clamp(118px,13vw,184px);height:auto;margin-top:-2.4rem;
+  filter:drop-shadow(0 8px 26px rgba(0,0,0,.65)) drop-shadow(0 0 18px rgba(184,152,99,.22))}
+.crest-under{display:flex;align-items:center;gap:clamp(1.1rem,3vw,2.2rem);margin-top:.5rem}
+.crest-under .stat-v{font-size:clamp(1.05rem,1.5vw,1.45rem)}
+.tick{width:1px;align-self:center;height:32px;
   background:linear-gradient(to bottom,transparent,var(--gold-soft),transparent);flex-shrink:0}
 
 /* scroll cue */
-.cue{position:absolute;left:50%;bottom:calc(clamp(1.6rem,3.4vh,2.6rem) + 132px);z-index:5;
+.cue{position:absolute;left:50%;bottom:38%;z-index:5;
   transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem}
 .cue .ln{width:1px;height:34px;background:linear-gradient(to bottom,var(--gold),transparent);
   animation:cuepulse 2.4s var(--ease) infinite}
