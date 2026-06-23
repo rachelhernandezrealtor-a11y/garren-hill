@@ -82,26 +82,26 @@ body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
   background:linear-gradient(90deg,transparent,var(--gold-soft) 22%,var(--gold) 50%,var(--gold-soft) 78%,transparent)}
 /* ONE tight centered constellation: [2 stats] CREST(+2 under) [2 stats], air on the OUTSIDE */
 .belt-row{display:flex;align-items:center;justify-content:center;
-  gap:clamp(1.4rem,2.8vw,2.6rem);margin-top:clamp(1.4rem,3vh,2.2rem)}
-.belt-side{display:flex;align-items:center;gap:clamp(1.4rem,2.8vw,2.6rem)}
+  gap:clamp(1.6rem,3vw,3rem);margin-top:clamp(1.4rem,3vh,2.2rem);max-width:1120px;margin-inline:auto}
+.belt-side{display:flex;align-items:center;justify-content:center;gap:clamp(1.4rem,2.8vw,2.6rem);flex:1 1 0;max-width:340px}
 .stat{text-align:center;white-space:nowrap}
 .stat-v{font-family:var(--font-display);font-weight:500;font-size:clamp(1.4rem,2.1vw,2.05rem);
   color:var(--cream);line-height:1;letter-spacing:.01em;text-shadow:0 1px 12px rgba(0,0,0,.55)}
 .stat-l{font-family:var(--font-label);font-size:clamp(.56rem,.72vw,.7rem);font-weight:500;
   letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-top:.6em}
 /* crest jewel — larger, lifted off the dark with a soft pedestal glow */
-.crest-wrap{position:relative;display:flex;flex-direction:column;align-items:center;flex-shrink:0;padding:0 clamp(.8rem,1.8vw,1.8rem)}
-/* jewel on velvet — a focused dark pool puts the crest on near-black, off the busy canopy */
-.crest-wrap::after{content:"";position:absolute;top:46%;left:50%;transform:translate(-50%,-50%);
-  width:230%;height:200%;border-radius:50%;z-index:-2;pointer-events:none;
-  background:radial-gradient(ellipse at center,rgba(8,8,7,.9) 0%,rgba(8,8,7,.7) 34%,rgba(8,8,7,.32) 56%,transparent 74%)}
-/* luminous gold-white halo (not brown) */
-.crest-wrap::before{content:"";position:absolute;top:30%;left:50%;transform:translateX(-50%);
-  width:120%;height:120%;border-radius:50%;z-index:-1;pointer-events:none;
-  background:radial-gradient(ellipse at center,rgba(246,233,194,.22) 0%,rgba(236,217,166,.10) 40%,transparent 68%)}
-.crest-wrap img{width:clamp(176px,17vw,256px);height:auto;margin-top:-3.2rem;
-  filter:drop-shadow(0 12px 34px rgba(0,0,0,.78)) drop-shadow(0 0 18px rgba(246,233,194,.34)) contrast(1.1) brightness(1.08) saturate(1.05)}
-.crest-under{display:flex;align-items:center;gap:clamp(1.4rem,3vw,2.6rem);margin-top:-.1rem}
+.crest-wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;flex-shrink:0;padding:0 clamp(.8rem,1.8vw,1.8rem)}
+/* VELVET POOL — real layer, above the photo, below the crest. Seats the jewel on near-black. */
+.crest-wrap .velvet{position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);
+  width:300%;height:240%;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(8,8,7,.94) 0%,rgba(8,8,7,.82) 30%,rgba(8,8,7,.5) 50%,rgba(8,8,7,.2) 66%,transparent 78%)}
+/* luminous gold-white halo just behind the metal */
+.crest-wrap .halo{position:absolute;top:30%;left:50%;transform:translateX(-50%);
+  width:128%;height:128%;border-radius:50%;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(246,233,194,.26) 0%,rgba(236,217,166,.11) 42%,transparent 66%)}
+.crest-wrap img{position:relative;z-index:2;width:clamp(178px,17vw,258px);height:auto;margin-top:-3.2rem;
+  filter:drop-shadow(0 12px 34px rgba(0,0,0,.82)) drop-shadow(0 0 16px rgba(246,233,194,.4)) contrast(1.12) brightness(1.09) saturate(1.06)}
+.crest-under{position:relative;z-index:2;display:flex;align-items:center;gap:clamp(1.4rem,3vw,2.6rem);margin-top:-.1rem}
 .crest-under .stat-v{font-size:clamp(1.15rem,1.6vw,1.55rem)}
 .tick{width:1px;align-self:center;height:34px;
   background:linear-gradient(to bottom,transparent,var(--gold-soft),transparent);flex-shrink:0}
@@ -160,6 +160,7 @@ body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
     <div class="belt-row">
       <div class="belt-side"><div class="stat"><div class="stat-v">6,320</div><div class="stat-l">SQUARE FEET</div></div><div class="tick"></div><div class="stat"><div class="stat-v">4.15</div><div class="stat-l">ACRES</div></div></div>
       <div class="crest-wrap">
+        <div class="velvet"></div><div class="halo"></div>
         <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal,w_900/f_png/v1782063976/gh_key/gh_crest_jewel_final.png" alt="Garran Hill crest — Pinehurst, Hollycrest, 1916">
         <div class="crest-under"><div class="stat"><div class="stat-v">4</div><div class="stat-l">BEDROOMS</div></div><div class="tick"></div><div class="stat"><div class="stat-v">6</div><div class="stat-l">BATHROOMS</div></div></div>
       </div>
