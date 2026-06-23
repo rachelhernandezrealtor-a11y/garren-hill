@@ -154,13 +154,13 @@ nav .links a.cta{color:var(--gold);opacity:1}
 /* BETTY — the grave as a smaller atmospheric backdrop ABOVE the closing line,
    flowers kept visible at top, text resting in the calm lower band. Not the big somber full-bleed. */
 .grave{position:relative;background:var(--ink);padding:0 var(--pad) clamp(4rem,9vh,6rem);text-align:center}
-.grave .gv-img{position:relative;max-width:760px;margin:0 auto;height:clamp(300px,46vh,460px);
+.grave .gv-img{position:relative;max-width:430px;margin:0 auto;height:clamp(220px,30vh,300px);
   border-radius:2px;overflow:hidden}
-.grave .gv-img img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;
-  filter:saturate(.92) brightness(.94)}
-/* soft vignette + a calm darkened lower band for the text, flowers (top-center) stay lit */
+.grave .gv-img img{width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block;
+  filter:saturate(.96) brightness(1)}
 .grave .gv-img::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,rgba(8,8,7,.12) 0%,transparent 26%,transparent 48%,rgba(8,8,7,.86) 100%)}
+  background:linear-gradient(180deg,rgba(8,8,7,.10) 0%,transparent 30%,transparent 50%,rgba(8,8,7,.86) 100%)}
+/* soft vignette + a calm darkened lower band for the text, flowers (top-center) stay lit */
 .grave .gv-cap{position:absolute;left:0;right:0;bottom:clamp(1.4rem,4vh,2.4rem);padding:0 var(--pad);z-index:2}
 .grave .gv-cap .room{font-family:var(--font-accent);font-size:var(--t-xs);letter-spacing:.32em;
   text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
