@@ -1,0 +1,152 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Garran Hill — Hero Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:wght@400;500&family=Mr+De+Haviland&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a0a0a; --cream:#F5F0E8; --cream-dim:rgba(245,240,232,.72);
+  --gold:#c9a96e; --gold-soft:rgba(201,169,110,.55); --gold-line:rgba(201,169,110,.42);
+  --display:'Playfair Display',Georgia,serif; --body:'Cormorant Garamond',serif;
+  --label:'Cinzel',serif; --script:'Mr De Haviland',cursive;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:var(--cream);font-family:var(--body);overflow:hidden}
+.hero{position:relative;width:100vw;height:100vh;overflow:hidden;background:#05060a}
+/* —— twilight loop —— */
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero .scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 60% 50% at 50% 38%,transparent 0%,rgba(5,6,10,.18) 55%,rgba(5,6,10,.6) 100%),
+             linear-gradient(to bottom,rgba(5,6,10,.45) 0%,transparent 22%,transparent 50%,rgba(5,6,10,.82) 100%)}
+/* —— the gold frame: drawn from the crest outward (4 segments) —— */
+.frame i{position:absolute;background:var(--gold-line);z-index:6;pointer-events:none}
+.frame .t{top:26px;left:50%;height:1px;width:0;transform:translateX(-50%)}
+.frame .b{bottom:26px;left:50%;height:1px;width:0;transform:translateX(-50%)}
+.frame .l{left:26px;top:50%;width:1px;height:0;transform:translateY(-50%)}
+.frame .r{right:26px;top:50%;width:1px;height:0;transform:translateY(-50%)}
+/* —— nav: collapsed, restraint —— */
+.eyebrow-est{position:absolute;top:46px;left:46px;z-index:7;font-family:var(--label);
+  font-size:.62rem;letter-spacing:.36em;color:var(--gold);opacity:.85}
+.menu{position:absolute;top:40px;right:42px;z-index:7;width:46px;height:34px;
+  border:1px solid var(--gold-line);display:flex;flex-direction:column;justify-content:center;
+  align-items:center;gap:4px;cursor:pointer;background:rgba(5,6,10,.25)}
+.menu span{width:18px;height:1px;background:var(--gold)}
+/* —— centre stack —— */
+.stack{position:absolute;left:0;right:0;top:30%;transform:translateY(-50%);z-index:5;
+  text-align:center;padding:0 8vw}
+.addr{font-family:var(--label);font-size:clamp(.6rem,.95vw,.78rem);letter-spacing:.42em;
+  color:var(--gold);text-transform:uppercase}
+.addr,.word,.subline,.tag{opacity:0}            /* GSAP reveals */
+.word{font-family:var(--script);color:var(--cream);line-height:.9;margin:.1em 0 .12em;
+  font-size:clamp(4.4rem,13vw,12rem);text-shadow:0 2px 40px rgba(0,0,0,.5)}
+.subline{font-family:var(--label);font-size:clamp(.58rem,.92vw,.74rem);letter-spacing:.34em;
+  color:var(--cream-dim);text-transform:uppercase}
+.tag{font-family:var(--body);font-style:italic;font-size:clamp(1.05rem,1.7vw,1.5rem);
+  color:var(--cream);margin-top:1.5rem;letter-spacing:.01em}
+/* —— bottom band: stats parted by the grounded crest —— */
+.band{position:absolute;left:0;right:0;bottom:0;z-index:5;
+  display:flex;align-items:flex-end;justify-content:center;gap:clamp(.8rem,2.4vw,2.2rem);
+  padding:0 4vw 38px;pointer-events:none}
+.band::before{content:"";position:absolute;inset:auto 0 0;height:300px;z-index:-1;pointer-events:none;
+  background:linear-gradient(to top,rgba(5,6,10,.96) 0%,rgba(5,6,10,.82) 30%,rgba(5,6,10,.4) 68%,transparent 100%)}
+.stats{display:flex;align-items:center;gap:clamp(1rem,3.4vw,3.2rem)}
+.stat{text-align:center;opacity:0}
+.stat .v{font-family:var(--display);font-size:clamp(1.05rem,1.7vw,1.5rem);color:var(--cream);
+  white-space:nowrap;font-weight:400}
+.stat .k{font-family:var(--label);font-size:.54rem;letter-spacing:.26em;color:var(--gold);
+  text-transform:uppercase;margin-top:.5rem}
+.tick{width:1px;height:30px;background:linear-gradient(transparent,var(--gold-line),transparent)}
+.crest{position:relative;z-index:6;margin:0 clamp(1.4rem,4vw,4rem) -6px;
+  width:clamp(118px,15vw,210px);opacity:0;filter:drop-shadow(0 6px 26px rgba(0,0,0,.6))}
+/* —— scroll cue —— */
+.cue{position:absolute;left:50%;bottom:122px;z-index:6;transform:translateX(-50%);
+  font-family:var(--label);font-size:.55rem;letter-spacing:.3em;color:var(--gold-soft);
+  text-transform:uppercase;opacity:0;text-align:center}
+.cue::after{content:"";display:block;width:1px;height:34px;margin:12px auto 0;
+  background:linear-gradient(var(--gold-soft),transparent);animation:cue 2.4s var(--ease,ease) infinite}
+@keyframes cue{0%,100%{opacity:.3;transform:scaleY(.7)}50%{opacity:1;transform:scaleY(1)}}
+/* —— video safe-zone overlay (toggle) —— */
+.safe{position:absolute;inset:0;z-index:8;pointer-events:none;display:none}
+.safe.on{display:block}
+.safe b{position:absolute;border:1px dashed rgba(120,200,255,.7);font-family:monospace;
+  font-size:10px;color:#9fd0ff;background:rgba(0,20,40,.35)}
+.safe .keep{inset:14% 18% 26%;border-color:rgba(80,255,160,.8);color:#7fffb0}
+.safe .lbl{top:14%;left:18%;padding:2px 6px;border:none;background:rgba(0,30,15,.6)}
+.safetog{position:absolute;bottom:40px;right:42px;z-index:9;font-family:monospace;font-size:11px;
+  color:#9fd0ff;border:1px solid rgba(120,200,255,.5);background:rgba(0,20,40,.5);
+  padding:5px 9px;cursor:pointer}
+@media(max-width:640px){
+  .stack{top:32%}.stats{gap:.7rem}.tick{display:none}
+  .stat .v{font-size:.92rem}.stat .k{font-size:.46rem;letter-spacing:.18em}
+  .crest{width:96px;margin:0 .8rem -4px}.eyebrow-est{top:30px;left:24px}
+  .menu{top:26px;right:24px}
+}
+</style></head>
+<body>
+<section class="hero">
+  <video autoplay muted loop playsinline poster="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/garran-hill/photos/001-front-exterior.jpg">
+    <source src="https://res.cloudinary.com/dghn2xpif/video/upload/q_auto/v1/done_czfe8o.mp4" type="video/mp4">
+  </video>
+  <div class="scrim"></div>
+  <div class="frame"><i class="t"></i><i class="b"></i><i class="l"></i><i class="r"></i></div>
+
+  <div class="eyebrow-est">EST · GARRAN HILL · 1916</div>
+  <div class="menu"><span></span><span></span><span></span></div>
+
+  <div class="stack">
+    <div class="addr">200 Hollycrest Drive &middot; Pinehurst, North Carolina</div>
+    <div class="word">Garran Hill</div>
+    <div class="subline">Neo-Georgian &middot; Walter Hines Page &middot; 110 Years on Its Own Ground</div>
+    <div class="tag">Some houses are built for arrival. This one was built for return.</div>
+  </div>
+
+  <div class="cue">Enter</div>
+
+  <div class="band">
+    <div class="stats">
+      <div class="stat"><div class="v">6,320 <span style="font-size:.7em">SF</span></div><div class="k">Under Roof</div></div>
+      <div class="tick"></div>
+      <div class="stat"><div class="v">4</div><div class="k">Bedrooms</div></div>
+      <div class="tick"></div>
+      <div class="stat"><div class="v">7</div><div class="k">Fireplaces</div></div>
+    </div>
+    <img class="crest" src="https://res.cloudinary.com/dghn2xpif/image/upload/c_crop,g_center,w_0.82,h_0.92/e_background_removal/f_png,q_auto,w_480/v1/gh_key/gh_crest_jewel_final.png" alt="Garran Hill crest">
+    <div class="stats">
+      <div class="stat"><div class="v">6</div><div class="k">Baths</div></div>
+      <div class="tick"></div>
+      <div class="stat"><div class="v">4.15</div><div class="k">Acres</div></div>
+      <div class="tick"></div>
+      <div class="stat"><div class="v">$4,250,000</div><div class="k">Offered</div></div>
+    </div>
+  </div>
+
+  <div class="safe"><b class="keep"></b><b class="lbl">VIDEO KEEP-CLEAR · house + circle drive live here</b></div>
+  <div class="safetog">safe-zones</div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+document.querySelector('.safetog').onclick=function(){document.querySelector('.safe').classList.toggle('on')};
+var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+window.addEventListener('load',function(){
+  if(reduce||!window.gsap){document.querySelectorAll('.addr,.word,.subline,.tag,.stat,.crest,.cue').forEach(function(e){e.style.opacity=1});
+    document.querySelectorAll('.frame .t,.frame .b').forEach(function(e){e.style.width='calc(100% - 52px)'});
+    document.querySelectorAll('.frame .l,.frame .r').forEach(function(e){e.style.height='calc(100% - 52px)'});return;}
+  var tl=gsap.timeline();
+  // 1. the crest lands first — the origin of the gold
+  tl.fromTo('.crest',{opacity:0,scale:.82,y:18},{opacity:1,scale:1,y:0,duration:1.4,ease:'power3.out'},.3)
+  // 2. the gold frame DRAWS itself outward from the crest
+    .to('.frame .t, .frame .b',{width:'calc(100% - 52px)',duration:1.6,ease:'power2.inOut'},'-=.7')
+    .to('.frame .l, .frame .r',{height:'calc(100% - 52px)',duration:1.6,ease:'power2.inOut'},'<')
+  // 3. address line floats in, THEN the name arrives (two beats)
+    .to('.addr',{opacity:1,y:0,duration:1.1,ease:'power2.out'},'-=.9')
+    .fromTo('.word',{opacity:0,y:26,filter:'blur(14px)'},{opacity:1,y:0,filter:'blur(0)',duration:1.8,ease:'power3.out'},'-=.3')
+    .to('.subline',{opacity:1,duration:1,ease:'power2.out'},'-=.6')
+    .to('.tag',{opacity:1,duration:1.2,ease:'power2.out'},'-=.4')
+  // 4. stats settle in around the crest
+    .to('.stat',{opacity:1,y:0,duration:.9,stagger:.12,ease:'power2.out'},'-=.8')
+    .to('.cue',{opacity:1,duration:1},'-=.3');
+});
+</script>
+</body></html>
