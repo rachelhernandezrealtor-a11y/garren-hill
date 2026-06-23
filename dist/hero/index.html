@@ -58,7 +58,7 @@ body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
   box-shadow:0 5px 0 var(--gold-hi),0 -5px 0 var(--gold-hi)}
 
 /* centered stack */
-.stack{position:absolute;z-index:4;left:0;right:0;top:clamp(15%,19vh,22%);
+.stack{position:absolute;z-index:4;left:0;right:0;top:clamp(17%,21vh,24%);
   display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 1.5rem}
 .eyebrow{font-family:var(--font-label);font-size:clamp(.62rem,.85vw,.8rem);font-weight:500;
   letter-spacing:.42em;text-transform:uppercase;color:var(--gold)}
@@ -92,15 +92,15 @@ body{background:var(--ink);color:var(--cream);font-family:var(--font-body);
 /* crest jewel — larger, lifted off the dark with a soft pedestal glow */
 .crest-wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;flex-shrink:0;padding:0 clamp(.8rem,1.8vw,1.8rem)}
 /* VELVET POOL — real layer, above the photo, below the crest. Seats the jewel on near-black. */
-.crest-wrap .velvet{position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);
-  width:300%;height:240%;border-radius:50%;z-index:0;pointer-events:none;
-  background:radial-gradient(ellipse at center,rgba(8,8,7,.94) 0%,rgba(8,8,7,.82) 30%,rgba(8,8,7,.5) 50%,rgba(8,8,7,.2) 66%,transparent 78%)}
+.crest-wrap .velvet{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:360%;height:300%;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle at center,#060605 0%,rgba(6,6,5,.97) 26%,rgba(6,6,5,.84) 44%,rgba(6,6,5,.5) 60%,rgba(6,6,5,.18) 74%,transparent 86%)}
 /* luminous gold-white halo just behind the metal */
-.crest-wrap .halo{position:absolute;top:30%;left:50%;transform:translateX(-50%);
-  width:128%;height:128%;border-radius:50%;z-index:1;pointer-events:none;
-  background:radial-gradient(ellipse at center,rgba(246,233,194,.26) 0%,rgba(236,217,166,.11) 42%,transparent 66%)}
+.crest-wrap .halo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:118%;height:118%;border-radius:50%;z-index:1;pointer-events:none;
+  background:radial-gradient(circle at center,rgba(246,233,194,.34) 0%,rgba(236,217,166,.16) 38%,rgba(184,152,99,.05) 58%,transparent 72%)}
 .crest-wrap img{position:relative;z-index:2;width:clamp(178px,17vw,258px);height:auto;margin-top:-3.2rem;
-  filter:drop-shadow(0 12px 34px rgba(0,0,0,.82)) drop-shadow(0 0 16px rgba(246,233,194,.4)) contrast(1.12) brightness(1.09) saturate(1.06)}
+  filter:drop-shadow(0 14px 38px rgba(0,0,0,.9)) drop-shadow(0 0 2px rgba(246,233,194,.7)) drop-shadow(0 0 20px rgba(246,233,194,.45)) contrast(1.14) brightness(1.12) saturate(1.08)}
 .crest-under{position:relative;z-index:2;display:flex;align-items:center;gap:clamp(1.4rem,3vw,2.6rem);margin-top:-.1rem}
 .crest-under .stat-v{font-size:clamp(1.15rem,1.6vw,1.55rem)}
 .tick{width:1px;align-self:center;height:34px;
