@@ -794,6 +794,16 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   animation:cuepulse 2.4s cubic-bezier(.16,1,.3,1) infinite}
 @keyframes cuepulse{0%,100%{transform:scaleY(.5);opacity:.4;transform-origin:top}50%{transform:scaleY(1);opacity:1;transform-origin:top}}
 
+
+/* nav links + hollycrest hook (June 24) */
+.ch-nav .ch-links{position:absolute;left:50%;top:1.6rem;transform:translateX(-50%);display:flex;gap:2.2rem;z-index:9001}
+.ch-nav .ch-links a{font-family:var(--font-label,'Cormorant Garamond',serif);font-size:.74rem;letter-spacing:.34em;text-transform:uppercase;color:rgba(244,238,228,.82);text-decoration:none;transition:color .4s ease}
+.ch-nav .ch-links a:hover{color:var(--gold,#c9a86a)}
+@media(max-width:860px){.ch-nav .ch-links{display:none}}
+.hollycrest-hook{max-width:760px;margin:0 auto;padding:5.5rem 1.5rem;text-align:center}
+.hollycrest-hook p{font-family:var(--font-body,'Cormorant Garamond',serif);font-size:clamp(1.15rem,2.4vw,1.5rem);font-style:italic;color:rgba(238,232,222,.9);line-height:1.6;margin:0 0 1.6rem}
+.hollycrest-hook .more{display:inline-block;font-family:var(--font-label,serif);font-size:.74rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold,#c9a86a);text-decoration:none;border-bottom:1px solid rgba(201,168,106,.5);padding-bottom:.3rem;transition:border-color .4s ease}
+.hollycrest-hook .more:hover{border-color:var(--gold,#c9a86a)}
 </style><link rel="stylesheet" href="mag-rooms.css">
 </head>
 <body class="s-grain">
@@ -815,6 +825,12 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 
   <nav class="ch-nav">
     <div class="ch-est">EST.&nbsp;<b>Garran Hill</b>&nbsp;1916</div>
+    <div class="ch-links">
+      <a href="#detail">The House</a>
+      <a href="#grounds">The Grounds</a>
+      <a href="/history">The History</a>
+      <a href="#inquiry">Inquire</a>
+    </div>
     <div class="ch-menu" aria-label="Menu"><span></span></div>
   </nav>
 
@@ -953,32 +969,11 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 </div>
 </section>
 
-<!-- CHAPTER: THE HOLLYCREST YEARS -->
-<div class="chapter-mark">
-  <div class="num">The Hollycrest Years</div>
-  <div class="ttl">If Page gave the estate its origin,<br>Betty Dumaine gave it its legend.</div>
-  <div class="seam"></div>
+<!-- HOLLYCREST — one quiet hook to /history (Betty + Blue Fox live there now) -->
+<div class="hollycrest-hook">
+  <p>Later, a woman named Betty Dumaine gave the house a second life, and the name it still carries.</p>
+  <a class="more" href="/history">Read the Hollycrest years</a>
 </div>
-
-<section class="fullbleed">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_2000/v1/gh_exteriors/gh_holly_door.jpg" alt="Holly with red berries at the front entrance of Garran Hill, the estate Betty Dumaine renamed Hollycrest">
-  <div class="fb-cap"><p>Betty Dumaine came in 1959, and stayed twenty-five years. The hollies at the front gave the house the name it kept. She brought horses, hounds, and peacocks, and ran the United States arm of the Princess Mother of Thailand's charities from here.</p></div>
-</section>
-
-<div class="prose">
-  <p>She loved one horse above the rest. An Irish hunter named Blue Fox.</p>
-  <p class="turn">When he died, she buried him at the back of the grounds, under slate.</p>
-</div>
-
-<section class="grave">
-  <div class="gv-img">
-    <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/c_crop,x_840,y_85,w_470,h_330/c_scale,w_1200/f_auto,q_auto/v1/garran-hill/photos/129-blue-fox.jpg" alt="Fresh flowers resting on the slate marker of Blue Fox, Betty Dumaine's Irish hunter, at the back of Garran Hill">
-    <div class="gv-cap">
-      <div class="room">My Irish Hunter &middot; Blue Fox</div>
-      <div class="whisper">She would leave flowers at his grave.<br><em>Someone still does.</em></div>
-    </div>
-  </div>
-</section>
 
 <!-- CHAPTER: THE RESTORATION -->
 <div class="chapter-mark">
