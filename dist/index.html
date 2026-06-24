@@ -594,15 +594,11 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .rm-scene::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
   background:linear-gradient(72deg, rgba(8,8,7,.66) 0%, rgba(8,8,7,.30) 30%, transparent 58%)}
 .rm-scene:nth-of-type(even)::after{background:linear-gradient(288deg, rgba(8,8,7,.66) 0%, rgba(8,8,7,.30) 30%, transparent 58%)}
-.rm-scene .slide{position:absolute;inset:0;opacity:0;background-size:cover;background-position:center;
-  transition:opacity 1.8s cubic-bezier(.4,0,.2,1);will-change:opacity,transform}
+.rm-scene .slide{position:absolute;inset:0;opacity:0;background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#0a0a07;
+  transition:opacity 1.8s cubic-bezier(.4,0,.2,1);will-change:opacity}
 .rm-scene .slide.on{opacity:1}
-/* Ken-Burns drift, alternating direction per slide — only runs while the active slide is on */
-.rm-scene .slide.on.kb-a{animation:kbA 7s ease-out forwards}
-.rm-scene .slide.on.kb-b{animation:kbB 7s ease-out forwards}
-@keyframes kbA{from{transform:scale(1.08) translate(1.5%,1%)}to{transform:scale(1.0) translate(0,0)}}
-@keyframes kbB{from{transform:scale(1.0) translate(0,0)}to{transform:scale(1.08) translate(-1.5%,-1%)}}
-@media (prefers-reduced-motion:reduce){.rm-scene .slide.on.kb-a,.rm-scene .slide.on.kb-b{animation:none;transform:none}}
+/* Ken-Burns animation removed to preserve full photo visibility with contain sizing */
+@media (prefers-reduced-motion:reduce){.rm-scene .slide.on{animation:none;transform:none}}
 /* room number sequence — top-left, gold */
 .rm-scene .rm-idx{position:absolute;top:1.4rem;left:var(--pad);z-index:4;font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.42em;text-transform:uppercase;color:var(--gold);opacity:.82;display:flex;align-items:center;gap:.8rem}
 .rm-scene .rm-idx::after{content:"";width:28px;height:1px;background:linear-gradient(90deg,var(--gold-soft),transparent)}
@@ -633,8 +629,8 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .rm-split.flip .rm-split-media{order:2}
 .rm-split.flip .rm-split-text{order:1}
 .rm-split-media{position:relative;overflow:hidden;background:#111}
-.rm-split-media .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease,transform 9s ease;background-size:cover;background-position:center;transform:scale(1.04)}
-.rm-split-media .slide.on{opacity:1;transform:scale(1.0)}
+.rm-split-media .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#0a0a07}
+.rm-split-media .slide.on{opacity:1}
 .rm-split::after{content:"";position:absolute;left:58.8%;top:8%;bottom:8%;width:1px;background:linear-gradient(180deg,transparent,var(--gold-soft) 22%,var(--gold-soft) 78%,transparent);z-index:4;pointer-events:none}
 .rm-split.flip::after{left:41.2%}
 .rm-split .rm-idx{position:absolute;top:1.3rem;left:var(--pad);z-index:5;font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.42em;text-transform:uppercase;color:var(--gold);opacity:.82;display:flex;align-items:center;gap:.8rem}
