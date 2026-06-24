@@ -69,7 +69,8 @@ a{color:inherit;text-decoration:none}
 /* the frame: photo sits FULL (contain). A blurred copy fills the void instead of dead black bars. */
 .gframe{position:relative;width:100%;aspect-ratio:3/2;overflow:hidden}
 .gcell.portrait .gframe{aspect-ratio:3/4}
-.gblur{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(34px) brightness(.55) saturate(1.1);transform:scale(1.15)}
+.gblur{position:absolute;inset:-8%;width:auto;height:auto;background-size:cover;background-position:center;filter:blur(34px) brightness(.55) saturate(1.1)}
+.gframe,.gcell{overflow:hidden}
 .gphoto{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:1;
   transition:transform 1.2s cubic-bezier(.16,1,.3,1),opacity .8s ease;opacity:0}
 .gphoto.loaded{opacity:1}
