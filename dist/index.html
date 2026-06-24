@@ -451,6 +451,25 @@ nav .links a.cta{color:var(--gold);opacity:1}
 
 /* the close — the last-remaining elegy, then one CTA, nothing after */
 .close{background:var(--ink);text-align:center;padding:clamp(5rem,13vh,9rem) var(--pad) clamp(5rem,13vh,9rem);max-width:760px;margin:0 auto}
+/* THE CLOSE as an emotional beat: the house alone in its own circle, the eye lifting away */
+.close--beat{position:relative;max-width:none;margin:0;padding:0;min-height:clamp(560px,96vh,920px);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--ink)}
+.close--beat .cb-img{position:absolute;inset:0;background-size:cover;background-position:center;
+  filter:sepia(.12) saturate(1.03) contrast(1.02) brightness(.86);transform:scale(1.08);transform-origin:50% 60%}
+.close--beat.lift .cb-img{transform:scale(1.0);transition:transform 9s cubic-bezier(.22,.61,.36,1)} /* slow pull-away */
+.close--beat .cb-veil{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(75% 60% at 50% 52%, rgba(8,8,7,.30), rgba(8,8,7,.72) 86%),
+             linear-gradient(to bottom, rgba(8,8,7,.55), rgba(8,8,7,.20) 30%, rgba(8,8,7,.50) 72%, var(--ink))}
+.close--beat .cb-inner{position:relative;z-index:2;max-width:780px;padding:0 var(--pad);text-align:center}
+.close--beat p{font-family:var(--font-display);font-weight:300;font-size:clamp(1.2rem,1.8vw,1.5rem);
+  line-height:1.7;color:var(--cream-dim);margin:0 0 1.4rem;text-shadow:0 1px 30px rgba(0,0,0,.6)}
+.close--beat .last{color:var(--cream);font-style:italic;font-size:clamp(1.5rem,2.6vw,2.15rem);
+  line-height:1.45;margin:2rem 0 3rem;text-shadow:0 1px 36px rgba(0,0,0,.7)}
+.close--beat .cta{display:inline-block;font-family:var(--font-label);font-size:var(--xs);letter-spacing:.34em;
+  text-transform:uppercase;color:var(--cream);padding:1.05rem 2.6rem;border:1px solid rgba(201,169,110,.55);
+  background:rgba(8,8,7,.28);backdrop-filter:blur(2px);transition:all .5s}
+.close--beat .cta:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+@media (prefers-reduced-motion:reduce){.close--beat .cb-img{transform:none;transition:none}}
 .close p{font-family:var(--font-display);font-weight:300;font-size:clamp(1.2rem,1.8vw,1.5rem);line-height:1.7;color:var(--cream-dim);margin:0 0 1.4rem}
 .close .last{color:var(--cream);font-style:italic;font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.45;margin:2rem 0 3rem}
 .close .cta{display:inline-block;font-family:var(--font-label);font-size:var(--xs);letter-spacing:.34em;text-transform:uppercase;color:var(--cream);
@@ -648,10 +667,15 @@ nav .links a.cta{color:var(--gold);opacity:1}
   .ep-beat .scrim{background:linear-gradient(180deg,transparent 30%,rgba(8,8,7,.78))}
   .ep-beat .pocket{display:none}}
 /* top-left variant: text + scrim ride the photo's shaded upper-left corner */
-.ep-beat--tl .scrim{background:linear-gradient(155deg, rgba(8,8,7,.74) 0%, rgba(8,8,7,.42) 26%, rgba(8,8,7,.08) 52%, transparent 70%);}
+.ep-beat--tl .scrim{background:
+  linear-gradient(150deg, rgba(8,8,7,.80) 0%, rgba(8,8,7,.52) 24%, rgba(8,8,7,.14) 48%, transparent 66%),
+  radial-gradient(46% 42% at 20% 26%, rgba(8,8,7,.42), transparent 72%);}
 .ep-beat--tl .ep-cap{bottom:auto;top:clamp(2.4rem,9vh,5.5rem)}
+/* feather the section's own bottom so it never reads as a hard black guillotine bar */
+.ep-beat::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;pointer-events:none;
+  background:linear-gradient(to bottom,transparent,var(--ink));z-index:1}
 @media(max-width:760px){.ep-beat--tl .ep-cap{top:auto;bottom:clamp(1.6rem,6vh,3rem)}
-  .ep-beat--tl .scrim{background:linear-gradient(180deg,rgba(8,8,7,.5) 0%,transparent 30%,transparent 55%,rgba(8,8,7,.8))}}
+  .ep-beat--tl .scrim{background:linear-gradient(180deg,rgba(8,8,7,.55) 0%,transparent 32%,transparent 52%,rgba(8,8,7,.82))}}
 
 /* MATTERPORT — the star walkthrough */
 .tour-wrap{position:relative;max-width:1100px;margin:0 auto clamp(3rem,7vh,5rem);aspect-ratio:16/9;background:#111;border:1px solid rgba(201,169,110,.25);cursor:pointer;overflow:hidden}
@@ -1322,7 +1346,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   <div class="scrim"></div>
   <div class="ep-cap">
     <span class="ep-eyebrow">The Grounds</span>
-    <p>4.15 acres, Moore County. Garran Hill sits within its own circle, the surviving house core of a much larger Page era farm. Inside the gates: the circular drive, the lawn, the brick walled pool, the tennis courts under the longleaf pines.</p>
+    <p>Inside the gates, the world quiets. A circular drive, the lawn, the brick walled pool, two courts under the longleaf pines.</p>
   </div>
 </section>
 
@@ -1392,11 +1416,15 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 </div>
 <div class="grid" id="ggrid"></div>
 
-<!-- THE CLOSE — the last-remaining elegy, then one CTA, nothing after -->
-<div class="close">
-  <p>The farm that surrounded it was subdivided long ago. The neighborhood that grew up around it took the name.</p>
-  <p class="last">200 Hollycrest is the last piece of the original Garran Hill still standing on its own ground.</p>
-  <a class="cta" href="#inquiry">Arrange a Private Visit</a>
+<!-- THE CLOSE — the house alone in its own circle. The eye lifts away. Then one CTA, nothing after. -->
+<div class="close close--beat" id="theClose">
+  <div class="cb-img" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_2400/v1/garran-hill/photos/136-4-15-acre-lot.jpg')"></div>
+  <div class="cb-veil"></div>
+  <div class="cb-inner">
+    <p>The farm that surrounded it was subdivided long ago. The neighborhood that grew up around it took the name.</p>
+    <p class="last">200 Hollycrest is the last piece of the original Garran Hill still standing on its own ground.</p>
+    <a class="cta" href="#inquiry">Arrange a Private Visit</a>
+  </div>
 </div>
 
 
@@ -1564,6 +1592,19 @@ document.getElementById('tourbox').addEventListener('click',function(){this.inne
     },{threshold:0.35});
     go.observe(gate);
   }else{gate.classList.add('lit');}
+})();
+
+/* THE CLOSE — the aerial lifts away (the goodbye) as the ending enters view */
+(function(){
+  var cl=document.getElementById('theClose');
+  if(!cl)return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){cl.classList.add('lift');return;}
+  if('IntersectionObserver' in window){
+    var co=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){setTimeout(function(){cl.classList.add('lift');},250);co.unobserve(e.target);}});
+    },{threshold:0.3});
+    co.observe(cl);
+  }else{cl.classList.add('lift');}
 })();
 
 /* THE LETTER — "the farm" rises out of his handwriting when the section enters view */
