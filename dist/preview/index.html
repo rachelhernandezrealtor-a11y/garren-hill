@@ -622,6 +622,19 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 .grave .gv-cap{z-index:2}
 .grave .gv-cap .room{text-shadow:0 2px 16px rgba(8,8,7,.98),0 1px 5px rgba(8,8,7,.95),0 0 30px rgba(8,8,7,.9)}
 
+/* --- HERO FILM: the dusk loop was reading murky and the house got lost. Raise
+   the focal point so the facade sits in the clear upper-middle, and give the
+   footage a gentle cinematic grade (lift + a touch of contrast/warmth) so it
+   reads like graded film, not an underexposed clip. Real footage only — this
+   only grades the existing loop, never generates imagery. --- */
+.hero-bg{object-position:50% 36%!important;
+  filter:brightness(1.08) contrast(1.06) saturate(1.05)!important}
+/* lift the center of the scrim so the house breathes; keep the top + bottom
+   anchors that hold the wordmark and the lower text legible */
+.hero-scrim{background:
+  radial-gradient(ellipse 70% 56% at 50% 40%,rgba(8,8,7,.34) 0%,rgba(8,8,7,.08) 48%,transparent 70%),
+  linear-gradient(180deg,rgba(8,8,7,.52) 0%,rgba(8,8,7,.12) 18%,transparent 40%,transparent 62%,rgba(8,8,7,.72) 100%)!important}
+
 </style><link rel="stylesheet" href="mag-rooms.css">
 </head>
 <body class="s-grain">
