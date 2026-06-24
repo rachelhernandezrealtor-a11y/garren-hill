@@ -592,8 +592,15 @@ nav .links a.cta{color:var(--gold);opacity:1}
 /* airy edge scrim — preserves the photo (Rule 9: never darken the image into a band) */
 .rm-scene::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
   background:radial-gradient(ellipse 70% 60% at 50% 80%,rgba(8,8,7,.5) 0%,rgba(8,8,7,.18) 55%,transparent 78%)}
-.rm-scene .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;background-size:cover;background-position:center;transform:scale(1.04);transition:opacity 1.6s ease,transform 9s ease}
-.rm-scene .slide.on{opacity:1;transform:scale(1.0)}
+.rm-scene .slide{position:absolute;inset:0;opacity:0;background-size:cover;background-position:center;
+  transition:opacity 1.8s cubic-bezier(.4,0,.2,1);will-change:opacity,transform}
+.rm-scene .slide.on{opacity:1}
+/* Ken-Burns drift, alternating direction per slide — only runs while the active slide is on */
+.rm-scene .slide.on.kb-a{animation:kbA 7s ease-out forwards}
+.rm-scene .slide.on.kb-b{animation:kbB 7s ease-out forwards}
+@keyframes kbA{from{transform:scale(1.08) translate(1.5%,1%)}to{transform:scale(1.0) translate(0,0)}}
+@keyframes kbB{from{transform:scale(1.0) translate(0,0)}to{transform:scale(1.08) translate(-1.5%,-1%)}}
+@media (prefers-reduced-motion:reduce){.rm-scene .slide.on.kb-a,.rm-scene .slide.on.kb-b{animation:none;transform:none}}
 /* room number sequence — top-left, gold */
 .rm-scene .rm-idx{position:absolute;top:1.4rem;left:var(--pad);z-index:4;font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.42em;text-transform:uppercase;color:var(--gold);opacity:.82;display:flex;align-items:center;gap:.8rem}
 .rm-scene .rm-idx::after{content:"";width:28px;height:1px;background:linear-gradient(90deg,var(--gold-soft),transparent)}
@@ -1291,43 +1298,43 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 </div>
 
 <div class="rooms-wrap">
-  <div class="rm-scene" data-imgs="013-entry-hall,011-entry-hall,012-entry-hall">
+  <div class="rm-scene" data-imgs="011-entry-hall,012-entry-hall,013-entry-hall">
     <span class="rm-idx">I &middot; First Floor</span><span class="rm-end"></span>
     <div class="rm-cap"><span class="rm">The Entrance Hall</span><p class="det">The mahogany rail leaves the newel in a single unbroken turn and does not let go until the landing. It has been climbed every day since 1916.</p><span class="flow">The hall opens to the drawing room</span></div>
     <div class="rm-dots"></div>
   </div>
 
-  <div class="rm-scene hero" data-imgs="019-drawing-room,017-drawing-room,020-drawing-room,022-drawing-room-french-doors">
+  <div class="rm-scene hero" data-imgs="015-drawing-room,017-drawing-room,019-drawing-room,021-drawing-room,022-drawing-room-french-doors">
     <span class="rm-idx">II &middot; First Floor</span><span class="rm-end"></span>
     <div class="rm-cap"><span class="rm">The Drawing Room</span><p class="det">Forty feet, and the afternoon crosses all of it. A Federal mantel, a ceiling worked in panels and coffers, bookcases arched into the wall. Two rooms could sit here and never crowd one another.</p><span class="flow">French doors give onto the brick terrace</span></div>
     <div class="rm-dots"></div>
   </div>
 
-  <div class="rm-split flip" data-imgs="058-library,060-library,061-library">
+  <div class="rm-split flip" data-imgs="058-library,059-library,060-library,061-library">
     <span class="rm-idx">III &middot; First Floor</span>
     <div class="rm-split-media"></div>
     <div class="rm-split-text"><span class="rm">The Library</span><p class="det">Shelving to the ceiling on three walls. A house built for a man of letters keeps its promise in this one room.</p><span class="flow">Through the hall to the sitting room</span></div>
   </div>
 
-  <div class="rm-scene compact" data-imgs="067-delft-sitting-room,069-sitting-room,109-den-spiral-staircase">
+  <div class="rm-scene compact" data-imgs="067-delft-sitting-room,068-sitting-room,069-sitting-room">
     <span class="rm-idx">IV &middot; First Floor</span><span class="rm-end"></span>
     <div class="rm-cap"><span class="rm">The Sitting Room</span><p class="det">Delft tile set around the fire, blue on white. In the corner a spiral stair winds up to the study, the way this house likes to send you somewhere.</p><span class="flow">The stair climbs to the den above</span></div>
     <div class="rm-dots"></div>
   </div>
 
-  <div class="rm-split" data-imgs="025-dining-room,024-dining-room,028-dining-room">
+  <div class="rm-split" data-imgs="024-dining-room,025-dining-room,028-dining-room,030-dining-room">
     <span class="rm-idx">V &middot; First Floor</span>
     <div class="rm-split-media"></div>
     <div class="rm-split-text"><span class="rm">The Dining Room</span><p class="det">The 1916 frontispiece is still here, and the arched shell cabinets that flank it. The east windows take the morning low and direct.</p><span class="flow">On to the kitchen</span></div>
   </div>
 
-  <div class="rm-scene hero" data-imgs="031-kitchen,034-kitchen,037-farm-sink,044-breakfast-room">
+  <div class="rm-scene hero" data-imgs="031-kitchen,034-kitchen,038-wall-of-windows-kitchen,043-breakfast-room,044-breakfast-room">
     <span class="rm-idx">VI &middot; First Floor</span><span class="rm-end"></span>
     <div class="rm-cap"><span class="rm">The Kitchen</span><p class="det">Heart pine underfoot, the one floor that is not the original oak. Black granite, a range under its hood, a butler's pantry with a farm sink. A working room that never forgot the old house around it.</p><span class="flow">Through to the breakfast room and the grounds</span></div>
     <div class="rm-dots"></div>
   </div>
 
-  <div class="rm-scene" data-imgs="073-primary,075-primary-bathroom,082-primary-shower,085-primary-dressing-room">
+  <div class="rm-scene" data-imgs="070-primary-suite,073-primary,075-primary-bathroom,082-primary-shower,085-primary-dressing-room">
     <span class="rm-idx">VII &middot; Private Wing</span><span class="rm-end"></span>
     <div class="rm-cap"><span class="rm">The Primary Suite</span><p class="det">A private wing across the full depth of the home. A fireplace in the panels, restored oak, two dressing rooms.</p><span class="flow">French doors open to the grounds</span></div>
     <div class="rm-dots"></div>
@@ -1357,19 +1364,19 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 </section>
 
 <div class="rooms-wrap">
-  <div class="rm-scene" data-imgs="124-pool,126-pool-brick-wall,127-pool">
+  <div class="rm-scene" data-imgs="124-pool,125-pool,126-pool-brick-wall,127-pool">
     <span class="rm-idx">IX &middot; The Grounds</span><span class="rm-end"></span>
     <div class="rm-cap"><span class="rm">The Walled Pool</span><p class="det">A saltwater pool set within a brick walled garden. The wall came first.</p></div>
     <div class="rm-dots"></div>
   </div>
 
-  <div class="rm-scene" data-imgs="120-tennis-courts,118-grounds,123-grounds">
+  <div class="rm-scene" data-imgs="118-grounds,120-tennis-courts,123-grounds">
     <span class="rm-idx">X &middot; The Grounds</span><span class="rm-end"></span>
     <div class="rm-cap"><span class="rm">The Courts</span><p class="det">Two regulation tennis courts, lit for evening play, under the longleaf pines. The courts await resurfacing, the bones are right.</p></div>
     <div class="rm-dots"></div>
   </div>
 
-  <div class="rm-scene" data-imgs="121-the-wee-cottage,115-boxwood-herb-garden,112-brick-terrace">
+  <div class="rm-scene" data-imgs="112-brick-terrace,115-boxwood-herb-garden,121-the-wee-cottage">
     <span class="rm-idx">XI &middot; The Grounds</span><span class="rm-end"></span>
     <div class="rm-cap"><span class="rm">The Grounds</span><p class="det">Mature longleaf pines, Grandiflora magnolias, a camellia garden. And The Wee Cottage in the rear yard.</p></div>
     <div class="rm-dots"></div>
@@ -1467,29 +1474,41 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 <div id="lb"><button class="x" aria-label="Close">&times;</button><button class="pv" aria-label="Previous">&larr;</button><img alt=""><div class="cap"></div><button class="nx" aria-label="Next">&rarr;</button></div>
 
 <script>
-/* ROOM CAROUSELS — full-bleed scenes AND split scenes crossfade their own photos */
+/* ROOM CAROUSELS — cinematic crossfade + alternating Ken-Burns, MLS order, in-view only */
 (function(){
   var B="https://res.cloudinary.com/dghn2xpif/image/upload/w_1800,q_auto,f_auto/v1/garran-hill/photos/";
-  document.querySelectorAll('.rm-scene,.rm-split').forEach(function(scene){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.rm-scene,.rm-split').forEach(function(scene,si){
     var ids=(scene.dataset.imgs||"").split(",").filter(Boolean);
     var dots=scene.querySelector('.rm-dots');
     var media=scene.querySelector('.rm-split-media')||scene;
     var slides=[];
     ids.forEach(function(id,i){
       var s=document.createElement('div');
-      s.className='slide'+(i===0?' on':'');
+      s.className='slide'+(i===0?' on':'')+(i%2?' kb-b':' kb-a');
       s.style.backgroundImage="url('"+B+id.trim()+".jpg')";
       media.insertBefore(s,media.firstChild);
       slides.push(s);
       if(dots){var d=document.createElement('i');if(i===0)d.className='on';dots.appendChild(d);}
     });
     if(slides.length<2)return;
-    var cur=0,di=dots?dots.querySelectorAll('i'):[];
-    setInterval(function(){
+    var cur=0,di=dots?dots.querySelectorAll('i'):[],timer=null;
+    // stagger dwell per scene so adjacent rooms don't flip in lockstep (alternate rhythm)
+    var dwell=5200+(si%3)*900;
+    function advance(){
       slides[cur].classList.remove('on'); if(di[cur])di[cur].classList.remove('on');
       cur=(cur+1)%slides.length;
-      slides[cur].classList.add('on'); if(di[cur])di[cur].classList.add('on');
-    },4200);
+      var s=slides[cur];
+      // re-trigger the ken-burns animation cleanly
+      s.style.animation='none'; void s.offsetWidth; s.style.animation='';
+      s.classList.add('on'); if(di[cur])di[cur].classList.add('on');
+    }
+    function start(){ if(reduce||timer)return; timer=setInterval(advance,dwell); }
+    function stop(){ if(timer){clearInterval(timer);timer=null;} }
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?start():stop();});},{threshold:0.25});
+      io.observe(scene);
+    } else { start(); }
   });
 })();
 var photos=[
