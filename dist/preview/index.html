@@ -589,6 +589,16 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 .prose{padding-top:clamp(.5rem,2vh,1.4rem)!important;padding-bottom:clamp(3rem,7vh,4.5rem)!important}
 .grave{padding-bottom:clamp(3rem,7vh,4.5rem)!important}
 
+/* --- GALLERY: a touch more air between tiles + a always-legible caption
+   gradient so room labels read without shouting (Aman-calm, not MLS). --- */
+.grid{gap:clamp(8px,1vw,14px)!important}
+.grid figcaption{background:linear-gradient(to top,rgba(8,8,7,.82) 0%,rgba(8,8,7,.3) 60%,transparent 100%)!important;
+  opacity:0;transition:opacity .5s var(--eq)!important;padding:1rem .95rem .8rem!important}
+.grid figure:hover figcaption{opacity:1!important}
+.grid figure::after{content:"";position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(184,152,99,0);transition:box-shadow .5s var(--eq)}
+.grid figure:hover::after{box-shadow:inset 0 0 0 1px rgba(184,152,99,.5)}
+
 </style><link rel="stylesheet" href="mag-rooms.css">
 </head>
 <body class="s-grain">
