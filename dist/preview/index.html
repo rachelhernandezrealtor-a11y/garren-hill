@@ -599,6 +599,29 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   box-shadow:inset 0 0 0 1px rgba(184,152,99,0);transition:box-shadow .5s var(--eq)}
 .grid figure:hover::after{box-shadow:inset 0 0 0 1px rgba(184,152,99,.5)}
 
+/* --- LETTER PATINA: the ghosted Page letter behind "The farm" was reading as
+   muddy printed-text wallpaper (the Squarespace tell). Invert it to luminous
+   strokes per the preserve-the-image law — printed ink becomes faint light
+   tracery caught in low light, not legible book text. Hold it to a whisper:
+   heavy blur + low opacity + large scale so words can never be decoded. --- */
+.letter .pageink{
+  filter:invert(1) sepia(.3) saturate(.5) brightness(1.04) contrast(.62) blur(7px)!important;
+  mix-blend-mode:screen;opacity:.5;
+  background-size:185% auto!important;
+  -webkit-mask-image:radial-gradient(ellipse 50% 40% at 50% 44%,#000 0%,rgba(0,0,0,.22) 40%,transparent 66%)!important;
+  mask-image:radial-gradient(ellipse 50% 40% at 50% 44%,#000 0%,rgba(0,0,0,.22) 40%,transparent 66%)!important}
+/* GSAP reveals pageink to .5; cap the visible result lower via the mask+contrast above */
+
+/* --- GRAVE BEAT: feather the slate photo into the black so it stops reading
+   as a floated rectangle, and lay a soft scrim under the gold eyebrow so
+   "MY IRISH HUNTER · BLUE FOX" stays legible over the bright stone. --- */
+.grave .gv-img{position:relative;overflow:visible!important;background:transparent!important}
+.grave .gv-img img{
+  -webkit-mask-image:radial-gradient(ellipse 64% 60% at 50% 48%,#000 0%,#000 30%,rgba(0,0,0,.55) 62%,transparent 100%);
+  mask-image:radial-gradient(ellipse 64% 60% at 50% 48%,#000 0%,#000 30%,rgba(0,0,0,.55) 62%,transparent 100%)}
+.grave .gv-cap{z-index:2}
+.grave .gv-cap .room{text-shadow:0 2px 16px rgba(8,8,7,.98),0 1px 5px rgba(8,8,7,.95),0 0 30px rgba(8,8,7,.9)}
+
 </style><link rel="stylesheet" href="mag-rooms.css">
 </head>
 <body class="s-grain">
