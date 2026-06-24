@@ -635,38 +635,155 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   radial-gradient(ellipse 70% 56% at 50% 40%,rgba(8,8,7,.34) 0%,rgba(8,8,7,.08) 48%,transparent 70%),
   linear-gradient(180deg,rgba(8,8,7,.52) 0%,rgba(8,8,7,.12) 18%,transparent 40%,transparent 62%,rgba(8,8,7,.72) 100%)!important}
 
+
+/* ===== CREST HERO (namespaced ch-) ===== */
+/* ============ THE HERO — a framed engraved plate ============ */
+.ch-hero{position:relative;height:100svh;min-height:640px;width:100%;overflow:hidden;background:#000}
+/* the twilight film */
+.ch-hero video,.ch-hero .ch-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.ch-hero .ch-poster{background-size:cover;background-position:center}
+/* focal + bottom scrim only — keep mid-frame footage clear (codex) */
+.ch-hero .ch-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+   radial-gradient(ellipse 66% 50% at 50% 38%,rgba(8,8,7,.62) 0%,rgba(8,8,7,.22) 45%,transparent 66%),
+   linear-gradient(to bottom,rgba(8,8,7,.42) 0%,transparent 22%,transparent 52%,rgba(8,8,7,.92) 100%)}
+
+/* THE GOLD FRAME — draws itself on */
+.ch-frame{position:absolute;inset:0;z-index:3;pointer-events:none}
+.ch-frame svg{position:absolute;inset:0;width:100%;height:100%}
+.ch-frame rect{fill:none;stroke:url(#fg);stroke-width:1.4;
+  stroke-dasharray:3824;stroke-dashoffset:3824}
+
+/* nav — one gold-outlined mark top-right (restraint) */
+.ch-nav{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;
+  align-items:center;padding:clamp(1.4rem,3vw,2.4rem) clamp(1.6rem,4vw,3.4rem)}
+.ch-nav .ch-est{font-family:var(--font-label);font-size:clamp(.66rem,.8vw,.78rem);letter-spacing:.34em;
+  text-transform:uppercase;color:var(--cream-dim);text-shadow:0 1px 14px rgba(0,0,0,.7)}
+.ch-nav .ch-est b{font-family:var(--font-script);font-weight:400;font-size:1.7em;color:var(--gold-hi);
+  letter-spacing:0;text-transform:none;vertical-align:-.05em;padding:0 .1em}
+.ch-nav .ch-menu{width:42px;height:42px;border:1px solid var(--gold-soft);border-radius:50%;
+  display:grid;place-items:center;cursor:pointer;transition:border-color .3s}
+.ch-nav .ch-menu:hover{border-color:var(--gold-hi)}
+.ch-nav .ch-menu span{display:block;width:15px;height:1px;background:var(--gold-hi);
+  box-shadow:0 5px 0 var(--gold-hi),0 -5px 0 var(--gold-hi)}
+
+/* centered stack */
+.ch-stack{position:absolute;z-index:4;left:0;right:0;top:clamp(17%,21vh,24%);
+  display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 1.5rem}
+.ch-eyebrow{font-family:var(--font-label);font-size:clamp(.62rem,.85vw,.8rem);font-weight:500;
+  letter-spacing:.42em;text-transform:uppercase;color:var(--gold)}
+.ch-wordmark{font-family:var(--font-script);font-weight:400;
+  font-size:clamp(4.2rem,12.5vw,11rem);line-height:.9;color:var(--cream);
+  margin:.12em 0 .04em;padding:.06em .12em;
+  text-shadow:0 2px 30px rgba(0,0,0,.55),0 0 1px rgba(0,0,0,.4);
+  }
+.ch-subline{font-family:var(--font-label);font-size:clamp(.6rem,.82vw,.76rem);font-weight:500;
+  letter-spacing:.34em;text-transform:uppercase;color:var(--cream-dim);text-shadow:0 1px 14px rgba(0,0,0,.7)}
+.ch-subline .ch-dot{color:var(--gold-soft);margin:0 .55em}
+.ch-tagline{font-family:var(--font-body);font-style:italic;font-weight:400;
+  font-size:clamp(1.15rem,1.9vw,1.7rem);color:var(--cream);margin-top:1.5rem;
+  text-shadow:0 1px 18px rgba(0,0,0,.6)}
+
+/* ===== THE STAT BAND — crest is the crowned jewel parting it ===== */
+.ch-belt{position:absolute;left:0;right:0;bottom:0;z-index:4;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:9vh clamp(1.4rem,5vw,5rem) clamp(2.4rem,4.5vh,3.6rem);
+  background:linear-gradient(to bottom,transparent 0%,rgba(8,8,7,.0) 22%,rgba(8,8,7,.5) 52%,rgba(8,8,7,.86) 78%,rgba(8,8,7,.97) 100%)}
+.ch-belt-rule{position:relative;z-index:2;height:1px;width:min(560px,72%);margin:0 auto;transform-origin:center;
+  background:linear-gradient(90deg,transparent,var(--gold-soft) 22%,var(--gold) 50%,var(--gold-soft) 78%,transparent)}
+/* ONE tight centered constellation: [2 stats] CREST(+2 under) [2 stats], air on the OUTSIDE */
+
+.ch-belt-seat{position:absolute;left:0;right:0;bottom:0;z-index:0;pointer-events:none;
+  height:clamp(210px,32vh,320px);
+  /* grounded lower-third shelf: bleeds edge-to-edge to the frame, darkest at the base */
+  background:
+    linear-gradient(to bottom,transparent 0%,rgba(7,7,6,.35) 22%,rgba(7,7,6,.72) 52%,rgba(7,7,6,.93) 78%,#070706 100%),
+    radial-gradient(ellipse 56% 130% at 50% 96%,rgba(7,7,6,.6) 0%,transparent 70%)}
+/* a faint gold horizon hairline where the shelf meets the film — the seam, intentional */
+.ch-belt-seat::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:min(760px,86%);height:1px;
+  background:linear-gradient(90deg,transparent,rgba(184,152,99,.28) 30%,rgba(184,152,99,.42) 50%,rgba(184,152,99,.28) 70%,transparent)}
+.ch-belt-row{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;
+  gap:clamp(2rem,4.5vw,4.2rem);margin-top:clamp(1.4rem,3vh,2.2rem);max-width:1180px;margin-inline:auto}
+.ch-belt-side{position:relative;z-index:4;display:flex;align-items:center;justify-content:center;gap:clamp(1.4rem,2.8vw,2.6rem);flex:1 1 0;max-width:340px}
+.ch-stat{text-align:center;white-space:nowrap}
+.ch-stat-v{font-family:var(--font-display);font-weight:500;font-size:clamp(1.4rem,2.1vw,2.05rem);
+  color:var(--cream);line-height:1;letter-spacing:.01em;text-shadow:0 1px 12px rgba(0,0,0,.55)}
+.ch-stat-l{font-family:var(--font-label);font-size:clamp(.56rem,.72vw,.7rem);font-weight:500;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-top:.6em}
+/* crest jewel — larger, lifted off the dark with a soft pedestal glow */
+.ch-crest-wrap{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;flex-shrink:0;padding:0 clamp(1rem,2.4vw,2.4rem)}
+/* VELVET POOL — real layer, above the photo, below the crest. Seats the jewel on near-black. */
+.ch-crest-wrap .ch-velvet{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:260%;height:240%;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle at center,rgba(6,6,5,.8) 0%,rgba(6,6,5,.5) 40%,rgba(6,6,5,.2) 62%,transparent 80%)}
+.ch-crest-wrap .ch-velvet-core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:150%;height:132%;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle at center,rgba(5,5,4,.75) 0%,rgba(5,5,4,.55) 55%,rgba(5,5,4,.25) 78%,transparent 92%)}
+/* luminous gold-white halo just behind the metal */
+.ch-crest-wrap .ch-halo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:108%;height:112%;border-radius:50%;z-index:1;pointer-events:none;
+  background:radial-gradient(circle at center,rgba(246,233,194,.34) 0%,rgba(236,217,166,.16) 38%,rgba(184,152,99,.05) 58%,transparent 72%)}
+.ch-crest-wrap img{position:relative;z-index:2;width:clamp(150px,14vw,210px);height:auto;margin-top:-2.4rem;
+  filter:drop-shadow(0 14px 38px rgba(0,0,0,.9)) drop-shadow(0 0 2px rgba(246,233,194,.7)) drop-shadow(0 0 20px rgba(246,233,194,.45)) contrast(1.14) brightness(1.12) saturate(1.08)}
+.ch-crest-under{position:relative;z-index:2;display:flex;align-items:center;gap:clamp(1.4rem,3vw,2.6rem);margin-top:.35rem}
+.ch-crest-under .ch-stat-v{font-size:clamp(1.15rem,1.6vw,1.55rem)}
+.ch-tick{width:1px;align-self:center;height:34px;
+  background:linear-gradient(to bottom,transparent,var(--gold-soft),transparent);flex-shrink:0}
+
+/* scroll cue */
+.ch-cue{position:absolute;left:50%;bottom:32%;z-index:5;
+  transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.ch-cue .ch-ln{width:1px;height:34px;background:linear-gradient(to bottom,var(--gold),transparent);
+  animation:cuepulse 2.4s cubic-bezier(.16,1,.3,1) infinite}
+@keyframes cuepulse{0%,100%{transform:scaleY(.5);opacity:.4;transform-origin:top}50%{transform:scaleY(1);opacity:1;transform-origin:top}}
+
 </style><link rel="stylesheet" href="mag-rooms.css">
 </head>
 <body class="s-grain">
 <div class="cursor-dot" id="cdot" aria-hidden="true"></div>
-<nav>
-  <div class="brand"><span class="est-mark">Est.</span> <span class="brand-script">Garran Hill</span> <span class="est-mark">1916</span></div>
-  <div class="links"><a href="#">The Estate</a><a href="#">The History</a><a href="#">The Grounds</a></div>
-</nav>
-
-<header class="hero">
-  <video class="hero-bg" autoplay muted loop playsinline preload="auto"
-    poster="https://res.cloudinary.com/dghn2xpif/image/upload/q_auto,f_auto/v1782250203/gh_hero_pro/garran_hill_hero_poster_v2.jpg">
-    <source src="https://res.cloudinary.com/dghn2xpif/video/upload/q_auto:best,f_auto/v1782250200/gh_hero_pro/garran_hill_hero_loop_v2.mp4" type="video/mp4">
+<section class="ch-hero">
+  <video autoplay muted loop playsinline preload="auto" poster="https://res.cloudinary.com/dghn2xpif/video/upload/so_1,q_auto,f_jpg/v1782085691/gh_hero_pro/garran_hill_hero_sharp.jpg">
+    <source src="https://res.cloudinary.com/dghn2xpif/video/upload/q_auto:best,f_auto/v1782085691/gh_hero_pro/garran_hill_hero_sharp.mp4" type="video/mp4">
   </video>
-  <div class="hero-scrim"></div>
-  <div class="hero-frame">
+  <div class="ch-scrim"></div>
+
+  <div class="ch-frame">
     <svg preserveAspectRatio="none" viewBox="0 0 1000 1000">
-      <defs><linearGradient id="ghfg" x1="0" y1="0" x2="1" y2="1">
+      <defs><linearGradient id="fg" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0" stop-color="#9c7e49"/><stop offset=".5" stop-color="#f6e9c2"/><stop offset="1" stop-color="#9c7e49"/>
       </linearGradient></defs>
-      <rect x="20" y="20" width="960" height="960" rx="2"/>
+      <rect x="22" y="22" width="956" height="956" rx="2"/>
     </svg>
   </div>
-  <div class="hero-inner">
-    <div class="hero-eyebrow">200 Hollycrest Drive &middot; Pinehurst, North Carolina</div>
-    <div class="wordmark"><svg class="wm-draw" viewBox="0 -672 8233.4 2414" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-label="Garran Hill">
-  <g class="wm-ink" transform="scale(1,-1)" fill="#F5F0E8" stroke="#F5F0E8" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"><path d="M1866 926Q1866 901 1788.5 809.5Q1711 718 1632 651Q1561 537 1528.0 462.5Q1495 388 1446 227Q1385 31 1295.5 -84.0Q1206 -199 1044 -289Q812 -418 569 -418Q363 -418 236.0 -306.0Q109 -194 109 -12Q109 143 205.0 282.5Q301 422 467.5 508.0Q634 594 776 594Q788 594 797 592Q797 617 811 680Q793 678 768 678Q607 678 511.5 749.0Q416 820 416 938Q416 1142 647.0 1300.0Q878 1458 1178 1458Q1416 1458 1567 1339Q1672 1378 1722 1378Q1819 1378 1819 1298Q1819 1224 1706 1114Q1714 1059 1714 1022Q1714 914 1651 791Q1632 754 1624 754Q1619 754 1618 760Q1619 765 1622 770Q1696 892 1696 1026Q1696 1067 1692 1102Q1525 955 1319.5 845.5Q1114 736 928 694Q896 642 879 586Q1143 541 1143 299V279Q1342 333 1632 674Q1697 776 1765.0 854.0Q1833 932 1858 932Q1864 932 1866 926ZM1800 1296Q1800 1362 1724 1362Q1666 1362 1585 1323Q1671 1249 1702 1133Q1800 1228 1800 1296ZM1688 1120Q1662 1239 1569 1317Q1390 1228 1213.0 1058.5Q1036 889 938 713Q1116 755 1320.5 865.5Q1525 976 1688 1120ZM1548 1333Q1415 1438 1182 1438Q901 1438 667.5 1282.5Q434 1127 434 940Q434 825 526.0 760.5Q618 696 782 696H817Q934 1079 1548 1333ZM1126 274Q1133 393 1067.0 470.5Q1001 548 877 569Q862 518 862 467Q862 378 919.5 324.0Q977 270 1071 270Q1100 270 1126 274ZM1597 610Q1328 311 1139 260Q1119 123 1010.5 10.5Q902 -102 791 -102Q732 -102 692.5 -66.0Q653 -30 653 23Q653 78 690.5 122.0Q728 166 774 166Q844 166 844 102Q844 73 821.0 50.0Q798 27 770 27Q717 27 717 74Q717 81 721 96Q723 104 723 111Q723 117 717 117Q702 117 687.0 84.5Q672 52 672 23Q672 -24 706.0 -55.0Q740 -86 791 -86Q893 -86 1000.5 25.0Q1108 136 1122 256Q1100 252 1071 252Q943 252 869.0 338.5Q795 425 795 573Q543 557 354.5 363.5Q166 170 166 -72Q166 -217 273.5 -307.0Q381 -397 555 -397Q791 -397 984.0 -230.0Q1177 -63 1432 362Q1510 494 1597 610Z" transform="translate(0,0)"/><path d="M889 313Q889 292 743 119Q625 -23 557 -23Q511 -23 482.0 11.5Q453 46 453 98Q453 152 485 215Q385 75 332.0 26.0Q279 -23 229 -23Q176 -23 140.0 22.5Q104 68 104 137Q104 329 375 477Q494 543 567 543Q629 543 629 483Q629 466 621 438L672 535Q702 528 725 528Q752 528 795 535L618 242Q526 88 526 39Q526 -8 565 -8Q605 -8 693.0 83.5Q781 175 872 309Q878 319 883 319Q889 319 889 313ZM614 479Q614 528 569 528Q477 528 327.5 348.0Q178 168 178 57Q178 -8 236 -8Q305 -8 475 221Q614 409 614 479Z" transform="translate(1503,0)"/><path d="M756 313Q756 305 696 240Q620 156 553 156Q477 156 477 244Q477 272 489 315Q426 260 386.5 206.0Q347 152 250 -14Q197 -10 188 -10Q184 -10 127 -14L291 252Q414 452 414 500Q414 528 391 528Q335 528 188 313Q179 299 172 299Q168 300 168 305Q169 310 172 313L190 338Q344 543 399 543Q479 543 479 440Q479 363 397 236Q449 296 496 334Q534 423 590.5 483.0Q647 543 692 543Q723 543 723 516Q723 468 584 379Q562 365 518 338L506 328Q492 282 492 252Q492 168 555 168Q633 168 725 297Q745 319 750 319Q756 319 756 313Z" transform="translate(2208,0)"/><path d="M756 313Q756 305 696 240Q620 156 553 156Q477 156 477 244Q477 272 489 315Q426 260 386.5 206.0Q347 152 250 -14Q197 -10 188 -10Q184 -10 127 -14L291 252Q414 452 414 500Q414 528 391 528Q335 528 188 313Q179 299 172 299Q168 300 168 305Q169 310 172 313L190 338Q344 543 399 543Q479 543 479 440Q479 363 397 236Q449 296 496 334Q534 423 590.5 483.0Q647 543 692 543Q723 543 723 516Q723 468 584 379Q562 365 518 338L506 328Q492 282 492 252Q492 168 555 168Q633 168 725 297Q745 319 750 319Q756 319 756 313Z" transform="translate(2777,0)"/><path d="M889 313Q889 292 743 119Q625 -23 557 -23Q511 -23 482.0 11.5Q453 46 453 98Q453 152 485 215Q385 75 332.0 26.0Q279 -23 229 -23Q176 -23 140.0 22.5Q104 68 104 137Q104 329 375 477Q494 543 567 543Q629 543 629 483Q629 466 621 438L672 535Q702 528 725 528Q752 528 795 535L618 242Q526 88 526 39Q526 -8 565 -8Q605 -8 693.0 83.5Q781 175 872 309Q878 319 883 319Q889 319 889 313ZM614 479Q614 528 569 528Q477 528 327.5 348.0Q178 168 178 57Q178 -8 236 -8Q305 -8 475 221Q614 409 614 479Z" transform="translate(3346,0)"/><path d="M987 313Q987 292 842 119Q723 -23 655 -23Q610 -23 579.5 12.0Q549 47 549 98Q549 143 567.5 181.5Q586 220 664 334Q745 454 745 487Q745 528 702 528Q556 528 252 -14Q203 -10 193 -10Q158 -10 127 -14L283 233Q416 445 416 498Q416 528 391 528Q340 528 190 313Q181 300 176 299Q171 299 170 305Q171 310 174 313L193 338Q346 543 399 543Q433 543 457.0 512.0Q481 481 481 438Q481 374 406 260Q524 423 587.5 483.0Q651 543 705 543Q749 543 779.0 507.0Q809 471 809 418Q809 351 717 213Q623 72 623 33Q623 -8 664 -8Q753 -8 971 309Q976 319 981 319Q987 319 987 313Z" transform="translate(4051,0)"/><path d="M2796 1075Q2796 915 2603 807Q2519 760 2488 760Q2480 760 2480 768Q2480 773 2509 784Q2621 828 2692.0 909.5Q2763 991 2763 1077Q2763 1157 2708.0 1207.0Q2653 1257 2564 1257Q2278 1257 2052 928Q2013 871 1815 489Q1600 78 1309 -16Q1396 -27 1446 -27Q1628 -27 1755 92Q1865 194 1954 330Q1965 344 1970 344Q1974 343 1974 340Q1974 330 1880 209Q1769 66 1676.5 12.5Q1584 -41 1450 -41Q1367 -41 1270 -27Q1196 -47 1135 -47Q1083 -47 1083 -25Q1083 0 1165 0Q1211 0 1280 -12Q1412 46 1481 131Q1555 223 1702 516L1718 549H1329Q1235 374 1166.0 290.0Q1097 206 981 127Q726 -47 489 -47Q351 -47 264.5 11.5Q178 70 178 164Q178 213 207.5 249.0Q237 285 279 285Q344 285 344 219Q344 187 324.0 164.0Q304 141 274 141Q227 141 227 188Q230 213 221 213Q203 213 203 160Q203 78 280.0 25.5Q357 -27 477 -27Q688 -27 846.5 98.5Q1005 224 1206 549H899L907 569H1219Q1231 589 1260 633Q1470 973 1655 1108Q1694 1137 1759.0 1170.5Q1824 1204 1839 1204Q1845 1202 1845 1196Q1845 1190 1825 1182Q1702 1132 1605.0 1010.0Q1508 888 1339 569H1729Q1916 903 2135.5 1088.5Q2355 1274 2564 1274Q2667 1274 2731.5 1218.5Q2796 1163 2796 1075ZM1499 1051Q1499 1030 1440 967Q1352 872 1272 872Q1215 872 1177.0 912.5Q1139 953 1139 1012Q1139 1067 1180 1149Q1231 1251 1231 1290Q1231 1341 1183.0 1372.0Q1135 1403 1057 1403Q834 1403 638.0 1223.5Q442 1044 442 840Q442 735 506.0 668.5Q570 602 672 602Q869 602 1004 784Q1006 790 1010 791Q1018 791 1018 782Q1018 761 954 705Q822 586 668 586Q560 586 492.0 656.0Q424 726 424 838Q424 1054 624.5 1236.5Q825 1419 1063 1419Q1272 1419 1272 1235Q1272 1172 1229.0 1084.0Q1186 996 1186 967Q1186 891 1268 891Q1318 891 1382.0 938.0Q1446 985 1481 1049Q1486 1059 1491 1059Q1499 1059 1499 1051Z" transform="translate(5466.4,0)"/><path d="M514 727Q514 692 484.5 661.5Q455 631 420 631Q375 631 375 676Q375 709 406.0 739.5Q437 770 471 770Q514 770 514 727ZM528 313Q527 310 518 297L475 238Q287 -23 188 -23Q141 -23 109.5 10.5Q78 44 78 94Q78 152 147 270L303 535Q334 528 352 528Q379 528 428 535L201 162Q152 81 152 37Q152 -8 199 -8Q288 -8 512 309Q517 319 522 319Q528 319 528 313Z" transform="translate(7233.4,0)"/><path d="M711 1022Q291 323 221.5 200.0Q152 77 152 37Q152 -8 190 -8Q274 -8 498 309Q503 319 510 319Q514 318 514 313Q514 307 504 297L461 238Q272 -23 182 -23Q139 -23 111.5 9.5Q84 42 84 92Q84 147 109.5 198.5Q135 250 283 496Q464 797 588 1018Q618 1010 641 1010Q679 1010 711 1022Z" transform="translate(7577.4,0)"/><path d="M711 1022Q291 323 221.5 200.0Q152 77 152 37Q152 -8 190 -8Q274 -8 498 309Q503 319 510 319Q514 318 514 313Q514 307 504 297L461 238Q272 -23 182 -23Q139 -23 111.5 9.5Q84 42 84 92Q84 147 109.5 198.5Q135 250 283 496Q464 797 588 1018Q618 1010 641 1010Q679 1010 711 1022Z" transform="translate(7905.4,0)"/></g>
-</svg></div>
-    <div class="hero-desc">Neo-Georgian Estate &middot; <span class="est-mark">Est. 1916</span> &middot; 110 Years of Provenance</div>
+
+  <nav class="ch-nav">
+    <div class="ch-est">EST.&nbsp;<b>Garran Hill</b>&nbsp;1916</div>
+    <div class="ch-menu" aria-label="Menu"><span></span></div>
+  </nav>
+
+  <div class="ch-stack">
+    <div class="ch-eyebrow" data-h="1">200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, North Carolina</div>
+    <h1 class="ch-wordmark" data-h="2">Garran Hill</h1>
+    <div class="ch-subline" data-h="3">Neo-Georgian &nbsp;<span class="ch-dot">·</span>&nbsp; Walter Hines Page &nbsp;<span class="ch-dot">·</span>&nbsp; 110 Years on Its Own Ground</div>
+    <div class="ch-tagline" data-h="4">Inside the gates, the world changes.</div>
   </div>
-  <div class="hero-cue"></div>
-</header>
+
+  <div class="ch-cue" data-h="5"><div class="ch-ln"></div></div>
+
+  <div class="ch-belt">
+    <div class="ch-belt-rule"></div>
+    <div class="ch-belt-seat"></div>
+    <div class="ch-belt-row">
+      <div class="ch-belt-side"><div class="ch-stat"><div class="ch-stat-v">6,320</div><div class="ch-stat-l">SQUARE FEET</div></div><div class="ch-tick"></div><div class="ch-stat"><div class="ch-stat-v">4.15</div><div class="ch-stat-l">ACRES</div></div></div>
+      <div class="ch-crest-wrap">
+        <div class="ch-velvet"></div><div class="ch-velvet-core"></div><div class="ch-halo"></div>
+        <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal,w_900/f_png/v1782063976/gh_key/gh_crest_jewel_final.png" alt="Garran Hill crest — Pinehurst, Hollycrest, 1916">
+        <div class="ch-crest-under"><div class="ch-stat"><div class="ch-stat-v">4</div><div class="ch-stat-l">BEDROOMS</div></div><div class="ch-tick"></div><div class="ch-stat"><div class="ch-stat-v">6</div><div class="ch-stat-l">BATHROOMS</div></div></div>
+      </div>
+      <div class="ch-belt-side"><div class="ch-stat"><div class="ch-stat-v">7</div><div class="ch-stat-l">FIREPLACES</div></div><div class="ch-tick"></div><div class="ch-stat"><div class="ch-stat-v">$4,250,000</div><div class="ch-stat-l">OFFERED</div></div></div>
+    </div>
+  </div>
+</section>
 
 <section class="facts">
   <video class="facts-bg" autoplay muted loop playsinline preload="auto">
@@ -946,20 +1063,20 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 <div class="close">
   <p>The farm that surrounded it was subdivided long ago. The neighborhood that grew up around it took the name.</p>
   <p class="last">200 Hollycrest is the last piece of the original Garran Hill still standing on its own ground.</p>
-  <a class="cta" href="#inquiry">Request Private Showing</a>
+  <a class="cta" href="#inquiry">Arrange a Private Visit</a>
 </div>
 
 
 <section class="inquiry" id="inquiry">
   <span class="eyebrow">Available by Private Appointment</span>
   <h2>Garran Hill is offered now,<br><em>for the first time in a generation.</em></h2>
-  <div class="sub">The question is whether you are ready.</div>
+  <div class="sub">Shown privately, to those who understand what it is.</div>
   <form onsubmit="event.preventDefault();this.querySelector('.conf').textContent='Thank you. Your inquiry has been received in confidence.';">
     <input type="text" name="name" placeholder="Name" required>
     <input type="email" name="email" placeholder="Email" required>
     <input type="tel" name="phone" placeholder="Phone">
     <textarea name="message" placeholder="Message"></textarea>
-    <button type="submit">Request Private Showing</button>
+    <button type="submit">Arrange a Private Visit</button>
     <div class="conf"></div>
   </form>
   <div class="agent">Rachel Hernandez<small>Pines Sotheby's International Realty &middot; Southern Pines, North Carolina</small></div>
@@ -1213,4 +1330,38 @@ if(window.matchMedia('(pointer:fine)').matches){
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="spine.js" defer></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var still=location.search.indexOf('still')>-1;          // ?still=1 => composed static (verify/SEO)
+  var rect=document.querySelector('.ch-frame rect');
+  if(rect){var L=2*(956+956);rect.style.strokeDasharray=L;}
+  // RESTING STATE IS FULLY COMPOSED. Only animate if JS+motion allowed.
+  if(reduce||still||!window.gsap){ if(rect)rect.style.strokeDashoffset=0; return; }
+  // hide for the reveal (JS-only, so no-JS stays visible)
+  if(rect)rect.style.strokeDashoffset=L;
+  gsap.set('.ch-nav',{opacity:0});
+  gsap.set('.ch-eyebrow',{opacity:0});
+  gsap.set('.ch-wordmark',{opacity:0,filter:'blur(14px)',y:18});
+  gsap.set('.ch-subline',{opacity:0});
+  gsap.set('.ch-tagline',{opacity:0});
+  gsap.set('.ch-belt-rule',{scaleX:0});
+  gsap.set('.ch-crest-wrap',{opacity:0,y:20,scale:.84});
+  gsap.set('.ch-stat',{opacity:0,y:14});
+  gsap.set('.ch-cue',{opacity:0});
+  var tl=gsap.timeline({defaults:{ease:'power3.out'}});
+  tl.to(rect,{strokeDashoffset:0,duration:2.4,ease:'power2.inOut'},0.2)
+    .to('.ch-nav',{opacity:1,duration:1.2},0.8)
+    .to('.ch-eyebrow',{opacity:1,duration:1.1},1.3)
+    .to('.ch-wordmark',{opacity:1,filter:'blur(0px)',y:0,duration:1.8,ease:'power2.out'},1.9)
+    .to('.ch-subline',{opacity:1,duration:1.1},2.9)
+    .to('.ch-tagline',{opacity:1,duration:1.2},3.3)
+    .to('.ch-belt-rule',{scaleX:1,duration:1.3,ease:'power2.inOut'},3.6)
+    .to('.ch-crest-wrap',{opacity:1,y:0,scale:1,duration:1.1,ease:'back.out(1.4)'},3.9)
+    .to('.ch-stat',{opacity:1,y:0,duration:.9,stagger:.12},4.1)
+    .to('.ch-cue',{opacity:1,duration:1},4.6);
+})();
+</script>
 </body></html>
