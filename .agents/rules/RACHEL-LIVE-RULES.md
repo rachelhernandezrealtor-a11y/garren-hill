@@ -624,3 +624,23 @@ Coco builds with a FAST LOCAL EYES-LOOP and her OWN stack — never blind, never
   open for 110 years." lives in dist/index.html). Pull her proven copy/treatment from the
   existing build FIRST, rebuild to THAT, then raise it — never overwrite her good work with
   a weaker improvisation.
+
+## GARRAN HILL HOMEPAGE — Rachel's visual changes (captured June 22-23, locked June 24)
+Source: session 2b1dac79be72. These are LAW for the homepage build.
+
+1. BETTY + BLUE FOX → /history tab (NOT main page). Two emotional centers (Page + Betty)
+   make the scroll stutter. Main page keeps ONE quiet line linking to history, then hands
+   back to the house. Retires the somber grave photo from main flow.
+2. HERO:
+   - First shot = the DRONE descending to the house showing the circle, then front-exterior
+     TWILIGHTS only, perfect-quality seamless loop.
+   - CREST = the crowned jewel: LARGER, anchored at BOTTOM of viewport.
+   - STAT BAR lives ON the hero as a design element AROUND the crest (exciting, not floating).
+   - "Garran Hill" appears ONCE: one line floats in, then the next floats in with
+     "Garran Hill" in EDWARDIAN script. Never the name twice.
+3. HISTORY/record section → OFF main page → its own HISTORY TAB in upper nav.
+4. Homepage is NOT "a million pages" — one tight flowing scroll.
+5. ENDING: after the narrative introduces the house → end on the AERIAL with the
+   "last remaining Walter Hines Page parcel" verbiage → CTA at the very end with
+   Rachel's name + Pines Sotheby's company under it. Nothing after.
+6. CTA language: editorial invitation, NOT salesy ("Arrange a Private Visit", never "Request Showing" begging).
