@@ -69,7 +69,7 @@ a{color:inherit;text-decoration:none}
 /* the frame: photo sits FULL (contain). A blurred copy fills the void instead of dead black bars. */
 .gframe{position:relative;width:100%;aspect-ratio:3/2;overflow:hidden}
 .gcell.portrait .gframe{aspect-ratio:3/4}
-.gblur{position:absolute;inset:-8%;width:auto;height:auto;background-size:cover;background-position:center;filter:blur(34px) brightness(.55) saturate(1.1)}
+.gblur{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(30px) brightness(.55) saturate(1.1)}
 .gframe,.gcell{overflow:hidden}
 .gphoto{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:1;
   transition:transform 1.2s cubic-bezier(.16,1,.3,1),opacity .8s ease;opacity:0}
@@ -113,6 +113,13 @@ a{color:inherit;text-decoration:none}
   .gbar{padding:.85rem 1.1rem}
   .gbar .est{display:none}
   .gbar .home,.gbar .count{font-size:.6rem;letter-spacing:.18em}
+  .group{padding-left:1rem;padding-right:1rem}
+  .group-title{flex-wrap:wrap;gap:.6rem}
+  .group-title .gt-name{font-size:.72rem;letter-spacing:.18em;white-space:normal;line-height:1.4;flex:1 1 auto}
+  .group-title .gt-rule{display:none}
+  .ghead h1{font-size:1.9rem}
+  .gchips{gap:.4rem}
+  .chip{font-size:.6rem;letter-spacing:.14em;padding:.45rem .8rem}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
