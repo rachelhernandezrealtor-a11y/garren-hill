@@ -804,6 +804,31 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 .hollycrest-hook p{font-family:var(--font-body,'Cormorant Garamond',serif);font-size:clamp(1.15rem,2.4vw,1.5rem);font-style:italic;color:rgba(238,232,222,.9);line-height:1.6;margin:0 0 1.6rem}
 .hollycrest-hook .more{display:inline-block;font-family:var(--font-label,serif);font-size:.74rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold,#c9a86a);text-decoration:none;border-bottom:1px solid rgba(201,168,106,.5);padding-bottom:.3rem;transition:border-color .4s ease}
 .hollycrest-hook .more:hover{border-color:var(--gold,#c9a86a)}
+
+/* === MOBILE POLISH (June 24, Rachel caught oversized CTA + clipped belt on phone) === */
+@media(max-width:680px){
+  /* inquiry CTA: no more full-width tacky gold block */
+  .inquiry button{display:inline-block;width:auto;min-width:260px;max-width:88%;margin:.6rem auto 0;padding:1rem 2.4rem;font-size:.72rem;letter-spacing:.24em;border-radius:2px}
+  .inquiry form{display:flex;flex-direction:column;align-items:center}
+  .inquiry input,.inquiry textarea{width:100%}
+  .close .cta{display:inline-block;padding:.95rem 2rem;font-size:.7rem;letter-spacing:.26em}
+
+  /* hero stat belt: stack vertically so crest + all 6 stats FIT, nothing clips */
+  .ch-belt-row{flex-direction:column;gap:1.4rem;align-items:center}
+  .ch-belt-side{max-width:92vw;gap:1.8rem;flex:0 0 auto;justify-content:center}
+  .ch-crest-wrap{padding:.4rem 0;order:-1}
+  .ch-crest-wrap img{max-width:120px;height:auto}
+  .ch-crest-under{gap:1.8rem}
+  .ch-stat-v{font-size:1.15rem}
+  .ch-stat-l{font-size:.56rem;letter-spacing:.18em}
+
+  /* belt container: keep it inside the viewport, no horizontal clip */
+  .ch-belt{left:0;right:0;width:100%;padding-left:4vw;padding-right:4vw;box-sizing:border-box}
+}
+@media(max-width:420px){
+  .ch-belt-side{flex-wrap:wrap;gap:1.2rem}
+  .inquiry button{min-width:0;width:88%}
+}
 </style><link rel="stylesheet" href="mag-rooms.css">
 </head>
 <body class="s-grain">
