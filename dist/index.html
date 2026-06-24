@@ -626,6 +626,28 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .fullbleed .fb-cap p{max-width:760px;margin:0 auto;font-family:var(--font-display);font-weight:300;
   font-size:clamp(1.1rem,1.7vw,1.4rem);line-height:1.6;color:var(--cream)}
 
+/* ===== EDITORIAL PHOTO PRESENTATION (skill: editorial-photo-presentation) =====
+   Photos composed not stacked; text stays ON the photo, legibility engineered. */
+.ep-beat{position:relative;width:100%;background:var(--ink);overflow:hidden}
+.ep-beat img{width:100%;height:clamp(440px,86vh,860px);object-fit:cover;display:block;
+  filter:sepia(.10) saturate(1.04) contrast(1.02) brightness(.99)} /* unified warm grade */
+/* directional scrim: follows the photo's dark falloff, reads as light not a bar */
+.ep-beat .scrim{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(102deg, rgba(8,8,7,.72) 0%, rgba(8,8,7,.40) 30%, rgba(8,8,7,.08) 56%, transparent 72%);}
+.ep-beat .pocket{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(58% 50% at 22% 74%, rgba(8,8,7,.50), transparent 72%);}
+.ep-beat .ep-cap{position:absolute;z-index:2;left:clamp(1.5rem,6vw,5.5rem);bottom:clamp(2.2rem,8vh,5rem);
+  max-width:40ch;text-align:left}
+.ep-beat .ep-eyebrow{font-family:var(--font-chapter);font-size:var(--xs);letter-spacing:.42em;
+  text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.9rem;margin-bottom:1rem}
+.ep-beat .ep-eyebrow::after{content:"";width:42px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.ep-beat .ep-cap p{font-family:var(--font-display);font-weight:300;font-size:clamp(1.15rem,1.7vw,1.5rem);
+  line-height:1.55;color:var(--cream);margin:0;text-shadow:0 1px 30px rgba(0,0,0,.5),0 1px 6px rgba(0,0,0,.4)}
+@media(max-width:760px){.ep-beat img{height:clamp(420px,72vh,640px)}
+  .ep-beat .ep-cap{left:0;right:0;bottom:clamp(1.6rem,6vh,3rem);padding:0 var(--pad);max-width:none}
+  .ep-beat .scrim{background:linear-gradient(180deg,transparent 30%,rgba(8,8,7,.78))}
+  .ep-beat .pocket{display:none}}
+
 /* MATTERPORT — the star walkthrough */
 .tour-wrap{position:relative;max-width:1100px;margin:0 auto clamp(3rem,7vh,5rem);aspect-ratio:16/9;background:#111;border:1px solid rgba(201,169,110,.25);cursor:pointer;overflow:hidden}
 .tour-wrap img{width:100%;height:100%;object-fit:cover;opacity:.55;transition:opacity .6s}
@@ -1290,9 +1312,14 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   <div class="seam"></div>
 </div>
 
-<section class="fullbleed">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_2000/v1/garran-hill/photos/136-4-15-acre-lot.jpg" alt="Garran Hill from above, 4.15 acres within its own circle">
-  <div class="fb-cap"><p>4.15 acres, Moore County. Garran Hill sits within its own circle, the surviving house core of a much larger Page era farm. Inside the gates: the circular drive, the lawn, the brick walled pool, the tennis courts under the longleaf pines.</p></div>
+<section class="ep-beat">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_2200/v1/garran-hill/photos/136-4-15-acre-lot.jpg" alt="Garran Hill from above, 4.15 acres within its own circle">
+  <div class="scrim"></div>
+  <div class="pocket"></div>
+  <div class="ep-cap">
+    <span class="ep-eyebrow">The Grounds</span>
+    <p>4.15 acres, Moore County. Garran Hill sits within its own circle, the surviving house core of a much larger Page era farm. Inside the gates: the circular drive, the lawn, the brick walled pool, the tennis courts under the longleaf pines.</p>
+  </div>
 </section>
 
 <div class="rooms-wrap">
