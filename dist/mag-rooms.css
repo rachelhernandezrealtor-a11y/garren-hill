@@ -1,53 +1,66 @@
-/* ROOM MAGAZINE GRID — overrides the stacked one-at-a-time slideshow.
+/* ROOM MAGAZINE SPREAD — overrides the stacked one-at-a-time slideshow.
    Shows all of a room's photos at once at varied scale = editorial spread.
-   Contained + reversible: remove this <link> to restore the slideshow. */
+   FLEX layout (not fixed grid) so any photo count fills cleanly with NO dead
+   void: the last row's tiles flex-grow to fill the width. Contained +
+   reversible: remove this <link> to restore the slideshow. */
 .rm-scene{
-  display:grid !important;
-  grid-template-columns:repeat(6,1fr);
-  grid-auto-rows:clamp(120px,15vh,180px);
+  display:flex !important;
+  flex-wrap:wrap;
   gap:clamp(6px,.8vw,12px);
   height:auto !important;
   background:var(--ink) !important;
   padding:clamp(1.4rem,4vw,3.2rem) var(--pad);
   align-items:stretch;
 }
-.rm-scene::after{display:none !important;}      /* kill full-scene scrim */
+.rm-scene::after{display:none !important;}      /* full-scene scrim not needed: caption is its own tile */
 .rm-scene .rm-dots{display:none !important;}     /* no slideshow dots */
+/* neutralize leftover slideshow height clamps so flex can size naturally */
+.rm-scene.hero,.rm-scene.compact{height:auto !important;min-height:0 !important}
+.rm-scene.hero .rm-cap{transform:none !important}
 
-/* slides stop being absolute layers; become magazine tiles */
+/* slides become magazine tiles. Default = half width; flex-grow fills the
+   last row so there is never an empty cell. */
 .rm-scene .slide{
   position:relative !important;
   inset:auto !important;
   opacity:1 !important;
   transition:none !important;
   border-radius:2px;
-  min-height:0;
-  grid-column:span 2;
-  grid-row:span 1;
+  overflow:hidden;
+  flex:1 1 calc(50% - clamp(6px,.8vw,12px));
+  min-width:240px;
+  min-height:clamp(240px,30vh,400px);
 }
-/* first photo = the hero of the spread (big) */
-.rm-scene .slide:first-of-type{grid-column:span 4;grid-row:span 2;}
-/* if 4+ photos, let the 2nd one go tall too for rhythm */
-.rm-scene .slide:nth-of-type(2){grid-row:span 2;}
+/* first photo = the hero of the spread: full-width, tall, cinematic */
+.rm-scene .slide:first-of-type{
+  flex:1 1 100%;
+  min-height:clamp(420px,62vh,720px);
+}
+.rm-scene .slide img{width:100%;height:100%;object-fit:cover;display:block}
 
-/* caption: its own calm tile in the grid, not floated over a photo */
+/* caption: its own calm tile on the ink ground, never floated over a photo.
+   Same flex basis as a photo so it pairs into the spread; flex-grow lets it
+   become a full-width band when it is the lone item on the last row. When it
+   does span full width, the inner content centers as an editorial band so the
+   row reads intentional, never as a left-stacked void. */
 .rm-scene .rm-cap{
   position:relative !important;
   inset:auto !important;
   left:auto;right:auto;bottom:auto;
-  grid-column:span 2;
-  grid-row:span 2;
-  display:flex;flex-direction:column;justify-content:center;
-  text-align:left !important;
-  padding:clamp(1rem,2vw,2rem) !important;
+  flex:1 1 calc(50% - clamp(6px,.8vw,12px));
+  min-width:280px;
+  min-height:clamp(240px,30vh,400px);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center !important;
+  padding:clamp(1.8rem,3.4vw,3.4rem) !important;
   z-index:1;
 }
-.rm-scene .rm-cap .rm{display:block;margin-bottom:1rem;}
-.rm-scene .rm-cap .det{max-width:34ch;}
+.rm-scene .rm-cap .rm{display:block;margin-bottom:1.1rem;}
+.rm-scene .rm-cap .det{max-width:46ch;margin:0 auto;}
+.rm-scene .rm-cap .flow{margin-top:1.2rem;display:block;}
 
 @media (max-width:760px){
-  .rm-scene{grid-template-columns:repeat(2,1fr);grid-auto-rows:clamp(140px,30vw,200px);}
-  .rm-scene .slide,.rm-scene .slide:first-of-type,.rm-scene .slide:nth-of-type(2){grid-column:span 1;grid-row:span 1;}
-  .rm-scene .slide:first-of-type{grid-column:span 2;grid-row:span 1;}
-  .rm-scene .rm-cap{grid-column:span 2;grid-row:span 1;text-align:center !important;}
+  .rm-scene .slide,.rm-scene .rm-cap{flex:1 1 100%;min-height:clamp(220px,42vw,340px)}
+  .rm-scene .slide:first-of-type{min-height:clamp(260px,54vw,420px)}
+  .rm-scene .rm-cap{text-align:center !important;min-height:auto}
 }
