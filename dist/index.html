@@ -841,6 +841,12 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .plans-note{margin:1.6rem auto 0;text-align:center;font-family:var(--font-display);font-style:italic;font-size:var(--sm);color:rgba(245,240,232,.5);letter-spacing:.04em}
 /* ===== INQUIRY (created — was missing in preview) ===== */
 .inquiry{max-width:640px;margin:0 auto;padding:clamp(3rem,8vh,6rem) var(--pad);text-align:center}
+/* quiet sign-off — no form, no pitch. Name, house, one private line. */
+.inquiry .sign{display:flex;flex-direction:column;align-items:center;gap:.7rem}
+.inquiry .sign-name{font-family:var(--font-display);font-weight:300;font-size:clamp(1.5rem,2.4vw,2rem);color:var(--cream);letter-spacing:.01em}
+.inquiry .sign-house{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.24em;text-transform:uppercase;color:rgba(245,240,232,.55)}
+.inquiry .sign-link{margin-top:1.4rem;font-family:var(--font-label);font-size:var(--xs);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,169,110,.4);padding-bottom:.35rem;transition:color .4s,border-color .4s}
+.inquiry .sign-link:hover{color:var(--cream);border-color:var(--cream)}
 .inquiry .eyebrow{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:block}
 .inquiry h2{font-family:var(--font-display);font-weight:500;font-size:clamp(1.8rem,3.4vw,2.9rem);line-height:1.2;color:var(--cream);margin:0 0 .5em}
 .inquiry h2 em{font-style:italic;color:var(--gold)}
@@ -1418,34 +1424,26 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 
 <!-- THE CLOSE — the house alone in its own circle. The eye lifts away. Then one CTA, nothing after. -->
 <div class="close close--beat" id="theClose">
-  <div class="cb-img" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_2400/v1/garran-hill/photos/136-4-15-acre-lot.jpg')"></div>
+  <div class="cb-img" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_2400/v1/garran-hill/photos/135-aerial.jpg')"></div>
   <div class="cb-veil"></div>
   <div class="cb-inner">
     <p>The farm that surrounded it was subdivided long ago. The neighborhood that grew up around it took the name.</p>
     <p class="last">200 Hollycrest is the last piece of the original Garran Hill still standing on its own ground.</p>
-    <a class="cta" href="#inquiry">Arrange a Private Visit</a>
+    <a class="cta" href="#inquiry">Inquire Privately</a>
   </div>
 </div>
 
 
 <section class="inquiry" id="inquiry">
-  <span class="eyebrow">Available by Private Appointment</span>
-  <h2>Garran Hill is offered now,<br><em>for the first time in a generation.</em></h2>
-  <div class="sub">Shown privately, to those who understand what it is.</div>
-  <form onsubmit="event.preventDefault();this.querySelector('.conf').textContent='Thank you. Your inquiry has been received in confidence.';">
-    <input type="text" name="name" placeholder="Name" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="tel" name="phone" placeholder="Phone">
-    <textarea name="message" placeholder="Message"></textarea>
-    <button type="submit">Arrange a Private Visit</button>
-    <div class="conf"></div>
-  </form>
-  <div class="agent">Rachel Hernandez<small>Pines Sotheby's International Realty &middot; Southern Pines, North Carolina</small></div>
+  <div class="sign">
+    <div class="sign-name">Rachel Hernandez</div>
+    <div class="sign-house">Pines Sotheby&rsquo;s International Realty</div>
+    <a class="sign-link" href="mailto:rachel@rachelhernandez.studio">Inquire privately</a>
+  </div>
 </section>
 <footer class="gh-footer">
   <div class="addr">Garran Hill &middot; 200 Hollycrest Drive &middot; Pinehurst, NC 28374</div>
-  <div class="srcline">History documented and cited: the <a href="/history">full provenance and sources</a> &mdash; Walter Hines Page, the Pinehurst Outlook, the National Park Service, PineStraw, and Westminster Abbey.</div>
-  <div class="copy">&copy; 2026 Pines Sotheby's International Realty &middot; Garran Hill is not simply for sale. It is being entrusted forward.</div>
+  <div class="srcline">The full history, documented and cited: <a href="/history">provenance and sources</a>.</div>
 </footer>
 
 <script>
