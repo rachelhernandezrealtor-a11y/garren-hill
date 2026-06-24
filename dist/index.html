@@ -405,39 +405,66 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .tour-wrap .tri{width:0;height:0;border-left:18px solid var(--gold);border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
 .tour-wrap .lbl{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.28em;text-transform:uppercase;color:var(--cream)}
 
-/* GALLERY — filterable archive wall */
-.gfilter{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.5rem;max-width:1280px;margin:0 auto clamp(1.5rem,4vh,2.5rem);padding:0 var(--pad)}
-.gfilter .chip{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);background:none;border:1px solid rgba(201,169,110,.25);padding:.55rem 1.1rem;cursor:pointer;transition:all .35s}
-.gfilter .chip:hover{color:var(--cream);border-color:rgba(201,169,110,.55)}
-.gfilter .chip.on{color:var(--ink);background:var(--gold);border-color:var(--gold)}
-.gfilter .gcount{font-family:var(--font-display);font-style:italic;font-size:var(--sm);color:var(--gold);letter-spacing:.12em;margin-left:.4rem}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-flow:dense;gap:8px;max-width:1280px;margin:0 auto clamp(3rem,7vh,5rem);padding:0 var(--pad)}
-.grid figure{margin:0;position:relative;overflow:hidden;background:#111}
+/* GALLERY — filterable archive wall. Calm by default, hush of gold on hover. */
+.gfilter{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.55rem;max-width:1280px;margin:0 auto clamp(1.4rem,3.5vh,2.4rem);padding:0 var(--pad);position:relative}
+.gfilter::before,.gfilter::after{content:"";position:absolute;top:50%;width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-soft),transparent);opacity:.5}
+.gfilter::before{left:0;background:linear-gradient(90deg,transparent,var(--gold-soft))}
+.gfilter::after{right:0;background:linear-gradient(270deg,transparent,var(--gold-soft))}
+@media(max-width:780px){.gfilter::before,.gfilter::after{display:none}}
+.gfilter .chip{position:relative;font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.28em;text-transform:uppercase;color:var(--cream-dim);background:transparent;border:1px solid rgba(201,169,110,.22);padding:.6rem 1.25rem;cursor:pointer;transition:color .35s,border-color .35s,background .35s,letter-spacing .35s}
+.gfilter .chip:hover{color:var(--cream);border-color:rgba(201,169,110,.55);letter-spacing:.31em}
+.gfilter .chip.on{color:var(--ink);background:linear-gradient(180deg,#efe0bd 0%,#ccb28a 40%,#9c8656 100%);border-color:transparent;font-weight:500}
+.gfilter .gcount{margin-left:1rem;font-family:var(--font-display);font-style:italic;font-size:var(--sm);color:var(--gold);letter-spacing:.14em;display:inline-flex;align-items:center;gap:.6rem;opacity:.92}
+.gfilter .gcount::before{content:"";width:24px;height:1px;background:linear-gradient(90deg,var(--gold-soft),transparent)}
+.gfilter .gcount::after{content:"";width:24px;height:1px;background:linear-gradient(270deg,var(--gold-soft),transparent)}
+
+/* Gallery intro whisper — sets tone before the grid */
+.gallery-intro{text-align:center;max-width:680px;margin:0 auto clamp(1.5rem,4vh,2.6rem);padding:0 var(--pad)}
+.gallery-intro p{font-family:var(--font-display);font-style:italic;font-weight:300;font-size:clamp(1.05rem,1.55vw,1.35rem);line-height:1.65;color:var(--cream-dim);margin:0}
+.gallery-intro p em{color:var(--gold);font-style:italic}
+
+.grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-flow:dense;gap:clamp(6px,0.9vw,12px);max-width:1280px;margin:0 auto clamp(3rem,7vh,5rem);padding:0 var(--pad)}
+.grid figure{margin:0;position:relative;overflow:hidden;background:#111;cursor:pointer}
+/* gold hairline frame on hover (matches the crest-jewel hover craft, keeps gallery Aman-calm) */
+.grid figure::after{content:"";position:absolute;inset:0;pointer-events:none;border:1px solid transparent;transition:border-color .5s ease,inset .5s ease;z-index:2}
+.grid figure:hover::after{border-color:rgba(204,178,138,.42);box-shadow:inset 0 0 0 1px rgba(184,152,99,.18)}
 .grid figure.wide{grid-column:span 2;grid-row:span 2}
+.grid figure.tall{grid-row:span 2}
 .grid figure.hide{display:none}
-.grid img{width:100%;height:100%;aspect-ratio:3/2;object-fit:cover;cursor:pointer;display:block;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.grid img{width:100%;height:100%;aspect-ratio:3/2;object-fit:cover;cursor:pointer;display:block;transition:transform 1.4s cubic-bezier(.16,1,.3,1),filter 1s ease}
 .grid figure.wide img{aspect-ratio:3/2.06}
-.grid figure:hover img{transform:scale(1.06)}
-.grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:.7rem .9rem;font-family:var(--font-label);font-size:var(--xs);letter-spacing:.2em;text-transform:uppercase;color:var(--cream);background:linear-gradient(to top,rgba(10,10,10,.85),transparent);opacity:0;transition:opacity .4s}
-.grid figure:hover figcaption{opacity:1}
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.grid figure.wide{grid-column:span 2;grid-row:span 1}}
-@media(max-width:600px){.grid{gap:5px}.grid img{aspect-ratio:1/1}.grid figure.wide img{aspect-ratio:2/1}.grid figcaption{opacity:1;font-size:var(--xxs)}}
+.grid figure.tall img{aspect-ratio:3/4}
+.grid figure:hover img{transform:scale(1.05);filter:brightness(1.04) saturate(1.05)}
+/* hover-reveal caption: matches campaign tier (Aman calm, not MLS grid) */
+.grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.3rem;z-index:3;
+  background:linear-gradient(to top,rgba(8,8,7,.92) 0%,rgba(8,8,7,.55) 55%,rgba(8,8,7,0) 100%);
+  opacity:0;transform:translateY(8px);transition:opacity .45s,transform .55s cubic-bezier(.16,1,.3,1)}
+.grid figure:hover figcaption{opacity:1;transform:translateY(0)}
+.grid figcaption .cap-name{font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:inline-block;position:relative;padding-bottom:.5rem}
+.grid figcaption .cap-name::after{content:"";position:absolute;left:0;bottom:0;width:24px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.grid figcaption .cap-room{font-family:var(--font-label);font-size:var(--xxs);letter-spacing:.22em;text-transform:uppercase;color:rgba(245,240,232,.78)}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.grid figure.wide{grid-column:span 2;grid-row:span 1}.grid figure.tall{grid-row:span 1}.grid figure.tall img{aspect-ratio:1/1}}
+@media(max-width:600px){.grid{gap:5px}.grid img{aspect-ratio:1/1}.grid figure.wide img{aspect-ratio:2/1}.grid figcaption{opacity:1;transform:none;padding:.6rem .7rem;background:linear-gradient(to top,rgba(8,8,7,.85),rgba(8,8,7,0) 80%)}.grid figcaption .cap-name{font-size:.65rem;letter-spacing:.22em}.grid figcaption .cap-room{font-size:.6rem}}
 
-/* PLANS — quiet utility */
-.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;max-width:1100px;margin:0 auto clamp(3rem,7vh,5rem);padding:0 var(--pad)}
-.plans figure{margin:0}
-.plans img{width:100%;background:#fff}
-.plans figcaption{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.22em;text-transform:uppercase;color:var(--cream-dim);margin-top:.7rem;text-align:center}
-
-/* LIGHTBOX */
-#lb{position:fixed;inset:0;z-index:9500;background:rgba(5,5,5,.97);display:none;align-items:center;justify-content:center;flex-direction:column;padding:2rem}
-#lb.open{display:flex}
-#lb img{max-width:92vw;max-height:80vh;width:auto;height:auto;object-fit:contain}
-#lb .cap{margin-top:1rem;font-size:var(--sm);font-style:italic;color:var(--cream-dim);letter-spacing:.08em}
-#lb button{position:absolute;background:none;border:none;color:var(--cream);font-size:2rem;cursor:pointer;padding:1rem;font-family:var(--font-display)}
-#lb .x{top:.5rem;right:1rem}
-#lb .pv{left:.5rem;top:50%;transform:translateY(-50%)}
-#lb .nx{right:.5rem;top:50%;transform:translateY(-50%)}
+/* LIGHTBOX — campaign tier placard */
+#lb{position:fixed;inset:0;z-index:9500;background:rgba(5,5,5,.97);display:none;align-items:center;justify-content:flex-start;flex-direction:column;padding:clamp(2rem,5vh,4rem) clamp(1rem,2.4vw,2.4rem);opacity:0;transition:opacity .35s}
+#lb.open{display:flex;opacity:1}
+#lb img{max-width:92vw;max-height:74vh;width:auto;height:auto;object-fit:contain;box-shadow:0 30px 90px rgba(0,0,0,.6);border:1px solid rgba(201,169,110,.18)}
+#lb .cap{margin-top:1.4rem;text-align:center;display:flex;flex-direction:column;gap:.5rem;align-items:center}
+#lb .cap .cap-room{font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.4em;text-transform:uppercase;color:var(--gold);position:relative;padding:0 1.4rem;display:inline-flex;align-items:center;gap:1rem}
+#lb .cap .cap-room::before,#lb .cap .cap-room::after{content:"";width:18px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-soft))}
+#lb .cap .cap-room::after{background:linear-gradient(270deg,transparent,var(--gold-soft))}
+#lb .cap .cap-name{font-family:var(--font-display);font-style:italic;font-size:clamp(1.1rem,1.5vw,1.4rem);color:var(--cream);letter-spacing:.04em}
+#lb .cap .cap-counter{font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.4em;text-transform:uppercase;color:rgba(245,240,232,.5);margin-top:.3rem}
+#lb button{position:absolute;background:none;border:none;color:var(--cream);cursor:pointer;padding:1rem;font-family:var(--font-display);transition:color .3s,transform .3s;line-height:1}
+#lb button:hover{color:var(--gold-hi)}
+#lb .x{top:1.2rem;right:1.2rem;font-size:1.6rem;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(201,169,110,.2);border-radius:50%;font-family:var(--font-chapter);letter-spacing:0}
+#lb .x:hover{border-color:var(--gold);background:rgba(201,169,110,.08);transform:rotate(90deg)}
+#lb .pv{left:1.2rem;top:50%;transform:translateY(-50%);font-size:1.6rem;width:56px;height:56px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(201,169,110,.18);border-radius:50%}
+#lb .pv:hover{border-color:var(--gold);background:rgba(201,169,110,.08);transform:translateY(-50%) translateX(-3px)}
+#lb .nx{right:1.2rem;top:50%;transform:translateY(-50%);font-size:1.6rem;width:56px;height:56px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(201,169,110,.18);border-radius:50%}
+#lb .nx:hover{border-color:var(--gold);background:rgba(201,169,110,.08);transform:translateY(-50%) translateX(3px)}
+@media(max-width:760px){#lb .pv{left:.4rem;width:44px;height:44px;font-size:1.2rem}#lb .nx{right:.4rem;width:44px;height:44px;font-size:1.2rem}#lb .x{top:.6rem;right:.6rem;width:40px;height:40px;font-size:1.2rem}}
 
 /* THE GATE — full-bleed turn moment: drive through, the return. The video IS the metaphor. */
 .gate{position:relative;height:92svh;min-height:560px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--ink)}
@@ -517,12 +544,19 @@ nav .links a.cta{color:var(--gold);opacity:1}
 
 
 /* ===== FLOOR PLANS (created — was missing in preview) ===== */
+/* PLANS — quiet utility, framed as a hand-rolled artifact */
 .plans-wrap{max-width:1280px;margin:0 auto;padding:0 var(--pad)}
 .plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
-.plans-grid figure{margin:0}
-.plans-grid img{width:100%;background:#fff;border:1px solid rgba(201,169,110,.2);display:block;transition:transform 1s cubic-bezier(.16,1,.3,1)}
+.plans-grid figure{margin:0;position:relative;background:#0e0e0d;padding:14px;border:1px solid rgba(201,169,110,.18);transition:border-color .5s,transform .6s cubic-bezier(.16,1,.3,1)}
+.plans-grid figure:hover{border-color:rgba(201,169,110,.45);transform:translateY(-2px)}
+.plans-grid figure::before{content:"";position:absolute;top:8px;left:8px;right:8px;bottom:8px;border:1px solid rgba(201,169,110,.08);pointer-events:none;transition:border-color .5s}
+.plans-grid figure:hover::before{border-color:rgba(201,169,110,.18)}
+.plans-grid img{width:100%;background:#f8f4ec;border:1px solid rgba(201,169,110,.2);display:block;transition:transform 1s cubic-bezier(.16,1,.3,1);filter:contrast(1.02) brightness(.99)}
 .plans-grid figure:hover img{transform:scale(1.02)}
-.plans-grid figcaption{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.24em;text-transform:uppercase;color:var(--cream-dim,rgba(245,240,232,.7));margin-top:.9rem;text-align:center}
+.plans-grid figcaption{font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-top:1.1rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:.7rem}
+.plans-grid figcaption::before,.plans-grid figcaption::after{content:"";width:18px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-soft))}
+.plans-grid figcaption::after{background:linear-gradient(270deg,transparent,var(--gold-soft))}
+.plans-note{margin:1.6rem auto 0;text-align:center;font-family:var(--font-display);font-style:italic;font-size:var(--sm);color:rgba(245,240,232,.5);letter-spacing:.04em}
 /* ===== INQUIRY (created — was missing in preview) ===== */
 .inquiry{max-width:640px;margin:0 auto;padding:clamp(3rem,8vh,6rem) var(--pad);text-align:center}
 .inquiry .eyebrow{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:block}
@@ -1075,12 +1109,16 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
     <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1600,q_auto:good,f_auto/v1/garran-hill/floorplans/138-second-floor.jpg" alt="Garran Hill second floor plan"><figcaption>Second Floor</figcaption></figure>
     <figure><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1600,q_auto:good,f_auto/v1/garran-hill/floorplans/139-basement.jpg" alt="Garran Hill basement plan"><figcaption>Basement</figcaption></figure>
   </div>
+  <div class="plans-note">Measured from the O&rsquo;Shea restoration drawings, 1999&ndash;2001.</div>
 </div>
 
 <div class="chapter-mark">
   <div class="num">Every Room</div>
   <div class="ttl">The complete archive.</div>
   <div class="seam"></div>
+</div>
+<div class="gallery-intro">
+  <p>One hundred and thirty seven photographs, taken for the listing. <em>Click any frame to step inside.</em></p>
 </div>
 <div class="gfilter" id="gfilter">
   <button class="chip on" data-f="all">All</button>
@@ -1218,15 +1256,24 @@ var photos=[
 var base="https://res.cloudinary.com/dghn2xpif/image/upload/";
 var grid=document.getElementById('ggrid');
 var feature={0:1,8:1,16:1,25:1,28:1,30:1,44:1,48:1,50:1};
+// vertical-format picks: paired as diptychs (per vertical photo law)
+var tallIdx={6:1,7:1,11:1,13:1,15:1,49:1,51:1,57:1,78:1,109:1,128:1};
+// category display labels for the hover caption and lightbox
+var catLabel={exterior:'Exterior',main:'Main Rooms',quiet:'Quiet Rooms',private:'Bedrooms',grounds:'Grounds'};
 var figs=[];
 photos.forEach(function(p,i){
   var fig=document.createElement('figure');
-  fig.dataset.cat=p[2];if(feature[i])fig.className='wide';
+  fig.dataset.cat=p[2];
+  if(feature[i])fig.className='wide';
+  else if(tallIdx[i])fig.classList.add('tall');
   var img=document.createElement('img');
   img.src=base+(feature[i]?"w_1080":"w_768")+",q_auto,f_auto/v1/garran-hill/photos/"+p[0]+".jpg";
   img.alt=p[1];img.loading="lazy";
   img.addEventListener('click',function(){openLb(i);});
-  var cap=document.createElement('figcaption');cap.textContent=p[1];
+  var cap=document.createElement('figcaption');
+  var cn=document.createElement('span');cn.className='cap-name';cn.textContent=p[1];
+  var cr=document.createElement('span');cr.className='cap-room';cr.textContent=catLabel[p[2]]||p[2];
+  cap.appendChild(cn);cap.appendChild(cr);
   fig.appendChild(img);fig.appendChild(cap);grid.appendChild(fig);figs.push(fig);
 });
 var curFilter='all',gcount=document.getElementById('gcount');
@@ -1235,14 +1282,14 @@ document.getElementById('gfilter').addEventListener('click',function(e){var b=e.
 applyFilter('all');
 var lb=document.getElementById('lb'),lbImg=lb.querySelector('img'),lcap=lb.querySelector('.cap'),cur=0;
 function visList(){return photos.map(function(p,i){return i;}).filter(function(i){return curFilter==='all'||photos[i][2]===curFilter;});}
-function openLb(i){cur=i;show();lb.classList.add('open');}
+function openLb(i){cur=i;show();lb.classList.add('open');document.body.style.overflow='hidden';}
 function step(d){var v=visList(),pos=v.indexOf(cur);cur=pos<0?v[0]:v[(pos+d+v.length)%v.length];show();}
-function show(){var p=photos[cur];lbImg.src=base+"w_2400,q_auto:best,f_auto/v1/garran-hill/photos/"+p[0]+".jpg";lbImg.alt=p[1];lcap.textContent=p[1];}
-lb.querySelector('.x').onclick=function(){lb.classList.remove('open');};
+function show(){var p=photos[cur],v=visList(),pos=v.indexOf(cur);lbImg.src=base+"w_2400,q_auto:best,f_auto/v1/garran-hill/photos/"+p[0]+".jpg";lbImg.alt=p[1];lcap.innerHTML='<span class="cap-room">'+catLabel[p[2]]+'</span><span class="cap-name">'+p[1]+'</span><span class="cap-counter">'+(pos+1)+' / '+v.length+'</span>';}
+lb.querySelector('.x').onclick=function(){lb.classList.remove('open');document.body.style.overflow='';};
 lb.querySelector('.pv').onclick=function(){step(-1);};
 lb.querySelector('.nx').onclick=function(){step(1);};
-document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1);});
-lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('open');});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape'){lb.classList.remove('open');document.body.style.overflow='';}if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1);});
+lb.addEventListener('click',function(e){if(e.target===lb){lb.classList.remove('open');document.body.style.overflow='';}});
 document.getElementById('tourbox').addEventListener('click',function(){this.innerHTML='<iframe src="https://my.matterport.com/show/?m=mfwyqT5Btwx&brand=0&help=1&nt=1" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="fullscreen; vr" allowfullscreen title="Garran Hill 3D tour"></iframe>';},{once:true});
 
 /* THE SIGNATURE — draw the Edwardian name in when the gate enters view */
