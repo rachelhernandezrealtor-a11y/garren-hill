@@ -647,6 +647,11 @@ nav .links a.cta{color:var(--gold);opacity:1}
   .ep-beat .ep-cap{left:0;right:0;bottom:clamp(1.6rem,6vh,3rem);padding:0 var(--pad);max-width:none}
   .ep-beat .scrim{background:linear-gradient(180deg,transparent 30%,rgba(8,8,7,.78))}
   .ep-beat .pocket{display:none}}
+/* top-left variant: text + scrim ride the photo's shaded upper-left corner */
+.ep-beat--tl .scrim{background:linear-gradient(155deg, rgba(8,8,7,.74) 0%, rgba(8,8,7,.42) 26%, rgba(8,8,7,.08) 52%, transparent 70%);}
+.ep-beat--tl .ep-cap{bottom:auto;top:clamp(2.4rem,9vh,5.5rem)}
+@media(max-width:760px){.ep-beat--tl .ep-cap{top:auto;bottom:clamp(1.6rem,6vh,3rem)}
+  .ep-beat--tl .scrim{background:linear-gradient(180deg,rgba(8,8,7,.5) 0%,transparent 30%,transparent 55%,rgba(8,8,7,.8))}}
 
 /* MATTERPORT — the star walkthrough */
 .tour-wrap{position:relative;max-width:1100px;margin:0 auto clamp(3rem,7vh,5rem);aspect-ratio:16/9;background:#111;border:1px solid rgba(201,169,110,.25);cursor:pointer;overflow:hidden}
@@ -1312,10 +1317,9 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   <div class="seam"></div>
 </div>
 
-<section class="ep-beat">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_2200/v1/garran-hill/photos/136-4-15-acre-lot.jpg" alt="Garran Hill from above, 4.15 acres within its own circle">
+<section class="ep-beat ep-beat--tl">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_2200/v1/garran-hill/photos/004-side-view.jpg" alt="Garran Hill, the brick motor court sweeping to the entrance, framed by mature trees">
   <div class="scrim"></div>
-  <div class="pocket"></div>
   <div class="ep-cap">
     <span class="ep-eyebrow">The Grounds</span>
     <p>4.15 acres, Moore County. Garran Hill sits within its own circle, the surviving house core of a much larger Page era farm. Inside the gates: the circular drive, the lawn, the brick walled pool, the tennis courts under the longleaf pines.</p>
