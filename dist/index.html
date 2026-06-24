@@ -541,6 +541,54 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .wordmark{text-shadow:0 2px 40px rgba(8,8,7,.7),0 1px 8px rgba(8,8,7,.6)}
 .hero-eyebrow,.hero-desc{text-shadow:0 1px 18px rgba(8,8,7,.9),0 1px 4px rgba(8,8,7,.8)}
 
+/* ============================================================
+   ELEVATION PASS 1 — craft fixes (Coco, June 23 2026)
+   Objective legibility/rhythm failures found in the eyes-loop.
+   Loaded last so it wins the cascade. Reversible (git).
+   ============================================================ */
+
+/* --- NAV: kill mix-blend-difference (the site-wide collision cause).
+   Give it a real top scrim so brand + links stay legible over any
+   section without inverting against photos. --- */
+nav{mix-blend-mode:normal!important;pointer-events:none}
+nav::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(8,8,7,.62) 0%,rgba(8,8,7,.32) 55%,transparent 100%)}
+nav .brand,nav .links{pointer-events:auto}
+nav .brand,nav .links a{text-shadow:0 1px 10px rgba(8,8,7,.9),0 1px 3px rgba(8,8,7,.85)}
+nav .links a{transition:color .4s var(--eq),opacity .4s var(--eq);opacity:.82}
+nav .links a:hover{opacity:1;color:var(--gold-hi)}
+
+/* --- CAPTIONS OVER IMAGES: cinematic lower-third gradients so gold/cream
+   type never disappears into a busy photo. Scene-wide gradient (not a small
+   blur plate) is the right fix for multi-line room captions. --- */
+.grave .gv-cap,.gatefade .gf-label,.fb-cap{position:absolute}
+.grave .gv-cap::before,.gatefade .gf-label::before,.fb-cap::before{
+  content:"";position:absolute;inset:-1.1em -2.4em -1.4em;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(8,8,7,.74) 0%,rgba(8,8,7,.5) 48%,rgba(8,8,7,.16) 78%,transparent 100%);
+  filter:blur(7px)}
+.grave .gv-cap *,.gatefade .gf-label *,.fb-cap *{text-shadow:0 1px 14px rgba(8,8,7,.92),0 1px 4px rgba(8,8,7,.85)}
+
+/* room-scene carousels: re-enable a refined lower-third + top scrim so the
+   room name, the italic detail line, and the flow line all stay legible over
+   bright interiors (windows, fireplaces). Replaces the disabled ::after. */
+.rm-scene::after{display:block!important;content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,rgba(8,8,7,.5) 0%,rgba(8,8,7,.12) 16%,transparent 38%,transparent 50%,rgba(8,8,7,.55) 76%,rgba(8,8,7,.92) 100%)!important}
+.rm-cap{z-index:3}
+.rm-split .rm-cap::before{content:"";position:absolute;inset:-1.4em -2em;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(8,8,7,.55) 30%,rgba(8,8,7,.78))}
+
+/* --- FACTS BAND: the muddy half-opacity floral was the "Squarespace tell."
+   Drop it to a faint living texture; deepen the scrim so the band reads as
+   confident ink with the gold numerals carrying it. --- */
+.facts-bg{opacity:.14!important;filter:saturate(.7) brightness(.8)}
+.facts-bg-scrim{background:radial-gradient(ellipse at 50% 42%,rgba(8,8,7,.74) 0%,rgba(8,8,7,.86) 55%,var(--ink) 100%)!important}
+
+/* --- VERTICAL RHYTHM: tame the arbitrary dead-black voids the eyes-loop
+   flagged between beats. Confident pauses, not unresolved gaps. --- */
+.letter{padding-top:clamp(4.5rem,11vh,7.5rem)!important;padding-bottom:clamp(4.5rem,11vh,7.5rem)!important}
+.prose{padding-top:clamp(.5rem,2vh,1.4rem)!important;padding-bottom:clamp(3rem,7vh,4.5rem)!important}
+.grave{padding-bottom:clamp(3rem,7vh,4.5rem)!important}
+
 </style><link rel="stylesheet" href="mag-rooms.css">
 </head>
 <body class="s-grain">
