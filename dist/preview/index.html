@@ -85,13 +85,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9000;display:flex;justify-conten
 nav .brand{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.34em;text-transform:uppercase;color:var(--cream);text-shadow:0 1px 10px rgba(0,0,0,.9)}
 nav .brand .brand-script{font-family:var(--font-chapter);font-size:1.04em;letter-spacing:.18em;text-transform:uppercase;vertical-align:0;margin:0 .35em;color:var(--cream)}
 .est-mark{font-family:var(--font-chapter);font-weight:500;letter-spacing:.14em;text-transform:uppercase}
-/* single CTA — delicate gold-bordered box, anchored low, appears once */
-.inquiry{position:absolute;left:50%;bottom:clamp(1.4rem,3.4vh,2.4rem);transform:translateX(-50%);z-index:4;
+/* DEAD legacy hero-CTA pill rule — neutralized June 24 (was hijacking .inquiry section with position:absolute, floating the form over the hero on mobile). Scoped to a non-existent class. */
+.legacy-hero-cta-DEAD{position:absolute;left:50%;bottom:clamp(1.4rem,3.4vh,2.4rem);transform:translateX(-50%);z-index:4;
   font-family:var(--font-label);font-size:var(--xs);letter-spacing:.34em;text-transform:uppercase;
   color:var(--gold-hi);text-decoration:none;padding:.85rem 2.1rem;
   border:1px solid var(--gold-soft);border-radius:1px;background:rgba(10,10,10,.18);backdrop-filter:blur(2px);
   transition:border-color .5s ease,color .5s ease,background .5s ease}
-.inquiry:hover{border-color:var(--gold-hi);color:var(--cream);background:rgba(184,152,99,.12)}
+.legacy-hero-cta-DEAD:hover{border-color:var(--gold-hi);color:var(--cream);background:rgba(184,152,99,.12)}
 nav .links{display:flex;gap:clamp(1rem,2.4vw,2.4rem);align-items:center;font-family:var(--font-label);font-size:var(--xs);letter-spacing:.22em;text-transform:uppercase;text-shadow:0 1px 10px rgba(0,0,0,.9)}
 nav .links a{color:var(--cream);opacity:.82;text-decoration:none}
 nav .links a.cta{color:var(--gold);opacity:1}
