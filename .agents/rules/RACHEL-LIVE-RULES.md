@@ -19,6 +19,61 @@ in progress with things wrong."
    briefs are compasses, not law. When an old "rule" conflicts with what
    serves the sale, ask Rachel, one question at a time.
 
+## 0.5 THE PHOTO LAW (Rachel, 2026-06-24 — HARD LAW, every image, every property, forever)
+
+Photography is the product on a luxury single-property site. These four hold on
+EVERY image, no exceptions, never re-litigated:
+
+1. **RESPONSIVE** — the right pixel size is delivered for the device. Phone gets a
+   phone-sized file, 5K Retina gets a Retina file. Never one giant file for all.
+   Mechanism: Cloudinary `w_` + `dpr_auto` (or `srcset`/`image-set` with width steps).
+2. **BEST CLARITY** — razor sharp, ALWAYS. Never upscaled past native pixels. Never
+   softened by an effect. If a transition/motion weakens the image, we do NOT use it —
+   we find motion that keeps it sharp, and we research before we build. (A `transform:
+   scale()` that pushes a bitmap past its delivered resolution SOFTENS it — banned on
+   photos unless the source is delivered large enough that peak zoom never exceeds 1.0
+   of native. See the sharp-motion reference.)
+3. **QUICKEST LOADING** — smallest bytes that still look perfect. Always `f_auto`
+   (AVIF/WebP/JPEG XL auto per browser) + `q_auto:best` for hero/gallery photography,
+   `q_auto:good` for supporting. Lazy-load below the fold. LCP is law (Core Web Vitals).
+4. **NEVER STRETCHED, NEVER CROPPED** — the FULL photograph shows, undistorted, with the
+   photographer's frame and aspect ratio respected — UNLESS cropping is a deliberate
+   DESIGN FUNCTION (a full-bleed cinematic hero/scene, a chosen detail crop). Stretching
+   (distortion) is NEVER acceptable anywhere, ever.
+   - **Buyer-study contexts (gallery, lightbox, room walk where they examine the room):**
+     show the full frame. Cloudinary `c_fit`/`c_limit` (contain), or let the box take the
+     photo's real aspect ratio. NEVER `c_fill`/`background-size:cover`/`object-fit:cover`
+     here — those CROP.
+   - **Design-function contexts (hero, full-bleed cinematic beats):** `cover`/`c_fill` is
+     correct, but the crop must be SMART (`g_auto` keeps the subject framed) and must
+     never distort.
+   - The test: "Is the buyer trying to SEE this room, or is this a cinematic backdrop?"
+     SEE the room → full frame. Backdrop → smart-cropped fill. Never distort either way.
+
+TOOL: Cloudinary (cloud dghn2xpif) — Studio + Admin API + delivery transforms are the
+photo engine. `c_fit` = contain/never-crop, `c_fill,g_auto` = smart-crop fill,
+`f_auto,q_auto:best` = best format + quality, `w_,dpr_auto` = responsive. Full reference
+in the property-site-spine skill (references/photo-law.md).
+
+## 0.6 THE NAVIGATION / IA LAW (Rachel, 2026-06-24 — HARD LAW, every property, forever)
+
+This site must FUNCTION like a serious single-property listing site, not just scroll
+as one long page. Homepage seduces; navigation delivers the listing function.
+
+- **HOMEPAGE = the cinematic editorial experience.** The story, the provenance, the
+  signature moments, a curated taste of the rooms. It seduces and reveals. It does NOT
+  dump every utility on one endless scroll.
+- **The HUGE FULL GALLERY does NOT live on the homepage.** It lives behind a
+  buyer-focused navigation link (e.g. "Gallery" / "The House"). A curated handful of
+  hero images can appear on the homepage as a taste, with a clear link to the full set.
+- **Buyer-utility depth lives behind nav links**, the way a real single-property
+  listing site works: full photo gallery, floor plans, full spec/facts, location/map,
+  the inquiry path. Reachable in one obvious click, never forced into the homepage scroll.
+- **The test:** "Is this the seductive story (homepage) or the listing function a
+  serious buyer navigates to (nav link)?" Story → homepage. Function → its own nav page.
+- Still true: the homepage is the BLOW-YOUR-MIND experience; the nav-linked function
+  pages are clean, fast, and complete. Both held to the full Photo Law (0.5).
+
 ## 1. WHAT THE SITE IS (Rachel, 2026-06-12)
 
 > "A single property luxury website on crack."

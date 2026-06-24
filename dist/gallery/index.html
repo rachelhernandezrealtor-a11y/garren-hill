@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gallery | Garran Hill, 200 Hollycrest Drive, Pinehurst NC</title>
+<meta name="description" content="The complete photography of Garran Hill, 200 Hollycrest Drive, Pinehurst, North Carolina. One hundred and thirty-seven photographs of the 1916 Neo-Georgian estate.">
+<link rel="canonical" href="https://garren-hill.pages.dev/gallery/"><!-- DEV canonical. Update to live garranhillforsalepinehurst.com/gallery/ at launch. -->
+<meta name="robots" content="noindex, nofollow"><!-- DEV: private until launch. -->
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://res.cloudinary.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500&family=Instrument+Sans:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a0a0a; --gold:#b89863; --gold-soft:rgba(184,152,99,.5); --gold-hi:#ccb28a;
+  --cream:#F5F0E8; --cream-dim:rgba(245,240,232,.88); --whisper:rgba(245,240,232,.42);
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Cormorant Garamond',Georgia,serif;
+  --font-label:'Instrument Sans',system-ui,sans-serif;
+  --font-chapter:'Cinzel',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:var(--font-body);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ===== TOP BAR ===== */
+.gbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem clamp(1.2rem,4vw,3rem);background:linear-gradient(180deg,rgba(10,10,10,.94),rgba(10,10,10,.72) 70%,transparent);
+  backdrop-filter:blur(6px)}
+.gbar .home{font-family:var(--font-label);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cream);display:flex;align-items:center;gap:.6rem}
+.gbar .home::before{content:"\2190";color:var(--gold);font-size:.9rem}
+.gbar .est{font-family:var(--font-chapter);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim)}
+.gbar .est b{font-weight:500;color:var(--cream)}
+.gbar .count{font-family:var(--font-label);font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--whisper)}
+
+/* ===== HEADER ===== */
+.ghead{text-align:center;padding:clamp(2.4rem,6vh,4.5rem) 1.5rem clamp(1.4rem,3vh,2.2rem)}
+.ghead .eyebrow{font-family:var(--font-label);font-size:.72rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);
+  text-shadow:0 1px 12px rgba(8,8,7,.6)}
+.ghead h1{font-family:var(--font-display);font-weight:400;font-size:clamp(2.1rem,5vw,3.6rem);color:var(--cream);margin:.5rem 0 .7rem;line-height:1.05}
+.ghead p{font-family:var(--font-body);font-style:italic;font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--cream-dim);max-width:46ch;margin:0 auto}
+
+/* ===== ROOM JUMP CHIPS ===== */
+.gchips{position:sticky;top:60px;z-index:20;display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;
+  padding:1rem clamp(1rem,4vw,3rem) 1.6rem;background:linear-gradient(180deg,rgba(10,10,10,.92),transparent)}
+.chip{font-family:var(--font-label);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cream-dim);
+  background:transparent;border:1px solid var(--gold-soft);border-radius:1px;padding:.5rem 1.05rem;cursor:pointer;
+  transition:all .4s ease;white-space:nowrap}
+.chip:hover{color:var(--cream);border-color:var(--gold)}
+.chip.on{color:var(--ink);background:var(--gold);border-color:var(--gold)}
+
+/* ===== GROUPS ===== */
+.group{padding:clamp(1.6rem,4vh,3rem) clamp(1rem,4vw,3.2rem)}
+.group-title{display:flex;align-items:center;gap:1.1rem;margin:0 auto clamp(1.2rem,3vh,2rem);max-width:1500px}
+.group-title .gt-name{font-family:var(--font-chapter);font-size:.9rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.group-title .gt-rule{height:1px;flex:1;background:linear-gradient(90deg,var(--gold-soft),transparent)}
+.group-title .gt-n{font-family:var(--font-label);font-size:.66rem;letter-spacing:.2em;color:var(--whisper)}
+
+/* ===== PHOTO ROWS — full-frame, NEVER cropped (Photo Law).
+   Each photo keeps its real aspect ratio; rows balance widths. ===== */
+.gset{display:flex;flex-wrap:wrap;gap:clamp(.5rem,1vw,1rem);max-width:1500px;margin:0 auto;justify-content:center}
+.gcell{position:relative;cursor:pointer;overflow:hidden;background:#141413;
+  flex-grow:1;flex-basis:380px;max-width:780px}
+.gcell.portrait{flex-basis:300px;max-width:520px}
+/* the frame: photo sits FULL (contain). A blurred copy fills the void instead of dead black bars. */
+.gframe{position:relative;width:100%;aspect-ratio:3/2;overflow:hidden}
+.gcell.portrait .gframe{aspect-ratio:3/4}
+.gblur{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(34px) brightness(.55) saturate(1.1);transform:scale(1.15)}
+.gphoto{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:1;
+  transition:transform 1.2s cubic-bezier(.16,1,.3,1),opacity .8s ease;opacity:0}
+.gphoto.loaded{opacity:1}
+.gcell:hover .gphoto{transform:scale(1.02)}
+.gcell::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;border:1px solid transparent;transition:border-color .5s ease,inset .5s ease}
+.gcell:hover::after{border-color:rgba(204,178,138,.42);inset:7px}
+.gcap{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:1.4rem 1.1rem .9rem;
+  background:linear-gradient(0deg,rgba(8,8,7,.82),transparent);
+  font-family:var(--font-label);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);
+  opacity:0;transform:translateY(6px);transition:opacity .5s ease,transform .5s ease}
+.gcell:hover .gcap{opacity:1;transform:none}
+
+/* ===== LIGHTBOX ===== */
+#lb{position:fixed;inset:0;z-index:100;background:rgba(8,8,7,.97);display:none;align-items:center;justify-content:center}
+#lb.on{display:flex}
+#lb .lb-blur{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(60px) brightness(.6) saturate(1.35);transform:scale(1.25);opacity:.9}
+#lb .lb-stage{position:relative;z-index:2;width:92vw;height:84vh;display:flex;align-items:center;justify-content:center}
+#lb img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 30px 90px rgba(0,0,0,.7)}
+#lb .lb-cap{position:absolute;bottom:2.2rem;left:0;right:0;z-index:3;text-align:center;
+  font-family:var(--font-label);font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--cream)}
+#lb .lb-cap .lb-room{color:var(--gold);margin-left:.9rem}
+#lb .lb-counter{position:absolute;top:1.6rem;left:0;right:0;z-index:3;text-align:center;font-family:var(--font-label);font-size:.68rem;letter-spacing:.24em;color:var(--whisper)}
+#lb .lb-x{position:absolute;top:1.3rem;right:1.6rem;z-index:4;width:42px;height:42px;border:1px solid var(--gold-soft);border-radius:50%;background:transparent;color:var(--cream);font-size:1.1rem;cursor:pointer;transition:all .3s}
+#lb .lb-x:hover{border-color:var(--gold);color:var(--gold)}
+#lb .lb-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:54px;height:54px;border:1px solid var(--gold-soft);border-radius:50%;background:rgba(10,10,10,.3);color:var(--cream);font-size:1.3rem;cursor:pointer;transition:all .3s}
+#lb .lb-nav:hover{border-color:var(--gold);color:var(--gold);background:rgba(10,10,10,.6)}
+#lb .lb-prev{left:clamp(.8rem,2vw,2rem)} #lb .lb-next{right:clamp(.8rem,2vw,2rem)}
+
+/* ===== FOOTER CTA ===== */
+.gfoot{text-align:center;padding:clamp(3rem,8vh,6rem) 1.5rem clamp(4rem,10vh,7rem)}
+.gfoot .line{height:1px;width:60px;background:var(--gold-soft);margin:0 auto 2rem}
+.gfoot p{font-family:var(--font-display);font-style:italic;font-size:clamp(1.4rem,2.6vw,2rem);color:var(--cream);margin-bottom:2rem}
+.gfoot a.cta{display:inline-block;font-family:var(--font-label);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-hi);
+  border:1px solid var(--gold-soft);padding:1rem 2.4rem;border-radius:1px;transition:all .4s ease}
+.gfoot a.cta:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+
+@media (max-width:600px){
+  .gcell,.gcell.portrait{flex-basis:100%;max-width:100%}
+  .gchips{top:54px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="gbar">
+  <a class="home" href="/">Garran Hill</a>
+  <div class="est">200&nbsp;Hollycrest&nbsp;Drive &middot; <b>Pinehurst</b></div>
+  <div class="count" id="topcount"></div>
+</div>
+
+<header class="ghead">
+  <div class="eyebrow">The Complete Photography</div>
+  <h1>Every room, every angle.</h1>
+  <p>One hundred and thirty-seven photographs of Garran Hill, in the order you would walk it.</p>
+</header>
+
+<nav class="gchips" id="chips"></nav>
+
+<main id="gallery"></main>
+
+<div class="gfoot">
+  <div class="line"></div>
+  <p>The house answers questions a photograph cannot.</p>
+  <a class="cta" href="/#inquiry">Request a Private Showing</a>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="lb-blur" id="lbBlur"></div>
+  <div class="lb-counter" id="lbCounter"></div>
+  <button class="lb-x" id="lbX" aria-label="Close">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">&#8249;</button>
+  <div class="lb-stage"><img id="lbImg" alt=""></div>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next">&#8250;</button>
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
+<script>
+var photos=[
+["001-front-exterior","Front Exterior","exterior"],["002-historic-garran-hill","Garran Hill, then","exterior"],["003-front-aerial","Front Aerial","grounds"],
+["004-side-view","Side View","exterior"],["005-cast-iron-original","Original cast iron","exterior"],["006-front-main","Front Main","exterior"],
+["007-front-exterior","Front Exterior","exterior"],["008-exterior","Exterior","exterior"],["009-portico","Portico","exterior"],
+["010-front-entry","Front Entry","exterior"],["011-entry-hall","Entry Hall","main"],["012-entry-hall","Entry Hall","main"],
+["013-entry-hall","Entry Hall","main"],["014-entry-hall","Entry Hall","main"],["015-drawing-room","Drawing room","main"],
+["016-drawing-room","Drawing room","main"],["017-drawing-room","Drawing room","main"],["018-drawing-room","Drawing room","main"],
+["019-drawing-room","Drawing room","main"],["020-drawing-room","Drawing room","main"],["021-drawing-room","Drawing room","main"],
+["022-drawing-room-french-doors","French doors to the terrace","main"],["023-outdoor-terrace","The brick terrace","grounds"],["024-dining-room","Dining Room","main"],
+["025-dining-room","Dining Room","main"],["026-dining-room","Dining Room","main"],["027-dining-room","Dining Room","main"],
+["028-dining-room","Dining Room","main"],["029-terrace","Terrace","grounds"],["030-dining-room","Dining Room","main"],
+["031-kitchen","Kitchen","main"],["032-kitchen","Kitchen","main"],["033-kitchen","Kitchen","main"],
+["034-kitchen","Kitchen","main"],["035-kitchen","Kitchen","main"],["036-butlers-pantry","Butler's pantry","main"],
+["037-farm-sink","Butler's pantry farm sink","main"],["038-wall-of-windows-kitchen","Kitchen wall of windows","main"],["039-kitchen","Kitchen","main"],
+["040-kitchen","Kitchen","main"],["041-built-in-pantry","Built-in Pantry","main"],["042-kitchen-to-breakfast-room","Kitchen to Breakfast Room","main"],
+["043-breakfast-room","Breakfast Room","main"],["044-breakfast-room","Breakfast Room","main"],["045-breakfast-room","Breakfast Room","main"],
+["046-kitchen","Kitchen","main"],["047-heart-pine-stairs-to-second-level","Heart pine stairs","main"],["048-built-in-desk-and-built-in-hutch","Built-in desk and hutch","main"],
+["049-stairs-to-basement","To the basement","quiet"],["050-door-to-side-porch","To the side porch","grounds"],["051-powder-room","Powder room","quiet"],
+["052-side-porch","Side Porch","grounds"],["053-side-porch-with-sink","Side Porch with sink","grounds"],["054-side-porch-sink","Side Porch Sink","grounds"],
+["055-laundry","Laundry","quiet"],["056-laundry","Laundry","quiet"],["057-hallway","Hallway","quiet"],
+["058-library","Library","quiet"],["059-library","Library","quiet"],["060-library","Library","quiet"],
+["061-library","Library","quiet"],["062-library","Library","quiet"],["063-side-entry","Side Entry","quiet"],
+["064-arched-door","Arched Door","quiet"],["065-powder-room","Powder Room","quiet"],["066-door-to-sitting-room","To the sitting room","quiet"],
+["067-delft-sitting-room","Sitting room, Delft fireplace","quiet"],["068-sitting-room","Sitting Room","quiet"],["069-sitting-room","Sitting Room","quiet"],
+["070-primary-suite","Primary Suite","private"],["071-primary-suite","Primary Suite","private"],["072-primary","Primary","private"],
+["073-primary","Primary","private"],["074-primary","Primary","private"],["075-primary-bathroom","Primary Bathroom","private"],
+["076-primary-bathroom","Primary Bathroom","private"],["077-primary-bathroom","Primary Bathroom","private"],["078-primary-bathroom","Primary Bathroom","private"],
+["079-jacuzzi-tub","Jacuzzi Tub","private"],["080-primary-bathroom","Primary Bathroom","private"],["081-stairs-off-primary-suite","Stairs off the primary","private"],
+["082-primary-shower","Primary Shower","private"],["083-dressing-room","Dressing Room","private"],["084-dressing-room","Dressing Room","private"],
+["085-primary-dressing-room","Primary Dressing Room","private"],["086-second-dressing-room-and-closet","Second dressing room","private"],["087-second-dressing-room-walk-in-closet","Dressing room closet","private"],
+["088-upper-hallway","Upper Hallway","private"],["089-upper-hallway","Upper Hallway","private"],["090-rose-suite","Rose suite","private"],
+["091-rose-suite","Rose suite","private"],["092-rose-suite-full-bathroom","Rose suite bath","private"],["093-rose-suite-full-bathroom","Rose suite bath","private"],
+["094-upper-hallway","Upper Hallway","private"],["095-yellow-bedroom-suite","Yellow suite","private"],["096-yellow-bedroom-suite","Yellow suite","private"],
+["097-yellow-bedroom-suite","Yellow suite","private"],["098-yellow-bedroom-suite-full-bathroom","Yellow suite bath","private"],["099-yellow-bedroom-suite-full-bathroom","Yellow suite bath","private"],
+["100-balcony-access-from-yellow-suite","Balcony access","grounds"],["101-hallway","Hallway","quiet"],["102-red-bedroom-nursery","Red bedroom","private"],
+["103-red-bedroom-nursery","Red bedroom","private"],["104-red-bedroom-nursery","Red bedroom","private"],["105-red-bedroom-nursery","Red bedroom","private"],
+["106-red-bedroom-nursery-full-bathroom","Red bedroom bath","private"],["107-balcony","Balcony","grounds"],["108-balcony","Balcony","grounds"],
+["109-den-spiral-staircase","Den spiral staircase","quiet"],["110-den","Den","quiet"],["111-den","Den","quiet"],
+["112-brick-terrace","Brick Terrace","grounds"],["113-exterior","Exterior","exterior"],["114-exterior","Exterior","exterior"],
+["115-boxwood-herb-garden","Boxwood herb garden","grounds"],["116-exterior","Exterior","exterior"],["117-exterior","Exterior","exterior"],
+["118-grounds","Grounds","grounds"],["119-grounds","Grounds","grounds"],["120-tennis-courts","Tennis Courts","grounds"],
+["121-the-wee-cottage","The Wee Cottage","grounds"],["122-playhouse","Playhouse","grounds"],["123-grounds","Grounds","grounds"],
+["124-pool","Pool","grounds"],["125-pool","Pool","grounds"],["126-pool-brick-wall","Pool garden wall","grounds"],
+["127-pool","Pool","grounds"],["128-grounds","Grounds","grounds"],["129-blue-fox","Blue Fox marker","grounds"],
+["130-grounds","Grounds","grounds"],["131-grounds","Grounds","grounds"],["132-garage","Garage","grounds"],
+["133-garage","Garage","grounds"],["134-aerial","Aerial","grounds"],["135-aerial","Aerial","grounds"],
+["136-4-15-acre-lot","The 4.15 acre lot","grounds"],["140-gated-entrance","Gated Entrance","exterior"]
+];
+var CLOUD="https://res.cloudinary.com/dghn2xpif/image/upload/";
+// PHOTO LAW: grid thumbs delivered responsive + sharp + full-frame (c_limit never crops);
+// dpr_auto serves Retina the right pixels. Lightbox gets a large sharp delivery.
+function thumbUrl(id){ return CLOUD+"c_limit,w_900,dpr_auto,f_auto,q_auto:good/v1/garran-hill/photos/"+id+".jpg"; }
+function tinyUrl(id){ return CLOUD+"c_limit,w_40,e_blur:200,f_auto,q_auto:low/v1/garran-hill/photos/"+id+".jpg"; }
+function fullUrl(id){ return CLOUD+"c_limit,w_2400,dpr_auto,f_auto,q_auto:best/v1/garran-hill/photos/"+id+".jpg"; }
+
+// portrait detection list (vertical-format photos -> portrait cell so they show full, no letterbox waste)
+var PORTRAIT={ "006-front-main":1,"007-front-exterior":1,"012-entry-hall":1,"014-entry-hall":1,
+  "049-stairs-to-basement":1,"051-powder-room":1,"057-hallway":1,"079-jacuzzi-tub":1,
+  "047-heart-pine-stairs-to-second-level":1,"109-den-spiral-staircase":1 };
+
+// Room groups in MLS walk order. Map each category to a buyer-readable section.
+var GROUPS=[
+  {key:"exterior",label:"Arrival & Exterior"},
+  {key:"main",label:"The Main Floor"},
+  {key:"quiet",label:"Library, Sitting & Quiet Rooms"},
+  {key:"private",label:"Bedrooms & Private Spaces"},
+  {key:"grounds",label:"The Grounds"}
+];
+var GLABEL={exterior:"Arrival & Exterior",main:"The Main Floor",quiet:"Library, Sitting & Quiet Rooms",private:"Bedrooms & Private Spaces",grounds:"The Grounds"};
+
+document.getElementById('topcount').textContent = photos.length + " Photographs";
+
+// build chips
+var chips=document.getElementById('chips');
+function mkChip(label,target,on){ var b=document.createElement('button'); b.className='chip'+(on?' on':''); b.textContent=label; b.dataset.t=target; chips.appendChild(b); return b; }
+mkChip('All','top',true);
+GROUPS.forEach(function(g){ if(photos.some(function(p){return p[2]===g.key;})) mkChip(g.label.replace('& ','& '),'grp-'+g.key,false); });
+
+// build groups (preserves MLS order WITHIN each group)
+var gallery=document.getElementById('gallery');
+var indexOf={}; // photo id -> global index for lightbox
+photos.forEach(function(p,i){ indexOf[p[0]]=i; });
+
+GROUPS.forEach(function(g){
+  var items=photos.filter(function(p){return p[2]===g.key;});
+  if(!items.length)return;
+  var sec=document.createElement('section'); sec.className='group'; sec.id='grp-'+g.key;
+  var t=document.createElement('div'); t.className='group-title';
+  t.innerHTML='<span class="gt-name">'+g.label+'</span><span class="gt-rule"></span><span class="gt-n">'+items.length+'</span>';
+  sec.appendChild(t);
+  var set=document.createElement('div'); set.className='gset';
+  items.forEach(function(p){
+    var i=indexOf[p[0]];
+    var cell=document.createElement('div'); cell.className='gcell'+(PORTRAIT[p[0]]?' portrait':'');
+    var frame=document.createElement('div'); frame.className='gframe';
+    var blur=document.createElement('div'); blur.className='gblur'; blur.style.backgroundImage="url('"+tinyUrl(p[0])+"')";
+    var img=document.createElement('img'); img.className='gphoto'; img.alt=p[1]; img.loading='lazy';
+    img.src=thumbUrl(p[0]);
+    img.addEventListener('load',function(){img.classList.add('loaded');});
+    if(img.complete) img.classList.add('loaded');
+    var cap=document.createElement('div'); cap.className='gcap'; cap.textContent=p[1];
+    frame.appendChild(blur); frame.appendChild(img); frame.appendChild(cap);
+    cell.appendChild(frame);
+    cell.addEventListener('click',function(){openLb(i);});
+    set.appendChild(cell);
+  });
+  sec.appendChild(set); gallery.appendChild(sec);
+});
+
+// chip nav
+chips.addEventListener('click',function(e){
+  var b=e.target.closest('.chip'); if(!b)return;
+  this.querySelectorAll('.chip').forEach(function(c){c.classList.remove('on');}); b.classList.add('on');
+  var t=b.dataset.t;
+  if(t==='top'){ window.scrollTo({top:0,behavior:'smooth'}); }
+  else { var el=document.getElementById(t); if(el){ var y=el.getBoundingClientRect().top+window.scrollY-110; window.scrollTo({top:y,behavior:'smooth'}); } }
+});
+
+// lightbox
+var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),
+    lbCap=document.getElementById('lbCap'),lbBlur=document.getElementById('lbBlur'),
+    lbCounter=document.getElementById('lbCounter'),cur=0;
+function openLb(i){ cur=i; render(); lb.classList.add('on'); document.body.style.overflow='hidden'; }
+function closeLb(){ lb.classList.remove('on'); document.body.style.overflow=''; }
+function render(){
+  var p=photos[cur];
+  lbImg.src=fullUrl(p[0]); lbImg.alt=p[1];
+  lbBlur.style.backgroundImage="url('"+tinyUrl(p[0])+"')";
+  lbCap.innerHTML=p[1]+'<span class="lb-room">'+(GLABEL[p[2]]||p[2])+'</span>';
+  lbCounter.textContent=(cur+1)+" / "+photos.length;
+}
+function next(){ cur=(cur+1)%photos.length; render(); }
+function prev(){ cur=(cur-1+photos.length)%photos.length; render(); }
+document.getElementById('lbX').addEventListener('click',closeLb);
+document.getElementById('lbNext').addEventListener('click',next);
+document.getElementById('lbPrev').addEventListener('click',prev);
+lb.addEventListener('click',function(e){ if(e.target===lb||e.target===lbBlur) closeLb(); });
+document.addEventListener('keydown',function(e){
+  if(!lb.classList.contains('on'))return;
+  if(e.key==='Escape')closeLb(); else if(e.key==='ArrowRight')next(); else if(e.key==='ArrowLeft')prev();
+});
+// swipe
+var tx=0; lb.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});
+lb.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-tx; if(Math.abs(dx)>50){dx<0?next():prev();}},{passive:true});
+</script>
+</body>
+</html>
