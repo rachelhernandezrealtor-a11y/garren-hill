@@ -574,6 +574,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 /* SOURCES — gallery-placard attribution + backlink engine (cite without footnote clutter) */
 .sources{background:var(--ink);text-align:center;padding:clamp(1rem,2.5vh,1.6rem) var(--pad) clamp(4rem,9vh,6rem);max-width:860px;margin:0 auto}
 .sources .lead{font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);opacity:.72;margin-bottom:1.1rem}
+.sources .srcs-note{font-family:var(--font-body);font-style:italic;font-size:clamp(1rem,1.5vw,1.25rem);color:var(--cream-dim);margin-bottom:1.3rem}
 .sources .srcs{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.4rem}
 .sources .srcs a{font-family:var(--font-body);font-size:clamp(.98rem,1.3vw,1.15rem);color:var(--cream-dim);text-decoration:none;border-bottom:1px solid var(--gold-soft);padding-bottom:.15em;transition:color .3s}
 .sources .srcs a:hover{color:var(--cream)}
@@ -1002,7 +1003,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 /* ============ THE HERO — a framed engraved plate ============ */
 .ch-hero{position:relative;height:100svh;min-height:640px;width:100%;overflow:hidden;background:#000}
 /* the twilight film */
-.ch-hero video,.ch-hero .ch-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.ch-hero video,.ch-hero .ch-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none}
 .ch-hero .ch-poster{background-size:cover;background-position:center}
 /* focal + bottom scrim only — keep mid-frame footage clear (codex) */
 .ch-hero .ch-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -1024,10 +1025,25 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 .ch-nav .ch-est b{font-family:var(--font-script);font-weight:400;font-size:1.7em;color:var(--gold-hi);
   letter-spacing:0;text-transform:none;vertical-align:-.05em;padding:0 .1em}
 .ch-nav .ch-menu{width:42px;height:42px;border:1px solid var(--gold-soft);border-radius:50%;
-  display:grid;place-items:center;cursor:pointer;transition:border-color .3s}
+  display:grid;place-items:center;cursor:pointer;transition:border-color .3s;pointer-events:auto;position:relative;z-index:9001}
 .ch-nav .ch-menu:hover{border-color:var(--gold-hi)}
 .ch-nav .ch-menu span{display:block;width:15px;height:1px;background:var(--gold-hi);
   box-shadow:0 5px 0 var(--gold-hi),0 -5px 0 var(--gold-hi)}
+/* hamburger only shows on mobile (desktop has the inline links) */
+.ch-nav .ch-menu{display:none}
+@media(max-width:860px){.ch-nav .ch-menu{display:grid}}
+/* MOBILE MENU OVERLAY — the hamburger opens this; nav must be reachable on phones */
+.ch-mobile{position:fixed;inset:0;z-index:9500;background:rgba(8,8,7,.97);backdrop-filter:blur(8px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;
+  opacity:0;pointer-events:none;transition:opacity .45s ease}
+.ch-mobile.open{opacity:1;pointer-events:auto}
+.ch-mobile a{font-family:var(--font-chapter);font-size:1.15rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--cream);text-decoration:none;padding:.4rem 1rem;transition:color .3s}
+.ch-mobile a:hover,.ch-mobile a:active{color:var(--gold-hi)}
+.ch-mobile .ch-mobile-x{position:absolute;top:1.6rem;right:1.6rem;width:44px;height:44px;border:1px solid var(--gold-soft);
+  border-radius:50%;background:none;color:var(--cream);font-size:1.4rem;cursor:pointer;line-height:1;transition:border-color .3s,color .3s}
+.ch-mobile .ch-mobile-x:hover{border-color:var(--gold-hi);color:var(--gold-hi)}
+.ch-mobile .ch-mobile-mark{font-family:var(--font-script);font-size:2.4rem;color:var(--gold-hi);margin-bottom:1rem}
 
 /* centered stack */
 .ch-stack{position:absolute;z-index:4;left:0;right:0;top:clamp(17%,21vh,24%);
@@ -1166,6 +1182,17 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
     <div class="ch-menu" aria-label="Menu"><span></span></div>
   </nav>
 
+  <!-- MOBILE MENU — opened by the hamburger; makes nav reachable on phones -->
+  <div class="ch-mobile" id="chMobile" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="ch-mobile-x" id="chMobileX" aria-label="Close menu">&times;</button>
+    <div class="ch-mobile-mark">Garran Hill</div>
+    <a href="#detail">The House</a>
+    <a href="#grounds">The Grounds</a>
+    <a href="/gallery/">Gallery</a>
+    <a href="/history">The History</a>
+    <a href="#inquiry">Inquire</a>
+  </div>
+
   <div class="ch-stack">
     <div class="ch-eyebrow" data-h="1">200 Hollycrest Drive &nbsp;·&nbsp; Pinehurst, North Carolina</div>
     <h1 class="ch-wordmark" data-h="2">Garran Hill</h1>
@@ -1244,7 +1271,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   <div class="archival-bg"></div>
   <div class="archival-veil"></div>
   <div class="yr">1915 &ndash; 1916</div>
-  <p>The house rose, built by the Pinehurst Company under J. R. McQueen, the same men then building Pinehurst. Rare handmade brick, laid in Flemish bond above a water table, <em>drawn to Georgian proportion.</em></p>
+  <p>The house rose through 1915 and 1916, built by the Pinehurst Company under J. R. McQueen. The same craftsmen who built Pinehurst built this house. Rare handmade brick, laid in Flemish bond above a water table, <em>drawn to Georgian proportion.</em></p>
 </section>
 
 <!-- THE RETURN — home gravely ill -->
@@ -1270,7 +1297,8 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 
 <!-- SOURCES — elegant attribution, real outbound links (credibility + backlink engine) -->
 <div class="sources">
-  <div class="lead">The Record</div>
+  <div class="lead">In Print</div>
+  <p class="srcs-note">This house has been written about, cited, and honored.</p>
   <div class="srcs">
     <a href="https://villageheritagefoundation.org/four-village-landmarks-honored/" target="_blank" rel="noopener">Village of Pinehurst Historic Foundation</a>
     <a href="https://pinestrawmag.com/a-page-out-of-history/" target="_blank" rel="noopener">PineStraw Magazine</a>
@@ -1515,6 +1543,18 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   });
 })();
 document.getElementById('tourbox').addEventListener('click',function(){this.innerHTML='<iframe src="https://my.matterport.com/show/?m=mfwyqT5Btwx&brand=0&help=1&nt=1" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="fullscreen; vr" allowfullscreen title="Garran Hill 3D tour"></iframe>';},{once:true});
+
+/* MOBILE MENU — wire the hamburger to open/close the overlay; close on link tap or Escape */
+(function(){
+  var burger=document.querySelector('.ch-menu'), panel=document.getElementById('chMobile'), x=document.getElementById('chMobileX');
+  if(!burger||!panel)return;
+  function open(){panel.classList.add('open');document.body.style.overflow='hidden';}
+  function close(){panel.classList.remove('open');document.body.style.overflow='';}
+  burger.addEventListener('click',open);
+  if(x)x.addEventListener('click',close);
+  panel.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&panel.classList.contains('open'))close();});
+})();
 
 /* THE SIGNATURE — draw the Edwardian name in when the gate enters view */
 (function(){
