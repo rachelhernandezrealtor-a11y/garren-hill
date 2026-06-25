@@ -353,11 +353,11 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .belt{position:absolute;left:0;right:0;bottom:0;z-index:3;display:flex;justify-content:center;align-items:flex-end;gap:clamp(1.5rem,4vw,3.5rem);padding:0 var(--pad);height:clamp(9rem,21vh,13rem)}
 /* full-width gradient scrim behind the whole belt so all 6 stats stay legible over bright footage */
 .belt::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(180deg,transparent 0%,rgba(8,8,7,.30) 38%,rgba(8,8,7,.72) 100%)}
-/* soft radial pocket behind the crest so the jewel always reads over bright video (the pool) */
+  background:linear-gradient(180deg,transparent 0%,rgba(8,8,7,.16) 46%,rgba(8,8,7,.58) 100%)}
+/* soft WARM radial pocket behind the crest — reads as light gathering on the jewel, not a black blob */
 .belt::before{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);z-index:2;pointer-events:none;
-  width:clamp(280px,34vw,460px);height:clamp(220px,30vh,360px);
-  background:radial-gradient(ellipse at 50% 78%,rgba(8,8,7,.72) 0%,rgba(8,8,7,.45) 42%,transparent 72%)}
+  width:clamp(300px,38vw,520px);height:clamp(240px,32vh,400px);
+  background:radial-gradient(ellipse at 50% 80%,rgba(14,11,8,.60) 0%,rgba(11,9,7,.34) 46%,transparent 76%)}
 .belt .grp{flex:1 1 0;display:flex;justify-content:space-evenly;align-items:flex-end;gap:clamp(1rem,2.5vw,2.4rem);max-width:420px;padding-bottom:clamp(2.4rem,6vh,3.6rem)}
 /* the two framing lines */
 .belt .rule,.belt .rule-top{position:absolute;left:var(--pad);right:var(--pad);height:2px;z-index:1;
@@ -614,6 +614,10 @@ nav .links a.cta{color:var(--gold);opacity:1}
 /* caption sits in a quiet lower corner (not dead-center over the bright subject),
    alternating left/right per scene so consecutive beats never read the same */
 .rm-cap{position:absolute;left:clamp(1.4rem,5vw,4.5rem);right:auto;bottom:clamp(2.2rem,7vh,5rem);z-index:3;text-align:left;padding:0;max-width:42ch}
+/* soft ink-pad behind the caption so gold name + text always read over bright frames (lamp/window) */
+.rm-cap::before{content:"";position:absolute;left:-10%;right:-10%;top:-16%;bottom:-16%;z-index:0;pointer-events:none;border-radius:46% 54% 52% 48%/50%;background:radial-gradient(ellipse 80% 100% at 32% 50%,rgba(8,8,7,.74) 0%,rgba(8,8,7,.5) 50%,transparent 82%);filter:blur(7px)}
+.rm-scene:nth-of-type(even) .rm-cap::before{background:radial-gradient(ellipse 80% 100% at 68% 50%,rgba(8,8,7,.74) 0%,rgba(8,8,7,.5) 50%,transparent 82%)}
+.rm-cap .rm,.rm-cap .det,.rm-cap .flow{position:relative;z-index:1}
 .rm-scene:nth-of-type(even) .rm-cap{left:auto;right:clamp(1.4rem,5vw,4.5rem);text-align:right}
 .rm-cap .rm{display:inline-block;font-family:var(--font-chapter);font-size:clamp(1rem,1.3vw,1.18rem);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;text-shadow:0 0 6px rgba(0,0,0,.9),0 2px 14px rgba(0,0,0,.85);position:relative;padding-bottom:.7rem}
 .rm-cap .rm::after{content:"";position:absolute;left:0;bottom:0;width:32px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
