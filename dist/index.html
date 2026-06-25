@@ -1168,6 +1168,8 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   filter:drop-shadow(0 1px 0 rgba(255,250,230,.45)) drop-shadow(0 2px 4px rgba(0,0,0,.95)) drop-shadow(0 0 12px rgba(201,169,110,.5))}
 .ch-stat-l{font-family:var(--font-label);font-size:clamp(.56rem,.72vw,.7rem);font-weight:500;
   letter-spacing:.3em;text-transform:uppercase;color:rgba(232,210,158,.92);margin-top:.62em;text-shadow:0 1px 4px rgba(0,0,0,.85)}
+/* the price: give the digits a hair of breathing room so the $ never crowds the first numeral */
+.ch-stat-v.price{letter-spacing:.025em}
 /* crest jewel — larger, lifted off the dark with a soft pedestal glow */
 .ch-crest-wrap{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;flex-shrink:0;padding:0 clamp(1rem,2.4vw,2.4rem)}
 /* VELVET POOL — real layer, above the photo, below the crest. Seats the jewel on near-black. */
@@ -1223,8 +1225,10 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   .ch-stat-v{font-size:1.15rem}
   .ch-stat-l{font-size:.56rem;letter-spacing:.18em}
 
-  /* belt container: keep it inside the viewport, no horizontal clip */
-  .ch-belt{left:0;right:0;width:100%;padding-left:4vw;padding-right:4vw;box-sizing:border-box}
+  /* belt container: keep it inside the viewport, no horizontal clip + safe-area bottom padding
+     so the bottom stat row never pins flush to a gesture bar / browser chrome */
+  .ch-belt{left:0;right:0;width:100%;padding-left:4vw;padding-right:4vw;box-sizing:border-box;
+    padding-bottom:calc(2rem + env(safe-area-inset-bottom,0px))}
 }
 @media(max-width:420px){
   .ch-belt-side{flex-wrap:wrap;gap:1.2rem}
@@ -1289,7 +1293,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
         <div class="ch-velvet"></div><div class="ch-velvet-core"></div><div class="ch-halo"></div>
         <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal,w_900/f_png/v1782063976/gh_key/gh_crest_jewel_final.png" alt="Garran Hill crest — Pinehurst, Hollycrest, 1916">
       </div>
-      <div class="ch-belt-side"><div class="ch-stat"><div class="ch-stat-v">6</div><div class="ch-stat-l">BATHROOMS</div></div><div class="ch-tick"></div><div class="ch-stat"><div class="ch-stat-v">7</div><div class="ch-stat-l">FIREPLACES</div></div><div class="ch-tick"></div><div class="ch-stat"><div class="ch-stat-v">$4,250,000</div><div class="ch-stat-l">PRESENTED</div></div></div>
+      <div class="ch-belt-side"><div class="ch-stat"><div class="ch-stat-v">6</div><div class="ch-stat-l">BATHROOMS</div></div><div class="ch-tick"></div><div class="ch-stat"><div class="ch-stat-v">7</div><div class="ch-stat-l">FIREPLACES</div></div><div class="ch-tick"></div><div class="ch-stat"><div class="ch-stat-v price">$4,250,000</div><div class="ch-stat-l">PRESENTED</div></div></div>
     </div>
   </div>
 </section>
