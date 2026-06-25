@@ -664,54 +664,6 @@ nav .links a.cta{color:var(--gold);opacity:1}
 /* ===== EDITORIAL PHOTO PRESENTATION (skill: editorial-photo-presentation) =====
    Photos composed not stacked; text stays ON the photo, legibility engineered. */
 .ep-beat{position:relative;width:100%;background:var(--ink);overflow:hidden}
-
-/* ===== THE FIRE BEAT — "Fire going. No one home yet." (Rachel's creative spine, June 25)
-   The emotional turn that opens the living house: a real fire burning in an empty room
-   (067 Delft sitting room, vision-verified flames + fresh flowers + books left out).
-   The line lands, then the timer-truth reveals WHY a fire burns with no one home.
-   Full-bleed, contained (cover IS the design function here), warm ember glow engineered
-   into the scrim from the hearth's own corner so the words read as firelight, not a bar. */
-.firebeat{position:relative;width:100%;min-height:clamp(620px,100svh,1080px);
-  display:flex;align-items:center;overflow:hidden;background:#0a0805}
-.firebeat .fb-photo{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center 38%;
-  filter:sepia(.2) saturate(1.12) contrast(1.05) brightness(.9) hue-rotate(-6deg);
-  transform:scale(1.06);transform-origin:60% 55%}
-.firebeat.lit .fb-photo{transform:scale(1.0);transition:transform 12s cubic-bezier(.22,.61,.36,1)} /* slow breath toward the room */
-/* engineered legibility — a warm ember pocket rising from the hearth (lower-left) + a
-   soft falloff for the type column. Reads as firelight gathering, never a black band. */
-.firebeat .fb-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:
-   radial-gradient(58% 60% at 26% 78%, rgba(122,58,16,.30) 0%, rgba(40,18,6,.10) 40%, transparent 70%),
-   linear-gradient(96deg, rgba(8,7,5,.84) 0%, rgba(8,7,5,.56) 26%, rgba(8,7,5,.18) 50%, transparent 70%),
-   linear-gradient(to bottom, rgba(8,7,5,.30) 0%, transparent 22%, transparent 60%, rgba(8,7,5,.66) 100%)}
-.firebeat .fb-cap{position:relative;z-index:2;max-width:46ch;
-  padding:0 clamp(1.5rem,7vw,7rem)}
-.firebeat .fb-eyebrow{font-family:var(--font-chapter);font-size:var(--xs);letter-spacing:.42em;
-  text-transform:uppercase;color:var(--gold-hi);display:inline-flex;align-items:center;gap:.9rem;margin-bottom:1.6rem}
-.firebeat .fb-eyebrow::after{content:"";width:46px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
-/* THE LINE — the largest, quietest display moment. Two short declaratives, the turn in firelight. */
-.firebeat .fb-line{font-family:var(--font-display);font-weight:300;
-  font-size:clamp(2.4rem,5.4vw,4.6rem);line-height:1.04;letter-spacing:.004em;color:var(--cream);
-  margin:0;text-shadow:0 2px 40px rgba(0,0,0,.6)}
-.firebeat .fb-line em{display:block;font-style:italic;color:var(--gold-hi);
-  text-shadow:0 1px 30px rgba(122,58,16,.5),0 2px 40px rgba(0,0,0,.6)}
-/* the woven truth — surfaces quietly beneath the line; the fact that earns the emotion */
-.firebeat .fb-truth{font-family:var(--font-body);font-weight:300;
-  font-size:clamp(1.15rem,1.75vw,1.5rem);line-height:1.66;color:var(--cream-dim);
-  margin:2.2rem 0 0;max-width:40ch;text-shadow:0 1px 20px rgba(0,0,0,.55)}
-.firebeat .fb-truth b{font-weight:500;color:var(--cream);font-style:normal}
-@media (prefers-reduced-motion:reduce){.firebeat .fb-photo{transform:none;transition:none}}
-@media(max-width:760px){
-  .firebeat{min-height:88vh;align-items:flex-end;padding-bottom:clamp(3rem,10vh,5rem)}
-  .firebeat .fb-photo{background-position:center 42%}
-  .firebeat .fb-scrim{background:
-     radial-gradient(70% 50% at 30% 86%, rgba(122,58,16,.28) 0%, transparent 64%),
-     linear-gradient(to bottom, rgba(8,7,5,.30) 0%, transparent 38%, rgba(8,7,5,.86) 100%)}
-  .firebeat .fb-cap{max-width:none;text-align:center}
-  .firebeat .fb-eyebrow{justify-content:center}
-  .firebeat .fb-truth{margin-left:auto;margin-right:auto}
-}
-
 .ep-beat img{width:100%;height:clamp(440px,86vh,860px);object-fit:cover;display:block;
   filter:sepia(.18) saturate(1.08) contrast(1.05) brightness(.94) hue-rotate(-5deg)} /* unified warm grade */
 /* directional scrim: follows the photo's dark falloff, reads as light not a bar */
@@ -1391,19 +1343,6 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   <a class="more" href="/history">Read the Hollycrest years</a>
 </div>
 
-<!-- THE FIRE BEAT — "Fire going. No one home yet." The emotional turn into the living house.
-     Real fire in the Delft sitting room (067, vision-verified flames + fresh flowers).
-     The line lands, the timer-truth reveals why a fire burns in an empty house. -->
-<section class="firebeat" id="firebeat">
-  <div class="fb-photo" style="background-image:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:best,w_2400/v1/garran-hill/photos/067-delft-sitting-room.jpg')"></div>
-  <div class="fb-scrim"></div>
-  <div class="fb-cap">
-    <span class="fb-eyebrow">The House Today</span>
-    <p class="fb-line">Fire going.<em>No one home yet.</em></p>
-    <p class="fb-truth">Seven hearths are set to come on by themselves through the cold months. So the house is never cold when you reach it, and a room is always lit, waiting, the way it was meant to be.</p>
-  </div>
-</section>
-
 <!-- CHAPTER: BUILT IN BOND — the craftsmanship beat. Three full-bleed photo-background scenes. -->
 <div class="chapter-mark">
   <div class="num">Built in Bond</div>
@@ -1490,9 +1429,9 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
     <div class="rm-split-text"><span class="rm">The Library</span><p class="det">Shelving to the ceiling on three walls. A house built for a man of letters keeps its promise in this one room.</p><span class="flow">Through the hall to the sitting room</span></div>
   </div>
 
-  <div class="rm-scene compact" data-imgs="069-sitting-room,068-sitting-room">
+  <div class="rm-scene compact" data-imgs="067-delft-sitting-room,068-sitting-room,069-sitting-room">
     <span class="rm-idx">IV &middot; First Floor</span><span class="rm-end"></span>
-    <div class="rm-cap"><span class="rm">The Sitting Room</span><p class="det">Delft tile set around the hearth, blue on white. In the corner a spiral stair winds up to the study, the way this house likes to send you somewhere.</p><span class="flow">The stair climbs to the den above</span></div>
+    <div class="rm-cap"><span class="rm">The Sitting Room</span><p class="det">Delft tile set around the fire, blue on white. In the corner a spiral stair winds up to the study, the way this house likes to send you somewhere.</p><span class="flow">The stair climbs to the den above</span></div>
     <div class="rm-dots"></div>
   </div>
 
@@ -1720,19 +1659,6 @@ document.getElementById('tourbox').addEventListener('click',function(){this.inne
   }else{cl.classList.add('lift');}
 })();
 
-/* THE FIRE BEAT — the room breathes toward you (slow scale-down) as it enters view */
-(function(){
-  var fb=document.getElementById('firebeat');
-  if(!fb)return;
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){fb.classList.add('lit');return;}
-  if('IntersectionObserver' in window){
-    var fo=new IntersectionObserver(function(es){
-      es.forEach(function(e){if(e.isIntersecting){setTimeout(function(){fb.classList.add('lit');},200);fo.unobserve(e.target);}});
-    },{threshold:0.35});
-    fo.observe(fb);
-  }else{fb.classList.add('lit');}
-})();
-
 /* THE LETTER — "the farm" rises out of his handwriting when the section enters view */
 (function(){
   // letter section: handwriting + farm write-on are driven by the spine engine (GH.writeOn /
@@ -1836,41 +1762,41 @@ if(window.matchMedia('(pointer:fine)').matches){
 </script>
 
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="spine.js" defer></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>
-/* HERO REVEAL — resting state is FULLY COMPOSED (belt, crest, price all visible).
-   GSAP only enhances the entrance when present. No GSAP / reduced-motion / a slow
-   load can NEVER hide the belt again. (Fixes the blank-bottom hero bug, June 25.) */
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
   var still=location.search.indexOf('still')>-1;          // ?still=1 => composed static (verify/SEO)
   var rect=document.querySelector('.ch-frame rect');
   if(rect){var L=2*(956+956);rect.style.strokeDasharray=L;}
+  // RESTING STATE IS FULLY COMPOSED. Only animate if JS+motion allowed.
   if(reduce||still||!window.gsap){ if(rect)rect.style.strokeDashoffset=0; return; }
+  // hide for the reveal (JS-only, so no-JS stays visible)
   if(rect)rect.style.strokeDashoffset=L;
-  // hide ONLY for the JS reveal, then guarantee everything is restored even if a
-  // tween is interrupted (onComplete + a hard safety timeout clears all inline hides).
-  var hidden=['.ch-nav','.ch-eyebrow','.ch-wordmark','.ch-subline','.ch-belt-rule','.ch-crest-wrap','.ch-stat','.ch-cue'];
   gsap.set('.ch-nav',{opacity:0});
   gsap.set('.ch-eyebrow',{opacity:0});
   gsap.set('.ch-wordmark',{opacity:0,filter:'blur(14px)',y:18});
   gsap.set('.ch-subline',{opacity:0});
+  gsap.set('.ch-tagline',{opacity:0});
   gsap.set('.ch-belt-rule',{scaleX:0});
   gsap.set('.ch-crest-wrap',{opacity:0,y:20,scale:.84});
   gsap.set('.ch-stat',{opacity:0,y:14});
   gsap.set('.ch-cue',{opacity:0});
-  function restore(){ hidden.forEach(function(s){gsap.set(s,{clearProps:'opacity,filter,transform,y,scale,scaleX'});}); if(rect)rect.style.strokeDashoffset=0; }
-  var tl=gsap.timeline({defaults:{ease:'power3.out'},onComplete:restore});
+  var tl=gsap.timeline({defaults:{ease:'power3.out'}});
   tl.to(rect,{strokeDashoffset:0,duration:2.4,ease:'power2.inOut'},0.2)
     .to('.ch-nav',{opacity:1,duration:1.2},0.8)
     .to('.ch-eyebrow',{opacity:1,duration:1.1},1.3)
     .to('.ch-wordmark',{opacity:1,filter:'blur(0px)',y:0,duration:1.8,ease:'power2.out'},1.9)
     .to('.ch-subline',{opacity:1,duration:1.1},2.9)
+    .to('.ch-tagline',{opacity:1,duration:1.2},3.3)
     .to('.ch-belt-rule',{scaleX:1,duration:1.3,ease:'power2.inOut'},3.6)
     .to('.ch-crest-wrap',{opacity:1,y:0,scale:1,duration:1.1,ease:'back.out(1.4)'},3.9)
     .to('.ch-stat',{opacity:1,y:0,duration:.9,stagger:.12},4.1)
     .to('.ch-cue',{opacity:1,duration:1},4.6);
-  // hard safety net: whatever happens, the hero is fully visible within 7s
-  setTimeout(restore,7000);
 })();
 </script>
 </body></html>
