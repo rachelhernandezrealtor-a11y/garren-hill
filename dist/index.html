@@ -1841,40 +1841,32 @@ if(window.matchMedia('(pointer:fine)').matches){
 
 
 <script>
-/* HERO REVEAL — resting state is FULLY COMPOSED (belt, crest, price all visible).
-   GSAP only enhances the entrance when present. No GSAP / reduced-motion / a slow
-   load can NEVER hide the belt again. (Fixes the blank-bottom hero bug, June 25.) */
+/* HERO REVEAL — the belt (crest + stats + $4.25M PRICE) is ALWAYS composed and visible.
+   It never depends on a JS timeline (a slow load / paused tab / fast scroll must never blank it).
+   GSAP only adds a gentle entrance to the lighter TOP elements (gold frame, nav, wordmark). */
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var still=location.search.indexOf('still')>-1;          // ?still=1 => composed static (verify/SEO)
+  var still=location.search.indexOf('still')>-1;
   var rect=document.querySelector('.ch-frame rect');
   if(rect){var L=2*(956+956);rect.style.strokeDasharray=L;}
   if(reduce||still||!window.gsap){ if(rect)rect.style.strokeDashoffset=0; return; }
   if(rect)rect.style.strokeDashoffset=L;
-  // hide ONLY for the JS reveal, then guarantee everything is restored even if a
-  // tween is interrupted (onComplete + a hard safety timeout clears all inline hides).
-  var hidden=['.ch-nav','.ch-eyebrow','.ch-wordmark','.ch-subline','.ch-belt-rule','.ch-crest-wrap','.ch-stat','.ch-cue'];
+  // ONLY the top stack animates. The belt is left fully composed at all times.
+  var top=['.ch-nav','.ch-eyebrow','.ch-wordmark','.ch-subline','.ch-cue'];
   gsap.set('.ch-nav',{opacity:0});
   gsap.set('.ch-eyebrow',{opacity:0});
   gsap.set('.ch-wordmark',{opacity:0,filter:'blur(14px)',y:18});
   gsap.set('.ch-subline',{opacity:0});
-  gsap.set('.ch-belt-rule',{scaleX:0});
-  gsap.set('.ch-crest-wrap',{opacity:0,y:20,scale:.84});
-  gsap.set('.ch-stat',{opacity:0,y:14});
   gsap.set('.ch-cue',{opacity:0});
-  function restore(){ hidden.forEach(function(s){gsap.set(s,{clearProps:'opacity,filter,transform,y,scale,scaleX'});}); if(rect)rect.style.strokeDashoffset=0; }
+  function restore(){ top.forEach(function(s){gsap.set(s,{clearProps:'opacity,filter,transform,y'});}); if(rect)rect.style.strokeDashoffset=0; }
   var tl=gsap.timeline({defaults:{ease:'power3.out'},onComplete:restore});
-  tl.to(rect,{strokeDashoffset:0,duration:2.4,ease:'power2.inOut'},0.2)
-    .to('.ch-nav',{opacity:1,duration:1.2},0.8)
-    .to('.ch-eyebrow',{opacity:1,duration:1.1},1.3)
-    .to('.ch-wordmark',{opacity:1,filter:'blur(0px)',y:0,duration:1.8,ease:'power2.out'},1.9)
-    .to('.ch-subline',{opacity:1,duration:1.1},2.9)
-    .to('.ch-belt-rule',{scaleX:1,duration:1.3,ease:'power2.inOut'},3.6)
-    .to('.ch-crest-wrap',{opacity:1,y:0,scale:1,duration:1.1,ease:'back.out(1.4)'},3.9)
-    .to('.ch-stat',{opacity:1,y:0,duration:.9,stagger:.12},4.1)
-    .to('.ch-cue',{opacity:1,duration:1},4.6);
-  // hard safety net: whatever happens, the hero is fully visible within 7s
-  setTimeout(restore,7000);
+  tl.to(rect,{strokeDashoffset:0,duration:2.2,ease:'power2.inOut'},0.2)
+    .to('.ch-nav',{opacity:1,duration:1.1},0.6)
+    .to('.ch-eyebrow',{opacity:1,duration:1.0},1.0)
+    .to('.ch-wordmark',{opacity:1,filter:'blur(0px)',y:0,duration:1.6,ease:'power2.out'},1.4)
+    .to('.ch-subline',{opacity:1,duration:1.0},2.2)
+    .to('.ch-cue',{opacity:1,duration:1},2.6);
+  setTimeout(restore,6000);
 })();
 </script>
 </body></html>
