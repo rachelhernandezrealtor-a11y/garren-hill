@@ -591,9 +591,9 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .rm-scene.compact{height:420px!important;min-height:420px!important}
 .rm-scene.hero .rm-cap{transform:scale(1.06);transform-origin:left bottom}
 /* airy edge scrim — preserves the photo (Rule 9: never darken the image into a band) */
-.rm-scene::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
-  background:linear-gradient(72deg, rgba(8,8,7,.66) 0%, rgba(8,8,7,.30) 30%, transparent 58%)}
-.rm-scene:nth-of-type(even)::after{background:linear-gradient(288deg, rgba(8,8,7,.66) 0%, rgba(8,8,7,.30) 30%, transparent 58%)}
+.rm-scene::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
+  background:linear-gradient(72deg, rgba(8,8,7,.52) 0%, rgba(8,8,7,.18) 26%, transparent 50%)}
+.rm-scene:nth-of-type(even)::after{background:linear-gradient(288deg, rgba(8,8,7,.52) 0%, rgba(8,8,7,.18) 26%, transparent 50%)}
 .rm-scene .slide{position:absolute;inset:0;opacity:0;background-color:#0a0a07;
   transition:opacity 1.8s cubic-bezier(.4,0,.2,1);will-change:opacity}
 /* VOID KILLER: two explicit layers — blurred self-fill behind, sharp full photo in front */
@@ -1019,6 +1019,8 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 /* nav — one gold-outlined mark top-right (restraint) — FIXED so it sits above everything */
 .ch-nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;justify-content:space-between;
   align-items:center;padding:clamp(1.4rem,3vw,2.4rem) clamp(1.6rem,4vw,3.4rem)}
+/* soft top scrim so the masthead + nav always read cleanly over any section (no hard bar) */
+.ch-nav::before{content:"";position:absolute;inset:0;bottom:auto;height:160px;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(8,8,7,.78) 0%,rgba(8,8,7,.45) 45%,transparent 100%)}
 .ch-nav .ch-est{font-family:var(--font-label);font-size:clamp(.66rem,.8vw,.78rem);letter-spacing:.34em;
   text-transform:uppercase;color:var(--cream-dim);text-shadow:0 1px 14px rgba(0,0,0,.7)}
 .ch-nav .ch-est b{font-family:var(--font-script);font-weight:400;font-size:1.7em;color:var(--gold-hi);
