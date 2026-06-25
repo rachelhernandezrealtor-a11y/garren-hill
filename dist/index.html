@@ -687,6 +687,27 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .ep-beat--tl .scrim{background:
   linear-gradient(150deg, rgba(8,8,7,.80) 0%, rgba(8,8,7,.52) 24%, rgba(8,8,7,.14) 48%, transparent 66%),
   radial-gradient(46% 42% at 20% 26%, rgba(8,8,7,.42), transparent 72%);}
+
+/* ep-detail — a quiet framed-in-air beat: photo inset on dark ground, NOT full-bleed.
+   Breaks a run of full-bleed beats so photos never stack identically. (editorial-photo-presentation kit) */
+.ep-detail{position:relative;background:var(--ink);display:grid;grid-template-columns:1.05fr .95fr;
+  gap:clamp(1.8rem,5vw,4.5rem);align-items:center;
+  padding:clamp(3.5rem,11vh,8rem) clamp(1.5rem,7vw,7rem)}
+.ep-detail .ep-detail-img{position:relative;overflow:hidden;border-radius:2px;
+  box-shadow:0 30px 80px rgba(0,0,0,.6);aspect-ratio:4/3}
+.ep-detail .ep-detail-img img{width:100%;height:100%;object-fit:cover;display:block;
+  filter:sepia(.18) saturate(1.08) contrast(1.05) brightness(.94) hue-rotate(-5deg)}
+.ep-detail .ep-detail-img::after{content:"";position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 60px rgba(8,8,7,.5)}
+.ep-detail .ep-detail-cap{max-width:34ch}
+.ep-detail .ep-eyebrow{font-family:var(--font-chapter);font-size:var(--xs);letter-spacing:.42em;
+  text-transform:uppercase;color:var(--gold-hi);display:inline-flex;align-items:center;gap:.9rem;margin-bottom:1.1rem}
+.ep-detail .ep-eyebrow::after{content:"";width:42px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.ep-detail .ep-detail-cap p{font-family:var(--font-display);font-weight:300;font-size:clamp(1.2rem,1.8vw,1.6rem);
+  line-height:1.5;color:var(--cream);margin:0}
+@media(max-width:760px){.ep-detail{grid-template-columns:1fr;gap:1.6rem;text-align:center}
+  .ep-detail .ep-detail-cap{max-width:none}
+  .ep-detail .ep-eyebrow{justify-content:center}}
 .ep-beat--tl .ep-cap{bottom:auto;top:clamp(2.4rem,9vh,5.5rem)}
 /* feather the section's own bottom so it never reads as a hard black guillotine bar */
 .ep-beat::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;pointer-events:none;
@@ -1338,14 +1359,15 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   </div>
 </section>
 
-<section class="ep-beat">
-  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:best,w_2400/v1/garran-hill/photos/009-portico.jpg" alt="Garran Hill portico and entry, the granite threshold inlaid GARRAN HILL 1916">
-  <div class="scrim"></div>
-  <div class="ep-cap">
+<div class="ep-detail">
+  <div class="ep-detail-img">
+    <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:best,w_1400/v1/garran-hill/photos/009-portico.jpg" alt="Garran Hill portico and entry, the granite threshold inlaid GARRAN HILL 1916">
+  </div>
+  <div class="ep-detail-cap">
     <span class="ep-eyebrow">The Threshold</span>
     <p>Before the walls, before the roof, the name was already cut into the stone.<br>GARRAN HILL. 1916.<br>No one has touched it since. It simply waits to be crossed.</p>
   </div>
-</section>
+</div>
 
 <section class="ep-beat ep-beat--tl">
   <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:best,w_1800/v1/garran-hill/photos/013-entry-hall.jpg" alt="Garran Hill two-story entry, Colonial Revival staircase, oak handrail unbroken from volute to landing">
@@ -1461,10 +1483,10 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
     <div class="rm-dots"></div>
   </div>
 
-  <div class="rm-scene" data-imgs="118-grounds,120-tennis-courts,123-grounds">
-    <span class="rm-idx">X &middot; The Grounds</span><span class="rm-end"></span>
-    <div class="rm-cap"><span class="rm">The Courts</span><p class="det">Two regulation courts, lit for evening play under the longleaf pines. The surfaces need resurfacing. They ask for that and nothing more.</p></div>
-    <div class="rm-dots"></div>
+  <div class="rm-split" data-imgs="120-tennis-courts,118-grounds,123-grounds">
+    <span class="rm-idx">X &middot; The Grounds</span>
+    <div class="rm-split-media"></div>
+    <div class="rm-split-text"><span class="rm">The Courts</span><p class="det">Two regulation courts, lit for evening play under the longleaf pines. The surfaces need resurfacing. They ask for that and nothing more.</p></div>
   </div>
 
   <div class="rm-scene" data-imgs="112-brick-terrace,115-boxwood-herb-garden,121-the-wee-cottage">
