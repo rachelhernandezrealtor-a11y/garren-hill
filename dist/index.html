@@ -598,7 +598,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
   transition:opacity 1.8s cubic-bezier(.4,0,.2,1);will-change:opacity}
 /* VOID KILLER: two explicit layers — blurred self-fill behind, sharp full photo in front */
 .slide-blur{position:absolute;inset:0;z-index:1;background-size:cover;background-position:center;background-repeat:no-repeat;filter:blur(55px) brightness(.85) saturate(1.3);transform:scale(1.18)}
-.slide-sharp{position:absolute;inset:0;z-index:2;background-size:contain;background-position:center;background-repeat:no-repeat}
+.slide-sharp{position:absolute;inset:0;z-index:2;background-size:contain;background-position:center;background-repeat:no-repeat;filter:sepia(.10) saturate(1.04) contrast(1.02) brightness(.99)} /* unified warm grade — matches .ep-beat */
 .rm-scene .slide.on{opacity:1}
 /* Ken-Burns animation removed to preserve full photo visibility with contain sizing */
 @media (prefers-reduced-motion:reduce){.rm-scene .slide.on{animation:none;transform:none}}
@@ -636,7 +636,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .rm-split.flip .rm-split-media{order:2}
 .rm-split.flip .rm-split-text{order:1}
 .rm-split-media{position:relative;overflow:hidden;background:#111}
-.rm-split-media .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;background-color:#0a0a07}
+.rm-split-media .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;background-color:#0a0a07;filter:sepia(.10) saturate(1.04) contrast(1.02) brightness(.99)}
 .rm-split-media .slide.on{opacity:1}
 .rm-split::after{content:"";position:absolute;left:58.8%;top:8%;bottom:8%;width:1px;background:linear-gradient(180deg,transparent,var(--gold-soft) 22%,var(--gold-soft) 78%,transparent);z-index:4;pointer-events:none}
 .rm-split.flip::after{left:41.2%}
