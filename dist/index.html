@@ -542,7 +542,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 /* THE BUILDING — the 1916 archival image behind the words about the house rising (airy, preserve-the-image) */
 .built{position:relative;overflow:hidden;background:var(--ink);text-align:center;padding:clamp(5rem,15vh,10rem) var(--pad)}
 .built .archival-bg{position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1800/v1/gh_key/gh_1916sheet.jpg') center/cover no-repeat;
+  background:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1800/v1/garran-hill/history/gh_1916_house_real.jpg') center/cover no-repeat;
   opacity:.30;filter:grayscale(1) contrast(1.02) brightness(1.02)}
 .built .archival-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:radial-gradient(ellipse 75% 75% at 50% 50%,transparent 0%,rgba(8,8,7,.45) 68%,rgba(8,8,7,.8) 100%)}
@@ -1090,19 +1090,22 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   gap:clamp(2rem,4.5vw,4.2rem);margin-top:clamp(1.4rem,3vh,2.2rem);max-width:1180px;margin-inline:auto}
 .ch-belt-side{position:relative;z-index:4;display:flex;align-items:center;justify-content:center;gap:clamp(1.4rem,2.8vw,2.6rem);flex:1 1 0;max-width:340px}
 .ch-stat{text-align:center;white-space:nowrap}
-.ch-stat-v{font-family:var(--font-display);font-weight:500;font-size:clamp(1.4rem,2.1vw,2.05rem);
-  color:var(--cream);line-height:1;letter-spacing:.01em;text-shadow:0 1px 12px rgba(0,0,0,.55)}
+.ch-stat-v{font-family:var(--font-display);font-weight:600;font-size:clamp(1.55rem,2.3vw,2.25rem);
+  line-height:1;letter-spacing:.012em;font-feature-settings:'onum' 1,'pnum' 1;
+  background:linear-gradient(180deg,#9c7836 0%,#e7c878 22%,#fff7e0 41%,#f6e6a8 50%,#c89f54 60%,#9a7430 79%,#684d22 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  filter:drop-shadow(0 1px 0 rgba(255,250,230,.45)) drop-shadow(0 2px 4px rgba(0,0,0,.95)) drop-shadow(0 0 12px rgba(201,169,110,.5))}
 .ch-stat-l{font-family:var(--font-label);font-size:clamp(.56rem,.72vw,.7rem);font-weight:500;
-  letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-top:.6em}
+  letter-spacing:.3em;text-transform:uppercase;color:rgba(232,210,158,.92);margin-top:.62em;text-shadow:0 1px 4px rgba(0,0,0,.85)}
 /* crest jewel — larger, lifted off the dark with a soft pedestal glow */
 .ch-crest-wrap{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;flex-shrink:0;padding:0 clamp(1rem,2.4vw,2.4rem)}
 /* VELVET POOL — real layer, above the photo, below the crest. Seats the jewel on near-black. */
 .ch-crest-wrap .ch-velvet{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:260%;height:240%;border-radius:50%;z-index:0;pointer-events:none;
-  background:radial-gradient(circle at center,rgba(6,6,5,.8) 0%,rgba(6,6,5,.5) 40%,rgba(6,6,5,.2) 62%,transparent 80%)}
+  width:240%;height:210%;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle at center,rgba(6,6,5,.55) 0%,rgba(6,6,5,.3) 42%,rgba(6,6,5,.1) 64%,transparent 80%)}
 .ch-crest-wrap .ch-velvet-core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:150%;height:132%;border-radius:50%;z-index:0;pointer-events:none;
-  background:radial-gradient(circle at center,rgba(5,5,4,.75) 0%,rgba(5,5,4,.55) 55%,rgba(5,5,4,.25) 78%,transparent 92%)}
+  width:140%;height:122%;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle at center,rgba(5,5,4,.5) 0%,rgba(5,5,4,.32) 56%,rgba(5,5,4,.14) 78%,transparent 92%)}
 /* luminous gold-white halo just behind the metal */
 .ch-crest-wrap .ch-halo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   width:108%;height:112%;border-radius:50%;z-index:1;pointer-events:none;
@@ -1288,7 +1291,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 <!-- THEN AND NOW — same house, same gate, a century apart -->
 <div class="thennow">
   <figure class="tn">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/v1777272689/gh_key/gh_1916sheet.jpg" alt="Garran Hill, 1916, newly built, from the archival record">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1600,q_auto:best,f_auto/v1/garran-hill/history/gh_1916_house_real.jpg" alt="Garran Hill in 1916, the house standing alone, newly built, from the archival record">
     <figcaption>The record &middot; 1916</figcaption>
   </figure>
   <figure class="tn">

@@ -74,6 +74,31 @@ as one long page. Homepage seduces; navigation delivers the listing function.
 - Still true: the homepage is the BLOW-YOUR-MIND experience; the nav-linked function
   pages are clean, fast, and complete. Both held to the full Photo Law (0.5).
 
+## 0.7 THE INTERACTIVE-VERIFICATION LAW (Rachel, 2026-06-24 — HARD LAW, every property, every ship)
+
+Looking at a screenshot is NOT enough. Before ANYTHING is called done or shown to Rachel,
+every interactive element must be CLICKED and proven to work. A nav link that does not open,
+a button that does nothing, a form that does not submit = basic failure, unacceptable.
+
+MANDATORY PRE-SHIP INTERACTION CHECK (run on desktop AND 390px mobile):
+1. **Every nav link** — click each one, confirm it navigates to the right place (returns 200 /
+   scrolls to the right section). The whole hero nav can be silently dead.
+2. **Every button / CTA** — click, confirm the action fires (inquiry, gallery, tour, lightbox).
+3. **The mobile menu** — confirm the hamburger actually opens the nav (links are display:none on
+   mobile; if the menu doesn't open them, mobile nav is unreachable).
+4. **Lightbox / carousels** — open, advance, close, keyboard, swipe.
+5. **No horizontal overflow** at 390px (scrollWidth === clientWidth).
+6. **No JS console errors** on load.
+
+THE KILLER PITFALL THAT CAUSED THIS LAW (Garran Hill, June 24): a full-bleed hero VIDEO/overlay
+sat above the nav and ate every click. The nav container had pointer-events:none (so mouse passes
+to the hero) but the LINKS were never given pointer-events:auto back — so ALL hero nav links were
+dead. Invisible in a screenshot, fatal in use. RULE: any nav/control layered over a hero
+video/image MUST have pointer-events:auto + a z-index above the media, and MUST be click-tested.
+
+HOW TO TEST (objective, not vision): elementFromPoint(centerX,centerY) on each link must return
+that link (or its child), not the covering media. Playwright: click each, assert URL/scroll changed.
+
 ## 1. WHAT THE SITE IS (Rachel, 2026-06-12)
 
 > "A single property luxury website on crack."
@@ -679,6 +704,35 @@ Coco builds with a FAST LOCAL EYES-LOOP and her OWN stack — never blind, never
   open for 110 years." lives in dist/index.html). Pull her proven copy/treatment from the
   existing build FIRST, rebuild to THAT, then raise it — never overwrite her good work with
   a weaker improvisation.
+
+## NO FINAL COPY — IT READS LIKE A STIFF BLANKET (Rachel, June 24 2026)
+There is NO final website copy. WEBSITE-COPY-FINAL.md is a misnomer: a stiff draft, not law.
+The current copy "reads like a stiff blanket" (Rachel's words) — correct, careful, lifeless,
+laid stiffly OVER the house instead of breathing inside it. That is the failure to fix.
+- Do NOT lift the stiff draft. Write fresh in Rachel's living voice every section.
+- The voice is EVOKE-DON'T-PERFORM + setup/turn/silence: the feeling lives INSIDE the true
+  architectural detail, never draped on top as careful description. Short, alive, declarative.
+- Test: read it aloud flat. If only structure/adjectives carry it, it is a stiff blanket. Rewrite
+  plainer until only the true, living detail remains. Sell the house by revealing it, not admiring it.
+- Only MLS facts + CITATIONS.md are fixed truth. The WORDING is open and must come alive.
+
+## PHOTOS AS BACKGROUND — full-bleed is the canvas (Rachel, June 24 2026)
+The photographs are the BACKGROUND, full-bleed, the canvas of each section. NOT small framed
+pictures floating on a dark page. The image IS the section. Text composes over/around the photo
+(per the preserve-the-image + protect-the-letters laws), the photo fills the frame edge to edge.
+This is the manifesto primitive (.s-fullbleed): every section anchored by full-scale immersive
+photography, the background is the architecture. Default layout = photo background, not photo-in-a-box.
+
+## THEN-AND-NOW GATE — THE THEN IMAGE IS LOCKED (Rachel, said "a million times", locked June 24 2026)
+The THEN image in the then-and-now / "the same gate has stood open 110 years" moment is the
+REAL old archival photograph of THE HOUSE STANDING ALONE — ONE single photo. Vision-verified:
+- USE: `garran-hill/history/gh_1916_house_real` — a single genuine 1916 photo, house alone on
+  bare ground with the young saplings. THIS is the THEN. Always. One photo, the house by itself.
+- NEVER USE for the then/now: `gh_1916sheet` (a 3-photo album SHEET with handwriting — wrong,
+  it is a collage, not the house alone) and NEVER the faux `gh_gate_sepia` / `002-historic-garran-hill`
+  (a modern photo with a sepia filter, not archival).
+Rachel has asked for the single-house archival photo many times; it kept getting swapped for the
+sheet or the fake sepia. It is LAW now: then = gh_1916_house_real, the house alone, one image.
 
 ## GARRAN HILL HOMEPAGE — Rachel's visual changes (captured June 22-23, locked June 24)
 Source: session 2b1dac79be72. These are LAW for the homepage build.
