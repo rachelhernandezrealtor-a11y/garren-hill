@@ -483,7 +483,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .gatefade .gf-then img{filter:sepia(.42) contrast(1.02) brightness(.96)}
 .gatefade .gf-then{animation:gfThen 18s ease-in-out infinite}
 .gatefade .gf-now{animation:gfNow 18s ease-in-out infinite}
-.gatefade .gf-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,7,.8),transparent 45%);pointer-events:none}
+.gatefade .gf-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,4,.94) 0%,rgba(5,5,4,.72) 22%,rgba(5,5,4,.34) 40%,transparent 58%);pointer-events:none}
 /* soft seams top + bottom so the gate dissolves into the dark instead of hard-cutting */
 .gatefade::before,.gatefade::after{content:"";position:absolute;left:0;right:0;height:14vh;z-index:1;pointer-events:none}
 .gatefade::before{top:0;background:linear-gradient(to bottom,var(--ink),transparent)}
@@ -592,8 +592,8 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .rm-scene.hero .rm-cap{transform:scale(1.06);transform-origin:left bottom}
 /* airy edge scrim — preserves the photo (Rule 9: never darken the image into a band) */
 .rm-scene::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
-  background:linear-gradient(28deg, rgba(8,8,7,.86) 0%, rgba(8,8,7,.6) 20%, rgba(8,8,7,.28) 40%, transparent 62%)}
-.rm-scene:nth-of-type(even)::after{background:linear-gradient(332deg, rgba(8,8,7,.86) 0%, rgba(8,8,7,.6) 20%, rgba(8,8,7,.28) 40%, transparent 62%)}
+  background:linear-gradient(28deg, rgba(6,6,5,.92) 0%, rgba(6,6,5,.72) 22%, rgba(6,6,5,.4) 44%, rgba(6,6,5,.12) 60%, transparent 74%)}
+.rm-scene:nth-of-type(even)::after{background:linear-gradient(332deg, rgba(6,6,5,.92) 0%, rgba(6,6,5,.72) 22%, rgba(6,6,5,.4) 44%, rgba(6,6,5,.12) 60%, transparent 74%)}
 .rm-scene .slide{position:absolute;inset:0;opacity:0;background-color:#0a0a07;
   transition:opacity 1.8s cubic-bezier(.4,0,.2,1);will-change:opacity}
 /* VOID KILLER: two explicit layers — blurred self-fill behind, sharp full photo in front */
@@ -615,8 +615,8 @@ nav .links a.cta{color:var(--gold);opacity:1}
    alternating left/right per scene so consecutive beats never read the same */
 .rm-cap{position:absolute;left:clamp(1.4rem,5vw,4.5rem);right:auto;bottom:clamp(2.2rem,7vh,5rem);z-index:3;text-align:left;padding:0;max-width:42ch}
 /* soft ink-pad behind the caption so gold name + text always read over bright frames (lamp/window) */
-.rm-cap::before{content:"";position:absolute;left:-14%;right:-14%;top:-22%;bottom:-22%;z-index:0;pointer-events:none;border-radius:46% 54% 52% 48%/50%;background:radial-gradient(ellipse 82% 104% at 32% 50%,rgba(8,8,7,.92) 0%,rgba(8,8,7,.74) 38%,rgba(8,8,7,.4) 64%,transparent 86%);filter:blur(9px)}
-.rm-scene:nth-of-type(even) .rm-cap::before{background:radial-gradient(ellipse 82% 104% at 68% 50%,rgba(8,8,7,.92) 0%,rgba(8,8,7,.74) 38%,rgba(8,8,7,.4) 64%,transparent 86%)}
+.rm-cap::before{content:"";position:absolute;left:-18%;right:-18%;top:-26%;bottom:-26%;z-index:0;pointer-events:none;border-radius:46% 54% 52% 48%/50%;background:radial-gradient(ellipse 86% 110% at 32% 50%,rgba(5,5,4,.96) 0%,rgba(5,5,4,.85) 40%,rgba(5,5,4,.5) 66%,transparent 88%);filter:blur(11px)}
+.rm-scene:nth-of-type(even) .rm-cap::before{background:radial-gradient(ellipse 86% 110% at 68% 50%,rgba(5,5,4,.96) 0%,rgba(5,5,4,.85) 40%,rgba(5,5,4,.5) 66%,transparent 88%)}
 .rm-cap .rm,.rm-cap .det,.rm-cap .flow{position:relative;z-index:1}
 .rm-scene:nth-of-type(even) .rm-cap{left:auto;right:clamp(1.4rem,5vw,4.5rem);text-align:right}
 .rm-cap .rm{display:inline-block;font-family:var(--font-chapter);font-size:clamp(1rem,1.3vw,1.18rem);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;text-shadow:0 0 6px rgba(0,0,0,.9),0 2px 14px rgba(0,0,0,.85);position:relative;padding-bottom:.7rem}
