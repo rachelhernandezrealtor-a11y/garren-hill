@@ -1,6 +1,37 @@
 # AGENTS.md — Start Here
 # For: Cursor / Claude Code / any AI agent editing this codebase
-# Last updated: 2026-05-01
+# Last updated: 2026-06-26
+
+---
+
+## ⛔ LAW ZERO — ONE DEV SITE, ONE TRUTH (Rachel, 2026-06-26)
+
+This law exists because an entire day was lost editing the WRONG copy and
+claiming work that never reached the live site. It supersedes convenience.
+
+1. **THE ONLY REPO YOU MAY EDIT IS `/root/garren-hill`.**
+   - Source of truth: `/root/garren-hill/dist/index.html`
+   - Deploys via: `git push origin main` → Cloudflare Pages → garren-hill.pages.dev
+   - There is NO other working copy. `/root/RachelStudio/repos/garren-hill*`
+     is STALE — never edit it. If a duplicate checkout reappears, delete it.
+
+2. **VERIFY LIVE AFTER EVERY PUSH — no exceptions, no claiming "done" off a
+   commit hash.** The only proof a change shipped is reading it back from the
+   LIVE site:
+   `curl -s https://garren-hill.pages.dev/ | grep "<the change>"`
+   If it's not in the live HTML, it did NOT ship. Do not tell Rachel it's done.
+
+3. **NEVER trust memory over the committed source.** Before "fixing" anything,
+   read what `origin/main` actually contains. Today's huge title was not a
+   broken pipe — it was deliberately committed big in an earlier pass. Read
+   first, build second.
+
+4. **The terminal git lane works via `subprocess`** (the `terminal` toolset
+   import may be absent in some lanes — `import subprocess` always works).
+   Use it to commit, push, and curl-verify. That is the proven pipe.
+
+5. Old experimental branches are archived as `archive/*` tags (nothing lost).
+   Do not resurrect them into main without a new decision record.
 
 ---
 
