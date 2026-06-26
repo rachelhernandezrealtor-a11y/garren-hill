@@ -1097,9 +1097,15 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 .ch-nav::before{content:"";position:absolute;inset:0;bottom:auto;height:200px;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,8,7,.92) 0%,rgba(8,8,7,.62) 42%,rgba(8,8,7,.2) 78%,transparent 100%)}
 .ch-nav > *{position:relative;z-index:1}
 .ch-nav .ch-est{font-family:var(--font-label);font-size:clamp(.66rem,.8vw,.78rem);letter-spacing:.34em;
-  text-transform:uppercase;color:var(--cream-dim);text-shadow:0 1px 14px rgba(0,0,0,.7)}
-.ch-nav .ch-est b{font-family:var(--font-script);font-weight:400;font-size:1.7em;color:var(--gold-hi);
-  letter-spacing:0;text-transform:none;vertical-align:-.05em;padding:0 .1em}
+  text-transform:uppercase;color:var(--cream-dim);text-shadow:0 1px 14px rgba(0,0,0,.7);
+  position:relative;isolation:isolate}
+.ch-nav .ch-est::before{content:"";position:absolute;inset:-0.55em -0.9em;z-index:-1;
+  background:radial-gradient(120% 150% at 38% 50%,rgba(8,10,9,.42),rgba(8,10,9,.16) 58%,transparent 80%);
+  filter:blur(7px);pointer-events:none}
+.ch-nav .ch-est b{font-family:var(--font-script);font-weight:400;font-size:1.7em;color:#e0c88f;
+  letter-spacing:0;text-transform:none;vertical-align:-.05em;padding:0 .1em;
+  text-shadow:0 0 1px rgba(0,0,0,.6),0 1px 3px rgba(0,0,0,.85);
+  -webkit-text-stroke:.35px #e6d09a;paint-order:stroke fill}
 .ch-nav .ch-menu{width:42px;height:42px;border:1px solid var(--gold-soft);border-radius:50%;
   display:grid;place-items:center;cursor:pointer;transition:border-color .3s;pointer-events:auto;position:relative;z-index:9001}
 .ch-nav .ch-menu:hover{border-color:var(--gold-hi)}
