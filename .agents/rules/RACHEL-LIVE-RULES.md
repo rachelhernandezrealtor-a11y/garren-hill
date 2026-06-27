@@ -9,7 +9,40 @@ in progress with things wrong."
 
 ---
 
-## 0. THE RULE HIERARCHY (the only fixed things)
+## ⛔ THE SHIT RACHEL REPEATS — STOP MAKING HER SAY IT (Rachel, 2026-06-26, TOP LAW)
+These are the things Rachel has said over and over and they keep slipping. They are
+NOT new. Capturing them loud, at the top, so no Coco ever makes her repeat them again.
+Every one is a HARD LAW. Check this block before shipping ANY image or section.
+
+1. IMAGES CONTAINED — NEVER CUT OFF, NEVER STRETCHED. Every photo shows its full,
+   intended frame. No head cut off, no edge cropped away, no subject sliced by a
+   container. Where a box must crop for a cinematic full-bleed, the crop is
+   DELIBERATE and SMART (g_auto keeps the subject), never an accident of object-fit.
+   STRETCHING (distortion) is NEVER acceptable anywhere. The full photograph, the
+   photographer's frame, respected. (Photo Law 0.5 #4 — restated because it slips.)
+
+2. QUALITY — RAZOR SHARP, ALWAYS. Every image is best-clarity, never soft, never
+   blurry, never a compressed copy, never upscaled past native. If an effect or a
+   transform SOFTENS the image, it is banned. Build from the pristine master, deliver
+   responsive (right size per device), f_auto + q_auto:best for hero/gallery. A soft
+   image is a FAILURE Rachel should never have to point out. (Photo Law 0.5 #2.)
+
+3. RESPONSIVE — EVERY ELEMENT, EVERY VIEWPORT. Desktop, tablet, 375px phone. Nothing
+   breaks, overflows, crops badly, or needs pinching on a phone. 375px check is
+   MANDATORY before anything is called done. (Responsive Law, restated June 21.)
+
+4. LOOK BEFORE YOU SAY DONE. Coco SEES the rendered page with her own eyes before
+   ever telling Rachel it is good. Rachel is NEVER the first to spot a cut-off photo,
+   a soft image, a broken phone layout, or below-bar work. (Eyes Law / Self-review.)
+
+5. PRESERVE THE IMAGE — AIRY, NOT DARKENED. Never darken a photo into a block/band to
+   make text legible. Protect the LETTERS (soft halo), keep the picture luminous.
+
+6. NOT BASIC — BLOW YOUR MIND. Hand-rolled CSS fades are basic and banned as the
+   primary effect. The bar is "has anyone ever seen this?" Use the real stack.
+
+---
+
 
 1. **MLS / FlexMLS facts** — price, beds, baths, SF, acreage, year, address,
    status, remarks. Never altered, never rounded, never "improved."
@@ -753,3 +786,34 @@ Source: session 2b1dac79be72. These are LAW for the homepage build.
    "last remaining Walter Hines Page parcel" verbiage → CTA at the very end with
    Rachel's name + Pines Sotheby's company under it. Nothing after.
 6. CTA language: editorial invitation, NOT salesy ("Arrange a Private Visit", never "Request Showing" begging).
+
+## HERO RULES — TODAY (Rachel, 2026-06-26, verbatim from session, LAW)
+These are Rachel's exact directions for the hero, captured the day she said them.
+They GOVERN the hero build. Nothing ships to the hero that violates one.
+
+1. NAME LARGER. "Garran Hill should be larger." The wordmark reads bigger and
+   bolder than the timid size. (It is ALWAYS Edwardian Script — Type Identity Law.)
+2. DRAMATIC TO MATCH THE CREST. "it should be dramatic because our crest is
+   dramatic." The name's entrance has real weight/presence, sized and animated to
+   stand WITH the crest, not whisper next to it.
+3. GRACEFUL FLY-IN — NOT CHEESY. "when you had your tools before you made it fly
+   in gracefully." The motion is a graceful, weighted EMERGENCE (one cinematic
+   gesture). Per-letter / wedding-invitation theatrics = REJECTED (Rachel called
+   letter-by-letter "cheesy"). Use the real stack (GSAP), timed to the footage.
+4. CREST IS A FIXED ANCHOR. "the crest stays where it is always doesn't move."
+   The crest NEVER animates, never scales, never moves. Only the NAME gets motion.
+5. CREST KISSES THE VIEWPORT FLOOR. "the bottom of the crest just barely touching
+   bottom of viewport... that will give you more room to scale everything to our
+   design." Crest sits LOW, bottom edge at the viewport floor. This is the anchor
+   the whole hero composition scales from.
+6. NEVER COVER THE HOUSE — THE VIDEO IS THE STAR. "you need to think like a web
+   editor, everything needs to be done preserving the video, don't cover the house."
+   Text and motion live ONLY in negative space. The house/footage stays fully
+   visible, bright, and sharp. The video is the hero; the type frames it.
+7. KILL THE DARK FLATTENING. "there are dark areas that flatten the clarity of
+   video." No heavy scrim/dark bands dulling the footage. Legibility comes from
+   protecting the LETTERS (soft halo), never from darkening the picture
+   (ties to PRESERVE-THE-IMAGE law). Keep the video luminous and crisp.
+8. TIMED PERFECTLY. "needs to be timed perfectly." The name's motion is
+   choreographed to the footage timeline, not loose or arbitrary. Coco verifies
+   the timing with her own eyes (rendered pixels) before Rachel sees it.
