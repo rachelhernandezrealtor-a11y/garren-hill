@@ -1137,16 +1137,24 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   width:165%;height:300%;border-radius:50%;pointer-events:none;
   background:radial-gradient(ellipse at center,rgba(6,6,5,.46) 0%,rgba(6,6,5,.28) 34%,rgba(6,6,5,.1) 60%,rgba(6,6,5,0) 78%);
   filter:blur(11px)}
-@property --wm-rev{syntax:'<percentage>';inherits:false;initial-value:108%}
+@property --wm-rev{syntax:'<percentage>';inherits:true;initial-value:118%}
+@property --wm-ink{syntax:'<number>';inherits:true;initial-value:0}
 .ch-wordmark{font-family:var(--font-script);font-weight:400;
   font-size:clamp(3.4rem,9vw,7.4rem);line-height:.92;color:var(--cream);
-  margin:.22em 0 .32em;padding:.06em .14em;
+  margin:.22em 0 .32em;padding:.06em .14em;position:relative;
   /* legibility from a tight letter-halo, NOT a dark band over the house */
   text-shadow:0 1px 2px rgba(0,0,0,.45),0 0 18px rgba(0,0,0,.5),0 0 40px rgba(0,0,0,.35);
-  /* cinematic ink-reveal: name is wiped in left→right like script being laid down */
-  -webkit-mask-image:linear-gradient(90deg,#000 0 var(--wm-rev,108%),transparent var(--wm-rev,108%));
-  mask-image:linear-gradient(90deg,#000 0 var(--wm-rev,108%),transparent var(--wm-rev,108%));
+  /* cinematic ink-reveal: a feathered leading edge so each stroke ARRIVES, not just uncovers */
+  -webkit-mask-image:linear-gradient(90deg,#000 0 calc(var(--wm-rev,118%) - 9%),rgba(0,0,0,.55) calc(var(--wm-rev,118%) - 3.5%),transparent var(--wm-rev,118%));
+  mask-image:linear-gradient(90deg,#000 0 calc(var(--wm-rev,118%) - 9%),rgba(0,0,0,.55) calc(var(--wm-rev,118%) - 3.5%),transparent var(--wm-rev,118%));
   }
+/* wet-ink shimmer that travels with the leading edge — the stroke catching light as it lands */
+.ch-wordmark::after{content:attr(data-name);position:absolute;inset:0;pointer-events:none;
+  font:inherit;color:#fff3d6;
+  -webkit-mask-image:linear-gradient(90deg,transparent calc(var(--wm-rev,118%) - 16%),rgba(0,0,0,1) calc(var(--wm-rev,118%) - 6%),rgba(0,0,0,.85) calc(var(--wm-rev,118%) - 2%),transparent var(--wm-rev,118%));
+  mask-image:linear-gradient(90deg,transparent calc(var(--wm-rev,118%) - 16%),rgba(0,0,0,1) calc(var(--wm-rev,118%) - 6%),rgba(0,0,0,.85) calc(var(--wm-rev,118%) - 2%),transparent var(--wm-rev,118%));
+  text-shadow:0 0 10px rgba(255,236,193,1),0 0 22px rgba(244,210,140,.9),0 0 44px rgba(212,178,112,.7);
+  opacity:var(--wm-ink,0)}
 .ch-subline{font-family:var(--font-label);font-size:clamp(.6rem,.82vw,.76rem);font-weight:500;
   letter-spacing:.34em;text-transform:uppercase;color:var(--cream-dim);text-shadow:0 1px 14px rgba(0,0,0,.7)}
 .ch-subline .ch-dot{color:var(--gold-soft);margin:0 .55em}
@@ -1306,7 +1314,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 
   <div class="ch-stack">
     <div class="ch-eyebrow" data-h="1">Pinehurst, North Carolina &nbsp;·&nbsp; 200 Hollycrest Drive</div>
-    <h1 class="ch-wordmark" data-h="2">Garran Hill</h1>
+    <h1 class="ch-wordmark" data-h="2" data-name="Garran Hill">Garran Hill</h1>
     <div class="ch-subline" data-h="3">Neo-Georgian &nbsp;<span class="ch-dot">·</span>&nbsp; Built for Ambassador Walter Hines Page &nbsp;<span class="ch-dot">·</span>&nbsp; On Its Own Ground Since 1916</div>
   </div>
 
@@ -1891,13 +1899,13 @@ if(window.matchMedia('(pointer:fine)').matches){
   gsap.set('.ch-eyebrow',{opacity:0});
   // The name EMERGES as one weighted gesture — out of soft blur, a slight rise,
   // a touch of scale settling in. Cinematic title card, not letter theatrics.
-  gsap.set('.ch-wordmark',{opacity:1,'--wm-rev':'0%',filter:'blur(6px)',y:10,scale:1.015,transformOrigin:'50% 60%'});
+  gsap.set('.ch-wordmark',{opacity:1,'--wm-rev':'0%','--wm-ink':0,filter:'blur(7px)',y:8,scale:1.012,transformOrigin:'50% 60%'});
   gsap.set('.ch-subline',{opacity:0});
   gsap.set('.ch-cue',{opacity:0});
 
   function restore(){
     top.forEach(function(s){gsap.set(s,{clearProps:'opacity,filter,transform,y,scale'});});
-    gsap.set('.ch-wordmark',{'--wm-rev':'108%'});
+    gsap.set('.ch-wordmark',{'--wm-rev':'118%','--wm-ink':0});
     if(rect)rect.style.strokeDashoffset=0;
   }
 
@@ -1905,10 +1913,16 @@ if(window.matchMedia('(pointer:fine)').matches){
   tl.to(rect,{strokeDashoffset:0,duration:2.2,ease:'power2.inOut'},0.2)
     .to('.ch-nav',{opacity:1,duration:1.1},0.6)
     .to('.ch-eyebrow',{opacity:1,duration:1.0},1.0)
-    // INK-REVEAL: the script is laid down left→right (mask wipe), then settles into focus
-    .to('.ch-wordmark',{'--wm-rev':'108%',duration:2.6,ease:'power1.inOut'},1.35)
-    .to('.ch-wordmark',{filter:'blur(0px)',y:0,scale:1,duration:1.6,ease:'power2.out'},'>-1.5')
-    .to('.ch-subline',{opacity:1,duration:1.1},'>-0.8')
+    // ① LAY-DOWN: script written left→right, a wet-ink shimmer riding the leading edge.
+    .to('.ch-wordmark',{'--wm-rev':'118%',duration:2.7,ease:'power1.inOut'},1.35)
+    .to('.ch-wordmark',{'--wm-ink':1,duration:0.45,ease:'power2.out'},1.4)
+    .to('.ch-wordmark',{'--wm-ink':0,duration:0.7,ease:'power2.in'},3.45)
+    // ② SETTLE: only AFTER the name is fully laid down does it breathe into focus.
+    .to('.ch-wordmark',{filter:'blur(0px)',y:0,scale:1,duration:1.4,ease:'power2.out'},3.5)
+    // ③ FINAL BREATH: one quiet gold warmth through the letters as they set — matches the crest.
+    .fromTo('.ch-wordmark',{textShadow:'0 1px 2px rgba(0,0,0,.45),0 0 18px rgba(0,0,0,.5),0 0 40px rgba(0,0,0,.35)'},
+            {textShadow:'0 1px 2px rgba(0,0,0,.4),0 0 22px rgba(255,231,176,.32),0 0 46px rgba(212,178,112,.22)',duration:1.1,ease:'sine.inOut',yoyo:true,repeat:1},'>-0.6')
+    .to('.ch-subline',{opacity:1,duration:1.1},'<0.2')
     .to('.ch-cue',{opacity:1,duration:1},'>-0.2');
   setTimeout(restore,7000);
 })();
