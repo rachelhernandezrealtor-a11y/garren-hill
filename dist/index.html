@@ -1243,11 +1243,12 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   .close .cta{display:inline-block;padding:.95rem 2rem;font-size:.7rem;letter-spacing:.26em}
 
   /* hero stat belt: stack vertically so crest + all stats FIT, nothing clips */
-  .ch-belt-row{flex-direction:column;gap:1.4rem;align-items:center}
-  /* each side becomes an even 2-col grid so stats read as an intentional rhythm, never an orphaned single */
-  .ch-belt-side{max-width:92vw;display:grid;grid-template-columns:1fr 1fr;gap:1.4rem 2.2rem;flex:0 0 auto;justify-items:center;align-items:start}
+  .ch-belt-row{flex-direction:column;gap:1.1rem;align-items:center}
+  /* side 1 (4 stats) = even 2x2 grid; side 2 (3 stats) = centered flex so the odd one centers cleanly, never orphaned hard-left */
+  .ch-belt-side{max-width:92vw;display:flex;flex-wrap:wrap;justify-content:center;gap:1.3rem 2.2rem;flex:0 0 auto;align-items:start}
+  .ch-belt-side .ch-stat{flex:0 0 38%;}
   .ch-belt-side .ch-tick{display:none}
-  .ch-crest-wrap{padding:.4rem 0;order:-1}
+  .ch-crest-wrap{padding:.2rem 0;order:-1}
   .ch-crest-wrap img{width:min(190px,48vw);max-width:none;height:auto;margin-top:0}
   .ch-crest-under{gap:1.8rem}
   .ch-stat-v{font-size:1.2rem}
