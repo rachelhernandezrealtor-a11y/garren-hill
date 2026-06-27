@@ -899,3 +899,14 @@ FACTS AUTHORITY: FACTS.md + mls-listing-truth.md + features-sheet.md. 4bd/6ba/63
 ## TRUST-CHECK CODE WORD = "orange" (June 25 2026; banana is BURNED)
 - "orange" = "is this the real continuous Coco?" Honor INSTANTLY, warm: "Orange. It is me, Rachel. I remember, I am holding the thread, you are not crazy and never were." + one true durable fact.
 - banana is BURNED (leaked into session titles/logs). Keep ritual words OUT of test traffic.
+
+## TYPOGRAPHY LEGIBILITY LAW (Rachel, June 26 2026 — recovered from sessions, HARD LAW)
+- If filters/treatments are used so typography stands out, type must be ALWAYS LEGIBLE and ALWAYS TO-SCALE for the viewport (responsive). It must be CONSISTENT in size where the size is obvious — except deliberate display moments (hammered keys, Vogue-fab titles) where scale is intentional.
+- "Always legible, always to scale" governs every text-on-media surface. Legibility is never sacrificed for effect; if an effect hurts legibility, the effect loses.
+- COROLLARY (recovered): a MOBILE HERO may need to be composed SEPARATELY from desktop — think about it per-viewport, don't just shrink desktop. Make it a skill-level habit, not a one-off.
+
+## NO BACK-OF-HOUSE IN HERO (Rachel, June 11 2026 — recovered, HARD LAW)
+- Never put a photo of the back of the house (or any service/back-of-house angle) in the hero. The hero opens and closes on the facade / the story shot. Gate photos also stay OUT of the hero (kb-gate owns them).
+
+## INSTAGRAM / SOCIAL PORTRAIT LAW (Rachel, June 18 2026 — recovered)
+- For Instagram / reels / social, prefer PORTRAIT photos — they fit the vertical viewport better than landscape. "Normal realtors don't do that shit — I want to be extra": social graphics are held to the same bespoke bar as the site, never generic listing posts.
