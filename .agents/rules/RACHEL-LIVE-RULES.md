@@ -839,3 +839,15 @@ They GOVERN the hero build. Nothing ships to the hero that violates one.
 8. TIMED PERFECTLY. "needs to be timed perfectly." The name's motion is
    choreographed to the footage timeline, not loose or arbitrary. Coco verifies
    the timing with her own eyes (rendered pixels) before Rachel sees it.
+
+
+## SELF-REVIEW INSTRUMENT LAW (learned hard, 2026-06-27)
+When judging a CINEMATIC hero (video loop + motion), the AI vision pass (vision_analyze) is NOT a reliable creative director — it pattern-matches generic MLS-thumbnail rules ("show the house", "too dark", "no flowers") and gives contradictory verdicts frame-to-frame. It cannot judge motion timing from a still.
+
+TRUST INSTRUMENTS over AI perception for objective questions:
+- Scrim/luminance: measure with PIL (mean grey 0-255 across bands). A "dark band" is real only if lower-mid is materially darker than upper. (Garran: 58 vs 62 = NO band; AI hallucinated one.)
+- Animation firing: probe computed CSS custom-prop values + ::after opacity via Playwright evaluate(), don't squint at stills.
+- VIDEO LOOPS SWING: sample brightness across the WHOLE loop (Garran video: t=2s=70 dark dusk, t=13s=170 bright daylight). NEVER judge the hero off one pinned frame — pin to a representative bright moment, and remember the dark frame is the video's own exposure, not your scrim. Do NOT regrade Rachel's chosen footage to satisfy an AI mood note.
+- The cinematic montage hero (grounds, flowers, AND house) is Rachel's vision ("single property luxury site on crack") — a frame with no house is NOT a failure.
+
+The MOTION FEEL is Rachel's eye, not the AI's. Ship the measured-correct composition; she judges the timing/feel on her device.
