@@ -1194,6 +1194,8 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   letter-spacing:.3em;text-transform:uppercase;color:rgba(232,210,158,.92);margin-top:.62em;text-shadow:0 1px 4px rgba(0,0,0,.85)}
 /* the price: give the digits a hair of breathing room so the $ never crowds the first numeral */
 .ch-stat-v.price{letter-spacing:.025em}
+/* word-values (e.g. Saltwater) sit at the same OPTICAL weight as the numerals — smaller + tracked so a long word doesn't dominate the row rhythm */
+.ch-stat-v.word{font-size:clamp(1.15rem,1.7vw,1.7rem);letter-spacing:.04em}
 /* crest jewel — larger, lifted off the dark with a soft pedestal glow */
 .ch-crest-wrap{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;flex-shrink:0;padding:0 clamp(1rem,2.4vw,2.4rem)}
 /* VELVET POOL — real layer, above the photo, below the crest. Seats the jewel on near-black. */
@@ -1203,12 +1205,12 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 .ch-crest-wrap .ch-velvet-core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   width:140%;height:122%;border-radius:50%;z-index:0;pointer-events:none;
   background:radial-gradient(circle at center,rgba(5,5,4,.5) 0%,rgba(5,5,4,.32) 56%,rgba(5,5,4,.14) 78%,transparent 92%)}
-/* luminous gold-white halo just behind the metal */
+/* luminous gold-white halo just behind the metal — widened so the larger jewel sits in gathered light */
 .ch-crest-wrap .ch-halo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:100%;height:104%;border-radius:50%;z-index:1;pointer-events:none;
-  background:radial-gradient(circle at center,rgba(244,230,192,.07) 0%,transparent 56%)}
-.ch-crest-wrap img{position:relative;z-index:2;width:clamp(170px,16vw,232px);height:auto;margin-top:-2.8rem;
-  filter:drop-shadow(0 14px 36px rgba(0,0,0,.92)) drop-shadow(0 1px 1px rgba(0,0,0,.7)) drop-shadow(0 0 1.5px rgba(246,233,194,.95)) contrast(1.32) brightness(1.42) saturate(1.2)}
+  width:118%;height:118%;border-radius:50%;z-index:1;pointer-events:none;
+  background:radial-gradient(circle at center,rgba(244,230,192,.12) 0%,rgba(244,230,192,.05) 38%,transparent 62%)}
+.ch-crest-wrap img{position:relative;z-index:2;width:clamp(238px,22vw,320px);height:auto;margin-top:-3.4rem;
+  filter:drop-shadow(0 18px 44px rgba(0,0,0,.94)) drop-shadow(0 1px 1px rgba(0,0,0,.7)) drop-shadow(0 0 2px rgba(246,233,194,.95)) contrast(1.32) brightness(1.42) saturate(1.2)}
 .ch-crest-under{position:relative;z-index:2;display:flex;align-items:center;gap:clamp(1.4rem,3vw,2.6rem);margin-top:.35rem}
 .ch-crest-under .ch-stat-v{font-size:clamp(1.15rem,1.6vw,1.55rem)}
 .ch-tick{width:1px;align-self:center;height:34px;
@@ -1244,7 +1246,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   .ch-belt-row{flex-direction:column;gap:1.4rem;align-items:center}
   .ch-belt-side{max-width:92vw;gap:1.8rem;flex:0 0 auto;justify-content:center}
   .ch-crest-wrap{padding:.4rem 0;order:-1}
-  .ch-crest-wrap img{max-width:120px;height:auto}
+  .ch-crest-wrap img{width:min(208px,52vw);max-width:none;height:auto;margin-top:0}
   .ch-crest-under{gap:1.8rem}
   .ch-stat-v{font-size:1.15rem}
   .ch-stat-l{font-size:.56rem;letter-spacing:.18em}
@@ -1330,7 +1332,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
         <div class="ch-velvet"></div><div class="ch-velvet-core"></div><div class="ch-halo"></div>
         <img src="https://res.cloudinary.com/dghn2xpif/image/upload/e_background_removal,w_900/f_png/v1782063976/gh_key/gh_crest_jewel_final.png" alt="Garran Hill crest — Pinehurst, Hollycrest, 1916">
       </div>
-      <div class="ch-belt-side"><div class="ch-stat"><div class="ch-stat-v">7</div><div class="ch-stat-l">FIREPLACES</div></div><div class="ch-tick"></div><div class="ch-stat"><div class="ch-stat-v">Saltwater</div><div class="ch-stat-l">POOL</div></div><div class="ch-tick"></div><div class="ch-stat"><div class="ch-stat-v">2</div><div class="ch-stat-l">TENNIS COURTS</div></div></div>
+      <div class="ch-belt-side"><div class="ch-stat"><div class="ch-stat-v">7</div><div class="ch-stat-l">FIREPLACES</div></div><div class="ch-tick"></div><div class="ch-stat"><div class="ch-stat-v word">Saltwater</div><div class="ch-stat-l">POOL</div></div><div class="ch-tick"></div><div class="ch-stat"><div class="ch-stat-v">2</div><div class="ch-stat-l">TENNIS COURTS</div></div></div>
     </div>
   </div>
 </section>
