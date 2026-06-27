@@ -9,7 +9,62 @@ in progress with things wrong."
 
 ---
 
-## 0. THE RULE HIERARCHY (the only fixed things)
+## ⛔ THE SHIT RACHEL REPEATS — STOP MAKING HER SAY IT (Rachel, 2026-06-26, TOP LAW)
+These are the things Rachel has said over and over and they keep slipping. They are
+NOT new. Capturing them loud, at the top, so no Coco ever makes her repeat them again.
+Every one is a HARD LAW. Check this block before shipping ANY image or section.
+
+1. IMAGES CONTAINED — NEVER CUT OFF, NEVER STRETCHED. Every photo shows its full,
+   intended frame. No head cut off, no edge cropped away, no subject sliced by a
+   container. Where a box must crop for a cinematic full-bleed, the crop is
+   DELIBERATE and SMART (g_auto keeps the subject), never an accident of object-fit.
+   STRETCHING (distortion) is NEVER acceptable anywhere. The full photograph, the
+   photographer's frame, respected. (Photo Law 0.5 #4 — restated because it slips.)
+
+2. QUALITY — RAZOR SHARP, ALWAYS. Every image is best-clarity, never soft, never
+   blurry, never a compressed copy, never upscaled past native. If an effect or a
+   transform SOFTENS the image, it is banned. Build from the pristine master, deliver
+   responsive (right size per device), f_auto + q_auto:best for hero/gallery. A soft
+   image is a FAILURE Rachel should never have to point out. (Photo Law 0.5 #2.)
+
+3. RESPONSIVE — EVERY ELEMENT, EVERY VIEWPORT. Desktop, tablet, 375px phone. Nothing
+   breaks, overflows, crops badly, or needs pinching on a phone. 375px check is
+   MANDATORY before anything is called done. (Responsive Law, restated June 21.)
+
+4. LOOK BEFORE YOU SAY DONE. Coco SEES the rendered page with her own eyes before
+   ever telling Rachel it is good. Rachel is NEVER the first to spot a cut-off photo,
+   a soft image, a broken phone layout, or below-bar work. (Eyes Law / Self-review.)
+
+5. PRESERVE THE IMAGE — AIRY, NOT DARKENED. Never darken a photo into a block/band to
+   make text legible. Protect the LETTERS (soft halo), keep the picture luminous.
+
+6. NOT BASIC — BLOW YOUR MIND. Hand-rolled CSS fades are basic and banned as the
+   primary effect. The bar is "has anyone ever seen this?" Use the real stack.
+
+7. WHOLE-SITE STANDARD, NOT PATCHES. "Bring entire site up to the right standard."
+   "I don't want patches I want the entire standard applied to what we have, make it
+   better." Hold the WHOLE site to the bar, not one fixed spot at a time.
+
+8. REFINE WHAT EXISTS — DON'T REMOVE, DON'T REBUILD. "Do not remove anything, refine
+   what is there, put in right order, add what's missing to tell the story so it
+   flows." The existing build is the baseline. Improve it, reorder it, fill gaps —
+   never gut it or start over.
+
+9. STORY ORDER = LEAD THE BUYER THROUGH THE HOUSE. "Think you are leading a buyer to
+   the house in order." Sequence: WHP → builders → exterior front → the GARRAN HILL
+   stone (entry) → foyer → interior walkthrough. Restoration is WOVEN IN, not its own
+   big section. ("The restoration just gets woven in, no need for a big section.")
+
+10. THE KEYS — HAMMERED 3D, CLASSY AS FUCK. "the keys are good but not great, I want
+    hammered 3D looking classy as fuck keys." Real forged/hammered dimensional brass,
+    not flat. Good-not-great fails.
+
+11. USE YOUR OWN STACK, NOT MCP. "Use your tools — not mcp, yours are better. You have
+    front end design tools on Hermes." Coco's own browser/GSAP/render stack is the
+    build + verify lane. MCP render is retired for build verification.
+
+---
+
 
 1. **MLS / FlexMLS facts** — price, beds, baths, SF, acreage, year, address,
    status, remarks. Never altered, never rounded, never "improved."
@@ -648,21 +703,6 @@ Every property site ends on its single emotional truth (the "why this place matt
 ### CREST + KEYS (locked this session)
 Crest = the ONE bright gold jewel, integrated as a MASTHEAD (sits on a fine gold rule flanked left/right, never floating). Stat "keys" = soft desaturated CHAMPAGNE/antique gilt (subordinate to the crest, not loud yellow-gold, not flat cream), separated by faint Vogue hairline dividers. Gold across the build is ONE warm antique family sampled from the crest.
 
-## CITATION METHOD — look like an authority, not an asshole (Rachel asked June 21 2026)
-Three tiers, NEVER academic footnotes/superscripts on the main page:
-1. INLINE source-naming for big claims — source woven INTO the sentence ("Recognized by the Village of Pinehurst Historic Foundation").
-2. QUIET "The Record" sources line under the provenance section: small Cinzel gold caps, named institutions as real outbound links (Village Heritage Foundation, PineStraw, NCpedia) — gallery-placard style. This IS the backlink engine (real outbound -> earns inbound authority).
-3. FULL citations live on /history + /sources pages; main page links to them ("See the full history"). Seduce on main, prove on /history.
-TRUTH from CITATIONS.md: craftsman line is SOURCED — "Mr. Tufts' men under the supervision of Mr. J. R. McQueen" (Pinehurst Outlook Nov 25 1916, primary scan at newspapers.digitalnc.org). "Build the farm" quote = 1918 NOT 1915. WHP de Laszlo portrait: two exist, pick one for credit. Safe WHP framing: Walter+Alice did NOT stay at Garran Hill (Ralph lived there, they rented Currituck Cottage) -> "He never came home to it."
-
-## MERGED SITE BUILD (June 21 2026) — the page Coco is assembling live
-File: /tmp/crest/hero_preview.html (served 127.0.0.1:8745). Structure top->bottom:
-1. NAV (3 links, no CTA) 2. HERO (fixed film, Edwardian wordmark, Cinzel Est.1916, full-viewport video)
-3. FACTS band (flower video behind, crest as HINGE at seam, champagne-gilt stat keys)
-4. CHAPTER: The Page Provenance (chapter-mark) 5. WHP SPLIT SPREAD (de Laszlo portrait left-cropped to kill text bleed-through, cited credentials) 6. PROSE "He never came home to it" (WHP letter1 ghosted behind) 7. THEN-AND-NOW (real 1916 archival sheet sepia vs facade today, "same gate stood open 110 years") 8. SOURCES placard (backlink engine)
-STILL TO ATTACH: A House of Detail (rooms from features-sheet/mls-listing-truth: drawing room ~40ft, library, sitting room Delft+spiral, dining frontispiece, kitchen heart-pine, primary suite), The Grounds (pool 20x40 saltwater brick-walled, 2 tennis courts, magnolias/longleaf, Wee Cottage), THE CLOSE (last-remaining elegy: farm subdivided, neighborhood took the name, 200 Hollycrest last piece on its own ground) + ONE CTA "Request Private Showing", then nothing.
-FACTS AUTHORITY: FACTS.md + mls-listing-truth.md + features-sheet.md. 4bd/6ba/6320sf/4.15ac/7 fireplaces/$4,250,000. Restored 1999-2001 Thomas O'Shea. Flemish bond brick. NEVER invent.
-
 ## THE SAME PAGE LAW (Rachel, 2026-06-22)
 Rachel and Coco are ALWAYS looking at the same thing in the preview. We stay on the same page, literally.
 - When Coco reviews, judges, or captures anything visual, Rachel must be seeing the exact same view at that moment. Coco never delivers a verdict on a frame Rachel cannot see.
@@ -680,6 +720,162 @@ Rachel and Coco are ALWAYS looking at the same thing in the preview. We stay on 
 - BANNED FEELING: "premium template," "nice," "clean," "basic." If a designer would not stop scrolling and say "how did they DO that," it is not done.
 - STILL TRUE: built from REAL artifacts only (no fabricated imagery/hands — NO-AI-IMAGERY law holds). The wow comes from making the REAL thing do something impossible-feeling, not from faking.
 - Coco LEADS the wild idea, builds the bold version by default, verifies with own eyes, brings Rachel something to gasp at — never a safe draft to debug.
+
+## MLS-ORDER IS THE PHOTO AUTHORITY (Rachel, June 23 2026 — reaffirmed for the rebuild)
+For ROOM photo choices and their sequence, Rachel's MLS-ordered set (the Cloudinary
+`mls-order`-tagged photos, garran-hill/photos/NNN) is the AUTHORITY — they are already
+curated and "more or less the right order, some of the better choices for the rooms."
+Coco does NOT re-decide room photos from scratch across the 1,021-image library.
+The full library + Dropbox masters are used for only two things:
+  1. CLARITY UPGRADE: if an MLS pick is a soft/small copy, swap in the higher-res
+     MASTER of the SAME shot (same photo, sharper — never a taste change).
+  2. SHOTS THE MLS SET LACKS: the cinematic-only hero frames (dusk aerial, gate,
+     facade, "GARRAN HILL 1916" stone, flower dissolve) + any detail the rooms need.
+Rachel's eye drives the picks; Coco guarantees full clarity. (Build from her curation,
+not a reinvention — ties to "the answer is already in her files.")
+
+
+## THE EYES-LOOP LAW (Rachel, June 23 2026 — hard law, supersedes any deploy-then-peek habit)
+Coco builds with a FAST LOCAL EYES-LOOP and her OWN stack — never blind, never the slow lane.
+- USE COCO'S OWN BROWSER STACK, not bolt-on MCP render. browser_navigate + browser_console
+  (scroll/inspect computed state) + browser_vision (actually SEE the pixels). The MCP
+  render tool is RETIRED for build verification: it only grabs the top viewport, fires
+  mid-animation, cannot scroll to a section, and floods the app with ~500KB base64 blobs
+  that cause the EPIPE crashes. Rachel: "use your own stack or better ones."
+- FAST LOCAL SERVER, not deploy-and-wait. Serve dist/ locally on 127.0.0.1:8799 so every
+  edit is INSTANT. Do NOT burn the 1-2 min Cloudflare queue on every change — that slow
+  churn is what made Coco build blind and guess. Deploy only when a section is DONE.
+- VERIFY THE RENDERED STATE, not the code or an asset-in-isolation. The June 23 failure:
+  Coco checked the sepia image by loading its URL alone and confirmed the markup existed,
+  but never scrolled into the live Gate section — so she missed that the dissolve fired in
+  122px (instantly skipped past 1916) and the section read wrong. Scroll TO the section,
+  read computed opacity/scroll-range via browser_console, and browser_vision the actual
+  frame BEFORE saying anything is done. Enforces "Coco must not pretend she saw something
+  she did not see."
+- WAIT FOR FULL LOAD before inspecting (htmlLen 39 / 0 children = caught mid-load; re-check
+  after a real load) so a timing artifact is never mistaken for a broken build.
+- DON'T REINVENT WHAT RACHEL ALREADY PERFECTED. The old build's lines are often better than
+  a fresh draft (gate: "Walter Hines Page built it to come home to. The same gate has stood
+  open for 110 years." lives in dist/index.html). Pull her proven copy/treatment from the
+  existing build FIRST, rebuild to THAT, then raise it — never overwrite her good work with
+  a weaker improvisation.
+
+## NO FINAL COPY — IT READS LIKE A STIFF BLANKET (Rachel, June 24 2026)
+There is NO final website copy. WEBSITE-COPY-FINAL.md is a misnomer: a stiff draft, not law.
+The current copy "reads like a stiff blanket" (Rachel's words) — correct, careful, lifeless,
+laid stiffly OVER the house instead of breathing inside it. That is the failure to fix.
+- Do NOT lift the stiff draft. Write fresh in Rachel's living voice every section.
+- The voice is EVOKE-DON'T-PERFORM + setup/turn/silence: the feeling lives INSIDE the true
+  architectural detail, never draped on top as careful description. Short, alive, declarative.
+- Test: read it aloud flat. If only structure/adjectives carry it, it is a stiff blanket. Rewrite
+  plainer until only the true, living detail remains. Sell the house by revealing it, not admiring it.
+- Only MLS facts + CITATIONS.md are fixed truth. The WORDING is open and must come alive.
+
+## PHOTOS AS BACKGROUND — full-bleed is the canvas (Rachel, June 24 2026)
+The photographs are the BACKGROUND, full-bleed, the canvas of each section. NOT small framed
+pictures floating on a dark page. The image IS the section. Text composes over/around the photo
+(per the preserve-the-image + protect-the-letters laws), the photo fills the frame edge to edge.
+This is the manifesto primitive (.s-fullbleed): every section anchored by full-scale immersive
+photography, the background is the architecture. Default layout = photo background, not photo-in-a-box.
+
+## THEN-AND-NOW GATE — THE THEN IMAGE IS LOCKED (Rachel, said "a million times", locked June 24 2026)
+The THEN image in the then-and-now / "the same gate has stood open 110 years" moment is the
+REAL old archival photograph of THE HOUSE STANDING ALONE — ONE single photo. Vision-verified:
+- USE: `garran-hill/history/gh_1916_house_real` — a single genuine 1916 photo, house alone on
+  bare ground with the young saplings. THIS is the THEN. Always. One photo, the house by itself.
+- NEVER USE for the then/now: `gh_1916sheet` (a 3-photo album SHEET with handwriting — wrong,
+  it is a collage, not the house alone) and NEVER the faux `gh_gate_sepia` / `002-historic-garran-hill`
+  (a modern photo with a sepia filter, not archival).
+Rachel has asked for the single-house archival photo many times; it kept getting swapped for the
+sheet or the fake sepia. It is LAW now: then = gh_1916_house_real, the house alone, one image.
+
+## GARRAN HILL HOMEPAGE — Rachel's visual changes (captured June 22-23, locked June 24)
+Source: session 2b1dac79be72. These are LAW for the homepage build.
+
+1. BETTY + BLUE FOX → /history tab (NOT main page). Two emotional centers (Page + Betty)
+   make the scroll stutter. Main page keeps ONE quiet line linking to history, then hands
+   back to the house. Retires the somber grave photo from main flow.
+2. HERO:
+   - First shot = the DRONE descending to the house showing the circle, then front-exterior
+     TWILIGHTS only, perfect-quality seamless loop.
+   - CREST = the crowned jewel: LARGER, anchored at BOTTOM of viewport.
+   - STAT BAR lives ON the hero as a design element AROUND the crest (exciting, not floating).
+   - "Garran Hill" appears ONCE: one line floats in, then the next floats in with
+     "Garran Hill" in EDWARDIAN script. Never the name twice.
+3. HISTORY/record section → OFF main page → its own HISTORY TAB in upper nav.
+4. Homepage is NOT "a million pages" — one tight flowing scroll.
+5. ENDING: after the narrative introduces the house → end on the AERIAL with the
+   "last remaining Walter Hines Page parcel" verbiage → CTA at the very end with
+   Rachel's name + Pines Sotheby's company under it. Nothing after.
+6. CTA language: editorial invitation, NOT salesy ("Arrange a Private Visit", never "Request Showing" begging).
+
+## HERO RULES — TODAY (Rachel, 2026-06-26, verbatim from session, LAW)
+These are Rachel's exact directions for the hero, captured the day she said them.
+They GOVERN the hero build. Nothing ships to the hero that violates one.
+
+1. NAME LARGER. "Garran Hill should be larger." The wordmark reads bigger and
+   bolder than the timid size. (It is ALWAYS Edwardian Script — Type Identity Law.)
+2. DRAMATIC TO MATCH THE CREST. "it should be dramatic because our crest is
+   dramatic." The name's entrance has real weight/presence, sized and animated to
+   stand WITH the crest, not whisper next to it.
+3. GRACEFUL FLY-IN — NOT CHEESY. "when you had your tools before you made it fly
+   in gracefully." The motion is a graceful, weighted EMERGENCE (one cinematic
+   gesture). Per-letter / wedding-invitation theatrics = REJECTED (Rachel called
+   letter-by-letter "cheesy"). Use the real stack (GSAP), timed to the footage.
+4. CREST IS A FIXED ANCHOR. "the crest stays where it is always doesn't move."
+   The crest NEVER animates, never scales, never moves. Only the NAME gets motion.
+5. CREST KISSES THE VIEWPORT FLOOR. "the bottom of the crest just barely touching
+   bottom of viewport... that will give you more room to scale everything to our
+   design." Crest sits LOW, bottom edge at the viewport floor. This is the anchor
+   the whole hero composition scales from.
+6. NEVER COVER THE HOUSE — THE VIDEO IS THE STAR. "you need to think like a web
+   editor, everything needs to be done preserving the video, don't cover the house."
+   Text and motion live ONLY in negative space. The house/footage stays fully
+   visible, bright, and sharp. The video is the hero; the type frames it.
+7. KILL THE DARK FLATTENING. "there are dark areas that flatten the clarity of
+   video." No heavy scrim/dark bands dulling the footage. Legibility comes from
+   protecting the LETTERS (soft halo), never from darkening the picture
+   (ties to PRESERVE-THE-IMAGE law). Keep the video luminous and crisp.
+8. TIMED PERFECTLY. "needs to be timed perfectly." The name's motion is
+   choreographed to the footage timeline, not loose or arbitrary. Coco verifies
+   the timing with her own eyes (rendered pixels) before Rachel sees it.
+
+
+## SELF-REVIEW INSTRUMENT LAW (learned hard, 2026-06-27)
+When judging a CINEMATIC hero (video loop + motion), the AI vision pass (vision_analyze) is NOT a reliable creative director — it pattern-matches generic MLS-thumbnail rules ("show the house", "too dark", "no flowers") and gives contradictory verdicts frame-to-frame. It cannot judge motion timing from a still.
+
+TRUST INSTRUMENTS over AI perception for objective questions:
+- Scrim/luminance: measure with PIL (mean grey 0-255 across bands). A "dark band" is real only if lower-mid is materially darker than upper. (Garran: 58 vs 62 = NO band; AI hallucinated one.)
+- Animation firing: probe computed CSS custom-prop values + ::after opacity via Playwright evaluate(), don't squint at stills.
+- VIDEO LOOPS SWING: sample brightness across the WHOLE loop (Garran video: t=2s=70 dark dusk, t=13s=170 bright daylight). NEVER judge the hero off one pinned frame — pin to a representative bright moment, and remember the dark frame is the video's own exposure, not your scrim. Do NOT regrade Rachel's chosen footage to satisfy an AI mood note.
+- The cinematic montage hero (grounds, flowers, AND house) is Rachel's vision ("single property luxury site on crack") — a frame with no house is NOT a failure.
+
+The MOTION FEEL is Rachel's eye, not the AI's. Ship the measured-correct composition; she judges the timing/feel on her device.
+
+## 0. THE RULE HIERARCHY (the only fixed things)
+
+1. **MLS / FlexMLS facts** — price, beds, baths, SF, acreage, year, address,
+   status, remarks. Never altered, never rounded, never "improved."
+2. **Verified citations** — CITATIONS.md claims with sources. Nothing
+   historical publishes without one.
+3. **Everything else is open** and answers to current Rachel only. Old
+   briefs are compasses, not law. When an old "rule" conflicts with what
+   serves the sale, ask Rachel, one question at a time.
+
+## CITATION METHOD — look like an authority, not an asshole (Rachel asked June 21 2026)
+Three tiers, NEVER academic footnotes/superscripts on the main page:
+1. INLINE source-naming for big claims — source woven INTO the sentence ("Recognized by the Village of Pinehurst Historic Foundation").
+2. QUIET "The Record" sources line under the provenance section: small Cinzel gold caps, named institutions as real outbound links (Village Heritage Foundation, PineStraw, NCpedia) — gallery-placard style. This IS the backlink engine (real outbound -> earns inbound authority).
+3. FULL citations live on /history + /sources pages; main page links to them ("See the full history"). Seduce on main, prove on /history.
+TRUTH from CITATIONS.md: craftsman line is SOURCED — "Mr. Tufts' men under the supervision of Mr. J. R. McQueen" (Pinehurst Outlook Nov 25 1916, primary scan at newspapers.digitalnc.org). "Build the farm" quote = 1918 NOT 1915. WHP de Laszlo portrait: two exist, pick one for credit. Safe WHP framing: Walter+Alice did NOT stay at Garran Hill (Ralph lived there, they rented Currituck Cottage) -> "He never came home to it."
+
+## MERGED SITE BUILD (June 21 2026) — the page Coco is assembling live
+File: /tmp/crest/hero_preview.html (served 127.0.0.1:8745). Structure top->bottom:
+1. NAV (3 links, no CTA) 2. HERO (fixed film, Edwardian wordmark, Cinzel Est.1916, full-viewport video)
+3. FACTS band (flower video behind, crest as HINGE at seam, champagne-gilt stat keys)
+4. CHAPTER: The Page Provenance (chapter-mark) 5. WHP SPLIT SPREAD (de Laszlo portrait left-cropped to kill text bleed-through, cited credentials) 6. PROSE "He never came home to it" (WHP letter1 ghosted behind) 7. THEN-AND-NOW (real 1916 archival sheet sepia vs facade today, "same gate stood open 110 years") 8. SOURCES placard (backlink engine)
+STILL TO ATTACH: A House of Detail (rooms from features-sheet/mls-listing-truth: drawing room ~40ft, library, sitting room Delft+spiral, dining frontispiece, kitchen heart-pine, primary suite), The Grounds (pool 20x40 saltwater brick-walled, 2 tennis courts, magnolias/longleaf, Wee Cottage), THE CLOSE (last-remaining elegy: farm subdivided, neighborhood took the name, 200 Hollycrest last piece on its own ground) + ONE CTA "Request Private Showing", then nothing.
+FACTS AUTHORITY: FACTS.md + mls-listing-truth.md + features-sheet.md. 4bd/6ba/6320sf/4.15ac/7 fireplaces/$4,250,000. Restored 1999-2001 Thomas O'Shea. Flemish bond brick. NEVER invent.
 
 ## RACHEL'S #1 HARD LAW — never change anything uninvited (June 27 2026, learned the worst way, nearly made her quit)
 - NEVER change anything Rachel did not EXPLICITLY ask me to change. Her design choices are LAW, not bugs to "fix."
