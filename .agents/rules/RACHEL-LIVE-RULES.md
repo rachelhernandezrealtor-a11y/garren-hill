@@ -41,6 +41,28 @@ Every one is a HARD LAW. Check this block before shipping ANY image or section.
 6. NOT BASIC — BLOW YOUR MIND. Hand-rolled CSS fades are basic and banned as the
    primary effect. The bar is "has anyone ever seen this?" Use the real stack.
 
+7. WHOLE-SITE STANDARD, NOT PATCHES. "Bring entire site up to the right standard."
+   "I don't want patches I want the entire standard applied to what we have, make it
+   better." Hold the WHOLE site to the bar, not one fixed spot at a time.
+
+8. REFINE WHAT EXISTS — DON'T REMOVE, DON'T REBUILD. "Do not remove anything, refine
+   what is there, put in right order, add what's missing to tell the story so it
+   flows." The existing build is the baseline. Improve it, reorder it, fill gaps —
+   never gut it or start over.
+
+9. STORY ORDER = LEAD THE BUYER THROUGH THE HOUSE. "Think you are leading a buyer to
+   the house in order." Sequence: WHP → builders → exterior front → the GARRAN HILL
+   stone (entry) → foyer → interior walkthrough. Restoration is WOVEN IN, not its own
+   big section. ("The restoration just gets woven in, no need for a big section.")
+
+10. THE KEYS — HAMMERED 3D, CLASSY AS FUCK. "the keys are good but not great, I want
+    hammered 3D looking classy as fuck keys." Real forged/hammered dimensional brass,
+    not flat. Good-not-great fails.
+
+11. USE YOUR OWN STACK, NOT MCP. "Use your tools — not mcp, yours are better. You have
+    front end design tools on Hermes." Coco's own browser/GSAP/render stack is the
+    build + verify lane. MCP render is retired for build verification.
+
 ---
 
 

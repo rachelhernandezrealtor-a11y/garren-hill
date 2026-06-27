@@ -1882,53 +1882,26 @@ if(window.matchMedia('(pointer:fine)').matches){
   // composed at all times — the crest NEVER moves. (Rachel law, 2026-06-26.)
   var top=['.ch-nav','.ch-eyebrow','.ch-wordmark','.ch-subline','.ch-cue'];
 
-  // --- Elegant per-letter wordmark: split "Garran Hill" into letter spans so the
-  // name arrives gracefully, letter by letter, instead of one block fade.
-  var wm=document.querySelector('.ch-wordmark');
-  var wmLetters=null;
-  if(wm && !wm.getAttribute('data-split')){
-    var raw=wm.textContent;            // "Garran Hill"
-    var frag='';
-    for(var i=0;i<raw.length;i++){
-      var ch=raw[i];
-      if(ch===' '){ frag+='<span class="ch-wl" style="display:inline-block;width:.34em">&nbsp;</span>'; }
-      else { frag+='<span class="ch-wl" style="display:inline-block;will-change:transform,opacity,filter">'+ch+'</span>'; }
-    }
-    wm.innerHTML=frag;
-    wm.setAttribute('data-split','1');
-    wmLetters=wm.querySelectorAll('.ch-wl');
-  } else if(wm){ wmLetters=wm.querySelectorAll('.ch-wl'); }
-
   gsap.set('.ch-nav',{opacity:0});
   gsap.set('.ch-eyebrow',{opacity:0});
-  gsap.set('.ch-wordmark',{opacity:1,filter:'none',y:0});   // container visible; letters carry the motion
-  if(wmLetters && wmLetters.length){ gsap.set(wmLetters,{opacity:0,yPercent:120,filter:'blur(12px)'}); }
+  // The name EMERGES as one weighted gesture — out of soft blur, a slight rise,
+  // a touch of scale settling in. Cinematic title card, not letter theatrics.
+  gsap.set('.ch-wordmark',{opacity:0,filter:'blur(18px)',y:26,scale:1.03,transformOrigin:'50% 60%'});
   gsap.set('.ch-subline',{opacity:0});
   gsap.set('.ch-cue',{opacity:0});
 
   function restore(){
-    top.forEach(function(s){gsap.set(s,{clearProps:'opacity,filter,transform,y'});});
-    if(wmLetters && wmLetters.length){ gsap.set(wmLetters,{clearProps:'opacity,transform,filter'}); }
+    top.forEach(function(s){gsap.set(s,{clearProps:'opacity,filter,transform,y,scale'});});
     if(rect)rect.style.strokeDashoffset=0;
   }
-
-  // refined easing — a soft, weighted settle (the "elegant arrival")
-  var easeElegant=gsap.parseEase ? 'power3.out' : 'power3.out';
 
   var tl=gsap.timeline({defaults:{ease:'power3.out'},onComplete:restore});
   tl.to(rect,{strokeDashoffset:0,duration:2.2,ease:'power2.inOut'},0.2)
     .to('.ch-nav',{opacity:1,duration:1.1},0.6)
-    .to('.ch-eyebrow',{opacity:1,duration:1.0},1.0);
-
-  // the name flies in gracefully — each letter rises, unblurs, settles, in a gentle stagger
-  if(wmLetters && wmLetters.length){
-    tl.to(wmLetters,{opacity:1,yPercent:0,filter:'blur(0px)',duration:1.5,
-        ease:'power4.out',stagger:{each:0.075,from:'start'}},1.35);
-  } else {
-    tl.to('.ch-wordmark',{opacity:1,filter:'blur(0px)',y:0,duration:1.6,ease:'power2.out'},1.4);
-  }
-
-  tl.to('.ch-subline',{opacity:1,duration:1.0},'>-0.4')
+    .to('.ch-eyebrow',{opacity:1,duration:1.0},1.0)
+    // single, slow, weighted emergence — the name resolves into focus
+    .to('.ch-wordmark',{opacity:1,filter:'blur(0px)',y:0,scale:1,duration:2.0,ease:'power2.out'},1.35)
+    .to('.ch-subline',{opacity:1,duration:1.1},'>-0.8')
     .to('.ch-cue',{opacity:1,duration:1},'>-0.2');
   setTimeout(restore,7000);
 })();
