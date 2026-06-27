@@ -1246,7 +1246,9 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   .ch-belt-row{flex-direction:column;gap:1.1rem;align-items:center}
   /* side 1 (4 stats) = even 2x2 grid; side 2 (3 stats) = centered flex so the odd one centers cleanly, never orphaned hard-left */
   .ch-belt-side{max-width:92vw;display:flex;flex-wrap:wrap;justify-content:center;gap:1.3rem 2.2rem;flex:0 0 auto;align-items:start}
-  .ch-belt-side .ch-stat{flex:0 0 38%;}
+  .ch-belt-side .ch-stat{flex:0 0 38%;display:flex;flex-direction:column;justify-content:flex-start;min-height:3.1em}
+  /* word-values (Saltwater) share the numeral baseline so the row never looks misaligned */
+  .ch-belt-side .ch-stat-v{display:flex;align-items:baseline;justify-content:center;min-height:1.4em}
   .ch-belt-side .ch-tick{display:none}
   .ch-crest-wrap{padding:.2rem 0;order:-1}
   .ch-crest-wrap img{width:min(190px,48vw);max-width:none;height:auto;margin-top:0}
