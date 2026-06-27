@@ -1242,13 +1242,16 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   .inquiry input,.inquiry textarea{width:100%}
   .close .cta{display:inline-block;padding:.95rem 2rem;font-size:.7rem;letter-spacing:.26em}
 
-  /* hero stat belt: stack vertically so crest + all 6 stats FIT, nothing clips */
+  /* hero stat belt: stack vertically so crest + all stats FIT, nothing clips */
   .ch-belt-row{flex-direction:column;gap:1.4rem;align-items:center}
-  .ch-belt-side{max-width:92vw;gap:1.8rem;flex:0 0 auto;justify-content:center}
+  /* each side becomes an even 2-col grid so stats read as an intentional rhythm, never an orphaned single */
+  .ch-belt-side{max-width:92vw;display:grid;grid-template-columns:1fr 1fr;gap:1.4rem 2.2rem;flex:0 0 auto;justify-items:center;align-items:start}
+  .ch-belt-side .ch-tick{display:none}
   .ch-crest-wrap{padding:.4rem 0;order:-1}
-  .ch-crest-wrap img{width:min(208px,52vw);max-width:none;height:auto;margin-top:0}
+  .ch-crest-wrap img{width:min(190px,48vw);max-width:none;height:auto;margin-top:0}
   .ch-crest-under{gap:1.8rem}
-  .ch-stat-v{font-size:1.15rem}
+  .ch-stat-v{font-size:1.2rem}
+  .ch-stat-v.word{font-size:1.05rem}
   .ch-stat-l{font-size:.56rem;letter-spacing:.18em}
 
   /* belt container: keep it inside the viewport, no horizontal clip + safe-area bottom padding
