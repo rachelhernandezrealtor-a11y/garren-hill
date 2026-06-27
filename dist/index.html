@@ -1081,8 +1081,8 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 /* focal + bottom scrim only — keep mid-frame footage clear (codex) */
 .ch-hero .ch-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-   radial-gradient(ellipse 66% 50% at 50% 38%,rgba(8,8,7,.62) 0%,rgba(8,8,7,.22) 45%,transparent 66%),
-   linear-gradient(to bottom,rgba(8,8,7,.42) 0%,transparent 22%,transparent 52%,rgba(8,8,7,.92) 100%)}
+   radial-gradient(ellipse 60% 42% at 50% 32%,rgba(8,8,7,.34) 0%,rgba(8,8,7,.12) 50%,transparent 70%),
+   linear-gradient(to bottom,rgba(8,8,7,.26) 0%,transparent 20%,transparent 58%,rgba(8,8,7,.72) 100%)}
 
 /* THE GOLD FRAME — draws itself on */
 .ch-frame{position:absolute;inset:0;z-index:3;pointer-events:none}
@@ -1137,10 +1137,15 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   width:165%;height:300%;border-radius:50%;pointer-events:none;
   background:radial-gradient(ellipse at center,rgba(6,6,5,.46) 0%,rgba(6,6,5,.28) 34%,rgba(6,6,5,.1) 60%,rgba(6,6,5,0) 78%);
   filter:blur(11px)}
+@property --wm-rev{syntax:'<percentage>';inherits:false;initial-value:108%}
 .ch-wordmark{font-family:var(--font-script);font-weight:400;
-  font-size:clamp(2.8rem,7vw,5.6rem);line-height:.92;color:var(--cream);
-  margin:.26em 0 .34em;padding:.06em .12em;
-  text-shadow:0 2px 30px rgba(0,0,0,.55),0 0 1px rgba(0,0,0,.4);
+  font-size:clamp(3.4rem,9vw,7.4rem);line-height:.92;color:var(--cream);
+  margin:.22em 0 .32em;padding:.06em .14em;
+  /* legibility from a tight letter-halo, NOT a dark band over the house */
+  text-shadow:0 1px 2px rgba(0,0,0,.45),0 0 18px rgba(0,0,0,.5),0 0 40px rgba(0,0,0,.35);
+  /* cinematic ink-reveal: name is wiped in left→right like script being laid down */
+  -webkit-mask-image:linear-gradient(90deg,#000 0 var(--wm-rev,108%),transparent var(--wm-rev,108%));
+  mask-image:linear-gradient(90deg,#000 0 var(--wm-rev,108%),transparent var(--wm-rev,108%));
   }
 .ch-subline{font-family:var(--font-label);font-size:clamp(.6rem,.82vw,.76rem);font-weight:500;
   letter-spacing:.34em;text-transform:uppercase;color:var(--cream-dim);text-shadow:0 1px 14px rgba(0,0,0,.7)}
@@ -1252,7 +1257,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   Updated: 2026-06-26T17:19:52.811Z
   Rationale: Rachel direction: hero name 'Garran Hill' must scale up dramatically to match the drama of the Hollycrest crest. Managed style block bumps .ch-wordmark from max 9.2rem to 12rem. Crest, video, and house untouched. First real edit to the CANONICAL repo via the live GitHub->Pages pipe (earlier edits were stranded in a stale box copy with no deploy remote).
 */
-.ch-hero .ch-wordmark{font-size:clamp(2.8rem,7vw,5.6rem)!important;line-height:.92!important;}
+.ch-hero .ch-wordmark{line-height:.92!important;}
 
 /* Coco GitHub-backed proof: coco-proof:garran-hill:2026-06-26T17:19:52.811Z:aec25faf-5ed4-4ac8-92e2-bef793ddece3 */
 </style>
@@ -1886,12 +1891,13 @@ if(window.matchMedia('(pointer:fine)').matches){
   gsap.set('.ch-eyebrow',{opacity:0});
   // The name EMERGES as one weighted gesture — out of soft blur, a slight rise,
   // a touch of scale settling in. Cinematic title card, not letter theatrics.
-  gsap.set('.ch-wordmark',{opacity:0,filter:'blur(18px)',y:26,scale:1.03,transformOrigin:'50% 60%'});
+  gsap.set('.ch-wordmark',{opacity:1,'--wm-rev':'0%',filter:'blur(6px)',y:10,scale:1.015,transformOrigin:'50% 60%'});
   gsap.set('.ch-subline',{opacity:0});
   gsap.set('.ch-cue',{opacity:0});
 
   function restore(){
     top.forEach(function(s){gsap.set(s,{clearProps:'opacity,filter,transform,y,scale'});});
+    gsap.set('.ch-wordmark',{'--wm-rev':'108%'});
     if(rect)rect.style.strokeDashoffset=0;
   }
 
@@ -1899,8 +1905,9 @@ if(window.matchMedia('(pointer:fine)').matches){
   tl.to(rect,{strokeDashoffset:0,duration:2.2,ease:'power2.inOut'},0.2)
     .to('.ch-nav',{opacity:1,duration:1.1},0.6)
     .to('.ch-eyebrow',{opacity:1,duration:1.0},1.0)
-    // single, slow, weighted emergence — the name resolves into focus
-    .to('.ch-wordmark',{opacity:1,filter:'blur(0px)',y:0,scale:1,duration:2.0,ease:'power2.out'},1.35)
+    // INK-REVEAL: the script is laid down left→right (mask wipe), then settles into focus
+    .to('.ch-wordmark',{'--wm-rev':'108%',duration:2.6,ease:'power1.inOut'},1.35)
+    .to('.ch-wordmark',{filter:'blur(0px)',y:0,scale:1,duration:1.6,ease:'power2.out'},'>-1.5')
     .to('.ch-subline',{opacity:1,duration:1.1},'>-0.8')
     .to('.ch-cue',{opacity:1,duration:1},'>-0.2');
   setTimeout(restore,7000);
