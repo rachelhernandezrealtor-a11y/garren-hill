@@ -704,12 +704,19 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .ep-beat--split{display:grid;grid-template-columns:0.92fr 1.08fr;align-items:stretch;
   background:var(--ink);overflow:visible;min-height:clamp(560px,90vh,920px)}
 .ep-beat--split .ep-photo{position:relative;display:flex;align-items:center;justify-content:center;
-  padding:clamp(2rem,5vh,4.5rem) clamp(1rem,3vw,3rem);background:
-    radial-gradient(120% 90% at 50% 40%, rgba(28,24,18,.55), var(--ink) 78%)}
-.ep-beat--split .ep-photo img{position:static;width:auto;height:auto;
-  max-width:100%;max-height:clamp(520px,82vh,840px);object-fit:contain;display:block;
-  border-radius:2px;box-shadow:0 40px 110px rgba(0,0,0,.7),0 0 0 1px rgba(201,169,110,.16);
-  filter:saturate(1.02) contrast(1.02)}
+  padding:clamp(2rem,5vh,4.5rem) clamp(1rem,3vw,3rem);overflow:hidden;background:var(--ink)}
+/* VOID KILLER (editorial-photo-presentation law): a blurred warm copy of the SAME image
+   fills the gutters so the panel carries the room's tone, never dead black. Sharp full
+   photo sits on top, contained, whole frame shown. */
+.ep-beat--split .ep-photo::before{content:"";position:absolute;inset:-8%;z-index:0;
+  background:url("https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_900/v1/gh_key/gh_threshold_stone_wide.jpg") center/cover no-repeat;
+  filter:blur(55px) brightness(.82) saturate(1.25);transform:scale(1.12)}
+.ep-beat--split .ep-photo::after{content:"";position:absolute;inset:0;z-index:1;
+  background:radial-gradient(130% 100% at 50% 45%, transparent 38%, rgba(8,8,6,.55) 100%)}
+.ep-beat--split .ep-photo img{position:relative;z-index:2;width:auto;height:auto;
+  max-width:100%;max-height:clamp(540px,84vh,860px);object-fit:contain;display:block;
+  border-radius:2px;box-shadow:0 44px 120px rgba(0,0,0,.78),0 0 0 1px rgba(201,169,110,.18);
+  filter:saturate(1.03) contrast(1.03)}
 .ep-beat--split .ep-cap{position:relative;left:auto;right:auto;bottom:auto;top:auto;
   align-self:center;max-width:34em;padding:clamp(2.5rem,7vh,6rem) clamp(2rem,5vw,5.5rem)}
 .ep-beat--split .scrim,.ep-beat--split .pocket{display:none}
