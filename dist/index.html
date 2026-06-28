@@ -330,8 +330,6 @@ nav .links a.cta{color:var(--gold);opacity:1}
 
 /* HERO — black void, video stage open above, belt + crest buckle anchored to bottom */
 .hero{position:relative;height:88svh;min-height:600px;overflow:hidden;background:var(--ink)}
-/* background cinematic loop */
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
 /* scrim: minimal — only a whisper at top (nav) + bottom (belt), middle stays CLEAR for footage clarity */
 .hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,rgba(8,8,7,.34) 0%,transparent 18%,transparent 70%,rgba(8,8,7,.55) 100%);}
@@ -340,49 +338,10 @@ nav .links a.cta{color:var(--gold);opacity:1}
   background:none;}
 
 
-/* the eyebrow + wordmark sit in the upper-mid, leaving the very top open for the future video */
-.hero-inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(5rem,11vh,7rem) var(--pad) clamp(4rem,9vh,6rem)}
-/* soft focal scrim behind the title block so it reads over bright footage, without darkening the whole video */
 
-.hero-eyebrow{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.42em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:2.8rem;text-shadow:0 1px 12px rgba(0,0,0,.85)}
-.wordmark{font-family:var(--font-script);font-weight:400;font-size:var(--wm-size);line-height:.9;color:var(--cream);
-  text-shadow:none;margin:.2rem 0}
-.hero-desc{font-family:var(--font-label);font-style:normal;font-size:var(--xs);letter-spacing:.34em;text-transform:uppercase;color:var(--cream-dim);margin-top:1.6rem;text-shadow:0 1px 12px rgba(0,0,0,.85)}
-
-/* THE BELT — framed by two gold lines, crest buckle anchored to viewport bottom */
-.belt{position:absolute;left:0;right:0;bottom:0;z-index:3;display:flex;justify-content:center;align-items:flex-end;gap:clamp(1.5rem,4vw,3.5rem);padding:0 var(--pad);height:clamp(9rem,21vh,13rem)}
-/* full-width gradient scrim behind the whole belt so all 6 stats stay legible over bright footage */
-.belt::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(180deg,transparent 0%,rgba(8,8,7,.16) 46%,rgba(8,8,7,.58) 100%)}
-/* soft WARM radial pocket behind the crest — reads as light gathering on the jewel, not a black blob */
-.belt::before{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);z-index:2;pointer-events:none;
-  width:clamp(300px,38vw,520px);height:clamp(240px,32vh,400px);
-  background:radial-gradient(ellipse at 50% 80%,rgba(14,11,8,.60) 0%,rgba(11,9,7,.34) 46%,transparent 76%)}
-.belt .grp{flex:1 1 0;display:flex;justify-content:space-evenly;align-items:flex-end;gap:clamp(1rem,2.5vw,2.4rem);max-width:420px;padding-bottom:clamp(2.4rem,6vh,3.6rem)}
-/* the two framing lines */
-.belt .rule,.belt .rule-top{position:absolute;left:var(--pad);right:var(--pad);height:2px;z-index:1;
-  background:
-    linear-gradient(to bottom,#efe0bd 0%,#ccb28a 40%,#9c8656 60%,#796348 100%),
-    linear-gradient(to right,transparent,rgba(204,178,138,.2) 8%,#9c8656 26%,#ccb28a 42%,#efe0bd 50%,#ccb28a 58%,#9c8656 74%,rgba(204,178,138,.2) 92%,transparent);
-  background-blend-mode:overlay;
-  box-shadow:0 0 10px rgba(204,178,138,.35),0 1px 1px rgba(0,0,0,.5)}
-.belt .rule{bottom:var(--belt-low)}      /* lower line */
-.belt .rule-top{bottom:calc(var(--belt-low) + var(--belt-gap))} /* upper line */
+       /* upper line */
 /* stats sit between the two lines */
 .stat{position:relative;z-index:3;text-align:center;flex:1 1 0;min-width:0}
-/* THE KEYS — fabulous dimensional gilt. High-contrast specular gold like real gilded metal catching light. */
-.stat b{display:block;font-family:var(--font-display);font-weight:600;font-size:clamp(1.7rem,2.7vw,2.6rem);margin-bottom:.6rem;line-height:1;font-feature-settings:'onum' 1,'pnum' 1;white-space:nowrap;
-  background:linear-gradient(176deg,#7a5e2c 0%,#b8924f 16%,#f2dd9e 34%,#fff6da 49%,#f2dd9e 56%,#c8a35c 70%,#8a6a32 86%,#5e4622 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
-  filter:drop-shadow(0 1px 0 rgba(255,246,210,.25)) drop-shadow(0 2px 3px rgba(0,0,0,.92)) drop-shadow(0 0 9px rgba(201,169,110,.45));letter-spacing:.01em}
-/* ===== BODY — editorial chapters, the page breathing like a film ===== */
-.stat span{font-family:var(--font-label);font-size:var(--xxs);letter-spacing:.36em;text-transform:uppercase;color:rgba(232,210,158,.92);font-weight:400;text-shadow:0 1px 3px rgba(0,0,0,.85)}
-/* THE PRICE — the one number that sells the house. Larger, brighter, its own weight. */
-.stat.price{flex:1.25 1 0}
-.stat.price b{font-size:clamp(1.9rem,3.1vw,3rem);
-  background:linear-gradient(180deg,#e9d49a 0%,#f2e3b8 40%,#e4c987 60%,#caa75f 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
-.stat.price span{color:rgba(244,233,198,.96);letter-spacing:.42em}
 .chapter-mark{text-align:center;padding:clamp(4rem,11vh,7rem) var(--pad) clamp(1rem,3vh,2rem);background:var(--ink)}
 /* BETTY — the grave as a smaller atmospheric backdrop ABOVE the closing line,
    flowers kept visible at top, text resting in the calm lower band. Not the big somber full-bleed. */
@@ -852,69 +811,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .gate .turn-line .a{opacity:.82;display:block;margin-bottom:.4rem}
 .gate .turn-line .b{display:block}
 
-/* crest buckle: anchored to bottom of viewport, sits ON TOP of everything */
-.buckle{position:relative;z-index:6;width:var(--crest-w);align-self:flex-end;
-  filter:drop-shadow(0 6px 30px rgba(0,0,0,.78)) drop-shadow(0 2px 8px rgba(0,0,0,.5)) drop-shadow(0 0 14px rgba(184,152,99,.28));margin:0 clamp(.6rem,2vw,1.6rem) 0;
-  display:block;transform:translateY(var(--crest-drop))}
-@media(max-width:760px){
-  .belt{flex-wrap:wrap;justify-content:center;align-items:flex-start;
-    height:auto;gap:1.1rem 1.5rem;padding:0 var(--pad) 1.4rem;background:linear-gradient(180deg,transparent,rgba(8,8,7,.55) 30%)}
-  .belt .rule,.belt .rule-top{display:none}
-  .buckle{order:-1;width:120px;margin:0 0 .4rem;flex:0 0 100%}
-  .stat{padding-bottom:0;flex:0 0 27%}
-  .stat b{font-size:1.5rem}
-}
 
-/* self-writing Edwardian wordmark */
-.wordmark{display:flex;justify-content:center;align-items:center;margin:2.2rem 0;filter:drop-shadow(0 2px 20px rgba(0,0,0,.7))}
-.wm-draw{width:min(74vw,640px);height:auto;overflow:visible}
-/* FACTS — flows out of the hero; crest masthead straddles the seam as the hinge (no hard line, no chop) */
-.facts{position:relative;background:var(--ink);text-align:center;
-  padding:0 var(--pad) clamp(4.5rem,10vh,7rem)}
-/* white-flower video drifting behind the facts — blooms read, gold still holds */
-.facts-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.5}
-.facts-bg-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(ellipse at 50% 40%,rgba(8,8,7,.5) 0%,rgba(8,8,7,.72) 55%,rgba(8,8,7,.88) 100%)}
-.facts > .crest-mast,.facts > .facts-row{position:relative;z-index:2}
-/* the hero film blends DOWN into the flower band — a soft gradient seam, never a line; crest sits on top of it */
-.facts::before{content:"";position:absolute;top:-140px;left:0;right:0;height:160px;z-index:1;
-  background:linear-gradient(180deg,transparent,rgba(8,8,7,.55) 55%,var(--ink));pointer-events:none}
-/* crest masthead pulled UP to straddle the hero/flower seam = the hinge */
-.facts > .crest-mast{margin-top:clamp(-4.5rem,-7vh,-3rem);padding-top:0}
-/* CREST MASTHEAD — crest centered ON a fine gold rule, integrated into the band (not floating) */
-.crest-mast{display:flex;align-items:center;justify-content:center;gap:clamp(1rem,2.6vw,2rem);
-  max-width:760px;margin-left:auto;margin-right:auto;margin-bottom:clamp(2rem,4.5vh,3rem)}
-/* pulled UP to straddle the hero/flower seam = the hinge (transform avoids margin-collapse) */
-.facts > .crest-mast{margin-top:0;transform:translateY(clamp(-5rem,-8vh,-3.5rem))}
-.crest-mast .mast-rule{flex:1;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(201,169,110,.5) 60%,rgba(201,169,110,.7))}
-.crest-mast .mast-rule:last-child{transform:scaleX(-1)}
-.facts-crest{display:block;width:clamp(150px,16vw,208px);flex:0 0 auto;
-  filter:drop-shadow(0 6px 24px rgba(0,0,0,.55)) drop-shadow(0 0 30px rgba(212,178,112,.5)) drop-shadow(0 0 10px rgba(255,240,200,.35)) brightness(1.08) contrast(1.05)}
-.facts-row{display:flex;justify-content:center;align-items:center;flex-wrap:nowrap;
-  gap:0;max-width:1120px;margin:0 auto}
-/* fine gold hairline between each key (Vogue editorial dividers) — short, faint, faded ends */
-.facts-row .stat{padding:0 clamp(.7rem,2vw,1.8rem);position:relative;flex:0 0 auto;min-width:0}
-.facts-row .stat + .stat::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
-  width:1px;height:clamp(26px,3.4vh,38px);
-  background:linear-gradient(180deg,transparent,rgba(201,169,110,.4) 30%,rgba(201,169,110,.4) 70%,transparent)}
-@media(max-width:760px){
-  .facts-row{flex-wrap:wrap;max-width:380px}
-  .facts-row .stat{flex:0 0 33%;padding:.6rem .3rem}
-  .facts-row .stat + .stat::before{display:none}
-  .wm-draw{width:58vw}
-  .hero-inner{justify-content:flex-start;padding:6vh var(--pad) 0;height:auto}
-  .hero-eyebrow{margin-bottom:1.4rem}
-  .wordmark{margin:1rem 0}
-  .hero-desc{margin-top:1rem;margin-bottom:0}
-}
-.wm-ink path{
-  fill:#F5F0E8;
-  stroke:#F5F0E8;
-  /* dash set per-path by JS; start hidden as stroke, fill transparent */
-}
-.wm-draw.animate .wm-ink{animation:none}
-@keyframes wmfill{to{fill-opacity:1}}
 
 
 /* ===== FLOOR PLANS (created — was missing in preview) ===== */
@@ -974,9 +871,6 @@ nav .links a.cta{color:var(--gold);opacity:1}
 @media (prefers-reduced-motion:reduce){.hero-frame rect{stroke-dashoffset:0!important}.hero-cue{animation:none}}
 
 
-.hero-inner{position:relative}
-.wordmark{text-shadow:0 2px 40px rgba(8,8,7,.7),0 1px 8px rgba(8,8,7,.6)}
-.hero-eyebrow,.hero-desc{text-shadow:0 1px 18px rgba(8,8,7,.9),0 1px 4px rgba(8,8,7,.8)}
 
 /* ============================================================
    ELEVATION PASS 1 — craft fixes (Coco, June 23 2026)
@@ -1019,11 +913,6 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 /* box behind text is BANNED — kill the radial "box" on both scene + split caps */
 .rm-cap::before,.rm-split .rm-cap::before{display:none!important;content:none!important;background:none!important}
 
-/* --- FACTS BAND: the muddy half-opacity floral was the "Squarespace tell."
-   Drop it to a faint living texture; deepen the scrim so the band reads as
-   confident ink with the gold numerals carrying it. --- */
-.facts-bg{opacity:.14!important;filter:saturate(.7) brightness(.8)}
-.facts-bg-scrim{background:radial-gradient(ellipse at 50% 42%,rgba(8,8,7,.74) 0%,rgba(8,8,7,.86) 55%,var(--ink) 100%)!important}
 
 /* --- VERTICAL RHYTHM: tame the arbitrary dead-black voids the eyes-loop
    flagged between beats. Confident pauses, not unresolved gaps. --- */
@@ -1064,13 +953,6 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 .grave .gv-cap{z-index:2}
 .grave .gv-cap .room{text-shadow:0 2px 16px rgba(8,8,7,.98),0 1px 5px rgba(8,8,7,.95),0 0 30px rgba(8,8,7,.9)}
 
-/* --- HERO FILM: the dusk loop was reading murky and the house got lost. Raise
-   the focal point so the facade sits in the clear upper-middle, and give the
-   footage a gentle cinematic grade (lift + a touch of contrast/warmth) so it
-   reads like graded film, not an underexposed clip. Real footage only — this
-   only grades the existing loop, never generates imagery. --- */
-.hero-bg{object-position:50% 36%!important;
-  filter:brightness(1.08) contrast(1.06) saturate(1.05)!important}
 /* lift the center of the scrim so the house breathes; keep the top + bottom
    anchors that hold the wordmark and the lower text legible */
 .hero-scrim{background:
