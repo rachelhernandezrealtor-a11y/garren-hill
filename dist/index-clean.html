@@ -41,8 +41,11 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
 .num.word{font-size:clamp(15px,1.8vw,24px);letter-spacing:.02em}
 .lab{font-family:'Cinzel',serif;font-size:clamp(.46rem,.6vw,.58rem);letter-spacing:.26em;text-transform:uppercase;color:rgba(236,224,196,.82);margin-top:.7em}
 .tick{width:1px;height:clamp(22px,3vw,38px);align-self:center;background:linear-gradient(to bottom,transparent,rgba(201,168,106,.5),transparent)}
-.crest{position:relative;flex-shrink:0;display:flex;align-items:flex-end;justify-content:center;transform:translateY(13px)}
-.crest img{position:relative;z-index:2;height:clamp(120px,16vw,188px);width:auto;filter:contrast(1.28) brightness(1.4) saturate(1.18) drop-shadow(2px 7px 6px rgba(12,8,2,.6))}
+.crest{position:relative;flex-shrink:0;display:flex;align-items:flex-end;justify-content:center;transform:translateY(20px)}
+.crest::before{content:"";position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);width:230%;height:150%;z-index:-1;
+ background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(6,7,10,.78),rgba(6,7,10,.42) 48%,transparent 74%);filter:blur(7px);pointer-events:none}
+
+.crest img{position:relative;z-index:2;height:clamp(100px,12.5vw,150px);width:auto;filter:contrast(1.28) brightness(1.4) saturate(1.18) drop-shadow(2px 7px 6px rgba(12,8,2,.6))}
 /* MOBILE mini-me: same composition, stats wrap to 2 rows, crest kisses frame */
 @media(max-width:560px){
  .nav{display:none}
