@@ -548,8 +548,17 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .built .archival-bg{position:absolute;inset:0;z-index:0;pointer-events:none;
   background:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:best,w_2200/v1/garran-hill/history/gh_1916_house_real.jpg') center/cover no-repeat;
   opacity:.74;filter:grayscale(1) contrast(1.06) brightness(1.06)}
+/* DEPTH (Rachel 2026-06-28: "we want our photos to have depth too"): the photo is not
+   a flat wash on a black wall. Two depth layers give it air and dimension:
+   1) a soft inward vignette that draws the eye to the subject (light center, gentle falloff)
+      instead of crushing the edges flat — depth modeling, not a darkening band.
+   2) a faint warm light-bloom from upper-center so the facade reads lit, with foreground
+      separation from the dark ground. The image sits IN air, off the wall. */
+.built .archival-depth{position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:soft-light;
+  background:radial-gradient(ellipse 62% 58% at 50% 42%,rgba(255,244,222,.22) 0%,transparent 60%),
+             radial-gradient(ellipse 120% 120% at 50% 50%,transparent 38%,rgba(6,6,5,.5) 100%)}
 .built .archival-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(ellipse 80% 82% at 50% 50%,transparent 0%,transparent 56%,rgba(8,8,7,.34) 100%)}
+  background:radial-gradient(ellipse 80% 82% at 50% 50%,transparent 0%,transparent 56%,rgba(8,8,7,.30) 100%)}
 /* soft seams so the archival photo melds into the dark above and below */
 .built::before,.built::after{content:"";position:absolute;left:0;right:0;height:12vh;z-index:1;pointer-events:none}
 .built::before{top:0;background:linear-gradient(to bottom,var(--ink),transparent)}
