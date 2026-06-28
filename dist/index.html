@@ -592,8 +592,8 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .rm-scene.hero .rm-cap{transform:scale(1.06);transform-origin:left bottom}
 /* airy edge scrim — preserves the photo (Rule 9: never darken the image into a band) */
 .rm-scene::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
-  background:linear-gradient(28deg, rgba(6,6,5,.92) 0%, rgba(6,6,5,.72) 22%, rgba(6,6,5,.4) 44%, rgba(6,6,5,.12) 60%, transparent 74%)}
-.rm-scene:nth-of-type(even)::after{background:linear-gradient(332deg, rgba(6,6,5,.92) 0%, rgba(6,6,5,.72) 22%, rgba(6,6,5,.4) 44%, rgba(6,6,5,.12) 60%, transparent 74%)}
+  background:linear-gradient(180deg, rgba(6,6,5,.30) 0%, transparent 24%, transparent 68%, rgba(6,6,5,.40) 100%)}
+.rm-scene:nth-of-type(even)::after{background:linear-gradient(180deg, rgba(6,6,5,.30) 0%, transparent 24%, transparent 68%, rgba(6,6,5,.40) 100%)}
 .rm-scene .slide{position:absolute;inset:0;opacity:0;background-color:#0a0a07;
   transition:opacity 1.8s cubic-bezier(.4,0,.2,1);will-change:opacity}
 /* VOID KILLER: two explicit layers — blurred self-fill behind, sharp full photo in front */
@@ -622,7 +622,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .rm-cap .rm{display:inline-block;font-family:var(--font-chapter);font-size:clamp(1rem,1.3vw,1.18rem);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;text-shadow:0 0 6px rgba(0,0,0,.9),0 2px 14px rgba(0,0,0,.85);position:relative;padding-bottom:.7rem}
 .rm-cap .rm::after{content:"";position:absolute;left:0;bottom:0;width:32px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
 .rm-scene:nth-of-type(even) .rm-cap .rm::after{left:auto;right:0;background:linear-gradient(90deg,transparent,var(--gold))}
-.rm-cap .det{font-family:var(--font-display);font-style:italic;font-weight:300;font-size:clamp(1.3rem,2.4vw,2rem);line-height:1.4;color:var(--cream);margin:0;max-width:42ch;text-shadow:0 0 8px rgba(0,0,0,.85),0 2px 22px rgba(0,0,0,.8),0 1px 6px rgba(0,0,0,.6)}
+.rm-cap .det{font-family:var(--font-display);font-style:italic;font-weight:300;font-size:clamp(1.3rem,2.4vw,2rem);line-height:1.4;color:var(--cream);margin:0;max-width:42ch;text-shadow:0 0 2px rgba(0,0,0,.95),0 1px 5px rgba(0,0,0,.85)}
 .rm-cap .flow{display:inline-block;margin-top:1.2rem;font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.92;text-shadow:0 1px 10px rgba(0,0,0,.9);position:relative;padding-right:1.4rem}
 .rm-cap .flow::after{content:"→";position:absolute;right:0;top:50%;transform:translateY(-50%);color:var(--gold);opacity:.85}
 .rm-dots{position:absolute;bottom:1.1rem;left:0;right:0;z-index:3;display:flex;justify-content:center;gap:.5rem}
@@ -1008,11 +1008,16 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 /* room-scene carousels: re-enable a refined lower-third + top scrim so the
    room name, the italic detail line, and the flow line all stay legible over
    bright interiors (windows, fireplaces). Replaces the disabled ::after. */
+/* LUMINOUS-PHOTO LAW (Rachel, RACHEL-LIVE-RULES L569/571/499): the image is the
+   product. NEVER darken the photo into a box or band to make text legible.
+   Legibility comes from protecting the LETTERS (soft halo), not the picture.
+   Only a whisper of edge-gradient at the very top/bottom corners, nothing across
+   the photo body. */
 .rm-scene::after{display:block!important;content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:linear-gradient(180deg,rgba(8,8,7,.5) 0%,rgba(8,8,7,.12) 16%,transparent 38%,transparent 50%,rgba(8,8,7,.55) 76%,rgba(8,8,7,.92) 100%)!important}
+  background:linear-gradient(180deg,rgba(8,8,7,.34) 0%,rgba(8,8,7,.06) 11%,transparent 26%,transparent 66%,rgba(8,8,7,.18) 84%,rgba(8,8,7,.46) 100%)!important}
 .rm-cap{z-index:3}
-.rm-split .rm-cap::before{content:"";position:absolute;inset:-1.4em -2em;z-index:-1;pointer-events:none;
-  background:linear-gradient(180deg,transparent,rgba(8,8,7,.55) 30%,rgba(8,8,7,.78))}
+/* box behind text is BANNED — kill the radial "box" on both scene + split caps */
+.rm-cap::before,.rm-split .rm-cap::before{display:none!important;content:none!important;background:none!important}
 
 /* --- FACTS BAND: the muddy half-opacity floral was the "Squarespace tell."
    Drop it to a faint living texture; deepen the scrim so the band reads as
