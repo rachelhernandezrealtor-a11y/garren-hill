@@ -441,16 +441,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .split{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center;
   max-width:1180px;margin:0 auto;padding:clamp(2rem,5vh,4rem) var(--pad);background:transparent}
 .split > *{position:relative;z-index:1}
-/* DEPTH on the archival portrait (Rachel 2026-06-28: photos have depth + lift off the
-   dark ground, never dissolve flat into the wall). A soft warm glow separates the figure
-   from the black, a fine inner frame gives it presence, a gentle contrast/brightness lift
-   models the face. Legibility of the man, dimension on the page. */
-.split .fig{position:relative}
-.split .fig img{width:100%;height:auto;display:block;
-  filter:saturate(.96);
-  box-shadow:0 0 0 1px rgba(204,178,138,.28),0 18px 60px rgba(0,0,0,.6),0 0 90px 10px rgba(120,96,52,.16)}
-.split .fig::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
-  background:radial-gradient(ellipse 70% 60% at 50% 38%,rgba(255,246,228,.12) 0%,transparent 55%);mix-blend-mode:soft-light}
+.split .fig img{width:100%;height:auto;display:block;filter:saturate(.92)}
 .split .fig figcaption{font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);margin-top:.9rem;text-align:left}
 .split .body{text-align:left}
 .split .body p{font-family:var(--font-body);font-weight:300;font-size:clamp(1.1rem,1.5vw,1.3rem);line-height:1.74;color:var(--cream-dim);margin:0 0 1.3rem}
@@ -550,32 +541,18 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .letter .cite-src{font-family:var(--font-display);font-style:italic;font-size:var(--sm);color:var(--cream-dim);opacity:.7;margin-top:.35rem}
 /* THE BUILDING — the 1916 archival image behind the words about the house rising (airy, preserve-the-image) */
 .built{position:relative;overflow:hidden;background:var(--ink);text-align:center;padding:clamp(5rem,15vh,10rem) var(--pad)}
-/* PRESERVE-THE-IMAGE (Rachel 2026-06-28): the real 1916 photograph is the product of
-   this beat, not a 30%-ghost drowned in an 80% vignette. Lift it to luminous, deliver
-   razor-sharp from a larger master (q_auto:best, w_2200), and protect the WORDS with a
-   soft local text-halo (below) instead of darkening the PICTURE into a band. */
 .built .archival-bg{position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:best,w_2200/v1/garran-hill/history/gh_1916_house_restored.jpg') center/cover no-repeat;
-  opacity:.82;filter:grayscale(1)}
-/* DEPTH (Rachel 2026-06-28: "we want our photos to have depth too"): the photo is not
-   a flat wash on a black wall. Two depth layers give it air and dimension:
-   1) a soft inward vignette that draws the eye to the subject (light center, gentle falloff)
-      instead of crushing the edges flat — depth modeling, not a darkening band.
-   2) a faint warm light-bloom from upper-center so the facade reads lit, with foreground
-      separation from the dark ground. The image sits IN air, off the wall. */
-.built .archival-depth{position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:soft-light;
-  background:radial-gradient(ellipse 62% 58% at 50% 42%,rgba(255,244,222,.22) 0%,transparent 60%),
-             linear-gradient(180deg,transparent 55%,rgba(255,244,222,.14) 100%),
-             radial-gradient(ellipse 120% 120% at 50% 50%,transparent 44%,rgba(6,6,5,.4) 100%)}
+  background:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1800/v1/garran-hill/history/gh_1916_house_real.jpg') center/cover no-repeat;
+  opacity:.30;filter:grayscale(1) contrast(1.02) brightness(1.02)}
 .built .archival-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(ellipse 80% 82% at 50% 50%,transparent 0%,transparent 56%,rgba(8,8,7,.30) 100%)}
+  background:radial-gradient(ellipse 75% 75% at 50% 50%,transparent 0%,rgba(8,8,7,.45) 68%,rgba(8,8,7,.8) 100%)}
 /* soft seams so the archival photo melds into the dark above and below */
 .built::before,.built::after{content:"";position:absolute;left:0;right:0;height:12vh;z-index:1;pointer-events:none}
 .built::before{top:0;background:linear-gradient(to bottom,var(--ink),transparent)}
 .built::after{bottom:0;background:linear-gradient(to top,var(--ink),transparent)}
 .built > *{position:relative;z-index:2}
 .built .yr{font-family:var(--font-chapter);font-size:var(--xs);letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem}
-.built p{font-family:var(--font-display);font-weight:300;font-size:clamp(1.3rem,2.2vw,1.9rem);line-height:1.6;color:var(--cream);max-width:30ch;margin:0 auto;text-shadow:0 0 18px rgba(6,6,5,.92),0 0 42px rgba(6,6,5,.78),0 2px 8px rgba(6,6,5,.8)}
+.built p{font-family:var(--font-display);font-weight:300;font-size:clamp(1.3rem,2.2vw,1.9rem);line-height:1.6;color:var(--cream);max-width:30ch;margin:0 auto;text-shadow:0 1px 18px rgba(0,0,0,.6)}
 .built p em{color:var(--gold);font-style:italic}
 @keyframes gfThen{0%,40%{opacity:1}50%,90%{opacity:0}100%{opacity:1}}
 @keyframes gfNow{0%,40%{opacity:0}50%,90%{opacity:1}100%{opacity:0}}
@@ -1399,7 +1376,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 <!-- WHP editorial spread: the man himself, portrait as art, his letters ghosted behind -->
 <div class="split">
   <figure class="fig">
-    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/c_crop,x_120,w_617,h_981/c_fill,w_1400/f_auto,q_auto:best/v1/gh_history/whp_portrait_restored.jpg" alt="Walter Hines Page, United States Ambassador to the Court of St James's, 1913 to 1918">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/c_crop,x_120,w_617,h_981/c_fill,w_900/f_auto,q_auto/v1/gh_history/whp_portrait.jpg" alt="Walter Hines Page, United States Ambassador to the Court of St James's, 1913 to 1918">
     <figcaption>Walter Hines Page &middot; 1855&ndash;1918</figcaption>
   </figure>
   <div class="body">
@@ -1424,7 +1401,6 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 <!-- THE BUILDING — the 1916 archival image behind the house rising -->
 <section class="built">
   <div class="archival-bg"></div>
-  <div class="archival-depth"></div>
   <div class="archival-veil"></div>
   <div class="yr">1915 &ndash; 1916</div>
   <p>The house rose through 1915 and 1916, built by the Pinehurst Company under J. R. McQueen. The same craftsmen who built Pinehurst built this house. Rare handmade brick, laid in Flemish bond above a water table, <em>drawn to Georgian proportion.</em></p>
