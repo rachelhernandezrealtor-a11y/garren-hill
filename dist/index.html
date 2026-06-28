@@ -397,8 +397,10 @@ nav .links a.cta{color:var(--gold);opacity:1}
   background:radial-gradient(ellipse at center,rgba(8,8,7,.62) 0%,rgba(8,8,7,.38) 55%,transparent 80%)}
 
 /* split: archival portrait beside prose */
-.split{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center;
+.split{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start;
   max-width:1180px;margin:0 auto;padding:clamp(2rem,5vh,4rem) var(--pad);background:transparent}
+/* editorial pairing: prose sits on the portrait's optical baseline, not floating centered against a taller image */
+.split .body{padding-top:clamp(.5rem,4vh,3rem)}
 .split > *{position:relative;z-index:1}
 .split .fig img{width:100%;height:auto;display:block;filter:saturate(.92)}
 .split .fig figcaption{font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);margin-top:.9rem;text-align:left}
