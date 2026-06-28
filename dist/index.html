@@ -696,14 +696,29 @@ nav .links a.cta{color:var(--gold);opacity:1}
   linear-gradient(150deg, rgba(8,8,7,.80) 0%, rgba(8,8,7,.52) 24%, rgba(8,8,7,.14) 48%, transparent 66%),
   radial-gradient(46% 42% at 20% 26%, rgba(8,8,7,.42), transparent 72%);}
 
-/* THRESHOLD beat — bright high-key carved-stone photo. Its caption sits bottom-left
-   and the carved "GARRAN HILL 1916" sits bottom-center, so the seat must darken the
-   BOTTOM-LEFT for legibility while keeping the center carving and the bright doorway
-   readable. Overrides the upper-left tl scrim for this section only. */
-.ep-beat--threshold .scrim{background:
-  radial-gradient(54% 48% at 16% 86%, rgba(8,8,7,.82) 0%, rgba(8,8,7,.46) 42%, transparent 68%);}
-.ep-beat--threshold .pocket{background:
-  linear-gradient(82deg, rgba(8,8,7,.50) 0%, rgba(8,8,7,.14) 20%, transparent 38%);}
+/* THRESHOLD beat — SPLIT layout (Rachel 2026-06-28): the photo reads vertical and was
+   being cover-cropped into a wide band, losing the carved 'GARRAN HILL 1916' + wasting
+   viewport. Now a two-panel magazine spread: the FULL uncropped photo on one side, the
+   threshold copy on the black ground beside it. Whole frame shows; viewport is filled;
+   the rhythm staggers off the run of full-bleed beats. Overrides .ep-beat defaults. */
+.ep-beat--split{display:grid;grid-template-columns:0.92fr 1.08fr;align-items:stretch;
+  background:var(--ink);overflow:visible;min-height:clamp(560px,90vh,920px)}
+.ep-beat--split .ep-photo{position:relative;display:flex;align-items:center;justify-content:center;
+  padding:clamp(2rem,5vh,4.5rem) clamp(1rem,3vw,3rem);background:
+    radial-gradient(120% 90% at 50% 40%, rgba(28,24,18,.55), var(--ink) 78%)}
+.ep-beat--split .ep-photo img{position:static;width:auto;height:auto;
+  max-width:100%;max-height:clamp(520px,82vh,840px);object-fit:contain;display:block;
+  border-radius:2px;box-shadow:0 40px 110px rgba(0,0,0,.7),0 0 0 1px rgba(201,169,110,.16);
+  filter:saturate(1.02) contrast(1.02)}
+.ep-beat--split .ep-cap{position:relative;left:auto;right:auto;bottom:auto;top:auto;
+  align-self:center;max-width:34em;padding:clamp(2.5rem,7vh,6rem) clamp(2rem,5vw,5.5rem)}
+.ep-beat--split .scrim,.ep-beat--split .pocket{display:none}
+.ep-beat--split::after{display:none}
+@media(max-width:860px){.ep-beat--split{grid-template-columns:1fr;min-height:0}
+  .ep-beat--split .ep-photo{padding:clamp(1.5rem,5vh,3rem) var(--pad)}
+  .ep-beat--split .ep-photo img{max-height:74vh}
+  .ep-beat--split .ep-cap{text-align:center;padding:clamp(1.8rem,5vh,3rem) var(--pad) clamp(2.4rem,7vh,4rem)}
+  .ep-beat--split .ep-eyebrow{justify-content:center}}
 
 /* ep-detail — a quiet framed-in-air beat: photo inset on dark ground, NOT full-bleed.
    Breaks a run of full-bleed beats so photos never stack identically. (editorial-photo-presentation kit) */
@@ -1283,10 +1298,10 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   </div>
 </section>
 
-<section class="ep-beat ep-beat--tl ep-beat--threshold">
-  <img loading="lazy" style="object-position:center 60%" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:best,w_1800/v1/gh_key/gh_threshold_stone_wide.jpg" alt="Garran Hill threshold, the name GARRAN HILL 1916 cut into the granite of the porch floor, the front door open to the staircase beyond">
-  <div class="scrim"></div>
-  <div class="pocket"></div>
+<section class="ep-beat ep-beat--split">
+  <div class="ep-photo">
+    <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:best,w_1400/v1/gh_key/gh_threshold_stone_wide.jpg" alt="Garran Hill threshold, the name GARRAN HILL 1916 cut into the granite of the porch floor, the front door open to the staircase beyond">
+  </div>
   <div class="ep-cap">
     <span class="ep-eyebrow">The Threshold</span>
     <p>Before the walls, before the roof, the name was already cut into the stone.<br>GARRAN HILL. 1916.<br>No one has touched it since. It simply waits to be crossed.</p>
