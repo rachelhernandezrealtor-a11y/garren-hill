@@ -1460,7 +1460,6 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   <div class="ep-cap">
     <span class="ep-eyebrow">The Rise</span>
     <p>The oak handrail turns once, from the volute, and does not break again until the landing.<br>A century of hands has worn it smooth.<br>It still gives the entry its first gesture of grace.</p>
-    <p class="ep-sub">Taken to the studs in 1998, then brought back over three years. What was 1916 stayed 1916.</p>
   </div>
 </section>
 
@@ -1473,7 +1472,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 
 <!-- THE APPROACH — show the whole house on its own ground before going inside (Rachel: exterior, then invite them in) -->
 <div class="rooms-wrap">
-  <div class="rm-scene hero" data-imgs="003-front-aerial,001-front-exterior,006-front-main,009-portico,010-front-entry">
+  <div class="rm-scene hero" data-imgs="001-front-exterior,006-front-main,009-portico,010-front-entry">
     <span class="rm-idx">The Approach</span><span class="rm-end"></span>
     <div class="rm-cap"><span class="rm">Garran Hill</span><p class="det">Red brick laid in Flemish bond, a portico held on white columns, four and a quarter acres holding the house the way they have since 1916. You see all of it before you are asked to come closer.</p><span class="flow">The door is open</span></div>
     <div class="rm-dots"></div>
@@ -1692,8 +1691,9 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
     });
     if(slides.length<2)return;
     var cur=0,di=dots?dots.querySelectorAll('i'):[],timer=null;
-    // stagger dwell per scene so adjacent rooms don't flip in lockstep (alternate rhythm)
-    var dwell=5200+(si%3)*900;
+    // each photo HOLDS long enough to be looked at — calm editorial pace, not a restless flip.
+    // staggered per scene so adjacent rooms don't change in lockstep.
+    var dwell=8500+(si%3)*1100;
     function advance(){
       slides[cur].classList.remove('on'); if(di[cur])di[cur].classList.remove('on');
       cur=(cur+1)%slides.length;
