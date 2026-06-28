@@ -441,7 +441,16 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .split{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center;
   max-width:1180px;margin:0 auto;padding:clamp(2rem,5vh,4rem) var(--pad);background:transparent}
 .split > *{position:relative;z-index:1}
-.split .fig img{width:100%;height:auto;display:block;filter:saturate(.92)}
+/* DEPTH on the archival portrait (Rachel 2026-06-28: photos have depth + lift off the
+   dark ground, never dissolve flat into the wall). A soft warm glow separates the figure
+   from the black, a fine inner frame gives it presence, a gentle contrast/brightness lift
+   models the face. Legibility of the man, dimension on the page. */
+.split .fig{position:relative}
+.split .fig img{width:100%;height:auto;display:block;
+  filter:saturate(.96) contrast(1.07) brightness(1.05);
+  box-shadow:0 0 0 1px rgba(204,178,138,.28),0 18px 60px rgba(0,0,0,.6),0 0 90px 10px rgba(120,96,52,.18)}
+.split .fig::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
+  background:radial-gradient(ellipse 70% 60% at 50% 38%,rgba(255,246,228,.12) 0%,transparent 55%);mix-blend-mode:soft-light}
 .split .fig figcaption{font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);margin-top:.9rem;text-align:left}
 .split .body{text-align:left}
 .split .body p{font-family:var(--font-body);font-weight:300;font-size:clamp(1.1rem,1.5vw,1.3rem);line-height:1.74;color:var(--cream-dim);margin:0 0 1.3rem}
@@ -556,7 +565,8 @@ nav .links a.cta{color:var(--gold);opacity:1}
       separation from the dark ground. The image sits IN air, off the wall. */
 .built .archival-depth{position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:soft-light;
   background:radial-gradient(ellipse 62% 58% at 50% 42%,rgba(255,244,222,.22) 0%,transparent 60%),
-             radial-gradient(ellipse 120% 120% at 50% 50%,transparent 38%,rgba(6,6,5,.5) 100%)}
+             linear-gradient(180deg,transparent 55%,rgba(255,244,222,.14) 100%),
+             radial-gradient(ellipse 120% 120% at 50% 50%,transparent 44%,rgba(6,6,5,.4) 100%)}
 .built .archival-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:radial-gradient(ellipse 80% 82% at 50% 50%,transparent 0%,transparent 56%,rgba(8,8,7,.30) 100%)}
 /* soft seams so the archival photo melds into the dark above and below */
