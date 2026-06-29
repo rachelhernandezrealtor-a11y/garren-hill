@@ -472,13 +472,19 @@ nav .links a.cta{color:var(--gold);opacity:1}
 /* his actual letter as the ground — warm aged paper lit in the center, dissolving into the
    dark at the edges (a real letter lying in shadow). The gold "the farm" rises off the page.
    NOT inverted: black ink on cream, so it reads as a letter, not a cold ghost. */
+/* his actual letter, lit like a page lying under a lamp: VISIBLE BY DEFAULT (never a black void
+   waiting on a scroll trigger), warm cream paper glowing in the center, real ink legible,
+   dissolving into the dark at the edges. The gold "the farm" rises off his own hand. */
 .letter .pageink{position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/gh_key/gh_whp_letter1.jpg') center 34%/120% auto no-repeat;
-  opacity:0;filter:sepia(.42) contrast(.92) brightness(1.05) saturate(.95) blur(2.5px);
-  -webkit-mask-image:radial-gradient(ellipse 58% 50% at 50% 46%,#000 0%,rgba(0,0,0,.4) 45%,transparent 72%);
-  mask-image:radial-gradient(ellipse 58% 50% at 50% 46%,#000 0%,rgba(0,0,0,.4) 45%,transparent 72%)}
+  background:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/gh_key/gh_whp_letter1.jpg') center 30%/118% auto no-repeat;
+  opacity:.62;filter:sepia(.46) contrast(1.02) brightness(1.18) saturate(1.04);
+  -webkit-mask-image:radial-gradient(ellipse 64% 58% at 50% 44%,#000 0%,#000 28%,rgba(0,0,0,.55) 52%,transparent 80%);
+  mask-image:radial-gradient(ellipse 64% 58% at 50% 44%,#000 0%,#000 28%,rgba(0,0,0,.55) 52%,transparent 80%)}
+/* a warm pool of lamplight bloom over the paper so it reads as a lit artifact, not a flat scan */
+.letter .pageink::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 50% 44% at 50% 42%,rgba(214,178,112,.16),transparent 68%);mix-blend-mode:soft-light}
 .letter .pageink{animation:inkDrift 32s ease-in-out 3s infinite}
-@keyframes inkDrift{0%{background-position:center 34%}50%{background-position:center 31%}100%{background-position:center 34%}}
+@keyframes inkDrift{0%{background-position:center 30%}50%{background-position:center 27%}100%{background-position:center 30%}}
 /* a soft dark frame so the paper never hard-edges the section */
 .letter .hand-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:radial-gradient(ellipse 86% 78% at 50% 44%,transparent 0%,transparent 50%,rgba(8,8,7,.62) 100%)}
@@ -961,18 +967,21 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   box-shadow:inset 0 0 0 1px rgba(184,152,99,0);transition:box-shadow .5s var(--eq)}
 .grid figure:hover::after{box-shadow:inset 0 0 0 1px rgba(184,152,99,.5)}
 
-/* --- LETTER PATINA: the ghosted Page letter behind "The farm" was reading as
-   muddy printed-text wallpaper (the Squarespace tell). Invert it to luminous
-   strokes per the preserve-the-image law — printed ink becomes faint light
-   tracery caught in low light, not legible book text. Hold it to a whisper:
-   heavy blur + low opacity + large scale so words can never be decoded. --- */
+/* --- LETTER GROUND (placeholder until the REAL Harvard MS Am 1090 letter lands).
+   The old override inverted+blurred the paper into a near-black void (a screen
+   that read empty on load — broke the hero-load-void law). And the source is a
+   printed BOOK page, so legible text = the Squarespace tell. The honest fix:
+   hold the ground as a soft WARM WHISPER of lamplit paper — visible by default,
+   never decodable as book text, dissolving into the dark at the edges. When the
+   real digitized autograph letter is in, this src + treatment gets swapped. --- */
 .letter .pageink{
-  filter:invert(1) sepia(.3) saturate(.5) brightness(1.04) contrast(.62) blur(7px)!important;
-  mix-blend-mode:screen;opacity:.5;
-  background-size:185% auto!important;
-  -webkit-mask-image:radial-gradient(ellipse 50% 40% at 50% 44%,#000 0%,rgba(0,0,0,.22) 40%,transparent 66%)!important;
-  mask-image:radial-gradient(ellipse 50% 40% at 50% 44%,#000 0%,rgba(0,0,0,.22) 40%,transparent 66%)!important}
-/* GSAP reveals pageink to .5; cap the visible result lower via the mask+contrast above */
+  filter:sepia(.5) saturate(.7) brightness(1.06) contrast(.7) blur(3px)!important;
+  mix-blend-mode:normal;opacity:.34;
+  background-size:150% auto!important;background-position:center 34%!important;
+  -webkit-mask-image:radial-gradient(ellipse 58% 50% at 50% 42%,#000 0%,rgba(0,0,0,.4) 46%,transparent 74%)!important;
+  mask-image:radial-gradient(ellipse 58% 50% at 50% 42%,#000 0%,rgba(0,0,0,.4) 46%,transparent 74%)!important}
+/* GSAP may reveal pageink to a target opacity; the values above keep the visible
+   result a warm whisper regardless — paper presence, never a void, never legible book text */
 
 /* --- GRAVE BEAT: feather the slate photo into the black so it stops reading
    as a floated rectangle, and lay a soft scrim under the gold eyebrow so
@@ -1741,8 +1750,8 @@ if(window.matchMedia('(pointer:fine)').matches){
     GH.lift('[data-gh="lift"]');
     // the farm writes itself on, phrase by phrase, like a pen — triggered by the letter section
     GH.writeOn('.letter .rise .farm',{trigger:'.letter',start:'top 68%',dur:1.8,stagger:1.25});
-    // his letter ground blooms in as the section arrives
-    GH.dissolve('.letter .pageink',{to:0.5,from:1.06,dur:2.8,start:'top 80%'});
+    // his letter ground is visible by default; the dissolve only adds a gentle warm bloom on arrival
+    GH.dissolve('.letter .pageink',{to:0.62,from:1.04,dur:2.8,start:'top 88%'});
   };
 
   GH.ready = true;
