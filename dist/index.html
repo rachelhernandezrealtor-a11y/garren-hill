@@ -1779,20 +1779,19 @@ if(window.matchMedia('(pointer:fine)').matches){
     }}catch(e){}
     var yr=root.querySelector('.gs-year');
     var yo={v:1916};
-    // PIN IS FRAGILE ON iOS SAFARI. When it fails, --wash stays 0 forever: the 2026
-    // photo never lifts in (you're frozen on the 1916 sepia, no motion). So on touch /
-    // small viewports we do NOT pin. We play the SAME wash as a self-contained timeline
-    // the moment the section enters view — both photos, year turn, both lines — on EVERY
-    // device. Desktop keeps the scroll-scrub. (Rachel: "2 photos", "where is the motion".)
+    // OPENS ON 1916 AND HOLDS. Time does not move on a timer — Rachel drives it by
+    // scrolling. On iOS the PINNED scrub is fragile, so on touch/small screens we use a
+    // NON-pinned scrub tied to the section's own scroll progress: as the section travels
+    // up through the viewport, --wash goes 0->1, sepia 1916 lifts into 2026 twilight, the
+    // year turns, the prophecy recedes and the payoff lands. Frame one = pure 1916.
+    // (Rachel: "1916!!" — open on the old photo, no auto-play, no stacked lines.)
     var noPin = matchMedia('(hover:none),(pointer:coarse),(max-width:900px)').matches;
     var tl=gsap.timeline({
-      defaults:{ease:'none',duration:1},          // linear, full-span by default -> even breath under scrub
+      defaults:{ease:'none',duration:1},
       scrollTrigger: noPin
-        ? {trigger:root,start:'top 62%',toggleActions:'play none none none'}   // mobile: PLAY the film on arrival
-        : {trigger:root,start:'top top',end:'+=170%',pin:true,scrub:1,anticipatePin:1}  // desktop: scrub it
+        ? {trigger:root,start:'top bottom',end:'bottom top',scrub:0.6}   // mobile: YOU drive time by scrolling (no pin)
+        : {trigger:root,start:'top top',end:'+=170%',pin:true,scrub:1,anticipatePin:1}  // desktop: pinned scrub
     });
-    // give the played-back film real cinematic pacing (scrub uses ease:none; playback breathes)
-    if(noPin){ tl.timeScale(0.42); }   // ~7s wash so the time-lapse reads, not a flash
     // CONTINUOUS SPANS (0 -> 1, duration 1): travel INTO frame + century turn fill the WHOLE pin
     tl.to('.gs-far', {yPercent:-5,  scale:1.04},0)
       .to('.gs-mid', {yPercent:-13, scale:1.11},0)
