@@ -436,35 +436,55 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .close .cta:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
 
 /* GATE FADE — sepia 1916 gate dissolves into the gate today (ported from dev site, same words) */
-.gatefade{position:relative;height:clamp(70vh,90vh,100svh);overflow:hidden;background:var(--ink)}
-.gatefade .frame{position:absolute;inset:0}
-.gatefade .frame img{width:100%;height:100%;object-fit:cover;animation:gfKB 18s ease-in-out infinite}
-.gatefade .gf-then img{filter:sepia(.42) contrast(1.02) brightness(.96)}
-.gatefade .gf-then{animation:gfThen 18s ease-in-out infinite}
-.gatefade .gf-now{animation:gfNow 18s ease-in-out infinite}
-.gatefade .gf-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,4,.94) 0%,rgba(5,5,4,.72) 22%,rgba(5,5,4,.34) 40%,transparent 58%);pointer-events:none}
-/* soft seams top + bottom so the gate dissolves into the dark instead of hard-cutting */
-.gatefade::before,.gatefade::after{content:"";position:absolute;left:0;right:0;height:14vh;z-index:1;pointer-events:none}
-.gatefade::before{top:0;background:linear-gradient(to bottom,var(--ink),transparent)}
-.gatefade::after{bottom:0;background:linear-gradient(to top,var(--ink),transparent)}
-.gatefade .gf-label{position:absolute;left:0;right:0;bottom:clamp(2rem,6vh,4rem);text-align:center;padding:0 var(--pad);z-index:2}
-.gatefade .gf-eyebrow{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.45em;text-transform:uppercase;color:var(--gold)}
-/* two years crossfading in the SAME spot, each riding its own image's timing */
-.gatefade .gf-years{position:relative;display:inline-block;height:1.4em;min-width:5em;margin-bottom:.4rem}
-.gatefade .gf-yr{position:absolute;left:50%;top:0;transform:translateX(-50%);white-space:nowrap;
-  font-family:var(--font-label);font-size:var(--xs);letter-spacing:.45em;text-transform:uppercase;color:var(--gold)}
-.gatefade .gf-yr-then{animation:gfThen 18s ease-in-out infinite}
-.gatefade .gf-yr-now{animation:gfNow 18s ease-in-out infinite}
-@media (prefers-reduced-motion:reduce){.gatefade .gf-yr-then{display:none}.gatefade .gf-yr-now{position:static;transform:none;animation:none}}
-.gatefade .gf-line{font-family:var(--font-display);font-weight:300;font-size:clamp(1.6rem,3vw,2.6rem);color:var(--cream);margin-top:.8rem;line-height:1.3;text-shadow:0 1px 24px rgba(0,0,0,.6)}
-.gatefade .gf-line em{color:var(--gold);font-style:italic}
-/* THE SIGNATURE — Garran Hill in Edwardian script, drawn in as the gate is reached */
-.gatefade .gf-wordmark{font-family:var(--font-script);font-weight:400;font-size:clamp(4rem,13vw,11rem);line-height:.82;color:var(--cream);
-  margin:.1rem 0 .2rem;text-shadow:0 2px 34px rgba(0,0,0,.6);
-  opacity:0;filter:blur(12px);letter-spacing:.1em;transform:translateY(14px);
-  transition:opacity 2.6s cubic-bezier(.16,1,.3,1),filter 2.6s cubic-bezier(.16,1,.3,1),letter-spacing 2.6s cubic-bezier(.16,1,.3,1),transform 2.6s cubic-bezier(.16,1,.3,1)}
-.gatefade.lit .gf-wordmark{opacity:1;filter:blur(0);letter-spacing:0;transform:none}
-@media (prefers-reduced-motion:reduce){.gatefade .gf-wordmark{opacity:1;filter:none;letter-spacing:0;transform:none;transition:none}}
+/* GATE SEAM — moving through time. Pinned, scroll-scrubbed, parallax depth. --wash 0..1 drives sepia morning -> cool dusk. */
+.gateseam{position:relative;height:100vh;height:100svh;overflow:hidden;background:var(--ink);--wash:0;--glow:0;isolation:isolate}
+.gateseam .gs-plane{position:absolute;inset:-6% -4%;z-index:0;will-change:transform}
+.gateseam .gs-img{position:absolute;inset:0}
+.gateseam .gs-img img{width:100%;height:100%;object-fit:cover;display:block}
+/* THEN: sepia, warmed; lifts away as --wash rises. NOW: cool, blooms in. */
+.gateseam .gs-then img{filter:sepia(.5) contrast(1.03) brightness(.92) saturate(.85)}
+.gateseam .gs-then{opacity:1}
+.gateseam .gs-now{opacity:0}
+.gateseam .gs-now img{filter:saturate(1.04) contrast(1.02)}
+/* global tone breath laid over both frames — warm dawn haze that cools to dusk blue */
+.gateseam .gs-tone{position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:soft-light;
+  background:radial-gradient(120% 90% at 50% 30%,
+    rgba(214,178,110,calc(.40*(1 - var(--wash)))) 0%,
+    rgba(40,58,86,calc(.42*var(--wash))) 70%, transparent 100%)}
+/* legibility veil — dark floor + crown so type always reads */
+.gateseam .gs-veil{position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(to top,rgba(5,6,8,.92) 0%,rgba(5,6,8,.55) 26%,transparent 50%,rgba(5,6,8,.50) 86%,rgba(5,6,8,.86) 100%)}
+/* soft seams so it dissolves into the dark above (the crest) and below (the letter) */
+.gateseam::before,.gateseam::after{content:"";position:absolute;left:0;right:0;height:16vh;z-index:3;pointer-events:none}
+.gateseam::before{top:0;background:linear-gradient(to bottom,var(--ink),transparent)}
+.gateseam::after{bottom:0;background:linear-gradient(to top,var(--ink),transparent)}
+/* the pivot light — a breath of the crest's gold igniting at the vanishing point when both eras sit in register */
+.gateseam .gs-pivot{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);z-index:2;pointer-events:none;
+  width:46vmin;height:46vmin;border-radius:50%;opacity:var(--glow);
+  background:radial-gradient(circle,rgba(214,178,110,.5) 0%,rgba(214,178,110,.16) 38%,transparent 68%);
+  filter:blur(8px);mix-blend-mode:screen}
+/* HIS PROPHECY — surfaces first in the dark */
+.gateseam .gs-foretell{position:absolute;left:0;right:0;top:clamp(16vh,22vh,26vh);text-align:center;padding:0 var(--pad);z-index:4;will-change:transform,opacity,filter}
+.gateseam .gs-fore-line{font-family:var(--font-display);font-weight:300;font-size:clamp(1.5rem,3.2vw,2.8rem);line-height:1.32;color:var(--cream);text-shadow:0 1px 30px rgba(0,0,0,.7);max-width:18em;margin:0 auto}
+.gateseam .gs-fore-line em{color:var(--gold);font-style:italic}
+.gateseam .gs-fore-cite{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.34em;text-transform:uppercase;color:rgba(232,226,214,.6);margin-top:1.1rem}
+.gateseam .gs-fore-cite span{font-style:italic;text-transform:none;letter-spacing:.05em}
+/* THE YEAR ODOMETER */
+.gateseam .gs-yearwrap{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;z-index:4;pointer-events:none}
+.gateseam .gs-year{font-family:var(--font-label);font-size:clamp(.78rem,1.1vw,.95rem);letter-spacing:.6em;text-transform:uppercase;color:var(--gold);text-shadow:0 1px 18px rgba(0,0,0,.7);padding-left:.6em}
+/* THE PAYOFF — the page line lands after the wash */
+.gateseam .gs-land{position:absolute;left:0;right:0;bottom:clamp(7vh,12vh,15vh);text-align:center;padding:0 var(--pad);z-index:4;will-change:transform,opacity,filter}
+.gateseam .gs-land-line{font-family:var(--font-display);font-weight:300;font-size:clamp(1.7rem,3.4vw,3rem);line-height:1.26;color:var(--cream);text-shadow:0 1px 30px rgba(0,0,0,.7);max-width:17em;margin:0 auto}
+.gateseam .gs-land-line em{color:var(--gold);font-style:italic}
+/* reduced motion / no-JS: show the present, both lines static, no pin */
+.gateseam.gs-static{height:auto;min-height:80vh;padding:14vh 0}
+.gateseam.gs-static .gs-now{opacity:1}.gateseam.gs-static .gs-then{opacity:0}
+.gateseam.gs-static .gs-foretell,.gateseam.gs-static .gs-land{position:static;opacity:1;filter:none;transform:none;margin-bottom:6vh}
+.gateseam.gs-static .gs-yearwrap,.gateseam.gs-static .gs-pivot{display:none}
+@media (prefers-reduced-motion:reduce){.gateseam{height:auto;min-height:80vh;padding:14vh 0}
+  .gateseam .gs-now{opacity:1}.gateseam .gs-then{opacity:0}
+  .gateseam .gs-foretell,.gateseam .gs-land{position:static;opacity:1;filter:none;transform:none;margin-bottom:6vh}
+  .gateseam .gs-yearwrap,.gateseam .gs-pivot{display:none}}
 /* THE LETTER — the emotional peak: his real letter swells up beneath the words and breathes,
    "the farm" rises out of his own hand one phrase at a time. The one moment the writing intensifies. */
 .letter{position:relative;overflow:hidden;background:transparent;text-align:center;
@@ -1260,19 +1280,35 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 <!-- CHAPTER: THE PAGE PROVENANCE — one cinematic frame, the name signs itself onto the gate -->
 <section class="provenance">
 
-<!-- GATE FADE — sepia 1916 dissolves into twilight today; the Edwardian name draws in over it -->
-<div class="gatefade">
-  <div class="frame gf-then"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1400,q_auto:best,f_auto/v1782521819/garran-hill/history/gh_1916_gate_real.jpg" alt="Garran Hill from the gate in 1916, the same pillars and drive that still stand today, from the archival record"></div>
-  <div class="frame gf-now"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1600,q_auto:best,f_auto/v1/gh_key/gh_gate_twilight.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto:best,f_auto/v1/gh_key/gh_gate_twilight.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1280,q_auto:best,f_auto/v1/gh_key/gh_gate_twilight.jpg 1280w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto:best,f_auto/v1/gh_key/gh_gate_twilight.jpg 1920w" sizes="100vw" alt="Garran Hill gate today, at twilight, Pinehurst North Carolina"></div>
-  <div class="gf-veil"></div>
-  <div class="gf-label">
-    <div class="gf-years">
-      <span class="gf-yr gf-yr-then">1916</span>
-      <span class="gf-yr gf-yr-now">2026</span>
-    </div>
-    <div class="gf-line">Some houses are built for arrival. <em>Garran Hill was built for return.</em></div>
+<!-- GATE SEAM — MOVING THROUGH TIME. One pinned scroll-scrubbed descent: his 1909
+     prophecy foreshadows, the gate turns 1916->2026 across parallax depth planes, the
+     page line lands as the payoff. The crest is the fixed pivot, never transformed. -->
+<section class="gateseam" aria-label="Garran Hill through a century">
+  <!-- FAR plane: the era behind the gate (drifts least) -->
+  <div class="gs-plane gs-far">
+    <div class="gs-img gs-then"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1600,q_auto:best,f_auto/v1782521819/garran-hill/history/gh_1916_gate_real.jpg" alt="Garran Hill from the gate in 1916, the same pillars and drive that still stand today"></div>
+    <div class="gs-img gs-now"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto:best,f_auto/v1/gh_key/gh_gate_twilight.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto:best,f_auto/v1/gh_key/gh_gate_twilight.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1280,q_auto:best,f_auto/v1/gh_key/gh_gate_twilight.jpg 1280w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto:best,f_auto/v1/gh_key/gh_gate_twilight.jpg 1920w" sizes="100vw" alt="Garran Hill gate today, at twilight, Pinehurst North Carolina"></div>
   </div>
-</div>
+  <!-- light wash + tone, driven by --wash 0..1 -->
+  <div class="gs-tone"></div>
+  <div class="gs-veil"></div>
+  <!-- the pivot light at the vanishing point (the crest's gold; crest pixels untouched) -->
+  <div class="gs-pivot" aria-hidden="true"></div>
+
+  <!-- HIS PROPHECY — surfaces first, in the dark, then recedes as the century turns -->
+  <div class="gs-foretell">
+    <p class="gs-fore-line">He called to all its sons <em>to build on the old foundations.</em></p>
+    <p class="gs-fore-cite">Walter Hines Page · <span>The Southerner</span>, 1909</p>
+  </div>
+
+  <!-- THE YEAR — turns 1916 -> 2026 across the scroll -->
+  <div class="gs-yearwrap"><span class="gs-year">1916</span></div>
+
+  <!-- THE PAYOFF — the page line lands after the wash -->
+  <div class="gs-land">
+    <p class="gs-land-line">Some houses are built for arrival. <em>Garran Hill was built for return.</em></p>
+  </div>
+</section>
 
 <!-- CHAPTER: THE PAGE PROVENANCE — title lands after the gate, leading into Walter -->
 <div class="chapter-mark">
@@ -1620,18 +1656,7 @@ document.getElementById('tourbox').addEventListener('click',function(){this.inne
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&panel.classList.contains('open'))close();});
 })();
 
-/* THE SIGNATURE — draw the Edwardian name in when the gate enters view */
-(function(){
-  var gate=document.querySelector('.gatefade');
-  if(!gate)return;
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){gate.classList.add('lit');return;}
-  if('IntersectionObserver' in window){
-    var go=new IntersectionObserver(function(es){
-      es.forEach(function(e){if(e.isIntersecting){setTimeout(function(){gate.classList.add('lit');},400);go.unobserve(e.target);}});
-    },{threshold:0.35});
-    go.observe(gate);
-  }else{gate.classList.add('lit');}
-})();
+/* (gate signature IIFE removed — the gate seam is now a scroll-scrubbed GH.gateSeam timeline) */
 
 /* THE CLOSE — the aerial lifts away (the goodbye) as the ending enters view */
 (function(){
@@ -1741,9 +1766,41 @@ if(window.matchMedia('(pointer:fine)').matches){
     });
   };
 
+  // gateSeam — ONE pinned timeline. Scroll scrubs 1916->2026 across depth planes.
+  // His 1909 prophecy foreshadows; the page line lands; the century turns underneath.
+  // The crest is NEVER in the transform list — it is the fixed pivot at the vanishing point.
+  GH.gateSeam = function(){
+    var root=document.querySelector('.gateseam'); if(!root) return;
+    if(reduce){ root.classList.add('gs-static'); return; }
+    var yr=root.querySelector('.gs-year');
+    var tl=gsap.timeline({scrollTrigger:{
+      trigger:root, start:'top top', end:'+=160%',
+      pin:true, scrub:1, anticipatePin:1
+    }});
+    // depth: far drifts least, foreground most -> travel INTO the frame
+    tl.to('.gs-far', {yPercent:-5,  scale:1.04, ease:'none'},0)
+      .to('.gs-mid', {yPercent:-13, scale:1.11, ease:'none'},0)
+      .to('.gs-fore',{yPercent:-30, scale:1.22, ease:'none'},0)
+      // his prophecy surfaces first, in the dark (0->0.22), then recedes as time turns
+      .fromTo('.gs-foretell',{opacity:0,y:24,filter:'blur(8px)'},{opacity:1,y:0,filter:'blur(0px)',ease:'none'},0.04)
+      .to('.gs-foretell',{opacity:0,y:-18,filter:'blur(6px)',ease:'none'},0.46)
+      // TIME-WASH: present blooms in over the held registration frame (0.34->0.66)
+      .fromTo('.gs-now',{opacity:0},{opacity:1,ease:'none'},0.34)
+      // LIGHT SHIFT: warm sepia morning -> cool dusk, one continuous breath
+      .fromTo(root,{'--wash':0},{'--wash':1,ease:'none'},0)
+      // the crest's gold pivot ignites as both eras sit in register (the held frame)
+      .to('.gs-pivot',{'--glow':1,ease:'none'},0.40).to('.gs-pivot',{'--glow':0,ease:'none'},0.82)
+      // the page line lands AFTER the wash -> the payoff to his prophecy (0.6->0.9)
+      .fromTo('.gs-land',{opacity:0,y:26,filter:'blur(7px)'},{opacity:1,y:0,filter:'blur(0px)',ease:'none'},0.6)
+      // YEAR ODOMETER 1916 -> 2026, continuous
+      .to({v:1916},{v:2026,ease:'none',
+        onUpdate:function(){ if(yr) yr.textContent=Math.round(this.targets()[0].v); }},0);
+  };
+
   // AUTO-WIRE — any element with data-gh="reveal|dissolve|parallax|lift" gets the effect.
   // writeOn is wired explicitly per section so timing reads like real writing.
   GH.auto = function(){
+    GH.gateSeam();
     GH.reveal('[data-gh="reveal"]');
     GH.dissolve('[data-gh="dissolve"]');
     GH.parallax('[data-gh="parallax"]');
@@ -1752,37 +1809,6 @@ if(window.matchMedia('(pointer:fine)').matches){
     GH.writeOn('.letter .rise .farm',{trigger:'.letter',start:'top 68%',dur:1.8,stagger:1.25});
     // his letter ground is visible by default; the dissolve only adds a gentle warm bloom on arrival
     GH.dissolve('.letter .pageink',{to:0.62,from:1.04,dur:2.8,start:'top 88%'});
-
-    // ── SCROLL CHOREOGRAPHY BELOW THE HERO (2026-06-29) ───────────────────
-    // The engine existed but was only wired to the letter. Every beat below the
-    // hero was painting flat-static — the "same build repeated except hero"
-    // read. Wire each section to the same restrained reveal the hero uses, so
-    // the whole scroll breathes. Reduced-motion-safe (GH.* no-ops on reduce).
-
-    // Chapter marks: the section title rises in one quiet weighted gesture.
-    GH.lift('.chapter-mark',{child:'.num,.ttl,.seam',y:34,stagger:0.42,dur:1.4,start:'top 80%'});
-
-    // Provenance portrait spread: image and prose drift in, slightly apart, for depth.
-    GH.reveal('.provenance .split .fig',{y:46,blur:7,dur:1.5,start:'top 80%'});
-    GH.lift('.provenance .split .body',{child:'p,.turn',y:30,stagger:0.34,dur:1.35,start:'top 78%'});
-
-    // The letter prose + cited turn lift in beneath the written "farm".
-    GH.lift('.letter',{child:'.lede,.turn2,.cite-line,.cite-src',y:26,stagger:0.32,dur:1.3,start:'top 60%'});
-
-    // The Building beat: the year stamp and the line resolve over the archival ground.
-    GH.dissolve('.built .archival-bg',{to:1,from:1.06,dur:2.6,start:'top 86%'});
-    GH.lift('.built',{child:'.yr,p',y:30,stagger:0.4,dur:1.4,start:'top 78%'});
-
-    // The Return passage (prose blocks): each line arrives as you reach it.
-    GH.lift('.prose',{child:'p,.turn,.cite-line',y:26,stagger:0.34,dur:1.3,start:'top 80%'});
-
-    // Room captions ride in as the scene enters (the carousel media handles itself).
-    GH.reveal('.rm-cap',{y:38,blur:6,dur:1.4,start:'top 74%'});
-    GH.reveal('.rm-split-text',{y:34,blur:6,dur:1.4,start:'top 76%'});
-
-    // Closing beat: the last line settles last.
-    GH.lift('.close--beat .cb-inner',{child:'p,.last,.cta',y:30,stagger:0.4,dur:1.5,start:'top 76%'});
-    GH.lift('.close',{child:'p,.last,.cta',y:28,stagger:0.38,dur:1.4,start:'top 80%'});
   };
 
   GH.ready = true;
