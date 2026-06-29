@@ -476,7 +476,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
    waiting on a scroll trigger), warm cream paper glowing in the center, real ink legible,
    dissolving into the dark at the edges. The gold "the farm" rises off his own hand. */
 .letter .pageink{position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1782717901/gh_key/gh_whp_page_letter_1907.jpg') center 26%/82% auto no-repeat;
+  background:url('https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1600/v1/gh_key/gh_whp_letter1.jpg') center 30%/118% auto no-repeat;
   opacity:.62;filter:sepia(.46) contrast(1.02) brightness(1.18) saturate(1.04);
   -webkit-mask-image:radial-gradient(ellipse 64% 58% at 50% 44%,#000 0%,#000 28%,rgba(0,0,0,.55) 52%,transparent 80%);
   mask-image:radial-gradient(ellipse 64% 58% at 50% 44%,#000 0%,#000 28%,rgba(0,0,0,.55) 52%,transparent 80%)}
@@ -967,25 +967,21 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   box-shadow:inset 0 0 0 1px rgba(184,152,99,0);transition:box-shadow .5s var(--eq)}
 .grid figure:hover::after{box-shadow:inset 0 0 0 1px rgba(184,152,99,.5)}
 
-/* --- LETTER GROUND — Walter Hines Page's OWN 1907 letter on Doubleday, Page & Co.
-   letterhead (real document, his signature in brown ink at the foot). PROOF OF
-   CONCEPT ground; a final cleanly-licensed scan swaps in later via this same id.
-   Treatment: lamplit paper, warm, lit toward the upper-center where his text and
-   letterhead live, dissolving into the dark at every edge. The dense type is held
-   to a soft presence (never legible enough to read as a scanned page); the clean
-   lower third is where the gold "the farm" rises. Visible by default — never a
-   void waiting on a scroll trigger. --- */
+/* --- LETTER GROUND (placeholder until the REAL Harvard MS Am 1090 letter lands).
+   The old override inverted+blurred the paper into a near-black void (a screen
+   that read empty on load — broke the hero-load-void law). And the source is a
+   printed BOOK page, so legible text = the Squarespace tell. The honest fix:
+   hold the ground as a soft WARM WHISPER of lamplit paper — visible by default,
+   never decodable as book text, dissolving into the dark at the edges. When the
+   real digitized autograph letter is in, this src + treatment gets swapped. --- */
 .letter .pageink{
-  filter:sepia(.42) saturate(.78) brightness(1.08) contrast(.72) blur(2.2px)!important;
-  mix-blend-mode:normal;opacity:.4;
-  background-size:82% auto!important;background-position:center 26%!important;
-  -webkit-mask-image:radial-gradient(ellipse 60% 54% at 50% 34%,#000 0%,#000 14%,rgba(0,0,0,.5) 48%,transparent 78%)!important;
-  mask-image:radial-gradient(ellipse 60% 54% at 50% 34%,#000 0%,#000 14%,rgba(0,0,0,.5) 48%,transparent 78%)!important}
-/* a warm lamplight bloom centered on the paper so it reads as a lit artifact */
-.letter .pageink::after{content:"";position:absolute;inset:0;
-  background:radial-gradient(ellipse 46% 40% at 50% 30%,rgba(214,178,112,.18),transparent 66%);mix-blend-mode:soft-light}
+  filter:sepia(.5) saturate(.7) brightness(1.06) contrast(.7) blur(3px)!important;
+  mix-blend-mode:normal;opacity:.34;
+  background-size:150% auto!important;background-position:center 34%!important;
+  -webkit-mask-image:radial-gradient(ellipse 58% 50% at 50% 42%,#000 0%,rgba(0,0,0,.4) 46%,transparent 74%)!important;
+  mask-image:radial-gradient(ellipse 58% 50% at 50% 42%,#000 0%,rgba(0,0,0,.4) 46%,transparent 74%)!important}
 /* GSAP may reveal pageink to a target opacity; the values above keep the visible
-   result a lamplit real document, never a flat scan, never a void */
+   result a warm whisper regardless — paper presence, never a void, never legible book text */
 
 /* --- GRAVE BEAT: feather the slate photo into the black so it stops reading
    as a floated rectangle, and lay a soft scrim under the gold eyebrow so
