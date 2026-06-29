@@ -1752,6 +1752,37 @@ if(window.matchMedia('(pointer:fine)').matches){
     GH.writeOn('.letter .rise .farm',{trigger:'.letter',start:'top 68%',dur:1.8,stagger:1.25});
     // his letter ground is visible by default; the dissolve only adds a gentle warm bloom on arrival
     GH.dissolve('.letter .pageink',{to:0.62,from:1.04,dur:2.8,start:'top 88%'});
+
+    // ── SCROLL CHOREOGRAPHY BELOW THE HERO (2026-06-29) ───────────────────
+    // The engine existed but was only wired to the letter. Every beat below the
+    // hero was painting flat-static — the "same build repeated except hero"
+    // read. Wire each section to the same restrained reveal the hero uses, so
+    // the whole scroll breathes. Reduced-motion-safe (GH.* no-ops on reduce).
+
+    // Chapter marks: the section title rises in one quiet weighted gesture.
+    GH.lift('.chapter-mark',{child:'.num,.ttl,.seam',y:34,stagger:0.42,dur:1.4,start:'top 80%'});
+
+    // Provenance portrait spread: image and prose drift in, slightly apart, for depth.
+    GH.reveal('.provenance .split .fig',{y:46,blur:7,dur:1.5,start:'top 80%'});
+    GH.lift('.provenance .split .body',{child:'p,.turn',y:30,stagger:0.34,dur:1.35,start:'top 78%'});
+
+    // The letter prose + cited turn lift in beneath the written "farm".
+    GH.lift('.letter',{child:'.lede,.turn2,.cite-line,.cite-src',y:26,stagger:0.32,dur:1.3,start:'top 60%'});
+
+    // The Building beat: the year stamp and the line resolve over the archival ground.
+    GH.dissolve('.built .archival-bg',{to:1,from:1.06,dur:2.6,start:'top 86%'});
+    GH.lift('.built',{child:'.yr,p',y:30,stagger:0.4,dur:1.4,start:'top 78%'});
+
+    // The Return passage (prose blocks): each line arrives as you reach it.
+    GH.lift('.prose',{child:'p,.turn,.cite-line',y:26,stagger:0.34,dur:1.3,start:'top 80%'});
+
+    // Room captions ride in as the scene enters (the carousel media handles itself).
+    GH.reveal('.rm-cap',{y:38,blur:6,dur:1.4,start:'top 74%'});
+    GH.reveal('.rm-split-text',{y:34,blur:6,dur:1.4,start:'top 76%'});
+
+    // Closing beat: the last line settles last.
+    GH.lift('.close--beat .cb-inner',{child:'p,.last,.cta',y:30,stagger:0.4,dur:1.5,start:'top 76%'});
+    GH.lift('.close',{child:'p,.last,.cta',y:28,stagger:0.38,dur:1.4,start:'top 80%'});
   };
 
   GH.ready = true;
