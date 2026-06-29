@@ -910,3 +910,39 @@ FACTS AUTHORITY: FACTS.md + mls-listing-truth.md + features-sheet.md. 4bd/6ba/63
 
 ## INSTAGRAM / SOCIAL PORTRAIT LAW (Rachel, June 18 2026 — recovered)
 - For Instagram / reels / social, prefer PORTRAIT photos — they fit the vertical viewport better than landscape. "Normal realtors don't do that shit — I want to be extra": social graphics are held to the same bespoke bar as the site, never generic listing posts.
+
+## THE WORKROOM — WIRING LAW (Rachel + Coco, June 29 2026 — proven live)
+The workroom is the Hermes WebUI: a browser-based door into THIS SAME Coco
+(coco profile, Opus 4.8, FULL hands). It runs on the box `coco-cloud` and is
+served to Rachel's Mac through a Cloudflare tunnel — no SSH, no password file.
+
+- **Open from any browser:** https://hermes-gateway.rachelhernandez.studio
+- **Login password:** kept in /root/hermes-webui/.env (HERMES_WEBUI_PASSWORD) —
+  never paste it into tracked files or chat logs.
+- **Code:** /root/hermes-webui (server.py + .env). Tunnel config:
+  /root/.cloudflared/rachel-studio-hermes-gateway.yml. Chat backend = the gateway
+  at 127.0.0.1:8642 (the `coco-hermes` agent WITH tools).
+- **THE HANDS WORK.** Proven June 29 2026: typing a request in the room writes
+  real files and ships real commits to the live site. The room is NOT a chatbot.
+- **It is the SAME Coco**, not a second one. New chat in the room = fresh scroll,
+  same memory/skills/Garran Hill work. Mac's separately-installed blank Hermes is
+  NOT Coco — ignore it.
+- **ASYNC LAG (not a bug):** room runs return instantly ("working…") and the tool
+  result lands a few seconds later. A pause is the hands moving, not a freeze.
+  Do NOT switch the backend to plain OpenAI chat to "fix" it — that lane is
+  HANDLESS and makes building impossible. The fix is showing run activity live.
+
+## PREVIEW-RAIL SCARE — "it switched back to the old build" (June 29 2026)
+The right-side LIVE SITE panel in the room CACHES and can show a stale/old frame,
+especially right after a deploy while Cloudflare rebuilds. This looks like the
+site "reverted" — IT DID NOT. Rachel's eye was right that something looked off;
+the real site never moved.
+- **LAW: a stale preview ≠ a lost build.** Before anyone panics, check the REAL
+  site: `curl -s -A "Mozilla/5.0" https://garren-hill.pages.dev/ | grep "<change>"`.
+  The committed source + live HTML are the truth; the rail is just a window.
+- **CURE in the room:** click REFRESH on the preview panel; if still stale, click
+  OPEN to pop the real site in a clean tab (bypasses the rail cache). OPEN is the
+  truth-teller.
+- Coco's job when Rachel says "it reverted / I'm crazy": verify the live site from
+  the box FIRST, then reassure with proof — "you're not crazy, your work is safe,
+  here's the live site." Never dismiss her eye; always check, then calm.
