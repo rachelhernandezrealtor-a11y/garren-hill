@@ -2,6 +2,17 @@
 ## The living law. Updated by Coco the moment Rachel says something new.
 ## Last updated: 2026-06-12
 
+## LAYOUT LAW — THE MLS LISTING IS THE BEST REFERENCE FOR THE HOUSE SECTION (Rachel, 2026-06-29)
+When laying out the HOUSE / rooms section, the FlexMLS listing is the authority for
+layout and organization: what rooms exist, their names, the order they're presented,
+and how the property is structured. Use `mls-listing-truth.md` + `mls-photo-order.json`
+as the spine for the house section — do NOT invent a room order. The MLS = best layout
+for the house. (Editorial voice is still ours; the STRUCTURE/order follows the MLS.)
+KEEP + PLAY UP: the French doors from the ~40ft DRAWING ROOM out to the rear brick
+TERRACE/patio (Rachel, 2026-06-29: "that leads to patio off drawing room that's a good
+thing"). Indoor-outdoor flow is a selling point — feature the drawing-room → terrace
+connection, don't bury it.
+
 This file SUPERSEDES every older brief, "locked" doc, master brief, and
 hard-rules list. Rachel, June 12 2026: "there are no hard rules like i told
 you, with exception to citations and the mls facts. every brief was a work
