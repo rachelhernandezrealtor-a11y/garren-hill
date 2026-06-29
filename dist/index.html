@@ -454,10 +454,10 @@ nav .links a.cta{color:var(--gold);opacity:1}
 /* legibility veil — dark floor + crown so type always reads */
 .gateseam .gs-veil{position:absolute;inset:0;z-index:2;pointer-events:none;
   background:linear-gradient(to top,rgba(5,6,8,.92) 0%,rgba(5,6,8,.55) 26%,transparent 50%,rgba(5,6,8,.50) 86%,rgba(5,6,8,.86) 100%)}
-/* soft seams so it dissolves into the dark above (the crest) and below (the letter) */
-.gateseam::before,.gateseam::after{content:"";position:absolute;left:0;right:0;height:16vh;z-index:3;pointer-events:none}
-.gateseam::before{top:0;background:linear-gradient(to bottom,var(--ink),transparent)}
-.gateseam::after{bottom:0;background:linear-gradient(to top,var(--ink),transparent)}
+/* soft seams so it dissolves into the dark above (the crest) and below (the letter) — tall, gentle, no hard band that could slice the crest above or read as a cut */
+.gateseam::before,.gateseam::after{content:"";position:absolute;left:0;right:0;height:34vh;z-index:3;pointer-events:none}
+.gateseam::before{top:0;background:linear-gradient(to bottom,var(--ink) 0%,rgba(5,6,8,.86) 30%,rgba(5,6,8,.5) 60%,transparent 100%)}
+.gateseam::after{bottom:0;background:linear-gradient(to top,var(--ink) 0%,rgba(5,6,8,.86) 30%,rgba(5,6,8,.5) 60%,transparent 100%)}
 /* the pivot light — a breath of the crest's gold igniting at the vanishing point when both eras sit in register */
 .gateseam .gs-pivot{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);z-index:2;pointer-events:none;
   width:46vmin;height:46vmin;border-radius:50%;opacity:var(--glow);
