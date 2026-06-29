@@ -448,9 +448,9 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .gateseam .gs-now img{filter:saturate(1.04) contrast(1.02)}
 /* global tone breath laid over both frames — warm dawn haze that cools to dusk blue */
 .gateseam .gs-tone{position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:soft-light;
-  background:radial-gradient(120% 90% at 50% 30%,
-    rgba(214,178,110,calc(.40*(1 - var(--wash)))) 0%,
-    rgba(40,58,86,calc(.42*var(--wash))) 70%, transparent 100%)}
+  background:radial-gradient(135% 100% at 50% 32%,
+    rgba(214,178,110,calc(.26*(1 - var(--wash)))) 0%,
+    rgba(40,58,86,calc(.34*var(--wash))) 72%, transparent 100%)}
 /* legibility veil — dark floor + crown so type always reads */
 .gateseam .gs-veil{position:absolute;inset:0;z-index:2;pointer-events:none;
   background:linear-gradient(to top,rgba(5,6,8,.92) 0%,rgba(5,6,8,.55) 26%,transparent 50%,rgba(5,6,8,.50) 86%,rgba(5,6,8,.86) 100%)}
@@ -1772,29 +1772,32 @@ if(window.matchMedia('(pointer:fine)').matches){
   GH.gateSeam = function(){
     var root=document.querySelector('.gateseam'); if(!root) return;
     if(reduce){ root.classList.add('gs-static'); return; }
+    // register the custom props so the browser INTERPOLATES them numerically (else they jump)
+    try{ if(window.CSS && CSS.registerProperty){
+      CSS.registerProperty({name:'--wash',syntax:'<number>',inherits:true,initialValue:'0'});
+      CSS.registerProperty({name:'--glow',syntax:'<number>',inherits:true,initialValue:'0'});
+    }}catch(e){}
     var yr=root.querySelector('.gs-year');
-    var tl=gsap.timeline({scrollTrigger:{
-      trigger:root, start:'top top', end:'+=160%',
-      pin:true, scrub:1, anticipatePin:1
-    }});
-    // depth: far drifts least, foreground most -> travel INTO the frame
-    tl.to('.gs-far', {yPercent:-5,  scale:1.04, ease:'none'},0)
-      .to('.gs-mid', {yPercent:-13, scale:1.11, ease:'none'},0)
-      .to('.gs-fore',{yPercent:-30, scale:1.22, ease:'none'},0)
-      // his prophecy surfaces first, in the dark (0->0.22), then recedes as time turns
-      .fromTo('.gs-foretell',{opacity:0,y:24,filter:'blur(8px)'},{opacity:1,y:0,filter:'blur(0px)',ease:'none'},0.04)
-      .to('.gs-foretell',{opacity:0,y:-18,filter:'blur(6px)',ease:'none'},0.46)
-      // TIME-WASH: present blooms in over the held registration frame (0.34->0.66)
-      .fromTo('.gs-now',{opacity:0},{opacity:1,ease:'none'},0.34)
-      // LIGHT SHIFT: warm sepia morning -> cool dusk, one continuous breath
-      .fromTo(root,{'--wash':0},{'--wash':1,ease:'none'},0)
-      // the crest's gold pivot ignites as both eras sit in register (the held frame)
-      .to('.gs-pivot',{'--glow':1,ease:'none'},0.40).to('.gs-pivot',{'--glow':0,ease:'none'},0.82)
-      // the page line lands AFTER the wash -> the payoff to his prophecy (0.6->0.9)
-      .fromTo('.gs-land',{opacity:0,y:26,filter:'blur(7px)'},{opacity:1,y:0,filter:'blur(0px)',ease:'none'},0.6)
-      // YEAR ODOMETER 1916 -> 2026, continuous
-      .to({v:1916},{v:2026,ease:'none',
-        onUpdate:function(){ if(yr) yr.textContent=Math.round(this.targets()[0].v); }},0);
+    var yo={v:1916};
+    var tl=gsap.timeline({
+      defaults:{ease:'none',duration:1},          // linear, full-span by default -> even breath under scrub
+      scrollTrigger:{trigger:root,start:'top top',end:'+=170%',pin:true,scrub:1,anticipatePin:1}
+    });
+    // CONTINUOUS SPANS (0 -> 1, duration 1): travel INTO frame + century turn fill the WHOLE pin
+    tl.to('.gs-far', {yPercent:-5,  scale:1.04},0)
+      .to('.gs-mid', {yPercent:-13, scale:1.11},0)
+      .to('.gs-fore',{yPercent:-30, scale:1.22},0)
+      .fromTo(root,{'--wash':0},{'--wash':1},0)
+      .fromTo('.gs-now',{opacity:0},{opacity:1},0)
+      .to(yo,{v:2026,onUpdate:function(){ if(yr) yr.textContent=Math.round(yo.v); }},0)
+      // BEAT 1 — his prophecy surfaces then recedes in the FIRST third (0 -> 0.33)
+      .fromTo('.gs-foretell',{opacity:0,y:24,filter:'blur(8px)'},{opacity:1,y:0,filter:'blur(0px)',duration:0.16},0.02)
+      .to('.gs-foretell',{opacity:0,y:-18,filter:'blur(6px)',duration:0.15},0.20)
+      // BEAT 2 — the crest's gold pivot ignites as both eras sit in register, MIDDLE third
+      .fromTo('.gs-pivot',{'--glow':0},{'--glow':1,duration:0.17},0.34)
+      .to('.gs-pivot',{'--glow':0,duration:0.16},0.52)
+      // BEAT 3 — the page line lands LAST, the payoff to his prophecy (0.66 -> 1)
+      .fromTo('.gs-land',{opacity:0,y:26,filter:'blur(7px)'},{opacity:1,y:0,filter:'blur(0px)',duration:0.30},0.66);
   };
 
   // AUTO-WIRE — any element with data-gh="reveal|dissolve|parallax|lift" gets the effect.
