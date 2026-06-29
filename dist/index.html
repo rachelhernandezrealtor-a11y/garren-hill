@@ -1779,10 +1779,20 @@ if(window.matchMedia('(pointer:fine)').matches){
     }}catch(e){}
     var yr=root.querySelector('.gs-year');
     var yo={v:1916};
+    // PIN IS FRAGILE ON iOS SAFARI. When it fails, --wash stays 0 forever: the 2026
+    // photo never lifts in (you're frozen on the 1916 sepia, no motion). So on touch /
+    // small viewports we do NOT pin. We play the SAME wash as a self-contained timeline
+    // the moment the section enters view — both photos, year turn, both lines — on EVERY
+    // device. Desktop keeps the scroll-scrub. (Rachel: "2 photos", "where is the motion".)
+    var noPin = matchMedia('(hover:none),(pointer:coarse),(max-width:900px)').matches;
     var tl=gsap.timeline({
       defaults:{ease:'none',duration:1},          // linear, full-span by default -> even breath under scrub
-      scrollTrigger:{trigger:root,start:'top top',end:'+=170%',pin:true,scrub:1,anticipatePin:1}
+      scrollTrigger: noPin
+        ? {trigger:root,start:'top 62%',toggleActions:'play none none none'}   // mobile: PLAY the film on arrival
+        : {trigger:root,start:'top top',end:'+=170%',pin:true,scrub:1,anticipatePin:1}  // desktop: scrub it
     });
+    // give the played-back film real cinematic pacing (scrub uses ease:none; playback breathes)
+    if(noPin){ tl.timeScale(0.42); }   // ~7s wash so the time-lapse reads, not a flash
     // CONTINUOUS SPANS (0 -> 1, duration 1): travel INTO frame + century turn fill the WHOLE pin
     tl.to('.gs-far', {yPercent:-5,  scale:1.04},0)
       .to('.gs-mid', {yPercent:-13, scale:1.11},0)
