@@ -291,11 +291,9 @@ body{background:var(--ink);color:var(--cream);font-family:var(--font-display);fo
 img{display:block;max-width:100%}
 
 /* FILM GRAIN — subtle cinematic texture (ported from live dev site) */
-body::after{content:'';position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:9998;opacity:0.04;
-background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-animation:grain 8s steps(10) infinite;}
-@keyframes grain{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-10%)}30%{transform:translate(3%,-15%)}50%{transform:translate(12%,9%)}70%{transform:translate(9%,4%)}90%{transform:translate(-1%,7%)}}
-@media (prefers-reduced-motion: reduce){body::after{animation:none}}
+/* FILM GRAIN REMOVED — Rachel law: no filter/film over the site, ever. It
+   fucks the clarity (esp. over the hero video). (Rachel, 2026-06-29) */
+@media (prefers-reduced-motion: reduce){}
 
 /* GOLD CURSOR (desktop only) — ported from live dev site */
 @media (pointer:fine){
