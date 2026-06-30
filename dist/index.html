@@ -980,6 +980,17 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 /* box behind text is BANNED — kill the radial "box" on both scene + split caps */
 .rm-cap::before,.rm-split .rm-cap::before{display:none!important;content:none!important;background:none!important}
 
+/* PHONE-ONLY caption floor (Viewport Art Direction Law, Rachel 2026-06-30):
+   at narrow widths the photo recrops and the lower-left caption lands over the
+   busier lawn/foreground, so the gold+cream text needs a grounded floor to read
+   crisp. NOT the banned radial box — a soft full-width bottom-up fade that follows
+   the photo's own lower darkening. Desktop/tablet untouched. */
+@media (max-width:640px){
+  .rm-scene::after{background:linear-gradient(180deg,rgba(8,8,7,.20) 0%,transparent 14%,transparent 50%,rgba(6,6,5,.58) 82%,rgba(5,5,4,.78) 100%)!important}
+  .rm-cap .det{font-size:clamp(1.15rem,4.6vw,1.5rem);text-shadow:0 0 3px rgba(0,0,0,.98),0 2px 10px rgba(0,0,0,.9)}
+  .rm-cap .rm{text-shadow:0 0 6px rgba(0,0,0,.95),0 2px 14px rgba(0,0,0,.9)}
+}
+
 
 /* --- VERTICAL RHYTHM: tame the arbitrary dead-black voids the eyes-loop
    flagged between beats. Confident pauses, not unresolved gaps. --- */
