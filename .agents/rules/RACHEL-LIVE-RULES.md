@@ -957,3 +957,23 @@ the real site never moved.
 - Coco's job when Rachel says "it reverted / I'm crazy": verify the live site from
   the box FIRST, then reassure with proof — "you're not crazy, your work is safe,
   here's the live site." Never dismiss her eye; always check, then calm.
+
+---
+
+## §X — VIEWPORT ART DIRECTION LAW (Rachel, 2026-06-30) — HARD
+
+Every viewport is judged as its OWN composition. Text placement that works on
+desktop must be re-checked at tablet (768) and phone (375), because a `contain`
+or smart-cropped photo RECROPS at each width — the caption corner that sat over a
+quiet shadow at 1440 can land on a bright window or busy zone at 375. Same for
+scrim direction and scale.
+
+- Judge each room/section at **1440, 768, AND 375** before shipping — render and
+  look at the real pixels at each width, never desktop-only.
+- If a viewport is WEAKER than the source photograph (focal point cut, furniture
+  sliced, text on a bright/busy area, symmetry lost, negative space gone),
+  **RECOMPOSE before writing code** — don't just nudge a value.
+- Recompose levers: caption corner per breakpoint, scrim angle/position to match
+  the photo's dark falloff at that width, `background-position` focal anchor, scale.
+- The fix for a viewport problem is structural (where/how the element sits at that
+  width), not a one-pixel tweak repeated across deploys.

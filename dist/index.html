@@ -590,7 +590,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
   transition:opacity 1.8s cubic-bezier(.4,0,.2,1);will-change:opacity}
 /* VOID KILLER: two explicit layers — blurred self-fill behind, sharp full photo in front */
 .slide-blur{position:absolute;inset:0;z-index:1;background-size:cover;background-position:center;background-repeat:no-repeat;filter:blur(48px) brightness(.86) saturate(1.22);transform:scale(1.2)}
-.slide-sharp{position:absolute;inset:0;z-index:2;background-size:contain;background-position:center;background-repeat:no-repeat;filter:sepia(.14) saturate(1.05) contrast(1.02) brightness(1.02) hue-rotate(-5deg)} /* CONTAIN — the FULL photograph shows, never cropped/sliced (buyer-study law). Blurred self-fill behind carries the gutters in the room's warm tone, so no dead letterbox. (Rachel 2026-06-30: rooms were cropping furniture — global fix to full-frame editorial) */
+.slide-sharp{position:absolute;inset:0;z-index:2;background-size:cover;background-position:center 38%;background-repeat:no-repeat;filter:sepia(.14) saturate(1.05) contrast(1.02) brightness(1.02) hue-rotate(-5deg)} /* COVER — the photo fills the frame edge to edge, no dead letterbox/blurred gutters. Focal anchor raised to 38% so furniture/floor at the bottom isn't sliced. (Rachel 2026-06-30: contain made "one huge photo in dead space stacking" — fixed to full-bleed cover, furniture protected by position not by shrinking) */
 .rm-scene .slide.on{opacity:1}
 /* Ken-Burns animation removed to preserve full photo visibility with contain sizing */
 @media (prefers-reduced-motion:reduce){.rm-scene .slide.on{animation:none;transform:none}}
@@ -632,7 +632,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .rm-split-media .slide.on{opacity:1}
 /* split panel uses the SAME void-killer law: full photo (contain) over its own warm blurred self-fill — never slice furniture inside the panel */
 .rm-split-media .slide-blur{position:absolute;inset:0;z-index:1;background-size:cover;background-position:center;background-repeat:no-repeat;filter:blur(48px) brightness(.82) saturate(1.22);transform:scale(1.2)}
-.rm-split-media .slide-sharp{position:absolute;inset:0;z-index:2;background-size:contain;background-position:center;background-repeat:no-repeat;filter:sepia(.16) saturate(1.06) contrast(1.04) brightness(.98) hue-rotate(-5deg)}
+.rm-split-media .slide-sharp{position:absolute;inset:0;z-index:2;background-size:cover;background-position:center 40%;background-repeat:no-repeat;filter:sepia(.16) saturate(1.06) contrast(1.04) brightness(.98) hue-rotate(-5deg)}
 .rm-split::after{content:"";position:absolute;left:58.8%;top:8%;bottom:8%;width:1px;background:linear-gradient(180deg,transparent,var(--gold-soft) 22%,var(--gold-soft) 78%,transparent);z-index:4;pointer-events:none}
 .rm-split.flip::after{left:41.2%}
 .rm-split .rm-idx{position:absolute;top:1.3rem;left:var(--pad);z-index:5;font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.42em;text-transform:uppercase;color:var(--gold);opacity:.82;display:flex;align-items:center;gap:.8rem}
@@ -1433,7 +1433,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 </div>
 
 <div class="rooms-wrap">
-  <div class="rm-scene" data-imgs="011-entry-hall,012-entry-hall,013-entry-hall">
+  <div class="rm-scene compact" data-imgs="011-entry-hall,012-entry-hall,013-entry-hall">
     <span class="rm-idx">I &middot; First Floor</span><span class="rm-end"></span>
     <div class="rm-cap"><span class="rm">The Entrance Hall</span><p class="det">The mahogany rail leaves the newel in a single unbroken turn and does not let go until the landing. It has been climbed every day since 1916. Above the door, the fanlight still lets the morning in.</p><span class="flow">The hall opens to the drawing room</span></div>
     <div class="rm-dots"></div>
@@ -1469,7 +1469,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
     <div class="rm-dots"></div>
   </div>
 
-  <div class="rm-scene" data-imgs="070-primary-suite,073-primary,075-primary-bathroom,082-primary-shower,085-primary-dressing-room">
+  <div class="rm-scene compact" data-imgs="070-primary-suite,073-primary,075-primary-bathroom,082-primary-shower,085-primary-dressing-room">
     <span class="rm-idx">VII &middot; Private Wing</span><span class="rm-end"></span>
     <div class="rm-cap"><span class="rm">The Primary Suite</span><p class="det">A private wing across the full depth of the home. A fireplace in the panels, restored oak, two dressing rooms.</p><span class="flow">French doors open to the grounds</span></div>
     <div class="rm-dots"></div>
@@ -1512,7 +1512,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 </section>
 
 <div class="rooms-wrap">
-  <div class="rm-scene" data-imgs="124-pool,125-pool,126-pool-brick-wall,127-pool">
+  <div class="rm-scene compact" data-imgs="124-pool,125-pool,126-pool-brick-wall,127-pool">
     <span class="rm-idx">IX &middot; The Grounds</span><span class="rm-end"></span>
     <div class="rm-cap"><span class="rm">The Walled Pool</span><p class="det">A saltwater pool set within a brick walled garden. The wall came first.</p></div>
     <div class="rm-dots"></div>
@@ -1524,7 +1524,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
     <div class="rm-split-text"><span class="rm">The Courts</span><p class="det">Two private courts within the grounds, lit for evening play under the longleaf pines. A resurfacing is all they ask, and then they are yours.</p></div>
   </div>
 
-  <div class="rm-scene" data-imgs="112-brick-terrace,115-boxwood-herb-garden,121-the-wee-cottage">
+  <div class="rm-scene compact" data-imgs="112-brick-terrace,115-boxwood-herb-garden,121-the-wee-cottage">
     <span class="rm-idx">XI &middot; The Grounds</span><span class="rm-end"></span>
     <div class="rm-cap"><span class="rm">The Grounds</span><p class="det">Mature longleaf pines, Grandiflora magnolias, a camellia garden. And The Wee Cottage in the rear yard.</p></div>
     <div class="rm-dots"></div>
