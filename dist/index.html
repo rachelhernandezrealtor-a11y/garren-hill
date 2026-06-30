@@ -628,8 +628,11 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .rm-split.flip .rm-split-media{order:2}
 .rm-split.flip .rm-split-text{order:1}
 .rm-split-media{position:relative;overflow:hidden;background:#111}
-.rm-split-media .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;background-color:#0a0a07;background-size:cover;background-position:center;background-repeat:no-repeat;filter:sepia(.18) saturate(1.08) contrast(1.05) brightness(.94) hue-rotate(-5deg)}
+.rm-split-media .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;background-color:#0a0a07}
 .rm-split-media .slide.on{opacity:1}
+/* split panel uses the SAME void-killer law: full photo (contain) over its own warm blurred self-fill — never slice furniture inside the panel */
+.rm-split-media .slide-blur{position:absolute;inset:0;z-index:1;background-size:cover;background-position:center;background-repeat:no-repeat;filter:blur(48px) brightness(.82) saturate(1.22);transform:scale(1.2)}
+.rm-split-media .slide-sharp{position:absolute;inset:0;z-index:2;background-size:contain;background-position:center;background-repeat:no-repeat;filter:sepia(.16) saturate(1.06) contrast(1.04) brightness(.98) hue-rotate(-5deg)}
 .rm-split::after{content:"";position:absolute;left:58.8%;top:8%;bottom:8%;width:1px;background:linear-gradient(180deg,transparent,var(--gold-soft) 22%,var(--gold-soft) 78%,transparent);z-index:4;pointer-events:none}
 .rm-split.flip::after{left:41.2%}
 .rm-split .rm-idx{position:absolute;top:1.3rem;left:var(--pad);z-index:5;font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.42em;text-transform:uppercase;color:var(--gold);opacity:.82;display:flex;align-items:center;gap:.8rem}
