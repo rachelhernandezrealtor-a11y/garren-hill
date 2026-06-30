@@ -61,8 +61,18 @@
     letter-spacing:.16em;text-transform:uppercase;color:var(--cream);opacity:.62;
     display:block;margin-bottom:.5rem}
   .est-item .val{font-family:var(--font-body);font-size:var(--t-base);
-    line-height:1.6;color:var(--cream-dim)}
-  .est-item .val b{color:var(--cream);font-weight:500}
+    line-height:1.6;color:var(--cream);opacity:.86}
+  .est-item .val b{color:var(--cream);font-weight:600;opacity:1}
+
+  /* quick-facts summary bar — the first thing a serious buyer scans */
+  .est-facts{max-width:1080px;margin:0 auto 1rem;padding:1.6rem var(--pad);
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:1.2rem 2rem;border-block:var(--rule)}
+  .est-facts > div{display:flex;flex-direction:column;gap:.35rem;text-align:center}
+  .est-facts .k{font-family:var(--font-label);font-size:var(--t-xs);
+    letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.9}
+  .est-facts .v{font-family:var(--font-display);font-weight:500;
+    font-size:clamp(1.15rem,2vw,1.5rem);color:var(--cream)}
 
   /* lead — one editorial paragraph per chapter so the page reads, never just lists */
   .est-lead{font-family:var(--font-body);font-size:var(--t-md);font-style:italic;
@@ -107,8 +117,17 @@
 <header class="est-head" data-reveal>
   <div class="num">The Complete Record</div>
   <h1>The Estate</h1>
-  <p class="sub">Everything a house keeps when it is meant to be lived in for a long time — the rooms, the systems, the ground it stands on. Set down plainly, the way it was built.</p>
+  <p class="sub">The full architectural and systems record of Garran Hill, set down plainly for the serious buyer.</p>
 </header>
+
+<div class="est-facts" data-reveal>
+  <div><span class="k">Offered</span><span class="v">$4,250,000</span></div>
+  <div><span class="k">Bedrooms</span><span class="v">4</span></div>
+  <div><span class="k">Baths</span><span class="v">4 full · 2 half</span></div>
+  <div><span class="k">Living Area</span><span class="v">6,320 sq ft</span></div>
+  <div><span class="k">Grounds</span><span class="v">4.15 acres</span></div>
+  <div><span class="k">Built</span><span class="v">1916</span></div>
+</div>
 
 <main class="est-wrap">
 
