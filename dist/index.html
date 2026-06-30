@@ -576,7 +576,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 /* ROOM — full-bleed crossfade carousel, detail overlaid bottom (matches dev standard, no 300 pages) */
 .rooms-wrap{background:var(--ink)}
 /* ROOM WALK — campaign tier. The rooms are scenes, not slides. */
-.rm-scene{position:relative;width:100%;height:clamp(540px,72vh,760px);overflow:hidden;background:#111}
+.rm-scene{position:relative;width:100%;height:clamp(480px,64vh,720px);overflow:hidden;background:#111}
 /* editorial scale rhythm — heroes go tall, connective rooms compress.
    Uses min/max in px so the contrast survives short preview panes (vh collapses it). */
 .rm-scene.hero{height:min(82vh,900px);min-height:640px}
@@ -584,13 +584,13 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .rm-scene.hero .rm-cap{transform:scale(1.06);transform-origin:left bottom}
 /* airy edge scrim — preserves the photo (Rule 9: never darken the image into a band) */
 .rm-scene::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
-  background:linear-gradient(180deg, rgba(6,6,5,.30) 0%, transparent 24%, transparent 68%, rgba(6,6,5,.40) 100%)}
-.rm-scene:nth-of-type(even)::after{background:linear-gradient(180deg, rgba(6,6,5,.30) 0%, transparent 24%, transparent 68%, rgba(6,6,5,.40) 100%)}
+  background:linear-gradient(180deg, rgba(6,6,5,.18) 0%, transparent 20%, transparent 74%, rgba(6,6,5,.24) 100%)}
+.rm-scene:nth-of-type(even)::after{background:linear-gradient(180deg, rgba(6,6,5,.18) 0%, transparent 20%, transparent 74%, rgba(6,6,5,.24) 100%)}
 .rm-scene .slide{position:absolute;inset:0;opacity:0;background-color:#0a0a07;
   transition:opacity 1.8s cubic-bezier(.4,0,.2,1);will-change:opacity}
 /* VOID KILLER: two explicit layers — blurred self-fill behind, sharp full photo in front */
 .slide-blur{position:absolute;inset:0;z-index:1;background-size:cover;background-position:center;background-repeat:no-repeat;filter:blur(48px) brightness(.86) saturate(1.22);transform:scale(1.2)}
-.slide-sharp{position:absolute;inset:0;z-index:2;background-size:cover;background-position:center 48%;background-repeat:no-repeat;filter:sepia(.14) saturate(1.05) contrast(1.02) brightness(1.02) hue-rotate(-5deg)} /* COVER — fills the frame edge to edge, no dead letterbox. Anchor raised 62%→48% so chandeliers/ceiling detail stay in frame (top-crop fix). */
+.slide-sharp{position:absolute;inset:0;z-index:2;background-size:contain;background-position:center center;background-repeat:no-repeat;filter:sepia(.14) saturate(1.05) contrast(1.02) brightness(1.02) hue-rotate(-5deg)} /* EDITORIAL CONTAIN — whole photo shows on its blurred mat, nothing cropped, magazine breathing room (Rachel 2026-06-30). */
 .rm-scene .slide.on{opacity:1}
 /* Ken-Burns animation removed to preserve full photo visibility with contain sizing */
 @media (prefers-reduced-motion:reduce){.rm-scene .slide.on{animation:none;transform:none}}
@@ -607,8 +607,8 @@ nav .links a.cta{color:var(--gold);opacity:1}
    alternating left/right per scene so consecutive beats never read the same */
 .rm-cap{position:absolute;left:clamp(1.4rem,5vw,4.5rem);right:auto;bottom:clamp(2.2rem,7vh,5rem);z-index:3;text-align:left;padding:0;max-width:42ch}
 /* soft ink-pad behind the caption so gold name + text always read over bright frames (lamp/window) */
-.rm-cap::before{content:"";position:absolute;left:-18%;right:-18%;top:-26%;bottom:-26%;z-index:0;pointer-events:none;border-radius:46% 54% 52% 48%/50%;background:radial-gradient(ellipse 86% 110% at 32% 50%,rgba(5,5,4,.96) 0%,rgba(5,5,4,.85) 40%,rgba(5,5,4,.5) 66%,transparent 88%);filter:blur(11px)}
-.rm-scene:nth-of-type(even) .rm-cap::before{background:radial-gradient(ellipse 86% 110% at 68% 50%,rgba(5,5,4,.96) 0%,rgba(5,5,4,.85) 40%,rgba(5,5,4,.5) 66%,transparent 88%)}
+.rm-cap::before{content:"";position:absolute;left:-22%;right:-22%;top:-30%;bottom:-30%;z-index:0;pointer-events:none;border-radius:46% 54% 52% 48%/50%;background:radial-gradient(ellipse 92% 116% at 32% 50%,rgba(5,5,4,.97) 0%,rgba(5,5,4,.9) 46%,rgba(5,5,4,.62) 70%,transparent 90%);filter:blur(13px)}
+.rm-scene:nth-of-type(even) .rm-cap::before{background:radial-gradient(ellipse 92% 116% at 68% 50%,rgba(5,5,4,.97) 0%,rgba(5,5,4,.9) 46%,rgba(5,5,4,.62) 70%,transparent 90%)}
 .rm-cap .rm,.rm-cap .det,.rm-cap .flow{position:relative;z-index:1}
 .rm-scene:nth-of-type(even) .rm-cap{left:auto;right:clamp(1.4rem,5vw,4.5rem);text-align:right}
 .rm-cap .rm{display:inline-block;font-family:var(--font-chapter);font-size:clamp(1rem,1.3vw,1.18rem);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;text-shadow:0 0 6px rgba(0,0,0,.9),0 2px 14px rgba(0,0,0,.85);position:relative;padding-bottom:.7rem}
@@ -632,7 +632,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .rm-split-media .slide.on{opacity:1}
 /* split panel uses the SAME void-killer law: full photo (contain) over its own warm blurred self-fill — never slice furniture inside the panel */
 .rm-split-media .slide-blur{position:absolute;inset:0;z-index:1;background-size:cover;background-position:center;background-repeat:no-repeat;filter:blur(48px) brightness(.82) saturate(1.22);transform:scale(1.2)}
-.rm-split-media .slide-sharp{position:absolute;inset:0;z-index:2;background-size:cover;background-position:center 62%;background-repeat:no-repeat;filter:sepia(.16) saturate(1.06) contrast(1.04) brightness(.98) hue-rotate(-5deg)}.rm-scene.wholeframe .slide-sharp,.rm-split.wholeframe .slide-sharp{background-size:contain!important;background-position:center center!important}
+.rm-split-media .slide-sharp{position:absolute;inset:0;z-index:2;background-size:contain;background-position:center center;background-repeat:no-repeat;filter:sepia(.16) saturate(1.06) contrast(1.04) brightness(.98) hue-rotate(-5deg)}.rm-scene.wholeframe .slide-sharp,.rm-split.wholeframe .slide-sharp{background-size:contain!important;background-position:center center!important}
 .rm-split::after{content:"";position:absolute;left:58.8%;top:8%;bottom:8%;width:1px;background:linear-gradient(180deg,transparent,var(--gold-soft) 22%,var(--gold-soft) 78%,transparent);z-index:4;pointer-events:none}
 .rm-split.flip::after{left:41.2%}
 .rm-split .rm-idx{position:absolute;top:1.3rem;left:var(--pad);z-index:5;font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.42em;text-transform:uppercase;color:var(--gold);opacity:.82;display:flex;align-items:center;gap:.8rem}
@@ -1005,15 +1005,20 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   /* full-bleed edge to edge — kill any side gutter on phone */
   .rm-scene,.rm-split{width:100%;max-width:100%;border-radius:0}
 
-  /* ---- SCALE RHYTHM: tall establishing vs shorter intimate ---- */
-  /* establishing / hero beats: generous, dominant */
-  .rm-scene.hero{height:78vh!important;min-height:520px!important}
-  /* standard scene: a confident full beat */
-  .rm-scene{height:64vh!important;min-height:460px!important}
-  /* intimate/detail beats: shorter held moment, but still full-WIDTH
-     (never a small card) and tight margin (never a void) */
+  /* ---- SCALE RHYTHM (mobile): bands sized to the photo's TRUE aspect so it
+     fills the frame edge-to-edge. 11/12 room scenes are landscape ~3:2; the
+     lone portrait (entry hall) gets its own tall band below. ---- */
+  /* establishing / hero beats: generous, dominant — 3:2 + a touch */
+  .rm-scene.hero{aspect-ratio:3/2;height:auto!important;min-height:240px!important;max-height:80vh!important}
+  /* standard landscape scene: fill the width at true 3:2 */
+  .rm-scene{aspect-ratio:3/2;height:auto!important;min-height:240px!important;max-height:72vh!important}
+  /* intimate/detail beats: same fill, slightly held */
   .rm-scene.compact,.rm-scene.compact.wholeframe{
-    height:52vh!important;min-height:380px!important}
+    aspect-ratio:3/2;height:auto!important;min-height:220px!important;max-height:64vh!important}
+  /* THE ONE PORTRAIT SCENE — entry hall (013), ar 0.77 — fills tall, no side bars */
+  .rm-scene[data-imgs^="013-entry"]{aspect-ratio:0.77/1!important;height:auto!important;min-height:420px!important;max-height:92vh!important}
+  /* kitchen (1.25) + terrace (1.28) are a touch squarer — match their shape */
+  .rm-scene[data-imgs^="031-kitchen"],.rm-scene[data-imgs^="112-brick"]{aspect-ratio:5/4!important}
 
   /* ---- SPLIT LAYOUT: force true single-column stack, photo a real
      full beat, text a tight composition directly beneath (no void) ---- */
@@ -1022,7 +1027,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
     min-height:0!important}
   .rm-split-media{
     position:relative!important;display:block!important;
-    width:100%!important;height:60vh!important;min-height:440px!important;
+    width:100%!important;aspect-ratio:3/2!important;height:auto!important;min-height:240px!important;max-height:72vh!important;
     order:0!important}
   .rm-split.flip .rm-split-media{order:0!important}
   .rm-split-text{
@@ -1038,15 +1043,13 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   .rm-scene + .rm-scene,.rm-split + .rm-split,
   .rm-scene + .rm-split,.rm-split + .rm-scene{margin-top:0!important}
 
-  /* keep the void-killer self-fill doing its job on phone:
-     blurred cover behind, sharp photo in front — no black bars */
+  /* Editorial contain applies at all widths — no mobile override needed.
+     The void-killer blurred self-fill handles the gutters cleanly. */
   .rm-scene .slide-sharp,.rm-split-media .slide-sharp{
-    background-size:cover!important;background-position:center 42%!important}
+    background-size:contain!important;background-position:center center!important}
   .rm-scene.wholeframe .slide-sharp,.rm-split.wholeframe .slide-sharp{
-    background-size:cover!important;background-position:center 50%!important}
+    background-size:contain!important;background-position:center center!important}
 }
-/* Kitchen beat: chandelier rides high in source — pull anchor up so its top clears the frame (per-scene, all widths) */
-.rm-scene[data-imgs^="031-kitchen"] .slide-sharp{background-position:center 30%!important}
 
 
 /* --- VERTICAL RHYTHM: tame the arbitrary dead-black voids the eyes-loop
