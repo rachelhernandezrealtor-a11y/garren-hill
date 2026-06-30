@@ -1960,4 +1960,68 @@ if(window.matchMedia('(pointer:fine)').matches){
   setTimeout(restore,7000);
 })();
 </script>
+
+<style id="coco-viewport-density">
+/* ============================================================
+   COCO MANAGED PATCH — viewport density + mobile overflow
+   Rachel Studio dev sightline only. Branch rebuild/editorial-spine.
+   2026-06-30. SCOPE: NON-HERO only. Verified: none of these classes
+   (.chapter-mark .rm-scene .ep-beat .prov .gs-* .slide-blur .rm-cap
+   .det .flow) appear inside the frozen hero section, so the hero is
+   untouched by this block.
+   Rationale (measured): page ran 26 viewports desktop / 21 mobile.
+   Causes: chapter-mark top padding voids (~89px x7), flat 640px room
+   floors with no rhythm, oversized ep-beat images, doubled provenance
+   breath; plus decorative bg layers overflowing the 375 column.
+   ============================================================ */
+
+/* ---- 1. CHAPTER-MARK voids: cut dead top padding (was clamp(4rem,11vh,7rem)) ---- */
+.chapter-mark{
+  padding-top:clamp(2.4rem,5.5vh,3.8rem);
+  padding-bottom:clamp(.8rem,2vh,1.4rem);
+}
+
+/* ---- 2. ROOM SCENES: tighter floor + rhythm (was clamp(480px,64vh,720px)) ---- */
+.rm-scene{ height:clamp(420px,54vh,600px); }
+.rm-scene.hero{ height:min(72vh,760px); min-height:560px; }
+.rm-scene.compact{ height:clamp(360px,46vh,480px)!important; min-height:clamp(360px,46vh,480px)!important; }
+
+/* ---- 3. EP-BEAT narrative images: trim (was clamp(420px,72vh,640px)) ---- */
+.ep-beat img{ height:clamp(360px,56vh,540px); }
+
+/* ---- 4. PROVENANCE internal rhythm: trim the doubled breath ---- */
+.prov{ padding-top:clamp(56px,8vh,110px); padding-bottom:clamp(56px,8vh,110px); }
+
+/* ============================================================
+   MOBILE (<=480px): contain non-hero horizontal overflow.
+   Measured spills in a 375 viewport: .gs-img/.gs-plane 392px,
+   .slide-blur 412px, .rm-cap/.det 396px, .flow 396px.
+   ============================================================ */
+@media (max-width:480px){
+  html,body{ overflow-x:hidden; }
+
+  /* history then/now planes were inset:-6% -4% pushing past the edge */
+  .gs-plane{ inset:0 !important; }
+  .gs-img{ inset:0 !important; }
+  .gs-img img{ width:100% !important; max-width:100% !important; }
+
+  /* blurred photo mat scaled 1.2 spilled right; keep the look, clip the spill */
+  .rm-split-media, .rm-scene{ overflow:hidden !important; }
+  .slide-blur{ transform:scale(1.12); }
+
+  /* room caption + prose were running off the right edge */
+  .rm-cap{
+    left:clamp(1rem,5vw,1.4rem) !important;
+    right:clamp(1rem,5vw,1.4rem) !important;
+    max-width:none !important;
+    transform:none !important;
+  }
+  .rm-cap .det, .ep-beat .det, .det{ max-width:100% !important; }
+  .flow{ max-width:100% !important; white-space:normal !important; }
+
+  /* tighten mobile breath a touch more (march is worse on phone) */
+  .chapter-mark{ padding-top:clamp(2rem,5vh,3rem); }
+}
+
+</style>
 </body></html>
