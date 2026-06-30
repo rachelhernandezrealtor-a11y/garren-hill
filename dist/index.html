@@ -590,7 +590,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
   transition:opacity 1.8s cubic-bezier(.4,0,.2,1);will-change:opacity}
 /* VOID KILLER: two explicit layers — blurred self-fill behind, sharp full photo in front */
 .slide-blur{position:absolute;inset:0;z-index:1;background-size:cover;background-position:center;background-repeat:no-repeat;filter:blur(48px) brightness(.86) saturate(1.22);transform:scale(1.2)}
-.slide-sharp{position:absolute;inset:0;z-index:2;background-size:cover;background-position:center 62%;background-repeat:no-repeat;filter:sepia(.14) saturate(1.05) contrast(1.02) brightness(1.02) hue-rotate(-5deg)} /* COVER — fills the frame edge to edge, no dead letterbox. Focal anchor 38% protects furniture/floor at the bottom. */
+.slide-sharp{position:absolute;inset:0;z-index:2;background-size:cover;background-position:center 48%;background-repeat:no-repeat;filter:sepia(.14) saturate(1.05) contrast(1.02) brightness(1.02) hue-rotate(-5deg)} /* COVER — fills the frame edge to edge, no dead letterbox. Anchor raised 62%→48% so chandeliers/ceiling detail stay in frame (top-crop fix). */
 .rm-scene .slide.on{opacity:1}
 /* Ken-Burns animation removed to preserve full photo visibility with contain sizing */
 @media (prefers-reduced-motion:reduce){.rm-scene .slide.on{animation:none;transform:none}}
@@ -1041,7 +1041,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   /* keep the void-killer self-fill doing its job on phone:
      blurred cover behind, sharp photo in front — no black bars */
   .rm-scene .slide-sharp,.rm-split-media .slide-sharp{
-    background-size:cover!important;background-position:center 50%!important}
+    background-size:cover!important;background-position:center 42%!important}
   .rm-scene.wholeframe .slide-sharp,.rm-split.wholeframe .slide-sharp{
     background-size:cover!important;background-position:center 50%!important}
 }
