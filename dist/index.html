@@ -576,11 +576,11 @@ nav .links a.cta{color:var(--gold);opacity:1}
 /* ROOM — full-bleed crossfade carousel, detail overlaid bottom (matches dev standard, no 300 pages) */
 .rooms-wrap{background:var(--ink)}
 /* ROOM WALK — campaign tier. The rooms are scenes, not slides. */
-.rm-scene{position:relative;width:100%;height:clamp(600px,86vh,880px);overflow:hidden;background:#111}
+.rm-scene{position:relative;width:100%;height:clamp(540px,72vh,760px);overflow:hidden;background:#111}
 /* editorial scale rhythm — heroes go tall, connective rooms compress.
    Uses min/max in px so the contrast survives short preview panes (vh collapses it). */
-.rm-scene.hero{height:min(96vh,1040px);min-height:760px}
-.rm-scene.compact{height:clamp(440px,64vh,640px)!important;min-height:clamp(440px,64vh,640px)!important}
+.rm-scene.hero{height:min(82vh,900px);min-height:640px}
+.rm-scene.compact{height:clamp(440px,64vh,640px)!important;min-height:clamp(440px,64vh,640px)!important}.rm-scene.compact.wholeframe{height:clamp(560px,76vh,820px)!important;min-height:clamp(560px,76vh,820px)!important}
 .rm-scene.hero .rm-cap{transform:scale(1.06);transform-origin:left bottom}
 /* airy edge scrim — preserves the photo (Rule 9: never darken the image into a band) */
 .rm-scene::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
@@ -590,7 +590,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
   transition:opacity 1.8s cubic-bezier(.4,0,.2,1);will-change:opacity}
 /* VOID KILLER: two explicit layers — blurred self-fill behind, sharp full photo in front */
 .slide-blur{position:absolute;inset:0;z-index:1;background-size:cover;background-position:center;background-repeat:no-repeat;filter:blur(48px) brightness(.86) saturate(1.22);transform:scale(1.2)}
-.slide-sharp{position:absolute;inset:0;z-index:2;background-size:cover;background-position:center 38%;background-repeat:no-repeat;filter:sepia(.14) saturate(1.05) contrast(1.02) brightness(1.02) hue-rotate(-5deg)} /* COVER — fills the frame edge to edge, no dead letterbox. Focal anchor 38% protects furniture/floor at the bottom. */
+.slide-sharp{position:absolute;inset:0;z-index:2;background-size:cover;background-position:center 62%;background-repeat:no-repeat;filter:sepia(.14) saturate(1.05) contrast(1.02) brightness(1.02) hue-rotate(-5deg)} /* COVER — fills the frame edge to edge, no dead letterbox. Focal anchor 38% protects furniture/floor at the bottom. */
 .rm-scene .slide.on{opacity:1}
 /* Ken-Burns animation removed to preserve full photo visibility with contain sizing */
 @media (prefers-reduced-motion:reduce){.rm-scene .slide.on{animation:none;transform:none}}
@@ -623,7 +623,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 
 /* SPLIT room — photo one side, detail column the other (breaks the full-bleed monotony).
    A fine gold rule down the gutter acts as the magazine spread binding. */
-.rm-split{position:relative;display:grid;grid-template-columns:1.55fr 1fr;align-items:stretch;background:var(--ink);min-height:clamp(600px,86vh,880px);overflow:hidden}
+.rm-split{position:relative;display:grid;grid-template-columns:1.55fr 1fr;align-items:stretch;background:var(--ink);min-height:clamp(520px,68vh,720px);overflow:hidden}
 .rm-split.flip{grid-template-columns:1fr 1.55fr}
 .rm-split.flip .rm-split-media{order:2}
 .rm-split.flip .rm-split-text{order:1}
@@ -632,7 +632,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .rm-split-media .slide.on{opacity:1}
 /* split panel uses the SAME void-killer law: full photo (contain) over its own warm blurred self-fill — never slice furniture inside the panel */
 .rm-split-media .slide-blur{position:absolute;inset:0;z-index:1;background-size:cover;background-position:center;background-repeat:no-repeat;filter:blur(48px) brightness(.82) saturate(1.22);transform:scale(1.2)}
-.rm-split-media .slide-sharp{position:absolute;inset:0;z-index:2;background-size:cover;background-position:center 40%;background-repeat:no-repeat;filter:sepia(.16) saturate(1.06) contrast(1.04) brightness(.98) hue-rotate(-5deg)}
+.rm-split-media .slide-sharp{position:absolute;inset:0;z-index:2;background-size:cover;background-position:center 62%;background-repeat:no-repeat;filter:sepia(.16) saturate(1.06) contrast(1.04) brightness(.98) hue-rotate(-5deg)}.rm-scene.wholeframe .slide-sharp,.rm-split.wholeframe .slide-sharp{background-size:contain!important;background-position:center center!important}
 .rm-split::after{content:"";position:absolute;left:58.8%;top:8%;bottom:8%;width:1px;background:linear-gradient(180deg,transparent,var(--gold-soft) 22%,var(--gold-soft) 78%,transparent);z-index:4;pointer-events:none}
 .rm-split.flip::after{left:41.2%}
 .rm-split .rm-idx{position:absolute;top:1.3rem;left:var(--pad);z-index:5;font-family:var(--font-chapter);font-size:var(--xxs);letter-spacing:.42em;text-transform:uppercase;color:var(--gold);opacity:.82;display:flex;align-items:center;gap:.8rem}
@@ -1397,7 +1397,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 </div>
 
 <div class="rooms-wrap">
-  <div class="rm-scene hero" data-imgs="001-front-exterior,006-front-main,009-portico">
+  <div class="rm-scene hero wholeframe" data-imgs="001-front-exterior,006-front-main,009-portico">
     <span class="rm-idx">The Approach</span><span class="rm-end"></span>
     <div class="rm-cap"><span class="rm">Garran Hill</span><p class="det">A portico held on white columns, four and a quarter acres holding the house the way they have since 1916. You see all of it before you are asked to come closer.</p><span class="flow">The door is open</span></div>
     <div class="rm-dots"></div>
@@ -1455,7 +1455,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
     <div class="rm-dots"></div>
   </div>
 
-  <div class="rm-split" data-imgs="024-dining-room,025-dining-room,028-dining-room,030-dining-room">
+  <div class="rm-split wholeframe" data-imgs="024-dining-room,025-dining-room,028-dining-room,030-dining-room">
     <span class="rm-idx">III &middot; First Floor</span>
     <div class="rm-split-media"></div>
     <div class="rm-split-text"><span class="rm">The Dining Room</span><p class="det">The 1916 frontispiece is still here, and the arched shell cabinets that flank it. The east windows take the morning low and direct.</p><span class="flow">Off the hall, the library</span></div>
@@ -1485,7 +1485,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
     <div class="rm-dots"></div>
   </div>
 
-  <div class="rm-split flip" data-imgs="090-rose-suite,095-yellow-bedroom-suite,102-red-bedroom-nursery">
+  <div class="rm-split flip wholeframe" data-imgs="090-rose-suite,095-yellow-bedroom-suite,102-red-bedroom-nursery">
     <span class="rm-idx">VIII &middot; Second Floor</span>
     <div class="rm-split-media"></div>
     <div class="rm-split-text"><span class="rm">The Upstairs Bedrooms</span><p class="det">Three more bedrooms above, each with its own fireplace and bath. The Rose, the Yellow, the Red. The spiral stair from the sitting room arrives here too, at the study tucked above.</p><span class="flow">Four bedrooms in all</span></div>
@@ -1522,19 +1522,19 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 </section>
 
 <div class="rooms-wrap">
-  <div class="rm-scene compact" data-imgs="124-pool,125-pool,126-pool-brick-wall,127-pool">
+  <div class="rm-scene compact wholeframe" data-imgs="124-pool,125-pool,126-pool-brick-wall,127-pool">
     <span class="rm-idx">IX &middot; The Grounds</span><span class="rm-end"></span>
     <div class="rm-cap"><span class="rm">The Walled Pool</span><p class="det">A saltwater pool set within a brick walled garden. The wall came first.</p></div>
     <div class="rm-dots"></div>
   </div>
 
-  <div class="rm-split" data-imgs="120-tennis-courts,118-grounds,123-grounds">
+  <div class="rm-split wholeframe" data-imgs="120-tennis-courts,118-grounds,123-grounds">
     <span class="rm-idx">X &middot; The Grounds</span>
     <div class="rm-split-media"></div>
     <div class="rm-split-text"><span class="rm">The Courts</span><p class="det">Two private courts within the grounds, lit for evening play under the longleaf pines. A resurfacing is all they ask, and then they are yours.</p></div>
   </div>
 
-  <div class="rm-scene compact" data-imgs="112-brick-terrace,115-boxwood-herb-garden,121-the-wee-cottage">
+  <div class="rm-scene compact wholeframe" data-imgs="112-brick-terrace,115-boxwood-herb-garden,121-the-wee-cottage">
     <span class="rm-idx">XI &middot; The Grounds</span><span class="rm-end"></span>
     <div class="rm-cap"><span class="rm">The Grounds</span><p class="det">Mature longleaf pines, Grandiflora magnolias, a camellia garden. And The Wee Cottage in the rear yard.</p></div>
     <div class="rm-dots"></div>
