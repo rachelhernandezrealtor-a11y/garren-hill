@@ -1939,7 +1939,8 @@ if(window.matchMedia('(pointer:fine)').matches){
   // The name is fully present from frame one — it simply resolves into focus in ONE
   // quiet weighted gesture (soft blur → sharp, a whisper of rise). No wipe, no ink
   // pulse, no gold yoyo. A Vogue title sits engraved; it does not perform its arrival.
-  gsap.set('.wordmark',{opacity:0,'--wm-rev':'118%','--wm-ink':0,filter:'blur(6px)',y:12,transformOrigin:'50% 60%'});
+  // Rachel 2026-06-30: title movement killed — wordmark is solid and still from frame one.
+  gsap.set('.wordmark',{opacity:1,'--wm-rev':'-18%','--wm-ink':1,filter:'blur(0px)',y:0,transformOrigin:'50% 60%'});
   gsap.set('.sign-name',{opacity:0});
   gsap.set('.ch-cue',{opacity:0});
 
@@ -1953,11 +1954,7 @@ if(window.matchMedia('(pointer:fine)').matches){
   tl.to(rect,{strokeDashoffset:0,duration:2.0,ease:'power2.inOut'},0.15)
     .to('.ch-nav',{opacity:1,duration:1.0},0.5)
     .to('.eyebrow',{opacity:1,duration:0.9},0.9)
-    // CLIMAX: the name is written on. Gold ink flows left->right (--wm-rev), the
-    // cream face lifts (--wm-ink), soft focus resolves to engraved, a whisper of rise.
-    .to('.wordmark',{opacity:1,duration:0.5,ease:'power1.out'},1.35)
-    .to('.wordmark',{'--wm-rev':'-18%',duration:1.6,ease:'power2.inOut'},1.45)
-    .to('.wordmark',{'--wm-ink':1,filter:'blur(0px)',y:0,duration:1.5,ease:'power2.out'},1.55)
+    // Rachel 2026-06-30: wordmark no longer animates in — it is solid from frame one.
     .to('.sign-name',{opacity:1,duration:1.0,ease:'power2.out'},'>-0.7')
     .to('.ch-cue',{opacity:1,duration:0.9},'>-0.1');
   setTimeout(restore,7000);
