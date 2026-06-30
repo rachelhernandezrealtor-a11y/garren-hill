@@ -1940,13 +1940,13 @@ if(window.matchMedia('(pointer:fine)').matches){
   // quiet weighted gesture (soft blur → sharp, a whisper of rise). No wipe, no ink
   // pulse, no gold yoyo. A Vogue title sits engraved; it does not perform its arrival.
   // Rachel 2026-06-30: title movement killed — wordmark is solid and still from frame one.
-  gsap.set('.wordmark',{opacity:1,'--wm-rev':'-18%','--wm-ink':1,filter:'blur(0px)',y:0,transformOrigin:'50% 60%'});
+  gsap.set('.wordmark',{opacity:1,'--wm-rev':'118%','--wm-ink':0,filter:'blur(0px)',y:0,transformOrigin:'50% 60%'});
   gsap.set('.sign-name',{opacity:0});
   gsap.set('.ch-cue',{opacity:0});
 
   function restore(){
     top.forEach(function(s){gsap.set(s,{clearProps:'opacity,filter,transform,y,scale'});});
-    gsap.set('.wordmark',{'--wm-rev':'-18%','--wm-ink':1,opacity:1,filter:'blur(0px)',y:0});
+    gsap.set('.wordmark',{'--wm-rev':'118%','--wm-ink':0,opacity:1,filter:'blur(0px)',y:0});
     if(rect)rect.style.strokeDashoffset=0;
   }
 
