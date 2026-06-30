@@ -1961,6 +1961,7 @@ if(window.matchMedia('(pointer:fine)').matches){
 })();
 </script>
 
+
 <style id="coco-viewport-density">
 /* ============================================================
    COCO MANAGED PATCH — viewport density + mobile overflow
@@ -1991,6 +1992,11 @@ if(window.matchMedia('(pointer:fine)').matches){
 
 /* ---- 4. PROVENANCE internal rhythm: trim the doubled breath ---- */
 .prov{ padding-top:clamp(56px,8vh,110px); padding-bottom:clamp(56px,8vh,110px); }
+
+/* ---- 5. PROVENANCE heavy section paddings (the real density hogs) ---- */
+.built{ padding-top:clamp(3.2rem,9vh,6rem)!important; padding-bottom:clamp(3.2rem,9vh,6rem)!important; }
+.letter{ padding-top:clamp(3rem,7vh,5rem)!important; padding-bottom:clamp(3rem,7vh,5rem)!important; }
+.page-foretell{ padding-top:clamp(4.5vh,7vh,9vh)!important; padding-bottom:clamp(4vh,6vh,7vh)!important; }
 
 /* ============================================================
    MOBILE (<=480px): contain non-hero horizontal overflow.
