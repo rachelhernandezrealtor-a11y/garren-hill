@@ -590,7 +590,7 @@ nav .links a.cta{color:var(--gold);opacity:1}
   transition:opacity 1.8s cubic-bezier(.4,0,.2,1);will-change:opacity}
 /* VOID KILLER: two explicit layers — blurred self-fill behind, sharp full photo in front */
 .slide-blur{position:absolute;inset:0;z-index:1;background-size:cover;background-position:center;background-repeat:no-repeat;filter:blur(48px) brightness(.86) saturate(1.22);transform:scale(1.2)}
-.slide-sharp{position:absolute;inset:0;z-index:2;background-size:cover;background-position:center 38%;background-repeat:no-repeat;filter:sepia(.14) saturate(1.05) contrast(1.02) brightness(1.02) hue-rotate(-5deg)} /* COVER — the photo fills the frame edge to edge, no dead letterbox/blurred gutters. Focal anchor raised to 38% so furniture/floor at the bottom isn't sliced. (Rachel 2026-06-30: contain made "one huge photo in dead space stacking" — fixed to full-bleed cover, furniture protected by position not by shrinking) */
+.slide-sharp{position:absolute;inset:0;z-index:2;background-size:cover;background-position:center 38%;background-repeat:no-repeat;filter:sepia(.14) saturate(1.05) contrast(1.02) brightness(1.02) hue-rotate(-5deg)} /* COVER — fills the frame edge to edge, no dead letterbox. Focal anchor 38% protects furniture/floor at the bottom. */
 .rm-scene .slide.on{opacity:1}
 /* Ken-Burns animation removed to preserve full photo visibility with contain sizing */
 @media (prefers-reduced-motion:reduce){.rm-scene .slide.on{animation:none;transform:none}}
@@ -1413,10 +1413,9 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   </div>
 </section>
 
-<section class="ep-beat ep-beat--split">
-  <div class="ep-photo">
-    <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:best,w_1400/v1/gh_key/gh_threshold_stone_wide.jpg" alt="Garran Hill threshold, the name GARRAN HILL 1916 cut into the granite of the porch floor, the front door open to the staircase beyond">
-  </div>
+<section class="ep-beat ep-beat--tl">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:best,w_1800/v1/gh_key/gh_threshold_stone_wide.jpg" alt="Garran Hill threshold, the name GARRAN HILL 1916 cut into the granite of the porch floor, the front door open to the staircase beyond">
+  <div class="scrim"></div>
   <div class="ep-cap">
     <span class="ep-eyebrow">The Threshold</span>
     <p>Before the walls, before the roof, the name was already cut into the stone.<br>GARRAN HILL. 1916.<br>No one has touched it since. It simply waits to be crossed.</p>
@@ -1444,7 +1443,7 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 </div>
 
 <div class="rooms-wrap">
-  <div class="rm-scene compact" data-imgs="011-entry-hall,012-entry-hall,013-entry-hall">
+  <div class="rm-scene hero" data-imgs="013-entry-hall">
     <span class="rm-idx">I &middot; First Floor</span><span class="rm-end"></span>
     <div class="rm-cap"><span class="rm">The Entrance Hall</span><p class="det">The mahogany rail leaves the newel in a single unbroken turn and does not let go until the landing. It has been climbed every day since 1916. Above the door, the fanlight still lets the morning in.</p><span class="flow">The hall opens to the drawing room</span></div>
     <div class="rm-dots"></div>
