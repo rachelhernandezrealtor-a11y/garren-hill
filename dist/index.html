@@ -991,6 +991,61 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
   .rm-cap .rm{text-shadow:0 0 6px rgba(0,0,0,.95),0 2px 14px rgba(0,0,0,.9)}
 }
 
+/* ============================================================
+   MOBILE ROOMS RUN — clean rebuild (Coco, 2026-06-30)
+   Built mobile-first against the live 375px render through the
+   editorial-photo-presentation law. Replaces the collapsed
+   desktop-vh sizing that made photos float as cards in black.
+   Goals: every beat near-full-width; deliberate tall/intimate
+   scale rhythm; NO dead-black voids; split text reads AS one
+   composition under its photo, never adrift. Desktop/tablet
+   (>760px) untouched. Scoped tight; wins by source order.
+   ============================================================ */
+@media (max-width:760px){
+  /* full-bleed edge to edge — kill any side gutter on phone */
+  .rm-scene,.rm-split{width:100%;max-width:100%;border-radius:0}
+
+  /* ---- SCALE RHYTHM: tall establishing vs shorter intimate ---- */
+  /* establishing / hero beats: generous, dominant */
+  .rm-scene.hero{height:78vh!important;min-height:520px!important}
+  /* standard scene: a confident full beat */
+  .rm-scene{height:64vh!important;min-height:460px!important}
+  /* intimate/detail beats: shorter held moment, but still full-WIDTH
+     (never a small card) and tight margin (never a void) */
+  .rm-scene.compact,.rm-scene.compact.wholeframe{
+    height:52vh!important;min-height:380px!important}
+
+  /* ---- SPLIT LAYOUT: force true single-column stack, photo a real
+     full beat, text a tight composition directly beneath (no void) ---- */
+  .rm-split,.rm-split.flip{
+    display:block!important;grid-template-columns:none!important;
+    min-height:0!important}
+  .rm-split-media{
+    position:relative!important;display:block!important;
+    width:100%!important;height:60vh!important;min-height:440px!important;
+    order:0!important}
+  .rm-split.flip .rm-split-media{order:0!important}
+  .rm-split-text{
+    order:0!important;display:block!important;
+    padding:clamp(2rem,8vw,3rem) var(--pad) clamp(2.6rem,9vw,3.6rem)!important;
+    text-align:center!important;background:var(--ink)!important}
+  .rm-split.flip .rm-split-text{order:0!important}
+  .rm-split::after,.rm-split.flip::after{display:none!important}
+
+  /* ---- GUTTER NORMALISER: deliberate, equal breathing between beats,
+     never the cavernous desktop vh-margins that read as voids ---- */
+  .rm-scene,.rm-split{margin:0 auto!important}
+  .rm-scene + .rm-scene,.rm-split + .rm-split,
+  .rm-scene + .rm-split,.rm-split + .rm-scene{margin-top:0!important}
+
+  /* keep the void-killer self-fill doing its job on phone:
+     blurred cover behind, sharp photo in front — no black bars */
+  .rm-scene .slide-sharp,.rm-split-media .slide-sharp{
+    background-size:cover!important;background-position:center 50%!important}
+  .rm-scene.wholeframe .slide-sharp,.rm-split.wholeframe .slide-sharp{
+    background-size:cover!important;background-position:center 50%!important}
+}
+
 
 /* --- VERTICAL RHYTHM: tame the arbitrary dead-black voids the eyes-loop
    flagged between beats. Confident pauses, not unresolved gaps. --- */
