@@ -9,5 +9,9 @@
 /studio-preview  /studio-preview.html  200
 /studio-preview/  /studio-preview/index.html  200
 
+# The Estate — full architectural + systems record (must come before the wildcard)
+/estate  /estate.html  200
+/estate/  /estate.html  200
+
 # SPA fallback
 /*  /index.html  200

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Estate | Garran Hill — 200 Hollycrest Drive, Pinehurst, NC</title>
+<meta name="description" content="The full architectural and systems record of Garran Hill — a 1916 Neo-Georgian estate in Pinehurst, NC. 6,320 square feet, 4.15 gated acres, seven carved mantels, restored 1999–2001.">
+<link rel="canonical" href="https://garren-hill.pages.dev/estate">
+<meta name="robots" content="noindex, nofollow"><!-- DEV: private until launch. -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rachelhernandez.studio/estate">
+<meta property="og:title" content="The Estate — Garran Hill, Pinehurst, North Carolina">
+<meta property="og:description" content="The full record. 1916 Neo-Georgian. 6,320 square feet. 4.15 gated acres. Seven carved mantels.">
+<meta property="og:image" content="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto,w_1200/v1/garran-hill/photos/001-front-exterior.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Instrument+Sans:wght@400;500&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/spine.css">
+
+<style>
+  /* ---- THE ESTATE — reference page, inherits the spine, never fights it ---- */
+  :root{ --font-signature:'Playfair Display',serif; }
+  body{ background:var(--ink); }
+
+  /* nav — matches the homepage masthead language (restraint, gold on dark) */
+  .est-nav{position:fixed;top:0;left:0;right:0;z-index:9000;display:flex;
+    justify-content:space-between;align-items:center;
+    padding:1.5rem var(--pad);
+    background:linear-gradient(180deg,rgba(8,8,7,.92) 0%,rgba(8,8,7,.5) 60%,transparent 100%)}
+  .est-nav .brand{font-family:var(--font-label);font-size:var(--t-xs);
+    letter-spacing:.34em;text-transform:uppercase;color:var(--cream);opacity:.92}
+  .est-nav .brand b{font-family:var(--font-display);font-weight:500;
+    letter-spacing:.06em;font-size:1.1em;color:var(--gold-hi)}
+  .est-nav .links{display:flex;gap:clamp(1rem,2.4vw,2.4rem);align-items:center;
+    font-family:var(--font-label);font-size:var(--t-xs);letter-spacing:.22em;
+    text-transform:uppercase}
+  .est-nav .links a{color:var(--cream);opacity:.82}
+  .est-nav .links a:hover{opacity:1;color:var(--gold-hi)}
+  .est-nav .links a.here{color:var(--gold);opacity:1}
+  @media(max-width:820px){.est-nav .links a:not(.cta){display:none}}
+
+  /* opening — quiet, editorial, sets this apart from the cinematic home */
+  .est-head{padding:calc(var(--section-y) + 3rem) var(--pad) var(--section-y);
+    text-align:center;max-width:760px;margin-inline:auto}
+  .est-head .num{font-family:var(--font-accent);font-size:var(--t-xs);
+    letter-spacing:.42em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem}
+  .est-head h1{font-family:var(--font-display);font-weight:500;
+    font-size:var(--t-xl);line-height:var(--lh-tight);letter-spacing:-.015em;color:var(--cream)}
+  .est-head .sub{font-family:var(--font-body);font-style:italic;font-size:var(--t-md);
+    line-height:1.5;color:var(--cream-dim);margin-top:1.4rem;max-width:54ch;margin-inline:auto}
+
+  /* the record — column groups, never a flat spec table */
+  .est-wrap{max-width:1080px;margin:0 auto;padding:0 var(--pad) var(--section-y)}
+  .est-block{padding-block:clamp(2.6rem,5vh,4.2rem);border-top:var(--rule)}
+  .est-block:first-of-type{border-top:none}
+  .est-block > .eyebrow{font-family:var(--font-label);font-size:var(--t-xs);
+    font-weight:500;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);
+    display:block;margin-bottom:1.6rem}
+  .est-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:clamp(1.6rem,3.4vw,3rem)}
+  .est-item .label{font-family:var(--font-label);font-size:var(--t-xs);
+    letter-spacing:.16em;text-transform:uppercase;color:var(--cream);opacity:.62;
+    display:block;margin-bottom:.5rem}
+  .est-item .val{font-family:var(--font-body);font-size:var(--t-base);
+    line-height:1.6;color:var(--cream-dim)}
+  .est-item .val b{color:var(--cream);font-weight:500}
+
+  /* lead — one editorial paragraph per chapter so the page reads, never just lists */
+  .est-lead{font-family:var(--font-body);font-size:var(--t-md);font-style:italic;
+    line-height:1.55;color:var(--cream);max-width:60ch;margin-bottom:2rem}
+
+  /* the honest line — Rachel's law: state the one caveat plainly, never bury it */
+  .est-note{font-family:var(--font-body);font-size:var(--t-sm);line-height:1.6;
+    color:var(--whisper);margin-top:1.4rem;font-style:italic}
+
+  /* close — same elegiac register as the home page, then the single CTA */
+  .est-close{text-align:center;padding:var(--section-y) var(--pad);
+    border-top:var(--rule);max-width:680px;margin-inline:auto}
+  .est-close p{font-family:var(--font-display);font-weight:400;font-size:var(--t-lg);
+    line-height:1.3;color:var(--cream)}
+  .est-close .seam{width:64px;height:1px;margin:2rem auto;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .est-cta{display:inline-block;margin-top:1.6rem;font-family:var(--font-label);
+    font-size:var(--t-xs);letter-spacing:.28em;text-transform:uppercase;color:var(--gold);
+    border:1px solid var(--gold-soft);padding:1rem 2.2rem;transition:all var(--dur-fast) var(--ease)}
+  .est-cta:hover{border-color:var(--gold-hi);color:var(--gold-hi)}
+
+  .est-foot{text-align:center;padding:0 var(--pad) var(--section-y);
+    font-family:var(--font-label);font-size:var(--t-xs);letter-spacing:.18em;
+    text-transform:uppercase;color:var(--whisper)}
+  .est-foot a{color:var(--cream-dim)}
+</style>
+</head>
+
+<body class="s-anim s-grain">
+
+<nav class="est-nav">
+  <a class="brand" href="/">GARRAN <b>Hill</b></a>
+  <div class="links">
+    <a href="/#detail">The House</a>
+    <a href="/#grounds">The Grounds</a>
+    <a href="/estate" class="here">The Estate</a>
+    <a href="/history">The History</a>
+    <a href="/#inquiry" class="cta">Inquire</a>
+  </div>
+</nav>
+
+<header class="est-head" data-reveal>
+  <div class="num">The Complete Record</div>
+  <h1>The Estate</h1>
+  <p class="sub">Everything a house keeps when it is meant to be lived in for a long time — the rooms, the systems, the ground it stands on. Set down plainly, the way it was built.</p>
+</header>
+
+<main class="est-wrap">
+
+  <!-- ARCHITECTURE -->
+  <section class="est-block" data-reveal>
+    <span class="eyebrow">The Architecture</span>
+    <p class="est-lead">A 1916 Neo-Georgian, taken down to the studs between 1999 and 2001 and brought back without losing the year it was made.</p>
+    <div class="est-grid">
+      <div class="est-item"><span class="label">Built</span><span class="val"><b>1916</b> · Neo-Georgian</span></div>
+      <div class="est-item"><span class="label">Restored</span><span class="val"><b>1999–2001</b> · Thomas O'Shea, Architect</span></div>
+      <div class="est-item"><span class="label">Living Area</span><span class="val"><b>6,320 sq ft</b> · plus 707 sq ft climate-controlled basement</span></div>
+      <div class="est-item"><span class="label">Grounds</span><span class="val"><b>4.15 acres</b> · gated entry · circular drive</span></div>
+      <div class="est-item"><span class="label">Brickwork</span><span class="val">Rare handmade red brick, laid in <b>Flemish bond</b> over a traditional water table. Matching the historic brick took three months of curation.</span></div>
+      <div class="est-item"><span class="label">Original 1916 Fabric</span><span class="val">Seven carved mantels, restored oak floors, leaded sidelights, arched fanlights above six-panel solid-wood doors, original brass key plates, the dining-room frontispiece, the arched shell cabinets.</span></div>
+    </div>
+  </section>
+
+  <!-- THE ROOMS -->
+  <section class="est-block" data-reveal>
+    <span class="eyebrow">The Principal Rooms</span>
+    <div class="est-grid">
+      <div class="est-item"><span class="label">The Drawing Room</span><span class="val">Nearly forty feet, two sitting areas. Federal-style carved mantel, dark marble surround, coffered and paneled ceiling, arched built-in bookcases, French doors to the rear brick terrace.</span></div>
+      <div class="est-item"><span class="label">Sitting Room</span><span class="val">A Delft-tile fireplace and a spiral staircase rising to the second-floor study.</span></div>
+      <div class="est-item"><span class="label">Formal Dining Room</span><span class="val">Fireplace, the original 1916 frontispiece, arched shell cabinets, period moldings.</span></div>
+      <div class="est-item"><span class="label">Library</span><span class="val">Floor-to-ceiling built-in shelving.</span></div>
+      <div class="est-item"><span class="label">Kitchen</span><span class="val">Reclaimed heart-pine floors, custom white Shaker cabinetry, glass-front display, black granite, a professional stainless range and hood, full-size refrigerator, custom pull-out pantry, kitchen desk. The breakfast room wears chinoiserie toile and opens to the grounds.</span></div>
+      <div class="est-item"><span class="label">Butler's Pantry</span><span class="val">Farm sink and butcher-block counter.</span></div>
+      <div class="est-item"><span class="label">Second-Floor Study / Den</span><span class="val">Floor-to-ceiling built-ins, a fitted desk run, the spiral stair down to the sitting room.</span></div>
+      <div class="est-item"><span class="label">Entry</span><span class="val">Two stories, a Colonial Revival staircase, an oak handrail running unbroken from volute to landing.</span></div>
+    </div>
+  </section>
+
+  <!-- BEDROOMS -->
+  <section class="est-block" data-reveal>
+    <span class="eyebrow">Bedrooms &amp; Baths</span>
+    <p class="est-lead">A first-floor primary that takes the full depth of the house, and three more above it — each with its own fireplace.</p>
+    <div class="est-grid">
+      <div class="est-item"><span class="label">Primary Suite — Main Level</span><span class="val">Celadon millwork, dentil cornice, a mantel built into the panels. Two dressing rooms with built-ins and walk-in closets. The bath: chandelier, marble counters, Jacuzzi tub, oversized stone-tile walk-in shower, French doors to the grounds.</span></div>
+      <div class="est-item"><span class="label">Second Floor</span><span class="val">Three generously scaled bedrooms, each with a fireplace and full bath. Two of the three baths have Jacuzzi tubs; two bedrooms open to a balcony.</span></div>
+      <div class="est-item"><span class="label">The Count</span><span class="val"><b>4 bedrooms</b> · 4 full baths · 2 powder rooms</span></div>
+    </div>
+  </section>
+
+  <!-- POOL & TENNIS -->
+  <section class="est-block" data-reveal>
+    <span class="eyebrow">Pool &amp; Tennis</span>
+    <div class="est-grid">
+      <div class="est-item"><span class="label">Saltwater Pool</span><span class="val">20 × 40 ft, in-ground concrete, ringed by a brick wall with iron gates. Converted from chlorine to saltwater in 2022; machinery serviced annually.</span></div>
+      <div class="est-item"><span class="label">Tennis</span><span class="val">Two regulation courts within the grounds — commercial-grade fencing, lighting for night play.<span class="est-note">In the interest of plain dealing: the courts are due for resurfacing.</span></span></div>
+    </div>
+  </section>
+
+  <!-- GROUNDS -->
+  <section class="est-block" data-reveal>
+    <span class="eyebrow">The Grounds &amp; Terrace</span>
+    <div class="est-grid">
+      <div class="est-item"><span class="label">Brick Terrace</span><span class="val">30 × 23 ft for entertaining and al fresco dining — reached from the dining room and through the drawing-room French doors.</span></div>
+      <div class="est-item"><span class="label">Balcony</span><span class="val">Above the kitchen, off two of the upstairs bedrooms, over the courts and rear grounds.</span></div>
+      <div class="est-item"><span class="label">Side Porch</span><span class="val">Sink with hot and cold water, built-in cabinets, gardening shelves.</span></div>
+      <div class="est-item"><span class="label">Parking</span><span class="val">A primary area off the entry circle for twelve-plus cars; a second by the pool for six.</span></div>
+    </div>
+  </section>
+
+  <!-- SYSTEMS -->
+  <section class="est-block" data-reveal>
+    <span class="eyebrow">Systems &amp; Stewardship</span>
+    <p class="est-lead">The quiet work that keeps a hundred-year-old house easy to live in.</p>
+    <div class="est-grid">
+      <div class="est-item"><span class="label">Fireplaces</span><span class="val">Seven — six on propane gas logs, switched and timed.</span></div>
+      <div class="est-item"><span class="label">Staircases</span><span class="val">Three.</span></div>
+      <div class="est-item"><span class="label">Climate</span><span class="val">Five HVAC units. A 250-gallon buried propane tank.</span></div>
+      <div class="est-item"><span class="label">Water</span><span class="val">County water and sewer to the home. A 130-ft well with an 80-gallon tank supplies irrigation and pool. Three electric hot-water heaters.</span></div>
+      <div class="est-item"><span class="label">Irrigation</span><span class="val">A 28-plus-zone system — front, sides, rear, and into the woods.</span></div>
+      <div class="est-item"><span class="label">Monitoring</span><span class="val">A Moen smart water monitor — app-connected, leak detection, remote shutoff.</span></div>
+      <div class="est-item"><span class="label">Security</span><span class="val">Hard-wired, with smoke alarms, remotely monitored.</span></div>
+      <div class="est-item"><span class="label">Utilities</span><span class="val">All underground.</span></div>
+      <div class="est-item"><span class="label">Basement</span><span class="val">707 sq ft, climate-controlled, stone-walled — four rooms beneath half the house, with a wine rack, cold storage, and an exterior door.</span></div>
+    </div>
+  </section>
+
+</main>
+
+<section class="est-close" data-reveal>
+  <p>The house was not built for spectacle. It was built for coming back.</p>
+  <div class="seam"></div>
+  <a class="est-cta" href="/#inquiry">Request a Private Showing</a>
+</section>
+
+<div class="est-foot">
+  200 Hollycrest Drive · Pinehurst, North Carolina · Offered at $4,250,000<br>
+  Rachel Hernandez · <a href="/">Pines Sotheby's International Realty</a>
+</div>
+
+<script src="/spine.js"></script>
+</body></html>
