@@ -321,6 +321,56 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
 @media(prefers-reduced-motion:reduce){.gate .datelock,.gate .line1,.gate .line2,.gate .q,.gate .citewrap{animation:none;opacity:1}}
 </style>
 
+
+<style id="ep-spine-bind">
+/* ---- ONE SHARED COLUMN (the spine) ---- */
+:root{ --col: 1180px; }              /* the page's single content column */
+.ep-section{
+  padding: clamp(4.5rem,10vh,9rem) var(--pad);   /* ONE vertical rhythm, top to bottom */
+  max-width: none;
+}
+/* every section's inner content aligns to the same centered column + edges */
+.ep-section > .ep-asym,
+.ep-section > .ep-text,
+.ep-section > .ep-plate{
+  max-width: var(--col);
+  margin-inline: auto;
+}
+
+/* ---- KILL THE FLOATING BOX: contained photo is framed in air, not a black box ---- */
+.ep-section .ep-plate{
+  background: transparent;          /* no black box */
+  overflow: visible;                /* let the photo breathe, not clip into a card */
+  margin-block: 0;                  /* rhythm comes from section padding, not plate margin */
+  border: 1px solid var(--frame-line);   /* a thin gold frame line = intentional, not a floating card */
+  box-shadow: 0 30px 80px -40px rgba(0,0,0,.9);  /* soft lift off the black, editorial */
+}
+.ep-section .ep-plate__fill{ display:none; }      /* the blur-fill is what made it read boxy; kill it */
+.ep-section .ep-plate__img{ background-size: cover; }  /* photo fills its own frame cleanly */
+.ep-section .ep-plate{ aspect-ratio: var(--ar,3/2); overflow:hidden; }  /* re-clip to the frame only */
+
+/* asymmetric editorial: photo one side, text breathing the other, both on the column */
+.ep-asym{ align-items:center; gap: clamp(2rem,5vw,5rem); }
+@media(min-width:900px){
+  .ep-asym{ grid-template-columns: 1.15fr .85fr; }
+  .ep-asym .ep-plate{ aspect-ratio: 4/3; }
+}
+.ep-text{ max-width: 46ch; }
+.ep-text .ep-eyebrow{ margin-bottom: var(--s-3); }
+
+/* full-bleed establishing shots: truly edge to edge, no column, no frame */
+.ep-section .ep-plate--bleed{
+  border:0; box-shadow:none; width:100vw; max-width:100vw;
+  margin-inline: calc(50% - 50vw);   /* break out of the section padding to full viewport */
+  aspect-ratio:auto; height:78svh; min-height:480px;
+}
+.ep-section:has(.ep-plate--bleed){ padding-left:0; padding-right:0; }
+.ep-section:has(.ep-plate--bleed) > .ep-text{ padding-inline: var(--pad); margin-top: clamp(2rem,5vh,4rem); }
+
+/* quiet text beats: centered on the same column, generous */
+.ep-quiet .ep-text, .ep-inquiry{ max-width: 56ch; margin-inline:auto; }
+</style>
+
 </head>
 <body>
 <section id="ghhero">
