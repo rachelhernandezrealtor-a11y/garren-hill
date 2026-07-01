@@ -434,35 +434,6 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .close .cta{display:inline-block;font-family:var(--font-label);font-size:var(--xs);letter-spacing:.34em;text-transform:uppercase;color:var(--cream);
   text-decoration:none;border:1px solid var(--gold-soft);padding:1.1rem 2.6rem;transition:all .4s}
 .close .cta:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
-
-/* GATE FADE — sepia 1916 gate dissolves into the gate today (ported from dev site, same words) */
-/* GATE SEAM — moving through time. Pinned, scroll-scrubbed, parallax depth. --wash 0..1 drives sepia morning -> cool dusk. */
-.gateseam{position:relative;height:100vh;height:100svh;overflow:hidden;background:var(--ink);--wash:0;--glow:0}
-.gateseam .gs-plane{position:absolute;inset:-6% -4%;z-index:0;will-change:transform}
-.gateseam .gs-img{position:absolute;inset:0}
-.gateseam .gs-img img{width:100%;height:100%;object-fit:cover;display:block}
-/* THEN: sepia, warmed; lifts away as --wash rises. NOW: cool, blooms in. */
-.gateseam .gs-then img{filter:sepia(.5) contrast(1.03) brightness(.92) saturate(.85)}
-.gateseam .gs-then{opacity:1}
-.gateseam .gs-now{opacity:0}
-.gateseam .gs-now img{filter:saturate(1.04) contrast(1.02)}
-/* global tone breath laid over both frames — warm dawn haze that cools to dusk blue */
-.gateseam .gs-tone{position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:soft-light;
-  background:radial-gradient(135% 100% at 50% 32%,
-    rgba(214,178,110,calc(.26*(1 - var(--wash)))) 0%,
-    rgba(40,58,86,calc(.34*var(--wash))) 72%, transparent 100%)}
-/* legibility veil — strong dark FLOOR for type, but the top crown eases to clear so the join above never bands (no second hard edge fighting the ::before dissolve) */
-.gateseam .gs-veil{position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:linear-gradient(to top,rgba(5,6,8,.92) 0%,rgba(5,6,8,.55) 26%,transparent 52%,rgba(5,6,8,.22) 84%,transparent 100%)}
-/* soft seams so it dissolves into the dark above (the crest) and below (the letter) — tall, gentle, no hard band that could slice the crest above or read as a cut */
-.gateseam::before,.gateseam::after{content:"";position:absolute;left:0;right:0;height:34vh;z-index:3;pointer-events:none}
-.gateseam::before{top:0;background:linear-gradient(to bottom,var(--ink) 0%,rgba(5,6,8,.86) 30%,rgba(5,6,8,.5) 60%,transparent 100%)}
-.gateseam::after{bottom:0;background:linear-gradient(to top,var(--ink) 0%,rgba(5,6,8,.86) 30%,rgba(5,6,8,.5) 60%,transparent 100%)}
-/* the pivot light — a breath of the crest's gold igniting at the vanishing point when both eras sit in register */
-.gateseam .gs-pivot{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);z-index:2;pointer-events:none;
-  width:46vmin;height:46vmin;border-radius:50%;opacity:var(--glow);
-  background:radial-gradient(circle,rgba(214,178,110,.5) 0%,rgba(214,178,110,.16) 38%,transparent 68%);
-  filter:blur(8px);mix-blend-mode:screen}
 /* HIS PROPHECY AS INTRO — a standalone editorial lead-in between the chapter mark and the
    WHP portrait. Quiet, centered, breathing. The line that hands the reader into Walter. */
 .page-foretell{background:var(--ink);text-align:center;padding:clamp(7vh,11vh,14vh) var(--pad) clamp(6vh,9vh,11vh)}
@@ -470,24 +441,6 @@ nav .links a.cta{color:var(--gold);opacity:1}
 .page-foretell .pf-line em{color:var(--gold);font-style:italic}
 .page-foretell .pf-cite{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.34em;text-transform:uppercase;color:rgba(232,226,214,.6);margin-top:1.4rem}
 .page-foretell .pf-cite span{font-style:italic;text-transform:none;letter-spacing:.05em}
-/* HIS PROPHECY — surfaces first in the dark */
-.gateseam .gs-foretell{position:absolute;left:0;right:0;top:clamp(16vh,22vh,26vh);text-align:center;padding:0 var(--pad);z-index:4;will-change:transform,opacity,filter}
-.gateseam .gs-fore-line{font-family:var(--font-display);font-weight:300;font-size:clamp(1.5rem,3.2vw,2.8rem);line-height:1.32;color:var(--cream);text-shadow:0 1px 30px rgba(0,0,0,.7);max-width:18em;margin:0 auto}
-.gateseam .gs-fore-line em{color:var(--gold);font-style:italic}
-.gateseam .gs-fore-cite{font-family:var(--font-label);font-size:var(--xs);letter-spacing:.34em;text-transform:uppercase;color:rgba(232,226,214,.6);margin-top:1.1rem}
-.gateseam .gs-fore-cite span{font-style:italic;text-transform:none;letter-spacing:.05em}
-/* THE YEAR ODOMETER — a quiet caption low on the frame, never a stamp over the house */
-.gateseam .gs-yearwrap{position:absolute;left:0;right:0;bottom:clamp(3vh,5vh,6vh);text-align:center;z-index:4;pointer-events:none}
-.gateseam .gs-year{font-family:var(--font-label);font-size:clamp(.62rem,.82vw,.74rem);letter-spacing:.5em;text-transform:uppercase;color:rgba(214,178,110,.74);text-shadow:0 1px 14px rgba(0,0,0,.8);padding-left:.5em}
-/* THE PAYOFF — the page line lands after the wash */
-.gateseam .gs-land{position:absolute;left:0;right:0;bottom:clamp(7vh,12vh,15vh);text-align:center;padding:0 var(--pad);z-index:4;will-change:transform,opacity,filter}
-.gateseam .gs-land-line{font-family:var(--font-display);font-weight:300;font-size:clamp(1.7rem,3.4vw,3rem);line-height:1.26;color:var(--cream);text-shadow:0 1px 30px rgba(0,0,0,.7);max-width:17em;margin:0 auto}
-.gateseam .gs-land-line em{color:var(--gold);font-style:italic}
-/* reduced motion / no-JS: show the present, both lines static, no pin */
-.gateseam.gs-static{height:auto;min-height:80vh;padding:14vh 0}
-.gateseam.gs-static .gs-now{opacity:1}.gateseam.gs-static .gs-then{opacity:0}
-.gateseam.gs-static .gs-foretell,.gateseam.gs-static .gs-land{position:static;opacity:1;filter:none;transform:none;margin-bottom:6vh}
-.gateseam.gs-static .gs-yearwrap,.gateseam.gs-static .gs-pivot{display:none}
 @media (prefers-reduced-motion:reduce){.gateseam{height:auto;min-height:80vh;padding:14vh 0}
   .gateseam .gs-now{opacity:1}.gateseam .gs-then{opacity:0}
   .gateseam .gs-foretell,.gateseam .gs-land{position:static;opacity:1;filter:none;transform:none;margin-bottom:6vh}
@@ -2074,37 +2027,6 @@ if(window.matchMedia('(pointer:fine)').matches){
 .built{ padding-top:clamp(3.2rem,9vh,6rem)!important; padding-bottom:clamp(3.2rem,9vh,6rem)!important; }
 .letter{ padding-top:clamp(3rem,7vh,5rem)!important; padding-bottom:clamp(3rem,7vh,5rem)!important; }
 .page-foretell{ padding-top:clamp(4.5vh,7vh,9vh)!important; padding-bottom:clamp(4vh,6vh,7vh)!important; }
-
-/* ============================================================
-   MOBILE (<=480px): contain non-hero horizontal overflow.
-   Measured spills in a 375 viewport: .gs-img/.gs-plane 392px,
-   .slide-blur 412px, .rm-cap/.det 396px, .flow 396px.
-   ============================================================ */
-@media (max-width:480px){
-  html,body{ overflow-x:hidden; }
-
-  /* history then/now planes were inset:-6% -4% pushing past the edge */
-  .gs-plane{ inset:0 !important; }
-  .gs-img{ inset:0 !important; }
-  .gs-img img{ width:100% !important; max-width:100% !important; }
-
-  /* blurred photo mat scaled 1.2 spilled right; keep the look, clip the spill */
-  .rm-split-media, .rm-scene{ overflow:hidden !important; }
-  .slide-blur{ transform:scale(1.12); }
-
-  /* room caption + prose were running off the right edge */
-  .rm-cap{
-    left:clamp(1rem,5vw,1.4rem) !important;
-    right:clamp(1rem,5vw,1.4rem) !important;
-    max-width:none !important;
-    transform:none !important;
-  }
-  .rm-cap .det, .ep-beat .det, .det{ max-width:100% !important; }
-  .flow{ max-width:100% !important; white-space:normal !important; }
-
-  /* tighten mobile breath a touch more (march is worse on phone) */
-  .chapter-mark{ padding-top:clamp(2rem,5vh,3rem); }
-}
 
 </style>
 
