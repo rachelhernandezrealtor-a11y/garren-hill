@@ -277,6 +277,27 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
 @media(max-width:560px){.gate .q{max-width:90%}.gate .pair{bottom:12%}.gate .datelock{top:11%}}
 </style>
 <style id=kill-seam>.seam-veil{display:none !important}</style>
+
+<style id="ep-sections-v1">
+.ep-section{padding:var(--s-6) var(--pad)}
+.ep-asym{display:grid;grid-template-columns:1fr;gap:var(--s-4)}
+@media(min-width:761px){.ep-asym{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s-6);align-items:center}.ep-asym--reverse>.ep-plate{order:2}}
+.ep-text{max-width:var(--measure)}
+.ep-text--center{margin-inline:auto;text-align:center}
+.ep-eyebrow{font-family:var(--font-label);font-size:var(--t-eyebrow);letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dim);margin:0 0 var(--s-3);font-weight:400}
+.ep-body{font-family:var(--font-body);font-size:var(--t-body);line-height:1.7;color:var(--cream);margin:0}
+.ep-quiet{padding-block:var(--s-7)}
+.ep-quiet .ep-text{max-width:48ch;margin-inline:auto;text-align:center}
+.ep-name{font-family:var(--font-script);font-size:var(--t-h2);line-height:1;color:var(--cream);margin:0}
+.ep-agent-name{font-family:var(--font-display);font-size:var(--t-h3);color:var(--cream);margin:0}
+.ep-agent-label{font-family:var(--font-label);font-size:var(--t-label);letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim);margin:var(--s-1) 0 0}
+.ep-cta{display:inline-block;margin-top:var(--s-4);padding:var(--s-2) var(--s-4);font-family:var(--font-label);font-size:var(--t-label);letter-spacing:.18em;text-transform:uppercase;color:var(--cream);border:1px solid var(--frame-line);text-decoration:none;transition:background .4s var(--ease),color .4s var(--ease)}
+.ep-cta:hover{background:rgba(201,168,106,.08)}
+.ep-inquiry{text-align:center;padding-block:var(--s-7)}
+.ep-inquiry__seal{margin-bottom:var(--s-5)}
+.ep-inquiry__agent{display:flex;flex-direction:column;align-items:center;gap:var(--s-1)}
+</style>
+
 </head>
 <body>
 <section id="ghhero">
@@ -325,6 +346,69 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
     <p class="prov-farm">The farm. The farm. The farm.</p>
   </div>
 </section>
+
+<!-- ===== EDITORIAL SECTIONS (on spine) ===== -->
+<section id="bond" class="section ep-section">
+  <div class="ep-asym beat">
+    <figure class="ep-plate" style="--photo-ar: 3 / 2;">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1600,q_auto:best,f_auto/v1/garran-hill/photos/006-front-main.jpg" alt="Flemish bond brickwork of Garran Hill, handmade and set above the water table" loading="lazy" decoding="async">
+    </figure>
+    <div class="ep-text">
+      <h2 class="ep-eyebrow">The Bond</h2>
+      <p class="ep-body">Flemish bond, handmade brick, set over the water table in 1916. When some of it had to be matched, the search took three months. Even the repair kept faith with the first hand.</p>
+    </div>
+  </div>
+</section>
+
+<section id="threshold" class="section ep-section">
+  <figure class="ep-plate ep-plate--bleed beat" style="--photo-ar: 16 / 9;">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1600,q_auto:best,f_auto/v1/garran-hill/photos/gh_threshold_stone_wide.jpg" alt="Threshold stone engraved with the name Garran Hill and the date 1916" loading="lazy" decoding="async">
+  </figure>
+  <div class="ep-text ep-text--center beat">
+    <h2 class="ep-eyebrow">The Threshold</h2>
+    <p class="ep-body">Before the walls, before the roof, the name was already cut into the stone. GARRAN HILL. 1916. No one has touched it since. It simply waits to be crossed.</p>
+  </div>
+</section>
+
+<section id="rise" class="section ep-section">
+  <div class="ep-asym ep-asym--reverse beat">
+    <figure class="ep-plate" style="--photo-ar: 3 / 2;">
+      <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1600,q_auto:best,f_auto/v1/garran-hill/photos/013-entry-hall.jpg" alt="Entry hall with the oak handrail rising from the volute to the landing" loading="lazy" decoding="async">
+    </figure>
+    <div class="ep-text">
+      <h2 class="ep-eyebrow">The Rise</h2>
+      <p class="ep-body">The oak handrail turns once, from the volute, and does not break again until the landing. A century of hands has worn it smooth. It still gives the entry its first gesture of grace.</p>
+    </div>
+  </div>
+</section>
+
+<section id="firebeat" class="section ep-section ep-quiet">
+  <div class="ep-text ep-text--center beat">
+    <h2 class="ep-eyebrow">The House Today</h2>
+    <p class="ep-body">Fire going. No one home yet. Seven hearths are set to come on by themselves through the cold months. So the house is never cold when you reach it, and a room is always lit, waiting, the way it was meant to be.</p>
+  </div>
+</section>
+
+<section id="grounds" class="section ep-section">
+  <figure class="ep-plate ep-plate--bleed beat" style="--photo-ar: 3 / 2;">
+    <img src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1600,q_auto:best,f_auto/v1/garran-hill/photos/004-side-view.jpg" alt="Side view of Garran Hill with circular drive, lawn, walled pool, and longleaf pines" loading="lazy" decoding="async">
+  </figure>
+  <div class="ep-text ep-text--center beat">
+    <h2 class="ep-eyebrow">The Grounds</h2>
+    <p class="ep-body">Inside the gates, the world quiets. A circular drive, the lawn, the brick walled pool, two courts under the longleaf pines.</p>
+  </div>
+</section>
+
+<section id="inquiry" class="section ep-section ep-inquiry">
+  <h2 class="ep-eyebrow beat">Inquiry</h2>
+  <p class="ep-name ep-inquiry__seal beat">Garran Hill</p>
+  <div class="ep-inquiry__agent beat">
+    <p class="ep-agent-name">Rachel Hernandez</p>
+    <p class="ep-agent-label">Pines Sotheby&rsquo;s International Realty</p>
+    <a class="ep-cta" href="mailto:rachel@rachelhernandez.studio?subject=Garran%20Hill%20%E2%80%94%20Private%20Inquiry">Inquire privately</a>
+  </div>
+</section>
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
