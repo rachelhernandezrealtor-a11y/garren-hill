@@ -213,7 +213,7 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
 .gate__vig{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(58% 62% at 50% 50%,transparent 52%,rgba(8,8,7,.55) 100%)}
 .gate__stage{position:absolute;inset:0;z-index:2;pointer-events:none}
 .gate .beat{position:absolute;left:0;right:0;text-align:center;padding:0 var(--pad);will-change:opacity,filter,transform;transform:translateZ(0);backface-visibility:hidden;opacity:0}
-.gate-date{top:13%;animation:gdate 16s var(--ease-io) infinite}
+.gate-date{top:16%;animation:gdate 16s var(--ease-io) infinite}
 .gate-date .circa{display:block;font-family:var(--font-label);text-transform:uppercase;letter-spacing:.5em;font-size:var(--t-eyebrow);color:var(--gold);margin-bottom:.4em;text-indent:.5em}
 .gate-date .yr{display:block;font-family:var(--font-display);font-size:clamp(2.4rem,5vw,4.2rem);color:var(--gold-hi);letter-spacing:.06em;line-height:1;text-shadow:0 2px 30px rgba(0,0,0,.6)}
 .gate-pair{bottom:15%}
@@ -411,6 +411,30 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
   document.documentElement.classList.add('gsap-on');
   if(document.readyState!=='loading'){GH.auto();}
   else{document.addEventListener('DOMContentLoaded',GH.auto);}
+})();
+</script>
+
+<script id="gate-sync-v1">
+(function(){
+  var v=document.querySelector('.gate__video'); if(!v) return;
+  if(window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  var sel='.gate-date,.gate-arrival,.gate-return,.gate-return .name,.gate-quote,.gate-cite';
+  var els=[].slice.call(document.querySelectorAll(sel));
+  if(!els.length) return;
+  els.forEach(function(e){ e.style.animationPlayState='paused'; });
+  var running=false;
+  function tick(){
+    var t=(v.currentTime||0)%16;         /* keyframes are tuned to a 16s loop */
+    var d=(-t)+'s';
+    for(var i=0;i<els.length;i++){ els[i].style.animationDelay=d; }
+    requestAnimationFrame(tick);
+  }
+  function start(){ if(running) return; running=true; requestAnimationFrame(tick); }
+  v.addEventListener('loadeddata', start);
+  v.addEventListener('play', start);
+  if(v.readyState>=2) start();
+  /* nudge autoplay on browsers that need it */
+  var pr=v.play&&v.play(); if(pr&&pr.catch){ pr.catch(function(){}); }
 })();
 </script>
 </body></html>
