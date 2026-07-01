@@ -431,8 +431,47 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
 
   // AUTO-WIRE — any element with data-gh="reveal|dissolve|parallax|lift" gets the effect.
   // writeOn is wired explicitly per section so timing reads like real writing.
+
+  // ---- FILM SEAM — dissolve adjacent sections through shared darkness (no hard edge) ----
+  GH.filmSeam = function(topSel, botSel){
+    var top=document.querySelector(topSel), bot=document.querySelector(botSel);
+    if(!top||!bot) return;
+    if(top.dataset.seamed==='1' && bot.dataset.seamedTop==='1') return;
+    // ensure sections can host absolutely-positioned overlays
+    [top,bot].forEach(function(s){ var cs=getComputedStyle(s); if(cs.position==='static') s.style.position='relative'; });
+    // bottom-of-top overlay: dark rising from the section's own bottom edge
+    var oT=document.createElement('div');
+    oT.className='seam-veil seam-veil--out';
+    oT.style.cssText='position:absolute;left:0;right:0;bottom:0;height:55%;z-index:40;pointer-events:none;opacity:0;background:linear-gradient(to bottom,transparent 0%,rgba(6,6,7,.6) 55%,#050506 100%)';
+    top.appendChild(oT); top.dataset.seamed='1';
+    // top-of-bottom overlay: dark that the next section emerges FROM
+    var oB=document.createElement('div');
+    oB.className='seam-veil seam-veil--in';
+    oB.style.cssText='position:absolute;left:0;right:0;top:0;height:60%;z-index:40;pointer-events:none;opacity:0;background:linear-gradient(to top,transparent 0%,rgba(6,6,7,.65) 52%,#050506 100%)';
+    bot.appendChild(oB); bot.dataset.seamedTop='1';
+    if(reduce){ oT.style.opacity=0; oB.style.opacity=0; return; }
+    // as the top section's last third scrolls out, its bottom darkens to full black
+    gsap.fromTo(oT,{opacity:0},{opacity:1,ease:'none',
+      scrollTrigger:{trigger:top,start:'bottom 92%',end:'bottom 30%',scrub:0.5}});
+    // as the bottom section's first third scrolls in, it emerges FROM black
+    gsap.fromTo(oB,{opacity:1},{opacity:0,ease:'none',
+      scrollTrigger:{trigger:bot,start:'top 92%',end:'top 34%',scrub:0.5}});
+  };
+  // wire the seam across EVERY adjacent section pair automatically
+  GH.seamAll = function(){
+    var secs=[].slice.call(document.querySelectorAll('body > section'));
+    for(var i=0;i<secs.length-1;i++){
+      var a=secs[i], b=secs[i+1];
+      // give each a stable id if missing so filmSeam can target it
+      if(!a.id) a.id='sec-'+i;
+      if(!b.id) b.id='sec-'+(i+1);
+      GH.filmSeam('#'+a.id, '#'+b.id);
+    }
+  };
+
   GH.auto = function(){
     GH.gateSeam();
+    GH.seamAll();
     GH.reveal('[data-gh="reveal"]');
     GH.dissolve('[data-gh="dissolve"]');
     GH.parallax('[data-gh="parallax"]');
