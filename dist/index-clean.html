@@ -160,7 +160,7 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
 /* THE LETTER — the emotional peak: his real letter swells up beneath the words and breathes,
 </style>
 
-<style id="spine-v1">
+<style id="spine-v1">@property --gm{syntax:'<length-percentage>';inherits:false;initial-value:15%}.gate{--gm:15%;-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 var(--gm),#000 100%);mask-image:linear-gradient(to bottom,transparent 0%,#000 var(--gm),#000 100%);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:100% 100%;mask-size:100% 100%}
 /* ===== GARRAN HILL SPINE v1 — reusable SYSTEM, GH skin. Zero !important. =====
    Additive: extends the file's existing color :root, never overrides it. */
 :root{
@@ -435,8 +435,18 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
 
 
 
+
+  // ---- GATE EMERGE — the gate materializes out of the hero's darkness on scroll (mask feather) ----
+  GH.gateEmerge = function(){
+    var gate=document.querySelector('.gate'); if(!gate) return;
+    if(reduce){ gate.style.setProperty('--gm','15%'); return; }   // static feather, no scrub
+    gsap.fromTo(gate, {'--gm':'55%'}, {'--gm':'15%', ease:'none',
+      scrollTrigger:{ trigger:gate, start:'top bottom', end:'top 55%', scrub:0.6 }});
+  };
+
   GH.auto = function(){
     GH.gateSeam();
+    GH.gateEmerge();
     GH.reveal('[data-gh="reveal"]');
     GH.dissolve('[data-gh="dissolve"]');
     GH.parallax('[data-gh="parallax"]');
