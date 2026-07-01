@@ -296,7 +296,7 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
 
 
 <section class="gate" aria-label="Garran Hill, built for return">
-  <video class="bg" autoplay muted loop playsinline preload="metadata"
+  <video class="bg" muted loop playsinline preload="metadata"
     poster="https://res.cloudinary.com/dghn2xpif/video/upload/so_1,q_auto,f_jpg,w_1280/v1782917090/gh_key/gate_film_16s.jpg"
     src="https://res.cloudinary.com/dghn2xpif/video/upload/v1782917090/gh_key/gate_film_16s.mp4"></video>
   <div class="scrim-top"></div><div class="vig-corners"></div><div class="scrim-bot"></div>
@@ -491,7 +491,12 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
   }
   function start(){ requestAnimationFrame(frame); }
   if(v.readyState>=1) start(); else v.addEventListener('loadedmetadata',start);
-  var pr=v.play&&v.play(); if(pr&&pr.catch)pr.catch(function(){});
+  // START ON THE 1916 PHOTO: only play when the gate enters view, always from frame 0.
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){ try{ if(v.currentTime>0.25){v.currentTime=0;} var pr=v.play(); if(pr&&pr.catch)pr.catch(function(){}); }catch(_){} }
+    else { try{ v.pause(); v.currentTime=0; }catch(_){} }   // leaves view -> reset so it reopens on 1916
+  });},{threshold:0.55});
+  io.observe(g);
 })();
 </script>
 </body></html>
