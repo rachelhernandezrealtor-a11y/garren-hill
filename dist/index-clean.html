@@ -159,6 +159,88 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
   .gateseam .gs-yearwrap,.gateseam .gs-pivot{display:none}}
 /* THE LETTER — the emotional peak: his real letter swells up beneath the words and breathes,
 </style>
+
+<style id="spine-v1">
+/* ===== GARRAN HILL SPINE v1 — reusable SYSTEM, GH skin. Zero !important. =====
+   Additive: extends the file's existing color :root, never overrides it. */
+:root{
+  --cream:#F5F0E8; --cream-dim:rgba(245,240,232,.72);
+  /* TYPE ROLES (slots; GH values) */
+  --font-script:'Edw','Mr De Haviland',cursive;
+  --font-display:'Cormorant Garamond',Georgia,serif;
+  --font-body:'Cormorant Garamond',Georgia,serif;
+  --font-label:'Cinzel',Georgia,serif;
+  /* MODULAR TYPE SCALE (fluid ~1.25, legible floors) */
+  --t-eyebrow:clamp(.7rem,.6rem + .4vw,.86rem);
+  --t-label:clamp(.74rem,.62rem + .5vw,.92rem);
+  --t-body:clamp(1.05rem,.95rem + .6vw,1.35rem);
+  --t-lead:clamp(1.25rem,1rem + 1.1vw,1.75rem);
+  --t-h3:clamp(1.5rem,1.1rem + 1.8vw,2.3rem);
+  --t-h2:clamp(2rem,1.4rem + 3vw,3.6rem);
+  --t-h1:clamp(2.6rem,1.6rem + 5vw,5.2rem);
+  --t-script:clamp(3.2rem,2rem + 7vw,7.2rem);
+  /* ONE SPACING SCALE */
+  --s-1:.5rem;--s-2:1rem;--s-3:1.5rem;--s-4:2.5rem;--s-5:4rem;--s-6:6rem;--s-7:9rem;--s-8:13rem;
+  --pad:clamp(1.4rem,5vw,5rem);
+  --measure:62ch;
+  --xs:var(--t-eyebrow);
+  --frame-inset:clamp(10px,1.4vw,22px);
+  --frame-line:rgba(201,168,106,.5);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --ease-io:cubic-bezier(.4,0,.2,1);
+}
+/* ---- PHOTO LAW: framed in air, own aspect-ratio, void-killer, gutter default.
+       Two full-bleed images CANNOT butt (framed+gutter is the default; bleed is opt-in). ---- */
+.plate{position:relative;width:100%;aspect-ratio:var(--ar,3/2);margin-block:var(--s-6);overflow:hidden;background:var(--ink)}
+.plate__fill{position:absolute;inset:0;z-index:1;background-size:cover;background-position:center;filter:blur(55px) brightness(.85) saturate(1.3);transform:scale(1.18)}
+.plate__img{position:absolute;inset:0;z-index:2;background-size:contain;background-position:center;background-repeat:no-repeat}
+.plate--bleed{aspect-ratio:auto;height:100svh;min-height:640px;margin-block:0}
+.plate--bleed .plate__img{background-size:cover}
+.plate--bleed .plate__fill{display:none}
+/* ---- TEXT LAW: caption lives in a corner zone with a TIGHT halo, never a dark box,
+       never covering the subject. Narrative text sits on calm space. ---- */
+.plate__cap{position:absolute;z-index:3;left:var(--s-4);bottom:var(--s-3);max-width:34ch;color:var(--cream);
+  text-shadow:0 0 2px rgba(0,0,0,.95),0 1px 5px rgba(0,0,0,.85)}
+.scrim{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(105deg,rgba(8,8,7,.55) 0%,rgba(8,8,7,.22) 40%,transparent 68%)}
+.eyebrow{font-family:var(--font-label);font-size:var(--t-eyebrow);letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.measure{max-width:var(--measure);margin-inline:auto}
+@media(max-width:560px){.plate{margin-block:var(--s-4)}.plate__cap{left:var(--s-3);right:var(--s-3);bottom:var(--s-2);max-width:none}}
+
+/* ===== GATE COMPONENT (then/now video film) ===== */
+.gate{position:relative;height:100svh;min-height:640px;width:100%;overflow:hidden;background:var(--ink)}
+.gate__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.gate__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(10,10,10,.5) 0%,transparent 26%,transparent 66%,rgba(10,10,10,.62) 100%)}
+.gate__vig{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(58% 62% at 50% 50%,transparent 52%,rgba(8,8,7,.55) 100%)}
+.gate__stage{position:absolute;inset:0;z-index:2;pointer-events:none}
+.gate .beat{position:absolute;left:0;right:0;text-align:center;padding:0 var(--pad);will-change:opacity,filter,transform;transform:translateZ(0);backface-visibility:hidden;opacity:0}
+.gate-date{top:13%;animation:gdate 16s var(--ease-io) infinite}
+.gate-date .circa{display:block;font-family:var(--font-label);text-transform:uppercase;letter-spacing:.5em;font-size:var(--t-eyebrow);color:var(--gold);margin-bottom:.4em;text-indent:.5em}
+.gate-date .yr{display:block;font-family:var(--font-display);font-size:clamp(2.4rem,5vw,4.2rem);color:var(--gold-hi);letter-spacing:.06em;line-height:1;text-shadow:0 2px 30px rgba(0,0,0,.6)}
+.gate-pair{bottom:15%}
+.gate-arrival{display:block;font-family:var(--font-body);font-weight:500;font-size:clamp(1.9rem,4.2vw,3.6rem);color:var(--cream);letter-spacing:.02em;line-height:1.1;text-shadow:0 2px 40px rgba(0,0,0,.7);margin-bottom:.32em;will-change:opacity,transform;transform:translateZ(0);backface-visibility:hidden;opacity:0;animation:garrival 16s var(--ease-io) infinite}
+.gate-return{display:block;transform-origin:center;opacity:0;will-change:opacity,transform;animation:greturn 16s cubic-bezier(.25,.7,.25,1) infinite}
+.gate-return .name{display:block;font-family:var(--font-script);font-size:clamp(3.7rem,9vw,7.6rem);color:var(--gold-hi);line-height:.92;text-shadow:0 3px 50px rgba(0,0,0,.6);animation:gnameglow 16s var(--ease-io) infinite}
+.gate-return .rtn{display:block;font-family:var(--font-display);font-size:clamp(1.35rem,2.9vw,2.4rem);color:var(--cream);letter-spacing:.03em;margin-top:.14em;text-shadow:0 2px 40px rgba(0,0,0,.7)}
+.gate-qz{top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 9vw}
+.gate-quote{font-family:var(--font-body);font-style:italic;font-weight:500;font-size:clamp(1.5rem,3.2vw,2.7rem);line-height:1.34;color:var(--cream);max-width:24ch;position:relative;opacity:0;will-change:opacity,filter;transform:translateZ(0);backface-visibility:hidden;animation:gquote 16s cubic-bezier(.33,0,.2,1) infinite,gquoteglow 16s var(--ease-io) infinite}
+.gate-cite{margin-top:1.7em;position:relative;opacity:0;font-family:var(--font-label);text-transform:uppercase;letter-spacing:.32em;font-size:clamp(.74rem,.6rem + .55vw,.94rem);color:var(--gold-hi);font-style:normal;text-shadow:0 1px 14px rgba(0,0,0,.7);will-change:opacity,filter;transform:translateZ(0);backface-visibility:hidden;animation:gcite 16s var(--ease-io) infinite,gciteglow 16s var(--ease-io) infinite}
+.gate-cite .rule{display:block;width:54px;height:1px;background:var(--gold);opacity:.8;margin:0 auto 1.1em}
+@keyframes gdate{0%{opacity:0;transform:translateY(6px)}5%{opacity:1;transform:none}12%{opacity:1}20%,100%{opacity:0;transform:translateY(-6px)}}
+@keyframes garrival{0%{opacity:0;transform:translateY(8px)}9%{opacity:1;transform:none}38%{opacity:1}44%,100%{opacity:0}}
+@keyframes greturn{0%,20%{opacity:0;transform:translateY(22px) scale(.9)}27%{opacity:1;transform:translateY(0) scale(1)}38%{opacity:1;transform:scale(1)}44%,100%{opacity:0;transform:scale(1)}}
+@keyframes gnameglow{0%,20%{text-shadow:0 3px 50px rgba(0,0,0,.6)}27%{text-shadow:0 0 30px rgba(240,220,166,.55),0 3px 50px rgba(0,0,0,.6)}37%{text-shadow:0 0 14px rgba(240,220,166,.3),0 3px 50px rgba(0,0,0,.6)}44%,100%{text-shadow:0 3px 50px rgba(0,0,0,.6)}}
+@keyframes gquote{0%,45%{opacity:0;filter:blur(14px);transform:translateY(14px)}51%{opacity:.6;filter:blur(6px);transform:translateY(7px)}57%{opacity:1;filter:blur(0);transform:translateY(0)}70%{opacity:1;filter:blur(0);transform:translateY(0)}76%,100%{opacity:0;filter:blur(3px);transform:translateY(-4px)}}
+@keyframes gquoteglow{0%,46%{text-shadow:0 0 0 rgba(246,233,200,0)}58%{text-shadow:0 0 26px rgba(246,233,200,.5),0 2px 40px rgba(0,0,0,.6)}70%{text-shadow:0 0 15px rgba(246,233,200,.34),0 2px 40px rgba(0,0,0,.6)}76%,100%{text-shadow:0 0 0 rgba(246,233,200,0)}}
+@keyframes gcite{0%,54%{opacity:0;filter:blur(3px) brightness(1.6);transform:translateY(6px)}58%{opacity:1;filter:blur(0) brightness(1.55);transform:none}62%{opacity:1;filter:blur(0) brightness(1)}70%{opacity:1;filter:blur(0) brightness(1);transform:translateY(0)}72%{opacity:1;filter:blur(1px) brightness(2.1);transform:translateY(-3px)}75%{opacity:.8;filter:blur(5px) brightness(1.7);transform:translateY(-12px)}81%,100%{opacity:0;filter:blur(14px) brightness(1.2);transform:translateY(-26px)}}
+@keyframes gciteglow{0%,54%{text-shadow:0 0 0 rgba(255,180,90,0)}58%{text-shadow:0 0 22px rgba(255,170,80,.85),0 0 8px rgba(255,210,140,.9)}62%{text-shadow:0 0 10px rgba(201,168,106,.5)}70%{text-shadow:0 0 8px rgba(201,168,106,.4)}72%{text-shadow:0 0 44px rgba(255,150,60,1),0 0 16px rgba(255,200,120,.95)}75%{text-shadow:0 0 50px rgba(255,130,50,.7)}81%,100%{text-shadow:0 0 0 rgba(0,0,0,0)}}
+@media (prefers-reduced-motion:reduce){
+  .gate .beat{animation:none;opacity:1;filter:none}
+  .gate-date{top:11%}.gate-pair{bottom:auto;top:34%}.gate-return{transform:none}
+  .gate-qz{top:auto;bottom:12%;justify-content:flex-end}.gate-quote{filter:none;transform:none;text-shadow:0 2px 40px rgba(0,0,0,.7)}.gate-cite{filter:none;transform:none}
+}
+@media(max-width:560px){.gate-qz{padding:0 7vw}.gate-pair{bottom:13%}.gate-date{top:11%}}
+@media(max-width:560px){.gate-return .name{font-size:clamp(3rem,13vw,4.4rem)}.gate-pair{padding-left:1.2rem;padding-right:1.2rem}.gate-arrival{font-size:clamp(1.55rem,6vw,2.2rem)}}
+</style>
 </head>
 <body>
 <section id="ghhero">
@@ -177,20 +259,21 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
 </section>
 
 
-<section class="gateseam" aria-label="Garran Hill through a century">
-  <!-- FAR plane: the era behind the gate (drifts least) -->
-  <div class="gs-plane gs-far">
-    <div class="gs-img gs-then"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1600,q_auto:best,f_auto/v1782521819/garran-hill/history/gh_1916_gate_real.jpg" alt="Garran Hill from the gate in 1916, the same pillars and drive that still stand today"></div>
-    <div class="gs-img gs-now"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto:best,f_auto/v1/gh_key/gh_gate_twilight.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto:best,f_auto/v1/gh_key/gh_gate_twilight.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1280,q_auto:best,f_auto/v1/gh_key/gh_gate_twilight.jpg 1280w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto:best,f_auto/v1/gh_key/gh_gate_twilight.jpg 1920w" sizes="100vw" alt="Garran Hill gate today, at twilight, Pinehurst North Carolina"></div>
-  </div>
-  <!-- light wash + tone, driven by --wash 0..1 -->
-  <div class="gs-tone"></div>
-  <div class="gs-veil"></div>
-  <!-- the pivot light at the vanishing point (the crest's gold; crest pixels untouched) -->
-  <div class="gs-pivot" aria-hidden="true"></div>
-  <!-- THE PAYOFF — the page line lands after the wash -->
-  <div class="gs-land">
-    <p class="gs-land-line">Some houses are built for arrival. <em>Garran Hill was built for return.</em></p>
+<section class="gate" aria-label="Garran Hill, built for return">
+  <video class="gate__video" autoplay muted loop playsinline preload="metadata"
+    poster="https://res.cloudinary.com/dghn2xpif/video/upload/so_1,q_auto,f_jpg,w_1280/v1782917090/gh_key/gate_film_16s.jpg"
+    src="https://res.cloudinary.com/dghn2xpif/video/upload/v1782917090/gh_key/gate_film_16s.mp4"></video>
+  <div class="gate__scrim"></div><div class="gate__vig"></div>
+  <div class="gate__stage">
+    <div class="beat gate-date" aria-hidden="true"><span class="circa">Circa</span><span class="yr">1916</span></div>
+    <div class="beat gate-pair">
+      <span class="gate-arrival">Some houses are built for arrival.</span>
+      <span class="gate-return"><span class="name">Garran Hill</span><span class="rtn">was built for return.</span></span>
+    </div>
+    <div class="beat gate-qz">
+      <blockquote class="gate-quote">&ldquo;He called to all its sons to build on the old foundations.&rdquo;</blockquote>
+      <cite class="gate-cite"><span class="rule"></span>Walter Hines Page &middot; The Southerner, 1909</cite>
+    </div>
   </div>
 </section>
 <section class="prov">
