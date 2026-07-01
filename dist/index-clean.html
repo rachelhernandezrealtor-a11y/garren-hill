@@ -486,7 +486,7 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
     var t=(v.currentTime||0)%16;   // GATE VIDEO CLOCK — beats can never drift from the film
     // BEAT MAP on measured holds: sepia hold 0-2 | dissolve 2-3 | today hold 3-13 | dissolve-back 13-16
     // Circa 1916 — lives in the sepia 1916 hold (0 -> 2.4), gone before dissolve
-    set(beats.date, win(t, 0.15,0.9, 1.9,2.5));
+    set(beats.date, win(t, -0.1,0.0, 2.6,3.2));  // INSTANT on first frame, hold through full sepia, out as it dissolves
     // "Some houses are built for arrival." — early today hold
     set(beats.l1, win(t, 3.4,4.3, 6.2,7.0));
     // "Garran Hill / was built for return." — mid today hold, the centerpiece
