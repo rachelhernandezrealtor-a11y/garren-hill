@@ -1361,6 +1361,60 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 }
 </style>
 
+<style id="gate-approved">
+.gate{position:relative;height:100svh;min-height:640px;width:100%;overflow:hidden;background:#000}
+.gate .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.gate .scrim-top{position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(8,8,7,.5) 0%,rgba(8,8,7,.1) 30%,transparent 50%)}
+.gate .vig-corners{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(46% 52% at 100% 100%,rgba(4,4,3,.92),rgba(4,4,3,.45) 40%,transparent 72%),radial-gradient(40% 40% at 0% 100%,rgba(4,4,3,.74),transparent 68%)}
+.gate .scrim-bot{position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(0deg,rgba(4,4,3,.97) 0%,rgba(4,4,3,.86) 22%,rgba(4,4,3,.56) 38%,rgba(4,4,3,.22) 52%,transparent 66%)}
+.gate .layer{position:absolute;inset:0;pointer-events:none;z-index:2}
+.gate .datelock{position:absolute;top:9.5%;left:0;right:0;text-align:center;opacity:0;}
+.gate .datelock .circa{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.5em;font-size:clamp(.7rem,1.2vw,1rem);color:#C9A96E;display:block;margin-bottom:.35em;text-indent:.5em}
+.gate .datelock .yr{font-family:var(--font-display);font-size:clamp(2.4rem,5vw,4.2rem);color:#ECD9B0;letter-spacing:.06em;line-height:1;text-shadow:0 2px 30px rgba(0,0,0,.6)}
+.gate .pair{position:absolute;left:0;right:0;bottom:14%;text-align:center}
+.gate .line1{font-family:var(--font-body);font-weight:500;font-size:clamp(2.1rem,4.6vw,4rem);color:#F5EFE4;letter-spacing:.04em;line-height:1.1;text-shadow:0 2px 44px rgba(0,0,0,.7);opacity:0;display:block;margin-bottom:.5em;}
+.gate .line2{opacity:0;display:block;transform-origin:center;}
+.gate .line2 .name{font-family:var(--font-script);font-size:clamp(3.4rem,8.5vw,7rem);color:#F6E9C8;line-height:.9;display:block;text-shadow:0 3px 50px rgba(0,0,0,.6);}
+.gate .line2 .rest{font-family:var(--font-display);font-size:clamp(1.35rem,2.9vw,2.4rem);color:#F5EFE4;letter-spacing:.04em;display:block;margin-top:.12em;text-shadow:0 2px 44px rgba(0,0,0,.7)}
+.gate .qz{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 9vw}
+.gate .pocket{position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(60% 48% at 50% 48%,rgba(6,6,5,.76),transparent 74%);}
+.gate .q{font-family:var(--font-body);font-style:italic;font-weight:500;font-size:clamp(1.5rem,3.2vw,2.7rem);line-height:1.34;letter-spacing:.012em;color:#F5EFE4;max-width:24ch;position:relative;opacity:0;will-change:opacity,filter;transform:translateZ(0);backface-visibility:hidden;}
+.gate .citewrap{position:relative;opacity:0;}
+.gate .rule{width:54px;height:1px;background:#C9A96E;opacity:.8;margin:1.7em auto 1em}
+.gate .cite{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.36em;font-size:clamp(.62rem,1vw,.82rem);color:#C9A96E;}
+5.62%{opacity:1;transform:none}11.25%{opacity:1}20.0%{opacity:0;transform:translateY(-6px)}100%{opacity:0}}
+@keyframes g_l1{0%{opacity:0;transform:translateY(8px)}8.75%{opacity:1;transform:none}38.75%{opacity:1}44.38%{opacity:0}100%{opacity:0}}
+@keyframes g_l2{0%,20.0%{opacity:0;transform:translateY(22px) scale(.9)}27.5%{opacity:1;transform:translateY(0) scale(1)}38.75%{opacity:1;transform:scale(1)}44.38%{opacity:0;transform:scale(1)}100%{opacity:0}}
+28.75%{text-shadow:0 0 30px rgba(246,220,160,.55),0 3px 50px rgba(0,0,0,.6)}37.5%{text-shadow:0 0 14px rgba(246,220,160,.3),0 3px 50px rgba(0,0,0,.6)}44.38%{text-shadow:0 3px 50px rgba(0,0,0,.6)}100%{text-shadow:0 3px 50px rgba(0,0,0,.6)}}
+51.25%{opacity:1}72.5%{opacity:1}78.75%{opacity:0}100%{opacity:0}}
+50.62%{opacity:.6;filter:blur(6px);transform:translateY(7px)}57.5%{opacity:1;filter:blur(0);transform:translateY(0)}70.0%{opacity:1;filter:blur(0);transform:translateY(0)}76.25%{opacity:0;filter:blur(3px);transform:translateY(-4px)}100%{opacity:0}}
+58.75%{text-shadow:0 0 26px rgba(246,233,200,.5),0 2px 40px rgba(0,0,0,.6)}70.0%{text-shadow:0 0 15px rgba(246,233,200,.34),0 2px 40px rgba(0,0,0,.6)}76.25%{text-shadow:0 0 0 rgba(246,233,200,0)}100%{text-shadow:0 0 0 rgba(246,233,200,0)}}
+58.13%{opacity:1;filter:blur(0) brightness(1.55);transform:none}61.25%{opacity:1;filter:blur(0) brightness(1)}70.0%{opacity:1;filter:blur(0) brightness(1);transform:translateY(0)}71.88%{opacity:1;filter:blur(1px) brightness(2.1);transform:translateY(-3px) scale(1.02)}75.0%{opacity:.8;filter:blur(5px) brightness(1.7);transform:translateY(-12px) scale(1.05)}80.62%{opacity:0;filter:blur(14px) brightness(1.2);transform:translateY(-28px) scale(1.08)}100%{opacity:0;filter:blur(14px)}}
+58.13%{text-shadow:0 0 22px rgba(255,170,80,.85),0 0 8px rgba(255,210,140,.9)}61.88%{text-shadow:0 0 10px rgba(201,169,110,.5)}70.0%{text-shadow:0 0 8px rgba(201,169,110,.4)}71.88%{text-shadow:0 0 44px rgba(255,150,60,1),0 0 16px rgba(255,200,120,.95)}75.0%{text-shadow:0 0 50px rgba(255,130,50,.7)}79.38%{text-shadow:0 0 60px rgba(160,80,35,.25)}100%{text-shadow:0 0 0 rgba(0,0,0,0)}}
+@media (prefers-reduced-motion:reduce){.gate .datelock,.gate .line1,.gate .line2,.gate .q,.gate .citewrap{animation:none;opacity:1}.gate .pair{bottom:auto;top:30%}.gate .qz{justify-content:flex-end;padding-bottom:8%}}
+@media(max-width:560px){.gate .q{max-width:90%}.gate .pair{bottom:12%}.gate .datelock{top:11%}}
+</style>
+<style id="gate-approved-timing">
+/* APPROVED gate timing — pure CSS, byte-faithful from gate-hero-FINAL.html. NO JS clock. */
+.gate .datelock{animation:datef 16s infinite cubic-bezier(.4,0,.2,1)}
+.gate .line1{animation:l1 16s infinite cubic-bezier(.4,0,.2,1)}
+.gate .line2{animation:l2 16s infinite cubic-bezier(.25,.7,.25,1)}
+.gate .line2 .name{animation:nameglow 16s infinite cubic-bezier(.4,0,.2,1)}
+.gate .pocket{animation:pocketf 16s infinite cubic-bezier(.4,0,.2,1)}
+.gate .q{animation:qemerge 16s infinite cubic-bezier(.33,0,.2,1),glow 16s infinite cubic-bezier(.4,0,.2,1)}
+.gate .citewrap{animation:citerev 16s infinite cubic-bezier(.45,0,.2,1)}
+.gate .cite{animation:searglow 16s infinite cubic-bezier(.45,0,.2,1)}
+@keyframes datef{0%{opacity:0;transform:translateY(6px)}5.62%{opacity:1;transform:none}11.25%{opacity:1}20.0%{opacity:0;transform:translateY(-6px)}100%{opacity:0}}
+@keyframes l1{0%{opacity:0;transform:translateY(8px)}8.75%{opacity:1;transform:none}38.75%{opacity:1}44.38%{opacity:0}100%{opacity:0}}
+@keyframes l2{0%,20.0%{opacity:0;transform:translateY(22px) scale(.9)}27.5%{opacity:1;transform:translateY(0) scale(1)}38.75%{opacity:1;transform:scale(1)}44.38%{opacity:0;transform:scale(1)}100%{opacity:0}}
+@keyframes nameglow{0%,20.0%{text-shadow:0 3px 50px rgba(0,0,0,.6)}28.75%{text-shadow:0 0 30px rgba(246,220,160,.55),0 3px 50px rgba(0,0,0,.6)}37.5%{text-shadow:0 0 14px rgba(246,220,160,.3),0 3px 50px rgba(0,0,0,.6)}44.38%{text-shadow:0 3px 50px rgba(0,0,0,.6)}100%{text-shadow:0 3px 50px rgba(0,0,0,.6)}}
+@keyframes pocketf{0%,43.75%{opacity:0}51.25%{opacity:1}72.5%{opacity:1}78.75%{opacity:0}100%{opacity:0}}
+@keyframes qemerge{0%,45.0%{opacity:0;filter:blur(14px);transform:translateY(14px)}50.62%{opacity:.6;filter:blur(6px);transform:translateY(7px)}57.5%{opacity:1;filter:blur(0);transform:translateY(0)}70.0%{opacity:1;filter:blur(0);transform:translateY(0)}76.25%{opacity:0;filter:blur(3px);transform:translateY(-4px)}100%{opacity:0}}
+@keyframes glow{0%,46.25%{text-shadow:0 0 0 rgba(246,233,200,0)}58.75%{text-shadow:0 0 26px rgba(246,233,200,.5),0 2px 40px rgba(0,0,0,.6)}70.0%{text-shadow:0 0 15px rgba(246,233,200,.34),0 2px 40px rgba(0,0,0,.6)}76.25%{text-shadow:0 0 0 rgba(246,233,200,0)}100%{text-shadow:0 0 0 rgba(246,233,200,0)}}
+@keyframes citerev{0%,54.37%{opacity:0;filter:blur(3px) brightness(1.6);transform:translateY(6px)}58.13%{opacity:1;filter:blur(0) brightness(1.55);transform:none}61.25%{opacity:1;filter:blur(0) brightness(1)}70.0%{opacity:1;filter:blur(0) brightness(1);transform:translateY(0)}71.88%{opacity:1;filter:blur(1px) brightness(2.1);transform:translateY(-3px) scale(1.02)}75.0%{opacity:.8;filter:blur(5px) brightness(1.7);transform:translateY(-12px) scale(1.05)}80.62%{opacity:0;filter:blur(14px) brightness(1.2);transform:translateY(-28px) scale(1.08)}100%{opacity:0;filter:blur(14px)}}
+@keyframes searglow{0%,54.37%{text-shadow:0 0 0 rgba(255,180,90,0)}58.13%{text-shadow:0 0 22px rgba(255,170,80,.85),0 0 8px rgba(255,210,140,.9)}61.88%{text-shadow:0 0 10px rgba(201,169,110,.5)}70.0%{text-shadow:0 0 8px rgba(201,169,110,.4)}71.88%{text-shadow:0 0 44px rgba(255,150,60,1),0 0 16px rgba(255,200,120,.95)}75.0%{text-shadow:0 0 50px rgba(255,130,50,.7)}79.38%{text-shadow:0 0 60px rgba(160,80,35,.25)}100%{text-shadow:0 0 0 rgba(0,0,0,0)}}
+@media(prefers-reduced-motion:reduce){.gate .datelock,.gate .line1,.gate .line2,.gate .q,.gate .citewrap{animation:none;opacity:1}}
+</style>
 </head>
 <body class="s-grain">
 <div class="cursor-dot" id="cdot" aria-hidden="true"></div>
@@ -1393,24 +1447,22 @@ nav .links a:hover{opacity:1;color:var(--gold-hi)}
 <!-- GATE SEAM — MOVING THROUGH TIME. One pinned scroll-scrubbed descent: his 1909
      prophecy foreshadows, the gate turns 1916->2026 across parallax depth planes, the
      page line lands as the payoff. The crest is the fixed pivot, never transformed. -->
-<section class="gateseam" aria-label="Garran Hill through a century">
-  <!-- FAR plane: the era behind the gate (drifts least) -->
-  <div class="gs-plane gs-far">
-    <div class="gs-img gs-then"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1600,q_auto:best,f_auto/v1782521819/garran-hill/history/gh_1916_gate_real.jpg" alt="Garran Hill from the gate in 1916, the same pillars and drive that still stand today"></div>
-    <div class="gs-img gs-now"><img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto:best,f_auto/v1/gh_key/gh_gate_twilight.jpg" srcset="https://res.cloudinary.com/dghn2xpif/image/upload/w_768,q_auto:best,f_auto/v1/gh_key/gh_gate_twilight.jpg 768w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1280,q_auto:best,f_auto/v1/gh_key/gh_gate_twilight.jpg 1280w, https://res.cloudinary.com/dghn2xpif/image/upload/w_1920,q_auto:best,f_auto/v1/gh_key/gh_gate_twilight.jpg 1920w" sizes="100vw" alt="Garran Hill gate today, at twilight, Pinehurst North Carolina"></div>
-  </div>
-  <!-- light wash + tone, driven by --wash 0..1 -->
-  <div class="gs-tone"></div>
-  <div class="gs-veil"></div>
-  <!-- the pivot light at the vanishing point (the crest's gold; crest pixels untouched) -->
-  <div class="gs-pivot" aria-hidden="true"></div>
-
-  <!-- THE YEAR — turns 1916 -> 2026 across the scroll -->
-  <div class="gs-yearwrap"><span class="gs-year">1916</span></div>
-
-  <!-- THE PAYOFF — the page line lands after the wash -->
-  <div class="gs-land">
-    <p class="gs-land-line">Some houses are built for arrival. <em>Garran Hill was built for return.</em></p>
+<section class="gate" aria-label="Garran Hill, built for return">
+  <video class="bg" muted loop playsinline preload="metadata"
+    poster="https://res.cloudinary.com/dghn2xpif/video/upload/so_1,q_auto,f_jpg,w_1280/v1782917090/gh_key/gate_film_16s.jpg"
+    src="https://res.cloudinary.com/dghn2xpif/video/upload/v1782917090/gh_key/gate_film_16s.mp4"></video>
+  <div class="scrim-top"></div><div class="vig-corners"></div><div class="scrim-bot"></div>
+  <div class="layer">
+    <div class="datelock"><span class="circa">Circa</span><span class="yr">1916</span></div>
+    <div class="pair">
+      <span class="line1">Some houses are built for arrival.</span>
+      <span class="line2"><span class="name">Garran Hill</span><span class="rest">was built for return.</span></span>
+    </div>
+    <div class="qz">
+      <div class="pocket"></div>
+      <div class="q">&ldquo;He called to all its sons to build on the old foundations.&rdquo;</div>
+      <div class="citewrap"><div class="rule"></div><div class="cite">Walter Hines Page&nbsp;&middot;&nbsp;The Southerner, 1909</div></div>
+    </div>
   </div>
 </section>
 
@@ -2131,4 +2183,22 @@ if(window.matchMedia('(pointer:fine)').matches){
   setTimeout(function(){ els.forEach(function(e){ e.classList.add('in'); }); }, 3200);
 })();
 </script>
-</body></html>
+<script id="gate-start-v3">
+(function(){
+  var g=document.querySelector('.gate'); if(!g) return;
+  var v=g.querySelector('video.bg'); if(!v) return;
+  var beats=g.querySelectorAll('.datelock,.line1,.line2,.pocket,.q,.citewrap,.cite,.line2 .name');
+  function restart(){
+    // hard-restart CSS animations so they begin exactly when the film begins
+    beats.forEach(function(e){ e.style.animation='none'; });
+    void g.offsetWidth; // reflow
+    beats.forEach(function(e){ e.style.animation=''; });
+    try{ v.currentTime=0; var p=v.play(); if(p&&p.catch)p.catch(function(){}); }catch(_){}
+  }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){ restart(); }
+    else { try{ v.pause(); }catch(_){} }
+  });},{threshold:0.55});
+  if(v.readyState>=1) io.observe(g); else v.addEventListener('loadedmetadata',function(){io.observe(g);});
+})();
+</script></body></html>
