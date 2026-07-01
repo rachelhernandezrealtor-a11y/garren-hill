@@ -298,6 +298,29 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
 .ep-inquiry__agent{display:flex;flex-direction:column;align-items:center;gap:var(--s-1)}
 </style>
 
+
+<style id="gate-approved-timing">
+/* APPROVED gate timing — pure CSS, byte-faithful from gate-hero-FINAL.html. NO JS clock. */
+.gate .datelock{animation:datef 16s infinite cubic-bezier(.4,0,.2,1)}
+.gate .line1{animation:l1 16s infinite cubic-bezier(.4,0,.2,1)}
+.gate .line2{animation:l2 16s infinite cubic-bezier(.25,.7,.25,1)}
+.gate .line2 .name{animation:nameglow 16s infinite cubic-bezier(.4,0,.2,1)}
+.gate .pocket{animation:pocketf 16s infinite cubic-bezier(.4,0,.2,1)}
+.gate .q{animation:qemerge 16s infinite cubic-bezier(.33,0,.2,1),glow 16s infinite cubic-bezier(.4,0,.2,1)}
+.gate .citewrap{animation:citerev 16s infinite cubic-bezier(.45,0,.2,1)}
+.gate .cite{animation:searglow 16s infinite cubic-bezier(.45,0,.2,1)}
+@keyframes datef{0%{opacity:0;transform:translateY(6px)}5.62%{opacity:1;transform:none}11.25%{opacity:1}20.0%{opacity:0;transform:translateY(-6px)}100%{opacity:0}}
+@keyframes l1{0%{opacity:0;transform:translateY(8px)}8.75%{opacity:1;transform:none}38.75%{opacity:1}44.38%{opacity:0}100%{opacity:0}}
+@keyframes l2{0%,20.0%{opacity:0;transform:translateY(22px) scale(.9)}27.5%{opacity:1;transform:translateY(0) scale(1)}38.75%{opacity:1;transform:scale(1)}44.38%{opacity:0;transform:scale(1)}100%{opacity:0}}
+@keyframes nameglow{0%,20.0%{text-shadow:0 3px 50px rgba(0,0,0,.6)}28.75%{text-shadow:0 0 30px rgba(246,220,160,.55),0 3px 50px rgba(0,0,0,.6)}37.5%{text-shadow:0 0 14px rgba(246,220,160,.3),0 3px 50px rgba(0,0,0,.6)}44.38%{text-shadow:0 3px 50px rgba(0,0,0,.6)}100%{text-shadow:0 3px 50px rgba(0,0,0,.6)}}
+@keyframes pocketf{0%,43.75%{opacity:0}51.25%{opacity:1}72.5%{opacity:1}78.75%{opacity:0}100%{opacity:0}}
+@keyframes qemerge{0%,45.0%{opacity:0;filter:blur(14px);transform:translateY(14px)}50.62%{opacity:.6;filter:blur(6px);transform:translateY(7px)}57.5%{opacity:1;filter:blur(0);transform:translateY(0)}70.0%{opacity:1;filter:blur(0);transform:translateY(0)}76.25%{opacity:0;filter:blur(3px);transform:translateY(-4px)}100%{opacity:0}}
+@keyframes glow{0%,46.25%{text-shadow:0 0 0 rgba(246,233,200,0)}58.75%{text-shadow:0 0 26px rgba(246,233,200,.5),0 2px 40px rgba(0,0,0,.6)}70.0%{text-shadow:0 0 15px rgba(246,233,200,.34),0 2px 40px rgba(0,0,0,.6)}76.25%{text-shadow:0 0 0 rgba(246,233,200,0)}100%{text-shadow:0 0 0 rgba(246,233,200,0)}}
+@keyframes citerev{0%,54.37%{opacity:0;filter:blur(3px) brightness(1.6);transform:translateY(6px)}58.13%{opacity:1;filter:blur(0) brightness(1.55);transform:none}61.25%{opacity:1;filter:blur(0) brightness(1)}70.0%{opacity:1;filter:blur(0) brightness(1);transform:translateY(0)}71.88%{opacity:1;filter:blur(1px) brightness(2.1);transform:translateY(-3px) scale(1.02)}75.0%{opacity:.8;filter:blur(5px) brightness(1.7);transform:translateY(-12px) scale(1.05)}80.62%{opacity:0;filter:blur(14px) brightness(1.2);transform:translateY(-28px) scale(1.08)}100%{opacity:0;filter:blur(14px)}}
+@keyframes searglow{0%,54.37%{text-shadow:0 0 0 rgba(255,180,90,0)}58.13%{text-shadow:0 0 22px rgba(255,170,80,.85),0 0 8px rgba(255,210,140,.9)}61.88%{text-shadow:0 0 10px rgba(201,169,110,.5)}70.0%{text-shadow:0 0 8px rgba(201,169,110,.4)}71.88%{text-shadow:0 0 44px rgba(255,150,60,1),0 0 16px rgba(255,200,120,.95)}75.0%{text-shadow:0 0 50px rgba(255,130,50,.7)}79.38%{text-shadow:0 0 60px rgba(160,80,35,.25)}100%{text-shadow:0 0 0 rgba(0,0,0,0)}}
+@media(prefers-reduced-motion:reduce){.gate .datelock,.gate .line1,.gate .line2,.gate .q,.gate .citewrap{animation:none;opacity:1}}
+</style>
+
 </head>
 <body>
 <section id="ghhero">
@@ -533,48 +556,24 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
 </script>
 
 
-<script id="gate-clock-v2">
+
+<script id="gate-start-v3">
 (function(){
   var g=document.querySelector('.gate'); if(!g) return;
   var v=g.querySelector('video.bg'); if(!v) return;
-  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var beats={
-    date:  g.querySelector('.datelock'),
-    l1:    g.querySelector('.line1'),
-    l2:    g.querySelector('.line2'),
-    q:     g.querySelector('.q'),
-    cite:  g.querySelector('.citewrap')
-  };
-  // helper: eased 0..1 ramp
-  function ramp(t,a,b){ if(t<=a)return 0; if(t>=b)return 1; var x=(t-a)/(b-a); return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2; }
-  function win(t,inA,inB,outA,outB){ return Math.min(ramp(t,inA,inB), 1-ramp(t,outA,outB)); }
-  if(reduce){ Object.values(beats).forEach(function(e){if(e)e.style.opacity=1;}); return; }
-  function set(el,o,extra){ if(!el)return; el.style.opacity=o.toFixed(3); if(extra)el.style.filter=extra; }
-  function frame(){
-    var t=(v.currentTime||0)%16;   // GATE VIDEO CLOCK — beats can never drift from the film
-    // BEAT MAP on measured holds: sepia hold 0-2 | dissolve 2-3 | today hold 3-13 | dissolve-back 13-16
-    // Circa 1916 — lives in the sepia 1916 hold (0 -> 2.4), gone before dissolve
-    set(beats.date, win(t, -0.1,0.0, 2.6,3.2));  // INSTANT on first frame, hold through full sepia, out as it dissolves
-    // "Some houses are built for arrival." — early today hold
-    set(beats.l1, win(t, 3.4,4.3, 6.2,7.0));
-    // "Garran Hill / was built for return." — mid today hold, the centerpiece
-    set(beats.l2, win(t, 6.6,7.6, 9.4,10.2));
-    // the quote — later today hold (memory surfacing)
-    var qv=win(t, 9.9,11.0, 12.2,12.9);
-    set(beats.q, qv, qv>0? 'blur('+((1-qv)*10).toFixed(1)+'px)':'blur(10px)');
-    // Walter Hines Page — sears in late, SMOLDERS OUT into the dissolve-back-to-1916 (the "return")
-    var cv=win(t, 11.4,12.2, 13.4,14.6);
-    set(beats.cite, cv, cv>0? 'brightness('+(1+ (1-cv)*0.8).toFixed(2)+') blur('+((1-cv)*6).toFixed(1)+'px)':'');
-    requestAnimationFrame(frame);
+  var beats=g.querySelectorAll('.datelock,.line1,.line2,.pocket,.q,.citewrap,.cite,.line2 .name');
+  function restart(){
+    // hard-restart CSS animations so they begin exactly when the film begins
+    beats.forEach(function(e){ e.style.animation='none'; });
+    void g.offsetWidth; // reflow
+    beats.forEach(function(e){ e.style.animation=''; });
+    try{ v.currentTime=0; var p=v.play(); if(p&&p.catch)p.catch(function(){}); }catch(_){}
   }
-  function start(){ requestAnimationFrame(frame); }
-  if(v.readyState>=1) start(); else v.addEventListener('loadedmetadata',start);
-  // START ON THE 1916 PHOTO: only play when the gate enters view, always from frame 0.
   var io=new IntersectionObserver(function(es){es.forEach(function(e){
-    if(e.isIntersecting){ try{ if(v.currentTime>0.25){v.currentTime=0;} var pr=v.play(); if(pr&&pr.catch)pr.catch(function(){}); }catch(_){} }
-    else { try{ v.pause(); v.currentTime=0; }catch(_){} }   // leaves view -> reset so it reopens on 1916
+    if(e.isIntersecting){ restart(); }
+    else { try{ v.pause(); }catch(_){} }
   });},{threshold:0.55});
-  io.observe(g);
+  if(v.readyState>=1) io.observe(g); else v.addEventListener('loadedmetadata',function(){io.observe(g);});
 })();
 </script>
 </body></html>
