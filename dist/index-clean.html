@@ -191,20 +191,20 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
 }
 /* ---- PHOTO LAW: framed in air, own aspect-ratio, void-killer, gutter default.
        Two full-bleed images CANNOT butt (framed+gutter is the default; bleed is opt-in). ---- */
-.plate{position:relative;width:100%;aspect-ratio:var(--ar,3/2);margin-block:var(--s-6);overflow:hidden;background:var(--ink)}
-.plate__fill{position:absolute;inset:0;z-index:1;background-size:cover;background-position:center;filter:blur(55px) brightness(.85) saturate(1.3);transform:scale(1.18)}
-.plate__img{position:absolute;inset:0;z-index:2;background-size:contain;background-position:center;background-repeat:no-repeat}
-.plate--bleed{aspect-ratio:auto;height:100svh;min-height:640px;margin-block:0}
-.plate--bleed .plate__img{background-size:cover}
-.plate--bleed .plate__fill{display:none}
+.ep-plate{position:relative;width:100%;aspect-ratio:var(--ar,3/2);margin-block:var(--s-6);overflow:hidden;background:var(--ink)}
+.ep-plate__fill{position:absolute;inset:0;z-index:1;background-size:cover;background-position:center;filter:blur(55px) brightness(.85) saturate(1.3);transform:scale(1.18)}
+.ep-plate__img{position:absolute;inset:0;z-index:2;background-size:contain;background-position:center;background-repeat:no-repeat}
+.ep-plate--bleed{aspect-ratio:auto;height:100svh;min-height:640px;margin-block:0}
+.ep-plate--bleed .ep-plate__img{background-size:cover}
+.ep-plate--bleed .ep-plate__fill{display:none}
 /* ---- TEXT LAW: caption lives in a corner zone with a TIGHT halo, never a dark box,
        never covering the subject. Narrative text sits on calm space. ---- */
-.plate__cap{position:absolute;z-index:3;left:var(--s-4);bottom:var(--s-3);max-width:34ch;color:var(--cream);
+.ep-plate__cap{position:absolute;z-index:3;left:var(--s-4);bottom:var(--s-3);max-width:34ch;color:var(--cream);
   text-shadow:0 0 2px rgba(0,0,0,.95),0 1px 5px rgba(0,0,0,.85)}
 .scrim{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(105deg,rgba(8,8,7,.55) 0%,rgba(8,8,7,.22) 40%,transparent 68%)}
 .eyebrow{font-family:var(--font-label);font-size:var(--t-eyebrow);letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
 .measure{max-width:var(--measure);margin-inline:auto}
-@media(max-width:560px){.plate{margin-block:var(--s-4)}.plate__cap{left:var(--s-3);right:var(--s-3);bottom:var(--s-2);max-width:none}}
+@media(max-width:560px){.ep-plate{margin-block:var(--s-4)}.ep-plate__cap{left:var(--s-3);right:var(--s-3);bottom:var(--s-2);max-width:none}}
 
 /* ===== GATE COMPONENT (then/now video film) ===== */
 .gate{position:relative;height:100svh;min-height:640px;width:100%;overflow:hidden;background:var(--ink)}
