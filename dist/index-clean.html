@@ -276,6 +276,7 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
 @media (prefers-reduced-motion:reduce){.gate .datelock,.gate .line1,.gate .line2,.gate .q,.gate .citewrap{animation:none;opacity:1}.gate .pair{bottom:auto;top:30%}.gate .qz{justify-content:flex-end;padding-bottom:8%}}
 @media(max-width:560px){.gate .q{max-width:90%}.gate .pair{bottom:12%}.gate .datelock{top:11%}}
 </style>
+<style id=kill-seam>.seam-veil{display:none !important}</style>
 </head>
 <body>
 <section id="ghhero">
@@ -471,7 +472,6 @@ html,body{background:#000;color:#f4ecdc;font-family:'Cormorant Garamond',serif}
 
   GH.auto = function(){
     GH.gateSeam();
-    GH.seamAll();
     GH.reveal('[data-gh="reveal"]');
     GH.dissolve('[data-gh="dissolve"]');
     GH.parallax('[data-gh="parallax"]');
