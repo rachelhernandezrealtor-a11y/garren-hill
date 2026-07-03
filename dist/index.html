@@ -2029,58 +2029,58 @@ if(window.matchMedia('(pointer:fine)').matches){
 .rooms-wrap{background:var(--ink)}
 
 /* FULL-BLEED scenes (no side gutter — that was the floating-box bug). One shape per scene;
-   the void-killer (blurred self-fill) fills any remainder so no dead black, no crop. */
+ the void-killer (blurred self-fill) fills any remainder so no dead black, no crop. */
 .rm-scene{
-  position:relative !important; width:100% !important; max-width:100% !important;
-  margin:0 auto !important; aspect-ratio:auto !important;
-  height:clamp(560px,80vh,880px) !important; min-height:0 !important; max-height:none !important;
-  overflow:hidden !important; background:var(--ink);
+ position:relative ; width:100% ; max-width:100% ;
+ margin:0 auto ; aspect-ratio:auto ;
+ height:clamp(560px,80vh,880px) ; min-height:0 ; max-height:none ;
+ overflow:hidden ; background:var(--ink);
 }
-.rm-scene.compact{ height:clamp(460px,62vh,640px) !important }
-.rm-scene.hero{ height:clamp(620px,88vh,960px) !important }
+.rm-scene.compact{ height:clamp(460px,62vh,640px) }
+.rm-scene.hero{ height:clamp(620px,88vh,960px) }
 
 /* void-killer: sharp full photo (contain) over its own blurred cover-fill — always renders */
 .rm-scene .slide-blur,.rm-split-media .slide-blur{
-  position:absolute !important; inset:0 !important; z-index:1 !important;
-  background-size:cover !important; background-position:center !important;
-  filter:blur(52px) brightness(.82) saturate(1.25); transform:scale(1.18)}
+ position:absolute ; inset:0 ; z-index:1 ;
+ background-size:cover ; background-position:center ;
+ filter:blur(52px) brightness(.82) saturate(1.25); transform:scale(1.18)}
 .rm-scene .slide-sharp,.rm-split-media .slide-sharp{
-  position:absolute !important; inset:0 !important; z-index:2 !important;
-  background-size:contain !important; background-position:center !important; background-repeat:no-repeat !important;
-  filter:sepia(.10) saturate(1.04) contrast(1.02)}
+ position:absolute ; inset:0 ; z-index:2 ;
+ background-size:contain ; background-position:center ; background-repeat:no-repeat ;
+ filter:sepia(.10) saturate(1.04) contrast(1.02)}
 .rm-scene .slide,.rm-split-media .slide{position:absolute;inset:0}
 .rm-scene .slide.on,.rm-split-media .slide.on{opacity:1}
 
 /* SPLIT rooms: photo | text side by side (magazine), stack photo-over-text on mobile */
-.rm-split{display:grid !important; grid-template-columns:1.5fr 1fr !important; align-items:stretch !important;
-  width:100% !important; max-width:100% !important; margin:0 auto !important;
-  aspect-ratio:auto !important; min-height:clamp(520px,66vh,720px) !important; height:auto !important; overflow:hidden}
-.rm-split.flip{grid-template-columns:1fr 1.5fr !important}
-.rm-split-media{position:relative !important; overflow:hidden !important; aspect-ratio:auto !important;
-  height:auto !important; min-height:0 !important; max-height:none !important; order:0 !important; background:var(--ink)}
-.rm-split.flip .rm-split-media{order:1 !important}
-.rm-split-text{display:flex !important; flex-direction:column !important; justify-content:center !important;
-  padding:clamp(2rem,4vw,4rem) !important; text-align:left !important; background:var(--ink); order:1 !important}
-.rm-split.flip .rm-split-text{order:0 !important}
+.rm-split{display:grid ; grid-template-columns:1.5fr 1fr ; align-items:stretch ;
+ width:100% ; max-width:100% ; margin:0 auto ;
+ aspect-ratio:auto ; min-height:clamp(520px,66vh,720px) ; height:auto ; overflow:hidden}
+.rm-split.flip{grid-template-columns:1fr 1.5fr }
+.rm-split-media{position:relative ; overflow:hidden ; aspect-ratio:auto ;
+ height:auto ; min-height:0 ; max-height:none ; order:0 ; background:var(--ink)}
+.rm-split.flip .rm-split-media{order:1 }
+.rm-split-text{display:flex ; flex-direction:column ; justify-content:center ;
+ padding:clamp(2rem,4vw,4rem) ; text-align:left ; background:var(--ink); order:1 }
+.rm-split.flip .rm-split-text{order:0 }
 @media(max-width:820px){
-  .rm-split,.rm-split.flip{display:block !important}
-  .rm-split-media{height:clamp(320px,52vw,460px) !important; order:0 !important}
-  .rm-split-text{order:1 !important; text-align:center !important; padding:clamp(1.8rem,7vw,2.6rem) var(--pad) !important}
+ .rm-split,.rm-split.flip{display:block }
+ .rm-split-media{height:clamp(320px,52vw,460px) ; order:0 }
+ .rm-split-text{order:1 ; text-align:center ; padding:clamp(1.8rem,7vw,2.6rem) var(--pad) }
 }
 
 /* CAPTION: one quiet lower corner, alternating, whisper legibility (NO dark box) */
-.rm-cap{position:absolute !important; z-index:4 !important; left:clamp(1.6rem,4vw,3.4rem); right:auto;
-  bottom:clamp(1.8rem,5vh,3.4rem); max-width:40ch; text-align:left; transform:none !important; padding:0}
+.rm-cap{position:absolute ; z-index:4 ; left:clamp(1.6rem,4vw,3.4rem); right:auto;
+ bottom:clamp(1.8rem,5vh,3.4rem); max-width:40ch; text-align:left; transform:none ; padding:0}
 .rm-scene:nth-of-type(even) .rm-cap{left:auto; right:clamp(1.6rem,4vw,3.4rem); text-align:right}
-.rm-cap::before{display:none !important; content:none !important}
+.rm-cap::before{display:none ; content:none }
 .rm-cap .rm,.rm-cap .det,.rm-cap .flow{text-shadow:0 0 2px rgba(0,0,0,.95),0 1px 6px rgba(0,0,0,.9)}
-.rm-split .rm-cap,.rm-split-text .rm-cap{position:static !important; max-width:46ch; text-shadow:none}
+.rm-split .rm-cap,.rm-split-text .rm-cap{position:static ; max-width:46ch; text-shadow:none}
 
 /* SCRIM: whisper at the extreme edges only; photo body stays luminous */
-.rm-scene::after{content:"" !important; position:absolute !important; inset:0 !important; z-index:3 !important; pointer-events:none !important;
-  background:linear-gradient(180deg,rgba(6,6,5,.24) 0%,transparent 16%,transparent 72%,rgba(6,6,5,.36) 100%) !important}
-.rm-split::after{display:none !important}
-.rm-scene::before{display:none !important}
+.rm-scene::after{content:"" ; position:absolute ; inset:0 ; z-index:3 ; pointer-events:none ;
+ background:linear-gradient(180deg,rgba(6,6,5,.24) 0%,transparent 16%,transparent 72%,rgba(6,6,5,.36) 100%) }
+.rm-split::after{display:none }
+.rm-scene::before{display:none }
 </style>
 
 <script id="film-reveal-js">
