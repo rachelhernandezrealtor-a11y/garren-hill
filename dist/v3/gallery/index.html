@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Gallery — Garran Hill, 200 Hollycrest Drive, Pinehurst</title>
+<meta name="description" content="One hundred and thirty-eight photographs of Garran Hill, in the order you would walk the house. 200 Hollycrest Drive, Pinehurst, North Carolina.">
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=EB+Garamond:ital,wght@0,400;0,500&family=Mr+De+Haviland&display=swap" rel="stylesheet">
+<style>
+  @font-face{font-family:'Edwardian Script ITC';src:url('../assets/edwardian.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+  :root{--ink:#1c1f1a;--paper:#f5f1e8;--gold:#a5843f;--gold-soft:#bfa268;--spine:#14160f;
+    --serif:'Cormorant Garamond',Georgia,serif;--body:'EB Garamond',Georgia,serif;
+    --script:'Edwardian Script ITC','Mr De Haviland',cursive}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--spine);color:var(--paper);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .masthead{text-align:center;padding:110px 24px 66px;position:relative}
+  .masthead .back{position:absolute;top:28px;left:32px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(245,241,232,.66);text-decoration:none}
+  .masthead .back:hover{color:#fff}
+  .masthead .est{font-size:11px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:18px}
+  .masthead h1{font-family:var(--script);font-weight:400;font-size:clamp(64px,10vw,120px);line-height:.95;color:var(--paper)}
+  .masthead .sub{font-family:var(--serif);font-style:italic;font-size:19px;color:rgba(245,241,232,.78);margin-top:20px}
+  .masthead .rule{width:1px;height:52px;margin:34px auto 0;background:linear-gradient(rgba(191,162,104,.7),transparent)}
+  .chapternav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;padding:0 24px 70px;max-width:900px;margin:0 auto}
+  .chapternav a{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(245,241,232,.62);text-decoration:none;transition:color .3s}
+  .chapternav a:hover{color:var(--gold-soft)}
+  .gch{max-width:1280px;margin:0 auto;padding:0 clamp(18px,4vw,48px) 90px}
+  .gch-head{display:flex;align-items:baseline;gap:18px;border-bottom:1px solid rgba(191,162,104,.28);padding-bottom:16px;margin-bottom:30px}
+  .gch-head .rom{font-size:12px;letter-spacing:.34em;color:var(--gold)}
+  .gch-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.4vw,38px);color:var(--paper)}
+  .gch-head .count{margin-left:auto;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,241,232,.45);white-space:nowrap}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+  .ph{position:relative;cursor:zoom-in;background:#0e100b;overflow:hidden}
+  .ph img{display:block;width:100%;height:100%;aspect-ratio:3/2;object-fit:cover;transition:transform 1.2s cubic-bezier(.19,.9,.22,1),opacity .6s;opacity:.94}
+  .ph:hover img{transform:scale(1.035);opacity:1}
+  .ph figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 10px;font-family:var(--serif);font-style:italic;font-size:14.5px;color:rgba(245,241,232,.92);
+    background:linear-gradient(0deg,rgba(10,11,8,.78),transparent);opacity:0;transition:opacity .35s}
+  .ph:hover figcaption{opacity:1}
+  .colophon{text-align:center;padding:40px 24px 110px;color:rgba(245,241,232,.55);font-family:var(--serif);font-style:italic;font-size:16px}
+  .colophon a{color:var(--gold-soft);text-decoration:none}
+  /* lightbox */
+  .lb{position:fixed;inset:0;background:rgba(8,9,6,.97);z-index:90;display:none;align-items:center;justify-content:center;flex-direction:column}
+  .lb.open{display:flex}
+  .lb img{max-width:94vw;max-height:84vh;object-fit:contain;box-shadow:0 40px 120px -30px rgba(0,0,0,.9)}
+  .lb .cap{margin-top:16px;font-family:var(--serif);font-style:italic;font-size:16px;color:rgba(245,241,232,.85);text-align:center;padding:0 20px}
+  .lb .x{position:absolute;top:20px;right:26px;font-size:26px;color:rgba(245,241,232,.7);background:none;border:0;cursor:pointer;line-height:1;padding:8px}
+  .lb .nav{position:absolute;top:50%;transform:translateY(-50%);font-size:34px;color:rgba(245,241,232,.55);background:none;border:0;cursor:pointer;padding:20px 16px}
+  .lb .nav:hover{color:#fff}
+  .lb .prev{left:6px} .lb .next{right:6px}
+  @media(max-width:640px){
+    .masthead{padding:84px 20px 46px}
+    .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+    .ph figcaption{display:none}
+    .gch{padding-bottom:60px}
+    .gch-head{flex-wrap:wrap;gap:8px 14px}
+    .gch-head .count{margin-left:0;flex-basis:100%}
+  }
+</style>
+</head>
+<body>
+<header class="masthead">
+  <a class="back" href="../">&larr; Garran Hill</a>
+  <div class="est">Est. 1916 &middot; Pinehurst, North Carolina</div>
+  <h1>The Gallery</h1>
+  <div class="sub">One hundred and thirty-eight photographs, in the order you would walk the house.</div>
+  <div class="rule" aria-hidden="true"></div>
+</header>
+<nav class="chapternav">
+  <a href="#the-approach">The Approach</a>
+  <a href="#the-threshold">The Threshold</a>
+  <a href="#the-drawing-room">The Drawing Room &amp; Terrace</a>
+  <a href="#the-dining-room">The Formal Dining Room</a>
+  <a href="#the-kitchen">The Kitchen &amp; Breakfast Room</a>
+  <a href="#the-quiet-rooms">The Quiet Rooms</a>
+  <a href="#the-primary-wing">The Primary Wing</a>
+  <a href="#upstairs">Upstairs</a>
+  <a href="#the-den">The Den &amp; Spiral Stair</a>
+  <a href="#the-grounds">The Grounds</a>
+  <a href="#the-last-parcel">The Last Parcel</a>
+</nav>
+<section class="gch" id="the-approach">
+  <header class="gch-head">
+    <span class="rom">I</span>
+    <h2>The Approach</h2>
+    <span class="count">9 photographs</span>
+  </header>
+  <div class="grid">
+<figure class="ph" id="ph-1">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/001-front-exterior.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/001-front-exterior.jpg" alt="Front exterior">
+  <figcaption>Front exterior</figcaption>
+</figure>
+<figure class="ph" id="ph-2">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/002-historic-garran-hill.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/002-historic-garran-hill.jpg" alt="Historic garran hill">
+  <figcaption>Historic garran hill</figcaption>
+</figure>
+<figure class="ph" id="ph-3">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/003-front-aerial.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/003-front-aerial.jpg" alt="Front aerial">
+  <figcaption>Front aerial</figcaption>
+</figure>
+<figure class="ph" id="ph-4">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/004-side-view.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/004-side-view.jpg" alt="Side view">
+  <figcaption>Side view</figcaption>
+</figure>
+<figure class="ph" id="ph-5">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/005-cast-iron-original.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/005-cast-iron-original.jpg" alt="Cast iron original">
+  <figcaption>Cast iron original</figcaption>
+</figure>
+<figure class="ph" id="ph-6">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/006-front-main.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/006-front-main.jpg" alt="Front main">
+  <figcaption>Front main</figcaption>
+</figure>
+<figure class="ph" id="ph-7">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/007-front-exterior.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/007-front-exterior.jpg" alt="Front exterior">
+  <figcaption>Front exterior</figcaption>
+</figure>
+<figure class="ph" id="ph-8">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/008-exterior.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/008-exterior.jpg" alt="Exterior">
+  <figcaption>Exterior</figcaption>
+</figure>
+<figure class="ph" id="ph-9">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/009-portico.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/009-portico.jpg" alt="Portico">
+  <figcaption>Portico</figcaption>
+</figure>
+  </div>
+</section>
+<section class="gch" id="the-threshold">
+  <header class="gch-head">
+    <span class="rom">II</span>
+    <h2>The Threshold</h2>
+    <span class="count">5 photographs</span>
+  </header>
+  <div class="grid">
+<figure class="ph" id="ph-10">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/010-front-entry.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/010-front-entry.jpg" alt="Front entry">
+  <figcaption>Front entry</figcaption>
+</figure>
+<figure class="ph" id="ph-11">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/011-entry-hall.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/011-entry-hall.jpg" alt="Entry hall">
+  <figcaption>Entry hall</figcaption>
+</figure>
+<figure class="ph" id="ph-12">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/012-entry-hall.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/012-entry-hall.jpg" alt="Entry hall">
+  <figcaption>Entry hall</figcaption>
+</figure>
+<figure class="ph" id="ph-13">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/013-entry-hall.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/013-entry-hall.jpg" alt="Entry hall">
+  <figcaption>Entry hall</figcaption>
+</figure>
+<figure class="ph" id="ph-14">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/014-entry-hall.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/014-entry-hall.jpg" alt="Entry hall">
+  <figcaption>Entry hall</figcaption>
+</figure>
+  </div>
+</section>
+<section class="gch" id="the-drawing-room">
+  <header class="gch-head">
+    <span class="rom">III</span>
+    <h2>The Drawing Room &amp; Terrace</h2>
+    <span class="count">10 photographs</span>
+  </header>
+  <div class="grid">
+<figure class="ph" id="ph-15">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/015-drawing-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/015-drawing-room.jpg" alt="Drawing room">
+  <figcaption>Drawing room</figcaption>
+</figure>
+<figure class="ph" id="ph-16">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/016-drawing-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/016-drawing-room.jpg" alt="Drawing room">
+  <figcaption>Drawing room</figcaption>
+</figure>
+<figure class="ph" id="ph-17">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/017-drawing-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/017-drawing-room.jpg" alt="Drawing room">
+  <figcaption>Drawing room</figcaption>
+</figure>
+<figure class="ph" id="ph-18">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/018-drawing-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/018-drawing-room.jpg" alt="Drawing room">
+  <figcaption>Drawing room</figcaption>
+</figure>
+<figure class="ph" id="ph-19">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/019-drawing-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/019-drawing-room.jpg" alt="Drawing room">
+  <figcaption>Drawing room</figcaption>
+</figure>
+<figure class="ph" id="ph-20">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/020-drawing-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/020-drawing-room.jpg" alt="Drawing room">
+  <figcaption>Drawing room</figcaption>
+</figure>
+<figure class="ph" id="ph-21">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/021-drawing-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/021-drawing-room.jpg" alt="Drawing room">
+  <figcaption>Drawing room</figcaption>
+</figure>
+<figure class="ph" id="ph-22">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/022-drawing-room-french-doors.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/022-drawing-room-french-doors.jpg" alt="Drawing room french doors">
+  <figcaption>Drawing room french doors</figcaption>
+</figure>
+<figure class="ph" id="ph-23">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/023-outdoor-terrace.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/023-outdoor-terrace.jpg" alt="Outdoor terrace">
+  <figcaption>Outdoor terrace</figcaption>
+</figure>
+<figure class="ph" id="ph-24">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/024-dining-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/024-dining-room.jpg" alt="Dining room">
+  <figcaption>Dining room</figcaption>
+</figure>
+  </div>
+</section>
+<section class="gch" id="the-dining-room">
+  <header class="gch-head">
+    <span class="rom">IV</span>
+    <h2>The Formal Dining Room</h2>
+    <span class="count">10 photographs</span>
+  </header>
+  <div class="grid">
+<figure class="ph" id="ph-25">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/025-dining-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/025-dining-room.jpg" alt="Dining room">
+  <figcaption>Dining room</figcaption>
+</figure>
+<figure class="ph" id="ph-26">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/026-dining-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/026-dining-room.jpg" alt="Dining room">
+  <figcaption>Dining room</figcaption>
+</figure>
+<figure class="ph" id="ph-27">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/027-dining-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/027-dining-room.jpg" alt="Dining room">
+  <figcaption>Dining room</figcaption>
+</figure>
+<figure class="ph" id="ph-28">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/028-dining-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/028-dining-room.jpg" alt="Dining room">
+  <figcaption>Dining room</figcaption>
+</figure>
+<figure class="ph" id="ph-29">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/029-terrace.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/029-terrace.jpg" alt="Terrace">
+  <figcaption>Terrace</figcaption>
+</figure>
+<figure class="ph" id="ph-30">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/030-dining-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/030-dining-room.jpg" alt="Dining room">
+  <figcaption>Dining room</figcaption>
+</figure>
+<figure class="ph" id="ph-31">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/031-kitchen.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/031-kitchen.jpg" alt="Kitchen">
+  <figcaption>Kitchen</figcaption>
+</figure>
+<figure class="ph" id="ph-32">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/032-kitchen.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/032-kitchen.jpg" alt="Kitchen">
+  <figcaption>Kitchen</figcaption>
+</figure>
+<figure class="ph" id="ph-33">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/033-kitchen.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/033-kitchen.jpg" alt="Kitchen">
+  <figcaption>Kitchen</figcaption>
+</figure>
+<figure class="ph" id="ph-34">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/034-kitchen.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/034-kitchen.jpg" alt="Kitchen">
+  <figcaption>Kitchen</figcaption>
+</figure>
+  </div>
+</section>
+<section class="gch" id="the-kitchen">
+  <header class="gch-head">
+    <span class="rom">V</span>
+    <h2>The Kitchen &amp; Breakfast Room</h2>
+    <span class="count">16 photographs</span>
+  </header>
+  <div class="grid">
+<figure class="ph" id="ph-35">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/035-kitchen.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/035-kitchen.jpg" alt="Kitchen">
+  <figcaption>Kitchen</figcaption>
+</figure>
+<figure class="ph" id="ph-36">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/036-butlers-pantry.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/036-butlers-pantry.jpg" alt="Butlers pantry">
+  <figcaption>Butlers pantry</figcaption>
+</figure>
+<figure class="ph" id="ph-37">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/037-farm-sink.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/037-farm-sink.jpg" alt="Farm sink">
+  <figcaption>Farm sink</figcaption>
+</figure>
+<figure class="ph" id="ph-38">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/038-wall-of-windows-kitchen.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/038-wall-of-windows-kitchen.jpg" alt="Wall of windows kitchen">
+  <figcaption>Wall of windows kitchen</figcaption>
+</figure>
+<figure class="ph" id="ph-39">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/039-kitchen.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/039-kitchen.jpg" alt="Kitchen">
+  <figcaption>Kitchen</figcaption>
+</figure>
+<figure class="ph" id="ph-40">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/040-kitchen.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/040-kitchen.jpg" alt="Kitchen">
+  <figcaption>Kitchen</figcaption>
+</figure>
+<figure class="ph" id="ph-41">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/041-built-in-pantry.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/041-built-in-pantry.jpg" alt="Built in pantry">
+  <figcaption>Built in pantry</figcaption>
+</figure>
+<figure class="ph" id="ph-42">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/042-kitchen-to-breakfast-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/042-kitchen-to-breakfast-room.jpg" alt="Kitchen to breakfast room">
+  <figcaption>Kitchen to breakfast room</figcaption>
+</figure>
+<figure class="ph" id="ph-43">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/043-breakfast-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/043-breakfast-room.jpg" alt="Breakfast room">
+  <figcaption>Breakfast room</figcaption>
+</figure>
+<figure class="ph" id="ph-44">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/044-breakfast-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/044-breakfast-room.jpg" alt="Breakfast room">
+  <figcaption>Breakfast room</figcaption>
+</figure>
+<figure class="ph" id="ph-45">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/045-breakfast-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/045-breakfast-room.jpg" alt="Breakfast room">
+  <figcaption>Breakfast room</figcaption>
+</figure>
+<figure class="ph" id="ph-46">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/046-kitchen.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/046-kitchen.jpg" alt="Kitchen">
+  <figcaption>Kitchen</figcaption>
+</figure>
+<figure class="ph" id="ph-47">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/047-heart-pine-stairs-to-second-level.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/047-heart-pine-stairs-to-second-level.jpg" alt="Heart pine stairs to second level">
+  <figcaption>Heart pine stairs to second level</figcaption>
+</figure>
+<figure class="ph" id="ph-48">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/048-built-in-desk-and-built-in-hutch.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/048-built-in-desk-and-built-in-hutch.jpg" alt="Built in desk and built in hutch">
+  <figcaption>Built in desk and built in hutch</figcaption>
+</figure>
+<figure class="ph" id="ph-49">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/049-stairs-to-basement.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/049-stairs-to-basement.jpg" alt="Stairs to basement">
+  <figcaption>Stairs to basement</figcaption>
+</figure>
+<figure class="ph" id="ph-50">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/050-door-to-side-porch.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/050-door-to-side-porch.jpg" alt="Door to side porch">
+  <figcaption>Door to side porch</figcaption>
+</figure>
+  </div>
+</section>
+<section class="gch" id="the-quiet-rooms">
+  <header class="gch-head">
+    <span class="rom">VI</span>
+    <h2>The Quiet Rooms</h2>
+    <span class="count">19 photographs</span>
+  </header>
+  <div class="grid">
+<figure class="ph" id="ph-51">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/051-powder-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/051-powder-room.jpg" alt="Powder room">
+  <figcaption>Powder room</figcaption>
+</figure>
+<figure class="ph" id="ph-52">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/052-side-porch.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/052-side-porch.jpg" alt="Side porch">
+  <figcaption>Side porch</figcaption>
+</figure>
+<figure class="ph" id="ph-53">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/053-side-porch-with-sink.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/053-side-porch-with-sink.jpg" alt="Side porch with sink">
+  <figcaption>Side porch with sink</figcaption>
+</figure>
+<figure class="ph" id="ph-54">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/054-side-porch-sink.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/054-side-porch-sink.jpg" alt="Side porch sink">
+  <figcaption>Side porch sink</figcaption>
+</figure>
+<figure class="ph" id="ph-55">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/055-laundry.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/055-laundry.jpg" alt="Laundry">
+  <figcaption>Laundry</figcaption>
+</figure>
+<figure class="ph" id="ph-56">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/056-laundry.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/056-laundry.jpg" alt="Laundry">
+  <figcaption>Laundry</figcaption>
+</figure>
+<figure class="ph" id="ph-57">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/057-hallway.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/057-hallway.jpg" alt="Hallway">
+  <figcaption>Hallway</figcaption>
+</figure>
+<figure class="ph" id="ph-58">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/058-library.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/058-library.jpg" alt="Library">
+  <figcaption>Library</figcaption>
+</figure>
+<figure class="ph" id="ph-59">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/059-library.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/059-library.jpg" alt="Library">
+  <figcaption>Library</figcaption>
+</figure>
+<figure class="ph" id="ph-60">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/060-library.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/060-library.jpg" alt="Library">
+  <figcaption>Library</figcaption>
+</figure>
+<figure class="ph" id="ph-61">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/061-library.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/061-library.jpg" alt="Library">
+  <figcaption>Library</figcaption>
+</figure>
+<figure class="ph" id="ph-62">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/062-library.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/062-library.jpg" alt="Library">
+  <figcaption>Library</figcaption>
+</figure>
+<figure class="ph" id="ph-63">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/063-side-entry.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/063-side-entry.jpg" alt="Side entry">
+  <figcaption>Side entry</figcaption>
+</figure>
+<figure class="ph" id="ph-64">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/064-arched-door.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/064-arched-door.jpg" alt="Arched door">
+  <figcaption>Arched door</figcaption>
+</figure>
+<figure class="ph" id="ph-65">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/065-powder-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/065-powder-room.jpg" alt="Powder room">
+  <figcaption>Powder room</figcaption>
+</figure>
+<figure class="ph" id="ph-66">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/066-door-to-sitting-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/066-door-to-sitting-room.jpg" alt="Door to sitting room">
+  <figcaption>Door to sitting room</figcaption>
+</figure>
+<figure class="ph" id="ph-67">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/067-delft-sitting-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/067-delft-sitting-room.jpg" alt="Delft sitting room">
+  <figcaption>Delft sitting room</figcaption>
+</figure>
+<figure class="ph" id="ph-68">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/068-sitting-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/068-sitting-room.jpg" alt="Sitting room">
+  <figcaption>Sitting room</figcaption>
+</figure>
+<figure class="ph" id="ph-69">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/069-sitting-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/069-sitting-room.jpg" alt="Sitting room">
+  <figcaption>Sitting room</figcaption>
+</figure>
+  </div>
+</section>
+<section class="gch" id="the-primary-wing">
+  <header class="gch-head">
+    <span class="rom">VII</span>
+    <h2>The Primary Wing</h2>
+    <span class="count">18 photographs</span>
+  </header>
+  <div class="grid">
+<figure class="ph" id="ph-70">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/070-primary-suite.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/070-primary-suite.jpg" alt="Primary suite">
+  <figcaption>Primary suite</figcaption>
+</figure>
+<figure class="ph" id="ph-71">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/071-primary-suite.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/071-primary-suite.jpg" alt="Primary suite">
+  <figcaption>Primary suite</figcaption>
+</figure>
+<figure class="ph" id="ph-72">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/072-primary.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/072-primary.jpg" alt="Primary">
+  <figcaption>Primary</figcaption>
+</figure>
+<figure class="ph" id="ph-73">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/073-primary.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/073-primary.jpg" alt="Primary">
+  <figcaption>Primary</figcaption>
+</figure>
+<figure class="ph" id="ph-74">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/074-primary.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/074-primary.jpg" alt="Primary">
+  <figcaption>Primary</figcaption>
+</figure>
+<figure class="ph" id="ph-75">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/075-primary-bathroom.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/075-primary-bathroom.jpg" alt="Primary bathroom">
+  <figcaption>Primary bathroom</figcaption>
+</figure>
+<figure class="ph" id="ph-76">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/076-primary-bathroom.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/076-primary-bathroom.jpg" alt="Primary bathroom">
+  <figcaption>Primary bathroom</figcaption>
+</figure>
+<figure class="ph" id="ph-77">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/077-primary-bathroom.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/077-primary-bathroom.jpg" alt="Primary bathroom">
+  <figcaption>Primary bathroom</figcaption>
+</figure>
+<figure class="ph" id="ph-78">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/078-primary-bathroom.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/078-primary-bathroom.jpg" alt="Primary bathroom">
+  <figcaption>Primary bathroom</figcaption>
+</figure>
+<figure class="ph" id="ph-79">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/079-jacuzzi-tub.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/079-jacuzzi-tub.jpg" alt="Jacuzzi tub">
+  <figcaption>Jacuzzi tub</figcaption>
+</figure>
+<figure class="ph" id="ph-80">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/080-primary-bathroom.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/080-primary-bathroom.jpg" alt="Primary bathroom">
+  <figcaption>Primary bathroom</figcaption>
+</figure>
+<figure class="ph" id="ph-81">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/081-stairs-off-primary-suite.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/081-stairs-off-primary-suite.jpg" alt="Stairs off primary suite">
+  <figcaption>Stairs off primary suite</figcaption>
+</figure>
+<figure class="ph" id="ph-82">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/082-primary-shower.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/082-primary-shower.jpg" alt="Primary shower">
+  <figcaption>Primary shower</figcaption>
+</figure>
+<figure class="ph" id="ph-83">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/083-dressing-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/083-dressing-room.jpg" alt="Dressing room">
+  <figcaption>Dressing room</figcaption>
+</figure>
+<figure class="ph" id="ph-84">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/084-dressing-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/084-dressing-room.jpg" alt="Dressing room">
+  <figcaption>Dressing room</figcaption>
+</figure>
+<figure class="ph" id="ph-85">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/085-primary-dressing-room.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/085-primary-dressing-room.jpg" alt="Primary dressing room">
+  <figcaption>Primary dressing room</figcaption>
+</figure>
+<figure class="ph" id="ph-86">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/086-second-dressing-room-and-closet.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/086-second-dressing-room-and-closet.jpg" alt="Second dressing room and closet">
+  <figcaption>Second dressing room and closet</figcaption>
+</figure>
+<figure class="ph" id="ph-87">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/087-second-dressing-room-walk-in-closet.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/087-second-dressing-room-walk-in-closet.jpg" alt="Second dressing room walk in closet">
+  <figcaption>Second dressing room walk in closet</figcaption>
+</figure>
+  </div>
+</section>
+<section class="gch" id="upstairs">
+  <header class="gch-head">
+    <span class="rom">VIII</span>
+    <h2>Upstairs</h2>
+    <span class="count">21 photographs</span>
+  </header>
+  <div class="grid">
+<figure class="ph" id="ph-88">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/088-upper-hallway.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/088-upper-hallway.jpg" alt="Upper hallway">
+  <figcaption>Upper hallway</figcaption>
+</figure>
+<figure class="ph" id="ph-89">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/089-upper-hallway.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/089-upper-hallway.jpg" alt="Upper hallway">
+  <figcaption>Upper hallway</figcaption>
+</figure>
+<figure class="ph" id="ph-90">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/090-rose-suite.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/090-rose-suite.jpg" alt="Rose suite">
+  <figcaption>Rose suite</figcaption>
+</figure>
+<figure class="ph" id="ph-91">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/091-rose-suite.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/091-rose-suite.jpg" alt="Rose suite">
+  <figcaption>Rose suite</figcaption>
+</figure>
+<figure class="ph" id="ph-92">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/092-rose-suite-full-bathroom.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/092-rose-suite-full-bathroom.jpg" alt="Rose suite full bathroom">
+  <figcaption>Rose suite full bathroom</figcaption>
+</figure>
+<figure class="ph" id="ph-93">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/093-rose-suite-full-bathroom.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/093-rose-suite-full-bathroom.jpg" alt="Rose suite full bathroom">
+  <figcaption>Rose suite full bathroom</figcaption>
+</figure>
+<figure class="ph" id="ph-94">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/094-upper-hallway.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/094-upper-hallway.jpg" alt="Upper hallway">
+  <figcaption>Upper hallway</figcaption>
+</figure>
+<figure class="ph" id="ph-95">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/095-yellow-bedroom-suite.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/095-yellow-bedroom-suite.jpg" alt="Yellow bedroom suite">
+  <figcaption>Yellow bedroom suite</figcaption>
+</figure>
+<figure class="ph" id="ph-96">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/096-yellow-bedroom-suite.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/096-yellow-bedroom-suite.jpg" alt="Yellow bedroom suite">
+  <figcaption>Yellow bedroom suite</figcaption>
+</figure>
+<figure class="ph" id="ph-97">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/097-yellow-bedroom-suite.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/097-yellow-bedroom-suite.jpg" alt="Yellow bedroom suite">
+  <figcaption>Yellow bedroom suite</figcaption>
+</figure>
+<figure class="ph" id="ph-98">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/098-yellow-bedroom-suite-full-bathroom.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/098-yellow-bedroom-suite-full-bathroom.jpg" alt="Yellow bedroom suite full bathroom">
+  <figcaption>Yellow bedroom suite full bathroom</figcaption>
+</figure>
+<figure class="ph" id="ph-99">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/099-yellow-bedroom-suite-full-bathroom.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/099-yellow-bedroom-suite-full-bathroom.jpg" alt="Yellow bedroom suite full bathroom">
+  <figcaption>Yellow bedroom suite full bathroom</figcaption>
+</figure>
+<figure class="ph" id="ph-100">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/100-balcony-access-from-yellow-suite.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/100-balcony-access-from-yellow-suite.jpg" alt="Balcony access from yellow suite">
+  <figcaption>Balcony access from yellow suite</figcaption>
+</figure>
+<figure class="ph" id="ph-101">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/101-hallway.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/101-hallway.jpg" alt="Hallway">
+  <figcaption>Hallway</figcaption>
+</figure>
+<figure class="ph" id="ph-102">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/102-red-bedroom-nursery.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/102-red-bedroom-nursery.jpg" alt="Red bedroom nursery">
+  <figcaption>Red bedroom nursery</figcaption>
+</figure>
+<figure class="ph" id="ph-103">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/103-red-bedroom-nursery.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/103-red-bedroom-nursery.jpg" alt="Red bedroom nursery">
+  <figcaption>Red bedroom nursery</figcaption>
+</figure>
+<figure class="ph" id="ph-104">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/104-red-bedroom-nursery.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/104-red-bedroom-nursery.jpg" alt="Red bedroom nursery">
+  <figcaption>Red bedroom nursery</figcaption>
+</figure>
+<figure class="ph" id="ph-105">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/105-red-bedroom-nursery.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/105-red-bedroom-nursery.jpg" alt="Red bedroom nursery">
+  <figcaption>Red bedroom nursery</figcaption>
+</figure>
+<figure class="ph" id="ph-106">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/106-red-bedroom-nursery-full-bathroom.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/106-red-bedroom-nursery-full-bathroom.jpg" alt="Red bedroom nursery full bathroom">
+  <figcaption>Red bedroom nursery full bathroom</figcaption>
+</figure>
+<figure class="ph" id="ph-107">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/107-balcony.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/107-balcony.jpg" alt="Balcony">
+  <figcaption>Balcony</figcaption>
+</figure>
+<figure class="ph" id="ph-108">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/108-balcony.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/108-balcony.jpg" alt="Balcony">
+  <figcaption>Balcony</figcaption>
+</figure>
+  </div>
+</section>
+<section class="gch" id="the-den">
+  <header class="gch-head">
+    <span class="rom">IX</span>
+    <h2>The Den &amp; Spiral Stair</h2>
+    <span class="count">3 photographs</span>
+  </header>
+  <div class="grid">
+<figure class="ph" id="ph-109">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/109-den-spiral-staircase.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/109-den-spiral-staircase.jpg" alt="Den spiral staircase">
+  <figcaption>Den spiral staircase</figcaption>
+</figure>
+<figure class="ph" id="ph-110">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/110-den.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/110-den.jpg" alt="Den">
+  <figcaption>Den</figcaption>
+</figure>
+<figure class="ph" id="ph-111">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/111-den.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/111-den.jpg" alt="Den">
+  <figcaption>Den</figcaption>
+</figure>
+  </div>
+</section>
+<section class="gch" id="the-grounds">
+  <header class="gch-head">
+    <span class="rom">X</span>
+    <h2>The Grounds</h2>
+    <span class="count">25 photographs</span>
+  </header>
+  <div class="grid">
+<figure class="ph" id="ph-112">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/112-brick-terrace.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/112-brick-terrace.jpg" alt="Brick terrace">
+  <figcaption>Brick terrace</figcaption>
+</figure>
+<figure class="ph" id="ph-113">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/113-exterior.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/113-exterior.jpg" alt="Exterior">
+  <figcaption>Exterior</figcaption>
+</figure>
+<figure class="ph" id="ph-114">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/114-exterior.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/114-exterior.jpg" alt="Exterior">
+  <figcaption>Exterior</figcaption>
+</figure>
+<figure class="ph" id="ph-115">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/115-boxwood-herb-garden.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/115-boxwood-herb-garden.jpg" alt="Boxwood herb garden">
+  <figcaption>Boxwood herb garden</figcaption>
+</figure>
+<figure class="ph" id="ph-116">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/116-exterior.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/116-exterior.jpg" alt="Exterior">
+  <figcaption>Exterior</figcaption>
+</figure>
+<figure class="ph" id="ph-117">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/117-exterior.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/117-exterior.jpg" alt="Exterior">
+  <figcaption>Exterior</figcaption>
+</figure>
+<figure class="ph" id="ph-118">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/118-grounds.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/118-grounds.jpg" alt="Grounds">
+  <figcaption>Grounds</figcaption>
+</figure>
+<figure class="ph" id="ph-119">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/119-grounds.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/119-grounds.jpg" alt="Grounds">
+  <figcaption>Grounds</figcaption>
+</figure>
+<figure class="ph" id="ph-120">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/120-tennis-courts.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/120-tennis-courts.jpg" alt="Tennis courts">
+  <figcaption>Tennis courts</figcaption>
+</figure>
+<figure class="ph" id="ph-121">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/121-the-wee-cottage.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/121-the-wee-cottage.jpg" alt="The wee cottage">
+  <figcaption>The wee cottage</figcaption>
+</figure>
+<figure class="ph" id="ph-122">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/122-playhouse.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/122-playhouse.jpg" alt="Playhouse">
+  <figcaption>Playhouse</figcaption>
+</figure>
+<figure class="ph" id="ph-123">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/123-grounds.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/123-grounds.jpg" alt="Grounds">
+  <figcaption>Grounds</figcaption>
+</figure>
+<figure class="ph" id="ph-124">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/124-pool.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/124-pool.jpg" alt="Pool">
+  <figcaption>Pool</figcaption>
+</figure>
+<figure class="ph" id="ph-125">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/125-pool.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/125-pool.jpg" alt="Pool">
+  <figcaption>Pool</figcaption>
+</figure>
+<figure class="ph" id="ph-126">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/126-pool-brick-wall.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/126-pool-brick-wall.jpg" alt="Pool brick wall">
+  <figcaption>Pool brick wall</figcaption>
+</figure>
+<figure class="ph" id="ph-127">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/127-pool.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/127-pool.jpg" alt="Pool">
+  <figcaption>Pool</figcaption>
+</figure>
+<figure class="ph" id="ph-128">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/128-grounds.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/128-grounds.jpg" alt="Grounds">
+  <figcaption>Grounds</figcaption>
+</figure>
+<figure class="ph" id="ph-129">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/129-blue-fox.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/129-blue-fox.jpg" alt="Blue fox">
+  <figcaption>Blue fox</figcaption>
+</figure>
+<figure class="ph" id="ph-130">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/130-grounds.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/130-grounds.jpg" alt="Grounds">
+  <figcaption>Grounds</figcaption>
+</figure>
+<figure class="ph" id="ph-131">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/131-grounds.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/131-grounds.jpg" alt="Grounds">
+  <figcaption>Grounds</figcaption>
+</figure>
+<figure class="ph" id="ph-132">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/132-garage.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/132-garage.jpg" alt="Garage">
+  <figcaption>Garage</figcaption>
+</figure>
+<figure class="ph" id="ph-133">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/133-garage.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/133-garage.jpg" alt="Garage">
+  <figcaption>Garage</figcaption>
+</figure>
+<figure class="ph" id="ph-134">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/134-aerial.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/134-aerial.jpg" alt="Aerial">
+  <figcaption>Aerial</figcaption>
+</figure>
+<figure class="ph" id="ph-135">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/135-aerial.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/135-aerial.jpg" alt="Aerial">
+  <figcaption>Aerial</figcaption>
+</figure>
+<figure class="ph" id="ph-136">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/136-4-15-acre-lot.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/136-4-15-acre-lot.jpg" alt="4.15 acre lot">
+  <figcaption>4.15 acre lot</figcaption>
+</figure>
+  </div>
+</section>
+<section class="gch" id="the-last-parcel">
+  <header class="gch-head">
+    <span class="rom">XI</span>
+    <h2>The Last Parcel</h2>
+    <span class="count">2 photographs</span>
+  </header>
+  <div class="grid">
+<figure class="ph" id="ph-137">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/137-spiral-staircase.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/137-spiral-staircase.jpg" alt="Spiral staircase">
+  <figcaption>Spiral staircase</figcaption>
+</figure>
+<figure class="ph" id="ph-138">
+  <img loading="lazy" src="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_900/v1/garran-hill/photos/140-gated-entrance.jpg" data-full="https://res.cloudinary.com/dghn2xpif/image/upload/f_auto,q_auto:good,w_2000/v1/garran-hill/photos/140-gated-entrance.jpg" alt="Gated entrance">
+  <figcaption>Gated entrance</figcaption>
+</figure>
+  </div>
+</section>
+<div class="colophon">Garran Hill &middot; 200 Hollycrest Drive &middot; Pinehurst, NC 28374 &middot; Offered at $4,250,000<br>
+<a href="../#inquire">Request a private showing</a></div>
+
+<div class="lb" id="lb" aria-hidden="true">
+  <button class="x" aria-label="Close">&times;</button>
+  <button class="nav prev" aria-label="Previous">&#8249;</button>
+  <img alt="">
+  <button class="nav next" aria-label="Next">&#8250;</button>
+  <div class="cap"></div>
+</div>
+<script>
+(function(){
+  var phs=[].slice.call(document.querySelectorAll('.ph'));
+  var lb=document.getElementById('lb'), im=lb.querySelector('img'), cap=lb.querySelector('.cap');
+  var cur=-1;
+  function show(i){
+    if(i<0) i=phs.length-1; if(i>=phs.length) i=0;
+    cur=i;
+    var img=phs[i].querySelector('img');
+    im.src=img.getAttribute('data-full')||img.src;
+    im.alt=img.alt; cap.textContent=img.alt;
+    lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  }
+  function hide(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  phs.forEach(function(p,i){ p.addEventListener('click',function(){show(i);}); });
+  lb.querySelector('.x').addEventListener('click',hide);
+  lb.querySelector('.prev').addEventListener('click',function(e){e.stopPropagation();show(cur-1);});
+  lb.querySelector('.next').addEventListener('click',function(e){e.stopPropagation();show(cur+1);});
+  lb.addEventListener('click',function(e){ if(e.target===lb) hide(); });
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key==='Escape') hide();
+    else if(e.key==='ArrowLeft') show(cur-1);
+    else if(e.key==='ArrowRight') show(cur+1);
+  });
+  // touch swipe
+  var sx=null;
+  lb.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+  lb.addEventListener('touchend',function(e){
+    if(sx===null) return;
+    var dx=e.changedTouches[0].clientX-sx; sx=null;
+    if(Math.abs(dx)>48) show(cur+(dx<0?1:-1));
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
