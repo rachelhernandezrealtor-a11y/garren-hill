@@ -1,0 +1,98 @@
+{
+  "name": "Rachel Studio Buyer Voice Brand System",
+  "date": "2026-05-03",
+  "status": "active_platform_module",
+  "purpose": "Give every listing its own buyer voice, brand language, search psychology, design register, and private/public experience based on that property's truth.",
+  "law": "Each listing gets its own buyer voice brand, born from the property's truth.",
+  "rings": [
+    "property_truth",
+    "buyer_psychology",
+    "voice_and_experience"
+  ],
+  "required_outputs": [
+    "buyer_voice_statement",
+    "primary_buyer_archetypes",
+    "anti_buyer_list",
+    "language_palette",
+    "property_specific_banned_phrases",
+    "public_page_tone",
+    "private_dossier_tone",
+    "seo_intent_map",
+    "image_caption_voice",
+    "video_social_voice",
+    "inquiry_language",
+    "source_claim_warnings"
+  ],
+  "visibility": {
+    "public_page": [
+      "indexable",
+      "source_backed",
+      "cinematic",
+      "restrained",
+      "specific",
+      "emotionally_precise",
+      "shareable",
+      "clear_for_qualified_search"
+    ],
+    "private_dossier": [
+      "noindex",
+      "deeper",
+      "practical",
+      "direct",
+      "tailored_to_buyer_path",
+      "qualification_or_intentional_share"
+    ]
+  },
+  "properties": {
+    "garran_hill": {
+      "working_voice": "Stewardship, provenance, privacy, architecture, and cultural weight.",
+      "buyer_archetypes": [
+        "preservation_minded_estate_buyer",
+        "architecture_provenance_buyer",
+        "pinehurst_legacy_buyer",
+        "private_retreat_buyer",
+        "cultural_history_buyer"
+      ],
+      "voice_traits": [
+        "restrained",
+        "haunted_but_factual",
+        "spare",
+        "archival",
+        "emotionally_controlled"
+      ]
+    },
+    "flow_farm": {
+      "working_voice": "A working ecosystem of land, food, resilience, scale, infrastructure, wellness, and privacy.",
+      "buyer_archetypes": [
+        "sustainability_resilience_buyer",
+        "wellness_estate_buyer",
+        "land_and_systems_buyer",
+        "family_compound_buyer",
+        "pinehurst_lifestyle_buyer",
+        "farm_food_sovereignty_buyer"
+      ],
+      "voice_traits": [
+        "alive",
+        "capable",
+        "grounded",
+        "intelligent",
+        "systems_aware",
+        "kinetic"
+      ]
+    }
+  },
+  "workflow": [
+    "gather_source_truth",
+    "extract_property_facts",
+    "identify_emotional_gravity",
+    "identify_buyer_archetypes",
+    "define_anti_buyer_list",
+    "write_buyer_voice_statement",
+    "create_keyword_lanes",
+    "create_public_private_content_split",
+    "create_visual_motion_direction",
+    "create_seo_social_language",
+    "rachel_rocky_approve",
+    "codex_enforces_in_build_and_checks"
+  ]
+}

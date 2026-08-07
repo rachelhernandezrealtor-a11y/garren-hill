@@ -1,0 +1,107 @@
+{
+  "name": "Rachel Studio Client-Facing Process",
+  "created": "2026-05-03",
+  "status": "active_client_facing_draft",
+  "purpose": "Explain Rachel Hernandez Studio to sellers without exposing the technical machinery.",
+  "core_explanation": "Most listings are prepared for distribution. Rachel Hernandez Studio prepares a property to be understood.",
+  "public_positioning": {
+    "studio_first": true,
+    "sothebys_role": "reach_and_brokerage_strength",
+    "recommended_phrase": "Rachel Hernandez Studio pairs a private editorial production process with the reach of Sotheby's International Realty."
+  },
+  "client_process_steps": [
+    {
+      "step": "Intake",
+      "client_meaning": "Rachel learns the property deeply before presenting it.",
+      "internal_jobs": [
+        "history",
+        "architecture",
+        "setting",
+        "systems",
+        "land",
+        "constraints",
+        "source-sensitive claims"
+      ]
+    },
+    {
+      "step": "Narrative",
+      "client_meaning": "The property receives a story, not generic listing copy.",
+      "internal_jobs": [
+        "buyer voice",
+        "copy direction",
+        "approved language",
+        "banned language",
+        "claim support"
+      ]
+    },
+    {
+      "step": "Presentation",
+      "client_meaning": "The property receives a dedicated digital presentation built for that property alone.",
+      "internal_jobs": [
+        "site structure",
+        "media placement",
+        "mobile behavior",
+        "visual rhythm",
+        "calls to action"
+      ]
+    },
+    {
+      "step": "Reach",
+      "client_meaning": "The launch connects Studio-level positioning with Sotheby's International Realty reach and property-specific search strategy.",
+      "internal_jobs": [
+        "SEO",
+        "structured data",
+        "source links",
+        "image text",
+        "backlink planning",
+        "selective search intent"
+      ]
+    },
+    {
+      "step": "After Launch",
+      "client_meaning": "The public presentation stays current while the property is on the market.",
+      "internal_jobs": [
+        "price updates",
+        "status updates",
+        "MLS updates",
+        "link updates",
+        "verification",
+        "change log"
+      ]
+    }
+  ],
+  "client_receives": [
+    "dedicated single-property site",
+    "original property narrative",
+    "curated photography and media placement",
+    "mobile-first presentation review",
+    "SEO title, description, image text, and structured data planning",
+    "source and backlink strategy where relevant",
+    "launch verification",
+    "post-launch update process"
+  ],
+  "public_words_to_use": [
+    "editorial presentation",
+    "property-specific strategy",
+    "source-backed positioning",
+    "selective reach",
+    "dedicated property site",
+    "launch process",
+    "right-buyer discovery"
+  ],
+  "public_words_to_avoid": [
+    "AI-powered listing pages",
+    "automated websites",
+    "instant property sites",
+    "templates",
+    "mass marketing",
+    "SEO tricks"
+  ],
+  "recommended_outputs": [
+    "studio site section",
+    "client one-page PDF",
+    "listing appointment handout",
+    "email response template"
+  ],
+  "private_machinery_rule": "Do not expose MCP, Cloudflare, GitHub, Cloudinary, Remotion, D1, or agent orchestration in client-facing process language."
+}

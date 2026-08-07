@@ -1,0 +1,80 @@
+{
+  "name": "Rachel Studio Selective SEO Strategy",
+  "date": "2026-05-03",
+  "status": "active_platform_module",
+  "purpose": "Make property sites discoverable by the right people while preserving private, editorial, source-backed selectivity.",
+  "primary_goal": "qualified_discovery",
+  "visibility_layers": [
+    {
+      "name": "public_indexed_page",
+      "indexing": "index",
+      "purpose": "Create desire, trust, and authority for qualified searchers."
+    },
+    {
+      "name": "public_authority_layer",
+      "indexing": "selective_index",
+      "purpose": "Help search engines, AI search, press, and researchers understand why the property matters."
+    },
+    {
+      "name": "private_noindex_dossier",
+      "indexing": "noindex",
+      "purpose": "Protect sensitive material and create controlled experiences for serious buyers, advisors, and agents."
+    }
+  ],
+  "keyword_lanes": [
+    "identity_search",
+    "buyer_intent",
+    "authority_history",
+    "visual_search",
+    "action_search"
+  ],
+  "required_public_page_checks": [
+    "canonical_url",
+    "indexable_robots",
+    "unique_title",
+    "unique_meta_description",
+    "one_h1",
+    "open_graph_metadata",
+    "twitter_card_metadata",
+    "validated_json_ld",
+    "approved_alt_text",
+    "source_links_reviewed",
+    "sitemap_ready",
+    "preview_noindex",
+    "no_private_names",
+    "no_banned_words",
+    "no_unsafe_claims"
+  ],
+  "structured_data_graph": [
+    "WebSite",
+    "WebPage",
+    "BreadcrumbList",
+    "SingleFamilyResidence",
+    "Offer",
+    "RealEstateAgent",
+    "ImageObject",
+    "VideoObject",
+    "Organization"
+  ],
+  "measurement": [
+    "qualified_search_impressions",
+    "identity_query_clicks",
+    "authority_query_clicks",
+    "image_search_impressions",
+    "video_search_impressions",
+    "time_on_page",
+    "source_link_interaction",
+    "inquiry_quality",
+    "backlinks_earned",
+    "search_console_health",
+    "core_web_vitals"
+  ],
+  "rules": [
+    "Truth is the seduction.",
+    "Do not keyword-stuff.",
+    "Do not invent or inflate claims.",
+    "Private material stays noindex.",
+    "Structured data must match visible page content.",
+    "Rachel approval is required before production."
+  ]
+}

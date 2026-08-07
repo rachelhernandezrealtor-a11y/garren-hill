@@ -1,0 +1,78 @@
+{
+  "name": "Rachel Studio Innovation Radar",
+  "date": "2026-05-03",
+  "status": "active_platform_module",
+  "purpose": "Watch official updates and trusted releases so Rachel Studio keeps improving without chasing hype.",
+  "sources": [
+    {
+      "name": "OpenAI Changelog",
+      "url": "https://platform.openai.com/docs/changelog",
+      "lanes": ["core_ai_models", "agents", "tool_calling", "coding", "image_video"]
+    },
+    {
+      "name": "OpenAI Models",
+      "url": "https://developers.openai.com/api/docs/models",
+      "lanes": ["model_selection", "coding", "vision", "agent_workflows"]
+    },
+    {
+      "name": "Anthropic Release Notes",
+      "url": "https://docs.anthropic.com/en/release-notes/overview",
+      "lanes": ["claude", "research", "long_context", "tool_use"]
+    },
+    {
+      "name": "Anthropic Models",
+      "url": "https://docs.anthropic.com/en/docs/about-claude/models/all-models",
+      "lanes": ["model_selection", "long_context", "research"]
+    },
+    {
+      "name": "Google Workspace Updates",
+      "url": "https://workspaceupdates.googleblog.com/",
+      "lanes": ["google_workspace", "notebooklm", "gemini", "source_truth"]
+    },
+    {
+      "name": "Cloudflare Changelog",
+      "url": "https://developers.cloudflare.com/changelog/",
+      "lanes": ["backend", "workers", "d1", "durable_objects", "mcp"]
+    },
+    {
+      "name": "Cloudinary Image and Video Updates",
+      "url": "https://cloudinary.com/product_updates",
+      "lanes": ["cloudinary", "image_enhancement", "video", "media_delivery"]
+    },
+    {
+      "name": "Cloudinary Assets Release Notes",
+      "url": "https://cloudinary.com/documentation/digital_asset_management_release_notes",
+      "lanes": ["media_library", "asset_management", "image_review"]
+    },
+    {
+      "name": "Google Search Central Updates",
+      "url": "https://developers.google.com/search/updates",
+      "lanes": ["seo", "schema", "discoverability"]
+    },
+    {
+      "name": "Schema.org Releases",
+      "url": "https://schema.org/docs/releases.html",
+      "lanes": ["structured_data", "seo", "source_authority"]
+    },
+    {
+      "name": "Model Context Protocol",
+      "url": "https://modelcontextprotocol.io/",
+      "lanes": ["mcp", "connectors", "tool_switchboard"]
+    }
+  ],
+  "scoring": {
+    "5": "test in preview now",
+    "4": "active backlog",
+    "3": "shelf for later",
+    "2": "watch only",
+    "1": "ignore"
+  },
+  "rules": [
+    "Do not chase hype.",
+    "Do not recommend production changes.",
+    "Preview first.",
+    "Rachel approval required for production.",
+    "Every upgrade needs a lane.",
+    "Every useful upgrade should become a versioned platform improvement."
+  ]
+}
